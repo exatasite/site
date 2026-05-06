@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Física EM - Página Inicial</title>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="estilo.css">
+    
+    <script type="text/javascript" id="MathJax-script" async
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
+</head>
+<body>
+    <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+
+    <nav id="menu-principal" class="nav-global">
+        <ul>
+            <li><a href="index.html">🏠 Início</a></li>
+            <li><a href="fisica_home.html">⚛️ Física</a></li>
+            <li><a href="matematica_home.html">📐 Matemática</a></li>
+            <li><a href="simulacoes_home.html">💻 Simulações</a></li>
+        </ul>
+    </nav>    
+
+    <header>
+        <h1>FÍSICA EM</h1>
+        <p>Aulas, Resumos e Questões para 1º, 2º e 3º Ano do Ensino Médio</p>
+    </header>
+
+    <div class="container">
+        
+        <main class="conteudo-principal">
+            
+            <div class="secao-aula">
+                <h2>Bem-vindo(a) ao Seu Portal de Física!</h2>
+                
+                <section class="resumo-conteudo">
+                    <h3>📚 Objetivo</h3>
+                    <p>Este portal foi desenvolvido para apoiar seus estudos em Física, cobrindo os três anos do Ensino Médio. Cada aula contém um resumo teórico essencial, 5 questões resolvidas passo a passo e 5 questões propostas para sua prática.</p>
+                    <p><strong>Navegue pelos tópicos no menu lateral para começar!</strong></p>
+                </section>
+                
+                <section>
+                    <h3>Organização do Conteúdo</h3>
+                    <ul>
+                        <li>1º Ano: Mecânica (40 Aulas)</li>
+                        <li>2º Ano: Termologia, Óptica e Ondas (40 Aulas)</li>
+                        <li>3º Ano: Eletricidade e Física Moderna (40 Aulas)</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h3>Estrutura das Questões</h3>
+                    <p>Seguimos a padronização para facilitar sua organização:</p>
+                    <ul>
+                        <li>Questões Resolvidas (R): Foco em fixação de conceitos e demonstração de técnica passo a passo.</li>
+                        <li>Questões Propostas (P): Exercícios que acompanham gabarito e resolução detalhada (que podem ser revelados para conferência).</li>
+			<li> Teste (T): Questões de múltipla escolha que abrangem o ENEM, vestibulares diversos e questões autorais elaboradas no estilo oficial das grandes provas.</li>
+                    </ul>
+                </section>
+
+            </div>
+        </main>
+        
+        <aside class="menu-lateral">
+            <iframe src="menu_fisica.html" style="width:100%; border:none; height:600px;"></iframe>
+        </aside>
+
+    </div>
+
+    <script>
+        function toggleMenu() {
+            // 1. Abre/Fecha o menu global (Início, Física, Matemática)
+            const menuGlobal = document.getElementById("menu-principal");
+            if (menuGlobal) {
+                menuGlobal.classList.toggle("ativo");
+            }
+            
+            // 2. Abre/Fecha o menu lateral de aulas
+            const menuLateral = document.querySelector(".menu-lateral");
+            if (menuLateral) {
+                menuLateral.classList.toggle("ativo");
+            }
+        }
+    </script>
+</body>
+</html>

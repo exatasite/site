@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulações Interativas - Projeto Exatas</title>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="estilo.css">
+    
+    <script type="text/javascript" id="MathJax-script" async
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
+</head>
+<body>
+<button class="menu-toggle" onclick="toggleMenu()">☰</button>
+
+<nav id="menu-principal" class="nav-global">
+    <ul>
+        <li><a href="index.html">🏠 Início</a></li>
+        <li><a href="fisica_home.html">⚛️ Física</a></li>
+        <li><a href="matematica_home.html">📐 Matemática</a></li>
+        <li><a href="simulacoes_home.html">💻 Simulações</a></li>
+    </ul>
+</nav>    
+    <header>
+        <h1>SIMULAÇÕES INTERATIVAS</h1>
+        <p>Laboratório Virtual de Física e Matemática</p>
+    </header>
+
+    <div class="container">
+        
+        <main class="conteudo-principal">
+            
+            <div class="secao-aula">
+                <h2>Exploração Visual e Experimental</h2>
+                
+                <section class="resumo-conteudo">
+                    <h3>🔬 O que são as simulações?</h3>
+                    <p>As simulações são ferramentas interativas que permitem visualizar conceitos abstratos na prática. Elas complementam os resumos teóricos, permitindo a manipulação de variáveis e a observação de fenômenos em tempo real.</p>
+                </section>
+                
+                <section>
+                    <h3>Simulações Disponíveis</h3>
+                    <p>Selecione uma simulação abaixo ou utilize o menu lateral para navegar por categoria.</p>
+                    
+                    <div class="questao">
+                        <h4>Física: Dilatação Térmica</h4>
+                        <p>Visualize como diferentes materiais se expandem com a variação de temperatura.</p>
+                        <a href="simulacoes/dilatacao_solidos.html" class="btn-gabarito" style="text-decoration: none; display: inline-block;">Abrir Simulação</a>
+                    </div>
+
+                    <div class="questao">
+                        <h4>Matemática: Geometria Espacial</h4>
+                        <p>Explore as propriedades e o cálculo de volume em diferentes tipos de prismas.</p>
+                        <a href="simulacoes/simulacao_prismas.html" class="btn-gabarito" style="text-decoration: none; display: inline-block;">Abrir Simulação</a>
+                    </div>
+                </section>
+            </div>
+        </main>
+        
+        <aside class="menu-lateral">
+            <h2>Índice de Simulações</h2>
+            
+            <h3>Simulações de Física</h3>
+            <ul>
+                <li class="aula-ativa"><a href="simulacoes/dilatacao_solidos.html">Dilatação dos Sólidos</a></li>
+                <li><a href="#">... Cinemática (Em breve)</a></li>
+                <li><a href="#">... Eletrostática (Em breve)</a></li>
+            </ul>
+
+            <h3>Simulações de Matemática</h3>
+            <ul>
+                <li><a href="simulacoes/simulacao_prismas.html">Estudo de Prismas</a></li>
+                <li><a href="#">... Funções (Em breve)</a></li>
+                <li><a href="#">... Trigonometria (Em breve)</a></li>
+            </ul>
+
+            <h3 style="margin-top: 30px; border-top: 2px solid var(--cor-secundaria); padding-top: 10px;">Navegação Geral</h3>
+            <ul>
+                <li><a href="index.html">Página Inicial (Seleção)</a></li>
+                <li><a href="fisica_home.html">Página de Física</a></li>
+                <li><a href="matematica_home.html">Página de Matemática</a></li>
+            </ul>
+        </aside>
+
+    </div>
+    <script>
+function toggleMenu() {
+    // 1. Abre/Fecha o menu global (Início, Física, Matemática)
+    const menuGlobal = document.getElementById("menu-principal");
+    if (menuGlobal) {
+        menuGlobal.classList.toggle("ativo");
+    }
+    
+    // 2. Abre/Fecha o menu lateral de aulas (específico da matemática)
+    const menuLateral = document.querySelector(".menu-lateral");
+    if (menuLateral) {
+        menuLateral.classList.toggle("ativo");
+    }
+}
+</script>
+</body>
+</html>
