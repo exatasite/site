@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1º Ano: Aula 01 - Grandezas e Unidades</title>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../estilo.css">
+    
+    <script>
+        MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true
+            }
+        };
+    </script>
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body>
+<button class="menu-toggle" onclick="toggleMenu()">☰</button>
+
+<nav id="menu-principal" class="nav-global">
+    <ul>
+        <li><a href="../index.html">🏠 Início</a></li>
+        <li><a href="../fisica_home.html">⚛️ Física</a></li>
+        <li><a href="../matematica_home.html">📐 Matemática</a></li>
+        <li><a href="../simulacoes_home.html">💻 Simulações</a></li>
+    </ul>
+</nav>
+
+<header id="topo">
+    <h1>FÍSICA EM</h1>
+    <p>1º Ano | Aula 01: Grandezas e Unidades Fundamentais</p>
+<button id="btn-slides" onclick="toggleSlides()">📺 Iniciar Modo Slides</button>
+</header>
+
+<div class="container">
+
+<main class="conteudo-principal">
+
+<div class="secao-aula">
+ <div class="container-resumo" id="resumo">
+    <h3>📚 Resumo </h3>
+    <section class="resumo-conteudo">
+        <p>Uma <strong>grandeza física</strong> é tudo aquilo que pode ser medido e quantificado. Para que essas medidas sejam compreendidas mundialmente, utiliza-se o <strong>Sistema Internacional de Unidades (SI)</strong>.</p>
+        <p>O SI padroniza unidades fundamentais como o metro (m), o quilograma (kg) e o segundo (s), garantindo a precisão em experimentos científicos, no comércio e na tecnologia.</p>
+    </section>
+</div>
+
+<section class="conteudo-teorico-completo" id="teoria">
+    <div class="passo-teoria">
+        <h3>📖 Grandezas e Unidades Fundamentais
+        <h4> 1. Grandezas Escalares e Vetoriais</h4>
+        <p>As grandezas físicas são divididas em dois grupos principais de acordo com a necessidade de informação para sua compreensão:</p>
+        <ul>
+            <li><strong>Grandezas Escalares:</strong> Ficam perfeitamente definidas apenas por um <strong>valor numérico e uma unidade de medida</strong>. Exemplos: massa (50 kg), tempo (10 s), temperatura (25°C) e energia.</li>
+            <li><strong>Grandezas Vetoriais:</strong> Além do valor e da unidade, precisam de <strong>direção e sentido</strong> para serem compreendidas. Exemplos: força, velocidade, aceleração e deslocamento.</li>
+        </ul>
+    </div>
+
+    <div class="passo-teoria">
+        <h4>2. O Sistema Internacional (SI)</h4>
+        <p>As três grandezas fundamentais da mecânica no SI e suas respectivas unidades são:</p>
+        <ul>
+            <li><strong>Comprimento:</strong> metro (m)</li>
+            <li><strong>Massa:</strong> quilograma (kg)</li>
+            <li><strong>Tempo:</strong> segundo (s)</li>
+        </ul>
+        <figure class="figura-aula figura-grande">
+            <img src="../imagens_fisica/aula1_01_conversao.png" alt="Esquema de conversão de unidades de comprimento e tempo.">
+            <figcaption>Figura 1: Esquema de conversão para unidades de base no Sistema Internacional.</figcaption>
+        </figure>
+    </div>
+
+    <div class="passo-teoria">
+        <h4>3. Prefixos do SI (Potências de 10)</h4>
+        <p>Prefixos facilitam a escrita de valores muito grandes ou pequenos. Os mais utilizados são:</p>
+        <table border="1" style="width:100%; border-collapse: collapse; margin: 10px 0; text-align: center;">
+            <tr style="background-color: #f2f2f2;">
+                <th>Prefixo</th>
+                <th>Símbolo</th>
+                <th>Fator multiplicador</th>
+            </tr>
+            <tr><td>Mega</td><td>M</td><td>$10^6$ (1.000.000)</td></tr>
+            <tr><td>Quilo</td><td>k</td><td>$10^3$ (1.000)</td></tr>
+            <tr><td>Centi</td><td>c</td><td>$10^{-2}$ (0,01)</td></tr>
+            <tr><td>Mili</td><td>m</td><td>$10^{-3}$ (0,001)</td></tr>
+            <tr><td>Micro</td><td>$\mu$</td><td>$10^{-6}$ (0,000001)</td></tr>
+        </table>
+    </div>
+</section>
+
+<section class="aplicacoes-reais" id="aplicacoes">
+    <h3>💡 Física em Ação</h3>
+    <div class="cards-aplicacao">
+        <div class="card">
+            <h4>🛰️ Tecnologia</h4>
+            <p>O GPS depende da sincronização de <strong>tempo</strong> em nanossegundos entre satélites e receptores para calcular posições com metros de erro.</p>
+        </div>
+        <div class="card" style="border-left-color: #2ecc71;">
+            <h4>⚖️ Comércio</h4>
+            <p>A definição exata do <strong>Quilograma</strong> garante que produtos comprados em diferentes países tenham a mesma massa real, facilitando a economia global.</p>
+        </div>
+    </div>
+</section>
+
+<section class="questoes-resolvidas" id="resolvidas">
+    <h3>✅ 5 Questões Resolvidas (R 1 a 5)</h3>
+    
+    <article class="questao">
+        <h4>R 1: Classificação de Grandezas</h4>
+        <p><strong>Enunciado:</strong> Classifique como escalar ou vetorial: Massa, Força, Temperatura e Deslocamento.</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong> <br>
+            - Massa: <strong>Escalar</strong> (apenas valor basta).<br>
+            - Força: <strong>Vetorial</strong> (precisa de direção e sentido).<br>
+            - Temperatura: <strong>Escalar</strong> (apenas valor basta).<br>
+            - Deslocamento: <strong>Vetorial</strong> (precisa indicar para onde foi o movimento).</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>R 2: Conversão de Tempo</h4>
+        <p><strong>Enunciado:</strong> Quantos segundos existem em 2 horas e 30 minutos?</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong> 2 horas = $2 \times 3600 = 7200\text{ s}$.<br>
+            30 minutos = $30 \times 60 = 1800\text{ s}$.<br>
+            Total: $7200 + 1800 = \mathbf{9000\text{ s}}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>R 3: Prefixos (Quilo)</h4>
+        <p><strong>Enunciado:</strong> Um atleta correu 5,2 km. Quantos metros ele percorreu?</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong> Como o prefixo 'k' (quilo) equivale a $10^3$ (1000), temos:<br>
+            $5,2 \times 1000 = \mathbf{5200\text{ m}}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>R 4: Conversão de Massa</h4>
+        <p><strong>Enunciado:</strong> Converta 850 gramas para quilogramas (unidade SI).</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong> No SI, a unidade de massa é o kg. Como 1 kg = 1000 g, dividimos por 1000:<br>
+            $850 / 1000 = \mathbf{0,85\text{ kg}}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>R 5: Área no SI</h4>
+        <p><strong>Enunciado:</strong> Uma placa possui área de $200\text{ cm}^2$. Qual esse valor em $\text{m}^2$?</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong> Para áreas, o fator de conversão é ao quadrado. $1\text{ m} = 100\text{ cm} \implies 1\text{ m}^2 = (100)^2 = 10.000\text{ cm}^2$.<br>
+            $200 / 10000 = \mathbf{0,02\text{ m}^2}$.</p>
+        </div>
+    </article>
+</section>
+
+<section class="questoes-propostas" id="propostas">
+    <h3>✍️ 5 Questões Propostas (P 6 a 10)</h3>
+
+    <article class="questao">
+        <h4>P 6: Unidades Fundamentais</h4>
+        <p><strong>Enunciado:</strong> No SI, quais são as unidades de comprimento, massa e tempo, respectivamente?</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> Metro (m), quilograma (kg) e segundo (s).</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 7: Prefixo Mili</h4>
+        <p><strong>Enunciado:</strong> Um comprimido tem 500 mg. Qual a sua massa em gramas?</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> O prefixo 'm' (mili) significa dividir por 1000: $500 / 1000 = 0,5\text{ g}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 8: Velocidade Composta</h4>
+        <p><strong>Enunciado:</strong> Converta $72\text{ km/h}$ para $\text{m/s}$ (unidade SI).</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> Para passar de km/h para m/s, dividimos por 3,6: $72 / 3,6 = 20\text{ m/s}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 9: Micro e Potência</h4>
+        <p><strong>Enunciado:</strong> Escreva $40 \mu\text{m}$ (micrômetros) em metros utilizando potência de 10.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> O prefixo micro ($\mu$) equivale a $10^{-6}$. Logo: $40 \times 10^{-6}\text{ m}$ ou $4 \times 10^{-5}\text{ m}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 10: Volume no SI</h4>
+        <p><strong>Enunciado:</strong> Uma caixa d'água tem 1000 litros. Sabendo que $1\text{ m}^3 = 1000\text{ L}$, qual o volume da caixa no SI?</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> No SI, a unidade de volume é o metro cúbico ($\text{m}^3$). Portanto, o volume é $1\text{ m}^3$.</p>
+        </div>
+    </article>
+</section>
+
+<section class="TESTE" id="testes">
+    <h3>🎓 TESTES (T 11 a 15)</h3>
+
+    <article class="questao">
+    <h4>T 11: (UFPR) Unidades de Medida</h4>
+    <p>O uso de múltiplos e submúltiplos de unidades de medida simplifica a escrita de números extensos. Considere que o diâmetro de um fio de cabelo vale e = 0,000070 m. Qual alternativa expressa este valor corretamente?</p>
+    <p>
+        A) e = 0,70 cm<br> 
+        B) e = 0,70 km<br> 
+        C) e = 70 mm<br> 
+        D) e = 70 μm<br> 
+        E) e = 70 nm
+    </p>
+    <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+    <div class="gabarito-resolucao">
+        <p><strong>Resolução:</strong> Alternativa <strong>D</strong>. 0,000070 m = $70 \times 10^{-6}\text{ m}$. Como $10^{-6}$ é o prefixo micro ($\mu$), o valor é 70 μm.</p>
+    </div>
+</article>
+
+    <article class="questao">
+    <h4>T 12: (IFSC) Conversão de Unidades</h4>
+    <p>A Federação Internacional de Atletismo – IAAF divulgou, no início do ano de 2019, os índices olímpicos para as Olimpíadas de Tokyo em 2020. O índice olímpico para a prova da Maratona Feminina, por exemplo, é de 2h29min30s. Assinale a alternativa que mais se aproxima deste índice olímpico, expresso apenas na unidade de tempo horas:</p>
+    <p>
+        A) 2,5001h<br> 
+        B) 2,4899h<br> 
+        C) 2,4916h<br> 
+        D) 2,2930h<br> 
+        E) 2,5102h
+    </p>
+    <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+    <div class="gabarito-resolucao">
+        <p><strong>Resolução:</strong> Alternativa <strong>C</strong>. <br>
+        Primeiro, mantemos as 2 horas inteiras. <br>
+        Depois, convertemos os 30 segundos para minutos: 30 / 60 = 0,5 minuto. <br>
+        Somamos aos minutos existentes: 29 + 0,5 = 29,5 minutos. <br>
+        Por fim, convertemos os minutos para horas: 29,5 / 60 = 0,49166... h. <br>
+        Somando tudo: 2h + 0,4916h = <strong>2,4916h</strong>.</p>
+    </div>
+</article>
+
+    <article class="questao">
+    <h4>T 13:(CESMAC) Cálculo de Medicamentos</h4>
+    <p>Naproxeno é uma medicação indicada para doenças reumáticas. Um médico receitou 1375 mg de Naproxeno por dia, em doses iguais. Cada tablete do Naproxeno disponível contém 0,275 g do medicamento. A quantos tabletes diários corresponde a prescrição do médico?</p>
+    <p>
+        A) 4<br> 
+        B) 5<br> 
+        C) 6<br> 
+        D) 8<br> 
+        E) 10
+    </p>
+    <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+    <div class="gabarito-resolucao">
+        <p><strong>Resolução:</strong> Alternativa <strong>B</strong>. <br>
+        Primeiro, padronizamos as unidades. Convertendo a massa do tablete de gramas para miligramas: 0,275 g = 275 mg (multiplicamos por 1.000). <br>
+        Agora, dividimos a dose total prescrita pela massa de cada tablete: 1375 / 275 = <strong>5 tabletes</strong>.</p>
+    </div>
+</article>
+
+    <article class="questao">
+    <h4>T 14: (FGV-SP) Grandezas Escalares</h4>
+    <p>São grandezas exclusivamente escalares:</p>
+    <p>
+        A) tempo, deslocamento e força<br> 
+        B) força, velocidade e aceleração<br> 
+        C) tempo, temperatura e volume<br> 
+        D) temperatura, velocidade e volume<br> 
+        E) tempo, temperatura e deslocamento
+    </p>
+    <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+    <div class="gabarito-resolucao">
+        <p><strong>Resolução:</strong> Alternativa <strong>C</strong>. Tempo, temperatura e volume não possuem direção ou sentido. Deslocamento, força, velocidade e aceleração são vetoriais.</p>
+    </div>
+</article>
+
+    <article class="questao">
+    <h4>T 15: (Cefet-PR) Grandezas Escalares e Vetoriais</h4>
+    <p>Verifique quais são as grandezas escalares e vetoriais nas afirmações abaixo:</p>
+    <p>
+        1) O deslocamento de um avião foi de 100 km, para o Norte.<br>
+        2) A área da residência é de 120,00 m².<br>
+        3) A força necessária para erguer uma caixa é de 100 N.<br>
+        4) A velocidade de um automóvel é de 80 km/h, rumo à capital.<br>
+        5) Um jogo de futebol dura 90 minutos.
+    </p>
+    <p>
+        A) vetorial, vetorial, escalar, vetorial, escalar.<br> 
+        B) vetorial, escalar, escalar, vetorial, escalar.<br> 
+        C) escalar, escalar, vetorial, vetorial, escalar.<br> 
+        D) vetorial, escalar, vetorial, vetorial, escalar.<br> 
+        E) escalar, escalar, vetorial, escalar, escalar.
+    </p>
+    <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+    <div class="gabarito-resolucao">
+        <p><strong>Resolução:</strong> Alternativa <strong>D</strong>. Deslocamento (1), Força (3) e Velocidade (4) são vetoriais. Área (2) e Tempo (5) são escalares.</p>
+    </div>
+</article>
+</section>
+
+</div>
+</main>
+
+<aside class="menu-lateral">
+    <iframe src="../menu_fisica.html" style="width:100%; border:none; height:600px;"></iframe>
+</aside>
+
+</div>
+
+<script>
+// Funções de script mantidas idênticas para garantir o funcionamento do menu e slides
+function toggleGabarito(botao) {
+    const gabarito = botao.nextElementSibling;
+    if (gabarito.style.display === "none" || gabarito.style.display === "") {
+        gabarito.style.display = "block";
+        botao.textContent = "Esconder Gabarito e Resolução";
+        botao.style.backgroundColor = "#2c3e50";
+    } else {
+        gabarito.style.display = "none";
+        botao.textContent = "Ver Gabarito e Resolução";
+        botao.style.backgroundColor = "#3498db";
+    }
+}
+
+function toggleMenu() {
+    const menuGlobal = document.getElementById("menu-principal");
+    if (menuGlobal) menuGlobal.classList.toggle("ativo");
+}
+
+let slideAtual = 0;
+let slides = [];
+
+function prepararSlides() {
+    const seletores = '.container-resumo, .passo-teoria, .aplicacoes-reais, .questao';
+    slides = document.querySelectorAll(seletores);
+}
+
+function toggleSlides() {
+    prepararSlides();
+    const body = document.body;
+    if (!body.classList.contains('modo-slides')) {
+        body.classList.add('modo-slides');
+        slideAtual = 0;
+        mostrarSlide(slideAtual);
+    } else {
+        body.classList.remove('modo-slides');
+        window.location.reload(); 
+    }
+}
+
+function mostrarSlide(n) {
+    slides.forEach(s => {
+        s.classList.remove('slide-ativo');
+        s.style.display = 'none';
+    });
+    const slide = slides[n];
+    slide.classList.add('slide-ativo');
+    slide.style.display = 'flex'; 
+
+    if (slide.classList.contains('questao') && !slide.querySelector('.btn-gabarito')) {
+        const resolucoes = slide.querySelectorAll('.resolucao-bloco');
+        resolucoes.forEach(r => r.style.display = 'block');
+    } else {
+        const gabaritos = slide.querySelectorAll('.gabarito-resolucao');
+        gabaritos.forEach(g => g.style.display = 'none');
+        const botoes = slide.querySelectorAll('.btn-gabarito');
+        botoes.forEach(b => {
+            b.textContent = "Ver Gabarito e Resolução";
+            b.style.backgroundColor = "#3498db";
+        });
+    }
+
+    const pHeader = document.querySelector('header p').innerText;
+    const partes = pHeader.split('|');
+    if(partes.length > 1) {
+        document.getElementById('slide-info-serie').innerText = partes[0].trim();
+        document.getElementById('slide-info-aula').innerText = partes[1].trim();
+    }
+    document.getElementById('contador-slide').innerText = (n + 1) + " / " + slides.length;
+    if (window.MathJax) MathJax.typesetPromise();
+}
+
+function mudarSlide(direcao) {
+    slideAtual += direcao;
+    if (slideAtual >= slides.length) slideAtual = 0;
+    if (slideAtual < 0) slideAtual = slides.length - 1;
+    mostrarSlide(slideAtual);
+}
+</script>
+
+<style>
+    /* Estilos preservados do original */
+    body.modo-slides { overflow: hidden; background-color: #1a1a1a; }
+    body.modo-slides .menu-lateral, body.modo-slides header, body.modo-slides .menu-toggle, body.modo-slides #btn-slides { display: none !important; }
+    .slide-ativo {
+        display: flex !important; flex-direction: column; align-items: center; justify-content: flex-start;
+        position: fixed; top: 0; left: 0; width: 100vw; height: calc(100vh - 70px);
+        background: #ffffff; padding: 40px; z-index: 999; overflow-y: auto !important; 
+        box-sizing: border-box; text-align: center;
+    }
+    .controles-slides {
+        position: fixed; bottom: 0; left: 0; width: 100%; height: 70px;
+        background: #2c3e50; color: white; display: none; 
+        justify-content: space-between; align-items: center; padding: 0 20px; z-index: 1001; box-sizing: border-box;
+    }
+    body.modo-slides .controles-slides { display: flex; }
+    .info-lateral { flex: 1; font-family: 'Oswald', sans-serif; font-size: 0.9rem; color: #bdc3c7; }
+    .botoes-centrais { display: flex; align-items: center; gap: 15px; justify-content: center; flex: 2; }
+    .btn-nav { padding: 10px 20px; background: #3498db; color: white; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; }
+    #contador-slide { font-family: 'Oswald', sans-serif; min-width: 60px; text-align: center; }
+</style>
+
+<div class="controles-slides">
+    <div id="slide-info-serie" class="info-lateral"></div>
+    <div class="botoes-centrais">
+        <button class="btn-nav" onclick="mudarSlide(-1)">⬅ Anterior</button>
+        <span id="contador-slide"></span>
+        <button class="btn-nav" onclick="mudarSlide(1)">Próximo ➡</button>
+        <button class="btn-nav" onclick="toggleSlides()" style="background:#e74c3c;">Sair</button>
+    </div>
+    <div id="slide-info-aula" class="info-lateral" style="text-align: right;"></div>
+</div>
+</body>
+</html>

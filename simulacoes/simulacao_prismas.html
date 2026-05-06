@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explorador de Prismas | Geometria Espacial</title>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --cor-primaria: #003366;    /* Azul Marinho */
+            --cor-secundaria: #D35400;  /* Laranja Queimado */
+            --cor-texto: #f8fafc;
+            --cor-fundo-glass: rgba(255, 255, 255, 0.1);
+            --fonte-titulo: 'Oswald', sans-serif; /* */
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0; padding: 0;
+            background: radial-gradient(circle at 50% 50%, #001f3f 0%, #000a14 100%);
+            color: var(--cor-texto);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        header {
+            background: rgba(0, 51, 102, 0.8);
+            backdrop-filter: blur(10px);
+            padding: 15px 5%;
+            text-align: center;
+            border-bottom: 5px solid var(--cor-secundaria);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        header h1 { font-family: var(--fonte-titulo); margin: 0; text-transform: uppercase; }
+
+        .main-grid {
+            display: grid;
+            grid-template-columns: 280px 1fr 280px;
+            gap: 20px;
+            padding: 20px;
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        .panel {
+            background: var(--cor-fundo-glass);
+            backdrop-filter: blur(15px);
+            padding: 20px;
+            border-radius: 15px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .panel h2 {
+            font-family: var(--fonte-titulo);
+            color: var(--cor-secundaria);
+            border-bottom: 2px solid var(--cor-secundaria);
+            padding-bottom: 8px;
+            text-transform: uppercase;
+            font-size: 1.2rem;
+        }
+
+        .input-group { margin-bottom: 15px; }
+        label { display: block; font-size: 0.7rem; font-weight: bold; color: #cbd5e1; text-transform: uppercase; margin-bottom: 5px; }
+        input, select {
+            width: 100%; padding: 10px; border-radius: 6px; border: 1px solid rgba(255,255,255,0.2);
+            background: rgba(0,0,0,0.4); color: white; box-sizing: border-box;
+        }
+
+        /* Container 3D Central */
+        .viz-container {
+            height: 500px;
+            background: rgba(0,0,0,0.2);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            perspective: 1000px;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+
+        #canvas3d {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+
+        /* Resultados */
+        .res-card {
+            background: rgba(255,255,255,0.03);
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 12px;
+            border-left: 4px solid var(--cor-secundaria);
+        }
+        .res-card span { display: block; font-size: 0.7rem; color: #94a3b8; text-transform: uppercase; }
+        .res-card strong { font-size: 1.1rem; color: white; display: block; margin-top: 4px; }
+
+        .formula-box {
+            font-size: 0.8rem;
+            background: rgba(0,0,0,0.3);
+            padding: 10px;
+            border-radius: 5px;
+            color: #2ecc71;
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        @media (max-width: 1100px) { .main-grid { grid-template-columns: 1fr; } }
+/* Botão hamburguer */
+.menu-toggle {
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    font-size: 24px;
+    background: var(--cor-secundaria);
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    z-index: 1001;
+}
+
+/* Menu escondido por padrão */
+.nav-global {
+    position: fixed;
+    top: 0;
+    left: -250px; /* escondido */
+    width: 250px;
+    height: 100%;
+    background: #003366;
+    transition: left 0.3s ease;
+    z-index: 1000;
+    padding-top: 60px;
+}
+
+/* Quando ativo (aberto) */
+.nav-global.ativo {
+    left: 0;
+}
+
+/* Estilo da lista */
+.nav-global ul {
+    list-style: none;
+    padding: 0;
+}
+
+.nav-global li {
+    margin: 15px 0;
+}
+
+.nav-global a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    display: block;
+}
+    </style>
+</head>
+<body>
+<button class="menu-toggle" onclick="toggleMenu()">☰</button>
+
+<nav id="menu-principal" class="nav-global">
+    <ul>
+        <li><a href="../index.html">🏠 Início</a></li>
+        <li><a href="../fisica_home.html">⚛️ Física</a></li>
+        <li><a href="../matematica_home.html">📐 Matemática</a></li>
+        <li><a href="../simulacoes_home.html">💻 Simulações</a></li>
+    </ul>
+</nav>    
+
+<header>
+    <h1>Laboratório de Geometria Espacial</h1>
+    <p>Simulador Interativo de Prismas Regulares</p>
+</header>
+
+<div class="main-grid">
+    <aside class="panel">
+        <h2>Base do Prisma</h2>
+        <div class="input-group">
+            <label>Polígono da Base</label>
+            <select id="tipoBase" onchange="calcular()">
+                <option value="3">Triangular (3 lados)</option>
+                <option value="4" selected>Quadrangular (4 lados)</option>
+                <option value="6">Hexagonal (6 lados)</option>
+            </select>
+        </div>
+        <div class="input-group">
+            <label>Aresta da Base (a)</label>
+            <input type="number" id="arestaBase" value="2" step="0.1" oninput="calcular()">
+        </div>
+        <div class="input-group">
+            <label>Altura do Prisma (h)</label>
+            <input type="number" id="altura" value="4" step="0.1" oninput="calcular()">
+        </div>
+        <div style="margin-top: 20px;">
+            <label>Fórmulas Utilizadas:</label>
+            <div class="formula-box" id="formula-display">
+                V = Ab * h<br>
+                Al = n * a * h
+            </div>
+        </div>
+    </aside>
+
+    <main class="viz-container" id="viz-container">
+        <div id="renderer-target" style="width:100%; height:100%"></div>
+    </main>
+
+    <aside class="panel">
+        <h2>Cálculos em Tempo Real</h2>
+        <div class="res-card">
+            <span>Área da Base (Ab)</span>
+            <strong id="res-ab">0.00 u.a.</strong>
+        </div>
+        <div class="res-card">
+            <span>Área Lateral (Al)</span>
+            <strong id="res-al">0.00 u.a.</strong>
+        </div>
+        <div class="res-card">
+            <span>Área Total (At)</span>
+            <strong id="res-at">0.00 u.a.</strong>
+        </div>
+        <div class="res-card" style="border-left-color: #2ecc71;">
+            <span>Volume (V)</span>
+            <strong id="res-v" style="color: #2ecc71;">0.00 u.v.</strong>
+        </div>
+    </aside>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+<script>
+    let scene, camera, renderer, prisma;
+
+    function init3D() {
+        const container = document.getElementById('renderer-target');
+        scene = new THREE.Scene();
+        camera = new THREE.PerspectiveCamera(45, container.clientWidth / container.clientHeight, 0.1, 1000);
+        
+        renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+        renderer.setSize(container.clientWidth, container.clientHeight);
+        container.appendChild(renderer.domElement);
+
+        const light = new THREE.DirectionalLight(0xffffff, 1);
+        light.position.set(5, 5, 5).unproject(camera);
+        scene.add(light);
+        scene.add(new THREE.AmbientLight(0x404040, 2));
+
+        camera.position.set(5, 5, 8);
+        camera.lookAt(0, 0, 0);
+
+        animate();
+        calcular();
+    }
+
+    function criarPrisma(lados, raio, altura) {
+        if (prisma) scene.remove(prisma);
+
+        // Geometria de Cilindro com poucos segmentos vira um Prisma Regular
+        const geometry = new THREE.CylinderGeometry(raio, raio, altura, lados);
+        const material = new THREE.MeshPhongMaterial({ 
+            color: 0xD35400, 
+            transparent: true, 
+            opacity: 0.8,
+            flatShading: true,
+            side: THREE.DoubleSide
+        });
+
+        const edges = new THREE.EdgesGeometry(geometry);
+        const line = new THREE.LineSegments(edges, new THREE.LineBasicMaterial({ color: 0xffffff }));
+
+        prisma = new THREE.Mesh(geometry, material);
+        prisma.add(line);
+        scene.add(prisma);
+    }
+
+    function calcular() {
+        const n = parseInt(document.getElementById('tipoBase').value);
+        const a = parseFloat(document.getElementById('arestaBase').value);
+        const h = parseFloat(document.getElementById('altura').value);
+
+        // Raio do círculo circunscrito para manter a aresta 'a' fixa
+        const raio = a / (2 * Math.sin(Math.PI / n));
+
+        let ab = 0;
+        if (n === 3) ab = (Math.pow(a, 2) * Math.sqrt(3)) / 4;
+        else if (n === 4) ab = Math.pow(a, 2);
+        else if (n === 6) ab = (3 * Math.pow(a, 2) * Math.sqrt(3)) / 2;
+
+        const al = n * a * h;
+        const at = 2 * ab + al;
+        const v = ab * h;
+
+        // Atualizar UI
+        document.getElementById('res-ab').innerText = ab.toFixed(2) + " u.a.";
+        document.getElementById('res-al').innerText = al.toFixed(2) + " u.a.";
+        document.getElementById('res-at').innerText = at.toFixed(2) + " u.a.";
+        document.getElementById('res-v').innerText = v.toFixed(2) + " u.v.";
+
+        criarPrisma(n, raio, h);
+    }
+
+    function animate() {
+        requestAnimationFrame(animate);
+        if (prisma) {
+            prisma.rotation.y += 0.005;
+        }
+        renderer.render(scene, camera);
+    }
+
+    window.addEventListener('resize', () => {
+        const container = document.getElementById('renderer-target');
+        camera.aspect = container.clientWidth / container.clientHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(container.clientWidth, container.clientHeight);
+    });
+
+    init3D();
+</script>
+<script>
+function toggleMenu() {
+    const menuGlobal = document.getElementById("menu-principal");
+    if (menuGlobal) {
+        menuGlobal.classList.toggle("ativo");
+    }
+}
+</script>
+</body>
+</html>

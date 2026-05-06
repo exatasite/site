@@ -1,0 +1,283 @@
+/* --- Paleta Elegante e Acessível (Ajustada) --- */
+:root {
+    --cor-primaria: #003366;    /* Azul Marinho Profundo */
+    --cor-secundaria: #D35400;  /* Laranja Queimado (Alto contraste) */
+    --cor-texto: #2C3E50;
+    --cor-fundo-claro: #F4F7F6;
+    --fonte-titulo: 'Oswald', sans-serif;
+    --fonte-corpo: Arial, sans-serif;
+}
+
+/* --- Estilos Gerais e Reset --- */
+body {
+    font-family: var(--fonte-corpo);
+    margin: 0;
+    padding: 0;
+    background-color: var(--cor-fundo-claro);
+    color: var(--cor-texto);
+    line-height: 1.6;
+    scroll-behavior: smooth; 
+}
+
+h1, h2, h3 {
+    font-family: var(--fonte-titulo);
+    color: var(--cor-primaria);
+    text-transform: uppercase;
+}
+
+/* Fórmulas e Notação Científica */
+.formula {
+    font-style: italic;
+    font-weight: bold;
+    color: var(--cor-secundaria);
+}
+
+/* --- Cabeçalho (Topo) --- */
+header {
+    background-color: var(--cor-primaria);
+    color: white;
+    padding: 20px 5%;
+    text-align: center;
+    border-bottom: 5px solid var(--cor-secundaria);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+    color: white;
+    margin: 0 0 5px 0;
+    font-size: 2.2em;
+}
+
+header p {
+    font-size: 1.1em;
+    margin: 0;
+}
+
+/* --- Layout Principal (Container e Colunas) --- */
+.container {
+    display: flex;
+    width: 95%;
+    max-width: 1400px;
+    margin: 20px auto;
+    gap: 25px;
+}
+
+.conteudo-principal {
+    flex: 3; 
+    background-color: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.05);
+    min-height: 100vh;
+}
+
+/* --- Menu Lateral Direita --- */
+.menu-lateral {
+    flex: 1; 
+    max-width: 300px;
+    position: sticky; 
+    top: 20px;
+    height: fit-content;
+    background-color: white;
+    padding: 20px 15px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+    overflow-y: auto; 
+    max-height: 90vh; 
+}
+
+.menu-lateral h2 {
+    margin-top: 0;
+    font-size: 1.5em;
+    border-bottom: 3px solid var(--cor-secundaria);
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+    color: var(--cor-texto);
+}
+
+.menu-lateral h3 {
+    font-size: 1.1em;
+    color: var(--cor-secundaria);
+    margin-top: 20px;
+    margin-bottom: 5px;
+    border-bottom: 1px dashed #ccc;
+    padding-bottom: 5px;
+}
+
+.menu-lateral ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.menu-lateral li {
+    margin-bottom: 5px;
+}
+
+.menu-lateral a {
+    text-decoration: none;
+    color: var(--cor-texto);
+    display: block;
+    padding: 5px 10px;
+    border-left: 3px solid transparent;
+    transition: background-color 0.2s, border-left 0.2s, color 0.2s;
+    font-size: 0.95em;
+}
+
+.menu-lateral a:hover {
+    background-color: rgba(0, 51, 102, 0.05);
+    border-left-color: var(--cor-primaria);
+    color: var(--cor-primaria);
+}
+
+.menu-lateral .aula-ativa a {
+    background-color: var(--cor-primaria);
+    color: white;
+    font-weight: bold;
+    border-radius: 0 4px 4px 0;
+    border-left-color: var(--cor-secundaria);
+}
+
+/* --- Estilos de Aula (Seções) --- */
+.secao-aula {
+    margin-bottom: 50px;
+    padding: 25px;
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+    background-color: #ffffff;
+}
+
+.resumo-conteudo {
+    padding: 15px;
+    background-color: #EBF5FB; /* Azul suave para resumos */
+    border-left: 5px solid var(--cor-primaria);
+    border-radius: 4px;
+    margin-bottom: 30px;
+}
+
+.questao {
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px dashed #ddd;
+    border-radius: 4px;
+}
+
+.resolucao-bloco {
+    background-color: #f7f7f7;
+    border-left: 5px solid #ccc;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 0 4px 4px 0;
+}
+
+/* Gabarito e Resolução Oculta */
+.btn-gabarito {
+    background-color: var(--cor-secundaria); 
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    margin: 10px 0;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 1em;
+    transition: background-color 0.3s, transform 0.1s;
+    font-family: var(--fonte-titulo);
+}
+
+.btn-gabarito:hover {
+    background-color: #A04000;
+    transform: translateY(-1px);
+}
+
+.gabarito-resolucao {
+    background-color: #FEF5E7; /* Tom pêssego suave para gabaritos */
+    border: 1px solid var(--cor-secundaria);
+    padding: 15px;
+    margin-top: 10px;
+    border-radius: 4px;
+}
+
+/* --- Responsividade (Mobile) --- */
+@media (max-width: 900px) {
+    .container {
+        flex-direction: column; 
+        width: 95%;
+    }
+
+    .menu-lateral {
+        order: -1; 
+        position: static;
+        max-width: 100%;
+        margin-bottom: 20px;
+        max-height: none;
+    }
+
+    .menu-lateral ul {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .menu-lateral li {
+        width: calc(50% - 5px); 
+    }
+
+    .secao-aula {
+        padding-top: 25px; 
+        margin-top: 0;
+    }
+}
+
+/* Estilização do Menu Global */
+.nav-global {
+    display: none; /* Escondido por padrão */
+    position: fixed;
+    top: 60px;
+    left: 10px;
+    background-color: white;
+    border: 2px solid var(--cor-secundaria, #e0e0e0);
+    border-radius: 8px;
+    z-index: 1000;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.nav-global.ativo {
+    display: block; /* Mostra quando a classe 'ativo' for adicionada */
+}
+
+.nav-global ul {
+    list-style: none;
+    padding: 10px;
+    margin: 0;
+}
+
+.nav-global ul li {
+    padding: 10px 20px;
+    border-bottom: 1px solid #eee;
+}
+
+.nav-global ul li:last-child {
+    border-bottom: none;
+}
+
+.nav-global ul li a {
+    text-decoration: none;
+    color: #333;
+    font-family: 'Oswald', sans-serif;
+    font-weight: bold;
+}
+
+/* Botão Hambúrguer */
+.menu-toggle {
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    font-size: 24px;
+    background: var(--cor-secundaria, #333);
+    color: white;
+    border: none;
+    padding: 5px 12px;
+    cursor: pointer;
+    border-radius: 5px;
+    z-index: 1001;
+}

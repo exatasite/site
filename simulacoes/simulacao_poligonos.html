@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Geometria Plana | Explorador Interativo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --cor-primaria: #003366;
+            --cor-secundaria: #D35400;
+            --cor-texto: #f8fafc;
+            --cor-fundo-glass: rgba(255, 255, 255, 0.1);
+            --fonte-titulo: 'Oswald', sans-serif;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0; padding: 0;
+            background: radial-gradient(circle at 50% 50%, #001f3f 0%, #000a14 100%);
+            color: var(--cor-texto);
+            min-height: 100vh;
+        }
+
+        header {
+            background: rgba(0, 51, 102, 0.8);
+            backdrop-filter: blur(10px);
+            padding: 15px 5%;
+            text-align: center;
+            border-bottom: 5px solid var(--cor-secundaria);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        header h1 { font-family: var(--fonte-titulo); margin: 0; text-transform: uppercase; }
+
+        .main-grid {
+            display: grid;
+            grid-template-columns: 280px 1fr 280px;
+            gap: 20px;
+            padding: 20px;
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        .panel {
+            background: var(--cor-fundo-glass);
+            backdrop-filter: blur(15px);
+            padding: 20px;
+            border-radius: 15px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .panel h2 {
+            font-family: var(--fonte-titulo);
+            color: var(--cor-secundaria);
+            border-bottom: 2px solid var(--cor-secundaria);
+            padding-bottom: 8px;
+            text-transform: uppercase;
+            font-size: 1.2rem;
+        }
+
+        .input-group { margin-bottom: 15px; }
+        label { display: block; font-size: 0.7rem; font-weight: bold; color: #cbd5e1; text-transform: uppercase; margin-bottom: 5px; }
+        input, select {
+            width: 100%; padding: 10px; border-radius: 6px; border: 1px solid rgba(255,255,255,0.2);
+            background: rgba(0,0,0,0.4); color: white; box-sizing: border-box;
+        }
+
+        /* Área de Desenho Central */
+        .viz-container {
+            height: 500px;
+            background: rgba(0,0,0,0.2);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(255,255,255,0.05);
+            overflow: hidden;
+        }
+
+        #geometria-svg {
+            width: 80%;
+            height: 80%;
+            filter: drop-shadow(0 0 15px rgba(211, 84, 0, 0.3));
+        }
+
+        .shape-path {
+            fill: rgba(211, 84, 0, 0.2);
+            stroke: var(--cor-secundaria);
+            stroke-width: 3;
+            stroke-linejoin: round;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* Resultados */
+        .res-card {
+            background: rgba(255,255,255,0.03);
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 12px;
+            border-left: 4px solid var(--cor-secundaria);
+        }
+        .res-card span { display: block; font-size: 0.7rem; color: #94a3b8; text-transform: uppercase; }
+        .res-card strong { font-size: 1.2rem; color: white; display: block; margin-top: 4px; }
+
+        .formula-display {
+            margin-top: 15px;
+            font-size: 0.85rem;
+            color: #2ecc71;
+            background: rgba(0,0,0,0.3);
+            padding: 10px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+        }
+
+        @media (max-width: 1100px) { .main-grid { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Geometria Plana Interativa</h1>
+    <p>Cálculo de Áreas e Perímetros em Tempo Real</p>
+</header>
+
+<div class="main-grid">
+    <aside class="panel">
+        <h2>Figura</h2>
+        <div class="input-group">
+            <label>Selecione a Forma</label>
+            <select id="forma" onchange="alternarInputs(); calcular();">
+                <option value="quadrado">Quadrado</option>
+                <option value="retangulo">Retângulo</option>
+                <option value="triangulo">Triângulo (Base/Alt)</option>
+                <option value="circulo">Círculo</option>
+            </select>
+        </div>
+
+        <div id="controles-dinamicos">
+            <div class="input-group" id="group-l1">
+                <label id="label-l1">Lado (m)</label>
+                <input type="number" id="val1" value="200" step="1" oninput="calcular()">
+            </div>
+            <div class="input-group" id="group-l2" style="display:none;">
+                <label id="label-l2">Altura (m)</label>
+                <input type="number" id="val2" value="100" step="1" oninput="calcular()">
+            </div>
+        </div>
+
+        <div class="formula-display" id="display-formula">
+            Área = L² <br> Perímetro = 4L
+        </div>
+    </aside>
+
+    <main class="viz-container">
+        <svg id="geometria-svg" viewBox="0 0 500 500">
+            <path id="shape" class="shape-path" d="" />
+        </svg>
+    </main>
+
+    <aside class="panel">
+        <h2>Medições</h2>
+        <div class="res-card">
+            <span>Perímetro / Comprimento</span>
+            <strong id="res-perimetro">0.00 m</strong>
+        </div>
+        <div class="res-card" style="border-left-color: #2ecc71;">
+            <span>Área Total</span>
+            <strong id="res-area" style="color: #2ecc71;">0.00 m²</strong>
+        </div>
+        <div class="res-card">
+            <span>Diagonal / Raio</span>
+            <strong id="res-extra">0.00 m</strong>
+        </div>
+    </aside>
+</div>
+
+<script>
+    function alternarInputs() {
+        const forma = document.getElementById('forma').value;
+        const g2 = document.getElementById('group-l2');
+        const l1 = document.getElementById('label-l1');
+        const formula = document.getElementById('display-formula');
+
+        g2.style.display = (forma === 'retangulo' || forma === 'triangulo') ? 'block' : 'none';
+
+        if (forma === 'quadrado') {
+            l1.innerText = "Lado (m)";
+            formula.innerHTML = "Área = L² <br> Perímetro = 4L";
+        } else if (forma === 'retangulo') {
+            l1.innerText = "Base (m)";
+            formula.innerHTML = "Área = b × h <br> Perímetro = 2(b+h)";
+        } else if (forma === 'triangulo') {
+            l1.innerText = "Base (m)";
+            formula.innerHTML = "Área = (b × h) / 2 <br> (Triângulo Isósceles)";
+        } else if (forma === 'circulo') {
+            l1.innerText = "Raio (r)";
+            formula.innerHTML = "Área = π × r² <br> C = 2 × π × r";
+        }
+    }
+
+    function calcular() {
+        const forma = document.getElementById('forma').value;
+        const v1 = parseFloat(document.getElementById('val1').value) || 0;
+        const v2 = parseFloat(document.getElementById('val2').value) || 0;
+        const path = document.getElementById('shape');
+        
+        let area = 0, perimetro = 0, extra = 0;
+        const cx = 250, cy = 250; // Centro do SVG
+
+        // Normalização para o desenho não sair do SVG (máximo 400px)
+        const scale = Math.min(v1, v2) > 0 ? 300 / Math.max(v1, v2) : 1;
+        const s1 = v1 * 0.8; // Escala visual
+        const s2 = v2 * 0.8;
+
+        if (forma === 'quadrado') {
+            area = v1 * v1;
+            perimetro = 4 * v1;
+            extra = v1 * Math.sqrt(2); // Diagonal
+            document.getElementById('res-extra').previousElementSibling.innerText = "Diagonal";
+            
+            const x = cx - s1/2, y = cy - s1/2;
+            path.setAttribute('d', `M ${x} ${y} H ${x + s1} V ${y + s1} H ${x} Z`);
+
+        } else if (forma === 'retangulo') {
+            area = v1 * v2;
+            perimetro = 2 * (v1 + v2);
+            extra = Math.sqrt(v1*v1 + v2*v2);
+            document.getElementById('res-extra').previousElementSibling.innerText = "Diagonal";
+
+            const x = cx - s1/2, y = cy - s2/2;
+            path.setAttribute('d', `M ${x} ${y} H ${x + s1} V ${y + s2} H ${x} Z`);
+
+        } else if (forma === 'triangulo') {
+            area = (v1 * v2) / 2;
+            const hipotenusa = Math.sqrt(Math.pow(v1/2, 2) + Math.pow(v2, 2));
+            perimetro = v1 + (2 * hipotenusa);
+            extra = v2; // Altura
+            document.getElementById('res-extra').previousElementSibling.innerText = "Altura (h)";
+
+            path.setAttribute('d', `M ${cx - s1/2} ${cy + s2/2} L ${cx} ${cy - s2/2} L ${cx + s1/2} ${cy + s2/2} Z`);
+
+        } else if (forma === 'circulo') {
+            area = Math.PI * Math.pow(v1, 2);
+            perimetro = 2 * Math.PI * v1;
+            extra = v1; 
+            document.getElementById('res-extra').previousElementSibling.innerText = "Raio (r)";
+
+            // Desenhar círculo usando path (arcos)
+            const r = s1/2;
+            path.setAttribute('d', `M ${cx-r},${cy} a ${r},${r} 0 1,0 ${r*2},0 a ${r},${r} 0 1,0 -${r*2},0`);
+        }
+
+        document.getElementById('res-area').innerText = area.toFixed(2) + " m²";
+        document.getElementById('res-perimetro').innerText = perimetro.toFixed(2) + " m";
+        document.getElementById('res-extra').innerText = extra.toFixed(2) + " m";
+    }
+
+    // Inicialização
+    alternarInputs();
+    calcular();
+</script>
+</body>
+</html>

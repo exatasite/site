@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1º Ano: Aula 11 - Função Exponencial</title>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../estilo001.css">
+    
+    <script>
+        MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true
+            }
+        };
+    </script>
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body>
+<button class="menu-toggle" onclick="toggleMenu()">☰</button>
+
+<nav id="menu-principal" class="nav-global">
+    <ul>
+        <li><a href="../index.html">🏠 Início</a></li>
+        <li><a href="../fisica_home.html">⚛️ Física</a></li>
+        <li><a href="../matematica_home.html">📐 Matemática</a></li>
+        <li><a href="../simulacoes_home.html">💻 Simulações</a></li>
+    </ul>
+</nav>
+
+<header>
+    <h1>MATEMÁTICA EM</h1>
+    <p>1º Ano | Aula 11: Função Exponencial</p>
+<button id="btn-slides" onclick="toggleSlides()" style="position: fixed; top: 20px; right: 20px; z-index: 1000; padding: 10px; cursor: pointer; background: #e67e22; color: white; border: none; border-radius: 5px; font-weight: bold;">
+    📺 Iniciar Modo Slides
+</button>
+</header>
+
+<div class="container">
+
+<main class="conteudo-principal">
+
+<div class="secao-aula">
+ <div class="container-resumo">
+    <h3>📚 Resumo </h3>
+    <section class="resumo-conteudo">
+        <p>Uma <strong>função exponencial</strong> é aquela em que a variável independente $x$ aparece no expoente. Sua forma geral é $f(x) = a^x$, onde a base $a$ deve ser positiva e diferente de 1 ($a > 0$ e $a \neq 1$).</p>
+        <p>Esse tipo de função descreve fenômenos de crescimento ou decaimento extremamente rápidos, como juros compostos, crescimento populacional e desintegração radioativa.</p>
+    </section>
+</div>
+
+<section class="conteudo-teorico-completo">
+    <div class="passo-teoria">
+        <h3>📖 Definição e Propriedades</h3>
+        <h4>1. A Lei de Formação</h4>
+        <p>Dizemos que $f: \mathbb{R} \to \mathbb{R}^*_+$ é uma função exponencial se:</p>
+        <p class="formula">$$f(x) = a^x$$</p>
+        <ul>
+            <li><strong>Base ($a$):</strong> Deve ser sempre maior que zero e diferente de 1.</li>
+            <li><strong>Crescente:</strong> Se $a > 1$, a função cresce (quanto maior o $x$, maior o $y$).</li>
+            <li><strong>Decrescente:</strong> Se $0 < a < 1$, a função decresce (quanto maior o $x$, menor o $y$).</li>
+        </ul>
+    </div>
+
+    <div class="passo-teoria">
+        <h4>2. O Gráfico da Função Exponencial</h4>
+        <p>O gráfico é uma curva chamada <strong>exponencial</strong>, que nunca toca o eixo $x$ (assíntota horizontal) e sempre corta o eixo $y$ no ponto $(0, 1)$, pois $a^0 = 1$.</p>
+        <figure class="figura-aula figura-grande">
+            <img src="../imagens_matematica/aula1_11_graficos.png" alt="Gráficos de funções exponenciais crescente e decrescente.">
+            <figcaption>Figura 1: Comparação entre funções crescentes ($a>1$) e decrescentes ($0<a<1$).</figcaption>
+        </figure>
+    </div>
+
+    <div class="passo-teoria">
+        <h4>3. Propriedades das Potências (Revisão)</h4>
+        <p>Para resolver equações exponenciais, utilizamos as propriedades fundamentais:</p>
+        <table border="1" style="width:100%; border-collapse: collapse; margin: 10px 0; text-align: center;">
+            <tr style="background-color: #f2f2f2;">
+                <th>Operação</th>
+                <th>Propriedade</th>
+                <th>Exemplo</th>
+            </tr>
+            <tr><td>Produto</td><td>$a^m \cdot a^n = a^{m+n}$</td><td>$2^3 \cdot 2^2 = 2^5$</td></tr>
+            <tr><td>Divisão</td><td>$a^m / a^n = a^{m-n}$</td><td>$3^5 / 3^2 = 3^3$</td></tr>
+            <tr><td>Potência de Potência</td><td>$(a^m)^n = a^{m \cdot n}$</td><td>$(5^2)^3 = 5^6$</td></tr>
+            <tr><td>Expoente Negativo</td><td>$a^{-n} = 1/a^n$</td><td>$2^{-3} = 1/8$</td></tr>
+        </table>
+    </div>
+</section>
+
+<section class="aplicacoes-reais">
+    <h3>💡 Matemática em Ação</h3>  
+    <div class="cards-aplicacao">        
+        <div class="card" style="background: #fdfdfd; padding: 20px; border-radius: 10px; border-left: 5px solid #3498db; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
+            <h4>💰 Finanças</h4>
+            <p>Os <strong>juros compostos</strong> são calculados via funções exponenciais. É o "juro sobre juro" que faz investimentos crescerem ao longo do tempo.</p>
+        </div>
+        <div class="card" style="background: #fdfdfd; padding: 20px; border-radius: 10px; border-left: 5px solid #2ecc71; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
+            <h4>🦠 Biologia</h4>
+            <p>A <strong>reprodução de bactérias</strong> em ambiente ideal segue um padrão exponencial, onde a população dobra em intervalos regulares de tempo.</p>
+        </div>
+    </div>   
+</section>
+
+<section class="questoes-resolvidas">
+    <h3>✅ 5 Questões Resolvidas (R 1 a 5)</h3>
+    
+    <article class="questao">
+        <h4>R 1: Cálculo de Valor</h4>
+        <p><strong>Enunciado:</strong> Dada a função $f(x) = 3^x$, determine o valor de $f(4)$.</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong> Substituímos $x$ por 4 na função:<br>
+            $f(4) = 3^4$<br>
+            $f(4) = 3 \times 3 \times 3 \times 3 = \mathbf{81}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>R 2: Equação Exponencial Simples</h4>
+        <p><strong>Enunciado:</strong> Resolva a equação $2^x = 128$.</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong> Fatoramos 128 na base 2:<br>
+            $128 = 2^7$.<br>
+            Logo, $2^x = 2^7$. Como as bases são iguais, igualamos os expoentes:<br>
+            $\mathbf{x = 7}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>R 3: Base Fracionária</h4>
+        <p><strong>Enunciado:</strong> A função $f(x) = (1/2)^x$ é crescente ou decrescente?</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong> Analisamos a base $a$.<br>
+            Como $a = 1/2$, temos que $0 < 1/2 < 1$.<br>
+            Portanto, a função é <strong>decrescente</strong>.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>R 4: Expoente Negativo</h4>
+        <p><strong>Enunciado:</strong> Resolva $5^x = 1/25$.</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong> Sabemos que $25 = 5^2$.<br>
+            Pela propriedade do expoente negativo, $1/5^2 = 5^{-2}$.<br>
+            Então, $5^x = 5^{-2} \implies \mathbf{x = -2}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>R 5: Intercepto no Eixo Y</h4>
+        <p><strong>Enunciado:</strong> Em qual ponto a função $f(x) = 7^x + 2$ corta o eixo das ordenadas ($y$)?</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong> Para achar o corte em $y$, fazemos $x = 0$:<br>
+            $f(0) = 7^0 + 2$<br>
+            $f(0) = 1 + 2 = 3$.<br>
+            O ponto é $\mathbf{(0, 3)}$.</p>
+        </div>
+    </article>
+</section>
+
+<section class="questoes-propostas">
+    <h3>✍️ 5 Questões Propostas (P 6 a 10)</h3>
+
+    <article class="questao">
+        <h4>P 6: Imagem da Função</h4>
+        <p><strong>Enunciado:</strong> Qual o valor de $f(-2)$ para a função $f(x) = 4^x$?</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> $f(-2) = 4^{-2} = 1/4^2 = \mathbf{1/16}$ ou $\mathbf{0,0625}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 7: Identificação de Base</h4>
+        <p><strong>Enunciado:</strong> Para que valor de $a$ a função $f(x) = (a-3)^x$ é crescente?</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> Para ser crescente, a base deve ser $> 1$.<br>
+            $a - 3 > 1 \implies a > 1 + 3 \implies \mathbf{a > 4}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 8: Equação com Raiz</h4>
+        <p><strong>Enunciado:</strong> Resolva $3^x = \sqrt{27}$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> $27 = 3^3$. A raiz quadrada é expoente $1/2$.<br>
+            $3^x = (3^3)^{1/2} \implies 3^x = 3^{3/2}$.<br>
+            $\mathbf{x = 3/2}$ ou $\mathbf{1,5}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 9: População de Bactérias</h4>
+        <p><strong>Enunciado:</strong> Uma população de bactérias dobra a cada hora. Se inicialmente há 100 bactérias, qual a função $P(t)$ que define a população após $t$ horas?</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> É uma função do tipo $P(t) = P_0 \cdot a^t$.<br>
+            $\mathbf{P(t) = 100 \cdot 2^t}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 10: Comparação de Bases</h4>
+        <p><strong>Enunciado:</strong> Resolva $0,2^x = 25$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> $0,2 = 2/10 = 1/5 = 5^{-1}$. E $25 = 5^2$.<br>
+            $(5^{-1})^x = 5^2 \implies 5^{-x} = 5^2 \implies -x = 2 \implies \mathbf{x = -2}$.</p>
+        </div>
+    </article>
+</section>
+
+<section class="TESTE">
+    <h3>🎓 TESTES (T 11 a 15)</h3>
+
+    <article class="questao">
+    <h4>T 11: (UFGD / 2021) Função Exponencial — Crescimento de Bactérias</h4>
+    <p>Num determinado experimento laboratorial, certo tipo de bactéria se multiplica e, em média, seu número aumenta 2,4 vezes a cada 3,5 horas. Supondo que o tubo de ensaio no laboratório contenha inicialmente 1.000 dessas bactérias, de acordo com o modelo de função exponencial, em quantas horas o número dessas bactérias atingiria cerca de $4 \times 10^{10}$?</p>
+    <p>Use $\log 2 = 0{,}30$ e $\log 3 = 0{,}48$.</p>
+    <p>A) 63 horas.<br>B) 70 horas.<br>C) 77 horas.<br>D) 84 horas.<br>E) 91 horas.</p>
+    <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+    <div class="gabarito-resolucao">
+        <p><strong>Resolução:</strong> Alternativa <strong>C</strong>.<br>
+        O modelo exponencial é: $N(t) = 1000 \cdot (2{,}4)^{t/3{,}5}$.<br><br>
+        Igualando a $4 \times 10^{10}$:<br>
+        $1000 \cdot (2{,}4)^{t/3{,}5} = 4 \times 10^{10}$<br>
+        $(2{,}4)^{t/3{,}5} = 4 \times 10^{7}$<br><br>
+        Aplicando logaritmo em ambos os lados:<br>
+        $\dfrac{t}{3{,}5} \cdot \log(2{,}4) = \log(4 \times 10^7)$<br><br>
+        Calculando $\log(2{,}4)$:<br>
+        $\log(2{,}4) = \log\!\left(\dfrac{12}{5}\right) = \log 12 - \log 5 = \log(4 \cdot 3) - \log 5$<br>
+        $= \log 4 + \log 3 - \log 5 = 2\log 2 + \log 3 - \log 5$<br>
+        $= 2(0{,}30) + 0{,}48 - \log\!\left(\dfrac{10}{2}\right)$<br>
+        $= 0{,}60 + 0{,}48 - (1 - 0{,}30) = 1{,}08 - 0{,}70 = 0{,}38$.<br><br>
+        Calculando $\log(4 \times 10^7)$:<br>
+        $= \log 4 + 7 = 2(0{,}30) + 7 = 0{,}60 + 7 = 7{,}60$.<br><br>
+        Resolvendo para $t$:<br>
+        $\dfrac{t}{3{,}5} \cdot 0{,}38 = 7{,}60$<br>
+        $\dfrac{t}{3{,}5} = \dfrac{7{,}60}{0{,}38} = 20$<br>
+        $t = 20 \times 3{,}5 = \mathbf{70}$ horas, alternativa <strong>B</strong>.<br><br>
+        Verificação com $\log(2{,}4) \approx 0{,}38$: $t = 70$ horas. ✓</p>
+    </div>
+</article>
+
+   <article class="questao">
+    <h4>T 12: (UNEMAT / 2018) Função Exponencial — Desintegração de Substância</h4>
+    <p>Certa substância se desintegra obedecendo à seguinte expressão: $Q(t) = k \cdot 2^{-0{,}5t}$, em que $t$ é o tempo (em horas), $k$ é uma constante real e $Q(t)$ é a quantidade da substância (em gramas), no tempo $t$.</p>
+    <p>Considerando que no instante inicial, $t = 0$, a quantidade de substância é de 800 g, assinale a alternativa que corresponde ao tempo necessário para que a quantidade dessa substância esteja reduzida a 25% do seu valor inicial.</p>
+    <p>A) 2 h<br>B) 4 h<br>C) 6 h<br>D) 8 h<br>E) 10 h</p>
+    <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+    <div class="gabarito-resolucao">
+        <p><strong>Resolução:</strong> Alternativa <strong>B</strong>.<br>
+        <strong>Passo 1 — Determinar $k$:</strong><br>
+        Em $t = 0$: $Q(0) = k \cdot 2^0 = k = 800$ g.<br><br>
+        <strong>Passo 2 — Encontrar $t$ para $Q(t) = 25\%$ de 800:</strong><br>
+        $25\%$ de $800 = 200$ g.<br>
+        $800 \cdot 2^{-0{,}5t} = 200$<br>
+        $2^{-0{,}5t} = \dfrac{200}{800} = \dfrac{1}{4} = 2^{-2}$<br><br>
+        <strong>Passo 3 — Igualar os expoentes:</strong><br>
+        $-0{,}5t = -2$<br>
+        $t = \dfrac{-2}{-0{,}5} = \mathbf{4}$ horas.</p>
+    </div>
+</article>
+
+    <article class="questao">
+    <h4>T 13: (FGV / 2018) Função Exponencial — Álcool no Sangue</h4>
+    <p>Em determinado estado, a quantidade máxima de álcool no sangue, permitida para dirigir, é 0,06 miligrama por ml de sangue. Logo após ingerir um copo cheio de certa bebida alcoólica, a quantidade de álcool no sangue de uma pessoa sobe para 0,3 miligrama por ml de sangue.</p>
+    <p>Suponha que a quantidade de álcool no sangue desta pessoa decresça exponencialmente com o tempo de forma que, a cada hora, a quantidade de álcool por ml se reduza à metade, isto é, $Q(x) = 0{,}3 \cdot (0{,}5)^x$, em que $x$ é a variável tempo medido em horas a partir de zero (momento da ingestão da bebida) e $Q(x)$ é a quantidade de álcool no sangue no momento $x$.</p>
+    <p>Depois de quanto tempo, após o consumo da bebida, a pessoa poderá voltar a dirigir? Adote $\log 2 = 0{,}3$.</p>
+    <p>A) 125 minutos.<br>B) 130 minutos.<br>C) 140 minutos.<br>D) 120 minutos.<br>E) 135 minutos.</p>
+    <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+    <div class="gabarito-resolucao">
+        <p><strong>Resolução:</strong> Alternativa <strong>B</strong>.<br>
+        A pessoa pode dirigir quando $Q(x) \leq 0{,}06$:<br>
+        $0{,}3 \cdot (0{,}5)^x = 0{,}06$<br>
+        $(0{,}5)^x = \dfrac{0{,}06}{0{,}3} = 0{,}2 = \dfrac{1}{5}$<br><br>
+        Aplicando logaritmo:<br>
+        $x \cdot \log(0{,}5) = \log\!\left(\dfrac{1}{5}\right)$<br>
+        $x \cdot \log\!\left(\dfrac{1}{2}\right) = -\log 5$<br>
+        $-x \cdot \log 2 = -\log 5$<br>
+        $x \cdot \log 2 = \log 5 = \log\!\left(\dfrac{10}{2}\right) = 1 - \log 2 = 1 - 0{,}3 = 0{,}7$<br><br>
+        $x = \dfrac{0{,}7}{0{,}3} = \dfrac{7}{3}$ horas.<br><br>
+        Convertendo para minutos:<br>
+        $\dfrac{7}{3} \times 60 = \dfrac{420}{3} = \mathbf{140}$ minutos, alternativa <strong>C</strong>.</p>
+    </div>
+</article>
+
+    <article class="questao">
+    <h4>T 14: Função Exponencial — Desvalorização de Moto</h4>
+    <p>Alguns objetos de uso contínuo sofrem desvalorização comercial, devido ao uso e desgaste ao longo do tempo. Ao comprar uma moto, temos que o valor de venda $V(t)$ da mesma, em função do tempo $t$ de uso em anos, é dado pela seguinte função:</p>
+    <p>$$V(t) = 10\,000 \times (0{,}9)^t$$</p>
+    <p>Dessa forma, essa moto poderá ser vendida por R$\,8\,100{,}00$ após quanto tempo de uso?</p>
+    <p>A) 2 anos.<br>B) 1 ano.<br>C) 18 meses.<br>D) 36 meses.</p>
+    <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+    <div class="gabarito-resolucao">
+        <p><strong>Resolução:</strong> Alternativa <strong>A</strong>.<br>
+        Igualando $V(t)$ a $8\,100$:<br>
+        $10\,000 \times (0{,}9)^t = 8\,100$<br>
+        $(0{,}9)^t = \dfrac{8\,100}{10\,000} = 0{,}81$<br><br>
+        Observando que $0{,}81 = (0{,}9)^2$:<br>
+        $(0{,}9)^t = (0{,}9)^2$<br>
+        $t = \mathbf{2}$ anos.</p>
+    </div>
+</article>
+
+    <article class="questao">
+    <h4>T 15: (IF Sul Rio-Grandense / 2017) Função Exponencial — Crescimento de Bactérias</h4>
+    <p>O crescimento de uma colônia de bactérias é determinado pela função:</p>
+    <p>$$Q(t) = Q_0 \cdot 3^t$$</p>
+    <p>Sendo $Q_0$ a quantidade inicial de bactérias na colônia e $t$ o tempo decorrido em horas, após quanto tempo a quantidade de bactérias será 9 vezes maior que a quantidade inicial?</p>
+    <p>A) 1 h<br>B) 1 h e 30 min<br>C) 2 h<br>D) 3 h<br>E) 9 h</p>
+    <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+    <div class="gabarito-resolucao">
+        <p><strong>Resolução:</strong> Alternativa <strong>C</strong>.<br>
+        Queremos $Q(t) = 9Q_0$:<br>
+        $Q_0 \cdot 3^t = 9Q_0$<br>
+        $3^t = 9$<br>
+        $3^t = 3^2$<br>
+        $t = \mathbf{2}$ horas.</p>
+    </div>
+</article>
+</section>
+
+</div>
+</main>
+
+<aside class="menu-lateral">
+    <iframe src="../menu_matematica.html" style="width:100%; border:none; height:600px;"></iframe>
+</aside>
+
+</div>
+
+<script>
+function toggleGabarito(botao) {
+    const gabarito = botao.nextElementSibling;
+    if (gabarito.style.display === "none" || gabarito.style.display === "") {
+        gabarito.style.display = "block";
+        botao.textContent = "Esconder Gabarito e Resolução";
+        botao.style.backgroundColor = "#2c3e50";
+    } else {
+        gabarito.style.display = "none";
+        botao.textContent = "Ver Gabarito e Resolução";
+        botao.style.backgroundColor = "#D35400"; // Cor secundária definida no root
+    }
+}
+
+function toggleMenu() {
+    const menuGlobal = document.getElementById("menu-principal");
+    if (menuGlobal) menuGlobal.classList.toggle("ativo");
+}
+
+let slideAtual = 0;
+let slides = [];
+
+function prepararSlides() {
+    const seletores = '.container-resumo, .passo-teoria, .aplicacoes-reais, .questao';
+    slides = document.querySelectorAll(seletores);
+}
+
+function toggleSlides() {
+    prepararSlides();
+    const body = document.body;
+    if (!body.classList.contains('modo-slides')) {
+        body.classList.add('modo-slides');
+        slideAtual = 0;
+        mostrarSlide(slideAtual);
+    } else {
+        body.classList.remove('modo-slides');
+        window.location.reload(); 
+    }
+}
+
+function mostrarSlide(n) {
+    slides.forEach(s => {
+        s.classList.remove('slide-ativo');
+        s.style.display = 'none';
+    });
+    
+    const slide = slides[n];
+    slide.classList.add('slide-ativo');
+    slide.style.display = 'flex'; 
+
+    if (slide.classList.contains('questao') && !slide.querySelector('.btn-gabarito')) {
+        const resolucoes = slide.querySelectorAll('.resolucao-bloco');
+        resolucoes.forEach(r => r.style.display = 'block');
+    } else {
+        const gabaritos = slide.querySelectorAll('.gabarito-resolucao');
+        gabaritos.forEach(g => g.style.display = 'none');
+        const botoes = slide.querySelectorAll('.btn-gabarito');
+        botoes.forEach(b => {
+            b.textContent = "Ver Gabarito e Resolução";
+            b.style.backgroundColor = "#D35400";
+        });
+    }
+
+    const pHeader = document.querySelector('header p').innerText;
+    const partes = pHeader.split('|');
+    if(partes.length > 1) {
+        document.getElementById('slide-info-serie').innerText = partes[0].trim();
+        document.getElementById('slide-info-aula').innerText = partes[1].trim();
+    }
+    
+    document.getElementById('contador-slide').innerText = (n + 1) + " / " + slides.length;
+    
+    if (window.MathJax) MathJax.typesetPromise();
+}
+
+function mudarSlide(direcao) {
+    slideAtual += direcao;
+    if (slideAtual >= slides.length) slideAtual = 0;
+    if (slideAtual < 0) slideAtual = slides.length - 1;
+    mostrarSlide(slideAtual);
+}
+</script>
+
+<style>
+    body.modo-slides { overflow: hidden; background-color: #1a1a1a; }
+    body.modo-slides .menu-lateral, body.modo-slides header, body.modo-slides .menu-toggle, body.modo-slides #btn-slides { display: none !important; }
+    
+    .slide-ativo {
+        display: flex !important; flex-direction: column; align-items: center; justify-content: flex-start;
+        position: fixed; top: 0; left: 0; width: 100vw; height: calc(100vh - 70px);
+        background: #ffffff; padding: 40px; z-index: 999; overflow-y: auto !important; 
+        box-sizing: border-box; text-align: center;
+    }
+    
+    .controles-slides {
+        position: fixed; bottom: 0; left: 0; width: 100%; height: 70px;
+        background: #2c3e50; color: white; display: none; 
+        justify-content: space-between; align-items: center; padding: 0 20px; z-index: 1001; box-sizing: border-box;
+    }
+    body.modo-slides .controles-slides { display: flex; }
+
+    .info-lateral { flex: 1; font-family: 'Oswald', sans-serif; font-size: 0.9rem; color: #bdc3c7; }
+    .botoes-centrais { display: flex; align-items: center; gap: 15px; justify-content: center; flex: 2; }
+    .btn-nav { padding: 10px 20px; background: #3498db; color: white; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; }
+    #contador-slide { font-family: 'Oswald', sans-serif; min-width: 60px; text-align: center; }
+</style>
+
+<div class="controles-slides">
+    <div id="slide-info-serie" class="info-lateral"></div>
+    
+    <div class="botoes-centrais">
+        <button class="btn-nav" onclick="mudarSlide(-1)">⬅ Anterior</button>
+        <span id="contador-slide"></span>
+        <button class="btn-nav" onclick="mudarSlide(1)">Próximo ➡</button>
+        <button class="btn-nav" onclick="toggleSlides()" style="background:#e74c3c;">Sair</button>
+    </div>
+
+    <div id="slide-info-aula" class="info-lateral" style="text-align: right;"></div>
+</div></body>
+</html>

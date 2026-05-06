@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laboratório de Funções Quadráticas | Interativo</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --cor-primaria: #003366;
+            --cor-secundaria: #D35400;
+            --cor-texto: #f8fafc;
+            --cor-fundo-glass: rgba(255, 255, 255, 0.1);
+            --fonte-titulo: 'Oswald', sans-serif;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0; padding: 0;
+            background: radial-gradient(circle at 50% 50%, #001f3f 0%, #000a14 100%);
+            color: var(--cor-texto);
+            min-height: 100vh;
+        }
+
+        header {
+            background: rgba(0, 51, 102, 0.8);
+            backdrop-filter: blur(10px);
+            padding: 15px 5%;
+            text-align: center;
+            border-bottom: 5px solid var(--cor-secundaria);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        header h1 { font-family: var(--fonte-titulo); margin: 0; text-transform: uppercase; }
+
+        .main-grid {
+            display: grid;
+            grid-template-columns: 320px 1fr 280px;
+            gap: 20px;
+            padding: 20px;
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        .panel {
+            background: var(--cor-fundo-glass);
+            backdrop-filter: blur(15px);
+            padding: 20px;
+            border-radius: 15px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .panel h2 {
+            font-family: var(--fonte-titulo);
+            color: var(--cor-secundaria);
+            border-bottom: 2px solid var(--cor-secundaria);
+            padding-bottom: 8px;
+            text-transform: uppercase;
+            font-size: 1.2rem;
+        }
+
+        .input-group { margin-bottom: 15px; }
+        label { display: block; font-size: 0.75rem; font-weight: bold; color: #cbd5e1; text-transform: uppercase; margin-bottom: 8px; }
+        
+        input[type="range"] {
+            width: 100%;
+            cursor: pointer;
+            accent-color: var(--cor-secundaria);
+        }
+
+        .valor-dinamico {
+            float: right;
+            color: var(--cor-secundaria);
+            font-family: monospace;
+            font-size: 1rem;
+        }
+
+        .viz-container {
+            background: white;
+            border-radius: 20px;
+            padding: 20px;
+            border: 1px solid rgba(255,255,255,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 450px;
+        }
+
+        .res-card {
+            background: rgba(255,255,255,0.03);
+            padding: 12px;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            border-left: 4px solid var(--cor-secundaria);
+        }
+        .res-card span { display: block; font-size: 0.65rem; color: #94a3b8; text-transform: uppercase; }
+        .res-card strong { font-size: 1rem; color: white; display: block; margin-top: 4px; }
+
+        .formula-display {
+            margin-top: 15px;
+            font-size: 1rem;
+            color: #2ecc71;
+            background: rgba(0,0,0,0.3);
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            font-family: 'Courier New', monospace;
+            font-weight: bold;
+        }
+
+        @media (max-width: 1100px) { .main-grid { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Explorador de Função Quadrática</h1>
+    <p>Visualize a Parábola e as propriedades do 2º Grau</p>
+</header>
+
+<div class="main-grid">
+    <aside class="panel">
+        <h2>Parâmetros (a, b, c)</h2>
+        
+        <div class="input-group">
+            <label>Coeficiente (a) <span id="valA" class="valor-dinamico">1</span></label>
+            <input type="range" id="inputA" min="-3" max="3" step="0.1" value="1" oninput="renderizar()">
+            <p style="font-size: 0.65rem; color: #94a3b8;">Concavidade da parábola.</p>
+        </div>
+
+        <div class="input-group">
+            <label>Coeficiente (b) <span id="valB" class="valor-dinamico">0</span></label>
+            <input type="range" id="inputB" min="-10" max="10" step="0.5" value="0" oninput="renderizar()">
+            <p style="font-size: 0.65rem; color: #94a3b8;">Deslocamento lateral/inclinação no eixo Y.</p>
+        </div>
+
+        <div class="input-group">
+            <label>Coeficiente (c) <span id="valC" class="valor-dinamico">0</span></label>
+            <input type="range" id="inputC" min="-15" max="15" step="1" value="0" oninput="renderizar()">
+            <p style="font-size: 0.65rem; color: #94a3b8;">Interseção com o eixo Y.</p>
+        </div>
+
+        <div class="formula-display" id="display-lei">
+            f(x) = 1x² + 0x + 0
+        </div>
+    </aside>
+
+    <main class="viz-container">
+        <canvas id="graficoQuadratico"></canvas>
+    </main>
+
+    <aside class="panel">
+        <h2>Análise da Parábola</h2>
+        
+        <div class="res-card">
+            <span>Concavidade</span>
+            <strong id="res-concavidade">Para cima</strong>
+        </div>
+
+        <div class="res-card" style="border-left-color: #e74c3c;">
+            <span>Delta (Δ)</span>
+            <strong id="res-delta">0.00</strong>
+        </div>
+
+        <div class="res-card" style="border-left-color: #2ecc71;">
+            <span>Raízes (Zeros)</span>
+            <strong id="res-raizes">x' = 0 | x'' = 0</strong>
+        </div>
+
+        <div class="res-card">
+            <span>Vértice (V)</span>
+            <strong id="res-vertice">V(0, 0)</strong>
+        </div>
+
+        <div class="res-card">
+            <span>Ponto de Máx/Mín</span>
+            <strong id="res-extremo">Mínimo</strong>
+        </div>
+    </aside>
+</div>
+
+<script>
+    let chart;
+    const ctx = document.getElementById('graficoQuadratico').getContext('2d');
+
+    function renderizar() {
+        const a = parseFloat(document.getElementById('inputA').value);
+        const b = parseFloat(document.getElementById('inputB').value);
+        const c = parseFloat(document.getElementById('inputC').value);
+
+        // Se 'a' for zero, não é segundo grau. Forçamos um valor mínimo.
+        const adjA = a === 0 ? 0.0001 : a;
+
+        // Atualizar interface
+        document.getElementById('valA').innerText = a.toFixed(1);
+        document.getElementById('valB').innerText = b.toFixed(1);
+        document.getElementById('valC').innerText = c;
+        
+        const sinalB = b >= 0 ? "+ " + b : "- " + Math.abs(b);
+        const sinalC = c >= 0 ? "+ " + c : "- " + Math.abs(c);
+        document.getElementById('display-lei').innerText = `f(x) = ${a}x² ${sinalB}x ${sinalC}`;
+
+        // Cálculos Matemáticos
+        const delta = (b * b) - (4 * adjA * c);
+        const xv = -b / (2 * adjA);
+        const yv = -delta / (4 * adjA);
+        
+        document.getElementById('res-concavidade').innerText = a > 0 ? "Para cima (∪)" : (a < 0 ? "Para baixo (∩)" : "Reta");
+        document.getElementById('res-delta').innerText = delta.toFixed(2);
+        document.getElementById('res-vertice').innerText = `V(${xv.toFixed(1)}, ${yv.toFixed(1)})`;
+        document.getElementById('res-extremo').innerText = a > 0 ? "Valor Mínimo" : "Valor Máximo";
+
+        // Raízes
+        let raizesTxt = "Não possui raízes reais";
+        if (delta > 0) {
+            const x1 = (-b + Math.sqrt(delta)) / (2 * adjA);
+            const x2 = (-b - Math.sqrt(delta)) / (2 * adjA);
+            raizesTxt = `x' = ${x1.toFixed(1)} | x'' = ${x2.toFixed(1)}`;
+        } else if (delta === 0) {
+            const x = -b / (2 * adjA);
+            raizesTxt = `x' = x'' = ${x.toFixed(1)}`;
+        }
+        document.getElementById('res-raizes').innerText = raizesTxt;
+
+        // Gerar Dados para o Gráfico
+        const labels = [];
+        const data = [];
+        // Geramos de -15 a 15 para ver bem a curva
+        for (let x = -15; x <= 15; x += 0.5) {
+            labels.push(x);
+            data.push(a * (x * x) + b * x + c);
+        }
+
+        if (chart) chart.destroy();
+
+        chart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: 'f(x) = ax² + bx + c',
+                    data: data,
+                    borderColor: '#D35400',
+                    borderWidth: 3,
+                    pointRadius: 0,
+                    fill: false,
+                    tension: 0.4 // Suaviza a curva da parábola
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: { 
+                        min: -30, max: 30,
+                        grid: { color: 'rgba(0,0,0,0.05)' }
+                    },
+                    x: { 
+                        grid: { color: 'rgba(0,0,0,0.05)' }
+                    }
+                },
+                plugins: {
+                    legend: { display: false }
+                }
+            }
+        });
+    }
+
+    window.onload = renderizar;
+</script>
+
+</body>
+</html>

@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laboratório de Funções | Explorador Interativo</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --cor-primaria: #003366;
+            --cor-secundaria: #D35400;
+            --cor-texto: #f8fafc;
+            --cor-fundo-glass: rgba(255, 255, 255, 0.1);
+            --fonte-titulo: 'Oswald', sans-serif;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0; padding: 0;
+            background: radial-gradient(circle at 50% 50%, #001f3f 0%, #000a14 100%);
+            color: var(--cor-texto);
+            min-height: 100vh;
+        }
+
+        header {
+            background: rgba(0, 51, 102, 0.8);
+            backdrop-filter: blur(10px);
+            padding: 15px 5%;
+            text-align: center;
+            border-bottom: 5px solid var(--cor-secundaria);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        header h1 { font-family: var(--fonte-titulo); margin: 0; text-transform: uppercase; }
+
+        .main-grid {
+            display: grid;
+            grid-template-columns: 320px 1fr 280px;
+            gap: 20px;
+            padding: 20px;
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        .panel {
+            background: var(--cor-fundo-glass);
+            backdrop-filter: blur(15px);
+            padding: 20px;
+            border-radius: 15px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .panel h2 {
+            font-family: var(--fonte-titulo);
+            color: var(--cor-secundaria);
+            border-bottom: 2px solid var(--cor-secundaria);
+            padding-bottom: 8px;
+            text-transform: uppercase;
+            font-size: 1.2rem;
+        }
+
+        .input-group { margin-bottom: 20px; }
+        label { display: block; font-size: 0.75rem; font-weight: bold; color: #cbd5e1; text-transform: uppercase; margin-bottom: 10px; }
+        
+        input[type="range"] {
+            width: 100%;
+            cursor: pointer;
+            accent-color: var(--cor-secundaria);
+        }
+
+        .valor-dinamico {
+            float: right;
+            color: var(--cor-secundaria);
+            font-family: monospace;
+            font-size: 1rem;
+        }
+
+        /* Área do Gráfico */
+        .viz-container {
+            background: white; /* Gráfico precisa de fundo claro para contraste */
+            border-radius: 20px;
+            padding: 20px;
+            border: 1px solid rgba(255,255,255,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 450px;
+        }
+
+        /* Resultados e Análise */
+        .res-card {
+            background: rgba(255,255,255,0.03);
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 12px;
+            border-left: 4px solid var(--cor-secundaria);
+        }
+        .res-card span { display: block; font-size: 0.7rem; color: #94a3b8; text-transform: uppercase; }
+        .res-card strong { font-size: 1.1rem; color: white; display: block; margin-top: 4px; }
+
+        .formula-display {
+            margin-top: 15px;
+            font-size: 1.1rem;
+            color: #2ecc71;
+            background: rgba(0,0,0,0.3);
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            font-family: 'Courier New', monospace;
+            font-weight: bold;
+        }
+
+        @media (max-width: 1100px) { .main-grid { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Explorador de Função Afim</h1>
+    <p>Ajuste os Coeficientes e Observe o Comportamento da Reta</p>
+</header>
+
+<div class="main-grid">
+    <aside class="panel">
+        <h2>Parâmetros</h2>
+        
+        <div class="input-group">
+            <label>Coeficiente Angular (a) <span id="valA" class="valor-dinamico">1</span></label>
+            <input type="range" id="inputA" min="-5" max="5" step="0.1" value="1" oninput="renderizar()">
+            <p style="font-size: 0.7rem; color: #94a3b8; margin-top: 5px;">Define a inclinação e se a função cresce ou decresce.</p>
+        </div>
+
+        <div class="input-group">
+            <label>Coeficiente Linear (b) <span id="valB" class="valor-dinamico">0</span></label>
+            <input type="range" id="inputB" min="-10" max="10" step="1" value="0" oninput="renderizar()">
+            <p style="font-size: 0.7rem; color: #94a3b8; margin-top: 5px;">Define onde a reta corta o eixo vertical (Y).</p>
+        </div>
+
+        <div class="formula-display" id="display-lei">
+            f(x) = 1x + 0
+        </div>
+    </aside>
+
+    <main class="viz-container">
+        <canvas id="graficoFuncao"></canvas>
+    </main>
+
+    <aside class="panel">
+        <h2>Análise Técnica</h2>
+        
+        <div class="res-card">
+            <span>Comportamento</span>
+            <strong id="res-comportamento">Crescente</strong>
+        </div>
+
+        <div class="res-card" style="border-left-color: #2ecc71;">
+            <span>Raiz da Função (Zero)</span>
+            <strong id="res-raiz" style="color: #2ecc71;">x = 0.00</strong>
+        </div>
+
+        <div class="res-card">
+            <span>Intersecção com Y</span>
+            <strong id="res-inter-y">(0, 0)</strong>
+        </div>
+
+        <div class="res-card">
+            <span>Tipo de Função</span>
+            <strong id="res-tipo">Linear</strong>
+        </div>
+    </aside>
+</div>
+
+<script>
+    let chart;
+    const ctx = document.getElementById('graficoFuncao').getContext('2d');
+
+    function renderizar() {
+        const a = parseFloat(document.getElementById('inputA').value);
+        const b = parseFloat(document.getElementById('inputB').value);
+
+        // Atualizar Labels
+        document.getElementById('valA').innerText = a.toFixed(1);
+        document.getElementById('valB').innerText = b;
+        document.getElementById('display-lei').innerText = `f(x) = ${a}x ${b >= 0 ? '+ ' + b : '- ' + Math.abs(b)}`;
+
+        // Cálculos de Análise
+        const comportamento = a > 0 ? "Crescente" : (a < 0 ? "Decrescente" : "Constante");
+        const raiz = a !== 0 ? (-b / a).toFixed(2) : "Inexistente";
+        const tipo = b === 0 ? "Linear" : "Afim";
+
+        document.getElementById('res-comportamento').innerText = comportamento;
+        document.getElementById('res-raiz').innerText = a !== 0 ? `x = ${raiz}` : "∅ (Paralela ao eixo X)";
+        document.getElementById('res-inter-y').innerText = `(0, ${b})`;
+        document.getElementById('res-tipo').innerText = tipo;
+
+        // Dados do Gráfico
+        const labels = [];
+        const data = [];
+        for (let x = -10; x <= 10; x++) {
+            labels.push(x);
+            data.push(a * x + b);
+        }
+
+        if (chart) chart.destroy();
+
+        chart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: 'f(x)',
+                    data: data,
+                    borderColor: '#D35400',
+                    borderWidth: 3,
+                    pointRadius: 2,
+                    fill: false,
+                    tension: 0
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: { 
+                        min: -15, max: 15,
+                        grid: { color: 'rgba(0,0,0,0.1)' },
+                        title: { display: true, text: 'Eixo Y' }
+                    },
+                    x: { 
+                        grid: { color: 'rgba(0,0,0,0.1)' },
+                        title: { display: true, text: 'Eixo X' }
+                    }
+                },
+                plugins: {
+                    legend: { display: false }
+                }
+            }
+        });
+    }
+
+    // Inicializar ao carregar
+    window.onload = renderizar;
+</script>
+
+</body>
+</html>
