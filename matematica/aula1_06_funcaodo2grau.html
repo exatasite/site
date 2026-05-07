@@ -830,137 +830,63 @@
 
 </main>
 
-<!-- MENU LATERAL -->
 <aside class="menu-lateral">
-    <h2>📐 Matemática</h2>
-
-    <h3>2º Ano</h3>
-    <ul>
-        <li style="background-color: rgba(211,84,0,0.1); border-left: 3px solid #D35400; border-radius: 4px;">
-            <a href="#" style="color: #003366; font-weight: bold;">Função do 2º Grau</a>
-        </li>
-    </ul>
-
-    <h3>Nesta Aula</h3>
-    <ul>
-        <li><a href="#" onclick="document.querySelector('.container-resumo').scrollIntoView({behavior:'smooth'}); return false;">📚 Resumo</a></li>
-        <li><a href="#" onclick="document.querySelectorAll('.passo-teoria')[0].scrollIntoView({behavior:'smooth'}); return false;">📖 1. Definição</a></li>
-        <li><a href="#" onclick="document.querySelectorAll('.passo-teoria')[1].scrollIntoView({behavior:'smooth'}); return false;">📖 2. Vértice</a></li>
-        <li><a href="#" onclick="document.querySelectorAll('.passo-teoria')[2].scrollIntoView({behavior:'smooth'}); return false;">📖 3. Raízes e Δ</a></li>
-        <li><a href="#" onclick="document.querySelectorAll('.passo-teoria')[3].scrollIntoView({behavior:'smooth'}); return false;">📖 4. Máx/Mín</a></li>
-        <li><a href="#" onclick="document.querySelectorAll('.passo-teoria')[4].scrollIntoView({behavior:'smooth'}); return false;">📖 5. Estudo do Sinal</a></li>
-        <li><a href="#" onclick="document.querySelector('.aplicacoes-reais').scrollIntoView({behavior:'smooth'}); return false;">💡 Aplicações</a></li>
-        <li><a href="#" onclick="document.querySelector('.questoes-resolvidas').scrollIntoView({behavior:'smooth'}); return false;">✅ Questões Resolvidas</a></li>
-        <li><a href="#" onclick="document.querySelector('.questoes-propostas').scrollIntoView({behavior:'smooth'}); return false;">✍️ Questões Propostas</a></li>
-        <li><a href="#" onclick="document.querySelector('.questoes-vestibular').scrollIntoView({behavior:'smooth'}); return false;">🎓 Vestibular</a></li>
-    </ul>
+    <iframe src="../menu_matematica.html" style="width:100%;border:none;height:600px;"></iframe>
 </aside>
-
-</div><!-- fim .container -->
+</div>
 
 <script>
 function toggleGabarito(botao) {
-    const gabarito = botao.nextElementSibling;
-    if (gabarito.style.display === "none" || gabarito.style.display === "") {
-        gabarito.style.display = "block";
-        botao.textContent = "Esconder Gabarito e Resolução";
-        botao.style.backgroundColor = "#2c3e50";
-    } else {
-        gabarito.style.display = "none";
-        botao.textContent = "Ver Gabarito e Resolução";
-        botao.style.backgroundColor = "#D35400";
-    }
+    const g = botao.nextElementSibling;
+    if (g.style.display === "none" || g.style.display === "") {
+        g.style.display = "block"; botao.textContent = "Esconder Gabarito e Resolução"; botao.style.backgroundColor = "#2c3e50";
+    } else { g.style.display = "none"; botao.textContent = "Ver Gabarito e Resolução"; botao.style.backgroundColor = "#3498db"; }
 }
-
-function toggleMenu() {
-    const menuGlobal = document.getElementById("menu-principal");
-    if (menuGlobal) menuGlobal.classList.toggle("ativo");
-}
-
-let slideAtual = 0;
-let slides = [];
-
-function prepararSlides() {
-    const seletores = '.container-resumo, .passo-teoria, .aplicacoes-reais, .questao';
-    slides = document.querySelectorAll(seletores);
-}
-
+function toggleMenu() { const m = document.getElementById("menu-principal"); if (m) m.classList.toggle("ativo"); }
+let slideAtual = 0, slides = [];
+function prepararSlides() { slides = document.querySelectorAll('.container-resumo, .passo-teoria, .aplicacoes-reais, .questao'); }
 function toggleSlides() {
     prepararSlides();
     const body = document.body;
-    if (!body.classList.contains('modo-slides')) {
-        body.classList.add('modo-slides');
-        slideAtual = 0;
-        mostrarSlide(slideAtual);
-    } else {
-        body.classList.remove('modo-slides');
-        window.location.reload();
-    }
+    if (!body.classList.contains('modo-slides')) { body.classList.add('modo-slides'); slideAtual = 0; mostrarSlide(0); }
+    else { body.classList.remove('modo-slides'); window.location.reload(); }
 }
-
 function mostrarSlide(n) {
-    slides.forEach(s => {
-        s.classList.remove('slide-ativo');
-        s.style.display = 'none';
-    });
-
-    const slide = slides[n];
-    slide.classList.add('slide-ativo');
-    slide.style.display = 'flex';
-
+    slides.forEach(s => { s.classList.remove('slide-ativo'); s.style.display = 'none'; });
+    const slide = slides[n]; slide.classList.add('slide-ativo'); slide.style.display = 'flex';
     if (slide.classList.contains('questao') && !slide.querySelector('.btn-gabarito')) {
-        const resolucoes = slide.querySelectorAll('.resolucao-bloco');
-        resolucoes.forEach(r => r.style.display = 'block');
+        slide.querySelectorAll('.resolucao-bloco').forEach(r => r.style.display = 'block');
     } else {
-        const gabaritos = slide.querySelectorAll('.gabarito-resolucao');
-        gabaritos.forEach(g => g.style.display = 'none');
-        const botoes = slide.querySelectorAll('.btn-gabarito');
-        botoes.forEach(b => {
-            b.textContent = "Ver Gabarito e Resolução";
-            b.style.backgroundColor = "#D35400";
-        });
+        slide.querySelectorAll('.gabarito-resolucao').forEach(g => g.style.display = 'none');
+        slide.querySelectorAll('.btn-gabarito').forEach(b => { b.textContent = "Ver Gabarito e Resolução"; b.style.backgroundColor = "#3498db"; });
     }
-
-    const pHeader = document.querySelector('header p').innerText;
-    const partes = pHeader.split('|');
-    if (partes.length > 1) {
-        document.getElementById('slide-info-serie').innerText = partes[0].trim();
-        document.getElementById('slide-info-aula').innerText = partes[1].trim();
-    }
-
+    const partes = document.querySelector('header p').innerText.split('|');
+    if (partes.length > 1) { document.getElementById('slide-info-serie').innerText = partes[0].trim(); document.getElementById('slide-info-aula').innerText = partes[1].trim(); }
     document.getElementById('contador-slide').innerText = (n + 1) + " / " + slides.length;
-
     if (window.MathJax) MathJax.typesetPromise();
 }
-
-function mudarSlide(direcao) {
-    slideAtual += direcao;
-    if (slideAtual >= slides.length) slideAtual = 0;
-    if (slideAtual < 0) slideAtual = slides.length - 1;
-    mostrarSlide(slideAtual);
-}
-
-// Navegação por teclado
-document.addEventListener('keydown', function(e) {
-    if (!document.body.classList.contains('modo-slides')) return;
-    if (e.key === 'ArrowRight' || e.key === 'ArrowDown') mudarSlide(1);
-    if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') mudarSlide(-1);
-    if (e.key === 'Escape') toggleSlides();
-});
+function mudarSlide(d) { slideAtual += d; if (slideAtual >= slides.length) slideAtual = 0; if (slideAtual < 0) slideAtual = slides.length - 1; mostrarSlide(slideAtual); }
 </script>
-
+<style>
+    body.modo-slides { overflow:hidden; background-color:#1a1a1a; }
+    body.modo-slides .menu-lateral, body.modo-slides header, body.modo-slides .menu-toggle, body.modo-slides #btn-slides { display:none !important; }
+    .slide-ativo { display:flex !important; flex-direction:column; align-items:center; justify-content:flex-start; position:fixed; top:0; left:0; width:100vw; height:calc(100vh - 70px); background:#ffffff; padding:40px; z-index:999; overflow-y:auto !important; box-sizing:border-box; text-align:center; }
+    .controles-slides { position:fixed; bottom:0; left:0; width:100%; height:70px; background:#2c3e50; color:white; display:none; justify-content:space-between; align-items:center; padding:0 20px; z-index:1001; box-sizing:border-box; }
+    body.modo-slides .controles-slides { display:flex; }
+    .info-lateral { flex:1; font-family:'Oswald',sans-serif; font-size:0.9rem; color:#bdc3c7; }
+    .botoes-centrais { display:flex; align-items:center; gap:15px; justify-content:center; flex:2; }
+    .btn-nav { padding:10px 20px; background:#3498db; color:white; border:none; border-radius:5px; cursor:pointer; font-weight:bold; }
+    #contador-slide { font-family:'Oswald',sans-serif; min-width:60px; text-align:center; }
+</style>
 <div class="controles-slides">
     <div id="slide-info-serie" class="info-lateral"></div>
-
     <div class="botoes-centrais">
         <button class="btn-nav" onclick="mudarSlide(-1)">⬅ Anterior</button>
         <span id="contador-slide"></span>
         <button class="btn-nav" onclick="mudarSlide(1)">Próximo ➡</button>
         <button class="btn-nav" onclick="toggleSlides()" style="background:#e74c3c;">Sair</button>
     </div>
-
-    <div id="slide-info-aula" class="info-lateral" style="text-align: right;"></div>
+    <div id="slide-info-aula" class="info-lateral" style="text-align:right;"></div>
 </div>
-
 </body>
 </html>
