@@ -821,3 +821,19 @@ body.modo-slides .controles-slides { display: flex; }
     border-radius: 5px;
     font-weight: bold;
 }
+@media (max-width: 768px) {
+
+    .container {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .conteudo-principal {
+        order: 1;
+    }
+
+    .menu-lateral {
+        order: 2;
+    }
+
+}
