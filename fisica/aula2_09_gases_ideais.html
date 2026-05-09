@@ -250,8 +250,47 @@
 <section class="TESTE">
     <h3>🎓 Testes (T 11 a 15)</h3>
 
+<article class="questao">
+    <h4>T 11: (Uniube) Volume Molar nas CNTP</h4>
+    <p>Nas condições normais de pressão e temperatura (CNTP), o volume ocupado por $10\text{ g}$ do gás monóxido de carbono (CO) é:</p>
+    <p><em>Dados: C = 12; O = 16.</em></p>
+    <p>
+        A) $12,0\text{ L}$.<br> 
+        B) $8,0\text{ L}$.<br> 
+        C) $9,0\text{ L}$.<br> 
+        D) $22,4\text{ L}$.
+    </p>
+
+    <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+    <div class="gabarito-resolucao">
+        <p><strong>Resolução:</strong> Alternativa <strong>B</strong>. <br>
+        Nas CNTP, utilizamos a relação direta de que $1\text{ mol} = 22,4\text{ L}$.
+
+        <strong>1. Cálculo da Massa Molar do CO:</strong>
+        $$ M = 12 (\text{C}) + 16 (\text{O}) = 28\text{ g/mol} $$
+
+        <strong>2. Cálculo do número de mols ($n$) em $10\text{ g}$:</strong>
+        $$ n = \frac{m}{M} = \frac{10}{28} \approx 0,357\text{ mols} $$
+
+        <strong>3. Cálculo do Volume ($V$):</strong>
+        Se $1\text{ mol}$ ocupa $22,4\text{ L}$, então:
+        $$ V = n \cdot 22,4 $$
+        $$ V = 0,357 \cdot 22,4 \approx \mathbf{8,0\text{ L}} $$
+
+        <em>Nota: Você também pode resolver por regra de três: 
+        $28\text{ g} \longrightarrow 22,4\text{ L}$
+        $10\text{ g} \longrightarrow X \text{ L}$
+        $X = (10 \cdot 22,4) / 28 = 224 / 28 = 8,0\text{ L}$.</em>
+        </p>
+    </div>
+</article>
+
+
+
+
+
     <article class="questao">
-    <h4>T 11: (MACKENZIE) Amostras de gás </h4>
+    <h4>T 12: (MACKENZIE) Amostras de gás </h4>
     <p>A tabela a seguir apresenta as características de duas amostras do mesmo gás perfeito. O preenchimento correto da lacuna existente para a temperatura da amostra 2 é:</p>
     
     <table border="1" style="border-collapse: collapse; width: 100%; text-align: center; margin-bottom: 15px;">
@@ -316,7 +355,7 @@
     </div>
 </article>
 <article class="questao">
-    <h4>T 12: (MACKENZIE) Equação de Clapeyron e Gráfico</h4>
+    <h4>T 13: (MACKENZIE) Equação de Clapeyron e Gráfico</h4>
     <p>Num reservatório de $32,8\text{ L}$, indilatável e isento de vazamentos, encontra-se certa quantidade de oxigênio ($M = 32\text{ g/mol}$). Alterando-se a temperatura do gás, sua pressão varia de acordo com o diagrama abaixo: \( \text{Dado: } R = 0{,}082 \,\frac{\text{atm} \cdot \text{L}}{\text{mol} \cdot \text{K}} \)</p>
     
     <figure class="figura-aula">
@@ -365,7 +404,7 @@
 </article>
 
 <article class="questao">
-    <h4>T 13: (Fuvest) Bujão de gás de cozinha</h4>
+    <h4>T 14: (Fuvest) Bujão de gás de cozinha</h4>
     <p>Um bujão de gás de cozinha contém $13\text{ kg}$ de gás liquefeito. Um mol desse gás tem massa de, aproximadamente, $52\text{ g}$. Se todo o conteúdo fosse utilizado para encher um balão à pressão atmosférica ($1\text{ atm}$) e à temperatura de $300\text{ K}$, o volume final do balão seria aproximadamente de:</p>
     
     <p><em>Dados: $R = 0,082\text{ atm}\cdot\text{L/(mol}\cdot\text{K)}$; $1\text{ m}^3 = 1000\text{ L}$.</em></p>
@@ -411,10 +450,80 @@
     </div>
 </article>
 
+<article class="questao">
+    <h4>T 15: (Unicentro-PR) Identificação de Gases</h4>
+    <p>Um profissional da área ambiental recebeu uma amostra de gás, sem identificação, para análise. Após algumas medidas, ele obteve os seguintes dados:</p>
+    
+    <table border="1" style="border-collapse: collapse; width: 90%; text-align: center; margin: 15px auto; font-family: sans-serif;">
+        <thead>
+            <tr style="background-color: #8B0000; color: white;">
+                <th>Amostra</th>
+                <th>Massa (g)</th>
+                <th>Volume (mL)</th>
+                <th>Pressão (atm)</th>
+                <th>Temperatura (°C)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Gás</td>
+                <td>1,28</td>
+                <td>600</td>
+                <td>0,82</td>
+                <td>27</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <p>Com base nos valores obtidos, entre os gases indicados nas alternativas, conclui-se que a amostra era de:</p>
+    <p>
+        A) O$_2$<br> 
+        B) O$_3$<br> 
+        C) N$_2$<br> 
+        D) SO$_2$<br> 
+        E) H$_2$
+    </p>
+    <p><em>Dados: O = 16 u, S = 32 u, N = 14 u, H = 1 u; R = 0,082 atm.L / (mol.K)</em></p>
+
+    <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+    <div class="gabarito-resolucao">
+        <p><strong>Resolução:</strong> Alternativa <strong>D</strong>. <br>
+        Vamos calcular a massa molar ($M$) para identificar o gás.
+
+        <strong>1. Conversão de Unidades:</strong>
+        <ul>
+            <li>$V = 600\text{ mL} = 0,6\text{ L}$</li>
+            <li>$T = 27 + 273 = 300\text{ K}$</li>
+        </ul>
+
+        <strong>2. Aplicação da Equação de Clapeyron ($PV = \frac{m}{M}RT$):</strong>
+        $$ \begin{aligned}
+        0,82 \cdot 0,6 &= \frac{1,28}{M} \cdot 0,082 \cdot 300 \\
+        0,492 &= \frac{1,28}{M} \cdot 24,6 \\
+        M &= \frac{1,28 \cdot 24,6}{0,492} \\
+        M &= \frac{31,488}{0,492} \\
+        M &= \mathbf{64\text{ g/mol}}
+        \end{aligned} $$
+
+        <strong>3. Verificação das Massas Molares:</strong>
+        <ul>
+            <li>O$_2 = 16 \cdot 2 = 32\text{ g/mol}$</li>
+            <li>O$_3 = 16 \cdot 3 = 48\text{ g/mol}$</li>
+            <li>N$_2 = 14 \cdot 2 = 28\text{ g/mol}$</li>
+            <li><strong>SO$_2 = 32 + (16 \cdot 2) = 64\text{ g/mol}$ (Correta)</strong></li>
+        </ul>
+        </p>
+    </div>
+</article>
+
+
+
+
 </section>
 
 </div>
 </main>
+
 
 <aside class="menu-lateral">
     <iframe src="../menu_fisica.html" style="width:100%; border:none; height:600px;"></iframe>
