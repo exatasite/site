@@ -47,7 +47,7 @@
  <div class="container-resumo">
     <h3>📚 Resumo: </h3>
     <section class="resumo-conteudo">
-        <p>A <strong>Calorimetria</strong> estuda as trocas de energia térmica entre corpos.</p>
+        <p> O <strong>Calor</strong> é definido como a transferência de energia térmica entre corpos que possuem temperaturas diferentes. </p>
 	<p> O <strong>Calor Sensível</strong> é o calor que gera variação de temperatura sem mudar o estado físico.</p>
         <p> O <strong>Calor Específico</strong> é uma característica da <strong>substância</strong>. Indica a quantidade de calor necessária para que 1 grama da substância varie sua temperatura em $1^\circ C$.</p>
 
@@ -63,8 +63,15 @@
     <div class="passo-teoria">
         <h3>📖 Conceitos de Calorimetria</h3>
         
+<h4>1. O Conceito de Calor</h4>
+<p>O <strong>Calor</strong> é definido como a transferência de energia térmica entre corpos que possuem temperaturas diferentes. É importante ressaltar que o calor sempre flui, de forma espontânea, do corpo mais quente para o corpo mais frio.</p>
 
-        <h4>1. Calor Sensível</h4>
+<p>Quando dois objetos atingem a mesma temperatura, a transferência de calor cessa, estado este que chamamos de <strong>Equilíbrio Térmico</strong>.</p>
+ </div>
+
+
+<div class="passo-teoria">
+ <h4>2. Calor Sensível</h4>
 <p>O calor sensível define-se como o fluxo de energia térmica que, ao interagir com uma substância, altera sua energia cinética molecular sem romper as ligações que determinam sua fase. Enquanto o calor latente atua na transição entre estados físicos, o sensível manifesta-se exclusivamente através da variação térmica mensurável do corpo. </p>
 
 	<p> O <strong>Calor Sensível</strong> é o calor que gera variação de temperatura sem mudar o estado físico.</p>
@@ -79,7 +86,7 @@
 
 
 <div class="passo-teoria">
-        <h4>2. Calor Específico ($c$)</h4>
+        <h4>3. Calor Específico ($c$)</h4>
         <p>É uma característica da <strong>substância</strong>. Indica a quantidade de calor necessária para que 1 grama da substância varie sua temperatura em $1^\circ C$.</p>
         <ul>
             <li>Exemplo: Água ($c = 1,0\text{ cal/g}^\circ C$); Ferro ($c = 0,11\text{ cal/g}^\circ C$).</li>
@@ -88,13 +95,13 @@
     </div>
 
     <div class="passo-teoria">
-        <h4>3. Capacidade Térmica ($C$)</h4>
+        <h4>4. Capacidade Térmica ($C$)</h4>
         <p>É uma característica do <strong>corpo</strong> (objeto). Indica a quantidade de calor que o corpo precisa receber para variar sua temperatura em $1^\circ C$. Depende da massa e da substância.</p>
         <p style="text-align: center; font-size: 1.2em;"><strong>$C = \frac{Q}{\Delta \theta} \quad \text{ou} \quad C = m \cdot c$</strong></p>
     </div>
 
     <div class="passo-teoria">
-        <h4>4. Equação Fundamental da Calorimetria</h4>
+        <h4>5. Equação Fundamental da Calorimetria</h4>
         <p>Utilizada para calcular a quantidade de calor sensível ($Q$) trocada por um corpo de massa ($m$):</p>
         
           <p style="text-align: center; font-size: 1.5em; background: #f9f9f9; padding: 10px; border-radius: 5px;">
@@ -110,7 +117,7 @@
     </div>
 
     <div class="passo-teoria">
-        <h4>5. Unidades e Convenções</h4>
+        <h4>6. Unidades e Convenções</h4>
         <p>1 caloria (cal) $\approx$ 4,18 Joules (J).<br>
         Se $Q > 0$, o corpo <strong>recebeu</strong> calor (aquecimento).<br>
         Se $Q < 0$, o corpo <strong>cedeu</strong> calor (resfriamento).</p>
@@ -291,36 +298,124 @@
 </article>
 
     <article class="questao">
-        <h4>T 13: (UNESP)</h4>
-        <p>No gráfico de Calor ($Q$) versus Variação de Temperatura ($\Delta \theta$), a inclinação da reta representa:</p>
-        <p>A) O calor específico. <br> B) A massa do corpo. <br> C) A capacidade térmica. <br> D) O calor latente. <br> E) A condutividade térmica.</p>
-        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-        <div class="gabarito-resolucao">
-            <p><strong>Resolução:</strong> Alternativa <strong>C</strong>. Como $Q = C \cdot \Delta \theta$, a razão $Q/\Delta \theta$ (coeficiente angular) é a Capacidade Térmica.</p>
-        </div>
-    </article>
+    <h4>T 13: (Mackenzie-SP) Calorimetria e Conversão de Unidades</h4>
+    <p>Um estudante aqueceu um corpo de liga de alumínio ($m = 1,00\text{ kg}$) com calor específico $c = 0,215\text{ cal/(g·°C)}$. A temperatura variou de $212\text{ °F}$ até $392\text{ °F}$. Considerando $1\text{ cal} = 4,2\text{ J}$, a energia térmica recebida foi aproximadamente:</p>
+    
+    <p>
+        A) $160\text{ kJ}$<br> 
+        B) $90\text{ kJ}$<br> 
+        C) $40\text{ kJ}$<br> 
+        D) $16\text{ kJ}$<br> 
+        E) $9\text{ kJ}$
+    </p>
+
+    <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+    <div class="gabarito-resolucao">
+        <p><strong>Resolução:</strong> Alternativa <strong>B</strong>. <br>
+        Precisamos seguir três etapas de conversão antes de aplicar a fórmula fundamental.
+
+        <strong>1. Conversão das Unidades de Massa e Temperatura:</strong>
+        <ul>
+            <li>Massa: $m = 1,00\text{ kg} = 1000\text{ g}$.</li>
+            <li>Variação de Temperatura ($\Delta \theta$): 
+                Sabemos que a relação entre as escalas é $\frac{\Delta C}{5} = \frac{\Delta F}{9}$.
+                $$\Delta F = 392 - 212 = 180\text{ °F}$$
+                $$\frac{\Delta C}{5} = \frac{180}{9} \Rightarrow \Delta C = 20 \cdot 5 = \mathbf{100\text{ °C}}$$
+            </li>
+        </ul>
+
+        <strong>2. Cálculo da Quantidade de Calor em calorias ($Q$):</strong>
+        $$ Q = m \cdot c \cdot \Delta \theta $$
+        $$ Q = 1000 \cdot 0,215 \cdot 100 $$
+        $$ Q = 21.500\text{ cal} $$
+
+        <strong>3. Conversão para Joules (J) e QuiloJoules (kJ):</strong>
+        $$ E = 21.500 \cdot 4,2 = 90.300\text{ J} $$
+        $$ E \approx \mathbf{90\text{ kJ}} $$
+        </p>
+    </div>
+</article>
 
     <article class="questao">
-        <h4>T 14: (PUC-PR)</h4>
-        <p>Uma caloria é a quantidade de calor necessária para elevar de $1^\circ C$ a temperatura de:</p>
-        <p>A) 1 g de água. <br> B) 1 kg de água. <br> C) 1 g de ferro. <br> D) 1 kg de ferro. <br> E) qualquer substância.</p>
-        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-        <div class="gabarito-resolucao">
-            <p><strong>Resolução:</strong> Alternativa <strong>A</strong>. Esta é a definição padrão da unidade caloria baseada no calor específico da água.</p>
-        </div>
-    </article>
+    <h4>T 14: (UFGD) Potência e Aquecimento de Água</h4>
+    <p>A potência útil de um chuveiro é $5.600\text{ W}$ e a vazão da água, inicialmente a $20\text{ °C}$, é de $8\text{ litros por minuto}$. Considerando que o calor específico da água é de $1\text{ cal/g·°C}$, a densidade da água é de $1\text{ kg/L}$ e uma caloria é aproximadamente $4,2\text{ J}$, bem como que a única troca de calor se dá entre a resistência elétrica do chuveiro e a água, assinale a alternativa que indica a temperatura da água imediatamente ao sair chuveiro.</p>
+    
+    <p>
+        A) $52,0\text{ °C}$<br> 
+        B) $30,0\text{ °C}$<br> 
+        C) $20,2\text{ °C}$<br> 
+        D) $10,0\text{ °C}$<br> 
+        E) $100,0\text{ °C}$
+    </p>
+
+    <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+    <div class="gabarito-resolucao">
+        <p><strong>Resolução:</strong> Alternativa <strong>B</strong>. <br>
+        Precisamos igualar a energia elétrica fornecida ($E = P \cdot t$) ao calor absorvido pela água ($Q = m \cdot c \cdot \Delta \theta$). Vamos analisar o que acontece em <strong>1 minuto (60 segundos)</strong>.
+
+        <strong>1. Energia Elétrica ($E$) em 60s:</strong>
+        $$ E = P \cdot t = 5.600\text{ W} \cdot 60\text{ s} = 336.000\text{ J} $$
+
+        <strong>2. Calor necessário em calorias:</strong>
+        Como $1\text{ cal} = 4,2\text{ J}$, convertemos a energia elétrica:
+        $$ Q = \frac{336.000}{4,2} = 80.000\text{ cal} $$
+
+        <strong>3. Massa de água em 1 minuto:</strong>
+        A vazão é de $8\text{ L/min}$. Com densidade de $1\text{ kg/L}$, temos $8\text{ kg}$ de água por minuto.
+        $$ m = 8\text{ kg} = 8.000\text{ g} $$
+
+        <strong>4. Cálculo da variação de temperatura ($\Delta \theta$):</strong>
+        $$ \begin{aligned}
+        Q &= m \cdot c \cdot \Delta \theta \\
+        80.000 &= 8.000 \cdot 1 \cdot \Delta \theta \\
+        \Delta \theta &= \frac{80.000}{8.000} = 10\text{ °C}
+        \end{aligned} $$
+
+        <strong>5. Temperatura final ($\theta_f$):</strong>
+        $$ \theta_f = \theta_i + \Delta \theta $$
+        $$ \theta_f = 20\text{ °C} + 10\text{ °C} = \mathbf{30\text{ °C}} $$
+        </p>
+    </div>
+</article>
 
     <article class="questao">
-        <h4>T 15: (VUNESP)</h4>
-        <p>Um corpo de 400g é aquecido de $20^\circ C$ até $120^\circ C$ com 4000 cal. A capacidade térmica ($C$) e o calor específico ($c$) são, respectivamente:</p>
-        <p>A) $40\text{ cal/}^\circ C$ e $0,1\text{ cal/g}^\circ C$ <br> B) $400\text{ cal/}^\circ C$ e $1,0\text{ cal/g}^\circ C$ <br> C) $4\text{ cal/}^\circ C$ e $0,01\text{ cal/g}^\circ C$ <br> D) $20\text{ cal/}^\circ C$ e $0,5\text{ cal/g}^\circ C$ <br> E) $40\text{ cal/}^\circ C$ e $1,0\text{ cal/g}^\circ C$</p>
-        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-        <div class="gabarito-resolucao">
-            <p><strong>Resolução:</strong> Alternativa <strong>A</strong>. <br>
-            $C = \frac{4000}{100} = 40\text{ cal/}^\circ C$. <br>
-            $c = \frac{C}{m} = \frac{40}{400} = 0,1\text{ cal/g}^\circ C$.</p>
-        </div>
-    </article>
+    <h4>T 16: (UECE) Calor de Combustão e Rendimento Térmico</h4>
+    <p>Uma certa quantidade de água contida em um recipiente é aquecida a partir da chama de um fogão a gás liquefeito de petróleo (GLP), popularmente conhecido como gás de cozinha. Quando queimado em fogo baixo, em um fogão convencional, esse gás apresenta um consumo de $0,2\text{ kg}$ por hora, com uma capacidade de transferência de $11.000\text{ kcal/kg}$. Considerando o calor específico da água igual a $1\text{ cal/g °C}$ e que $80\%$ da energia da chama é transferida para esse líquido, a massa de água aquecida em $50\text{ °C}$, após $30\text{ min}$ de exposição à chama, corresponde, em kg, a:</p>
+    
+    <p>
+        A) $17,6$.<br> 
+        B) $22$.<br> 
+        C) $35,2$.<br> 
+        D) $44$.
+    </p>
+
+    <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+    <div class="gabarito-resolucao">
+        <p><strong>Resolução:</strong> Alternativa <strong>A</strong>. <br>
+        Para resolver esta questão, devemos calcular a energia total gerada pela queima do gás e aplicar o rendimento do sistema.
+
+        <strong>1. Cálculo da massa de gás consumida ($m_{gás}$):</strong>
+        O consumo é de $0,2\text{ kg}$ por hora ($60\text{ min}$). Em $30\text{ min}$:
+        $$ m_{gás} = 0,2 \cdot \frac{30}{60} = 0,1\text{ kg} $$
+
+        <strong>2. Cálculo da energia total liberada ($Q_{total}$):</strong>
+        $$ Q_{total} = m_{gás} \cdot \text{Poder Calorífico} $$
+        $$ Q_{total} = 0,1\text{ kg} \cdot 11.000\text{ kcal/kg} = 1.100\text{ kcal} $$
+
+        <strong>3. Cálculo da energia efetivamente transferida ($Q_{útil}$):</strong>
+        O enunciado afirma que apenas $80\%$ da energia é transferida para a água:
+        $$ Q_{útil} = 1.100 \cdot 0,80 = 880\text{ kcal} $$
+
+        <strong>4. Cálculo da massa de água ($m_{água}$):</strong>
+        Utilizamos a equação fundamental da calorimetria ($Q = m \cdot c \cdot \Delta \theta$). Note que $1\text{ cal/g °C}$ é numericamente igual a $1\text{ kcal/kg °C}$.
+        $$ \begin{aligned}
+        880 &= m_{água} \cdot 1 \cdot 50 \\
+        m_{água} &= \frac{880}{50} \\
+        m_{água} &= \mathbf{17,6\text{ kg}}
+        \end{aligned} $$
+        </p>
+    </div>
+</article>
 </section>
 
 </div>
