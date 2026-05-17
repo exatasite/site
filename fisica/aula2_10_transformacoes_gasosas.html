@@ -681,45 +681,40 @@
 
     <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
     <div class="gabarito-resolucao">
-        <p><strong>Resolução:</strong> Alternativa <strong>D</strong></p>
+        <p><strong>Resolução:</strong></p>
         
         <p><strong>1. Identificação dos dados:</strong></p>
         <ul class="dados-lista">
-            <li><strong>Estado Inicial (1) - Nível do mar:</strong>
+            <li><strong>Estado Inicial (1):</strong>
                 <ul>
-                    <li>$P_1 = 1\text{ atm}$</li>
-                    <li>$V_1 = 1\text{ L}$</li>
+                    <li>$P_1 = 5\text{ atm}$</li>
+                    <li>$T_1 = 500\text{ K}$</li>
                 </ul>
             </li>
-            <li><strong>Estado Final (2) - Profundidade de 30m:</strong>
-           <li><strong>Nota:</strong> A Pressão final é dada por: $ = 1\text{ atm (ar)} + 3\text{ atm (água)} = 4\text{ atm}$.</li>
+            <li><strong>Estado Final (2):</strong>
                 <ul>
-                    <li>$P_2 = 1\text{ atm (ar)} + 3\text{ atm (água)} = 4\text{ atm}$</li>
-                    <li>$V_2 = ?$</li>
+                    <li>$P_2 = ?$</li>
+                    <li>$T_2 = 300\text{ K}$</li>
                 </ul>
             </li>
-            <li><strong>Nota:</strong> A transformação é isotérmica ($T_1 = T_2$).</li>
+            <li><strong>Nota sobre o processo:</strong> Como o volume é mantido constante, trata-se de uma transformação isocórica (também chamada de isovolumétrica ou métrica).</li>
         </ul>
 
-        <p><strong>2. Aplicação da Lei de Boyle-Mariotte:</strong></p>
+        <p><strong>2. Aplicação da Lei de Gay-Lussac:</strong></p>
+        <p>Para transformações a volume constante, a pressão de um gás é diretamente proporcional à sua temperatura absoluta:</p>
         $$
         \begin{aligned}
-            P_1 \cdot V_1 &= P_2 \cdot V_2 \\
-            1 \cdot 1 &= 4 \cdot V_2 \\
-            1 &= 4 \cdot V_2 \\
-            V_2 &= \frac{1}{4} \\
-            V_2 &= 0,25\text{ L}
+            \frac{P_1}{T_1} &= \frac{P_2}{T_2} \\
+            \frac{5}{500} &= \frac{P_2}{300} \\
+            500 \cdot P_2 &= 5 \cdot 300 \\
+            500 \cdot P_2 &= 1500 \\
+            P_2 &= \frac{1500}{500} \\
+            P_2 &= \mathbf{3 \text{ atm}}
         \end{aligned}
         $$
 
-        <p><strong>3. Conversão para mililitros (mL):</strong></p>
-        <p>
-            Sabendo que $1\text{ L} = 1000\text{ mL}$:
-        </p>
-        $$ V_2 = 0,25 \cdot 1000 = \mathbf{250\text{ mL}} $$
-
-        <p><strong>Conclusão:</strong></p>
-        <p>Ao se submeter a uma pressão total quatro vezes maior que a da superfície, o volume de ar ocupado é comprimido inversamente e reduzido a um quarto do valor original.</p>
+        <p><strong>Conclusão e Análise das Notas:</strong></p>
+        <p>Como a temperatura absoluta do sistema reduziu (de 500 K para 300 K), a pressão exercida pelas colisões das partículas do gás contra as paredes do recipiente rígido reduziu proporcionalmente na mesma razão, caindo para 3 atm.</p>
     </div>
 </article>
 
