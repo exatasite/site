@@ -445,7 +445,39 @@ function mostrarSlide(n) {
     document.getElementById('contador-slide').innerText = (n + 1) + " / " + slides.length;
     if (window.MathJax) MathJax.typesetPromise();
 }
-function mudarSlide(d) { slideAtual += d; if (slideAtual >= slides.length) slideAtual = 0; if (slideAtual < 0) slideAtual = slides.length - 1; mostrarSlide(slideAtual); }
+function mudarSlide(direcao) {
+    slideAtual += direcao;
+    if (slideAtual >= slides.length) slideAtual = 0;
+    if (slideAtual < 0) slideAtual = slides.length - 1;
+    mostrarSlide(slideAtual);
+}
+
+// Script para detectar comandos do passador de slides
+document.addEventListener('keydown', function(event) {
+    // Só executa se o Modo Slides estiver ativo
+    if (document.body.classList.contains('modo-slides')) {
+        
+        switch(event.key) {
+            case 'ArrowRight': // Seta para direita
+            case 'PageDown':   // Comum em muitos passadores
+            case 'Enter':      // Alguns passadores usam Enter para avançar
+            case ' ':          // Barra de espaço (alguns passadores emulam)
+                mudarSlide(1);
+                break;
+                
+            case 'ArrowLeft':  // Seta para esquerda
+            case 'PageUp':     // Comum em muitos passadores
+                mudarSlide(-1);
+                break;
+
+            case 'Escape':     // Tecla Esc para sair do modo slides
+                toggleSlides();
+                break;
+        }
+    }
+});
+
+
 </script>
 <style>
     body.modo-slides { overflow:hidden; background-color:#1a1a1a; }
