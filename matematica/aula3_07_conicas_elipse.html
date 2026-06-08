@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3º Ano: Aula 07 - Cônicas: Elipse</title>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../estilo.css">
+
+    <script>
+        MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true
+            }
+        };
+    </script>
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body>
+<button class="menu-toggle" onclick="toggleMenu()">☰</button>
+
+<nav id="menu-principal" class="nav-global">
+    <ul>
+        <li><a href="../index.html">🏠 Início</a></li>
+        <li><a href="../fisica_home.html">⚛️ Física</a></li>
+        <li><a href="../matematica_home.html">📐 Matemática</a></li>
+        <li><a href="../simulacoes_home.html">💻 Simulações</a></li>
+    </ul>
+</nav>
+
+<header>
+    <h1>MATEMÁTICA EM</h1>
+    <p>3º Ano | Aula 07: Cônicas — Elipse</p>
+<button id="btn-slides" onclick="toggleSlides()" style="position: fixed; top: 20px; right: 20px; z-index: 1000; padding: 10px; cursor: pointer; background: #e67e22; color: white; border: none; border-radius: 5px; font-weight: bold;">
+    📺 Iniciar Modo Slides
+</button>
+</header>
+
+<div class="container">
+
+<main class="conteudo-principal">
+
+<div class="secao-aula">
+ <div class="container-resumo">
+    <h3>📚 Resumo: </h3>
+    <section class="resumo-conteudo">
+        <p>A elipse é o lugar geométrico dos pontos do plano cuja <strong>soma das distâncias a dois pontos fixos</strong> (focos $F_1$ e $F_2$) é constante e igual a $2a$.</p>
+        <p style="text-align: center;"><strong>Equação canônica com eixo maior horizontal: $\dfrac{x^2}{a^2} + \dfrac{y^2}{b^2} = 1$ &nbsp; ($a > b > 0$)</strong></p>
+        <p style="text-align: center;"><strong>Equação canônica com eixo maior vertical: $\dfrac{x^2}{b^2} + \dfrac{y^2}{a^2} = 1$ &nbsp; ($a > b > 0$)</strong></p>
+        <ul>
+            <li><strong>Semieixo maior $a$:</strong> metade do comprimento do eixo maior.</li>
+            <li><strong>Semieixo menor $b$:</strong> metade do comprimento do eixo menor.</li>
+            <li><strong>Distância focal $c$:</strong> distância do centro a cada foco. Relação: $c^2 = a^2 - b^2$.</li>
+            <li><strong>Excentricidade $e$:</strong> $e = \dfrac{c}{a}$, com $0 < e < 1$. Quanto mais próximo de 0, mais circular; quanto mais próximo de 1, mais alongada.</li>
+        </ul>
+    </section>
+</div>
+
+<section class="conteudo-teorico-completo">
+    <div class="passo-teoria">
+        <h3>📖 O que é uma Elipse?</h3>
+        <p>A elipse é uma das quatro seções cônicas (junto com a circunferência, a parábola e a hipérbole). Ela surge ao cortar um cone com um plano inclinado em relação ao eixo, mas sem paralelo a nenhuma geratriz. Na prática, é a forma da órbita dos planetas ao redor do Sol (1ª Lei de Kepler), da secção transversal de um cilindro cortado obliquamente, e aparece em arquitetura, acústica e óptica.</p>
+    </div>
+
+    <div class="passo-teoria">
+        <h4>1. Definição e Elementos da Elipse</h4>
+        <p>Dados dois pontos fixos $F_1$ e $F_2$ (focos), a elipse é o conjunto dos pontos $P$ tais que:</p>
+        <p style="text-align: center;">$$d(P, F_1) + d(P, F_2) = 2a \quad \text{(constante, com } 2a > d(F_1, F_2)\text{)}$$</p>
+        <p>Os elementos principais da elipse com centro na origem e eixo maior sobre o eixo $x$ são:</p>
+        <ul>
+            <li><strong>Centro:</strong> $O(0, 0)$ — ponto médio entre os focos.</li>
+            <li><strong>Focos:</strong> $F_1(-c, 0)$ e $F_2(c, 0)$.</li>
+            <li><strong>Vértices do eixo maior:</strong> $A_1(-a, 0)$ e $A_2(a, 0)$.</li>
+            <li><strong>Vértices do eixo menor:</strong> $B_1(0, -b)$ e $B_2(0, b)$.</li>
+            <li><strong>Relação fundamental:</strong> $c^2 = a^2 - b^2$, ou seja, $a^2 = b^2 + c^2$.</li>
+        </ul>
+        <figure class="figura-aula figura-grande">
+            <img src="../imagens_matematica/aula3_07_figura_1.png" alt="Elipse com eixo maior horizontal, mostrando os focos F1 e F2, os semieixos a e b, e a distância focal c.">
+            <figcaption>Figura 1: Elementos da elipse com eixo maior horizontal. A relação $a^2 = b^2 + c^2$ conecta os três parâmetros fundamentais.</figcaption>
+        </figure>
+    </div>
+
+    <div class="passo-teoria">
+        <h4>2. Equações Canônicas da Elipse</h4>
+        <p>A elipse centrada na origem tem duas formas canônicas, dependendo da orientação do eixo maior:</p>
+        <div class="destaque-formula">
+            <p><strong>Eixo maior horizontal</strong> (focos sobre o eixo $x$):</p>
+            <p>$$\frac{x^2}{a^2} + \frac{y^2}{b^2} = 1 \quad (a > b > 0, \quad c^2 = a^2 - b^2)$$</p>
+        </div>
+        <div class="destaque-formula">
+            <p><strong>Eixo maior vertical</strong> (focos sobre o eixo $y$):</p>
+            <p>$$\frac{x^2}{b^2} + \frac{y^2}{a^2} = 1 \quad (a > b > 0, \quad c^2 = a^2 - b^2)$$</p>
+        </div>
+        <p><strong>Como distinguir as duas formas:</strong> o maior denominador indica o eixo maior. Se o maior denominador está sob $x^2$, o eixo maior é horizontal; se está sob $y^2$, é vertical.</p>
+        <figure class="figura-aula figura-grande">
+            <img src="../imagens_matematica/aula3_07_figura_2.png" alt="Comparação entre elipse com eixo maior horizontal e elipse com eixo maior vertical.">
+            <figcaption>Figura 2: Elipse com eixo maior horizontal (esquerda) e vertical (direita). O maior denominador indica a direção do eixo maior.</figcaption>
+        </figure>
+    </div>
+
+    <div class="passo-teoria">
+        <h4>3. A Relação $c^2 = a^2 - b^2$ e o Triângulo de Referência</h4>
+        <p>A relação entre os três parâmetros pode ser visualizada com um triângulo retângulo com hipotenusa $a$, catetos $b$ e $c$:</p>
+        <p style="text-align: center;">$$a^2 = b^2 + c^2$$</p>
+        <p>Esse triângulo tem vértices no centro $O(0,0)$, no extremo do eixo menor $B(0,b)$ e em um dos focos $F(c,0)$. A hipotenusa é o semieixo maior $a$, pois a distância do foco ao extremo do eixo menor é sempre $a$.</p>
+        <p><strong>Dica prática:</strong> dado qualquer par de valores entre $a$, $b$ e $c$, o terceiro é facilmente calculado com $a^2 = b^2 + c^2$.</p>
+    </div>
+
+    <div class="passo-teoria">
+        <h4>4. Excentricidade</h4>
+        <p>A excentricidade mede o "achatamento" da elipse:</p>
+        <p style="text-align: center;">$$e = \frac{c}{a} \quad (0 < e < 1)$$</p>
+        <ul>
+            <li>$e \to 0$: a elipse se aproxima de uma <strong>circunferência</strong> (focos próximos ao centro, $c \approx 0$).</li>
+            <li>$e \to 1$: a elipse fica muito <strong>alongada</strong> (focos próximos aos vértices, $c \approx a$).</li>
+        </ul>
+        <p>A circunferência é um caso especial de elipse com $e = 0$ (os dois focos coincidem no centro e $a = b = r$).</p>
+        <p><strong>Exemplos astronômicos:</strong> A órbita da Terra tem $e \approx 0{,}017$ (quase circular). A órbita de Halley tem $e \approx 0{,}97$ (muito alongada).</p>
+    </div>
+
+    <div class="passo-teoria">
+        <h4>5. Elipse com Centro em $(h, k)$</h4>
+        <p>Quando o centro da elipse não está na origem, mas em $C(h, k)$, a equação é deslocada:</p>
+        <div class="destaque-formula">
+            <p>$$\frac{(x-h)^2}{a^2} + \frac{(y-k)^2}{b^2} = 1 \quad \text{(eixo maior horizontal)}$$</p>
+        </div>
+        <div class="destaque-formula">
+            <p>$$\frac{(x-h)^2}{b^2} + \frac{(y-k)^2}{a^2} = 1 \quad \text{(eixo maior vertical)}$$</p>
+        </div>
+        <p>Os focos e vértices são deslocados da mesma forma: os focos ficam a distância $c$ do centro ao longo do eixo maior.</p>
+    </div>
+</section>
+
+<section class="aplicacoes-reais">
+    <h3>💡 Matemática em Ação</h3>
+    <div class="cards-aplicacao" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-top: 20px;">
+        <div class="card" style="background: #fdfdfd; padding: 20px; border-radius: 10px; border-left: 5px solid #3498db; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
+            <h4>🪐 Astronomia — Lei de Kepler</h4>
+            <p>A 1ª Lei de Kepler afirma que os planetas orbitam o Sol em trajetórias elípticas, com o Sol em um dos focos. É uma das descobertas mais importantes da física clássica.</p>
+        </div>
+        <div class="card" style="background: #fdfdfd; padding: 20px; border-radius: 10px; border-left: 5px solid #2ecc71; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
+            <h4>🏛️ Salas de Sussurro</h4>
+            <p>Em salas com teto elíptico, o som emitido em um foco se reflete e converge no outro foco. Esse fenômeno acústico é explorado em galerias e cúpulas históricas ao redor do mundo.</p>
+        </div>
+        <div class="card" style="background: #fdfdfd; padding: 20px; border-radius: 10px; border-left: 5px solid #e74c3c; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
+            <h4>🏥 Litotripsia</h4>
+            <p>Aparelhos para destruir cálculos renais usam ondas de choque geradas em um foco de um espelho elíptico. As ondas convergem no outro foco, onde está o cálculo — sem cirurgia.</p>
+        </div>
+    </div>
+</section>
+
+<section class="simulacao-interativa">
+    <h3>💻 Simulação Interativa: Elipse</h3>
+    <p>Para uma melhor experiência, clique no botão abaixo para abrir o simulador em uma tela cheia:</p>
+
+    <div style="text-align: center; margin: 30px auto; width: 100%;">
+        <a href="../simulacoes/simulacao_elipse.html"
+           target="_blank"
+           class="btn-gabarito"
+           style="text-decoration: none; display: inline-block;">
+           🚀 Abrir Simulação em Nova Aba
+        </a>
+    </div>
+</section>
+
+
+
+<!--------------- QUESTOES RESOLVIDAS --------------------------->
+
+<section class="questoes-resolvidas">
+    <h3>✅ 5 Questões Resolvidas (R 1 a 5)</h3>
+
+    <article class="questao">
+        <h4>R 1: Identificação dos Elementos da Elipse</h4>
+        <p><strong>Enunciado:</strong> Identifique o semieixo maior $a$, o semieixo menor $b$, a distância focal $c$, os focos e os vértices da elipse $\dfrac{x^2}{25} + \dfrac{y^2}{9} = 1$.</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong> Comparamos com $\dfrac{x^2}{a^2} + \dfrac{y^2}{b^2} = 1$. O maior denominador é 25, sob $x^2$, logo o eixo maior é <strong>horizontal</strong>.</p>
+            <ul>
+                <li>$a^2 = 25 \implies a = 5$</li>
+                <li>$b^2 = 9 \implies b = 3$</li>
+                <li>$c^2 = a^2 - b^2 = 25 - 9 = 16 \implies c = 4$</li>
+            </ul>
+            <p><strong>Focos:</strong> $F_1(-4, 0)$ e $F_2(4, 0)$.</p>
+            <p><strong>Vértices do eixo maior:</strong> $A_1(-5, 0)$ e $A_2(5, 0)$.</p>
+            <p><strong>Vértices do eixo menor:</strong> $B_1(0, -3)$ e $B_2(0, 3)$.</p>
+            <p><strong>Excentricidade:</strong> $e = \dfrac{c}{a} = \dfrac{4}{5} = 0{,}8$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>R 2: Elipse com Eixo Maior Vertical</h4>
+        <p><strong>Enunciado:</strong> Determine os focos e a excentricidade da elipse $\dfrac{x^2}{16} + \dfrac{y^2}{25} = 1$.</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong> O maior denominador é 25, sob $y^2$, logo o eixo maior é <strong>vertical</strong>.</p>
+            <ul>
+                <li>$a^2 = 25 \implies a = 5$ (eixo maior sobre $y$)</li>
+                <li>$b^2 = 16 \implies b = 4$</li>
+                <li>$c^2 = 25 - 16 = 9 \implies c = 3$</li>
+            </ul>
+            <p><strong>Focos:</strong> $F_1(0, -3)$ e $F_2(0, 3)$ (sobre o eixo $y$).</p>
+            <p><strong>Excentricidade:</strong> $e = \dfrac{3}{5} = 0{,}6$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>R 3: Escrevendo a Equação da Elipse</h4>
+        <p><strong>Enunciado:</strong> Determine a equação da elipse com focos $F_1(-3, 0)$ e $F_2(3, 0)$ e semieixo maior $a = 5$.</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong> Os focos estão sobre o eixo $x$, logo o eixo maior é horizontal.</p>
+            <ul>
+                <li>$a = 5 \implies a^2 = 25$</li>
+                <li>$c = 3$ (distância do centro ao foco)</li>
+                <li>$b^2 = a^2 - c^2 = 25 - 9 = 16$</li>
+            </ul>
+            <p>A equação da elipse é:</p>
+            <p>$$\frac{x^2}{25} + \frac{y^2}{16} = 1$$</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>R 4: Verificação se Ponto Pertence à Elipse</h4>
+        <p><strong>Enunciado:</strong> O ponto $P\!\left(3,\ \dfrac{16}{5}\right)$ pertence à elipse $\dfrac{x^2}{25} + \dfrac{y^2}{16} = 1$?</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong> Substituímos as coordenadas de $P$ na equação da elipse:</p>
+            <p>$$\frac{3^2}{25} + \frac{(16/5)^2}{16} = \frac{9}{25} + \frac{256/25}{16} = \frac{9}{25} + \frac{256}{400} = \frac{9}{25} + \frac{16}{25} = \frac{25}{25} = 1 \checkmark$$</p>
+            <p>Como a equação é satisfeita, o ponto $P\!\left(3,\ \dfrac{16}{5}\right)$ <strong>pertence</strong> à elipse.</p>
+            <p>Confirmação pela soma das distâncias ($a=5$, $c=3$, focos $F_1(-3,0)$ e $F_2(3,0)$):</p>
+            <p>$d(P,F_1) = \sqrt{36+\frac{256}{25}} = \sqrt{\frac{900+256}{25}} = \sqrt{\frac{1156}{25}} = \dfrac{34}{5}$; &nbsp;
+               $d(P,F_2) = \sqrt{0+\frac{256}{25}} = \dfrac{16}{5}$.</p>
+            <p>Soma: $\dfrac{34}{5} + \dfrac{16}{5} = \dfrac{50}{5} = 10 = 2a$. ✓</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>R 5: Soma das Distâncias aos Focos</h4>
+        <p><strong>Enunciado:</strong> Um ponto $P$ pertence à elipse $\dfrac{x^2}{36} + \dfrac{y^2}{20} = 1$. Sabendo que $d(P, F_1) = 9$, determine $d(P, F_2)$.</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong> Identificamos $a^2 = 36 \implies a = 6$. Logo a soma das distâncias é $2a = 12$.</p>
+            <p>$$d(P, F_1) + d(P, F_2) = 2a$$</p>
+            <p>$$9 + d(P, F_2) = 12 \implies d(P, F_2) = 3$$</p>
+            <p>A distância de $P$ ao outro foco é $d(P, F_2) = 3$.</p>
+        </div>
+    </article>
+</section>
+
+<!--------------- QUESTÕES PROPOSTAS --------------------------->
+
+<section class="questoes-propostas">
+    <h3>✍️ 5 Questões Propostas (P 6 a 10)</h3>
+
+    <article class="questao">
+        <h4>P 6: Encontrando $b$ a partir de $a$ e $c$</h4>
+        <p><strong>Enunciado:</strong> Uma elipse tem semieixo maior $a = 10$ e distância focal $c = 6$. Determine o semieixo menor $b$ e a equação da elipse (eixo maior horizontal).</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong></p>
+            <p>$$b^2 = a^2 - c^2 = 100 - 36 = 64 \implies b = 8$$</p>
+            <p>A equação da elipse é $\dfrac{x^2}{100} + \dfrac{y^2}{64} = 1$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 7: Elipse com Centro Deslocado</h4>
+        <p><strong>Enunciado:</strong> Determine o centro, os focos e os vértices do eixo maior da elipse $\dfrac{(x-2)^2}{25} + \dfrac{(y+1)^2}{9} = 1$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> Centro $C(2, -1)$. Eixo maior horizontal com $a^2=25$, $b^2=9$.</p>
+            <p>$c^2 = 25 - 9 = 16 \implies c = 4$.</p>
+            <p><strong>Focos:</strong> $F_1(2-4,\ -1) = (-2,\ -1)$ e $F_2(2+4,\ -1) = (6,\ -1)$.</p>
+            <p><strong>Vértices do eixo maior:</strong> $A_1(2-5,\ -1) = (-3,\ -1)$ e $A_2(2+5,\ -1) = (7,\ -1)$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 8: Excentricidade e Classificação</h4>
+        <p><strong>Enunciado:</strong> Calcule a excentricidade da elipse $\dfrac{x^2}{100} + \dfrac{y^2}{64} = 1$ e classifique-a como mais circular ou mais alongada.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> $a^2 = 100$, $b^2 = 64$.</p>
+            <p>$c^2 = 100 - 64 = 36 \implies c = 6$.</p>
+            <p>$$e = \frac{c}{a} = \frac{6}{10} = 0{,}6$$</p>
+            <p>Como $e = 0{,}6$ está mais próximo de 0 do que de 1, a elipse é <strong>relativamente circular</strong> (moderadamente achatada).</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 9: Equação a partir de Vértices e Focos</h4>
+        <p><strong>Enunciado:</strong> Determine a equação da elipse cujos vértices do eixo maior são $A_1(0, -7)$ e $A_2(0, 7)$ e os focos são $F_1(0, -\sqrt{24})$ e $F_2(0, \sqrt{24})$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> Os vértices e focos estão sobre o eixo $y$ → eixo maior <strong>vertical</strong>.</p>
+            <p>$a = 7 \implies a^2 = 49$. &nbsp; $c = \sqrt{24} \implies c^2 = 24$.</p>
+            <p>$b^2 = a^2 - c^2 = 49 - 24 = 25$.</p>
+            <p>A equação é $\dfrac{x^2}{25} + \dfrac{y^2}{49} = 1$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 10: Distâncias aos Focos com Vértice</h4>
+        <p><strong>Enunciado:</strong> Na elipse $\dfrac{x^2}{49} + \dfrac{y^2}{24} = 1$, determine as distâncias de um vértice do eixo menor a cada um dos focos.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> $a^2 = 49$, $b^2 = 24$. $c^2 = 49 - 24 = 25 \implies c = 5$.</p>
+            <p>Um vértice do eixo menor é $B(0, \sqrt{24})$. Os focos são $F_1(-5, 0)$ e $F_2(5, 0)$.</p>
+            <p>Por simetria, $d(B, F_1) = d(B, F_2)$. Pela propriedade: a distância do vértice do eixo menor a qualquer foco é igual a $a$.</p>
+            <p>$$d(B, F_2) = \sqrt{(0-5)^2+(\sqrt{24}-0)^2} = \sqrt{25+24} = \sqrt{49} = 7 = a$$</p>
+            <p>As distâncias são ambas iguais a $a = 7$.</p>
+        </div>
+    </article>
+</section>
+
+<!--------------- TESTES --------------------------->
+
+<section class="TESTE">
+    <h3>🎓 TESTES (T 11 a 15)</h3>
+
+    <article class="questao">
+    <h4>T 11: (ENEM) Elipse — Órbita de Satélite</h4>
+    <p>Um satélite artificial orbita a Terra em trajetória elíptica. No modelo matemático adotado, o centro da Terra está em um dos focos. A equação da órbita, com as distâncias em milhares de km, é $\dfrac{x^2}{25} + \dfrac{y^2}{16} = 1$. Qual é a distância máxima e a distância mínima do satélite ao centro da Terra (no foco)?</p>
+    <p>A) Máxima $= 5$; mínima $= 4$.<br>
+       B) Máxima $= 8$; mínima $= 2$.<br>
+       C) Máxima $= 7$; mínima $= 3$.<br>
+       D) Máxima $= 9$; mínima $= 1$.<br>
+       E) Máxima $= 6$; mínima $= 4$.</p>
+    <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+    <div class="gabarito-resolucao">
+        <p><strong>Resolução:</strong> Alternativa <strong>B</strong>.<br>
+        $a^2 = 25 \implies a = 5$. $b^2 = 16$. $c^2 = 25 - 16 = 9 \implies c = 3$.<br>
+        O foco está a distância $c = 3$ do centro. Os vértices do eixo maior estão em $(\pm 5, 0)$.<br>
+        <strong>Distância máxima</strong> (afélio — vértice mais afastado do foco): $a + c = 5 + 3 = 8$.<br>
+        <strong>Distância mínima</strong> (periélio — vértice mais próximo do foco): $a - c = 5 - 3 = 2$.<br>
+        Portanto: máxima $= 8$ mil km e mínima $= 2$ mil km. ✓</p>
+    </div>
+    </article>
+
+    <article class="questao">
+    <h4>T 12: (ENEM) Elipse — Excentricidade da Órbita</h4>
+    <p>Dois planetas têm órbitas elípticas ao redor do mesmo sol (em um dos focos). O Planeta A tem órbita com $a = 10$ e $b = 8$. O Planeta B tem órbita com $a = 10$ e $b = 6$. Qual planeta tem órbita mais alongada e qual é a diferença entre suas excentricidades?</p>
+    <p>A) Planeta A é mais alongado; diferença $= 0{,}2$.<br>
+       B) Planeta B é mais alongado; diferença $= 0{,}4$.<br>
+       C) Planeta B é mais alongado; diferença $= 0{,}2$.<br>
+       D) São igualmente alongados; diferença $= 0$.<br>
+       E) Planeta A é mais alongado; diferença $= 0{,}4$.</p>
+    <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+    <div class="gabarito-resolucao">
+        <p><strong>Resolução:</strong> Alternativa <strong>C</strong>.<br>
+        Planeta A: $c_A^2 = 100 - 64 = 36 \implies c_A = 6$. $e_A = \dfrac{6}{10} = 0{,}6$.<br>
+        Planeta B: $c_B^2 = 100 - 36 = 64 \implies c_B = 8$. $e_B = \dfrac{8}{10} = 0{,}8$.<br>
+        Como $e_B > e_A$, o <strong>Planeta B</strong> tem órbita mais alongada.<br>
+        Diferença: $0{,}8 - 0{,}6 = 0{,}2$. ✓</p>
+    </div>
+    </article>
+
+    <article class="questao">
+    <h4>T 13: (FUVEST) Elipse — Equação a partir de Condições</h4>
+    <p>Uma elipse tem centro na origem, eixo maior sobre o eixo $x$, excentricidade $e = \dfrac{3}{5}$ e semieixo maior $a = 5$. Determine sua equação canônica.</p>
+    <p>A) $\dfrac{x^2}{25} + \dfrac{y^2}{9} = 1$<br>
+       B) $\dfrac{x^2}{25} + \dfrac{y^2}{16} = 1$<br>
+       C) $\dfrac{x^2}{16} + \dfrac{y^2}{25} = 1$<br>
+       D) $\dfrac{x^2}{9} + \dfrac{y^2}{25} = 1$<br>
+       E) $\dfrac{x^2}{25} + \dfrac{y^2}{4} = 1$</p>
+    <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+    <div class="gabarito-resolucao">
+        <p><strong>Resolução:</strong> Alternativa <strong>B</strong>.<br>
+        $e = \dfrac{c}{a} = \dfrac{3}{5}$ e $a = 5 \implies c = 3$.<br>
+        $b^2 = a^2 - c^2 = 25 - 9 = 16$.<br>
+        Equação: $\dfrac{x^2}{25} + \dfrac{y^2}{16} = 1$. ✓</p>
+    </div>
+    </article>
+
+    <article class="questao">
+    <h4>T 14: (ENEM) Elipse — Sala de Sussurro</h4>
+    <p>Em uma sala com teto em formato elíptico, o som emitido em um foco converge no outro foco. A elipse da sala tem equação $\dfrac{x^2}{100} + \dfrac{y^2}{75} = 1$ (em metros). A que distância do centro da sala devem ser posicionadas as duas pessoas para que uma ouça o sussurro da outra?</p>
+    <p>A) A 10 m do centro.<br>
+       B) A $\sqrt{75}$ m do centro.<br>
+       C) A 5 m do centro.<br>
+       D) A $\sqrt{25} = 5$ m do centro.<br>
+       E) A 8 m do centro.</p>
+    <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+    <div class="gabarito-resolucao">
+        <p><strong>Resolução:</strong> Alternativa <strong>C</strong>.<br>
+        $a^2 = 100$, $b^2 = 75$. $c^2 = 100 - 75 = 25 \implies c = 5$.<br>
+        Os focos estão em $F_1(-5, 0)$ e $F_2(5, 0)$, ou seja, a distância de cada foco ao centro é $c = 5$ m.<br>
+        As duas pessoas devem se posicionar nos focos, cada uma a <strong>5 m do centro</strong>. ✓</p>
+    </div>
+    </article>
+
+    <article class="questao">
+    <h4>T 15: (ENEM) Elipse — Ponto sobre a Curva</h4>
+    <p>Um ponto $P$ pertence à elipse $\dfrac{x^2}{25} + \dfrac{y^2}{9} = 1$ e está localizado de modo que $d(P, F_1) = 7$. Sabendo que os focos são $F_1(-4, 0)$ e $F_2(4, 0)$, determine $d(P, F_2)$. Em qual região o ponto $P$ está mais próximo?</p>
+    <p>A) $d(P, F_2) = 1$; mais próximo de $F_2$.<br>
+       B) $d(P, F_2) = 3$; mais próximo de $F_2$.<br>
+       C) $d(P, F_2) = 5$; equidistante dos focos.<br>
+       D) $d(P, F_2) = 7$; equidistante dos focos.<br>
+       E) $d(P, F_2) = 3$; mais próximo de $F_1$.</p>
+    <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+    <div class="gabarito-resolucao">
+        <p><strong>Resolução:</strong> Alternativa <strong>B</strong>.<br>
+        Para essa elipse, $a^2 = 25 \implies a = 5$. A soma das distâncias aos focos é $2a = 10$.<br>
+        $$d(P, F_1) + d(P, F_2) = 10$$<br>
+        $$7 + d(P, F_2) = 10 \implies d(P, F_2) = 3$$<br>
+        Como $d(P, F_2) = 3 < 7 = d(P, F_1)$, o ponto está <strong>mais próximo de $F_2$</strong>. ✓</p>
+    </div>
+    </article>
+</section>
+
+</div>
+</main>
+
+<aside class="menu-lateral">
+    <iframe src="../menu_matematica.html" style="width:100%; border:none; height:600px;"></iframe>
+</aside>
+
+</div>
+
+<script>
+function toggleGabarito(botao) {
+    const gabarito = botao.nextElementSibling;
+    if (gabarito.style.display === "none" || gabarito.style.display === "") {
+        gabarito.style.display = "block";
+        botao.textContent = "Esconder Gabarito e Resolução";
+        botao.style.backgroundColor = "#2c3e50";
+    } else {
+        gabarito.style.display = "none";
+        botao.textContent = "Ver Gabarito e Resolução";
+        botao.style.backgroundColor = "#3498db";
+    }
+}
+
+function toggleMenu() {
+    const menuGlobal = document.getElementById("menu-principal");
+    if (menuGlobal) menuGlobal.classList.toggle("ativo");
+}
+
+let slideAtual = 0;
+let slides = [];
+
+function prepararSlides() {
+    const seletores = '.container-resumo, .passo-teoria, .aplicacoes-reais, .questao';
+    slides = document.querySelectorAll(seletores);
+}
+
+function toggleSlides() {
+    prepararSlides();
+    const body = document.body;
+    if (!body.classList.contains('modo-slides')) {
+        body.classList.add('modo-slides');
+        slideAtual = 0;
+        mostrarSlide(slideAtual);
+    } else {
+        body.classList.remove('modo-slides');
+        window.location.reload();
+    }
+}
+
+function mostrarSlide(n) {
+    slides.forEach(s => {
+        s.classList.remove('slide-ativo');
+        s.style.display = 'none';
+    });
+
+    const slide = slides[n];
+    slide.classList.add('slide-ativo');
+    slide.style.display = 'flex';
+
+    if (slide.classList.contains('questao') && !slide.querySelector('.btn-gabarito')) {
+        const resolucoes = slide.querySelectorAll('.resolucao-bloco');
+        resolucoes.forEach(r => r.style.display = 'block');
+    } else {
+        const gabaritos = slide.querySelectorAll('.gabarito-resolucao');
+        gabaritos.forEach(g => g.style.display = 'none');
+        const botoes = slide.querySelectorAll('.btn-gabarito');
+        botoes.forEach(b => {
+            b.textContent = "Ver Gabarito e Resolução";
+            b.style.backgroundColor = "#3498db";
+        });
+    }
+
+    const pHeader = document.querySelector('header p').innerText;
+    const partes = pHeader.split('|');
+    if (partes.length > 1) {
+        document.getElementById('slide-info-serie').innerText = partes[0].trim();
+        document.getElementById('slide-info-aula').innerText = partes[1].trim();
+    }
+
+    document.getElementById('contador-slide').innerText = (n + 1) + " / " + slides.length;
+
+    if (window.MathJax) MathJax.typesetPromise();
+}
+
+function mudarSlide(direcao) {
+    slideAtual += direcao;
+    if (slideAtual >= slides.length) slideAtual = 0;
+    if (slideAtual < 0) slideAtual = slides.length - 1;
+    mostrarSlide(slideAtual);
+}
+</script>
+
+<style>
+    body.modo-slides { overflow: hidden; background-color: #1a1a1a; }
+    body.modo-slides .menu-lateral, body.modo-slides header, body.modo-slides .menu-toggle, body.modo-slides #btn-slides { display: none !important; }
+
+    .slide-ativo {
+        display: flex !important; flex-direction: column; align-items: center; justify-content: flex-start;
+        position: fixed; top: 0; left: 0; width: 100vw; height: calc(100vh - 70px);
+        background: #ffffff; padding: 40px; z-index: 999; overflow-y: auto !important;
+        box-sizing: border-box; text-align: center;
+    }
+
+    .controles-slides {
+        position: fixed; bottom: 0; left: 0; width: 100%; height: 70px;
+        background: #2c3e50; color: white; display: none;
+        justify-content: space-between; align-items: center; padding: 0 20px; z-index: 1001; box-sizing: border-box;
+    }
+    body.modo-slides .controles-slides { display: flex; }
+
+    .info-lateral { flex: 1; font-family: 'Oswald', sans-serif; font-size: 0.9rem; color: #bdc3c7; }
+    .botoes-centrais { display: flex; align-items: center; gap: 15px; justify-content: center; flex: 2; }
+    .btn-nav { padding: 10px 20px; background: #3498db; color: white; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; }
+    #contador-slide { font-family: 'Oswald', sans-serif; min-width: 60px; text-align: center; }
+</style>
+
+<div class="controles-slides">
+    <div id="slide-info-serie" class="info-lateral"></div>
+    <div class="botoes-centrais">
+        <button class="btn-nav" onclick="mudarSlide(-1)">⬅ Anterior</button>
+        <span id="contador-slide"></span>
+        <button class="btn-nav" onclick="mudarSlide(1)">Próximo ➡</button>
+        <button class="btn-nav" onclick="toggleSlides()" style="background:#e74c3c;">Sair</button>
+    </div>
+    <div id="slide-info-aula" class="info-lateral" style="text-align: right;"></div>
+</div>
+</body>
+</html>

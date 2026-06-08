@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1º Ano: Aula 23 - Variância e Desvio Padrão</title>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../estilo.css">
+
+    <script>
+        MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true
+            }
+        };
+    </script>
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body>
+<button class="menu-toggle" onclick="toggleMenu()">☰</button>
+
+<nav id="menu-principal" class="nav-global">
+    <ul>
+        <li><a href="../index.html">🏠 Início</a></li>
+        <li><a href="../fisica_home.html">⚛️ Física</a></li>
+        <li><a href="../matematica_home.html">📐 Matemática</a></li>
+        <li><a href="../simulacoes_home.html">💻 Simulações</a></li>
+    </ul>
+</nav>
+
+<header>
+    <h1>MATEMÁTICA EM</h1>
+    <p>1º Ano | Aula 23: Variância e Desvio Padrão</p>
+<button id="btn-slides" onclick="toggleSlides()" style="position: fixed; top: 20px; right: 20px; z-index: 1000; padding: 10px; cursor: pointer; background: #e67e22; color: white; border: none; border-radius: 5px; font-weight: bold;">
+    📺 Iniciar Modo Slides
+</button>
+</header>
+
+<div class="container">
+
+<main class="conteudo-principal">
+
+<div class="secao-aula">
+ <div class="container-resumo">
+    <h3>📚 Resumo:</h3>
+    <section class="resumo-conteudo">
+        <p>As <strong>medidas de dispersão</strong> indicam o quanto os dados se afastam da média. As principais são:</p>
+        <ul>
+            <li><strong>Amplitude total:</strong> $A = x_{\max} - x_{\min}$</li>
+            <li><strong>Desvio médio:</strong> $DM = \dfrac{\displaystyle\sum_{i=1}^{n}|x_i - \bar{x}|}{n}$</li>
+            <li><strong>Variância populacional:</strong> $\sigma^2 = \dfrac{\displaystyle\sum_{i=1}^{n}(x_i - \bar{x})^2}{n}$</li>
+            <li><strong>Desvio padrão:</strong> $\sigma = \sqrt{\sigma^2}$ — na mesma unidade dos dados.</li>
+            <li><strong>Coeficiente de variação:</strong> $CV = \dfrac{\sigma}{\bar{x}} \times 100\%$ — dispersão relativa, adimensional.</li>
+        </ul>
+    </section>
+</div>
+
+<section class="conteudo-teorico-completo">
+
+    <div class="passo-teoria">
+        <h3>📖 Por que medir a dispersão?</h3>
+        <p>Dois grupos podem ter a <em>mesma média</em> e comportamentos completamente diferentes. Imagine duas turmas com média 7,0: na Turma A, todas as notas são exatamente 7,0; na Turma B, metade tirou 4,0 e a outra metade tirou 10,0. A média não revela essa diferença — mas as <strong>medidas de dispersão</strong> revelam. Elas respondem à pergunta: <em>"Os dados estão concentrados perto da média ou espalhados?"</em>. Quanto maior a dispersão, menos representativa é a média.</p>
+    </div>
+
+    <div class="passo-teoria">
+        <h4>1. Amplitude Total</h4>
+        <p>A medida de dispersão mais simples é a <strong>amplitude total</strong>: a diferença entre o maior e o menor valor do conjunto.</p>
+        <div class="destaque-formula">
+            <p>$$A = x_{\max} - x_{\min}$$</p>
+        </div>
+        <p><strong>Exemplo:</strong> notas {4, 6, 7, 8, 10} → $A = 10 - 4 = 6$</p>
+        <p><strong>Limitação:</strong> a amplitude considera apenas os extremos e ignora a distribuição dos dados intermediários. Um único valor atípico pode inflacionar muito a amplitude, tornando-a pouco informativa.</p>
+    </div>
+
+    <div class="passo-teoria">
+        <h4>2. Desvio em Relação à Média e Desvio Médio</h4>
+        <p>O <strong>desvio de cada dado</strong> em relação à média é $d_i = x_i - \bar{x}$. A soma de todos os desvios é sempre zero, então usamos o valor absoluto para medir o "espalhamento médio":</p>
+        <div class="destaque-formula">
+            <p>$$DM = \frac{\displaystyle\sum_{i=1}^{n}|x_i - \bar{x}|}{n}$$</p>
+        </div>
+        <p><strong>Exemplo:</strong> dados {2, 4, 6, 8, 10}, $\bar{x} = 6$.</p>
+        <div class="tabela-wrapper">
+        <table>
+            <thead><tr><th>$x_i$</th><th>$x_i - \bar{x}$</th><th>$|x_i - \bar{x}|$</th></tr></thead>
+            <tbody>
+                <tr><td>2</td><td>$-4$</td><td>4</td></tr>
+                <tr><td>4</td><td>$-2$</td><td>2</td></tr>
+                <tr><td>6</td><td>$0$</td><td>0</td></tr>
+                <tr><td>8</td><td>$+2$</td><td>2</td></tr>
+                <tr><td>10</td><td>$+4$</td><td>4</td></tr>
+                <tr style="font-weight:bold;"><td>—</td><td>$\sum = 0$</td><td>$\sum = 12$</td></tr>
+            </tbody>
+        </table>
+        </div>
+        <p>$DM = \dfrac{12}{5} = 2{,}4$</p>
+    </div>
+
+    <div class="passo-teoria">
+        <h4>3. Variância</h4>
+        <p>A <strong>variância</strong> é a medida de dispersão mais importante da estatística. Em vez de usar o valor absoluto dos desvios (que é difícil de manipular algebricamente), usa-se o <strong>quadrado dos desvios</strong>:</p>
+        <div class="destaque-formula">
+            <p>$$\sigma^2 = \frac{\displaystyle\sum_{i=1}^{n}(x_i - \bar{x})^2}{n} = \frac{\displaystyle\sum x_i^2}{n} - \bar{x}^2$$</p>
+        </div>
+        <p>A segunda forma (fórmula computacional) é mais prática para cálculos manuais.</p>
+        <p><strong>Exemplo completo:</strong> dados {2, 4, 6, 8, 10}, $\bar{x} = 6$.</p>
+        <div class="tabela-wrapper">
+        <table>
+            <thead><tr><th>$x_i$</th><th>$x_i - \bar{x}$</th><th>$(x_i-\bar{x})^2$</th><th>$x_i^2$</th></tr></thead>
+            <tbody>
+                <tr><td>2</td><td>$-4$</td><td>16</td><td>4</td></tr>
+                <tr><td>4</td><td>$-2$</td><td>4</td><td>16</td></tr>
+                <tr><td>6</td><td>$0$</td><td>0</td><td>36</td></tr>
+                <tr><td>8</td><td>$+2$</td><td>4</td><td>64</td></tr>
+                <tr><td>10</td><td>$+4$</td><td>16</td><td>100</td></tr>
+                <tr style="font-weight:bold;"><td>—</td><td>$0$</td><td>$40$</td><td>$220$</td></tr>
+            </tbody>
+        </table>
+        </div>
+        <p>Fórmula direta: $\sigma^2 = \dfrac{40}{5} = 8$</p>
+        <p>Fórmula computacional: $\sigma^2 = \dfrac{220}{5} - 6^2 = 44 - 36 = 8$ ✓</p>
+        <p><strong>Atenção:</strong> a variância é expressa na <strong>unidade ao quadrado</strong> (ex.: notas² , metros², etc.), o que dificulta a interpretação direta. Por isso usamos o desvio padrão.</p>
+
+        <figure class="figura-aula figura-grande">
+            <svg viewBox="0 0 580 240" xmlns="http://www.w3.org/2000/svg" width="560" height="220">
+                <defs>
+                    <marker id="axd" markerWidth="7" markerHeight="7" refX="5" refY="3" orient="auto">
+                        <path d="M0,0 L0,6 L7,3 Z" fill="#003366"/>
+                    </marker>
+                </defs>
+
+                <!-- Título -->
+                <text x="290" y="18" fill="#003366" font-size="13" font-family="Arial" font-weight="bold" text-anchor="middle">Visualização dos Desvios ao Quadrado</text>
+
+                <!-- Linha de referência (eixo x) -->
+                <line x1="40" y1="150" x2="540" y2="150" stroke="#003366" stroke-width="1.5" marker-end="url(#axd)"/>
+                <text x="544" y="154" fill="#003366" font-size="11" font-family="Arial">x</text>
+
+                <!-- Linha da média -->
+                <line x1="290" y1="40" x2="290" y2="170" stroke="#D35400" stroke-width="2" stroke-dasharray="6,3"/>
+                <text x="290" y="34" fill="#D35400" font-size="12" font-family="Arial" text-anchor="middle" font-weight="bold">x̄ = 6</text>
+
+                <!-- Escala: 1 unidade = 50px, origem em 290 para x=6 → x=2 em 90, x=4 em 190, x=6 em 290, x=8 em 390, x=10 em 490 -->
+
+                <!-- Quadrados dos desvios (visualizados como quadrados) -->
+                <!-- x=2, desvio=-4, quadrado lado=4*18=72px, à esq da média -->
+                <rect x="90" y="78" width="200" height="72" fill="#3498db" fill-opacity="0.2" stroke="#3498db" stroke-width="1.5"/>
+                <text x="190" y="118" fill="#3498db" font-size="11" font-family="Arial" text-anchor="middle">$d^2=16$</text>
+
+                <!-- x=4, desvio=-2, quadrado lado=2*18=36px -->
+                <rect x="190" y="114" width="100" height="36" fill="#2ecc71" fill-opacity="0.3" stroke="#2ecc71" stroke-width="1.5"/>
+                <text x="240" y="136" fill="#2ecc71" font-size="11" font-family="Arial" text-anchor="middle">$d^2=4$</text>
+
+                <!-- x=8, desvio=+2 -->
+                <rect x="290" y="114" width="100" height="36" fill="#2ecc71" fill-opacity="0.3" stroke="#2ecc71" stroke-width="1.5"/>
+                <text x="340" y="136" fill="#2ecc71" font-size="11" font-family="Arial" text-anchor="middle">$d^2=4$</text>
+
+                <!-- x=10, desvio=+4 -->
+                <rect x="290" y="78" width="200" height="72" fill="#3498db" fill-opacity="0.2" stroke="#3498db" stroke-width="1.5"/>
+                <text x="390" y="118" fill="#3498db" font-size="11" font-family="Arial" text-anchor="middle">$d^2=16$</text>
+
+                <!-- Pontos de dados na linha -->
+                <circle cx="90" cy="150" r="6" fill="#D35400"/>
+                <text x="90" y="170" fill="#555" font-size="12" font-family="Arial" text-anchor="middle">2</text>
+                <circle cx="190" cy="150" r="6" fill="#D35400"/>
+                <text x="190" y="170" fill="#555" font-size="12" font-family="Arial" text-anchor="middle">4</text>
+                <circle cx="290" cy="150" r="8" fill="#D35400"/>
+                <text x="290" y="170" fill="#D35400" font-size="12" font-family="Arial" text-anchor="middle" font-weight="bold">6</text>
+                <circle cx="390" cy="150" r="6" fill="#D35400"/>
+                <text x="390" y="170" fill="#555" font-size="12" font-family="Arial" text-anchor="middle">8</text>
+                <circle cx="490" cy="150" r="6" fill="#D35400"/>
+                <text x="490" y="170" fill="#555" font-size="12" font-family="Arial" text-anchor="middle">10</text>
+
+                <!-- Setas desvio -->
+                <line x1="90" y1="150" x2="290" y2="150" stroke="#9b59b6" stroke-width="1.5" marker-end="url(#axd)"/>
+                <text x="190" y="145" fill="#9b59b6" font-size="10" font-family="Arial" text-anchor="middle">d = −4</text>
+                <line x1="490" y1="150" x2="290" y2="150" stroke="#9b59b6" stroke-width="1.5" marker-end="url(#axd)"/>
+                <text x="390" y="145" fill="#9b59b6" font-size="10" font-family="Arial" text-anchor="middle">d = +4</text>
+
+                <!-- Variância -->
+                <text x="290" y="210" fill="#003366" font-size="13" font-family="Arial" text-anchor="middle" font-weight="bold">σ² = (16+4+0+4+16)/5 = 8</text>
+            </svg>
+            <figcaption>Figura 1: Os quadrados (áreas coloridas) representam visualmente $(x_i - \bar{x})^2$. A variância é a média das áreas desses quadrados. Dados mais espalhados geram quadrados maiores e maior variância.</figcaption>
+        </figure>
+    </div>
+
+    <div class="passo-teoria">
+        <h4>4. Desvio Padrão</h4>
+        <p>O <strong>desvio padrão</strong> ($\sigma$) é a raiz quadrada da variância. Ele é a medida de dispersão mais usada porque está na <strong>mesma unidade dos dados originais</strong>:</p>
+        <div class="destaque-formula">
+            <p>$$\sigma = \sqrt{\sigma^2} = \sqrt{\frac{\displaystyle\sum_{i=1}^{n}(x_i - \bar{x})^2}{n}}$$</p>
+        </div>
+        <p>Continuando o exemplo anterior: $\sigma = \sqrt{8} = 2\sqrt{2} \approx 2{,}83$</p>
+        <p><strong>Interpretação prática:</strong> em média, cada dado se afasta $\approx 2{,}83$ unidades da média $\bar{x} = 6$. Quanto <em>menor</em> o desvio padrão, mais os dados estão concentrados em torno da média; quanto <em>maior</em>, mais dispersos.</p>
+
+        <figure class="figura-aula figura-grande">
+            <svg viewBox="0 0 580 220" xmlns="http://www.w3.org/2000/svg" width="560" height="200">
+                <defs>
+                    <marker id="axd2" markerWidth="7" markerHeight="7" refX="5" refY="3" orient="auto">
+                        <path d="M0,0 L0,6 L7,3 Z" fill="#003366"/>
+                    </marker>
+                </defs>
+
+                <!-- Título -->
+                <text x="290" y="18" fill="#003366" font-size="13" font-family="Arial" font-weight="bold" text-anchor="middle">Baixo σ × Alto σ — mesma média</text>
+
+                <!-- === CONJUNTO A: baixo σ (dados concentrados) === -->
+                <text x="145" y="40" fill="#003366" font-size="12" font-family="Arial" text-anchor="middle" font-weight="bold">Turma A (σ pequeno)</text>
+                <line x1="30" y1="100" x2="260" y2="100" stroke="#003366" stroke-width="1.5" marker-end="url(#axd2)"/>
+
+                <!-- Média A em x=145 -->
+                <line x1="145" y1="70" x2="145" y2="115" stroke="#D35400" stroke-width="2" stroke-dasharray="4,3"/>
+                <text x="145" y="65" fill="#D35400" font-size="11" font-family="Arial" text-anchor="middle">x̄</text>
+
+                <!-- Pontos concentrados: 4,5,6,7,8 → escala 30px/unidade, base=5 em x=55 -->
+                <!-- x=4→55, x=5→85, x=6→115(mas média em 145, ajustar) -->
+                <!-- reescala: x=4 em 85, x=5 em 115, x=6 em 145, x=7 em 175, x=8 em 205 -->
+                <circle cx="85" cy="100" r="7" fill="#3498db" fill-opacity="0.8"/>
+                <circle cx="115" cy="100" r="7" fill="#3498db" fill-opacity="0.8"/>
+                <circle cx="145" cy="100" r="7" fill="#D35400"/>
+                <circle cx="175" cy="100" r="7" fill="#3498db" fill-opacity="0.8"/>
+                <circle cx="205" cy="100" r="7" fill="#3498db" fill-opacity="0.8"/>
+                <text x="85" y="120" fill="#555" font-size="10" font-family="Arial" text-anchor="middle">4</text>
+                <text x="115" y="120" fill="#555" font-size="10" font-family="Arial" text-anchor="middle">5</text>
+                <text x="145" y="120" fill="#D35400" font-size="10" font-family="Arial" text-anchor="middle">6</text>
+                <text x="175" y="120" fill="#555" font-size="10" font-family="Arial" text-anchor="middle">7</text>
+                <text x="205" y="120" fill="#555" font-size="10" font-family="Arial" text-anchor="middle">8</text>
+
+                <text x="145" y="155" fill="#2ecc71" font-size="12" font-family="Arial" text-anchor="middle" font-weight="bold">σ = √2 ≈ 1,41</text>
+                <text x="145" y="172" fill="#555" font-size="11" font-family="Arial" text-anchor="middle">Dados próximos da média</text>
+
+                <!-- Separador -->
+                <line x1="290" y1="40" x2="290" y2="180" stroke="#ddd" stroke-width="1"/>
+
+                <!-- === CONJUNTO B: alto σ (dados dispersos) === -->
+                <text x="435" y="40" fill="#003366" font-size="12" font-family="Arial" text-anchor="middle" font-weight="bold">Turma B (σ grande)</text>
+                <line x1="320" y1="100" x2="550" y2="100" stroke="#003366" stroke-width="1.5" marker-end="url(#axd2)"/>
+
+                <!-- Média B em x=435 -->
+                <line x1="435" y1="70" x2="435" y2="115" stroke="#D35400" stroke-width="2" stroke-dasharray="4,3"/>
+                <text x="435" y="65" fill="#D35400" font-size="11" font-family="Arial" text-anchor="middle">x̄</text>
+
+                <!-- Pontos dispersos: 1,3,6,9,11 → escala ~27px/unidade, base: x=1 em 332 -->
+                <!-- x=1→332+0=332, x=3→332+54=386, x=6→332+135=467? ajustar para x=6 em 435: x=1→327, x=3→381, x=6→435, x=9→489, x=11→543 -->
+                <circle cx="327" cy="100" r="7" fill="#e74c3c" fill-opacity="0.8"/>
+                <circle cx="381" cy="100" r="7" fill="#e74c3c" fill-opacity="0.8"/>
+                <circle cx="435" cy="100" r="7" fill="#D35400"/>
+                <circle cx="489" cy="100" r="7" fill="#e74c3c" fill-opacity="0.8"/>
+                <circle cx="543" cy="100" r="7" fill="#e74c3c" fill-opacity="0.8"/>
+                <text x="327" y="120" fill="#555" font-size="10" font-family="Arial" text-anchor="middle">1</text>
+                <text x="381" y="120" fill="#555" font-size="10" font-family="Arial" text-anchor="middle">3</text>
+                <text x="435" y="120" fill="#D35400" font-size="10" font-family="Arial" text-anchor="middle">6</text>
+                <text x="489" y="120" fill="#555" font-size="10" font-family="Arial" text-anchor="middle">9</text>
+                <text x="543" y="120" fill="#555" font-size="10" font-family="Arial" text-anchor="middle">11</text>
+
+                <text x="435" y="155" fill="#e74c3c" font-size="12" font-family="Arial" text-anchor="middle" font-weight="bold">σ ≈ 3,58</text>
+                <text x="435" y="172" fill="#555" font-size="11" font-family="Arial" text-anchor="middle">Dados espalhados da média</text>
+            </svg>
+            <figcaption>Figura 2: Dois conjuntos com a mesma média ($\bar{x} = 6$) e desvios padrão muito diferentes. A Turma A está mais homogênea; a Turma B, mais heterogênea.</figcaption>
+        </figure>
+    </div>
+
+    <div class="passo-teoria">
+        <h4>5. Coeficiente de Variação (CV)</h4>
+        <p>O desvio padrão tem a limitação de depender da escala dos dados — não se pode comparar diretamente o desvio padrão de notas (de 0 a 10) com o de salários (de 0 a 10.000). O <strong>coeficiente de variação</strong> resolve isso tornando a dispersão <strong>relativa e adimensional</strong>:</p>
+        <div class="destaque-formula">
+            <p>$$CV = \frac{\sigma}{\bar{x}} \times 100\%$$</p>
+        </div>
+        <p><strong>Interpretação usual do CV:</strong></p>
+        <div class="tabela-wrapper">
+        <table>
+            <thead><tr><th>$CV$</th><th>Interpretação</th></tr></thead>
+            <tbody>
+                <tr><td>$CV \leq 15\%$</td><td>Baixa dispersão — dados homogêneos</td></tr>
+                <tr><td>$15\% < CV \leq 30\%$</td><td>Dispersão moderada</td></tr>
+                <tr><td>$CV > 30\%$</td><td>Alta dispersão — dados heterogêneos</td></tr>
+            </tbody>
+        </table>
+        </div>
+        <p><strong>Exemplo comparativo:</strong></p>
+        <ul>
+            <li>Turma A: $\bar{x} = 7{,}0$, $\sigma = 0{,}5$ → $CV = \dfrac{0{,}5}{7{,}0} \times 100\% \approx 7{,}1\%$ (homogênea)</li>
+            <li>Turma B: $\bar{x} = 7{,}0$, $\sigma = 3{,}0$ → $CV = \dfrac{3{,}0}{7{,}0} \times 100\% \approx 42{,}9\%$ (heterogênea)</li>
+        </ul>
+        <p>Ambas têm a mesma média, mas o CV revela que a Turma B é muito mais dispersa.</p>
+    </div>
+
+    <div class="passo-teoria">
+        <h4>6. Propriedades e Resumo das Fórmulas</h4>
+        <p>Ao operar sobre o conjunto de dados, as medidas de dispersão se comportam assim:</p>
+        <ul>
+            <li>Somar (ou subtrair) uma constante $k$ a todos os dados: a variância e o desvio padrão <strong>não mudam</strong> (apenas a média muda).</li>
+            <li>Multiplicar todos os dados por uma constante $k$: a variância multiplica por $k^2$ e o desvio padrão multiplica por $|k|$.</li>
+        </ul>
+        <div class="destaque-formula">
+            <p>$$y_i = x_i + k \;\Rightarrow\; \sigma_y^2 = \sigma_x^2 \qquad \sigma_y = \sigma_x$$</p>
+            <p>$$y_i = k \cdot x_i \;\Rightarrow\; \sigma_y^2 = k^2\sigma_x^2 \qquad \sigma_y = |k|\sigma_x$$</p>
+        </div>
+        <div class="tabela-wrapper">
+        <table>
+            <thead>
+                <tr><th>Medida</th><th>Fórmula</th><th>Unidade</th><th>Uso</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>Amplitude</td><td>$x_{\max} - x_{\min}$</td><td>dados</td><td>Visão rápida do alcance</td></tr>
+                <tr><td>Desvio Médio</td><td>$\sum|x_i-\bar{x}|/n$</td><td>dados</td><td>Dispersão média simples</td></tr>
+                <tr><td>Variância</td><td>$\sum(x_i-\bar{x})^2/n$</td><td>dados²</td><td>Base para desvio padrão</td></tr>
+                <tr><td>Desvio Padrão</td><td>$\sqrt{\sigma^2}$</td><td>dados</td><td>Dispersão interpretável</td></tr>
+                <tr><td>Coef. Variação</td><td>$\sigma/\bar{x} \times 100\%$</td><td>%</td><td>Comparação entre conjuntos</td></tr>
+            </tbody>
+        </table>
+        </div>
+    </div>
+
+</section>
+
+<section class="aplicacoes-reais">
+    <h3>💡 Matemática em Ação</h3>
+    <div class="cards-aplicacao" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-top: 20px;">
+        <div class="card" style="background: #fdfdfd; padding: 20px; border-radius: 10px; border-left: 5px solid #3498db; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
+            <h4>📈 Finanças — Risco de Investimentos</h4>
+            <p>Em finanças, o desvio padrão dos retornos de um ativo é a medida clássica de <strong>risco</strong>. Um fundo com alto desvio padrão tem retornos muito variáveis — pode render muito ou perder muito. Um fundo conservador tem baixo desvio padrão.</p>
+        </div>
+        <div class="card" style="background: #fdfdfd; padding: 20px; border-radius: 10px; border-left: 5px solid #2ecc71; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
+            <h4>🏭 Controle de Qualidade</h4>
+            <p>Fábricas usam o desvio padrão para controlar a precisão de peças produzidas. Se o desvio padrão do diâmetro de um parafuso for muito alto, haverá peças defeituosas. O objetivo é manter $\sigma$ o menor possível.</p>
+        </div>
+        <div class="card" style="background: #fdfdfd; padding: 20px; border-radius: 10px; border-left: 5px solid #D35400; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
+            <h4>🧪 Pesquisa Científica</h4>
+            <p>Em experimentos, resultados com baixo desvio padrão indicam que o método é <strong>preciso e reprodutível</strong>. Resultados com alto desvio padrão sugerem que o experimento deve ser refinado ou que o fenômeno em si é altamente variável.</p>
+        </div>
+    </div>
+</section>
+
+<section class="simulacao-interativa">
+    <h3>💻 Simulação Interativa: Variância e Desvio Padrão</h3>
+    <p>Para uma melhor experiência, clique no botão abaixo para abrir o simulador em uma tela cheia:</p>
+    <div style="text-align: center; margin: 30px auto; width: 100%;">
+        <a href="../simulacoes/simulacao_dispersao.html"
+           target="_blank"
+           class="btn-gabarito"
+           style="text-decoration: none; display: inline-block;">
+           🚀 Abrir Simulação em Nova Aba
+        </a>
+    </div>
+</section>
+
+
+<!--------------- QUESTOES RESOLVIDAS --------------------------->
+
+<section class="questoes-resolvidas">
+    <h3>✅ 5 Questões Resolvidas (R 1 a 5)</h3>
+
+    <article class="questao">
+        <h4>R 1: Variância e Desvio Padrão — Cálculo Completo</h4>
+        <p><strong>Enunciado:</strong> Calcule a variância e o desvio padrão do conjunto: 3, 5, 7, 9, 11.</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong></p>
+            <p>$\bar{x} = \dfrac{3+5+7+9+11}{5} = \dfrac{35}{5} = 7$</p>
+            <div class="tabela-wrapper">
+            <table>
+                <thead><tr><th>$x_i$</th><th>$x_i - \bar{x}$</th><th>$(x_i-\bar{x})^2$</th></tr></thead>
+                <tbody>
+                    <tr><td>3</td><td>$-4$</td><td>16</td></tr>
+                    <tr><td>5</td><td>$-2$</td><td>4</td></tr>
+                    <tr><td>7</td><td>$0$</td><td>0</td></tr>
+                    <tr><td>9</td><td>$+2$</td><td>4</td></tr>
+                    <tr><td>11</td><td>$+4$</td><td>16</td></tr>
+                    <tr style="font-weight:bold;"><td>—</td><td>0</td><td>40</td></tr>
+                </tbody>
+            </table>
+            </div>
+            <p>$\sigma^2 = \dfrac{40}{5} = 8$</p>
+            <p>$\sigma = \sqrt{8} = 2\sqrt{2} \approx 2{,}83$</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>R 2: Fórmula Computacional da Variância</h4>
+        <p><strong>Enunciado:</strong> Use a fórmula $\sigma^2 = \dfrac{\sum x_i^2}{n} - \bar{x}^2$ para calcular a variância de {4, 6, 8, 10}.</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong></p>
+            <p>$\bar{x} = \dfrac{4+6+8+10}{4} = \dfrac{28}{4} = 7$</p>
+            <p>$\sum x_i^2 = 16 + 36 + 64 + 100 = 216$</p>
+            <p>$\sigma^2 = \dfrac{216}{4} - 7^2 = 54 - 49 = 5$</p>
+            <p>$\sigma = \sqrt{5} \approx 2{,}24$</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>R 3: Desvio Médio</h4>
+        <p><strong>Enunciado:</strong> Calcule o desvio médio do conjunto de notas: 5, 6, 7, 8, 9.</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong></p>
+            <p>$\bar{x} = \dfrac{5+6+7+8+9}{5} = 7$</p>
+            <p>Desvios absolutos: $|5-7|=2$; $|6-7|=1$; $|7-7|=0$; $|8-7|=1$; $|9-7|=2$</p>
+            <p>$DM = \dfrac{2+1+0+1+2}{5} = \dfrac{6}{5} = 1{,}2$</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>R 4: Coeficiente de Variação e Comparação</h4>
+        <p><strong>Enunciado:</strong> Duas turmas têm $\bar{x}_A = 6{,}0$ com $\sigma_A = 1{,}2$ e $\bar{x}_B = 8{,}0$ com $\sigma_B = 2{,}0$. Qual turma é mais homogênea?</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong></p>
+            <p>$CV_A = \dfrac{1{,}2}{6{,}0} \times 100\% = 20\%$</p>
+            <p>$CV_B = \dfrac{2{,}0}{8{,}0} \times 100\% = 25\%$</p>
+            <p>Como $CV_A < CV_B$, a <strong>Turma A é mais homogênea</strong>, apesar de ter desvio padrão absoluto menor.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>R 5: Efeito de Transformação sobre o Desvio Padrão</h4>
+        <p><strong>Enunciado:</strong> Um conjunto tem média 10 e desvio padrão 3. Se todos os valores forem multiplicados por 2 e depois somados 5, quais serão a nova média e o novo desvio padrão?</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong> Para $y_i = 2x_i + 5$:</p>
+            <p>Nova média: $\bar{y} = 2\bar{x} + 5 = 2(10) + 5 = 25$</p>
+            <p>Novo desvio padrão: $\sigma_y = |2| \cdot \sigma_x = 2 \times 3 = 6$</p>
+            <p>(A constante +5 desloca os dados mas não altera a dispersão.)</p>
+        </div>
+    </article>
+</section>
+
+
+<!--------------- QUESTOES PROPOSTAS --------------------------->
+
+<section class="questoes-propostas">
+    <h3>📝 5 Questões Propostas (P 1 a 5)</h3>
+
+    <article class="questao">
+        <h4>P 1: Cálculo Completo de Dispersão</h4>
+        <p><strong>Enunciado:</strong> Para o conjunto {1, 3, 5, 7, 9}, calcule: amplitude, desvio médio, variância e desvio padrão.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong><br>
+            $\bar{x} = \dfrac{1+3+5+7+9}{5} = 5$<br>
+            Amplitude: $A = 9 - 1 = 8$<br>
+            Desvios: $|{-4}|, |{-2}|, 0, |{+2}|, |{+4}| = 4,2,0,2,4$<br>
+            $DM = \dfrac{4+2+0+2+4}{5} = \dfrac{12}{5} = 2{,}4$<br>
+            $(x_i-\bar{x})^2$: $16, 4, 0, 4, 16$ → $\sum = 40$<br>
+            $\sigma^2 = \dfrac{40}{5} = 8$; $\quad \sigma = \sqrt{8} = 2\sqrt{2} \approx 2{,}83$</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 2: Fórmula Computacional</h4>
+        <p><strong>Enunciado:</strong> Use $\sigma^2 = \dfrac{\sum x_i^2}{n} - \bar{x}^2$ para calcular a variância de {2, 4, 4, 6, 9, 11}.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong><br>
+            $n = 6$; $\bar{x} = \dfrac{2+4+4+6+9+11}{6} = \dfrac{36}{6} = 6$<br>
+            $\sum x_i^2 = 4+16+16+36+81+121 = 274$<br>
+            $\sigma^2 = \dfrac{274}{6} - 36 = 45{,}67 - 36 = 9{,}67$<br>
+            $\sigma \approx 3{,}11$</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 3: Coeficiente de Variação</h4>
+        <p><strong>Enunciado:</strong> Um atleta corre 100 m com tempos médios de 10,5 s e desvio padrão 0,3 s. Outro tem média 12,0 s e desvio padrão 0,6 s. Qual atleta é mais consistente (menor CV)?</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong><br>
+            $CV_1 = \dfrac{0{,}3}{10{,}5} \times 100\% \approx 2{,}86\%$<br>
+            $CV_2 = \dfrac{0{,}6}{12{,}0} \times 100\% = 5{,}00\%$<br>
+            O <strong>Atleta 1</strong> é mais consistente ($CV_1 < CV_2$).</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 4: Conjunto com Desvio Padrão Zero</h4>
+        <p><strong>Enunciado:</strong> Qual é o desvio padrão do conjunto {7, 7, 7, 7, 7}? Justifique sem calcular.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong><br>
+            $\bar{x} = 7$. Todos os desvios são $x_i - \bar{x} = 7 - 7 = 0$.<br>
+            Logo $\sigma^2 = 0$ e $\sigma = 0$.<br>
+            <strong>Interpretação:</strong> desvio padrão zero significa que não há dispersão — todos os dados são idênticos. Este é o menor valor possível do desvio padrão.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 5: Transformação Linear dos Dados</h4>
+        <p><strong>Enunciado:</strong> Um conjunto tem variância $\sigma^2 = 16$. Se todos os valores forem divididos por 4, qual será a nova variância e o novo desvio padrão?</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong><br>
+            $y_i = \dfrac{x_i}{4} = \dfrac{1}{4}x_i$ → multiplicação por $k = \dfrac{1}{4}$.<br>
+            Nova variância: $\sigma_y^2 = k^2 \cdot \sigma_x^2 = \left(\dfrac{1}{4}\right)^2 \cdot 16 = \dfrac{1}{16} \cdot 16 = 1$<br>
+            Novo desvio padrão: $\sigma_y = \dfrac{1}{4} \cdot \sqrt{16} = \dfrac{1}{4} \cdot 4 = 1$</p>
+        </div>
+    </article>
+</section>
+
+
+<!--------------- QUESTOES VESTIBULAR --------------------------->
+
+<section class="questoes-vestibular">
+    <h3>🎓 10 Questões de Vestibular/ENEM (T 1 a 10)</h3>
+
+    <article class="questao">
+        <h4>T 1: (FUVEST) Variância de Conjunto Simples</h4>
+        <p>A variância do conjunto {2, 4, 6, 8, 10} é:</p>
+        <p>A) $4$<br>B) $6$<br>C) $8$<br>D) $10$<br>E) $12$</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> Alternativa <strong>C</strong>.<br>
+            $\bar{x} = 6$. $(x_i-6)^2$: 16, 4, 0, 4, 16. Soma = 40.<br>
+            $\sigma^2 = \dfrac{40}{5} = 8$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>T 2: (UNICAMP) Desvio Padrão</h4>
+        <p>O desvio padrão do conjunto {0, 0, 0, 6, 6, 6} é:</p>
+        <p>A) $\sqrt{3}$<br>B) $2$<br>C) $3$<br>D) $\sqrt{6}$<br>E) $6$</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> Alternativa <strong>C</strong>.<br>
+            $\bar{x} = \dfrac{0+0+0+6+6+6}{6} = 3$.<br>
+            $(x_i-3)^2$: 9,9,9,9,9,9. Soma = 54.<br>
+            $\sigma^2 = \dfrac{54}{6} = 9$; $\sigma = 3$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>T 3: (PUC-SP) Conjunto de Mínima Variância</h4>
+        <p>Dentre os conjuntos abaixo, qual tem menor variância?</p>
+        <p>A) {1, 5, 9}<br>B) {3, 5, 7}<br>C) {4, 5, 6}<br>D) {2, 5, 8}<br>E) {0, 5, 10}</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> Alternativa <strong>C</strong>.<br>
+            Todos têm $\bar{x}=5$. Variância é proporcional ao espalhamento.<br>
+            C: $(4-5)^2+(5-5)^2+(6-5)^2 = 1+0+1=2$; $\sigma^2=\dfrac{2}{3}\approx0{,}67$.<br>
+            B: $4+0+4=8$; $\sigma^2=\dfrac{8}{3}\approx2{,}67$. C tem a menor variância.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>T 4: (VUNESP) Efeito da Transformação</h4>
+        <p>Um conjunto tem desvio padrão $\sigma = 5$. Se todos os valores forem multiplicados por 3, o novo desvio padrão é:</p>
+        <p>A) $5$<br>B) $8$<br>C) $15$<br>D) $25$<br>E) $45$</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> Alternativa <strong>C</strong>.<br>
+            $\sigma_y = |k| \cdot \sigma_x = 3 \times 5 = 15$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>T 5: (UFMG) Adição de Constante</h4>
+        <p>Um conjunto tem variância $\sigma^2 = 9$. Se somarmos 10 a todos os valores, a nova variância será:</p>
+        <p>A) $19$<br>B) $81$<br>C) $9$<br>D) $99$<br>E) $3$</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> Alternativa <strong>C</strong>.<br>
+            Somar uma constante desloca todos os dados igualmente, sem alterar os desvios em relação à nova média. Portanto $\sigma^2$ permanece $9$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>T 6: (ITA) Coeficiente de Variação</h4>
+        <p>Dois investimentos têm: Inv. A com retorno médio 12% e $\sigma = 3\%$; Inv. B com retorno médio 20% e $\sigma = 6\%$. Qual é mais arriscado proporcionalmente?</p>
+        <p>A) Inv. A, pois tem menor $\sigma$<br>B) Inv. B, pois tem maior $\sigma$<br>C) São iguais<br>D) Inv. A, pois $CV_A > CV_B$<br>E) Inv. B, pois $CV_B > CV_A$</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> Alternativa <strong>C</strong>.<br>
+            $CV_A = \dfrac{3}{12}\times100\% = 25\%$; $\quad CV_B = \dfrac{6}{20}\times100\% = 30\%$.<br>
+            $CV_B > CV_A$, portanto o <strong>Inv. B é proporcionalmente mais arriscado</strong>. Alternativa correta: <strong>E</strong>.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>T 7: (UNESP) Interpretação do Desvio Padrão</h4>
+        <p>Duas fábricas produzem parafusos com diâmetro nominal 10 mm. Fábrica A: $\bar{x}=10{,}0$ mm, $\sigma=0{,}1$ mm. Fábrica B: $\bar{x}=10{,}0$ mm, $\sigma=0{,}5$ mm. Qual fábrica tem controle de qualidade superior?</p>
+        <p>A) Fábrica B, por ter maior $\sigma$<br>B) São equivalentes, pois têm mesma média<br>C) Fábrica A, por ter menor $\sigma$<br>D) Depende do número de peças produzidas<br>E) Não é possível determinar</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> Alternativa <strong>C</strong>.<br>
+            Menor desvio padrão significa peças com diâmetro mais próximo do nominal 10 mm → maior precisão → melhor controle de qualidade. A Fábrica A é superior.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>T 8: (ENEM) Variância a partir de Dados Tabelados</h4>
+        <p>Uma pesquisa registrou o número de horas de estudo diário de 5 alunos: 1, 2, 3, 4, 5. A variância dessas horas é:</p>
+        <p>A) $1$<br>B) $2$<br>C) $\sqrt{2}$<br>D) $4$<br>E) $5$</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> Alternativa <strong>B</strong>.<br>
+            $\bar{x} = 3$. Desvios ao quadrado: $4,1,0,1,4$. Soma = $10$.<br>
+            $\sigma^2 = \dfrac{10}{5} = 2$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>T 9: (FUVEST) Variância com Fórmula Computacional</h4>
+        <p>Para o conjunto {1, 3, 5, 7, 9}, $\sum x_i^2 = 165$ e $n = 5$. A variância é:</p>
+        <p>A) $4$<br>B) $6$<br>C) $8$<br>D) $10$<br>E) $33$</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> Alternativa <strong>C</strong>.<br>
+            $\bar{x} = \dfrac{1+3+5+7+9}{5} = 5$.<br>
+            $\sigma^2 = \dfrac{165}{5} - 5^2 = 33 - 25 = 8$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>T 10: (UNICAMP) Homogeneidade pelo CV</h4>
+        <p>Uma professora compara o desempenho de três turmas em uma prova:</p>
+        <p>Turma 1: $\bar{x}=6{,}0$, $\sigma=1{,}8$. Turma 2: $\bar{x}=7{,}5$, $\sigma=1{,}5$. Turma 3: $\bar{x}=9{,}0$, $\sigma=2{,}7$.</p>
+        <p>A turma mais homogênea é:</p>
+        <p>A) Turma 1<br>B) Turma 2<br>C) Turma 3<br>D) Turmas 1 e 2 empatadas<br>E) Não é possível determinar</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> Alternativa <strong>B</strong>.<br>
+            $CV_1 = \dfrac{1{,}8}{6{,}0}\times100\% = 30\%$<br>
+            $CV_2 = \dfrac{1{,}5}{7{,}5}\times100\% = 20\%$<br>
+            $CV_3 = \dfrac{2{,}7}{9{,}0}\times100\% = 30\%$<br>
+            Menor $CV$ = maior homogeneidade → <strong>Turma 2</strong>.</p>
+        </div>
+    </article>
+
+</section>
+
+</div>
+</main>
+
+<aside class="menu-lateral">
+    <iframe src="../menu_matematica.html" style="width:100%; border:none; height:600px;"></iframe>
+</aside>
+
+</div>
+
+<script>
+function toggleGabarito(botao) {
+    const gabarito = botao.nextElementSibling;
+    if (gabarito.style.display === "none" || gabarito.style.display === "") {
+        gabarito.style.display = "block";
+        botao.textContent = "Esconder Gabarito e Resolução";
+        botao.style.backgroundColor = "#2c3e50";
+    } else {
+        gabarito.style.display = "none";
+        botao.textContent = "Ver Gabarito e Resolução";
+        botao.style.backgroundColor = "#3498db";
+    }
+}
+
+function toggleMenu() {
+    const menuGlobal = document.getElementById("menu-principal");
+    if (menuGlobal) menuGlobal.classList.toggle("ativo");
+}
+
+let slideAtual = 0;
+let slides = [];
+
+function prepararSlides() {
+    const seletores = '.container-resumo, .passo-teoria, .aplicacoes-reais, .questao';
+    slides = document.querySelectorAll(seletores);
+}
+
+function toggleSlides() {
+    prepararSlides();
+    const body = document.body;
+    if (!body.classList.contains('modo-slides')) {
+        body.classList.add('modo-slides');
+        slideAtual = 0;
+        mostrarSlide(slideAtual);
+    } else {
+        body.classList.remove('modo-slides');
+        window.location.reload();
+    }
+}
+
+function mostrarSlide(n) {
+    slides.forEach(s => {
+        s.classList.remove('slide-ativo');
+        s.style.display = 'none';
+    });
+
+    const slide = slides[n];
+    slide.classList.add('slide-ativo');
+    slide.style.display = 'flex';
+
+    if (slide.classList.contains('questao') && !slide.querySelector('.btn-gabarito')) {
+        const resolucoes = slide.querySelectorAll('.resolucao-bloco');
+        resolucoes.forEach(r => r.style.display = 'block');
+    } else {
+        const gabaritos = slide.querySelectorAll('.gabarito-resolucao');
+        gabaritos.forEach(g => g.style.display = 'none');
+        const botoes = slide.querySelectorAll('.btn-gabarito');
+        botoes.forEach(b => {
+            b.textContent = "Ver Gabarito e Resolução";
+            b.style.backgroundColor = "#3498db";
+        });
+    }
+
+    const pHeader = document.querySelector('header p').innerText;
+    const partes = pHeader.split('|');
+    if (partes.length > 1) {
+        document.getElementById('slide-info-serie').innerText = partes[0].trim();
+        document.getElementById('slide-info-aula').innerText = partes[1].trim();
+    }
+
+    document.getElementById('contador-slide').innerText = (n + 1) + " / " + slides.length;
+
+    if (window.MathJax) MathJax.typesetPromise();
+}
+
+function mudarSlide(direcao) {
+    slideAtual += direcao;
+    if (slideAtual >= slides.length) slideAtual = 0;
+    if (slideAtual < 0) slideAtual = slides.length - 1;
+    mostrarSlide(slideAtual);
+}
+</script>
+
+<style>
+    body.modo-slides { overflow: hidden; background-color: #1a1a1a; }
+    body.modo-slides .menu-lateral, body.modo-slides header, body.modo-slides .menu-toggle, body.modo-slides #btn-slides { display: none !important; }
+
+    .slide-ativo {
+        display: flex !important; flex-direction: column; align-items: center; justify-content: flex-start;
+        position: fixed; top: 0; left: 0; width: 100vw; height: calc(100vh - 70px);
+        background: #ffffff; padding: 40px; z-index: 999; overflow-y: auto !important;
+        box-sizing: border-box; text-align: center;
+    }
+
+    .controles-slides {
+        position: fixed; bottom: 0; left: 0; width: 100%; height: 70px;
+        background: #2c3e50; color: white; display: none;
+        justify-content: space-between; align-items: center; padding: 0 20px; z-index: 1001; box-sizing: border-box;
+    }
+    body.modo-slides .controles-slides { display: flex; }
+
+    .info-lateral { flex: 1; font-family: 'Oswald', sans-serif; font-size: 0.9rem; color: #bdc3c7; }
+    .botoes-centrais { display: flex; align-items: center; gap: 15px; justify-content: center; flex: 2; }
+    .btn-nav { padding: 10px 20px; background: #3498db; color: white; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; }
+    #contador-slide { font-family: 'Oswald', sans-serif; min-width: 60px; text-align: center; }
+</style>
+
+<div class="controles-slides">
+    <div id="slide-info-serie" class="info-lateral"></div>
+    <div class="botoes-centrais">
+        <button class="btn-nav" onclick="mudarSlide(-1)">⬅ Anterior</button>
+        <span id="contador-slide"></span>
+        <button class="btn-nav" onclick="mudarSlide(1)">Próximo ➡</button>
+        <button class="btn-nav" onclick="toggleSlides()" style="background:#e74c3c;">Sair</button>
+    </div>
+    <div id="slide-info-aula" class="info-lateral" style="text-align: right;"></div>
+</div>
+</body>
+</html>

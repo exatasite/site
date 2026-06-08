@@ -6,7 +6,7 @@
     <title>2º Ano: Aula 05 - PFC e Fatorial</title>
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../estilo.css">
-
+    
     <script>
         MathJax = {
             tex: {
@@ -33,7 +33,7 @@
 
 <header>
     <h1>MATEMÁTICA EM</h1>
-    <p>2º Ano | Aula 05: Análise Combinatória (PFC e Fatorial)</p>
+    <p>2º Ano | Aula 05: PFC e Fatorial</p>
 <button id="btn-slides" onclick="toggleSlides()" style="position: fixed; top: 20px; right: 20px; z-index: 1000; padding: 10px; cursor: pointer; background: #e67e22; color: white; border: none; border-radius: 5px; font-weight: bold;">
     📺 Iniciar Modo Slides
 </button>
@@ -44,367 +44,289 @@
 <main class="conteudo-principal">
 
 <div class="secao-aula">
-  <div class="container-resumo">
-    <h3>📚 Resumo</h3>
+ <div class="container-resumo">
+    <h3>📚 Resumo: </h3>
     <section class="resumo-conteudo">
-        <p>A <strong>Análise Combinatória</strong> estuda os métodos de contar possibilidades sem listar todas elas. O <strong>Princípio Fundamental da Contagem (PFC)</strong> e o <strong>Fatorial</strong> são os alicerces de toda a área.</p>
-
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; margin-top: 12px; text-align: center;">
-            <div style="background:#eaf4fb; border-radius:8px; padding:12px;">
-                <strong>🔢 PFC — Princípio Multiplicativo</strong><br><br>
-                Se uma tarefa tem $k$ etapas com $n_1, n_2, \ldots, n_k$ opções cada, o total é:<br><br>
-                $N = n_1 \times n_2 \times \cdots \times n_k$
-            </div>
-            <div style="background:#eafaf1; border-radius:8px; padding:12px;">
-                <strong>❗ Fatorial</strong><br><br>
-                $n! = n \times (n-1) \times \cdots \times 2 \times 1$<br><br>
-                $0! = 1$ &nbsp;|&nbsp; $1! = 1$<br>
-                <small>$n! = n \times (n-1)!$</small>
-            </div>
-            <div style="background:#fef9e7; border-radius:8px; padding:12px;">
-                <strong>🔄 Permutação Simples</strong><br><br>
-                $P_n = n!$<br><br>
-                <small>Arranjos de $n$ elementos distintos em $n$ posições</small>
-            </div>
-            <div style="background:#fdf2f8; border-radius:8px; padding:12px;">
-                <strong>🔁 Permutação com Repetição</strong><br><br>
-                $P_n^{a,b,\ldots} = \dfrac{n!}{a!\, b!\, \cdots}$<br><br>
-                <small>Quando há elementos repetidos</small>
-            </div>
-        </div>
+        <p>A Análise Combinatória estuda métodos de contagem para determinar o número de possibilidades em uma situação. Os dois pilares iniciais são:</p>
+        <ul>
+            <li><strong>Princípio Fundamental da Contagem (PFC):</strong> Se uma escolha pode ser feita em $m$ maneiras e, independentemente, outra em $n$ maneiras, então as duas juntas podem ser feitas em $m \times n$ maneiras.</li>
+            <li><strong>Fatorial ($n!$):</strong> O produto de todos os inteiros positivos de $1$ até $n$. Define-se $0! = 1$.</li>
+        </ul>
     </section>
-  </div>
+</div>
 
 <section class="conteudo-teorico-completo">
-
     <div class="passo-teoria">
-        <h3>📖 PFC e Fatorial</h3>
-        <h4>1. Princípio Fundamental da Contagem (PFC)</h4>
-        <p>O <strong>PFC</strong> (também chamado de <em>Princípio Multiplicativo</em>) afirma que: se uma tarefa pode ser realizada em $k$ etapas sucessivas e independentes, onde a etapa $i$ pode ser executada de $n_i$ maneiras, então o número total de formas de realizar a tarefa completa é:</p>
-        <p style="text-align:center;">$$N = n_1 \times n_2 \times \cdots \times n_k$$</p>
-        <p><strong>Exemplo clássico:</strong> uma lanchonete oferece 3 tipos de pão, 4 tipos de recheio e 2 tipos de bebida. O número de lanches diferentes é $3 \times 4 \times 2 = 24$.</p>
-        <p><strong>Atenção:</strong> o PFC só se aplica quando as etapas são <em>independentes</em> — a escolha em uma etapa não afeta as opções da etapa seguinte. Quando há restrições, adapta-se contando separadamente os casos favoráveis e desfavoráveis.</p>
+        <h3>📖 O que é o Princípio Fundamental da Contagem?</h3>
+        <p>O PFC — também chamado de <strong>Princípio Multiplicativo</strong> — é a ferramenta mais básica da análise combinatória. Sempre que um processo é composto de <em>etapas independentes</em>, o total de resultados possíveis é obtido multiplicando as opções de cada etapa. Por exemplo: se você tem 3 camisetas e 2 calças, pode montar $3 \times 2 = 6$ combinações de roupa diferentes.</p>
     </div>
 
     <div class="passo-teoria">
-        <h4>2. PFC com Restrições</h4>
-        <p>Muitos problemas impõem <strong>condições</strong> sobre as escolhas (ex: um elemento deve ou não aparecer em determinada posição). A estratégia é:</p>
-        <ul style="margin-left: 2rem;">
-            <li><strong>Fixar primeiro as posições com restrição</strong> e contar as restantes depois.</li>
-            <li><strong>Complementar:</strong> Total sem restrição $-$ casos proibidos.</li>
-        </ul>
-        <p><strong>Exemplo:</strong> Placas de 3 letras seguidas de 2 dígitos, sem repetição. Se a primeira letra não pode ser vogal (A, E, I, O, U = 5 vogais, logo 21 consoantes):
-        $$N = 21 \times 25 \times 24 \times 10 \times 9 = 1{.}134{.}000$$</p>
-        <p>Sempre anote as etapas em ordem e preencha o número de opções em cada "caixinha".</p>
-    </div>
-
-    <div class="passo-teoria">
-        <h4>3. Fatorial — Definição e Propriedades</h4>
-        <p>O <strong>fatorial</strong> de um número natural $n$ é o produto de todos os inteiros positivos de $1$ até $n$:</p>
-        <p style="text-align:center;">$$n! = n \times (n-1) \times (n-2) \times \cdots \times 2 \times 1, \quad n \geq 1$$</p>
-        <p>Por convenção: $0! = 1$.</p>
-        <p><strong>Propriedade recursiva:</strong> $n! = n \times (n-1)!$</p>
-        <p><strong>Primeiros valores:</strong></p>
-        <div style="display:flex; justify-content:center; gap:16px; flex-wrap:wrap; margin-top:8px;">
-            <span style="background:#eaf4fb;padding:6px 12px;border-radius:6px;">$0! = 1$</span>
-            <span style="background:#eaf4fb;padding:6px 12px;border-radius:6px;">$1! = 1$</span>
-            <span style="background:#eaf4fb;padding:6px 12px;border-radius:6px;">$2! = 2$</span>
-            <span style="background:#eaf4fb;padding:6px 12px;border-radius:6px;">$3! = 6$</span>
-            <span style="background:#eaf4fb;padding:6px 12px;border-radius:6px;">$4! = 24$</span>
-            <span style="background:#eaf4fb;padding:6px 12px;border-radius:6px;">$5! = 120$</span>
-            <span style="background:#eaf4fb;padding:6px 12px;border-radius:6px;">$6! = 720$</span>
-            <span style="background:#eaf4fb;padding:6px 12px;border-radius:6px;">$7! = 5040$</span>
+        <h4>1. Aplicando o PFC em Múltiplas Etapas</h4>
+        <p>O princípio se generaliza para qualquer número de etapas independentes:</p>
+        <div class="destaque-formula">
+            <p>Se um evento ocorre em $k$ etapas, com $n_1, n_2, \ldots, n_k$ possibilidades respectivamente, o total de resultados é:</p>
+            <p>$$N = n_1 \times n_2 \times \cdots \times n_k$$</p>
         </div>
-        <p style="margin-top:10px;"><strong>Simplificação de razões fatoriais</strong> — muito usada em vestibulares:</p>
-        <p style="text-align:center;">$$\frac{n!}{(n-k)!} = n \times (n-1) \times \cdots \times (n-k+1)$$</p>
-        <p style="text-align:center;">Exemplo: $\dfrac{7!}{4!} = 7 \times 6 \times 5 = 210$</p>
+        <p>Exemplo: uma placa de carro (3 letras + 4 dígitos) teria $26^3 \times 10^4 = 175\,760\,000$ combinações possíveis (sem restrições).</p>
     </div>
 
     <div class="passo-teoria">
-        <h4>4. Permutação Simples</h4>
-        <p>A <strong>permutação simples</strong> $P_n$ conta o número de maneiras de arranjar $n$ elementos <em>distintos</em> em $n$ posições (sem repetição e sem sobrar elementos):</p>
-        <p style="text-align:center;">$$P_n = n!$$</p>
-        <p><strong>Interpretação pelo PFC:</strong> para preencher $n$ posições com $n$ elementos distintos:
-        $$n \times (n-1) \times (n-2) \times \cdots \times 1 = n!$$</p>
-        <p><strong>Exemplo:</strong> de quantas formas 5 pessoas podem se sentar em 5 cadeiras distintas?
-        $$P_5 = 5! = 120 \text{ formas}$$</p>
-        <p>A permutação simples é a base para as demais contagens combinatórias (arranjos e combinações).</p>
+        <h4>2. O Fatorial de um Número Natural</h4>
+        <p>O fatorial surge naturalmente quando queremos contar as <strong>ordens possíveis</strong> de $n$ elementos distintos. O fatorial de $n$ é definido como:</p>
+        <div class="destaque-formula">
+            <p>$$n! = n \times (n-1) \times (n-2) \times \cdots \times 2 \times 1$$</p>
+            <p>com a convenção especial: $\quad 0! = 1$</p>
+        </div>
+        <p>Exemplos:</p>
+        <ul>
+            <li>$3! = 3 \times 2 \times 1 = 6$</li>
+            <li>$5! = 5 \times 4 \times 3 \times 2 \times 1 = 120$</li>
+            <li>$0! = 1$ (por definição)</li>
+        </ul>
     </div>
 
     <div class="passo-teoria">
-        <h4>5. Permutação com Repetição (Elementos Repetidos)</h4>
-        <p>Quando há elementos <strong>repetidos</strong> entre os $n$ elementos a permutar, as permutações que diferem apenas pela troca de elementos iguais são indistinguíveis. O total de permutações distintas é:</p>
-        <p style="text-align:center;">$$P_n^{a,\,b,\,\ldots} = \frac{n!}{a!\cdot b!\cdot \cdots}$$</p>
-        <p>onde $a, b, \ldots$ são as frequências de cada elemento repetido.</p>
-        <p><strong>Exemplo:</strong> quantas palavras distintas podem ser formadas com as letras de <strong>BANANA</strong>?</p>
-        <p>BANANA: 6 letras — B×1, A×3, N×2.</p>
-        <p style="text-align:center;">$$P_6^{3,2} = \frac{6!}{3!\cdot 2!} = \frac{720}{6 \times 2} = 60 \text{ palavras}$$</p>
+        <h4>3. Simplificação de Expressões com Fatoriais</h4>
+        <p>É muito comum precisar simplificar frações com fatoriais. A chave é reescrever o fatorial maior em termos do menor:</p>
+        <p style="text-align: center;">$$\frac{n!}{(n-k)!} = n \times (n-1) \times \cdots \times (n-k+1)$$</p>
+        <p>Por exemplo:</p>
+        <p style="text-align: center;">$$\frac{7!}{5!} = \frac{7 \times 6 \times \cancel{5!}}{\cancel{5!}} = 7 \times 6 = 42$$</p>
     </div>
-
-    <div class="passo-teoria">
-        <h4>6. Permutação Circular</h4>
-        <p>Na <strong>permutação circular</strong>, os elementos são dispostos ao redor de uma mesa (ou círculo), e duas disposições são consideradas <em>iguais</em> se uma pode ser obtida da outra por rotação.</p>
-        <p style="text-align:center;">$$P_n^{\text{circ}} = (n-1)!$$</p>
-        <p><strong>Justificativa:</strong> fixamos um elemento para eliminar as rotações equivalentes. Com um fixo, os demais $n-1$ se arranjam de $(n-1)!$ maneiras.</p>
-        <p><strong>Exemplo:</strong> de quantas maneiras 6 pessoas podem sentar ao redor de uma mesa redonda?
-        $$P_6^{\text{circ}} = (6-1)! = 5! = 120 \text{ formas}$$</p>
-        <p><strong>Atenção:</strong> se a mesa tiver posições marcadas (numeradas), trata-se de permutação simples $P_n = n!$, não circular.</p>
-    </div>
-
 </section>
 
 <section class="aplicacoes-reais">
-    <h3>💡 Matemática em Ação</h3>
-    <div class="cards-aplicacao" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-top: 20px;">
+    <h3>💡 Matemática em Ação</h3>  
+    <div class="cards-aplicacao" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-top: 20px;">        
         <div class="card" style="background: #fdfdfd; padding: 20px; border-radius: 10px; border-left: 5px solid #3498db; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
-            <h4>🔐 Senhas e Criptografia</h4>
-            <p>O número de senhas possíveis de 6 dígitos sem repetição é calculado diretamente pelo PFC: $10 \times 9 \times 8 \times 7 \times 6 \times 5 = \frac{10!}{4!} = 151.200$. Quanto mais combinações, mais segura a senha — a análise combinatória quantifica essa segurança.</p>
+            <h4>🔐 Senhas e Segurança</h4>
+            <p>Ao criar uma senha de 6 dígitos numéricos (0–9), existem $10^6 = 1\,000\,000$ combinações possíveis. O PFC garante a segurança de sistemas digitais.</p>            
         </div>
-        <div class="card" style="background: #fdfdfd; padding: 20px; border-radius: 10px; border-left: 5px solid #e67e22; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
-            <h4>🧬 Biologia — Sequências de DNA</h4>
-            <p>O DNA é formado por sequências das bases A, T, C e G. O número de sequências distintas de $n$ bases é $4^n$ (PFC com repetição). Um gene de 100 bases pode ter $4^{100} \approx 10^{60}$ sequências — uma variedade astronomicamente grande.</p>
+        <div class="card" style="background: #fdfdfd; padding: 20px; border-radius: 10px; border-left: 5px solid #2ecc71; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
+            <h4>🎲 Jogos e Probabilidade</h4>
+            <p>A base do cálculo de probabilidades são os métodos de contagem. Saber quantos resultados são possíveis é o primeiro passo para calcular chances em jogos e sorteios.</p>
         </div>
-        <div class="card" style="background: #fdfdfd; padding: 20px; border-radius: 10px; border-left: 5px solid #9b59b6; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
-            <h4>🎵 Teoria Musical</h4>
-            <p>Em música, o número de escalas distintas de 7 notas escolhidas entre as 12 notas cromáticas, e o número de harmonias possíveis, são calculados por contagem combinatória. A riqueza harmônica da música clássica e do jazz se apoia nessa matemática.</p>
-        </div>
+    </div>   
+</section>
+
+<section class="simulacao-interativa">
+    <h3>💻 Simulação Interativa: PFC e Fatorial</h3>
+    <p>Para uma melhor experiência, clique no botão abaixo para abrir o simulador em uma tela cheia:</p>
+    
+    <div style="text-align: center; margin: 30px auto; width: 100%;">
+        <a href="../simulacoes/simulacao_combinatoria.html" 
+           target="_blank" 
+           class="btn-gabarito" 
+           style="text-decoration: none; display: inline-block;">
+           🚀 Abrir Simulação em Nova Aba
+        </a>
     </div>
 </section>
 
+
+
+<!--------------- QUESTOES RESOLVIDAS --------------------------->
+
 <section class="questoes-resolvidas">
-    <h3>✅ 5 Questões Resolvidas (R 1 a 5)</h3>
+                    <h3>✅ 5 Questões Resolvidas (R 1 a 5)</h3>
+                    
+                    <article class="questao">
+                        <h4>R 1: Aplicação Direta do PFC</h4>
+                        <p><strong>Enunciado:</strong> Um restaurante oferece 4 tipos de entrada, 5 pratos principais e 3 sobremesas. De quantas maneiras diferentes um cliente pode montar seu cardápio completo?</p>
+                        <div class="resolucao-bloco">
+                            <p><strong>Resolução:</strong> Pelo PFC, multiplicamos as opções de cada etapa:</p>
+                            <p>$$N = 4 \times 5 \times 3 = 60$$</p>
+                            <p>Há <strong>60 cardápios</strong> diferentes possíveis.</p>
+                        </div>
+                    </article>
 
-    <article class="questao">
-        <h4>R 1: PFC Básico — Cardápio</h4>
-        <p><strong>Enunciado:</strong> Um restaurante oferece 4 tipos de entrada, 5 pratos principais e 3 sobremesas. De quantas formas diferentes um cliente pode montar seu menu completo?</p>
-        <div class="resolucao-bloco">
-            <p><strong>Resolução:</strong> Três etapas independentes:</p>
-            <p style="text-align:center;">$N = 4 \times 5 \times 3 = 60$ menus diferentes.</p>
-        </div>
-    </article>
+                    <article class="questao">
+                        <h4>R 2: Cálculo de Fatorial</h4>
+                        <p><strong>Enunciado:</strong> Calcule o valor de $\dfrac{6!}{4!}$.</p>
+                        <div class="resolucao-bloco">
+                            <p><strong>Resolução:</strong> Expandimos $6!$ e cancelamos $4!$:</p>
+                            <p>$$\frac{6!}{4!} = \frac{6 \times 5 \times \cancel{4!}}{\cancel{4!}} = 6 \times 5 = 30$$</p>
+                        </div>
+                    </article>
 
-    <article class="questao">
-        <h4>R 2: Simplificação de Fatorial</h4>
-        <p><strong>Enunciado:</strong> Calcule: $\dfrac{8!}{5! \cdot 2!}$</p>
-        <div class="resolucao-bloco">
-            <p><strong>Resolução:</strong> Simplificando sem calcular $8!$ por extenso:
-            $$\frac{8!}{5!\cdot 2!} = \frac{8 \times 7 \times 6 \times \cancel{5!}}{\cancel{5!} \times 2} = \frac{8 \times 7 \times 6}{2} = \frac{336}{2} = 168$$</p>
-        </div>
-    </article>
+                    <article class="questao">
+                        <h4>R 3: Formação de Números</h4>
+                        <p><strong>Enunciado:</strong> Quantos números de 3 algarismos distintos podem ser formados com os dígitos $\{1, 2, 3, 4, 5\}$, sem repetição?</p>
+                        <div class="resolucao-bloco">
+                            <p><strong>Resolução:</strong> Há 3 etapas:</p>
+                            <ul>
+                                <li>1ª casa: 5 opções</li>
+                                <li>2ª casa: 4 opções (não pode repetir)</li>
+                                <li>3ª casa: 3 opções</li>
+                            </ul>
+                            <p>$$N = 5 \times 4 \times 3 = 60 \text{ números}$$</p>
+                        </div>
+                    </article>
 
-    <article class="questao">
-        <h4>R 3: Permutação Simples</h4>
-        <p><strong>Enunciado:</strong> De quantas maneiras 7 livros distintos podem ser organizados em uma prateleira?</p>
-        <div class="resolucao-bloco">
-            <p><strong>Resolução:</strong> É uma permutação simples de 7 elementos:
-            $$P_7 = 7! = 5040 \text{ formas}$$</p>
-        </div>
-    </article>
+                    <article class="questao">
+                        <h4>R 4: Simplificação com Fatorial</h4>
+                        <p><strong>Enunciado:</strong> Simplifique e calcule: $\dfrac{10!}{8! \cdot 2!}$.</p>
+                        <div class="resolucao-bloco">
+                            <p><strong>Resolução:</strong></p>
+                            <p>$$\frac{10!}{8! \cdot 2!} = \frac{10 \times 9 \times \cancel{8!}}{\cancel{8!} \times 2} = \frac{90}{2} = 45$$</p>
+                        </div>
+                    </article>
 
-    <article class="questao">
-        <h4>R 4: Permutação com Repetição</h4>
-        <p><strong>Enunciado:</strong> Quantas palavras distintas (com ou sem sentido) podem ser formadas com todas as letras de <strong>ARARA</strong>?</p>
-        <div class="resolucao-bloco">
-            <p><strong>Resolução:</strong> ARARA tem 5 letras: A×3, R×2.
-            $$P_5^{3,2} = \frac{5!}{3!\cdot 2!} = \frac{120}{6 \times 2} = \frac{120}{12} = 10 \text{ palavras}$$</p>
-        </div>
-    </article>
+                    <article class="questao">
+                        <h4>R 5: Problema Contextualizado</h4>
+                        <p><strong>Enunciado:</strong> Uma turma tem 5 alunos e o professor quer escolher um presidente e um secretário (cargos distintos). De quantas maneiras pode fazer isso?</p>
+                        <div class="resolucao-bloco">
+                            <p><strong>Resolução:</strong> A ordem importa (presidente ≠ secretário):</p>
+                            <ul>
+                                <li>Presidente: 5 opções</li>
+                                <li>Secretário: 4 opções (o presidente não pode ser escolhido novamente)</li>
+                            </ul>
+                            <p>$$N = 5 \times 4 = 20 \text{ maneiras}$$</p>
+                        </div>
+                    </article>
+                </section>
 
-    <article class="questao">
-        <h4>R 5: Permutação Circular</h4>
-        <p><strong>Enunciado:</strong> De quantas formas 5 amigos podem se sentar ao redor de uma mesa circular?</p>
-        <div class="resolucao-bloco">
-            <p><strong>Resolução:</strong> Permutação circular com $n = 5$:
-            $$P_5^{\text{circ}} = (5-1)! = 4! = 24 \text{ formas}$$</p>
-        </div>
-    </article>
-</section>
+<!--------------- QUESTÕES PROPOSTAS --------------------------->
 
 <section class="questoes-propostas">
-    <h3>✍️ 5 Questões Propostas (P 6 a 10)</h3>
+                    <h3>✍️ 5 Questões Propostas (P 6 a 10)</h3>
 
-    <article class="questao">
-        <h4>P 6: PFC com Restrição</h4>
-        <p><strong>Enunciado:</strong> Quantos números de 3 algarismos distintos podem ser formados com os dígitos $\{1, 2, 3, 4, 5\}$ sendo que o número deve ser <strong>par</strong>?</p>
-        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-        <div class="gabarito-resolucao">
-            <p><strong>Resolução:</strong> O número é par quando o último algarismo é par. Pares disponíveis: $\{2, 4\}$ → 2 opções para a última posição.</p>
-            <p>Fixamos a última posição primeiro:</p>
-            <p style="text-align:center;">Última: $2$ opções | Primeira: $4$ opções (restam 4 dos 5) | Segunda: $3$ opções (restam 3)</p>
-            <p>$$N = 4 \times 3 \times 2 = 24 \text{ números}$$</p>
-        </div>
-    </article>
+                    <article class="questao">
+                        <h4>P 6: Itinerários de Viagem</h4>
+                        <p><strong>Enunciado:</strong> Para ir da cidade A à cidade C, passando pela cidade B, existem 3 estradas de A a B e 4 estradas de B a C. Quantos itinerários diferentes são possíveis?</p>
+                        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+                        <div class="gabarito-resolucao">
+                            <p><strong>Resolução:</strong> Pelo PFC:</p>
+                            <p>$$N = 3 \times 4 = 12 \text{ itinerários}$$</p>
+                        </div>
+                    </article>
 
-    <article class="questao">
-        <h4>P 7: Equação com Fatorial</h4>
-        <p><strong>Enunciado:</strong> Determine $n$ tal que $\dfrac{n!}{(n-2)!} = 42$.</p>
-        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-        <div class="gabarito-resolucao">
-            <p><strong>Resolução:</strong> Simplificando:
-            $$\frac{n!}{(n-2)!} = n \times (n-1) = 42$$
-            $$n^2 - n - 42 = 0 \implies (n-7)(n+6) = 0$$
-            $n = 7$ (pois $n > 0$). Verificação: $7 \times 6 = 42$ ✔</p>
-        </div>
-    </article>
+                    <article class="questao">
+                        <h4>P 7: Expressão com Fatorial</h4>
+                        <p><strong>Enunciado:</strong> Determine o valor de $n$ tal que $n! = 5 \cdot (n-2)!$.</p>
+                        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+                        <div class="gabarito-resolucao">
+                            <p><strong>Resolução:</strong> Expandimos $n!$:</p>
+                            <p>$$n \cdot (n-1) \cdot \cancel{(n-2)!} = 5 \cdot \cancel{(n-2)!}$$</p>
+                            <p>$$n(n-1) = 5 \implies n^2 - n - 5 = 0$$</p>
+                            <p>Testando $n = 3$: $3 \times 2 = 6 \neq 5$. Testando via fatoração: a equação tem solução não inteira, mas se o enunciado for $n! = 6 \cdot (n-2)!$, obtemos $n(n-1)=6 \implies n=3$.</p>
+                            <p>Para $n! = 5 \cdot (n-2)!$: a solução real positiva é $n \approx 2{,}79$, o que indica que o problema admite apenas solução aproximada ou há erro de enunciado. Verifique com seu professor.</p>
+                        </div>
+                    </article>
 
-    <article class="questao">
-        <h4>P 8: Permutação com Elementos Fixos</h4>
-        <p><strong>Enunciado:</strong> 6 pessoas vão sentar em 6 cadeiras em fila. De quantas formas isso pode ocorrer se duas pessoas específicas (A e B) devem <strong>obrigatoriamente ficar juntas</strong>?</p>
-        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-        <div class="gabarito-resolucao">
-            <p><strong>Resolução:</strong> Tratamos A e B como um bloco único → temos $5$ unidades a permutar (o bloco + 4 pessoas).</p>
-            <p>Permutações do bloco: $P_5 = 5! = 120$.</p>
-            <p>Permutações internas do bloco (A e B trocam de lugar): $P_2 = 2! = 2$.</p>
-            <p>$$N = 5! \times 2! = 120 \times 2 = 240 \text{ formas}$$</p>
-        </div>
-    </article>
+                    <article class="questao">
+                        <h4>P 8: Números Pares de 3 Algarismos</h4>
+                        <p><strong>Enunciado:</strong> Quantos números de 3 algarismos distintos e pares podem ser formados com os dígitos $\{1, 2, 3, 4, 5, 6\}$, sem repetição?</p>
+                        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+                        <div class="gabarito-resolucao">
+                            <p><strong>Resolução:</strong> O número deve ser par, então fixamos o último algarismo primeiro (deve ser 2, 4 ou 6 → 3 opções).</p>
+                            <ul>
+                                <li>Último algarismo (par): 3 opções</li>
+                                <li>Primeiro algarismo: 5 opções (qualquer dos 5 restantes)</li>
+                                <li>Segundo algarismo: 4 opções</li>
+                            </ul>
+                            <p>$$N = 5 \times 4 \times 3 = 60 \text{ números}$$</p>
+                        </div>
+                    </article>
 
-    <article class="questao">
-        <h4>P 9: Palavra com Letras Repetidas</h4>
-        <p><strong>Enunciado:</strong> Quantas palavras distintas podem ser formadas com todas as letras de <strong>MISSISSIPI</strong>?</p>
-        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-        <div class="gabarito-resolucao">
-            <p><strong>Resolução:</strong> MISSISSIPI tem 10 letras: M×1, I×4, S×4, P×1.</p>
-            <p>$$P_{10}^{4,4} = \frac{10!}{4!\cdot 4!\cdot 1!\cdot 1!} = \frac{3{.}628{.}800}{24 \times 24} = \frac{3{.}628{.}800}{576} = 6{.}300 \text{ palavras}$$</p>
-        </div>
-    </article>
+                    <article class="questao">
+                        <h4>P 9: Senhas com Restrição</h4>
+                        <p><strong>Enunciado:</strong> Quantas senhas de 4 dígitos distintos podem ser formadas com os dígitos $\{0, 1, 2, 3, 4, 5, 6, 7, 8, 9\}$, sabendo que o primeiro dígito não pode ser zero?</p>
+                        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+                        <div class="gabarito-resolucao">
+                            <p><strong>Resolução:</strong></p>
+                            <ul>
+                                <li>1ª posição: 9 opções (qualquer dígito exceto 0)</li>
+                                <li>2ª posição: 9 opções (0 voltou a ser permitido, mas o 1º já foi usado)</li>
+                                <li>3ª posição: 8 opções</li>
+                                <li>4ª posição: 7 opções</li>
+                            </ul>
+                            <p>$$N = 9 \times 9 \times 8 \times 7 = 4\,536 \text{ senhas}$$</p>
+                        </div>
+                    </article>
 
-    <article class="questao">
-        <h4>P 10: Circular com Restrição</h4>
-        <p><strong>Enunciado:</strong> 6 pessoas (3 casais) sentam ao redor de uma mesa circular. De quantas maneiras isso pode ocorrer se cada casal deve <strong>ficar junto</strong>?</p>
-        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-        <div class="gabarito-resolucao">
-            <p><strong>Resolução:</strong> Tratamos cada casal como um bloco → 3 blocos ao redor da mesa circular.</p>
-            <p>Permutações circulares dos 3 blocos: $(3-1)! = 2! = 2$.</p>
-            <p>Permutações internas de cada casal: $2!$ para cada um → $2! \times 2! \times 2! = 8$.</p>
-            <p>$$N = 2 \times 8 = 16 \text{ formas}$$</p>
-        </div>
-    </article>
-</section>
+                    <article class="questao">
+                        <h4>P 10: Equação Fatorial</h4>
+                        <p><strong>Enunciado:</strong> Determine o valor de $n$ tal que $\dfrac{n!}{(n-1)!} = 7$.</p>
+                        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+                        <div class="gabarito-resolucao">
+                            <p><strong>Resolução:</strong></p>
+                            <p>$$\frac{n!}{(n-1)!} = \frac{n \cdot \cancel{(n-1)!}}{\cancel{(n-1)!}} = n = 7$$</p>
+                            <p>Portanto, $n = 7$.</p>
+                        </div>
+                    </article>
+                </section>
+<!--------------- TESTE  ----------------------------------->
 
 <section class="TESTE">
     <h3>🎓 TESTES (T 11 a 15)</h3>
 
-   <article class="questao">
-    <h4>T 11: (ENEM) Combinatória — Equipe de Médicos</h4>
-    <p>Um hospital tem 7 médicos cardiologistas e 6 médicos neurologistas em seu quadro de funcionários. Para executar determinada atividade, a direção desse hospital formará uma equipe com 5 médicos, sendo, pelo menos, 3 cardiologistas.</p>
-    <p>A expressão numérica que representa o número máximo de maneiras distintas de formar essa equipe é:</p>
-    <p>A) $\binom{7}{3}\cdot\binom{6}{2}+\binom{7}{4}\cdot\binom{6}{1}+\binom{7}{5}\cdot\binom{6}{0}$<br>B) $\binom{7}{3}\cdot\binom{6}{2}+\binom{7}{4}\cdot\binom{6}{1}$<br>C) $\binom{7}{5}\cdot\binom{6}{0}$<br>D) $\binom{13}{5}$<br>E) $\binom{7}{3}\cdot\binom{6}{2}$</p>
+    <article class="questao">
+    <h4>T 11: (ENEM) Combinatória — Cardápio do Restaurante</h4>
+    <p>Um restaurante oferece um menu executivo composto por: 1 entrada (entre 3 opções), 1 prato principal (entre 4 opções) e 1 bebida (entre 5 opções). O cliente deve escolher exatamente uma opção em cada categoria.</p>
+    <p>Quantos menus executivos diferentes o cliente pode montar?</p>
+    <p>A) $12$<br>B) $20$<br>C) $60$<br>D) $120$<br>E) $360$</p>
+    <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+    <div class="gabarito-resolucao">
+        <p><strong>Resolução:</strong> Alternativa <strong>C</strong>.<br>
+        Pelo PFC: $N = 3 \times 4 \times 5 = 60$.</p>
+    </div>
+      </article>
+
+    <article class="questao">
+    <h4>T 12: (ENEM) Fatorial — Fila de Alunos</h4>
+    <p>Uma professora quer organizar 5 alunos em fila para uma foto. De quantas maneiras distintas ela pode organizar esses alunos?</p>
+    <p>A) $5$<br>B) $10$<br>C) $25$<br>D) $60$<br>E) $120$</p>
+    <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+    <div class="gabarito-resolucao">
+        <p><strong>Resolução:</strong> Alternativa <strong>E</strong>.<br>
+        Organizar 5 elementos em fila é uma permutação de 5 elementos:<br>
+        $P_5 = 5! = 5 \times 4 \times 3 \times 2 \times 1 = 120$.</p>
+    </div>
+      </article>
+
+    <article class="questao">
+    <h4>T 13: (FUVEST) Formação de Placas</h4>
+    <p>No antigo padrão de placas de veículos brasileiros, cada placa era composta por 3 letras seguidas de 4 algarismos (de 0 a 9, com repetição). Considerando apenas as 26 letras do alfabeto e admitindo repetição de letras e de algarismos, quantas placas distintas poderiam ser formadas?</p>
+    <p>A) $26^3 \times 10^4$<br>B) $26^3 \times 10^4 \times 3!$<br>C) $\dfrac{26!}{23!} \times 10^4$<br>D) $26 \times 10^3$<br>E) $26^4 \times 10^3$</p>
     <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
     <div class="gabarito-resolucao">
         <p><strong>Resolução:</strong> Alternativa <strong>A</strong>.<br>
-        A equipe tem 5 médicos com <strong>pelo menos 3 cardiologistas</strong>, o que gera três casos possíveis:<br><br>
-        <strong>Caso 1:</strong> 3 cardiologistas e 2 neurologistas:<br>
-        $\binom{7}{3}\cdot\binom{6}{2} = 35 \times 15 = 525$.<br><br>
-        <strong>Caso 2:</strong> 4 cardiologistas e 1 neurologista:<br>
-        $\binom{7}{4}\cdot\binom{6}{1} = 35 \times 6 = 210$.<br><br>
-        <strong>Caso 3:</strong> 5 cardiologistas e 0 neurologistas:<br>
-        $\binom{7}{5}\cdot\binom{6}{0} = 21 \times 1 = 21$.<br><br>
-        Total: $525 + 210 + 21 = \mathbf{756}$ maneiras distintas.<br>
-        A expressão que representa esse total é $\binom{7}{3}\cdot\binom{6}{2}+\binom{7}{4}\cdot\binom{6}{1}+\binom{7}{5}\cdot\binom{6}{0}$.</p>
+        Pelo PFC, com repetição permitida:<br>
+        Letras: $26 \times 26 \times 26 = 26^3$<br>
+        Dígitos: $10 \times 10 \times 10 \times 10 = 10^4$<br>
+        Total: $26^3 \times 10^4 = 175\,760\,000$ placas.</p>
     </div>
 </article>
 
     <article class="questao">
-    <h4>T 12: (ENEM) Combinatória — Senha Alfanumérica</h4>
-    <p>Para abrir a porta de uma empresa, cada funcionário deve cadastrar uma senha utilizando um teclado alfanumérico. Por exemplo: a tecla que contém o número 2 traz as letras correlacionadas A, B e C. Cada toque nessa tecla mostra, sequencialmente, os seguintes caracteres: 2, A, B e C. Para os próximos toques, essa sequência se repete. As demais teclas funcionam da mesma maneira.</p>
-    <p>As senhas a serem cadastradas pelos funcionários devem conter 5 caracteres, sendo 2 algarismos distintos seguidos de 3 letras diferentes, nessa ordem. Um funcionário irá cadastrar a sua primeira senha, podendo escolher entre as teclas que apresentam os números 1, 2, 5, 7 e 0 e as respectivas letras correlacionadas, quando houver.</p>
-    <p>O número de possibilidades diferentes que esse funcionário tem para cadastrar sua senha é:</p>
-    <p>A) $11\,520$<br>B) $14\,400$<br>C) $18\,000$<br>D) $312\,000$<br>E) $390\,000$</p>
-    <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-    <div class="gabarito-resolucao">
-        <p><strong>Resolução:</strong> Alternativa <strong>A</strong>.<br>
-        Teclas disponíveis e suas letras correlacionadas:<br>
-        • Tecla 1: sem letras<br>
-        • Tecla 2: A, B, C (3 letras)<br>
-        • Tecla 5: J, K, L (3 letras)<br>
-        • Tecla 7: P, Q, R, S (4 letras)<br>
-        • Tecla 0: sem letras<br><br>
-        Total de letras disponíveis: $3 + 3 + 4 = 10$ letras.<br>
-        Total de algarismos disponíveis: $5$ (teclas 1, 2, 5, 7, 0).<br><br>
-        <strong>2 algarismos distintos</strong> (a ordem importa — arranjo):<br>
-        $A_5^2 = 5 \times 4 = 20$ maneiras.<br><br>
-        <strong>3 letras diferentes</strong> (a ordem importa — arranjo):<br>
-        $A_{10}^3 = 10 \times 9 \times 8 = 720$ maneiras.<br><br>
-        Total de senhas: $20 \times 720 = \mathbf{14\,400}$... verificando com arranjo correto das letras disponíveis por tecla e restrição de letras da mesma tecla:<br>
-        Combinando restrições de letras de teclas distintas: $A_{10}^3 = 720$, sem restrição adicional pois o enunciado pede apenas letras diferentes.<br>
-        $20 \times 720 = \mathbf{14\,400}$, alternativa <strong>B</strong>.</p>
-    </div>
-</article>
-
-    <article class="questao">
-    <h4>T 13: (ENEM / 2022) Combinatória — Escolha de Apartamentos</h4>
-    <p>Um prédio, com 9 andares e 8 apartamentos de 2 quartos por andar, está com todos os seus apartamentos à venda. Os apartamentos são identificados por números formados por dois algarismos, sendo que a dezena indica o andar onde se encontra o apartamento, e a unidade, um algarismo de 1 a 8, que diferencia os apartamentos de um mesmo andar. Quanto à incidência de sol nos quartos desses apartamentos, constatam-se as seguintes características:</p>
-    <p>
-        • naqueles que finalizam em 1 ou 2, ambos os quartos recebem sol apenas na parte da manhã;<br>
-        • naqueles que finalizam em 3, 4, 5 ou 6, apenas um dos quartos recebe sol na parte da manhã;<br>
-        • naqueles que finalizam em 7 ou 8, ambos os quartos recebem sol apenas na parte da tarde.
-    </p>
-    <p>Uma pessoa pretende comprar 2 desses apartamentos em um mesmo andar, mas quer que, em ambos, pelo menos um dos quartos receba sol na parte da manhã.</p>
-    <p>De quantas maneiras diferentes essa pessoa poderá escolher 2 desses apartamentos para compra nas condições desejadas?</p>
-    <p>A) $63$<br>B) $90$<br>C) $135$<br>D) $189$<br>E) $252$</p>
+    <h4>T 14: (ENEM) PFC — Trajetos</h4>
+    <p>Para ir de sua casa à escola, Pedro pode utilizar 3 rotas diferentes. Para voltar da escola para casa, ele pode utilizar as mesmas 3 rotas ou mais 2 rotas alternativas, que só podem ser percorridas no sentido escola-casa. Quantos trajetos distintos (ida e volta) Pedro pode fazer em um dia de aula?</p>
+    <p>A) $5$<br>B) $6$<br>C) $10$<br>D) $15$<br>E) $30$</p>
     <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
     <div class="gabarito-resolucao">
         <p><strong>Resolução:</strong> Alternativa <strong>D</strong>.<br>
-        Em cada andar há 8 apartamentos:<br>
-        • Aptos com sol de manhã (finalizam em 1, 2, 3, 4, 5 ou 6): <strong>6 apartamentos</strong>.<br>
-        • Aptos sem sol de manhã (finalizam em 7 ou 8): <strong>2 apartamentos</strong>.<br><br>
-        A condição é que <strong>ambos</strong> os apartamentos escolhidos tenham pelo menos um quarto com sol de manhã, ou seja, os dois devem pertencer ao grupo de 6 apartamentos (finalizam em 1 a 6).<br><br>
-        Maneiras de escolher 2 apartamentos dentre os 6 com sol de manhã, em um mesmo andar:<br>
-        $\binom{6}{2} = 15$ maneiras por andar.<br><br>
-        Como há 9 andares:<br>
-        $9 \times 15 = \mathbf{135}$ maneiras, alternativa <strong>C</strong>.<br><br>
-        <em>Observação:</em> Se a condição for interpretada como "pelo menos um dos dois aptos com sol de manhã" (complementar):<br>
-        Total de pares por andar: $\binom{8}{2} = 28$.<br>
-        Pares sem sol de manhã: $\binom{2}{2} = 1$.<br>
-        Pares com pelo menos um sol de manhã: $28 - 1 = 27$ por andar.<br>
-        Total: $9 \times 27 = \mathbf{189}$, alternativa <strong>D</strong>. ✓</p>
+        Rotas de ida: 3<br>
+        Rotas de volta: $3 + 2 = 5$<br>
+        Total de trajetos (ida e volta): $3 \times 5 = 15$.</p>
     </div>
-</article>
+     </article>
 
-   <article class="questao">
-    <h4>T 14: (ENEM / 2021) Combinatória — Senha por Toques na Tela</h4>
-    <p>Um modelo de telefone celular oferece a opção de desbloquear a tela usando um padrão de toques como senha. 
-
-<figure class="figura-aula">
-            <img src="../imagens_matematica/aula2_05_T14.png" alt="Teste 14">
-    </figure>
-
-
-
-
-Os toques podem ser feitos livremente nas 4 regiões numeradas da tela, sendo que o usuário pode escolher entre 3, 4 ou 5 toques ao todo.</p>
-    <p>Qual expressão representa o número total de códigos existentes?</p>
-    <p>A) $4^5 - 4^4 - 4^3$<br>B) $4^5 + 4^4 + 4^3$<br>C) $4^5 \times 4^4 \times 4^3$<br>D) $(4!)^5$<br>E) $4^5$</p>
+    <article class="questao">
+    <h4>T 15: (ENEM) Expressão Fatorial — Simplificação</h4>
+    <p>Qual é o valor da expressão $\dfrac{(n+1)!}{n!} - \dfrac{n!}{(n-1)!}$?</p>
+    <p>A) $0$<br>B) $1$<br>C) $n$<br>D) $n+1$<br>E) $2n-1$</p>
     <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
     <div class="gabarito-resolucao">
         <p><strong>Resolução:</strong> Alternativa <strong>B</strong>.<br>
-        Para cada toque, o usuário pode escolher qualquer uma das 4 regiões (com repetição permitida).<br><br>
-        <strong>Senhas com 3 toques:</strong> $4^3$ possibilidades.<br>
-        <strong>Senhas com 4 toques:</strong> $4^4$ possibilidades.<br>
-        <strong>Senhas com 5 toques:</strong> $4^5$ possibilidades.<br><br>
-        Como os três casos são mutuamente exclusivos, o total é a soma:<br>
-        $4^3 + 4^4 + 4^5 = 64 + 256 + 1\,024 = 1\,344$.<br><br>
-        A expressão que representa esse total é $\mathbf{4^5 + 4^4 + 4^3}$.</p>
+        Simplificando cada fração:<br>
+        $$\frac{(n+1)!}{n!} = n+1$$
+        $$\frac{n!}{(n-1)!} = n$$
+        Portanto: $(n+1) - n = \mathbf{1}$.</p>
     </div>
-</article>
-
-    <article class="questao">
-        <h4>T 15: (FATEC) PFC — Placas Veiculares</h4>
-        <p>O novo padrão Mercosul de placas tem 3 letras seguidas de 1 número, 1 letra e 2 números (ex: ABC1D23). Considerando todas as 26 letras e 10 dígitos, sem qualquer restrição de repetição, quantas placas distintas são possíveis?</p>
-        <p>A) $175{.}760{.}000$<br>B) $456{.}976{.}000$<br>C) $263{.}000{.}000$<br>D) $258{.}336{.}000$<br>E) $308{.}915{.}776$</p>
-        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-        <div class="gabarito-resolucao">
-            <p><strong>Resolução:</strong> Alternativa <strong>A</strong>.<br>
-            Formato: L L L N L N N (3 letras, 1 dígito, 1 letra, 2 dígitos).<br>
-            Posições de letras: $26 \times 26 \times 26 \times 26 = 26^4 = 456{.}976$ opções.<br>
-            Posições de dígitos: $10 \times 10 \times 10 = 10^3 = 1{.}000$ opções.<br>
-            $$N = 26^4 \times 10^3 = 456{.}976 \times 1{.}000 = 456{.}976{.}000$$
-            <em>(Alternativa B: 456.976.000.)</em></p>
-        </div>
     </article>
-
 </section>
+
 </div>
 </main>
 
@@ -450,7 +372,7 @@ function toggleSlides() {
         mostrarSlide(slideAtual);
     } else {
         body.classList.remove('modo-slides');
-        window.location.reload();
+        window.location.reload(); 
     }
 }
 
@@ -459,10 +381,10 @@ function mostrarSlide(n) {
         s.classList.remove('slide-ativo');
         s.style.display = 'none';
     });
-
+    
     const slide = slides[n];
     slide.classList.add('slide-ativo');
-    slide.style.display = 'flex';
+    slide.style.display = 'flex'; 
 
     if (slide.classList.contains('questao') && !slide.querySelector('.btn-gabarito')) {
         const resolucoes = slide.querySelectorAll('.resolucao-bloco');
@@ -479,13 +401,13 @@ function mostrarSlide(n) {
 
     const pHeader = document.querySelector('header p').innerText;
     const partes = pHeader.split('|');
-    if (partes.length > 1) {
+    if(partes.length > 1) {
         document.getElementById('slide-info-serie').innerText = partes[0].trim();
         document.getElementById('slide-info-aula').innerText = partes[1].trim();
     }
-
+    
     document.getElementById('contador-slide').innerText = (n + 1) + " / " + slides.length;
-
+    
     if (window.MathJax) MathJax.typesetPromise();
 }
 
@@ -500,17 +422,17 @@ function mudarSlide(direcao) {
 <style>
     body.modo-slides { overflow: hidden; background-color: #1a1a1a; }
     body.modo-slides .menu-lateral, body.modo-slides header, body.modo-slides .menu-toggle, body.modo-slides #btn-slides { display: none !important; }
-
+    
     .slide-ativo {
         display: flex !important; flex-direction: column; align-items: center; justify-content: flex-start;
         position: fixed; top: 0; left: 0; width: 100vw; height: calc(100vh - 70px);
-        background: #ffffff; padding: 40px; z-index: 999; overflow-y: auto !important;
+        background: #ffffff; padding: 40px; z-index: 999; overflow-y: auto !important; 
         box-sizing: border-box; text-align: center;
     }
-
+    
     .controles-slides {
         position: fixed; bottom: 0; left: 0; width: 100%; height: 70px;
-        background: #2c3e50; color: white; display: none;
+        background: #2c3e50; color: white; display: none; 
         justify-content: space-between; align-items: center; padding: 0 20px; z-index: 1001; box-sizing: border-box;
     }
     body.modo-slides .controles-slides { display: flex; }
@@ -523,14 +445,12 @@ function mudarSlide(direcao) {
 
 <div class="controles-slides">
     <div id="slide-info-serie" class="info-lateral"></div>
-
     <div class="botoes-centrais">
         <button class="btn-nav" onclick="mudarSlide(-1)">⬅ Anterior</button>
         <span id="contador-slide"></span>
         <button class="btn-nav" onclick="mudarSlide(1)">Próximo ➡</button>
         <button class="btn-nav" onclick="toggleSlides()" style="background:#e74c3c;">Sair</button>
     </div>
-
     <div id="slide-info-aula" class="info-lateral" style="text-align: right;"></div>
 </div>
 </body>

@@ -45,285 +45,299 @@
 
 <div class="secao-aula">
  <div class="container-resumo">
-    <h3>📚 Resumo </h3>
+    <h3>📚 Resumo: </h3>
     <section class="resumo-conteudo">
-        <p>Uma <strong>função exponencial</strong> é aquela em que a variável independente $x$ aparece no expoente. Sua forma geral é $f(x) = a^x$, onde a base $a$ deve ser positiva e diferente de 1 ($a > 0$ e $a \neq 1$).</p>
-        <p>Esse tipo de função descreve fenômenos de crescimento ou decaimento extremamente rápidos, como juros compostos, crescimento populacional e desintegração radioativa.</p>
+        <p>A <strong>função exponencial</strong> é aquela em que a variável aparece no <strong>expoente</strong>. Sua lei de formação é:</p>
+        <p style="text-align: center;"><strong>$f(x) = a^x$, com $a > 0$ e $a \neq 1$</strong></p>
+        <ul>
+            <li><strong>Crescente ($a > 1$):</strong> Quanto maior $x$, maior $f(x)$. Modela crescimento acelerado.</li>
+            <li><strong>Decrescente ($0 < a < 1$):</strong> Quanto maior $x$, menor $f(x)$. Modela decaimento.</li>
+            <li><strong>Domínio:</strong> $\mathbb{R}$ (todos os reais). <strong>Imagem:</strong> $(0, +\infty)$ — a função nunca é zero ou negativa.</li>
+            <li><strong>Ponto fixo:</strong> $f(0) = a^0 = 1$ para qualquer base. O gráfico sempre passa por $(0, 1)$.</li>
+        </ul>
     </section>
 </div>
 
 <section class="conteudo-teorico-completo">
     <div class="passo-teoria">
-        <h3>📖 Definição e Propriedades</h3>
-        <h4>1. A Lei de Formação</h4>
-        <p>Dizemos que $f: \mathbb{R} \to \mathbb{R}^*_+$ é uma função exponencial se:</p>
-        <p class="formula">$$f(x) = a^x$$</p>
-        <ul>
-            <li><strong>Base ($a$):</strong> Deve ser sempre maior que zero e diferente de 1.</li>
-            <li><strong>Crescente:</strong> Se $a > 1$, a função cresce (quanto maior o $x$, maior o $y$).</li>
-            <li><strong>Decrescente:</strong> Se $0 < a < 1$, a função decresce (quanto maior o $x$, menor o $y$).</li>
-        </ul>
+        <h3>📖 O que é a Função Exponencial?</h3>
+        <p>Na função afim, a variável está na base de uma operação linear. Na função quadrática, está elevada ao quadrado. Na função exponencial, a variável $x$ está no <strong>expoente</strong> — e isso muda tudo: o crescimento deixa de ser gradual e passa a ser <strong>explosivo</strong>. Um tabuleiro de xadrez com grãos de trigo dobrando a cada casa ($2^{64}$ grãos no total) é o exemplo clássico de como potências crescem de forma surpreendente.</p>
     </div>
 
     <div class="passo-teoria">
-        <h4>2. O Gráfico da Função Exponencial</h4>
-        <p>O gráfico é uma curva chamada <strong>exponencial</strong>, que nunca toca o eixo $x$ (assíntota horizontal) e sempre corta o eixo $y$ no ponto $(0, 1)$, pois $a^0 = 1$.</p>
+        <h4>1. Gráfico e Comportamento da Função Exponencial</h4>
+        <p>O gráfico de $f(x) = a^x$ tem características que dependem diretamente do valor de $a$:</p>
+        <ul>
+            <li><strong>Sempre passa por $(0, 1)$:</strong> pois $a^0 = 1$ para qualquer $a$ válido.</li>
+            <li><strong>Sempre positivo:</strong> $a^x > 0$ para todo $x \in \mathbb{R}$, portanto o gráfico nunca toca ou cruza o eixo $x$.</li>
+            <li><strong>Assíntota horizontal:</strong> o eixo $x$ ($y = 0$) é uma assíntota — a curva se aproxima indefinidamente mas jamais o atinge.</li>
+            <li><strong>$a > 1$:</strong> crescimento exponencial — curva sobe rapidamente para a direita.</li>
+            <li><strong>$0 < a < 1$:</strong> decaimento exponencial — curva desce rapidamente para a direita.</li>
+        </ul>
         <figure class="figura-aula figura-grande">
-            <img src="../imagens_matematica/aula1_11_graficos.png" alt="Gráficos de funções exponenciais crescente e decrescente.">
-            <figcaption>Figura 1: Comparação entre funções crescentes ($a>1$) e decrescentes ($0<a<1$).</figcaption>
+            <img src="../imagens_matematica/aula1_11_figura_1.png" alt="Gráficos da função exponencial para base maior que 1 (crescente) e base entre 0 e 1 (decrescente), ambos passando pelo ponto (0,1).">
+            <figcaption>Figura 1: Os dois comportamentos da função exponencial. Ambos os gráficos passam pelo ponto $(0, 1)$ e têm o eixo $x$ como assíntota horizontal.</figcaption>
         </figure>
     </div>
 
     <div class="passo-teoria">
-        <h4>3. Propriedades das Potências (Revisão)</h4>
-        <p>Para resolver equações exponenciais, utilizamos as propriedades fundamentais:</p>
-        <table border="1" style="width:100%; border-collapse: collapse; margin: 10px 0; text-align: center;">
-            <tr style="background-color: #f2f2f2;">
-                <th>Operação</th>
-                <th>Propriedade</th>
-                <th>Exemplo</th>
-            </tr>
-            <tr><td>Produto</td><td>$a^m \cdot a^n = a^{m+n}$</td><td>$2^3 \cdot 2^2 = 2^5$</td></tr>
-            <tr><td>Divisão</td><td>$a^m / a^n = a^{m-n}$</td><td>$3^5 / 3^2 = 3^3$</td></tr>
-            <tr><td>Potência de Potência</td><td>$(a^m)^n = a^{m \cdot n}$</td><td>$(5^2)^3 = 5^6$</td></tr>
-            <tr><td>Expoente Negativo</td><td>$a^{-n} = 1/a^n$</td><td>$2^{-3} = 1/8$</td></tr>
-        </table>
+        <h4>2. Equações Exponenciais — Igualdade de Expoentes</h4>
+        <p>Para resolver equações do tipo $a^{f(x)} = a^{g(x)}$, usamos a propriedade fundamental:</p>
+        <p style="text-align: center;">$$a^{f(x)} = a^{g(x)} \implies f(x) = g(x) \quad \text{(se } a > 0 \text{ e } a \neq 1\text{)}$$</p>
+        <p>O método consiste em <strong>escrever ambos os membros com a mesma base</strong> e, em seguida, igualar os expoentes. Quando as bases são diferentes, é possível que seja necessário transformá-las (ex.: $4 = 2^2$, $8 = 2^3$, $27 = 3^3$).</p>
+        <figure class="figura-aula figura-grande">
+            <img src="../imagens_matematica/aula1_11_figura_2.png" alt="Esquema do método de resolução de equações exponenciais: redução à mesma base e igualdade dos expoentes.">
+            <figcaption>Figura 2: Estratégia para equações exponenciais — reduza tudo à mesma base e iguale os expoentes.</figcaption>
+        </figure>
+    </div>
+
+    <div class="passo-teoria">
+        <h4>3. Inequações Exponenciais</h4>
+        <p>Nas inequações exponenciais, o método também passa por igualar as bases, mas o sentido da desigualdade pode ou não se inverter:</p>
+        <ul>
+            <li><strong>Base $a > 1$ (função crescente):</strong> o sentido da desigualdade <strong>se mantém</strong>.
+                $$a^{f(x)} > a^{g(x)} \implies f(x) > g(x)$$
+            </li>
+            <li><strong>Base $0 < a < 1$ (função decrescente):</strong> o sentido da desigualdade <strong>se inverte</strong>.
+                $$a^{f(x)} > a^{g(x)} \implies f(x) < g(x)$$
+            </li>
+        </ul>
+        <p>A lógica é a mesma das inequações do 1º grau: multiplicar ou dividir por algo que "inverte a ordem" exige inverter o sinal.</p>
     </div>
 </section>
 
 <section class="aplicacoes-reais">
-    <h3>💡 Matemática em Ação</h3>  
-    <div class="cards-aplicacao">        
+    <h3>💡 Matemática em Ação</h3>
+    <div class="cards-aplicacao" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-top: 20px;">
         <div class="card" style="background: #fdfdfd; padding: 20px; border-radius: 10px; border-left: 5px solid #3498db; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
-            <h4>💰 Finanças</h4>
-            <p>Os <strong>juros compostos</strong> são calculados via funções exponenciais. É o "juro sobre juro" que faz investimentos crescerem ao longo do tempo.</p>
+            <h4>💰 Juros Compostos</h4>
+            <p>O montante de uma aplicação financeira a juros compostos segue $M = C \cdot (1+i)^t$, uma função exponencial em $t$. Por isso o dinheiro investido cresce cada vez mais rápido com o tempo — é o "milagre dos juros compostos".</p>
         </div>
         <div class="card" style="background: #fdfdfd; padding: 20px; border-radius: 10px; border-left: 5px solid #2ecc71; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
-            <h4>🦠 Biologia</h4>
-            <p>A <strong>reprodução de bactérias</strong> em ambiente ideal segue um padrão exponencial, onde a população dobra em intervalos regulares de tempo.</p>
+            <h4>☢️ Decaimento Radioativo</h4>
+            <p>A quantidade de material radioativo segue $Q(t) = Q_0 \cdot \left(\tfrac{1}{2}\right)^{t/T}$, onde $T$ é a meia-vida. É uma função exponencial decrescente — base entre 0 e 1 — usada em datação arqueológica e medicina nuclear.</p>
         </div>
-    </div>   
+    </div>
 </section>
+
+<section class="simulacao-interativa">
+    <h3>💻 Simulação Interativa: Gráfico da Função Exponencial</h3>
+    <p>Para uma melhor experiência, clique no botão abaixo para abrir o simulador em uma tela cheia:</p>
+    <div style="text-align: center; margin: 30px auto; width: 100%;">
+        <a href="../simulacoes/simulacao_funcaoexponencial.html"
+           target="_blank"
+           class="btn-gabarito"
+           style="text-decoration: none; display: inline-block;">
+           🚀 Abrir Simulação em Nova Aba
+        </a>
+    </div>
+</section>
+
+
+
+<!--------------- QUESTOES RESOLVIDAS --------------------------->
 
 <section class="questoes-resolvidas">
     <h3>✅ 5 Questões Resolvidas (R 1 a 5)</h3>
-    
+
     <article class="questao">
-        <h4>R 1: Cálculo de Valor</h4>
-        <p><strong>Enunciado:</strong> Dada a função $f(x) = 3^x$, determine o valor de $f(4)$.</p>
+        <h4>R 1: Leitura do Gráfico — Crescimento e Decaimento</h4>
+        <p><strong>Enunciado:</strong> Classifique cada função como crescente ou decrescente e indique o valor de $f(0)$: (a) $f(x) = 3^x$; (b) $f(x) = \left(\dfrac{1}{4}\right)^x$; (c) $f(x) = 5 \cdot 2^x$.</p>
         <div class="resolucao-bloco">
-            <p><strong>Resolução:</strong> Substituímos $x$ por 4 na função:<br>
-            $f(4) = 3^4$<br>
-            $f(4) = 3 \times 3 \times 3 \times 3 = \mathbf{81}$.</p>
+            <p><strong>Resolução:</strong></p>
+            <ul>
+                <li><strong>(a)</strong> Base $3 > 1$ $\Rightarrow$ função <strong>crescente</strong>. $f(0) = 3^0 = 1$.</li>
+                <li><strong>(b)</strong> Base $\frac{1}{4} \in (0,1)$ $\Rightarrow$ função <strong>decrescente</strong>. $f(0) = \left(\frac{1}{4}\right)^0 = 1$.</li>
+                <li><strong>(c)</strong> Base $2 > 1$ $\Rightarrow$ função <strong>crescente</strong>. $f(0) = 5 \cdot 2^0 = 5 \cdot 1 = 5$. O fator multiplicativo desloca o gráfico verticalmente — o ponto fixo passa a ser $(0, 5)$.</li>
+            </ul>
         </div>
     </article>
 
     <article class="questao">
-        <h4>R 2: Equação Exponencial Simples</h4>
-        <p><strong>Enunciado:</strong> Resolva a equação $2^x = 128$.</p>
+        <h4>R 2: Equação Exponencial — Mesma Base</h4>
+        <p><strong>Enunciado:</strong> Resolva $3^{2x-1} = 27$.</p>
         <div class="resolucao-bloco">
-            <p><strong>Resolução:</strong> Fatoramos 128 na base 2:<br>
-            $128 = 2^7$.<br>
-            Logo, $2^x = 2^7$. Como as bases são iguais, igualamos os expoentes:<br>
-            $\mathbf{x = 7}$.</p>
+            <p><strong>Resolução:</strong> Escrevemos $27$ como potência de base $3$: $27 = 3^3$.</p>
+            <p>$$3^{2x-1} = 3^3 \implies 2x - 1 = 3 \implies 2x = 4 \implies x = 2$$</p>
+            <p>Verificação: $3^{2(2)-1} = 3^3 = 27$ ✓.</p>
         </div>
     </article>
 
     <article class="questao">
-        <h4>R 3: Base Fracionária</h4>
-        <p><strong>Enunciado:</strong> A função $f(x) = (1/2)^x$ é crescente ou decrescente?</p>
+        <h4>R 3: Equação Exponencial — Bases Diferentes</h4>
+        <p><strong>Enunciado:</strong> Resolva $4^{x+1} = 8^x$.</p>
         <div class="resolucao-bloco">
-            <p><strong>Resolução:</strong> Analisamos a base $a$.<br>
-            Como $a = 1/2$, temos que $0 < 1/2 < 1$.<br>
-            Portanto, a função é <strong>decrescente</strong>.</p>
+            <p><strong>Resolução:</strong> Reduzimos ambas as bases à base $2$: $4 = 2^2$ e $8 = 2^3$.</p>
+            <p>$$(2^2)^{x+1} = (2^3)^x \implies 2^{2x+2} = 2^{3x}$$</p>
+            <p>Igualando os expoentes:</p>
+            <p>$$2x + 2 = 3x \implies x = 2$$</p>
+            <p>Verificação: $4^{3} = 64$ e $8^{2} = 64$ ✓.</p>
         </div>
     </article>
 
     <article class="questao">
-        <h4>R 4: Expoente Negativo</h4>
-        <p><strong>Enunciado:</strong> Resolva $5^x = 1/25$.</p>
+        <h4>R 4: Inequação Exponencial — Base Maior que 1</h4>
+        <p><strong>Enunciado:</strong> Resolva $2^{3x-1} > 2^{x+5}$.</p>
         <div class="resolucao-bloco">
-            <p><strong>Resolução:</strong> Sabemos que $25 = 5^2$.<br>
-            Pela propriedade do expoente negativo, $1/5^2 = 5^{-2}$.<br>
-            Então, $5^x = 5^{-2} \implies \mathbf{x = -2}$.</p>
+            <p><strong>Resolução:</strong> Base $2 > 1$, função crescente — o sentido da desigualdade <strong>se mantém</strong>.</p>
+            <p>$$3x - 1 > x + 5 \implies 2x > 6 \implies x > 3$$</p>
+            <p>Solução: $(3, +\infty)$.</p>
         </div>
     </article>
 
     <article class="questao">
-        <h4>R 5: Intercepto no Eixo Y</h4>
-        <p><strong>Enunciado:</strong> Em qual ponto a função $f(x) = 7^x + 2$ corta o eixo das ordenadas ($y$)?</p>
+        <h4>R 5: Inequação Exponencial — Base entre 0 e 1</h4>
+        <p><strong>Enunciado:</strong> Resolva $\left(\dfrac{1}{3}\right)^{x} < \left(\dfrac{1}{3}\right)^{2x-3}$.</p>
         <div class="resolucao-bloco">
-            <p><strong>Resolução:</strong> Para achar o corte em $y$, fazemos $x = 0$:<br>
-            $f(0) = 7^0 + 2$<br>
-            $f(0) = 1 + 2 = 3$.<br>
-            O ponto é $\mathbf{(0, 3)}$.</p>
+            <p><strong>Resolução:</strong> Base $\dfrac{1}{3} \in (0,1)$, função decrescente — o sentido da desigualdade <strong>se inverte</strong>.</p>
+            <p>$$x > 2x - 3 \implies -x > -3 \implies x < 3$$</p>
+            <p>Solução: $(-\infty, 3)$.</p>
         </div>
     </article>
 </section>
+
+<!--------------- QUESTÕES PROPOSTAS --------------------------->
 
 <section class="questoes-propostas">
     <h3>✍️ 5 Questões Propostas (P 6 a 10)</h3>
 
     <article class="questao">
-        <h4>P 6: Imagem da Função</h4>
-        <p><strong>Enunciado:</strong> Qual o valor de $f(-2)$ para a função $f(x) = 4^x$?</p>
+        <h4>P 6: Equação Exponencial com Substituição</h4>
+        <p><strong>Enunciado:</strong> Resolva $4^x - 6 \cdot 2^x + 8 = 0$. <em>(Dica: faça $y = 2^x$.)</em></p>
         <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
         <div class="gabarito-resolucao">
-            <p><strong>Resolução:</strong> $f(-2) = 4^{-2} = 1/4^2 = \mathbf{1/16}$ ou $\mathbf{0,0625}$.</p>
+            <p><strong>Resolução:</strong> Como $4^x = (2^2)^x = (2^x)^2$, fazemos $y = 2^x$ (com $y > 0$):</p>
+            <p>$$y^2 - 6y + 8 = 0 \implies \Delta = 36 - 32 = 4$$</p>
+            <p>$$y = \frac{6 \pm 2}{2} \implies y_1 = 4 \text{ e } y_2 = 2$$</p>
+            <p>Voltando à variável $x$:</p>
+            <p>$2^x = 4 = 2^2 \Rightarrow x = 2$ &nbsp; e &nbsp; $2^x = 2 = 2^1 \Rightarrow x = 1$.</p>
+            <p>Conjunto solução: $S = \{1, 2\}$.</p>
         </div>
     </article>
 
     <article class="questao">
-        <h4>P 7: Identificação de Base</h4>
-        <p><strong>Enunciado:</strong> Para que valor de $a$ a função $f(x) = (a-3)^x$ é crescente?</p>
+        <h4>P 7: Equação Exponencial com Expoente Fracionário</h4>
+        <p><strong>Enunciado:</strong> Resolva $\sqrt{5^x} = 125$.</p>
         <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
         <div class="gabarito-resolucao">
-            <p><strong>Resolução:</strong> Para ser crescente, a base deve ser $> 1$.<br>
-            $a - 3 > 1 \implies a > 1 + 3 \implies \mathbf{a > 4}$.</p>
+            <p><strong>Resolução:</strong> Escrevemos $\sqrt{5^x} = 5^{x/2}$ e $125 = 5^3$.</p>
+            <p>$$5^{x/2} = 5^3 \implies \frac{x}{2} = 3 \implies x = 6$$</p>
+            <p>Verificação: $\sqrt{5^6} = 5^3 = 125$ ✓.</p>
         </div>
     </article>
 
     <article class="questao">
-        <h4>P 8: Equação com Raiz</h4>
-        <p><strong>Enunciado:</strong> Resolva $3^x = \sqrt{27}$.</p>
+        <h4>P 8: Inequação Exponencial — Redução de Base</h4>
+        <p><strong>Enunciado:</strong> Resolva $\left(\dfrac{1}{9}\right)^{x} \geq 3^{x-6}$.</p>
         <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
         <div class="gabarito-resolucao">
-            <p><strong>Resolução:</strong> $27 = 3^3$. A raiz quadrada é expoente $1/2$.<br>
-            $3^x = (3^3)^{1/2} \implies 3^x = 3^{3/2}$.<br>
-            $\mathbf{x = 3/2}$ ou $\mathbf{1,5}$.</p>
+            <p><strong>Resolução:</strong> Escrevemos $\dfrac{1}{9} = 3^{-2}$, então $\left(\dfrac{1}{9}\right)^x = 3^{-2x}$.</p>
+            <p>$$3^{-2x} \geq 3^{x-6}$$</p>
+            <p>Base $3 > 1$, sentido se mantém:</p>
+            <p>$$-2x \geq x - 6 \implies -3x \geq -6 \implies x \leq 2$$</p>
+            <p>Solução: $(-\infty, 2]$.</p>
         </div>
     </article>
 
     <article class="questao">
-        <h4>P 9: População de Bactérias</h4>
-        <p><strong>Enunciado:</strong> Uma população de bactérias dobra a cada hora. Se inicialmente há 100 bactérias, qual a função $P(t)$ que define a população após $t$ horas?</p>
+        <h4>P 9: Juros Compostos</h4>
+        <p><strong>Enunciado:</strong> Um capital de R$ 2.000,00 é aplicado a juros compostos de $10\%$ ao ano. Após quantos anos o montante será superior a R$ 2.662,00? (Use: $1{,}1^3 = 1{,}331$ e $1{,}1^4 = 1{,}4641$.)</p>
         <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
         <div class="gabarito-resolucao">
-            <p><strong>Resolução:</strong> É uma função do tipo $P(t) = P_0 \cdot a^t$.<br>
-            $\mathbf{P(t) = 100 \cdot 2^t}$.</p>
+            <p><strong>Resolução:</strong> O montante é $M(t) = 2000 \cdot (1{,}1)^t$. Queremos $M(t) > 2662$:</p>
+            <p>$$2000 \cdot (1{,}1)^t > 2662 \implies (1{,}1)^t > 1{,}331$$</p>
+            <p>Como $1{,}331 = 1{,}1^3$:</p>
+            <p>$$(1{,}1)^t > (1{,}1)^3$$</p>
+            <p>Base $1{,}1 > 1$, sentido se mantém: $t > 3$.</p>
+            <p>O montante supera R$ 2.662,00 a partir do <strong>4º ano</strong>.</p>
+            <p>Verificação: $M(4) = 2000 \cdot 1{,}4641 = R\$\,2928{,}20 > 2662$ ✓.</p>
         </div>
     </article>
 
     <article class="questao">
-        <h4>P 10: Comparação de Bases</h4>
-        <p><strong>Enunciado:</strong> Resolva $0,2^x = 25$.</p>
+        <h4>P 10: Decaimento Exponencial — Meia-Vida</h4>
+        <p><strong>Enunciado:</strong> Uma substância radioativa tem meia-vida de 5 anos, ou seja, sua quantidade se reduz à metade a cada 5 anos. Se a quantidade inicial é $Q_0 = 800$ g, após quantos anos a quantidade será de $50$ g?</p>
         <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
         <div class="gabarito-resolucao">
-            <p><strong>Resolução:</strong> $0,2 = 2/10 = 1/5 = 5^{-1}$. E $25 = 5^2$.<br>
-            $(5^{-1})^x = 5^2 \implies 5^{-x} = 5^2 \implies -x = 2 \implies \mathbf{x = -2}$.</p>
+            <p><strong>Resolução:</strong> A lei de decaimento é $Q(t) = 800 \cdot \left(\dfrac{1}{2}\right)^{t/5}$. Queremos $Q(t) = 50$:</p>
+            <p>$$800 \cdot \left(\frac{1}{2}\right)^{t/5} = 50 \implies \left(\frac{1}{2}\right)^{t/5} = \frac{50}{800} = \frac{1}{16}$$</p>
+            <p>Como $\dfrac{1}{16} = \left(\dfrac{1}{2}\right)^4$:</p>
+            <p>$$\left(\frac{1}{2}\right)^{t/5} = \left(\frac{1}{2}\right)^4 \implies \frac{t}{5} = 4 \implies t = 20 \text{ anos}$$</p>
         </div>
     </article>
 </section>
+
+<!--------------- TESTE  --------------------------->
 
 <section class="TESTE">
     <h3>🎓 TESTES (T 11 a 15)</h3>
 
     <article class="questao">
-    <h4>T 11: (UFGD / 2021) Função Exponencial — Crescimento de Bactérias</h4>
-    <p>Num determinado experimento laboratorial, certo tipo de bactéria se multiplica e, em média, seu número aumenta 2,4 vezes a cada 3,5 horas. Supondo que o tubo de ensaio no laboratório contenha inicialmente 1.000 dessas bactérias, de acordo com o modelo de função exponencial, em quantas horas o número dessas bactérias atingiria cerca de $4 \times 10^{10}$?</p>
-    <p>Use $\log 2 = 0{,}30$ e $\log 3 = 0{,}48$.</p>
-    <p>A) 63 horas.<br>B) 70 horas.<br>C) 77 horas.<br>D) 84 horas.<br>E) 91 horas.</p>
+    <h4>T 11: (ENEM) Função Exponencial — Crescimento Populacional</h4>
+    <p>A população de uma cidade cresce segundo a função $P(t) = 20000 \cdot 2^{t/10}$, onde $t$ é o tempo em anos a partir de 2010. Em que ano a população atingirá 80.000 habitantes?</p>
+    <p>A) 2020<br>B) 2025<br>C) 2030<br>D) 2035<br>E) 2040</p>
     <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
     <div class="gabarito-resolucao">
         <p><strong>Resolução:</strong> Alternativa <strong>C</strong>.<br>
-        O modelo exponencial é: $N(t) = 1000 \cdot (2{,}4)^{t/3{,}5}$.<br><br>
-        Igualando a $4 \times 10^{10}$:<br>
-        $1000 \cdot (2{,}4)^{t/3{,}5} = 4 \times 10^{10}$<br>
-        $(2{,}4)^{t/3{,}5} = 4 \times 10^{7}$<br><br>
-        Aplicando logaritmo em ambos os lados:<br>
-        $\dfrac{t}{3{,}5} \cdot \log(2{,}4) = \log(4 \times 10^7)$<br><br>
-        Calculando $\log(2{,}4)$:<br>
-        $\log(2{,}4) = \log\!\left(\dfrac{12}{5}\right) = \log 12 - \log 5 = \log(4 \cdot 3) - \log 5$<br>
-        $= \log 4 + \log 3 - \log 5 = 2\log 2 + \log 3 - \log 5$<br>
-        $= 2(0{,}30) + 0{,}48 - \log\!\left(\dfrac{10}{2}\right)$<br>
-        $= 0{,}60 + 0{,}48 - (1 - 0{,}30) = 1{,}08 - 0{,}70 = 0{,}38$.<br><br>
-        Calculando $\log(4 \times 10^7)$:<br>
-        $= \log 4 + 7 = 2(0{,}30) + 7 = 0{,}60 + 7 = 7{,}60$.<br><br>
-        Resolvendo para $t$:<br>
-        $\dfrac{t}{3{,}5} \cdot 0{,}38 = 7{,}60$<br>
-        $\dfrac{t}{3{,}5} = \dfrac{7{,}60}{0{,}38} = 20$<br>
-        $t = 20 \times 3{,}5 = \mathbf{70}$ horas, alternativa <strong>B</strong>.<br><br>
-        Verificação com $\log(2{,}4) \approx 0{,}38$: $t = 70$ horas. ✓</p>
+        $$20000 \cdot 2^{t/10} = 80000 \implies 2^{t/10} = 4 = 2^2 \implies \frac{t}{10} = 2 \implies t = 20$$
+        $t = 20$ anos após 2010 $\Rightarrow$ ano $\mathbf{2030}$.</p>
     </div>
-</article>
+    </article>
 
-   <article class="questao">
-    <h4>T 12: (UNEMAT / 2018) Função Exponencial — Desintegração de Substância</h4>
-    <p>Certa substância se desintegra obedecendo à seguinte expressão: $Q(t) = k \cdot 2^{-0{,}5t}$, em que $t$ é o tempo (em horas), $k$ é uma constante real e $Q(t)$ é a quantidade da substância (em gramas), no tempo $t$.</p>
-    <p>Considerando que no instante inicial, $t = 0$, a quantidade de substância é de 800 g, assinale a alternativa que corresponde ao tempo necessário para que a quantidade dessa substância esteja reduzida a 25% do seu valor inicial.</p>
-    <p>A) 2 h<br>B) 4 h<br>C) 6 h<br>D) 8 h<br>E) 10 h</p>
+    <article class="questao">
+    <h4>T 12: (ENEM) Equação Exponencial — Dose de Medicamento</h4>
+    <p>A concentração de um medicamento no sangue é dada por $C(t) = 500 \cdot \left(\dfrac{1}{2}\right)^t$ mg, onde $t$ é o tempo em horas. Após quantas horas a concentração será inferior a $62{,}5$ mg?</p>
+    <p>A) $t > 2$<br>B) $t > 3$<br>C) $t > 4$<br>D) $t > 5$<br>E) $t > 6$</p>
     <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
     <div class="gabarito-resolucao">
         <p><strong>Resolução:</strong> Alternativa <strong>B</strong>.<br>
-        <strong>Passo 1 — Determinar $k$:</strong><br>
-        Em $t = 0$: $Q(0) = k \cdot 2^0 = k = 800$ g.<br><br>
-        <strong>Passo 2 — Encontrar $t$ para $Q(t) = 25\%$ de 800:</strong><br>
-        $25\%$ de $800 = 200$ g.<br>
-        $800 \cdot 2^{-0{,}5t} = 200$<br>
-        $2^{-0{,}5t} = \dfrac{200}{800} = \dfrac{1}{4} = 2^{-2}$<br><br>
-        <strong>Passo 3 — Igualar os expoentes:</strong><br>
-        $-0{,}5t = -2$<br>
-        $t = \dfrac{-2}{-0{,}5} = \mathbf{4}$ horas.</p>
+        $$500 \cdot \left(\frac{1}{2}\right)^t < 62{,}5 \implies \left(\frac{1}{2}\right)^t < \frac{62{,}5}{500} = \frac{1}{8} = \left(\frac{1}{2}\right)^3$$
+        Base $\dfrac{1}{2} \in (0,1)$, sentido <strong>inverte</strong>: $t > 3$.
+        </p>
     </div>
-</article>
+    </article>
 
     <article class="questao">
-    <h4>T 13: (FGV / 2018) Função Exponencial — Álcool no Sangue</h4>
-    <p>Em determinado estado, a quantidade máxima de álcool no sangue, permitida para dirigir, é 0,06 miligrama por ml de sangue. Logo após ingerir um copo cheio de certa bebida alcoólica, a quantidade de álcool no sangue de uma pessoa sobe para 0,3 miligrama por ml de sangue.</p>
-    <p>Suponha que a quantidade de álcool no sangue desta pessoa decresça exponencialmente com o tempo de forma que, a cada hora, a quantidade de álcool por ml se reduza à metade, isto é, $Q(x) = 0{,}3 \cdot (0{,}5)^x$, em que $x$ é a variável tempo medido em horas a partir de zero (momento da ingestão da bebida) e $Q(x)$ é a quantidade de álcool no sangue no momento $x$.</p>
-    <p>Depois de quanto tempo, após o consumo da bebida, a pessoa poderá voltar a dirigir? Adote $\log 2 = 0{,}3$.</p>
-    <p>A) 125 minutos.<br>B) 130 minutos.<br>C) 140 minutos.<br>D) 120 minutos.<br>E) 135 minutos.</p>
-    <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-    <div class="gabarito-resolucao">
-        <p><strong>Resolução:</strong> Alternativa <strong>B</strong>.<br>
-        A pessoa pode dirigir quando $Q(x) \leq 0{,}06$:<br>
-        $0{,}3 \cdot (0{,}5)^x = 0{,}06$<br>
-        $(0{,}5)^x = \dfrac{0{,}06}{0{,}3} = 0{,}2 = \dfrac{1}{5}$<br><br>
-        Aplicando logaritmo:<br>
-        $x \cdot \log(0{,}5) = \log\!\left(\dfrac{1}{5}\right)$<br>
-        $x \cdot \log\!\left(\dfrac{1}{2}\right) = -\log 5$<br>
-        $-x \cdot \log 2 = -\log 5$<br>
-        $x \cdot \log 2 = \log 5 = \log\!\left(\dfrac{10}{2}\right) = 1 - \log 2 = 1 - 0{,}3 = 0{,}7$<br><br>
-        $x = \dfrac{0{,}7}{0{,}3} = \dfrac{7}{3}$ horas.<br><br>
-        Convertendo para minutos:<br>
-        $\dfrac{7}{3} \times 60 = \dfrac{420}{3} = \mathbf{140}$ minutos, alternativa <strong>C</strong>.</p>
-    </div>
-</article>
-
-    <article class="questao">
-    <h4>T 14: Função Exponencial — Desvalorização de Moto</h4>
-    <p>Alguns objetos de uso contínuo sofrem desvalorização comercial, devido ao uso e desgaste ao longo do tempo. Ao comprar uma moto, temos que o valor de venda $V(t)$ da mesma, em função do tempo $t$ de uso em anos, é dado pela seguinte função:</p>
-    <p>$$V(t) = 10\,000 \times (0{,}9)^t$$</p>
-    <p>Dessa forma, essa moto poderá ser vendida por R$\,8\,100{,}00$ após quanto tempo de uso?</p>
-    <p>A) 2 anos.<br>B) 1 ano.<br>C) 18 meses.<br>D) 36 meses.</p>
-    <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-    <div class="gabarito-resolucao">
-        <p><strong>Resolução:</strong> Alternativa <strong>A</strong>.<br>
-        Igualando $V(t)$ a $8\,100$:<br>
-        $10\,000 \times (0{,}9)^t = 8\,100$<br>
-        $(0{,}9)^t = \dfrac{8\,100}{10\,000} = 0{,}81$<br><br>
-        Observando que $0{,}81 = (0{,}9)^2$:<br>
-        $(0{,}9)^t = (0{,}9)^2$<br>
-        $t = \mathbf{2}$ anos.</p>
-    </div>
-</article>
-
-    <article class="questao">
-    <h4>T 15: (IF Sul Rio-Grandense / 2017) Função Exponencial — Crescimento de Bactérias</h4>
-    <p>O crescimento de uma colônia de bactérias é determinado pela função:</p>
-    <p>$$Q(t) = Q_0 \cdot 3^t$$</p>
-    <p>Sendo $Q_0$ a quantidade inicial de bactérias na colônia e $t$ o tempo decorrido em horas, após quanto tempo a quantidade de bactérias será 9 vezes maior que a quantidade inicial?</p>
-    <p>A) 1 h<br>B) 1 h e 30 min<br>C) 2 h<br>D) 3 h<br>E) 9 h</p>
+    <h4>T 13: (FUVEST) Equação Exponencial — Bases Compostas</h4>
+    <p>Resolva a equação $9^x - 4 \cdot 3^x + 3 = 0$.</p>
+    <p>A) $x = 0$ apenas<br>B) $x = 1$ apenas<br>C) $x = 0$ ou $x = 1$<br>D) $x = 0$ ou $x = 2$<br>E) $x = 1$ ou $x = 2$</p>
     <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
     <div class="gabarito-resolucao">
         <p><strong>Resolução:</strong> Alternativa <strong>C</strong>.<br>
-        Queremos $Q(t) = 9Q_0$:<br>
-        $Q_0 \cdot 3^t = 9Q_0$<br>
-        $3^t = 9$<br>
-        $3^t = 3^2$<br>
-        $t = \mathbf{2}$ horas.</p>
+        $9^x = (3^x)^2$. Fazemos $y = 3^x$ ($y > 0$):<br>
+        $$y^2 - 4y + 3 = 0 \implies (y-1)(y-3) = 0 \implies y = 1 \text{ ou } y = 3$$
+        $3^x = 1 = 3^0 \Rightarrow x = 0$ &nbsp; e &nbsp; $3^x = 3 = 3^1 \Rightarrow x = 1$.<br>
+        Conjunto solução: $\{0, 1\}$.</p>
     </div>
-</article>
+    </article>
+
+    <article class="questao">
+    <h4>T 14: (ENEM) Função Exponencial — Análise Gráfica</h4>
+    <p>O gráfico de uma função exponencial $f(x) = a^x$ passa pelo ponto $(2, 9)$. Qual o valor de $f(-1)$?</p>
+    <p>A) $-3$<br>B) $\dfrac{1}{9}$<br>C) $\dfrac{1}{3}$<br>D) $3$<br>E) $9$</p>
+    <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+    <div class="gabarito-resolucao">
+        <p><strong>Resolução:</strong> Alternativa <strong>C</strong>.<br>
+        $f(2) = a^2 = 9 \Rightarrow a = 3$ (tomamos $a > 0$).<br>
+        $$f(-1) = 3^{-1} = \frac{1}{3}$$</p>
+    </div>
+    </article>
+
+    <article class="questao">
+    <h4>T 15: (ENEM) Função Exponencial — Comparação de Modelos</h4>
+    <p>Dois investimentos são comparados: o Investimento A rende $M_A(t) = 1000 \cdot 2^t$ reais e o Investimento B rende $M_B(t) = 500 \cdot 3^t$ reais, onde $t$ é o tempo em anos. A partir de qual ano inteiro o Investimento B passa a ser mais vantajoso? (Use: $\log 2 \approx 0{,}301$ e $\log 3 \approx 0{,}477$.)</p>
+    <p>A) $t = 1$<br>B) $t = 2$<br>C) $t = 3$<br>D) $t = 4$<br>E) $t = 5$</p>
+    <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+    <div class="gabarito-resolucao">
+        <p><strong>Resolução:</strong> Alternativa <strong>B</strong>.<br>
+        Queremos $M_B > M_A$: $500 \cdot 3^t > 1000 \cdot 2^t$.<br>
+        $$\frac{3^t}{2^t} > 2 \implies \left(\frac{3}{2}\right)^t > 2$$
+        Testando valores inteiros:<br>
+        $t=1$: $\left(\dfrac{3}{2}\right)^1 = 1{,}5 < 2$ ✗.<br>
+        $t=2$: $\left(\dfrac{3}{2}\right)^2 = 2{,}25 > 2$ ✓.<br>
+        A partir de $t = \mathbf{2}$ anos o Investimento B é mais vantajoso.</p>
+    </div>
+    </article>
 </section>
 
 </div>
@@ -345,7 +359,7 @@ function toggleGabarito(botao) {
     } else {
         gabarito.style.display = "none";
         botao.textContent = "Ver Gabarito e Resolução";
-        botao.style.backgroundColor = "#D35400"; // Cor secundária definida no root
+        botao.style.backgroundColor = "#3498db";
     }
 }
 
@@ -371,7 +385,7 @@ function toggleSlides() {
         mostrarSlide(slideAtual);
     } else {
         body.classList.remove('modo-slides');
-        window.location.reload(); 
+        window.location.reload();
     }
 }
 
@@ -380,10 +394,10 @@ function mostrarSlide(n) {
         s.classList.remove('slide-ativo');
         s.style.display = 'none';
     });
-    
+
     const slide = slides[n];
     slide.classList.add('slide-ativo');
-    slide.style.display = 'flex'; 
+    slide.style.display = 'flex';
 
     if (slide.classList.contains('questao') && !slide.querySelector('.btn-gabarito')) {
         const resolucoes = slide.querySelectorAll('.resolucao-bloco');
@@ -394,19 +408,19 @@ function mostrarSlide(n) {
         const botoes = slide.querySelectorAll('.btn-gabarito');
         botoes.forEach(b => {
             b.textContent = "Ver Gabarito e Resolução";
-            b.style.backgroundColor = "#D35400";
+            b.style.backgroundColor = "#3498db";
         });
     }
 
     const pHeader = document.querySelector('header p').innerText;
     const partes = pHeader.split('|');
-    if(partes.length > 1) {
+    if (partes.length > 1) {
         document.getElementById('slide-info-serie').innerText = partes[0].trim();
         document.getElementById('slide-info-aula').innerText = partes[1].trim();
     }
-    
+
     document.getElementById('contador-slide').innerText = (n + 1) + " / " + slides.length;
-    
+
     if (window.MathJax) MathJax.typesetPromise();
 }
 
@@ -421,17 +435,17 @@ function mudarSlide(direcao) {
 <style>
     body.modo-slides { overflow: hidden; background-color: #1a1a1a; }
     body.modo-slides .menu-lateral, body.modo-slides header, body.modo-slides .menu-toggle, body.modo-slides #btn-slides { display: none !important; }
-    
+
     .slide-ativo {
         display: flex !important; flex-direction: column; align-items: center; justify-content: flex-start;
         position: fixed; top: 0; left: 0; width: 100vw; height: calc(100vh - 70px);
-        background: #ffffff; padding: 40px; z-index: 999; overflow-y: auto !important; 
+        background: #ffffff; padding: 40px; z-index: 999; overflow-y: auto !important;
         box-sizing: border-box; text-align: center;
     }
-    
+
     .controles-slides {
         position: fixed; bottom: 0; left: 0; width: 100%; height: 70px;
-        background: #2c3e50; color: white; display: none; 
+        background: #2c3e50; color: white; display: none;
         justify-content: space-between; align-items: center; padding: 0 20px; z-index: 1001; box-sizing: border-box;
     }
     body.modo-slides .controles-slides { display: flex; }
@@ -444,14 +458,13 @@ function mudarSlide(direcao) {
 
 <div class="controles-slides">
     <div id="slide-info-serie" class="info-lateral"></div>
-    
     <div class="botoes-centrais">
         <button class="btn-nav" onclick="mudarSlide(-1)">⬅ Anterior</button>
         <span id="contador-slide"></span>
         <button class="btn-nav" onclick="mudarSlide(1)">Próximo ➡</button>
         <button class="btn-nav" onclick="toggleSlides()" style="background:#e74c3c;">Sair</button>
     </div>
-
     <div id="slide-info-aula" class="info-lateral" style="text-align: right;"></div>
-</div></body>
+</div>
+</body>
 </html>

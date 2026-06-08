@@ -6,7 +6,7 @@
     <title>1º Ano: Aula 08 - Inequações de 1º e 2º Grau</title>
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../estilo.css">
-
+    
     <script>
         MathJax = {
             tex: {
@@ -33,7 +33,7 @@
 
 <header>
     <h1>MATEMÁTICA EM</h1>
-    <p>1º Ano | Aula 08: Álgebra (Inequações de 1º e 2º Grau)</p>
+    <p>1º Ano | Aula 08: Inequações de 1º e 2º Grau</p>
 <button id="btn-slides" onclick="toggleSlides()" style="position: fixed; top: 20px; right: 20px; z-index: 1000; padding: 10px; cursor: pointer; background: #e67e22; color: white; border: none; border-radius: 5px; font-weight: bold;">
     📺 Iniciar Modo Slides
 </button>
@@ -44,397 +44,303 @@
 <main class="conteudo-principal">
 
 <div class="secao-aula">
-  <div class="container-resumo">
-    <h3>📚 Resumo</h3>
+ <div class="container-resumo">
+    <h3>📚 Resumo: </h3>
     <section class="resumo-conteudo">
-        <p>Uma <strong>inequação</strong> é uma sentença matemática que relaciona duas expressões por meio de uma <strong>desigualdade</strong> ($<$, $>$, $\leq$, $\geq$). A solução é um <strong>conjunto de valores</strong> (intervalo) que tornam a desigualdade verdadeira.</p>
-
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 12px; margin-top: 12px; text-align: center;">
-            <div style="background:#eaf4fb; border-radius:8px; padding:12px;">
-                <strong>📏 Inequação de 1º Grau</strong><br><br>
-                $ax + b > 0$<br><br>
-                Solução: semirreta<br>
-                <small>Isola $x$ como numa equação — atenção ao dividir por negativo!</small>
-            </div>
-            <div style="background:#eafaf1; border-radius:8px; padding:12px;">
-                <strong>📐 Inequação de 2º Grau</strong><br><br>
-                $ax^2 + bx + c > 0$<br><br>
-                Analisa-se o sinal da parábola<br>
-                <small>Raízes dividem a reta em intervalos</small>
-            </div>
-            <div style="background:#fef9e7; border-radius:8px; padding:12px;">
-                <strong>⚠️ Regra de Ouro</strong><br><br>
-                Ao <strong>multiplicar ou dividir</strong> por número <strong>negativo</strong>, o sentido da desigualdade <strong>inverte</strong>!<br>
-                <small>$-2x > 4 \implies x < -2$</small>
-            </div>
-            <div style="background:#fdf2f8; border-radius:8px; padding:12px;">
-                <strong>🔢 Notação de Intervalo</strong><br><br>
-                $x > a$: $(a, +\infty)$<br>
-                $x \geq a$: $[a, +\infty)$<br>
-                $a < x < b$: $(a, b)$<br>
-                $a \leq x \leq b$: $[a, b]$
-            </div>
-        </div>
+        <p>Uma <strong>inequação</strong> é uma sentença matemática que expressa uma relação de desigualdade entre duas expressões, usando os símbolos $<$, $>$, $\leq$ ou $\geq$.</p>
+        <ul>
+            <li><strong>Inequação do 1º Grau:</strong> Forma $ax + b > 0$ (ou $<$, $\leq$, $\geq$). Solução é sempre um intervalo aberto ou fechado na reta.</li>
+            <li><strong>Inequação do 2º Grau:</strong> Forma $ax^2 + bx + c > 0$. A solução é determinada pelas raízes e pela concavidade da parábola.</li>
+            <li><strong>Regra de ouro:</strong> Ao multiplicar ou dividir ambos os lados por um número <strong>negativo</strong>, o sentido da desigualdade se <strong>inverte</strong>.</li>
+        </ul>
     </section>
-  </div>
+</div>
 
 <section class="conteudo-teorico-completo">
+    <div class="passo-teoria">
+        <h3>📖 O que é uma Inequação?</h3>
+        <p>Enquanto uma equação pergunta "para qual valor de $x$ a igualdade é válida?", uma inequação pergunta "para quais valores de $x$ a desigualdade é satisfeita?". A resposta, em geral, não é um único número, mas um <strong>conjunto de valores</strong> — representado por um intervalo na reta real.</p>
+    </div>
 
     <div class="passo-teoria">
-        <h3>📖 Inequações de 1º e 2º Grau</h3>
-        <h4>1. Conceito de Inequação e Sinais de Desigualdade</h4>
-        <p>Uma <strong>inequação</strong> é uma expressão matemática com desigualdade entre dois membros. Os sinais usados são:</p>
-        <ul style="margin-left: 2rem;">
-            <li>$<$: estritamente menor que</li>
-            <li>$>$: estritamente maior que</li>
-            <li>$\leq$: menor ou igual a</li>
-            <li>$\geq$: maior ou igual a</li>
+        <h4>1. Inequações do 1º Grau — Método de Resolução</h4>
+        <p>A resolução é semelhante à de uma equação, com uma regra extra fundamental:</p>
+        <ul>
+            <li>Isole a incógnita realizando as operações em ambos os lados.</li>
+            <li><strong>Ao multiplicar ou dividir por um número negativo, inverta o sinal da desigualdade.</strong></li>
         </ul>
-        <p>O <strong>conjunto solução</strong> de uma inequação é formado por todos os valores reais que tornam a desigualdade verdadeira. Ao contrário da equação (solução pontual), a solução de uma inequação é geralmente um <strong>intervalo</strong> da reta real.</p>
-        <p><strong>Propriedades das desigualdades:</strong></p>
-        <ul style="margin-left: 2rem;">
-            <li>Somar ou subtrair o mesmo valor dos dois lados <strong>não altera</strong> o sentido.</li>
-            <li>Multiplicar ou dividir por um número <strong>positivo</strong> não altera o sentido.</li>
-            <li>Multiplicar ou dividir por um número <strong>negativo inverte</strong> o sentido. ⚠️</li>
+        <p><strong>Exemplo:</strong> Resolva $-3x + 6 > 0$.</p>
+        <p style="text-align:center;">$$-3x > -6 \implies x < \frac{-6}{-3} \implies x < 2$$</p>
+        <p>A solução é o intervalo $(-\infty, 2)$, ou seja, todo $x$ real menor que $2$.</p>
+        <figure class="figura-aula figura-grande">
+            <img src="../imagens_matematica/aula1_08_figura_1.png" alt="Representação da solução de uma inequação do 1º grau na reta real.">
+            <figcaption>Figura 1: A solução de uma inequação do 1º grau é representada por uma semirreta na reta real. O círculo aberto indica que o extremo não está incluído.</figcaption>
+        </figure>
+    </div>
+
+    <div class="passo-teoria">
+        <h4>2. Inequações do 2º Grau — Método pelo Estudo do Sinal</h4>
+        <p>Para resolver $ax^2 + bx + c > 0$ (ou $< 0$), seguimos os passos:</p>
+        <ul>
+            <li><strong>Passo 1:</strong> Calcule as raízes $x_1$ e $x_2$ (com $x_1 < x_2$) usando Bhaskara. Se $\Delta < 0$, não há raízes reais.</li>
+            <li><strong>Passo 2:</strong> Identifique a concavidade pelo sinal de $a$.</li>
+            <li><strong>Passo 3:</strong> Use a tabela de sinais para determinar o intervalo solução.</li>
+        </ul>
+        <p>Resultados para $\Delta > 0$:</p>
+        <ul>
+            <li>Se $a > 0$: $f(x) > 0$ para $x < x_1$ ou $x > x_2$; e $f(x) < 0$ para $x_1 < x < x_2$.</li>
+            <li>Se $a < 0$: $f(x) > 0$ para $x_1 < x < x_2$; e $f(x) < 0$ para $x < x_1$ ou $x > x_2$.</li>
+        </ul>
+        <figure class="figura-aula figura-grande">
+            <img src="../imagens_matematica/aula1_08_figura_2.png" alt="Tabela de sinais da inequação do 2º grau para os casos a maior que zero e a menor que zero.">
+            <figcaption>Figura 2: O sinal de $a$ e as raízes determinam os intervalos solução da inequação do 2º grau.</figcaption>
+        </figure>
+    </div>
+
+    <div class="passo-teoria">
+        <h4>3. Casos Especiais — $\Delta = 0$ e $\Delta < 0$</h4>
+        <p>Quando $\Delta \leq 0$, a análise é mais simples:</p>
+        <ul>
+            <li><strong>$\Delta = 0$ (raiz dupla $x_0$):</strong> $f(x_0) = 0$ e $f(x) > 0$ para todo $x \neq x_0$ se $a > 0$; ou $f(x) < 0$ para todo $x \neq x_0$ se $a < 0$.</li>
+            <li><strong>$\Delta < 0$:</strong> A parábola não toca o eixo $x$. Se $a > 0$, $f(x) > 0$ para todo $x \in \mathbb{R}$; se $a < 0$, $f(x) < 0$ para todo $x \in \mathbb{R}$.</li>
         </ul>
     </div>
-
-    <div class="passo-teoria">
-        <h4>2. Inequação do 1º Grau — Resolução</h4>
-        <p>Uma inequação do 1º grau na forma $ax + b \lessgtr 0$ (ou $\lessgtr c$) é resolvida de forma análoga a uma equação, <strong>isolando $x$</strong>, com atenção ao sinal quando se multiplica/divide por negativo.</p>
-        <p><strong>Exemplo passo a passo:</strong> Resolva $3x - 6 > 0$.</p>
-        <ol style="margin-left: 2rem;">
-            <li>$3x > 6$</li>
-            <li>$x > 2$ (dividimos por $+3$, sentido mantido)</li>
-            <li>Solução: $x \in (2, +\infty)$</li>
-        </ol>
-        <p><strong>Exemplo com inversão:</strong> Resolva $-2x + 4 \geq 10$.</p>
-        <ol style="margin-left: 2rem;">
-            <li>$-2x \geq 6$</li>
-            <li>$x \leq -3$ (dividimos por $-2$, sentido <strong>invertido</strong>!)</li>
-            <li>Solução: $x \in (-\infty, -3]$</li>
-        </ol>
-    </div>
-
-    <div class="passo-teoria">
-        <h4>3. Inequação do 1º Grau — Sistema (Conjunto Interseção)</h4>
-        <p>Um <strong>sistema de inequações</strong> do 1º grau exige que as desigualdades sejam satisfeitas <strong>simultaneamente</strong>. A solução é a <strong>interseção</strong> dos conjuntos solução de cada inequação.</p>
-        <p style="text-align:center;">$$\begin{cases} x > 1 \\ x \leq 5 \end{cases} \implies S = (1,\, 5]$$</p>
-        <p>Quando a interseção é vazia, o sistema não tem solução: $\begin{cases} x > 5 \\ x < 2 \end{cases} \implies S = \emptyset$.</p>
-        <p>Na reta numérica, representa-se cada inequação e identifica-se a região de sobreposição.</p>
-    </div>
-
-    <div class="passo-teoria">
-        <h4>4. Inequação do 2º Grau — Método das Raízes e Estudo do Sinal</h4>
-        <p>Para resolver $ax^2 + bx + c \lessgtr 0$, seguimos os passos:</p>
-        <ol style="margin-left: 2rem;">
-            <li>Encontre as raízes $x_1$ e $x_2$ (com $x_1 \leq x_2$) da equação $ax^2 + bx + c = 0$ (usando Bhaskara).</li>
-            <li>Analise o <strong>sinal da parábola</strong> em relação ao eixo $x$ com base no coeficiente $a$:</li>
-        </ol>
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 10px 0; text-align: center; font-size: 0.95em;">
-            <div style="background:#eafaf1; border-radius:8px; padding:10px;">
-                <strong>$a > 0$ (parábola ⋃)</strong><br>
-                $ax^2+bx+c > 0$: $x < x_1$ ou $x > x_2$ &nbsp; → &nbsp; $(-\infty, x_1) \cup (x_2, +\infty)$<br>
-                $ax^2+bx+c < 0$: $x_1 < x < x_2$ &nbsp; → &nbsp; $(x_1, x_2)$
-            </div>
-            <div style="background:#fdecea; border-radius:8px; padding:10px;">
-                <strong>$a < 0$ (parábola ⋂)</strong><br>
-                $ax^2+bx+c > 0$: $x_1 < x < x_2$ &nbsp; → &nbsp; $(x_1, x_2)$<br>
-                $ax^2+bx+c < 0$: $x < x_1$ ou $x > x_2$ &nbsp; → &nbsp; $(-\infty, x_1) \cup (x_2, +\infty)$
-            </div>
-        </div>
-        <p><strong>Casos especiais ($\Delta \leq 0$):</strong> se $\Delta < 0$ e $a > 0$, então $ax^2+bx+c > 0$ para todo $x \in \mathbb{R}$. Se $\Delta = 0$, há um único ponto de tangência com o eixo $x$.</p>
-    </div>
-
-    <div class="passo-teoria">
-        <h4>5. Inequação do 2º Grau — Tabela de Sinais</h4>
-        <p>A <strong>tabela de sinais</strong> é uma ferramenta poderosa para resolver inequações do 2º grau, especialmente as fatoradas. Para $f(x) = a(x - x_1)(x - x_2)$:</p>
-        <div style="overflow-x: auto; margin: 10px 0;">
-            <table style="width:100%; border-collapse: collapse; text-align:center; font-size:0.95em;">
-                <tr style="background:#2c3e50; color:white;">
-                    <th style="padding:8px; border:1px solid #ccc;">$x$</th>
-                    <th style="padding:8px; border:1px solid #ccc;">$(-\infty, x_1)$</th>
-                    <th style="padding:8px; border:1px solid #ccc;">$x_1$</th>
-                    <th style="padding:8px; border:1px solid #ccc;">$(x_1, x_2)$</th>
-                    <th style="padding:8px; border:1px solid #ccc;">$x_2$</th>
-                    <th style="padding:8px; border:1px solid #ccc;">$(x_2, +\infty)$</th>
-                </tr>
-                <tr>
-                    <td style="padding:8px; border:1px solid #ccc;">$(x - x_1)$</td>
-                    <td style="padding:8px; border:1px solid #ccc; background:#fdecea;">$-$</td>
-                    <td style="padding:8px; border:1px solid #ccc;">$0$</td>
-                    <td style="padding:8px; border:1px solid #ccc; background:#eafaf1;">$+$</td>
-                    <td style="padding:8px; border:1px solid #ccc;">$+$</td>
-                    <td style="padding:8px; border:1px solid #ccc; background:#eafaf1;">$+$</td>
-                </tr>
-                <tr>
-                    <td style="padding:8px; border:1px solid #ccc;">$(x - x_2)$</td>
-                    <td style="padding:8px; border:1px solid #ccc; background:#fdecea;">$-$</td>
-                    <td style="padding:8px; border:1px solid #ccc;">$-$</td>
-                    <td style="padding:8px; border:1px solid #ccc; background:#fdecea;">$-$</td>
-                    <td style="padding:8px; border:1px solid #ccc;">$0$</td>
-                    <td style="padding:8px; border:1px solid #ccc; background:#eafaf1;">$+$</td>
-                </tr>
-                <tr style="font-weight:bold;">
-                    <td style="padding:8px; border:1px solid #ccc;">$f(x)$ ($a>0$)</td>
-                    <td style="padding:8px; border:1px solid #ccc; background:#eafaf1;">$+$</td>
-                    <td style="padding:8px; border:1px solid #ccc;">$0$</td>
-                    <td style="padding:8px; border:1px solid #ccc; background:#fdecea;">$-$</td>
-                    <td style="padding:8px; border:1px solid #ccc;">$0$</td>
-                    <td style="padding:8px; border:1px solid #ccc; background:#eafaf1;">$+$</td>
-                </tr>
-            </table>
-        </div>
-        <p>A tabela de sinais também é aplicável a inequações produto (ex: $(x-2)(x+3) > 0$) e quocientes (ex: $\dfrac{x-1}{x+4} > 0$).</p>
-    </div>
-
-    <div class="passo-teoria">
-        <h4>6. Inequações Produto e Quociente</h4>
-        <p>Inequações do tipo $(x - a)(x - b) \lessgtr 0$ ou $\dfrac{x - a}{x - b} \lessgtr 0$ são resolvidas pela <strong>tabela de sinais</strong>:</p>
-        <p><strong>Regra prática para produto/quociente:</strong></p>
-        <ul style="margin-left: 2rem;">
-            <li>Resultado <strong>positivo</strong>: os fatores têm o <strong>mesmo sinal</strong> (ambos $+$ ou ambos $-$).</li>
-            <li>Resultado <strong>negativo</strong>: os fatores têm <strong>sinais opostos</strong>.</li>
-        </ul>
-        <p><strong>Atenção no quociente:</strong> o denominador nunca pode ser zero — ele é excluído da solução mesmo quando $\leq$ ou $\geq$ é o sinal usado.</p>
-        <p>Exemplo: $\dfrac{x+2}{x-3} \geq 0$. Raízes: $x = -2$ (numerador) e $x = 3$ (denominador, excluído).</p>
-        <p>Solução: $x \leq -2$ ou $x > 3$, ou seja $(-\infty, -2] \cup (3, +\infty)$.</p>
-    </div>
-
 </section>
 
 <section class="aplicacoes-reais">
-    <h3>💡 Matemática em Ação</h3>
-    <div class="cards-aplicacao" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-top: 20px;">
+    <h3>💡 Matemática em Ação</h3>  
+    <div class="cards-aplicacao" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-top: 20px;">        
         <div class="card" style="background: #fdfdfd; padding: 20px; border-radius: 10px; border-left: 5px solid #3498db; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
-            <h4>💰 Economia — Análise de Lucro</h4>
-            <p>Uma empresa lucra quando a receita supera o custo. Modelando receita e custo como funções quadráticas, a inequação $R(x) > C(x)$ — equivalente a uma <strong>inequação do 2º grau</strong> — determina o intervalo de produção rentável.</p>
+            <h4>💰 Finanças Pessoais</h4>
+            <p>Inequações de 1º grau modelam limites de gastos: "Quanto posso gastar por dia para não ultrapassar meu orçamento mensal?" é uma inequação $30x \leq 900$.</p>            
         </div>
-        <div class="card" style="background: #fdfdfd; padding: 20px; border-radius: 10px; border-left: 5px solid #e74c3c; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
-            <h4>🏗️ Engenharia — Resistência de Materiais</h4>
-            <p>Normas técnicas exigem que a tensão em uma estrutura <strong>não ultrapasse</strong> um valor limite: $\sigma(x) \leq \sigma_{max}$. Resolver essa inequação define as dimensões seguras de vigas, pilares e cabos.</p>
+        <div class="card" style="background: #fdfdfd; padding: 20px; border-radius: 10px; border-left: 5px solid #2ecc71; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
+            <h4>🏭 Controle de Produção</h4>
+            <p>Empresas usam inequações do 2º grau para determinar a faixa de produção em que o lucro é positivo: $L(x) = -x^2 + 10x - 16 > 0$ indica a quantidade mínima e máxima para lucrar.</p>
         </div>
-        <div class="card" style="background: #fdfdfd; padding: 20px; border-radius: 10px; border-left: 5px solid #27ae60; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
-            <h4>🎯 Programação Linear</h4>
-            <p>A <strong>Programação Linear</strong> — usada em logística, finanças e indústria — modela restrições como <strong>sistemas de inequações</strong>. A região de soluções viáveis (polígono convexo) é determinada pela interseção dos conjuntos solução de cada inequação.</p>
-        </div>
+    </div>   
+</section>
+
+<section class="simulacao-interativa">
+    <h3>💻 Simulação Interativa: Inequações na Reta Real</h3>
+    <p>Para uma melhor experiência, clique no botão abaixo para abrir o simulador em uma tela cheia:</p>
+    
+    <div style="text-align: center; margin: 30px auto; width: 100%;">
+        <a href="../simulacoes/simulacao_inequacoes.html" 
+           target="_blank" 
+           class="btn-gabarito" 
+           style="text-decoration: none; display: inline-block;">
+           🚀 Abrir Simulação em Nova Aba
+        </a>
     </div>
 </section>
 
+
+
+<!--------------- QUESTOES RESOLVIDAS --------------------------->
+
 <section class="questoes-resolvidas">
-    <h3>✅ 5 Questões Resolvidas (R 1 a 5)</h3>
+                    <h3>✅ 5 Questões Resolvidas (R 1 a 5)</h3>
+                    
+                    <article class="questao">
+                        <h4>R 1: Inequação do 1º Grau Simples</h4>
+                        <p><strong>Enunciado:</strong> Resolva a inequação $2x - 8 < 0$ e represente a solução em notação de intervalo.</p>
+                        <div class="resolucao-bloco">
+                            <p><strong>Resolução:</strong></p>
+                            <p>$$2x - 8 < 0 \implies 2x < 8 \implies x < \frac{8}{2} \implies x < 4$$</p>
+                            <p>A solução é o intervalo $(-\infty,\, 4)$. Todos os valores reais menores que $4$ satisfazem a inequação.</p>
+                        </div>
+                    </article>
 
-    <article class="questao">
-        <h4>R 1: Inequação do 1º Grau Simples</h4>
-        <p><strong>Enunciado:</strong> Resolva $5x - 10 < 2x + 8$ e represente na reta real.</p>
-        <div class="resolucao-bloco">
-            <p><strong>Resolução:</strong>
-            $$5x - 2x < 8 + 10 \implies 3x < 18 \implies x < 6$$
-            Solução: $S = (-\infty,\, 6)$.</p>
-            <p>Na reta real: círculo aberto em $6$, sombreamento para a esquerda. ←○─────</p>
-        </div>
-    </article>
+                    <article class="questao">
+                        <h4>R 2: Inversão do Sinal de Desigualdade</h4>
+                        <p><strong>Enunciado:</strong> Resolva $-4x + 12 \geq 0$.</p>
+                        <div class="resolucao-bloco">
+                            <p><strong>Resolução:</strong></p>
+                            <p>$$-4x + 12 \geq 0 \implies -4x \geq -12$$</p>
+                            <p>Dividindo ambos os lados por $-4$ (número negativo — <strong>inverte o sinal</strong>):</p>
+                            <p>$$x \leq \frac{-12}{-4} \implies x \leq 3$$</p>
+                            <p>A solução é $(-\infty,\, 3]$. O colchete indica que $x = 3$ está incluído (desigualdade com $\leq$).</p>
+                        </div>
+                    </article>
 
-    <article class="questao">
-        <h4>R 2: Inequação do 1º Grau com Inversão</h4>
-        <p><strong>Enunciado:</strong> Resolva $4 - 3x \geq 13$.</p>
-        <div class="resolucao-bloco">
-            <p><strong>Resolução:</strong>
-            $$-3x \geq 13 - 4 \implies -3x \geq 9$$
-            Dividindo por $-3$ (negativo → <strong>inverte</strong> o sinal):
-            $$x \leq -3$$
-            Solução: $S = (-\infty,\, -3]$.</p>
-        </div>
-    </article>
+                    <article class="questao">
+                        <h4>R 3: Inequação do 2º Grau com $a > 0$</h4>
+                        <p><strong>Enunciado:</strong> Resolva $x^2 - x - 6 > 0$.</p>
+                        <div class="resolucao-bloco">
+                            <p><strong>Resolução:</strong> Encontramos as raízes. $a = 1$, $b = -1$, $c = -6$.</p>
+                            <p>$$\Delta = 1 + 24 = 25 \implies x = \frac{1 \pm 5}{2} \implies x_1 = 3 \text{ e } x_2 = -2$$</p>
+                            <p>Como $a > 0$, a parábola abre para cima e $f(x) > 0$ <strong>fora</strong> das raízes:</p>
+                            <p>$$x < -2 \quad \text{ou} \quad x > 3$$</p>
+                            <p>Solução: $(-\infty, -2) \cup (3, +\infty)$.</p>
+                        </div>
+                    </article>
 
-    <article class="questao">
-        <h4>R 3: Sistema de Inequações do 1º Grau</h4>
-        <p><strong>Enunciado:</strong> Resolva o sistema: $\begin{cases} 2x + 1 > 3 \\ x - 4 \leq 2 \end{cases}$</p>
-        <div class="resolucao-bloco">
-            <p><strong>Resolução:</strong></p>
-            <p>1ª inequação: $2x > 2 \implies x > 1$. Conjunto: $(1, +\infty)$.</p>
-            <p>2ª inequação: $x \leq 6$. Conjunto: $(-\infty, 6]$.</p>
-            <p>Interseção: $S = (1, +\infty) \cap (-\infty, 6] = (1,\, 6]$.</p>
-        </div>
-    </article>
+                    <article class="questao">
+                        <h4>R 4: Inequação do 2º Grau com $a < 0$</h4>
+                        <p><strong>Enunciado:</strong> Resolva $-x^2 + 4x - 3 \geq 0$.</p>
+                        <div class="resolucao-bloco">
+                            <p><strong>Resolução:</strong> $a = -1$, $b = 4$, $c = -3$.</p>
+                            <p>$$\Delta = 16 - 12 = 4 \implies x = \frac{-4 \pm 2}{-2} \implies x_1 = 1 \text{ e } x_2 = 3$$</p>
+                            <p>Como $a < 0$, a parábola abre para baixo e $f(x) \geq 0$ <strong>entre</strong> as raízes (inclusive):</p>
+                            <p>$$1 \leq x \leq 3$$</p>
+                            <p>Solução: $[1,\, 3]$.</p>
+                        </div>
+                    </article>
 
-    <article class="questao">
-        <h4>R 4: Inequação do 2º Grau com $a > 0$</h4>
-        <p><strong>Enunciado:</strong> Resolva $x^2 - 5x + 6 < 0$.</p>
-        <div class="resolucao-bloco">
-            <p><strong>Resolução:</strong> Encontrando as raízes de $x^2 - 5x + 6 = 0$:
-            $$\Delta = 25 - 24 = 1 \implies x = \frac{5 \pm 1}{2} \implies x_1 = 2,\ x_2 = 3$$
-            Como $a = 1 > 0$ (parábola ⋃), o trinômio é <strong>negativo entre as raízes</strong>:
-            $$S = (2,\, 3)$$</p>
-        </div>
-    </article>
+                    <article class="questao">
+                        <h4>R 5: Problema Contextualizado</h4>
+                        <p><strong>Enunciado:</strong> Uma empresa tem lucro (em reais) dado por $L(x) = -x^2 + 8x - 12$, onde $x$ é a quantidade de produtos vendidos (em centenas). Para quais valores de $x$ o lucro é positivo?</p>
+                        <div class="resolucao-bloco">
+                            <p><strong>Resolução:</strong> Queremos $L(x) > 0$, ou seja, $-x^2 + 8x - 12 > 0$.</p>
+                            <p>$a = -1$, $b = 8$, $c = -12$.</p>
+                            <p>$$\Delta = 64 - 48 = 16 \implies x = \frac{-8 \pm 4}{-2} \implies x_1 = 2 \text{ e } x_2 = 6$$</p>
+                            <p>Como $a < 0$, a função é positiva entre as raízes:</p>
+                            <p>$$2 < x < 6$$</p>
+                            <p>O lucro é positivo quando a empresa vende entre 200 e 600 produtos (exclusive os extremos).</p>
+                        </div>
+                    </article>
+                </section>
 
-    <article class="questao">
-        <h4>R 5: Inequação do 2º Grau com $a < 0$</h4>
-        <p><strong>Enunciado:</strong> Resolva $-x^2 + 4x - 3 \geq 0$.</p>
-        <div class="resolucao-bloco">
-            <p><strong>Resolução:</strong> Raízes de $-x^2 + 4x - 3 = 0$: multiplicando por $-1$: $x^2 - 4x + 3 = 0$.
-            $$\Delta = 16 - 12 = 4 \implies x_1 = 1,\ x_2 = 3$$
-            Como $a = -1 < 0$ (parábola ⋂), o trinômio é <strong>positivo ou nulo entre as raízes</strong> (incluindo):
-            $$S = [1,\, 3]$$</p>
-        </div>
-    </article>
-</section>
+<!--------------- QUESTÕES PROPOSTAS --------------------------->
 
 <section class="questoes-propostas">
-    <h3>✍️ 5 Questões Propostas (P 6 a 10)</h3>
+                    <h3>✍️ 5 Questões Propostas (P 6 a 10)</h3>
 
-    <article class="questao">
-        <h4>P 6: Inequação com Parâmetro</h4>
-        <p><strong>Enunciado:</strong> Para quais valores de $x$ a expressão $\dfrac{2x - 6}{3} + 1 > x - 1$ é verdadeira?</p>
-        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-        <div class="gabarito-resolucao">
-            <p><strong>Resolução:</strong> Multiplicando por 3:
-            $$2x - 6 + 3 > 3x - 3 \implies 2x - 3 > 3x - 3$$
-            $$-x > 0 \implies x < 0$$
-            Solução: $S = (-\infty,\, 0)$.</p>
-        </div>
-    </article>
+                    <article class="questao">
+                        <h4>P 6: Inequação com Fração</h4>
+                        <p><strong>Enunciado:</strong> Resolva a inequação $\dfrac{x}{3} - 2 > 1$.</p>
+                        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+                        <div class="gabarito-resolucao">
+                            <p><strong>Resolução:</strong></p>
+                            <p>$$\frac{x}{3} > 3 \implies x > 9$$</p>
+                            <p>Solução: $(9, +\infty)$.</p>
+                        </div>
+                    </article>
 
-    <article class="questao">
-        <h4>P 7: Inequação do 2º Grau — $\Delta < 0$</h4>
-        <p><strong>Enunciado:</strong> Resolva $x^2 + x + 1 > 0$ e classifique o conjunto solução.</p>
-        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-        <div class="gabarito-resolucao">
-            <p><strong>Resolução:</strong> Calculamos $\Delta$:
-            $$\Delta = 1 - 4 = -3 < 0$$
-            Como $\Delta < 0$ e $a = 1 > 0$, a parábola não toca o eixo $x$ e fica <strong>inteiramente acima</strong> dele. Portanto $x^2 + x + 1 > 0$ para <strong>todo</strong> $x \in \mathbb{R}$:
-            $$S = \mathbb{R} = (-\infty,\, +\infty)$$</p>
-        </div>
-    </article>
+                    <article class="questao">
+                        <h4>P 7: Inequação Composta (Dupla)</h4>
+                        <p><strong>Enunciado:</strong> Resolva $-1 \leq 2x + 3 \leq 9$.</p>
+                        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+                        <div class="gabarito-resolucao">
+                            <p><strong>Resolução:</strong> Operamos nos três membros simultaneamente:</p>
+                            <p>$$-1 - 3 \leq 2x \leq 9 - 3 \implies -4 \leq 2x \leq 6 \implies -2 \leq x \leq 3$$</p>
+                            <p>Solução: $[-2,\, 3]$.</p>
+                        </div>
+                    </article>
 
-    <article class="questao">
-        <h4>P 8: Inequação Produto</h4>
-        <p><strong>Enunciado:</strong> Resolva $(x - 4)(x + 1) \leq 0$.</p>
-        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-        <div class="gabarito-resolucao">
-            <p><strong>Resolução:</strong> As raízes são $x_1 = -1$ e $x_2 = 4$. Tabela de sinais:</p>
-            <p>O produto é negativo ou nulo quando os fatores têm sinais opostos ou um deles é zero, ou seja, entre as raízes (inclusive):
-            $$S = [-1,\, 4]$$</p>
-        </div>
-    </article>
+                    <article class="questao">
+                        <h4>P 8: Inequação do 2º Grau — $\Delta = 0$</h4>
+                        <p><strong>Enunciado:</strong> Resolva $x^2 - 6x + 9 \leq 0$.</p>
+                        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+                        <div class="gabarito-resolucao">
+                            <p><strong>Resolução:</strong> $a = 1$, $b = -6$, $c = 9$.</p>
+                            <p>$$\Delta = 36 - 36 = 0 \implies x_0 = \frac{6}{2} = 3 \text{ (raiz dupla)}$$</p>
+                            <p>Como $a > 0$, a parábola abre para cima e $f(x) \geq 0$ para todo $x$. Mas $f(x) = 0$ apenas em $x = 3$.</p>
+                            <p>Para $f(x) \leq 0$, a única solução é $\mathbf{x = 3}$.</p>
+                        </div>
+                    </article>
 
-    <article class="questao">
-        <h4>P 9: Inequação Quociente</h4>
-        <p><strong>Enunciado:</strong> Resolva $\dfrac{x - 3}{x + 2} > 0$.</p>
-        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-        <div class="gabarito-resolucao">
-            <p><strong>Resolução:</strong> Raízes críticas: $x = 3$ (numerador) e $x = -2$ (denominador, excluído).</p>
-            <p>Tabela de sinais com $x_1 = -2$ e $x_2 = 3$:</p>
-            <p>O quociente é positivo quando numerador e denominador têm o <strong>mesmo sinal</strong>:</p>
-            <p>— $x < -2$: $(-)/(-)$ = $+$ ✔ &nbsp;|&nbsp; $-2 < x < 3$: $(-)/(+)$ = $-$ ✗ &nbsp;|&nbsp; $x > 3$: $(+)/(+)$ = $+$ ✔</p>
-            <p>$$S = (-\infty,\, -2) \cup (3,\, +\infty)$$
-            ($x = -2$ excluído pois anula o denominador; $x = 3$ excluído pois o sinal é estrito $>$)</p>
-        </div>
-    </article>
+                    <article class="questao">
+                        <h4>P 9: Inequação do 2º Grau — $\Delta < 0$</h4>
+                        <p><strong>Enunciado:</strong> Determine o conjunto solução de $x^2 + 2x + 5 > 0$.</p>
+                        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+                        <div class="gabarito-resolucao">
+                            <p><strong>Resolução:</strong> $a = 1$, $b = 2$, $c = 5$.</p>
+                            <p>$$\Delta = 4 - 20 = -16 < 0$$</p>
+                            <p>Como $\Delta < 0$ e $a > 0$, a parábola não cruza o eixo $x$ e fica inteiramente acima dele. Portanto $f(x) > 0$ para <strong>todo</strong> $x \in \mathbb{R}$.</p>
+                            <p>Solução: $\mathbb{R}$ (conjunto dos reais).</p>
+                        </div>
+                    </article>
 
-    <article class="questao">
-        <h4>P 10: Problema com Inequação do 2º Grau</h4>
-        <p><strong>Enunciado:</strong> Um projétil é lançado e sua altura (em metros) é dada por $h(t) = -t^2 + 6t$, onde $t$ é o tempo em segundos. Durante quais instantes o projétil está a <strong>mais de 8 m</strong> de altura?</p>
-        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-        <div class="gabarito-resolucao">
-            <p><strong>Resolução:</strong> Queremos $h(t) > 8$:
-            $$-t^2 + 6t > 8 \implies -t^2 + 6t - 8 > 0 \implies t^2 - 6t + 8 < 0$$
-            Raízes de $t^2 - 6t + 8 = 0$: $\Delta = 36 - 32 = 4 \implies t_1 = 2,\ t_2 = 4$.<br>
-            Como $a = 1 > 0$, o trinômio é negativo entre as raízes:
-            $$S = (2,\, 4)$$
-            O projétil está acima de 8 m durante o intervalo $2 < t < 4$ segundos.</p>
-        </div>
-    </article>
-</section>
+                    <article class="questao">
+                        <h4>P 10: Problema — Altura de um Objeto</h4>
+                        <p><strong>Enunciado:</strong> Um objeto é lançado verticalmente e sua altura é $h(t) = -t^2 + 6t$ metros. Durante quais instantes de tempo o objeto estará a uma altura <strong>maior que 8 m</strong>?</p>
+                        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+                        <div class="gabarito-resolucao">
+                            <p><strong>Resolução:</strong> Queremos $h(t) > 8$:</p>
+                            <p>$$-t^2 + 6t > 8 \implies -t^2 + 6t - 8 > 0$$</p>
+                            <p>$a = -1$, $b = 6$, $c = -8$. $\Delta = 36 - 32 = 4$.</p>
+                            <p>$$t = \frac{-6 \pm 2}{-2} \implies t_1 = 2 \text{ e } t_2 = 4$$</p>
+                            <p>Como $a < 0$, a função é positiva entre as raízes: $2 < t < 4$.</p>
+                            <p>O objeto estará acima de 8 m entre os instantes $t = 2$ s e $t = 4$ s.</p>
+                        </div>
+                    </article>
+                </section>
+<!--------------- TESTE  --------------------------->
 
 <section class="TESTE">
     <h3>🎓 TESTES (T 11 a 15)</h3>
 
     <article class="questao">
-        <h4>T 11: (FUVEST) Inequação do 1º Grau</h4>
-        <p>O conjunto solução da inequação $\dfrac{x}{2} - \dfrac{x-1}{3} > 1$ é:</p>
-        <p>A) $x > 3$<br>B) $x < 3$<br>C) $x > 4$<br>D) $x > 5$<br>E) $x < 5$</p>
-        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-        <div class="gabarito-resolucao">
-            <p><strong>Resolução:</strong> Alternativa <strong>C</strong>.<br>
-            Multiplicando por 6 (mmc de 2 e 3):
-            $$3x - 2(x-1) > 6 \implies 3x - 2x + 2 > 6 \implies x > 4$$
-            Solução: $S = (4, +\infty)$.</p>
-        </div>
-    </article>
-
-    <article class="questao">
-    <h4>T 12: (ENEM) Inequação do 1º Grau — Resultados Naturais</h4>
-    <p>Quais são os resultados naturais da inequação a seguir?</p>
-    <p>$$2x - 18 > 4x - 38$$</p>
-    <p>A) $x > 10$<br>B) $x < 10$<br>C) $x = 10$<br>D) $x$ é um número natural<br>E) $x = 0,\ x = 1,\ x = 2,\ x = 3,\ x = 4,\ x = 5,\ x = 6,\ x = 7,\ x = 8$ e $x = 9$</p>
+    <h4>T 11: (ENEM) Inequação do 1º Grau — Comparação de Planos</h4>
+    <p>Uma operadora de celular oferece dois planos. O Plano A cobra R$ 0,50 por minuto. O Plano B cobra R$ 20,00 fixos mensais mais R$ 0,20 por minuto. A partir de quantos minutos mensais o Plano B passa a ser mais econômico que o Plano A?</p>
+    <p>A) A partir de 50 min<br>B) A partir de 60 min<br>C) A partir de 67 min<br>D) A partir de 80 min<br>E) A partir de 100 min</p>
     <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
     <div class="gabarito-resolucao">
-        <p><strong>Resolução:</strong> Alternativa <strong>E</strong>.<br>
-        $2x - 18 > 4x - 38$<br>
-        $2x - 4x > -38 + 18$<br>
-        $-2x > -20$<br>
-        $x < 10$ (ao dividir por $-2$, inverte-se o sinal da inequação).<br>
-        O conjunto solução é $x < 10$. Como o enunciado pede os resultados <strong>naturais</strong> ($\mathbb{N} = \{0, 1, 2, 3, \ldots\}$), a resposta é $x \in \{0,\ 1,\ 2,\ 3,\ 4,\ 5,\ 6,\ 7,\ 8,\ 9\}$.</p>
+        <p><strong>Resolução:</strong> Alternativa <strong>C</strong>.<br>
+        Plano B mais econômico: $20 + 0{,}20x < 0{,}50x$.<br>
+        $$20 < 0{,}30x \implies x > \frac{20}{0{,}30} \implies x > 66{,}6\ldots$$
+        A partir de 67 minutos inteiros o Plano B é mais barato.</p>
     </div>
-</article>
+      </article>
 
     <article class="questao">
-    <h4>T 13:  Inequação do 1º Grau — Idade de Maria</h4>
-    <p>Ana tem duas vezes a idade que Maria terá daqui a dez anos, entretanto, a idade de Ana não supera o quádruplo da idade de Maria.</p>
-    <p>Entre as opções a seguir, qual é a que melhor representa a idade de Maria?</p>
-    <p>A) A idade de Ana é maior que a idade de Maria.<br>B) A idade de Maria é menor que a idade de Ana.<br>C) A idade de Ana é maior que 10 anos.<br>D) A idade de Maria é maior que 10 anos.<br>E) A idade de Maria é menor que 10 anos.</p>
-    <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-    <div class="gabarito-resolucao">
-        <p><strong>Resolução:</strong> Alternativa <strong>D</strong>.<br>
-        Seja $m$ a idade de Maria e $a$ a idade de Ana.<br>
-        Condição 1: $a = 2(m + 10)$, ou seja, $a = 2m + 20$.<br>
-        Condição 2: $a \leq 4m$.<br>
-        Substituindo a condição 1 na condição 2:<br>
-        $2m + 20 \leq 4m$<br>
-        $20 \leq 4m - 2m$<br>
-        $20 \leq 2m$<br>
-        $m \geq 10$.<br>
-        Como $a = 2m + 20 > m$ sempre que $m > -20$ (verdadeiro para idades), as alternativas A e B são sempre verdadeiras mas não representam especificamente a idade de Maria. A condição obtida mostra que a idade de Maria é <strong>maior que 10 anos</strong>.</p>
-    </div>
-</article>
-
-    <article class="questao">
-    <h4>T 14:  Inequação do 1º Grau — Área e Perímetro do Quadrado</h4>
-    <p>Sabendo que um quadrado possui quatro lados congruentes, que condição deve ser cumprida para que a área de um quadrado seja maior que seu perímetro?</p>
-    <p>A) Os lados do quadrado devem ser iguais.<br>B) A medida do lado do quadrado deve ser maior que 10.<br>C) A medida do lado do quadrado deve ser menor que 10.<br>D) A medida do lado do quadrado deve ser maior que 4.<br>E) A medida da diagonal do quadrado deve ser maior que a medida do lado.</p>
-    <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-    <div class="gabarito-resolucao">
-        <p><strong>Resolução:</strong> Alternativa <strong>D</strong>.<br>
-        Seja $l$ a medida do lado do quadrado.<br>
-        Área: $A = l^2$ e Perímetro: $P = 4l$.<br>
-        Condição: $A > P \implies l^2 > 4l$.<br>
-        Como $l > 0$, divide-se ambos os lados por $l$:<br>
-        $l > 4$.<br>
-        Portanto, a área do quadrado é maior que seu perímetro quando a medida do lado é <strong>maior que 4</strong>.</p>
-    </div>
-</article>
-
-    <article class="questao">
-    <h4>T 15: Inequação do 1º Grau — Produção de Cadernos</h4>
-    <p>Uma empresa que trabalha com cadernos tem gastos fixos de R$\,400{,}00$ mais o custo de R$\,3{,}00$ por caderno produzido. Sabendo que cada unidade será vendida a R$\,11{,}00$, quantos cadernos deverão ser produzidos para que o valor arrecadado supere os gastos?</p>
-    <p>A) 50 cadernos<br>B) 70 cadernos<br>C) 90 cadernos<br>D) A arrecadação nunca será superior<br>E) Os gastos nunca serão superiores</p>
+    <h4>T 12: (ENEM) Inequação do 2º Grau — Intervalo de Lucro</h4>
+    <p>O lucro semanal de uma barraca de feira, em reais, é modelado por $L(x) = -2x^2 + 20x - 32$, onde $x$ é o número de caixas de produto vendidas. Para quais valores de $x$ o lucro é positivo?</p>
+    <p>A) $2 < x < 8$<br>B) $x < 2$ ou $x > 8$<br>C) $1 < x < 16$<br>D) $0 < x < 10$<br>E) $4 < x < 6$</p>
     <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
     <div class="gabarito-resolucao">
         <p><strong>Resolução:</strong> Alternativa <strong>A</strong>.<br>
-        Seja $x$ a quantidade de cadernos produzidos e vendidos.<br>
-        Receita: $R = 11x$.<br>
-        Custo total: $C = 3x + 400$.<br>
-        Condição: $R > C \implies 11x > 3x + 400$.<br>
-        $11x - 3x > 400$<br>
-        $8x > 400$<br>
-        $x > 50$.<br>
-        A empresa deve produzir e vender mais de 50 cadernos, ou seja, a partir de <strong>51 cadernos</strong> o valor arrecadado supera os gastos. A alternativa mais próxima é <strong>50 cadernos</strong> (ponto de equilíbrio).</p>
+        $-2x^2 + 20x - 32 > 0$. Dividindo por $-2$ (inverte): $x^2 - 10x + 16 < 0$.<br>
+        $\Delta = 100 - 64 = 36 \implies x_1 = 2$ e $x_2 = 8$.<br>
+        Como $a = 1 > 0$, a parábola é negativa entre as raízes: $2 < x < 8$.</p>
+    </div>
+      </article>
+
+    <article class="questao">
+    <h4>T 13: (FUVEST) Inequação com Parâmetro</h4>
+    <p>Para quais valores inteiros de $k$ a inequação $kx > 4$ tem como solução $x > \dfrac{4}{k}$ (ou seja, o sentido da desigualdade <strong>não</strong> se inverte)?</p>
+    <p>A) $k \geq 1$<br>B) $k > 0$<br>C) $k \neq 0$<br>D) $k < 0$<br>E) $k \leq -1$</p>
+    <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+    <div class="gabarito-resolucao">
+        <p><strong>Resolução:</strong> Alternativa <strong>B</strong>.<br>
+        Ao dividir $kx > 4$ por $k$, o sentido se mantém somente quando $k > 0$.<br>
+        Se $k < 0$, a divisão inverteria a desigualdade, resultando em $x < \dfrac{4}{k}$.<br>
+        Se $k = 0$, a expressão $kx = 0$ não depende de $x$ e a inequação vira $0 > 4$, que é falsa.</p>
     </div>
 </article>
 
+    <article class="questao">
+    <h4>T 14: (ENEM) Sistema de Inequações</h4>
+    <p>Determine o conjunto solução do sistema de inequações:
+    $$\begin{cases} 2x - 4 > 0 \\ x^2 - 5x + 4 \leq 0 \end{cases}$$</p>
+    <p>A) $1 \leq x \leq 4$<br>B) $2 < x \leq 4$<br>C) $x > 2$<br>D) $1 < x < 4$<br>E) $2 < x < 4$</p>
+    <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+    <div class="gabarito-resolucao">
+        <p><strong>Resolução:</strong> Alternativa <strong>B</strong>.<br>
+        Inequação 1: $2x - 4 > 0 \Rightarrow x > 2$. Solução: $(2, +\infty)$.<br>
+        Inequação 2: $x^2 - 5x + 4 \leq 0$. Raízes: $\Delta = 25 - 16 = 9 \Rightarrow x_1 = 1$ e $x_2 = 4$.<br>
+        Como $a > 0$, $f(x) \leq 0$ entre as raízes: $1 \leq x \leq 4$. Solução: $[1, 4]$.<br>
+        Interseção: $(2, +\infty) \cap [1, 4] = (2, 4]$, ou seja, $\mathbf{2 < x \leq 4}$.</p>
+    </div>
+     </article>
+
+    <article class="questao">
+    <h4>T 15: (ENEM) Inequação do 2º Grau — Segurança Estrutural</h4>
+    <p>A resistência de uma viga (em kN) em função do comprimento $x$ (em metros) é dada por $R(x) = -x^2 + 10x - 21$. A viga é considerada segura enquanto $R(x) > 0$. Qual o intervalo de comprimentos seguros?</p>
+    <p>A) $0 < x < 10$<br>B) $x < 3$ ou $x > 7$<br>C) $3 < x < 7$<br>D) $1 < x < 21$<br>E) $x > 5$</p>
+    <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+    <div class="gabarito-resolucao">
+        <p><strong>Resolução:</strong> Alternativa <strong>C</strong>.<br>
+        $-x^2 + 10x - 21 > 0$. $a = -1$, $b = 10$, $c = -21$.<br>
+        $$\Delta = 100 - 84 = 16 \implies x = \frac{-10 \pm 4}{-2} \implies x_1 = 3 \text{ e } x_2 = 7$$
+        Como $a < 0$, a função é positiva entre as raízes: $3 < x < 7$.<br>
+        A viga é segura para comprimentos entre 3 m e 7 m.</p>
+    </div>
+    </article>
 </section>
+
 </div>
 </main>
 
@@ -480,7 +386,7 @@ function toggleSlides() {
         mostrarSlide(slideAtual);
     } else {
         body.classList.remove('modo-slides');
-        window.location.reload();
+        window.location.reload(); 
     }
 }
 
@@ -489,10 +395,10 @@ function mostrarSlide(n) {
         s.classList.remove('slide-ativo');
         s.style.display = 'none';
     });
-
+    
     const slide = slides[n];
     slide.classList.add('slide-ativo');
-    slide.style.display = 'flex';
+    slide.style.display = 'flex'; 
 
     if (slide.classList.contains('questao') && !slide.querySelector('.btn-gabarito')) {
         const resolucoes = slide.querySelectorAll('.resolucao-bloco');
@@ -509,13 +415,13 @@ function mostrarSlide(n) {
 
     const pHeader = document.querySelector('header p').innerText;
     const partes = pHeader.split('|');
-    if (partes.length > 1) {
+    if(partes.length > 1) {
         document.getElementById('slide-info-serie').innerText = partes[0].trim();
         document.getElementById('slide-info-aula').innerText = partes[1].trim();
     }
-
+    
     document.getElementById('contador-slide').innerText = (n + 1) + " / " + slides.length;
-
+    
     if (window.MathJax) MathJax.typesetPromise();
 }
 
@@ -530,17 +436,17 @@ function mudarSlide(direcao) {
 <style>
     body.modo-slides { overflow: hidden; background-color: #1a1a1a; }
     body.modo-slides .menu-lateral, body.modo-slides header, body.modo-slides .menu-toggle, body.modo-slides #btn-slides { display: none !important; }
-
+    
     .slide-ativo {
         display: flex !important; flex-direction: column; align-items: center; justify-content: flex-start;
         position: fixed; top: 0; left: 0; width: 100vw; height: calc(100vh - 70px);
-        background: #ffffff; padding: 40px; z-index: 999; overflow-y: auto !important;
+        background: #ffffff; padding: 40px; z-index: 999; overflow-y: auto !important; 
         box-sizing: border-box; text-align: center;
     }
-
+    
     .controles-slides {
         position: fixed; bottom: 0; left: 0; width: 100%; height: 70px;
-        background: #2c3e50; color: white; display: none;
+        background: #2c3e50; color: white; display: none; 
         justify-content: space-between; align-items: center; padding: 0 20px; z-index: 1001; box-sizing: border-box;
     }
     body.modo-slides .controles-slides { display: flex; }
@@ -553,14 +459,12 @@ function mudarSlide(direcao) {
 
 <div class="controles-slides">
     <div id="slide-info-serie" class="info-lateral"></div>
-
     <div class="botoes-centrais">
         <button class="btn-nav" onclick="mudarSlide(-1)">⬅ Anterior</button>
         <span id="contador-slide"></span>
         <button class="btn-nav" onclick="mudarSlide(1)">Próximo ➡</button>
         <button class="btn-nav" onclick="toggleSlides()" style="background:#e74c3c;">Sair</button>
     </div>
-
     <div id="slide-info-aula" class="info-lateral" style="text-align: right;"></div>
 </div>
 </body>
