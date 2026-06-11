@@ -520,55 +520,51 @@
     <h3>🎓 Testes (T 11 a 15)</h3>
 
     <article class="questao">
-        <h4>T 11: (IFTM) Lei Geral dos Gases Perfeitos</h4>
-        <p>Uma massa gasosa está encerrada em um recipiente de volume $6\text{ litros}$ na temperatura de $27\text{ °C}$, exercendo pressão de $8\text{ atmosferas}$. Aquece-se o gás até que sua temperatura passe a ser o dobro da temperatura inicial e reduz-se o volume à terça parte do volume inicial. Pode-se afirmar que a nova pressão do gás vale:</p>
+    <h4>T 11: (ENEM) Lei Geral dos Gases e Relação de Pressão</h4>
+    <p>O estado de qualquer substância gasosa é determinado pela medida de três grandezas: o volume (V), a pressão (P) e a temperatura (T) dessa substância. Para os chamados gases “ideais”, o valor do quociente $\frac{P \cdot V}{T}$ é sempre constante. Considere um reservatório que está cheio de um gás ideal. Sem vazar o gás, realiza-se uma compressão do reservatório, reduzindo seu volume à metade. Ao mesmo tempo, uma fonte de calor faz a temperatura do gás ser quadruplicada. Considere P0 e P1 respectivamente, os valores da pressão do gás no reservatório, antes e depois do procedimento descrito.</p>
+    
+    <p>A relação entre P0 e P1 é:</p>
     
     <p>
-        A) $48\text{ atm}$<br> 
-        B) $12\text{ atm}$<br> 
-        C) $18\text{ atm}$<br> 
-        D) $6\text{ atm}$<br> 
-        E) $24\text{ atm}$
+        A) $P_1 = \frac{P_0}{8}$<br> 
+        B) $P_1 = \frac{P_0}{2}$<br> 
+        C) $P_1 = P_0$<br> 
+        D) $P_1 = 2 P_0$<br> 
+        E) $P_1 = 8 P_0$
     </p>
 
     <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
     <div class="gabarito-resolucao">
-        <p><strong>Resolução:</strong> Alternativa <strong>A</strong></p>
+        <p><strong>Resolução:</strong> Alternativa <strong>E</strong>. <br>
+        O enunciado estabelece que o quociente entre os estados inicial (0) e final (1) é constante:
         
-        <p><strong>1. Identificação dos dados:</strong></p>
-        <ul class="dados-lista">
-            <li><strong>Estado Inicial (1):</strong>
-                <ul>
-                    <li>$P_1 = 8\text{ atm}$</li>
-                    <li>$V_1 = 6\text{ L}$</li>
-                    <li>$T_1 = 27^\circ\text{C} + 273 = 300\text{ K}$</li>
-                </ul>
-            </li>
-            <li><strong>Estado Final (2):</strong>
-                <ul>
-                    <li>$P_2 = ?$</li>
-                    <li>$V_2 = \frac{6}{3} = 2\text{ L}$</li>
-                    <li>$T_2 = 2 \cdot 300 = 600\text{ K}$</li>
-                </ul>
-            </li>
+        $$ \frac{P_0 \cdot V_0}{T_0} = \frac{P_1 \cdot V_1}{T_1} $$
+
+        <strong>1. Identificação das modificações descritas:</strong>
+        <ul>
+            <li>O volume final é reduzido à metade do inicial: $V_1 = \frac{V_0}{2}$</li>
+            <li>A temperatura final é quadruplicada em relação à inicial: $T_1 = 4 T_0$</li>
         </ul>
 
-        <p><strong>2. Aplicação da Lei Geral dos Gases Perfeitos:</strong></p>
-        $$
-        \begin{aligned}
-            \frac{P_1 \cdot V_1}{T_1} &= \frac{P_2 \cdot V_2}{T_2} \\
-            \frac{8 \cdot 6}{300} &= \frac{P_2 \cdot 2}{600} \\
-            \frac{48}{300} &= \frac{2 \cdot P_2}{600} \\
-            2 \cdot P_2 \cdot 300 &= 48 \cdot 600 \\
-            600 \cdot P_2 &= 28800 \\
-            P_2 &= \frac{28800}{600} \\
-            P_2 &= \mathbf{48\text{ atm}}
-        \end{aligned}
-        $$
+        <strong>2. Substituição na fórmula:</strong>
+        $$ \frac{P_0 \cdot V_0}{T_0} = \frac{P_1 \cdot \left(\frac{V_0}{2}\right)}{4 T_0} $$
+
+        <strong>3. Simplificação matemática:</strong>
+        Podemos cancelar $V_0$ e $T_0$ de ambos os lados da equação:
+        $$ P_0 = \frac{P_1 \cdot \frac{1}{2}}{4} $$
         
-       
+        Multiplicando o numerador pelo inverso do denominador no lado direito:
+        $$ P_0 = \frac{P_1}{2 \cdot 4} $$
+        $$ P_0 = \frac{P_1}{8} $$
+
+        Isolando $P_1$:
+        $$ P_1 = 8 P_0 $$
+
+        <strong>Conclusão:</strong> Como o volume diminuiu (o que faz a pressão aumentar) e a temperatura aumentou (o que também faz a pressão aumentar), os dois efeitos se somaram para tornar a pressão final 8 vezes maior que a inicial.
+        </p>
     </div>
 </article>
+
 
     <article class="questao">
     <h4>T 12: (UFRGS) Análise de Gráficos de Transformações</h4>
