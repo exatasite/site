@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1º Ano: Aula 07 - Gráficos do MU e MUV</title>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../estilo.css">
+    
+    <script>
+        MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true
+            }
+        };
+    </script>
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body>
+<button class="menu-toggle" onclick="toggleMenu()">☰</button>
+
+<nav id="menu-principal" class="nav-global">
+    <ul>
+        <li><a href="../index.html">🏠 Início</a></li>
+        <li><a href="../fisica_home.html">⚛️ Física</a></li>
+        <li><a href="../matematica_home.html">📐 Matemática</a></li>
+        <li><a href="../simulacoes_home.html">💻 Simulações</a></li>
+    </ul>
+</nav>
+
+<header id="topo">
+    <h1>FÍSICA EM</h1>
+    <p>1º Ano | Aula 07: Gráficos de MU e MUV</p>
+    <button id="btn-slides" onclick="toggleSlides()">📺 Iniciar Modo Slides</button>
+</header>
+
+<div class="container">
+
+<main class="conteudo-principal">
+
+<div class="secao-aula">
+ <div class="container-resumo" id="resumo">
+    <h3>📚 Resumo </h3>
+    <section class="resumo-conteudo">
+        <p>A análise gráfica permite visualizar a evolução da posição, velocidade e aceleração ao longo do tempo. No <strong>Movimento Uniforme (MU)</strong>, o gráfico $S \times t$ é uma <strong>reta inclinada</strong> e $v \times t$ é uma <strong>reta horizontal</strong>.</p>
+        <p>No <strong>Movimento Uniformemente Variado (MUV)</strong>, a aceleração $a \times t$ é constante (reta horizontal), a velocidade $v \times t$ é uma <strong>reta inclinada</strong> (cuja inclinação fornece a aceleração) e a posição $S \times t$ forma uma <strong>parábola</strong>. A área sob o gráfico $v \times t$ equivale numericamente ao deslocamento ($\Delta S$).</p>
+    </section>
+</div>
+
+<section class="conteudo-teorico-completo" id="teoria">
+    <div class="passo-teoria">
+        <h3>📖 Gráficos do Movimento Uniforme (MU)</h3>
+        <h4>1. Gráficos do MU</h4>
+        <p>Como a velocidade no MU é constante ($a = 0$), as curvas comportam-se da seguinte maneira:</p>
+        <ul>
+            <li><strong>Posição em função do tempo ($S \times t$):</strong> Representado por uma linha reta inclinada. A inclinação da reta (tangente do ângulo) é numericamente igual à velocidade escalar ($v = \tan\theta$).
+                <ul>
+                    <li>Reta crescente $\implies v > 0$ (Movimento Progrediente).</li>
+                    <li>Reta decrescente $\implies v < 0$ (Movimento Retrógrado).</li>
+                </ul>
+            </li>
+            <li><strong>Velocidade em função do tempo ($v \times t$):</strong> Representado por uma linha reta paralela ao eixo do tempo. A área limitada pela reta e o eixo do tempo é numericamente igual ao deslocamento ($\text{Área} \stackrel{N}{=} \Delta S$).</li>
+        </ul>
+    </div>
+
+    <div class="passo-teoria">
+        <h4>2. Gráficos do Movimento Uniformemente Variado (MUV)</h4>
+        <p>No MUV a aceleração é constante ($a \neq 0$), gerando gráficos característicos:</p>
+        <ul>
+            <li><strong>Aceleração em função do tempo ($a \times t$):</strong> Linha reta horizontal. A área sob o gráfico fornece a variação de velocidade ($\text{Área} \stackrel{N}{=} \Delta v$).</li>
+            <li><strong>Velocidade em função do tempo ($v \times t$):</strong> Linha reta inclinada ($v = v_0 + a \cdot t$). A inclinação fornece a aceleração ($a = \tan\theta$) e a área sob a curva fornece o deslocamento ($\text{Área} \stackrel{N}{=} \Delta S$).</li>
+            <li><strong>Posição em função do tempo ($S \times t$):</strong> Curva parabólica ($S = S_0 + v_0 \cdot t + \frac{1}{2}a \cdot t^2$).
+                <ul>
+                    <li>Concavidade voltada para cima ($\cup$) $\implies a > 0$.</li>
+                    <li>Concavidade voltada para baixo ($\cap$) $\implies a < 0$.</li>
+                    <li>O vértice da parábola indica o ponto de inversão do sentido do movimento ($v = 0$).</li>
+                </ul>
+            </li>
+        </ul>
+        <figure class="figura-aula figura-grande">
+            <img src="../imagens_fisica/aula1_07_graficos_resumo.png" alt="Gráficos Comparativos de MU e MUV">
+            <figcaption>Figura 1: Comportamento das curvas para posição, velocidade e aceleração em função do tempo.</figcaption>
+        </figure>
+    </div>
+
+    <div class="passo-teoria">
+        <h4>3. Propriedades Geométricas Fundamentais</h4>
+        <p>Duas regras práticas essenciais para resolução de problemas gráficos:</p>
+        <p>$$\text{Área do gráfico } (v \times t) \stackrel{N}{=} \Delta S$$</p>
+        <p>$$\text{Inclinação da reta no gráfico } (v \times t) \stackrel{N}{=} a$$</p>
+    </div>
+</section>
+
+<section class="aplicacoes-reais" id="aplicacoes">
+    <h3>💡 Física em Ação</h3>
+    <div class="cards-aplicacao">
+        <div class="card">
+            <h4>📊 Telemetria na Formula 1</h4>
+            <p>Engenheiros de corrida analisam os gráficos de velocidade versus tempo emitidos via telemetria para calcular o ponto exato em que o piloto deve frear ou acelerar antes das curvas.</p>
+        </div>
+        <div class="card" style="border-left-color: #2ecc71;">
+            <h4>📱 Sensores de Smartphones</h4>
+            <p>Os acelerômetros dos celulares registram gráficos de aceleração ao longo do tempo para contagem de passos, identificação de quedas e orientação da tela.</p>
+        </div>
+    </div>
+</section>
+
+<section class="questoes-resolvidas" id="resolvidas">
+    <h3>✅ 5 Questões Resolvidas (R 1 a 5)</h3>
+    
+    <article class="questao">
+        <h4>R 1: Deslocamento pela Área do Gráfico $v \times t$</h4>
+        <p><strong>Enunciado:</strong> Um móvel apresenta um gráfico $v \times t$ retangular, onde a velocidade se mantém constante em $12\text{ m/s}$ durante um intervalo de $10\text{ s}$. Calcule o deslocamento do móvel no período.</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong><br>
+            A área sob o gráfico $v \times t$ é a área de um retângulo (base $\times$ altura):<br>
+            $\Delta S \stackrel{N}{=} \text{Área} = \text{base} \times \text{altura} = 10 \times 12 = \mathbf{120\text{ m}}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>R 2: Cálculo da Aceleração via Gráfico $v \times t$</h4>
+        <p><strong>Enunciado:</strong> O gráfico da velocidade em função do tempo de um móvel é uma reta que passa pelos pontos $(t_1 = 0\text{ s}, v_1 = 5\text{ m/s})$ e $(t_2 = 4\text{ s}, v_2 = 25\text{ m/s})$. Determine a aceleração escalar do movimento.</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong><br>
+            A aceleração é numericamente igual à inclinação da reta:<br>
+            $a = \frac{\Delta v}{\Delta t} = \frac{v_2 - v_1}{t_2 - t_1} = \frac{25 - 5}{4 - 0} = \frac{20}{4} = \mathbf{5\text{ m/s}^2}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>R 3: Leitura de Gráfico de Posição Parabólico</h4>
+        <p><strong>Enunciado:</strong> O gráfico $S \times t$ de um MUV é uma parábola com concavidade voltada para baixo cujo vértice ocorre no instante $t = 3\text{ s}$. Qual o significado físico do vértice?</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong><br>
+            No vértice da parábola do gráfico $S \times t$, a reta tangente é horizontal, o que significa que a velocidade escalar é nula ($v = 0$). Esse instante indica a <strong>inversão do sentido do movimento</strong> do móvel.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>R 4: Deslocamento em Gráfico Trapezoidal</h4>
+        <p><strong>Enunciado:</strong> Um gráfico $v \times t$ possui a forma de um trapézio: a velocidade sobe de $0$ a $20\text{ m/s}$ de $t = 0$ a $t = 2\text{ s}$, permanece constante em $20\text{ m/s}$ até $t = 6\text{ s}$ e cai a zero em $t = 8\text{ s}$. Calcule o deslocamento total.</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong><br>
+            A área de um trapézio é dada por $\frac{(B + b) \cdot h}{2}$:<br>
+            • Base maior ($B$) = $8 - 0 = 8\text{ s}$<br>
+            • Base menor ($b$) = $6 - 2 = 4\text{ s}$<br>
+            • Altura ($h$) = $20\text{ m/s}$<br>
+            $\Delta S \stackrel{N}{=} \frac{(8 + 4) \cdot 20}{2} = \frac{12 \cdot 20}{2} = \mathbf{120\text{ m}}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>R 5: Variação de Velocidade via Gráfico $a \times t$</h4>
+        <p><strong>Enunciado:</strong> O gráfico da aceleração pelo tempo $a \times t$ mostra um valor constante $a = 3\text{ m/s}^2$ durante $6\text{ s}$. Se a velocidade inicial era $v_0 = 4\text{ m/s}$, determine a velocidade final.</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong><br>
+            A área sob o gráfico $a \times t$ é numericamente igual à variação de velocidade ($\Delta v$):<br>
+            $\Delta v \stackrel{N}{=} \text{Área} = a \cdot \Delta t = 3 \cdot 6 = 18\text{ m/s}$.<br>
+            Como $\Delta v = v - v_0 \implies 18 = v - 4 \implies v = \mathbf{22\text{ m/s}}$.</p>
+        </div>
+    </article>
+</section>
+
+<section class="questoes-propostas" id="propostas">
+    <h3>✍️ 5 Questões Propostas (P 6 a 10)</h3>
+
+    <article class="questao">
+        <h4>P 6: Velocidade em Gráfico $S \times t$ Reta</h4>
+        <p><strong>Enunciado:</strong> Um gráfico $S \times t$ mostra uma reta que parte da posição $S = 10\text{ m}$ em $t = 0$ e atinge $S = 50\text{ m}$ em $t = 5\text{ s}$. Qual é a velocidade escalar do móvel?</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> A velocidade é a inclinação da reta:<br>
+            $v = \frac{\Delta S}{\Delta t} = \frac{50 - 10}{5 - 0} = \frac{40}{5} = \mathbf{8\text{ m/s}}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 7: Identificação do Sinal da Aceleração</h4>
+        <p><strong>Enunciado:</strong> Um móvel apresenta um gráfico $S \times t$ parabólico com concavidade voltada para cima. Qual é o sinal de sua aceleração?</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> Em gráficos $S \times t$ parabólicos, a concavidade voltada para cima ($\cup$) indica estritamente que a aceleração escalar é <strong>positiva ($a > 0$)</strong>.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 8: Área Triangular no Gráfico $v \times t$</h4>
+        <p><strong>Enunciado:</strong> Em um gráfico $v \times t$, a velocidade cresce de $0$ a $30\text{ m/s}$ em um intervalo de $6\text{ s}$ formando um triângulo. Determine a distância percorrida.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> $\Delta S \stackrel{N}{=} \text{Área do triângulo} = \frac{\text{base} \times \text{altura}}{2} = \frac{6 \times 30}{2} = \mathbf{90\text{ m}}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 9: Análise de Inversão de Sentido em $v \times t$</h4>
+        <p><strong>Enunciado:</strong> No gráfico $v \times t$, a reta cruza o eixo do tempo no instante $t = 4\text{ s}$. O que ocorre nesse instante específico com o móvel?</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> Quando a curva do gráfico $v \times t$ cruza o eixo do tempo, a velocidade passa de positiva para negativa (ou vice-versa), marcando o instante em que o móvel <strong>inverte o sentido do movimento ($v = 0$)</strong>.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 10: Comparação de Dois Móveis em $S \times t$</h4>
+        <p><strong>Enunciado:</strong> No gráfico $S \times t$, duas retas correspondentes a dois móveis $A$ e $B$ se cruzam no instante $t = 5\text{ s}$. Qual o significado físico dessa intersecção?</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> O ponto de cruzamento entre duas curvas ou retas em um gráfico $S \times t$ indica que ambos os corpos ocupam a mesma posição no mesmo instante, ou seja, representa o <strong>encontro dos móveis</strong>.</p>
+        </div>
+    </article>
+</section>
+
+<section class="TESTE" id="testes">
+    <h3>🎓 TESTES (T 11 a 15)</h3>
+
+    <div class="card" style="text-align:center; padding:60px 20px; background:#f8f9fa; border:2px dashed #3498db; border-radius:12px; margin-top:20px;">
+        <h2 style="color:#3498db; font-size:2.5rem; margin-bottom:15px;">
+            🚧 EM BREVE!
+        </h2>
+
+        <p style="font-size:1.2rem; color:#555;">
+            Questões de vestibulares serão disponibilizadas em breve.
+        </p>
+    </div>
+</section>
+
+</div>
+</main>
+
+<aside class="menu-lateral">
+    <iframe src="../menu_fisica.html" style="width:100%; border:none; height:600px;"></iframe>
+</aside>
+
+</div>
+
+<script>
+function toggleGabarito(botao) {
+    const gabarito = botao.nextElementSibling;
+    if (gabarito.style.display === "none" || gabarito.style.display === "") {
+        gabarito.style.display = "block";
+        botao.textContent = "Esconder Gabarito e Resolução";
+        botao.style.backgroundColor = "#2c3e50";
+    } else {
+        gabarito.style.display = "none";
+        botao.textContent = "Ver Gabarito e Resolução";
+        botao.style.backgroundColor = "#3498db";
+    }
+}
+
+function toggleMenu() {
+    const menuGlobal = document.getElementById("menu-principal");
+    if (menuGlobal) menuGlobal.classList.toggle("ativo");
+}
+
+let slideAtual = 0;
+let slides = [];
+
+function prepararSlides() {
+    const seletores = '.container-resumo, .passo-teoria, .aplicacoes-reais, .questao';
+    slides = document.querySelectorAll(seletores);
+}
+
+function toggleSlides() {
+    prepararSlides();
+    const body = document.body;
+    if (!body.classList.contains('modo-slides')) {
+        body.classList.add('modo-slides');
+        slideAtual = 0;
+        mostrarSlide(slideAtual);
+    } else {
+        body.classList.remove('modo-slides');
+        window.location.reload(); 
+    }
+}
+
+function mostrarSlide(n) {
+    slides.forEach(s => {
+        s.classList.remove('slide-ativo');
+        s.style.display = 'none';
+    });
+    const slide = slides[n];
+    slide.classList.add('slide-ativo');
+    slide.style.display = 'flex'; 
+
+    if (slide.classList.contains('questao') && !slide.querySelector('.btn-gabarito')) {
+        const resolucoes = slide.querySelectorAll('.resolucao-bloco');
+        resolucoes.forEach(r => r.style.display = 'block');
+    } else {
+        const gabaritos = slide.querySelectorAll('.gabarito-resolucao');
+        gabaritos.forEach(g => g.style.display = 'none');
+        const botoes = slide.querySelectorAll('.btn-gabarito');
+        botoes.forEach(b => {
+            b.textContent = "Ver Gabarito e Resolução";
+            b.style.backgroundColor = "#3498db";
+        });
+    }
+
+    const pHeader = document.querySelector('header p').innerText;
+    const partes = pHeader.split('|');
+    if(partes.length > 1) {
+        document.getElementById('slide-info-serie').innerText = partes[0].trim();
+        document.getElementById('slide-info-aula').innerText = partes[1].trim();
+    }
+    document.getElementById('contador-slide').innerText = (n + 1) + " / " + slides.length;
+    if (window.MathJax) MathJax.typesetPromise();
+}
+
+function mudarSlide(direcao) {
+    slideAtual += direcao;
+    if (slideAtual >= slides.length) slideAtual = 0;
+    if (slideAtual < 0) slideAtual = slides.length - 1;
+    mostrarSlide(slideAtual);
+}
+
+document.addEventListener('keydown', function(event) {
+    if (document.body.classList.contains('modo-slides')) {
+        switch(event.key) {
+            case 'ArrowRight': 
+            case 'PageDown':   
+            case 'Enter':      
+            case ' ':          
+                mudarSlide(1);
+                break;
+                
+            case 'ArrowLeft':  
+            case 'PageUp':     
+                mudarSlide(-1);
+                break;
+
+            case 'Escape':     
+                toggleSlides();
+                break;
+        }
+    }
+});
+</script>
+
+<style>
+    body.modo-slides { overflow: hidden; background-color: #1a1a1a; }
+    body.modo-slides .menu-lateral, body.modo-slides header, body.modo-slides .menu-toggle, body.modo-slides #btn-slides { display: none !important; }
+    .slide-ativo {
+        display: flex !important; flex-direction: column; align-items: center; justify-content: flex-start;
+        position: fixed; top: 0; left: 0; width: 100vw; height: calc(100vh - 70px);
+        background: #ffffff; padding: 40px; z-index: 999; overflow-y: auto !important; 
+        box-sizing: border-box; text-align: center;
+    }
+    .controles-slides {
+        position: fixed; bottom: 0; left: 0; width: 100%; height: 70px;
+        background: #2c3e50; color: white; display: none; 
+        justify-content: space-between; align-items: center; padding: 0 20px; z-index: 1001; box-sizing: border-box;
+    }
+    body.modo-slides .controles-slides { display: flex; }
+    .info-lateral { flex: 1; font-family: 'Oswald', sans-serif; font-size: 0.9rem; color: #bdc3c7; }
+    .botoes-centrais { display: flex; align-items: center; gap: 15px; justify-content: center; flex: 2; }
+    .btn-nav { padding: 10px 20px; background: #3498db; color: white; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; }
+    #contador-slide { font-family: 'Oswald', sans-serif; min-width: 60px; text-align: center; }
+</style>
+
+<div class="controles-slides">
+    <div id="slide-info-serie" class="info-lateral"></div>
+    <div class="botoes-centrais">
+        <button class="btn-nav" onclick="mudarSlide(-1)">⬅ Anterior</button>
+        <span id="contador-slide"></span>
+        <button class="btn-nav" onclick="mudarSlide(1)">Próximo ➡</button>
+        <button class="btn-nav" onclick="toggleSlides()" style="background:#e74c3c;">Sair</button>
+    </div>
+    <div id="slide-info-aula" class="info-lateral" style="text-align: right;"></div>
+</div>
+</body>
+</html>
