@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1º Ano: Aula 05 - Movimento Uniforme (MU)</title>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../estilo.css">
+    
+    <script>
+        MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true
+            }
+        };
+    </script>
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body>
+<button class="menu-toggle" onclick="toggleMenu()">☰</button>
+
+<nav id="menu-principal" class="nav-global">
+    <ul>
+        <li><a href="../index.html">🏠 Início</a></li>
+        <li><a href="../fisica_home.html">⚛️ Física</a></li>
+        <li><a href="../matematica_home.html">📐 Matemática</a></li>
+        <li><a href="../simulacoes_home.html">💻 Simulações</a></li>
+    </ul>
+</nav>
+
+<header id="topo">
+    <h1>FÍSICA EM</h1>
+    <p>1º Ano | Aula 05: Movimento Uniforme (MU)</p>
+    <button id="btn-slides" onclick="toggleSlides()">📺 Iniciar Modo Slides</button>
+</header>
+
+<div class="container">
+
+<main class="conteudo-principal">
+
+<div class="secao-aula">
+ <div class="container-resumo" id="resumo">
+    <h3>📚 Resumo </h3>
+    <section class="resumo-conteudo">
+        <p>O <strong>Movimento Uniforme (MU)</strong> caracteriza-se por apresentar <strong>velocidade escalar constante</strong> e diferente de zero ($v = \text{constante} \neq 0$). Consequentemente, a aceleração é nula ($a = 0$) e o móvel percorre deslocamentos iguais em intervalos de tempo iguais.</p>
+        <p>A posição em função do tempo é descrita pela <strong>Função Horária da Posição</strong>: $S = S_0 + v \cdot t$. O movimento é classificado como <strong>progrediente</strong> quando $v > 0$ (a favor da trajetória) ou <strong>retrógrado</strong> quando $v < 0$ (contra a trajetória).</p>
+    </section>
+</div>
+
+<section class="conteudo-teorico-completo" id="teoria">
+    <div class="passo-teoria">
+        <h3>📖 Movimento Uniforme (MU)</h3>
+        <h4>1. Conceito e Característica Fundamental</h4>
+        <p>No Movimento Uniforme, a rapidez do corpo não altera com o passar do tempo. A velocidade vetorial pode até mudar de direção se a trajetória for curva, mas a <strong>velocidade escalar instantânea permanece idêntica à velocidade escalar média</strong> em qualquer intervalo considerado.</p>
+        <p>Por ter velocidade constante, a aceleração escalar do movimento é sempre igual a zero ($a = 0$).</p>
+    </div>
+
+    <div class="passo-teoria">
+        <h4>2. Função Horária da Posição</h4>
+        <p>Partindo da definição de velocidade escalar média $v = \frac{\Delta S}{\Delta t} = \frac{S - S_0}{t - t_0}$, considerando o instante inicial $t_0 = 0$, isolamos a posição final $S$ para obter a lei horária do MU:</p>
+        <p>$$S = S_0 + v \cdot t$$</p>
+        <ul>
+            <li><strong>$S$:</strong> posição final no instante $t$ ($\text{m}$).</li>
+            <li><strong>$S_0$:</strong> posição inicial no instante $t = 0$ ($\text{m}$).</li>
+            <li><strong>$v$:</strong> velocidade escalar constante ($\text{m/s}$).</li>
+            <li><strong>$t$:</strong> tempo decorrido ($\text{s}$).</li>
+        </ul>
+    </div>
+
+    <div class="passo-teoria">
+        <h4>3. Classificação do Movimento</h4>
+        <p>A trajetória possui uma orientação positiva definida como referencial:</p>
+        <ul>
+            <li><strong>Movimento Progrediente ($v > 0$):</strong> O móvel caminha no sentido do crescimento das posições. A posição $S$ aumenta com o tempo.</li>
+            <li><strong>Movimento Retrógrado ($v < 0$):</strong> O móvel caminha no sentido oposto ao crescimento das posições. A posição $S$ diminui com o tempo.</li>
+        </ul>
+        <figure class="figura-aula figura-grande">
+            <img src="../imagens_fisica/aula1_05_classificacao_mu.png" alt="Classificação do Movimento Uniforme: Progrediente e Retrógrado">
+            <figcaption>Figura 1: Representação dos sentidos de movimento em relação à orientação positiva do referencial.</figcaption>
+        </figure>
+    </div>
+
+    <div class="passo-teoria">
+        <h4>4. Encontro de Móveis</h4>
+        <p>Quando dois corpos $A$ e $B$ se deslocam na mesma trajetória, o instante de encontro $t_e$ ocorre exatamente quando ambos ocupam a mesma posição no espaço:</p>
+        <p>$$S_A(t_e) = S_B(t_e)$$</p>
+        <p>Para resolver problemas de encontro, escreve-se a função horária de cada móvel sob o mesmo referencial e igualam-se as equações.</p>
+    </div>
+</section>
+
+<section class="aplicacoes-reais" id="aplicacoes">
+    <h3>💡 Física em Ação</h3>
+    <div class="cards-aplicacao">
+        <div class="card">
+            <h4>🚗 Piloto Automático (Cruise Control)</h4>
+            <p>Ao ativar o piloto automático em uma rodovia plana e reta, o veículo mantém sua velocidade rigorosamente constante, exemplificando o Movimento Uniforme na prática cotidiana.</p>
+        </div>
+        <div class="card" style="border-left-color: #2ecc71;">
+            <h4>📦 Esteiras Rolantes Industriais</h4>
+            <p>Esteiras de bagagens em aeroportos e linhas de montagem usam motores regulados para se mover em MU, garantindo que o tempo de transporte de cada item seja previsível.</p>
+        </div>
+    </div>
+</section>
+
+<section class="questoes-resolvidas" id="resolvidas">
+    <h3>✅ 5 Questões Resolvidas (R 21 a 25)</h3>
+    
+    <article class="questao">
+        <h4>R 1: Interpretação da Função Horária</h4>
+        <p><strong>Enunciado:</strong> Um ponto material move-se segundo a função horária $S = 20 - 4t$ (no SI). Determine a posição inicial, a velocidade escalar e a posição no instante $t = 3\text{ s}$.</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong><br>
+            Comparando $S = 20 - 4t$ com $S = S_0 + v \cdot t$:<br>
+            • Posição inicial: $S_0 = \mathbf{20\text{ m}}$.<br>
+            • Velocidade escalar: $v = \mathbf{-4\text{ m/s}}$ (movimento retrógrado).<br>
+            • Para $t = 3\text{ s}$: $S = 20 - 4(3) = 20 - 12 = \mathbf{8\text{ m}}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>R 2: Instante em que o Móvel Passa pela Origem</h4>
+        <p><strong>Enunciado:</strong> Um móvel realiza MU com equação horária $S = -15 + 3t$ (em unidades do SI). Em que instante ele passa pela origem das posições ($S = 0$)?</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong><br>
+            Substituímos $S = 0$ na função horária:<br>
+            $0 = -15 + 3t \implies 3t = 15 \implies t = \frac{15}{3} = \mathbf{5\text{ s}}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>R 3: Determinação da Função Horária a partir de Dados</h4>
+        <p><strong>Enunciado:</strong> Um carro parte da posição $S_0 = 50\text{ km}$ e, mantendo velocidade escalar constante de $80\text{ km/h}$, move-se no sentido positivo da trajetória. Escreva a função horária e determine sua posição após $2,5\text{ h}$.</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong><br>
+            Como $v > 0$, temos $S_0 = 50$ e $v = 80$.<br>
+            • Função horária: $\mathbf{S = 50 + 80t}$ (com $S$ em $\text{km}$ e $t$ em $\text{h}$).<br>
+            • Para $t = 2,5\text{ h}$: $S = 50 + 80(2,5) = 50 + 200 = \mathbf{250\text{ km}}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>R 4: Encontro de Dois Móveis na Mesma Direção</h4>
+        <p><strong>Enunciado:</strong> Dois móveis $A$ e $B$ partem no mesmo instante de posições $S_A = 10\text{ m}$ e $S_B = 70\text{ m}$, com velocidades constantes $v_A = 15\text{ m/s}$ e $v_B = 5\text{ m/s}$, ambos no sentido positivo. Determine o instante do encontro.</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong><br>
+            Funções horárias: $S_A = 10 + 15t$ e $S_B = 70 + 5t$.<br>
+            No encontro ($S_A = S_B$):<br>
+            $10 + 15t = 70 + 5t \implies 15t - 5t = 70 - 10 \implies 10t = 60 \implies t = \mathbf{6\text{ s}}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>R 5: Ultrapassagem de Trens</h4>
+        <p><strong>Enunciado:</strong> Um trem de $100\text{ m}$ de comprimento com velocidade constante de $20\text{ m/s}$ atravessa completamente uma ponte de $300\text{ m}$. Quanto tempo dura a travessia?</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong><br>
+            Para a travessia completa de um corpo extenso, o deslocamento total é a soma do comprimento da ponte com o do próprio trem:<br>
+            $\Delta S = L_{\text{ponte}} + L_{\text{trem}} = 300 + 100 = 400\text{ m}$.<br>
+            Como $\Delta S = v \cdot \Delta t \implies 400 = 20 \cdot \Delta t \implies \Delta t = \frac{400}{20} = \mathbf{20\text{ s}}$.</p>
+        </div>
+    </article>
+</section>
+
+<section class="questoes-propostas" id="propostas">
+    <h3>✍️ 5 Questões Propostas (P 26 a 30)</h3>
+
+    <article class="questao">
+        <h4>P 6: Classificação e Deslocamento</h4>
+        <p><strong>Enunciado:</strong> A equação horária de um móvel é $S = 100 - 10t$ (SI). Classifique o movimento e determine o deslocamento entre $t = 1\text{ s}$ e $t = 5\text{ s}$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> Como $v = -10\text{ m/s} < 0$, o movimento é <strong>retrógrado</strong>.<br>
+            Em $t = 1\text{ s} \implies S_1 = 100 - 10(1) = 90\text{ m}$.<br>
+            Em $t = 5\text{ s} \implies S_5 = 100 - 10(5) = 50\text{ m}$.<br>
+            Deslocamento: $\Delta S = S_5 - S_1 = 50 - 90 = \mathbf{-40\text{ m}}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 7: Encontro em Sentidos Opostos</h4>
+        <p><strong>Enunciado:</strong> Dois móveis $A$ e $B$ estão separados por $200\text{ m}$. Partem simultaneamente um ao encontro do outro com velocidades $v_A = 12\text{ m/s}$ e $v_B = -8\text{ m/s}$. Qual o instante do encontro?</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> Adotando a posição inicial de $A$ como $S_{0A} = 0$, a de $B$ será $S_{0B} = 200\text{ m}$.<br>
+            Funções: $S_A = 12t$ e $S_B = 200 - 8t$.<br>
+            Igualando: $12t = 200 - 8t \implies 20t = 200 \implies t = \mathbf{10\text{ s}}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 8: Posição do Encontro</h4>
+        <p><strong>Enunciado:</strong> Considerando a questão anterior (P 27), determine a posição em que ocorre o encontro em relação ao ponto de partida do móvel $A$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> Substituindo $t = 10\text{ s}$ na função de $A$:<br>
+            $S_A(10) = 12 \cdot 10 = \mathbf{120\text{ m}}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 9: Ultrassom de Ecosonda</h4>
+        <p><strong>Enunciado:</strong> Um barco envia um sinal sonoro verticalmente para o fundo do mar. O som (velocidade de $1500\text{ m/s}$ na água) retorna ao barco após $0,8\text{ s}$. Qual a profundidade do oceano no local?</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> O tempo para o som apenas ir até o fundo é a metade do tempo total de ida e volta: $t = 0,4\text{ s}$.<br>
+            Profundidade: $d = v \cdot t = 1500 \cdot 0,4 = \mathbf{600\text{ m}}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 10: Ultrapassagem entre Dois Veículos</h4>
+        <p><strong>Enunciado:</strong> Um carro de $4\text{ m}$ com velocidade de $25\text{ m/s}$ deseja ultrapassar um caminhão de $16\text{ m}$ que se move a $20\text{ m/s}$ no mesmo sentido. Quanto tempo dura a ultrapassagem completa?</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> Velocidade relativa: $v_{\text{rel}} = 25 - 20 = 5\text{ m/s}$.<br>
+            Distância relativa para ultrapassar totalmente: $d_{\text{rel}} = L_{\text{carro}} + L_{\text{caminhão}} = 4 + 16 = 20\text{ m}$.<br>
+            Tempo: $t = \frac{d_{\text{rel}}}{v_{\text{rel}}} = \frac{20}{5} = \mathbf{4\text{ s}}$.</p>
+        </div>
+    </article>
+</section>
+
+<section class="TESTE" id="testes">
+    <h3>🎓 TESTES (T 11 a 15)</h3>
+
+    <div class="card" style="text-align:center; padding:60px 20px; background:#f8f9fa; border:2px dashed #3498db; border-radius:12px; margin-top:20px;">
+        <h2 style="color:#3498db; font-size:2.5rem; margin-bottom:15px;">
+            🚧 EM BREVE!
+        </h2>
+
+        <p style="font-size:1.2rem; color:#555;">
+           Questões de vestibulares serão disponibilizadas em breve.
+        </p>
+    </div>
+</section>
+</div>
+</main>
+
+<aside class="menu-lateral">
+    <iframe src="../menu_fisica.html" style="width:100%; border:none; height:600px;"></iframe>
+</aside>
+
+</div>
+
+<script>
+function toggleGabarito(botao) {
+    const gabarito = botao.nextElementSibling;
+    if (gabarito.style.display === "none" || gabarito.style.display === "") {
+        gabarito.style.display = "block";
+        botao.textContent = "Esconder Gabarito e Resolução";
+        botao.style.backgroundColor = "#2c3e50";
+    } else {
+        gabarito.style.display = "none";
+        botao.textContent = "Ver Gabarito e Resolução";
+        botao.style.backgroundColor = "#3498db";
+    }
+}
+
+function toggleMenu() {
+    const menuGlobal = document.getElementById("menu-principal");
+    if (menuGlobal) menuGlobal.classList.toggle("ativo");
+}
+
+let slideAtual = 0;
+let slides = [];
+
+function prepararSlides() {
+    const seletores = '.container-resumo, .passo-teoria, .aplicacoes-reais, .questao';
+    slides = document.querySelectorAll(seletores);
+}
+
+function toggleSlides() {
+    prepararSlides();
+    const body = document.body;
+    if (!body.classList.contains('modo-slides')) {
+        body.classList.add('modo-slides');
+        slideAtual = 0;
+        mostrarSlide(slideAtual);
+    } else {
+        body.classList.remove('modo-slides');
+        window.location.reload(); 
+    }
+}
+
+function mostrarSlide(n) {
+    slides.forEach(s => {
+        s.classList.remove('slide-ativo');
+        s.style.display = 'none';
+    });
+    const slide = slides[n];
+    slide.classList.add('slide-ativo');
+    slide.style.display = 'flex'; 
+
+    if (slide.classList.contains('questao') && !slide.querySelector('.btn-gabarito')) {
+        const resolucoes = slide.querySelectorAll('.resolucao-bloco');
+        resolucoes.forEach(r => r.style.display = 'block');
+    } else {
+        const gabaritos = slide.querySelectorAll('.gabarito-resolucao');
+        gabaritos.forEach(g => g.style.display = 'none');
+        const botoes = slide.querySelectorAll('.btn-gabarito');
+        botoes.forEach(b => {
+            b.textContent = "Ver Gabarito e Resolução";
+            b.style.backgroundColor = "#3498db";
+        });
+    }
+
+    const pHeader = document.querySelector('header p').innerText;
+    const partes = pHeader.split('|');
+    if(partes.length > 1) {
+        document.getElementById('slide-info-serie').innerText = partes[0].trim();
+        document.getElementById('slide-info-aula').innerText = partes[1].trim();
+    }
+    document.getElementById('contador-slide').innerText = (n + 1) + " / " + slides.length;
+    if (window.MathJax) MathJax.typesetPromise();
+}
+
+function mudarSlide(direcao) {
+    slideAtual += direcao;
+    if (slideAtual >= slides.length) slideAtual = 0;
+    if (slideAtual < 0) slideAtual = slides.length - 1;
+    mostrarSlide(slideAtual);
+}
+
+document.addEventListener('keydown', function(event) {
+    if (document.body.classList.contains('modo-slides')) {
+        switch(event.key) {
+            case 'ArrowRight': 
+            case 'PageDown':   
+            case 'Enter':      
+            case ' ':          
+                mudarSlide(1);
+                break;
+                
+            case 'ArrowLeft':  
+            case 'PageUp':     
+                mudarSlide(-1);
+                break;
+
+            case 'Escape':     
+                toggleSlides();
+                break;
+        }
+    }
+});
+</script>
+
+<style>
+    body.modo-slides { overflow: hidden; background-color: #1a1a1a; }
+    body.modo-slides .menu-lateral, body.modo-slides header, body.modo-slides .menu-toggle, body.modo-slides #btn-slides { display: none !important; }
+    .slide-ativo {
+        display: flex !important; flex-direction: column; align-items: center; justify-content: flex-start;
+        position: fixed; top: 0; left: 0; width: 100vw; height: calc(100vh - 70px);
+        background: #ffffff; padding: 40px; z-index: 999; overflow-y: auto !important; 
+        box-sizing: border-box; text-align: center;
+    }
+    .controles-slides {
+        position: fixed; bottom: 0; left: 0; width: 100%; height: 70px;
+        background: #2c3e50; color: white; display: none; 
+        justify-content: space-between; align-items: center; padding: 0 20px; z-index: 1001; box-sizing: border-box;
+    }
+    body.modo-slides .controles-slides { display: flex; }
+    .info-lateral { flex: 1; font-family: 'Oswald', sans-serif; font-size: 0.9rem; color: #bdc3c7; }
+    .botoes-centrais { display: flex; align-items: center; gap: 15px; justify-content: center; flex: 2; }
+    .btn-nav { padding: 10px 20px; background: #3498db; color: white; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; }
+    #contador-slide { font-family: 'Oswald', sans-serif; min-width: 60px; text-align: center; }
+</style>
+
+<div class="controles-slides">
+    <div id="slide-info-serie" class="info-lateral"></div>
+    <div class="botoes-centrais">
+        <button class="btn-nav" onclick="mudarSlide(-1)">⬅ Anterior</button>
+        <span id="contador-slide"></span>
+        <button class="btn-nav" onclick="mudarSlide(1)">Próximo ➡</button>
+        <button class="btn-nav" onclick="toggleSlides()" style="background:#e74c3c;">Sair</button>
+    </div>
+    <div id="slide-info-aula" class="info-lateral" style="text-align: right;"></div>
+</div>
+</body>
+</html>
