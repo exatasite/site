@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1º Ano: Aula 10 - Composição de Movimentos</title>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../estilo.css">
+    
+    <script>
+        MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true
+            }
+        };
+    </script>
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body>
+<button class="menu-toggle" onclick="toggleMenu()">☰</button>
+
+<nav id="menu-principal" class="nav-global">
+    <ul>
+        <li><a href="../index.html">🏠 Início</a></li>
+        <li><a href="../fisica_home.html">⚛️ Física</a></li>
+        <li><a href="../matematica_home.html">📐 Matemática</a></li>
+        <li><a href="../simulacoes_home.html">💻 Simulações</a></li>
+    </ul>
+</nav>
+
+<header id="topo">
+    <h1>FÍSICA EM</h1>
+    <p>1º Ano | Aula 10: Composição de Movimentos</p>
+    <button id="btn-slides" onclick="toggleSlides()">📺 Iniciar Modo Slides</button>
+</header>
+
+<div class="container">
+
+<main class="conteudo-principal">
+
+<div class="secao-aula">
+ <div class="container-resumo" id="resumo">
+    <h3>📚 Resumo </h3>
+    <section class="resumo-conteudo">
+        <p>A <strong>Composição de Movimentos</strong> baseia-se no <strong>Princípio da Independência dos Movimentos de Galileu</strong>: se um corpo executa um movimento composto, cada um dos movimentos componentes realiza-se como se os demais não existissem.</p>
+        <p>A velocidade resultante de um corpo ($\vec{v}_R$) é calculada pela soma vetorial da velocidade própria do móvel ($\vec{v}_m$) com a velocidade do arrasto/meio ($\vec{v}_a$). A travessia de um rio por um barco é o clássico exemplo de aplicação desse princípio.</p>
+    </section>
+</div>
+
+<section class="conteudo-teorico-completo" id="teoria">
+    <div class="passo-teoria">
+        <h3>📖 Composição de Movimentos</h3>
+        <h4>1. Princípio de Galileu</h4>
+        <p>Um movimento complexo pode ser decomposto em dois ou mais movimentos simples e independentes. O tempo decorrido no movimento composto é exatamente igual ao tempo de cada movimento componente.</p>
+        <p>$$t_{\text{total}} = t_1 = t_2$$</p>
+    </div>
+
+    <div class="passo-teoria">
+        <h4>2. Vetores Velocidade na Composição</h4>
+        <p>Considere um corpo movendo-se em relação a um meio que também está em movimento (por exemplo, um barco em relação à água de um rio):</p>
+        <ul>
+            <li>$\vec{v}_m$ (ou $\vec{v}_{\text{rel}}$): Velocidade <strong>relativa</strong> (própria do móvel em relação ao meio).</li>
+            <li>$\vec{v}_a$ (ou $\vec{v}_{\text{arr}}$): Velocidade de <strong>arrasto</strong> (do meio em relação à Terra).</li>
+            <li>$\vec{v}_R$ (ou $\vec{v}_{\text{abs}}$): Velocidade <strong>resultante</strong> (do móvel em relação à Terra/margem).</li>
+        </ul>
+        <p>$$\vec{v}_R = \vec{v}_m + \vec{v}_a$$</p>
+    </div>
+
+    <div class="passo-teoria">
+        <h4>3. Casos Clássicos de Travessia de Rio</h4>
+        <ul>
+            <li><strong>Movimento a favor da correnteza ($\theta = 0^\circ$):</strong>
+                <br>$v_R = v_m + v_a$ (Velocidade máxima).
+            </li>
+            <li><strong>Movimento contra a correnteza ($\theta = 180^\circ$):</strong>
+                <br>$v_R = v_m - v_a$ (Velocidade mínima, requer $v_m > v_a$ para subir o rio).
+            </li>
+            <li><strong>Travessia em tempo mínimo (Proa perpendicular à margem):</strong>
+                <br>O barco aponta diretamente para a margem oposta. A correnteza o arrasta rio abaixo.
+                <br>• $t_{\text{mín}} = \frac{d}{v_m}$ ($d$ = largura do rio).
+                <br>• $v_R = \sqrt{v_m^2 + v_a^2}$ (Soma ortogonal/Pitágoras).
+            </li>
+            <li><strong>Travessia em distância mínima (Trajetória perpendicular à margem):</strong>
+                <br>O barco aponta contra a correnteza para que a resultante alcance o ponto diretamente oposto.
+                <br>• $v_R = \sqrt{v_m^2 - v_a^2}$ (Requer $v_m > v_a$).
+            </li>
+        </ul>
+        <figure class="figura-aula figura-grande">
+            <img src="../imagens_fisica/aula1_10_composicao_movimentos.png" alt="Travessia de Rio em Tempo Mínimo e Distância Mínima">
+            <figcaption>Figura 1: Representação vetorial das velocidades na travessia de um rio em tempo mínimo vs. trajetória perpendicular.</figcaption>
+        </figure>
+    </div>
+</section>
+
+<section class="aplicacoes-reais" id="aplicacoes">
+    <h3>💡 Física em Ação</h3>
+    <div class="cards-aplicacao">
+        <div class="card">
+            <h4>🚶 Escadas Rolantes e Esteiras</h4>
+            <p>Pessoas caminhando sobre esteiras rolantes de aeroportos combinam sua velocidade de caminhada com a velocidade da esteira, aumentando ou diminuindo sua velocidade total em relação ao solo.</p>
+        </div>
+        <div class="card" style="border-left-color: #2ecc71;">
+            <h4>✈️ Navegação Aérea sob Vento Crosswind</h4>
+            <p>Ao pousar sob fortes ventos laterais, os aviões apontam o nariz em ângulo ligeiramente desalinhado da pista ("caranguejamento") para que a velocidade resultante alinhe a aeronave com a pista.</p>
+        </div>
+    </div>
+</section>
+
+<section class="questoes-resolvidas" id="resolvidas">
+    <h3>✅ 5 Questões Resolvidas (R 1 a 5)</h3>
+    
+    <article class="questao">
+        <h4>R 1: Caminhada em Escada Rolante</h4>
+        <p><strong>Enunciado:</strong> Uma pessoa caminha a $1,5\text{ m/s}$ sobre uma escada rolante de $12\text{ m}$ de comprimento que se move a $0,5\text{ m/s}$ no mesmo sentido. Quanto tempo ela leva para percorrer toda a escada?</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong><br>
+            Como os movimentos têm o mesmo sentido:<br>
+            $v_R = v_p + v_e = 1,5 + 0,5 = 2,0\text{ m/s}$.<br>
+            $\Delta t = \frac{\Delta S}{v_R} = \frac{12}{2} = \mathbf{6\text{ s}}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>R 2: Travessia de Rio em Tempo Mínimo</h4>
+        <p><strong>Enunciado:</strong> Um barco cuja velocidade em água parada é $v_m = 4\text{ m/s}$ atravessa um rio de $80\text{ m}$ de largura apontando sua proa perpendicularmente às margens. A velocidade da correnteza é $v_a = 3\text{ m/s}$. Calcule o tempo de travessia.</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong><br>
+            Pelo Princípio da Independência, o tempo de travessia depende apenas da velocidade perpendicular à margem ($v_m$):<br>
+            $t = \frac{d}{v_m} = \frac{80}{4} = \mathbf{20\text{ s}}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>R 3: Módulo da Velocidade Resultante na Travessia</h4>
+        <p><strong>Enunciado:</strong> Para o barco do problema R 2 ($v_m = 4\text{ m/s}$ e $v_a = 3\text{ m/s}$), determine o módulo da velocidade resultante em relação à margem e o arrasto sofrido rio abaixo.</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong><br>
+            • Velocidade Resultante (Pitágoras):<br>
+            $v_R = \sqrt{v_m^2 + v_a^2} = \sqrt{4^2 + 3^2} = \sqrt{16 + 9} = \sqrt{25} = \mathbf{5\text{ m/s}}$.<br>
+            • Arrasto rio abaixo ($\Delta x$):<br>
+            $\Delta x = v_a \cdot t = 3 \cdot 20 = \mathbf{60\text{ m}}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>R 4: Movimento Contra a Correnteza</h4>
+        <p><strong>Enunciado:</strong> Um barco motorizado tem velocidade de $10\text{ m/s}$ em relação à água. Em um rio cuja correnteza é de $3\text{ m/s}$, quanto tempo ele gasta para subir uma distância de $700\text{ m}$ contra a correnteza?</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong><br>
+            Navegando contra a correnteza:<br>
+            $v_R = v_m - v_a = 10 - 3 = 7\text{ m/s}$.<br>
+            $t = \frac{\Delta S}{v_R} = \frac{700}{7} = \mathbf{100\text{ s}}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>R 5: Travessia em Trajetória Perpendicular (Distância Mínima)</h4>
+        <p><strong>Enunciado:</strong> Um barco quer atravessar um rio de modo a desembarcar exatamente no ponto oposto ao de partida. Se a velocidade do barco na água é $5\text{ m/s}$ e a da correnteza é $3\text{ m/s}$, qual deve ser o módulo da sua velocidade resultante em relação à terra?</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong><br>
+            Para atingir o ponto diretamente oposto, a resultante deve ser perpendicular às margens. Usamos o triângulo de velocidades onde $v_m$ é a hipotenusa:<br>
+            $v_m^2 = v_R^2 + v_a^2 \implies 5^2 = v_R^2 + 3^2 \implies 25 = v_R^2 + 9 \implies v_R^2 = 16 \implies v_R = \mathbf{4\text{ m/s}}$.</p>
+        </div>
+    </article>
+</section>
+
+<section class="questoes-propostas" id="propostas">
+    <h3>✍️ 5 Questões Propostas (P 6 a 10)</h3>
+
+    <article class="questao">
+        <h4>P 6: Caminhada Sentido Contrário na Escada Rolante</h4>
+        <p><strong>Enunciado:</strong> Uma pessoa tenta subir uma escada rolante que desce a $1\text{ m/s}$. Se a velocidade de caminhada da pessoa é de $1,8\text{ m/s}$, qual é a velocidade efetiva do avanço da pessoa em relação ao solo?</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> $v_R = v_p - v_e = 1,8 - 1,0 = \mathbf{0,8\text{ m/s}}$ no sentido da subida.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 7: Independência do Tempo de Travessia</h4>
+        <p><strong>Enunciado:</strong> Aumentar a velocidade da correnteza de um rio altera o tempo de travessia de um barco que navega apontando sempre perpendicularmente às margens? Justifique.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> <strong>Não altera.</strong> Pelo Princípio da Independência de Galileu, o tempo de travessia depende exclusivamente da largura do rio ($d$) e da componente da velocidade perpendicular à margem ($v_m$). A correnteza provoca apenas um maior deslocamento rio abaixo ($\Delta x$).</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 8: Largura do Rio</h4>
+        <p><strong>Enunciado:</strong> Um barco atravessa um rio em tempo mínimo levando $40\text{ s}$. Sabendo que sua velocidade na água é de $6\text{ m/s}$, qual é a largura do rio?</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> $d = v_m \cdot t = 6 \cdot 40 = \mathbf{240\text{ m}}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 9: Pingo de Chuva em Janela do Trem</h4>
+        <p><strong>Enunciado:</strong> Gotas de chuva caem verticalmente a $8\text{ m/s}$ em relação ao solo. Um trem anda horizontalmente a $6\text{ m/s}$. Qual é a velocidade das gotas de chuva observada por um passageiro no trem?</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> A velocidade relativa é dada pela composição ortogonal das duas velocidades:<br>
+            $v_{\text{rel}} = \sqrt{v_{\text{chuva}}^2 + v_{\text{trem}}^2} = \sqrt{8^2 + 6^2} = \sqrt{64 + 36} = \sqrt{100} = \mathbf{10\text{ m/s}}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 10: Condição para Atravessar em Linha Reta</h4>
+        <p><strong>Enunciado:</strong> Para um barco atravessar um rio em linha reta perpendicular às margens, a velocidade própria do barco ($v_m$) deve ser maior, menor ou igual à velocidade da correnteza ($v_a$)?</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> A velocidade do barco deve ser <strong>estritamente maior que a da correnteza ($v_m > v_a$)</strong>. Caso contrário, a componente perpendicular da velocidade resultante seria nula ou impossível de equilibrar a força de arrasto da água.</p>
+        </div>
+    </article>
+</section>
+
+<section class="TESTE" id="testes">
+    <h3>🎓 TESTES (T 11 a 15)</h3>
+
+    <div class="card" style="text-align:center; padding:60px 20px; background:#f8f9fa; border:2px dashed #3498db; border-radius:12px; margin-top:20px;">
+        <h2 style="color:#3498db; font-size:2.5rem; margin-bottom:15px;">
+            🚧 EM BREVE!
+        </h2>
+
+        <p style="font-size:1.2rem; color:#555;">
+            Questões de vestibulares serão disponibilizadas em breve.
+        </p>
+    </div>
+</section>
+
+</div>
+</main>
+
+<aside class="menu-lateral">
+    <iframe src="../menu_fisica.html" style="width:100%; border:none; height:600px;"></iframe>
+</aside>
+
+</div>
+
+<script>
+function toggleGabarito(botao) {
+    const gabarito = botao.nextElementSibling;
+    if (gabarito.style.display === "none" || gabarito.style.display === "") {
+        gabarito.style.display = "block";
+        botao.textContent = "Esconder Gabarito e Resolução";
+        botao.style.backgroundColor = "#2c3e50";
+    } else {
+        gabarito.style.display = "none";
+        botao.textContent = "Ver Gabarito e Resolução";
+        botao.style.backgroundColor = "#3498db";
+    }
+}
+
+function toggleMenu() {
+    const menuGlobal = document.getElementById("menu-principal");
+    if (menuGlobal) menuGlobal.classList.toggle("ativo");
+}
+
+let slideAtual = 0;
+let slides = [];
+
+function prepararSlides() {
+    const seletores = '.container-resumo, .passo-teoria, .aplicacoes-reais, .questao';
+    slides = document.querySelectorAll(seletores);
+}
+
+function toggleSlides() {
+    prepararSlides();
+    const body = document.body;
+    if (!body.classList.contains('modo-slides')) {
+        body.classList.add('modo-slides');
+        slideAtual = 0;
+        mostrarSlide(slideAtual);
+    } else {
+        body.classList.remove('modo-slides');
+        window.location.reload(); 
+    }
+}
+
+function mostrarSlide(n) {
+    slides.forEach(s => {
+        s.classList.remove('slide-ativo');
+        s.style.display = 'none';
+    });
+    const slide = slides[n];
+    slide.classList.add('slide-ativo');
+    slide.style.display = 'flex'; 
+
+    if (slide.classList.contains('questao') && !slide.querySelector('.btn-gabarito')) {
+        const resolucoes = slide.querySelectorAll('.resolucao-bloco');
+        resolucoes.forEach(r => r.style.display = 'block');
+    } else {
+        const gabaritos = slide.querySelectorAll('.gabarito-resolucao');
+        gabaritos.forEach(g => g.style.display = 'none');
+        const botoes = slide.querySelectorAll('.btn-gabarito');
+        botoes.forEach(b => {
+            b.textContent = "Ver Gabarito e Resolução";
+            b.style.backgroundColor = "#3498db";
+        });
+    }
+
+    const pHeader = document.querySelector('header p').innerText;
+    const partes = pHeader.split('|');
+    if(partes.length > 1) {
+        document.getElementById('slide-info-serie').innerText = partes[0].trim();
+        document.getElementById('slide-info-aula').innerText = partes[1].trim();
+    }
+    document.getElementById('contador-slide').innerText = (n + 1) + " / " + slides.length;
+    if (window.MathJax) MathJax.typesetPromise();
+}
+
+function mudarSlide(direcao) {
+    slideAtual += direcao;
+    if (slideAtual >= slides.length) slideAtual = 0;
+    if (slideAtual < 0) slideAtual = slides.length - 1;
+    mostrarSlide(slideAtual);
+}
+
+document.addEventListener('keydown', function(event) {
+    if (document.body.classList.contains('modo-slides')) {
+        switch(event.key) {
+            case 'ArrowRight': 
+            case 'PageDown':   
+            case 'Enter':      
+            case ' ':          
+                mudarSlide(1);
+                break;
+                
+            case 'ArrowLeft':  
+            case 'PageUp':     
+                mudarSlide(-1);
+                break;
+
+            case 'Escape':     
+                toggleSlides();
+                break;
+        }
+    }
+});
+</script>
+
+<style>
+    body.modo-slides { overflow: hidden; background-color: #1a1a1a; }
+    body.modo-slides .menu-lateral, body.modo-slides header, body.modo-slides .menu-toggle, body.modo-slides #btn-slides { display: none !important; }
+    .slide-ativo {
+        display: flex !important; flex-direction: column; align-items: center; justify-content: flex-start;
+        position: fixed; top: 0; left: 0; width: 100vw; height: calc(100vh - 70px);
+        background: #ffffff; padding: 40px; z-index: 999; overflow-y: auto !important; 
+        box-sizing: border-box; text-align: center;
+    }
+    .controles-slides {
+        position: fixed; bottom: 0; left: 0; width: 100%; height: 70px;
+        background: #2c3e50; color: white; display: none; 
+        justify-content: space-between; align-items: center; padding: 0 20px; z-index: 1001; box-sizing: border-box;
+    }
+    body.modo-slides .controles-slides { display: flex; }
+    .info-lateral { flex: 1; font-family: 'Oswald', sans-serif; font-size: 0.9rem; color: #bdc3c7; }
+    .botoes-centrais { display: flex; align-items: center; gap: 15px; justify-content: center; flex: 2; }
+    .btn-nav { padding: 10px 20px; background: #3498db; color: white; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; }
+    #contador-slide { font-family: 'Oswald', sans-serif; min-width: 60px; text-align: center; }
+</style>
+
+<div class="controles-slides">
+    <div id="slide-info-serie" class="info-lateral"></div>
+    <div class="botoes-centrais">
+        <button class="btn-nav" onclick="mudarSlide(-1)">⬅ Anterior</button>
+        <span id="contador-slide"></span>
+        <button class="btn-nav" onclick="mudarSlide(1)">Próximo ➡</button>
+        <button class="btn-nav" onclick="toggleSlides()" style="background:#e74c3c;">Sair</button>
+    </div>
+    <div id="slide-info-aula" class="info-lateral" style="text-align: right;"></div>
+</div>
+</body>
+</html>
