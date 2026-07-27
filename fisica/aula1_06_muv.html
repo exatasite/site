@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1º Ano: Aula 06 - Movimento Uniformemente Variado (MUV)</title>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../estilo.css">
+    
+    <script>
+        MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true
+            }
+        };
+    </script>
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body>
+<button class="menu-toggle" onclick="toggleMenu()">☰</button>
+
+<nav id="menu-principal" class="nav-global">
+    <ul>
+        <li><a href="../index.html">🏠 Início</a></li>
+        <li><a href="../fisica_home.html">⚛️ Física</a></li>
+        <li><a href="../matematica_home.html">📐 Matemática</a></li>
+        <li><a href="../simulacoes_home.html">💻 Simulações</a></li>
+    </ul>
+</nav>
+
+<header id="topo">
+    <h1>FÍSICA EM</h1>
+    <p>1º Ano | Aula 06: Movimento Uniformemente Variado (MUV)</p>
+    <button id="btn-slides" onclick="toggleSlides()">📺 Iniciar Modo Slides</button>
+</header>
+
+<div class="container">
+
+<main class="conteudo-principal">
+
+<div class="secao-aula">
+ <div class="container-resumo" id="resumo">
+    <h3>📚 Resumo </h3>
+    <section class="resumo-conteudo">
+        <p>O <strong>Movimento Uniformemente Variado (MUV)</strong> caracteriza-se por apresentar <strong>aceleração escalar constante e diferente de zero</strong> ($a = \text{constante} \neq 0$). Em consequência, a velocidade escalar do móvel sofre variações iguais em intervalos de tempo iguais.</p>
+        <p>O MUV é regido por três equações fundamentais: a <strong>Função Horária da Velocidade</strong> ($v = v_0 + a \cdot t$), a <strong>Função Horária da Posição</strong> ($S = S_0 + v_0 \cdot t + \frac{1}{2}a \cdot t^2$) e a <strong>Equação de Torricelli</strong> ($v^2 = v_0^2 + 2a \cdot \Delta S$), utilizada quando o tempo não é fornecido.</p>
+    </section>
+</div>
+
+<section class="conteudo-teorico-completo" id="teoria">
+    <div class="passo-teoria">
+        <h3>📖 Movimento Uniformemente Variado (MUV)</h3>
+        <h4>1. Conceito e Aceleração Escalar Constante</h4>
+        <p>No MUV, a velocidade do corpo varia de maneira uniforme no decorrer do tempo. A taxa dessa variação é a <strong>aceleração escalar média</strong>, que coincide com a aceleração instantânea em qualquer instante:</p>
+        <p>$$a = \frac{\Delta v}{\Delta t} = \frac{v - v_0}{t - t_0}$$</p>
+    </div>
+
+    <div class="passo-teoria">
+        <h4>2. Equações Fundamentais do MUV</h4>
+        <p>Isolando as variáveis a partir do instante inicial $t_0 = 0$, obtemos o conjunto de equações do movimento:</p>
+        <ul>
+            <li><strong>Função Horária da Velocidade:</strong> $v = v_0 + a \cdot t$</li>
+            <li><strong>Função Horária da Posição:</strong> $S = S_0 + v_0 \cdot t + \frac{1}{2}a \cdot t^2$</li>
+            <li><strong>Equação de Torricelli:</strong> $v^2 = v_0^2 + 2a \cdot \Delta S$ (equação independente do tempo)</li>
+            <li><strong>Velocidade Média no MUV:</strong> $v_m = \frac{v_0 + v}{2} = \frac{\Delta S}{\Delta t}$</li>
+        </ul>
+    </div>
+
+    <div class="passo-teoria">
+        <h4>3. Classificação quanto ao Sentido e à Rapidez</h4>
+        <p>O movimento no MUV combina duas classificações independentes:</p>
+        <ul>
+            <li><strong>Quanto ao sentido do movimento:</strong>
+                <ul>
+                    <li><strong>Progrediente:</strong> $v > 0$ (móvel a favor da orientação da trajetória).</li>
+                    <li><strong>Retrógrado:</strong> $v < 0$ (móvel contra a orientação da trajetória).</li>
+                </ul>
+            </li>
+            <li><strong>Quanto à variação da rapidez:</strong>
+                <ul>
+                    <li><strong>Acelerado:</strong> O módulo da velocidade aumenta. Ocorre quando $v$ e $a$ possuem o <strong>mesmo sinal</strong> ($v \cdot a > 0$).</li>
+                    <li><strong>Retardado:</strong> O módulo da velocidade diminui (frenagem). Ocorre quando $v$ e $a$ possuem <strong>sinais contrários</strong> ($v \cdot a < 0$).</li>
+                </ul>
+            </li>
+        </ul>
+        <figure class="figura-aula figura-grande">
+            <img src="../imagens_fisica/aula1_06_classificacao_muv.png" alt="Classificação do MUV: Acelerado e Retardado">
+            <figcaption>Figura 1: Sinais de velocidade e aceleração nas classificações do movimento.</figcaption>
+        </figure>
+    </div>
+</section>
+
+<section class="aplicacoes-reais" id="aplicacoes">
+    <h3>💡 Física em Ação</h3>
+    <div class="cards-aplicacao">
+        <div class="card">
+            <h4>🚗 Testes de Frenagem Automotiva</h4>
+            <p>A Equação de Torricelli é amplamente utilizada pela engenharia automotiva para calcular a distância mínima de parada de um veículo viajando a determinada velocidade, assumindo desaceleração constante.</p>
+        </div>
+        <div class="card" style="border-left-color: #2ecc71;">
+            <h4>🛫 Decolagem de Aviões</h4>
+            <p>Aeronaves comerciais realizam aceleração praticamente uniforme na pista de decolagem. Os pilotos usam as equações do MUV para calcular a distância necessária para atingir a velocidade de rotação ($v_R$).</p>
+        </div>
+    </div>
+</section>
+
+<section class="questoes-resolvidas" id="resolvidas">
+    <h3>✅ 5 Questões Resolvidas (R 1 a 5)</h3>
+    
+    <article class="questao">
+        <h4>R 1: Interpretação das Funções Horárias</h4>
+        <p><strong>Enunciado:</strong> A função horária da posição de um móvel é dada por $S = 15 - 2t + 3t^2$ (em unidades do SI). Determine a posição inicial, a velocidade inicial e a aceleração escalar do móvel.</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong><br>
+            Comparando $S = 15 - 2t + 3t^2$ com o padrão $S = S_0 + v_0 \cdot t + \frac{1}{2}a \cdot t^2$:<br>
+            • Posição inicial: $S_0 = \mathbf{15\text{ m}}$.<br>
+            • Velocidade inicial: $v_0 = \mathbf{-2\text{ m/s}}$.<br>
+            • Aceleração: $\frac{1}{2}a = 3 \implies a = 2 \cdot 3 = \mathbf{6\text{ m/s}^2}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>R 2: Cálculo de Velocidade e Instante</h4>
+        <p><strong>Enunciado:</strong> Um móvel parte do repouso ($v_0 = 0$) com aceleração constante $a = 4\text{ m/s}^2$. Calcule sua velocidade no instante $t = 5\text{ s}$.</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong><br>
+            Utilizamos a Função Horária da Velocidade ($v = v_0 + a \cdot t$):<br>
+            $v = 0 + 4 \cdot 5 = \mathbf{20\text{ m/s}}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>R 3: Aplicação da Equação de Torricelli</h4>
+        <p><strong>Enunciado:</strong> Um carro viajando a $20\text{ m/s}$ freia uniformemente com desaceleração de $4\text{ m/s}^2$ ($a = -4\text{ m/s}^2$) até parar ($v = 0$). Qual a distância percorrida durante a frenagem?</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong><br>
+            Como o tempo não foi informado, usamos Torricelli ($v^2 = v_0^2 + 2a \cdot \Delta S$):<br>
+            $0^2 = 20^2 + 2(-4)\Delta S \implies 0 = 400 - 8\Delta S \implies 8\Delta S = 400 \implies \Delta S = \mathbf{50\text{ m}}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>R 4: Mudança de Sentido do Movimento</h4>
+        <p><strong>Enunciado:</strong> Um objeto é lançado com velocidade inicial $v_0 = -12\text{ m/s}$ e aceleração constante $a = 3\text{ m/s}^2$. Em que instante o móvel inverte o sentido de seu movimento?</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong><br>
+            A inversão de sentido ocorre no instante em que a velocidade escalar se anula ($v = 0$):<br>
+            $v = v_0 + a \cdot t \implies 0 = -12 + 3t \implies 3t = 12 \implies t = \mathbf{4\text{ s}}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>R 5: Posição Final em Movimento Acelerado</h4>
+        <p><strong>Enunciado:</strong> Um trem parte da posição $S_0 = 100\text{ m}$ com velocidade inicial de $10\text{ m/s}$ e aceleração de $2\text{ m/s}^2$. Determine sua posição no instante $t = 6\text{ s}$.</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong><br>
+            Usando a Função Horária da Posição:<br>
+            $S = S_0 + v_0 \cdot t + \frac{1}{2}a \cdot t^2$<br>
+            $S = 100 + 10(6) + \frac{1}{2}(2)(6)^2 = 100 + 60 + 36 = \mathbf{196\text{ m}}$.</p>
+        </div>
+    </article>
+</section>
+
+<section class="questoes-propostas" id="propostas">
+    <h3>✍️ 5 Questões Propostas (P 6 a 10)</h3>
+
+    <article class="questao">
+        <h4>P 6: Classificação do Movimento</h4>
+        <p><strong>Enunciado:</strong> Um corpo possui função da velocidade $v = -10 + 2t$ (SI). Classifique o movimento nos instantes $t = 2\text{ s}$ e $t = 8\text{ s}$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> Aceleração $a = +2\text{ m/s}^2 > 0$.<br>
+            • Em $t = 2\text{ s} \implies v = -10 + 2(2) = -6\text{ m/s}$. Como $v < 0$ e $a > 0$ (sinais opostos), o movimento é <strong>retrógrado e retardado</strong>.<br>
+            • Em $t = 8\text{ s} \implies v = -10 + 2(8) = +6\text{ m/s}$. Como $v > 0$ e $a > 0$ (mesmo sinal), o movimento é <strong>progrediente e acelerado</strong>.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 7: Distância Percorrida a partir do Repouso</h4>
+        <p><strong>Enunciado:</strong> Uma partícula parte do repouso com aceleração de $3\text{ m/s}^2$. Qual a distância percorrida após $4\text{ s}$?</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> $v_0 = 0 \implies \Delta S = \frac{1}{2}a \cdot t^2 = \frac{1}{2}(3)(4)^2 = \frac{1}{2}(3)(16) = \mathbf{24\text{ m}}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 8: Velocidade Média no MUV</h4>
+        <p><strong>Enunciado:</strong> Um carro varia sua velocidade uniformemente de $10\text{ m/s}$ para $30\text{ m/s}$ em $5\text{ s}$. Qual foi a sua velocidade média e o deslocamento no intervalo?</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> Velocidade média: $v_m = \frac{v_0 + v}{2} = \frac{10 + 30}{2} = \mathbf{20\text{ m/s}}$.<br>
+            Deslocamento: $\Delta S = v_m \cdot \Delta t = 20 \cdot 5 = \mathbf{100\text{ m}}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 9: Aceleração em Pista de Arrancada</h4>
+        <p><strong>Enunciado:</strong> Um dragster atinge $100\text{ m/s}$ partindo do repouso em uma pista de $200\text{ m}$. Supondo MUV, determine a aceleração do veículo.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> Aplicando Torricelli:<br>
+            $v^2 = v_0^2 + 2a \cdot \Delta S \implies 100^2 = 0^2 + 2a(200) \implies 10000 = 400a \implies a = \frac{10000}{400} = \mathbf{25\text{ m/s}^2}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 10: Frenagem de Emergência</h4>
+        <p><strong>Enunciado:</strong> Um motorista a $30\text{ m/s}$ aciona os freios, imprimindo uma desaceleração constante de $5\text{ m/s}^2$. Quanto tempo o carro leva para parar totalmente?</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> Usando a função horária da velocidade com $v = 0$ e $a = -5\text{ m/s}^2$:<br>
+            $0 = 30 - 5t \implies 5t = 30 \implies t = \mathbf{6\text{ s}}$.</p>
+        </div>
+    </article>
+</section>
+
+<section class="TESTE" id="testes">
+    <h3>🎓 TESTES (T 11 a 15)</h3>
+
+    <div class="card" style="text-align:center; padding:60px 20px; background:#f8f9fa; border:2px dashed #3498db; border-radius:12px; margin-top:20px;">
+        <h2 style="color:#3498db; font-size:2.5rem; margin-bottom:15px;">
+            🚧 EM BREVE!
+        </h2>
+
+        <p style="font-size:1.2rem; color:#555;">
+            Questões de vestibulares serão disponibilizadas em breve.
+        </p>
+    </div>
+</section>
+
+</div>
+</main>
+
+<aside class="menu-lateral">
+    <iframe src="../menu_fisica.html" style="width:100%; border:none; height:600px;"></iframe>
+</aside>
+
+</div>
+
+<script>
+function toggleGabarito(botao) {
+    const gabarito = botao.nextElementSibling;
+    if (gabarito.style.display === "none" || gabarito.style.display === "") {
+        gabarito.style.display = "block";
+        botao.textContent = "Esconder Gabarito e Resolução";
+        botao.style.backgroundColor = "#2c3e50";
+    } else {
+        gabarito.style.display = "none";
+        botao.textContent = "Ver Gabarito e Resolução";
+        botao.style.backgroundColor = "#3498db";
+    }
+}
+
+function toggleMenu() {
+    const menuGlobal = document.getElementById("menu-principal");
+    if (menuGlobal) menuGlobal.classList.toggle("ativo");
+}
+
+let slideAtual = 0;
+let slides = [];
+
+function prepararSlides() {
+    const seletores = '.container-resumo, .passo-teoria, .aplicacoes-reais, .questao';
+    slides = document.querySelectorAll(seletores);
+}
+
+function toggleSlides() {
+    prepararSlides();
+    const body = document.body;
+    if (!body.classList.contains('modo-slides')) {
+        body.classList.add('modo-slides');
+        slideAtual = 0;
+        mostrarSlide(slideAtual);
+    } else {
+        body.classList.remove('modo-slides');
+        window.location.reload(); 
+    }
+}
+
+function mostrarSlide(n) {
+    slides.forEach(s => {
+        s.classList.remove('slide-ativo');
+        s.style.display = 'none';
+    });
+    const slide = slides[n];
+    slide.classList.add('slide-ativo');
+    slide.style.display = 'flex'; 
+
+    if (slide.classList.contains('questao') && !slide.querySelector('.btn-gabarito')) {
+        const resolucoes = slide.querySelectorAll('.resolucao-bloco');
+        resolucoes.forEach(r => r.style.display = 'block');
+    } else {
+        const gabaritos = slide.querySelectorAll('.gabarito-resolucao');
+        gabaritos.forEach(g => g.style.display = 'none');
+        const botoes = slide.querySelectorAll('.btn-gabarito');
+        botoes.forEach(b => {
+            b.textContent = "Ver Gabarito e Resolução";
+            b.style.backgroundColor = "#3498db";
+        });
+    }
+
+    const pHeader = document.querySelector('header p').innerText;
+    const partes = pHeader.split('|');
+    if(partes.length > 1) {
+        document.getElementById('slide-info-serie').innerText = partes[0].trim();
+        document.getElementById('slide-info-aula').innerText = partes[1].trim();
+    }
+    document.getElementById('contador-slide').innerText = (n + 1) + " / " + slides.length;
+    if (window.MathJax) MathJax.typesetPromise();
+}
+
+function mudarSlide(direcao) {
+    slideAtual += direcao;
+    if (slideAtual >= slides.length) slideAtual = 0;
+    if (slideAtual < 0) slideAtual = slides.length - 1;
+    mostrarSlide(slideAtual);
+}
+
+document.addEventListener('keydown', function(event) {
+    if (document.body.classList.contains('modo-slides')) {
+        switch(event.key) {
+            case 'ArrowRight': 
+            case 'PageDown':   
+            case 'Enter':      
+            case ' ':          
+                mudarSlide(1);
+                break;
+                
+            case 'ArrowLeft':  
+            case 'PageUp':     
+                mudarSlide(-1);
+                break;
+
+            case 'Escape':     
+                toggleSlides();
+                break;
+        }
+    }
+});
+</script>
+
+<style>
+    body.modo-slides { overflow: hidden; background-color: #1a1a1a; }
+    body.modo-slides .menu-lateral, body.modo-slides header, body.modo-slides .menu-toggle, body.modo-slides #btn-slides { display: none !important; }
+    .slide-ativo {
+        display: flex !important; flex-direction: column; align-items: center; justify-content: flex-start;
+        position: fixed; top: 0; left: 0; width: 100vw; height: calc(100vh - 70px);
+        background: #ffffff; padding: 40px; z-index: 999; overflow-y: auto !important; 
+        box-sizing: border-box; text-align: center;
+    }
+    .controles-slides {
+        position: fixed; bottom: 0; left: 0; width: 100%; height: 70px;
+        background: #2c3e50; color: white; display: none; 
+        justify-content: space-between; align-items: center; padding: 0 20px; z-index: 1001; box-sizing: border-box;
+    }
+    body.modo-slides .controles-slides { display: flex; }
+    .info-lateral { flex: 1; font-family: 'Oswald', sans-serif; font-size: 0.9rem; color: #bdc3c7; }
+    .botoes-centrais { display: flex; align-items: center; gap: 15px; justify-content: center; flex: 2; }
+    .btn-nav { padding: 10px 20px; background: #3498db; color: white; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; }
+    #contador-slide { font-family: 'Oswald', sans-serif; min-width: 60px; text-align: center; }
+</style>
+
+<div class="controles-slides">
+    <div id="slide-info-serie" class="info-lateral"></div>
+    <div class="botoes-centrais">
+        <button class="btn-nav" onclick="mudarSlide(-1)">⬅ Anterior</button>
+        <span id="contador-slide"></span>
+        <button class="btn-nav" onclick="mudarSlide(1)">Próximo ➡</button>
+        <button class="btn-nav" onclick="toggleSlides()" style="background:#e74c3c;">Sair</button>
+    </div>
+    <div id="slide-info-aula" class="info-lateral" style="text-align: right;"></div>
+</div>
+</body>
+</html>
