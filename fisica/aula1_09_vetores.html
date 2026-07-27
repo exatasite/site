@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1º Ano: Aula 09 - Vetores e Grandezas Vetoriais</title>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../estilo.css">
+    
+    <script>
+        MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true
+            }
+        };
+    </script>
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body>
+<button class="menu-toggle" onclick="toggleMenu()">☰</button>
+
+<nav id="menu-principal" class="nav-global">
+    <ul>
+        <li><a href="../index.html">🏠 Início</a></li>
+        <li><a href="../fisica_home.html">⚛️ Física</a></li>
+        <li><a href="../matematica_home.html">📐 Matemática</a></li>
+        <li><a href="../simulacoes_home.html">💻 Simulações</a></li>
+    </ul>
+</nav>
+
+<header id="topo">
+    <h1>FÍSICA EM</h1>
+    <p>1º Ano | Aula 09: Vetores e Grandezas Vetoriais</p>
+    <button id="btn-slides" onclick="toggleSlides()">📺 Iniciar Modo Slides</button>
+</header>
+
+<div class="container">
+
+<main class="conteudo-principal">
+
+<div class="secao-aula">
+ <div class="container-resumo" id="resumo">
+    <h3>📚 Resumo </h3>
+    <section class="resumo-conteudo">
+        <p>As grandezas físicas dividem-se em <strong>escalares</strong> (definidas apenas por valor numérico e unidade, como massa e tempo) e <strong>vetoriais</strong>, que necessitam obrigatoriamente de <strong>módulo</strong> (tamanho), <strong>direção</strong> (reta suporte) e <strong>sentido</strong> (orientação).</p>
+        <p>A soma de vetores pode ser feita geometricamente pela <strong>Regra do Polígono</strong> ou da <strong>Regra do Paralelogramo</strong>. A determinação do módulo do vetor resultante é feita pela Lei dos Cossenos ($\vec{R}^2 = \vec{A}^2 + \vec{B}^2 + 2AB\cos\theta$) ou pelo Teorema de Pitágoras quando o ângulo entre eles é $90^\circ$.</p>
+    </section>
+</div>
+
+<section class="conteudo-teorico-completo" id="teoria">
+    <div class="passo-teoria">
+        <h3>📖 Vetores e Operações Vetoriais</h3>
+        <h4>1. Grandezas Escalares vs. Vetoriais</h4>
+        <ul>
+            <li><strong>Grandezas Escalares:</strong> Ficam completamente determinadas por um número acompanhado de uma unidade de medida. Ex: temperatura ($25^\circ\text{C}$), massa ($70\text{ kg}$), tempo ($10\text{ s}$).</li>
+            <li><strong>Grandezas Vetoriais:</strong> Exigem três características para sua definição total:
+                <br>• <strong>Módulo:</strong> O valor numérico com a unidade de medida (comprimento do vetor).
+                <br>• <strong>Direção:</strong> A reta suporte ao longo da qual o vetor atua (ex: horizontal, vertical, inclinada).
+                <br>• <strong>Sentido:</strong> Para onde o vetor aponta ao longo da direção (ex: da esquerda para a direita, para cima).
+                <br><em>Exemplos:</em> Força, Velocidade, Aceleração e Deslocamento.
+            </li>
+        </ul>
+    </div>
+
+    <div class="passo-teoria">
+        <h4>2. Operações Geométricas de Adição Vetorial</h4>
+        <ul>
+            <li><strong>Regra da Origem com Extremidade (Regra do Polígono):</strong> Desenha-se o primeiro vetor e junta-se a origem do segundo na extremidade do primeiro. O vetor resultante ($\vec{R}$) une a origem do primeiro à extremidade do último.</li>
+            <li><strong>Regra do Paralelogramo:</strong> Junta-se as origens dos dois vetores ($\vec{A}$ e $\vec{B}$). Desenha-se linhas paralelas para formar um paralelogramo. O vetor resultante parte da origem comum até o vértice oposto.</li>
+        </ul>
+    </div>
+
+    <div class="passo-teoria">
+        <h4>3. Módulo do Vetor Resultante</h4>
+        <p>Para dois vetores $\vec{A}$ e $\vec{B}$ que formam um ângulo $\theta$ entre si, o módulo da resultante é obtido por:</p>
+        <p>$$R = \sqrt{A^2 + B^2 + 2 \cdot A \cdot B \cdot \cos\theta}$$</p>
+
+        <p><strong>Casos Particulares Importantes:</strong></p>
+        <ul>
+            <li><strong>Mesma direção e mesmo sentido ($\theta = 0^\circ$):</strong> Resultante Máxima $\implies R = A + B$.</li>
+            <li><strong>Mesma direção e sentidos opostos ($\theta = 180^\circ$):</strong> Resultante Mínima $\implies R = |A - B|$.</li>
+            <li><strong>Perpendiculares ($\theta = 90^\circ$):</strong> Aplicamos Pitágoras $\implies R = \sqrt{A^2 + B^2}$.</li>
+        </ul>
+        <figure class="figura-aula figura-grande">
+            <img src="../imagens_fisica/aula1_09_operacoes_vetoriais.png" alt="Soma Vetorial e Regra do Paralelogramo">
+            <figcaption>Figura 1: Representação gráfica do vetor resultante e decomposição angular.</figcaption>
+        </figure>
+    </div>
+
+    <div class="passo-teoria">
+        <h4>4. Decomposição Ortogonal de Vetores</h4>
+        <p>Um vetor $\vec{V}$ inclinado de um ângulo $\theta$ em relação à horizontal pode ser decomposto em duas componentes perpendiculares ($V_x$ e $V_y$):</p>
+        <p>$$V_x = V \cdot \cos\theta \quad \text{e} \quad V_y = V \cdot \sen\theta$$</p>
+    </div>
+</section>
+
+<section class="aplicacoes-reais" id="aplicacoes">
+    <h3>💡 Física em Ação</h3>
+    <div class="cards-aplicacao">
+        <div class="card">
+            <h4>✈️ Navegação Aérea e Vento Lateral</h4>
+            <p>Os pilotos de avião precisam calcular a soma vetorial entre a velocidade da aeronave e a velocidade do vento para manter a rota correta sem serem desviados.</p>
+        </div>
+        <div class="card" style="border-left-color: #2ecc71;">
+            <h4>🕹️ Controles de Videogame (Joysticks)</h4>
+            <p>Os alavancas analógicas detectam o movimento em eixos ortogonais ($X$ e $Y$) e decompõem a direção do impulso do jogador em componentes vetoriais em tempo real.</p>
+        </div>
+    </div>
+</section>
+
+<section class="questoes-resolvidas" id="resolvidas">
+    <h3>✅ 5 Questões Resolvidas (R 1 a 5)</h3>
+    
+    <article class="questao">
+        <h4>R 1: Resultantes Máxima e Mínima</h4>
+        <p><strong>Enunciado:</strong> Dois vetores possuem módulos $A = 8\text{ u}$ e $B = 6\text{ u}$. Calcule os valores possíveis para os módulos da resultante máxima e da resultante mínima entre eles.</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong><br>
+            • Resultante máxima ($\theta = 0^\circ$): $R_{\text{máx}} = A + B = 8 + 6 = \mathbf{14\text{ u}}$.<br>
+            • Resultante mínima ($\theta = 180^\circ$): $R_{\text{mín}} = |A - B| = |8 - 6| = \mathbf{2\text{ u}}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>R 2: Vetores Perpendiculares</h4>
+        <p><strong>Enunciado:</strong> Duas forças perpendiculares entre si, de módulos $F_1 = 3\text{ N}$ e $F_2 = 4\text{ N}$, atuam sobre um mesmo ponto material. Determine o módulo da força resultante.</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong><br>
+            Para vetores perpendiculares ($\theta = 90^\circ$), aplicamos o Teorema de Pitágoras:<br>
+            $F_R = \sqrt{F_1^2 + F_2^2} = \sqrt{3^2 + 4^2} = \sqrt{9 + 16} = \sqrt{25} = \mathbf{5\text{ N}}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>R 3: Regra do Paralelogramo com Ângulo de 60°</h4>
+        <p><strong>Enunciado:</strong> Calcule o módulo da resultante entre dois vetores de módulos $A = 5\text{ u}$ e $B = 3\text{ u}$ que formam entre si um ângulo de $60^\circ$. (Dado: $\cos 60^\circ = 0,5$).</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong><br>
+            $R = \sqrt{A^2 + B^2 + 2AB\cos\theta}$<br>
+            $R = \sqrt{5^2 + 3^2 + 2(5)(3)(0,5)} = \sqrt{25 + 9 + 15} = \sqrt{49} = \mathbf{7\text{ u}}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>R 4: Decomposição Ortogonal de um Vetor</h4>
+        <p><strong>Enunciado:</strong> Um vetor velocidade tem módulo $v = 100\text{ m/s}$ e faz um ângulo de $30^\circ$ com a horizontal. Determine suas componentes horizontal ($v_x$) e vertical ($v_y$). (Considere $\cos 30^\circ = 0,86$ e $\sen 30^\circ = 0,50$).</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong><br>
+            • Componente horizontal: $v_x = v \cdot \cos 30^\circ = 100 \cdot 0,86 = \mathbf{86\text{ m/s}}$.<br>
+            • Componente vertical: $v_y = v \cdot \sen 30^\circ = 100 \cdot 0,50 = \mathbf{50\text{ m/s}}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>R 5: Classificação de Grandezas</h4>
+        <p><strong>Enunciado:</strong> Classifique as seguintes grandezas em escala ou vetorial: Massa, Força, Temperatura, Deslocamento e Tempo.</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong><br>
+            • <strong>Escalares:</strong> Massa, Temperatura e Tempo.<br>
+            • <strong>Vetoriais:</strong> Força e Deslocamento.</p>
+        </div>
+    </article>
+</section>
+
+<section class="questoes-propostas" id="propostas">
+    <h3>✍️ 5 Questões Propostas (P 6 a 10)</h3>
+
+    <article class="questao">
+        <h4>P 6: Intervalo de Possibilidades da Resultante</h4>
+        <p><strong>Enunciado:</strong> Dois vetores têm módulos $10\text{ u}$ e $15\text{ u}$. É possível que o vetor resultante dessa soma tenha módulo igual a $4\text{ u}$? Justifique.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> Não. O módulo da resultante deve estar obrigatoriamente entre a resultante mínima e a máxima:<br>
+            $R_{\text{mín}} = |15 - 10| = 5\text{ u}$ e $R_{\text{máx}} = 15 + 10 = 25\text{ u}$.<br>
+            Como $4\text{ u} < 5\text{ u}$, <strong>não é possível</strong> obter uma resultante de valor 4.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 7: Soma de Dois Vetores Iguais Perpendiculares</h4>
+        <p><strong>Enunciado:</strong> Dois vetores de mesmo módulo $V = 10\text{ u}$ são perpendiculares entre si. Calcule o módulo do vetor resultante.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> $R = \sqrt{V^2 + V^2} = \sqrt{10^2 + 10^2} = \sqrt{200} = \mathbf{10\sqrt{2}\text{ u}} \approx 14,14\text{ u}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 8: Soma Vetorial com Ângulo Obtuso (120°)</h4>
+        <p><strong>Enunciado:</strong> Dois vetores de módulo $F = 20\text{ N}$ formam entre si um ângulo de $120^\circ$. Qual é o módulo da força resultante? (Dado: $\cos 120^\circ = -0,5$).</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> $R = \sqrt{20^2 + 20^2 + 2(20)(20)(-0,5)} = \sqrt{400 + 400 - 400} = \sqrt{400} = \mathbf{20\text{ N}}$.<br>
+            <em>Nota:</em> Quando dois vetores iguais formam $120^\circ$, a resultante possui módulo exatamente igual ao dos vetores originários.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 9: Componentes de Força no Plano Inclinado</h4>
+        <p><strong>Enunciado:</strong> Uma força de $50\text{ N}$ é aplicada formando $60^\circ$ com a horizontal. Determine a componente vertical desta força. ($\sen 60^\circ = 0,87$).</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> $F_y = F \cdot \sen 60^\circ = 50 \cdot 0,87 = \mathbf{43,5\text{ N}}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 10: Diferença entre Direção e Sentido</h4>
+        <p><strong>Enunciado:</strong> Explique resumidamente a diferença conceitual entre direção e sentido na física vetorial.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> A <strong>direção</strong> refere-se à reta suporte onde o vetor se encontra (ex: horizontal, vertical). O <strong>sentido</strong> é a orientação ao longo dessa reta suporte, indicando para onde a seta aponta (ex: para cima ou para baixo, para a esquerda ou para a direita). Uma única direção possui sempre dois sentidos opostos.</p>
+        </div>
+    </article>
+</section>
+
+<section class="TESTE" id="testes">
+    <h3>🎓 TESTES (T 11 a 15)</h3>
+
+    <div class="card" style="text-align:center; padding:60px 20px; background:#f8f9fa; border:2px dashed #3498db; border-radius:12px; margin-top:20px;">
+        <h2 style="color:#3498db; font-size:2.5rem; margin-bottom:15px;">
+            🚧 EM BREVE!
+        </h2>
+
+        <p style="font-size:1.2rem; color:#555;">
+            Questões de vestibulares serão disponibilizadas em breve.
+        </p>
+    </div>
+</section>
+
+</div>
+</main>
+
+<aside class="menu-lateral">
+    <iframe src="../menu_fisica.html" style="width:100%; border:none; height:600px;"></iframe>
+</aside>
+
+</div>
+
+<script>
+function toggleGabarito(botao) {
+    const gabarito = botao.nextElementSibling;
+    if (gabarito.style.display === "none" || gabarito.style.display === "") {
+        gabarito.style.display = "block";
+        botao.textContent = "Esconder Gabarito e Resolução";
+        botao.style.backgroundColor = "#2c3e50";
+    } else {
+        gabarito.style.display = "none";
+        botao.textContent = "Ver Gabarito e Resolução";
+        botao.style.backgroundColor = "#3498db";
+    }
+}
+
+function toggleMenu() {
+    const menuGlobal = document.getElementById("menu-principal");
+    if (menuGlobal) menuGlobal.classList.toggle("ativo");
+}
+
+let slideAtual = 0;
+let slides = [];
+
+function prepararSlides() {
+    const seletores = '.container-resumo, .passo-teoria, .aplicacoes-reais, .questao';
+    slides = document.querySelectorAll(seletores);
+}
+
+function toggleSlides() {
+    prepararSlides();
+    const body = document.body;
+    if (!body.classList.contains('modo-slides')) {
+        body.classList.add('modo-slides');
+        slideAtual = 0;
+        mostrarSlide(slideAtual);
+    } else {
+        body.classList.remove('modo-slides');
+        window.location.reload(); 
+    }
+}
+
+function mostrarSlide(n) {
+    slides.forEach(s => {
+        s.classList.remove('slide-ativo');
+        s.style.display = 'none';
+    });
+    const slide = slides[n];
+    slide.classList.add('slide-ativo');
+    slide.style.display = 'flex'; 
+
+    if (slide.classList.contains('questao') && !slide.querySelector('.btn-gabarito')) {
+        const resolucoes = slide.querySelectorAll('.resolucao-bloco');
+        resolucoes.forEach(r => r.style.display = 'block');
+    } else {
+        const gabaritos = slide.querySelectorAll('.gabarito-resolucao');
+        gabaritos.forEach(g => g.style.display = 'none');
+        const botoes = slide.querySelectorAll('.btn-gabarito');
+        botoes.forEach(b => {
+            b.textContent = "Ver Gabarito e Resolução";
+            b.style.backgroundColor = "#3498db";
+        });
+    }
+
+    const pHeader = document.querySelector('header p').innerText;
+    const partes = pHeader.split('|');
+    if(partes.length > 1) {
+        document.getElementById('slide-info-serie').innerText = partes[0].trim();
+        document.getElementById('slide-info-aula').innerText = partes[1].trim();
+    }
+    document.getElementById('contador-slide').innerText = (n + 1) + " / " + slides.length;
+    if (window.MathJax) MathJax.typesetPromise();
+}
+
+function mudarSlide(direcao) {
+    slideAtual += direcao;
+    if (slideAtual >= slides.length) slideAtual = 0;
+    if (slideAtual < 0) slideAtual = slides.length - 1;
+    mostrarSlide(slideAtual);
+}
+
+document.addEventListener('keydown', function(event) {
+    if (document.body.classList.contains('modo-slides')) {
+        switch(event.key) {
+            case 'ArrowRight': 
+            case 'PageDown':   
+            case 'Enter':      
+            case ' ':          
+                mudarSlide(1);
+                break;
+                
+            case 'ArrowLeft':  
+            case 'PageUp':     
+                mudarSlide(-1);
+                break;
+
+            case 'Escape':     
+                toggleSlides();
+                break;
+        }
+    }
+});
+</script>
+
+<style>
+    body.modo-slides { overflow: hidden; background-color: #1a1a1a; }
+    body.modo-slides .menu-lateral, body.modo-slides header, body.modo-slides .menu-toggle, body.modo-slides #btn-slides { display: none !important; }
+    .slide-ativo {
+        display: flex !important; flex-direction: column; align-items: center; justify-content: flex-start;
+        position: fixed; top: 0; left: 0; width: 100vw; height: calc(100vh - 70px);
+        background: #ffffff; padding: 40px; z-index: 999; overflow-y: auto !important; 
+        box-sizing: border-box; text-align: center;
+    }
+    .controles-slides {
+        position: fixed; bottom: 0; left: 0; width: 100%; height: 70px;
+        background: #2c3e50; color: white; display: none; 
+        justify-content: space-between; align-items: center; padding: 0 20px; z-index: 1001; box-sizing: border-box;
+    }
+    body.modo-slides .controles-slides { display: flex; }
+    .info-lateral { flex: 1; font-family: 'Oswald', sans-serif; font-size: 0.9rem; color: #bdc3c7; }
+    .botoes-centrais { display: flex; align-items: center; gap: 15px; justify-content: center; flex: 2; }
+    .btn-nav { padding: 10px 20px; background: #3498db; color: white; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; }
+    #contador-slide { font-family: 'Oswald', sans-serif; min-width: 60px; text-align: center; }
+</style>
+
+<div class="controles-slides">
+    <div id="slide-info-serie" class="info-lateral"></div>
+    <div class="botoes-centrais">
+        <button class="btn-nav" onclick="mudarSlide(-1)">⬅ Anterior</button>
+        <span id="contador-slide"></span>
+        <button class="btn-nav" onclick="mudarSlide(1)">Próximo ➡</button>
+        <button class="btn-nav" onclick="toggleSlides()" style="background:#e74c3c;">Sair</button>
+    </div>
+    <div id="slide-info-aula" class="info-lateral" style="text-align: right;"></div>
+</div>
+</body>
+</html>
