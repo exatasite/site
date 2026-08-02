@@ -207,15 +207,43 @@
 <section class="TESTE" id="testes">
     <h3>🎓 TESTES (T 11 a 15)</h3>
 
-    <div class="card" style="text-align:center; padding:60px 20px; background:#f8f9fa; border:2px dashed #3498db; border-radius:12px; margin-top:20px;">
-        <h2 style="color:#3498db; font-size:2.5rem; margin-bottom:15px;">
-            🚧 EM BREVE!
-        </h2>
+    <article class="questao">
+    <h4>T 11: (ENEM) Notação Científica</h4>
+    <p>A gripe é uma infecção respiratória aguda de curta duração causada pelo vírus influenza. Ao entrar no nosso organismo pelo nariz, esse vírus multiplica-se, disseminando-se para a garganta e demais partes das vias respiratórias, incluindo os pulmões.</p>
+    <p>O vírus influenza é uma partícula esférica que tem um diâmetro interno de $0,00011\text{ mm}$.</p>
+    <p><em>Disponível em: www.gripenet.pt. Acesso em: 2 nov. 2013 (adaptado).</em></p>
+    
+    <p>Em notação científica, o diâmetro interno do vírus influenza, em mm, é:</p>
+    
+    <p>
+        A) $1,1 \times 10^{-1}$<br> 
+        B) $1,1 \times 10^{-2}$<br> 
+        C) $1,1 \times 10^{-3}$<br> 
+        D) $1,1 \times 10^{-4}$<br> 
+        E) $1,1 \times 10^{-5}$
+    </p>
 
-        <p style="font-size:1.2rem; color:#555;">
-           Questões de vestibulares serão disponibilizadas em breve.
+    <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+    <div class="gabarito-resolucao">
+        <p><strong>Resolução:</strong> Alternativa <strong>D</strong>. <br>
+        Para escrever um número decimal em notação científica, ajustamos o número para a forma $a \times 10^n$, em que $1 \le a < 10$.
+
+        <strong>1. Mover a vírgula:</strong>
+        Partindo de $0,00011$, movimentamos a vírgula para a direita até o primeiro algarismo significativo diferente de zero ($1,1$):
+        <ul>
+            <li>$0,00011 \rightarrow 00,0011$ (1 casa)</li>
+            <li>$00,0011 \rightarrow 000,011$ (2 casas)</li>
+            <li>$000,011 \rightarrow 0000,11$ (3 casas)</li>
+            <li>$0000,11 \rightarrow 00001,1$ (4 casas para a direita)</li>
+        </ul>
+
+        <strong>2. Determinar o expoente:</strong>
+        Como deslocamos a vírgula <strong>4 casas para a direita</strong> (tornando o número decimal maior), o expoente da base 10 deve ser negativo: $-4$.
+
+        $$ 0,00011\text{ mm} = \mathbf{1,1 \times 10^{-4}\text{ mm}} $$
         </p>
     </div>
+</article>
 </section>
 
 </div>
