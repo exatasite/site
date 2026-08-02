@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3º Ano: Aula 09 - Campo e Potencial de um Condutor Esférico</title>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../estilo.css">
+    
+    <script>
+        MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true
+            }
+        };
+    </script>
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body>
+<button class="menu-toggle" onclick="toggleMenu()">☰</button>
+
+<nav id="menu-principal" class="nav-global">
+    <ul>
+        <li><a href="../index.html">🏠 Início</a></li>
+        <li><a href="../fisica_home.html">⚛️ Física</a></li>
+        <li><a href="../matematica_home.html">📐 Matemática</a></li>
+        <li><a href="../simulacoes_home.html">💻 Simulações</a></li>
+    </ul>
+</nav>
+
+<header id="topo">
+    <h1>FÍSICA EM</h1>
+    <p>3º Ano | Aula 09: Campo e Potencial de um Condutor Esférico</p>
+    <button id="btn-slides" onclick="toggleSlides()">📺 Iniciar Modo Slides</button>
+</header>
+
+<div class="container">
+
+<main class="conteudo-principal">
+
+<div class="secao-aula">
+ <div class="container-resumo" id="resumo">
+    <h3>📚 Resumo </h3>
+    <section class="resumo-conteudo">
+        <p>Em um **condutor esférico** de raio $R$ eletrizado com carga $Q$ em equilíbrio eletrostático, o comportamento do campo elétrico e do potencial depende da distância $r$ ao centro da esfera.</p>
+        <p>No interior ($r < R$), o campo elétrico é nulo ($E = 0$) e o potencial é constante ($V = \frac{k_0 \cdot Q}{R}$). Para pontos externos ($r > R$), a esfera comporta-se como se toda a sua carga estivesse concentrada no seu centro: $E = \frac{k_0 \cdot |Q|}{r^2}$ e $V = \frac{k_0 \cdot Q}{r}$.</p>
+    </section>
+</div>
+
+<section class="conteudo-teorico-completo" id="teoria">
+    <div class="passo-teoria">
+        <h3>📖 Campo e Potencial em Condutores Esféricos</h3>
+        <h4>1. Comportamento do Campo Elétrico ($E$)</h4>
+        <ul>
+            <li><strong>Pontos internos ($r < R$):</strong> $E_{\text{int}} = 0$.</li>
+            <li><strong>Na superfície ($r = R$):</strong> O campo é descontínuo. Em um ponto infinitamente próximo do lado de fora da superfície, o campo vale $E_{\text{próx}} = \frac{k_0 \cdot |Q|}{R^2}$. O campo exatamente sobre a superfície (valor médio) é $E_{\text{sup}} = \frac{k_0 \cdot |Q|}{2 R^2}$.</li>
+            <li><strong>Pontos externos ($r > R$):</strong> $E_{\text{ext}} = \frac{k_0 \cdot |Q|}{r^2}$.</li>
+        </ul>
+    </div>
+
+    <div class="passo-teoria">
+        <h4>2. Comportamento do Potencial Elétrico ($V$)</h4>
+        <ul>
+            <li><strong>Pontos internos e superfície ($r \le R$):</strong> O potencial é constante e igual em todos os pontos:
+            <p>$$V_{\text{int}} = V_{\text{sup}} = \frac{k_0 \cdot Q}{R}$$</p></li>
+            <li><strong>Pontos externos ($r > R$):</strong> O potencial diminui inversamente com a distância ao centro:
+            <p>$$V_{\text{ext}} = \frac{k_0 \cdot Q}{r}$$</p></li>
+        </ul>
+    </div>
+
+    <div class="passo-teoria">
+        <h4>3. Análise Gráfica ($E \times r$ e $V \times r$)</h4>
+        <p>A representação gráfica em função da distância $r$ ao centro da esfera destaca a descontinuidade do campo elétrico na superfície e a continuidade do potencial elétrico:</p>
+        <figure class="figura-aula figura-grande">
+            <img src="../imagens_fisica/aula3_09_condutor_esferico.png" alt="Gráficos de Campo Elétrico e Potencial Elétrico de um Condutor Esférico">
+            <figcaption>Figura 1: Gráficos de $E \times r$ e $V \times r$ para um condutor esférico de raio $R$.</figcaption>
+        </figure>
+    </div>
+
+    <div class="passo-teoria">
+        <h4>4. Capacidade Elétrica de um Condutor Esférico</h4>
+        <p>A capacidade (ou capacitância) $C$ de um condutor esférico no vácuo mede sua habilidade de armazenar carga para um dado potencial:</p>
+        <p>$$C = \frac{Q}{V_{\text{sup}}} = \frac{R}{k_0}$$</p>
+        <p><em>Unidade no SI:</em> Farad ($\text{F}$). Quanto maior o raio $R$ da esfera, maior é a sua capacidade de armazenar cargas.</p>
+    </div>
+</section>
+
+<section class="aplicacoes-reais" id="aplicacoes">
+    <h3>💡 Física em Ação</h3>
+    <div class="cards-aplicacao">
+        <div class="card">
+            <h4>⚡ Gerador de Van de Graaff</h4>
+            <p>Utiliza uma grande cúpula condutora esférica de metal. As cargas transportadas pela esteira acumulam-se na superfície externa da esfera, gerando potenciais elétricos de centenas de milhares de volts sem criar campo elétrico no seu interior.</p>
+        </div>
+        <div class="card" style="border-left-color: #2ecc71;">
+            <h4>🌍 Capacitância do Planeta Terra</h4>
+            <p>A Terra pode ser modelada como um condutor esférico gigante de raio $R \approx 6,4 \times 10^6\text{ m}$. Sua capacitância no vácuo é de aproximadamente $710\ \mu\text{F}$, servindo de referência ("terra" ou $0\text{ V}$) para circuitos elétricos.</p>
+        </div>
+    </div>
+</section>
+
+<section class="questoes-resolvidas" id="resolvidas">
+    <h3>✅ 5 Questões Resolvidas (R 1 a 5)</h3>
+    
+    <article class="questao">
+        <h4>R 1: Campo e Potencial no Interior e Exterior</h4>
+        <p><strong>Enunciado:</strong> Uma esfera metálica de raio $R = 0,3\text{ m}$ está carregada com $Q = +6,0\ \mu\text{C}$ no vácuo ($k_0 = 9 \times 10^9\text{ N}\cdot\text{m}^2/\text{C}^2$). Determine o potencial e o campo elétrico nos pontos situados a $0,1\text{ m}$ e a $0,6\text{ m}$ do centro da esfera.</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong><br>
+            • <strong>Ponto 1 ($r_1 = 0,1\text{ m} < R$ - Interior):</strong><br>
+            $E_1 = \mathbf{0\text{ N/C}}$.<br>
+            $V_1 = V_{\text{sup}} = k_0 \cdot \frac{Q}{R} = (9 \times 10^9) \cdot \frac{6 \times 10^{-6}}{0,3} = \mathbf{1,8 \times 10^5\text{ V}\ (180\text{ kV})}$.<br><br>
+            • <strong>Ponto 2 ($r_2 = 0,6\text{ m} > R$ - Exterior):</strong><br>
+            $E_2 = k_0 \cdot \frac{Q}{r_2^2} = (9 \times 10^9) \cdot \frac{6 \times 10^{-6}}{(0,6)^2} = \frac{5,4 \times 10^4}{0,36} = \mathbf{1,5 \times 10^5\text{ N/C}}$.<br>
+            $V_2 = k_0 \cdot \frac{Q}{r_2} = (9 \times 10^9) \cdot \frac{6 \times 10^{-6}}{0,6} = \mathbf{9,0 \times 10^4\text{ V}\ (90\text{ kV})}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>R 2: Capacitância de Esfera Condutora</h4>
+        <p><strong>Enunciado:</strong> Calcule a capacitância de uma esfera condutora de raio $r = 9,0\text{ cm}$ colocada no vácuo ($k_0 = 9 \times 10^9\text{ N}\cdot\text{m}^2/\text{C}^2$).</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong><br>
+            $R = 9,0\text{ cm} = 0,09\text{ m} = 9 \times 10^{-2}\text{ m}$.<br>
+            $C = \frac{R}{k_0} = \frac{9 \times 10^{-2}}{9 \times 10^9} = 1 \times 10^{-11}\text{ F} = \mathbf{10\text{ pF}}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>R 3: Relação entre Campo Próximo e Potencial da Superfície</h4>
+        <p><strong>Enunciado:</strong> Uma esfera condutora em equilíbrio eletrostático possui potencial na superfície de $V = 500\text{ V}$ e raio $R = 0,2\text{ m}$. Qual é a intensidade do campo elétrico em um ponto infinitamente próximo à sua superfície externamente?</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong><br>
+            Como $V = k_0 \frac{Q}{R}$ e $E_{\text{próx}} = k_0 \frac{Q}{R^2}$, podemos fazer:<br>
+            $E_{\text{próx}} = \frac{V}{R} = \frac{500}{0,2} = \mathbf{2500\text{ V/m}\ (\text{ou N/C})}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>R 4: Gráfico de Potencial de um Condutor Esférico</h4>
+        <p><strong>Enunciado:</strong> O potencial no centro de uma esfera metálica eletrizada de raio $R$ vale $100\text{ V}$. Qual será o valor do potencial no ponto situado a uma distância $r = 2R$ do centro dessa esfera?</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong><br>
+            • No centro e na superfície: $V_{\text{sup}} = k_0 \frac{Q}{R} = 100\text{ V}$.<br>
+            • A uma distância $r = 2R$: $V(2R) = k_0 \frac{Q}{2R} = \frac{1}{2} \cdot \left(k_0 \frac{Q}{R}\right) = \frac{100}{2} = \mathbf{50\text{ V}}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>R 5: Carga Mapeada por Potencial Externo</h4>
+        <p><strong>Enunciado:</strong> Em um ponto distante $2,0\text{ m}$ do centro de um condutor esférico, o potencial vale $4,5 \times 10^3\text{ V}$. Sabendo que o meio é o vácuo ($k_0 = 9 \times 10^9\text{ N}\cdot\text{m}^2/\text{C}^2$), qual é o valor da carga $Q$ acumulada na esfera?</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong><br>
+            Para pontos externos, $V = k_0 \frac{Q}{r}$.<br>
+            $4,5 \times 10^3 = (9 \times 10^9) \frac{Q}{2,0} \implies 9,0 \times 10^3 = (9 \times 10^9) \cdot Q$<br>
+            $Q = \frac{9,0 \times 10^3}{9 \times 10^9} = 1,0 \times 10^{-6}\text{ C} = \mathbf{+1,0\ \mu\text{C}}$.</p>
+        </div>
+    </article>
+</section>
+
+<section class="questoes-propostas" id="propostas">
+    <h3>✍️ 5 Questões Propostas (P 6 a 10)</h3>
+
+    <article class="questao">
+        <h4>P 6: Campo no Centro da Esfera</h4>
+        <p><strong>Enunciado:</strong> Quanto vale o vetor campo elétrico no centro de uma esfera condutora maciça em equilíbrio eletrostático carregada com carga $+Q$?</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> O campo elétrico é **nulo ($\vec{E} = \vec{0}$)** em qualquer ponto interno ao condutor, inclusive no seu centro.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 7: Comparação do Potencial Interno e Superficial</h4>
+        <p><strong>Enunciado:</strong> O potencial elétrico no centro de um condutor esférico eletrizado é maior, menor ou igual ao potencial na sua superfície externa?</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> É **igual** ($V_{\text{centro}} = V_{\text{int}} = V_{\text{sup}}$). Toda a região interna e a superfície do condutor formam um volume equipotencial.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 8: Comportamento do Campo com o Dobro da Distância Externa</h4>
+        <p><strong>Enunciado:</strong> Se a distância de um ponto externo ao centro de uma esfera condutora eletrizada dobrar (de $r$ para $2r$), o que acontece com a intensidade do campo elétrico?</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> Como $E \propto \frac{1}{r^2}$, ao dobrar a distância o campo elétrico fica **quatro vezes menor ($E' = \frac{E}{4}$)**.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 9: Relação entre Raio e Capacitância</h4>
+        <p><strong>Enunciado:</strong> Se dobrarmos o raio de um condutor esférico, sua capacidade elétrica (capacitância) aumenta, diminui ou permanece a mesma?</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> **Aumenta para o dobro**. A capacitância de uma esfera é diretamente proporcional ao seu raio ($C = \frac{R}{k_0}$).</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 10: Ponto de Campo Máximo</h4>
+        <p><strong>Enunciado:</strong> Em relação à distância $r$ do centro de uma esfera condutora isolada de raio $R$, em qual região a intensidade do campo elétrico atinge seu valor máximo absoluto?</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> O campo atinge seu valor máximo **infinitamente próximo à superfície do lado de fora ($r \to R^+$)**, onde $E = \frac{k_0 |Q|}{R^2}$. Para $r > R$, o campo diminui com o quadrado da distância.</p>
+        </div>
+    </article>
+</section>
+
+<section class="TESTE" id="testes">
+    <h3>🎓 TESTES (T 11 a 15)</h3>
+
+    <div class="card" style="text-align:center; padding:60px 20px; background:#f8f9fa; border:2px dashed #3498db; border-radius:12px; margin-top:20px;">
+        <h2 style="color:#3498db; font-size:2.5rem; margin-bottom:15px;">
+            🚧 EM BREVE!
+        </h2>
+
+        <p style="font-size:1.2rem; color:#555;">
+            Questões de vestibulares serão disponibilizadas em breve.
+        </p>
+    </div>
+</section>
+
+</div>
+</main>
+
+<aside class="menu-lateral">
+    <iframe src="../menu_fisica.html" style="width:100%; border:none; height:600px;"></iframe>
+</aside>
+
+</div>
+
+<script>
+function toggleGabarito(botao) {
+    const gabarito = botao.nextElementSibling;
+    if (gabarito.style.display === "none" || gabarito.style.display === "") {
+        gabarito.style.display = "block";
+        botao.textContent = "Esconder Gabarito e Resolução";
+        botao.style.backgroundColor = "#2c3e50";
+    } else {
+        gabarito.style.display = "none";
+        botao.textContent = "Ver Gabarito e Resolução";
+        botao.style.backgroundColor = "#3498db";
+    }
+}
+
+function toggleMenu() {
+    const menuGlobal = document.getElementById("menu-principal");
+    if (menuGlobal) menuGlobal.classList.toggle("ativo");
+}
+
+let slideAtual = 0;
+let slides = [];
+
+function prepararSlides() {
+    const seletores = '.container-resumo, .passo-teoria, .aplicacoes-reais, .questao';
+    slides = document.querySelectorAll(seletores);
+}
+
+function toggleSlides() {
+    prepararSlides();
+    const body = document.body;
+    if (!body.classList.contains('modo-slides')) {
+        body.classList.add('modo-slides');
+        slideAtual = 0;
+        mostrarSlide(slideAtual);
+    } else {
+        body.classList.remove('modo-slides');
+        window.location.reload(); 
+    }
+}
+
+function mostrarSlide(n) {
+    slides.forEach(s => {
+        s.classList.remove('slide-ativo');
+        s.style.display = 'none';
+    });
+    const slide = slides[n];
+    slide.classList.add('slide-ativo');
+    slide.style.display = 'flex'; 
+
+    if (slide.classList.contains('questao') && !slide.querySelector('.btn-gabarito')) {
+        const resolucoes = slide.querySelectorAll('.resolucao-bloco');
+        resolucoes.forEach(r => r.style.display = 'block');
+    } else {
+        const gabaritos = slide.querySelectorAll('.gabarito-resolucao');
+        gabaritos.forEach(g => g.style.display = 'none');
+        const botoes = slide.querySelectorAll('.btn-gabarito');
+        botoes.forEach(b => {
+            b.textContent = "Ver Gabarito e Resolução";
+            b.style.backgroundColor = "#3498db";
+        });
+    }
+
+    const pHeader = document.querySelector('header p').innerText;
+    const partes = pHeader.split('|');
+    if(partes.length > 1) {
+        document.getElementById('slide-info-serie').innerText = partes[0].trim();
+        document.getElementById('slide-info-aula').innerText = partes[1].trim();
+    }
+    document.getElementById('contador-slide').innerText = (n + 1) + " / " + slides.length;
+    if (window.MathJax) MathJax.typesetPromise();
+}
+
+function mudarSlide(direcao) {
+    slideAtual += direcao;
+    if (slideAtual >= slides.length) slideAtual = 0;
+    if (slideAtual < 0) slideAtual = slides.length - 1;
+    mostrarSlide(slideAtual);
+}
+
+document.addEventListener('keydown', function(event) {
+    if (document.body.classList.contains('modo-slides')) {
+        switch(event.key) {
+            case 'ArrowRight': 
+            case 'PageDown':   
+            case 'Enter':      
+            case ' ':          
+                mudarSlide(1);
+                break;
+                
+            case 'ArrowLeft':  
+            case 'PageUp':     
+                mudarSlide(-1);
+                break;
+
+            case 'Escape':     
+                toggleSlides();
+                break;
+        }
+    }
+});
+</script>
+
+<style>
+    body.modo-slides { overflow: hidden; background-color: #1a1a1a; }
+    body.modo-slides .menu-lateral, body.modo-slides header, body.modo-slides .menu-toggle, body.modo-slides #btn-slides { display: none !important; }
+    .slide-ativo {
+        display: flex !important; flex-direction: column; align-items: center; justify-content: flex-start;
+        position: fixed; top: 0; left: 0; width: 100vw; height: calc(100vh - 70px);
+        background: #ffffff; padding: 40px; z-index: 999; overflow-y: auto !important; 
+        box-sizing: border-box; text-align: center;
+    }
+    .controles-slides {
+        position: fixed; bottom: 0; left: 0; width: 100%; height: 70px;
+        background: #2c3e50; color: white; display: none; 
+        justify-content: space-between; align-items: center; padding: 0 20px; z-index: 1001; box-sizing: border-box;
+    }
+    body.modo-slides .controles-slides { display: flex; }
+    .info-lateral { flex: 1; font-family: 'Oswald', sans-serif; font-size: 0.9rem; color: #bdc3c7; }
+    .botoes-centrais { display: flex; align-items: center; gap: 15px; justify-content: center; flex: 2; }
+    .btn-nav { padding: 10px 20px; background: #3498db; color: white; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; }
+    #contador-slide { font-family: 'Oswald', sans-serif; min-width: 60px; text-align: center; }
+</style>
+
+<div class="controles-slides">
+    <div id="slide-info-serie" class="info-lateral"></div>
+    <div class="botoes-centrais">
+        <button class="btn-nav" onclick="mudarSlide(-1)">⬅ Anterior</button>
+        <span id="contador-slide"></span>
+        <button class="btn-nav" onclick="mudarSlide(1)">Próximo ➡</button>
+        <button class="btn-nav" onclick="toggleSlides()" style="background:#e74c3c;">Sair</button>
+    </div>
+    <div id="slide-info-aula" class="info-lateral" style="text-align: right;"></div>
+</div>
+</body>
+</html>
