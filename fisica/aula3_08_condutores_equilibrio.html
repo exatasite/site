@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3º Ano: Aula 08 - Propriedades dos Condutores em Equilíbrio Eletrostático</title>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../estilo.css">
+    
+    <script>
+        MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true
+            }
+        };
+    </script>
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body>
+<button class="menu-toggle" onclick="toggleMenu()">☰</button>
+
+<nav id="menu-principal" class="nav-global">
+    <ul>
+        <li><a href="../index.html">🏠 Início</a></li>
+        <li><a href="../fisica_home.html">⚛️ Física</a></li>
+        <li><a href="../matematica_home.html">📐 Matemática</a></li>
+        <li><a href="../simulacoes_home.html">💻 Simulações</a></li>
+    </ul>
+</nav>
+
+<header id="topo">
+    <h1>FÍSICA EM</h1>
+    <p>3º Ano | Aula 08: Propriedades dos Condutores em Equilíbrio Eletrostático</p>
+    <button id="btn-slides" onclick="toggleSlides()">📺 Iniciar Modo Slides</button>
+</header>
+
+<div class="container">
+
+<main class="conteudo-principal">
+
+<div class="secao-aula">
+ <div class="container-resumo" id="resumo">
+    <h3>📚 Resumo </h3>
+    <section class="resumo-conteudo">
+        <p>Um condutor está em <strong>equilíbrio eletrostático</strong> quando não há movimento ordenado de cargas elétricas em seu interior.</p>
+        <p>Nessa condição, o campo elétrico interno é nulo ($E_{\text{int}} = 0$), todo o excesso de carga localiza-se na superfície externa, a superfície do condutor forma uma linha equipotencial ($V = \text{constante}$) e o campo nas proximidades das pontas é mais intenso (<strong>Poder das Pontas</strong>).</p>
+    </section>
+</div>
+
+<section class="conteudo-teorico-completo" id="teoria">
+    <div class="passo-teoria">
+        <h3>📖 Condutores em Equilíbrio Eletrostático</h3>
+        <h4>1. Campo Elétrico Interno e Distribuição de Cargas</h4>
+        <p>Em um condutor em equilíbrio eletrostático, o vetor campo elétrico em qualquer ponto do seu interior é **nulo** ($E_{\text{int}} = 0$).</p>
+        <ul>
+            <li>Se houvesse campo elétrico interno, os elétrons livres sofreriam força e se movimentariam, contradizendo o estado de equilíbrio.</li>
+            <li>Como consequência da repulsão mútua, qualquer excesso de carga elétrica acumula-se exclusivamente na **superfície externa** do condutor.</li>
+        </ul>
+    </div>
+
+    <div class="passo-teoria">
+        <h4>2. Potencial Elétrico de um Condutor Eletrizado</h4>
+        <p>Como o campo elétrico interno é nulo, não há trabalho para mover cargas em seu interior ($\tau = 0$).</p>
+        <ul>
+            <li>O **potencial elétrico é constante** em todos os pontos internos e na superfície do condutor ($V_{\text{int}} = V_{\text{sup}}$).</li>
+            <li>A superfície do condutor é uma **superfície equipotencial**, e o campo elétrico logo na superfície externa é sempre **perpendicular** a ela.</li>
+        </ul>
+    </div>
+
+    <div class="passo-teoria">
+        <h4>3. Blindagem Eletrostática (Gaiola de Faraday)</h4>
+        <p>Como $E_{\text{int}} = 0$, qualquer cavidade interior a um condutor fica protegida de campos elétricos externos. Esse fenômeno é conhecido como **blindagem eletrostática**.</p>
+    </div>
+
+    <div class="passo-teoria">
+        <h4>4. Densidade Superficial de Cargas e Poder das Pontas</h4>
+        <p>A densidade superficial de cargas ($\sigma = \frac{Q}{A}$) mede a quantidade de carga por unidade de área. Em condutores de formato irregular:</p>
+        <ul>
+            <li>As cargas acumulam-se preferencialmente nas regiões de menor raio de curvatura (regiões pontiagudas).</li>
+            <li>Nas pontas, o campo elétrico torna-se muito intenso, podendo ionizar o ar ao redor e produzir descargas elétricas (efeito conhecido como **Poder das Pontas**).</li>
+        </ul>
+        <figure class="figura-aula figura-grande">
+            <img src="../imagens_fisica/aula3_08_condutores_equilibrio.png" alt="Condutor em equilíbrio eletrostático e poder das pontas">
+            <figcaption>Figura 1: Distribuição de cargas, campo elétrico nulo no interior e acúmulo de cargas nas pontas.</figcaption>
+        </figure>
+    </div>
+</section>
+
+<section class="aplicacoes-reais" id="aplicacoes">
+    <h3>💡 Física em Ação</h3>
+    <div class="cards-aplicacao">
+        <div class="card">
+            <h4>⚡ Para-Raios de Franklin</h4>
+            <p>Os para-raios utilizam o **poder das pontas** para ionizar o ar e atrair/descarregar as nuvens eletrizadas com segurança até o solo através de hastes metálicas pontiagudas.</p>
+        </div>
+        <div class="card" style="border-left-color: #2ecc71;">
+            <h4>🚗 Segurança em Carros e Aviões</h4>
+            <p>A carcaça metálica de automóveis e aeronaves funciona como uma **Gaiola de Faraday**, protegendo os ocupantes no interior em caso de atrito com o ar ou tempestades com raios.</p>
+        </div>
+    </div>
+</section>
+
+<section class="questoes-resolvidas" id="resolvidas">
+    <h3>✅ 5 Questões Resolvidas (R 1 a 5)</h3>
+    
+    <article class="questao">
+        <h4>R 1: Campo e Potencial no Interior de Esfera Condutora</h4>
+        <p><strong>Enunciado:</strong> Uma esfera condutora em equilíbrio eletrostático de raio $R = 0,2\text{ m}$ possui carga $Q = +4,0\ \mu\text{C}$ no vácuo ($k_0 = 9 \times 10^9\text{ N}\cdot\text{m}^2/\text{C}^2$). Determine o módulo do campo elétrico e o potencial elétrico em um ponto a $0,1\text{ m}$ do centro da esfera.</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong><br>
+            Como o ponto ($d = 0,1\text{ m}$) está no interior da esfera ($d < R$):<br>
+            1. O campo elétrico interno é nulo: $\mathbf{E_{\text{int}} = 0\text{ N/C}}$.<br>
+            2. O potencial no interior é igual ao potencial na superfície:<br>
+            $V_{\text{int}} = V_{\text{sup}} = k_0 \cdot \frac{Q}{R} = (9 \times 10^9) \cdot \frac{4 \times 10^{-6}}{0,2} = \mathbf{1,8 \times 10^5\text{ V}\ (180\text{ kV})}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>R 2: Conceito de Gaiola de Faraday</h4>
+        <p><strong>Enunciado:</strong> Por que aparelhos celulares frequentemente perdem o sinal quando colocados no interior de elevadores metálicos totalmente fechados?</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong><br>
+            O elevador metálico atua como uma **Gaiola de Faraday (blindagem eletrostática)**. A estrutura condutora bloqueia as ondas eletromagnéticas externas, fazendo com que o campo elétrico das ondas no interior do elevador seja praticamente nulo.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>R 3: Campo Externo Próximo à Superfície</h4>
+        <p><strong>Enunciado:</strong> Uma esfera condutora isolada de raio $R = 0,5\text{ m}$ está carregada com $Q = +10\ \mu\text{C}$. Calcule o potencial na superfície e o campo elétrico em um ponto infinitamente próximo do lado de fora da superfície.</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong><br>
+            1. Potencial na superfície: $V = k_0 \frac{Q}{R} = (9 \times 10^9) \frac{10 \times 10^{-6}}{0,5} = \mathbf{1,8 \times 10^5\text{ V}}$.<br>
+            2. Campo elétrico em ponto externo imediatamente próximo à superfície ($E_{\text{próx}} = k_0 \frac{Q}{R^2}$):<br>
+            $E_{\text{próx}} = (9 \times 10^9) \frac{10 \times 10^{-6}}{0,5^2} = \frac{9 \times 10^4}{0,25} = \mathbf{3,6 \times 10^5\text{ N/C}}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>R 4: Onde se Localiza o Excesso de Carga</h4>
+        <p><strong>Enunciado:</strong> Um condutor metálico oco recebe uma carga positiva $+Q$. Onde essa carga se distribuirá no estado de equilíbrio eletrostático?</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong><br>
+            Devido à repulsão eletrostática entre cargas do mesmo sinal e à mobilidade dos elétrons, **todo o excesso de carga $+Q$ se acumulará exclusivamente na superfície externa** do condutor.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>R 5: Densidade de Carga e Geometria</h4>
+        <p><strong>Enunciado:</strong> Um condutor maciço tem a forma de uma lágrima (uma extremidade arredondada e outra pontiaguda). Onde a densidade superficial de cargas será maior?</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong><br>
+            Pelo princípio do **poder das pontas**, a densidade superficial de cargas ($\sigma$) é inversamente proporcional ao raio de curvatura. Assim, a densidade de cargas será **maior na extremidade pontiaguda**.</p>
+        </div>
+    </article>
+</section>
+
+<section class="questoes-propostas" id="propostas">
+    <h3>✍️ 5 Questões Propostas (P 6 a 10)</h3>
+
+    <article class="questao">
+        <h4>P 6: Trabalho Interno em Condutor</h4>
+        <p><strong>Enunciado:</strong> Quanto vale o trabalho realizado pela força elétrica para mover uma carga de prova de $2\ \mu\text{C}$ entre dois pontos no interior de um condutor em equilíbrio eletrostático?</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> O trabalho é **nulo ($\tau = 0\text{ J}$)**. Como o potencial elétrico é igual e constante em todos os pontos do interior do condutor ($\Delta V = 0$), temos $\tau = q \cdot \Delta V = 0$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 7: Orientação do Campo na Superfície</h4>
+        <p><strong>Enunciado:</strong> Qual é a direção do vetor campo elétrico em relação à superfície externa de um condutor em equilíbrio eletrostático?</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> O vetor campo elétrico é sempre **perpendicular ($90^\circ$)** à superfície do condutor. Se houvesse uma componente tangencial, as cargas livres na superfície se moveriam, destruindo o equilíbrio eletrostático.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 8: Condutores Ocos x Condutores Maciços</h4>
+        <p><strong>Enunciado:</strong> A propriedade de ter campo interno nulo ($E_{\text{int}} = 0$) aplica-se apenas a condutores maciços ou também a condutores ocos?</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> Aplica-se **tanto a condutores maciços quanto a condutores ocos** (desde que não haja cargas no interior da cavidade). É esse princípio que fundamenta a blindagem eletrostática.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 9: Variação de Potencial do Centro até a Superfície</h4>
+        <p><strong>Enunciado:</strong> Ao nos deslocarmos do centro de uma esfera condutora eletrizada em direção à sua superfície, o potencial elétrico aumenta, diminui ou permanece constante?</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> O potencial elétrico **permanece constante** em todo o percurso do centro até a superfície ($V_{\text{centro}} = V_{\text{int}} = V_{\text{sup}}$).</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 10: Princípio de Funcionamento do Para-Raios</h4>
+        <p><strong>Enunciado:</strong> Qual propriedade eletrostática dos condutores explica a escolha do formato pontiagudo para as hastes de para-raios?</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> O efeito conhecido como **Poder das Pontas**. A forte concentração de cargas na ponta gera um campo elétrico intenso capaz de ionizar o ar próximo, facilitando a atração e o escoamento seguro de raios.</p>
+        </div>
+    </article>
+</section>
+
+<section class="TESTE" id="testes">
+    <h3>🎓 TESTES (T 11 a 15)</h3>
+
+    <div class="card" style="text-align:center; padding:60px 20px; background:#f8f9fa; border:2px dashed #3498db; border-radius:12px; margin-top:20px;">
+        <h2 style="color:#3498db; font-size:2.5rem; margin-bottom:15px;">
+            🚧 EM BREVE!
+        </h2>
+
+        <p style="font-size:1.2rem; color:#555;">
+            Questões de vestibulares serão disponibilizadas em breve.
+        </p>
+    </div>
+</section>
+
+</div>
+</main>
+
+<aside class="menu-lateral">
+    <iframe src="../menu_fisica.html" style="width:100%; border:none; height:600px;"></iframe>
+</aside>
+
+</div>
+
+<script>
+function toggleGabarito(botao) {
+    const gabarito = botao.nextElementSibling;
+    if (gabarito.style.display === "none" || gabarito.style.display === "") {
+        gabarito.style.display = "block";
+        botao.textContent = "Esconder Gabarito e Resolução";
+        botao.style.backgroundColor = "#2c3e50";
+    } else {
+        gabarito.style.display = "none";
+        botao.textContent = "Ver Gabarito e Resolução";
+        botao.style.backgroundColor = "#3498db";
+    }
+}
+
+function toggleMenu() {
+    const menuGlobal = document.getElementById("menu-principal");
+    if (menuGlobal) menuGlobal.classList.toggle("ativo");
+}
+
+let slideAtual = 0;
+let slides = [];
+
+function prepararSlides() {
+    const seletores = '.container-resumo, .passo-teoria, .aplicacoes-reais, .questao';
+    slides = document.querySelectorAll(seletores);
+}
+
+function toggleSlides() {
+    prepararSlides();
+    const body = document.body;
+    if (!body.classList.contains('modo-slides')) {
+        body.classList.add('modo-slides');
+        slideAtual = 0;
+        mostrarSlide(slideAtual);
+    } else {
+        body.classList.remove('modo-slides');
+        window.location.reload(); 
+    }
+}
+
+function mostrarSlide(n) {
+    slides.forEach(s => {
+        s.classList.remove('slide-ativo');
+        s.style.display = 'none';
+    });
+    const slide = slides[n];
+    slide.classList.add('slide-ativo');
+    slide.style.display = 'flex'; 
+
+    if (slide.classList.contains('questao') && !slide.querySelector('.btn-gabarito')) {
+        const resolucoes = slide.querySelectorAll('.resolucao-bloco');
+        resolucoes.forEach(r => r.style.display = 'block');
+    } else {
+        const gabaritos = slide.querySelectorAll('.gabarito-resolucao');
+        gabaritos.forEach(g => g.style.display = 'none');
+        const botoes = slide.querySelectorAll('.btn-gabarito');
+        botoes.forEach(b => {
+            b.textContent = "Ver Gabarito e Resolução";
+            b.style.backgroundColor = "#3498db";
+        });
+    }
+
+    const pHeader = document.querySelector('header p').innerText;
+    const partes = pHeader.split('|');
+    if(partes.length > 1) {
+        document.getElementById('slide-info-serie').innerText = partes[0].trim();
+        document.getElementById('slide-info-aula').innerText = partes[1].trim();
+    }
+    document.getElementById('contador-slide').innerText = (n + 1) + " / " + slides.length;
+    if (window.MathJax) MathJax.typesetPromise();
+}
+
+function mudarSlide(direcao) {
+    slideAtual += direcao;
+    if (slideAtual >= slides.length) slideAtual = 0;
+    if (slideAtual < 0) slideAtual = slides.length - 1;
+    mostrarSlide(slideAtual);
+}
+
+document.addEventListener('keydown', function(event) {
+    if (document.body.classList.contains('modo-slides')) {
+        switch(event.key) {
+            case 'ArrowRight': 
+            case 'PageDown':   
+            case 'Enter':      
+            case ' ':          
+                mudarSlide(1);
+                break;
+                
+            case 'ArrowLeft':  
+            case 'PageUp':     
+                mudarSlide(-1);
+                break;
+
+            case 'Escape':     
+                toggleSlides();
+                break;
+        }
+    }
+});
+</script>
+
+<style>
+    body.modo-slides { overflow: hidden; background-color: #1a1a1a; }
+    body.modo-slides .menu-lateral, body.modo-slides header, body.modo-slides .menu-toggle, body.modo-slides #btn-slides { display: none !important; }
+    .slide-ativo {
+        display: flex !important; flex-direction: column; align-items: center; justify-content: flex-start;
+        position: fixed; top: 0; left: 0; width: 100vw; height: calc(100vh - 70px);
+        background: #ffffff; padding: 40px; z-index: 999; overflow-y: auto !important; 
+        box-sizing: border-box; text-align: center;
+    }
+    .controles-slides {
+        position: fixed; bottom: 0; left: 0; width: 100%; height: 70px;
+        background: #2c3e50; color: white; display: none; 
+        justify-content: space-between; align-items: center; padding: 0 20px; z-index: 1001; box-sizing: border-box;
+    }
+    body.modo-slides .controles-slides { display: flex; }
+    .info-lateral { flex: 1; font-family: 'Oswald', sans-serif; font-size: 0.9rem; color: #bdc3c7; }
+    .botoes-centrais { display: flex; align-items: center; gap: 15px; justify-content: center; flex: 2; }
+    .btn-nav { padding: 10px 20px; background: #3498db; color: white; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; }
+    #contador-slide { font-family: 'Oswald', sans-serif; min-width: 60px; text-align: center; }
+</style>
+
+<div class="controles-slides">
+    <div id="slide-info-serie" class="info-lateral"></div>
+    <div class="botoes-centrais">
+        <button class="btn-nav" onclick="mudarSlide(-1)">⬅ Anterior</button>
+        <span id="contador-slide"></span>
+        <button class="btn-nav" onclick="mudarSlide(1)">Próximo ➡</button>
+        <button class="btn-nav" onclick="toggleSlides()" style="background:#e74c3c;">Sair</button>
+    </div>
+    <div id="slide-info-aula" class="info-lateral" style="text-align: right;"></div>
+</div>
+</body>
+</html>
