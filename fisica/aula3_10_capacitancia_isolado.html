@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3º Ano: Aula 10 - Capacitância Eletrostática de um Condutor Isolado</title>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../estilo.css">
+    
+    <script>
+        MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true
+            }
+        };
+    </script>
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body>
+<button class="menu-toggle" onclick="toggleMenu()">☰</button>
+
+<nav id="menu-principal" class="nav-global">
+    <ul>
+        <li><a href="../index.html">🏠 Início</a></li>
+        <li><a href="../fisica_home.html">⚛️ Física</a></li>
+        <li><a href="../matematica_home.html">📐 Matemática</a></li>
+        <li><a href="../simulacoes_home.html">💻 Simulações</a></li>
+    </ul>
+</nav>
+
+<header id="topo">
+    <h1>FÍSICA EM</h1>
+    <p>3º Ano | Aula 10: Capacitância Eletrostática de um Condutor Isolado</p>
+    <button id="btn-slides" onclick="toggleSlides()">📺 Iniciar Modo Slides</button>
+</header>
+
+<div class="container">
+
+<main class="conteudo-principal">
+
+<div class="secao-aula">
+ <div class="container-resumo" id="resumo">
+    <h3>📚 Resumo </h3>
+    <section class="resumo-conteudo">
+        <p>A <strong>Capacitância Eletrostática ($C$)</strong> mede a capacidade de um condutor armazenar carga elétrica para um determinado potencial eletrostático.</p>
+        <p>A capacitância é uma propriedade exclusivamente geométrica e do meio envolvente, definida pela razão $C = \frac{Q}{V}$. Sua unidade no Sistema Internacional é o <strong>Farad ($\text{F}$)</strong>. Além disso, o processo de eletrização armazena <strong>Energia Potencial Eletrostática ($E_p$)</strong> no condutor.</p>
+    </section>
+</div>
+
+<section class="conteudo-teorico-completo" id="teoria">
+    <div class="passo-teoria">
+        <h3>📖 Capacitância e Energia Armazenada</h3>
+        <h4>1. Conceito e Definição de Capacitância</h4>
+        <p>Quando fornecemos uma carga elétrica $Q$ a um condutor isolado, seu potencial elétrico $V$ varia de forma diretamente proporcional. A constante de proporcionalidade entre a carga e o potencial é a <strong>capacitância ($C$)</strong>:</p>
+        <p>$$C = \frac{Q}{V}$$</p>
+        <p><em>Unidade no SI:</em> Coulombs por Volt ($\text{C/V}$), denominada <strong>Farad ($\text{F}$)</strong> em homenagem a Michael Faraday.</p>
+        <ul>
+            <li>$1\ \text{mF} = 10^{-3}\ \text{F}$ (milifarad)</li>
+            <li>$1\ \mu\text{F} = 10^{-6}\ \text{F}$ (microfarad)</li>
+            <li>$1\ \text{nF} = 10^{-9}\ \text{F}$ (nanofarad)</li>
+            <li>$1\ \text{pF} = 10^{-12}\ \text{F}$ (picofarad)</li>
+        </ul>
+    </div>
+
+    <div class="passo-teoria">
+        <h4>2. Fatores que Determinam a Capacitância</h4>
+        <p>A capacitância de um condutor isolado <strong>não depende</strong> da quantidade de carga $Q$ ou do potencial $V$. Ela depende exclusivamente de:</p>
+        <ul>
+            <li><strong>Dimensões e forma geométrica</strong> do condutor (quanto maior o tamanho, maior a capacitância).</li>
+            <li><strong>Meio dielétrico</strong> que envolve o condutor (medido pela permissividade elétrica $\varepsilon$).</li>
+        </ul>
+    </div>
+
+    <div class="passo-teoria">
+        <h4>3. Energia Potencial Eletrostática Armazenada</h4>
+        <p>Para carregar um condutor, realiza-se trabalho contra as forças elétricas das cargas já acumuladas. Graficamente ($Q \times V$), o trabalho corresponde à área sob a reta de eletrização, resultando na energia potencial acumulada:</p>
+        <p>$$E_p = \frac{Q \cdot V}{2} = \frac{C \cdot V^2}{2} = \frac{Q^2}{2C}$$</p>
+        <figure class="figura-aula figura-grande">
+            <img src="../imagens_fisica/aula3_10_capacitancia_isolado.png" alt="Gráfico Q x V e Energia Potencial Eletrostática Armazenada">
+            <figcaption>Figura 1: Representação gráfica do potencial em função da carga $Q \times V$, destacando a área equivalente à energia potencial $E_p$.</figcaption>
+        </figure>
+    </div>
+</section>
+
+<section class="aplicacoes-reais" id="aplicacoes">
+    <h3>💡 Física em Ação</h3>
+    <div class="cards-aplicacao">
+        <div class="card">
+            <h4>📸 Flash de Câmeras Fotográficas</h4>
+            <p>Os capacitores internos da câmera acumulam energia lentamente através da bateria e descarregam-na em uma fração de segundo, gerando uma luz extremamente intensa para a foto.</p>
+        </div>
+        <div class="card" style="border-left-color: #2ecc71;">
+            <h4>⚡ Desfibriladores Cardíacos</h4>
+            <p>Armazenam energia eletrostática em altos potenciais e descarregam um choque elétrico controlado no peito do paciente para restabelecer o ritmo cardíaco normal.</p>
+        </div>
+    </div>
+</section>
+
+<section class="questoes-resolvidas" id="resolvidas">
+    <h3>✅ 5 Questões Resolvidas (R 1 a 5)</h3>
+    
+    <article class="questao">
+        <h4>R 1: Cálculo de Capacitância Simples</h4>
+        <p><strong>Enunciado:</strong> Um condutor isolado recebe uma carga elétrica de $12\ \mu\text{C}$ e adquire um potencial eletrostático de $600\text{ V}$. Determine a capacitância desse condutor em microfarads ($\mu\text{F}$).</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong><br>
+            Aplica-se a definição direta de capacitância:<br>
+            $C = \frac{Q}{V} = \frac{12 \times 10^{-6}\text{ C}}{600\text{ V}} = 0,02 \times 10^{-6}\text{ F} = \mathbf{0,02\ \mu\text{F}}\ (\text{ou } 20\text{ nF})$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>R 2: Energia Potencial Armazenada</h4>
+        <p><strong>Enunciado:</strong> Um capacitor de condutor isolado com capacitância de $5\ \mu\text{F}$ é carregado até atingir um potencial de $200\text{ V}$. Calcule a energia potencial eletrostática armazenada nesse condutor.</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong><br>
+            Utilizando a fórmula da energia em função de $C$ e $V$:<br>
+            $E_p = \frac{C \cdot V^2}{2} = \frac{(5 \times 10^{-6}) \cdot (200)^2}{2} = \frac{(5 \times 10^{-6}) \cdot 40.000}{2} = \frac{0,2}{2} = \mathbf{0,1\text{ J}}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>R 3: Novo Potencial ao Dobrar a Carga</h4>
+        <p><strong>Enunciado:</strong> Um condutor de capacitância $C = 4\ \text{nF}$ possui potencial $V_1 = 50\text{ V}$ quando carregado com carga $Q_1$. Se a carga do condutor for dobrada ($Q_2 = 2Q_1$), qual será o novo potencial $V_2$ e a nova capacitância $C_2$?</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong><br>
+            1. A capacitância depende apenas da geometria do condutor, logo **não altera**: $\mathbf{C_2 = 4\text{ nF}}$.<br>
+            2. Como $Q = C \cdot V$, se a carga dobra e $C$ é constante, o potencial também dobra:<br>
+            $V_2 = 2 \cdot V_1 = 2 \cdot 50 = \mathbf{100\text{ V}}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>R 4: Análise Gráfica de Carga e Potencial</h4>
+        <p><strong>Enunciado:</strong> Um condutor isolado apresenta um gráfico $Q \times V$ linear que passa pelos pontos $(V = 0\text{ V}, Q = 0\text{ C})$ e $(V = 100\text{ V}, Q = 2\ \mu\text{C})$. Calcule a capacitância e a energia armazenada quando $V = 100\text{ V}$.</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong><br>
+            1. $C = \frac{Q}{V} = \frac{2 \times 10^{-6}}{100} = \mathbf{2 \times 10^{-8}\text{ F}\ (20\text{ nF})}$.<br>
+            2. $E_p = \frac{Q \cdot V}{2} = \frac{(2 \times 10^{-6}) \cdot 100}{2} = \mathbf{1,0 \times 10^{-4}\text{ J}}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>R 5: Variação de Potencial e Carga Adicionada</h4>
+        <p><strong>Enunciado:</strong> Para elevar o potencial de um condutor isolado de $100\text{ V}$ para $300\text{ V}$, foi necessário adicionar a ele uma carga de $8\ \mu\text{C}$. Qual é a capacitância desse condutor?</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong><br>
+            A variação da carga é proporcional à variação do potencial: $\Delta Q = C \cdot \Delta V$.<br>
+            $8 \times 10^{-6} = C \cdot (300 - 100) \implies 8 \times 10^{-6} = C \cdot 200$<br>
+            $C = \frac{8 \times 10^{-6}}{200} = 4 \times 10^{-8}\text{ F} = \mathbf{0,04\ \mu\text{F}\ (40\text{ nF})}$.</p>
+        </div>
+    </article>
+</section>
+
+<section class="questoes-propostas" id="propostas">
+    <h3>✍️ 5 Questões Propostas (P 6 a 10)</h3>
+
+    <article class="questao">
+        <h4>P 6: Dependência da Capacitância</h4>
+        <p><strong>Enunciado:</strong> Se aumentarmos a quantidade de carga $Q$ acumulada em um condutor isolado de forma razoável, sua capacitância $C$ aumenta, diminui ou permanece constante?</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> **Permanecerá constante**. A capacitância depende unicamente da forma, tamanho do condutor e do meio isolante ao seu redor. Ao aumentar a carga, o potencial $V$ aumenta na mesma proporção, mantendo a razão $C = \frac{Q}{V}$ inalterada.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 7: Unidades de Medida no SI</h4>
+        <p><strong>Enunciado:</strong> Qual é a combinação de unidades fundamentais do Sistema Internacional equivalente a $1\text{ Farad}\ (1\text{ F})$?</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> $1\text{ Farad} = 1\text{ Coulomb per Volt}\ (\mathbf{1\text{ C/V}})$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 8: Relação entre Energia e Potencial</h4>
+        <p><strong>Enunciado:</strong> Se dobrarmos o potencial elétrico $V$ aplicado a um condutor de capacitância constante, por qual fator a energia potencial eletrostática armazenada será multiplicada?</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> A energia será multiplicada por **4 (quadruplicada)**. Como $E_p = \frac{C \cdot V^2}{2}$, a energia varia proporcionalmente ao quadrado do potencial ($V^2$).</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 9: Dimensões Geométricas e Capacitância</h4>
+        <p><strong>Enunciado:</strong> Entre duas esferas metálicas maciças $A$ e $B$, feitas do mesmo material, sabendo que o raio de $A$ é maior do que o raio de $B$, qual delas possui maior capacitância eletrostática?</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> A **esfera $A$** possui maior capacitância. Quanto maiores as dimensões físicas de um condutor, maior é sua capacidade de armazenar carga para um mesmo potencial.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 10: Significado da Área do Gráfico Q x V</h4>
+        <p><strong>Enunciado:</strong> O que representa fisicamente a área sob a curva em um gráfico do Potencial Elétrico ($V$) em função da Carga Elétrica ($Q$)?</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> Representa a **Energia Potencial Eletrostática Armazenada ($E_p$)** no condutor (ou o trabalho realizado para carregá-lo).</p>
+        </div>
+    </article>
+</section>
+
+<section class="TESTE" id="testes">
+    <h3>🎓 TESTES (T 11 a 15)</h3>
+
+    <div class="card" style="text-align:center; padding:60px 20px; background:#f8f9fa; border:2px dashed #3498db; border-radius:12px; margin-top:20px;">
+        <h2 style="color:#3498db; font-size:2.5rem; margin-bottom:15px;">
+            🚧 EM BREVE!
+        </h2>
+
+        <p style="font-size:1.2rem; color:#555;">
+            Questões de vestibulares serão disponibilizadas em breve.
+        </p>
+    </div>
+</section>
+
+</div>
+</main>
+
+<aside class="menu-lateral">
+    <iframe src="../menu_fisica.html" style="width:100%; border:none; height:600px;"></iframe>
+</aside>
+
+</div>
+
+<script>
+function toggleGabarito(botao) {
+    const gabarito = botao.nextElementSibling;
+    if (gabarito.style.display === "none" || gabarito.style.display === "") {
+        gabarito.style.display = "block";
+        botao.textContent = "Esconder Gabarito e Resolução";
+        botao.style.backgroundColor = "#2c3e50";
+    } else {
+        gabarito.style.display = "none";
+        botao.textContent = "Ver Gabarito e Resolução";
+        botao.style.backgroundColor = "#3498db";
+    }
+}
+
+function toggleMenu() {
+    const menuGlobal = document.getElementById("menu-principal");
+    if (menuGlobal) menuGlobal.classList.toggle("ativo");
+}
+
+let slideAtual = 0;
+let slides = [];
+
+function prepararSlides() {
+    const seletores = '.container-resumo, .passo-teoria, .aplicacoes-reais, .questao';
+    slides = document.querySelectorAll(seletores);
+}
+
+function toggleSlides() {
+    prepararSlides();
+    const body = document.body;
+    if (!body.classList.contains('modo-slides')) {
+        body.classList.add('modo-slides');
+        slideAtual = 0;
+        mostrarSlide(slideAtual);
+    } else {
+        body.classList.remove('modo-slides');
+        window.location.reload(); 
+    }
+}
+
+function mostrarSlide(n) {
+    slides.forEach(s => {
+        s.classList.remove('slide-ativo');
+        s.style.display = 'none';
+    });
+    const slide = slides[n];
+    slide.classList.add('slide-ativo');
+    slide.style.display = 'flex'; 
+
+    if (slide.classList.contains('questao') && !slide.querySelector('.btn-gabarito')) {
+        const resolucoes = slide.querySelectorAll('.resolucao-bloco');
+        resolucoes.forEach(r => r.style.display = 'block');
+    } else {
+        const gabaritos = slide.querySelectorAll('.gabarito-resolucao');
+        gabaritos.forEach(g => g.style.display = 'none');
+        const botoes = slide.querySelectorAll('.btn-gabarito');
+        botoes.forEach(b => {
+            b.textContent = "Ver Gabarito e Resolução";
+            b.style.backgroundColor = "#3498db";
+        });
+    }
+
+    const pHeader = document.querySelector('header p').innerText;
+    const partes = pHeader.split('|');
+    if(partes.length > 1) {
+        document.getElementById('slide-info-serie').innerText = partes[0].trim();
+        document.getElementById('slide-info-aula').innerText = partes[1].trim();
+    }
+    document.getElementById('contador-slide').innerText = (n + 1) + " / " + slides.length;
+    if (window.MathJax) MathJax.typesetPromise();
+}
+
+function mudarSlide(direcao) {
+    slideAtual += direcao;
+    if (slideAtual >= slides.length) slideAtual = 0;
+    if (slideAtual < 0) slideAtual = slides.length - 1;
+    mostrarSlide(slideAtual);
+}
+
+document.addEventListener('keydown', function(event) {
+    if (document.body.classList.contains('modo-slides')) {
+        switch(event.key) {
+            case 'ArrowRight': 
+            case 'PageDown':   
+            case 'Enter':      
+            case ' ':          
+                mudarSlide(1);
+                break;
+                
+            case 'ArrowLeft':  
+            case 'PageUp':     
+                mudarSlide(-1);
+                break;
+
+            case 'Escape':     
+                toggleSlides();
+                break;
+        }
+    }
+});
+</script>
+
+<style>
+    body.modo-slides { overflow: hidden; background-color: #1a1a1a; }
+    body.modo-slides .menu-lateral, body.modo-slides header, body.modo-slides .menu-toggle, body.modo-slides #btn-slides { display: none !important; }
+    .slide-ativo {
+        display: flex !important; flex-direction: column; align-items: center; justify-content: flex-start;
+        position: fixed; top: 0; left: 0; width: 100vw; height: calc(100vh - 70px);
+        background: #ffffff; padding: 40px; z-index: 999; overflow-y: auto !important; 
+        box-sizing: border-box; text-align: center;
+    }
+    .controles-slides {
+        position: fixed; bottom: 0; left: 0; width: 100%; height: 70px;
+        background: #2c3e50; color: white; display: none; 
+        justify-content: space-between; align-items: center; padding: 0 20px; z-index: 1001; box-sizing: border-box;
+    }
+    body.modo-slides .controles-slides { display: flex; }
+    .info-lateral { flex: 1; font-family: 'Oswald', sans-serif; font-size: 0.9rem; color: #bdc3c7; }
+    .botoes-centrais { display: flex; align-items: center; gap: 15px; justify-content: center; flex: 2; }
+    .btn-nav { padding: 10px 20px; background: #3498db; color: white; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; }
+    #contador-slide { font-family: 'Oswald', sans-serif; min-width: 60px; text-align: center; }
+</style>
+
+<div class="controles-slides">
+    <div id="slide-info-serie" class="info-lateral"></div>
+    <div class="botoes-centrais">
+        <button class="btn-nav" onclick="mudarSlide(-1)">⬅ Anterior</button>
+        <span id="contador-slide"></span>
+        <button class="btn-nav" onclick="mudarSlide(1)">Próximo ➡</button>
+        <button class="btn-nav" onclick="toggleSlides()" style="background:#e74c3c;">Sair</button>
+    </div>
+    <div id="slide-info-aula" class="info-lateral" style="text-align: right;"></div>
+</div>
+</body>
+</html>
