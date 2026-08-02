@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3º Ano: Aula 05 - Trabalho da Força Elétrica e Potencial Elétrico</title>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../estilo.css">
+    
+    <script>
+        MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true
+            }
+        };
+    </script>
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body>
+<button class="menu-toggle" onclick="toggleMenu()">☰</button>
+
+<nav id="menu-principal" class="nav-global">
+    <ul>
+        <li><a href="../index.html">🏠 Início</a></li>
+        <li><a href="../fisica_home.html">⚛️ Física</a></li>
+        <li><a href="../matematica_home.html">📐 Matemática</a></li>
+        <li><a href="../simulacoes_home.html">💻 Simulações</a></li>
+    </ul>
+</nav>
+
+<header id="topo">
+    <h1>FÍSICA EM</h1>
+    <p>3º Ano | Aula 05: Trabalho da Força Elétrica e Potencial Elétrico</p>
+    <button id="btn-slides" onclick="toggleSlides()">📺 Iniciar Modo Slides</button>
+</header>
+
+<div class="container">
+
+<main class="conteudo-principal">
+
+<div class="secao-aula">
+ <div class="container-resumo" id="resumo">
+    <h3>📚 Resumo </h3>
+    <section class="resumo-conteudo">
+        <p>A força eletrostática é uma <strong>força conservativa</strong>, o que significa que o trabalho realizado por ela independe da trajetória percorrida pela carga, dependendo apenas das posições inicial e final: $\tau_{A \to B} = q \cdot (V_A - V_B) = q \cdot U_{AB}$.</p>
+        <p>O <strong>Potencial Elétrico ($V$)</strong> é uma grandeza escalar que mede o nível de energia potencial elétrica por unidade de carga em determinado ponto do espaço. Em um Campo Elétrico Uniforme, a diferença de potencial ($U$) relaciona-se diretamente com o campo elétrico por $U = E \cdot d$.</p>
+    </section>
+</div>
+
+<section class="conteudo-teorico-completo" id="teoria">
+    <div class="passo-teoria">
+        <h3>📖 Energia, Trabalho e Potencial Eletrostático</h3>
+        <h4>1. Energia Potencial Elétrica ($E_p$)</h4>
+        <p>A energia armazenada no sistema formado por duas cargas puntiformes $Q$ e $q$, separadas por uma distância $d$ no vácuo, é dada por:</p>
+        <p>$$E_p = k_0 \cdot \frac{Q \cdot q}{d}$$</p>
+        <p><em>Unidade no SI:</em> Joule ($\text{J}$). Por ser uma grandeza escalar, o sinal das cargas deve ser incluído no cálculo.</p>
+    </div>
+
+    <div class="passo-teoria">
+        <h4>2. Potencial Elétrico ($V$)</h4>
+        <p>O potencial elétrico em um ponto $P$ a uma distância $d$ de uma carga geradora $Q$ mede a energia potencial por unidade de carga de prova:</p>
+        <p>$$V = \frac{E_p}{q} \implies V = k_0 \cdot \frac{Q}{d}$$</p>
+        <p><em>Unidade no SI:</em> Volt ($\text{V}$), onde $1\text{ V} = 1\text{ J/C}$.</p>
+        <ul>
+            <li>Se $Q > 0 \implies V > 0$ (Potencial positivo).</li>
+            <li>Se $Q < 0 \implies V < 0$ (Potencial negativo).</li>
+            <li>O potencial elétrico resultante em um ponto sujeito a várias cargas é a <strong>soma algébrica</strong> dos potenciais individuais: $V_R = V_1 + V_2 + \dots$</li>
+        </ul>
+    </div>
+
+    <div class="passo-teoria">
+        <h4>3. Trabalho da Força Elétrica ($\tau$) e Diferença de Potencial ($U$)</h4>
+        <p>Ao deslocar uma carga $q$ de um ponto $A$ para um ponto $B$, o trabalho da força elétrica vale:</p>
+        <p>$$\tau_{A \to B} = q \cdot (V_A - V_B) = q \cdot U_{AB}$$</p>
+        <p>Onde $U_{AB} = V_A - V_B$ é a <strong>Diferença de Potencial (ddp)</strong> ou tensão elétrica.</p>
+        <ul>
+            <li><strong>Cargas positivas ($q > 0$):</strong> Movem-se espontaneamente no sentido dos potenciais <strong>decrescentes</strong> ($\tau > 0$).</li>
+            <li><strong>Cargas negativas ($q < 0$):</strong> Movem-se espontaneamente no sentido dos potenciais <strong>crescentes</strong> ($\tau > 0$).</li>
+        </ul>
+    </div>
+
+    <div class="passo-teoria">
+        <h4>4. Relação no Campo Elétrico Uniforme (CEU)</h4>
+        <p>Entre dois pontos $A$ e $B$ alinhados ao longo da mesma linha de força em um CEU, a ddp $U$ e o campo $E$ relacionam-se por:</p>
+        <p>$$U = E \cdot d$$</p>
+        <p>Onde $d$ é a distância entre os pontos medida paralelamente às linhas de campo.</p>
+        <figure class="figura-aula figura-grande">
+            <img src="../imagens_fisica/aula3_05_trabalho_potencial.png" alt="Superfícies equipotenciais e deslocamento de carga no CEU">
+            <figcaption>Figura 1: Representação do deslocamento de cargas e superfícies equipotenciais perpendiculares ao campo elétrico.</figcaption>
+        </figure>
+    </div>
+
+    <div class="passo-teoria">
+        <h4>5. Superfícies Equipotenciais</h4>
+        <p>São superfícies imaginárias constituídas por pontos que possuem o mesmo potencial elétrico ($V_A = V_B$).</p>
+        <ul>
+            <li>São sempre <strong>perpendiculares às linhas de força</strong> do campo elétrico.</li>
+            <li>O trabalho para mover uma carga sobre uma mesma superfície equipotencial é <strong>nulo ($\tau = 0$)</strong>, pois $V_A - V_B = 0$.</li>
+        </ul>
+    </div>
+</section>
+
+<section class="aplicacoes-reais" id="aplicacoes">
+    <h3>💡 Física em Ação</h3>
+    <div class="cards-aplicacao">
+        <div class="card">
+            <h4>⚡ Desfibrilador Cardíaco</h4>
+            <p>Os desfibriladores armazenam energia potencial elétrica em capacitores submetidos a altas diferenças de potencial (milhares de volts) para descarregá-la rapidamente no peito do paciente e restabelecer o ritmo cardíaco normal.</p>
+        </div>
+        <div class="card" style="border-left-color: #2ecc71;">
+            <h4>🔌 Tensão Residencial ($127\text{ V}$ / $220\text{ V}$)</h4>
+            <p>A tensão elétrica disponível nas tomadas das nossas casas nada mais é do que uma diferença de potencial ($U$) mantida pela concessionária de energia para realizar trabalho e movimentar os elétrons na fiação dos aparelhos.</p>
+        </div>
+    </div>
+</section>
+
+<section class="questoes-resolvidas" id="resolvidas">
+    <h3>✅ 5 Questões Resolvidas (R 1 a 5)</h3>
+    
+    <article class="questao">
+        <h4>R 1: Potencial Criado por Carga Puntiforme</h4>
+        <p><strong>Enunciado:</strong> Determine o potencial elétrico gerado por uma carga $Q = +6,0\ \mu\text{C}$ no vácuo em um ponto localizado a $3,0\text{ m}$ da carga. ($k_0 = 9 \times 10^9\text{ N}\cdot\text{m}^2/\text{C}^2$).</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong><br>
+            $Q = 6 \times 10^{-6}\text{ C}$ e $d = 3\text{ m}$.<br>
+            $V = k_0 \cdot \frac{Q}{d} = (9 \times 10^9) \cdot \frac{6 \times 10^{-6}}{3} = 9 \times 10^9 \cdot 2 \times 10^{-6} = \mathbf{1,8 \times 10^4\text{ V}\ (18\text{ kV})}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>R 2: Trabalho da Força Elétrica</h4>
+        <p><strong>Enunciado:</strong> Uma carga de prova $q = +2,0\ \mu\text{C}$ é deslocada de um ponto $A$ ($V_A = 100\text{ V}$) até um ponto $B$ ($V_B = 30\text{ V}$). Calcule o trabalho realizado pela força elétrica nesse deslocamento.</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong><br>
+            $\tau_{A \to B} = q \cdot (V_A - V_B) = (2,0 \times 10^{-6}) \cdot (100 - 30) = (2,0 \times 10^{-6}) \cdot 70 = \mathbf{1,4 \times 10^{-4}\text{ J}}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>R 3: Ddp em Campo Elétrico Uniforme</h4>
+        <p><strong>Enunciado:</strong> Dois pontos $A$ e $B$ situam-se sobre a mesma linha de força de um campo elétrico uniforme de intensidade $E = 500\text{ N/C}$, distanciados de $0,2\text{ m}$. Qual é a diferença de potencial entre $A$ e $B$?</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong><br>
+            Em um CEU, $U = E \cdot d$.<br>
+            $U = 500 \cdot 0,2 = \mathbf{100\text{ V}}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>R 4: Energia Potencial Elétrica</h4>
+        <p><strong>Enunciado:</strong> Duas cargas puntiformes $q_1 = +3,0\ \mu\text{C}$ e $q_2 = -4,0\ \mu\text{C}$ encontram-se no vácuo separadas por $0,2\text{ m}$. Qual é a energia potencial elétrica desse sistema?</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong><br>
+            $E_p = k_0 \cdot \frac{q_1 \cdot q_2}{d} = (9 \times 10^9) \cdot \frac{(3 \times 10^{-6}) \cdot (-4 \times 10^{-6})}{0,2}$<br>
+            $E_p = (9 \times 10^9) \cdot \frac{-12 \times 10^{-12}}{0,2} = \frac{-108 \times 10^{-3}}{0,2} = \mathbf{-0,54\text{ J}}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>R 5: Potencial Resultante no Ponto Médio</h4>
+        <p><strong>Enunciado:</strong> Duas cargas $Q_1 = +8\ \text{nC}$ e $Q_2 = -2\ \text{nC}$ estão no vácuo separadas por $1,0\text{ m}$. Calcule o potencial elétrico resultante no ponto médio da reta que une as cargas.</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong><br>
+            A distância de cada carga ao ponto médio é $d = 0,5\text{ m}$.<br>
+            $V_1 = k_0 \frac{Q_1}{d} = 9 \times 10^9 \frac{8 \times 10^{-9}}{0,5} = \frac{72}{0,5} = +144\text{ V}$.<br>
+            $V_2 = k_0 \frac{Q_2}{d} = 9 \times 10^9 \frac{-2 \times 10^{-9}}{0,5} = \frac{-18}{0,5} = -36\text{ V}$.<br>
+            $V_R = V_1 + V_2 = 144 + (-36) = \mathbf{+108\text{ V}}$.</p>
+        </div>
+    </article>
+</section>
+
+<section class="questoes-propostas" id="propostas">
+    <h3>✍️ 5 Questões Propostas (P 6 a 10)</h3>
+
+    <article class="questao">
+        <h4>P 6: Movimento Espontâneo de Elétron</h4>
+        <p><strong>Enunciado:</strong> Quando um elétron (carga negativa) é abandonado do repouso em um campo elétrico, ele se move espontaneamente para regiões de maior ou menor potencial elétrico?</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> Move-se espontaneamente para regiões de <strong>maior potencial elétrico</strong>. Cargas negativas são atraídas no sentido oposto às linhas de campo, caminhando do menor para o maior potencial para reduzir sua energia potencial.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 7: Trabalho sobre Superfície Equipotencial</h4>
+        <p><strong>Enunciado:</strong> Qual é o trabalho realizado pela força elétrica ao mover uma carga $q = 5\ \mu\text{C}$ ao longo de uma superfície equipotencial de $50\text{ V}$ por uma distância de $2\text{ m}$?</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> Como os pontos inicial e final pertencem à mesma equipotencial, $V_A = V_B = 50\text{ V}$. Logo, $\tau = q(V_A - V_B) = q(0) = \mathbf{0\text{ J}}$ (trabalho nulo).</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 8: Ddp entre Placas em Campo de $2000\text{ V/m}$</h4>
+        <p><strong>Enunciado:</strong> Duas placas condutoras paralelas distam $0,05\text{ m}$ entre si. Sabendo que o campo elétrico uniforme entre elas tem módulo $E = 2000\text{ V/m}$, qual é a ddp entre as placas?</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> $U = E \cdot d = 2000 \cdot 0,05 = \mathbf{100\text{ V}}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 9: Potencial Elétrico no Infinito</h4>
+        <p><strong>Enunciado:</strong> Por convenção, qual é o valor do potencial elétrico no infinito para uma carga geradora isolada?</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> O potencial elétrico no infinito é adotado como <strong>zero ($V_{\infty} = 0$)</strong>, pois $V = k_0 \frac{Q}{d}$ tende a zero quando $d \to \infty$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 10: Variação de Energia Potencial no Deslocamento</h4>
+        <p><strong>Enunciado:</strong> Se a força elétrica realiza um trabalho positivo de $+10\text{ J}$ sobre uma partícula ao movê-la de $A$ para $B$, a energia potencial elétrica da partícula aumentou ou diminuiu?</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> A energia potencial <strong>diminuiu em $10\text{ J}$</strong>. Como a força elétrica é conservativa, $\tau_{A \to B} = -\Delta E_p = E_{pA} - E_{pB}$. Se o trabalho é positivo, a energia potencial final é menor que a inicial.</p>
+        </div>
+    </article>
+</section>
+
+<section class="TESTE" id="testes">
+    <h3>🎓 TESTES (T 11 a 15)</h3>
+
+    <div class="card" style="text-align:center; padding:60px 20px; background:#f8f9fa; border:2px dashed #3498db; border-radius:12px; margin-top:20px;">
+        <h2 style="color:#3498db; font-size:2.5rem; margin-bottom:15px;">
+            🚧 EM BREVE!
+        </h2>
+
+        <p style="font-size:1.2rem; color:#555;">
+            Questões de vestibulares serão disponibilizadas em breve.
+        </p>
+    </div>
+</section>
+
+</div>
+</main>
+
+<aside class="menu-lateral">
+    <iframe src="../menu_fisica.html" style="width:100%; border:none; height:600px;"></iframe>
+</aside>
+
+</div>
+
+<script>
+function toggleGabarito(botao) {
+    const gabarito = botao.nextElementSibling;
+    if (gabarito.style.display === "none" || gabarito.style.display === "") {
+        gabarito.style.display = "block";
+        botao.textContent = "Esconder Gabarito e Resolução";
+        botao.style.backgroundColor = "#2c3e50";
+    } else {
+        gabarito.style.display = "none";
+        botao.textContent = "Ver Gabarito e Resolução";
+        botao.style.backgroundColor = "#3498db";
+    }
+}
+
+function toggleMenu() {
+    const menuGlobal = document.getElementById("menu-principal");
+    if (menuGlobal) menuGlobal.classList.toggle("ativo");
+}
+
+let slideAtual = 0;
+let slides = [];
+
+function prepararSlides() {
+    const seletores = '.container-resumo, .passo-teoria, .aplicacoes-reais, .questao';
+    slides = document.querySelectorAll(seletores);
+}
+
+function toggleSlides() {
+    prepararSlides();
+    const body = document.body;
+    if (!body.classList.contains('modo-slides')) {
+        body.classList.add('modo-slides');
+        slideAtual = 0;
+        mostrarSlide(slideAtual);
+    } else {
+        body.classList.remove('modo-slides');
+        window.location.reload(); 
+    }
+}
+
+function mostrarSlide(n) {
+    slides.forEach(s => {
+        s.classList.remove('slide-ativo');
+        s.style.display = 'none';
+    });
+    const slide = slides[n];
+    slide.classList.add('slide-ativo');
+    slide.style.display = 'flex'; 
+
+    if (slide.classList.contains('questao') && !slide.querySelector('.btn-gabarito')) {
+        const resolucoes = slide.querySelectorAll('.resolucao-bloco');
+        resolucoes.forEach(r => r.style.display = 'block');
+    } else {
+        const gabaritos = slide.querySelectorAll('.gabarito-resolucao');
+        gabaritos.forEach(g => g.style.display = 'none');
+        const botoes = slide.querySelectorAll('.btn-gabarito');
+        botoes.forEach(b => {
+            b.textContent = "Ver Gabarito e Resolução";
+            b.style.backgroundColor = "#3498db";
+        });
+    }
+
+    const pHeader = document.querySelector('header p').innerText;
+    const partes = pHeader.split('|');
+    if(partes.length > 1) {
+        document.getElementById('slide-info-serie').innerText = partes[0].trim();
+        document.getElementById('slide-info-aula').innerText = partes[1].trim();
+    }
+    document.getElementById('contador-slide').innerText = (n + 1) + " / " + slides.length;
+    if (window.MathJax) MathJax.typesetPromise();
+}
+
+function mudarSlide(direcao) {
+    slideAtual += direcao;
+    if (slideAtual >= slides.length) slideAtual = 0;
+    if (slideAtual < 0) slideAtual = slides.length - 1;
+    mostrarSlide(slideAtual);
+}
+
+document.addEventListener('keydown', function(event) {
+    if (document.body.classList.contains('modo-slides')) {
+        switch(event.key) {
+            case 'ArrowRight': 
+            case 'PageDown':   
+            case 'Enter':      
+            case ' ':          
+                mudarSlide(1);
+                break;
+                
+            case 'ArrowLeft':  
+            case 'PageUp':     
+                mudarSlide(-1);
+                break;
+
+            case 'Escape':     
+                toggleSlides();
+                break;
+        }
+    }
+});
+</script>
+
+<style>
+    body.modo-slides { overflow: hidden; background-color: #1a1a1a; }
+    body.modo-slides .menu-lateral, body.modo-slides header, body.modo-slides .menu-toggle, body.modo-slides #btn-slides { display: none !important; }
+    .slide-ativo {
+        display: flex !important; flex-direction: column; align-items: center; justify-content: flex-start;
+        position: fixed; top: 0; left: 0; width: 100vw; height: calc(100vh - 70px);
+        background: #ffffff; padding: 40px; z-index: 999; overflow-y: auto !important; 
+        box-sizing: border-box; text-align: center;
+    }
+    .controles-slides {
+        position: fixed; bottom: 0; left: 0; width: 100%; height: 70px;
+        background: #2c3e50; color: white; display: none; 
+        justify-content: space-between; align-items: center; padding: 0 20px; z-index: 1001; box-sizing: border-box;
+    }
+    body.modo-slides .controles-slides { display: flex; }
+    .info-lateral { flex: 1; font-family: 'Oswald', sans-serif; font-size: 0.9rem; color: #bdc3c7; }
+    .botoes-centrais { display: flex; align-items: center; gap: 15px; justify-content: center; flex: 2; }
+    .btn-nav { padding: 10px 20px; background: #3498db; color: white; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; }
+    #contador-slide { font-family: 'Oswald', sans-serif; min-width: 60px; text-align: center; }
+</style>
+
+<div class="controles-slides">
+    <div id="slide-info-serie" class="info-lateral"></div>
+    <div class="botoes-centrais">
+        <button class="btn-nav" onclick="mudarSlide(-1)">⬅ Anterior</button>
+        <span id="contador-slide"></span>
+        <button class="btn-nav" onclick="mudarSlide(1)">Próximo ➡</button>
+        <button class="btn-nav" onclick="toggleSlides()" style="background:#e74c3c;">Sair</button>
+    </div>
+    <div id="slide-info-aula" class="info-lateral" style="text-align: right;"></div>
+</div>
+</body>
+</html>
