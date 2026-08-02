@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3º Ano: Aula 01 - Carga Elétrica e Processos de Eletrização</title>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../estilo.css">
+    
+    <script>
+        MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true
+            }
+        };
+    </script>
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body>
+<button class="menu-toggle" onclick="toggleMenu()">☰</button>
+
+<nav id="menu-principal" class="nav-global">
+    <ul>
+        <li><a href="../index.html">🏠 Início</a></li>
+        <li><a href="../fisica_home.html">⚛️ Física</a></li>
+        <li><a href="../matematica_home.html">📐 Matemática</a></li>
+        <li><a href="../simulacoes_home.html">💻 Simulações</a></li>
+    </ul>
+</nav>
+
+<header id="topo">
+    <h1>FÍSICA EM</h1>
+    <p>3º Ano | Aula 01: Carga Elétrica e Processos de Eletrização</p>
+    <button id="btn-slides" onclick="toggleSlides()">📺 Iniciar Modo Slides</button>
+</header>
+
+<div class="container">
+
+<main class="conteudo-principal">
+
+<div class="secao-aula">
+ <div class="container-resumo" id="resumo">
+    <h3>📚 Resumo </h3>
+    <section class="resumo-conteudo">
+        <p>A <strong>Carga Elétrica</strong> é uma propriedade intrínseca das partículas fundamentais (prótons e elétrons). A quantidade de carga elétrica ($Q$) é quantizada em múltiplos da carga elementar ($e \approx 1,6 \times 10^{-19}\text{ C}$), segundo a relação $Q = n \cdot e$.</p>
+        <p>Existem três processos fundamentais de <strong>eletrização</strong>: <strong>Atrito</strong> (corpos de materiais diferentes adquirem cargas de sinais opostos), <strong>Contato</strong> (corpos condutores adquirem cargas do mesmo sinal) e <strong>Indução</strong> (eletrização à distância com o auxílio do aterramento, resultando em cargas de sinais opostos).</p>
+    </section>
+</div>
+
+<section class="conteudo-teorico-completo" id="teoria">
+    <div class="passo-teoria">
+        <h3>📖 Carga Elétrica e Eletrização</h3>
+        <h4>1. Carga Elétrica Elementar e Quantização</h4>
+        <p>Um corpo eletricamente neutro possui número igual de prótons e elétrons. Um corpo torna-se eletrizado quando ganha ou perde elétrons (os prótons permanecem fixos no núcleo atômico):</p>
+        <ul>
+            <li><strong>Carga positiva:</strong> Falta de elétrons ($n_p > n_e$).</li>
+            <li><strong>Carga negativa:</strong> Excesso de elétrons ($n_e > n_p$).</li>
+        </ul>
+        <p>A quantidade total de carga ($Q$) é dada por:</p>
+        <p>$$Q = n \cdot e$$</p>
+        <p>Onde $n$ é o número de elétrons transferidos e $e = 1,6 \times 10^{-19}\text{ C}$ é a carga elementar.</p>
+    </div>
+
+    <div class="passo-teoria">
+        <h4>2. Princípios da Eletrostática</h4>
+        <ul>
+            <li><strong>Princípio das Atração e Repulsão:</strong> Cargas elétricas de mesmo sinal se repelem e de sinais contrários se atraem.</li>
+            <li><strong>Princípio da Conservação da Carga Elétrica:</strong> Num sistema eletricamente isolado, a soma algébrica das cargas elétricas permanece constante ($Q_{\text{inicial}} = Q_{\text{final}}$).</li>
+        </ul>
+    </div>
+
+    <div class="passo-teoria">
+        <h4>3. Processos de Eletrização</h4>
+        <ul>
+            <li><strong>1. Eletrização por Atrito:</strong> Dois corpos neutros de materiais distintos são friccionados. Um cede elétrons para o outro.
+                <br>• <em>Resultado:</em> Corpos ficam com cargas de <strong>sinais opostos</strong> e módulos iguais.
+            </li>
+            <li><strong>2. Eletrização por Contato:</strong> Dois condutores (pelo menos um previamente eletrizado) são colocados em contato. Há migração de elétrons até o equilíbrio eletrostático.
+                <br>• <em>Resultado:</em> Corpos ficam com cargas do <strong>mesmo sinal</strong>. Para esferas idênticas, a carga final é a média aritmética: $Q' = \frac{Q_A + Q_B}{2}$.
+            </li>
+            <li><strong>3. Eletrização por Indução:</strong> Um corpo eletrizado (indutor) aproxima-se de um condutor neutro (induzido) sem tocá-lo, promovendo a separação local de cargas (polarização). Conecta-se o induzido à Terra (aterramento) e, em seguida, desfaz-se a ligação antes de afastar o indutor.
+                <br>• <em>Resultado:</em> O induzido adquire carga de <strong>sinal oposto</strong> ao do indutor.
+            </li>
+        </ul>
+        <figure class="figura-aula figura-grande">
+            <img src="../imagens_fisica/aula3_01_eletrizacao.png" alt="Processos de Eletrização: Atrito, Contato e Indução">
+            <figcaption>Figura 1: Etapas da eletrização por indução eletrostática com aterramento.</figcaption>
+        </figure>
+    </div>
+</section>
+
+<section class="aplicacoes-reais" id="aplicacoes">
+    <h3>💡 Física em Ação</h3>
+    <div class="cards-aplicacao">
+        <div class="card">
+            <h4>🎨 Pintura Eletrostática Automotiva</h4>
+            <p>A tinta em pó é eletrizada ao sair da pistola de pintura e atrai-se fortemente pela lataria do carro (que possui carga oposta ou está aterrada), resultando em um acabamento uniforme e sem desperdício.</p>
+        </div>
+        <div class="card" style="border-left-color: #2ecc71;">
+            <h4>⚡ Raios e Para-raios</h4>
+            <p>As nuvens de tempestade eletrizam-se por atrito devido à movimentação de cristais de gelo e gotas de água. A enorme carga na base da nuvem induz uma carga oposta no solo, gerando a descarga atmosférica (raio).</p>
+        </div>
+    </div>
+</section>
+
+<section class="questoes-resolvidas" id="resolvidas">
+    <h3>✅ 5 Questões Resolvidas (R 1 a 5)</h3>
+    
+    <article class="questao">
+        <h4>R 1: Cálculo do Número de Elétrons</h4>
+        <p><strong>Enunciado:</strong> Um corpo condutor inicialmente neutro perde $5 \times 10^{13}$ elétrons ao ser atritado. Sabendo que $e = 1,6 \times 10^{-19}\text{ C}$, determine o sinal e o valor da carga elétrica adquirida por esse corpo.</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong><br>
+            Como o corpo perdeu elétrons, sua carga final será <strong>positiva</strong>.<br>
+            $Q = n \cdot e = (5 \times 10^{13}) \cdot (1,6 \times 10^{-19}) = 8,0 \times 10^{-6}\text{ C} = \mathbf{+8,0\ \mu\text{C}}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>R 2: Contato entre Esferas Idênticas</h4>
+        <p><strong>Enunciado:</strong> Duas esferas metálicas idênticas $A$ e $B$ possuem cargas iniciais $Q_A = +12\ \mu\text{C}$ e $Q_B = -4\ \mu\text{C}$. Elas são colocadas em contato e, em seguida, separadas. Qual a carga final de cada esfera?</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong><br>
+            Como as esferas são idênticas, a carga divide-se igualmente:<br>
+            $Q' = \frac{Q_A + Q_B}{2} = \frac{(+12) + (-4)}{2} = \frac{8}{2} = \mathbf{+4\ \mu\text{C}}$ para cada esfera.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>R 3: Sequência de Contatos</h4>
+        <p><strong>Enunciado:</strong> Três esferas condutoras idênticas $A$, $B$ e $C$ possuem cargas $Q_A = +8\text{ C}$, $Q_B = 0$ (neutra) e $Q_C = 0$ (neutra). Se $A$ encosta primeiro em $B$ e depois em $C$, qual a carga final de $A$?</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong><br>
+            1. Contato $A$ com $B$:<br>
+            $Q'_{A1} = Q'_B = \frac{+8 + 0}{2} = +4\text{ C}$.<br>
+            2. Contato $A$ com $C$ (usando a nova carga de $A$):<br>
+            $Q''_{A} = Q'_C = \frac{+4 + 0}{2} = \mathbf{+2\text{ C}}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>R 4: Sinal na Eletrização por Indução</h4>
+        <p><strong>Enunciado:</strong> Um bastão de vidro eletrizado positivamente é aproximado de uma esfera condutora neutra aterrada. Em seguida, o aterramento é desfeito e o bastão é afastado. Qual o sinal da carga adquirida pela esfera?</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong><br>
+            O bastão positivo atrai elétrons da Terra para a esfera induzida. Ao desfazer o aterramento, esses elétrons ficam retidos no corpo. Portanto, a esfera fica eletrizada com carga <strong>negativa</strong> (sinal oposto ao do indutor).</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>R 5: Conservação da Carga Elétrica</h4>
+        <p><strong>Enunciado:</strong> Em um sistema eletricamente isolado composto por três corpos, as cargas iniciais são $Q_1 = +5\text{ C}$, $Q_2 = -2\text{ C}$ e $Q_3 = +1\text{ C}$. Após várias trocas de carga, observa-se que $Q'_1 = +2\text{ C}$ e $Q'_2 = +4\text{ C}$. Determine o valor da carga $Q'_3$.</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong><br>
+            Pelo Princípio da Conservação da Carga:<br>
+            $Q_{\text{inicial}} = Q_{\text{final}} \implies Q_1 + Q_2 + Q_3 = Q'_1 + Q'_2 + Q'_3$<br>
+            $5 - 2 + 1 = 2 + 4 + Q'_3 \implies 4 = 6 + Q'_3 \implies Q'_3 = 4 - 6 = \mathbf{-2\text{ C}}$.</p>
+        </div>
+    </article>
+</section>
+
+<section class="questoes-propostas" id="propostas">
+    <h3>✍️ 5 Questões Propostas (P 6 a 10)</h3>
+
+    <article class="questao">
+        <h4>P 6: Excesso de Elétrons</h4>
+        <p><strong>Enunciado:</strong> Um corpo possui uma carga elétrica $Q = -3,2\ \mu\text{C}$. Quantos elétrons esse corpo tem em excesso? ($e = 1,6 \times 10^{-19}\text{ C}$).</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> $Q = n \cdot e \implies 3,2 \times 10^{-6} = n \cdot (1,6 \times 10^{-19}) \implies n = \frac{3,2 \times 10^{-6}}{1,6 \times 10^{-19}} = \mathbf{2,0 \times 10^{13}\text{ elétrons}}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 7: Atrito entre Ambar e Lã</h4>
+        <p><strong>Enunciado:</strong> Um bastão de âmbar neutro é atritado com um pedaço de tecido de lã neutro. Se a lã adquire carga $+Q$, qual é a carga adquirida pelo âmbar?</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> Pela Conservação da Carga e Eletrização por Atrito, os corpos adquirem cargas de módulos iguais e sinais opostos. O âmbar adquire carga <strong>$-Q$</strong>.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 8: Atração de Corpos Neutros</h4>
+        <p><strong>Enunciado:</strong> Explique por que um bastão eletrizado consegue atrair pequenos pedaços de papel neutros.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> Ocorre o fenômeno da <strong>polarização</strong> (indução em isolantes). O bastão eletrizado atrai as cargas de sinal oposto do papel para mais perto de si e repele as de mesmo sinal, gerando uma força resultante de atração eletrostática.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 9: Contato Triplo Simultâneo</h4>
+        <p><strong>Enunciado:</strong> Três esferas idênticas $A$, $B$ e $C$ possuem cargas $Q_A = +10\text{ C}$, $Q_B = -2\text{ C}$ e $Q_C = +1\text{ C}$. Se as três forem colocadas em contato SIMULTANEAMENTE, qual será a carga final de cada uma?</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> No contato simultâneo entre 3 esferas idênticas, divide-se a soma por 3:<br>
+            $Q' = \frac{Q_A + Q_B + Q_C}{3} = \frac{10 - 2 + 1}{3} = \frac{9}{3} = \mathbf{+3\text{ C}}$ para cada esfera.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 10: Impossibilidade de Carga Fracionada</h4>
+        <p><strong>Enunciado:</strong> É possível um corpo apresentar uma carga de valor $Q = 2,4 \times 10^{-19}\text{ C}$? Justifique com base no conceito de quantização.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> Não. Calculando $n = \frac{Q}{e} = \frac{2,4 \times 10^{-19}}{1,6 \times 10^{-19}} = 1,5$. Como $n$ precisa ser obrigatoriamente um número <strong>inteiro</strong> de elétrons, a carga informada é <strong>impossível</strong> na prática.</p>
+        </div>
+    </article>
+</section>
+
+<section class="TESTE" id="testes">
+    <h3>🎓 TESTES (T 11 a 15)</h3>
+
+    <div class="card" style="text-align:center; padding:60px 20px; background:#f8f9fa; border:2px dashed #3498db; border-radius:12px; margin-top:20px;">
+        <h2 style="color:#3498db; font-size:2.5rem; margin-bottom:15px;">
+            🚧 EM BREVE!
+        </h2>
+
+        <p style="font-size:1.2rem; color:#555;">
+            Questões de vestibulares serão disponibilizadas em breve.
+        </p>
+    </div>
+</section>
+
+</div>
+</main>
+
+<aside class="menu-lateral">
+    <iframe src="../menu_fisica.html" style="width:100%; border:none; height:600px;"></iframe>
+</aside>
+
+</div>
+
+<script>
+function toggleGabarito(botao) {
+    const gabarito = botao.nextElementSibling;
+    if (gabarito.style.display === "none" || gabarito.style.display === "") {
+        gabarito.style.display = "block";
+        botao.textContent = "Esconder Gabarito e Resolução";
+        botao.style.backgroundColor = "#2c3e50";
+    } else {
+        gabarito.style.display = "none";
+        botao.textContent = "Ver Gabarito e Resolução";
+        botao.style.backgroundColor = "#3498db";
+    }
+}
+
+function toggleMenu() {
+    const menuGlobal = document.getElementById("menu-principal");
+    if (menuGlobal) menuGlobal.classList.toggle("ativo");
+}
+
+let slideAtual = 0;
+let slides = [];
+
+function prepararSlides() {
+    const seletores = '.container-resumo, .passo-teoria, .aplicacoes-reais, .questao';
+    slides = document.querySelectorAll(seletores);
+}
+
+function toggleSlides() {
+    prepararSlides();
+    const body = document.body;
+    if (!body.classList.contains('modo-slides')) {
+        body.classList.add('modo-slides');
+        slideAtual = 0;
+        mostrarSlide(slideAtual);
+    } else {
+        body.classList.remove('modo-slides');
+        window.location.reload(); 
+    }
+}
+
+function mostrarSlide(n) {
+    slides.forEach(s => {
+        s.classList.remove('slide-ativo');
+        s.style.display = 'none';
+    });
+    const slide = slides[n];
+    slide.classList.add('slide-ativo');
+    slide.style.display = 'flex'; 
+
+    if (slide.classList.contains('questao') && !slide.querySelector('.btn-gabarito')) {
+        const resolucoes = slide.querySelectorAll('.resolucao-bloco');
+        resolucoes.forEach(r => r.style.display = 'block');
+    } else {
+        const gabaritos = slide.querySelectorAll('.gabarito-resolucao');
+        gabaritos.forEach(g => g.style.display = 'none');
+        const botoes = slide.querySelectorAll('.btn-gabarito');
+        botoes.forEach(b => {
+            b.textContent = "Ver Gabarito e Resolução";
+            b.style.backgroundColor = "#3498db";
+        });
+    }
+
+    const pHeader = document.querySelector('header p').innerText;
+    const partes = pHeader.split('|');
+    if(partes.length > 1) {
+        document.getElementById('slide-info-serie').innerText = partes[0].trim();
+        document.getElementById('slide-info-aula').innerText = partes[1].trim();
+    }
+    document.getElementById('contador-slide').innerText = (n + 1) + " / " + slides.length;
+    if (window.MathJax) MathJax.typesetPromise();
+}
+
+function mudarSlide(direcao) {
+    slideAtual += direcao;
+    if (slideAtual >= slides.length) slideAtual = 0;
+    if (slideAtual < 0) slideAtual = slides.length - 1;
+    mostrarSlide(slideAtual);
+}
+
+document.addEventListener('keydown', function(event) {
+    if (document.body.classList.contains('modo-slides')) {
+        switch(event.key) {
+            case 'ArrowRight': 
+            case 'PageDown':   
+            case 'Enter':      
+            case ' ':          
+                mudarSlide(1);
+                break;
+                
+            case 'ArrowLeft':  
+            case 'PageUp':     
+                mudarSlide(-1);
+                break;
+
+            case 'Escape':     
+                toggleSlides();
+                break;
+        }
+    }
+});
+</script>
+
+<style>
+    body.modo-slides { overflow: hidden; background-color: #1a1a1a; }
+    body.modo-slides .menu-lateral, body.modo-slides header, body.modo-slides .menu-toggle, body.modo-slides #btn-slides { display: none !important; }
+    .slide-ativo {
+        display: flex !important; flex-direction: column; align-items: center; justify-content: flex-start;
+        position: fixed; top: 0; left: 0; width: 100vw; height: calc(100vh - 70px);
+        background: #ffffff; padding: 40px; z-index: 999; overflow-y: auto !important; 
+        box-sizing: border-box; text-align: center;
+    }
+    .controles-slides {
+        position: fixed; bottom: 0; left: 0; width: 100%; height: 70px;
+        background: #2c3e50; color: white; display: none; 
+        justify-content: space-between; align-items: center; padding: 0 20px; z-index: 1001; box-sizing: border-box;
+    }
+    body.modo-slides .controles-slides { display: flex; }
+    .info-lateral { flex: 1; font-family: 'Oswald', sans-serif; font-size: 0.9rem; color: #bdc3c7; }
+    .botoes-centrais { display: flex; align-items: center; gap: 15px; justify-content: center; flex: 2; }
+    .btn-nav { padding: 10px 20px; background: #3498db; color: white; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; }
+    #contador-slide { font-family: 'Oswald', sans-serif; min-width: 60px; text-align: center; }
+</style>
+
+<div class="controles-slides">
+    <div id="slide-info-serie" class="info-lateral"></div>
+    <div class="botoes-centrais">
+        <button class="btn-nav" onclick="mudarSlide(-1)">⬅ Anterior</button>
+        <span id="contador-slide"></span>
+        <button class="btn-nav" onclick="mudarSlide(1)">Próximo ➡</button>
+        <button class="btn-nav" onclick="toggleSlides()" style="background:#e74c3c;">Sair</button>
+    </div>
+    <div id="slide-info-aula" class="info-lateral" style="text-align: right;"></div>
+</div>
+</body>
+</html>
