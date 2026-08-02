@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3º Ano: Aula 04 - Linhas de Força e Campo Elétrico Uniforme</title>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../estilo.css">
+    
+    <script>
+        MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true
+            }
+        };
+    </script>
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body>
+<button class="menu-toggle" onclick="toggleMenu()">☰</button>
+
+<nav id="menu-principal" class="nav-global">
+    <ul>
+        <li><a href="../index.html">🏠 Início</a></li>
+        <li><a href="../fisica_home.html">⚛️ Física</a></li>
+        <li><a href="../matematica_home.html">📐 Matemática</a></li>
+        <li><a href="../simulacoes_home.html">💻 Simulações</a></li>
+    </ul>
+</nav>
+
+<header id="topo">
+    <h1>FÍSICA EM</h1>
+    <p>3º Ano | Aula 04: Linhas de Força e Campo Elétrico Uniforme</p>
+    <button id="btn-slides" onclick="toggleSlides()">📺 Iniciar Modo Slides</button>
+</header>
+
+<div class="container">
+
+<main class="conteudo-principal">
+
+<div class="secao-aula">
+ <div class="container-resumo" id="resumo">
+    <h3>📚 Resumo </h3>
+    <section class="resumo-conteudo">
+        <p>As <strong>Linhas de Força</strong> são linhas imaginárias tangentes ao vetor campo elétrico em cada ponto do espaço, indicando visualmente a direção e o sentido do campo. A densidade de linhas é proporcional à intensidade do campo.</p>
+        <p>Um <strong>Campo Elétrico Uniforme (CEU)</strong> ocorre quando o vetor campo elétrico $\vec{E}$ possui o mesmo módulo, direção e sentido em todos os pontos de uma região. Suas linhas de força são retas paralelas, igualmente espaçadas e orientadas da placa positiva para a placa negativa.</p>
+    </section>
+</div>
+
+<section class="conteudo-teorico-completo" id="teoria">
+    <div class="passo-teoria">
+        <h3>📖 Linhas de Força e Campo Elétrico Uniforme (CEU)</h3>
+        <h4>1. Propriedades das Linhas de Força</h4>
+        <ul>
+            <li>Nascem em cargas positivas (ou no infinito) e morrem em cargas negativas (ou no infinito).</li>
+            <li>O vetor campo elétrico $\vec{E}$ é <strong>tangente</strong> às linhas de força em qualquer ponto e possui o mesmo sentido delas.</li>
+            <li><strong>Nunca se cruzam</strong>, pois em cada ponto do espaço o vetor campo elétrico resultante é único.</li>
+            <li>A intensidade do campo elétrico é maior nas regiões onde as linhas estão mais próximas (maior densidade espacial).</li>
+        </ul>
+    </div>
+
+    <div class="passo-teoria">
+        <h4>2. Campo Elétrico Uniforme (CEU)</h4>
+        <p>É estabelecido tipicamente no espaço entre duas placas condutoras planas e paralelas, carregadas com cargas de módulos iguais e sinais opostos.</p>
+        <ul>
+            <li>O vetor campo elétrico $\vec{E}$ é constante em módulo, direção e sentido.</li>
+            <li>As linhas de força são <strong>retas paralelas, equidistantes e orientadas</strong> da placa positiva para a placa negativa.</li>
+        </ul>
+        <figure class="figura-aula figura-grande">
+            <img src="../imagens_fisica/aula3_04_linhas_forca_ceu.png" alt="Campo Elétrico Uniforme entre Placas Paralelas">
+            <figcaption>Figura 1: Linhas de força paralelas e equidistantes entre duas placas paralelas eletrizadas.</figcaption>
+        </figure>
+    </div>
+
+    <div class="passo-teoria">
+        <h4>3. Movimento de Partículas Carregadas no CEU</h4>
+        <p>Uma partícula de massa $m$ e carga $q$ lançada ou abandonada em um CEU experimenta uma força elétrica constante $\vec{F} = q \cdot \vec{E}$. Pela Segunda Lei de Newton ($\vec{F} = m \cdot \vec{a}$):</p>
+        <p>$$a = \frac{|q| \cdot E}{m}$$</p>
+        <ul>
+            <li>Como a aceleração é constante, a partícula realiza um <strong>Movimento Uniformemente Variado (MUV)</strong> na direção do campo elétrico.</li>
+            <li>Se a partícula for lançada perpendicularmente ao campo, descreverá uma <strong>trajetória parabólica</strong> (análoga ao lançamento horizontal no campo gravitacional).</li>
+        </ul>
+    </div>
+</section>
+
+<section class="aplicacoes-reais" id="aplicacoes">
+    <h3>💡 Física em Ação</h3>
+    <div class="cards-aplicacao">
+        <div class="card">
+            <h4>🛢️ Experimento da Gota de Óleo de Millikan</h4>
+            <p>Robert Millikan utilizou um campo elétrico uniforme entre duas placas para equilibrar a força peso de pequenas gotas de óleo carregadas, determinando pela primeira vez a carga elementar do elétron ($e \approx 1,6 \times 10^{-19}\text{ C}$).</p>
+        </div>
+        <div class="card" style="border-left-color: #2ecc71;">
+            <h4>🖨️ Telas Touchscreen Capacitivas</h4>
+            <p>O toque do dedo altera o campo elétrico uniforme criado entre as camadas transparentes condutoras da tela do celular, permitindo registrar a posição exata do toque.</p>
+        </div>
+    </div>
+</section>
+
+<section class="questoes-resolvidas" id="resolvidas">
+    <h3>✅ 5 Questões Resolvidas (R 1 a 5)</h3>
+    
+    <article class="questao">
+        <h4>R 1: Propriedade das Linhas de Força</h4>
+        <p><strong>Enunciado:</strong> Duas linhas de força de um mesmo campo eletrostático podem se cruzar no espaço? Justifique.</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong><br>
+            <strong>Não.</strong> Se duas linhas se cruzassem, haveria duas direções possíveis para o vetor campo elétrico no ponto de intersecção. Como o campo elétrico resultante em um ponto do espaço é único, as linhas de força nunca se cruzam.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>R 2: Aceleração de um Próton no CEU</h4>
+        <p><strong>Enunciado:</strong> Um próton ($q = 1,6 \times 10^{-19}\text{ C}$, $m = 1,6 \times 10^{-27}\text{ kg}$) é abandonado no vácuo em um campo elétrico uniforme de intensidade $E = 2,0 \times 10^3\text{ N/C}$. Determine o módulo da aceleração adquirida pelo próton.</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong><br>
+            1. Calculando a força elétrica: $F = q \cdot E = (1,6 \times 10^{-19}) \cdot (2,0 \times 10^3) = 3,2 \times 10^{-16}\text{ N}$.<br>
+            2. Pela Segunda Lei de Newton ($F = m \cdot a$):<br>
+            $a = \frac{F}{m} = \frac{3,2 \times 10^{-16}}{1,6 \times 10^{-27}} = \mathbf{2,0 \times 10^{11}\text{ m/s}^2}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>R 3: Equilíbrio de uma Partícula</h4>
+        <p><strong>Enunciado:</strong> Uma pequena esfera de massa $m = 2,0 \times 10^{-3}\text{ kg}$ e carga $q = +4,0\ \mu\text{C}$ permanece em equilíbrio suspenso no ar entre duas placas paralelas horizontais. Sabendo que $g = 10\text{ m/s}^2$, determine o módulo e o sentido do campo elétrico entre as placas.</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong><br>
+            Para o equilíbrio, a força elétrica deve anular a força peso ($\vec{F}_e = -\vec{P}$):<br>
+            • $P = m \cdot g = (2,0 \times 10^{-3}) \cdot 10 = 2,0 \times 10^{-2}\text{ N}$ (para baixo).<br>
+            • Portanto, a força elétrica deve valer $F_e = 2,0 \times 10^{-2}\text{ N}$ voltada <strong>para cima</strong>.<br>
+            • Como a carga $q$ é positiva, o campo elétrico tem o mesmo sentido da força: <strong>para cima</strong>.<br>
+            • Módulo do campo: $E = \frac{F_e}{q} = \frac{2,0 \times 10^{-2}}{4,0 \times 10^{-6}} = \mathbf{5,0 \times 10^3\text{ N/C}}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>R 4: Deflexão de Elétrons em Lançamento Horizontal</h4>
+        <p><strong>Enunciado:</strong> Um elétron é lançado horizontalmente com velocidade $v_0$ em um CEU vertical orientado para baixo. Para qual placa o elétron será defletido?</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong><br>
+            O elétron possui carga elétrica negativa ($q < 0$). A força elétrica exercida sobre ele possui a mesma direção do campo elétrico, mas <strong>sentido oposto</strong>.<br>
+            Como o campo aponta para baixo, a força elétrica atuará <strong>para cima</strong>, defletindo o elétron na direção da <strong>placa superior (positiva)</strong>.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>R 5: Densidade de Linhas e Intensidade do Campo</h4>
+        <p><strong>Enunciado:</strong> Em um diagrama de linhas de força de um campo não uniforme, observa-se que no ponto $A$ as linhas são mais adensadas que no ponto $B$. Em qual dos pontos o campo elétrico é mais intenso?</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong><br>
+            A densidade espacial das linhas de força é diretamente proporcional à intensidade do campo elétrico. Portanto, o campo elétrico no <strong>ponto $A$ é mais intenso que no ponto $B$ ($E_A > E_B$)</strong>.</p>
+        </div>
+    </article>
+</section>
+
+<section class="questoes-propostas" id="propostas">
+    <h3>✍️ 5 Questões Propostas (P 6 a 10)</h3>
+
+    <article class="questao">
+        <h4>P 6: Orientação do Campo Elétrico Uniforme</h4>
+        <p><strong>Enunciado:</strong> Em um campo elétrico uniforme criado por duas placas paralelas verticais, a placa da esquerda está carregada positivamente e a da direita, negativamente. Qual é o sentido do vetor campo elétrico no interior das placas?</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> As linhas de força saem das cargas positivas e vão para as negativas. Portanto, o sentido do campo elétrico é da <strong>esquerda para a direita</strong> (horizontalmente).</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 7: Velocidade de uma Carga Abandonada no CEU</h4>
+        <p><strong>Enunciado:</strong> Uma carga de $1\ \mu\text{C}$ e massa $10^{-6}\text{ kg}$ é solta do repouso em um CEU de $500\text{ N/C}$. Qual será sua velocidade após $2\text{ s}$? (Despreze a gravidade).</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong><br>
+            1. $F = q \cdot E = (10^{-6}) \cdot 500 = 5 \times 10^{-4}\text{ N}$.<br>
+            2. $a = \frac{F}{m} = \frac{5 \times 10^{-4}}{10^{-6}} = 500\text{ m/s}^2$.<br>
+            3. $v = v_0 + a \cdot t = 0 + 500 \cdot 2 = \mathbf{1000\text{ m/s}}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 8: Força sobre Carga Negativa no CEU</h4>
+        <p><strong>Enunciado:</strong> Uma carga de $-5\ \mu\text{C}$ é colocada em um CEU de $4 \times 10^3\text{ N/C}$ voltado para o Leste. Qual é o módulo e o sentido da força que atua sobre a carga?</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong><br>
+            $F = |q| \cdot E = (5 \times 10^{-6}) \cdot (4 \times 10^3) = \mathbf{0,02\text{ N}}$.<br>
+            Como a carga é negativa, o sentido da força é oposto ao do campo: para o <strong>Oeste</strong>.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 9: Trajetória no CEU com Lançamento Perpendicular</h4>
+        <p><strong>Enunciado:</strong> Qual é o formato da trajetória de uma partícula carregada lançada com velocidade constante perpendicularmente às linhas de força de um campo elétrico uniforme?</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> A trajetória é <strong>parabólica</strong>. A velocidade horizontal permanece constante (Movimento Uniforme), enquanto o movimento vertical é acelerado pela força elétrica constante (Movimento Uniformemente Variado).</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 10: Características das Linhas em um CEU</h4>
+        <p><strong>Enunciado:</strong> Como são graficamente representadas as linhas de força de um Campo Elétrico Uniforme?</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> São representadas por <strong>linhas retas paralelas, orientadas e igualmente espaçadas (equidistantes)</strong> entre si.</p>
+        </div>
+    </article>
+</section>
+
+<section class="TESTE" id="testes">
+    <h3>🎓 TESTES (T 11 a 15)</h3>
+
+    <div class="card" style="text-align:center; padding:60px 20px; background:#f8f9fa; border:2px dashed #3498db; border-radius:12px; margin-top:20px;">
+        <h2 style="color:#3498db; font-size:2.5rem; margin-bottom:15px;">
+            🚧 EM BREVE!
+        </h2>
+
+        <p style="font-size:1.2rem; color:#555;">
+            Questões de vestibulares serão disponibilizadas em breve.
+        </p>
+    </div>
+</section>
+
+</div>
+</main>
+
+<aside class="menu-lateral">
+    <iframe src="../menu_fisica.html" style="width:100%; border:none; height:600px;"></iframe>
+</aside>
+
+</div>
+
+<script>
+function toggleGabarito(botao) {
+    const gabarito = botao.nextElementSibling;
+    if (gabarito.style.display === "none" || gabarito.style.display === "") {
+        gabarito.style.display = "block";
+        botao.textContent = "Esconder Gabarito e Resolução";
+        botao.style.backgroundColor = "#2c3e50";
+    } else {
+        gabarito.style.display = "none";
+        botao.textContent = "Ver Gabarito e Resolução";
+        botao.style.backgroundColor = "#3498db";
+    }
+}
+
+function toggleMenu() {
+    const menuGlobal = document.getElementById("menu-principal");
+    if (menuGlobal) menuGlobal.classList.toggle("ativo");
+}
+
+let slideAtual = 0;
+let slides = [];
+
+function prepararSlides() {
+    const seletores = '.container-resumo, .passo-teoria, .aplicacoes-reais, .questao';
+    slides = document.querySelectorAll(seletores);
+}
+
+function toggleSlides() {
+    prepararSlides();
+    const body = document.body;
+    if (!body.classList.contains('modo-slides')) {
+        body.classList.add('modo-slides');
+        slideAtual = 0;
+        mostrarSlide(slideAtual);
+    } else {
+        body.classList.remove('modo-slides');
+        window.location.reload(); 
+    }
+}
+
+function mostrarSlide(n) {
+    slides.forEach(s => {
+        s.classList.remove('slide-ativo');
+        s.style.display = 'none';
+    });
+    const slide = slides[n];
+    slide.classList.add('slide-ativo');
+    slide.style.display = 'flex'; 
+
+    if (slide.classList.contains('questao') && !slide.querySelector('.btn-gabarito')) {
+        const resolucoes = slide.querySelectorAll('.resolucao-bloco');
+        resolucoes.forEach(r => r.style.display = 'block');
+    } else {
+        const gabaritos = slide.querySelectorAll('.gabarito-resolucao');
+        gabaritos.forEach(g => g.style.display = 'none');
+        const botoes = slide.querySelectorAll('.btn-gabarito');
+        botoes.forEach(b => {
+            b.textContent = "Ver Gabarito e Resolução";
+            b.style.backgroundColor = "#3498db";
+        });
+    }
+
+    const pHeader = document.querySelector('header p').innerText;
+    const partes = pHeader.split('|');
+    if(partes.length > 1) {
+        document.getElementById('slide-info-serie').innerText = partes[0].trim();
+        document.getElementById('slide-info-aula').innerText = partes[1].trim();
+    }
+    document.getElementById('contador-slide').innerText = (n + 1) + " / " + slides.length;
+    if (window.MathJax) MathJax.typesetPromise();
+}
+
+function mudarSlide(direcao) {
+    slideAtual += direcao;
+    if (slideAtual >= slides.length) slideAtual = 0;
+    if (slideAtual < 0) slideAtual = slides.length - 1;
+    mostrarSlide(slideAtual);
+}
+
+document.addEventListener('keydown', function(event) {
+    if (document.body.classList.contains('modo-slides')) {
+        switch(event.key) {
+            case 'ArrowRight': 
+            case 'PageDown':   
+            case 'Enter':      
+            case ' ':          
+                mudarSlide(1);
+                break;
+                
+            case 'ArrowLeft':  
+            case 'PageUp':     
+                mudarSlide(-1);
+                break;
+
+            case 'Escape':     
+                toggleSlides();
+                break;
+        }
+    }
+});
+</script>
+
+<style>
+    body.modo-slides { overflow: hidden; background-color: #1a1a1a; }
+    body.modo-slides .menu-lateral, body.modo-slides header, body.modo-slides .menu-toggle, body.modo-slides #btn-slides { display: none !important; }
+    .slide-ativo {
+        display: flex !important; flex-direction: column; align-items: center; justify-content: flex-start;
+        position: fixed; top: 0; left: 0; width: 100vw; height: calc(100vh - 70px);
+        background: #ffffff; padding: 40px; z-index: 999; overflow-y: auto !important; 
+        box-sizing: border-box; text-align: center;
+    }
+    .controles-slides {
+        position: fixed; bottom: 0; left: 0; width: 100%; height: 70px;
+        background: #2c3e50; color: white; display: none; 
+        justify-content: space-between; align-items: center; padding: 0 20px; z-index: 1001; box-sizing: border-box;
+    }
+    body.modo-slides .controles-slides { display: flex; }
+    .info-lateral { flex: 1; font-family: 'Oswald', sans-serif; font-size: 0.9rem; color: #bdc3c7; }
+    .botoes-centrais { display: flex; align-items: center; gap: 15px; justify-content: center; flex: 2; }
+    .btn-nav { padding: 10px 20px; background: #3498db; color: white; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; }
+    #contador-slide { font-family: 'Oswald', sans-serif; min-width: 60px; text-align: center; }
+</style>
+
+<div class="controles-slides">
+    <div id="slide-info-serie" class="info-lateral"></div>
+    <div class="botoes-centrais">
+        <button class="btn-nav" onclick="mudarSlide(-1)">⬅ Anterior</button>
+        <span id="contador-slide"></span>
+        <button class="btn-nav" onclick="mudarSlide(1)">Próximo ➡</button>
+        <button class="btn-nav" onclick="toggleSlides()" style="background:#e74c3c;">Sair</button>
+    </div>
+    <div id="slide-info-aula" class="info-lateral" style="text-align: right;"></div>
+</div>
+</body>
+</html>
