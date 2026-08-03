@@ -314,82 +314,68 @@
 </article>
 
 <article class="questao">
-    <h4>T 14: (ENEM) Crescimento Exponencial e Função Exponencial</h4>
-    <p>Pesquisas indicam que o número de bactérias X é duplicado a cada quarto de hora. Um aluno resolveu fazer uma observação para verificar a veracidade dessa afirmação. Ele usou uma população inicial de $10^5$ bactérias X e encerrou a observação ao final de uma hora.</p>
-    <p>Suponha que a observação do aluno tenha confirmado que o número de bactérias X se duplica a cada quarto de hora.</p>
-    <p>Após uma hora do início do período de observação desse aluno, o número de bactérias X foi de:</p>
+    <h4>T 14: (UFRJ) Ordem de Grandeza e Variação Populacional</h4>
+    <p>O censo populacional realizado em 1970 constatou que a população do Brasil era de 90 milhões de habitantes. Recentemente o censo estimou uma população de 150 milhões de habitantes. A ordem de grandeza que melhor expressa o aumento populacional é:</p>
     
     <p>
-        A) $2^{-2} \cdot 10^5$<br> 
-        B) $2^{-1} \cdot 10^5$<br> 
-        C) $2^2 \cdot 10^5$<br> 
-        D) $2^3 \cdot 10^5$<br> 
-        E) $2^4 \cdot 10^5$
+        A) $10^6$<br> 
+        B) $10^7$<br> 
+        C) $10^8$<br> 
+        D) $10^9$<br> 
+        E) $10^{10}$
     </p>
 
     <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
     <div class="gabarito-resolucao">
-        <p><strong>Resolução:</strong> Alternativa <strong>E</strong>. <br>
-        Vamos analisar o número de duplicações que ocorrem durante o período de 1 hora.
+        <p><strong>Resolução:</strong> Alternativa <strong>B</strong>. <br>
+        Primeiro, calculamos a variação (aumento) populacional e, em seguida, determinamos a sua ordem de grandeza.
 
-        <strong>1. Determinar o número de intervalos de tempo:</strong>
+        <strong>1. Cálculo do Aumento Populacional ($\Delta N$):</strong>
+        $$\Delta N = 150\text{ milhões} - 90\text{ milhões} = 60\text{ milhões de habitantes}$$
+
+        Em notação científica, como $1\text{ milhão} = 10^6$:
+        $$\Delta N = 60 \times 10^6 = 6,0 \times 10^7$$
+
+        <strong>2. Determinação da Ordem de Grandeza (OG):</strong>
+        Para definir a ordem de grandeza na forma $N = a \times 10^n$, comparamos o coeficiente $a$ com o valor de referência $\sqrt{10} \approx 3,16$:
         <ul>
-            <li>Um "quarto de hora" equivale a $15\text{ minutos}$ ($\frac{1}{4}\text{ h}$).</li>
-            <li>Em $1\text{ hora}$ ($60\text{ minutos}$), há $4$ quartos de hora: $\frac{60}{15} = 4$.</li>
+            <li>Se $a \ge 3,16$, arredondamos a potência para cima: $\text{OG} = 10^{n+1}$.</li>
+            <li>Se $a < 3,16$, mantemos a potência atual: $\text{OG} = 10^n$.</li>
         </ul>
 
-        <strong>2. Calcular a população final:</strong>
-        A cada quarto de hora, a população é multiplicada por $2$.
-        <ul>
-            <li><strong>Início ($t = 0$):</strong> $10^5$</li>
-            <li><strong>1º quarto de hora:</strong> $10^5 \cdot 2$</li>
-            <li><strong>2º quarto de hora:</strong> $10^5 \cdot 2 \cdot 2 = 2^2 \cdot 10^5$</li>
-            <li><strong>3º quarto de hora:</strong> $10^5 \cdot 2^3 = 2^3 \cdot 10^5$</li>
-            <li><strong>4º quarto de hora ($1\text{ h}$):</strong> $10^5 \cdot 2^4 = \mathbf{2^4 \cdot 10^5}$</li>
-        </ul>
+        Como no nosso resultado $a = 6,0$ (que é maior que $3,16$):
+        $$\text{OG} = 10^{7+1} = \mathbf{10^7}$$
+
+        <em>Nota de atenção:</em> A somatória $7 + 1$ ajusta para a potência de dez mais próxima. Como $6,0 \times 10^7$ está mais perto de $100 \text{ milhões } (10^8)$ do que de $10 \text{ milhões } (10^7)$, o expoente torna-se $10^7$.
         </p>
     </div>
 </article>
-<article class="questao">
-    <h4>T 15: (ENEM) Conversão de Unidades de Área e Notação Científica</h4>
-    <p>O gelo marinho no Ártico está em sua segunda menor extensão já registrada: $5,56\text{ milhões de km}^2$. Essa medida foi feita com o auxílio de satélites no dia 14 de agosto de 2011 e é apenas $220\text{ mil km}^2$ maior do que a baixa recorde de 2007.</p>
-    <p><em>ANGELO, C. Volume de gelo no Ártico nunca foi tão baixo. Disponível em: www1.folha.uol.com.br. Acesso em: 08 nov. 2011.</em></p>
-    <p>De acordo com esses dados, a menor extensão territorial de gelo marinho registrada no Ártico em 2007, em metros quadrados, foi:</p>
+
+    <article class="questao">
+    <h4>T 15: (UFV) Ordem de Grandeza e Cálculo de Volume</h4>
+    <p>Considere o volume de uma gota como $5,0 \times 10^{-2}\text{ mL}$. A ordem de grandeza do número de gotas em um litro de água é:</p>
     
     <p>
-        A) $214,44 \times 10^3$<br> 
-        B) $5,34 \times 10^6$<br> 
-        C) $5,34 \times 10^9$<br> 
-        D) $5,34 \times 10^{12}$<br> 
-        E) $214,44 \times 10^{12}$
+        A) $10^3$<br> 
+        B) $10^5$<br> 
+        C) $10^2$<br> 
+        D) $10^4$<br> 
+        E) $10^6$
     </p>
 
     <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
     <div class="gabarito-resolucao">
         <p><strong>Resolução:</strong> Alternativa <strong>D</strong>. <br>
-        A questão exige duas etapas: encontrar a extensão do gelo em 2007 ($\text{em km}^2$) e converter a unidade para metros quadrados ($\text{m}^2$).
+        Primeiro, calculamos quantas gotas existem em $1\text{ litro}$ de água e depois determinamos a sua ordem de grandeza.
 
-        <strong>1. Cálculo da extensão em 2007 ($\text{km}^2$):</strong>
-        <ul>
-            <li>Extensão em 2011: $5,56\text{ milhões de km}^2 = 5,56 \times 10^6\text{ km}^2$.</li>
-            <li>Diferença para 2007: $220\text{ mil km}^2 = 0,22 \times 10^6\text{ km}^2$.</li>
-        </ul>
-        $$\text{Área}_{2007} = 5,56 \times 10^6 - 0,22 \times 10^6 = 5,34 \times 10^6\text{ km}^2$$
+        <strong>1. Conversão das unidades de volume:</strong>
+        Sabemos que $1\text{ litro} = 1000\text{ mL} = 10^3\text{ mL}$.
 
-        <strong>2. Conversão de $\text{km}^2$ para $\text{m}^2$:</strong>
-        Como $1\text{ km} = 10^3\text{ m}$, elevando ambos os lados ao quadrado obtemos a relação de áreas:
-        $$ 1\text{ km}^2 = (10^3\text{ m})^2 = 10^6\text{ m}^2 $$
+        <strong>2. Cálculo do número total de gotas ($N$):</strong>
+        Dividimos o volume total pelo volume de uma única gota:
+        $$N = \frac{V_{total}}{V_{gota}} = \frac{1000\text{ mL}}{5,0 \times 10^{-2}\text{ mL}}$$
 
-        <strong>3. Aplicação da conversão:</strong>
-        Multiplicamos a área obtida por $10^6$:
-        $$ \begin{aligned}
-        \text{Área}_{2007} &= (5,34 \times 10^6) \times 10^6\text{ m}^2 \\
-        \text{Área}_{2007} &= 5,34 \times 10^{6+6}\text{ m}^2 \\
-        \text{Área}_{2007} &= \mathbf{5,34 \times 10^{12}\text{ m}^2}
-        \end{aligned} $$
-        </p>
-    </div>
-</article>
+        Reescrevendo $1000$ como $10 \times 10^2$ para facilitar a divisão por $5$:$$ N = \frac{10 \times 10
 
     
 </section>
