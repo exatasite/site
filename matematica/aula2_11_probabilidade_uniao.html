@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2º Ano: Aula 11 - Probabilidade da União e Intersecção de Eventos</title>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../estilo.css">
+    
+    <script>
+        MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true
+            }
+        };
+    </script>
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body>
+<button class="menu-toggle" onclick="toggleMenu()">☰</button>
+
+<nav id="menu-principal" class="nav-global">
+    <ul>
+        <li><a href="../index.html">🏠 Início</a></li>
+        <li><a href="../fisica_home.html">⚛️ Física</a></li>
+        <li><a href="../matematica_home.html">📐 Matemática</a></li>
+        <li><a href="../simulacoes_home.html">💻 Simulações</a></li>
+    </ul>
+</nav>
+
+<header id="topo">
+    <h1>MATEMÁTICA EM</h1>
+    <p>2º Ano | Aula 11: Probabilidade da União e Intersecção de Eventos</p>
+    <button id="btn-slides" onclick="toggleSlides()">📺 Iniciar Modo Slides</button>
+</header>
+
+<div class="container">
+
+<main class="conteudo-principal">
+
+<div class="secao-aula">
+ <div class="container-resumo" id="resumo">
+    <h3>📚 Resumo </h3>
+    <section class="resumo-conteudo">
+        <p>A <strong>União de Eventos ($A \cup B$)</strong> representa a ocorrência de pelo menos um dos eventos ($A$ ou $B$). A sua probabilidade é dada por $P(A \cup B) = P(A) + P(B) - P(A \cap B)$, onde $P(A \cap B)$ é a probabilidade da <strong>Intersecção</strong> (ocorrência simultânea de ambos os eventos).</p>
+        <p>Quando dois eventos não podem ocorrer ao mesmo tempo, dizemos que são <strong>Mutuamente Excludentes</strong> ($A \cap B = \emptyset$), simplificando a fórmula para $P(A \cup B) = P(A) + P(B)$.</p>
+    </section>
+</div>
+
+<section class="conteudo-teorico-completo" id="teoria">
+    <div class="passo-teoria">
+        <h3>📖 Operações com Eventos Probabilísticos</h3>
+        <h4>1. União de dois Eventos ($A \cup B$)</h4>
+        <p>A probabilidade de ocorrer o evento $A$ <strong>OU</strong> o evento $B$ equivale à união dos dois conjuntos. Para não contar elementos duplicados (que pertencem a ambos os conjuntos), aplica-se a regra do Princípio da Inclusão-Exclusão:</p>
+        <p>$$P(A \cup B) = P(A) + P(B) - P(A \cap B)$$</p>
+    </div>
+
+    <div class="passo-teoria">
+        <h4>2. Eventos Mutuamente Excludentes</h4>
+        <p>Dois eventos $A$ e $B$ são chamados de <em>mutuamente excludentes</em> ou <em>disjuntos</em> quando é impossível que aconteçam ao mesmo tempo:</p>
+        <ul>
+            <li><strong>Intersecção nula:</strong> $A \cap B = \emptyset \implies P(A \cap B) = 0$.</li>
+            <li><strong>Fórmula Simplificada:</strong> $P(A \cup B) = P(A) + P(B)$.</li>
+        </ul>
+    </div>
+
+    <div class="passo-teoria">
+        <h4>3. Intersecção de Eventos Independentes ($A \cap B$)</h4>
+        <p>Quando a ocorrência de um evento $A$ não altera a probabilidade do evento $B$, dizemos que são <strong>eventos independentes</strong>. Nesses casos, a probabilidade de ocorrer $A$ <strong>E</strong> $B$ simultaneamente é o produto de suas probabilidades individuais:</p>
+        <p>$$P(A \cap B) = P(A) \cdot P(B)$$</p>
+    </div>
+</section>
+
+<section class="aplicacoes-reais" id="aplicacoes">
+    <h3>💡 Matemática em Ação</h3>
+    <div class="cards-aplicacao">
+        <div class="card">
+            <h4>🏥 Diagnósticos Médicos e Exames</h4>
+            <p>Ao realizar exames em cadeia, médicos avaliam a chance de um paciente ter a doença A, a doença B ou ambas, ajustando tratamentos conforme a intersecção dos diagnósticos.</p>
+        </div>
+        <div class="card" style="border-left-color: #2ecc71;">
+            <h4>📈 Pesquisas de Mercado e Consumo</h4>
+            <p>Empresas analisam a probabilidade de clientes comprarem o produto X, o produto Y ou ambos, otimizando estratégias de vendas e ofertas combinadas (combos).</p>
+        </div>
+    </div>
+</section>
+
+<section class="questoes-resolvidas" id="resolvidas">
+    <h3>✅ 5 Questões Resolvidas (R 1 a 5)</h3>
+    
+    <article class="questao">
+        <h4>R 1: União de Eventos em Dados</h4>
+        <p><strong>Enunciado:</strong> Ao lançar um dado comum de 6 faces, qual a probabilidade de sair um número par OU um número maior que 4?</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong><br>
+            1. $\Omega = \{1, 2, 3, 4, 5, 6\} \implies n(\Omega) = 6$.<br>
+            2. Evento $A$ (número par): $A = \{2, 4, 6\} \implies P(A) = \frac{3}{6}$.<br>
+            3. Evento $B$ (maior que 4): $B = \{5, 6\} \implies P(B) = \frac{2}{6}$.<br>
+            4. Intersecção $A \cap B$ (par E maior que 4): $\{6\} \implies P(A \cap B) = \frac{1}{6}$.<br>
+            5. $P(A \cup B) = P(A) + P(B) - P(A \cap B) = \frac{3}{6} + \frac{2}{6} - \frac{1}{6} = \frac{4}{6} = \mathbf{\frac{2}{3} \approx 66,67\%}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>R 2: Sorteio de Cartas em Baralho</h4>
+        <p><strong>Enunciado:</strong> Retirando uma carta de um baralho de 52 cartas, qual a probabilidade de sair um Rei OU uma carta de Copas?</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong><br>
+            1. $n(\Omega) = 52$.<br>
+            2. Evento $A$ (Rei): $4$ reis na mesa $\implies P(A) = \frac{4}{52}$.<br>
+            3. Evento $B$ (Copas): $13$ cartas de copas $\implies P(B) = \frac{13}{52}$.<br>
+            4. Intersecção $A \cap B$ (Rei de Copas): $1$ carta $\implies P(A \cap B) = \frac{1}{52}$.<br>
+            5. $P(A \cup B) = \frac{4}{52} + \frac{13}{52} - \frac{1}{52} = \frac{16}{52} = \mathbf{\frac{4}{13} \approx 30,77\%}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>R 3: Eventos Mutuamente Excludentes</h4>
+        <p><strong>Enunciado:</strong> No lançamento de um dado não viciado, qual a probabilidade de obter o número 1 OU o número 6?</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong><br>
+            1. Como um dado não pode mostrar 1 e 6 ao mesmo tempo, os eventos são mutuamente excludentes ($P(A \cap B) = 0$).<br>
+            2. $P(A) = \frac{1}{6}$ e $P(B) = \frac{1}{6}$.<br>
+            3. $P(A \cup B) = P(A) + P(B) = \frac{1}{6} + \frac{1}{6} = \frac{2}{6} = \mathbf{\frac{1}{3} \approx 33,33\%}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>R 4: Intersecção de Eventos Independentes</h4>
+        <p><strong>Enunciado:</strong> Lançam-se uma moeda e um dado comum simultaneamente. Qual a probabilidade de obter 'Cara' na moeda E o número '5' no dado?</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong><br>
+            1. Os lançamentos são independentes.<br>
+            2. $P(\text{Cara}) = \frac{1}{2}$.<br>
+            3. $P(\text{Número 5}) = \frac{1}{6}$.<br>
+            4. $P(\text{Cara} \cap 5) = P(\text{Cara}) \cdot P(5) = \frac{1}{2} \cdot \frac{1}{6} = \mathbf{\frac{1}{12} \approx 8,33\%}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>R 5: Sorteio de Números de 1 a 30</h4>
+        <p><strong>Enunciado:</strong> Escolhe-se ao acaso um número de 1 a 30. Qual a probabilidade de ser múltiplo de 3 OU múltiplo de 5?</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong><br>
+            1. $n(\Omega) = 30$.<br>
+            2. Múltiplos de 3 ($A$): $\{3,6,9,12,15,18,21,24,27,30\} \implies n(A) = 10 \implies P(A) = \frac{10}{30}$.<br>
+            3. Múltiplos de 5 ($B$): $\{5,10,15,20,25,30\} \implies n(B) = 6 \implies P(B) = \frac{6}{30}$.<br>
+            4. Múltiplos de 3 e 5 ($A \cap B$, múltiplos de 15): $\{15,30\} \implies n(A \cap B) = 2 \implies P(A \cap B) = \frac{2}{30}$.<br>
+            5. $P(A \cup B) = \frac{10}{30} + \frac{6}{30} - \frac{2}{30} = \frac{14}{30} = \mathbf{\frac{7}{15} \approx 46,67\%}$.</p>
+        </div>
+    </article>
+</section>
+
+<section class="questoes-propostas" id="propostas">
+    <h3>✍️ 5 Questões Propostas (P 6 a 10)</h3>
+
+    <article class="questao">
+        <h4>P 6: Lançamento de Dado Comum</h4>
+        <p><strong>Enunciado:</strong> Qual é a probabilidade de, ao lançar um dado, obter um número ímpar OU um número primo?</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> Ímpares: $\{1, 3, 5\} \implies P(A) = \frac{3}{6}$. Primos: $\{2, 3, 5\} \implies P(B) = \frac{3}{6}$. Intersecção (ímpares e primos): $\{3, 5\} \implies P(A \cap B) = \frac{2}{6}$. Assim, $P(A \cup B) = \frac{3}{6} + \frac{3}{6} - \frac{2}{6} = \frac{4}{6} = \mathbf{\frac{2}{3} \approx 66,67\%}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 7: Escolha em um Grupo de Pessoas</h4>
+        <p><strong>Enunciado:</strong> Em um grupo de 100 pessoas, 60 praticam futebol, 40 praticam basquete e 20 praticam ambos os esportes. Escolhendo uma pessoa ao acaso, qual a probabilidade de ela praticar futebol OU basquete?</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> $P(\text{Fut}) = \frac{60}{100}$, $P(\text{Basq}) = \frac{40}{100}$, $P(\text{Ambos}) = \frac{20}{100}$. Usando a fórmula: $P = \frac{60}{100} + \frac{40}{100} - \frac{20}{100} = \frac{80}{100} = \mathbf{0,8 \text{ (ou } 80\% \text{)}}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 8: Moedas Independentes</h4>
+        <p><strong>Enunciado:</strong> Lançam-se duas moedas honestas simultaneamente. Qual a probabilidade de obter 'Coroa' na primeira moeda E 'Coroa' na segunda moeda?</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> Como os lançamentos são independentes: $P(C_1 \cap C_2) = P(C_1) \cdot P(C_2) = \frac{1}{2} \cdot \frac{1}{2} = \mathbf{\frac{1}{4} \text{ (ou } 25\% \text{)}}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 9: Sorteio de Cartas Mutuamente Excludentes</h4>
+        <p><strong>Enunciado:</strong> Ao retirar uma carta de um baralho de 52 cartas, qual a probabilidade de ela ser um Ás OU um Rei?</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> Uma carta não pode ser Ás e Rei ao mesmo tempo ($P(A \cap B) = 0$). $P(\text{Ás}) = \frac{4}{52}$, $P(\text{Rei}) = \frac{4}{52}$. Logo, $P = \frac{4}{52} + \frac{4}{52} = \frac{8}{52} = \mathbf{\frac{2}{13} \approx 15,38\%}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 10: Sorteio de Números de 1 a 20</h4>
+        <p><strong>Enunciado:</strong> Um número inteiro de 1 a 20 é sorteado. Qual é a probabilidade de o número ser menor que 5 OU maior que 15?</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> Menores que 5: $\{1, 2, 3, 4\} \implies 4$ números. Maiores que 15: $\{16, 17, 18, 19, 20\} \implies 5$ números. Os conjuntos não possuem intersecção ($0$ elementos comuns). Logo, $P = \frac{4}{20} + \frac{5}{20} = \frac{9}{20} = \mathbf{0,45 \text{ (ou } 45\% \text{)}}$.</p>
+        </div>
+    </article>
+</section>
+
+<section class="TESTE" id="testes">
+    <h3>🎓 TESTES (T 11 a 15)</h3>
+
+    <div class="card" style="text-align:center; padding:60px 20px; background:#f8f9fa; border:2px dashed #3498db; border-radius:12px; margin-top:20px;">
+        <h2 style="color:#3498db; font-size:2.5rem; margin-bottom:15px;">
+            🚧 EM BREVE!
+        </h2>
+
+        <p style="font-size:1.2rem; color:#555;">
+            Questões de vestibulares serão disponibilizadas em breve.
+        </p>
+    </div>
+</section>
+
+</div>
+</main>
+
+<aside class="menu-lateral">
+    <iframe src="../menu_matematica.html" style="width:100%; border:none; height:600px;"></iframe>
+</aside>
+
+</div>
+
+<script>
+function toggleGabarito(botao) {
+    const gabarito = botao.nextElementSibling;
+    if (gabarito.style.display === "none" || gabarito.style.display === "") {
+        gabarito.style.display = "block";
+        botao.textContent = "Esconder Gabarito e Resolução";
+        botao.style.backgroundColor = "#2c3e50";
+    } else {
+        gabarito.style.display = "none";
+        botao.textContent = "Ver Gabarito e Resolução";
+        botao.style.backgroundColor = "#3498db";
+    }
+}
+
+function toggleMenu() {
+    const menuGlobal = document.getElementById("menu-principal");
+    if (menuGlobal) menuGlobal.classList.toggle("ativo");
+}
+
+let slideAtual = 0;
+let slides = [];
+
+function prepararSlides() {
+    const seletores = '.container-resumo, .passo-teoria, .aplicacoes-reais, .questao';
+    slides = document.querySelectorAll(seletores);
+}
+
+function toggleSlides() {
+    prepararSlides();
+    const body = document.body;
+    if (!body.classList.contains('modo-slides')) {
+        body.classList.add('modo-slides');
+        slideAtual = 0;
+        mostrarSlide(slideAtual);
+    } else {
+        body.classList.remove('modo-slides');
+        window.location.reload(); 
+    }
+}
+
+function mostrarSlide(n) {
+    slides.forEach(s => {
+        s.classList.remove('slide-ativo');
+        s.style.display = 'none';
+    });
+    const slide = slides[n];
+    slide.classList.add('slide-ativo');
+    slide.style.display = 'flex'; 
+
+    if (slide.classList.contains('questao') && !slide.querySelector('.btn-gabarito')) {
+        const resolucoes = slide.querySelectorAll('.resolucao-bloco');
+        resolucoes.forEach(r => r.style.display = 'block');
+    } else {
+        const gabaritos = slide.querySelectorAll('.gabarito-resolucao');
+        gabaritos.forEach(g => g.style.display = 'none');
+        const botoes = slide.querySelectorAll('.btn-gabarito');
+        botoes.forEach(b => {
+            b.textContent = "Ver Gabarito e Resolução";
+            b.style.backgroundColor = "#3498db";
+        });
+    }
+
+    const pHeader = document.querySelector('header p').innerText;
+    const partes = pHeader.split('|');
+    if(partes.length > 1) {
+        document.getElementById('slide-info-serie').innerText = partes[0].trim();
+        document.getElementById('slide-info-aula').innerText = partes[1].trim();
+    }
+    document.getElementById('contador-slide').innerText = (n + 1) + " / " + slides.length;
+    if (window.MathJax) MathJax.typesetPromise();
+}
+
+function mudarSlide(direcao) {
+    slideAtual += direcao;
+    if (slideAtual >= slides.length) slideAtual = 0;
+    if (slideAtual < 0) slideAtual = slides.length - 1;
+    mostrarSlide(slideAtual);
+}
+
+document.addEventListener('keydown', function(event) {
+    if (document.body.classList.contains('modo-slides')) {
+        switch(event.key) {
+            case 'ArrowRight': 
+            case 'PageDown':   
+            case 'Enter':      
+            case ' ':          
+                mudarSlide(1);
+                break;
+                
+            case 'ArrowLeft':  
+            case 'PageUp':     
+                mudarSlide(-1);
+                break;
+
+            case 'Escape':     
+                toggleSlides();
+                break;
+        }
+    }
+});
+</script>
+
+<style>
+    body.modo-slides { overflow: hidden; background-color: #1a1a1a; }
+    body.modo-slides .menu-lateral, body.modo-slides header, body.modo-slides .menu-toggle, body.modo-slides #btn-slides { display: none !important; }
+    .slide-ativo {
+        display: flex !important; flex-direction: column; align-items: center; justify-content: flex-start;
+        position: fixed; top: 0; left: 0; width: 100vw; height: calc(100vh - 70px);
+        background: #ffffff; padding: 40px; z-index: 999; overflow-y: auto !important; 
+        box-sizing: border-box; text-align: center;
+    }
+    .controles-slides {
+        position: fixed; bottom: 0; left: 0; width: 100%; height: 70px;
+        background: #2c3e50; color: white; display: none; 
+        justify-content: space-between; align-items: center; padding: 0 20px; z-index: 1001; box-sizing: border-box;
+    }
+    body.modo-slides .controles-slides { display: flex; }
+    .info-lateral { flex: 1; font-family: 'Oswald', sans-serif; font-size: 0.9rem; color: #bdc3c7; }
+    .botoes-centrais { display: flex; align-items: center; gap: 15px; justify-content: center; flex: 2; }
+    .btn-nav { padding: 10px 20px; background: #3498db; color: white; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; }
+    #contador-slide { font-family: 'Oswald', sans-serif; min-width: 60px; text-align: center; }
+</style>
+
+<div class="controles-slides">
+    <div id="slide-info-serie" class="info-lateral"></div>
+    <div class="botoes-centrais">
+        <button class="btn-nav" onclick="mudarSlide(-1)">⬅ Anterior</button>
+        <span id="contador-slide"></span>
+        <button class="btn-nav" onclick="mudarSlide(1)">Próximo ➡</button>
+        <button class="btn-nav" onclick="toggleSlides()" style="background:#e74c3c;">Sair</button>
+    </div>
+    <div id="slide-info-aula" class="info-lateral" style="text-align: right;"></div>
+</div>
+</body>
+</html>
