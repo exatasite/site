@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2º Ano: Aula 10 - Introdução à Probabilidade</title>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../estilo.css">
+    
+    <script>
+        MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true
+            }
+        };
+    </script>
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body>
+<button class="menu-toggle" onclick="toggleMenu()">☰</button>
+
+<nav id="menu-principal" class="nav-global">
+    <ul>
+        <li><a href="../index.html">🏠 Início</a></li>
+        <li><a href="../fisica_home.html">⚛️ Física</a></li>
+        <li><a href="../matematica_home.html">📐 Matemática</a></li>
+        <li><a href="../simulacoes_home.html">💻 Simulações</a></li>
+    </ul>
+</nav>
+
+<header id="topo">
+    <h1>MATEMÁTICA EM</h1>
+    <p>2º Ano | Aula 10: Introdução à Probabilidade</p>
+    <button id="btn-slides" onclick="toggleSlides()">📺 Iniciar Modo Slides</button>
+</header>
+
+<div class="container">
+
+<main class="conteudo-principal">
+
+<div class="secao-aula">
+ <div class="container-resumo" id="resumo">
+    <h3>📚 Resumo </h3>
+    <section class="resumo-conteudo">
+        <p>A <strong>Probabilidade</strong> mede a chance de ocorrência de um evento em experimentos aleatórios. O conjunto de todos os resultados possíveis é o <strong>Espaço Amostral ($\Omega$)</strong>, e qualquer subconjunto é um <strong>Evento ($E$)</strong>.</p>
+        <p>Em um espaço amostral equiprovável, a probabilidade é a razão entre o número de casos favoráveis e o total de casos possíveis: $P(E) = \frac{n(E)}{n(\Omega)}$, com valor entre $0$ ($0\%$) e $1$ ($100\%$).</p>
+    </section>
+</div>
+
+<section class="conteudo-teorico-completo" id="teoria">
+    <div class="passo-teoria">
+        <h3>📖 Introdução à Probabilidade</h3>
+        <h4>1. Conceitos Fundamentais</h4>
+        <p>Em experimentos aleatórios, o resultado exato não pode ser previsto antes da execução:</p>
+        <ul>
+            <li><strong>Espaço Amostral ($\Omega$):</strong> Conjunto de todos os resultados possíveis (ex: no dado comum, $\Omega = \{1, 2, 3, 4, 5, 6\}$).</li>
+            <li><strong>Evento ($E$):</strong> Qualquer subconjunto do espaço amostral (ex: obter número par, $E = \{2, 4, 6\}$).</li>
+        </ul>
+    </div>
+
+    <div class="passo-teoria">
+        <h4>2. Definição Laplaceana de Probabilidade</h4>
+        <p>Para um espaço amostral equiprovável (onde todos os resultados possuem a mesma chance):</p>
+        <p>$$P(E) = \frac{n(E)}{n(\Omega)} \quad \text{onde} \quad n(E) \text{ é o número de casos favoráveis e } n(\Omega) \text{ o total de casos}$$</p>
+        <p>Propriedades importantes:</p>
+        <ul>
+            <li><strong>Evento Impossível:</strong> $P(\emptyset) = 0$.</li>
+            <li><strong>Evento Certo:</strong> $P(\Omega) = 1$.</li>
+        </ul>
+    </div>
+
+    <div class="passo-teoria">
+        <h4>3. Evento Complementar</h4>
+        <p>O evento complementar de $E$ (indicado por $E^c$) representa a não ocorrência do evento $E$. A soma de suas probabilidades é sempre $1$ ($100\%$):</p>
+        <p>$$P(E) + P(E^c) = 1 \implies P(E^c) = 1 - P(E)$$</p>
+    </div>
+</section>
+
+<section class="aplicacoes-reais" id="aplicacoes">
+    <h3>💡 Matemática em Ação</h3>
+    <div class="cards-aplicacao">
+        <div class="card">
+            <h4>🎲 Jogos de Azar e Estratégia</h4>
+            <p>O cálculo de probabilidade surgiu no século XVII com o estudo de jogos de dados e cartas, sendo essencial hoje para prever riscos e tomadas de decisão.</p>
+        </div>
+        <div class="card" style="border-left-color: #2ecc71;">
+            <h4>📊 Seguros e Atuária</h4>
+            <p>As seguradoras utilizam a probabilidade estatística para determinar o valor das apólices com base na chance de acidentes ou sinistros ocorrerem.</p>
+        </div>
+    </div>
+</section>
+
+<section class="questoes-resolvidas" id="resolvidas">
+    <h3>✅ 5 Questões Resolvidas (R 1 a 5)</h3>
+    
+    <article class="questao">
+        <h4>R 1: Lançamento de Dado</h4>
+        <p><strong>Enunciado:</strong> Ao lançar um dado comum de 6 faces, qual é a probabilidade de obter um número primo?</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong><br>
+            1. Espaço amostral: $n(\Omega) = 6$.<br>
+            2. Casos favoráveis (números primos $\{2, 3, 5\}$): $n(E) = 3$.<br>
+            3. Probabilidade: $P(E) = \frac{3}{6} = \mathbf{0,5 \text{ (ou } 50\% \text{)}}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>R 2: Retirada de Carta de Baralho</h4>
+        <p><strong>Enunciado:</strong> Retira-se uma carta ao acaso de um baralho de 52 cartas. Qual a probabilidade de ser um ás?</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong><br>
+            1. Total de cartas: $n(\Omega) = 52$.<br>
+            2. Total de ases: $n(E) = 4$.<br>
+            3. Probabilidade: $P(E) = \frac{4}{52} = \mathbf{\frac{1}{13} \approx 7,69\%}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>R 3: Sorteio em Sala de Aula</h4>
+        <p><strong>Enunciado:</strong> Uma turma tem 18 meninas e 12 meninos. Sorteando um aluno ao acaso, qual a probabilidade de ser um menino?</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong><br>
+            1. Total de alunos: $n(\Omega) = 18 + 12 = 30$.<br>
+            2. Meninos: $n(E) = 12$.<br>
+            3. Probabilidade: $P(E) = \frac{12}{30} = \mathbf{0,4 \text{ (ou } 40\% \text{)}}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>R 4: Lançamento de Duas Moedas</h4>
+        <p><strong>Enunciado:</strong> Duas moedas são lançadas juntas. Qual a probabilidade de sair pelo menos uma cara?</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong><br>
+            1. $\Omega = \{(K,K), (K,C), (C,K), (C,C)\} \implies n(\Omega) = 4$.<br>
+            2. Favoráveis: $\{(K,K), (K,C), (C,K)\} \implies n(E) = 3$.<br>
+            3. Probabilidade: $P(E) = \frac{3}{4} = \mathbf{0,75 \text{ (ou } 75\% \text{)}}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>R 5: Evento Complementar</h4>
+        <p><strong>Enunciado:</strong> A probabilidade de um atirador acertar o alvo é $80\%$. Qual a probabilidade de ele errar o disparo?</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong><br>
+            1. Sabendo que $P(E) = 0,80$.<br>
+            2. Pelo evento complementar: $P(E^c) = 1 - 0,80 = \mathbf{0,20 \text{ (ou } 20\% \text{)}}$.</p>
+        </div>
+    </article>
+</section>
+
+<section class="questoes-propostas" id="propostas">
+    <h3>✍️ 5 Questões Propostas (P 6 a 10)</h3>
+
+    <article class="questao">
+        <h4>P 6: Lançamento de Dado Comum</h4>
+        <p><strong>Enunciado:</strong> Lançando um dado perfeito de 6 faces, qual a probabilidade de sair um número maior que 4?</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> Os números maiores que 4 são $\{5, 6\}$, logo $n(E) = 2$. Como $n(\Omega) = 6$, a probabilidade é $P = \frac{2}{6} = \mathbf{\frac{1}{3} \approx 33,33\%}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 7: Extração de Bolas de Urna</h4>
+        <p><strong>Enunciado:</strong> Uma urna contém 5 bolas vermelhas, 3 azuis e 2 amarelas. Sorteando uma bola, qual a probabilidade de NÃO ser azul?</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> Total de bolas $n(\Omega) = 10$. Bolas não azuis: $5 + 2 = 7$. Logo, $P = \frac{7}{10} = \mathbf{0,7 \text{ (ou } 70\% \text{)}}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 8: Sorteio de Números de 1 a 20</h4>
+        <p><strong>Enunciado:</strong> Escolhendo ao acaso um número inteiro de $1$ a $20$, qual a probabilidade de ele ser múltiplo de 5?</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> $n(\Omega) = 20$. Múltiplos de 5 no intervalo: $\{5, 10, 15, 20\}$, logo $n(E) = 4$. Assim, $P = \frac{4}{20} = \mathbf{\frac{1}{5} \text{ (ou } 20\% \text{)}}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 9: Lançamento de Dois Dados</h4>
+        <p><strong>Enunciado:</strong> Dois dados comuns são lançados. Qual a probabilidade de a soma dos pontos ser igual a 7?</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> Total de possibilidades: $n(\Omega) = 6 \times 6 = 36$. Pares com soma 7: $\{(1,6),(2,5),(3,4),(4,3),(5,2),(6,1)\}$, totalizando $n(E) = 6$. Logo, $P = \frac{6}{36} = \mathbf{\frac{1}{6} \approx 16,67\%}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 10: Letras da Palavra "MATEMATICA"</h4>
+        <p><strong>Enunciado:</strong> Escolhendo uma letra ao acaso da palavra MATEMATICA, qual a probabilidade de ser a letra 'A'?</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> A palavra possui 10 letras ($n(\Omega) = 10$). A letra 'A' aparece 3 vezes ($n(E) = 3$). A probabilidade é $P = \frac{3}{10} = \mathbf{0,3 \text{ (ou } 30\% \text{)}}$.</p>
+        </div>
+    </article>
+</section>
+
+<section class="TESTE" id="testes">
+    <h3>🎓 TESTES (T 11 a 15)</h3>
+
+    <div class="card" style="text-align:center; padding:60px 20px; background:#f8f9fa; border:2px dashed #3498db; border-radius:12px; margin-top:20px;">
+        <h2 style="color:#3498db; font-size:2.5rem; margin-bottom:15px;">
+            🚧 EM BREVE!
+        </h2>
+
+        <p style="font-size:1.2rem; color:#555;">
+            Questões de vestibulares serão disponibilizadas em breve.
+        </p>
+    </div>
+</section>
+
+</div>
+</main>
+
+<aside class="menu-lateral">
+    <iframe src="../menu_matematica.html" style="width:100%; border:none; height:600px;"></iframe>
+</aside>
+
+</div>
+
+<script>
+function toggleGabarito(botao) {
+    const gabarito = botao.nextElementSibling;
+    if (gabarito.style.display === "none" || gabarito.style.display === "") {
+        gabarito.style.display = "block";
+        botao.textContent = "Esconder Gabarito e Resolução";
+        botao.style.backgroundColor = "#2c3e50";
+    } else {
+        gabarito.style.display = "none";
+        botao.textContent = "Ver Gabarito e Resolução";
+        botao.style.backgroundColor = "#3498db";
+    }
+}
+
+function toggleMenu() {
+    const menuGlobal = document.getElementById("menu-principal");
+    if (menuGlobal) menuGlobal.classList.toggle("ativo");
+}
+
+let slideAtual = 0;
+let slides = [];
+
+function prepararSlides() {
+    const seletores = '.container-resumo, .passo-teoria, .aplicacoes-reais, .questao';
+    slides = document.querySelectorAll(seletores);
+}
+
+function toggleSlides() {
+    prepararSlides();
+    const body = document.body;
+    if (!body.classList.contains('modo-slides')) {
+        body.classList.add('modo-slides');
+        slideAtual = 0;
+        mostrarSlide(slideAtual);
+    } else {
+        body.classList.remove('modo-slides');
+        window.location.reload(); 
+    }
+}
+
+function mostrarSlide(n) {
+    slides.forEach(s => {
+        s.classList.remove('slide-ativo');
+        s.style.display = 'none';
+    });
+    const slide = slides[n];
+    slide.classList.add('slide-ativo');
+    slide.style.display = 'flex'; 
+
+    if (slide.classList.contains('questao') && !slide.querySelector('.btn-gabarito')) {
+        const resolucoes = slide.querySelectorAll('.resolucao-bloco');
+        resolucoes.forEach(r => r.style.display = 'block');
+    } else {
+        const gabaritos = slide.querySelectorAll('.gabarito-resolucao');
+        gabaritos.forEach(g => g.style.display = 'none');
+        const botoes = slide.querySelectorAll('.btn-gabarito');
+        botoes.forEach(b => {
+            b.textContent = "Ver Gabarito e Resolução";
+            b.style.backgroundColor = "#3498db";
+        });
+    }
+
+    const pHeader = document.querySelector('header p').innerText;
+    const partes = pHeader.split('|');
+    if(partes.length > 1) {
+        document.getElementById('slide-info-serie').innerText = partes[0].trim();
+        document.getElementById('slide-info-aula').innerText = partes[1].trim();
+    }
+    document.getElementById('contador-slide').innerText = (n + 1) + " / " + slides.length;
+    if (window.MathJax) MathJax.typesetPromise();
+}
+
+function mudarSlide(direcao) {
+    slideAtual += direcao;
+    if (slideAtual >= slides.length) slideAtual = 0;
+    if (slideAtual < 0) slideAtual = slides.length - 1;
+    mostrarSlide(slideAtual);
+}
+
+document.addEventListener('keydown', function(event) {
+    if (document.body.classList.contains('modo-slides')) {
+        switch(event.key) {
+            case 'ArrowRight': 
+            case 'PageDown':   
+            case 'Enter':      
+            case ' ':          
+                mudarSlide(1);
+                break;
+                
+            case 'ArrowLeft':  
+            case 'PageUp':     
+                mudarSlide(-1);
+                break;
+
+            case 'Escape':     
+                toggleSlides();
+                break;
+        }
+    }
+});
+</script>
+
+<style>
+    body.modo-slides { overflow: hidden; background-color: #1a1a1a; }
+    body.modo-slides .menu-lateral, body.modo-slides header, body.modo-slides .menu-toggle, body.modo-slides #btn-slides { display: none !important; }
+    .slide-ativo {
+        display: flex !important; flex-direction: column; align-items: center; justify-content: flex-start;
+        position: fixed; top: 0; left: 0; width: 100vw; height: calc(100vh - 70px);
+        background: #ffffff; padding: 40px; z-index: 999; overflow-y: auto !important; 
+        box-sizing: border-box; text-align: center;
+    }
+    .controles-slides {
+        position: fixed; bottom: 0; left: 0; width: 100%; height: 70px;
+        background: #2c3e50; color: white; display: none; 
+        justify-content: space-between; align-items: center; padding: 0 20px; z-index: 1001; box-sizing: border-box;
+    }
+    body.modo-slides .controles-slides { display: flex; }
+    .info-lateral { flex: 1; font-family: 'Oswald', sans-serif; font-size: 0.9rem; color: #bdc3c7; }
+    .botoes-centrais { display: flex; align-items: center; gap: 15px; justify-content: center; flex: 2; }
+    .btn-nav { padding: 10px 20px; background: #3498db; color: white; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; }
+    #contador-slide { font-family: 'Oswald', sans-serif; min-width: 60px; text-align: center; }
+</style>
+
+<div class="controles-slides">
+    <div id="slide-info-serie" class="info-lateral"></div>
+    <div class="botoes-centrais">
+        <button class="btn-nav" onclick="mudarSlide(-1)">⬅ Anterior</button>
+        <span id="contador-slide"></span>
+        <button class="btn-nav" onclick="mudarSlide(1)">Próximo ➡</button>
+        <button class="btn-nav" onclick="toggleSlides()" style="background:#e74c3c;">Sair</button>
+    </div>
+    <div id="slide-info-aula" class="info-lateral" style="text-align: right;"></div>
+</div>
+</body>
+</html>
