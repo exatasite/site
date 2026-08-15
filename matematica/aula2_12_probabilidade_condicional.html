@@ -1,0 +1,1036 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aula 12 - Probabilidade Condicional | Matemática 2º Ano</title>
+    <!-- MathJax para renderização de fórmulas matemáticas -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        :root {
+            --primary-color: #2b5c8f;
+            --primary-dark: #1e3f63;
+            --accent-color: #d97706;
+            --bg-body: #f8fafc;
+            --bg-card: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border-color: #e2e8f0;
+            --highlight-bg: #eff6ff;
+            --success-color: #16a34a;
+            --danger-color: #dc2626;
+            --radius-sm: 6px;
+            --radius-md: 10px;
+            --radius-lg: 16px;
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.08);
+            --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.1);
+            --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, Roboto, sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            line-height: 1.6;
+            padding-bottom: 60px;
+        }
+
+        /* Top Bar & Navigation */
+        .top-navbar {
+            position: sticky;
+            top: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid var(--border-color);
+            z-index: 1000;
+            padding: 12px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .nav-brand {
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+        }
+
+        .nav-controls {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 16px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            border-radius: var(--radius-sm);
+            border: 1px solid var(--border-color);
+            background: var(--bg-card);
+            color: var(--text-main);
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-decoration: none;
+        }
+
+        .btn:hover {
+            background: #f1f5f9;
+            border-color: #cbd5e1;
+        }
+
+        .btn-primary {
+            background: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            border-color: var(--primary-dark);
+        }
+
+        /* Container Layout */
+        .main-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 32px 20px;
+        }
+
+        /* Header Hero */
+        .hero-header {
+            background: linear-gradient(135deg, #1e3f63 0%, #2b5c8f 100%);
+            color: white;
+            padding: 40px 32px;
+            border-radius: var(--radius-lg);
+            margin-bottom: 32px;
+            box-shadow: var(--shadow-md);
+        }
+
+        .badge-subject {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 12px;
+        }
+
+        .hero-header h1 {
+            font-size: 2.2rem;
+            line-height: 1.2;
+            margin-bottom: 10px;
+            font-weight: 800;
+        }
+
+        .hero-header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            max-width: 800px;
+        }
+
+        /* Quick Summary Cards */
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .summary-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 20px;
+            box-shadow: var(--shadow-sm);
+            border-top: 4px solid var(--primary-color);
+        }
+
+        .summary-card h3 {
+            font-size: 1rem;
+            color: var(--primary-color);
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .summary-card p {
+            font-size: 0.92rem;
+            color: var(--text-muted);
+        }
+
+        /* Content Sections */
+        .content-section {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 32px;
+            margin-bottom: 32px;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 10px;
+            margin-bottom: 24px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .formula-box {
+            background: var(--highlight-bg);
+            border-left: 4px solid var(--primary-color);
+            padding: 20px;
+            border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+            margin: 20px 0;
+            text-align: center;
+            font-size: 1.1rem;
+        }
+
+        .concept-highlight {
+            background: #fef3c7;
+            border-left: 4px solid var(--accent-color);
+            padding: 16px 20px;
+            border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+            margin: 20px 0;
+            font-weight: 500;
+        }
+
+        /* Tables */
+        .custom-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 0.95rem;
+        }
+
+        .custom-table th, .custom-table td {
+            border: 1px solid var(--border-color);
+            padding: 12px 16px;
+            text-align: center;
+        }
+
+        .custom-table th {
+            background: #f1f5f9;
+            color: var(--primary-color);
+            font-weight: 700;
+        }
+
+        .custom-table tr:nth-child(even) {
+            background: #fafafa;
+        }
+
+        /* Exercise Boxes */
+        .exercise-box {
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            margin-bottom: 24px;
+            overflow: hidden;
+            background: var(--bg-card);
+        }
+
+        .exercise-header {
+            background: #f8fafc;
+            padding: 16px 20px;
+            font-weight: 700;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .exercise-tag {
+            background: var(--primary-color);
+            color: white;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+        }
+
+        .exercise-body {
+            padding: 20px;
+        }
+
+        .solution-btn {
+            background: none;
+            border: none;
+            color: var(--primary-color);
+            font-weight: 600;
+            cursor: pointer;
+            padding: 12px 20px;
+            width: 100%;
+            text-align: left;
+            border-top: 1px dashed var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: background 0.2s ease;
+        }
+
+        .solution-btn:hover {
+            background: #f1f5f9;
+        }
+
+        .solution-content {
+            display: none;
+            padding: 20px;
+            background: #fafafa;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .solution-content.active {
+            display: block;
+        }
+
+        /* Presentation / Slide Mode Overlays */
+        .slide-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: #1e293b;
+            color: white;
+            z-index: 2000;
+            padding: 40px;
+            flex-direction: column;
+            justify-content: space-between;
+            box-sizing: border-box;
+        }
+
+        .slide-overlay.active {
+            display: flex;
+        }
+
+        .slide-content {
+            max-width: 900px;
+            margin: 0 auto;
+            width: 100%;
+            font-size: 1.4rem;
+            line-height: 1.8;
+            overflow-y: auto;
+            padding-right: 10px;
+        }
+
+        .slide-content h2 {
+            color: #38bdf8;
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+        }
+
+        .slide-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 900px;
+            margin: 0 auto;
+            width: 100%;
+            padding-top: 20px;
+            border-top: 1px solid #334155;
+        }
+
+        /* Drawer Menu */
+        .drawer {
+            position: fixed;
+            top: 0;
+            right: -320px;
+            width: 320px;
+            height: 100%;
+            background: white;
+            box-shadow: var(--shadow-lg);
+            z-index: 1500;
+            transition: right 0.3s ease;
+            padding: 24px;
+            overflow-y: auto;
+        }
+
+        .drawer.open {
+            right: 0;
+        }
+
+        .drawer-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 12px;
+        }
+
+        .drawer-menu {
+            list-style: none;
+        }
+
+        .drawer-menu li {
+            margin-bottom: 12px;
+        }
+
+        .drawer-menu a {
+            color: var(--text-main);
+            text-decoration: none;
+            font-weight: 500;
+            display: block;
+            padding: 8px;
+            border-radius: var(--radius-sm);
+            transition: background 0.2s ease;
+        }
+
+        .drawer-menu a:hover {
+            background: #f1f5f9;
+            color: var(--primary-color);
+        }
+
+        .backdrop {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0,0,0,0.4);
+            z-index: 1400;
+        }
+
+        .backdrop.active {
+            display: block;
+        }
+
+        @media (max-width: 768px) {
+            .hero-header h1 {
+                font-size: 1.7rem;
+            }
+            .content-section {
+                padding: 20px;
+            }
+            .main-container {
+                padding: 16px 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navegação Superior -->
+    <header class="top-navbar">
+        <a href="index.html" class="nav-brand">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+            Matemática — 2º Ano
+        </a>
+        <div class="nav-controls">
+            <button class="btn" id="btnSlides">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                Modo Slides
+            </button>
+            <button class="btn" id="btnMenu">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+                Sumário
+            </button>
+        </div>
+    </header>
+
+    <!-- Drawer / Menu Lateral -->
+    <div class="backdrop" id="backdrop"></div>
+    <aside class="drawer" id="drawer">
+        <div class="drawer-header">
+            <h3>Conteúdo da Aula</h3>
+            <button class="btn" id="btnCloseDrawer">✕</button>
+        </div>
+        <ul class="drawer-menu">
+            <li><a href="#resumo" class="menu-link">1. Resumo Executivo</a></li>
+            <li><a href="#teoria" class="menu-link">2. Fundamentação Teórica</a></li>
+            <li><a href="#multiplicacao" class="menu-link">3. Teorema da Multiplicação</a></li>
+            <li><a href="#independencia" class="menu-link">4. Eventos Independentes</a></li>
+            <li><a href="#aplicacoes" class="menu-link">5. Aplicações no Cotidiano</a></li>
+            <li><a href="#resolvidas" class="menu-link">6. Questões Resolvidas (R1 - R5)</a></li>
+            <li><a href="#propostas" class="menu-link">7. Questões Propostas (P6 - P10)</a></li>
+        </ul>
+    </aside>
+
+    <!-- Conteúdo Principal -->
+    <main class="main-container">
+
+        <!-- Hero Header -->
+        <header class="hero-header">
+            <span class="badge-subject">Estatística e Probabilidade</span>
+            <h1>Aula 12 — Probabilidade Condicional</h1>
+            <p>Compreenda como a ocorrência prévia de um evento restringe o espaço amostral e altera as chances do evento de interesse.</p>
+        </header>
+
+        <!-- Cards de Resumo Rápido -->
+        <section id="resumo" class="summary-grid">
+            <div class="summary-card">
+                <h3>📌 Restrição do Espaço Amostral</h3>
+                <p>Saber que o evento \(B\) ocorreu significa que o universo do experimento passa a ser apenas os elementos do conjunto \(B\).</p>
+            </div>
+            <div class="summary-card">
+                <h3>📐 Fórmula Fundamental</h3>
+                <p>\[ P(A|B) = \frac{P(A \cap B)}{P(B)} \quad \text{ou} \quad P(A|B) = \frac{n(A \cap B)}{n(B)} \]</p>
+            </div>
+            <div class="summary-card">
+                <h3>🔄 Regra do Produto</h3>
+                <p>A probabilidade de dois eventos ocorrerem sucessivamente é expressa por: \(P(A \cap B) = P(B) \cdot P(A|B)\).</p>
+            </div>
+            <div class="summary-card">
+                <h3>⚡ Eventos Independentes</h3>
+                <p>Quando a ocorrência de \(B\) não altera a chance de \(A\), temos \(P(A|B) = P(A)\) e portanto \(P(A \cap B) = P(A) \cdot P(B)\).</p>
+            </div>
+        </section>
+
+        <!-- Seção 1: Teoria -->
+        <section id="teoria" class="content-section">
+            <h2 class="section-title">1. O Conceito de Probabilidade Condicional</h2>
+            
+            <p>Na teoria clássica das probabilidades, calculamos a chance de ocorrência de um evento dentro de um espaço amostral original \(\Omega\). No entanto, em muitas situações reais, recebemos uma <strong>informação prévia</strong> de que determinado evento já se realizou. Essa informação reduz o nosso conjunto de possibilidades.</p>
+
+            <div class="concept-highlight">
+                <strong>Definição:</strong> Sejam \(A\) e \(B\) dois eventos associados a um espaço amostral \(\Omega\) finito e não vazio, com \(P(B) > 0\). Chama-se <em>probabilidade condicional de \(A\) dado \(B\)</em> (indicada por \(P(A|B)\)) a probabilidade do evento \(A\) ocorrer sabendo que o evento \(B\) já ocorreu.
+            </div>
+
+            <p>Do ponto de vista intuitivo, quando sabemos que o evento \(B\) ocorreu, o evento \(B\) assume o papel do <strong>novo espaço amostral</strong>. Dentro desse novo universo, os únicos resultados que também favorecem a ocorrência do evento \(A\) são os elementos pertencentes à interseção \(A \cap B\).</p>
+
+            <div class="formula-box">
+                \[ P(A|B) = \frac{n(A \cap B)}{n(B)} \]
+                <p style="font-size: 0.9rem; margin-top: 8px; color: var(--text-muted);">
+                    Dividindo o numerador e o denominador por \(n(\Omega)\), obtemos a forma probabilística:
+                </p>
+                \[ P(A|B) = \frac{P(A \cap B)}{P(B)}, \quad \text{com } P(B) > 0 \]
+            </div>
+
+            <h3 style="margin-top: 24px; color: var(--primary-color);">Exemplo Intuitivo: Lançamento de um Dado</h3>
+            <p>Considere o lançamento de um dado honesto de 6 faces (\(\Omega = \{1, 2, 3, 4, 5, 6\}\)).</p>
+            <ul>
+                <li>Seja o evento \(A\): "Sair um número primo" \(\Rightarrow A = \{2, 3, 5\}\).</li>
+                <li>Seja o evento \(B\): "Sair um número ímpar" \(\Rightarrow B = \{1, 3, 5\}\).</li>
+            </ul>
+            <p>Se perguntarmos qual a probabilidade de sair um número primo <strong>sabendo que o resultado foi um número ímpar</strong>, nosso espaço amostral é reduzido para \(B = \{1, 3, 5\}\) com \(n(B) = 3\). Os primos dentro deste conjunto são \(A \cap B = \{3, 5\}\), logo \(n(A \cap B) = 2\).</p>
+            <p>Portanto: \(P(A|B) = \frac{2}{3}\).</p>
+        </section>
+
+        <!-- Seção 2: Teorema da Multiplicação e Tabelas -->
+        <section id="multiplicacao" class="content-section">
+            <h2 class="section-title">2. Teorema da Multiplicação e Tabelas de Contingência</h2>
+
+            <p>Isolando a probabilidade da interseção \(P(A \cap B)\) na fórmula da probabilidade condicional, obtemos o <strong>Teorema da Multiplicação</strong> (também conhecido como Regra do Produto):</p>
+
+            <div class="formula-box">
+                \[ P(A \cap B) = P(B) \cdot P(A|B) \quad \text{ou} \quad P(A \cap B) = P(A) \cdot P(B|A) \]
+            </div>
+
+            <p>Essa regra é especialmente poderosa ao resolver problemas de retiradas sucessivas sem reposição ou em árvores de probabilidade.</p>
+
+            <h3 style="margin-top: 24px; color: var(--primary-color);">Análise por Tabela de Contingência (Cruzamento de Dados)</h3>
+            <p>Em pesquisas e estudos estatísticos, os dados frequentemente aparecem organizados em matrizes bidimensionais. Vejamos um exemplo clássico:</p>
+
+            <table class="custom-table">
+                <thead>
+                    <tr>
+                        <th>Grupo</th>
+                        <th>Gosta de Matemática</th>
+                        <th>Não gosta de Matemática</th>
+                        <th>Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Alunos do 2º Ano A</strong></td>
+                        <td>30</td>
+                        <td>10</td>
+                        <td>40</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Alunos do 2º Ano B</strong></td>
+                        <td>20</td>
+                        <td>20</td>
+                        <td>40</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Total</strong></td>
+                        <td><strong>50</strong></td>
+                        <td><strong>30</strong></td>
+                        <td><strong>80</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <p>Sorteando um aluno ao acaso de todo o grupo (80 alunos):</p>
+            <ul>
+                <li><strong>A) Qual a probabilidade de ser do 2º Ano A?</strong> \(P(A) = \frac{40}{80} = 50\%\).</li>
+                <li><strong>B) Dado que o aluno sorteado gosta de Matemática, qual a probabilidade de ele ser do 2º Ano A?</strong><br>
+                <em>Espaço amostral restrito aos que gostam de Matemática (\(n(B) = 50\)). Alunos do 2º A que gostam de Matemática: \(n(A \cap B) = 30\).</em><br>
+                \(P(\text{2º A} \mid \text{Gosta de Mat}) = \frac{30}{50} = \frac{3}{5} = 60\%\).</li>
+            </ul>
+        </section>
+
+        <!-- Seção 3: Eventos Independentes -->
+        <section id="independencia" class="content-section">
+            <h2 class="section-title">3. Eventos Independentes</h2>
+
+            <p>Dizemos que dois eventos \(A\) e \(B\) são <strong>independentes</strong> quando a ocorrência do evento \(B\) não altera em nada a probabilidade do evento \(A\) ocorrer, e vice-versa.</p>
+
+            <div class="concept-highlight">
+                Dois eventos \(A\) e \(B\) (com probabilidades não nulas) são independentes se, e somente se:
+                \[ P(A|B) = P(A) \]
+            </div>
+
+            <p>Substituindo na regra da multiplicação, temos o critério matemático definitivo de independência:</p>
+
+            <div class="formula-box">
+                \[ P(A \cap B) = P(A) \cdot P(B) \]
+            </div>
+
+            <p><strong>Atenção:</strong> Não confunda <em>eventos independentes</em> com <em>eventos mutuamente exclusivos</em> (disjuntos). Se dois eventos são mutuamente exclusivos com probabilidades positivas, eles não podem ocorrer juntos (\(A \cap B = \emptyset \Rightarrow P(A \cap B) = 0\)), logo a ocorrência de um impede a ocorrência do outro, tornando-os altamente dependentes!</p>
+        </section>
+
+        <!-- Seção 4: Aplicações no Cotidiano -->
+        <section id="aplicacoes" class="content-section">
+            <h2 class="section-title">4. Aplicações no Mundo Real e no ENEM</h2>
+
+            <div class="summary-grid" style="margin-bottom: 0;">
+                <div class="summary-card" style="border-top-color: #16a34a;">
+                    <h3>🔬 Exames Médicos e Falsos Positivos</h3>
+                    <p>Ao realizar um teste para detecção de uma doença, calcular a probabilidade de um paciente estar realmente doente <em>dado que o teste deu positivo</em> é uma aplicação direta da probabilidade condicional.</p>
+                </div>
+                <div class="summary-card" style="border-top-color: #d97706;">
+                    <h3>🤖 Algoritmos e Filtros de Spam</h3>
+                    <p>Sistemas de e-mail calculam a probabilidade de uma mensagem ser spam <em>dado que ela contém certas palavras-chave</em> (como "promoção" ou "urgente").</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção 5: Questões Resolvidas -->
+        <section id="resolvidas" class="content-section">
+            <h2 class="section-title">5. Questões Resolvidas (R1 a R5)</h2>
+
+            <!-- R1 -->
+            <div class="exercise-box">
+                <div class="exercise-header">
+                    <span>Exercício Resolvido R1</span>
+                    <span class="exercise-tag">Lançamento de Dados</span>
+                </div>
+                <div class="exercise-body">
+                    <p>Dois dados perfeitos e distintos são lançados simultaneamente. Sabendo que a soma dos pontos obtidos é igual a 8, qual é a probabilidade de ter saído o número 5 em pelo menos um dos dados?</p>
+                </div>
+                <button class="solution-btn" onclick="toggleSolution('sol-r1')">
+                    <span>Ver Resolução Passo a Passo</span>
+                    <span>▼</span>
+                </button>
+                <div class="solution-content" id="sol-r1">
+                    <p><strong>Passo 1: Determinar o novo espaço amostral (Evento B = "soma igual a 8").</strong></p>
+                    <p>Os pares ordenados \((d_1, d_2)\) cuja soma é 8 são:</p>
+                    \[ B = \{(2,6), (3,5), (4,4), (5,3), (6,2)\} \Rightarrow n(B) = 5 \]
+
+                    <p><strong>Passo 2: Identificar os casos favoráveis (Evento A = "sair o número 5" dentro do espaço B).</strong></p>
+                    <p>Analisando os pares do conjunto \(B\), os que contêm pelo menos um número 5 são:</p>
+                    \[ A \cap B = \{(3,5), (5,3)\} \Rightarrow n(A \cap B) = 2 \]
+
+                    <p><strong>Passo 3: Aplicar a fórmula de probabilidade condicional.</strong></p>
+                    \[ P(A|B) = \frac{n(A \cap B)}{n(B)} = \frac{2}{5} = 0{,}40 \text{ ou } 40\% \]
+                </div>
+            </div>
+
+            <!-- R2 -->
+            <div class="exercise-box">
+                <div class="exercise-header">
+                    <span>Exercício Resolvido R2</span>
+                    <span class="exercise-tag">Retirada sem Reposição</span>
+                </div>
+                <div class="exercise-body">
+                    <p>Uma urna contém 5 bolas vermelhas e 3 bolas azuis. Duas bolas são retiradas sucessivamente e sem reposição. Qual a probabilidade de a primeira bola ser vermelha e a segunda bola ser azul?</p>
+                </div>
+                <button class="solution-btn" onclick="toggleSolution('sol-r2')">
+                    <span>Ver Resolução Passo a Passo</span>
+                    <span>▼</span>
+                </button>
+                <div class="solution-content" id="sol-r2">
+                    <p>Seja \(V_1\) o evento "1ª bola vermelha" e \(A_2\) o evento "2ª bola azul". Queremos encontrar \(P(V_1 \cap A_2)\).</p>
+
+                    <p><strong>1. Probabilidade da 1ª bola ser vermelha:</strong></p>
+                    \[ P(V_1) = \frac{5}{8} \]
+
+                    <p><strong>2. Probabilidade da 2ª bola ser azul, sabendo que a 1ª foi vermelha:</strong><br>
+                    Após retirar a bola vermelha, restam 7 bolas na urna, das quais 3 são azuis.</p>
+                    \[ P(A_2 | V_1) = \frac{3}{7} \]
+
+                    <p><strong>3. Aplicação do Teorema da Multiplicação:</strong></p>
+                    \[ P(V_1 \cap A_2) = P(V_1) \cdot P(A_2 | V_1) = \frac{5}{8} \cdot \frac{3}{7} = \frac{15}{56} \approx 26{,}79\% \]
+                </div>
+            </div>
+
+            <!-- R3 -->
+            <div class="exercise-box">
+                <div class="exercise-header">
+                    <span>Exercício Resolvido R3</span>
+                    <span class="exercise-tag">Tabela de Contingência</span>
+                </div>
+                <div class="exercise-body">
+                    <p>Em um grupo de 100 pacientes de uma clínica, 60 foram vacinados contra a gripe e 40 não foram vacinados. Durante o inverno, 10 vacinados pegaram gripe e 20 não vacinados pegaram gripe. Escolhendo ao acaso um paciente deste grupo e constatando que ele pegou gripe, qual a probabilidade de ele ter sido vacinado?</p>
+                </div>
+                <button class="solution-btn" onclick="toggleSolution('sol-r3')">
+                    <span>Ver Resolução Passo a Passo</span>
+                    <span>▼</span>
+                </button>
+                <div class="solution-content" id="sol-r3">
+                    <p>Vamos organizar os dados em uma tabela de contingência:</p>
+                    <table class="custom-table">
+                        <tr>
+                            <th>Grupo</th>
+                            <th>Pegou Gripe</th>
+                            <th>Não Pegou Gripe</th>
+                            <th>Total</th>
+                        </tr>
+                        <tr>
+                            <td>Vacinados</td>
+                            <td>10</td>
+                            <td>50</td>
+                            <td>60</td>
+                        </tr>
+                        <tr>
+                            <td>Não Vacinados</td>
+                            <td>20</td>
+                            <td>20</td>
+                            <td>40</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Total</strong></td>
+                            <td><strong>30</strong></td>
+                            <td><strong>70</strong></td>
+                            <td><strong>100</strong></td>
+                        </tr>
+                    </table>
+
+                    <p>Queremos calcular \(P(\text{Vacinado} \mid \text{Pegou Gripe})\):</p>
+                    <ul>
+                        <li>Espaço amostral restrito aos que pegaram gripe: \(n(\text{Gripe}) = 30\).</li>
+                        <li>Casos de vacinados dentro do grupo com gripe: \(n(\text{Vacinado} \cap \text{Gripe}) = 10\).</li>
+                    </ul>
+                    \[ P(\text{Vacinado} \mid \text{Gripe}) = \frac{10}{30} = \frac{1}{3} \approx 33{,}33\% \]
+                </div>
+            </div>
+
+            <!-- R4 -->
+            <div class="exercise-box">
+                <div class="exercise-header">
+                    <span>Exercício Resolvido R4</span>
+                    <span class="exercise-tag">Independência de Eventos</span>
+                </div>
+                <div class="exercise-body">
+                    <p>Um casal planeja ter dois filhos. Assuma que a probabilidade de nascer menino ou menina é idêntica (50%). Considere os eventos: \(A =\) "O primeiro filho é menino" e \(B =\) "O casal tem um filho de cada sexo". Verifique se os eventos \(A\) e \(B\) são independentes.</p>
+                </div>
+                <button class="solution-btn" onclick="toggleSolution('sol-r4')">
+                    <span>Ver Resolução Passo a Passo</span>
+                    <span>▼</span>
+                </button>
+                <div class="solution-content" id="sol-r4">
+                    <p>O espaço amostral do casal é: \(\Omega = \{(M,M), (M,F), (F,M), (F,F)\}\) com \(n(\Omega) = 4\).</p>
+                    <ul>
+                        <li>Evento \(A = \{(M,M), (M,F)\} \Rightarrow P(A) = \frac{2}{4} = \frac{1}{2}\).</li>
+                        <li>Evento \(B = \{(M,F), (F,M)\} \Rightarrow P(B) = \frac{2}{4} = \frac{1}{2}\).</li>
+                        <li>Interseção \(A \cap B = \{(M,F)\} \Rightarrow P(A \cap B) = \frac{1}{4}\).</li>
+                    </ul>
+
+                    <p>Para verificar a independência, testamos se \(P(A \cap B) = P(A) \cdot P(B)\):</p>
+                    \[ P(A) \cdot P(B) = \frac{1}{2} \cdot \frac{1}{2} = \frac{1}{4} \]
+                    <p>Como \(P(A \cap B) = \frac{1}{4} = P(A) \cdot P(B)\), concluímos que os eventos \(A\) e \(B\) <strong>são independentes</strong>.</p>
+                </div>
+            </div>
+
+            <!-- R5 -->
+            <div class="exercise-box">
+                <div class="exercise-header">
+                    <span>Exercício Resolvido R5</span>
+                    <span class="exercise-tag">Estilo ENEM / Teste Diagnóstico</span>
+                </div>
+                <div class="exercise-body">
+                    <p>Um exame para diagnóstico de uma enfermidade apresenta 90% de precisão para detectar a doença em pessoas enfermas e 5% de taxa de falso positivo em pessoas sadias. Em uma comunidade, sabe-se que 10% das pessoas possuem a doença. Se uma pessoa dessa comunidade for submetida ao exame e o resultado for positivo, qual a probabilidade de ela realmente estar doente?</p>
+                </div>
+                <button class="solution-btn" onclick="toggleSolution('sol-r5')">
+                    <span>Ver Resolução Passo a Passo</span>
+                    <span>▼</span>
+                </button>
+                <div class="solution-content" id="sol-r5">
+                    <p>Considere uma população hipotética de 1.000 pessoas:</p>
+                    <ul>
+                        <li><strong>Doentes (10%):</strong> 100 pessoas.
+                            <ul>
+                                <li>Teste Positivo (90% de 100): 90 pessoas (Verdadeiro Positivo).</li>
+                                <li>Teste Negativo (10% de 100): 10 pessoas.</li>
+                            </ul>
+                        </li>
+                        <li><strong>Sadias (90%):</strong> 900 pessoas.
+                            <ul>
+                                <li>Teste Positivo (5% de 900): 45 pessoas (Falso Positivo).</li>
+                                <li>Teste Negativo (95% de 900): 855 pessoas.</li>
+                            </ul>
+                        </li>
+                    </ul>
+
+                    <p><strong>Cálculo do espaço amostral restrito aos testes positivos:</strong></p>
+                    \[ n(\text{Positivos}) = 90 + 45 = 135 \text{ pessoas} \]
+
+                    <p><strong>Probabilidade da pessoa estar doente dado que o teste deu positivo:</strong></p>
+                    \[ P(\text{Doente} \mid \text{Positivo}) = \frac{90}{135} = \frac{2}{3} \approx 66{,}67\% \]
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção 6: Questões Propostas -->
+        <section id="propostas" class="content-section">
+            <h2 class="section-title">6. Questões Propostas (P6 a P10)</h2>
+
+            <!-- P6 -->
+            <div class="exercise-box">
+                <div class="exercise-header">
+                    <span>Questão P6</span>
+                    <span class="exercise-tag">Dados</span>
+                </div>
+                <div class="exercise-body">
+                    <p>Um dado não viciado de 6 faces é lançado. Sabendo que a face superior é maior que 2, qual é a probabilidade de o número obtido ser um número par?</p>
+                </div>
+                <button class="solution-btn" onclick="toggleSolution('sol-p6')">
+                    <span>Ver Resposta / Gabarito</span>
+                    <span>▼</span>
+                </button>
+                <div class="solution-content" id="sol-p6">
+                    <p><strong>Resolução:</strong></p>
+                    <p>Espaço amostral reduzido (maior que 2): \(B = \{3, 4, 5, 6\} \Rightarrow n(B) = 4\).</p>
+                    <p>Números pares dentro desse conjunto: \(A \cap B = \{4, 6\} \Rightarrow n(A \cap B) = 2\).</p>
+                    \[ P = \frac{2}{4} = \frac{1}{2} = 50\% \]
+                </div>
+            </div>
+
+            <!-- P7 -->
+            <div class="exercise-box">
+                <div class="exercise-header">
+                    <span>Questão P7</span>
+                    <span class="exercise-tag">Baralho</span>
+                </div>
+                <div class="exercise-body">
+                    <p>Uma carta é retirada ao acaso de um baralho tradicional de 52 cartas. Sabendo que a carta sorteada é uma figura (Valete, Dama ou Rei), qual a probabilidade de ela ser uma Dama?</p>
+                </div>
+                <button class="solution-btn" onclick="toggleSolution('sol-p7')">
+                    <span>Ver Resposta / Gabarito</span>
+                    <span>▼</span>
+                </button>
+                <div class="solution-content" id="sol-p7">
+                    <p><strong>Resolução:</strong></p>
+                    <p>Total de figuras no baralho: 3 por naipe \(\times 4 = 12\) cartas (novo espaço amostral).</p>
+                    <p>Total de Damas no baralho: 4 cartas.</p>
+                    \[ P(\text{Dama} \mid \text{Figura}) = \frac{4}{12} = \frac{1}{3} \approx 33{,}33\% \]
+                </div>
+            </div>
+
+            <!-- P8 -->
+            <div class="exercise-box">
+                <div class="exercise-header">
+                    <span>Questão P8</span>
+                    <span class="exercise-tag">Urnas Sucessivas</span>
+                </div>
+                <div class="exercise-body">
+                    <p>Em um estojo há 6 canetas azuis e 4 canetas pretas. Retiram-se, sem reposição, 2 canetas. Qual a probabilidade de ambas serem azuis?</p>
+                </div>
+                <button class="solution-btn" onclick="toggleSolution('sol-p8')">
+                    <span>Ver Resposta / Gabarito</span>
+                    <span>▼</span>
+                </button>
+                <div class="solution-content" id="sol-p8">
+                    <p><strong>Resolução:</strong></p>
+                    <p>1ª caneta azul: \(\frac{6}{10}\).</p>
+                    <p>2ª caneta azul (dado que a 1ª foi azul): \(\frac{5}{9}\).</p>
+                    \[ P = \frac{6}{10} \cdot \frac{5}{9} = \frac{30}{90} = \frac{1}{3} \approx 33{,}33\% \]
+                </div>
+            </div>
+
+            <!-- P9 -->
+            <div class="exercise-box">
+                <div class="exercise-header">
+                    <span>Questão P9</span>
+                    <span class="exercise-tag">Pesquisa de Idiomas</span>
+                </div>
+                <div class="exercise-body">
+                    <p>Em uma escola de idiomas com 200 alunos, 120 estudam Inglês, 80 estudam Espanhol e 40 estudam ambos os idiomas. Sorteando-se um aluno que estuda Inglês, qual a probabilidade de ele também estudar Espanhol?</p>
+                </div>
+                <button class="solution-btn" onclick="toggleSolution('sol-p9')">
+                    <span>Ver Resposta / Gabarito</span>
+                    <span>▼</span>
+                </button>
+                <div class="solution-content" id="sol-p9">
+                    <p><strong>Resolução:</strong></p>
+                    <p>Espaço amostral restrito aos alunos que estudam Inglês: \(n(I) = 120\).</p>
+                    <p>Alunos que estudam Espanhol dentro desse grupo: \(n(I \cap E) = 40\).</p>
+                    \[ P(E|I) = \frac{40}{120} = \frac{1}{3} \approx 33{,}33\% \]
+                </div>
+            </div>
+
+            <!-- P10 -->
+            <div class="exercise-box">
+                <div class="exercise-header">
+                    <span>Questão P10</span>
+                    <span class="exercise-tag">Desafio ENEM</span>
+                </div>
+                <div class="exercise-body">
+                    <p>Dois atiradores, A e B, disparam contra um alvo. A probabilidade de A acertar é de \(0{,}7\) e a de B acertar é de \(0{,}8\). Sabendo que os disparos são eventos independentes, qual a probabilidade de pelo menos um deles acertar o alvo?</p>
+                </div>
+                <button class="solution-btn" onclick="toggleSolution('sol-p10')">
+                    <span>Ver Resposta / Gabarito</span>
+                    <span>▼</span>
+                </button>
+                <div class="solution-content" id="sol-p10">
+                    <p><strong>Resolução pelo Evento Complementar:</strong></p>
+                    <p>A probabilidade de "pelo menos um acertar" é igual a \(1 - P(\text{ambos errarem})\).</p>
+                    <ul>
+                        <li>Probabilidade de A errar: \(1 - 0{,}7 = 0{,}3\).</li>
+                        <li>Probabilidade de B errar: \(1 - 0{,}8 = 0{,}2\).</li>
+                    </ul>
+                    <p>Como os eventos são independentes:</p>
+                    \[ P(\text{ambos errarem}) = 0{,}3 \cdot 0{,}2 = 0{,}06 \]
+                    \[ P(\text{pelo menos um acertar}) = 1 - 0{,}06 = 0{,}94 \text{ ou } 94\% \]
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Overlay de Modo Slides -->
+    <div class="slide-overlay" id="slideOverlay">
+        <div class="slide-content" id="slideContent">
+            <!-- Conteúdo injetado via JS -->
+        </div>
+        <div class="slide-nav">
+            <button class="btn" id="prevSlide">← Anterior</button>
+            <span id="slideCounter" style="color: #94a3b8; font-size: 0.9rem;">Slide 1 de 5</span>
+            <button class="btn btn-primary" id="nextSlide">Próximo →</button>
+            <button class="btn" id="closeSlides">Sair (ESC)</button>
+        </div>
+    </div>
+
+    <!-- Scripts de Interatividade -->
+    <script>
+        // Toggle soluções dos exercícios
+        function toggleSolution(id) {
+            const content = document.getElementById(id);
+            content.classList.toggle('active');
+        }
+
+        // Drawer Menu
+        const btnMenu = document.getElementById('btnMenu');
+        const btnCloseDrawer = document.getElementById('btnCloseDrawer');
+        const drawer = document.getElementById('drawer');
+        const backdrop = document.getElementById('backdrop');
+
+        function openDrawer() {
+            drawer.classList.add('open');
+            backdrop.classList.add('active');
+        }
+
+        function closeDrawer() {
+            drawer.classList.remove('open');
+            backdrop.classList.remove('active');
+        }
+
+        btnMenu.addEventListener('click', openDrawer);
+        btnCloseDrawer.addEventListener('click', closeDrawer);
+        backdrop.addEventListener('click', closeDrawer);
+
+        document.querySelectorAll('.menu-link').forEach(link => {
+            link.addEventListener('click', closeDrawer);
+        });
+
+        // Modo Slides
+        const slidesData = [
+            {
+                title: "Probabilidade Condicional",
+                html: "<p>Bem-vindo à Aula 12 de Matemática.</p><p>Nesta aula, investigaremos como uma <strong>informação prévia</strong> altera o cálculo das probabilidades através da restrição do espaço amostral.</p>"
+            },
+            {
+                title: "Definição e Fórmula",
+                html: "<p>A probabilidade de ocorrer o evento \(A\), sabendo que o evento \(B\) já ocorreu, é dada por:</p><div style='background:#334155; padding:20px; border-radius:8px; text-align:center; margin:20px 0;'>\[ P(A|B) = \\frac{P(A \\cap B)}{P(B)} \]</div><p>O evento \(B\) passa a ser o novo espaço amostral reduzido.</p>"
+            },
+            {
+                title: "Teorema da Multiplicação",
+                html: "<p>Reagrupando a fórmula, determinamos a probabilidade da ocorrência simultânea ou sucessiva de dois eventos:</p><div style='background:#334155; padding:20px; border-radius:8px; text-align:center; margin:20px 0;'>\[ P(A \\cap B) = P(B) \\cdot P(A|B) \]</div>"
+            },
+            {
+                title: "Eventos Independentes",
+                html: "<p>Dois eventos são <strong>independentes</strong> quando a ocorrência de um não afeta a probabilidade do outro:</p><p>\[ P(A|B) = P(A) \\implies P(A \\cap B) = P(A) \\cdot P(B) \]</p>"
+            },
+            {
+                title: "Resumo das Aplicações",
+                html: "<ul><li>Análise de tabelas de dados em pesquisas estatísticas.</li><li>Cálculo de eficácia e falsos positivos em testes laboratoriais.</li><li>Modelos de inteligência artificial e diagnósticos probabilísticos.</li></ul>"
+            }
+        ];
+
+        let currentSlide = 0;
+        const btnSlides = document.getElementById('btnSlides');
+        const slideOverlay = document.getElementById('slideOverlay');
+        const closeSlides = document.getElementById('closeSlides');
+        const slideContent = document.getElementById('slideContent');
+        const slideCounter = document.getElementById('slideCounter');
+        const prevSlide = document.getElementById('prevSlide');
+        const nextSlide = document.getElementById('nextSlide');
+
+        function renderSlide() {
+            const slide = slidesData[currentSlide];
+            slideContent.innerHTML = `<h2>${slide.title}</h2>${slide.html}`;
+            slideCounter.textContent = `Slide ${currentSlide + 1} de ${slidesData.length}`;
+            
+            // Re-render MathJax
+            if (window.MathJax) {
+                MathJax.typesetPromise([slideContent]);
+            }
+        }
+
+        btnSlides.addEventListener('click', () => {
+            currentSlide = 0;
+            renderSlide();
+            slideOverlay.classList.add('active');
+        });
+
+        closeSlides.addEventListener('click', () => {
+            slideOverlay.classList.remove('active');
+        });
+
+        prevSlide.addEventListener('click', () => {
+            if (currentSlide > 0) {
+                currentSlide--;
+                renderSlide();
+            }
+        });
+
+        nextSlide.addEventListener('click', () => {
+            if (currentSlide < slidesData.length - 1) {
+                currentSlide++;
+                renderSlide();
+            }
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (!slideOverlay.classList.contains('active')) return;
+            if (e.key === 'Escape') slideOverlay.classList.remove('active');
+            if (e.key === 'ArrowRight') nextSlide.click();
+            if (e.key === 'ArrowLeft') prevSlide.click();
+        });
+    </script>
+</body>
+</html>
