@@ -300,17 +300,7 @@
 </main>
 
 <aside class="menu-lateral">
-    <h2>⚛️ Navegação</h2>
-    <ul>
-        <li><a href="../fisica_home.html">🏠 Voltar ao Índice</a></li>
-        <li><a href="#topo">⬆️ Topo da página</a></li>
-        <li><a href="#resumo">📚 Resumo</a></li>
-        <li><a href="#teoria">📖 Teoria</a></li>
-        <li><a href="#aplicacoes">💡 Aplicações</a></li>
-        <li><a href="#resolvidas">✅ Resolvidas</a></li>
-        <li><a href="#propostas">✍️ Propostas</a></li>
-        <li><a href="#testes">🎓 Testes</a></li>
-    </ul>
+    <iframe src="../menu_fisica.html" style="width:100%; border:none; height:600px;"></iframe>
 </aside>
 
 </div>
@@ -365,7 +355,6 @@ function mostrarSlide(n) {
     slide.classList.add('slide-ativo');
     slide.style.display = 'flex'; 
 
-    // Lógica de Gabaritos
     if (slide.classList.contains('questao') && !slide.querySelector('.btn-gabarito')) {
         const resolucoes = slide.querySelectorAll('.resolucao-bloco');
         resolucoes.forEach(r => r.style.display = 'block');
@@ -379,7 +368,6 @@ function mostrarSlide(n) {
         });
     }
 
-    // Distribuição dos textos na barra
     const pHeader = document.querySelector('header p').innerText;
     const partes = pHeader.split('|');
     if(partes.length > 1) {
@@ -398,8 +386,50 @@ function mudarSlide(direcao) {
     if (slideAtual < 0) slideAtual = slides.length - 1;
     mostrarSlide(slideAtual);
 }
+
+document.addEventListener('keydown', function(event) {
+    if (document.body.classList.contains('modo-slides')) {
+        switch(event.key) {
+            case 'ArrowRight': 
+            case 'PageDown':   
+            case 'Enter':      
+            case ' ':          
+                mudarSlide(1);
+                break;
+                
+            case 'ArrowLeft':  
+            case 'PageUp':     
+                mudarSlide(-1);
+                break;
+
+            case 'Escape':     
+                toggleSlides();
+                break;
+        }
+    }
+});
 </script>
 
+<style>
+    body.modo-slides { overflow: hidden; background-color: #1a1a1a; }
+    body.modo-slides .menu-lateral, body.modo-slides header, body.modo-slides .menu-toggle, body.modo-slides #btn-slides { display: none !important; }
+    .slide-ativo {
+        display: flex !important; flex-direction: column; align-items: center; justify-content: flex-start;
+        position: fixed; top: 0; left: 0; width: 100vw; height: calc(100vh - 70px);
+        background: #ffffff; padding: 40px; z-index: 999; overflow-y: auto !important; 
+        box-sizing: border-box; text-align: center;
+    }
+    .controles-slides {
+        position: fixed; bottom: 0; left: 0; width: 100%; height: 70px;
+        background: #2c3e50; color: white; display: none; 
+        justify-content: space-between; align-items: center; padding: 0 20px; z-index: 1001; box-sizing: border-box;
+    }
+    body.modo-slides .controles-slides { display: flex; }
+    .info-lateral { flex: 1; font-family: 'Oswald', sans-serif; font-size: 0.9rem; color: #bdc3c7; }
+    .botoes-centrais { display: flex; align-items: center; gap: 15px; justify-content: center; flex: 2; }
+    .btn-nav { padding: 10px 20px; background: #3498db; color: white; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; }
+    #contador-slide { font-family: 'Oswald', sans-serif; min-width: 60px; text-align: center; }
+</style>
 
 <div class="controles-slides">
     <div id="slide-info-serie" class="info-lateral"></div>
