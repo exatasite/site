@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1º Ano: Aula 35 - Regras de Três Simples e Composta</title>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../estilo.css">
+    
+    <script>
+        MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true
+            }
+        };
+    </script>
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body>
+<button class="menu-toggle" onclick="toggleMenu()">☰</button>
+
+<nav id="menu-principal" class="nav-global">
+    <ul>
+        <li><a href="../index.html">🏠 Início</a></li>
+        <li><a href="../fisica_home.html">⚛️ Física</a></li>
+        <li><a href="../matematica_home.html">📐 Matemática</a></li>
+        <li><a href="../simulacoes_home.html">💻 Simulações</a></li>
+    </ul>
+</nav>
+
+<header id="topo">
+    <h1>MATEMÁTICA EM</h1>
+    <p>1º Ano | Aula 35: Regras de Três Simples e Composta</p>
+    <button id="btn-slides" onclick="toggleSlides()">📺 Iniciar Modo Slides</button>
+</header>
+
+<div class="container">
+
+<main class="conteudo-principal">
+
+<div class="secao-aula">
+ <div class="container-resumo" id="resumo">
+    <h3>📚 Resumo </h3>
+    <section class="resumo-conteudo">
+        <p>A <strong>Regra de Três Simples</strong> envolve apenas duas grandezas proporcionalmente relacionadas (diretas ou inversas). Quando há três ou mais grandezas, utiliza-se a <strong>Regra de Três Composta</strong>.</p>
+        <p>Grandezas <strong>diretamente proporcionais</strong> aumentam ou diminuem no mesmo sentido. Grandezas <strong>inversamente proporcionais</strong> variam em sentidos opostos (ao aumentar uma, a outra diminui na mesma proporção).</p>
+    </section>
+</div>
+
+<section class="conteudo-teorico-completo" id="teoria">
+    <div class="passo-teoria">
+        <h3>📖 Métodos de Resolução</h3>
+        <h4>1. Regra de Três Simples</h4>
+        <p>Utilizada quando comparamos duas grandezas:</p>
+        <ul>
+            <li><strong>Diretamente Proporcionais (DP):</strong> Monta-se a proporção mantendo a ordem e multiplica-se cruzado ($\frac{a}{b} = \frac{c}{x}$).</li>
+            <li><strong>Inversamente Proporcionais (IP):</strong> Inverte-se uma das razões antes de multiplicar cruzado ($\frac{a}{b} = \frac{x}{c}$) ou multiplica-se em linha ($a \cdot c = b \cdot x$).</li>
+        </ul>
+	<figure class="figura-aula figura-grande">
+		<img src="../imagens_matematica/aula1_35_regra_tres.png" alt="Regra de três">
+		<figcaption>Figura 1:Regra de três simples.</figcaption>
+	</figure>
+    </div>
+
+    <div class="passo-teoria">
+        <h4>2. Regra de Três Composta</h4>
+        <p>Envolve três ou mais grandezas. O passo a passo para resolução é:</p>
+        <ol>
+            <li>Isolar a razão que contém a incógnita $x$.</li>
+            <li>Comparar individualmente cada uma das outras grandezas com a grandeza que contém o $x$ (avaliando se são DP ou IP em relação a ela).</li>
+            <li>Inverter as razões que forem <strong>inversamente proporcionais</strong> à grandeza do $x$.</li>
+            <li>Igualar a razão do $x$ ao produto de todas as outras razões ajustadas.</li>
+        </ol>
+    </div>
+</section>
+
+<section class="aplicacoes-reais" id="aplicacoes">
+    <h3>💡 Matemática em Ação</h3>
+    <div class="cards-aplicacao">
+        <div class="card">
+            <h4>🏭 Produção Industrial e Logística</h4>
+            <p>Empresas utilizam regras de três compostas para calcular prazos de entrega ajustando número de funcionários, horas diárias de trabalho e capacidade de máquinas.</p>
+        </div>
+        <div class="card" style="border-left-color: #2ecc71;">
+            <h4>🏗️ Construção Civil e Projetos</h4>
+            <p>Engenheiros estimam o consumo de materiais, custos operacionais e tempo de conclusão de obras variando o número de operários envolvidos.</p>
+        </div>
+    </div>
+</section>
+
+<section class="questoes-resolvidas" id="resolvidas">
+    <h3>✅ 5 Questões Resolvidas (R 1 a 5)</h3>
+    
+    <article class="questao">
+        <h4>R 1: Regra de Três Simples Direta</h4>
+        <p><strong>Enunciado:</strong> Um carro consome $12\text{ litros}$ de combustível para percorrer $150\text{ km}$. Quantos litros serão necessários para percorrer $250\text{ km}$ no mesmo ritmo?</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong><br>
+            1. As grandezas (distância e consumo) são <strong>diretamente proporcionais</strong> (mais distância exige mais combustível).<br>
+            2. Montando a proporção:<br>
+            $$\frac{150}{250} = \frac{12}{x}$$<br>
+            3. Multiplicando em cruz:<br>
+            $$150 \cdot x = 250 \cdot 12 \implies 150x = 3000 \implies x = \frac{3000}{150} = \mathbf{20\text{ litros}}$$</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>R 2: Regra de Três Simples Inversa</h4>
+        <p><strong>Enunciado:</strong> Uma reforma é concluída em $12\text{ dias}$ por $6\text{ operários}$. Quantos dias serão necessários para realizar a mesma reforma com $9\text{ operários}$, mantendo o mesmo ritmo de trabalho?</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong><br>
+            1. As grandezas (operários e dias) são <strong>inversamente proporcionais</strong> (mais operários realizam a obra em menos dias).<br>
+            2. Multiplicando em linha ou invertendo uma das razões:<br>
+            $$6 \cdot 12 = 9 \cdot x$$<br>
+            $$72 = 9x \implies x = \frac{72}{9} = \mathbf{8\text{ dias}}$$</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>R 3: Regra de Três Composta - Todas DP</h4>
+        <p><strong>Enunciado:</strong> Em uma fábrica, $5\text{ máquinas}$ idênticas produzem $600\text{ peças}$ em $4\text{ dias}$. Quantas peças serão produzidas por $8\text{ máquinas}$ durante $6\text{ dias}$?</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong><br>
+            1. Grandeza do $x$: Peças ($600 \to x$).<br>
+            2. Comparação com a grandeza Peças:<br>
+            - Máquinas e Peças: <strong>DP</strong> (mais máquinas produzem mais peças).<br>
+            - Dias e Peças: <strong>DP</strong> (mais dias geram mais peças).<br>
+            3. Montando a equação:<br>
+            $$\frac{600}{x} = \frac{5}{8} \cdot \frac{4}{6}$$<br>
+            $$\frac{600}{x} = \frac{20}{48} \implies 20x = 600 \cdot 48 \implies 20x = 28800 \implies x = \mathbf{1440\text{ peças}}$$</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>R 4: Regra de Três Composta com Grandeza Inversa</h4>
+        <p><strong>Enunciado:</strong> Numa gráfica, $4\text{ impressoras}$ trabalhando $6\text{ horas por dia}$ imprimem um lote em $5\text{ dias}$. Em quantos dias $3\text{ impressoras}$ trabalhando $8\text{ horas por dia}$ imprimirão o mesmo lote?</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong><br>
+            1. Grandeza do $x$: Dias ($5 \to x$).<br>
+            2. Comparação com a grandeza Dias:<br>
+            - Impressoras e Dias: <strong>IP</strong> (menos impressoras exigem mais dias). Inverte-se para $\frac{3}{4}$.<br>
+            - Horas/dia e Dias: <strong>IP</strong> (mais horas por dia reduzem os dias necessários). Inverte-se para $\frac{8}{6}$.<br>
+            3. Montando a equação com as razões invertidas:<br>
+            $$\frac{5}{x} = \frac{3}{4} \cdot \frac{8}{6}$$<br>
+            $$\frac{5}{x} = \frac{24}{24} = 1 \implies x = \mathbf{5\text{ dias}}$$</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>R 5: Regra de Três Composta Mista</h4>
+        <p><strong>Enunciado:</strong> $8\text{ pedreiros}$ constroem um muro de $40\text{ metros}$ em $10\text{ dias}$. Quantos pedreiros serão necessários para construir um muro de $60\text{ metros}$ em $6\text{ dias}$?</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong><br>
+            1. Grandeza do $x$: Pedreiros ($8 \to x$).<br>
+            2. Comparação com Pedreiros:<br>
+            - Muros (metros): <strong>DP</strong> (muro maior exige mais pedreiros). Mantém $\frac{40}{60}$.<br>
+            - Dias: <strong>IP</strong> (menos dias exigem mais pedreiros). Inverte para $\frac{6}{10}$.<br>
+            3. Montando a equação:<br>
+            $$\frac{8}{x} = \frac{40}{60} \cdot \frac{6}{10}$$<br>
+            $$\frac{8}{x} = \frac{2}{3} \cdot \frac{3}{5} = \frac{6}{15} = \frac{2}{5}$$<br>
+            $$2x = 8 \cdot 5 \implies 2x = 40 \implies x = \mathbf{20\text{ pedreiros}}$$</p>
+        </div>
+    </article>
+</section>
+
+<section class="questoes-propostas" id="propostas">
+    <h3>✍️ 5 Questões Propostas (P 6 a 10)</h3>
+
+    <article class="questao">
+        <h4>P 6: Consumo Proporcional</h4>
+        <p><strong>Enunciado:</strong> Se $3$ torneiras idênticas enchem um tanque em $8\text{ horas}$, em quanto tempo $4$ torneiras com a mesma vazão encheriam esse mesmo tanque?</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> Torneiras e tempo são <strong>inversamente proporcionais</strong>. Multiplicando em linha: $3 \cdot 8 = 4 \cdot x \implies 24 = 4x \implies x = \mathbf{6\text{ horas}}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 7: Velocidade e Tempo</h4>
+        <p><strong>Enunciado:</strong> Um ônibus faz um trajeto em $4\text{ horas}$ com velocidade média de $60\text{ km/h}$. Se a velocidade média aumentasse para $80\text{ km/h}$, qual seria o tempo do trajeto?</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> Velocidade e tempo são <strong>inversamente proporcionais</strong>. $60 \cdot 4 = 80 \cdot x \implies 240 = 80x \implies x = \mathbf{3\text{ horas}}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 8: Regra de Três Composta Simples</h4>
+        <p><strong>Enunciado:</strong> $6$ tecelãs produzem $120\text{ metros}$ de tecido em $8\text{ dias}$. Quantas tecelãs serão necessárias para produzir $300\text{ metros}$ em $10\text{ dias}$?</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> Tecelãs ($6 \to x$). Tecidos e Tecelãs são DP ($\frac{120}{300}$). Dias e Tecelãs são IP ($\frac{10}{8}$).<br>
+            $$\frac{6}{x} = \frac{120}{300} \cdot \frac{10}{8} \implies \frac{6}{x} = \frac{2}{5} \cdot \frac{5}{4} = \frac{10}{20} = \frac{1}{2}$$
+            $$x = 6 \cdot 2 \implies \mathbf{12\text{ tecelãs}}$$</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 9: Trabalho e Produtividade</h4>
+        <p><strong>Enunciado:</strong> $12$ operários, trabalhando $8\text{ horas por dia}$, realizam uma tarefa em $15\text{ dias}$. Em quantos dias $10$ operários, trabalhando $6\text{ horas por dia}$, realizarão a mesma tarefa?</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> Dias ($15 \to x$). Operários e Dias são IP ($\frac{10}{12}$). Horas/dia e Dias são IP ($\frac{6}{8}$).<br>
+            $$\frac{15}{x} = \frac{10}{12} \cdot \frac{6}{8} = \frac{60}{96} = \frac{5}{8}$$
+            $$5x = 15 \cdot 8 \implies 5x = 120 \implies x = \mathbf{24\text{ dias}}$$</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 10: Ração para Animais</h4>
+        <p><strong>Enunciado:</strong> Um estoque de ração alimenta $15\text{ cavalos}$ durante $30\text{ dias}$, fornecendo $2\text{ refeições}$ diárias. Para alimentar $20\text{ cavalos}$ fornecendo $3\text{ refeições}$ diárias, para quantos dias durará esse mesmo estoque?</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> Dias ($30 \to x$). Cavalos e Dias são IP ($\frac{20}{15}$). Refeições e Dias são IP ($\frac{3}{2}$).<br>
+            $$\frac{30}{x} = \frac{20}{15} \cdot \frac{3}{2} = \frac{4}{3} \cdot \frac{3}{2} = \frac{12}{6} = 2$$
+            $$2x = 30 \implies x = \mathbf{15\text{ dias}}$$</p>
+        </div>
+    </article>
+</section>
+
+<section class="TESTE" id="testes">
+    <h3>🎓 TESTES (T 11 a 15)</h3>
+
+    <div class="card" style="text-align:center; padding:60px 20px; background:#f8f9fa; border:2px dashed #3498db; border-radius:12px; margin-top:20px;">
+        <h2 style="color:#3498db; font-size:2.5rem; margin-bottom:15px;">
+            🚧 EM BREVE!
+        </h2>
+
+        <p style="font-size:1.2rem; color:#555;">
+            Questões de vestibulares serão disponibilizadas em breve.
+        </p>
+    </div>
+</section>
+
+</div>
+</main>
+
+<aside class="menu-lateral">
+    <iframe src="../menu_matematica.html" style="width:100%; border:none; height:600px;"></iframe>
+</aside>
+
+</div>
+
+<script>
+function toggleGabarito(botao) {
+    const gabarito = botao.nextElementSibling;
+    if (gabarito.style.display === "none" || gabarito.style.display === "") {
+        gabarito.style.display = "block";
+        botao.textContent = "Esconder Gabarito e Resolução";
+        botao.style.backgroundColor = "#2c3e50";
+    } else {
+        gabarito.style.display = "none";
+        botao.textContent = "Ver Gabarito e Resolução";
+        botao.style.backgroundColor = "#3498db";
+    }
+}
+
+function toggleMenu() {
+    const menuGlobal = document.getElementById("menu-principal");
+    if (menuGlobal) menuGlobal.classList.toggle("ativo");
+}
+
+let slideAtual = 0;
+let slides = [];
+
+function prepararSlides() {
+    const seletores = '.container-resumo, .passo-teoria, .aplicacoes-reais, .questao';
+    slides = document.querySelectorAll(seletores);
+}
+
+function toggleSlides() {
+    prepararSlides();
+    const body = document.body;
+    if (!body.classList.contains('modo-slides')) {
+        body.classList.add('modo-slides');
+        slideAtual = 0;
+        mostrarSlide(slideAtual);
+    } else {
+        body.classList.remove('modo-slides');
+        window.location.reload(); 
+    }
+}
+
+function mostrarSlide(n) {
+    slides.forEach(s => {
+        s.classList.remove('slide-ativo');
+        s.style.display = 'none';
+    });
+    const slide = slides[n];
+    slide.classList.add('slide-ativo');
+    slide.style.display = 'flex'; 
+
+    if (slide.classList.contains('questao') && !slide.querySelector('.btn-gabarito')) {
+        const resolucoes = slide.querySelectorAll('.resolucao-bloco');
+        resolucoes.forEach(r => r.style.display = 'block');
+    } else {
+        const gabaritos = slide.querySelectorAll('.gabarito-resolucao');
+        gabaritos.forEach(g => g.style.display = 'none');
+        const botoes = slide.querySelectorAll('.btn-gabarito');
+        botoes.forEach(b => {
+            b.textContent = "Ver Gabarito e Resolução";
+            b.style.backgroundColor = "#3498db";
+        });
+    }
+
+    const pHeader = document.querySelector('header p').innerText;
+    const partes = pHeader.split('|');
+    if(partes.length > 1) {
+        document.getElementById('slide-info-serie').innerText = partes[0].trim();
+        document.getElementById('slide-info-aula').innerText = partes[1].trim();
+    }
+    document.getElementById('contador-slide').innerText = (n + 1) + " / " + slides.length;
+    if (window.MathJax) MathJax.typesetPromise();
+}
+
+function mudarSlide(direcao) {
+    slideAtual += direcao;
+    if (slideAtual >= slides.length) slideAtual = 0;
+    if (slideAtual < 0) slideAtual = slides.length - 1;
+    mostrarSlide(slideAtual);
+}
+
+document.addEventListener('keydown', function(event) {
+    if (document.body.classList.contains('modo-slides')) {
+        switch(event.key) {
+            case 'ArrowRight': 
+            case 'PageDown':   
+            case 'Enter':      
+            case ' ':          
+                mudarSlide(1);
+                break;
+                
+            case 'ArrowLeft':  
+            case 'PageUp':     
+                mudarSlide(-1);
+                break;
+
+            case 'Escape':     
+                toggleSlides();
+                break;
+        }
+    }
+});
+</script>
+
+<style>
+    body.modo-slides { overflow: hidden; background-color: #1a1a1a; }
+    body.modo-slides .menu-lateral, body.modo-slides header, body.modo-slides .menu-toggle, body.modo-slides #btn-slides { display: none !important; }
+    .slide-ativo {
+        display: flex !important; flex-direction: column; align-items: center; justify-content: flex-start;
+        position: fixed; top: 0; left: 0; width: 100vw; height: calc(100vh - 70px);
+        background: #ffffff; padding: 40px; z-index: 999; overflow-y: auto !important; 
+        box-sizing: border-box; text-align: center;
+    }
+    .controles-slides {
+        position: fixed; bottom: 0; left: 0; width: 100%; height: 70px;
+        background: #2c3e50; color: white; display: none; 
+        justify-content: space-between; align-items: center; padding: 0 20px; z-index: 1001; box-sizing: border-box;
+    }
+    body.modo-slides .controles-slides { display: flex; }
+    .info-lateral { flex: 1; font-family: 'Oswald', sans-serif; font-size: 0.9rem; color: #bdc3c7; }
+    .botoes-centrais { display: flex; align-items: center; gap: 15px; justify-content: center; flex: 2; }
+    .btn-nav { padding: 10px 20px; background: #3498db; color: white; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; }
+    #contador-slide { font-family: 'Oswald', sans-serif; min-width: 60px; text-align: center; }
+</style>
+
+<div class="controles-slides">
+    <div id="slide-info-serie" class="info-lateral"></div>
+    <div class="botoes-centrais">
+        <button class="btn-nav" onclick="mudarSlide(-1)">⬅ Anterior</button>
+        <span id="contador-slide"></span>
+        <button class="btn-nav" onclick="mudarSlide(1)">Próximo ➡</button>
+        <button class="btn-nav" onclick="toggleSlides()" style="background:#e74c3c;">Sair</button>
+    </div>
+    <div id="slide-info-aula" class="info-lateral" style="text-align: right;"></div>
+</div>
+</body>
+</html>
