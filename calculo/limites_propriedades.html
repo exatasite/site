@@ -3,185 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cálculo I: Aula 01 - Limites e Propriedades</title>
-    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
-    
-    <style>
-        /* Estilos incorporados para garantir a funcionalidade da página sem o estilo.css externo */
-        :root {
-            --primary-color: #2980b9;
-            --secondary-color: #27ae60;
-            --bg-color: #f4f7f6;
-            --text-color: #333;
-            --card-bg: #fff;
-        }
-        
-        body {
-            font-family: 'Roboto', sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            margin: 0;
-            padding: 0;
-            line-height: 1.6;
-        }
-        
-        h1, h2, h3, h4 {
-            font-family: 'Oswald', sans-serif;
-            color: #2c3e50;
-        }
-
-        .menu-toggle {
-            position: fixed;
-            top: 15px;
-            left: 15px;
-            z-index: 1001;
-            background: var(--primary-color);
-            color: white;
-            border: none;
-            padding: 10px 15px;
-            font-size: 20px;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        .nav-global {
-            display: none; /* Escondido por padrão no mobile */
-            background: #34495e;
-            padding: 15px;
-            text-align: center;
-        }
-
-        .nav-global ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
-        }
-
-        .nav-global a {
-            color: white;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 1.1rem;
-        }
-
-        .nav-global a:hover {
-            color: #f1c40f;
-        }
-
-        header {
-            background: linear-gradient(135deg, #2c3e50, #3498db);
-            color: white;
-            padding: 40px 20px;
-            text-align: center;
-            position: relative;
-        }
-        
-        header h1 {
-            color: white;
-            margin-bottom: 5px;
-            font-size: 2.5rem;
-        }
-
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-
-        .secao-aula, .conteudo-teorico-completo, .aplicacoes-reais, .simulacao-interativa, .questoes-resolvidas, .questoes-propostas, .TESTE {
-            background: var(--card-bg);
-            padding: 30px;
-            border-radius: 10px;
-            margin-bottom: 25px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
-        }
-
-        .container-resumo {
-            background: #eaf2f8;
-            padding: 20px;
-            border-left: 5px solid var(--primary-color);
-            border-radius: 5px;
-        }
-
-        .passo-teoria {
-            margin-bottom: 30px;
-            padding-bottom: 20px;
-            border-bottom: 1px solid #eee;
-        }
-        
-        .passo-teoria:last-child {
-            border-bottom: none;
-        }
-
-        .btn-gabarito {
-            background: var(--primary-color);
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            cursor: pointer;
-            border-radius: 5px;
-            font-weight: bold;
-            font-size: 1rem;
-            margin-top: 10px;
-            transition: background 0.3s;
-        }
-
-        .btn-gabarito:hover {
-            background: #1c5980;
-        }
-
-        .gabarito-resolucao {
-            display: none;
-            background: #eafaf1;
-            border-left: 4px solid var(--secondary-color);
-            padding: 20px;
-            margin-top: 15px;
-            border-radius: 5px;
-        }
-
-        .resolucao-bloco {
-            background: #fdfefe;
-            border-left: 4px solid #f39c12;
-            padding: 20px;
-            margin-top: 15px;
-            border-radius: 5px;
-            border: 1px solid #eee;
-        }
-
-        .questao {
-            margin-bottom: 35px;
-        }
-
-        .figura-aula {
-            text-align: center;
-            margin: 30px 0;
-        }
-
-        .figura-aula img {
-            max-width: 100%;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-
-        figcaption {
-            font-size: 0.9rem;
-            color: #7f8c8d;
-            margin-top: 10px;
-        }
-
-        @media (min-width: 768px) {
-            .nav-global {
-                display: block !important;
-            }
-            .menu-toggle {
-                display: none;
-            }
-        }
-    </style>
+    <title>Cálculo I: Limites e Propriedades</title>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../estilo.css">
     
     <script>
         MathJax = {
@@ -191,31 +15,6 @@
                 processEscapes: true
             }
         };
-
-        // Funções de interatividade solicitadas
-        function toggleMenu() {
-            var menu = document.getElementById('menu-principal');
-            if (menu.style.display === 'block') {
-                menu.style.display = 'none';
-            } else {
-                menu.style.display = 'block';
-            }
-        }
-
-        function toggleSlides() {
-            alert('Modo slides ativado! (Funcionalidade para carregar visualizador em tela cheia)');
-        }
-
-        function toggleGabarito(button) {
-            var gabarito = button.nextElementSibling;
-            if (gabarito.style.display === 'block') {
-                gabarito.style.display = 'none';
-                button.innerHTML = 'Ver Gabarito e Resolução';
-            } else {
-                gabarito.style.display = 'block';
-                button.innerHTML = 'Ocultar Gabarito e Resolução';
-            }
-        }
     </script>
     <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
@@ -228,17 +27,14 @@
         <li><a href="../index.html">🏠 Início</a></li>
         <li><a href="../fisica_home.html">⚛️ Física</a></li>
         <li><a href="../matematica_home.html">📐 Matemática</a></li>
-        <li><a href="../calculo_home.html">♾️ Cálculo</a></li>
         <li><a href="../simulacoes_home.html">💻 Simulações</a></li>
     </ul>
 </nav>
 
-<header>
+<header id="topo">
     <h1>CÁLCULO I</h1>
-    <p>Ensino Superior | Aula 01: Limites e Propriedades</p>
-    <button id="btn-slides" onclick="toggleSlides()" style="position: absolute; top: 20px; right: 20px; z-index: 1000; padding: 10px; cursor: pointer; background: #e67e22; color: white; border: none; border-radius: 5px; font-weight: bold;">
-        📺 Iniciar Modo Slides
-    </button>
+    <p>Cálculo | Aula: Limites e Propriedades</p>
+    <button id="btn-slides" onclick="toggleSlides()">📺 Iniciar Modo Slides</button>
 </header>
 
 <div class="container">
@@ -246,210 +42,178 @@
 <main class="conteudo-principal">
 
 <div class="secao-aula">
- <div class="container-resumo">
-    <h3>📚 Resumo: </h3>
+ <div class="container-resumo" id="resumo">
+    <h3>📚 Resumo </h3>
     <section class="resumo-conteudo">
-        <p>O conceito de limite é a base do Cálculo. Ele descreve o comportamento de uma função à medida que sua variável se aproxima de um determinado valor.</p>
-        <p style="text-align: center; font-size: 1.2rem;"><strong>$\lim_{x \to a} f(x) = L$</strong></p>
-        <ul>
-            <li><strong>Intuição:</strong> "À medida que $x$ chega muito perto de $a$, o valor de $f(x)$ chega muito perto de $L$."</li>
-            <li><strong>Propriedades Básicas:</strong> O limite da soma é a soma dos limites, o limite do produto é o produto dos limites, etc.</li>
-            <li><strong>Indeterminações:</strong> Expressões como $\frac{0}{0}$ exigem manipulação algébrica (fatoração ou racionalização) para encontrar o limite real.</li>
-        </ul>
+        <p>O <strong>Limite</strong> de uma função descreve o comportamento dessa função à medida que a variável independente (geralmente $x$) se aproxima de um determinado valor $a$. A notação padrão é $\lim_{x \to a} f(x) = L$.</p>
+        <p>Para facilitar o cálculo de limites complexos, utilizamos as <strong>Propriedades dos Limites</strong> (soma, subtração, produto, quociente, potência e constante). Quando a substituição direta resulta em uma indeterminação do tipo $\frac{0}{0}$, utilizamos técnicas de fatoração ou racionalização para encontrar o limite verdadeiro.</p>
     </section>
 </div>
 
-<section class="conteudo-teorico-completo">
+<section class="conteudo-teorico-completo" id="teoria">
     <div class="passo-teoria">
-        <h3>📖 A Ideia Intuitiva de Limite</h3>
-        <p>Muitas vezes em matemática, não podemos calcular uma função diretamente em um ponto específico (por exemplo, quando isso causaria uma divisão por zero). O limite nos permite descobrir qual valor a função "deveria" ter naquele ponto ao analisar sua vizinhança.</p>
-        <p>Dizemos que $\lim_{x \to a} f(x) = L$ se podemos tornar $f(x)$ tão próximo de $L$ quanto quisermos, bastando escolher $x$ suficientemente próximo de $a$ (mas $x \neq a$).</p>
+        <h3>📖 O Conceito de Limite</h3>
+        <p>A ideia fundamental do cálculo diferencial e integral é o limite. Dizer que $\lim_{x \to a} f(x) = L$ significa que, quando $x$ fica arbitrariamente próximo de $a$ (mas não igual a $a$), os valores de $f(x)$ ficam arbitrariamente próximos de $L$.</p>
+        <p><strong>Substituição Direta:</strong> Se a função for contínua (como um polinômio), o limite pode ser calculado apenas trocando o $x$ pelo valor alvo: $\lim_{x \to 2} (3x - 1) = 3(2) - 1 = 5$.</p>
     </div>
 
     <div class="passo-teoria">
-        <h4>1. Calculando Limites por Substituição Direta</h4>
-        <p>Se a função $f(x)$ for contínua (como polinômios, raízes, funções exponenciais no seu domínio), o limite pode ser calculado simplesmente substituindo o valor de $x$:</p>
-        <p style="text-align: center;">$$\lim_{x \to 2} (3x^2 + 5) = 3(2)^2 + 5 = 12 + 5 = 17$$</p>
-    </div>
-
-    <div class="passo-teoria">
-        <h4>2. Propriedades Operatórias dos Limites</h4>
-        <p>Sendo $\lim_{x \to a} f(x) = L_1$ e $\lim_{x \to a} g(x) = L_2$, temos as seguintes propriedades:</p>
+        <h4>1. Principais Propriedades dos Limites</h4>
+        <p>Supondo que $\lim_{x \to a} f(x)$ e $\lim_{x \to a} g(x)$ existam, temos:</p>
         <ul>
-            <li><strong>Soma e Subtração:</strong> $\lim_{x \to a} [f(x) \pm g(x)] = L_1 \pm L_2$</li>
-            <li><strong>Multiplicação por Constante:</strong> $\lim_{x \to a} [c \cdot f(x)] = c \cdot L_1$</li>
-            <li><strong>Produto:</strong> $\lim_{x \to a} [f(x) \cdot g(x)] = L_1 \cdot L_2$</li>
-            <li><strong>Quociente:</strong> $\lim_{x \to a} \left[\frac{f(x)}{g(x)}\right] = \frac{L_1}{L_2}$ (desde que $L_2 \neq 0$)</li>
-            <li><strong>Potência:</strong> $\lim_{x \to a} [f(x)]^n = [L_1]^n$</li>
+            <li><strong>Soma/Subtração:</strong> $\lim_{x \to a} [f(x) \pm g(x)] = \lim_{x \to a} f(x) \pm \lim_{x \to a} g(x)$</li>
+            <li><strong>Multiplicação:</strong> $\lim_{x \to a} [f(x) \cdot g(x)] = \lim_{x \to a} f(x) \cdot \lim_{x \to a} g(x)$</li>
+            <li><strong>Divisão:</strong> $\lim_{x \to a} \left[ \frac{f(x)}{g(x)} \right] = \frac{\lim_{x \to a} f(x)}{\lim_{x \to a} g(x)}$, desde que $\lim_{x \to a} g(x) \neq 0$</li>
+            <li><strong>Constante:</strong> $\lim_{x \to a} [c \cdot f(x)] = c \cdot \lim_{x \to a} f(x)$, onde $c$ é um número real.</li>
         </ul>
     </div>
 
     <div class="passo-teoria">
-        <h4>3. Limites Indeterminados do tipo 0/0</h4>
-        <p>Se ao substituir diretamente obtermos a forma indeterminada $\frac{0}{0}$, isso significa que existe um fator comum no numerador e no denominador escondendo o verdadeiro valor do limite.</p>
-        <p><strong>Estratégias de Resolução:</strong></p>
-        <ul>
-            <li><strong>Fatoração:</strong> Útil quando temos polinômios. (Ex: Diferença de quadrados).</li>
-            <li><strong>Racionalização:</strong> Útil quando a função possui raízes quadradas. Multiplicamos pelo conjugado.</li>
-        </ul>
-        <figure class="figura-aula figura-grande">
-            <img src="https://placehold.co/800x300/3498db/ffffff?text=Buraco+no+Grafico:+(Indeterminacao+0/0)" alt="Gráfico mostrando um 'buraco' ou descontinuidade removível.">
-            <figcaption>Figura 1: A indeterminação $0/0$ geralmente ocorre em descontinuidades removíveis, onde o gráfico apresenta um "buraco".</figcaption>
-        </figure>
+        <h4>2. Lidando com Indeterminações ($\frac{0}{0}$)</h4>
+        <p>Se ao substituirmos o valor de $x$ o resultado for $\frac{0}{0}$, isso <strong>não</strong> significa que o limite não existe! É uma <em>indeterminação</em>. Para resolvê-la, devemos simplificar a expressão matemática cortando o fator que está "zerando" a equação.</p>
+        <p>Técnicas comuns incluem: <strong>Fatoração</strong> (como diferença de quadrados ou Bhaskara) e <strong>Multiplicação pelo Conjugado</strong> (quando há raízes).</p>
     </div>
 </section>
 
-<section class="aplicacoes-reais">
-    <h3>💡 Cálculo em Ação</h3>  
-    <div class="cards-aplicacao">        
-        <div class="card" style="border-left: 5px solid #3498db;">
-            <h4>🚀 Velocidade Instantânea (Física)</h4>
-            <p>Como medir a velocidade exata de um carro no velocímetro em um instante $t$? Fazemos a média da distância percorrida em um intervalo de tempo $\Delta t$ e aplicamos o limite de $\Delta t \to 0$. Isso dá origem à derivada!</p>            
+<section class="aplicacoes-reais" id="aplicacoes">
+    <h3>💡 Matemática em Ação</h3>
+    <div class="cards-aplicacao">
+        <div class="card">
+            <h4>🚀 Física: Velocidade Instantânea</h4>
+            <p>Se a velocidade média é a variação da posição sobre um intervalo de tempo, a velocidade exata num instante específico é calculada usando o limite quando o intervalo de tempo tende a zero ($\Delta t \to 0$).</p>
         </div>
-        <div class="card" style="border-left: 5px solid #2ecc71;">
-            <h4>📈 Custo Marginal (Economia)</h4>
-            <p>Se uma fábrica produz $x$ peças, o limite da razão incremental do custo conforme a produção aumenta infinitamente pouco fornece o custo marginal, ou seja, o custo exato de produzir uma peça adicional.</p>
+        <div class="card" style="border-left-color: #2ecc71;">
+            <h4>📈 Economia: Custo Marginal</h4>
+            <p>Economistas usam o limite para determinar o "Custo Marginal" — o custo exato para se produzir apenas uma unidade extra de um produto numa escala industrial massiva.</p>
         </div>
-    </div>   
-</section>
-
-<section class="simulacao-interativa">
-    <h3>💻 Simulação Interativa: Comportamento do Limite</h3>
-    <p>Para visualizar como a função se comporta ao se aproximar de um ponto de indeterminação, clique no botão abaixo para abrir a ferramenta gráfica (Desmos/Geogebra):</p>
-    
-    <div style="text-align: center; margin: 30px auto; width: 100%;">
-        <a href="../simulacoes/simulador_limites.html" 
-           target="_blank" 
-           class="btn-gabarito" 
-           style="text-decoration: none; display: inline-block;">
-           🚀 Abrir Gráfico Interativo de Limites
-        </a>
     </div>
 </section>
 
-<!--------------- QUESTOES RESOLVIDAS --------------------------->
-
-<section class="questoes-resolvidas">
+<section class="questoes-resolvidas" id="resolvidas">
     <h3>✅ 5 Questões Resolvidas (R 1 a 5)</h3>
-                    
+    
     <article class="questao">
-        <h4>R 1: Limite por Substituição Direta</h4>
-        <p><strong>Enunciado:</strong> Calcule o limite: $\lim_{x \to 3} (2x^2 - 4x + 1)$</p>
+        <h4>R 1: Substituição Direta</h4>
+        <p><strong>Enunciado:</strong> Calcule o valor numérico do limite $\lim_{x \to 3} (2x^2 - 4x + 5)$.</p>
         <div class="resolucao-bloco">
-            <p><strong>Resolução:</strong> Como é uma função polinomial, basta substituir $x = 3$:</p>
-            <p>$$L = 2(3)^2 - 4(3) + 1$$</p>
-            <p>$$L = 2(9) - 12 + 1 = 18 - 12 + 1 = 7$$</p>
-            <p>Portanto, o limite é $7$.</p>
+            <p><strong>Resolução:</strong><br>
+            1. Como a função $f(x) = 2x^2 - 4x + 5$ é um polinômio (portanto contínua em todo o domínio real), podemos calcular o limite fazendo a substituição direta de $x$ por 3.<br>
+            2. $L = 2(3)^2 - 4(3) + 5$<br>
+            3. $L = 2(9) - 12 + 5 = 18 - 12 + 5 = \mathbf{11}$.</p>
         </div>
     </article>
 
     <article class="questao">
-        <h4>R 2: Indeterminação 0/0 (Fatoração Simples)</h4>
-        <p><strong>Enunciado:</strong> Calcule o limite: $\lim_{x \to 2} \frac{x^2 - 4}{x - 2}$</p>
+        <h4>R 2: Uso das Propriedades</h4>
+        <p><strong>Enunciado:</strong> Sabendo que $\lim_{x \to 2} f(x) = 4$ e $\lim_{x \to 2} g(x) = -1$, calcule o valor de $\lim_{x \to 2} \left[ 3f(x) - 2g(x) \right]$.</p>
         <div class="resolucao-bloco">
-            <p><strong>Resolução:</strong> Substituindo direto, temos $\frac{2^2 - 4}{2 - 2} = \frac{0}{0}$ (Indeterminação).</p>
-            <p>Usamos a diferença de quadrados no numerador: $x^2 - 4 = (x - 2)(x + 2)$.</p>
-            <p>$$\lim_{x \to 2} \frac{(x - 2)(x + 2)}{x - 2}$$</p>
-            <p>Cancelando o termo comum $(x - 2)$ (pois $x \neq 2$ no limite):</p>
-            <p>$$= \lim_{x \to 2} (x + 2) = 2 + 2 = 4$$</p>
+            <p><strong>Resolução:</strong><br>
+            1. Usamos a propriedade da diferença e da constante de forma simultânea.<br>
+            2. $\lim_{x \to 2} [3f(x)] - \lim_{x \to 2} [2g(x)]$<br>
+            3. $3 \cdot \lim_{x \to 2} f(x) - 2 \cdot \lim_{x \to 2} g(x)$<br>
+            4. Substituindo os valores conhecidos: $3(4) - 2(-1) = 12 + 2 = \mathbf{14}$.</p>
         </div>
     </article>
 
     <article class="questao">
-        <h4>R 3: Indeterminação 0/0 (Trinômio do 2º Grau)</h4>
-        <p><strong>Enunciado:</strong> Calcule: $\lim_{x \to 1} \frac{x^2 + 2x - 3}{x - 1}$</p>
+        <h4>R 3: Indeterminação 0/0 (Diferença de Quadrados)</h4>
+        <p><strong>Enunciado:</strong> Determine o limite de $\lim_{x \to 5} \frac{x^2 - 25}{x - 5}$.</p>
         <div class="resolucao-bloco">
-            <p><strong>Resolução:</strong> Substituindo $x = 1$, obtemos $\frac{0}{0}$.</p>
-            <p>Fatorando o numerador $x^2 + 2x - 3$. As raízes são $1$ e $-3$, então a forma fatorada é $(x - 1)(x + 3)$.</p>
-            <p>$$\lim_{x \to 1} \frac{(x - 1)(x + 3)}{x - 1}$$</p>
-            <p>Cancelando $(x - 1)$:</p>
-            <p>$$= \lim_{x \to 1} (x + 3) = 1 + 3 = 4$$</p>
+            <p><strong>Resolução:</strong><br>
+            1. Se fizermos substituição direta: $\frac{5^2 - 25}{5 - 5} = \frac{0}{0}$ (Indeterminação).<br>
+            2. Precisamos fatorar o numerador. Notamos que $x^2 - 25$ é uma diferença de quadrados: $x^2 - 5^2 = (x - 5)(x + 5)$.<br>
+            3. Reescrevendo o limite: $\lim_{x \to 5} \frac{(x - 5)(x + 5)}{x - 5}$.<br>
+            4. Cancelamos o termo $(x - 5)$ em cima e embaixo, sobrando: $\lim_{x \to 5} (x + 5)$.<br>
+            5. Substituição direta na nova função: $5 + 5 = \mathbf{10}$.</p>
         </div>
     </article>
 
     <article class="questao">
-        <h4>R 4: Racionalização de Numerador</h4>
-        <p><strong>Enunciado:</strong> Calcule: $\lim_{x \to 9} \frac{\sqrt{x} - 3}{x - 9}$</p>
+        <h4>R 4: Indeterminação 0/0 (Fatoração Quadrática)</h4>
+        <p><strong>Enunciado:</strong> Calcule $\lim_{x \to 2} \frac{x^2 - x - 2}{x - 2}$.</p>
         <div class="resolucao-bloco">
-            <p><strong>Resolução:</strong> Substituindo $x = 9$, obtemos $\frac{0}{0}$. Multiplicamos o numerador e o denominador pelo conjugado do numerador $(\sqrt{x} + 3)$:</p>
-            <p>$$\lim_{x \to 9} \frac{(\sqrt{x} - 3)(\sqrt{x} + 3)}{(x - 9)(\sqrt{x} + 3)}$$</p>
-            <p>O numerador torna-se $(\sqrt{x})^2 - 3^2 = x - 9$:</p>
-            <p>$$= \lim_{x \to 9} \frac{x - 9}{(x - 9)(\sqrt{x} + 3)}$$</p>
-            <p>Cancelando $(x - 9)$:</p>
-            <p>$$= \lim_{x \to 9} \frac{1}{\sqrt{x} + 3} = \frac{1}{\sqrt{9} + 3} = \frac{1}{3 + 3} = \frac{1}{6}$$</p>
+            <p><strong>Resolução:</strong><br>
+            1. Substituição direta: $\frac{2^2 - 2 - 2}{2 - 2} = \frac{0}{0}$.<br>
+            2. Fatorando o numerador $x^2 - x - 2$. As raízes são $2$ e $-1$, logo a forma fatorada é $(x - 2)(x + 1)$.<br>
+            3. Reescrevendo: $\lim_{x \to 2} \frac{(x - 2)(x + 1)}{x - 2}$.<br>
+            4. Cancelando o $(x-2)$, obtemos: $\lim_{x \to 2} (x + 1)$.<br>
+            5. Substituindo $x=2$, temos: $2 + 1 = \mathbf{3}$.</p>
         </div>
     </article>
 
     <article class="questao">
-        <h4>R 5: Aplicando as Propriedades dos Limites</h4>
-        <p><strong>Enunciado:</strong> Sabendo que $\lim_{x \to c} f(x) = 5$ e $\lim_{x \to c} g(x) = -2$, calcule $\lim_{x \to c} \frac{2f(x) + g(x)}{f(x) \cdot g(x)}$.</p>
+        <h4>R 5: Indeterminação 0/0 (Racionalização)</h4>
+        <p><strong>Enunciado:</strong> Calcule $\lim_{x \to 0} \frac{\sqrt{x + 9} - 3}{x}$.</p>
         <div class="resolucao-bloco">
-            <p><strong>Resolução:</strong> Aplicando as propriedades de limite (soma, produto, quociente e constante):</p>
-            <p>$$= \frac{2 \cdot \left(\lim_{x \to c} f(x)\right) + \left(\lim_{x \to c} g(x)\right)}{\left(\lim_{x \to c} f(x)\right) \cdot \left(\lim_{x \to c} g(x)\right)}$$</p>
-            <p>Substituindo os valores dados:</p>
-            <p>$$= \frac{2(5) + (-2)}{(5)(-2)} = \frac{10 - 2}{-10} = \frac{8}{-10} = -\frac{4}{5}$$</p>
+            <p><strong>Resolução:</strong><br>
+            1. Substituição direta: $\frac{\sqrt{9} - 3}{0} = \frac{0}{0}$.<br>
+            2. Para tirar a raiz, multiplicamos o numerador e o denominador pelo <strong>conjugado</strong> do numerador, que é $(\sqrt{x + 9} + 3)$.<br>
+            3. $\lim_{x \to 0} \frac{(\sqrt{x + 9} - 3)(\sqrt{x + 9} + 3)}{x(\sqrt{x + 9} + 3)}$.<br>
+            4. Numerador vira diferença de quadrados: $(\sqrt{x+9})^2 - 3^2 = x + 9 - 9 = x$.<br>
+            5. Fica: $\lim_{x \to 0} \frac{x}{x(\sqrt{x + 9} + 3)}$.<br>
+            6. Cancelando o $x$: $\lim_{x \to 0} \frac{1}{\sqrt{x + 9} + 3}$.<br>
+            7. Substituindo $x=0$: $\frac{1}{\sqrt{9} + 3} = \frac{1}{3 + 3} = \mathbf{\frac{1}{6}}$.</p>
         </div>
     </article>
 </section>
 
-<!--------------- QUESTÕES PROPOSTAS --------------------------->
-
-<section class="questoes-propostas">
+<section class="questoes-propostas" id="propostas">
     <h3>✍️ 5 Questões Propostas (P 6 a 10)</h3>
 
     <article class="questao">
-        <h4>P 6: Limite Básico</h4>
-        <p><strong>Enunciado:</strong> Determine o valor de $\lim_{x \to -2} (4x^3 - 2x + 5)$.</p>
+        <h4>P 6: Limite Simples</h4>
+        <p><strong>Enunciado:</strong> Avalie $\lim_{x \to -1} (5x^3 + 2x^2 - x + 4)$.</p>
         <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
         <div class="gabarito-resolucao">
-            <p><strong>Resolução:</strong> Substituição direta:</p>
-            <p>$$= 4(-2)^3 - 2(-2) + 5$$</p>
-            <p>$$= 4(-8) + 4 + 5 = -32 + 9 = -23$$</p>
+            <p><strong>Resolução:</strong> Substituição direta: $5(-1)^3 + 2(-1)^2 - (-1) + 4$. <br>
+            $= 5(-1) + 2(1) + 1 + 4 = -5 + 2 + 1 + 4 = \mathbf{2}$.</p>
         </div>
     </article>
 
     <article class="questao">
-        <h4>P 7: Indeterminação Simples</h4>
-        <p><strong>Enunciado:</strong> Calcule $\lim_{x \to 5} \frac{x^2 - 25}{x - 5}$.</p>
+        <h4>P 7: Propriedades do Quociente</h4>
+        <p><strong>Enunciado:</strong> Se $\lim_{x \to a} f(x) = 10$ e $\lim_{x \to a} g(x) = 2$, calcule $\lim_{x \to a} \frac{f(x)}{g(x) + 3}$.</p>
         <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
         <div class="gabarito-resolucao">
-            <p><strong>Resolução:</strong> Fatorando o numerador por diferença de quadrados:</p>
-            <p>$$\lim_{x \to 5} \frac{(x - 5)(x + 5)}{x - 5} = \lim_{x \to 5} (x + 5) = 5 + 5 = 10$$</p>
+            <p><strong>Resolução:</strong> Utilizando as propriedades do quociente e soma:<br>
+            $\frac{\lim f(x)}{\lim g(x) + \lim 3} = \frac{10}{2 + 3} = \frac{10}{5} = \mathbf{2}$.</p>
         </div>
     </article>
 
     <article class="questao">
-        <h4>P 8: Fatoração com Fator Comum em Evidência</h4>
-        <p><strong>Enunciado:</strong> Calcule $\lim_{x \to 0} \frac{x^2 + 5x}{x}$.</p>
+        <h4>P 8: Fatoração Simples</h4>
+        <p><strong>Enunciado:</strong> Calcule o limite $\lim_{x \to 4} \frac{x^2 - 16}{x - 4}$.</p>
         <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
         <div class="gabarito-resolucao">
-            <p><strong>Resolução:</strong> Substituição resulta em $0/0$. Colocando $x$ em evidência no numerador:</p>
-            <p>$$\lim_{x \to 0} \frac{x(x + 5)}{x} = \lim_{x \to 0} (x + 5) = 0 + 5 = 5$$</p>
+            <p><strong>Resolução:</strong> Gera $\frac{0}{0}$. Fatorando a diferença de quadrados no numerador: $(x-4)(x+4)$.<br>
+            Cancelando com o $(x-4)$ do denominador, sobra $\lim_{x \to 4} (x+4)$.<br>
+            Substituindo $x=4$, temos $4 + 4 = \mathbf{8}$.</p>
         </div>
     </article>
 
     <article class="questao">
-        <h4>P 9: Racionalização</h4>
-        <p><strong>Enunciado:</strong> Encontre o valor de $\lim_{x \to 4} \frac{x - 4}{\sqrt{x} - 2}$.</p>
+        <h4>P 9: Evidência</h4>
+        <p><strong>Enunciado:</strong> Encontre o valor de $\lim_{x \to 0} \frac{3x^2 + 5x}{x}$.</p>
         <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
         <div class="gabarito-resolucao">
-            <p><strong>Resolução:</strong> Multiplicando pelo conjugado do denominador $(\sqrt{x} + 2)$:</p>
-            <p>$$\lim_{x \to 4} \frac{(x - 4)(\sqrt{x} + 2)}{(\sqrt{x} - 2)(\sqrt{x} + 2)}$$</p>
-            <p>$$\lim_{x \to 4} \frac{(x - 4)(\sqrt{x} + 2)}{x - 4} = \lim_{x \to 4} (\sqrt{x} + 2) = \sqrt{4} + 2 = 2 + 2 = 4$$</p>
+            <p><strong>Resolução:</strong> Resulta em $\frac{0}{0}$. Colocando o $x$ em evidência no numerador: $\frac{x(3x + 5)}{x}$.<br>
+            Cancelando $x$, sobra $\lim_{x \to 0} (3x + 5)$.<br>
+            Substituindo $x=0$, temos $3(0) + 5 = \mathbf{5}$.</p>
         </div>
     </article>
 
     <article class="questao">
-        <h4>P 10: Limite do Quociente de Propriedades</h4>
-        <p><strong>Enunciado:</strong> Se $\lim_{x \to 1} h(x) = 8$, qual o valor de $\lim_{x \to 1} \sqrt[3]{h(x)}$?</p>
+        <h4>P 10: Limite com Conjugado</h4>
+        <p><strong>Enunciado:</strong> Calcule $\lim_{x \to 4} \frac{\sqrt{x} - 2}{x - 4}$.</p>
         <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
         <div class="gabarito-resolucao">
-            <p><strong>Resolução:</strong> Pela propriedade da raiz de um limite:</p>
-            <p>$$= \sqrt[3]{\lim_{x \to 1} h(x)} = \sqrt[3]{8} = 2$$</p>
+            <p><strong>Resolução:</strong> Substituição dá $\frac{0}{0}$. Multiplicamos numerador e denominador pelo conjugado $(\sqrt{x} + 2)$.<br>
+            Numerador vira: $(\sqrt{x})^2 - 2^2 = x - 4$.<br>
+            A expressão fica: $\frac{x - 4}{(x - 4)(\sqrt{x} + 2)}$. Cancelando o $(x-4)$, sobra $\frac{1}{\sqrt{x} + 2}$.<br>
+            Substituindo $x=4$: $\frac{1}{\sqrt{4} + 2} = \frac{1}{2 + 2} = \mathbf{\frac{1}{4}}$.</p>
         </div>
     </article>
 </section>
-<!--------------- TESTE  --------------------------->
 
 <section class="TESTE" id="testes">
     <h3>🎓 TESTES (T 11 a 15)</h3>
@@ -460,12 +224,152 @@
         </h2>
 
         <p style="font-size:1.2rem; color:#555;">
-            Questões de vestibulares serão disponibilizadas em breve.
+            Questões de vestibulares (ENADE, concursos, etc) sobre Limites serão disponibilizadas nesta seção em breve.
         </p>
     </div>
 </section>
 
+</div>
 </main>
+
+<aside class="menu-lateral">
+    <iframe src="../menu_calculo.html" style="width:100%; border:none; height:600px;"></iframe>
+</aside>
+
+</div>
+
+<script>
+function toggleGabarito(botao) {
+    const gabarito = botao.nextElementSibling;
+    if (gabarito.style.display === "none" || gabarito.style.display === "") {
+        gabarito.style.display = "block";
+        botao.textContent = "Esconder Gabarito e Resolução";
+        botao.style.backgroundColor = "#2c3e50";
+    } else {
+        gabarito.style.display = "none";
+        botao.textContent = "Ver Gabarito e Resolução";
+        botao.style.backgroundColor = "#3498db";
+    }
+}
+
+function toggleMenu() {
+    const menuGlobal = document.getElementById("menu-principal");
+    if (menuGlobal) menuGlobal.classList.toggle("ativo");
+}
+
+let slideAtual = 0;
+let slides = [];
+
+function prepararSlides() {
+    const seletores = '.container-resumo, .passo-teoria, .aplicacoes-reais, .questao';
+    slides = document.querySelectorAll(seletores);
+}
+
+function toggleSlides() {
+    prepararSlides();
+    const body = document.body;
+    if (!body.classList.contains('modo-slides')) {
+        body.classList.add('modo-slides');
+        slideAtual = 0;
+        mostrarSlide(slideAtual);
+    } else {
+        body.classList.remove('modo-slides');
+        window.location.reload(); 
+    }
+}
+
+function mostrarSlide(n) {
+    slides.forEach(s => {
+        s.classList.remove('slide-ativo');
+        s.style.display = 'none';
+    });
+    const slide = slides[n];
+    slide.classList.add('slide-ativo');
+    slide.style.display = 'flex'; 
+
+    if (slide.classList.contains('questao') && !slide.querySelector('.btn-gabarito')) {
+        const resolucoes = slide.querySelectorAll('.resolucao-bloco');
+        resolucoes.forEach(r => r.style.display = 'block');
+    } else {
+        const gabaritos = slide.querySelectorAll('.gabarito-resolucao');
+        gabaritos.forEach(g => g.style.display = 'none');
+        const botoes = slide.querySelectorAll('.btn-gabarito');
+        botoes.forEach(b => {
+            b.textContent = "Ver Gabarito e Resolução";
+            b.style.backgroundColor = "#3498db";
+        });
+    }
+
+    const pHeader = document.querySelector('header p').innerText;
+    const partes = pHeader.split('|');
+    if(partes.length > 1) {
+        document.getElementById('slide-info-serie').innerText = partes[0].trim();
+        document.getElementById('slide-info-aula').innerText = partes[1].trim();
+    }
+    document.getElementById('contador-slide').innerText = (n + 1) + " / " + slides.length;
+    if (window.MathJax) MathJax.typesetPromise();
+}
+
+function mudarSlide(direcao) {
+    slideAtual += direcao;
+    if (slideAtual >= slides.length) slideAtual = 0;
+    if (slideAtual < 0) slideAtual = slides.length - 1;
+    mostrarSlide(slideAtual);
+}
+
+document.addEventListener('keydown', function(event) {
+    if (document.body.classList.contains('modo-slides')) {
+        switch(event.key) {
+            case 'ArrowRight': 
+            case 'PageDown':   
+            case 'Enter':      
+            case ' ':          
+                mudarSlide(1);
+                break;
+                
+            case 'ArrowLeft':  
+            case 'PageUp':     
+                mudarSlide(-1);
+                break;
+
+            case 'Escape':     
+                toggleSlides();
+                break;
+        }
+    }
+});
+</script>
+
+<style>
+    body.modo-slides { overflow: hidden; background-color: #1a1a1a; }
+    body.modo-slides .menu-lateral, body.modo-slides header, body.modo-slides .menu-toggle, body.modo-slides #btn-slides { display: none !important; }
+    .slide-ativo {
+        display: flex !important; flex-direction: column; align-items: center; justify-content: flex-start;
+        position: fixed; top: 0; left: 0; width: 100vw; height: calc(100vh - 70px);
+        background: #ffffff; padding: 40px; z-index: 999; overflow-y: auto !important; 
+        box-sizing: border-box; text-align: center;
+    }
+    .controles-slides {
+        position: fixed; bottom: 0; left: 0; width: 100%; height: 70px;
+        background: #2c3e50; color: white; display: none; 
+        justify-content: space-between; align-items: center; padding: 0 20px; z-index: 1001; box-sizing: border-box;
+    }
+    body.modo-slides .controles-slides { display: flex; }
+    .info-lateral { flex: 1; font-family: 'Oswald', sans-serif; font-size: 0.9rem; color: #bdc3c7; }
+    .botoes-centrais { display: flex; align-items: center; gap: 15px; justify-content: center; flex: 2; }
+    .btn-nav { padding: 10px 20px; background: #3498db; color: white; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; }
+    #contador-slide { font-family: 'Oswald', sans-serif; min-width: 60px; text-align: center; }
+</style>
+
+<div class="controles-slides">
+    <div id="slide-info-serie" class="info-lateral"></div>
+    <div class="botoes-centrais">
+        <button class="btn-nav" onclick="mudarSlide(-1)">⬅ Anterior</button>
+        <span id="contador-slide"></span>
+        <button class="btn-nav" onclick="mudarSlide(1)">Próximo ➡</button>
+        <button class="btn-nav" onclick="toggleSlides()" style="background:#e74c3c;">Sair</button>
+    </div>
+    <div id="slide-info-aula" class="info-lateral" style="text-align: right;"></div>
 </div>
 </body>
 </html>
