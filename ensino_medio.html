@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+	<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-SJ6PHJ2EX1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-SJ6PHJ2EX1');
+</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ensino Médio - ExataSite</title>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="estilo.css">
+    <style>
+        /* Layout em Colunas */
+        .layout-principal {
+            display: flex;
+            gap: 30px;
+            align-items: flex-start;
+            flex-wrap: wrap; /* Ajuste para dispositivos móveis */
+            margin-top: 20px;
+        }
+
+        .coluna-esquerda {
+            flex: 3;
+            min-width: 320px;
+        }
+
+        /* Sidebar do Autor */
+        .sidebar-autor {
+            flex: 0.5;
+            min-width: 280px;
+            background: #ffffff;
+            padding: 25px;
+            border-radius: 12px;
+            border: 2px solid #e0e0e0;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+
+        .foto-autor {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--cor-secundaria, #2c3e50);
+            margin-bottom: 15px;
+            background-color: #eee;
+        }
+
+        .bio-texto {
+            text-align: left;
+            font-size: 0.80em;
+            line-height: 1.2;
+            color: #444;
+        }
+
+        .bio-texto h3 {
+            text-align: center;
+            color: var(--cor-secundaria, #2c3e50);
+            margin-bottom: 5px;
+            font-family: 'Oswald', sans-serif;
+        }
+
+        .credenciais {
+            text-align: center;
+            font-weight: bold;
+            display: block;
+            margin-bottom: 15px;
+            color: #666;
+            font-size: 0.85em;
+        }
+
+        .conquistas-geek {
+            background: #f0f4f8;
+            padding: 10px;
+            border-radius: 8px;
+            margin-top: 10px;
+            border-left: 4px solid var(--cor-secundaria, #2c3e50);
+        }
+
+        .conquistas-geek p {
+            margin: 8px 0;
+            font-size: 0.9em;
+        }
+
+        /* Ajustes dos Cards */
+        .selecao-disciplinas {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .card-disciplina {
+            text-align: center;
+            padding: 30px 20px;
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: inherit;
+            background-color: #fff;
+        }
+
+        .card-disciplina:hover {
+            transform: translateY(-8px);
+            border-color: var(--cor-secundaria, #2c3e50);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+
+<button class="menu-toggle" onclick="toggleMenu()">☰</button>
+
+<nav id="menu-principal" class="nav-global">
+    <ul>
+        <li><a href="index.html">🏠 Início</a></li>
+        <li><a href="ensino_medio.html">📚 Ensino Médio</a></li>
+        <li><a href="ensino_superior.html">🎓 Ensino Superior</a></li>
+    </ul>
+</nav>
+
+<header>
+    <h1>ENSINO MÉDIO</h1>
+    <p>Matemática e Física Escolar & Preparatório para Vestibulares</p>
+</header>
+
+<div class="container">
+    <main class="layout-principal">
+        
+        <div class="coluna-esquerda">
+            <h2 style="margin-bottom: 25px;">Selecione a disciplina:</h2>
+
+            <div class="selecao-disciplinas">
+                <!-- Card Física -->
+                <a href="fisica_home.html" class="card-disciplina">
+                    <span style="font-size: 3em; display: block; margin-bottom: 10px;">⚛️</span>
+                    <h2>FÍSICA</h2>
+                    <p>Mecânica, Termologia, Óptica, Ondas e Eletricidade com foco conceitual e prático.</p>
+                    <span class="btn-gabarito" style="display:inline-block; margin-top:20px;">Acessar</span>
+                </a>
+
+                <!-- Card Matemática -->
+                <a href="matematica_home.html" class="card-disciplina">
+                    <span style="font-size: 3em; display: block; margin-bottom: 10px;">📐</span>
+                    <h2>MATEMÁTICA</h2>
+                    <p>Funções, Trigonometria, Geometria e Análise Combinatória para fixação da base.</p>
+                    <span class="btn-gabarito" style="display:inline-block; margin-top:20px;">Acessar</span>
+                </a>
+            </div>
+
+            <section class="resumo-conteudo">
+                <h3>Apoio ao Estudante</h3>
+                <p>Nesta seção você encontra resumos, exercícios resolvidos e materiais estruturados para acompanhar as aulas da escola e se preparar para o ENEM e vestibulares.</p>
+            </section>
+        </div>
+
+        <aside class="sidebar-autor">
+            <img src="imagens/wans.png" alt="Wanderson Pereira Schneider" class="foto-autor">
+            
+            <div class="bio-texto">
+                <h3>Wanderson P. Schneider</h3>
+                <span class="credenciais">Matemático, Físico, Motociclista e Baixista</span>
+                <span class="credenciais">Traduz o "cientifiquês" para o português de forma leve </span>
+
+                <p>Licenciado em Matemática;</p>
+                <p>Mestre em Ensino de Física;</p> 
+                <p>Pós-graduado em Educação para Jovens e Adultos (EJA);</p> 
+
+                <div class="conquistas-geek">
+                    <p>🃏 <strong>Mestre do Truco:</strong> Campeão Intergaláctico (invicto contra alienígenas).</p>
+                    <p>🔮 <strong>Busca Infinita:</strong> Já possui 6 das 7 Esferas do Dragão.</p>
+                    <p>🌌 <strong>Navegador:</strong> Sabe calcular a velocidade da luz, mas ainda se perde no GPS.</p>
+                    <p>⚔️ <strong>Multiverso:</strong> Platinou ciências em 3 realidades do multiverso (e contando...).</p>
+                </div>
+            </div>
+        </aside>
+
+    </main>
+</div>
+
+<script>
+function toggleMenu() {
+    const menuGlobal = document.getElementById("menu-principal");
+    if (menuGlobal) menuGlobal.classList.toggle("ativo");
+}
+</script>
+</body>
+</html>
