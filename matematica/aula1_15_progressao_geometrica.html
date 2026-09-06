@@ -6,7 +6,7 @@
     <title>1º Ano: Aula 15 - Progressão Geométrica (PG)</title>
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../estilo.css">
-
+    
     <script>
         MathJax = {
             tex: {
@@ -31,12 +31,10 @@
     </ul>
 </nav>
 
-<header>
+<header id="topo">
     <h1>MATEMÁTICA EM</h1>
-    <p>1º Ano | Aula 15: Álgebra (Progressão Geométrica)</p>
-<button id="btn-slides" onclick="toggleSlides()" style="position: fixed; top: 20px; right: 20px; z-index: 1000; padding: 10px; cursor: pointer; background: #e67e22; color: white; border: none; border-radius: 5px; font-weight: bold;">
-    📺 Iniciar Modo Slides
-</button>
+    <p>1º Ano | Aula 15: Progressão Geométrica (PG)</p>
+    <button id="btn-slides" onclick="toggleSlides()">📺 Iniciar Modo Slides</button>
 </header>
 
 <div class="container">
@@ -44,398 +42,195 @@
 <main class="conteudo-principal">
 
 <div class="secao-aula">
-  <div class="container-resumo">
+ <div class="container-resumo" id="resumo">
     <h3>📚 Resumo</h3>
     <section class="resumo-conteudo">
-        <p>Uma <strong>Progressão Geométrica (PG)</strong> é uma sequência numérica em que cada termo (a partir do segundo) é obtido multiplicando o anterior por uma constante chamada <strong>razão $q$</strong>.</p>
-
-        <p style="text-align:center; font-size:1.1em;">
-            $(a_1,\ a_1 q,\ a_1 q^2,\ \ldots,\ a_1 q^{n-1},\ \ldots)$
-        </p>
-
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 12px; margin-top: 12px; text-align: center;">
-            <div style="background:#eaf4fb; border-radius:8px; padding:12px;">
-                <strong>📌 Termo Geral</strong><br><br>
-                $a_n = a_1 \cdot q^{n-1}$<br><br>
-                <small>$a_1$: 1º termo &nbsp;|&nbsp; $q$: razão &nbsp;|&nbsp; $n$: posição</small>
-            </div>
-            <div style="background:#eafaf1; border-radius:8px; padding:12px;">
-                <strong>➕ Soma dos $n$ Termos</strong><br><br>
-                $q \neq 1$: $S_n = a_1 \cdot \dfrac{q^n - 1}{q - 1}$<br><br>
-                $q = 1$: $S_n = n \cdot a_1$
-            </div>
-            <div style="background:#fef9e7; border-radius:8px; padding:12px;">
-                <strong>♾️ PG Infinita Decrescente</strong><br><br>
-                $|q| < 1$:<br>
-                $S_\infty = \dfrac{a_1}{1 - q}$<br><br>
-                <small>Soma de infinitos termos</small>
-            </div>
-            <div style="background:#fdf2f8; border-radius:8px; padding:12px;">
-                <strong>🔗 Propriedade do Termo Médio</strong><br><br>
-                $a_n^2 = a_{n-1} \cdot a_{n+1}$<br><br>
-                <small>O quadrado de qualquer termo é igual ao produto dos vizinhos</small>
-            </div>
-        </div>
+        <p><strong>Progressão Geométrica (PG):</strong> Sequência numérica em que cada termo, a partir do segundo, é obtido multiplicando o anterior por uma constante chamada <strong>razão ($q$)</strong>.</p>
+        <p><strong>Termo Geral da PG:</strong> $a_n = a_1 \cdot q^{n-1}$</p>
+        <p><strong>Soma dos $n$ primeiros termos (PG Finita):</strong> $S_n = \frac{a_1(q^n - 1)}{q - 1} \quad (q \neq 1)$</p>
+        <p><strong>Soma da PG Infinita:</strong> $S_\infty = \frac{a_1}{1 - q} \quad (-1 < q < 1)$</p>
     </section>
-  </div>
+</div>
 
-<section class="conteudo-teorico-completo">
-
+<section class="conteudo-teorico-completo" id="teoria">
     <div class="passo-teoria">
-        <h3>📖 Progressão Geométrica (PG)</h3>
+        <h3>📖 Conceitos Fundamentais</h3>
         <h4>1. Definição e Razão</h4>
-        <p>Uma sequência $(a_1, a_2, a_3, \ldots)$ é uma <strong>Progressão Geométrica</strong> se existe uma constante $q$ (a <strong>razão</strong>) tal que:</p>
-        <p style="text-align:center;">$$\frac{a_{n+1}}{a_n} = q, \quad \text{para todo } n \geq 1$$</p>
-        <p>Ou seja, cada termo é obtido multiplicando o anterior por $q$. A razão pode ser qualquer número real não nulo — e os termos da PG também devem ser não nulos.</p>
-        <p><strong>Classificações segundo a razão:</strong></p>
-        <ul style="margin-left: 2rem;">
-            <li>$q > 1$: PG <strong>crescente</strong> (com $a_1 > 0$) ou decrescente (com $a_1 < 0$)</li>
-            <li>$0 < q < 1$: PG <strong>decrescente</strong> (com $a_1 > 0$) tendendo a zero</li>
-            <li>$q = 1$: PG <strong>constante</strong> — todos os termos iguais a $a_1$</li>
-            <li>$q = -1$: PG <strong>alternante</strong> — termos alternam entre $a_1$ e $-a_1$</li>
-            <li>$q < 0$: PG com termos de <strong>sinais alternados</strong></li>
-        </ul>
-        <p><strong>Identificando a razão:</strong> divida qualquer termo pelo anterior. Se o quociente for constante, a sequência é PG.</p>
-    </div>
+        <p>Em uma PG $(a_1, a_2, a_3, \dots, a_n)$, a razão é dada pela divisão entre qualquer termo e seu antecessor imediato:</p>
+        <p>$$q = \frac{a_n}{a_{n-1}}$$</p>
 
-    <div class="passo-teoria">
-        <h4>2. Termo Geral da PG</h4>
-        <p>A fórmula do <strong>termo geral</strong> permite calcular qualquer termo da PG diretamente, sem precisar calcular todos os anteriores:</p>
-        <p style="text-align:center;">$$\boxed{a_n = a_1 \cdot q^{n-1}}$$</p>
-        <p><strong>Demonstração:</strong> partindo de $a_1$ e multiplicando $q$ repetidamente:</p>
-        <p style="text-align:center;">$a_1,\ a_1 q,\ a_1 q^2,\ \ldots,\ a_1 q^{n-1}$</p>
-        <p>O expoente de $q$ é sempre $n-1$ (um a menos que a posição).</p>
-        <p><strong>Fórmula alternativa</strong> — relacionando termos não consecutivos:</p>
-        <p style="text-align:center;">$$a_n = a_m \cdot q^{n-m}$$</p>
-        <p>Muito útil quando não se conhece $a_1$ mas conhece-se algum outro termo.</p>
-        <p><strong>Exemplos rápidos:</strong> na PG $(2, 6, 18, 54, \ldots)$ com $q = 3$:</p>
-        <ul style="margin-left:2rem;">
-            <li>$a_5 = 2 \cdot 3^4 = 162$</li>
-            <li>$a_{10} = 2 \cdot 3^9 = 39{.}366$</li>
+        <Image src="image_agent_tag_16125036793291727318" alt="Gráfico do crescimento exponencial em uma Progressão Geométrica" caption="Crescimento exponencial em uma Progressão Geométrica" />
+
+        <h4>2. Classificação das PGs</h4>
+        <ul>
+            <li><strong>Crescente:</strong> $a_1 > 0$ e $q > 1$ ou $a_1 < 0$ e $0 < q < 1$. Exemplo: $(2, 6, 18, 54, \dots)$.</li>
+            <li><strong>Decrescente:</strong> $a_1 > 0$ e $0 < q < 1$ ou $a_1 < 0$ e $q > 1$. Exemplo: $(32, 16, 8, 4, \dots)$.</li>
+            <li><strong>Oscilante ou Alternada:</strong> $q < 0$. Exemplo: $(3, -6, 12, -24, \dots)$.</li>
+            <li><strong>Constante:</strong> $q = 1$. Exemplo: $(5, 5, 5, 5, \dots)$.</li>
         </ul>
     </div>
 
     <div class="passo-teoria">
-        <h4>3. Propriedade dos Termos Equidistantes</h4>
-        <p>Em uma PG, dois termos equidistantes dos extremos têm produto igual ao produto dos extremos:</p>
-        <p style="text-align:center;">$$a_p \cdot a_q = a_r \cdot a_s \quad \text{se} \quad p + q = r + s$$</p>
-        <p>O caso mais importante é o <strong>termo médio proporcional</strong> entre dois termos:</p>
-        <p style="text-align:center;">$$a_n^2 = a_{n-1} \cdot a_{n+1}$$</p>
-        <p>Isso significa que em qualquer três termos consecutivos de uma PG, o quadrado do termo central é igual ao produto dos extremos. Essa propriedade é usada para:</p>
-        <ul style="margin-left: 2rem;">
-            <li>Verificar se três números formam uma PG</li>
-            <li>Inserir médias geométricas entre dois valores</li>
-            <li>Resolver problemas com três ou mais termos desconhecidos</li>
-        </ul>
+        <h4>3. Média Geométrica</h4>
+        <p>Para três termos consecutivos $(a, b, c)$ de uma PG de termos positivos, o termo central é a média geométrica dos extremantes:</p>
+        <p>$$b^2 = a \cdot c \implies b = \sqrt{a \cdot c}$$</p>
     </div>
-
-    <div class="passo-teoria">
-        <h4>4. Soma dos $n$ Primeiros Termos de uma PG Finita</h4>
-        <p>A soma dos $n$ primeiros termos de uma PG é:</p>
-        <p style="text-align:center;">
-            $$S_n = \begin{cases} a_1 \cdot \dfrac{q^n - 1}{q - 1} & \text{se } q \neq 1 \\[10pt] n \cdot a_1 & \text{se } q = 1 \end{cases}$$
-        </p>
-        <p><strong>Demonstração rápida:</strong> seja $S = a_1 + a_1 q + \cdots + a_1 q^{n-1}$. Multiplicando por $q$: $qS = a_1 q + a_1 q^2 + \cdots + a_1 q^n$. Subtraindo: $S(q-1) = a_1(q^n - 1)$, logo $S = a_1 \cdot \dfrac{q^n-1}{q-1}$.</p>
-        <p><strong>Forma alternativa</strong> (útil quando se conhece o último termo $a_n$):</p>
-        <p style="text-align:center;">$$S_n = \frac{a_n \cdot q - a_1}{q - 1} = \frac{a_1 - a_n \cdot q}{1 - q}$$</p>
-    </div>
-
-    <div class="passo-teoria">
-        <h4>5. Soma de uma PG Infinita Decrescente</h4>
-        <p>Quando $|q| < 1$, os termos da PG tendem a zero e a soma de infinitos termos <strong>converge</strong> para um valor finito:</p>
-        <p style="text-align:center;">$$S_\infty = \frac{a_1}{1 - q}, \quad |q| < 1$$</p>
-        <p><strong>Intuição:</strong> à medida que $n \to \infty$, $q^n \to 0$ (pois $|q| < 1$), e a fórmula $S_n = a_1 \cdot \dfrac{q^n - 1}{q-1}$ tende a $\dfrac{a_1}{1-q}$.</p>
-        <p><strong>Aplicação clássica — dízima periódica:</strong> a dízima $0{,}\overline{3} = 0{,}333\ldots$ é a soma da PG infinita com $a_1 = 0{,}3$ e $q = 0{,}1$:</p>
-        <p style="text-align:center;">$$S_\infty = \frac{0{,}3}{1 - 0{,}1} = \frac{0{,}3}{0{,}9} = \frac{1}{3}$$</p>
-    </div>
-
-    <div class="passo-teoria">
-        <h4>6. PG vs. PA — Comparativo e Conexão com Logaritmos</h4>
-        <p>A PG e a Progressão Aritmética (PA) têm uma <strong>relação profunda via logaritmos</strong>: se $(a_1, a_2, \ldots)$ é uma PG com razão $q > 0$, então $(\log a_1, \log a_2, \ldots)$ é uma PA com razão $\log q$.</p>
-        <div style="overflow-x:auto; margin: 10px 0;">
-            <table style="width:100%; border-collapse:collapse; text-align:center; font-size:0.93em;">
-                <tr style="background:#2c3e50; color:white;">
-                    <th style="padding:8px; border:1px solid #ccc;">Característica</th>
-                    <th style="padding:8px; border:1px solid #ccc;">PA</th>
-                    <th style="padding:8px; border:1px solid #ccc;">PG</th>
-                </tr>
-                <tr>
-                    <td style="padding:7px; border:1px solid #ccc;">Operação</td>
-                    <td style="padding:7px; border:1px solid #ccc;">Adição (razão $r$)</td>
-                    <td style="padding:7px; border:1px solid #ccc;">Multiplicação (razão $q$)</td>
-                </tr>
-                <tr style="background:#f9f9f9;">
-                    <td style="padding:7px; border:1px solid #ccc;">Termo geral</td>
-                    <td style="padding:7px; border:1px solid #ccc;">$a_n = a_1 + (n-1)r$</td>
-                    <td style="padding:7px; border:1px solid #ccc;">$a_n = a_1 \cdot q^{n-1}$</td>
-                </tr>
-                <tr>
-                    <td style="padding:7px; border:1px solid #ccc;">Termo médio</td>
-                    <td style="padding:7px; border:1px solid #ccc;">$a_n = \frac{a_{n-1}+a_{n+1}}{2}$</td>
-                    <td style="padding:7px; border:1px solid #ccc;">$a_n^2 = a_{n-1} \cdot a_{n+1}$</td>
-                </tr>
-                <tr style="background:#f9f9f9;">
-                    <td style="padding:7px; border:1px solid #ccc;">Soma de $n$ termos</td>
-                    <td style="padding:7px; border:1px solid #ccc;">$S_n = \frac{(a_1+a_n)n}{2}$</td>
-                    <td style="padding:7px; border:1px solid #ccc;">$S_n = a_1 \cdot \frac{q^n-1}{q-1}$</td>
-                </tr>
-                <tr>
-                    <td style="padding:7px; border:1px solid #ccc;">Soma infinita</td>
-                    <td style="padding:7px; border:1px solid #ccc;">Diverge (exceto $r=0$)</td>
-                    <td style="padding:7px; border:1px solid #ccc;">$\frac{a_1}{1-q}$ se $|q|<1$</td>
-                </tr>
-            </table>
-        </div>
-    </div>
-
 </section>
 
-<section class="aplicacoes-reais">
+<section class="aplicacoes-reais" id="aplicacoes">
     <h3>💡 Matemática em Ação</h3>
-    <div class="cards-aplicacao" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-top: 20px;">
-        <div class="card" style="background: #fdfdfd; padding: 20px; border-radius: 10px; border-left: 5px solid #3498db; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
-            <h4>💰 Finanças — Juros Compostos</h4>
-            <p>Os montantes de um capital aplicado a juros compostos formam uma <strong>PG</strong>: $C,\ C(1+i),\ C(1+i)^2,\ \ldots$ com razão $q = 1+i$. A soma dos montantes ao longo de vários períodos é exatamente a fórmula de soma da PG.</p>
+    <div class="cards-aplicacao">
+        <div class="card">
+            <h4>📈 Juros Compostos e Finanças</h4>
+            <p>O crescimento de investimentos sob o regime de juros compostos segue exatamente o modelo matemático de uma PG crescente, onde o fator de rendimento $(1 + i)$ atua como a razão $q$.</p>
         </div>
-        <div class="card" style="background: #fdfdfd; padding: 20px; border-radius: 10px; border-left: 5px solid #27ae60; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
-            <h4>🦠 Biologia — Crescimento Populacional</h4>
-            <p>O crescimento de colônias bacterianas sob condições ideais segue uma <strong>PG de razão 2</strong>: uma bactéria → 2 → 4 → 8 → … A população após $n$ divisões é $P_n = P_0 \cdot 2^n$, o termo geral da PG.</p>
-        </div>
-        <div class="card" style="background: #fdfdfd; padding: 20px; border-radius: 10px; border-left: 5px solid #e74c3c; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
-            <h4>🎸 Física — Frequências Musicais</h4>
-            <p>Na escala temperada ocidental, as 12 notas de uma oitava formam uma <strong>PG de razão $q = \sqrt[12]{2}$</strong>. A nota Lá tem 440 Hz; a próxima oitava tem 880 Hz — exatamente o dobro, confirmando a estrutura geométrica da música.</p>
+        <div class="card" style="border-left-color: #2ecc71;">
+            <h4>🦠 Biologia e Crescimento Populacional</h4>
+            <p>A divisão celular e a replicação de bactérias ou vírus sob condições ideais multiplicam-se segundo uma PG de razão $q = 2$ a cada ciclo de geração.</p>
         </div>
     </div>
 </section>
 
-<section class="questoes-resolvidas">
+<section class="questoes-resolvidas" id="resolvidas">
     <h3>✅ 5 Questões Resolvidas (R 1 a 5)</h3>
-
+    
     <article class="questao">
-        <h4>R 1: Identificar PG e Calcular a Razão</h4>
-        <p><strong>Enunciado:</strong> Verifique se $(3,\ 6,\ 12,\ 24,\ 48)$ é uma PG e determine a razão.</p>
+        <h4>R 1: Cálculo do Termo Geral</h4>
+        <p><strong>Enunciado:</strong> Determine o $7^\circ$ termo da PG $(3, 6, 12, 24, \dots)$.</p>
         <div class="resolucao-bloco">
-            <p><strong>Resolução:</strong> Calculamos o quociente entre termos consecutivos:</p>
-            <p>$\dfrac{6}{3} = 2$, $\quad \dfrac{12}{6} = 2$, $\quad \dfrac{24}{12} = 2$, $\quad \dfrac{48}{24} = 2$.</p>
-            <p>O quociente é constante e igual a $2$. Portanto, é uma <strong>PG com $q = 2$</strong>.</p>
+            <p><strong>Resolução:</strong><br>
+            1. Identificando os dados: $a_1 = 3$, $q = \frac{6}{3} = 2$ e $n = 7$.<br>
+            2. Aplicando a fórmula do termo geral $a_n = a_1 \cdot q^{n-1}$:<br>
+               $a_7 = 3 \cdot 2^{7-1} = 3 \cdot 2^6$<br>
+               $a_7 = 3 \cdot 64 = \mathbf{192}$.</p>
         </div>
     </article>
 
     <article class="questao">
-        <h4>R 2: Termo Geral</h4>
-        <p><strong>Enunciado:</strong> Em uma PG com $a_1 = 5$ e $q = 3$, calcule $a_6$.</p>
+        <h4>R 2: Encontrando a Razão</h4>
+        <p><strong>Enunciado:</strong> Em uma PG, o primeiro termo é $a_1 = 5$ e o quinto termo é $a_5 = 80$. Sabendo que todos os termos são positivos, qual é a razão dessa PG?</p>
         <div class="resolucao-bloco">
-            <p><strong>Resolução:</strong>
-            $$a_6 = a_1 \cdot q^{6-1} = 5 \cdot 3^5 = 5 \cdot 243 = 1215$$</p>
+            <p><strong>Resolução:</strong><br>
+            1. Usando a fórmula do termo geral:<br>
+               $a_5 = a_1 \cdot q^4 \implies 80 = 5 \cdot q^4$<br>
+               $q^4 = \frac{80}{5} = 16$<br>
+            2. Como os termos são positivos: $q = \sqrt[4]{16} = \mathbf{2}$.</p>
         </div>
     </article>
 
     <article class="questao">
-        <h4>R 3: Encontrar $a_1$ e $q$ dados Dois Termos</h4>
-        <p><strong>Enunciado:</strong> Em uma PG, $a_2 = 6$ e $a_5 = 162$. Determine $a_1$ e $q$.</p>
+        <h4>R 3: Soma dos Termos de uma PG Finita</h4>
+        <p><strong>Enunciado:</strong> Calcule a soma dos $6$ primeiros termos da PG $(2, 6, 18, \dots)$.</p>
         <div class="resolucao-bloco">
-            <p><strong>Resolução:</strong> Usando $a_n = a_m \cdot q^{n-m}$:
-            $$a_5 = a_2 \cdot q^{5-2} \implies 162 = 6 \cdot q^3 \implies q^3 = 27 \implies q = 3$$
-            $$a_1 = \frac{a_2}{q} = \frac{6}{3} = 2$$
-            PG: $(2,\ 6,\ 18,\ 54,\ 162,\ \ldots)$ ✔</p>
+            <p><strong>Resolução:</strong><br>
+            1. Dados: $a_1 = 2$, $q = 3$ e $n = 6$.<br>
+            2. Aplicando a fórmula da soma finita $S_n = \frac{a_1(q^n - 1)}{q - 1}$:<br>
+               $S_6 = \frac{2(3^6 - 1)}{3 - 1} = \frac{2(729 - 1)}{2}$<br>
+               $S_6 = 728 \implies S_6 = \mathbf{728}$.</p>
         </div>
     </article>
 
     <article class="questao">
-        <h4>R 4: Soma de $n$ Termos</h4>
-        <p><strong>Enunciado:</strong> Calcule a soma dos 6 primeiros termos da PG $(1,\ 2,\ 4,\ 8,\ \ldots)$.</p>
+        <h4>R 4: Soma de uma PG Infinita</h4>
+        <p><strong>Enunciado:</strong> Encontre a soma de todos os termos da PG infinita $\left(1, \frac{1}{2}, \frac{1}{4}, \frac{1}{8}, \dots\right)$.</p>
         <div class="resolucao-bloco">
-            <p><strong>Resolução:</strong> $a_1 = 1$, $q = 2$, $n = 6$:
-            $$S_6 = 1 \cdot \frac{2^6 - 1}{2 - 1} = \frac{64 - 1}{1} = 63$$
-            Verificação direta: $1 + 2 + 4 + 8 + 16 + 32 = 63$ ✔</p>
+            <p><strong>Resolução:</strong><br>
+            1. Dados: $a_1 = 1$ e $q = \frac{1}{2}$. Como $-1 < q < 1$, a PG converge.<br>
+            2. Aplicando a fórmula $S_\infty = \frac{a_1}{1 - q}$:<br>
+               $S_\infty = \frac{1}{1 - \frac{1}{2}} = \frac{1}{\frac{1}{2}} = \mathbf{2}$.</p>
         </div>
     </article>
 
     <article class="questao">
-        <h4>R 5: PG Infinita — Dízima Periódica</h4>
-        <p><strong>Enunciado:</strong> Converta a dízima $0{,}\overline{27} = 0{,}272727\ldots$ em fração usando a soma da PG infinita.</p>
+        <h4>R 5: Propriedade dos Termos Consecutivos</h4>
+        <p><strong>Enunciado:</strong> Determine o valor positivo de $x$ para que os números $(x, x + 2, x + 6)$ formem uma PG nessa ordem.</p>
         <div class="resolucao-bloco">
-            <p><strong>Resolução:</strong> Escrevemos como soma:
-            $$0{,}272727\ldots = 0{,}27 + 0{,}0027 + 0{,}000027 + \cdots$$
-            É uma PG com $a_1 = 0{,}27$ e $q = 0{,}01$. Como $|q| < 1$:
-            $$S_\infty = \frac{0{,}27}{1 - 0{,}01} = \frac{0{,}27}{0{,}99} = \frac{27}{99} = \frac{3}{11}$$
-            Verificação: $\dfrac{3}{11} = 0{,}272727\ldots$ ✔</p>
+            <p><strong>Resolução:</strong><br>
+            1. Pela propriedade do termo médio: $(x + 2)^2 = x \cdot (x + 6)$.<br>
+            2. Desenvolvendo os produtos:<br>
+               $x^2 + 4x + 4 = x^2 + 6x$<br>
+            3. Simplificando $x^2$ dos dois lados:<br>
+               $4x + 4 = 6x \implies 2x = 4 \implies x = \mathbf{2}$.</p>
         </div>
     </article>
 </section>
 
-<section class="questoes-propostas">
+<section class="questoes-propostas" id="propostas">
     <h3>✍️ 5 Questões Propostas (P 6 a 10)</h3>
 
     <article class="questao">
-        <h4>P 6: Inserir Médias Geométricas</h4>
-        <p><strong>Enunciado:</strong> Insira 3 médias geométricas entre $2$ e $162$, formando uma PG de 5 termos.</p>
+        <h4>P 6: Termo Específico de PG Alternada</h4>
+        <p><strong>Enunciado:</strong> Determine o $6^\circ$ termo da PG oscilante $(2, -6, 18, -54, \dots)$.</p>
         <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
         <div class="gabarito-resolucao">
-            <p><strong>Resolução:</strong> Temos $a_1 = 2$ e $a_5 = 162$. Usando o termo geral:
-            $$162 = 2 \cdot q^4 \implies q^4 = 81 \implies q = 3 \text{ (tomando } q > 0\text{)}$$
-            PG: $a_1 = 2$, $a_2 = 6$, $a_3 = 18$, $a_4 = 54$, $a_5 = 162$.<br>
-            As 3 médias geométricas são: <strong>6, 18 e 54</strong>.</p>
+            <p><strong>Resolução:</strong><br>
+            1. Dados: $a_1 = 2$, $q = \frac{-6}{2} = -3$.<br>
+            2. $a_6 = a_1 \cdot q^5 \implies a_6 = 2 \cdot (-3)^5 = 2 \cdot (-243) = \mathbf{-486}$.</p>
         </div>
     </article>
 
     <article class="questao">
-        <h4>P 7: Três Números em PG</h4>
-        <p><strong>Enunciado:</strong> Três números em PG têm soma $14$ e produto $64$. Determine esses números.</p>
+        <h4>P 7: Quantidade de Termos na PG</h4>
+        <p><strong>Enunciado:</strong> Quantos termos possui a PG finita $(3, 6, 12, \dots, 384)$?</p>
         <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
         <div class="gabarito-resolucao">
-            <p><strong>Resolução:</strong> Represente os três termos como $\dfrac{a}{q},\ a,\ aq$.</p>
-            <p><strong>Produto:</strong> $\dfrac{a}{q} \cdot a \cdot aq = a^3 = 64 \implies a = 4$.</p>
-            <p><strong>Soma:</strong> $\dfrac{4}{q} + 4 + 4q = 14 \implies \dfrac{4}{q} + 4q = 10$.</p>
-            <p>Multiplicando por $q$: $4 + 4q^2 = 10q \implies 4q^2 - 10q + 4 = 0 \implies 2q^2 - 5q + 2 = 0$.</p>
-            <p>$(2q - 1)(q - 2) = 0 \implies q = 2$ ou $q = \dfrac{1}{2}$.</p>
-            <p>Para $q = 2$: termos $2,\ 4,\ 8$. Para $q = \dfrac{1}{2}$: termos $8,\ 4,\ 2$ (mesma PG invertida).<br>
-            Resposta: <strong>2, 4 e 8</strong>.</p>
+            <p><strong>Resolução:</strong><br>
+            1. Dados: $a_1 = 3$, $q = 2$, e $a_n = 384$.<br>
+            2. $384 = 3 \cdot 2^{n-1} \implies 2^{n-1} = 128$.<br>
+            3. Fatorando $128 = 2^7 \implies n - 1 = 7 \implies n = \mathbf{8\text{ termos}}$.</p>
         </div>
     </article>
 
     <article class="questao">
-        <h4>P 8: Soma de PG com Logaritmos</h4>
-        <p><strong>Enunciado:</strong> Os termos $\log 2$, $\log 4$ e $\log 8$ formam uma PA. Mostre que $2$, $4$ e $8$ formam uma PG e determine o 8º termo da PG.</p>
+        <h4>P 8: Soma Infinita de Frascos</h4>
+        <p><strong>Enunciado:</strong> Calcule o valor da soma infinita: $S = 6 + 2 + \frac{2}{3} + \frac{2}{9} + \dots$</p>
         <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
         <div class="gabarito-resolucao">
-            <p><strong>Resolução:</strong></p>
-            <p><strong>PG:</strong> $\dfrac{4}{2} = 2$ e $\dfrac{8}{4} = 2$ → razão constante $q = 2$ ✔. Logo $(2, 4, 8)$ é PG.</p>
-            <p><strong>PA dos logaritmos:</strong> $\log 4 - \log 2 = \log 2$ e $\log 8 - \log 4 = \log 2$ ✔ — razão da PA é $\log 2$. Isso confirma a relação PG ↔ PA pelos logaritmos.</p>
-            <p><strong>8º termo da PG:</strong> $a_8 = 2 \cdot 2^{8-1} = 2^8 = 256$.</p>
+            <p><strong>Resolução:</strong><br>
+            1. Trata-se de uma PG infinita com $a_1 = 6$ e razão $q = \frac{2}{6} = \frac{1}{3}$.<br>
+            2. $S_\infty = \frac{a_1}{1 - q} = \frac{6}{1 - \frac{1}{3}} = \frac{6}{\frac{2}{3}} = 6 \cdot \frac{3}{2} = \mathbf{9}$.</p>
         </div>
     </article>
 
     <article class="questao">
-        <h4>P 9: Aplicação — Crescimento Bacteriano</h4>
-        <p><strong>Enunciado:</strong> Uma colônia bacteriana começa com 100 bactérias e dobra a cada hora. Após quantas horas a população ultrapassará 3.200?</p>
+        <h4>P 9: Dobro de População de Bactérias</h4>
+        <p><strong>Enunciado:</strong> Uma colônia possui inicialmente $100$ bactérias. Se a população dobra a cada hora, quantas bactérias haverá na colônia após $5$ horas?</p>
         <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
         <div class="gabarito-resolucao">
-            <p><strong>Resolução:</strong> PG com $a_1 = 100$ e $q = 2$. O número de bactérias após $n-1$ horas é:
-            $$a_n = 100 \cdot 2^{n-1} > 3200 \implies 2^{n-1} > 32 = 2^5 \implies n - 1 > 5 \implies n > 6$$
-            Portanto $n = 7$: após <strong>6 horas</strong>, a população é $a_7 = 100 \cdot 2^6 = 6{.}400 > 3{.}200$ ✔.<br>
-            Às 5 horas: $a_6 = 100 \cdot 2^5 = 3{.}200$ (não ultrapassa — é exatamente igual).<br>
-            Portanto a população <strong>ultrapassa</strong> 3.200 após <strong>6 horas</strong>.</p>
+            <p><strong>Resolução:</strong><br>
+            1. No instante inicial ($t = 0$), temos $a_1 = 100$.<br>
+            2. Após $5$ horas, o número de bactérias corresponde ao termo $a_6$ da PG (pois $n = \text{horas} + 1$):<br>
+               $a_6 = 100 \cdot 2^5 = 100 \cdot 32 = \mathbf{3200\text{ bactérias}}$.</p>
         </div>
     </article>
 
     <article class="questao">
-        <h4>P 10: Soma Infinita — Aplicação Geométrica</h4>
-        <p><strong>Enunciado:</strong> Um quadrado de lado $8$ cm tem seu quadrado inscrito unindo os pontos médios dos lados, e esse processo se repete infinitamente. Qual a soma das áreas de todos os quadrados?</p>
+        <h4>P 10: Fração Geratriz com PG Infinita</h4>
+        <p><strong>Enunciado:</strong> Determine a fração geratriz da dízima periódica $0{,}333\dots$ utilizando a soma de uma PG infinita.</p>
         <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
         <div class="gabarito-resolucao">
-            <p><strong>Resolução:</strong> O 1º quadrado tem lado $8$ cm → área $= 64$ cm².</p>
-            <p>O quadrado inscrito tem diagonal igual ao lado do anterior, logo lado $= \dfrac{8}{\sqrt{2}} = 4\sqrt{2}$ → área $= 32$ cm².</p>
-            <p>A razão das áreas é $q = \dfrac{32}{64} = \dfrac{1}{2}$. As áreas formam uma PG infinita com $a_1 = 64$ e $q = \dfrac{1}{2}$:
-            $$S_\infty = \frac{64}{1 - \frac{1}{2}} = \frac{64}{\frac{1}{2}} = 128 \text{ cm}^2$$</p>
+            <p><strong>Resolução:</strong><br>
+            1. Escrevendo a dízima como soma: $0{,}3 + 0{,}03 + 0{,}003 + \dots = \frac{3}{10} + \frac{3}{100} + \frac{3}{1000} + \dots$<br>
+            2. É uma PG infinita com $a_1 = \frac{3}{10}$ e $q = \frac{1}{10}$.<br>
+            3. $S_\infty = \frac{\frac{3}{10}}{1 - \frac{1}{10}} = \frac{\frac{3}{10}}{\frac{9}{10}} = \frac{3}{9} = \mathbf{\frac{1}{3}}$.</p>
         </div>
     </article>
 </section>
 
-<section class="TESTE">
+<section class="TESTE" id="testes">
     <h3>🎓 TESTES (T 11 a 15)</h3>
 
-    <article class="questao">
-    <h4>T 11: (UECE / 2024) Progressão Geométrica — Termos Pares e Ímpares</h4>
-    <p>Uma progressão geométrica é formada por seis termos os quais são números reais positivos. Se a soma dos termos de ordem par é igual a 21 e a soma dos termos de ordem ímpar é 10,5, é correto afirmar que o segundo termo desta progressão é igual a:</p>
-    <p>A) $0{,}5$<br>B) $1{,}0$<br>C) $1{,}5$<br>D) $2{,}0$</p>
-    <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-    <div class="gabarito-resolucao">
-        <p><strong>Resolução:</strong> Alternativa <strong>B</strong>.<br>
-        Seja a PG: $a_1, a_2, a_3, a_4, a_5, a_6$ com razão $q$.<br><br>
-        Termos de ordem ímpar: $a_1 + a_3 + a_5 = 10{,}5$.<br>
-        Termos de ordem par: $a_2 + a_4 + a_6 = 21$.<br><br>
-        Cada termo par é $q$ vezes o termo ímpar anterior:<br>
-        $a_2 + a_4 + a_6 = q(a_1 + a_3 + a_5)$<br>
-        $21 = q \times 10{,}5$<br>
-        $q = 2$.<br><br>
-        Os termos ímpares $a_1, a_3, a_5$ formam uma PG com razão $q^2 = 4$:<br>
-        $a_1(1 + 4 + 16) = 10{,}5$<br>
-        $21\,a_1 = 10{,}5$<br>
-        $a_1 = 0{,}5$.<br><br>
-        Segundo termo:<br>
-        $a_2 = a_1 \cdot q = 0{,}5 \times 2 = \mathbf{1{,}0}$.<br><br>
-        Verificação: $a_1+a_3+a_5 = 0{,}5+2+8 = 10{,}5$ ✓ e $a_2+a_4+a_6 = 1+4+16 = 21$ ✓</p>
-    </div>
-</article>
+    <div class="card" style="text-align:center; padding:60px 20px; background:#f8f9fa; border:2px dashed #3498db; border-radius:12px; margin-top:20px;">
+        <h2 style="color:#3498db; font-size:2.5rem; margin-bottom:15px;">
+            🚧 EM BREVE!
+        </h2>
 
-    <article class="questao">
-    <h4>T 12: (UNICENTRO / 2018) Progressão Geométrica — Perímetro do Triângulo</h4>
-    <p>Sabendo-se que as medidas, em metros, dos lados de um triângulo estão em progressão geométrica, nessa ordem, e são expressas por $x + 1$, $2x$ e $x^2$, pode-se concluir que a medida do perímetro desse triângulo é:</p>
-    <p>A) $7{,}0$ m<br>B) $9{,}5$ m<br>C) $16{,}5$ m<br>D) $19{,}0$ m</p>
-    <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-    <div class="gabarito-resolucao">
-        <p><strong>Resolução:</strong> Alternativa <strong>C</strong>.<br>
-        Em uma PG, o quadrado do termo central é igual ao produto dos extremos:<br>
-        $(2x)^2 = (x+1) \cdot x^2$<br>
-        $4x^2 = x^3 + x^2$<br>
-        $0 = x^3 + x^2 - 4x^2$<br>
-        $0 = x^3 - 3x^2$<br>
-        $0 = x^2(x - 3)$<br><br>
-        Como $x \neq 0$ (medidas positivas): $x = 3$.<br><br>
-        Calculando os lados:<br>
-        $x + 1 = 3 + 1 = 4$ m.<br>
-        $2x = 2 \times 3 = 6$ m.<br>
-        $x^2 = 3^2 = 9$ m.<br><br>
-        Verificando a PG: $\dfrac{6}{4} = \dfrac{9}{6} = 1{,}5$ ✓<br><br>
-        Perímetro:<br>
-        $P = 4 + 6 + 9 = \mathbf{19{,}0}$ m, alternativa <strong>D</strong>.<br><br>
-        <em>Obs.:</em> Verificando a desigualdade triangular: $4 + 6 = 10 > 9$ ✓</p>
+        <p style="font-size:1.2rem; color:#555;">
+            Questões de vestibulares serão disponibilizadas em breve.
+        </p>
     </div>
-</article>
-
-    <article class="questao">
-    <h4>T 13: (ENEM) Progressão Geométrica — Razão da PG</h4>
-    <p>A PG é toda sequência de números não nulos na qual é constante o quociente da divisão de cada termo "a partir do segundo" pelo termo anterior. Esse quociente constante é chamado de razão da progressão.</p>
-    <p>Assinale a única alternativa correta, após determinar a razão de $(2,\ 8,\ \ldots)$:</p>
-    <p>A) $q = 8$<br>B) $q = -2$<br>C) $q = 10$<br>D) $q = 2$<br>E) $q = 4$</p>
-    <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-    <div class="gabarito-resolucao">
-        <p><strong>Resolução:</strong> Alternativa <strong>E</strong>.<br>
-        A razão de uma PG é calculada dividindo-se qualquer termo pelo seu anterior:<br>
-        $q = \dfrac{a_2}{a_1} = \dfrac{8}{2} = \mathbf{4}$.</p>
-    </div>
-</article>
-
-    <article class="questao">
-    <h4>T 14: (IF Sul Rio-Grandense / 2017) Progressão Geométrica — Doação de Bombons</h4>
-    <p>Na última páscoa, a direção de um câmpus do IFSul solicitou que cada servidor doasse caixas de bombons para serem entregues a 16.000 alunos de baixa renda das escolas da região. Supondo-se que o primeiro servidor doou uma caixa; o segundo doou 2; o terceiro, 4 e assim sucessivamente até o décimo quinto servidor, é possível afirmar que o total de caixas de bombons arrecadadas foram suficientes para doar exatamente:</p>
-    <p>A) uma para cada aluno.<br>B) duas para cada aluno.<br>C) uma para cada aluno e ainda sobraram 767 caixas de bombons.<br>D) duas para cada aluno e ainda sobraram 767 caixas de bombons.</p>
-    <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-    <div class="gabarito-resolucao">
-        <p><strong>Resolução:</strong> Alternativa <strong>D</strong>.<br>
-        As doações formam uma PG com $a_1 = 1$, $q = 2$ e $n = 15$.<br><br>
-        Soma da PG:<br>
-        $S_{15} = \dfrac{a_1(q^n - 1)}{q - 1} = \dfrac{1 \cdot (2^{15} - 1)}{2 - 1} = 2^{15} - 1$.<br><br>
-        Calculando $2^{15}$:<br>
-        $2^{10} = 1\,024$ e $2^5 = 32$, logo $2^{15} = 1\,024 \times 32 = 32\,768$.<br>
-        $S_{15} = 32\,768 - 1 = 32\,767$ caixas.<br><br>
-        Dividindo pelo número de alunos:<br>
-        $32\,767 \div 16\,000 = 2$ caixas por aluno, com sobra de:<br>
-        $32\,767 - 2 \times 16\,000 = 32\,767 - 32\,000 = \mathbf{767}$ caixas.<br><br>
-        Portanto, foram suficientes para <strong>duas caixas para cada aluno</strong> e ainda sobraram <strong>767 caixas</strong>.</p>
-    </div>
-</article>
-
-    <article class="questao">
-    <h4>T 15: (UFVJM-MG / 2017) Progressão Geométrica — Razão da PG</h4>
-    <p>Um pesquisador encontrou em suas anotações antigas dados coletados em relação a um experimento. Nessas anotações os dados estavam dispostos em forma de uma progressão geométrica de 6 termos, em que as únicas informações anotadas eram de que a soma dos termos de ordem ímpar dessa progressão geométrica era 63 e a soma dos termos de ordem par era 126. Porém, o pesquisador deseja obter a razão dessa progressão, para assim saber quais são seus termos.</p>
-    <p>A razão dessa progressão geométrica é:</p>
-    <p>A) $2$<br>B) $3$<br>C) $4$<br>D) $5$</p>
-    <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-    <div class="gabarito-resolucao">
-        <p><strong>Resolução:</strong> Alternativa <strong>A</strong>.<br>
-        Seja a PG: $a_1, a_2, a_3, a_4, a_5, a_6$ com razão $q$.<br><br>
-        Termos de ordem ímpar: $a_1 + a_3 + a_5 = 63$.<br>
-        Termos de ordem par: $a_2 + a_4 + a_6 = 126$.<br><br>
-        Cada termo par é $q$ vezes o termo ímpar anterior:<br>
-        $a_2 + a_4 + a_6 = q(a_1 + a_3 + a_5)$<br>
-        $126 = q \times 63$<br>
-        $q = \dfrac{126}{63} = \mathbf{2}$.</p>
-    </div>
-</article>
-
 </section>
+
 </div>
 </main>
 
@@ -481,7 +276,7 @@ function toggleSlides() {
         mostrarSlide(slideAtual);
     } else {
         body.classList.remove('modo-slides');
-        window.location.reload();
+        window.location.reload(); 
     }
 }
 
@@ -490,10 +285,9 @@ function mostrarSlide(n) {
         s.classList.remove('slide-ativo');
         s.style.display = 'none';
     });
-
     const slide = slides[n];
     slide.classList.add('slide-ativo');
-    slide.style.display = 'flex';
+    slide.style.display = 'flex'; 
 
     if (slide.classList.contains('questao') && !slide.querySelector('.btn-gabarito')) {
         const resolucoes = slide.querySelectorAll('.resolucao-bloco');
@@ -510,13 +304,11 @@ function mostrarSlide(n) {
 
     const pHeader = document.querySelector('header p').innerText;
     const partes = pHeader.split('|');
-    if (partes.length > 1) {
+    if(partes.length > 1) {
         document.getElementById('slide-info-serie').innerText = partes[0].trim();
         document.getElementById('slide-info-aula').innerText = partes[1].trim();
     }
-
     document.getElementById('contador-slide').innerText = (n + 1) + " / " + slides.length;
-
     if (window.MathJax) MathJax.typesetPromise();
 }
 
@@ -526,26 +318,45 @@ function mudarSlide(direcao) {
     if (slideAtual < 0) slideAtual = slides.length - 1;
     mostrarSlide(slideAtual);
 }
+
+document.addEventListener('keydown', function(event) {
+    if (document.body.classList.contains('modo-slides')) {
+        switch(event.key) {
+            case 'ArrowRight': 
+            case 'PageDown':   
+            case 'Enter':      
+            case ' ':          
+                mudarSlide(1);
+                break;
+                
+            case 'ArrowLeft':  
+            case 'PageUp':     
+                mudarSlide(-1);
+                break;
+
+            case 'Escape':     
+                toggleSlides();
+                break;
+        }
+    }
+});
 </script>
 
 <style>
     body.modo-slides { overflow: hidden; background-color: #1a1a1a; }
     body.modo-slides .menu-lateral, body.modo-slides header, body.modo-slides .menu-toggle, body.modo-slides #btn-slides { display: none !important; }
-
     .slide-ativo {
         display: flex !important; flex-direction: column; align-items: center; justify-content: flex-start;
         position: fixed; top: 0; left: 0; width: 100vw; height: calc(100vh - 70px);
-        background: #ffffff; padding: 40px; z-index: 999; overflow-y: auto !important;
+        background: #ffffff; padding: 40px; z-index: 999; overflow-y: auto !important; 
         box-sizing: border-box; text-align: center;
     }
-
     .controles-slides {
         position: fixed; bottom: 0; left: 0; width: 100%; height: 70px;
-        background: #2c3e50; color: white; display: none;
+        background: #2c3e50; color: white; display: none; 
         justify-content: space-between; align-items: center; padding: 0 20px; z-index: 1001; box-sizing: border-box;
     }
     body.modo-slides .controles-slides { display: flex; }
-
     .info-lateral { flex: 1; font-family: 'Oswald', sans-serif; font-size: 0.9rem; color: #bdc3c7; }
     .botoes-centrais { display: flex; align-items: center; gap: 15px; justify-content: center; flex: 2; }
     .btn-nav { padding: 10px 20px; background: #3498db; color: white; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; }
@@ -554,14 +365,12 @@ function mudarSlide(direcao) {
 
 <div class="controles-slides">
     <div id="slide-info-serie" class="info-lateral"></div>
-
     <div class="botoes-centrais">
         <button class="btn-nav" onclick="mudarSlide(-1)">⬅ Anterior</button>
         <span id="contador-slide"></span>
         <button class="btn-nav" onclick="mudarSlide(1)">Próximo ➡</button>
         <button class="btn-nav" onclick="toggleSlides()" style="background:#e74c3c;">Sair</button>
     </div>
-
     <div id="slide-info-aula" class="info-lateral" style="text-align: right;"></div>
 </div>
 </body>
