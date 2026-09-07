@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>1º Ano: Aula 15 - Progressão Geométrica (PG)</title>
+    <title>3º Ano: Aula 17 - Associação Mista e Ponte de Wheatstone</title>
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../estilo.css">
     
@@ -32,8 +32,8 @@
 </nav>
 
 <header id="topo">
-    <h1>MATEMÁTICA EM</h1>
-    <p>1º Ano | Aula 15: Progressão Geométrica (PG)</p>
+    <h1>FÍSICA EM</h1>
+    <p>3º Ano | Aula 17: Associação Mista e Ponte de Wheatstone</p>
     <button id="btn-slides" onclick="toggleSlides()">📺 Iniciar Modo Slides</button>
 </header>
 
@@ -45,48 +45,46 @@
  <div class="container-resumo" id="resumo">
     <h3>📚 Resumo</h3>
     <section class="resumo-conteudo">
-        <p><strong>Progressão Geométrica (PG):</strong> Sequência numérica em que cada termo, a partir do segundo, é obtido multiplicando o anterior por uma constante chamada <strong>razão ($q$)</strong>.</p>
-        <p><strong>Termo Geral da PG:</strong> $a_n = a_1 \cdot q^{n-1}$</p>
-        <p><strong>Soma dos $n$ primeiros termos (PG Finita):</strong> $S_n = \frac{a_1(q^n - 1)}{q - 1} \quad (q \neq 1)$</p>
-        <p><strong>Soma da PG Infinita:</strong> $S_\infty = \frac{a_1}{1 - q} \quad (-1 < q < 1)$</p>
+        <p><strong>Associação Mista:</strong> Circuito que contém resistores conectados em série e em paralelo. A resolução é feita por partes, simplificando os blocos paralelos e em série sucessivamente.</p>
+        <p><strong>Ponte de Wheatstone:</strong> Circuito em losango com quatro resistores e um galvanômetro (ou resistor central).</p>
+        <p><strong>Condição de Equilíbrio:</strong> Quando a corrente no ramo central é nula ($i_G = 0$), o produto dos resistores opostos é igual:</p>
+        <p>$$R_1 \cdot R_4 = R_2 \cdot R_3$$</p>
     </section>
 </div>
 
 <section class="conteudo-teorico-completo" id="teoria">
     <div class="passo-teoria">
         <h3>📖 Conceitos Fundamentais</h3>
-        <h4>1. Definição e Razão</h4>
-        <p>Em uma PG $(a_1, a_2, a_3, \dots, a_n)$, a razão é dada pela divisão entre qualquer termo e seu antecessor imediato:</p>
-        <p>$$q = \frac{a_n}{a_{n-1}}$$</p>
-
-        <Image src="image_agent_tag_16125036793291727318" alt="Gráfico do crescimento exponencial em uma Progressão Geométrica" caption="Crescimento exponencial em uma Progressão Geométrica" />
-
-        <h4>2. Classificação das PGs</h4>
+        <h4>1. Resolução de Circuitos Mistos</h4>
+        <p>Para calcular a resistência equivalente ($R_{eq}$) em uma associação mista:</p>
         <ul>
-            <li><strong>Crescente:</strong> $a_1 > 0$ e $q > 1$ ou $a_1 < 0$ e $0 < q < 1$. Exemplo: $(2, 6, 18, 54, \dots)$.</li>
-            <li><strong>Decrescente:</strong> $a_1 > 0$ e $0 < q < 1$ ou $a_1 < 0$ e $q > 1$. Exemplo: $(32, 16, 8, 4, \dots)$.</li>
-            <li><strong>Oscilante ou Alternada:</strong> $q < 0$. Exemplo: $(3, -6, 12, -24, \dots)$.</li>
-            <li><strong>Constante:</strong> $q = 1$. Exemplo: $(5, 5, 5, 5, \dots)$.</li>
+            <li>Identifique nós e trechos onde a corrente não se divide (resistores em série: $R_{eq} = R_1 + R_2$).</li>
+            <li>Identifique nós com a mesma diferença de potencial (resistores em paralelo: $R_{eq} = \frac{R_1 \cdot R_2}{R_1 + R_2}$).</li>
+            <li>Redesenhe o circuito simplificado a cada etapa até obter um único resistor equivalente.</li>
         </ul>
     </div>
 
     <div class="passo-teoria">
-        <h4>3. Média Geométrica</h4>
-        <p>Para três termos consecutivos $(a, b, c)$ de uma PG de termos positivos, o termo central é a média geométrica dos extremantes:</p>
-        <p>$$b^2 = a \cdot c \implies b = \sqrt{a \cdot c}$$</p>
+        <h4>2. Ponte de Wheatstone</h4>
+        <p>A Ponte de Wheatstone é uma rede elétrica usada para medir resistências desconhecidas com alta precisão.</p>
+        <ul>
+            <li><strong>Em equilíbrio:</strong> $V_B = V_D \implies U_{BD} = 0 \implies i_G = 0$.</li>
+            <li>Nessa condição, o resistor do ramo central pode ser removido do circuito para os cálculos de $R_{eq}$.</li>
+            <li>Relação fundamental de equilíbrio: $R_1 \cdot R_4 = R_2 \cdot R_3$.</li>
+        </ul>
     </div>
 </section>
 
 <section class="aplicacoes-reais" id="aplicacoes">
-    <h3>💡 Matemática em Ação</h3>
+    <h3>💡 Física em Ação</h3>
     <div class="cards-aplicacao">
         <div class="card">
-            <h4>📈 Juros Compostos e Finanças</h4>
-            <p>O crescimento de investimentos sob o regime de juros compostos segue exatamente o modelo matemático de uma PG crescente, onde o fator de rendimento $(1 + i)$ atua como a razão $q$.</p>
+            <h4>🔬 Extensômetros (Strain Gauges)</h4>
+            <p>Sensores de deformação utilizados em pontes e asas de avião usam o princípio da Ponte de Wheatstone para detectar variações minúsculas de resistência causadas por forças mecânicas.</p>
         </div>
         <div class="card" style="border-left-color: #2ecc71;">
-            <h4>🦠 Biologia e Crescimento Populacional</h4>
-            <p>A divisão celular e a replicação de bactérias ou vírus sob condições ideais multiplicam-se segundo uma PG de razão $q = 2$ a cada ciclo de geração.</p>
+            <h4>⚖️ Balanças Eletrônicas</h4>
+            <p>As células de carga das balanças digitais usam pontes de Wheatstone para converter a deformação causada pelo peso em um sinal elétrico mensurável com extrema precisão.</p>
         </div>
     </div>
 </section>
@@ -95,62 +93,59 @@
     <h3>✅ 5 Questões Resolvidas (R 1 a 5)</h3>
     
     <article class="questao">
-        <h4>R 1: Cálculo do Termo Geral</h4>
-        <p><strong>Enunciado:</strong> Determine o $7^\circ$ termo da PG $(3, 6, 12, 24, \dots)$.</p>
+        <h4>R 1: Associação Mista Simples</h4>
+        <p><strong>Enunciado:</strong> Dois resistores de $6\,\Omega$ estão em paralelo. Essa combinação está ligada em série com um resistor de $4\,\Omega$. Qual é a resistência equivalente do circuito?</p>
         <div class="resolucao-bloco">
             <p><strong>Resolução:</strong><br>
-            1. Identificando os dados: $a_1 = 3$, $q = \frac{6}{3} = 2$ e $n = 7$.<br>
-            2. Aplicando a fórmula do termo geral $a_n = a_1 \cdot q^{n-1}$:<br>
-               $a_7 = 3 \cdot 2^{7-1} = 3 \cdot 2^6$<br>
-               $a_7 = 3 \cdot 64 = \mathbf{192}$.</p>
+            1. Calculando o paralelo dos dois resistores de $6\,\Omega$:<br>
+               $R_p = \frac{6}{2} = 3\,\Omega$.<br>
+            2. Somando com o resistor em série de $4\,\Omega$:<br>
+               $R_{eq} = R_p + 4 = 3 + 4 = \mathbf{7\,\Omega}$.</p>
         </div>
     </article>
 
     <article class="questao">
-        <h4>R 2: Encontrando a Razão</h4>
-        <p><strong>Enunciado:</strong> Em uma PG, o primeiro termo é $a_1 = 5$ e o quinto termo é $a_5 = 80$. Sabendo que todos os termos são positivos, qual é a razão dessa PG?</p>
+        <h4>R 2: Condição de Equilíbrio na Ponte de Wheatstone</h4>
+        <p><strong>Enunciado:</strong> Numa ponte de Wheatstone em equilíbrio, os resistores dos braços são $R_1 = 10\,\Omega$, $R_2 = 20\,\Omega$ e $R_3 = 15\,\Omega$. Determine o valor de $R_x$ (oposto a $R_1$).</p>
         <div class="resolucao-bloco">
             <p><strong>Resolução:</strong><br>
-            1. Usando a fórmula do termo geral:<br>
-               $a_5 = a_1 \cdot q^4 \implies 80 = 5 \cdot q^4$<br>
-               $q^4 = \frac{80}{5} = 16$<br>
-            2. Como os termos são positivos: $q = \sqrt[4]{16} = \mathbf{2}$.</p>
+            1. Aplicando a condição de equilíbrio ($R_1 \cdot R_x = R_2 \cdot R_3$):<br>
+               $10 \cdot R_x = 20 \cdot 15$.<br>
+            2. $10 \cdot R_x = 300 \implies R_x = \mathbf{30\,\Omega}$.</p>
         </div>
     </article>
 
     <article class="questao">
-        <h4>R 3: Soma dos Termos de uma PG Finita</h4>
-        <p><strong>Enunciado:</strong> Calcule a soma dos $6$ primeiros termos da PG $(2, 6, 18, \dots)$.</p>
+        <h4>R 3: Corrente Total em Circuito Misto</h4>
+        <p><strong>Enunciado:</strong> Um circuito mista tem $R_{eq} = 10\,\Omega$ alimentado por uma fonte de $20\,\text{V}$. Determine a corrente elétrica total fornecida pela fonte.</p>
         <div class="resolucao-bloco">
             <p><strong>Resolução:</strong><br>
-            1. Dados: $a_1 = 2$, $q = 3$ e $n = 6$.<br>
-            2. Aplicando a fórmula da soma finita $S_n = \frac{a_1(q^n - 1)}{q - 1}$:<br>
-               $S_6 = \frac{2(3^6 - 1)}{3 - 1} = \frac{2(729 - 1)}{2}$<br>
-               $S_6 = 728 \implies S_6 = \mathbf{728}$.</p>
+            1. Aplicando a 1ª Lei de Ohm ($U = R_{eq} \cdot i$):<br>
+               $20 = 10 \cdot i \implies i = \mathbf{2\,\text{A}}$.</p>
         </div>
     </article>
 
     <article class="questao">
-        <h4>R 4: Soma de uma PG Infinita</h4>
-        <p><strong>Enunciado:</strong> Encontre a soma de todos os termos da PG infinita $\left(1, \frac{1}{2}, \frac{1}{4}, \frac{1}{8}, \dots\right)$.</p>
+        <h4>R 4: Ponte de Wheatstone com Resistor Desconhecido</h4>
+        <p><strong>Enunciado:</strong> Uma ponte de Wheatstone possui os valores $R_1 = 4\,\Omega$, $R_2 = 8\,\Omega$, $R_3 = x$ e $R_4 = 12\,\Omega$. Sabendo que o galvanômetro indica zero, encontre $x$ sabendo que $R_1$ é oposto a $R_4$.</p>
         <div class="resolucao-bloco">
             <p><strong>Resolução:</strong><br>
-            1. Dados: $a_1 = 1$ e $q = \frac{1}{2}$. Como $-1 < q < 1$, a PG converge.<br>
-            2. Aplicando a fórmula $S_\infty = \frac{a_1}{1 - q}$:<br>
-               $S_\infty = \frac{1}{1 - \frac{1}{2}} = \frac{1}{\frac{1}{2}} = \mathbf{2}$.</p>
+            1. Com galvanômetro nulo, a ponte está equilibrada:<br>
+               $R_1 \cdot R_4 = R_2 \cdot R_3$.<br>
+            2. $4 \cdot 12 = 8 \cdot x \implies 48 = 8x \implies x = \mathbf{6\,\Omega}$.</p>
         </div>
     </article>
 
     <article class="questao">
-        <h4>R 5: Propriedade dos Termos Consecutivos</h4>
-        <p><strong>Enunciado:</strong> Determine o valor positivo de $x$ para que os números $(x, x + 2, x + 6)$ formem uma PG nessa ordem.</p>
+        <h4>R 5: Resistência Equivalente de Ponte Equilibrada</h4>
+        <p><strong>Enunciado:</strong> Uma ponte de Wheatstone equilibrada possui quatro resistores idênticos de $10\,\Omega$ nos ramos externos e um de $50\,\Omega$ no galvanômetro central. Qual a resistência equivalente entre os terminais de entrada e saída?</p>
         <div class="resolucao-bloco">
             <p><strong>Resolução:</strong><br>
-            1. Pela propriedade do termo médio: $(x + 2)^2 = x \cdot (x + 6)$.<br>
-            2. Desenvolvendo os produtos:<br>
-               $x^2 + 4x + 4 = x^2 + 6x$<br>
-            3. Simplificando $x^2$ dos dois lados:<br>
-               $4x + 4 = 6x \implies 2x = 4 \implies x = \mathbf{2}$.</p>
+            1. Como a ponte está em equilíbrio, não passa corrente pelo resistor central de $50\,\Omega$, que pode ser removido.<br>
+            2. O circuito fica com dois ramos em paralelo, cada um composto por dois resistores de $10\,\Omega$ em série:<br>
+               $R_1 = 10 + 10 = 20\,\Omega$ e $R_2 = 10 + 10 = 20\,\Omega$.<br>
+            3. A resistência equivalente é o paralelo entre esses dois ramos de $20\,\Omega$:<br>
+               $R_{eq} = \frac{20}{2} = \mathbf{10\,\Omega}$.</p>
         </div>
     </article>
 </section>
@@ -159,60 +154,60 @@
     <h3>✍️ 5 Questões Propostas (P 6 a 10)</h3>
 
     <article class="questao">
-        <h4>P 6: Termo Específico de PG Alternada</h4>
-        <p><strong>Enunciado:</strong> Determine o $6^\circ$ termo da PG oscilante $(2, -6, 18, -54, \dots)$.</p>
+        <h4>P 6: Circuito Misto em Escada</h4>
+        <p><strong>Enunciado:</strong> Três resistores iguais de $9\,\Omega$ estão dispostos da seguinte forma: dois em paralelo e o conjunto em série com o terceiro. Calcule a $R_{eq}$.</p>
         <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
         <div class="gabarito-resolucao">
             <p><strong>Resolução:</strong><br>
-            1. Dados: $a_1 = 2$, $q = \frac{-6}{2} = -3$.<br>
-            2. $a_6 = a_1 \cdot q^5 \implies a_6 = 2 \cdot (-3)^5 = 2 \cdot (-243) = \mathbf{-486}$.</p>
+            1. Paralelo dos dois primeiros: $R_p = \frac{9}{2} = 4{,}5\,\Omega$.<br>
+            2. Somando em série com o terceiro: $R_{eq} = 4{,}5 + 9 = \mathbf{13{,}5\,\Omega}$.</p>
         </div>
     </article>
 
     <article class="questao">
-        <h4>P 7: Quantidade de Termos na PG</h4>
-        <p><strong>Enunciado:</strong> Quantos termos possui a PG finita $(3, 6, 12, \dots, 384)$?</p>
+        <h4>P 7: Verificação do Equilíbrio de Ponte</h4>
+        <p><strong>Enunciado:</strong> Uma ponte possui ramos consecutivos $R_1 = 3\,\Omega$, $R_2 = 6\,\Omega$, $R_3 = 5\,\Omega$ e $R_4 = 10\,\Omega$ (com $R_1$ oposto a $R_4$). Verifique se passa corrente pelo ramo central.</p>
         <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
         <div class="gabarito-resolucao">
             <p><strong>Resolução:</strong><br>
-            1. Dados: $a_1 = 3$, $q = 2$, e $a_n = 384$.<br>
-            2. $384 = 3 \cdot 2^{n-1} \implies 2^{n-1} = 128$.<br>
-            3. Fatorando $128 = 2^7 \implies n - 1 = 7 \implies n = \mathbf{8\text{ termos}}$.</p>
+            1. Testando o produto cruzado: $R_1 \cdot R_4 = 3 \cdot 10 = 30$.<br>
+            2. Produto dos outros dois: $R_2 \cdot R_3 = 6 \cdot 5 = 30$.<br>
+            3. Como $R_1 \cdot R_4 = R_2 \cdot R_3 = 30$, a ponte está em equilíbrio e **não passa corrente** pelo ramo central ($i_G = 0$).</p>
         </div>
     </article>
 
     <article class="questao">
-        <h4>P 8: Soma Infinita de Frascos</h4>
-        <p><strong>Enunciado:</strong> Calcule o valor da soma infinita: $S = 6 + 2 + \frac{2}{3} + \frac{2}{9} + \dots$</p>
+        <h4>P 8: Potência em Circuito Misto</h4>
+        <p><strong>Enunciado:</strong> Um circuito mista com $R_{eq} = 5\,\Omega$ é submetido a uma d.d.p. de $10\,\text{V}$. Qual é a potência elétrica total dissipada pelo circuito?</p>
         <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
         <div class="gabarito-resolucao">
             <p><strong>Resolução:</strong><br>
-            1. Trata-se de uma PG infinita com $a_1 = 6$ e razão $q = \frac{2}{6} = \frac{1}{3}$.<br>
-            2. $S_\infty = \frac{a_1}{1 - q} = \frac{6}{1 - \frac{1}{3}} = \frac{6}{\frac{2}{3}} = 6 \cdot \frac{3}{2} = \mathbf{9}$.</p>
+            1. Aplicando a fórmula da potência em função da tensão e resistência:<br>
+               $P = \frac{U^2}{R_{eq}} = \frac{10^2}{5} = \frac{100}{5} = \mathbf{20\,\text{W}}$.</p>
         </div>
     </article>
 
     <article class="questao">
-        <h4>P 9: Dobro de População de Bactérias</h4>
-        <p><strong>Enunciado:</strong> Uma colônia possui inicialmente $100$ bactérias. Se a população dobra a cada hora, quantas bactérias haverá na colônia após $5$ horas?</p>
+        <h4>P 9: Determinação de Resistor em Ponte</h4>
+        <p><strong>Enunciado:</strong> Em uma ponte de Wheatstone equilibrada, $R_1 = 15\,\Omega$, $R_2 = 45\,\Omega$ e $R_3 = 20\,\Omega$. Sabendo que $R_1$ é oposto a $R_4$, encontre o valor de $R_4$.</p>
         <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
         <div class="gabarito-resolucao">
             <p><strong>Resolução:</strong><br>
-            1. No instante inicial ($t = 0$), temos $a_1 = 100$.<br>
-            2. Após $5$ horas, o número de bactérias corresponde ao termo $a_6$ da PG (pois $n = \text{horas} + 1$):<br>
-               $a_6 = 100 \cdot 2^5 = 100 \cdot 32 = \mathbf{3200\text{ bactérias}}$.</p>
+            1. Condição de equilíbrio: $R_1 \cdot R_4 = R_2 \cdot R_3$.<br>
+            2. $15 \cdot R_4 = 45 \cdot 20 \implies 15 \cdot R_4 = 900$.<br>
+            3. $R_4 = \frac{900}{15} = \mathbf{60\,\Omega}$.</p>
         </div>
     </article>
 
     <article class="questao">
-        <h4>P 10: Fração Geratriz com PG Infinita</h4>
-        <p><strong>Enunciado:</strong> Determine a fração geratriz da dízima periódica $0{,}333\dots$ utilizando a soma de uma PG infinita.</p>
+        <h4>P 10: Curto-Circuito em Associação Mista</h4>
+        <p><strong>Enunciado:</strong> Dois resistores de $10\,\Omega$ estão em série. Se um fio ideal for conectado em paralelo com um deles, qual será a nova resistência equivalente entre os terminais?</p>
         <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
         <div class="gabarito-resolucao">
             <p><strong>Resolução:</strong><br>
-            1. Escrevendo a dízima como soma: $0{,}3 + 0{,}03 + 0{,}003 + \dots = \frac{3}{10} + \frac{3}{100} + \frac{3}{1000} + \dots$<br>
-            2. É uma PG infinita com $a_1 = \frac{3}{10}$ e $q = \frac{1}{10}$.<br>
-            3. $S_\infty = \frac{\frac{3}{10}}{1 - \frac{1}{10}} = \frac{\frac{3}{10}}{\frac{9}{10}} = \frac{3}{9} = \mathbf{\frac{1}{3}}$.</p>
+            1. O fio ideal conectado em paralelo com um dos resistores causa um curto-circuito, anulando a resistência desse resistor ($R = 0$).<br>
+            2. Sobra apenas o outro resistor funcionando normalmente no circuito.<br>
+            3. Portanto, $R_{eq} = \mathbf{10\,\Omega}$.</p>
         </div>
     </article>
 </section>
@@ -235,7 +230,7 @@
 </main>
 
 <aside class="menu-lateral">
-    <iframe src="../menu_matematica.html" style="width:100%; border:none; height:600px;"></iframe>
+    <iframe src="../menu_fisica.html" style="width:100%; border:none; height:600px;"></iframe>
 </aside>
 
 </div>
