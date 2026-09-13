@@ -1,0 +1,426 @@
+
+
+Calculo limites infinitos · HTML
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cálculo I: Limites Infinitos</title>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../estilo.css">
+    
+    <script>
+        MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true
+            }
+        };
+    </script>
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+ 
+<body>
+<button class="menu-toggle" onclick="toggleMenu()">☰</button>
+ 
+<nav id="menu-principal" class="nav-global">
+    <ul>
+        <li><a href="../index.html">🏠 Início</a></li>
+        <li><a href="../ensino_medio.html">📚 Ensino Médio</a></li>
+        <li><a href="../ensino_superior.html">🎓 Ensino Superior</a></li>
+    </ul>
+</nav>
+ 
+<header id="topo">
+    <h1>CÁLCULO I</h1>
+    <p>Cálculo | Aula: Limites Infinitos</p>
+    <button id="btn-slides" onclick="toggleSlides()">📺 Iniciar Modo Slides</button>
+</header>
+ 
+<div class="container">
+ 
+<main class="conteudo-principal">
+ 
+<div class="secao-aula">
+ <div class="container-resumo" id="resumo">
+    <h3>📚 Resumo </h3>
+    <section class="resumo-conteudo">
+        <p>Dizemos que $f$ tem um <strong>limite infinito</strong> quando, ao aproximarmos $x$ de um ponto $a$, os valores de $f(x)$ crescem ou decrescem sem parar — ou seja, não se aproximam de nenhum número real, mas "explodem" para $+\infty$ ou $-\infty$: $\lim_{x \to a} f(x) = +\infty$ ou $\lim_{x \to a} f(x) = -\infty$.</p>
+        <p><strong>Importante:</strong> $+\infty$ e $-\infty$ não são números — dizer que "o limite é infinito" é, na verdade, uma forma de descrever <em>por que</em> o limite não existe, e não um valor que ele assume. Se $\displaystyle\lim_{x \to a^-} f(x)$ ou $\displaystyle\lim_{x \to a^+} f(x)$ for $+\infty$ ou $-\infty$, a reta $x=a$ é uma <strong>assíntota vertical</strong> do gráfico de $f$. Não confundir com "limite no infinito" ($x \to \pm\infty$), que é um conceito diferente.</p>
+    </section>
+</div>
+ 
+<section class="conteudo-teorico-completo" id="teoria">
+    <div class="passo-teoria">
+        <h3>📖 O que é um Limite Infinito?</h3>
+        <p>Sempre que uma divisão tem denominador se aproximando de zero enquanto o numerador se aproxima de um valor diferente de zero, o quociente cresce (em módulo) sem limite. É exatamente esse comportamento que os limites infinitos descrevem — e ele está por trás de praticamente toda assíntota vertical que você já viu em um gráfico.</p>
+    </div>
+ 
+    <div class="passo-teoria">
+        <h4>1. Limites Laterais Infinitos</h4>
+        <p>Assim como nos limites comuns, é essencial analisar os dois lados. Um exemplo clássico é $f(x) = \dfrac{1}{x}$ em $x=0$:</p>
+        <p style="text-align: center;">$$\lim_{x \to 0^-} \frac{1}{x} = -\infty \qquad \qquad \lim_{x \to 0^+} \frac{1}{x} = +\infty$$</p>
+        <p>Como os limites laterais são diferentes (um $-\infty$, outro $+\infty$), dizemos que $\displaystyle\lim_{x \to 0} \frac{1}{x}$ <strong>não existe</strong>, embora cada lado individualmente "exploda" para o infinito.</p>
+        <figure class="figura-aula figura-grande">
+            <svg viewBox="0 0 400 320" xmlns="http://www.w3.org/2000/svg" style="width:100%; max-width:450px; height:auto; display:block; margin:0 auto; background:#fdfdfd; border-radius:10px;">
+                <line x1="200" y1="15" x2="200" y2="305" stroke="#bdc3c7" stroke-width="1.5" stroke-dasharray="5,4"/>
+                <line x1="20" y1="160" x2="380" y2="160" stroke="#bdc3c7" stroke-width="1.5" stroke-dasharray="5,4"/>
+                <line x1="20" y1="160" x2="380" y2="160" stroke="#2c3e50" stroke-width="2"/>
+                <polygon points="390,160 378,155 378,165" fill="#2c3e50"/>
+                <line x1="200" y1="310" x2="200" y2="10" stroke="#2c3e50" stroke-width="2"/>
+                <polygon points="200,2 195,12 205,12" fill="#2c3e50"/>
+                <text x="365" y="178" font-size="13" fill="#2c3e50" font-family="sans-serif">x</text>
+                <text x="207" y="20" font-size="13" fill="#2c3e50" font-family="sans-serif">y</text>
+                <polyline points="209.8,81.4 213.6,103.3 217.4,115.7 221.2,123.6 224.9,129.1 228.7,133.2 232.5,136.3 236.3,138.8 240.1,140.8 243.9,142.5 247.7,143.8 251.5,145.0 255.2,146.1 259.0,147.0 262.8,147.7 266.6,148.4 270.4,149.1 274.2,149.6 278.0,150.1 281.8,150.6 285.5,151.0 289.3,151.4 293.1,151.7 296.9,152.1 300.7,152.4 304.5,152.6 308.3,152.9 312.1,153.1 315.8,153.4 319.6,153.6 323.4,153.8 327.2,153.9 331.0,154.1 334.8,154.3 338.6,154.4 342.4,154.6 346.1,154.7 349.9,154.9 353.7,155.0 357.5,155.1" fill="none" stroke="#3498db" stroke-width="3"/>
+                <polyline points="42.5,164.9 46.3,165.0 50.1,165.1 53.9,165.3 57.6,165.4 61.4,165.6 65.2,165.7 69.0,165.9 72.8,166.1 76.6,166.2 80.4,166.4 84.2,166.6 87.9,166.9 91.7,167.1 95.5,167.4 99.3,167.6 103.1,167.9 106.9,168.3 110.7,168.6 114.5,169.0 118.2,169.4 122.0,169.9 125.8,170.4 129.6,170.9 133.4,171.6 137.2,172.3 141.0,173.0 144.8,173.9 148.5,175.0 152.3,176.2 156.1,177.5 159.9,179.2 163.7,181.2 167.5,183.7 171.3,186.8 175.1,190.9 178.8,196.4 182.6,204.3 186.4,216.7 190.2,238.6" fill="none" stroke="#3498db" stroke-width="3"/>
+                <text x="230" y="70" font-size="13" fill="#3498db" font-family="sans-serif" font-weight="bold">x→0⁺: f(x)→+∞</text>
+                <text x="60" y="255" font-size="13" fill="#3498db" font-family="sans-serif" font-weight="bold">x→0⁻: f(x)→−∞</text>
+                <text x="30" y="17" font-size="14" fill="#2c3e50" font-family="sans-serif" font-weight="bold">f(x) = 1/x</text>
+            </svg>
+            <figcaption>Figura 1: O gráfico de $f(x) = \dfrac{1}{x}$ evidencia a assíntota vertical em $x=0$.</figcaption>
+        </figure>
+    </div>
+ 
+    <div class="passo-teoria">
+        <h4>2. Regra Prática: Numerador Constante, Denominador Tendendo a Zero</h4>
+        <p>Quando $\displaystyle\lim_{x \to a} g(x) = L \neq 0$ e $\displaystyle\lim_{x \to a} h(x) = 0$, o quociente $\dfrac{g(x)}{h(x)}$ tende a $+\infty$ ou $-\infty$, dependendo do sinal de $L$ e do sinal de $h(x)$ perto de $a$. <strong>Atenção:</strong> se o numerador também tender a zero ($\frac{0}{0}$), pode haver cancelamento de fatores — e o limite pode até ser finito!</p>
+        <figure class="figura-aula figura-grande">
+            <svg viewBox="0 0 400 320" xmlns="http://www.w3.org/2000/svg" style="width:100%; max-width:450px; height:auto; display:block; margin:0 auto; background:#fdfdfd; border-radius:10px;">
+                <line x1="200" y1="15" x2="200" y2="305" stroke="#bdc3c7" stroke-width="1.5" stroke-dasharray="5,4"/>
+                <line x1="20" y1="280" x2="380" y2="280" stroke="#2c3e50" stroke-width="2"/>
+                <polygon points="390,280 378,275 378,285" fill="#2c3e50"/>
+                <line x1="200" y1="310" x2="200" y2="10" stroke="#2c3e50" stroke-width="2"/>
+                <polygon points="200,2 195,12 205,12" fill="#2c3e50"/>
+                <text x="365" y="298" font-size="13" fill="#2c3e50" font-family="sans-serif">x</text>
+                <text x="207" y="20" font-size="13" fill="#2c3e50" font-family="sans-serif">y</text>
+                <text x="205" y="295" font-size="13" fill="#2c3e50" font-family="sans-serif">2</text>
+                <polyline points="206.8,27.0 209.5,27.0 212.2,27.0 214.9,79.1 217.6,136.2 220.3,172.1 223.0,196.0 225.7,212.8 228.5,225.0 231.2,234.1 233.9,241.2 236.6,246.7 239.3,251.2 242.0,254.8 244.7,257.7 247.4,260.2 250.2,262.3 252.9,264.1 255.6,265.6 258.3,266.9 261.0,268.0 263.7,269.0 266.4,269.9 269.2,270.7 271.9,271.4 274.6,272.0 277.3,272.5 280.0,273.0 282.7,273.5 285.4,273.9 288.1,274.3 290.9,274.6 293.6,274.9 296.3,275.2 299.0,275.5" fill="none" stroke="#3498db" stroke-width="3"/>
+                <polyline points="101.0,275.5 103.7,275.2 106.4,274.9 109.1,274.6 111.9,274.3 114.6,273.9 117.3,273.5 120.0,273.0 122.7,272.5 125.4,272.0 128.1,271.4 130.8,270.7 133.6,269.9 136.3,269.0 139.0,268.0 141.7,266.9 144.4,265.6 147.1,264.1 149.8,262.3 152.6,260.2 155.3,257.7 158.0,254.8 160.7,251.2 163.4,246.7 166.1,241.2 168.8,234.1 171.5,225.0 174.3,212.8 177.0,196.0 179.7,172.1 182.4,136.2 185.1,79.1 187.8,27.0 190.5,27.0 193.2,27.0" fill="none" stroke="#3498db" stroke-width="3"/>
+                <text x="270" y="55" font-size="14" fill="#3498db" font-family="sans-serif" font-weight="bold">f(x) → +∞</text>
+                <text x="30" y="17" font-size="14" fill="#2c3e50" font-family="sans-serif" font-weight="bold">f(x) = 1/(x−2)²</text>
+            </svg>
+            <figcaption>Figura 2: Quando o denominador está elevado a uma potência par, os dois ramos tendem ao mesmo sinal (aqui, $+\infty$, em $x=2$).</figcaption>
+        </figure>
+    </div>
+ 
+    <div class="passo-teoria">
+        <h4>3. Determinando Assíntotas Verticais</h4>
+        <p>Para encontrar as assíntotas verticais de uma função racional $f(x) = \dfrac{p(x)}{q(x)}$, procuramos as raízes de $q(x)$ que <strong>não sejam também raízes de $p(x)$</strong> (senão haveria cancelamento e, possivelmente, apenas um "buraco" no gráfico, não uma assíntota).</p>
+    </div>
+</section>
+ 
+<section class="aplicacoes-reais" id="aplicacoes">
+    <h3>💡 Matemática em Ação</h3>
+    <div class="cards-aplicacao">
+        <div class="card">
+            <h4>⚡ Circuitos com Capacitores</h4>
+            <p>A reatância capacitiva $X_C = \dfrac{1}{\omega C}$ tende ao infinito quando a frequência $\omega$ se aproxima de zero — por isso um capacitor bloqueia corrente contínua.</p>
+        </div>
+        <div class="card" style="border-left-color: #2ecc71;">
+            <h4>🔩 Concentração de Tensão</h4>
+            <p>Perto da ponta de uma trinca em uma peça mecânica, os modelos teóricos de tensão tendem ao infinito — um sinal de que o material real vai falhar ali antes de "chegar" a esse valor.</p>
+        </div>
+    </div>
+</section>
+ 
+<section class="questoes-resolvidas" id="resolvidas">
+    <h3>✅ 5 Questões Resolvidas (R 1 a 5)</h3>
+ 
+    <article class="questao">
+        <h4>R 1: Denominador Elevado ao Quadrado</h4>
+        <p><strong>Enunciado:</strong> Calcule $\displaystyle\lim_{x \to 0} \dfrac{1}{x^2}$.</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong><br>
+            1. Analisamos o denominador $x^2$ quando $x \to 0$.<br>
+            2. Como $x^2 > 0$ para todo $x \neq 0$, o denominador tende a $0$ sempre por valores positivos.<br>
+            3. Isso vale tanto pela esquerda quanto pela direita de $x=0$, ou seja, os dois limites laterais coincidem.<br>
+            4. Logo, $\displaystyle\lim_{x \to 0} \frac{1}{x^2} = \mathbf{+\infty}$.</p>
+        </div>
+    </article>
+ 
+    <article class="questao">
+        <h4>R 2: Limites Laterais em Assíntota Vertical</h4>
+        <p><strong>Enunciado:</strong> Calcule $\displaystyle\lim_{x \to 3^-} \dfrac{1}{x-3}$ e $\displaystyle\lim_{x \to 3^+} \dfrac{1}{x-3}$.</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong><br>
+            1. Pela esquerda ($x \to 3^-$), a expressão $x-3$ é negativa e se aproxima de $0$.<br>
+            2. Logo, $\dfrac{1}{x-3} \to -\infty$.<br>
+            3. Pela direita ($x \to 3^+$), a expressão $x-3$ é positiva e se aproxima de $0$.<br>
+            4. Logo, $\dfrac{1}{x-3} \to +\infty$.<br>
+            5. Como os sinais são opostos, a reta $x=3$ é uma $\mathbf{assíntota\ vertical}$.</p>
+        </div>
+    </article>
+ 
+    <article class="questao">
+        <h4>R 3: Sinal Determinado por Potência Par</h4>
+        <p><strong>Enunciado:</strong> Calcule $\displaystyle\lim_{x \to 2} \dfrac{x+1}{(x-2)^2}$.</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong><br>
+            1. O numerador tende a $2+1=3$, um valor positivo.<br>
+            2. O denominador, $(x-2)^2$, tende a $0$ sempre por valores positivos (potência par), dos dois lados.<br>
+            3. Um número positivo dividido por algo cada vez mais próximo de $0^+$ cresce sem limite.<br>
+            4. Logo, $\displaystyle\lim_{x \to 2} \frac{x+1}{(x-2)^2} = \mathbf{+\infty}$.</p>
+        </div>
+    </article>
+ 
+    <article class="questao">
+        <h4>R 4: Determinação de Assíntotas Verticais</h4>
+        <p><strong>Enunciado:</strong> Determine as assíntotas verticais de $f(x) = \dfrac{x-1}{x^2-4}$.</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong><br>
+            1. Fatoramos o denominador: $x^2-4 = (x-2)(x+2)$, que se anula em $x=2$ e $x=-2$.<br>
+            2. Verificamos o numerador nesses pontos: em $x=2$, o numerador vale $1 \neq 0$.<br>
+            3. Em $x=-2$, o numerador vale $-3 \neq 0$.<br>
+            4. Como não há cancelamento em nenhum dos dois casos, ambas as retas são assíntotas: $\mathbf{x=2\ e\ x=-2}$.</p>
+        </div>
+    </article>
+ 
+    <article class="questao">
+        <h4>R 5: Problema Contextualizado</h4>
+        <p><strong>Enunciado:</strong> O campo elétrico gerado por uma carga puntiforme a uma distância $r$ é dado por $E(r) = \dfrac{kq}{r^2}$. O que acontece com $E(r)$ quando $r \to 0^+$? Interprete fisicamente.</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong><br>
+            1. O numerador $kq$ é uma constante não nula.<br>
+            2. O denominador $r^2 \to 0^+$ conforme $r \to 0^+$.<br>
+            3. Matematicamente, $\displaystyle\lim_{r \to 0^+} \frac{kq}{r^2} = \mathbf{+\infty}$.<br>
+            4. Fisicamente, esse resultado revela uma limitação do modelo de "carga puntiforme": nenhuma carga real é um ponto sem dimensão, então valores extremamente pequenos de $r$ estão fora do domínio de validade física da fórmula.</p>
+        </div>
+    </article>
+</section>
+ 
+<section class="questoes-propostas" id="propostas">
+    <h3>✍️ 5 Questões Propostas (P 6 a 10)</h3>
+ 
+    <article class="questao">
+        <h4>P 6: Limite Lateral Simples</h4>
+        <p><strong>Enunciado:</strong> Calcule $\displaystyle\lim_{x \to 0^+} \dfrac{1}{x}$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong><br>
+            1. Para $x \to 0^+$, temos $x > 0$ se aproximando de $0$.<br>
+            2. Um número positivo dividido por algo cada vez menor cresce sem limite.<br>
+            3. Logo, $\displaystyle\lim_{x \to 0^+} \frac{1}{x} = \mathbf{+\infty}$.</p>
+        </div>
+    </article>
+ 
+    <article class="questao">
+        <h4>P 7: Limite Lateral Simples (Outro Lado)</h4>
+        <p><strong>Enunciado:</strong> Calcule $\displaystyle\lim_{x \to 0^-} \dfrac{1}{x}$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong><br>
+            1. Para $x \to 0^-$, temos $x < 0$ se aproximando de $0$.<br>
+            2. Um número positivo dividido por algo negativo cada vez mais próximo de $0$ decresce sem limite.<br>
+            3. Logo, $\displaystyle\lim_{x \to 0^-} \frac{1}{x} = \mathbf{-\infty}$.</p>
+        </div>
+    </article>
+ 
+    <article class="questao">
+        <h4>P 8: Assíntotas Verticais</h4>
+        <p><strong>Enunciado:</strong> Determine as assíntotas verticais de $f(x) = \dfrac{1}{x^2-1}$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong><br>
+            1. Fatoramos: $x^2-1 = (x-1)(x+1)$, que se anula em $x=1$ e $x=-1$.<br>
+            2. O numerador é a constante $1$, que nunca se anula.<br>
+            3. Como não há cancelamento, ambas as retas são assíntotas: $\mathbf{x=1\ e\ x=-1}$.</p>
+        </div>
+    </article>
+ 
+    <article class="questao">
+        <h4>P 9: Sinal com Potência Par</h4>
+        <p><strong>Enunciado:</strong> Calcule $\displaystyle\lim_{x \to 5} \dfrac{x+2}{(x-5)^2}$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong><br>
+            1. O numerador tende a $5+2=7$, um valor positivo.<br>
+            2. O denominador $(x-5)^2 \to 0^+$ sempre, dos dois lados.<br>
+            3. Logo, $\displaystyle\lim_{x \to 5} \frac{x+2}{(x-5)^2} = \mathbf{+\infty}$.</p>
+        </div>
+    </article>
+ 
+    <article class="questao">
+        <h4>P 10: Conceitual</h4>
+        <p><strong>Enunciado:</strong> Qual é a diferença entre um "limite infinito" ($\displaystyle\lim_{x \to a} f(x) = \infty$) e um "limite no infinito" ($\displaystyle\lim_{x \to \infty} f(x) = L$)?</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong><br>
+            1. No <strong>limite infinito</strong>, é o valor de $f(x)$ (eixo $y$) que cresce sem limite quando $x$ se aproxima de um ponto finito $a$.<br>
+            2. Esse comportamento indica uma assíntota vertical.<br>
+            3. No <strong>limite no infinito</strong>, é a variável $x$ (eixo $x$) que cresce sem limite.<br>
+            4. Analisamos para qual valor $f(x)$ se aproxima — se existir um valor finito $L$, temos uma $\mathbf{assíntota\ horizontal}$.</p>
+        </div>
+    </article>
+</section>
+ 
+<section class="TESTE" id="testes">
+    <h3>🎓 TESTES (T 11 a 15)</h3>
+ 
+    <div class="card" style="text-align:center; padding:60px 20px; background:#f8f9fa; border:2px dashed #3498db; border-radius:12px; margin-top:20px;">
+        <h2 style="color:#3498db; font-size:2.5rem; margin-bottom:15px;">
+            🚧 EM BREVE!
+        </h2>
+ 
+        <p style="font-size:1.2rem; color:#555;">
+            Questões de vestibulares (ENADE, concursos, etc) sobre Limites Infinitos serão disponibilizadas nesta seção em breve.
+        </p>
+    </div>
+</section>
+ 
+</div>
+</main>
+ 
+<aside class="menu-lateral">
+    <iframe src="../menu_calculo.html" style="width:100%; border:none; height:600px;"></iframe>
+</aside>
+ 
+</div>
+ 
+<script>
+function toggleGabarito(botao) {
+    const gabarito = botao.nextElementSibling;
+    if (gabarito.style.display === "none" || gabarito.style.display === "") {
+        gabarito.style.display = "block";
+        botao.textContent = "Esconder Gabarito e Resolução";
+        botao.style.backgroundColor = "#2c3e50";
+    } else {
+        gabarito.style.display = "none";
+        botao.textContent = "Ver Gabarito e Resolução";
+        botao.style.backgroundColor = "#3498db";
+    }
+}
+ 
+function toggleMenu() {
+    const menuGlobal = document.getElementById("menu-principal");
+    if (menuGlobal) menuGlobal.classList.toggle("ativo");
+}
+ 
+let slideAtual = 0;
+let slides = [];
+ 
+function prepararSlides() {
+    const seletores = '.container-resumo, .passo-teoria, .aplicacoes-reais, .questao';
+    slides = document.querySelectorAll(seletores);
+}
+ 
+function toggleSlides() {
+    prepararSlides();
+    const body = document.body;
+    if (!body.classList.contains('modo-slides')) {
+        body.classList.add('modo-slides');
+        slideAtual = 0;
+        mostrarSlide(slideAtual);
+    } else {
+        body.classList.remove('modo-slides');
+        window.location.reload(); 
+    }
+}
+ 
+function mostrarSlide(n) {
+    slides.forEach(s => {
+        s.classList.remove('slide-ativo');
+        s.style.display = 'none';
+    });
+    const slide = slides[n];
+    slide.classList.add('slide-ativo');
+    slide.style.display = 'flex'; 
+ 
+    if (slide.classList.contains('questao') && !slide.querySelector('.btn-gabarito')) {
+        const resolucoes = slide.querySelectorAll('.resolucao-bloco');
+        resolucoes.forEach(r => r.style.display = 'block');
+    } else {
+        const gabaritos = slide.querySelectorAll('.gabarito-resolucao');
+        gabaritos.forEach(g => g.style.display = 'none');
+        const botoes = slide.querySelectorAll('.btn-gabarito');
+        botoes.forEach(b => {
+            b.textContent = "Ver Gabarito e Resolução";
+            b.style.backgroundColor = "#3498db";
+        });
+    }
+ 
+    const pHeader = document.querySelector('header p').innerText;
+    const partes = pHeader.split('|');
+    if(partes.length > 1) {
+        document.getElementById('slide-info-serie').innerText = partes[0].trim();
+        document.getElementById('slide-info-aula').innerText = partes[1].trim();
+    }
+    document.getElementById('contador-slide').innerText = (n + 1) + " / " + slides.length;
+    if (window.MathJax) MathJax.typesetPromise();
+}
+ 
+function mudarSlide(direcao) {
+    slideAtual += direcao;
+    if (slideAtual >= slides.length) slideAtual = 0;
+    if (slideAtual < 0) slideAtual = slides.length - 1;
+    mostrarSlide(slideAtual);
+}
+ 
+document.addEventListener('keydown', function(event) {
+    if (document.body.classList.contains('modo-slides')) {
+        switch(event.key) {
+            case 'ArrowRight': 
+            case 'PageDown':   
+            case 'Enter':      
+            case ' ':          
+                mudarSlide(1);
+                break;
+                
+            case 'ArrowLeft':  
+            case 'PageUp':     
+                mudarSlide(-1);
+                break;
+ 
+            case 'Escape':     
+                toggleSlides();
+                break;
+        }
+    }
+});
+</script>
+ 
+<style>
+    body.modo-slides { overflow: hidden; background-color: #1a1a1a; }
+    body.modo-slides .menu-lateral, body.modo-slides header, body.modo-slides .menu-toggle, body.modo-slides #btn-slides { display: none !important; }
+    .slide-ativo {
+        display: flex !important; flex-direction: column; align-items: center; justify-content: flex-start;
+        position: fixed; top: 0; left: 0; width: 100vw; height: calc(100vh - 70px);
+        background: #ffffff; padding: 40px; z-index: 999; overflow-y: auto !important; 
+        box-sizing: border-box; text-align: center;
+    }
+    .controles-slides {
+        position: fixed; bottom: 0; left: 0; width: 100%; height: 70px;
+        background: #2c3e50; color: white; display: none; 
+        justify-content: space-between; align-items: center; padding: 0 20px; z-index: 1001; box-sizing: border-box;
+    }
+    body.modo-slides .controles-slides { display: flex; }
+    .info-lateral { flex: 1; font-family: 'Oswald', sans-serif; font-size: 0.9rem; color: #bdc3c7; }
+    .botoes-centrais { display: flex; align-items: center; gap: 15px; justify-content: center; flex: 2; }
+    .btn-nav { padding: 10px 20px; background: #3498db; color: white; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; }
+    #contador-slide { font-family: 'Oswald', sans-serif; min-width: 60px; text-align: center; }
+</style>
+ 
+<div class="controles-slides">
+    <div id="slide-info-serie" class="info-lateral"></div>
+    <div class="botoes-centrais">
+        <button class="btn-nav" onclick="mudarSlide(-1)">⬅ Anterior</button>
+        <span id="contador-slide"></span>
+        <button class="btn-nav" onclick="mudarSlide(1)">Próximo ➡</button>
+        <button class="btn-nav" onclick="toggleSlides()" style="background:#e74c3c;">Sair</button>
+    </div>
+    <div id="slide-info-aula" class="info-lateral" style="text-align: right;"></div>
+</div>
+</body>
+</html>
+ 
+
+
+
+
+
+
+
+
+
+

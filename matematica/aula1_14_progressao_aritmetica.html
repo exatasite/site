@@ -21,13 +21,11 @@
 
 <body>
 <button class="menu-toggle" onclick="toggleMenu()">☰</button>
-
 <nav id="menu-principal" class="nav-global">
     <ul>
         <li><a href="../index.html">🏠 Início</a></li>
-        <li><a href="../fisica_home.html">⚛️ Física</a></li>
-        <li><a href="../matematica_home.html">📐 Matemática</a></li>
-        <li><a href="../simulacoes_home.html">💻 Simulações</a></li>
+        <li><a href="../ensino_medio.html">📚 Ensino Médio</a></li>
+        <li><a href="../ensino_superior.html">🎓 Ensino Superior</a></li>
     </ul>
 </nav>
 
@@ -45,302 +43,343 @@
 
 <div class="secao-aula">
  <div class="container-resumo">
-    <h3>📚 Resumo </h3>
+    <h3>📚 Resumo: </h3>
     <section class="resumo-conteudo">
-        <p>Uma <strong>Progressão Aritmética (PA)</strong> é uma sequência numérica onde cada termo, a partir do segundo, é igual à soma do termo anterior com uma constante chamada <strong>razão ($r$)</strong>.</p>
-        <p>As PAs são fundamentais para modelar fenômenos de crescimento linear, como o aumento de uma dívida com juros simples ou a contagem de degraus em uma escada.</p>
+        <p>Uma <strong>Progressão Aritmética (PA)</strong> é uma sequência numérica na qual a diferença entre cada termo e o termo anterior é sempre a mesma — chamada de <strong>razão</strong> ($r$):</p>
+        <p style="text-align: center;"><strong>$$a_{n+1} - a_n = r \quad \text{(constante para todo } n\text{)}$$</strong></p>
+        <ul>
+            <li><strong>Termo Geral:</strong> $a_n = a_1 + (n-1) \cdot r$</li>
+            <li><strong>Classificação:</strong> crescente ($r>0$), decrescente ($r<0$) ou constante ($r=0$).</li>
+            <li><strong>Soma dos $n$ primeiros termos:</strong> $S_n = \dfrac{(a_1+a_n) \cdot n}{2}$</li>
+        </ul>
     </section>
 </div>
 
 <section class="conteudo-teorico-completo">
     <div class="passo-teoria">
-        <h3>📖 Definição e Termo Geral</h3>
-        <h4>1. A Razão da PA</h4>
-        <p>Para identificar uma PA, subtraímos qualquer termo pelo seu antecessor: $r = a_n - a_{n-1}$.</p>
+        <h3>📖 O que é uma Progressão Aritmética?</h3>
+        <p>Progressões aritméticas aparecem em qualquer situação com <strong>crescimento (ou decrescimento) constante e regular</strong>: o número de assentos que aumenta a cada fileira de um teatro, a altura de cada degrau de uma escada, ou a velocidade de um carro que acelera de forma uniforme. Reconhecer esse padrão permite prever qualquer termo da sequência sem precisar somar um por um.</p>
+    </div>
+
+    <div class="passo-teoria">
+        <h4>1. O Conceito de Sequência e Progressão Aritmética</h4>
+        <p><strong>Sequência numérica</strong> é um conjunto ordenado de números, indexados pela posição que ocupam: $(a_1, a_2, a_3, \dots, a_n, \dots)$, em que $a_1$ é o primeiro termo, $a_2$ o segundo, e assim por diante.</p>
+        <p>Uma sequência é chamada de <strong>Progressão Aritmética</strong> quando a diferença entre um termo qualquer e o seu antecessor é sempre igual a uma constante $r$, chamada <strong>razão</strong>:</p>
+        <p style="text-align: center;">$$r = a_2 - a_1 = a_3 - a_2 = a_4 - a_3 = \dots$$</p>
+        <p><strong>Exemplos:</strong></p>
         <ul>
-            <li><strong>PA Crescente:</strong> Razão positiva ($r > 0$). Ex: $(2, 5, 8, ...)$</li>
-            <li><strong>PA Decrescente:</strong> Razão negativa ($r < 0$). Ex: $(20, 15, 10, ...)$</li>
-            <li><strong>PA Constante:</strong> Razão nula ($r = 0$). Ex: $(7, 7, 7, ...)$</li>
+            <li>$(2, 5, 8, 11, 14, \dots)$ — aqui $r = 5-2 = 3$: cada termo é o anterior somado a $3$;</li>
+            <li>$(10, 7, 4, 1, -2, \dots)$ — aqui $r = 7-10 = -3$: cada termo é o anterior somado a $-3$;</li>
+            <li>$(5, 5, 5, 5, \dots)$ — aqui $r = 0$: todos os termos são iguais.</li>
+        </ul>
+        <p><strong>Como identificar se uma sequência é uma PA:</strong> basta calcular a diferença entre termos consecutivos. Se todas as diferenças forem iguais, é uma PA; se alguma diferença for diferente das demais, não é.</p>
+        <figure class="figura-aula figura-grande">
+            <svg viewBox="0 0 400 320" xmlns="http://www.w3.org/2000/svg" style="width:100%; max-width:450px; height:auto; display:block; margin:0 auto; background:#fdfdfd; border-radius:10px;">
+                <!-- grade -->
+                <g stroke="#e8e8e8" stroke-width="1">
+                    <line x1="60" y1="20" x2="60" y2="290"/>
+                    <line x1="130" y1="20" x2="130" y2="290"/>
+                    <line x1="200" y1="20" x2="200" y2="290"/>
+                    <line x1="270" y1="20" x2="270" y2="290"/>
+                    <line x1="340" y1="20" x2="340" y2="290"/>
+                </g>
+                <!-- eixos -->
+                <line x1="30" y1="280" x2="380" y2="280" stroke="#2c3e50" stroke-width="2"/>
+                <polygon points="390,280 378,275 378,285" fill="#2c3e50"/>
+                <line x1="30" y1="290" x2="30" y2="20" stroke="#2c3e50" stroke-width="2"/>
+                <polygon points="30,10 25,22 35,22" fill="#2c3e50"/>
+                <text x="345" y="300" font-size="13" fill="#2c3e50" font-family="sans-serif">n (posição)</text>
+                <text x="36" y="30" font-size="13" fill="#2c3e50" font-family="sans-serif">a(n)</text>
+                <!-- pontos da PA (2,5,8,11,14) -->
+                <polyline points="60,250 130,205 200,160 270,115 340,70" fill="none" stroke="#3498db" stroke-width="3"/>
+                <circle cx="60" cy="250" r="5" fill="#e67e22"/>
+                <circle cx="130" cy="205" r="5" fill="#e67e22"/>
+                <circle cx="200" cy="160" r="5" fill="#e67e22"/>
+                <circle cx="270" cy="115" r="5" fill="#e67e22"/>
+                <circle cx="340" cy="70" r="5" fill="#e67e22"/>
+                <!-- rotulos posicionados ACIMA de cada ponto, sem tocar a reta -->
+                <text x="60" y="234" font-size="12" fill="#2c3e50" font-family="sans-serif" text-anchor="middle">a1 = 2</text>
+                <text x="130" y="189" font-size="12" fill="#2c3e50" font-family="sans-serif" text-anchor="middle">a2 = 5</text>
+                <text x="200" y="144" font-size="12" fill="#2c3e50" font-family="sans-serif" text-anchor="middle">a3 = 8</text>
+                <text x="270" y="99" font-size="12" fill="#2c3e50" font-family="sans-serif" text-anchor="middle">a4 = 11</text>
+                <text x="340" y="54" font-size="12" fill="#2c3e50" font-family="sans-serif" text-anchor="middle">a5 = 14</text>
+                <!-- indicador da razão, isolado no canto, sem sobrepor rotulos -->
+                <line x1="95" y1="227" x2="95" y2="205" stroke="#2ecc71" stroke-width="2" stroke-dasharray="4,3"/>
+                <line x1="20" y1="264" x2="93" y2="220" stroke="#2ecc71" stroke-width="1"/>
+                <text x="20" y="270" font-size="13" fill="#2ecc71" font-family="sans-serif" font-weight="bold">r = 3</text>
+            </svg>
+            <figcaption>Figura 1: Os termos de uma PA, quando representados em um gráfico posição × valor, formam pontos alinhados — a razão $r$ é o "salto" constante entre eles.</figcaption>
+        </figure>
+    </div>
+
+    <div class="passo-teoria">
+        <h4>2. Termo Geral da PA</h4>
+        <p>Se conhecemos o primeiro termo $a_1$ e a razão $r$, podemos encontrar qualquer termo sem precisar somar um por um. Observe o padrão:</p>
+        <p style="text-align: center;">$$a_2 = a_1+r \qquad a_3 = a_2+r = a_1+2r \qquad a_4 = a_3+r = a_1+3r \qquad \dots$$</p>
+        <p>Generalizando, chegamos à <strong>fórmula do termo geral</strong>:</p>
+        <p style="text-align: center;">$$\boxed{a_n = a_1 + (n-1) \cdot r}$$</p>
+        <p>Também é possível relacionar dois termos quaisquer da PA (não necessariamente o primeiro), de forma mais geral:</p>
+        <p style="text-align: center;">$$a_n = a_m + (n-m) \cdot r$$</p>
+    </div>
+
+    <div class="passo-teoria">
+        <h4>3. Classificação das Progressões Aritméticas</h4>
+        <p>O sinal da razão $r$ determina completamente o comportamento da sequência:</p>
+        <ul>
+            <li><strong>PA Crescente ($r > 0$):</strong> cada termo é maior que o anterior. Ex.: $(1, 4, 7, 10, \dots)$, $r=3$.</li>
+            <li><strong>PA Decrescente ($r < 0$):</strong> cada termo é menor que o anterior. Ex.: $(20, 15, 10, 5, \dots)$, $r=-5$.</li>
+            <li><strong>PA Constante ($r = 0$):</strong> todos os termos são iguais. Ex.: $(8, 8, 8, 8, \dots)$, $r=0$.</li>
         </ul>
     </div>
 
     <div class="passo-teoria">
-        <h4>2. Fórmula do Termo Geral</h4>
-        <p>Para encontrar qualquer termo ($a_n$) sem precisar escrever toda a sequência, utilizamos:</p>
-        <p class="formula">$$a_n = a_1 + (n - 1) \cdot r$$</p>
-        <p>Onde: <br>
-        $a_n$ é o termo que queremos encontrar;<br>
-        $a_1$ é o primeiro termo;<br>
-        $n$ é a posição do termo;<br>
-        $r$ é a razão.</p>
+        <h4>4. Soma dos $n$ Primeiros Termos de uma PA</h4>
+        <p>Conta-se que, ainda criança, o matemático <strong>Carl Friedrich Gauss</strong> somou rapidamente todos os números de $1$ a $100$ percebendo um truque: ao invés de somar em ordem, ele agrupou os termos em pares que somam sempre o mesmo valor:</p>
+        <p style="text-align: center;">$$1+100 = 101 \qquad 2+99 = 101 \qquad 3+98=101 \qquad \dots$$</p>
+        <p>Esse é exatamente o princípio por trás da fórmula da soma de uma PA. Se $S_n = a_1+a_2+\dots+a_n$, podemos escrever a mesma soma de trás para frente, $S_n = a_n + a_{n-1}+\dots+a_1$, e somar as duas expressões, termo a termo:</p>
+        <p style="text-align: center;">$$2S_n = \underbrace{(a_1+a_n)+(a_2+a_{n-1})+\dots+(a_n+a_1)}_{n \text{ parcelas, todas iguais a } (a_1+a_n)} = n \cdot (a_1+a_n)$$</p>
+        <p>Isolando $S_n$, obtemos a <strong>fórmula da soma</strong>:</p>
+        <p style="text-align: center;">$$\boxed{S_n = \frac{(a_1+a_n) \cdot n}{2}}$$</p>
+        <p>Se não conhecemos $a_n$ diretamente, podemos substituir $a_n = a_1+(n-1)r$ e obter uma versão da fórmula que depende só de $a_1$, $r$ e $n$:</p>
+        <p style="text-align: center;">$$S_n = \frac{n \cdot [2a_1+(n-1)r]}{2}$$</p>
+        <figure class="figura-aula figura-grande">
+            <svg viewBox="0 0 420 300" xmlns="http://www.w3.org/2000/svg" style="width:100%; max-width:450px; height:auto; display:block; margin:0 auto; background:#fdfdfd; border-radius:10px;">
+                <!-- caixas com os termos da PA 3,7,11,15,19,23 -->
+                <g font-family="sans-serif" font-size="15" text-anchor="middle">
+                    <rect x="30" y="240" width="50" height="40" rx="6" fill="#3498db"/>
+                    <text x="55" y="265" fill="white" font-weight="bold">3</text>
+                    <rect x="90" y="240" width="50" height="40" rx="6" fill="#3498db"/>
+                    <text x="115" y="265" fill="white" font-weight="bold">7</text>
+                    <rect x="150" y="240" width="50" height="40" rx="6" fill="#3498db"/>
+                    <text x="175" y="265" fill="white" font-weight="bold">11</text>
+                    <rect x="210" y="240" width="50" height="40" rx="6" fill="#3498db"/>
+                    <text x="235" y="265" fill="white" font-weight="bold">15</text>
+                    <rect x="270" y="240" width="50" height="40" rx="6" fill="#3498db"/>
+                    <text x="295" y="265" fill="white" font-weight="bold">19</text>
+                    <rect x="330" y="240" width="50" height="40" rx="6" fill="#3498db"/>
+                    <text x="355" y="265" fill="white" font-weight="bold">23</text>
+                </g>
+                <!-- arcos conectando pares equidistantes, alinhados aos centros corretos das caixas -->
+                <path d="M 55,235 Q 205,15 355,235" fill="none" stroke="#e67e22" stroke-width="2.5"/>
+                <path d="M 115,235 Q 205,95 295,235" fill="none" stroke="#2ecc71" stroke-width="2.5"/>
+                <path d="M 175,235 Q 205,165 235,235" fill="none" stroke="#9b59b6" stroke-width="2.5"/>
+                <!-- rotulos deslocados para as laterais, fora da area dos arcos, sem sobreposicao -->
+                <text x="80" y="35" font-size="14" fill="#e67e22" font-family="sans-serif" font-weight="bold" text-anchor="middle">3 + 23 = 26</text>
+                <text x="330" y="105" font-size="14" fill="#2ecc71" font-family="sans-serif" font-weight="bold" text-anchor="middle">7 + 19 = 26</text>
+                <text x="205" y="200" font-size="13" fill="#9b59b6" font-family="sans-serif" font-weight="bold" text-anchor="middle">11 + 15 = 26</text>
+            </svg>
+            <figcaption>Figura 2: O "truque de Gauss" — em uma PA, pares de termos equidistantes das extremidades sempre somam o mesmo valor.</figcaption>
+        </figure>
     </div>
 
     <div class="passo-teoria">
-        <h4>3. Soma dos Termos de uma PA</h4>
-        <p>A soma dos $n$ primeiros termos de uma PA foi sistematizada por Gauss:</p>
-        <p class="formula">$$S_n = \frac{(a_1 + a_n) \cdot n}{2}$$</p>
-        <figure class="figura-aula figura-grande">
-            <img src="../imagens_matematica/aula1_14_soma_gauss.png" alt="Representação visual da soma de Gauss.">
-            <figcaption>Figura 1: A lógica da soma dos extremos em uma sequência aritmética.</figcaption>
-        </figure>
+        <h4>5. Propriedade dos Termos Equidistantes e Interpolação de Meios Aritméticos</h4>
+        <p><strong>Termos equidistantes:</strong> em uma PA, qualquer termo é a <strong>média aritmética</strong> dos termos que estão à mesma distância dele, para um lado e para o outro:</p>
+        <p style="text-align: center;">$$a_k = \frac{a_{k-p} + a_{k+p}}{2}$$</p>
+        <p><strong>Interpolar meios aritméticos</strong> significa inserir $m$ números entre dois valores dados $a$ e $b$, de modo que todos, juntos, formem uma PA de $m+2$ termos (contando $a$ e $b$ como extremos). A razão dessa nova PA é:</p>
+        <p style="text-align: center;">$$r = \frac{b-a}{m+1}$$</p>
+        <p><em>Exemplo:</em> interpolar $4$ meios aritméticos entre $3$ e $23$ significa formar uma PA de $6$ termos ($3$, mais $4$ meios, mais $23$). A razão é $r = \dfrac{23-3}{4+1} = \dfrac{20}{5} = 4$, gerando a PA $(3, 7, 11, 15, 19, 23)$ — a mesma sequência ilustrada na Figura 2.</p>
     </div>
 </section>
 
 <section class="aplicacoes-reais">
     <h3>💡 Matemática em Ação</h3>  
-    <div class="cards-aplicacao">        
+    <div class="cards-aplicacao" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-top: 20px;">        
         <div class="card" style="background: #fdfdfd; padding: 20px; border-radius: 10px; border-left: 5px solid #3498db; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
-            <h4>🏗️ Construção</h4>
-            <p>O cálculo de materiais para estruturas com padrões repetitivos (como telhas ou poltronas de um cinema) utiliza PA para prever quantidades totais.</p>
+            <h4>🏗️ Arquitetura e Escadas</h4>
+            <p>Cada degrau de uma escada sobe a mesma altura em relação ao anterior — a altura acumulada a cada degrau forma uma PA, o que garante conforto e segurança ao subir.</p>            
         </div>
         <div class="card" style="background: #fdfdfd; padding: 20px; border-radius: 10px; border-left: 5px solid #2ecc71; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
-            <h4>📈 Economia</h4>
-            <p>O sistema de <strong>Juros Simples</strong> funciona como uma PA, onde o valor da dívida cresce somando sempre a mesma quantia fixa ao capital inicial.</p>
+            <h4>🚗 Física: Velocidade em MRUV</h4>
+            <p>Em um Movimento Retilíneo Uniformemente Variado, a velocidade aumenta (ou diminui) a mesma quantidade a cada segundo — a razão da PA corresponde exatamente à aceleração do movimento.</p>
         </div>
     </div>   
 </section>
 
-<section class="questoes-resolvidas">
-    <h3>✅ 5 Questões Resolvidas (R 1 a 5)</h3>
+<section class="simulacao-interativa">
+    <h3>💻 Simulação Interativa: Explorando a Progressão Aritmética</h3>
+    <p>Para uma melhor experiência, clique no botão abaixo para abrir o simulador em uma tela cheia:</p>
     
-    <article class="questao">
-        <h4>R 1: Identificação da Razão</h4>
-        <p><strong>Enunciado:</strong> Determine a razão da PA $(5, 12, 19, 26, ...)$.</p>
-        <div class="resolucao-bloco">
-            <p><strong>Resolução:</strong> Subtraímos o segundo termo pelo primeiro:<br>
-            $r = a_2 - a_1$<br>
-            $r = 12 - 5 = \mathbf{7}$.</p>
-        </div>
-    </article>
-
-    <article class="questao">
-        <h4>R 2: Termo Geral</h4>
-        <p><strong>Enunciado:</strong> Determine o 10º termo da PA onde $a_1 = 3$ e $r = 4$.</p>
-        <div class="resolucao-bloco">
-            <p><strong>Resolução:</strong> Usamos a fórmula $a_n = a_1 + (n-1)r$:<br>
-            $a_{10} = 3 + (10 - 1) \cdot 4$<br>
-            $a_{10} = 3 + 9 \cdot 4$<br>
-            $a_{10} = 3 + 36 = \mathbf{39}$.</p>
-        </div>
-    </article>
-
-    <article class="questao">
-        <h4>R 3: Encontrando o Primeiro Termo</h4>
-        <p><strong>Enunciado:</strong> Em uma PA, o 5º termo é 20 e a razão é 3. Qual o valor de $a_1$?</p>
-        <div class="resolucao-bloco">
-            <p><strong>Resolução:</strong> $a_5 = a_1 + 4r$<br>
-            $20 = a_1 + 4(3)$<br>
-            $20 = a_1 + 12$<br>
-            $a_1 = 20 - 12 = \mathbf{8}$.</p>
-        </div>
-    </article>
-
-    <article class="questao">
-        <h4>R 4: Soma dos Termos</h4>
-        <p><strong>Enunciado:</strong> Calcule a soma dos 20 primeiros números pares positivos $(2, 4, 6, ..., 40)$.</p>
-        <div class="resolucao-bloco">
-            <p><strong>Resolução:</strong> Temos $a_1 = 2$, $a_{20} = 40$ e $n = 20$.<br>
-            $S_{20} = \frac{(2 + 40) \cdot 20}{2}$<br>
-            $S_{20} = 42 \cdot 10 = \mathbf{420}$.</p>
-        </div>
-    </article>
-
-    <article class="questao">
-        <h4>R 5: Posição de um Termo</h4>
-        <p><strong>Enunciado:</strong> Qual a posição do número 51 na PA $(1, 6, 11, ...)$?</p>
-        <div class="resolucao-bloco">
-            <p><strong>Resolução:</strong> $a_1 = 1$, $r = 5$, $a_n = 51$.<br>
-            $51 = 1 + (n - 1) \cdot 5$<br>
-            $50 = (n - 1) \cdot 5$<br>
-            $10 = n - 1 \implies \mathbf{n = 11}$.</p>
-        </div>
-    </article>
+    <div style="text-align: center; margin: 30px auto; width: 100%;">
+        <a href="../simulacoes/simulacao_progressao_aritmetica.html" 
+           target="_blank" 
+           class="btn-gabarito" 
+           style="text-decoration: none; display: inline-block;">
+           🚀 Abrir Simulação em Nova Aba
+        </a>
+    </div>
 </section>
+
+
+
+<!--------------- QUESTOES RESOLVIDAS --------------------------->
+
+<section class="questoes-resolvidas">
+                    <h3>✅ 5 Questões Resolvidas (R 1 a 5)</h3>
+                    
+                    <article class="questao">
+                        <h4>R 1: Cálculo de um Termo com a Fórmula do Termo Geral</h4>
+                        <p><strong>Enunciado:</strong> Determine o $10º$ termo da PA $(5, 9, 13, \dots)$.</p>
+                        <div class="resolucao-bloco">
+                            <p><strong>Resolução:</strong> Identificamos $a_1 = 5$ e $r = 9-5 = 4$. Aplicando a fórmula do termo geral:</p>
+                            <p>$$a_{10} = a_1 + (10-1) \cdot r = 5 + 9 \times 4 = 5+36 = 41$$</p>
+                        </div>
+                    </article>
+
+                    <article class="questao">
+                        <h4>R 2: Determinação da Razão a partir de Dois Termos</h4>
+                        <p><strong>Enunciado:</strong> Em uma PA, $a_1 = 7$ e $a_5 = 27$. Determine a razão $r$ e a lei do termo geral.</p>
+                        <div class="resolucao-bloco">
+                            <p><strong>Resolução:</strong> Usando $a_5 = a_1 + 4r$:</p>
+                            <p>$$27 = 7 + 4r \implies 4r = 20 \implies r = 5$$</p>
+                            <p>Logo, o termo geral é $a_n = 7+(n-1) \cdot 5 = 5n+2$.</p>
+                        </div>
+                    </article>
+
+                    <article class="questao">
+                        <h4>R 3: Verificação se uma Sequência é PA</h4>
+                        <p><strong>Enunciado:</strong> A sequência $(2, 6, 11, 17, \dots)$ é uma Progressão Aritmética?</p>
+                        <div class="resolucao-bloco">
+                            <p><strong>Resolução:</strong> Calculamos as diferenças entre termos consecutivos:</p>
+                            <p>$$6-2 = 4 \qquad \qquad 11-6 = 5$$</p>
+                            <p>Como as diferenças não são iguais ($4 \neq 5$), a sequência <strong>não é</strong> uma Progressão Aritmética.</p>
+                        </div>
+                    </article>
+
+                    <article class="questao">
+                        <h4>R 4: Soma dos Termos de uma PA</h4>
+                        <p><strong>Enunciado:</strong> Calcule a soma dos $20$ primeiros termos da PA $(3, 7, 11, \dots)$.</p>
+                        <div class="resolucao-bloco">
+                            <p><strong>Resolução:</strong> Temos $a_1=3$, $r=4$. Primeiro, calculamos $a_{20}$:</p>
+                            <p>$$a_{20} = 3+(20-1) \times 4 = 3+76 = 79$$</p>
+                            <p>Agora aplicamos a fórmula da soma:</p>
+                            <p>$$S_{20} = \frac{(a_1+a_{20}) \times 20}{2} = \frac{(3+79) \times 20}{2} = \frac{82 \times 20}{2} = 820$$</p>
+                        </div>
+                    </article>
+
+                    <article class="questao">
+                        <h4>R 5: Problema Contextualizado (Física — MRUV)</h4>
+                        <p><strong>Enunciado:</strong> Um carro parte com velocidade de $3\,\text{m/s}$ e, a cada segundo, sua velocidade aumenta $2\,\text{m/s}$ (aceleração constante). Determine a velocidade do carro após $7$ segundos de movimento.</p>
+                        <div class="resolucao-bloco">
+                            <p><strong>Resolução:</strong> As velocidades formam uma PA: $a_1 = 3\,\text{m/s}$ (velocidade em $t=0\text{s}$) e $r = 2\,\text{m/s}$. A velocidade após $7$ segundos corresponde ao $8º$ termo ($a_8$, pois $a_1$ já representa $t=0$):</p>
+                            <p>$$a_8 = a_1 + (8-1) \cdot r = 3 + 7 \times 2 = 3+14 = 17\,\text{m/s}$$</p>
+                        </div>
+                    </article>
+                </section>
+
+<!--------------- QUESTÕES PROPOSTAS --------------------------->
 
 <section class="questoes-propostas">
-    <h3>✍️ 5 Questões Propostas (P 6 a 10)</h3>
+                    <h3>✍️ 5 Questões Propostas (P 6 a 10)</h3>
 
-    <article class="questao">
-        <h4>P 6: Razão Negativa</h4>
-        <p><strong>Enunciado:</strong> Qual o 15º termo da PA $(100, 90, 80, ...)$?</p>
-        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-        <div class="gabarito-resolucao">
-            <p><strong>Resolução:</strong> $a_1 = 100$, $r = -10$, $n = 15$.<br>
-            $a_{15} = 100 + (14) \cdot (-10) = 100 - 140 = \mathbf{-40}$.</p>
-        </div>
-    </article>
+                    <article class="questao">
+                        <h4>P 6: Cálculo de Termo</h4>
+                        <p><strong>Enunciado:</strong> Determine o $12º$ termo da PA $(10, 16, 22, \dots)$.</p>
+                        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+                        <div class="gabarito-resolucao">
+                            <p><strong>Resolução:</strong> $a_1=10$, $r=6$. $$a_{12} = 10+(12-1) \times 6 = 10+66 = 76$$</p>
+                        </div>
+                    </article>
 
-    <article class="questao">
-        <h4>P 7: Interpolação Aritmética</h4>
-        <p><strong>Enunciado:</strong> Insira dois meios aritméticos entre 5 e 14.</p>
-        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-        <div class="gabarito-resolucao">
-            <p><strong>Resolução:</strong> A sequência será $(5, x, y, 14)$. Logo $n = 4$.<br>
-            $14 = 5 + 3r \implies 9 = 3r \implies r = 3$.<br>
-            Os meios são $5+3 = \mathbf{8}$ e $8+3 = \mathbf{11}$.</p>
-        </div>
-    </article>
+                    <article class="questao">
+                        <h4>P 7: PA Decrescente</h4>
+                        <p><strong>Enunciado:</strong> Numa PA, $a_1 = 50$ e $r = -4$. Determine $a_9$.</p>
+                        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+                        <div class="gabarito-resolucao">
+                            <p><strong>Resolução:</strong> $$a_9 = 50+(9-1) \times (-4) = 50-32 = 18$$</p>
+                        </div>
+                    </article>
 
-    <article class="questao">
-        <h4>P 8: Soma dos Ímpares</h4>
-        <p><strong>Enunciado:</strong> Qual a soma dos números ímpares de 1 a 99?</p>
-        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-        <div class="gabarito-resolucao">
-            <p><strong>Resolução:</strong> $a_1 = 1$, $a_n = 99$, $r = 2$.<br>
-            $99 = 1 + (n-1)2 \implies 98 = 2n - 2 \implies 100 = 2n \implies n = 50$.<br>
-            $S_{50} = \frac{(1 + 99) \cdot 50}{2} = 100 \cdot 25 = \mathbf{2500}$.</p>
-        </div>
-    </article>
+                    <article class="questao">
+                        <h4>P 8: Verificação de PA</h4>
+                        <p><strong>Enunciado:</strong> A sequência $(1, 4, 9, 16, \dots)$ é uma PA? Justifique.</p>
+                        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+                        <div class="gabarito-resolucao">
+                            <p><strong>Resolução:</strong> As diferenças são $4-1=3$, $9-4=5$ e $16-9=7$ — todas diferentes. Portanto, <strong>não é</strong> uma PA (é, na verdade, a sequência dos quadrados perfeitos).</p>
+                        </div>
+                    </article>
 
-    <article class="questao">
-        <h4>P 9: Propriedade da Média</h4>
-        <p><strong>Enunciado:</strong> Se $(x, 10, 14)$ é uma PA, qual o valor de $x$?</p>
-        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-        <div class="gabarito-resolucao">
-            <p><strong>Resolução:</strong> O termo médio é a média aritmética dos vizinhos:<br>
-            $10 = \frac{x + 14}{2} \implies 20 = x + 14 \implies \mathbf{x = 6}$.</p>
-        </div>
-    </article>
+                    <article class="questao">
+                        <h4>P 9: Soma de Termos</h4>
+                        <p><strong>Enunciado:</strong> Calcule a soma dos $10$ primeiros termos da PA $(2, 5, 8, \dots)$.</p>
+                        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+                        <div class="gabarito-resolucao">
+                            <p><strong>Resolução:</strong> $a_1=2$, $r=3$, $a_{10} = 2+9 \times 3 = 29$.</p>
+                            <p>$$S_{10} = \frac{(2+29) \times 10}{2} = \frac{310}{2} = 155$$</p>
+                        </div>
+                    </article>
 
-    <article class="questao">
-        <h4>P 10: Salário Progressivo</h4>
-        <p><strong>Enunciado:</strong> Um funcionário ganha R$ 2.000,00 e recebe um aumento fixo anual de R$ 150,00. Qual será seu salário no 6º ano?</p>
-        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-        <div class="gabarito-resolucao">
-            <p><strong>Resolução:</strong> $a_1 = 2000$, $r = 150$, $n = 6$.<br>
-            $a_6 = 2000 + 5 \cdot 150 = 2000 + 750 = \mathbf{2750}$.</p>
-        </div>
-    </article>
-</section>
+                    <article class="questao">
+                        <h4>P 10: Conceitual</h4>
+                        <p><strong>Enunciado:</strong> Explique, usando a definição de razão, por que uma PA com $r<0$ é sempre decrescente.</p>
+                        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+                        <div class="gabarito-resolucao">
+                            <p><strong>Resolução:</strong> Como $a_{n+1} = a_n + r$, se $r<0$ estamos sempre <strong>somando um valor negativo</strong> ao termo anterior — ou seja, subtraindo. Assim, cada novo termo é necessariamente menor que o anterior, o que caracteriza uma sequência decrescente.</p>
+                        </div>
+                    </article>
+                </section>
+<!--------------- TESTES --------------------------->
 
-<section class="TESTE">
+<section class="testes">
     <h3>🎓 TESTES (T 11 a 15)</h3>
 
     <article class="questao">
-    <h4>T 11: (UECE / 2024) Trigonometria — Triângulo Retângulo com PA</h4>
-    <p>Em um triângulo retângulo, a medida da hipotenusa é igual a 2 m e as medidas dos ângulos internos, usando a unidade "grau", constituem uma progressão aritmética. Se as medidas dos catetos, em metro, são $x$ e $y$, então, o produto $x \cdot y$ é igual a:</p>
-    <p>A) $\sqrt{2}$ m²<br>B) $\sqrt{3}$ m²<br>C) $2\sqrt{3}$ m²<br>D) $3\sqrt{2}$ m²</p>
-    <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-    <div class="gabarito-resolucao">
-        <p><strong>Resolução:</strong> Alternativa <strong>B</strong>.<br>
-        Os três ângulos internos somam $180°$ e constituem uma PA. Em qualquer PA de três termos, o termo central é a média aritmética dos extremos, logo o termo central é $\dfrac{180°}{3} = 60°$.<br><br>
-        Como o triângulo é retângulo, um dos ângulos é $90°$. Os três ângulos em PA são, portanto:<br>
-        $30°,\ 60°,\ 90°$.<br><br>
-        Com hipotenusa $= 2$ m:<br>
-        $x = 2\sen(30°) = 2 \cdot \dfrac{1}{2} = 1$ m.<br>
-        $y = 2\sen(60°) = 2 \cdot \dfrac{\sqrt{3}}{2} = \sqrt{3}$ m.<br><br>
-        Produto:<br>
-        $x \cdot y = 1 \times \sqrt{3} = \mathbf{\sqrt{3}}$ m².</p>
-    </div>
-</article>
-
-    <article class="questao">
-    <h4>T 12: Progressão Aritmética — Matrículas em Curso</h4>
-    <p>Uma escola de preparação para concursos públicos contratou uma empresa de marketing digital para divulgar seus cursos. Um dos cursos oferecidos tinha capacidade para atender 15.000 alunos. No primeiro dia de matrícula desse curso, 180 alunos se inscreveram; no segundo dia, 240; no terceiro dia, 300, e, assim, sucessivamente, sempre aumentando 60 alunos inscritos a cada dia.</p>
-    <p>Qual é o número mínimo de dias para atingir 15.000 alunos inscritos?</p>
-    <p>A) $12$<br>B) $15$<br>C) $18$<br>D) $20$</p>
+    <h4>T 11: (ENEM) Progressão Aritmética — Lugares em um Teatro</h4>
+    <p>Em um teatro, a primeira fileira de poltronas tem $20$ lugares. Cada fileira seguinte tem $4$ lugares a mais que a fileira anterior, seguindo esse padrão até a última fileira.</p>
+    <p>Quantos lugares tem a $15ª$ fileira desse teatro?</p>
+    <p>A) $56$<br>B) $60$<br>C) $64$<br>D) $76$<br>E) $80$</p>
     <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
     <div class="gabarito-resolucao">
         <p><strong>Resolução:</strong> Alternativa <strong>D</strong>.<br>
-        A sequência de inscritos por dia forma uma PA com $a_1 = 180$ e $r = 60$.<br>
-        Termo geral: $a_n = 180 + (n-1) \cdot 60 = 120 + 60n$.<br><br>
-        O total de inscritos após $n$ dias é a soma dos termos da PA:<br>
-        $S_n = \dfrac{n(a_1 + a_n)}{2} = \dfrac{n(180 + 120 + 60n)}{2} = \dfrac{n(300 + 60n)}{2} = 150n + 30n^2$.<br><br>
-        Condição: $S_n \geq 15\,000$:<br>
-        $30n^2 + 150n \geq 15\,000$<br>
-        $n^2 + 5n \geq 500$<br>
-        $n^2 + 5n - 500 \geq 0$<br><br>
-        Resolvendo $n^2 + 5n - 500 = 0$:<br>
-        $n = \dfrac{-5 + \sqrt{25 + 2000}}{2} = \dfrac{-5 + \sqrt{2025}}{2} = \dfrac{-5 + 45}{2} = \dfrac{40}{2} = 20$.<br><br>
-        Verificando: $S_{20} = 30(400) + 150(20) = 12\,000 + 3\,000 = 15\,000$ ✓<br>
-        O número mínimo de dias é $\mathbf{20}$.</p>
+        $a_1 = 20$, $r=4$. $$a_{15} = 20+(15-1) \times 4 = 20+56 = 76 \text{ lugares}$$</p>
     </div>
-</article>
+      </article>
 
     <article class="questao">
-    <h4>T 13: (UERJ) Razão</h4>
-    <p>Em uma PA onde $a_1 = 10$ e $a_{10} = 55$, a razão é:</p>
-    <p>
-        A) 4<b<article class="questao">
-    <h4>T 13: Progressão Geométrica — Bungee Jump</h4>
-    <p>Atualmente, os esportes radicais estão em alta. Um dos preferidos dos adolescentes é o salto de Bungee Jump. A atração consiste em se jogar de uma certa altura preso a uma corda elástica de tamanho menor que a distância até o chão. Um indivíduo decide participar da brincadeira e, ao se jogar de um equipamento com uma corda de 100 metros, ele volta, devido à elasticidade dessa corda, até $\dfrac{3}{4}$ da altura inicial, e assim sucessivamente ao descer de novo.</p>
-    <p>Supondo que esse fosse um processo infinito, a distância percorrida entre subidas e descidas verticais desse indivíduo, em metros, seria de:</p>
-    <p>A) $350$<br>B) $275$<br>C) $600$<br>D) $200$<br>E) $300$</p>
+    <h4>T 12: Sistema com Termo Geral</h4>
+    <p>Numa PA crescente, a soma do primeiro com o quinto termo é $30$, e a razão vale $3$. Qual é o valor do primeiro termo?</p>
+    <p>A) $6$<br>B) $9$<br>C) $12$<br>D) $15$<br>E) $18$</p>
     <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
     <div class="gabarito-resolucao">
-        <p><strong>Resolução:</strong> Alternativa <strong>C</strong>.<br>
-        A primeira descida percorre $100$ m.<br>
-        A partir daí, o indivíduo sobe e desce $\dfrac{3}{4}$ da altura anterior, repetindo infinitamente.<br><br>
-        As subidas e descidas após a primeira queda formam uma PG infinita com:<br>
-        $a_1 = 2 \times \dfrac{3}{4} \times 100 = 150$ m (primeira subida + descida).<br>
-        $q = \dfrac{3}{4}$.<br><br>
-        Soma da PG infinita (subidas e descidas):<br>
-        $S = \dfrac{a_1}{1 - q} = \dfrac{150}{1 - \frac{3}{4}} = \dfrac{150}{\frac{1}{4}} = 600$ m... incluindo a primeira descida:<br>
-        $S_{\text{total}} = 100 + \dfrac{150}{1/4}$... Recalculando:<br>
-        $S_{\text{total}} = 100 + \dfrac{2 \times 75}{1/4}$.<br>
-        Subidas e descidas: $a_1 = 75 + 75 = 150$, $S = \dfrac{150}{1/4} = 500$.<br>
-        Total $= 100 + 500 = \mathbf{600}$ m. ✓</p>
+        <p><strong>Resolução:</strong> Alternativa <strong>B</strong>.<br>
+        $a_5 = a_1+4r = a_1+12$. Da condição $a_1+a_5=30$: $$a_1+(a_1+12)=30 \implies 2a_1=18 \implies a_1=9$$</p>
     </div>
-</article>r> 
-        B) 5<br> 
-        C) 6<br> 
-        D) 10<br> 
-        E) 45
-    </p>
-    <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-    <div class="gabarito-resolucao">
-        <p><strong>Resolução:</strong> Alternativa <strong>B</strong>. <br>
-        $a_{10} = a_1 + 9r$<br>
-        $55 = 10 + 9r \implies 45 = 9r \implies \mathbf{r = 5}$.</p>
-    </div>
-</article>
+      </article>
 
     <article class="questao">
-    <h4>T 14: (FUNDATEC – SEBRAE-SP / 2019) Progressão Aritmética — Ponte Estaiada</h4>
-    <p>A ponte Octavio Frias de Oliveira, em São Paulo, mais conhecida como ponte Estaiada, tem algumas características interessantes, dentre elas o fato de que seus cabos de sustentação totalizam um número de 144, sendo 72 para cada um dos dois pilares que formam um "X". O cabo mais comprido de cada pilar mede exatos 251 metros e os demais, para o mesmo pilar, diminuem 2 metros um por um.</p>
-    <p>Sendo assim, podemos dizer que a soma, em metros, dos comprimentos de todos os cabos é de:</p>
-    <p>A) $360$<br>B) $12\,960$<br>C) $13\,464$<br>D) $15\,696$<br>E) $25\,920$</p>
+    <h4>T 13: Determinação do Número de Termos</h4>
+    <p>Uma PA tem $a_1=5$, $a_n=37$ e soma $S_n=210$. Quantos termos tem essa PA?</p>
+    <p>A) $8$<br>B) $10$<br>C) $12$<br>D) $14$<br>E) $15$</p>
     <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
     <div class="gabarito-resolucao">
-        <p><strong>Resolução:</strong> Alternativa <strong>E</strong>.<br>
-        Para cada pilar, os 72 cabos formam uma PA com:<br>
-        $a_1 = 251$ m (cabo mais comprido), $r = -2$ m e $n = 72$.<br><br>
-        Último cabo: $a_{72} = 251 + (72-1)\cdot(-2) = 251 - 142 = 109$ m.<br><br>
-        Soma dos cabos de um pilar:<br>
-        $S_{72} = \dfrac{n(a_1 + a_{72})}{2} = \dfrac{72(251 + 109)}{2} = \dfrac{72 \times 360}{2} = 36 \times 360 = 12\,960$ m.<br><br>
-        Como há dois pilares iguais:<br>
-        $S_{\text{total}} = 2 \times 12\,960 = \mathbf{25\,920}$ m.</p>
+        <p><strong>Resolução:</strong> Alternativa <strong>B</strong>.<br>
+        $$S_n = \frac{(a_1+a_n) \cdot n}{2} \implies 210 = \frac{(5+37) \cdot n}{2} = 21n \implies n = 10$$</p>
     </div>
-</article>
+      </article>
 
     <article class="questao">
-    <h4>T 15: (PUC-SP / 2017) Progressão Aritmética — Quebra-Cabeça</h4>
-    <p>Uma pessoa montou um quebra-cabeça de 1000 peças em 11 dias. No 1º dia foram montadas 40 peças, e o número diário de peças montadas do 2º ao 11º dia obedeceram a uma progressão aritmética. Se o número de peças montadas no 2º dia correspondeu a 60% do número de peças montadas no 7º dia, então, o número de peças montadas no 9º dia foi:</p>
-    <p>A) $120$<br>B) $118$<br>C) $116$<br>D) $114$</p>
+    <h4>T 14: Interpolação de Meios Aritméticos</h4>
+    <p>Ao interpolar $4$ meios aritméticos entre os números $3$ e $23$, qual é a razão da PA formada?</p>
+    <p>A) $2$<br>B) $4$<br>C) $5$<br>D) $6$<br>E) $20$</p>
     <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
     <div class="gabarito-resolucao">
-        <p><strong>Resolução:</strong> Alternativa <strong>A</strong>.<br>
-        Do 2º ao 11º dia há $10$ termos em PA com primeiro termo $a_1 = b$ e razão $r$.<br><br>
-        <strong>Condição 1</strong> — total de peças $= 1000$:<br>
-        $40 + S_{10} = 1000 \implies S_{10} = 960$.<br>
-        $S_{10} = \dfrac{10(b + a_{10})}{2} = 5(b + b + 9r) = 5(2b + 9r) = 960$<br>
-        $2b + 9r = 192$ &nbsp;&nbsp;&nbsp;$(i)$<br><br>
-        <strong>Condição 2</strong> — peças no 2º dia $= 60\%$ das peças no 7º dia:<br>
-        O 2º dia é $a_1 = b$ e o 7º dia (da PA) é $a_6 = b + 5r$.<br>
-        $b = 0{,}6(b + 5r)$<br>
-        $b = 0{,}6b + 3r$<br>
-        $0{,}4b = 3r \implies b = \dfrac{3r}{0{,}4} = 7{,}5r$ &nbsp;&nbsp;&nbsp;$(ii)$<br><br>
-        Substituindo $(ii)$ em $(i)$:<br>
-        $2(7{,}5r) + 9r = 192$<br>
-        $15r + 9r = 192$<br>
-        $24r = 192 \implies r = 8$.<br>
-        $b = 7{,}5 \times 8 = 60$.<br><br>
-        Peças no 9º dia (8º termo da PA):<br>
-        $a_8 = b + 7r = 60 + 7(8) = 60 + 56 = \mathbf{116}$, alternativa <strong>C</strong>.<br><br>
-        Verificação: $S_{10} = 5(2\times60 + 9\times8) = 5(120+72) = 5\times192 = 960$ ✓<br>
-        $a_1 = 60$, $a_6 = 60+40 = 100$, $60\% \times 100 = 60 = a_1$ ✓</p>
+        <p><strong>Resolução:</strong> Alternativa <strong>B</strong>.<br>
+        Interpolar $4$ meios cria uma PA de $4+2=6$ termos: $$r = \frac{b-a}{m+1} = \frac{23-3}{4+1} = \frac{20}{5} = 4$$</p>
     </div>
-</article>
+    </article>
+
+    <article class="questao">
+    <h4>T 15: (ENEM) Progressão Aritmética — Física (MRUV)</h4>
+    <p>Um carro parte do repouso ($v=0$) e sua velocidade aumenta uniformemente $5\,\text{km/h}$ a cada segundo.</p>
+    <p>Qual é a velocidade do carro após $6$ segundos de movimento?</p>
+    <p>A) $5\,\text{km/h}$<br>B) $6\,\text{km/h}$<br>C) $25\,\text{km/h}$<br>D) $30\,\text{km/h}$<br>E) $35\,\text{km/h}$</p>
+    <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+    <div class="gabarito-resolucao">
+        <p><strong>Resolução:</strong> Alternativa <strong>D</strong>.<br>
+        $a_1 = 0$ (velocidade em $t=0\text{s}$), $r=5$. A velocidade em $t=6\text{s}$ corresponde a $a_7$:<br>
+        $$a_7 = a_1+(7-1) \times 5 = 0+30 = 30\,\text{km/h}$$</p>
+    </div>
+    </article>
 </section>
 
 </div>
@@ -362,7 +401,7 @@ function toggleGabarito(botao) {
     } else {
         gabarito.style.display = "none";
         botao.textContent = "Ver Gabarito e Resolução";
-        botao.style.backgroundColor = "#D35400";
+        botao.style.backgroundColor = "#3498db";
     }
 }
 
@@ -411,7 +450,7 @@ function mostrarSlide(n) {
         const botoes = slide.querySelectorAll('.btn-gabarito');
         botoes.forEach(b => {
             b.textContent = "Ver Gabarito e Resolução";
-            b.style.backgroundColor = "#D35400";
+            b.style.backgroundColor = "#3498db";
         });
     }
 
@@ -461,14 +500,13 @@ function mudarSlide(direcao) {
 
 <div class="controles-slides">
     <div id="slide-info-serie" class="info-lateral"></div>
-    
     <div class="botoes-centrais">
         <button class="btn-nav" onclick="mudarSlide(-1)">⬅ Anterior</button>
         <span id="contador-slide"></span>
         <button class="btn-nav" onclick="mudarSlide(1)">Próximo ➡</button>
         <button class="btn-nav" onclick="toggleSlides()" style="background:#e74c3c;">Sair</button>
     </div>
-
     <div id="slide-info-aula" class="info-lateral" style="text-align: right;"></div>
-</div></body>
+</div>
+</body>
 </html>
