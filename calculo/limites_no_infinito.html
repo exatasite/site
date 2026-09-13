@@ -254,15 +254,73 @@
 <section class="TESTE" id="testes">
     <h3>🎓 TESTES (T 11 a 15)</h3>
 
-    <div class="card" style="text-align:center; padding:60px 20px; background:#f8f9fa; border:2px dashed #3498db; border-radius:12px; margin-top:20px;">
-        <h2 style="color:#3498db; font-size:2.5rem; margin-bottom:15px;">
-            🚧 EM BREVE!
-        </h2>
-
-        <p style="font-size:1.2rem; color:#555;">
-            Questões de vestibulares (ENADE, concursos, etc) sobre Limites no Infinito serão disponibilizadas nesta seção em breve.
-        </p>
+    <article class="questao">
+    <h4>T 11: (ITA 1958) Limite de Sequência — Graus Iguais</h4>
+    <p>Calcular o seguinte limite:</p>
+    <p style="text-align:center;">$$\lim_{n \to \infty} \frac{n^2-3n+1}{4n^2+1}$$</p>
+    <p>A) $0$<br>B) $\dfrac{1}{4}$<br>C) $\dfrac{1}{3}$<br>D) $1$<br>E) O limite não existe</p>
+    <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+    <div class="gabarito-resolucao">
+        <p><strong>Resolução:</strong> Alternativa <strong>B</strong>.<br>
+        1. O numerador e o denominador têm o mesmo grau (grau $2$).<br>
+        2. O limite é a razão entre os coeficientes líderes: $1$ (do $n^2$) e $4$ (do $4n^2$).<br>
+        3. Logo, $\displaystyle\lim_{n \to \infty} \frac{n^2-3n+1}{4n^2+1} = \mathbf{\dfrac{1}{4}}$.<br>
+        <em>Fonte: Instituto Tecnológico de Aeronáutica (ITA), Exame de Habilitação de 1958, Prova de Matemática, questão 1.</em></p>
     </div>
+      </article>
+
+    <article class="questao">
+    <h4>T 12: Grau do Numerador Menor</h4>
+    <p>Qual é o valor de $\displaystyle\lim_{x \to \infty} \dfrac{3x+7}{x^2+1}$?</p>
+    <p>A) $0$<br>B) $3$<br>C) $7$<br>D) $+\infty$<br>E) O limite não existe</p>
+    <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+    <div class="gabarito-resolucao">
+        <p><strong>Resolução:</strong> Alternativa <strong>A</strong>.<br>
+        1. O grau do numerador ($1$) é menor que o grau do denominador ($2$).<br>
+        2. Nesse caso, o quociente tende a zero.<br>
+        3. Logo, $\displaystyle\lim_{x \to \infty} \frac{3x+7}{x^2+1} = \mathbf{0}$.</p>
+    </div>
+      </article>
+
+    <article class="questao">
+    <h4>T 13: Grau do Numerador Maior</h4>
+    <p>Qual é o valor de $\displaystyle\lim_{x \to \infty} \dfrac{4x^3-x}{2x+5}$?</p>
+    <p>A) $0$<br>B) $2$<br>C) $\dfrac{4}{2}$<br>D) $+\infty$<br>E) $-\infty$</p>
+    <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+    <div class="gabarito-resolucao">
+        <p><strong>Resolução:</strong> Alternativa <strong>D</strong>.<br>
+        1. O grau do numerador ($3$) é maior que o grau do denominador ($1$).<br>
+        2. O coeficiente líder do numerador é positivo ($4$).<br>
+        3. Logo, $\displaystyle\lim_{x \to \infty} \frac{4x^3-x}{2x+5} = \mathbf{+\infty}$.</p>
+    </div>
+      </article>
+
+    <article class="questao">
+    <h4>T 14: Determinação de Assíntota Horizontal</h4>
+    <p>Qual é a assíntota horizontal de $f(x) = \dfrac{7x-3}{3x+2}$?</p>
+    <p>A) $y=0$<br>B) $y=\dfrac{3}{7}$<br>C) $y=\dfrac{7}{3}$<br>D) $y=7$<br>E) Não possui assíntota horizontal</p>
+    <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+    <div class="gabarito-resolucao">
+        <p><strong>Resolução:</strong> Alternativa <strong>C</strong>.<br>
+        1. Numerador e denominador têm o mesmo grau (grau $1$).<br>
+        2. O limite (e a assíntota horizontal) é a razão entre os coeficientes líderes: $\dfrac{7}{3}$.<br>
+        3. Logo, a assíntota horizontal é $\mathbf{y = \dfrac{7}{3}}$.</p>
+    </div>
+    </article>
+
+    <article class="questao">
+    <h4>T 15: Concentração de Equilíbrio</h4>
+    <p>A concentração de um poluente em um lago, em partes por milhão (ppm), é modelada por $C(t) = 50 - 50e^{-0{,}1t}$, com $t$ em anos. Qual é o valor de equilíbrio dessa concentração, à medida que $t \to \infty$?</p>
+    <p>A) $0\,\text{ppm}$<br>B) $25\,\text{ppm}$<br>C) $50\,\text{ppm}$<br>D) $100\,\text{ppm}$<br>E) A concentração cresce indefinidamente</p>
+    <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+    <div class="gabarito-resolucao">
+        <p><strong>Resolução:</strong> Alternativa <strong>C</strong>.<br>
+        1. Conforme $t \to \infty$, o expoente $-0{,}1t \to -\infty$.<br>
+        2. Logo, $e^{-0{,}1t} \to 0$.<br>
+        3. Substituindo: $C(t) \to 50 - 50(0) = 50$.<br>
+        4. O valor de equilíbrio é $\mathbf{50\ \text{ppm}}$.</p>
+    </div>
+    </article>
 </section>
 
 </div>
