@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1º Ano: Aula 15 - Progressão Geométrica (PG)</title>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../estilo.css">
+    
+    <script>
+        MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true
+            }
+        };
+    </script>
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body>
+<button class="menu-toggle" onclick="toggleMenu()">☰</button>
+
+<nav id="menu-principal" class="nav-global">
+    <ul>
+        <li><a href="../index.html">🏠 Início</a></li>
+        <li><a href="../fisica_home.html">⚛️ Física</a></li>
+        <li><a href="../matematica_home.html">📐 Matemática</a></li>
+        <li><a href="../simulacoes_home.html">💻 Simulações</a></li>
+    </ul>
+</nav>
+
+<header id="topo">
+    <h1>MATEMÁTICA EM</h1>
+    <p>1º Ano | Aula 15: Progressão Geométrica (PG)</p>
+    <button id="btn-slides" onclick="toggleSlides()">📺 Iniciar Modo Slides</button>
+</header>
+
+<div class="container">
+
+<main class="conteudo-principal">
+
+<div class="secao-aula">
+ <div class="container-resumo" id="resumo">
+    <h3>📚 Resumo</h3>
+    <section class="resumo-conteudo">
+        <p><strong>Progressão Geométrica (PG):</strong> Sequência numérica em que cada termo, a partir do segundo, é obtido multiplicando o anterior por uma constante chamada <strong>razão ($q$)</strong>.</p>
+        <p><strong>Termo Geral da PG:</strong> $a_n = a_1 \cdot q^{n-1}$</p>
+        <p><strong>Soma dos $n$ primeiros termos (PG Finita):</strong> $S_n = \frac{a_1(q^n - 1)}{q - 1} \quad (q \neq 1)$</p>
+        <p><strong>Soma da PG Infinita:</strong> $S_\infty = \frac{a_1}{1 - q} \quad (-1 < q < 1)$</p>
+    </section>
+</div>
+
+<section class="conteudo-teorico-completo" id="teoria">
+    <div class="passo-teoria">
+        <h3>📖 Conceitos Fundamentais</h3>
+        <h4>1. Definição e Razão</h4>
+        <p>Em uma PG $(a_1, a_2, a_3, \dots, a_n)$, a razão é dada pela divisão entre qualquer termo e seu antecessor imediato:</p>
+        <p>$$q = \frac{a_n}{a_{n-1}}$$</p>
+
+        <Image src="image_agent_tag_16125036793291727318" alt="Gráfico do crescimento exponencial em uma Progressão Geométrica" caption="Crescimento exponencial em uma Progressão Geométrica" />
+
+        <h4>2. Classificação das PGs</h4>
+        <ul>
+            <li><strong>Crescente:</strong> $a_1 > 0$ e $q > 1$ ou $a_1 < 0$ e $0 < q < 1$. Exemplo: $(2, 6, 18, 54, \dots)$.</li>
+            <li><strong>Decrescente:</strong> $a_1 > 0$ e $0 < q < 1$ ou $a_1 < 0$ e $q > 1$. Exemplo: $(32, 16, 8, 4, \dots)$.</li>
+            <li><strong>Oscilante ou Alternada:</strong> $q < 0$. Exemplo: $(3, -6, 12, -24, \dots)$.</li>
+            <li><strong>Constante:</strong> $q = 1$. Exemplo: $(5, 5, 5, 5, \dots)$.</li>
+        </ul>
+    </div>
+
+    <div class="passo-teoria">
+        <h4>3. Média Geométrica</h4>
+        <p>Para três termos consecutivos $(a, b, c)$ de uma PG de termos positivos, o termo central é a média geométrica dos extremantes:</p>
+        <p>$$b^2 = a \cdot c \implies b = \sqrt{a \cdot c}$$</p>
+    </div>
+</section>
+
+<section class="aplicacoes-reais" id="aplicacoes">
+    <h3>💡 Matemática em Ação</h3>
+    <div class="cards-aplicacao">
+        <div class="card">
+            <h4>📈 Juros Compostos e Finanças</h4>
+            <p>O crescimento de investimentos sob o regime de juros compostos segue exatamente o modelo matemático de uma PG crescente, onde o fator de rendimento $(1 + i)$ atua como a razão $q$.</p>
+        </div>
+        <div class="card" style="border-left-color: #2ecc71;">
+            <h4>🦠 Biologia e Crescimento Populacional</h4>
+            <p>A divisão celular e a replicação de bactérias ou vírus sob condições ideais multiplicam-se segundo uma PG de razão $q = 2$ a cada ciclo de geração.</p>
+        </div>
+    </div>
+</section>
+
+<section class="questoes-resolvidas" id="resolvidas">
+    <h3>✅ 5 Questões Resolvidas (R 1 a 5)</h3>
+    
+    <article class="questao">
+        <h4>R 1: Cálculo do Termo Geral</h4>
+        <p><strong>Enunciado:</strong> Determine o $7^\circ$ termo da PG $(3, 6, 12, 24, \dots)$.</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong><br>
+            1. Identificando os dados: $a_1 = 3$, $q = \frac{6}{3} = 2$ e $n = 7$.<br>
+            2. Aplicando a fórmula do termo geral $a_n = a_1 \cdot q^{n-1}$:<br>
+               $a_7 = 3 \cdot 2^{7-1} = 3 \cdot 2^6$<br>
+               $a_7 = 3 \cdot 64 = \mathbf{192}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>R 2: Encontrando a Razão</h4>
+        <p><strong>Enunciado:</strong> Em uma PG, o primeiro termo é $a_1 = 5$ e o quinto termo é $a_5 = 80$. Sabendo que todos os termos são positivos, qual é a razão dessa PG?</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong><br>
+            1. Usando a fórmula do termo geral:<br>
+               $a_5 = a_1 \cdot q^4 \implies 80 = 5 \cdot q^4$<br>
+               $q^4 = \frac{80}{5} = 16$<br>
+            2. Como os termos são positivos: $q = \sqrt[4]{16} = \mathbf{2}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>R 3: Soma dos Termos de uma PG Finita</h4>
+        <p><strong>Enunciado:</strong> Calcule a soma dos $6$ primeiros termos da PG $(2, 6, 18, \dots)$.</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong><br>
+            1. Dados: $a_1 = 2$, $q = 3$ e $n = 6$.<br>
+            2. Aplicando a fórmula da soma finita $S_n = \frac{a_1(q^n - 1)}{q - 1}$:<br>
+               $S_6 = \frac{2(3^6 - 1)}{3 - 1} = \frac{2(729 - 1)}{2}$<br>
+               $S_6 = 728 \implies S_6 = \mathbf{728}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>R 4: Soma de uma PG Infinita</h4>
+        <p><strong>Enunciado:</strong> Encontre a soma de todos os termos da PG infinita $\left(1, \frac{1}{2}, \frac{1}{4}, \frac{1}{8}, \dots\right)$.</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong><br>
+            1. Dados: $a_1 = 1$ e $q = \frac{1}{2}$. Como $-1 < q < 1$, a PG converge.<br>
+            2. Aplicando a fórmula $S_\infty = \frac{a_1}{1 - q}$:<br>
+               $S_\infty = \frac{1}{1 - \frac{1}{2}} = \frac{1}{\frac{1}{2}} = \mathbf{2}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>R 5: Propriedade dos Termos Consecutivos</h4>
+        <p><strong>Enunciado:</strong> Determine o valor positivo de $x$ para que os números $(x, x + 2, x + 6)$ formem uma PG nessa ordem.</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong><br>
+            1. Pela propriedade do termo médio: $(x + 2)^2 = x \cdot (x + 6)$.<br>
+            2. Desenvolvendo os produtos:<br>
+               $x^2 + 4x + 4 = x^2 + 6x$<br>
+            3. Simplificando $x^2$ dos dois lados:<br>
+               $4x + 4 = 6x \implies 2x = 4 \implies x = \mathbf{2}$.</p>
+        </div>
+    </article>
+</section>
+
+<section class="questoes-propostas" id="propostas">
+    <h3>✍️ 5 Questões Propostas (P 6 a 10)</h3>
+
+    <article class="questao">
+        <h4>P 6: Termo Específico de PG Alternada</h4>
+        <p><strong>Enunciado:</strong> Determine o $6^\circ$ termo da PG oscilante $(2, -6, 18, -54, \dots)$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong><br>
+            1. Dados: $a_1 = 2$, $q = \frac{-6}{2} = -3$.<br>
+            2. $a_6 = a_1 \cdot q^5 \implies a_6 = 2 \cdot (-3)^5 = 2 \cdot (-243) = \mathbf{-486}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 7: Quantidade de Termos na PG</h4>
+        <p><strong>Enunciado:</strong> Quantos termos possui a PG finita $(3, 6, 12, \dots, 384)$?</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong><br>
+            1. Dados: $a_1 = 3$, $q = 2$, e $a_n = 384$.<br>
+            2. $384 = 3 \cdot 2^{n-1} \implies 2^{n-1} = 128$.<br>
+            3. Fatorando $128 = 2^7 \implies n - 1 = 7 \implies n = \mathbf{8\text{ termos}}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 8: Soma Infinita de Frascos</h4>
+        <p><strong>Enunciado:</strong> Calcule o valor da soma infinita: $S = 6 + 2 + \frac{2}{3} + \frac{2}{9} + \dots$</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong><br>
+            1. Trata-se de uma PG infinita com $a_1 = 6$ e razão $q = \frac{2}{6} = \frac{1}{3}$.<br>
+            2. $S_\infty = \frac{a_1}{1 - q} = \frac{6}{1 - \frac{1}{3}} = \frac{6}{\frac{2}{3}} = 6 \cdot \frac{3}{2} = \mathbf{9}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 9: Dobro de População de Bactérias</h4>
+        <p><strong>Enunciado:</strong> Uma colônia possui inicialmente $100$ bactérias. Se a população dobra a cada hora, quantas bactérias haverá na colônia após $5$ horas?</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong><br>
+            1. No instante inicial ($t = 0$), temos $a_1 = 100$.<br>
+            2. Após $5$ horas, o número de bactérias corresponde ao termo $a_6$ da PG (pois $n = \text{horas} + 1$):<br>
+               $a_6 = 100 \cdot 2^5 = 100 \cdot 32 = \mathbf{3200\text{ bactérias}}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 10: Fração Geratriz com PG Infinita</h4>
+        <p><strong>Enunciado:</strong> Determine a fração geratriz da dízima periódica $0{,}333\dots$ utilizando a soma de uma PG infinita.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong><br>
+            1. Escrevendo a dízima como soma: $0{,}3 + 0{,}03 + 0{,}003 + \dots = \frac{3}{10} + \frac{3}{100} + \frac{3}{1000} + \dots$<br>
+            2. É uma PG infinita com $a_1 = \frac{3}{10}$ e $q = \frac{1}{10}$.<br>
+            3. $S_\infty = \frac{\frac{3}{10}}{1 - \frac{1}{10}} = \frac{\frac{3}{10}}{\frac{9}{10}} = \frac{3}{9} = \mathbf{\frac{1}{3}}$.</p>
+        </div>
+    </article>
+</section>
+
+<section class="TESTE" id="testes">
+    <h3>🎓 TESTES (T 11 a 15)</h3>
+
+    <div class="card" style="text-align:center; padding:60px 20px; background:#f8f9fa; border:2px dashed #3498db; border-radius:12px; margin-top:20px;">
+        <h2 style="color:#3498db; font-size:2.5rem; margin-bottom:15px;">
+            🚧 EM BREVE!
+        </h2>
+
+        <p style="font-size:1.2rem; color:#555;">
+            Questões de vestibulares serão disponibilizadas em breve.
+        </p>
+    </div>
+</section>
+
+</div>
+</main>
+
+<aside class="menu-lateral">
+    <iframe src="../menu_matematica.html" style="width:100%; border:none; height:600px;"></iframe>
+</aside>
+
+</div>
+
+<script>
+function toggleGabarito(botao) {
+    const gabarito = botao.nextElementSibling;
+    if (gabarito.style.display === "none" || gabarito.style.display === "") {
+        gabarito.style.display = "block";
+        botao.textContent = "Esconder Gabarito e Resolução";
+        botao.style.backgroundColor = "#2c3e50";
+    } else {
+        gabarito.style.display = "none";
+        botao.textContent = "Ver Gabarito e Resolução";
+        botao.style.backgroundColor = "#3498db";
+    }
+}
+
+function toggleMenu() {
+    const menuGlobal = document.getElementById("menu-principal");
+    if (menuGlobal) menuGlobal.classList.toggle("ativo");
+}
+
+let slideAtual = 0;
+let slides = [];
+
+function prepararSlides() {
+    const seletores = '.container-resumo, .passo-teoria, .aplicacoes-reais, .questao';
+    slides = document.querySelectorAll(seletores);
+}
+
+function toggleSlides() {
+    prepararSlides();
+    const body = document.body;
+    if (!body.classList.contains('modo-slides')) {
+        body.classList.add('modo-slides');
+        slideAtual = 0;
+        mostrarSlide(slideAtual);
+    } else {
+        body.classList.remove('modo-slides');
+        window.location.reload(); 
+    }
+}
+
+function mostrarSlide(n) {
+    slides.forEach(s => {
+        s.classList.remove('slide-ativo');
+        s.style.display = 'none';
+    });
+    const slide = slides[n];
+    slide.classList.add('slide-ativo');
+    slide.style.display = 'flex'; 
+
+    if (slide.classList.contains('questao') && !slide.querySelector('.btn-gabarito')) {
+        const resolucoes = slide.querySelectorAll('.resolucao-bloco');
+        resolucoes.forEach(r => r.style.display = 'block');
+    } else {
+        const gabaritos = slide.querySelectorAll('.gabarito-resolucao');
+        gabaritos.forEach(g => g.style.display = 'none');
+        const botoes = slide.querySelectorAll('.btn-gabarito');
+        botoes.forEach(b => {
+            b.textContent = "Ver Gabarito e Resolução";
+            b.style.backgroundColor = "#3498db";
+        });
+    }
+
+    const pHeader = document.querySelector('header p').innerText;
+    const partes = pHeader.split('|');
+    if(partes.length > 1) {
+        document.getElementById('slide-info-serie').innerText = partes[0].trim();
+        document.getElementById('slide-info-aula').innerText = partes[1].trim();
+    }
+    document.getElementById('contador-slide').innerText = (n + 1) + " / " + slides.length;
+    if (window.MathJax) MathJax.typesetPromise();
+}
+
+function mudarSlide(direcao) {
+    slideAtual += direcao;
+    if (slideAtual >= slides.length) slideAtual = 0;
+    if (slideAtual < 0) slideAtual = slides.length - 1;
+    mostrarSlide(slideAtual);
+}
+
+document.addEventListener('keydown', function(event) {
+    if (document.body.classList.contains('modo-slides')) {
+        switch(event.key) {
+            case 'ArrowRight': 
+            case 'PageDown':   
+            case 'Enter':      
+            case ' ':          
+                mudarSlide(1);
+                break;
+                
+            case 'ArrowLeft':  
+            case 'PageUp':     
+                mudarSlide(-1);
+                break;
+
+            case 'Escape':     
+                toggleSlides();
+                break;
+        }
+    }
+});
+</script>
+
+<style>
+    body.modo-slides { overflow: hidden; background-color: #1a1a1a; }
+    body.modo-slides .menu-lateral, body.modo-slides header, body.modo-slides .menu-toggle, body.modo-slides #btn-slides { display: none !important; }
+    .slide-ativo {
+        display: flex !important; flex-direction: column; align-items: center; justify-content: flex-start;
+        position: fixed; top: 0; left: 0; width: 100vw; height: calc(100vh - 70px);
+        background: #ffffff; padding: 40px; z-index: 999; overflow-y: auto !important; 
+        box-sizing: border-box; text-align: center;
+    }
+    .controles-slides {
+        position: fixed; bottom: 0; left: 0; width: 100%; height: 70px;
+        background: #2c3e50; color: white; display: none; 
+        justify-content: space-between; align-items: center; padding: 0 20px; z-index: 1001; box-sizing: border-box;
+    }
+    body.modo-slides .controles-slides { display: flex; }
+    .info-lateral { flex: 1; font-family: 'Oswald', sans-serif; font-size: 0.9rem; color: #bdc3c7; }
+    .botoes-centrais { display: flex; align-items: center; gap: 15px; justify-content: center; flex: 2; }
+    .btn-nav { padding: 10px 20px; background: #3498db; color: white; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; }
+    #contador-slide { font-family: 'Oswald', sans-serif; min-width: 60px; text-align: center; }
+</style>
+
+<div class="controles-slides">
+    <div id="slide-info-serie" class="info-lateral"></div>
+    <div class="botoes-centrais">
+        <button class="btn-nav" onclick="mudarSlide(-1)">⬅ Anterior</button>
+        <span id="contador-slide"></span>
+        <button class="btn-nav" onclick="mudarSlide(1)">Próximo ➡</button>
+        <button class="btn-nav" onclick="toggleSlides()" style="background:#e74c3c;">Sair</button>
+    </div>
+    <div id="slide-info-aula" class="info-lateral" style="text-align: right;"></div>
+</div>
+</body>
+</html>
