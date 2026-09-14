@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cálculo I: Limites e Propriedades</title>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../estilo.css">
+    
+    <script>
+        MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true
+            }
+        };
+    </script>
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body>
+<button class="menu-toggle" onclick="toggleMenu()">☰</button>
+
+<nav id="menu-principal" class="nav-global">
+    <ul>
+        <li><a href="../index.html">🏠 Início</a></li>
+        <li><a href="../ensino_medio.html">📚 Ensino Médio</a></li>
+        <li><a href="../ensino_superior.html">🎓 Ensino Superior</a></li>
+    </ul>
+</nav>
+
+<header id="topo">
+    <h1>CÁLCULO I</h1>
+    <p>Cálculo | Aula: Limites e Propriedades</p>
+    <button id="btn-slides" onclick="toggleSlides()">📺 Iniciar Modo Slides</button>
+</header>
+
+<div class="container">
+
+<main class="conteudo-principal">
+
+<div class="secao-aula">
+ <div class="container-resumo" id="resumo">
+    <h3>📚 Resumo </h3>
+    <section class="resumo-conteudo">
+        <p>O <strong>Limite</strong> de uma função descreve o comportamento dessa função à medida que a variável independente (geralmente $x$) se aproxima de um determinado valor $a$. A notação padrão é $\lim_{x \to a} f(x) = L$.</p>
+        <p>Para que esse limite exista, os <strong>limites laterais</strong> (pela esquerda e pela direita de $a$) precisam existir e ser iguais. Para facilitar o cálculo de limites complexos, utilizamos as <strong>Propriedades dos Limites</strong> (soma, subtração, produto, quociente, potência e constante). Quando a substituição direta resulta em uma indeterminação do tipo $\frac{0}{0}$, utilizamos técnicas de fatoração ou racionalização para encontrar o limite verdadeiro.</p>
+    </section>
+</div>
+
+<section class="conteudo-teorico-completo" id="teoria">
+    <div class="passo-teoria">
+        <h3>📖 O Conceito de Limite</h3>
+        <p>A ideia fundamental do cálculo diferencial e integral é o limite. Dizer que $\lim_{x \to a} f(x) = L$ significa que, quando $x$ fica arbitrariamente próximo de $a$ (mas não igual a $a$), os valores de $f(x)$ ficam arbitrariamente próximos de $L$.</p>
+        <p><strong>Substituição Direta:</strong> Se a função for contínua (como um polinômio), o limite pode ser calculado apenas trocando o $x$ pelo valor alvo: $\lim_{x \to 2} (3x - 1) = 3(2) - 1 = 5$.</p>
+    </div>
+
+    <div class="passo-teoria">
+        <h4>1. Limites Laterais e a Existência do Limite</h4>
+        <p>O <strong>limite lateral à esquerda</strong>, $\displaystyle\lim_{x \to a^-} f(x)$, analisa o comportamento de $f$ apenas para valores de $x$ menores que $a$ (aproximando pela esquerda). Já o <strong>limite lateral à direita</strong>, $\displaystyle\lim_{x \to a^+} f(x)$, analisa valores de $x$ maiores que $a$.</p>
+        <p>Esses dois limites laterais são o que garantem (ou não) a existência do limite geral:</p>
+        <p style="text-align: center;">$$\lim_{x \to a} f(x) = L \iff \lim_{x \to a^-} f(x) = \lim_{x \to a^+} f(x) = L$$</p>
+        <p>Se os limites laterais existirem mas forem diferentes, dizemos que o limite <strong>não existe</strong> nesse ponto — mesmo que a função esteja perfeitamente definida nos dois lados.</p>
+        <figure class="figura-aula figura-grande">
+            <svg viewBox="0 0 400 320" xmlns="http://www.w3.org/2000/svg" style="width:100%; max-width:450px; height:auto; display:block; margin:0 auto; background:#fdfdfd; border-radius:10px;">
+                <line x1="30" y1="280" x2="370" y2="280" stroke="#2c3e50" stroke-width="2"/>
+                <polygon points="380,280 368,275 368,285" fill="#2c3e50"/>
+                <line x1="80" y1="300" x2="80" y2="30" stroke="#2c3e50" stroke-width="2"/>
+                <polygon points="80,20 75,32 85,32" fill="#2c3e50"/>
+                <text x="355" y="298" font-size="13" fill="#2c3e50" font-family="sans-serif">x</text>
+                <text x="87" y="35" font-size="13" fill="#2c3e50" font-family="sans-serif">y</text>
+                <line x1="130" y1="30" x2="130" y2="280" stroke="#bdc3c7" stroke-width="1.5" stroke-dasharray="5,4"/>
+                <text x="122" y="295" font-size="13" fill="#2c3e50" font-family="sans-serif">1</text>
+                <line x1="30" y1="300" x2="130" y2="220" stroke="#3498db" stroke-width="3"/>
+                <circle cx="130" cy="220" r="6" fill="#fdfdfd" stroke="#3498db" stroke-width="3"/>
+                <line x1="130" y1="180" x2="230" y2="100" stroke="#e67e22" stroke-width="3"/>
+                <circle cx="130" cy="180" r="6" fill="#e67e22"/>
+                <text x="185" y="85" font-size="13" fill="#e67e22" font-family="sans-serif" font-weight="bold">lim (x→1⁺) f(x) = 2</text>
+                <text x="35" y="255" font-size="13" fill="#3498db" font-family="sans-serif" font-weight="bold">lim (x→1⁻) f(x) = 1</text>
+                <text x="60" y="270" font-size="12" fill="#9b59b6" font-family="sans-serif" font-weight="bold">Como 1 ≠ 2, o limite não existe em x=1</text>
+            </svg>
+            <figcaption>Figura 1: Uma função com "salto" em $x=1$: os limites laterais existem, mas são diferentes — logo, o limite geral não existe nesse ponto.</figcaption>
+        </figure>
+    </div>
+
+    <div class="passo-teoria">
+        <h4>2. Principais Propriedades dos Limites</h4>
+        <p>Supondo que $\lim_{x \to a} f(x)$ e $\lim_{x \to a} g(x)$ existam, temos:</p>
+        <ul>
+            <li><strong>Soma/Subtração:</strong> $\lim_{x \to a} [f(x) \pm g(x)] = \lim_{x \to a} f(x) \pm \lim_{x \to a} g(x)$</li>
+            <li><strong>Multiplicação:</strong> $\lim_{x \to a} [f(x) \cdot g(x)] = \lim_{x \to a} f(x) \cdot \lim_{x \to a} g(x)$</li>
+            <li><strong>Divisão:</strong> $\lim_{x \to a} \left[ \frac{f(x)}{g(x)} \right] = \frac{\lim_{x \to a} f(x)}{\lim_{x \to a} g(x)}$, desde que $\lim_{x \to a} g(x) \neq 0$</li>
+            <li><strong>Constante:</strong> $\lim_{x \to a} [c \cdot f(x)] = c \cdot \lim_{x \to a} f(x)$, onde $c$ é um número real.</li>
+        </ul>
+    </div>
+
+    <div class="passo-teoria">
+        <h4>3. Lidando com Indeterminações ($\frac{0}{0}$)</h4>
+        <p>Se ao substituirmos o valor de $x$ o resultado for $\frac{0}{0}$, isso <strong>não</strong> significa que o limite não existe! É uma <em>indeterminação</em>. Para resolvê-la, devemos simplificar a expressão matemática cortando o fator que está "zerando" a equação.</p>
+        <p>Técnicas comuns incluem: <strong>Fatoração</strong> (como diferença de quadrados ou Bhaskara) e <strong>Multiplicação pelo Conjugado</strong> (quando há raízes). Em ambos os casos, o que realmente acontece é a remoção de um "buraco" (descontinuidade removível): a função original não está definida exatamente no ponto $a$, mas o gráfico "quase" passa por ali — e é essa altura que o limite revela.</p>
+    </div>
+
+    <div class="passo-teoria">
+        <h4>4. Teorema do Confronto (ou Teorema do Sanduíche)</h4>
+        <p>Às vezes, uma função $f$ é difícil de analisar diretamente, mas pode ser "espremida" entre duas outras funções $g$ e $h$ cujos limites já conhecemos. Se, perto de $x=a$:</p>
+        <p style="text-align: center;">$$g(x) \leq f(x) \leq h(x) \qquad \text{e} \qquad \lim_{x \to a} g(x) = \lim_{x \to a} h(x) = L$$</p>
+        <p>então, obrigatoriamente, $\displaystyle\lim_{x \to a} f(x) = L$ também — afinal, se $f$ está "presa" entre duas funções que convergem para o mesmo valor, ela não tem para onde ir a não ser esse mesmo valor.</p>
+        <figure class="figura-aula figura-grande">
+            <svg viewBox="0 0 400 320" xmlns="http://www.w3.org/2000/svg" style="width:100%; max-width:450px; height:auto; display:block; margin:0 auto; background:#fdfdfd; border-radius:10px;">
+                <line x1="30" y1="280" x2="370" y2="280" stroke="#2c3e50" stroke-width="2"/>
+                <polygon points="380,280 368,275 368,285" fill="#2c3e50"/>
+                <line x1="200" y1="300" x2="200" y2="20" stroke="#2c3e50" stroke-width="2"/>
+                <polygon points="200,10 195,22 205,22" fill="#2c3e50"/>
+                <text x="355" y="298" font-size="13" fill="#2c3e50" font-family="sans-serif">x</text>
+                <text x="207" y="25" font-size="13" fill="#2c3e50" font-family="sans-serif">y</text>
+                <polygon points="50,95 80,122 140,158 200,170 260,158 320,122 350,95 350,245 320,218 260,182 200,170 140,182 80,218 50,245" fill="#eaf4fc" opacity="0.7"/>
+                <polyline points="50,95 80,122 140,158 200,170 260,158 320,122 350,95" fill="none" stroke="#e67e22" stroke-width="3"/>
+                <polyline points="50,245 80,218 140,182 200,170 260,182 320,218 350,245" fill="none" stroke="#2ecc71" stroke-width="3"/>
+                <line x1="40" y1="170" x2="360" y2="170" stroke="#9b59b6" stroke-width="1.5" stroke-dasharray="5,4"/>
+                <circle cx="200" cy="170" r="5" fill="#9b59b6"/>
+                <text x="207" y="165" font-size="13" fill="#9b59b6" font-family="sans-serif" font-weight="bold">L</text>
+                <text x="205" y="292" font-size="13" fill="#2c3e50" font-family="sans-serif">a</text>
+                <text x="300" y="88" font-size="14" fill="#e67e22" font-family="sans-serif" font-weight="bold">h(x)</text>
+                <text x="300" y="260" font-size="14" fill="#2ecc71" font-family="sans-serif" font-weight="bold">g(x)</text>
+                <text x="115" y="145" font-size="13" fill="#3498db" font-family="sans-serif" font-weight="bold">f(x) "espremida"</text>
+                <text x="70" y="35" font-size="12" fill="#2c3e50" font-family="sans-serif">g(x) ≤ f(x) ≤ h(x)</text>
+            </svg>
+            <figcaption>Figura 2: O Teorema do Confronto — se $f$ está sempre entre $g$ e $h$, e ambas convergem para $L$ em $x=a$, então $f$ também converge para $L$.</figcaption>
+        </figure>
+    </div>
+</section>
+
+<section class="aplicacoes-reais" id="aplicacoes">
+    <h3>💡 Matemática em Ação</h3>
+    <div class="cards-aplicacao">
+        <div class="card">
+            <h4>🚀 Física: Velocidade Instantânea</h4>
+            <p>Se a velocidade média é a variação da posição sobre um intervalo de tempo, a velocidade exata num instante específico é calculada usando o limite quando o intervalo de tempo tende a zero ($\Delta t \to 0$).</p>
+        </div>
+        <div class="card" style="border-left-color: #2ecc71;">
+            <h4>📈 Economia: Custo Marginal</h4>
+            <p>Economistas usam o limite para determinar o "Custo Marginal" — o custo exato para se produzir apenas uma unidade extra de um produto numa escala industrial massiva.</p>
+        </div>
+    </div>
+</section>
+
+<section class="questoes-resolvidas" id="resolvidas">
+    <h3>✅ 5 Questões Resolvidas (R 1 a 5)</h3>
+    
+    <article class="questao">
+        <h4>R 1: Substituição Direta</h4>
+        <p><strong>Enunciado:</strong> Calcule o valor numérico do limite $\lim_{x \to 3} (2x^2 - 4x + 5)$.</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong><br>
+            1. Como $f(x) = 2x^2 - 4x + 5$ é um polinômio (contínuo em todo o domínio real), calculamos o limite por substituição direta.<br>
+            2. $L = 2(3)^2 - 4(3) + 5$.<br>
+            3. $L = 2(9) - 12 + 5 = 18 - 12 + 5$.<br>
+            4. Logo, $\displaystyle\lim_{x \to 3} (2x^2-4x+5) = \mathbf{11}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>R 2: Existência do Limite via Limites Laterais</h4>
+        <p><strong>Enunciado:</strong> Seja $f(x) = \begin{cases} x, & x < 1 \\ x+1, & x \geq 1 \end{cases}$. Verifique se $\displaystyle\lim_{x \to 1} f(x)$ existe.</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong><br>
+            1. Calculamos o limite lateral à esquerda: $\displaystyle\lim_{x \to 1^-} x = 1$.<br>
+            2. Calculamos o limite lateral à direita: $\displaystyle\lim_{x \to 1^+} (x+1) = 2$.<br>
+            3. Comparamos os dois valores: $1 \neq 2$.<br>
+            4. Como os limites laterais são diferentes, $\displaystyle\lim_{x \to 1} f(x)$ $\mathbf{não\ existe}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>R 3: Indeterminação 0/0 (Diferença de Quadrados)</h4>
+        <p><strong>Enunciado:</strong> Determine o limite de $\lim_{x \to 5} \frac{x^2 - 25}{x - 5}$.</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong><br>
+            1. Substituição direta: $\frac{5^2-25}{5-5} = \frac{0}{0}$ (indeterminação).<br>
+            2. Fatoramos o numerador como diferença de quadrados: $x^2-25 = (x-5)(x+5)$.<br>
+            3. Reescrevemos e cancelamos o fator comum: $\displaystyle\lim_{x \to 5} \frac{(x-5)(x+5)}{x-5} = \lim_{x \to 5} (x+5)$.<br>
+            4. Substituindo: $5+5 = \mathbf{10}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>R 4: Indeterminação 0/0 (Fatoração Quadrática)</h4>
+        <p><strong>Enunciado:</strong> Calcule $\lim_{x \to 2} \frac{x^2 - x - 2}{x - 2}$.</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong><br>
+            1. Substituição direta: $\frac{4-2-2}{0} = \frac{0}{0}$.<br>
+            2. Fatoramos o numerador $x^2-x-2$; suas raízes são $2$ e $-1$, logo $x^2-x-2=(x-2)(x+1)$.<br>
+            3. Cancelamos o fator comum: $\displaystyle\lim_{x \to 2} \frac{(x-2)(x+1)}{x-2} = \lim_{x \to 2} (x+1)$.<br>
+            4. Substituindo $x=2$: $2+1 = \mathbf{3}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>R 5: Indeterminação 0/0 (Racionalização)</h4>
+        <p><strong>Enunciado:</strong> Calcule $\lim_{x \to 0} \frac{\sqrt{x+9}-3}{x}$.</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong><br>
+            1. Substituição direta: $\frac{\sqrt{9}-3}{0} = \frac{0}{0}$.<br>
+            2. Multiplicamos numerador e denominador pelo conjugado $(\sqrt{x+9}+3)$.<br>
+            3. O numerador vira diferença de quadrados: $(\sqrt{x+9})^2-3^2 = x+9-9 = x$.<br>
+            4. Ficamos com $\displaystyle\lim_{x \to 0} \frac{x}{x(\sqrt{x+9}+3)} = \lim_{x \to 0} \frac{1}{\sqrt{x+9}+3}$.<br>
+            5. Substituindo $x=0$: $\dfrac{1}{\sqrt{9}+3} = \dfrac{1}{6}$. Logo, o limite é $\mathbf{\dfrac{1}{6}}$.</p>
+        </div>
+    </article>
+</section>
+
+<section class="questoes-propostas" id="propostas">
+    <h3>✍️ 5 Questões Propostas (P 6 a 10)</h3>
+
+    <article class="questao">
+        <h4>P 6: Limite Simples</h4>
+        <p><strong>Enunciado:</strong> Avalie $\lim_{x \to -1} (5x^3 + 2x^2 - x + 4)$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong><br>
+            1. Substituição direta: $5(-1)^3+2(-1)^2-(-1)+4$.<br>
+            2. $=-5+2+1+4$.<br>
+            3. Logo, o limite é $\mathbf{2}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 7: Propriedades do Quociente</h4>
+        <p><strong>Enunciado:</strong> Se $\lim_{x \to a} f(x) = 10$ e $\lim_{x \to a} g(x) = 2$, calcule $\lim_{x \to a} \frac{f(x)}{g(x) + 3}$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong><br>
+            1. Aplicamos as propriedades do quociente e da soma: $\dfrac{\lim f(x)}{\lim g(x)+3} = \dfrac{10}{2+3}$.<br>
+            2. Logo, o limite é $\mathbf{2}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 8: Fatoração Simples</h4>
+        <p><strong>Enunciado:</strong> Calcule o limite $\lim_{x \to 4} \frac{x^2 - 16}{x - 4}$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong><br>
+            1. Gera $\frac{0}{0}$. Fatoramos a diferença de quadrados: $x^2-16=(x-4)(x+4)$.<br>
+            2. Cancelamos $(x-4)$, restando $\displaystyle\lim_{x \to 4} (x+4)$.<br>
+            3. Substituindo $x=4$: $4+4 = \mathbf{8}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 9: Fator Comum em Evidência</h4>
+        <p><strong>Enunciado:</strong> Encontre o valor de $\lim_{x \to 0} \frac{3x^2 + 5x}{x}$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong><br>
+            1. Resulta em $\frac{0}{0}$. Colocamos $x$ em evidência: $\dfrac{x(3x+5)}{x}$.<br>
+            2. Cancelando $x$, sobra $\displaystyle\lim_{x \to 0} (3x+5)$.<br>
+            3. Substituindo $x=0$: $3(0)+5 = \mathbf{5}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 10: Limite com Conjugado</h4>
+        <p><strong>Enunciado:</strong> Calcule $\lim_{x \to 4} \frac{\sqrt{x} - 2}{x - 4}$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong><br>
+            1. Substituição dá $\frac{0}{0}$. Multiplicamos pelo conjugado $(\sqrt{x}+2)$.<br>
+            2. O numerador vira $(\sqrt{x})^2-2^2=x-4$.<br>
+            3. A expressão fica $\dfrac{x-4}{(x-4)(\sqrt{x}+2)}$; cancelando $(x-4)$, sobra $\dfrac{1}{\sqrt{x}+2}$.<br>
+            4. Substituindo $x=4$: $\dfrac{1}{\sqrt{4}+2} = \dfrac{1}{4}$. Logo, o limite é $\mathbf{\dfrac{1}{4}}$.</p>
+        </div>
+    </article>
+</section>
+
+<section class="TESTE" id="testes">
+    <h3>🎓 TESTES (T 11 a 15)</h3>
+    <p style="text-align:center; font-size:0.9em; color:#7f8c8d; margin-top:-10px;">Pesquisei por questões reais de vestibulares (ITA, IME, Escola Naval, EsPCEx) sobre esses subtemas específicos, mas não encontrei nenhuma com texto e dados completos que eu pudesse reproduzir com segurança — por isso, nenhuma das questões abaixo traz nome de vestibular.</p>
+
+    <article class="questao">
+    <h4>T 11: Limites Laterais e Existência</h4>
+    <p>Seja $f(x) = \begin{cases} x^2, & x \leq 2 \\ 3x-2, & x > 2 \end{cases}$. O que se pode afirmar sobre $\displaystyle\lim_{x \to 2} f(x)$?</p>
+    <p>A) Não existe, pois os limites laterais divergem<br>B) É igual a $4$<br>C) É igual a $6$<br>D) É igual a $2$<br>E) É igual a $0$</p>
+    <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+    <div class="gabarito-resolucao">
+        <p><strong>Resolução:</strong> Alternativa <strong>B</strong>.<br>
+        1. Limite à esquerda: $\displaystyle\lim_{x \to 2^-} x^2 = 4$.<br>
+        2. Limite à direita: $\displaystyle\lim_{x \to 2^+} (3x-2) = 3(2)-2=4$.<br>
+        3. Como os dois limites laterais coincidem em $4$, o limite existe e vale $\mathbf{4}$.</p>
+    </div>
+      </article>
+
+    <article class="questao">
+    <h4>T 12: Propriedades Combinadas</h4>
+    <p>Se $\displaystyle\lim_{x \to a} f(x) = 6$ e $\displaystyle\lim_{x \to a} g(x) = -2$, qual é o valor de $\displaystyle\lim_{x \to a} \left[\dfrac{f(x) \cdot g(x)}{f(x)-g(x)}\right]$?</p>
+    <p>A) $-\dfrac{3}{2}$<br>B) $-\dfrac{12}{8}$<br>C) $\dfrac{12}{8}$<br>D) $-3$<br>E) $3$</p>
+    <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+    <div class="gabarito-resolucao">
+        <p><strong>Resolução:</strong> Alternativa <strong>B</strong> (equivalente a $-\dfrac{3}{2}$).<br>
+        1. Numerador: $f(x)\cdot g(x) \to 6 \times (-2) = -12$.<br>
+        2. Denominador: $f(x)-g(x) \to 6-(-2)=8$.<br>
+        3. Logo, o limite é $\dfrac{-12}{8} = \mathbf{-\dfrac{3}{2}}$.</p>
+    </div>
+      </article>
+
+    <article class="questao">
+    <h4>T 13: Indeterminação com Fatoração Dupla</h4>
+    <p>Qual é o valor de $\displaystyle\lim_{x \to 3} \dfrac{x^2-9}{x^2-4x+3}$?</p>
+    <p>A) $0$<br>B) $1$<br>C) $2$<br>D) $3$<br>E) O limite não existe</p>
+    <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+    <div class="gabarito-resolucao">
+        <p><strong>Resolução:</strong> Alternativa <strong>D</strong>.<br>
+        1. Gera $\frac{0}{0}$. Fatoramos ambos: $x^2-9=(x-3)(x+3)$ e $x^2-4x+3=(x-3)(x-1)$.<br>
+        2. Cancelando $(x-3)$: $\displaystyle\lim_{x \to 3} \dfrac{x+3}{x-1}$.<br>
+        3. Substituindo $x=3$: $\dfrac{6}{2} = \mathbf{3}$.</p>
+    </div>
+      </article>
+
+    <article class="questao">
+    <h4>T 14: Aplicação do Teorema do Confronto</h4>
+    <p>Sabendo que, para todo $x$ próximo de $0$, vale $1-\dfrac{x^2}{2} \leq \cos x \leq 1$, o que o Teorema do Confronto permite concluir sobre $\displaystyle\lim_{x \to 0} \cos x$?</p>
+    <p>A) O limite não existe<br>B) O limite é $0$<br>C) O limite é $1$<br>D) O limite é $\dfrac{1}{2}$<br>E) Não é possível concluir nada</p>
+    <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+    <div class="gabarito-resolucao">
+        <p><strong>Resolução:</strong> Alternativa <strong>C</strong>.<br>
+        1. Temos $\cos x$ "espremido" entre $g(x)=1-\dfrac{x^2}{2}$ e $h(x)=1$.<br>
+        2. Calculamos os limites das duas funções que envolvem $\cos x$: $\displaystyle\lim_{x\to 0}\left(1-\dfrac{x^2}{2}\right)=1$ e $\displaystyle\lim_{x\to 0} 1 = 1$.<br>
+        3. Como ambas tendem ao mesmo valor $1$, pelo Teorema do Confronto, $\displaystyle\lim_{x \to 0} \cos x = \mathbf{1}$.</p>
+    </div>
+    </article>
+
+    <article class="questao">
+    <h4>T 15: Racionalização com Índice Diferente</h4>
+    <p>Qual é o valor de $\displaystyle\lim_{x \to 4} \dfrac{x-4}{\sqrt{x}-2}$?</p>
+    <p>A) $0$<br>B) $1$<br>C) $2$<br>D) $4$<br>E) O limite não existe</p>
+    <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+    <div class="gabarito-resolucao">
+        <p><strong>Resolução:</strong> Alternativa <strong>D</strong>.<br>
+        1. Gera $\frac{0}{0}$. Multiplicamos numerador e denominador pelo conjugado $(\sqrt{x}+2)$.<br>
+        2. O denominador vira $(\sqrt{x})^2-2^2=x-4$.<br>
+        3. A expressão fica $\dfrac{(x-4)(\sqrt{x}+2)}{x-4} = \sqrt{x}+2$ (após cancelar $x-4$).<br>
+        4. Substituindo $x=4$: $\sqrt{4}+2 = \mathbf{4}$.</p>
+    </div>
+    </article>
+</section>
+
+</div>
+</main>
+
+<aside class="menu-lateral">
+    <iframe src="../menu_calculo.html" style="width:100%; border:none; height:600px;"></iframe>
+</aside>
+
+</div>
+
+<script>
+function toggleGabarito(botao) {
+    const gabarito = botao.nextElementSibling;
+    if (gabarito.style.display === "none" || gabarito.style.display === "") {
+        gabarito.style.display = "block";
+        botao.textContent = "Esconder Gabarito e Resolução";
+        botao.style.backgroundColor = "#2c3e50";
+    } else {
+        gabarito.style.display = "none";
+        botao.textContent = "Ver Gabarito e Resolução";
+        botao.style.backgroundColor = "#3498db";
+    }
+}
+
+function toggleMenu() {
+    const menuGlobal = document.getElementById("menu-principal");
+    if (menuGlobal) menuGlobal.classList.toggle("ativo");
+}
+
+let slideAtual = 0;
+let slides = [];
+
+function prepararSlides() {
+    const seletores = '.container-resumo, .passo-teoria, .aplicacoes-reais, .questao';
+    slides = document.querySelectorAll(seletores);
+}
+
+function toggleSlides() {
+    prepararSlides();
+    const body = document.body;
+    if (!body.classList.contains('modo-slides')) {
+        body.classList.add('modo-slides');
+        slideAtual = 0;
+        mostrarSlide(slideAtual);
+    } else {
+        body.classList.remove('modo-slides');
+        window.location.reload(); 
+    }
+}
+
+function mostrarSlide(n) {
+    slides.forEach(s => {
+        s.classList.remove('slide-ativo');
+        s.style.display = 'none';
+    });
+    const slide = slides[n];
+    slide.classList.add('slide-ativo');
+    slide.style.display = 'flex'; 
+
+    if (slide.classList.contains('questao') && !slide.querySelector('.btn-gabarito')) {
+        const resolucoes = slide.querySelectorAll('.resolucao-bloco');
+        resolucoes.forEach(r => r.style.display = 'block');
+    } else {
+        const gabaritos = slide.querySelectorAll('.gabarito-resolucao');
+        gabaritos.forEach(g => g.style.display = 'none');
+        const botoes = slide.querySelectorAll('.btn-gabarito');
+        botoes.forEach(b => {
+            b.textContent = "Ver Gabarito e Resolução";
+            b.style.backgroundColor = "#3498db";
+        });
+    }
+
+    const pHeader = document.querySelector('header p').innerText;
+    const partes = pHeader.split('|');
+    if(partes.length > 1) {
+        document.getElementById('slide-info-serie').innerText = partes[0].trim();
+        document.getElementById('slide-info-aula').innerText = partes[1].trim();
+    }
+    document.getElementById('contador-slide').innerText = (n + 1) + " / " + slides.length;
+    if (window.MathJax) MathJax.typesetPromise();
+}
+
+function mudarSlide(direcao) {
+    slideAtual += direcao;
+    if (slideAtual >= slides.length) slideAtual = 0;
+    if (slideAtual < 0) slideAtual = slides.length - 1;
+    mostrarSlide(slideAtual);
+}
+
+document.addEventListener('keydown', function(event) {
+    if (document.body.classList.contains('modo-slides')) {
+        switch(event.key) {
+            case 'ArrowRight': 
+            case 'PageDown':   
+            case 'Enter':      
+            case ' ':          
+                mudarSlide(1);
+                break;
+                
+            case 'ArrowLeft':  
+            case 'PageUp':     
+                mudarSlide(-1);
+                break;
+
+            case 'Escape':     
+                toggleSlides();
+                break;
+        }
+    }
+});
+</script>
+
+<style>
+    body.modo-slides { overflow: hidden; background-color: #1a1a1a; }
+    body.modo-slides .menu-lateral, body.modo-slides header, body.modo-slides .menu-toggle, body.modo-slides #btn-slides { display: none !important; }
+    .slide-ativo {
+        display: flex !important; flex-direction: column; align-items: center; justify-content: flex-start;
+        position: fixed; top: 0; left: 0; width: 100vw; height: calc(100vh - 70px);
+        background: #ffffff; padding: 40px; z-index: 999; overflow-y: auto !important; 
+        box-sizing: border-box; text-align: center;
+    }
+    .controles-slides {
+        position: fixed; bottom: 0; left: 0; width: 100%; height: 70px;
+        background: #2c3e50; color: white; display: none; 
+        justify-content: space-between; align-items: center; padding: 0 20px; z-index: 1001; box-sizing: border-box;
+    }
+    body.modo-slides .controles-slides { display: flex; }
+    .info-lateral { flex: 1; font-family: 'Oswald', sans-serif; font-size: 0.9rem; color: #bdc3c7; }
+    .botoes-centrais { display: flex; align-items: center; gap: 15px; justify-content: center; flex: 2; }
+    .btn-nav { padding: 10px 20px; background: #3498db; color: white; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; }
+    #contador-slide { font-family: 'Oswald', sans-serif; min-width: 60px; text-align: center; }
+</style>
+
+<div class="controles-slides">
+    <div id="slide-info-serie" class="info-lateral"></div>
+    <div class="botoes-centrais">
+        <button class="btn-nav" onclick="mudarSlide(-1)">⬅ Anterior</button>
+        <span id="contador-slide"></span>
+        <button class="btn-nav" onclick="mudarSlide(1)">Próximo ➡</button>
+        <button class="btn-nav" onclick="toggleSlides()" style="background:#e74c3c;">Sair</button>
+    </div>
+    <div id="slide-info-aula" class="info-lateral" style="text-align: right;"></div>
+</div>
+</body>
+</html>
