@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cálculo I: Continuidade de uma Função</title>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../estilo.css">
+    
+    <script>
+        MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true
+            }
+        };
+    </script>
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body>
+<button class="menu-toggle" onclick="toggleMenu()">☰</button>
+
+<nav id="menu-principal" class="nav-global">
+    <ul>
+        <li><a href="../index.html">🏠 Início</a></li>
+        <li><a href="../ensino_medio.html">📚 Ensino Médio</a></li>
+        <li><a href="../ensino_superior.html">🎓 Ensino Superior</a></li>
+    </ul>
+</nav>
+
+<header id="topo">
+    <h1>CÁLCULO I</h1>
+    <p>Cálculo | Aula: Continuidade de uma Função</p>
+    <button id="btn-slides" onclick="toggleSlides()">📺 Iniciar Modo Slides</button>
+</header>
+
+<div class="container">
+
+<main class="conteudo-principal">
+
+<div class="secao-aula">
+ <div class="container-resumo" id="resumo">
+    <h3>📚 Resumo </h3>
+    <section class="resumo-conteudo">
+        <p>Uma função $f$ é <strong>contínua</strong> em um ponto $x = a$ quando o seu gráfico não apresenta "saltos", "buracos" ou "explosões" naquele ponto. Formalmente, $f$ é contínua em $a$ se, e somente se, três condições são satisfeitas simultaneamente:</p>
+        <ul>
+            <li><strong>(i)</strong> $f(a)$ existe (o ponto pertence ao domínio);</li>
+            <li><strong>(ii)</strong> $\displaystyle\lim_{x \to a} f(x)$ existe (os limites laterais existem e são iguais);</li>
+            <li><strong>(iii)</strong> $\displaystyle\lim_{x \to a} f(x) = f(a)$ (o valor do limite coincide com o valor da função).</li>
+        </ul>
+        <p>Se qualquer uma dessas condições falhar, dizemos que $f$ é <strong>descontínua</strong> em $x=a$.</p>
+    </section>
+</div>
+
+<section class="conteudo-teorico-completo" id="teoria">
+    <div class="passo-teoria">
+        <h3>📖 O que é Continuidade?</h3>
+        <p>Intuitivamente, uma função contínua é aquela que pode ser desenhada "sem tirar o lápis do papel". A continuidade é a base para diversos resultados centrais do Cálculo, como o Teorema do Valor Intermediário e o próprio conceito de derivada — afinal, toda função derivável em um ponto é necessariamente contínua nesse ponto (a recíproca não é verdadeira).</p>
+    </div>
+
+    <div class="passo-teoria">
+        <h4>1. As Três Condições de Continuidade</h4>
+        <p>Para verificar a continuidade em $x=a$, seguimos sempre o mesmo roteiro: calcular $f(a)$, calcular os limites laterais $\displaystyle\lim_{x \to a^-} f(x)$ e $\displaystyle\lim_{x \to a^+} f(x)$, e comparar os três valores.</p>
+        <figure class="figura-aula figura-grande">
+            <svg viewBox="0 0 420 260" xmlns="http://www.w3.org/2000/svg" style="width:100%; max-width:480px; height:auto; display:block; margin:0 auto; background:#fdfdfd; border-radius:10px;">
+                <line x1="30" y1="230" x2="185" y2="230" stroke="#2c3e50" stroke-width="2"/>
+                <line x1="35" y1="240" x2="35" y2="70" stroke="#2c3e50" stroke-width="2"/>
+                <polyline points="44.0,217.5 48.8,211.4 53.7,206.9 58.5,203.1 63.3,199.8 68.2,196.8 73.0,194.0 77.8,191.5 82.7,189.1 87.5,186.8 92.3,184.7 97.2,182.7 102.0,180.7 106.8,178.8 111.7,177.0 116.5,175.2 121.3,173.5 126.2,171.9 131.0,170.3 135.8,168.7 140.7,167.2 145.5,165.7 150.3,164.2 155.2,162.8 160.0,161.4" fill="none" stroke="#3498db" stroke-width="3"/>
+                <line x1="100" y1="230" x2="100" y2="181.5" stroke="#bdc3c7" stroke-width="1.5" stroke-dasharray="4,3"/>
+                <circle cx="100" cy="181.5" r="5" fill="#3498db"/>
+                <text x="93" y="248" font-size="13" fill="#2c3e50" font-family="sans-serif">a</text>
+                <text x="45" y="90" font-size="14" fill="#3498db" font-family="sans-serif" font-weight="bold">contínua em x=a</text>
+                <line x1="230" y1="230" x2="385" y2="230" stroke="#2c3e50" stroke-width="2"/>
+                <line x1="235" y1="240" x2="235" y2="70" stroke="#2c3e50" stroke-width="2"/>
+                <polyline points="244.0,217.5 248.8,211.4 253.7,206.9 258.5,203.1 263.3,199.8 268.2,196.8 273.0,194.0 277.8,191.5 282.7,189.1 287.5,186.8 292.3,184.7 297.2,182.7 302.0,180.7 306.8,178.8 311.7,177.0 316.5,175.2 321.3,173.5 326.2,171.9 331.0,170.3 335.8,168.7 340.7,167.2 345.5,165.7 350.3,164.2 355.2,162.8 360.0,161.4" fill="none" stroke="#e67e22" stroke-width="3"/>
+                <line x1="300" y1="230" x2="300" y2="141.5" stroke="#bdc3c7" stroke-width="1.5" stroke-dasharray="4,3"/>
+                <circle cx="300" cy="181.5" r="5" fill="#fdfdfd" stroke="#e67e22" stroke-width="3"/>
+                <circle cx="300" cy="141.5" r="5" fill="#9b59b6"/>
+                <text x="293" y="248" font-size="13" fill="#2c3e50" font-family="sans-serif">a</text>
+                <text x="235" y="90" font-size="14" fill="#e67e22" font-family="sans-serif" font-weight="bold">descontínua em x=a</text>
+                <text x="308" y="145" font-size="12" fill="#9b59b6" font-family="sans-serif">f(a)</text>
+            </svg>
+            <figcaption>Figura 1: À esquerda, uma função contínua em $x=a$ (o ponto do gráfico coincide com o limite). À direita, uma descontinuidade: o limite existe (círculo aberto), mas $f(a)$ está em outro lugar.</figcaption>
+        </figure>
+    </div>
+
+    <div class="passo-teoria">
+        <h4>2. Tipos de Descontinuidade</h4>
+        <p>Nem toda descontinuidade tem a mesma "gravidade". Classificamos em três tipos principais:</p>
+        <ul>
+            <li><strong>Removível:</strong> o limite existe, mas é diferente de $f(a)$ (ou $f(a)$ não está definido). Basta "redefinir" um ponto para tornar a função contínua.</li>
+            <li><strong>De Salto (1ª espécie):</strong> os limites laterais existem, mas são diferentes entre si — típico de funções definidas por partes.</li>
+            <li><strong>Infinita (2ª espécie):</strong> pelo menos um dos limites laterais tende a $+\infty$ ou $-\infty$, geralmente associada a uma assíntota vertical.</li>
+        </ul>
+        <figure class="figura-aula figura-grande">
+            <svg viewBox="0 0 450 280" xmlns="http://www.w3.org/2000/svg" style="width:100%; max-width:480px; height:auto; display:block; margin:0 auto; background:#fdfdfd; border-radius:10px;">
+                <line x1="15" y1="220" x2="140" y2="220" stroke="#2c3e50" stroke-width="2"/>
+                <line x1="20" y1="230" x2="20" y2="60" stroke="#2c3e50" stroke-width="2"/>
+                <polyline points="28,195 40,175 55,158 70,145 85,135 100,128 115,123" fill="none" stroke="#3498db" stroke-width="3"/>
+                <line x1="70" y1="220" x2="70" y2="145" stroke="#bdc3c7" stroke-width="1.5" stroke-dasharray="3,3"/>
+                <circle cx="70" cy="145" r="5" fill="#fdfdfd" stroke="#3498db" stroke-width="3"/>
+                <circle cx="70" cy="110" r="5" fill="#9b59b6"/>
+                <text x="65" y="238" font-size="12" fill="#2c3e50" font-family="sans-serif">a</text>
+                <text x="20" y="28" font-size="13" fill="#3498db" font-family="sans-serif" font-weight="bold">Removível</text>
+                <line x1="165" y1="220" x2="290" y2="220" stroke="#2c3e50" stroke-width="2"/>
+                <line x1="170" y1="230" x2="170" y2="60" stroke="#2c3e50" stroke-width="2"/>
+                <line x1="178" y1="200" x2="220" y2="150" stroke="#3498db" stroke-width="3"/>
+                <circle cx="220" cy="150" r="5" fill="#fdfdfd" stroke="#3498db" stroke-width="3"/>
+                <line x1="220" y1="115" x2="265" y2="80" stroke="#e67e22" stroke-width="3"/>
+                <circle cx="220" cy="115" r="5" fill="#e67e22"/>
+                <text x="216" y="238" font-size="12" fill="#2c3e50" font-family="sans-serif">a</text>
+                <text x="170" y="28" font-size="13" fill="#e67e22" font-family="sans-serif" font-weight="bold">De salto</text>
+                <line x1="315" y1="220" x2="440" y2="220" stroke="#2c3e50" stroke-width="2"/>
+                <line x1="320" y1="230" x2="320" y2="60" stroke="#2c3e50" stroke-width="2"/>
+                <line x1="378" y1="230" x2="378" y2="55" stroke="#bdc3c7" stroke-width="1.5" stroke-dasharray="4,3"/>
+                <polyline points="328,205 345,195 358,180 368,155 375,110 377,65" fill="none" stroke="#2ecc71" stroke-width="3"/>
+                <polyline points="381,65 383,110 390,155 400,180 413,195 430,205" fill="none" stroke="#2ecc71" stroke-width="3"/>
+                <text x="372" y="238" font-size="12" fill="#2c3e50" font-family="sans-serif">a</text>
+                <text x="320" y="28" font-size="13" fill="#2ecc71" font-family="sans-serif" font-weight="bold">Infinita</text>
+            </svg>
+            <figcaption>Figura 2: Os três tipos de descontinuidade — removível, de salto e infinita.</figcaption>
+        </figure>
+    </div>
+
+    <div class="passo-teoria">
+        <h4>3. Continuidade em Intervalos e o Teorema do Valor Intermediário (TVI)</h4>
+        <p>Uma função é contínua em um intervalo $[a,b]$ quando é contínua em todos os pontos desse intervalo. Isso garante um resultado poderoso, o <strong>Teorema do Valor Intermediário</strong>: se $f$ é contínua em $[a,b]$ e $f(a)$ e $f(b)$ têm sinais opostos, então existe pelo menos um valor $c \in (a,b)$ tal que $f(c) = 0$.</p>
+        <p style="text-align: center;">$$f \text{ contínua em } [a,b], \; f(a) \cdot f(b) < 0 \implies \exists\, c \in (a,b) \mid f(c) = 0$$</p>
+    </div>
+</section>
+
+<section class="aplicacoes-reais" id="aplicacoes">
+    <h3>💡 Matemática em Ação</h3>
+    <div class="cards-aplicacao">
+        <div class="card">
+            <h4>🏗️ Engenharia Estrutural</h4>
+            <p>A distribuição de tensões ao longo de uma viga precisa ser contínua; uma "quebra" matemática indicaria uma fratura ou falha física real no material.</p>
+        </div>
+        <div class="card" style="border-left-color: #2ecc71;">
+            <h4>⚡ Sinais e Circuitos</h4>
+            <p>Ao ligar uma chave em um circuito, a corrente pode apresentar uma descontinuidade de salto — o instante exato da comutação é um ponto crítico de análise.</p>
+        </div>
+    </div>
+</section>
+
+<section class="questoes-resolvidas" id="resolvidas">
+    <h3>✅ 5 Questões Resolvidas (R 1 a 5)</h3>
+    
+    <article class="questao">
+        <h4>R 1: Descontinuidade Removível</h4>
+        <p><strong>Enunciado:</strong> Verifique se $f(x) = \dfrac{x^2-1}{x-1}$ para $x \neq 1$, com $f(1) = 3$, é contínua em $x=1$.</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong><br>
+            1. Fatoramos o numerador como diferença de quadrados: $x^2-1=(x-1)(x+1)$.<br>
+            2. Calculamos o limite: $\displaystyle\lim_{x \to 1} \frac{(x-1)(x+1)}{x-1} = \lim_{x \to 1}(x+1) = 2$.<br>
+            3. Comparamos com o valor da função: $f(1) = 3$.<br>
+            4. Como $2 \neq 3$, temos $\displaystyle\lim_{x \to 1} f(x) \neq f(1)$. A função é $\mathbf{descontínua\ (removível)}$ em $x=1$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>R 2: Determinação de Parâmetro</h4>
+        <p><strong>Enunciado:</strong> Determine o valor de $k$ para que $f(x) = \begin{cases} x^2 + k, & x < 2 \\ 3x - 1, & x \geq 2 \end{cases}$ seja contínua em $x=2$.</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong><br>
+            1. Calculamos o limite lateral esquerdo: $\displaystyle\lim_{x \to 2^-} (x^2+k) = 4+k$.<br>
+            2. Calculamos o valor (e limite direito) em $x=2$: $f(2) = 3(2)-1 = 5$.<br>
+            3. Para continuidade, igualamos: $4+k=5$.<br>
+            4. Logo, $k = \mathbf{1}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>R 3: Classificação de Descontinuidade</h4>
+        <p><strong>Enunciado:</strong> Classifique o tipo de descontinuidade de $f(x) = \dfrac{1}{x-3}$ em $x=3$.</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong><br>
+            1. A função não está definida em $x=3$ (denominador nulo).<br>
+            2. Analisamos os limites laterais: $\displaystyle\lim_{x \to 3^-} \frac{1}{x-3} = -\infty$.<br>
+            3. E também: $\displaystyle\lim_{x \to 3^+} \frac{1}{x-3} = +\infty$.<br>
+            4. Como os limites tendem ao infinito, trata-se de uma $\mathbf{descontinuidade\ infinita}$, associada à assíntota vertical $x=3$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>R 4: Aplicação do Teorema do Valor Intermediário</h4>
+        <p><strong>Enunciado:</strong> Mostre que $f(x) = x^3 - 4x + 1$ possui pelo menos uma raiz no intervalo $[0,1]$.</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong><br>
+            1. Como $f$ é polinomial, é contínua em toda a reta real, inclusive em $[0,1]$.<br>
+            2. Calculamos os extremos: $f(0) = 0-0+1 = 1 > 0$.<br>
+            3. E também: $f(1) = 1-4+1 = -2 < 0$.<br>
+            4. Como $f(0)$ e $f(1)$ têm sinais opostos e $f$ é contínua, pelo TVI existe $c \in (0,1)$ tal que $\mathbf{f(c)=0}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>R 5: Problema Contextualizado</h4>
+        <p><strong>Enunciado:</strong> A temperatura de um forno, em graus Celsius, é dada por $T(t) = \begin{cases} 20 + 2t, & 0 \leq t < 5 \\ 30, & t \geq 5 \end{cases}$, com $t$ em minutos. Verifique se $T$ é contínua em $t=5$.</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong><br>
+            1. Calculamos o limite lateral esquerdo: $\displaystyle\lim_{t \to 5^-} (20+2t) = 20+10=30$.<br>
+            2. Calculamos o valor da função: $T(5) = 30$.<br>
+            3. Os dois valores (e o limite lateral direito, constante $30$) coincidem.<br>
+            4. Logo, $T$ é $\mathbf{contínua}$ em $t=5$ — o forno atinge a temperatura de patamar suavemente, sem saltos.</p>
+        </div>
+    </article>
+</section>
+
+<section class="questoes-propostas" id="propostas">
+    <h3>✍️ 5 Questões Propostas (P 6 a 10)</h3>
+
+    <article class="questao">
+        <h4>P 6: Determinação de Parâmetro</h4>
+        <p><strong>Enunciado:</strong> Determine o valor de $a$ para que $f(x) = \begin{cases} ax + 3, & x \leq 1 \\ 5x - 2, & x > 1 \end{cases}$ seja contínua em $x=1$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong><br>
+            1. $f(1) = a+3$; limite lateral direito: $\displaystyle\lim_{x \to 1^+}(5x-2) = 3$.<br>
+            2. Igualando: $a+3=3$.<br>
+            3. Logo, $a = \mathbf{0}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 7: Análise de Limites Laterais</h4>
+        <p><strong>Enunciado:</strong> A função $f(x) = \dfrac{|x|}{x}$ é contínua em $x=0$? Justifique.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong><br>
+            1. $f$ não está definida em $x=0$.<br>
+            2. $\displaystyle\lim_{x \to 0^-} \frac{|x|}{x} = -1$ e $\displaystyle\lim_{x \to 0^+} \frac{|x|}{x} = 1$.<br>
+            3. Como os limites laterais são diferentes, o limite não existe.<br>
+            4. A função é $\mathbf{descontínua\ (tipo\ salto)}$ em $x=0$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 8: Domínio de Continuidade</h4>
+        <p><strong>Enunciado:</strong> Para quais valores de $x$ a função $f(x) = \dfrac{1}{x^2-4}$ é descontínua?</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong><br>
+            1. Fatoramos o denominador: $x^2-4=(x-2)(x+2)$.<br>
+            2. A função não está definida em $x=2$ e $x=-2$.<br>
+            3. Logo, é descontínua (infinita) nesses dois pontos, sendo contínua em $\mathbf{\mathbb{R} - \{-2, 2\}}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 9: Aplicação do TVI</h4>
+        <p><strong>Enunciado:</strong> Mostre que $g(x) = x^3 - x - 1$ possui uma raiz no intervalo $[1,2]$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong><br>
+            1. $g$ é polinomial, logo contínua em toda a reta.<br>
+            2. $g(1) = 1-1-1=-1<0$ e $g(2)=8-2-1=5>0$.<br>
+            3. Como há mudança de sinal e $g$ é contínua em $[1,2]$, pelo TVI existe $c \in (1,2)$ com $\mathbf{g(c)=0}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 10: Continuidade e Fenômenos Físicos</h4>
+        <p><strong>Enunciado:</strong> Por que a posição de um objeto em movimento é sempre descrita por uma função contínua do tempo, mesmo que sua velocidade possa variar bruscamente?</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong><br>
+            1. Um objeto físico não pode "desaparecer" de uma posição e "reaparecer" instantaneamente em outra.<br>
+            2. Isso violaria a continuidade da matéria no espaço.<br>
+            3. Já a velocidade (derivada da posição) pode ter descontinuidades, como em uma colisão, $\mathbf{sem\ que\ a\ posição\ deixe\ de\ ser\ contínua}$.</p>
+        </div>
+    </article>
+</section>
+
+<section class="TESTE" id="testes">
+    <h3>🎓 TESTES (T 11 a 15)</h3>
+    <p style="text-align:center; font-size:0.9em; color:#7f8c8d; margin-top:-10px;">A T11 é uma questão real (Escola Naval 2013). Para as demais, não encontrei outras questões de vestibular sobre esses subtemas específicos com dados completos e verificáveis — por isso não trazem nome de vestibular.</p>
+
+    <article class="questao">
+    <h4>T 11: (Escola Naval 2013) Continuidade com Parâmetro e Exponencial</h4>
+    <p>Sabendo que a função real $f(x)=\begin{cases} 1+e^{1/x}, & x<0\\ \dfrac{x^2+x-a}{x+2}, & x\geq0\end{cases}$ é contínua em $x=0$, $x \in \mathbb{R}$, qual é o valor de $\dfrac{a}{b}$, onde $b=\dfrac{f^2(0)}{4}$?</p>
+    <p>A) $-2$<br>B) $-4$<br>C) $-6$<br>D) $-8$<br>E) $-10$</p>
+    <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+    <div class="gabarito-resolucao">
+        <p><strong>Resolução:</strong> Alternativa <strong>D</strong>.<br>
+        1. Calculamos o limite lateral esquerdo: quando $x \to 0^-$, temos $1/x \to -\infty$, logo $e^{1/x} \to 0$, e $\displaystyle\lim_{x \to 0^-} f(x) = 1+0 = 1$.<br>
+        2. Para continuidade, $f(0)$ (pela segunda sentença) deve valer $1$: $f(0) = \dfrac{0+0-a}{0+2} = -\dfrac{a}{2} = 1 \implies a=-2$.<br>
+        3. Calculamos $b$: $b = \dfrac{f^2(0)}{4} = \dfrac{1^2}{4} = \dfrac{1}{4}$.<br>
+        4. Logo, $\dfrac{a}{b} = \dfrac{-2}{1/4} = \mathbf{-8}$.<br>
+        <em>Fonte: Escola Naval, vestibular 2013, prova de Matemática.</em></p>
+    </div>
+      </article>
+
+    <article class="questao">
+    <h4>T 12: Determinação de Parâmetro para Continuidade</h4>
+    <p>Considere a função $f(x) = \begin{cases} \dfrac{x^2-9}{x-3}, & x \neq 3 \\ k, & x = 3 \end{cases}$.</p>
+    <p>Qual deve ser o valor de $k$ para que $f$ seja contínua em $x=3$?</p>
+    <p>A) $3$<br>B) $6$<br>C) $9$<br>D) $0$<br>E) A função nunca será contínua em $x=3$</p>
+    <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+    <div class="gabarito-resolucao">
+        <p><strong>Resolução:</strong> Alternativa <strong>B</strong>.<br>
+        1. Fatoramos e simplificamos: $\displaystyle\lim_{x \to 3} \frac{x^2-9}{x-3} = \lim_{x \to 3} \frac{(x-3)(x+3)}{x-3} = \lim_{x \to 3}(x+3) = 6$.<br>
+        2. Para que $f(3)=k$ coincida com o limite, devemos ter $k = \mathbf{6}$.</p>
+    </div>
+      </article>
+
+    <article class="questao">
+    <h4>T 13: Classificação de Descontinuidade</h4>
+    <p>Seja $f(x) = \begin{cases} x+1, & x < 0 \\ 0, & x = 0 \\ x-1, & x > 0 \end{cases}$.</p>
+    <p>A descontinuidade de $f$ em $x=0$ é do tipo:</p>
+    <p>A) Removível<br>B) De salto (1ª espécie)<br>C) Infinita (2ª espécie)<br>D) A função é contínua em $x=0$<br>E) Não é possível classificar</p>
+    <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+    <div class="gabarito-resolucao">
+        <p><strong>Resolução:</strong> Alternativa <strong>B</strong>.<br>
+        1. Limite lateral esquerdo: $\displaystyle\lim_{x \to 0^-} (x+1) = 1$.<br>
+        2. Limite lateral direito: $\displaystyle\lim_{x \to 0^+} (x-1) = -1$.<br>
+        3. Os limites laterais existem, são finitos, mas diferentes entre si ($1 \neq -1$).<br>
+        4. Isso caracteriza uma $\mathbf{descontinuidade\ de\ salto}$.</p>
+    </div>
+      </article>
+
+    <article class="questao">
+    <h4>T 14: Continuidade em Circuito Elétrico</h4>
+    <p>A corrente elétrica (em ampères) em um circuito é modelada por $i(t) = \begin{cases} 5t, & t < 2 \\ 2t+6, & t \geq 2 \end{cases}$, com $t$ em segundos.</p>
+    <p>Qual o valor da corrente no instante $t=2\,\text{s}$, e a função é contínua nesse ponto?</p>
+    <p>A) $8\,\text{A}$, descontínua<br>B) $10\,\text{A}$, contínua<br>C) $10\,\text{A}$, descontínua<br>D) $12\,\text{A}$, contínua<br>E) $6\,\text{A}$, contínua</p>
+    <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+    <div class="gabarito-resolucao">
+        <p><strong>Resolução:</strong> Alternativa <strong>B</strong>.<br>
+        1. Limite lateral esquerdo: $\displaystyle\lim_{t \to 2^-} 5t = 10$.<br>
+        2. Valor da função: $i(2) = 2(2)+6=10$.<br>
+        3. Os dois valores coincidem em $10\,\text{A}$.<br>
+        4. Logo, a função é $\mathbf{contínua}$ em $t=2\,\text{s}$ — não há salto de corrente na comutação.</p>
+    </div>
+    </article>
+
+    <article class="questao">
+    <h4>T 15: Identificação de Função Descontínua</h4>
+    <p>Qual das funções abaixo <strong>NÃO</strong> é contínua em $x=1$?</p>
+    <p>A) $f(x) = x^2+1$<br>B) $f(x) = \dfrac{1}{x-1}$<br>C) $f(x) = \sqrt{x}$<br>D) $f(x) = |x-1|$<br>E) $f(x) = x^3-2$</p>
+    <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+    <div class="gabarito-resolucao">
+        <p><strong>Resolução:</strong> Alternativa <strong>B</strong>.<br>
+        1. A função $f(x) = \dfrac{1}{x-1}$ não está definida em $x=1$ (denominador nulo).<br>
+        2. Ela apresenta uma descontinuidade infinita nesse ponto.<br>
+        3. Todas as demais alternativas são $\mathbf{contínuas}$ em toda a reta real (ou em seu domínio, que inclui $x=1$).</p>
+    </div>
+    </article>
+</section>
+
+</div>
+</main>
+
+<aside class="menu-lateral">
+    <iframe src="../menu_calculo.html" style="width:100%; border:none; height:600px;"></iframe>
+</aside>
+
+</div>
+
+<script>
+function toggleGabarito(botao) {
+    const gabarito = botao.nextElementSibling;
+    if (gabarito.style.display === "none" || gabarito.style.display === "") {
+        gabarito.style.display = "block";
+        botao.textContent = "Esconder Gabarito e Resolução";
+        botao.style.backgroundColor = "#2c3e50";
+    } else {
+        gabarito.style.display = "none";
+        botao.textContent = "Ver Gabarito e Resolução";
+        botao.style.backgroundColor = "#3498db";
+    }
+}
+
+function toggleMenu() {
+    const menuGlobal = document.getElementById("menu-principal");
+    if (menuGlobal) menuGlobal.classList.toggle("ativo");
+}
+
+let slideAtual = 0;
+let slides = [];
+
+function prepararSlides() {
+    const seletores = '.container-resumo, .passo-teoria, .aplicacoes-reais, .questao';
+    slides = document.querySelectorAll(seletores);
+}
+
+function toggleSlides() {
+    prepararSlides();
+    const body = document.body;
+    if (!body.classList.contains('modo-slides')) {
+        body.classList.add('modo-slides');
+        slideAtual = 0;
+        mostrarSlide(slideAtual);
+    } else {
+        body.classList.remove('modo-slides');
+        window.location.reload(); 
+    }
+}
+
+function mostrarSlide(n) {
+    slides.forEach(s => {
+        s.classList.remove('slide-ativo');
+        s.style.display = 'none';
+    });
+    const slide = slides[n];
+    slide.classList.add('slide-ativo');
+    slide.style.display = 'flex'; 
+
+    if (slide.classList.contains('questao') && !slide.querySelector('.btn-gabarito')) {
+        const resolucoes = slide.querySelectorAll('.resolucao-bloco');
+        resolucoes.forEach(r => r.style.display = 'block');
+    } else {
+        const gabaritos = slide.querySelectorAll('.gabarito-resolucao');
+        gabaritos.forEach(g => g.style.display = 'none');
+        const botoes = slide.querySelectorAll('.btn-gabarito');
+        botoes.forEach(b => {
+            b.textContent = "Ver Gabarito e Resolução";
+            b.style.backgroundColor = "#3498db";
+        });
+    }
+
+    const pHeader = document.querySelector('header p').innerText;
+    const partes = pHeader.split('|');
+    if(partes.length > 1) {
+        document.getElementById('slide-info-serie').innerText = partes[0].trim();
+        document.getElementById('slide-info-aula').innerText = partes[1].trim();
+    }
+    document.getElementById('contador-slide').innerText = (n + 1) + " / " + slides.length;
+    if (window.MathJax) MathJax.typesetPromise();
+}
+
+function mudarSlide(direcao) {
+    slideAtual += direcao;
+    if (slideAtual >= slides.length) slideAtual = 0;
+    if (slideAtual < 0) slideAtual = slides.length - 1;
+    mostrarSlide(slideAtual);
+}
+
+document.addEventListener('keydown', function(event) {
+    if (document.body.classList.contains('modo-slides')) {
+        switch(event.key) {
+            case 'ArrowRight': 
+            case 'PageDown':   
+            case 'Enter':      
+            case ' ':          
+                mudarSlide(1);
+                break;
+                
+            case 'ArrowLeft':  
+            case 'PageUp':     
+                mudarSlide(-1);
+                break;
+
+            case 'Escape':     
+                toggleSlides();
+                break;
+        }
+    }
+});
+</script>
+
+<style>
+    body.modo-slides { overflow: hidden; background-color: #1a1a1a; }
+    body.modo-slides .menu-lateral, body.modo-slides header, body.modo-slides .menu-toggle, body.modo-slides #btn-slides { display: none !important; }
+    .slide-ativo {
+        display: flex !important; flex-direction: column; align-items: center; justify-content: flex-start;
+        position: fixed; top: 0; left: 0; width: 100vw; height: calc(100vh - 70px);
+        background: #ffffff; padding: 40px; z-index: 999; overflow-y: auto !important; 
+        box-sizing: border-box; text-align: center;
+    }
+    .controles-slides {
+        position: fixed; bottom: 0; left: 0; width: 100%; height: 70px;
+        background: #2c3e50; color: white; display: none; 
+        justify-content: space-between; align-items: center; padding: 0 20px; z-index: 1001; box-sizing: border-box;
+    }
+    body.modo-slides .controles-slides { display: flex; }
+    .info-lateral { flex: 1; font-family: 'Oswald', sans-serif; font-size: 0.9rem; color: #bdc3c7; }
+    .botoes-centrais { display: flex; align-items: center; gap: 15px; justify-content: center; flex: 2; }
+    .btn-nav { padding: 10px 20px; background: #3498db; color: white; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; }
+    #contador-slide { font-family: 'Oswald', sans-serif; min-width: 60px; text-align: center; }
+</style>
+
+<div class="controles-slides">
+    <div id="slide-info-serie" class="info-lateral"></div>
+    <div class="botoes-centrais">
+        <button class="btn-nav" onclick="mudarSlide(-1)">⬅ Anterior</button>
+        <span id="contador-slide"></span>
+        <button class="btn-nav" onclick="mudarSlide(1)">Próximo ➡</button>
+        <button class="btn-nav" onclick="toggleSlides()" style="background:#e74c3c;">Sair</button>
+    </div>
+    <div id="slide-info-aula" class="info-lateral" style="text-align: right;"></div>
+</div>
+</body>
+</html>
