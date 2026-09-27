@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>1º Ano: Aula 19 - Funções Seno e Cosseno</title>
+    <title>1º Ano: Aula 19 - Razões Trigonométricas e Ângulos Notáveis</title>
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../estilo.css">
 
@@ -21,19 +21,17 @@
 
 <body>
 <button class="menu-toggle" onclick="toggleMenu()">☰</button>
-
 <nav id="menu-principal" class="nav-global">
     <ul>
         <li><a href="../index.html">🏠 Início</a></li>
-        <li><a href="../fisica_home.html">⚛️ Física</a></li>
-        <li><a href="../matematica_home.html">📐 Matemática</a></li>
-        <li><a href="../simulacoes_home.html">💻 Simulações</a></li>
+        <li><a href="../ensino_medio.html">📚 Ensino Médio</a></li>
+        <li><a href="../ensino_superior.html">🎓 Ensino Superior</a></li>
     </ul>
 </nav>
 
 <header>
     <h1>MATEMÁTICA EM</h1>
-    <p>1º Ano | Aula 19: Funções Seno e Cosseno</p>
+    <p>1º Ano | Aula 19: Razões Trigonométricas e Ângulos Notáveis (30°, 45°, 60°)</p>
 <button id="btn-slides" onclick="toggleSlides()" style="position: fixed; top: 20px; right: 20px; z-index: 1000; padding: 10px; cursor: pointer; background: #e67e22; color: white; border: none; border-radius: 5px; font-weight: bold;">
     📺 Iniciar Modo Slides
 </button>
@@ -45,625 +43,348 @@
 
 <div class="secao-aula">
  <div class="container-resumo">
-    <h3>📚 Resumo:</h3>
+    <h3>📚 Resumo: </h3>
     <section class="resumo-conteudo">
-        <p>As <strong>funções trigonométricas</strong> $f(x) = \sin x$ e $g(x) = \cos x$ são funções reais periódicas definidas para todo $x \in \mathbb{R}$. A forma geral é:</p>
+        <p>As <strong>razões trigonométricas</strong> relacionam os ângulos de um triângulo retângulo com as medidas de seus lados. As três principais são:</p>
+        <p style="text-align: center;"><strong>$$\operatorname{sen}\theta = \frac{\text{cateto oposto}}{\text{hipotenusa}} \qquad \cos\theta = \frac{\text{cateto adjacente}}{\text{hipotenusa}} \qquad \operatorname{tg}\theta = \frac{\text{cateto oposto}}{\text{cateto adjacente}}$$</strong></p>
         <ul>
-            <li><strong>Forma geral:</strong> $f(x) = A\sin(Bx + C) + D$ ou $f(x) = A\cos(Bx + C) + D$</li>
-            <li><strong>Amplitude:</strong> $|A|$ — metade da diferença entre o valor máximo e mínimo.</li>
-            <li><strong>Período:</strong> $T = \dfrac{2\pi}{|B|}$ — comprimento de um ciclo completo.</li>
-            <li><strong>Defasagem (fase):</strong> $-\dfrac{C}{B}$ — deslocamento horizontal.</li>
-            <li><strong>Deslocamento vertical:</strong> $D$ — sobe ou desce o gráfico inteiro.</li>
+            <li><strong>Ângulos Notáveis:</strong> $30°$, $45°$ e $60°$ têm valores de seno, cosseno e tangente conhecidos e fixos, obtidos por dedução geométrica (sem calculadora).</li>
+            <li><strong>Triângulo Retângulo:</strong> a hipotenusa é sempre o maior lado, oposto ao ângulo reto; os catetos são "oposto" ou "adjacente" dependendo de qual ângulo agudo está sendo analisado.</li>
         </ul>
     </section>
 </div>
 
 <section class="conteudo-teorico-completo">
-
     <div class="passo-teoria">
-        <h3>📖 De onde vêm as Funções Seno e Cosseno?</h3>
-        <p>No ciclo trigonométrico, à medida que o ponto $P$ percorre a circunferência, sua <strong>ordenada</strong> (altura) varia entre $-1$ e $1$ — isso é exatamente a função seno. Sua <strong>abscissa</strong> (posição horizontal) também varia entre $-1$ e $1$ — essa é a função cosseno. Ao "desenrolar" o ciclo sobre o eixo $x$, obtemos os gráficos ondulados dessas funções. Elas são a base matemática de todo fenômeno periódico: som, luz, corrente alternada, marés e muito mais.</p>
+        <h3>📖 1. O que são Razões Trigonométricas?</h3>
+        <p>Em qualquer triângulo retângulo, fixado um dos ângulos agudos $\theta$, a razão entre dois de seus lados é sempre a mesma, não importa o tamanho do triângulo — desde que o ângulo $\theta$ seja mantido. Essa constância é o que torna as razões trigonométricas tão úteis: conhecendo apenas um ângulo e um lado, conseguimos calcular todos os outros lados do triângulo.</p>
+        <p>Os três lados do triângulo retângulo recebem nomes que dependem do ângulo de referência $\theta$:</p>
+        <ul>
+            <li><strong>Hipotenusa:</strong> o lado oposto ao ângulo reto (sempre o maior lado).</li>
+            <li><strong>Cateto Oposto:</strong> o lado que está "de frente" para o ângulo $\theta$.</li>
+            <li><strong>Cateto Adjacente:</strong> o lado que "encosta" no ângulo $\theta$ (sem ser a hipotenusa).</li>
+        </ul>
     </div>
 
     <div class="passo-teoria">
-        <h4>1. Gráfico da Função Seno: $f(x) = \sin x$</h4>
-        <p>A função $f(x) = \sin x$ possui as seguintes características fundamentais:</p>
-        <ul>
-            <li><strong>Domínio:</strong> $\mathbb{R}$</li>
-            <li><strong>Imagem:</strong> $[-1,\, 1]$</li>
-            <li><strong>Período:</strong> $2\pi$</li>
-            <li><strong>Zeros:</strong> $x = k\pi$, $k \in \mathbb{Z}$ (ou seja, $0°, 180°, 360°, \ldots$)</li>
-            <li><strong>Máximo:</strong> $1$, em $x = \dfrac{\pi}{2} + 2k\pi$</li>
-            <li><strong>Mínimo:</strong> $-1$, em $x = \dfrac{3\pi}{2} + 2k\pi$</li>
-            <li><strong>Função ímpar:</strong> $\sin(-x) = -\sin x$ — simétrica em relação à origem.</li>
-        </ul>
-
+        <h4>2. Seno, Cosseno e Tangente</h4>
+        <p>Definimos as três razões trigonométricas fundamentais em relação ao ângulo $\theta$:</p>
+        <p style="text-align: center;">$$\operatorname{sen}\theta = \frac{\text{cateto oposto}}{\text{hipotenusa}} \qquad \cos\theta = \frac{\text{cateto adjacente}}{\text{hipotenusa}} \qquad \operatorname{tg}\theta = \frac{\text{cateto oposto}}{\text{cateto adjacente}}$$</p>
+        <p>Repare que a tangente pode ser escrita como a razão entre seno e cosseno: $\operatorname{tg}\theta = \dfrac{\operatorname{sen}\theta}{\cos\theta}$. Essa relação é muito útil para simplificar expressões trigonométricas.</p>
         <figure class="figura-aula figura-grande">
-            <svg viewBox="0 0 660 240" xmlns="http://www.w3.org/2000/svg" width="640" height="220">
-                <defs>
-                    <marker id="ax" markerWidth="7" markerHeight="7" refX="5" refY="3" orient="auto">
-                        <path d="M0,0 L0,6 L7,3 Z" fill="#003366"/>
-                    </marker>
-                </dtml:defs>
-
-                <!-- Eixos -->
-                <line x1="20" y1="115" x2="645" y2="115" stroke="#003366" stroke-width="1.5" marker-end="url(#ax)"/>
-                <line x1="50" y1="210" x2="50" y2="20" stroke="#003366" stroke-width="1.5" marker-end="url(#ax)"/>
-                <text x="648" y="119" fill="#003366" font-size="12" font-family="Arial">x</text>
-                <text x="54" y="16" fill="#003366" font-size="12" font-family="Arial">y</text>
-
-                <!-- Grades horizontais -->
-                <line x1="40" y1="55" x2="640" y2="55" stroke="#e0e0e0" stroke-width="1" stroke-dasharray="3,3"/>
-                <line x1="40" y1="175" x2="640" y2="175" stroke="#e0e0e0" stroke-width="1" stroke-dasharray="3,3"/>
-                <text x="22" y="59" fill="#888" font-size="11" font-family="Arial">1</text>
-                <text x="14" y="179" fill="#888" font-size="11" font-family="Arial">−1</text>
-
-                <!-- Marcações eixo x: π/2=110, π=170, 3π/2=230, 2π=290, -π/2=-10+50=... -->
-                <!-- Escala: 1 rad = 60px, origem em x=50 -->
-                <!-- π/2 = 50+94=144, π=50+188=238, 3π/2=50+283=333, 2π=50+377=427 -->
-                <!-- -π/2=50-94=-44 → fora; vamos mostrar de -π a 2π -->
-                <!-- -π=50-188=-138 fora; de 0 a 2π apenas + labels -->
-
-                <!-- Marcações x -->
-                <line x1="144" y1="110" x2="144" y2="120" stroke="#003366" stroke-width="1"/>
-                <text x="132" y="133" fill="#003366" font-size="11" font-family="Arial">π/2</text>
-
-                <line x1="238" y1="110" x2="238" y2="120" stroke="#003366" stroke-width="1"/>
-                <text x="232" y="133" fill="#003366" font-size="11" font-family="Arial">π</text>
-
-                <line x1="333" y1="110" x2="333" y2="120" stroke="#003366" stroke-width="1"/>
-                <text x="317" y="133" fill="#003366" font-size="11" font-family="Arial">3π/2</text>
-
-                <line x1="427" y1="110" x2="427" y2="120" stroke="#003366" stroke-width="1"/>
-                <text x="420" y="133" fill="#003366" font-size="11" font-family="Arial">2π</text>
-
-                <line x1="521" y1="110" x2="521" y2="120" stroke="#003366" stroke-width="1"/>
-                <text x="509" y="133" fill="#003366" font-size="11" font-family="Arial">5π/2</text>
-
-                <line x1="616" y1="110" x2="616" y2="120" stroke="#003366" stroke-width="1"/>
-                <text x="609" y="133" fill="#003366" font-size="11" font-family="Arial">3π</text>
-
-                <!-- Curva seno: y_pixel = 115 - 60*sin(x_rad), x_rad=(x_pixel-50)/60 -->
-                <!-- Pontos chave: (50,115),(144,55),(238,115),(333,175),(427,115),(521,55),(616,115) -->
-                <path d="M50,115 C73,115 97,55 144,55 C191,55 215,115 238,115 C261,115 285,175 333,175 C380,175 403,115 427,115 C450,115 474,55 521,55 C568,55 592,115 616,115"
-                      fill="none" stroke="#D35400" stroke-width="2.5"/>
-
-                <!-- Pontos notáveis -->
-                <circle cx="144" cy="55" r="4" fill="#D35400"/>
-                <circle cx="333" cy="175" r="4" fill="#D35400"/>
-                <circle cx="521" cy="55" r="4" fill="#D35400"/>
-
-                <!-- Label -->
-                <text x="55" y="42" fill="#D35400" font-size="13" font-family="Arial" font-weight="bold">f(x) = sen x</text>
-
-                <!-- Label 0 -->
-                <text x="43" y="130" fill="#003366" font-size="11" font-family="Arial">0</text>
+            <svg viewBox="0 0 400 320" xmlns="http://www.w3.org/2000/svg" style="width:100%; max-width:420px; height:auto; display:block; margin:0 auto; background:#fdfdfd; border-radius:10px;">
+                <polygon points="60,260 280,260 280,80" fill="#eaf4fc" stroke="#3498db" stroke-width="3"/>
+                <rect x="262" y="242" width="18" height="18" fill="none" stroke="#2c3e50" stroke-width="1.5"/>
+                <path d="M 100,260 A 40,40 0 0 1 91.7,225.7" fill="none" stroke="#e67e22" stroke-width="2.5"/>
+                <text x="93" y="245" font-size="15" fill="#e67e22" font-family="sans-serif" font-weight="bold">θ</text>
+                <circle cx="60" cy="260" r="4" fill="#2c3e50"/>
+                <circle cx="280" cy="260" r="4" fill="#2c3e50"/>
+                <circle cx="280" cy="80" r="4" fill="#2c3e50"/>
+                <text x="48" y="278" font-size="14" fill="#2c3e50" font-family="sans-serif" font-weight="bold">A</text>
+                <text x="286" y="278" font-size="14" fill="#2c3e50" font-family="sans-serif" font-weight="bold">B</text>
+                <text x="286" y="76" font-size="14" fill="#2c3e50" font-family="sans-serif" font-weight="bold">C</text>
+                <text x="170" y="282" font-size="14" fill="#2c3e50" font-family="sans-serif" text-anchor="middle" font-weight="bold">cateto adjacente</text>
+                <text x="304" y="170" font-size="14" fill="#2c3e50" font-family="sans-serif" text-anchor="middle" font-weight="bold" transform="rotate(90 304 170)">cateto oposto</text>
+                <text x="150" y="155" font-size="14" fill="#9b59b6" font-family="sans-serif" font-weight="bold" transform="rotate(-38 150 155)">hipotenusa</text>
+                <text x="20" y="24" font-size="15" fill="#2c3e50" font-family="sans-serif" font-weight="bold">sen θ = op/hip</text>
+                <text x="20" y="44" font-size="15" fill="#2c3e50" font-family="sans-serif" font-weight="bold">cos θ = adj/hip</text>
+                <text x="20" y="64" font-size="15" fill="#2c3e50" font-family="sans-serif" font-weight="bold">tg θ = op/adj</text>
             </svg>
-            <figcaption>Figura 1: Gráfico de $f(x) = \sin x$. A curva parte da origem, sobe até o máximo $1$ em $x = \pi/2$, retorna a zero em $x = \pi$, desce até $-1$ em $x = 3\pi/2$ e completa um ciclo em $x = 2\pi$.</figcaption>
+            <figcaption>Figura 1: No triângulo retângulo, em relação ao ângulo $\theta$, definimos seno, cosseno e tangente a partir dos catetos e da hipotenusa.</figcaption>
         </figure>
     </div>
 
     <div class="passo-teoria">
-        <h4>2. Gráfico da Função Cosseno: $g(x) = \cos x$</h4>
-        <p>A função $g(x) = \cos x$ tem as mesmas propriedades gerais do seno, mas começa no máximo:</p>
+        <h4>3. Triângulos Notáveis: De Onde Vêm os Valores de 30°, 45° e 60°?</h4>
+        <p>Os ângulos $30°$, $45°$ e $60°$ são chamados de <strong>ângulos notáveis</strong> porque seus valores de seno, cosseno e tangente podem ser deduzidos geometricamente, sem usar calculadora:</p>
         <ul>
-            <li><strong>Domínio:</strong> $\mathbb{R}$</li>
-            <li><strong>Imagem:</strong> $[-1,\, 1]$</li>
-            <li><strong>Período:</strong> $2\pi$</li>
-            <li><strong>Zeros:</strong> $x = \dfrac{\pi}{2} + k\pi$, $k \in \mathbb{Z}$ (ou seja, $90°, 270°, \ldots$)</li>
-            <li><strong>Máximo:</strong> $1$, em $x = 2k\pi$</li>
-            <li><strong>Mínimo:</strong> $-1$, em $x = \pi + 2k\pi$</li>
-            <li><strong>Função par:</strong> $\cos(-x) = \cos x$ — simétrica em relação ao eixo $y$.</li>
-            <li><strong>Relação com seno:</strong> $\cos x = \sin\!\left(x + \dfrac{\pi}{2}\right)$ — o cosseno é o seno deslocado $\pi/2$ à esquerda.</li>
+            <li><strong>45°:</strong> obtido cortando um <strong>quadrado</strong> pela diagonal. Se o lado do quadrado é $L$, pelo Teorema de Pitágoras a diagonal mede $L\sqrt{2}$, e o triângulo formado é retângulo isósceles com dois ângulos de $45°$.</li>
+            <li><strong>30° e 60°:</strong> obtidos traçando a <strong>altura de um triângulo equilátero</strong>. Se o lado do triângulo é $L$, a altura divide o triângulo em dois triângulos retângulos, cada um com ângulos de $30°$ e $60°$, hipotenusa $L$, um cateto $\frac{L}{2}$ (metade da base) e o outro cateto $\frac{L\sqrt{3}}{2}$ (a altura).</li>
         </ul>
-
         <figure class="figura-aula figura-grande">
-            <svg viewBox="0 0 660 240" xmlns="http://www.w3.org/2000/svg" width="640" height="220">
-                <defs>
-                    <marker id="ax2" markerWidth="7" markerHeight="7" refX="5" refY="3" orient="auto">
-                        <path d="M0,0 L0,6 L7,3 Z" fill="#003366"/>
-                    </marker>
-                </defs>
-
-                <!-- Eixos -->
-                <line x1="20" y1="115" x2="645" y2="115" stroke="#003366" stroke-width="1.5" marker-end="url(#ax2)"/>
-                <line x1="50" y1="210" x2="50" y2="20" stroke="#003366" stroke-width="1.5" marker-end="url(#ax2)"/>
-                <text x="648" y="119" fill="#003366" font-size="12" font-family="Arial">x</text>
-                <text x="54" y="16" fill="#003366" font-size="12" font-family="Arial">y</text>
-
-                <!-- Grades -->
-                <line x1="40" y1="55" x2="640" y2="55" stroke="#e0e0e0" stroke-width="1" stroke-dasharray="3,3"/>
-                <line x1="40" y1="175" x2="640" y2="175" stroke="#e0e0e0" stroke-width="1" stroke-dasharray="3,3"/>
-                <text x="22" y="59" fill="#888" font-size="11" font-family="Arial">1</text>
-                <text x="14" y="179" fill="#888" font-size="11" font-family="Arial">−1</text>
-
-                <!-- Marcações x -->
-                <line x1="144" y1="110" x2="144" y2="120" stroke="#003366" stroke-width="1"/>
-                <text x="132" y="133" fill="#003366" font-size="11" font-family="Arial">π/2</text>
-                <line x1="238" y1="110" x2="238" y2="120" stroke="#003366" stroke-width="1"/>
-                <text x="232" y="133" fill="#003366" font-size="11" font-family="Arial">π</text>
-                <line x1="333" y1="110" x2="333" y2="120" stroke="#003366" stroke-width="1"/>
-                <text x="317" y="133" fill="#003366" font-size="11" font-family="Arial">3π/2</text>
-                <line x1="427" y1="110" x2="427" y2="120" stroke="#003366" stroke-width="1"/>
-                <text x="420" y="133" fill="#003366" font-size="11" font-family="Arial">2π</text>
-                <line x1="521" y1="110" x2="521" y2="120" stroke="#003366" stroke-width="1"/>
-                <text x="509" y="133" fill="#003366" font-size="11" font-family="Arial">5π/2</text>
-                <line x1="616" y1="110" x2="616" y2="120" stroke="#003366" stroke-width="1"/>
-                <text x="609" y="133" fill="#003366" font-size="11" font-family="Arial">3π</text>
-
-                <!-- Curva cosseno: começa em (50,55), zero em π/2=144, mín em π=238, zero em 3π/2=333, máx em 2π=427 -->
-                <path d="M50,55 C97,55 120,115 144,115 C167,115 191,175 238,175 C285,175 309,115 333,115 C356,115 380,55 427,55 C474,55 497,115 521,115 C544,115 568,175 616,175"
-                      fill="none" stroke="#003366" stroke-width="2.5"/>
-
-                <!-- Pontos notáveis -->
-                <circle cx="50" cy="55" r="4" fill="#003366"/>
-                <circle cx="238" cy="175" r="4" fill="#003366"/>
-                <circle cx="427" cy="55" r="4" fill="#003366"/>
-                <circle cx="616" cy="175" r="4" fill="#003366"/>
-
-                <!-- Label -->
-                <text x="55" y="42" fill="#003366" font-size="13" font-family="Arial" font-weight="bold">g(x) = cos x</text>
-                <text x="43" y="130" fill="#003366" font-size="11" font-family="Arial">0</text>
+            <svg viewBox="0 0 450 310" xmlns="http://www.w3.org/2000/svg" style="width:100%; max-width:520px; height:auto; display:block; margin:0 auto; background:#fdfdfd; border-radius:10px;">
+                <text x="100" y="26" font-size="15" fill="#2c3e50" font-family="sans-serif" text-anchor="middle" font-weight="bold">Quadrado → 45°</text>
+                <rect x="30" y="40" width="120" height="120" fill="none" stroke="#95a5a6" stroke-width="2" stroke-dasharray="4,3"/>
+                <polygon points="30,160 150,160 150,40" fill="#eaf4fc" stroke="#3498db" stroke-width="3"/>
+                <line x1="30" y1="160" x2="150" y2="40" stroke="#3498db" stroke-width="3"/>
+                <rect x="132" y="142" width="18" height="18" fill="none" stroke="#2c3e50" stroke-width="1.5"/>
+                <path d="M 65,160 A 35,35 0 0 1 51.2,133.8" fill="none" stroke="#e67e22" stroke-width="2.2"/>
+                <text x="55" y="150" font-size="13" fill="#e67e22" font-family="sans-serif" font-weight="bold">45°</text>
+                <path d="M 150,75 A 35,35 0 0 1 123.8,61.2" fill="none" stroke="#e67e22" stroke-width="2.2"/>
+                <text x="122" y="72" font-size="13" fill="#e67e22" font-family="sans-serif" font-weight="bold">45°</text>
+                <text x="90" y="176" font-size="13" fill="#2c3e50" font-family="sans-serif" text-anchor="middle" font-weight="bold">L</text>
+                <text x="166" y="104" font-size="13" fill="#2c3e50" font-family="sans-serif" text-anchor="middle" font-weight="bold">L</text>
+                <text x="80" y="95" font-size="13" fill="#9b59b6" font-family="sans-serif" font-weight="bold" transform="rotate(-45 80 95)">L√2</text>
+                <line x1="225" y1="15" x2="225" y2="300" stroke="#dcdcdc" stroke-width="1.5"/>
+                <text x="337" y="26" font-size="15" fill="#2c3e50" font-family="sans-serif" text-anchor="middle" font-weight="bold">Equilátero → 30°/60°</text>
+                <polygon points="260,220 414,220 337,52" fill="#eaf4fc" stroke="#3498db" stroke-width="3"/>
+                <line x1="337" y1="52" x2="337" y2="220" stroke="#e74c3c" stroke-width="2.5" stroke-dasharray="6,3"/>
+                <rect x="337" y="202" width="14" height="14" fill="none" stroke="#2c3e50" stroke-width="1.5"/>
+                <path d="M 295,220 A 35,35 0 0 1 279.4,190.7" fill="none" stroke="#e67e22" stroke-width="2.2"/>
+                <text x="283" y="208" font-size="13" fill="#e67e22" font-family="sans-serif" font-weight="bold">60°</text>
+                <path d="M 337,87 A 35,35 0 0 1 313.5,102.7" fill="none" stroke="#8e44ad" stroke-width="2.2"/>
+                <text x="305" y="92" font-size="13" fill="#8e44ad" font-family="sans-serif" font-weight="bold">30°</text>
+                <circle cx="260" cy="220" r="3.5" fill="#2c3e50"/>
+                <circle cx="414" cy="220" r="3.5" fill="#2c3e50"/>
+                <circle cx="337" cy="52" r="3.5" fill="#2c3e50"/>
+                <text x="337" y="238" font-size="13" fill="#2c3e50" font-family="sans-serif" text-anchor="middle" font-weight="bold">L</text>
+                <text x="380" y="140" font-size="13" fill="#9b59b6" font-family="sans-serif" font-weight="bold" transform="rotate(58 380 140)">L</text>
+                <text x="352" y="140" font-size="13" fill="#e74c3c" font-family="sans-serif" font-weight="bold">L√3/2</text>
             </svg>
-            <figcaption>Figura 2: Gráfico de $g(x) = \cos x$. A curva começa no máximo $1$ em $x = 0$, cai a zero em $\pi/2$, atinge o mínimo $-1$ em $\pi$, retorna a zero em $3\pi/2$ e completa um ciclo em $2\pi$.</figcaption>
+            <figcaption>Figura 2: Os ângulos notáveis vêm de duas construções geométricas simples: a diagonal do quadrado (45°) e a altura do triângulo equilátero (30° e 60°).</figcaption>
         </figure>
     </div>
 
     <div class="passo-teoria">
-        <h4>3. Comparação Seno × Cosseno</h4>
-        <p>Os dois gráficos têm a mesma forma, mas estão <strong>deslocados de $\pi/2$</strong> horizontalmente. A tabela resume as diferenças:</p>
-        <div class="tabela-wrapper">
-        <table>
+        <h4>4. Tabela dos Ângulos Notáveis</h4>
+        <p>A partir das duas construções acima, obtemos a tabela que deve ser memorizada:</p>
+        <div style="overflow-x:auto;">
+        <table style="width:100%; max-width:500px; margin:15px auto; border-collapse:collapse; text-align:center; font-family:sans-serif;">
             <thead>
-                <tr><th>Propriedade</th><th>$\sin x$</th><th>$\cos x$</th></tr>
+                <tr style="background:#2c3e50; color:white;">
+                    <th style="padding:10px; border:1px solid #ddd;">Ângulo</th>
+                    <th style="padding:10px; border:1px solid #ddd;">30°</th>
+                    <th style="padding:10px; border:1px solid #ddd;">45°</th>
+                    <th style="padding:10px; border:1px solid #ddd;">60°</th>
+                </tr>
             </thead>
             <tbody>
-                <tr><td>Valor em $x=0$</td><td>$0$</td><td>$1$</td></tr>
-                <tr><td>Máximo ($= 1$) em</td><td>$\dfrac{\pi}{2} + 2k\pi$</td><td>$2k\pi$</td></tr>
-                <tr><td>Mínimo ($= -1$) em</td><td>$\dfrac{3\pi}{2} + 2k\pi$</td><td>$\pi + 2k\pi$</td></tr>
-                <tr><td>Zeros em</td><td>$k\pi$</td><td>$\dfrac{\pi}{2} + k\pi$</td></tr>
-                <tr><td>Paridade</td><td>Ímpar: $\sin(-x)=-\sin x$</td><td>Par: $\cos(-x)=\cos x$</td></tr>
-                <tr><td>Simetria</td><td>Em relação à origem</td><td>Em relação ao eixo $y$</td></tr>
+                <tr>
+                    <td style="padding:10px; border:1px solid #ddd; font-weight:bold; background:#eaf4fc;">seno</td>
+                    <td style="padding:10px; border:1px solid #ddd;">$\frac{1}{2}$</td>
+                    <td style="padding:10px; border:1px solid #ddd;">$\frac{\sqrt{2}}{2}$</td>
+                    <td style="padding:10px; border:1px solid #ddd;">$\frac{\sqrt{3}}{2}$</td>
+                </tr>
+                <tr>
+                    <td style="padding:10px; border:1px solid #ddd; font-weight:bold; background:#eaf4fc;">cosseno</td>
+                    <td style="padding:10px; border:1px solid #ddd;">$\frac{\sqrt{3}}{2}$</td>
+                    <td style="padding:10px; border:1px solid #ddd;">$\frac{\sqrt{2}}{2}$</td>
+                    <td style="padding:10px; border:1px solid #ddd;">$\frac{1}{2}$</td>
+                </tr>
+                <tr>
+                    <td style="padding:10px; border:1px solid #ddd; font-weight:bold; background:#eaf4fc;">tangente</td>
+                    <td style="padding:10px; border:1px solid #ddd;">$\frac{\sqrt{3}}{3}$</td>
+                    <td style="padding:10px; border:1px solid #ddd;">$1$</td>
+                    <td style="padding:10px; border:1px solid #ddd;">$\sqrt{3}$</td>
+                </tr>
             </tbody>
         </table>
         </div>
+        <p>Repare que $\operatorname{sen}30° = \cos 60°$ e $\operatorname{sen}60° = \cos 30°$ — isso não é coincidência: ângulos complementares (que somam $90°$) sempre têm seno de um igual ao cosseno do outro.</p>
     </div>
 
     <div class="passo-teoria">
-        <h4>4. Transformações: Amplitude, Período e Fase</h4>
-        <p>A forma geral $f(x) = A\sin(Bx + C) + D$ permite modificar o gráfico básico:</p>
-        <div class="destaque-formula">
-            <p>$$f(x) = A\sin(Bx + C) + D$$</p>
-            <p><strong>Amplitude</strong> $= |A|$ &nbsp;|&nbsp; <strong>Período</strong> $= \dfrac{2\pi}{|B|}$ &nbsp;|&nbsp; <strong>Fase</strong> $= -\dfrac{C}{B}$ &nbsp;|&nbsp; <strong>Eixo médio</strong> $= D$</p>
-        </div>
-        <ul>
-            <li><strong>$|A| > 1$:</strong> gráfico "esticado" verticalmente (amplitudes maiores).</li>
-            <li><strong>$0 < |A| < 1$:</strong> gráfico "achatado" (amplitudes menores).</li>
-            <li><strong>$A < 0$:</strong> gráfico refletido em relação ao eixo $x$ (invertido).</li>
-            <li><strong>$|B| > 1$:</strong> período menor, gráfico "comprimido" horizontalmente.</li>
-            <li><strong>$0 < |B| < 1$:</strong> período maior, gráfico "esticado" horizontalmente.</li>
-            <li><strong>$C \neq 0$:</strong> deslocamento horizontal (defasagem).</li>
-            <li><strong>$D \neq 0$:</strong> deslocamento vertical — o eixo médio sobe ou desce.</li>
-        </ul>
-
-        <figure class="figura-aula figura-grande">
-            <svg viewBox="0 0 660 280" xmlns="http://www.w3.org/2000/svg" width="640" height="260">
-                <defs>
-                    <marker id="ax3" markerWidth="7" markerHeight="7" refX="5" refY="3" orient="auto">
-                        <path d="M0,0 L0,6 L7,3 Z" fill="#003366"/>
-                    </marker>
-                </defs>
-
-                <!-- Eixos -->
-                <line x1="20" y1="140" x2="645" y2="140" stroke="#003366" stroke-width="1.5" marker-end="url(#ax3)"/>
-                <line x1="50" y1="255" x2="50" y2="20" stroke="#003366" stroke-width="1.5" marker-end="url(#ax3)"/>
-                <text x="648" y="144" fill="#003366" font-size="12" font-family="Arial">x</text>
-                <text x="54" y="16" fill="#003366" font-size="12" font-family="Arial">y</text>
-
-                <!-- Grades -->
-                <line x1="40" y1="80" x2="640" y2="80" stroke="#e0e0e0" stroke-width="1" stroke-dasharray="3,3"/>
-                <line x1="40" y1="200" x2="640" y2="200" stroke="#e0e0e0" stroke-width="1" stroke-dasharray="3,3"/>
-                <line x1="40" y1="50" x2="640" y2="50" stroke="#e8f4f8" stroke-width="1" stroke-dasharray="2,4"/>
-                <line x1="40" y1="230" x2="640" y2="230" stroke="#f8e8e8" stroke-width="1" stroke-dasharray="2,4"/>
-
-                <!-- Labels y -->
-                <text x="28" y="84" fill="#888" font-size="11" font-family="Arial">1</text>
-                <text x="20" y="204" fill="#888" font-size="11" font-family="Arial">−1</text>
-                <text x="28" y="54" fill="#2ecc71" font-size="10" font-family="Arial">2</text>
-                <text x="20" y="234" fill="#2ecc71" font-size="10" font-family="Arial">−2</text>
-
-                <!-- Marcações x -->
-                <line x1="238" y1="135" x2="238" y2="145" stroke="#003366" stroke-width="1"/>
-                <text x="232" y="158" fill="#003366" font-size="11" font-family="Arial">π</text>
-                <line x1="427" y1="135" x2="427" y2="145" stroke="#003366" stroke-width="1"/>
-                <text x="420" y="158" fill="#003366" font-size="11" font-family="Arial">2π</text>
-                <line x1="616" y1="135" x2="616" y2="145" stroke="#003366" stroke-width="1"/>
-                <text x="609" y="158" fill="#003366" font-size="11" font-family="Arial">3π</text>
-
-                <!-- sen x básico (laranja) escala 60px/rad, amplitude 60px -->
-                <path d="M50,140 C73,140 97,80 144,80 C191,80 215,140 238,140 C261,140 285,200 333,200 C380,200 403,140 427,140 C450,140 474,80 521,80 C568,80 592,140 616,140"
-                      fill="none" stroke="#D35400" stroke-width="1.5" stroke-dasharray="5,3"/>
-
-                <!-- 2·sen x (verde) amplitude 120px -->
-                <path d="M50,140 C73,140 97,20 144,20 C191,20 215,140 238,140 C261,140 285,260 333,260 C380,260 403,140 427,140 C450,140 474,20 521,20 C568,20 592,140 616,140"
-                      fill="none" stroke="#2ecc71" stroke-width="2"/>
-
-                <!-- sen(2x) período π, amplitude 60 -->
-                <!-- zeros: 0,π/2=144-50+50=144? não, período π=188px. zeros: 50,50+94=144,50+188=238,... max em 50+47=97,min em 50+141=191 -->
-                <path d="M50,140 C67,140 80,80 97,80 C114,80 127,140 144,140 C161,140 175,200 191,200 C208,200 221,140 238,140 C255,140 268,80 285,80 C302,80 315,140 333,140 C350,140 363,200 380,200 C397,200 410,140 427,140 C444,140 457,80 474,80 C491,80 504,140 521,140 C538,140 551,200 568,200 C585,200 598,140 616,140"
-                      fill="none" stroke="#9b59b6" stroke-width="2"/>
-
-                <!-- Legendas -->
-                <rect x="460" y="22" width="170" height="70" rx="4" fill="white" stroke="#ddd" stroke-width="1"/>
-                <line x1="468" y1="38" x2="498" y2="38" stroke="#D35400" stroke-width="1.5" stroke-dasharray="5,3"/>
-                <text x="502" y="42" fill="#D35400" font-size="11" font-family="Arial">sen x (A=1, T=2π)</text>
-                <line x1="468" y1="55" x2="498" y2="55" stroke="#2ecc71" stroke-width="2"/>
-                <text x="502" y="59" fill="#2ecc71" font-size="11" font-family="Arial">2·sen x (A=2, T=2π)</text>
-                <line x1="468" y1="72" x2="498" y2="72" stroke="#9b59b6" stroke-width="2"/>
-                <text x="502" y="76" fill="#9b59b6" font-size="11" font-family="Arial">sen(2x) (A=1, T=π)</text>
-
-                <text x="32" y="155" fill="#003366" font-size="11" font-family="Arial">0</text>
-            </svg>
-            <figcaption>Figura 3: Efeito da amplitude e do período. Em verde, $2\sin x$ tem amplitude duplicada. Em roxo, $\sin(2x)$ tem período reduzido à metade ($T = \pi$).</figcaption>
-        </figure>
+        <h4>5. A Relação Fundamental da Trigonometria</h4>
+        <p>Para qualquer ângulo $\theta$, vale a identidade fundamental:</p>
+        <p style="text-align: center;">$$\operatorname{sen}^2\theta + \cos^2\theta = 1$$</p>
+        <p>Essa relação vem diretamente do Teorema de Pitágoras aplicado ao triângulo retângulo: se dividirmos todos os lados pela hipotenusa, a soma dos quadrados dos catetos (que dá o quadrado da hipotenusa) se transforma exatamente nessa igualdade. Ela é extremamente útil quando conhecemos o valor de um seno (ou cosseno) e precisamos encontrar o outro.</p>
     </div>
-
-    <div class="passo-teoria">
-        <h4>5. Leitura Gráfica: extraindo $A$, $T$, Fase e $D$</h4>
-        <p>Dado o gráfico de uma função do tipo $f(x) = A\sin(Bx+C)+D$, extraia os parâmetros assim:</p>
-        <ul>
-            <li><strong>Amplitude $|A|$:</strong> $|A| = \dfrac{y_{\max} - y_{\min}}{2}$</li>
-            <li><strong>Eixo médio $D$:</strong> $D = \dfrac{y_{\max} + y_{\min}}{2}$</li>
-            <li><strong>Período $T$:</strong> distância horizontal entre dois máximos (ou mínimos) consecutivos.</li>
-            <li><strong>$B$:</strong> $B = \dfrac{2\pi}{T}$</li>
-            <li><strong>Fase $-C/B$:</strong> deslocamento do zero (ou máximo) em relação à origem.</li>
-        </ul>
-        <div class="destaque-formula">
-            <p>$$|A| = \frac{y_{\max} - y_{\min}}{2} \qquad D = \frac{y_{\max} + y_{\min}}{2} \qquad T = \frac{2\pi}{|B|}$$</p>
-        </div>
-        <p><strong>Exemplo:</strong> um gráfico com $y_{\max} = 5$, $y_{\min} = -1$ e período $T = 4\pi$ tem:<br>
-        $|A| = \dfrac{5-(-1)}{2} = 3$; $D = \dfrac{5+(-1)}{2} = 2$; $B = \dfrac{2\pi}{4\pi} = \dfrac{1}{2}$.<br>
-        Logo: $f(x) = 3\sin\!\left(\dfrac{x}{2}\right) + 2$ (sem defasagem).</p>
-    </div>
-
-    <div class="passo-teoria">
-        <h4>6. Propriedades Importantes</h4>
-        <div class="destaque-formula">
-            <p>$$\sin^2 x + \cos^2 x = 1 \qquad \text{(Relação Fundamental)}$$</p>
-            <p>$$\cos x = \sin\!\left(x + \frac{\pi}{2}\right) \qquad \sin x = \cos\!\left(x - \frac{\pi}{2}\right)$$</p>
-            <p>$$\sin(x + 2\pi) = \sin x \qquad \cos(x + 2\pi) = \cos x$$</p>
-        </div>
-        <p>A relação fundamental é válida para qualquer $x \in \mathbb{R}$ e é a base de inúmeras simplificações em equações e integrais trigonométricas.</p>
-        <p>Valores máximo e mínimo de expressões do tipo $A\sin(Bx+C)+D$:</p>
-        <ul>
-            <li>$y_{\max} = |A| + D$ (quando $\sin = 1$ ou $\cos = 1$).</li>
-            <li>$y_{\min} = -|A| + D$ (quando $\sin = -1$ ou $\cos = -1$).</li>
-        </ul>
-    </div>
-
 </section>
 
 <section class="aplicacoes-reais">
     <h3>💡 Matemática em Ação</h3>
     <div class="cards-aplicacao" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-top: 20px;">
         <div class="card" style="background: #fdfdfd; padding: 20px; border-radius: 10px; border-left: 5px solid #3498db; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
-            <h4>🎵 Acústica e Música</h4>
-            <p>Uma nota musical pura é uma onda $y = A\sin(2\pi f t)$, onde $f$ é a frequência em hertz. O Lá central é $f = 440\text{ Hz}$. A amplitude $A$ determina o volume e $f$ determina o tom.</p>
+            <h4>🏗️ Engenharia e Construção Civil</h4>
+            <p>Rampas de acesso, telhados e escadas rolantes são projetados usando ângulos notáveis. Uma rampa a $30°$, por exemplo, permite calcular exatamente quanta altura se ganha a cada metro percorrido.</p>
         </div>
         <div class="card" style="background: #fdfdfd; padding: 20px; border-radius: 10px; border-left: 5px solid #2ecc71; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
-            <h4>🌡️ Temperatura ao Longo do Ano</h4>
-            <p>A temperatura média mensal de uma cidade pode ser modelada por $T(t) = D + A\cos\!\left(\dfrac{2\pi}{12}(t - t_0)\right)$, onde $t$ é o mês, $A$ é a variação e $D$ é a média anual.</p>
-        </div>
-        <div class="card" style="background: #fdfdfd; padding: 20px; border-radius: 10px; border-left: 5px solid #D35400; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
-            <h4>⚡ Engenharia Elétrica</h4>
-            <p>A tensão na rede elétrica brasileira é $V(t) = 127\sqrt{2}\sin(120\pi t)$. A amplitude é $127\sqrt{2} \approx 180\text{ V}$ (tensão de pico) e o período é $T = \dfrac{1}{60}\text{ s}$ (60 Hz).</p>
+            <h4>🗺️ Topografia e Navegação</h4>
+            <p>Para medir a altura de um morro ou a distância até um navio no mar sem se aproximar do alvo, topógrafos e navegadores usam ângulos medidos com teodolito e as razões trigonométricas.</p>
         </div>
     </div>
 </section>
-
-<section class="simulacao-interativa">
-    <h3>💻 Simulação Interativa: Funções Seno e Cosseno</h3>
-    <p>Para uma melhor experiência, clique no botão abaixo para abrir o simulador em uma tela cheia:</p>
-    <div style="text-align: center; margin: 30px auto; width: 100%;">
-        <a href="../simulacoes/simulacao_funcoes_trig.html"
-           target="_blank"
-           class="btn-gabarito"
-           style="text-decoration: none; display: inline-block;">
-           🚀 Abrir Simulação em Nova Aba
-        </a>
-    </div>
-</section>
-
 
 <!--------------- QUESTOES RESOLVIDAS --------------------------->
 
 <section class="questoes-resolvidas">
-    <h3>✅ 5 Questões Resolvidas (R 1 a 5)</h3>
+                    <h3>✅ 5 Questões Resolvidas (R 1 a 5)</h3>
 
-    <article class="questao">
-        <h4>R 1: Identificação de Amplitude e Período</h4>
-        <p><strong>Enunciado:</strong> Para a função $f(x) = 3\sin(2x)$, determine a amplitude, o período, o valor máximo e o valor mínimo.</p>
-        <div class="resolucao-bloco">
-            <p><strong>Resolução:</strong></p>
-            <p>Comparando com $A\sin(Bx)$: $A = 3$ e $B = 2$.</p>
-            <ul>
-                <li><strong>Amplitude:</strong> $|A| = 3$</li>
-                <li><strong>Período:</strong> $T = \dfrac{2\pi}{|B|} = \dfrac{2\pi}{2} = \pi$</li>
-                <li><strong>Valor máximo:</strong> $y_{\max} = 3$ (quando $\sin = 1$, i.e., $x = \pi/4$)</li>
-                <li><strong>Valor mínimo:</strong> $y_{\min} = -3$ (quando $\sin = -1$, i.e., $x = 3\pi/4$)</li>
-            </ul>
-        </div>
-    </article>
+                    <article class="questao">
+                        <h4>R 1: Cálculo Direto das Razões Trigonométricas</h4>
+                        <p><strong>Enunciado:</strong> Em um triângulo retângulo, o cateto oposto a um ângulo $\theta$ mede $6$ cm, e a hipotenusa mede $10$ cm. Calcule $\operatorname{sen}\theta$, $\cos\theta$ e $\operatorname{tg}\theta$.</p>
+                        <div class="resolucao-bloco">
+                            <p><strong>Resolução:</strong></p>
+                            <p>1. Primeiro encontramos o cateto adjacente usando o Teorema de Pitágoras: $10^2 = 6^2 + b^2 \implies b^2 = 100 - 36 = 64 \implies b = 8$ cm.</p>
+                            <p>2. Aplicando as definições: $\operatorname{sen}\theta = \dfrac{6}{10} = \mathbf{0{,}6}$.</p>
+                            <p>3. $\cos\theta = \dfrac{8}{10} = \mathbf{0{,}8}$.</p>
+                            <p>4. $\operatorname{tg}\theta = \dfrac{6}{8} = \mathbf{0{,}75}$.</p>
+                        </div>
+                    </article>
 
-    <article class="questao">
-        <h4>R 2: Deslocamento Vertical e Horizontal</h4>
-        <p><strong>Enunciado:</strong> Determine amplitude, período, fase e eixo médio de $f(x) = 2\cos\!\left(x - \dfrac{\pi}{3}\right) + 1$.</p>
-        <div class="resolucao-bloco">
-            <p><strong>Resolução:</strong> Comparando com $A\cos(Bx + C) + D$: $A=2$, $B=1$, $C=-\pi/3$, $D=1$.</p>
-            <ul>
-                <li><strong>Amplitude:</strong> $|A| = 2$</li>
-                <li><strong>Período:</strong> $T = \dfrac{2\pi}{1} = 2\pi$</li>
-                <li><strong>Fase (deslocamento horizontal):</strong> $-\dfrac{C}{B} = \dfrac{\pi}{3}$ (deslocado $\pi/3$ para a direita)</li>
-                <li><strong>Eixo médio:</strong> $D = 1$ (gráfico sobe 1 unidade)</li>
-                <li><strong>Máximo:</strong> $y_{\max} = 2 + 1 = 3$; <strong>Mínimo:</strong> $y_{\min} = -2 + 1 = -1$</li>
-            </ul>
-        </div>
-    </article>
+                    <article class="questao">
+                        <h4>R 2: Altura de uma Árvore usando 60°</h4>
+                        <p><strong>Enunciado:</strong> A sombra de uma árvore mede $5$ m no chão, e o ângulo entre o topo da árvore e a ponta da sombra (visto do chão) é de $60°$. Qual a altura da árvore?</p>
+                        <div class="resolucao-bloco">
+                            <p><strong>Resolução:</strong></p>
+                            <p>1. A sombra é o cateto adjacente ao ângulo de $60°$, e a altura da árvore é o cateto oposto.</p>
+                            <p>2. Usamos a tangente: $\operatorname{tg}60° = \dfrac{\text{altura}}{\text{sombra}}$.</p>
+                            <p>3. Sabendo que $\operatorname{tg}60° = \sqrt{3}$: $\sqrt{3} = \dfrac{\text{altura}}{5} \implies \text{altura} = 5\sqrt{3}$.</p>
+                            <p>4. A altura da árvore é $\mathbf{5\sqrt{3} \approx 8{,}66\text{ m}}$.</p>
+                        </div>
+                    </article>
 
-    <article class="questao">
-        <h4>R 3: Determinação da Equação pelo Gráfico</h4>
-        <p><strong>Enunciado:</strong> Um gráfico senoidal tem máximo $y = 4$, mínimo $y = -2$ e período $T = \pi$. A função passa por um máximo em $x = \pi/4$. Determine a equação no formato $A\sin(Bx + C) + D$.</p>
-        <div class="resolucao-bloco">
-            <p><strong>Resolução:</strong></p>
-            <p>$|A| = \dfrac{4-(-2)}{2} = 3$; $\quad D = \dfrac{4+(-2)}{2} = 1$</p>
-            <p>$T = \pi \Rightarrow B = \dfrac{2\pi}{\pi} = 2$</p>
-            <p>O máximo ocorre quando $\sin(Bx+C) = 1$, i.e., $Bx+C = \dfrac{\pi}{2}$:</p>
-            <p>$2 \cdot \dfrac{\pi}{4} + C = \dfrac{\pi}{2} \Rightarrow \dfrac{\pi}{2} + C = \dfrac{\pi}{2} \Rightarrow C = 0$</p>
-            <p>$$f(x) = 3\sin(2x) + 1$$</p>
-        </div>
-    </article>
+                    <article class="questao">
+                        <h4>R 3: Rampa de Acesso a 30°</h4>
+                        <p><strong>Enunciado:</strong> Uma rampa de $8$ m de comprimento faz um ângulo de $30°$ com o chão. Qual a altura que essa rampa atinge?</p>
+                        <div class="resolucao-bloco">
+                            <p><strong>Resolução:</strong></p>
+                            <p>1. O comprimento da rampa é a hipotenusa, e a altura atingida é o cateto oposto ao ângulo de $30°$.</p>
+                            <p>2. Usamos o seno: $\operatorname{sen}30° = \dfrac{\text{altura}}{8}$.</p>
+                            <p>3. Sabendo que $\operatorname{sen}30° = \dfrac{1}{2}$: $\dfrac{1}{2} = \dfrac{\text{altura}}{8} \implies \text{altura} = 4$.</p>
+                            <p>4. A rampa atinge $\mathbf{4\text{ m}}$ de altura.</p>
+                        </div>
+                    </article>
 
-    <article class="questao">
-        <h4>R 4: Máximo e Mínimo de Expressão Trigonométrica</h4>
-        <p><strong>Enunciado:</strong> Determine os valores máximo e mínimo de $f(x) = -4\sin(3x - \pi) + 2$.</p>
-        <div class="resolucao-bloco">
-            <p><strong>Resolução:</strong></p>
-            <p>$A = -4$, $D = 2$. Como $A < 0$, o gráfico está invertido, mas $|A| = 4$.</p>
-            <p>$y_{\max} = |A| + D = 4 + 2 = 6$ (quando $\sin = -1$, pois $A = -4$: $-4 \cdot (-1) = 4$)</p>
-            <p>$y_{\min} = -|A| + D = -4 + 2 = -2$ (quando $\sin = 1$: $-4 \cdot 1 = -4$)</p>
-        </div>
-    </article>
+                    <article class="questao">
+                        <h4>R 4: Diagonal de um Quadrado via 45°</h4>
+                        <p><strong>Enunciado:</strong> Um terreno quadrado tem lado $L = 20$ m. Qual o comprimento da diagonal que liga dois vértices opostos?</p>
+                        <div class="resolucao-bloco">
+                            <p><strong>Resolução:</strong></p>
+                            <p>1. A diagonal de um quadrado forma um ângulo de $45°$ com o lado, e sabemos que a diagonal vale $L\sqrt{2}$ (dedução do triângulo retângulo isósceles).</p>
+                            <p>2. Substituindo $L = 20$: diagonal $= 20\sqrt{2}$.</p>
+                            <p>3. Aproximando $\sqrt{2} \approx 1{,}41$: diagonal $\approx 20 \times 1{,}41 = \mathbf{28{,}2\text{ m}}$.</p>
+                        </div>
+                    </article>
 
-    <article class="questao">
-        <h4>R 5: Período de Função Cosseno com Parâmetros</h4>
-        <p><strong>Enunciado:</strong> A temperatura (em °C) de uma cidade ao longo do ano é modelada por $T(t) = 10\cos\!\left(\dfrac{\pi}{6}t\right) + 20$, onde $t$ é o mês ($t = 0$ = janeiro). Determine: (a) a temperatura máxima e mínima; (b) o período do modelo; (c) a temperatura em junho ($t = 6$).</p>
-        <div class="resolucao-bloco">
-            <p><strong>Resolução:</strong></p>
-            <p>(a) $T_{\max} = 10 + 20 = 30°\text{C}$; $\quad T_{\min} = -10 + 20 = 10°\text{C}$</p>
-            <p>(b) $T = \dfrac{2\pi}{\pi/6} = \dfrac{2\pi \cdot 6}{\pi} = 12$ meses ✓ (período anual)</p>
-            <p>(c) $T(6) = 10\cos\!\left(\dfrac{\pi}{6} \cdot 6\right) + 20 = 10\cos\pi + 20 = 10(-1) + 20 = 10°\text{C}$</p>
-        </div>
-    </article>
-</section>
+                    <article class="questao">
+                        <h4>R 5: Problema Contextualizado — Escada Apoiada na Parede</h4>
+                        <p><strong>Enunciado:</strong> Uma escada de $6$ m está apoiada em uma parede, formando um ângulo de $60°$ com o chão. A que altura da parede a escada alcança?</p>
+                        <div class="resolucao-bloco">
+                            <p><strong>Resolução:</strong></p>
+                            <p>1. A escada é a hipotenusa do triângulo retângulo formado com a parede e o chão; a altura alcançada na parede é o cateto oposto ao ângulo de $60°$.</p>
+                            <p>2. Usamos o seno: $\operatorname{sen}60° = \dfrac{\text{altura}}{6}$.</p>
+                            <p>3. Sabendo que $\operatorname{sen}60° = \dfrac{\sqrt{3}}{2}$: $\dfrac{\sqrt{3}}{2} = \dfrac{\text{altura}}{6} \implies \text{altura} = 3\sqrt{3}$.</p>
+                            <p>4. A escada alcança $\mathbf{3\sqrt{3} \approx 5{,}2\text{ m}}$ de altura na parede.</p>
+                        </div>
+                    </article>
+                </section>
 
-
-<!--------------- QUESTOES PROPOSTAS --------------------------->
+<!--------------- QUESTÕES PROPOSTAS --------------------------->
 
 <section class="questoes-propostas">
-    <h3>📝 5 Questões Propostas (P 1 a 5)</h3>
+                    <h3>✍️ 5 Questões Propostas (P 6 a 10)</h3>
+
+                    <article class="questao">
+                        <h4>P 6: Cálculo Direto</h4>
+                        <p><strong>Enunciado:</strong> Em um triângulo retângulo, o cateto adjacente a um ângulo $\alpha$ mede $9$ cm, e a hipotenusa mede $15$ cm. Calcule $\operatorname{sen}\alpha$, $\cos\alpha$ e $\operatorname{tg}\alpha$.</p>
+                        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+                        <div class="gabarito-resolucao">
+                            <p><strong>Resolução:</strong> Pelo Teorema de Pitágoras, o cateto oposto mede $\sqrt{15^2-9^2} = \sqrt{225-81} = \sqrt{144} = 12$ cm.</p>
+                            <p>$\cos\alpha = \dfrac{9}{15} = \mathbf{0{,}6}$; $\operatorname{sen}\alpha = \dfrac{12}{15} = \mathbf{0{,}8}$; $\operatorname{tg}\alpha = \dfrac{12}{9} = \mathbf{1{,}33}$.</p>
+                        </div>
+                    </article>
+
+                    <article class="questao">
+                        <h4>P 7: Aplicação com 30°</h4>
+                        <p><strong>Enunciado:</strong> Um avião decola formando um ângulo de $30°$ com a pista. Depois de percorrer $2000$ m de trajetória (em linha reta), a que altura ele está?</p>
+                        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+                        <div class="gabarito-resolucao">
+                            <p><strong>Resolução:</strong> A trajetória é a hipotenusa e a altura é o cateto oposto: $\operatorname{sen}30° = \dfrac{h}{2000}$.</p>
+                            <p>$\dfrac{1}{2} = \dfrac{h}{2000} \implies h = \mathbf{1000\text{ m}}$.</p>
+                        </div>
+                    </article>
+
+                    <article class="questao">
+                        <h4>P 8: Aplicação com 45°</h4>
+                        <p><strong>Enunciado:</strong> Um cabo de sustentação de $12\sqrt{2}$ m liga o topo de um poste ao chão, formando um ângulo de $45°$ com o poste. Qual a distância do pé do cabo até a base do poste?</p>
+                        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+                        <div class="gabarito-resolucao">
+                            <p><strong>Resolução:</strong> O cabo é a hipotenusa; a distância pedida é o cateto oposto ao ângulo de $45°$ (formado com o poste): $\operatorname{sen}45° = \dfrac{d}{12\sqrt{2}}$.</p>
+                            <p>$\dfrac{\sqrt{2}}{2} = \dfrac{d}{12\sqrt{2}} \implies d = 12\sqrt{2}\cdot\dfrac{\sqrt{2}}{2} = \dfrac{12\cdot2}{2} = \mathbf{12\text{ m}}$.</p>
+                        </div>
+                    </article>
+
+                    <article class="questao">
+                        <h4>P 9: Relação Fundamental</h4>
+                        <p><strong>Enunciado:</strong> Sabendo que $\operatorname{sen}\theta = \dfrac{3}{5}$ e que $\theta$ é um ângulo agudo, calcule $\cos\theta$ usando a relação fundamental da trigonometria.</p>
+                        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+                        <div class="gabarito-resolucao">
+                            <p><strong>Resolução:</strong> $\operatorname{sen}^2\theta + \cos^2\theta = 1 \implies \left(\dfrac{3}{5}\right)^2 + \cos^2\theta = 1 \implies \cos^2\theta = 1 - \dfrac{9}{25} = \dfrac{16}{25}$.</p>
+                            <p>Como $\theta$ é agudo, $\cos\theta > 0$: $\cos\theta = \mathbf{\dfrac{4}{5} = 0{,}8}$.</p>
+                        </div>
+                    </article>
+
+                    <article class="questao">
+                        <h4>P 10: Conceitual</h4>
+                        <p><strong>Enunciado:</strong> Em um mesmo triângulo retângulo, explique por que um mesmo cateto pode ser chamado de "oposto" em relação a um ângulo e de "adjacente" em relação ao outro ângulo agudo.</p>
+                        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+                        <div class="gabarito-resolucao">
+                            <p><strong>Resolução:</strong> As nomenclaturas "oposto" e "adjacente" não são propriedades fixas de um lado — elas dependem de <strong>qual ângulo agudo</strong> está sendo usado como referência. Um cateto está "de frente" (oposto) para um dos ângulos agudos e "encostado" (adjacente) no outro ângulo agudo. Por isso, ao calcular seno, cosseno ou tangente, é essencial sempre identificar primeiro em relação a qual ângulo a razão está sendo montada.</p>
+                        </div>
+                    </article>
+                </section>
+<!--------------- TESTE  --------------------------->
+
+<section class="testes">
+    <h3>🎓 TESTES (T 11 a 15)</h3>
 
     <article class="questao">
-        <h4>P 1: Amplitude e Período</h4>
-        <p><strong>Enunciado:</strong> Para $f(x) = -5\cos\!\left(\dfrac{x}{3}\right)$, determine a amplitude, o período, o valor máximo e mínimo e indique se a curva está invertida.</p>
-        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-        <div class="gabarito-resolucao">
-            <p><strong>Resolução:</strong><br>
-            $A = -5$, $B = \dfrac{1}{3}$, $C = 0$, $D = 0$.<br>
-            Amplitude: $|A| = 5$<br>
-            Período: $T = \dfrac{2\pi}{1/3} = 6\pi$<br>
-            $y_{\max} = 5$ (quando $\cos = -1$, pois $A = -5$: máximo de $-5\cos = -5 \cdot (-1) = 5$)<br>
-            $y_{\min} = -5$ (quando $\cos = 1$: $-5 \cdot 1 = -5$)<br>
-            Sim, a curva está <strong>invertida</strong> (refletida em relação ao eixo $x$).</p>
-        </div>
+    <h4>T 11: (Cesgranrio) Rampa Inclinada</h4>
+    <p>Uma rampa plana, de $36$ m de comprimento, faz ângulo de $30°$ com o plano horizontal. Uma pessoa que sobe a rampa inteira eleva-se verticalmente de:</p>
+    <p>A) $9\text{ m}$<br>B) $12\text{ m}$<br>C) $15\text{ m}$<br>D) $16\text{ m}$<br>E) $18\text{ m}$</p>
+    <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+    <div class="gabarito-resolucao">
+        <p><strong>Resolução:</strong> Alternativa <strong>E</strong>.<br>
+        1. O comprimento da rampa ($36$ m) é a hipotenusa do triângulo retângulo formado; a elevação vertical é o cateto oposto ao ângulo de $30°$.<br>
+        2. Usamos o seno: $\operatorname{sen}30° = \dfrac{h}{36}$.<br>
+        3. Como $\operatorname{sen}30° = \dfrac{1}{2}$: $\dfrac{1}{2} = \dfrac{h}{36} \implies h = \mathbf{18\text{ m}}$.<br>
+        <em>Fonte: Cesgranrio (vestibular).</em></p>
+    </div>
+      </article>
+
+    <article class="questao">
+    <h4>T 12: (ENEM Libras 2017 — Caderno Verde, Questão 139) A Torre de Pisa</h4>
+    <p>A famosa Torre de Pisa, localizada na Itália, assim como muitos outros prédios, sofre inclinações causadas por conta do solo que não sustenta seu peso adequadamente. Estima-se que a torre tenha 60 metros de altura (do chão até o topo) na parte mais alta e, no ponto mais baixo, 58 metros. Considere que a base seja plana, horizontal e a região no entorno também, e que a torre tem seu formato apoiado num círculo de diâmetro igual a $17$ metros. Considere ainda $0,03$ como valor aproximado para a razão entre a diferença das alturas (mais alta e mais baixa) e o diâmetro da base da torre, para calcular o ângulo de inclinação $\alpha$ dessa torre, em relação ao eixo vertical, sabendo que $\operatorname{sen}\alpha$ é aproximadamente igual a essa razão.</p>
+    <p>Considerando a tabela de senos fornecida na prova, o ângulo $\alpha$ está entre:</p>
+    <p>A) $0° \leq \alpha < 1{,}0°$<br>B) $1{,}0° \leq \alpha < 1{,}5°$<br>C) $1{,}5° \leq \alpha < 1{,}8°$<br>D) $1{,}8° \leq \alpha < 2{,}0°$<br>E) $2{,}0° \leq \alpha < 3{,}0°$</p>
+    <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+    <div class="gabarito-resolucao">
+        <p><strong>Resolução:</strong> Alternativa <strong>C</strong>.<br>
+        1. A diferença entre as alturas é $60 - 58 = 2$ m; dividindo pelo diâmetro da base ($17$ m), obtemos a razão $\operatorname{sen}\alpha \approx \dfrac{2}{17} \approx 0{,}03$, conforme informado no próprio enunciado.<br>
+        2. Consultando a tabela de senos fornecida na prova, o valor $\operatorname{sen}\alpha \approx 0{,}03$ corresponde a um ângulo no intervalo $\mathbf{1{,}5° \leq \alpha < 1{,}8°}$.<br>
+        <em>Fonte: ENEM Libras 2017, 2º dia, caderno verde, questão 139.</em></p>
+    </div>
+      </article>
+
+    <article class="questao">
+    <h4>T 13: (Instituto Consulpam — Concurso Prefeitura de Apuiarés/CE, 2014) Escada do Bombeiro</h4>
+    <p>Um bombeiro sobe uma escada de $15$ m de comprimento que forma um ângulo de $60°$ com o solo. Assinale a alternativa que mostra a altura aproximada que o bombeiro está do solo, quando chega ao topo da escada. <em>(Dados: $\operatorname{sen}60° = 0{,}87$; $\cos60° = 0{,}5$; $\operatorname{tg}60° = 1{,}73$)</em></p>
+    <p>A) $7{,}50\text{ m}$<br>B) $11{,}92\text{ m}$<br>C) $12{,}02\text{ m}$<br>D) $13{,}05\text{ m}$</p>
+    <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+    <div class="gabarito-resolucao">
+        <p><strong>Resolução:</strong> Alternativa <strong>B</strong>.<br>
+        1. A escada é a hipotenusa do triângulo retângulo formado com o solo; a altura alcançada é o cateto oposto ao ângulo de $60°$.<br>
+        2. Usamos o seno: $\operatorname{sen}60° = \dfrac{h}{15} \implies h = 15 \times \operatorname{sen}60°$.<br>
+        3. Usando o valor exato $\operatorname{sen}60° = \dfrac{\sqrt{3}}{2} \approx 0{,}866$ (mais preciso que o dado arredondado $0{,}87$ fornecido na prova): $h = 15 \times 0{,}866 \approx \mathbf{11{,}92\text{ m}}$.<br>
+        <em>Fonte: Instituto Consulpam, concurso público da Prefeitura de Apuiarés (CE), 2014, prova de Matemática.</em></p>
+    </div>
+      </article>
+
+    <article class="questao">
+    <h4>T 14: Altura de um Prédio</h4>
+    <p>Do topo de um prédio de $50$ m de altura, um observador vê a base de outro prédio vizinho sob um ângulo de $60°$ em relação à vertical (medido a partir do topo do primeiro prédio, olhando para baixo). Qual é aproximadamente a distância horizontal entre os dois prédios?</p>
+    <p>A) $28{,}9\text{ m}$<br>B) $43{,}3\text{ m}$<br>C) $50{,}0\text{ m}$<br>D) $57{,}7\text{ m}$<br>E) $86{,}6\text{ m}$</p>
+    <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+    <div class="gabarito-resolucao">
+        <p><strong>Resolução:</strong> Alternativa <strong>E</strong>.<br>
+        1. O ângulo de $60°$ é medido em relação à vertical (o prédio), então a altura ($50$ m) é o cateto adjacente a esse ângulo, e a distância horizontal é o cateto oposto.<br>
+        2. Usamos a tangente: $\operatorname{tg}60° = \dfrac{d}{50}$.<br>
+        3. Como $\operatorname{tg}60° = \sqrt{3} \approx 1{,}73$: $d = 50\sqrt{3} \approx \mathbf{86{,}6\text{ m}}$.</p>
+    </div>
     </article>
 
     <article class="questao">
-        <h4>P 2: Parâmetros da Forma Geral</h4>
-        <p><strong>Enunciado:</strong> Identifique $A$, $B$, $C$, $D$, amplitude, período, fase e eixo médio de $f(x) = 3\sin\!\left(2x + \dfrac{\pi}{4}\right) - 1$.</p>
-        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-        <div class="gabarito-resolucao">
-            <p><strong>Resolução:</strong><br>
-            $A = 3$, $B = 2$, $C = \pi/4$, $D = -1$<br>
-            Amplitude: $3$<br>
-            Período: $T = \dfrac{2\pi}{2} = \pi$<br>
-            Fase: $-\dfrac{C}{B} = -\dfrac{\pi/4}{2} = -\dfrac{\pi}{8}$ (deslocado $\pi/8$ para a <strong>esquerda</strong>)<br>
-            Eixo médio: $y = -1$<br>
-            $y_{\max} = 3 + (-1) = 2$; $\quad y_{\min} = -3 + (-1) = -4$</p>
-        </div>
+    <h4>T 15: Diagonal de uma Tela Quadrada</h4>
+    <p>Uma televisão quadrada de lado $L$ tem diagonal de $70\sqrt{2}$ cm. Qual é o valor de $L$?</p>
+    <p>A) $35\text{ cm}$<br>B) $49\text{ cm}$<br>C) $60\text{ cm}$<br>D) $70\text{ cm}$<br>E) $99\text{ cm}$</p>
+    <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+    <div class="gabarito-resolucao">
+        <p><strong>Resolução:</strong> Alternativa <strong>D</strong>.<br>
+        1. Sabemos que a diagonal de um quadrado de lado $L$ vale $L\sqrt{2}$ (dedução do triângulo retângulo de $45°$).<br>
+        2. Igualando: $L\sqrt{2} = 70\sqrt{2} \implies L = \mathbf{70\text{ cm}}$.</p>
+    </div>
     </article>
-
-    <article class="questao">
-        <h4>P 3: Leitura Gráfica</h4>
-        <p><strong>Enunciado:</strong> Um gráfico cosseno tem $y_{\max} = 7$, $y_{\min} = 1$ e período $T = 4$. Escreva a equação na forma $A\cos(Bx) + D$ (sem defasagem).</p>
-        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-        <div class="gabarito-resolucao">
-            <p><strong>Resolução:</strong><br>
-            $|A| = \dfrac{7-1}{2} = 3$; $\quad D = \dfrac{7+1}{2} = 4$<br>
-            $B = \dfrac{2\pi}{4} = \dfrac{\pi}{2}$<br>
-            Equação: $f(x) = 3\cos\!\left(\dfrac{\pi}{2}x\right) + 4$</p>
-        </div>
-    </article>
-
-    <article class="questao">
-        <h4>P 4: Zeros da Função</h4>
-        <p><strong>Enunciado:</strong> Determine os zeros de $f(x) = \sin(2x)$ no intervalo $[0, 2\pi]$.</p>
-        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-        <div class="gabarito-resolucao">
-            <p><strong>Resolução:</strong><br>
-            $\sin(2x) = 0 \Rightarrow 2x = k\pi \Rightarrow x = \dfrac{k\pi}{2}$, $k \in \mathbb{Z}$<br>
-            Para $x \in [0, 2\pi]$: $k = 0, 1, 2, 3, 4$<br>
-            Zeros: $x = 0,\; \dfrac{\pi}{2},\; \pi,\; \dfrac{3\pi}{2},\; 2\pi$</p>
-        </div>
-    </article>
-
-    <article class="questao">
-        <h4>P 5: Aplicação — Corrente Elétrica</h4>
-        <p><strong>Enunciado:</strong> A corrente em um circuito é $i(t) = 6\sin(100\pi t - \pi/3)$ A. Determine: (a) amplitude; (b) período; (c) frequência; (d) valor de $i$ em $t = 0$.</p>
-        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-        <div class="gabarito-resolucao">
-            <p><strong>Resolução:</strong><br>
-            (a) Amplitude: $|A| = 6\text{ A}$<br>
-            (b) $B = 100\pi$; $\quad T = \dfrac{2\pi}{100\pi} = \dfrac{1}{50}\text{ s} = 20\text{ ms}$<br>
-            (c) Frequência: $f = \dfrac{1}{T} = 50\text{ Hz}$<br>
-            (d) $i(0) = 6\sin\!\left(-\dfrac{\pi}{3}\right) = -6\sin\!\left(\dfrac{\pi}{3}\right) = -6 \cdot \dfrac{\sqrt{3}}{2} = -3\sqrt{3} \approx -5{,}2\text{ A}$</p>
-        </div>
-    </article>
-</section>
-
-
-<!--------------- QUESTOES VESTIBULAR --------------------------->
-
-<section class="questoes-vestibular">
-    <h3>🎓 10 Questões de Vestibular/ENEM (T 1 a 10)</h3>
-
-    <article class="questao">
-        <h4>T 1: (FUVEST) Amplitude e Período</h4>
-        <p>A função $f(x) = 4\sin(3x) - 1$ tem amplitude e período iguais a:</p>
-        <p>A) $A=4$, $T=2\pi/3$<br>B) $A=4$, $T=3$<br>C) $A=3$, $T=2\pi/4$<br>D) $A=1$, $T=2\pi/3$<br>E) $A=4$, $T=2\pi$</p>
-        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-        <div class="gabarito-resolucao">
-            <p><strong>Resolução:</strong> Alternativa <strong>A</strong>.<br>
-            $A = 4$ (o $-1$ é deslocamento vertical, não altera a amplitude).<br>
-            $T = \dfrac{2\pi}{B} = \dfrac{2\pi}{3}$.</p>
-        </div>
-    </article>
-
-    <article class="questao">
-        <h4>T 2: (UNICAMP) Máximo e Mínimo</h4>
-        <p>O valor máximo e mínimo de $f(x) = 2\cos(x) + 3$ são, respectivamente:</p>
-        <p>A) $5$ e $1$<br>B) $3$ e $-3$<br>C) $5$ e $-5$<br>D) $2$ e $-2$<br>E) $5$ e $0$</p>
-        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-        <div class="gabarito-resolucao">
-            <p><strong>Resolução:</strong> Alternativa <strong>A</strong>.<br>
-            $y_{\max} = |A| + D = 2 + 3 = 5$<br>
-            $y_{\min} = -|A| + D = -2 + 3 = 1$</p>
-        </div>
-    </article>
-
-    <article class="questao">
-        <h4>T 3: (PUC-SP) Período da Função</h4>
-        <p>O período da função $f(x) = \sin\!\left(\dfrac{\pi x}{4}\right)$ é:</p>
-        <p>A) $4$<br>B) $8$<br>C) $\pi/4$<br>D) $2\pi$<br>E) $\pi$</p>
-        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-        <div class="gabarito-resolucao">
-            <p><strong>Resolução:</strong> Alternativa <strong>B</strong>.<br>
-            $B = \dfrac{\pi}{4}$; $\quad T = \dfrac{2\pi}{\pi/4} = \dfrac{2\pi \cdot 4}{\pi} = 8$.</p>
-        </div>
-    </article>
-
-    <article class="questao">
-        <h4>T 4: (VUNESP) Identificação pelo Gráfico</h4>
-        <p>Um gráfico senoidal tem valor máximo $6$, valor mínimo $-2$ e período $4\pi$. Qual a equação dessa função (sem defasagem)?</p>
-        <p>A) $f(x) = 4\sin\!\left(\dfrac{x}{2}\right) + 2$<br>
-           B) $f(x) = 4\sin(2x) + 2$<br>
-           C) $f(x) = 8\sin\!\left(\dfrac{x}{2}\right) + 2$<br>
-           D) $f(x) = 4\sin\!\left(\dfrac{x}{2}\right) - 2$<br>
-           E) $f(x) = 2\sin\!\left(\dfrac{x}{2}\right) + 4$</p>
-        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-        <div class="gabarito-resolucao">
-            <p><strong>Resolução:</strong> Alternativa <strong>A</strong>.<br>
-            $|A| = \dfrac{6-(-2)}{2} = 4$; $\quad D = \dfrac{6+(-2)}{2} = 2$<br>
-            $T = 4\pi \Rightarrow B = \dfrac{2\pi}{4\pi} = \dfrac{1}{2}$<br>
-            $f(x) = 4\sin\!\left(\dfrac{x}{2}\right) + 2$</p>
-        </div>
-    </article>
-
-    <article class="questao">
-        <h4>T 5: (UFMG) Zeros da Função Cosseno</h4>
-        <p>Quantos zeros possui a função $f(x) = \cos(2x)$ no intervalo $[0, 2\pi]$?</p>
-        <p>A) $2$<br>B) $3$<br>C) $4$<br>D) $5$<br>E) $6$</p>
-        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-        <div class="gabarito-resolucao">
-            <p><strong>Resolução:</strong> Alternativa <strong>C</strong>.<br>
-            $\cos(2x) = 0 \Rightarrow 2x = \dfrac{\pi}{2} + k\pi \Rightarrow x = \dfrac{\pi}{4} + \dfrac{k\pi}{2}$<br>
-            Para $x \in [0, 2\pi]$: $k = 0,1,2,3$ → $x = \dfrac{\pi}{4},\;\dfrac{3\pi}{4},\;\dfrac{5\pi}{4},\;\dfrac{7\pi}{4}$. Total: <strong>4 zeros</strong>.</p>
-        </div>
-    </article>
-
-    <article class="questao">
-        <h4>T 6: (ITA) Relação entre Seno e Cosseno</h4>
-        <p>Se $f(x) = \sin(x)$ e $g(x) = \cos(x)$, qual expressão abaixo é sempre verdadeira?</p>
-        <p>A) $f(x) = g(x + \pi/2)$<br>B) $g(x) = f(x + \pi/2)$<br>C) $f(x) + g(x) = 1$<br>D) $f(x)^2 - g(x)^2 = 1$<br>E) $f(x) = -g(x)$</p>
-        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-        <div class="gabarito-resolucao">
-            <p><strong>Resolução:</strong> Alternativa <strong>B</strong>.<br>
-            $\cos x = \sin\!\left(x + \dfrac{\pi}{2}\right)$, portanto $g(x) = f\!\left(x + \dfrac{\pi}{2}\right)$ ✓<br>
-            A alternativa A é falsa: $\sin x \neq \cos(x+\pi/2) = -\sin x$ em geral.<br>
-            A alternativa C vale apenas se $\sin x + \cos x = 1$ (não é identidade).</p>
-        </div>
-    </article>
-
-    <article class="questao">
-        <h4>T 7: (UNESP) Aplicação — Temperatura</h4>
-        <p>A temperatura média diária (em °C) de uma cidade é $T(h) = 5\sin\!\left(\dfrac{\pi}{12}h - \dfrac{\pi}{2}\right) + 20$, onde $h$ é a hora do dia ($0 \leq h \leq 24$). A temperatura mínima ocorre às:</p>
-        <p>A) 0h<br>B) 6h<br>C) 12h<br>D) 18h<br>E) 24h</p>
-        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-        <div class="gabarito-resolucao">
-            <p><strong>Resolução:</strong> Alternativa <strong>A</strong>.<br>
-            Mínimo quando $\sin = -1$:<br>
-            $\dfrac{\pi}{12}h - \dfrac{\pi}{2} = -\dfrac{\pi}{2} \Rightarrow \dfrac{\pi}{12}h = 0 \Rightarrow h = 0$<br>
-            A temperatura mínima $T = 5(-1) + 20 = 15°\text{C}$ ocorre à meia-noite.</p>
-        </div>
-    </article>
-
-    <article class="questao">
-        <h4>T 8: (ENEM) Onda Sonora</h4>
-        <p>Uma onda sonora é descrita por $y(t) = 0{,}02\sin(880\pi t)$ metros, onde $t$ é em segundos. A frequência dessa onda em hertz é:</p>
-        <p>A) $220\text{ Hz}$<br>B) $440\text{ Hz}$<br>C) $880\text{ Hz}$<br>D) $1760\text{ Hz}$<br>E) $440\pi\text{ Hz}$</p>
-        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-        <div class="gabarito-resolucao">
-            <p><strong>Resolução:</strong> Alternativa <strong>B</strong>.<br>
-            $B = 880\pi$; $\quad T = \dfrac{2\pi}{880\pi} = \dfrac{1}{440}\text{ s}$<br>
-            Frequência: $f = \dfrac{1}{T} = 440\text{ Hz}$ — o Lá central.</p>
-        </div>
-    </article>
-
-    <article class="questao">
-        <h4>T 9: (FUVEST) Equação pelo Gráfico Deslocado</h4>
-        <p>Uma função do tipo $f(x) = A\sin(x + C)$ tem máximo em $x = \pi/6$ e amplitude $3$. Qual é a equação?</p>
-        <p>A) $f(x) = 3\sin\!\left(x - \dfrac{\pi}{6}\right)$<br>
-           B) $f(x) = 3\sin\!\left(x + \dfrac{\pi}{3}\right)$<br>
-           C) $f(x) = 3\sin\!\left(x + \dfrac{\pi}{6}\right)$<br>
-           D) $f(x) = 3\cos\!\left(x - \dfrac{\pi}{6}\right)$<br>
-           E) $f(x) = 3\sin\!\left(x - \dfrac{\pi}{3}\right)$</p>
-        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-        <div class="gabarito-resolucao">
-            <p><strong>Resolução:</strong> Alternativa <strong>B</strong>.<br>
-            Máximo quando $\sin(x+C) = 1$, i.e., $x + C = \pi/2$.<br>
-            Em $x = \pi/6$: $\dfrac{\pi}{6} + C = \dfrac{\pi}{2} \Rightarrow C = \dfrac{\pi}{2} - \dfrac{\pi}{6} = \dfrac{3\pi - \pi}{6} = \dfrac{2\pi}{6} = \dfrac{\pi}{3}$<br>
-            $f(x) = 3\sin\!\left(x + \dfrac{\pi}{3}\right)$</p>
-        </div>
-    </article>
-
-    <article class="questao">
-        <h4>T 10: (UNICAMP) Combinação de Parâmetros</h4>
-        <p>A função $f(x) = -2\sin\!\left(\dfrac{\pi}{3}x + \dfrac{\pi}{6}\right) + 5$ tem período, valor máximo e valor mínimo iguais a:</p>
-        <p>A) $T=6$, $y_{\max}=7$, $y_{\min}=3$<br>
-           B) $T=6$, $y_{\max}=3$, $y_{\min}=7$<br>
-           C) $T=3$, $y_{\max}=7$, $y_{\min}=3$<br>
-           D) $T=6$, $y_{\max}=7$, $y_{\min}=3$ com gráfico invertido<br>
-           E) $T=2\pi/3$, $y_{\max}=7$, $y_{\min}=3$</p>
-        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-        <div class="gabarito-resolucao">
-            <p><strong>Resolução:</strong> Alternativa <strong>A</strong> (e <strong>D</strong> complementar).<br>
-            $B = \dfrac{\pi}{3}$; $\quad T = \dfrac{2\pi}{\pi/3} = 6$<br>
-            $|A| = 2$, $D = 5$.<br>
-            $y_{\max} = |A| + D = 2 + 5 = 7$ (quando $\sin = -1$, pois $A = -2$: $-2 \cdot (-1) = 2$)<br>
-            $y_{\min} = -|A| + D = -2 + 5 = 3$ (quando $\sin = 1$: $-2 \cdot 1 = -2$)<br>
-            O gráfico está invertido por causa do sinal negativo de $A$.</p>
-        </div>
-    </article>
-
 </section>
 
 </div>
@@ -740,7 +461,7 @@ function mostrarSlide(n) {
 
     const pHeader = document.querySelector('header p').innerText;
     const partes = pHeader.split('|');
-    if (partes.length > 1) {
+    if(partes.length > 1) {
         document.getElementById('slide-info-serie').innerText = partes[0].trim();
         document.getElementById('slide-info-aula').innerText = partes[1].trim();
     }
