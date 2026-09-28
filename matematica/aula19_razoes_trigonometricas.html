@@ -335,14 +335,33 @@
 
     <article class="questao">
     <h4>T 12: (ENEM Libras 2017 — Caderno Verde, Questão 139) A Torre de Pisa</h4>
-    <p>A famosa Torre de Pisa, localizada na Itália, assim como muitos outros prédios, sofre inclinações causadas por conta do solo que não sustenta seu peso adequadamente. Estima-se que a torre tenha 60 metros de altura (do chão até o topo) na parte mais alta e, no ponto mais baixo, 58 metros. Considere que a base seja plana, horizontal e a região no entorno também, e que a torre tem seu formato apoiado num círculo de diâmetro igual a $17$ metros. Considere ainda $0,03$ como valor aproximado para a razão entre a diferença das alturas (mais alta e mais baixa) e o diâmetro da base da torre, para calcular o ângulo de inclinação $\alpha$ dessa torre, em relação ao eixo vertical, sabendo que $\operatorname{sen}\alpha$ é aproximadamente igual a essa razão.</p>
-    <p>Considerando a tabela de senos fornecida na prova, o ângulo $\alpha$ está entre:</p>
-    <p>A) $0° \leq \alpha < 1{,}0°$<br>B) $1{,}0° \leq \alpha < 1{,}5°$<br>C) $1{,}5° \leq \alpha < 1{,}8°$<br>D) $1{,}8° \leq \alpha < 2{,}0°$<br>E) $2{,}0° \leq \alpha < 3{,}0°$</p>
+    <p>A famosa Torre de Pisa, localizada na Itália, assim como muitos outros prédios, por motivos adversos, sofrem inclinações durante ou após suas construções. Um prédio, quando construído, dispunha-se verticalmente e tinha $60$ metros de altura. Ele sofreu uma inclinação de um ângulo $\alpha$, e a projeção ortogonal de sua fachada lateral sobre o solo tem largura medindo $1{,}80$ metro. O valor do ângulo de inclinação pode ser determinado fazendo-se o uso de uma tabela como a apresentada.</p>
+    <div style="overflow-x:auto;">
+    <table style="width:100%; max-width:280px; margin:10px auto; border-collapse:collapse; text-align:center; font-family:sans-serif;">
+        <thead>
+            <tr style="background:#2c3e50; color:white;">
+                <th style="padding:6px; border:1px solid #ddd;">Ângulo $\alpha$ (grau)</th>
+                <th style="padding:6px; border:1px solid #ddd;">Seno</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><td style="padding:6px; border:1px solid #ddd;">$0{,}0$</td><td style="padding:6px; border:1px solid #ddd;">$0{,}000$</td></tr>
+            <tr><td style="padding:6px; border:1px solid #ddd;">$1{,}0$</td><td style="padding:6px; border:1px solid #ddd;">$0{,}017$</td></tr>
+            <tr><td style="padding:6px; border:1px solid #ddd;">$1{,}5$</td><td style="padding:6px; border:1px solid #ddd;">$0{,}026$</td></tr>
+            <tr><td style="padding:6px; border:1px solid #ddd;">$1{,}8$</td><td style="padding:6px; border:1px solid #ddd;">$0{,}031$</td></tr>
+            <tr><td style="padding:6px; border:1px solid #ddd;">$2{,}0$</td><td style="padding:6px; border:1px solid #ddd;">$0{,}034$</td></tr>
+            <tr><td style="padding:6px; border:1px solid #ddd;">$3{,}0$</td><td style="padding:6px; border:1px solid #ddd;">$0{,}052$</td></tr>
+        </tbody>
+    </table>
+    </div>
+    <p>Uma estimativa para o ângulo de inclinação $\alpha$, quando dado em grau, é tal que:</p>
+    <p>A) $0 \leq \alpha < 1{,}0$<br>B) $1{,}0 \leq \alpha < 1{,}5$<br>C) $1{,}5 \leq \alpha < 1{,}8$<br>D) $1{,}8 \leq \alpha < 2{,}0$<br>E) $2{,}0 \leq \alpha < 3{,}0$</p>
     <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
     <div class="gabarito-resolucao">
         <p><strong>Resolução:</strong> Alternativa <strong>C</strong>.<br>
-        1. A diferença entre as alturas é $60 - 58 = 2$ m; dividindo pelo diâmetro da base ($17$ m), obtemos a razão $\operatorname{sen}\alpha \approx \dfrac{2}{17} \approx 0{,}03$, conforme informado no próprio enunciado.<br>
-        2. Consultando a tabela de senos fornecida na prova, o valor $\operatorname{sen}\alpha \approx 0{,}03$ corresponde a um ângulo no intervalo $\mathbf{1{,}5° \leq \alpha < 1{,}8°}$.<br>
+        1. O prédio inclinado ($60$ m) é a hipotenusa do triângulo retângulo; a projeção da fachada sobre o solo ($1{,}80$ m) é o cateto oposto ao ângulo de inclinação $\alpha$ (medido em relação à vertical).<br>
+        2. Usamos o seno: $\operatorname{sen}\alpha = \dfrac{1{,}8}{60} = 0{,}03$.<br>
+        3. Pela tabela: $\operatorname{sen}1{,}5° = 0{,}026 < 0{,}03 < 0{,}031 = \operatorname{sen}1{,}8°$. Como o seno cresce com o ângulo (entre $0°$ e $90°$), temos $\mathbf{1{,}5° \leq \alpha < 1{,}8°}$.<br>
         <em>Fonte: ENEM Libras 2017, 2º dia, caderno verde, questão 139.</em></p>
     </div>
       </article>
@@ -353,10 +372,11 @@
     <p>A) $7{,}50\text{ m}$<br>B) $11{,}92\text{ m}$<br>C) $12{,}02\text{ m}$<br>D) $13{,}05\text{ m}$</p>
     <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
     <div class="gabarito-resolucao">
-        <p><strong>Resolução:</strong> Alternativa <strong>B</strong>.<br>
+        <p><strong>Resolução:</strong> Alternativa <strong>D</strong>.<br>
         1. A escada é a hipotenusa do triângulo retângulo formado com o solo; a altura alcançada é o cateto oposto ao ângulo de $60°$.<br>
         2. Usamos o seno: $\operatorname{sen}60° = \dfrac{h}{15} \implies h = 15 \times \operatorname{sen}60°$.<br>
-        3. Usando o valor exato $\operatorname{sen}60° = \dfrac{\sqrt{3}}{2} \approx 0{,}866$ (mais preciso que o dado arredondado $0{,}87$ fornecido na prova): $h = 15 \times 0{,}866 \approx \mathbf{11{,}92\text{ m}}$.<br>
+        3. Usando o valor fornecido pela prova, $\operatorname{sen}60° = 0{,}87$: $h = 15 \times 0{,}87 = \mathbf{13{,}05\text{ m}}$.<br>
+        4. <em>Conferência:</em> com o valor exato $\operatorname{sen}60° = \dfrac{\sqrt{3}}{2} \approx 0{,}866$, obtemos $h \approx 12{,}99$ m — também muito próximo de $13{,}05$ m, confirmando a alternativa D.<br>
         <em>Fonte: Instituto Consulpam, concurso público da Prefeitura de Apuiarés (CE), 2014, prova de Matemática.</em></p>
     </div>
       </article>
