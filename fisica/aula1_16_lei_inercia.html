@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1º Ano: Aula 16 - 1ª Lei de Newton (Inércia)</title>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../estilo.css">
+    
+    <script>
+        MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true
+            }
+        };
+    </script>
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body>
+<button class="menu-toggle" onclick="toggleMenu()">☰</button>
+
+<nav id="menu-principal" class="nav-global">
+    <ul>
+        <li><a href="../index.html">🏠 Início</a></li>
+        <li><a href="../fisica_home.html">⚛️ Física</a></li>
+        <li><a href="../matematica_home.html">📐 Matemática</a></li>
+        <li><a href="../simulacoes_home.html">💻 Simulações</a></li>
+    </ul>
+</nav>
+
+<header id="topo">
+    <h1>FÍSICA EM</h1>
+    <p>1º Ano | Aula 16: 1ª Lei de Newton (Lei da Inércia)</p>
+<button id="btn-slides" onclick="toggleSlides()">📺 Iniciar Modo Slides</button>
+</header>
+
+<div class="container">
+
+<main class="conteudo-principal">
+
+<div class="secao-aula">
+ <div class="container-resumo" id="resumo">
+    <h3>📚 Resumo </h3>
+    <section class="resumo-conteudo">
+        <p>A <strong>1ª Lei de Newton (Princípio da Inércia)</strong> afirma que um corpo tende a manter seu estado de repouso ou de movimento retilíneo uniforme (MRU), a menos que seja atuado por uma força resultante externa não nula.</p>
+        <p style="text-align: center;"><strong>Equilíbrio Dinâmico ou Estático:</strong> $\vec{F}_{res} = 0 \iff \vec{a} = 0 \iff \vec{v} = \text{constante}$</p>
+        <p style="text-align: center;"><strong>Massa:</strong> É a medida quantitativa da inércia de um corpo.</p>
+    </section>
+</div>
+
+<section class="conteudo-teorico-completo" id="teoria">
+    <div class="passo-teoria">
+        <h3>📖 1ª Lei de Newton: A Lei da Inércia</h3>
+        <h4>1. O Conceito de Inércia</h4>
+        <p>Inércia é a propriedade da matéria de resistir a variações em seu estado de movimento. Corpos de maior massa possuem maior inércia, ou seja, oferecem maior resistência a serem acelerados ou freados.</p>
+        <figure class="figura-aula figura-grande">
+            <img src="../imagens_fisica/aula1_16_inercia_conceito.png" alt="Ilustração da tendência do corpo de manter o movimento em uma frenagem súbita.">
+            <figcaption>Figura 1: Em uma frenagem ou aceleração, os passageiros tendem por inércia a manter a velocidade que possuíam anteriormente.</figcaption>
+        </figure>
+    </div>
+
+    <div class="passo-teoria">
+        <h4>2. Condição de Equilíbrio ($\vec{F}_{res} = 0$)</h4>
+        <p>Quando a força resultante sobre um corpo é igual a zero ($\vec{F}_{res} = 0$), o corpo está em <strong>equilíbrio</strong>. Existem dois tipos de equilíbrio:</p>
+        <ul>
+            <li><strong>Equilíbrio Estático:</strong> O corpo está em repouso ($\vec{v} = 0$).</li>
+            <li><strong>Equilíbrio Dinâmico:</strong> O corpo move-se em linha reta com velocidade constante (MRU, $\vec{v} \neq 0$).</li>
+        </ul>
+    </div>
+
+    <div class="passo-teoria">
+        <h4>3. Referenciais Inerciais</h4>
+        <p>A 1ª Lei de Newton é válida apenas em <strong>referenciais inerciais</strong>, que são sistemas de referência que estão em repouso ou em movimento retilíneo uniforme entre si (sem aceleração).</p>
+    </div>
+</section>
+
+<section class="aplicacoes-reais" id="aplicacoes">
+    <h3>💡 Física em Ação</h3>
+    <div class="cards-aplicacao">
+        <div class="card">
+            <h4>🚗 Cinto de Segurança</h4>
+            <p>Em uma colisão, o automóvel para bruscamente, mas os passageiros tendem a continuar em movimento retilíneo uniforme por inércia. O cinto exerce a força necessária para alterar esse movimento e proteger o ocupante.</p>
+        </div>
+        <div class="card" style="border-left-color: #2ecc71;">
+            <h4>🚀 Sondas Espaciais</h4>
+            <p>No espaço profundo, longe da gravidade de estrelas e sem atrito atmosférico, uma sonda espacial desligada continua se movendo indefinitidamente em linha reta e com velocidade constante sem gastar combustível.</p>
+        </div>
+    </div>
+</section>
+
+<section class="questoes-resolvidas" id="resolvidas">
+    <h3>✅ 5 Questões Resolvidas (R 1 a 5)</h3>
+    
+    <article class="questao">
+        <h4>R 1: Frenagem do Ônibus</h4>
+        <p><strong>Enunciado:</strong> Por que os passageiros de um ônibus em alta velocidade são projetados para frente quando o motorista pisa bruscamente no freio?</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong> Devido à inércia. Como os passageiros estavam se movendo junto com o ônibus, a tendência natural dos seus corpos é manter o movimento para a frente com a mesma velocidade que tinham antes da frenagem.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>R 2: Conceito de Equilíbrio</h4>
+        <p><strong>Enunciado:</strong> Um livro de $2\text{ kg}$ está parado sobre uma mesa horizontal. A força resultante sobre ele é nula?</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong> Sim. Como o livro está em repouso (equilíbrio estático), a força peso atua para baixo e a força normal para cima com o mesmo módulo, cancelando-se. Logo, $\vec{F}_{res} = 0$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>R 3: Movimento no Espaço</h4>
+        <p><strong>Enunciado:</strong> Um objeto lançado no espaço intergaláctico, longe de qualquer influência gravitacional e atrito, necessita de propulsão contínua para manter seu movimento?</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong> Não. Pela 1ª Lei de Newton, na ausência de forças resultantes externas ($\vec{F}_{res} = 0$), o corpo permanecerá em Movimento Retilíneo Uniforme (MRU) por inércia, sem precisar de combustível.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>R 4: Curva e Inércia</h4>
+        <p><strong>Enunciado:</strong> Quando um carro faz uma curva fechada para a esquerda, para onde os passageiros parecem ser "jogados"? Por quê?</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong> Eles tendem a ser projetados para a direita. Pela lei da inércia, os passageiros tendem a manter a trajetória reta original. Como o carro vira para a esquerda, a lateral direita do veículo vai ao encontro deles.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>R 5: Relação entre Massa e Inércia</h4>
+        <p><strong>Enunciado:</strong> O que exige maior força para alterar o estado de repouso: um carrinho de supermercado vazio ou um cheio? Justifique.</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong> O carrinho cheio. Como a massa é a medida quantitativa da inércia, quanto maior a massa de um corpo, maior é a sua resistência a variações de velocidade (maior inércia).</p>
+        </div>
+    </article>
+</section>
+
+<section class="questoes-propostas" id="propostas">
+    <h3>✍️ 5 Questões Propostas (P 6 a 10)</h3>
+
+    <article class="questao">
+        <h4>P 6: Arrancada Brusca</h4>
+        <p><strong>Enunciado:</strong> Explique o que acontece com a cabeça de um motorista parado no sinal quando seu carro é atingido bruscamente por trás por outro veículo.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> Por inércia, a cabeça tende a permanecer em repouso. Como o tronco é impulsionado para a frente pelo banco do carro, a cabeça aparenta ir para trás (efeito "chicote"), motivo pelo qual o encosto de cabeça é obrigatório.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 7: Pano de Mesa</h4>
+        <p><strong>Enunciado:</strong> Um mágico puxa rapidamente a toalha de uma mesa cheia de pratos sem derrubá-los. Qual conceito da Física explica esse fenômeno?</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> A 1ª Lei de Newton (Inércia). Ao aplicar uma força rápida na toalha, o tempo de interação e o atrito são mínimos, permitindo que os pratos permaneçam em repouso devido à sua inércia.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 8: Patinador no Gelo</h4>
+        <p><strong>Enunciado:</strong> Um patinador desliza em uma pista de gelo ideal (sem atrito) com velocidade constante de $5\text{ m/s}$. Qual é a força resultante aplicada sobre ele?</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> Como a velocidade é constante e o movimento é retilíneo (MRU), o patinador está em equilíbrio dinâmico. Portanto, a força resultante é zero ($\vec{F}_{res} = 0$).</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 9: Moeda no Copo</h4>
+        <p><strong>Enunciado:</strong> Uma moeda repousa sobre um cartão de papel em cima de um copo. Se dermos um peteleco horizontal no cartão, a moeda cai dentro do copo. Por quê?</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> O peteleco aplica força apenas no cartão. A moeda, por inércia, tende a permanecer em repouso na sua posição. Sem o cartão para sustentá-la, a gravidade a faz cair dentro do copo.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 10: Gotas de Guarda-Chuva</h4>
+        <p><strong>Enunciado:</strong> Para tirar a água de um guarda-chuva molhado, nós o sacudimos rapidamente e o paramos de estalo. Como a inércia atua nesse caso?</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> As gotas entram em movimento junto com o guarda-chuva. Quando o guarda-chuva para abruptamente, as gotas mantêm seu movimento para a frente por inércia, se desligando do tecido.</p>
+        </div>
+    </article>
+</section>
+
+<section class="TESTE" id="testes">
+    <h3>🎓 TESTES (T 11 a 15)</h3>
+
+    <article class="questao">
+        <h4>T 11: (UNESP) Cinto de Segurança</h4>
+        <p>As estatísticas indicam que o uso de cinto de segurança deve ser obrigatório para prevenir lesões mais graves em motoristas e passageiros no caso de acidentes. Fisicamente, a função do cinto está relacionada com a:</p>
+        <p>A) Primeira Lei de Newton.<br>
+        B) Lei de Snell.<br>
+        C) Lei de Ampère.<br>
+        D) Lei de Ohm.<br>
+        E) Primeira Lei de Kepler.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> Alternativa <strong>A</strong>.<br>
+            Em uma colisão ou frenagem brusca, os ocupantes tendem a manter seu movimento por inércia. O cinto aplica a força externa necessária para alterar esse estado, como prevê a Primeira Lei de Newton.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>T 12: (CEFET-MG) Queda no Skate</h4>
+        <p>A imagem mostra um garoto sobre um skate em movimento com velocidade constante que, em seguida, choca-se com um obstáculo e cai. A queda do garoto justifica-se devido à(ao):</p>
+    <figure class="figura-aula">
+        <img src="../imagens_fisica/aula1_16_T12.png" alt="Queda do Skate">
+    </figure>
+
+        <p>A) princípio da inércia.<br>
+        B) ação de uma força externa.<br>
+        C) princípio da ação e reação.<br>
+        D) força de atrito exercida pelo obstáculo.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> Alternativa <strong>A</strong>.<br>
+            O obstáculo interrompe o movimento do skate ao aplicar uma força sobre ele, mas o garoto continua seu movimento para a frente devido ao princípio da inércia.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>T 13: (UNIRG-TO) "Força de Inércia"</h4>
+        <p>As pessoas costumam dizer que, quando um carro freia, uma “força de inércia” atua sobre elas, jogando-as para frente. Essa afirmação está errada, pois essa tendência de continuar em movimento, que a pessoa sente, não é proveniente de uma força, mas sim:</p>
+        <p>A) da inércia, que é uma propriedade física da matéria.<br>
+        B) da energia potencial gravitacional, que se mantém constante.<br>
+        C) do par ação e reação, que surge entre o banco do carro e a pessoa.<br>
+        D) do atrito, que tende a frear o carro, mas não a pessoa.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> Alternativa <strong>A</strong>.<br>
+            A inércia não é uma força, mas sim uma propriedade da matéria de resistir a mudanças em seu estado de movimento.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>T 14: (UNIFOR-CE) Rotação da Terra</h4>
+        <p>O que aconteceria se de repente a Terra parasse de girar ao redor do seu eixo? Ao parar a Terra inesperadamente, as casas, as pessoas, as árvores, os animais e tudo o que não esteja ligado firmemente à Terra sairá a voar pela tangente com a velocidade de um projétil. A origem dessa tragédia tem uma explicação simples e está:</p>
+        <p>A) no efeito relativístico do movimento de rotação da terra.<br>
+        B) no princípio de que todo corpo que possui massa sofre os efeitos do princípio da inércia.<br>
+        C) nas leis da termodinâmica, devido a uma redução de pressão na superfície.<br>
+        D) no fato de que a terra passaria a repelir os corpos por ação gravitacional.<br>
+        E) no princípio da conservação da energia mecânica.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> Alternativa <strong>B</strong>.<br>
+            Como tudo na superfície da Terra se move junto com o planeta no movimento de rotação, se o planeta parar bruscamente, os corpos soltos tendem a continuar em movimento tangencial por inércia.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>T 15: (Unicastelo-SP) Aplicação da 1ª Lei de Newton</h4>
+ <figure class="figura-aula">
+        <img src="../imagens_fisica/aula1_16_T15.png" alt="Calvin e Haroldo Tirinha">
+    </figure>
+
+        <p>Assinale a alternativa que contém um exemplo de aplicação da Primeira Lei de Newton:</p>
+        <p>A) Um livro apoiado sobre uma mesa horizontal é empurrado horizontalmente para a direita com uma força de mesma intensidade da força de atrito que atua sobre ele, mantendo-o em movimento retilíneo e uniforme.<br>
+        B) Quando um tenista acerta uma bola com sua raquete, exerce nela uma força de mesma direção e intensidade da que a bola exerce na raquete, mas de sentido oposto.<br>
+        C) Em uma colisão entre duas bolas de bilhar, a quantidade de movimento do sistema formado por elas imediatamente depois da colisão é igual à quantidade de movimento do sistema imediatamente antes da colisão.<br>
+        D) Em um sistema de corpos onde forças não conservativas não realizam trabalho, só pode ocorrer transformação de energia potencial em cinética ou de energia cinética em potencial.<br>
+        E) Se a força resultante que atua sobre um carrinho de supermercado enquanto ele se move tiver sua intensidade dobrada, a aceleração imposta a ele também terá sua intensidade dobrada.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> Alternativa <strong>A</strong>.<br>
+            Como a força aplicada possui a mesma intensidade da força de atrito mas em sentido oposto, a força resultante sobre o livro é nula ($\vec{F}_{res} = 0$). Pela Primeira Lei de Newton (Princípio da Inércia), um corpo sob resultante nula permanece em Movimento Retilíneo Uniforme (MRU).<br><br>
+            <em>Análise das outras alternativas:</em><br>
+            - B refere-se à 3ª Lei de Newton (Ação e Reação).<br>
+            - C refere-se à Conservação da Quantidade de Movimento.<br>
+            - D refere-se à Conservação da Energia Mecânica.<br>
+            - E refere-se à 2ª Lei de Newton ($F = m \cdot a$).</p>
+        </div>
+    </article>
+</section>
+</div>
+</main>
+
+<aside class="menu-lateral">
+    <iframe src="../menu_fisica.html" style="width:100%; border:none; height:600px;"></iframe>
+</aside>
+
+</div>
+
+<script>
+function toggleGabarito(botao) {
+    const gabarito = botao.nextElementSibling;
+    if (gabarito.style.display === "none" || gabarito.style.display === "") {
+        gabarito.style.display = "block";
+        botao.textContent = "Esconder Gabarito e Resolução";
+        botao.style.backgroundColor = "#2c3e50";
+    } else {
+        gabarito.style.display = "none";
+        botao.textContent = "Ver Gabarito e Resolução";
+        botao.style.backgroundColor = "#3498db";
+    }
+}
+
+function toggleMenu() {
+    const menuGlobal = document.getElementById("menu-principal");
+    if (menuGlobal) menuGlobal.classList.toggle("ativo");
+}
+
+let slideAtual = 0;
+let slides = [];
+
+function prepararSlides() {
+    const seletores = '.container-resumo, .passo-teoria, .aplicacoes-reais, .questao';
+    slides = document.querySelectorAll(seletores);
+}
+
+function toggleSlides() {
+    prepararSlides();
+    const body = document.body;
+    if (!body.classList.contains('modo-slides')) {
+        body.classList.add('modo-slides');
+        slideAtual = 0;
+        mostrarSlide(slideAtual);
+    } else {
+        body.classList.remove('modo-slides');
+        window.location.reload(); 
+    }
+}
+
+function mostrarSlide(n) {
+    slides.forEach(s => {
+        s.classList.remove('slide-ativo');
+        s.style.display = 'none';
+    });
+    
+    const slide = slides[n];
+    slide.classList.add('slide-ativo');
+    slide.style.display = 'flex';
+
+    if (slide.classList.contains('questao') && !slide.querySelector('.btn-gabarito')) {
+        const resolucoes = slide.querySelectorAll('.resolucao-bloco');
+        resolucoes.forEach(r => r.style.display = 'block');
+    } else {
+        const gabaritos = slide.querySelectorAll('.gabarito-resolucao');
+        gabaritos.forEach(g => g.style.display = 'none');
+        const botoes = slide.querySelectorAll('.btn-gabarito');
+        botoes.forEach(b => {
+            b.textContent = "Ver Gabarito e Resolução";
+            b.style.backgroundColor = "#3498db";
+        });
+    }
+
+    const pHeader = document.querySelector('header p').innerText;
+    const partes = pHeader.split('|');
+    if(partes.length > 1) {
+        document.getElementById('slide-info-serie').innerText = partes[0].trim();
+        document.getElementById('slide-info-aula').innerText = partes[1].trim();
+    }
+    
+    document.getElementById('contador-slide').innerText = (n + 1) + " / " + slides.length;
+    
+    // Força o reprocessamento do MathJax apenas no slide atual que acabou de ficar visível
+    if (window.MathJax && window.MathJax.typesetPromise) {
+        MathJax.typesetPromise([slide]);
+    }
+}});
+</script>
+
+<style>
+    body.modo-slides { overflow: hidden; background-color: #1a1a1a; }
+    body.modo-slides .menu-lateral, body.modo-slides header, body.modo-slides .menu-toggle, body.modo-slides #btn-slides { display: none !important; }
+    .slide-ativo {
+        display: flex !important; flex-direction: column; align-items: center; justify-content: flex-start;
+        position: fixed; top: 0; left: 0; width: 100vw; height: calc(100vh - 70px);
+        background: #ffffff; padding: 40px; z-index: 999; overflow-y: auto !important; 
+        box-sizing: border-box; text-align: center;
+    }
+    .controles-slides {
+        position: fixed; bottom: 0; left: 0; width: 100%; height: 70px;
+        background: #2c3e50; color: white; display: none; 
+        justify-content: space-between; align-items: center; padding: 0 20px; z-index: 1001; box-sizing: border-box;
+    }
+    body.modo-slides .controles-slides { display: flex; }
+    .info-lateral { flex: 1; font-family: 'Oswald', sans-serif; font-size: 0.9rem; color: #bdc3c7; }
+    .botoes-centrais { display: flex; align-items: center; gap: 15px; justify-content: center; flex: 2; }
+    .btn-nav { padding: 10px 20px; background: #3498db; color: white; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; }
+    #contador-slide { font-family: 'Oswald', sans-serif; min-width: 60px; text-align: center; }
+</style>
+
+<div class="controles-slides">
+    <div id="slide-info-serie" class="info-lateral"></div>
+    
+    <div class="botoes-centrais">
+        <button class="btn-nav" onclick="mudarSlide(-1)">⬅ Anterior</button>
+        <span id="contador-slide"></span>
+        <button class="btn-nav" onclick="mudarSlide(1)">Próximo ➡</button>
+        <button class="btn-nav" onclick="toggleSlides()" style="background:#e74c3c;">Sair</button>
+    </div>
+
+    <div id="slide-info-aula" class="info-lateral" style="text-align: right;"></div>
+</div>
+</body>
+</html>
