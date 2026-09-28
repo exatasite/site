@@ -17,102 +17,7 @@
         };
     </script>
     <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-
-    <style>
-        /* Estilos do Modo Slides Corrigido */
-        body.modo-slides { 
-            overflow: hidden !important; 
-            background-color: #111111; 
-        }
-        
-        body.modo-slides .menu-lateral, 
-        body.modo-slides header, 
-        body.modo-slides .menu-toggle, 
-        body.modo-slides #btn-slides,
-        body.modo-slides .nav-global { 
-            display: none !important; 
-        }
-
-        .slide-ativo {
-            display: flex !important; 
-            flex-direction: column; 
-            align-items: center; 
-            justify-content: flex-start;
-            position: fixed; 
-            top: 0; 
-            left: 0; 
-            width: 100vw; 
-            height: calc(100vh - 70px);
-            background: #ffffff; 
-            padding: 40px 20px; 
-            z-index: 999; 
-            overflow-y: auto !important; 
-            box-sizing: border-box; 
-            text-align: left;
-        }
-
-        .slide-ativo > * {
-            max-width: 900px;
-            width: 100%;
-        }
-
-        .controles-slides {
-            position: fixed; 
-            bottom: 0; 
-            left: 0; 
-            width: 100%; 
-            height: 70px;
-            background: #2c3e50; 
-            color: white; 
-            display: none; 
-            justify-content: space-between; 
-            align-items: center; 
-            padding: 0 20px; 
-            z-index: 1001; 
-            box-sizing: border-box;
-        }
-
-        body.modo-slides .controles-slides { 
-            display: flex; 
-        }
-
-        .info-lateral { 
-            flex: 1; 
-            font-family: 'Oswald', sans-serif; 
-            font-size: 0.9rem; 
-            color: #bdc3c7; 
-        }
-
-        .botoes-centrais { 
-            display: flex; 
-            align-items: center; 
-            gap: 15px; 
-            justify-content: center; 
-            flex: 2; 
-        }
-
-        .btn-nav { 
-            padding: 10px 20px; 
-            background: #3498db; 
-            color: white; 
-            border: none; 
-            border-radius: 5px; 
-            cursor: pointer; 
-            font-weight: bold; 
-            transition: background 0.2s;
-        }
-
-        .btn-nav:hover {
-            background: #2980b9;
-        }
-
-        #contador-slide { 
-            font-family: 'Oswald', sans-serif; 
-            min-width: 60px; 
-            text-align: center; 
-        }
-    </style>
-</head>
+   </head> 
 
 <body>
 <button class="menu-toggle" onclick="toggleMenu()">☰</button>
@@ -120,12 +25,10 @@
 <nav id="menu-principal" class="nav-global">
     <ul>
         <li><a href="../index.html">🏠 Início</a></li>
-        <li><a href="../fisica_home.html">⚛️ Física</a></li>
-        <li><a href="../matematica_home.html">📐 Matemática</a></li>
-        <li><a href="../simulacoes_home.html">💻 Simulações</a></li>
+        <li><a href="../ensino_medio.html">📚 Ensino Médio</a></li>
+        <li><a href="../ensino_superior.html">🎓 Ensino Superior</a></li>
     </ul>
 </nav>
-
 <header id="topo">
     <h1>FÍSICA EM</h1>
     <p>1º Ano | Aula 18: 3ª Lei de Newton (Ação e Reação)</p>
