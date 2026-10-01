@@ -6,7 +6,7 @@
     <title>1º Ano: Aula 16 - Trigonometria no Triângulo Retângulo</title>
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../estilo.css">
-    
+
     <script>
         MathJax = {
             tex: {
@@ -21,13 +21,11 @@
 
 <body>
 <button class="menu-toggle" onclick="toggleMenu()">☰</button>
-
 <nav id="menu-principal" class="nav-global">
     <ul>
         <li><a href="../index.html">🏠 Início</a></li>
-        <li><a href="../fisica_home.html">⚛️ Física</a></li>
-        <li><a href="../matematica_home.html">📐 Matemática</a></li>
-        <li><a href="../simulacoes_home.html">💻 Simulações</a></li>
+        <li><a href="../ensino_medio.html">📚 Ensino Médio</a></li>
+        <li><a href="../ensino_superior.html">🎓 Ensino Superior</a></li>
     </ul>
 </nav>
 
@@ -45,494 +43,382 @@
 
 <div class="secao-aula">
  <div class="container-resumo">
-    <h3>📚 Resumo:</h3>
+    <h3>📚 Resumo: </h3>
     <section class="resumo-conteudo">
-        <p>No triângulo retângulo, as razões trigonométricas relacionam os ângulos agudos com os lados da figura. Para um ângulo agudo $\theta$:</p>
+        <p>A <strong>trigonometria no triângulo retângulo</strong> permite calcular lados e ângulos desconhecidos a partir de apenas algumas medidas. Para um ângulo agudo $\alpha$:</p>
+        <p style="text-align: center;"><strong>$$\operatorname{sen}\alpha = \frac{\text{cateto oposto}}{\text{hipotenusa}} \qquad \cos\alpha = \frac{\text{cateto adjacente}}{\text{hipotenusa}} \qquad \operatorname{tg}\alpha = \frac{\text{cateto oposto}}{\text{cateto adjacente}}$$</strong></p>
         <ul>
-            <li><strong>Seno:</strong> $\sin\theta = \dfrac{\text{cateto oposto}}{\text{hipotenusa}}$</li>
-            <li><strong>Cosseno:</strong> $\cos\theta = \dfrac{\text{cateto adjacente}}{\text{hipotenusa}}$</li>
-            <li><strong>Tangente:</strong> $\tan\theta = \dfrac{\text{cateto oposto}}{\text{cateto adjacente}} = \dfrac{\sin\theta}{\cos\theta}$</li>
-            <li><strong>Relação fundamental:</strong> $\sin^2\theta + \cos^2\theta = 1$</li>
+            <li><strong>Ângulos complementares:</strong> os dois ângulos agudos somam $90°$, e o seno de um é igual ao cosseno do outro.</li>
+            <li><strong>Ângulos quaisquer:</strong> para ângulos que não são notáveis (como $20°$ ou $35°$), usamos uma <strong>tabela trigonométrica</strong> ou a calculadora.</li>
+            <li><strong>Elevação e depressão:</strong> são ângulos medidos a partir da <strong>linha horizontal</strong> do observador — para cima (elevação) ou para baixo (depressão).</li>
         </ul>
     </section>
 </div>
 
 <section class="conteudo-teorico-completo">
-
     <div class="passo-teoria">
-        <h3>📖 O que é Trigonometria no Triângulo Retângulo?</h3>
-        <p>A palavra "trigonometria" vem do grego e significa <em>medida de triângulos</em>. O estudo das razões trigonométricas no triângulo retângulo é a base de toda a trigonometria: a partir de um único ângulo agudo e um lado conhecido, conseguimos calcular todos os demais lados e ângulos da figura. Essa ferramenta está presente na arquitetura, engenharia, física, astronomia e em qualquer situação que envolva distâncias ou alturas indiretas.</p>
-    </div>
-
-    <div class="passo-teoria">
-        <h4>1. Os Lados do Triângulo Retângulo</h4>
-        <p>Em um triângulo retângulo com ângulo reto em $C$ e ângulo agudo $\theta$ em $A$, os lados recebem nomes em relação ao ângulo $\theta$:</p>
+        <h3>📖 1. Elementos do Triângulo Retângulo</h3>
+        <p>Um <strong>triângulo retângulo</strong> é aquele que possui um ângulo reto ($90°$). Seus elementos recebem nomes especiais:</p>
         <ul>
-            <li><strong>Hipotenusa:</strong> lado oposto ao ângulo reto — sempre o maior lado. No triângulo, é o lado $AB$.</li>
-            <li><strong>Cateto oposto a $\theta$:</strong> lado que não toca $\theta$ — é o lado $BC$.</li>
-            <li><strong>Cateto adjacente a $\theta$:</strong> lado que forma $\theta$ junto com a hipotenusa — é o lado $AC$.</li>
+            <li><strong>Hipotenusa ($c$):</strong> o lado oposto ao ângulo reto — é sempre o maior lado.</li>
+            <li><strong>Catetos ($a$ e $b$):</strong> os dois lados que formam o ângulo reto.</li>
+            <li><strong>Ângulos agudos ($\alpha$ e $\beta$):</strong> como a soma dos ângulos internos é $180°$, temos $\alpha + \beta = 90°$ — eles são <strong>complementares</strong>.</li>
         </ul>
+        <p>Os lados sempre obedecem ao <strong>Teorema de Pitágoras</strong>: $c^2 = a^2 + b^2$.</p>
         <figure class="figura-aula figura-grande">
-            <svg viewBox="0 0 520 320" xmlns="http://www.w3.org/2000/svg" width="500" height="300">
-                <defs>
-                    <marker id="arr2" markerWidth="7" markerHeight="7" refX="5" refY="3" orient="auto">
-                        <path d="M0,0 L0,6 L7,3 Z" fill="#003366"/>
-                    </marker>
-                </defs>
-                <!-- Triângulo: A(60,260), B(420,260), C(420,80) -->
-                <polygon points="60,260 420,260 420,80" fill="#EBF5FB" stroke="#003366" stroke-width="2"/>
-
-                <!-- Ângulo reto em B(420,260) -->
-                <rect x="400" y="240" width="20" height="20" fill="none" stroke="#003366" stroke-width="1.5"/>
-
-                <!-- Arco de theta em A(60,260) -->
-                <path d="M100,260 A40,40 0 0,0 80,228" fill="none" stroke="#D35400" stroke-width="2"/>
-                <text x="108" y="250" fill="#D35400" font-size="16" font-family="Arial" font-style="italic">θ</text>
-
-                <!-- Vértices -->
-                <circle cx="60" cy="260" r="4" fill="#003366"/>
-                <text x="38" y="276" fill="#003366" font-size="15" font-family="Arial" font-weight="bold">A</text>
-                <circle cx="420" cy="260" r="4" fill="#003366"/>
-                <text x="428" y="276" fill="#003366" font-size="15" font-family="Arial" font-weight="bold">B</text>
-                <circle cx="420" cy="80" r="4" fill="#003366"/>
-                <text x="428" y="78" fill="#003366" font-size="15" font-family="Arial" font-weight="bold">C</text>
-
-                <!-- Labels dos lados -->
-                <!-- Hipotenusa AC diagonal -->
-                <text x="210" y="155" fill="#D35400" font-size="14" font-family="Arial" font-weight="bold" transform="rotate(-27,210,155)">Hipotenusa (AC)</text>
-
-                <!-- Cateto adjacente AB (base) -->
-                <text x="210" y="285" fill="#2ecc71" font-size="13" font-family="Arial" font-weight="bold" text-anchor="middle">Cateto adjacente (AB)</text>
-
-                <!-- Cateto oposto BC (altura) -->
-                <text x="462" y="178" fill="#9b59b6" font-size="13" font-family="Arial" font-weight="bold" transform="rotate(90,462,178)">Cateto oposto (BC)</text>
-
-                <!-- Fórmulas -->
-                <text x="60" y="44" fill="#003366" font-size="13" font-family="Arial">sen θ = BC / AC</text>
-                <text x="60" y="64" fill="#003366" font-size="13" font-family="Arial">cos θ = AB / AC</text>
-                <text x="60" y="84" fill="#003366" font-size="13" font-family="Arial">tan θ = BC / AB</text>
+            <svg viewBox="0 0 400 310" xmlns="http://www.w3.org/2000/svg" style="width:100%; max-width:420px; height:auto; display:block; margin:0 auto; background:#fdfdfd; border-radius:10px;">
+                <polygon points="60,260 300,260 300,90" fill="#eaf4fc" stroke="#3498db" stroke-width="3"/>
+                <rect x="282" y="242" width="18" height="18" fill="none" stroke="#2c3e50" stroke-width="1.5"/>
+                <path d="M 100,260 A 40,40 0 0 0 92.65,236.9" fill="none" stroke="#e67e22" stroke-width="2.5"/>
+                <text x="104" y="252" font-size="16" fill="#e67e22" font-family="sans-serif" font-weight="bold">α</text>
+                <path d="M 300,125 A 35,35 0 0 1 271.4,110.2" fill="none" stroke="#8e44ad" stroke-width="2.5"/>
+                <text x="278" y="136" font-size="16" fill="#8e44ad" font-family="sans-serif" font-weight="bold">β</text>
+                <circle cx="60" cy="260" r="4" fill="#2c3e50"/>
+                <circle cx="300" cy="260" r="4" fill="#2c3e50"/>
+                <circle cx="300" cy="90" r="4" fill="#2c3e50"/>
+                <text x="46" y="280" font-size="15" fill="#2c3e50" font-family="sans-serif" font-weight="bold">A</text>
+                <text x="306" y="280" font-size="15" fill="#2c3e50" font-family="sans-serif" font-weight="bold">C</text>
+                <text x="306" y="86" font-size="15" fill="#2c3e50" font-family="sans-serif" font-weight="bold">B</text>
+                <text x="180" y="284" font-size="15" fill="#2c3e50" font-family="sans-serif" text-anchor="middle" font-weight="bold">b (cateto)</text>
+                <text x="324" y="175" font-size="15" fill="#2c3e50" font-family="sans-serif" text-anchor="middle" font-weight="bold" transform="rotate(90 324 175)">a (cateto)</text>
+                <text x="168" y="160" font-size="15" fill="#9b59b6" font-family="sans-serif" text-anchor="middle" font-weight="bold" transform="rotate(-35.3 168 160)">c (hipotenusa)</text>
+                <text x="20" y="30" font-size="14" fill="#2c3e50" font-family="sans-serif" font-weight="bold">α + β = 90°</text>
+                <text x="20" y="50" font-size="14" fill="#2c3e50" font-family="sans-serif" font-weight="bold">c² = a² + b²</text>
             </svg>
-            <figcaption>Figura 1: Triângulo retângulo com ângulo reto em $B$ e ângulo agudo $\theta$ em $A$. Os nomes dos lados dependem do ângulo de referência.</figcaption>
+            <figcaption>Figura 1: No triângulo retângulo ABC (reto em C), $c$ é a hipotenusa, $a$ e $b$ são os catetos, e os ângulos agudos $\alpha$ e $\beta$ são complementares.</figcaption>
         </figure>
     </div>
 
     <div class="passo-teoria">
-        <h4>2. As Razões Trigonométricas</h4>
-        <p>Para o ângulo $\theta$ no triângulo retângulo, definimos três razões fundamentais, sempre positivas para $0° < \theta < 90°$:</p>
-        <div class="destaque-formula">
-            <p>$$\sin\theta = \frac{\text{cateto oposto}}{\text{hipotenusa}} \qquad \cos\theta = \frac{\text{cateto adjacente}}{\text{hipotenusa}} \qquad \tan\theta = \frac{\text{cateto oposto}}{\text{cateto adjacente}}$$</p>
-        </div>
-        <p>Uma forma mnemônica muito usada: <strong>SOH-CAH-TOA</strong> (Seno = Oposto/Hipotenusa; Cosseno = Adjacente/Hipotenusa; Tangente = Oposto/Adjacente).</p>
-        <p>Além dessas, existem as razões inversas: <strong>cossecante</strong> $(\csc\theta = 1/\sin\theta)$, <strong>secante</strong> $(\sec\theta = 1/\cos\theta)$ e <strong>cotangente</strong> $(\cot\theta = 1/\tan\theta)$, mas as três principais são suficientes para a maioria das aplicações do Ensino Médio.</p>
+        <h4>2. Por que as Razões Trigonométricas Funcionam? (Semelhança)</h4>
+        <p>Dois triângulos retângulos que têm o mesmo ângulo agudo $\alpha$ são <strong>semelhantes</strong>: seus lados são proporcionais. Por isso, a razão entre dois lados correspondentes <strong>não depende do tamanho</strong> do triângulo — depende apenas do ângulo.</p>
+        <p>Essa é a ideia central: cada ângulo agudo tem um valor próprio de seno, cosseno e tangente, e esses valores podem ser tabelados.</p>
+        <figure class="figura-aula figura-grande">
+            <svg viewBox="0 0 450 250" xmlns="http://www.w3.org/2000/svg" style="width:100%; max-width:520px; height:auto; display:block; margin:0 auto; background:#fdfdfd; border-radius:10px;">
+                <polygon points="40,200 160,200 160,110" fill="#eaf4fc" stroke="#3498db" stroke-width="3"/>
+                <rect x="146" y="186" width="14" height="14" fill="none" stroke="#2c3e50" stroke-width="1.5"/>
+                <path d="M 70,200 A 30,30 0 0 0 64,182" fill="none" stroke="#e67e22" stroke-width="2.2"/>
+                <text x="72" y="194" font-size="13" fill="#e67e22" font-family="sans-serif" font-weight="bold">α</text>
+                <text x="100" y="218" font-size="14" fill="#2c3e50" font-family="sans-serif" text-anchor="middle" font-weight="bold">4</text>
+                <text x="172" y="160" font-size="14" fill="#2c3e50" font-family="sans-serif" text-anchor="middle" font-weight="bold">3</text>
+                <text x="92" y="146" font-size="14" fill="#9b59b6" font-family="sans-serif" text-anchor="middle" font-weight="bold">5</text>
+                <polygon points="210,200 410,200 410,50" fill="#fdf2e9" stroke="#e67e22" stroke-width="3"/>
+                <rect x="396" y="186" width="14" height="14" fill="none" stroke="#2c3e50" stroke-width="1.5"/>
+                <path d="M 240,200 A 30,30 0 0 0 234,182" fill="none" stroke="#e67e22" stroke-width="2.2"/>
+                <text x="242" y="194" font-size="13" fill="#e67e22" font-family="sans-serif" font-weight="bold">α</text>
+                <text x="310" y="218" font-size="14" fill="#2c3e50" font-family="sans-serif" text-anchor="middle" font-weight="bold">8</text>
+                <text x="424" y="130" font-size="14" fill="#2c3e50" font-family="sans-serif" text-anchor="middle" font-weight="bold">6</text>
+                <text x="296" y="112" font-size="14" fill="#9b59b6" font-family="sans-serif" text-anchor="middle" font-weight="bold">10</text>
+                <text x="225" y="242" font-size="15" fill="#2c3e50" font-family="sans-serif" text-anchor="middle" font-weight="bold">sen α = 3/5 = 6/10 = 0,6</text>
+            </svg>
+            <figcaption>Figura 2: Triângulos semelhantes com o mesmo ângulo $\alpha$: embora os lados sejam diferentes, as razões entre eles são iguais.</figcaption>
+        </figure>
     </div>
 
     <div class="passo-teoria">
-        <h4>3. Valores Notáveis: 30°, 45° e 60°</h4>
-        <p>Esses três ângulos têm valores exatos, obtidos a partir dos triângulos equilátero e isósceles retângulo. Memorize a tabela:</p>
-        <div class="tabela-wrapper">
-        <table>
+        <h4>3. Relações entre Seno, Cosseno e Tangente</h4>
+        <p>Usando a Figura 1 (reto em C), temos para os dois ângulos agudos:</p>
+        <p style="text-align: center;">$$\operatorname{sen}\alpha = \frac{a}{c} = \cos\beta \qquad \cos\alpha = \frac{b}{c} = \operatorname{sen}\beta \qquad \operatorname{tg}\alpha = \frac{a}{b} = \frac{1}{\operatorname{tg}\beta}$$</p>
+        <p>Daí saem três relações importantes:</p>
+        <ul>
+            <li><strong>Complementares:</strong> se $\alpha + \beta = 90°$, então $\operatorname{sen}\alpha = \cos\beta$ e $\cos\alpha = \operatorname{sen}\beta$.</li>
+            <li><strong>Tangente como quociente:</strong> $\operatorname{tg}\alpha = \dfrac{\operatorname{sen}\alpha}{\cos\alpha}$.</li>
+            <li><strong>Relação fundamental:</strong> $\operatorname{sen}^2\alpha + \cos^2\alpha = 1$ (consequência direta de Pitágoras).</li>
+        </ul>
+        <p>Observe também que, como a hipotenusa é o maior lado, para todo ângulo agudo temos $0 < \operatorname{sen}\alpha < 1$ e $0 < \cos\alpha < 1$. Já a tangente pode assumir qualquer valor positivo.</p>
+    </div>
+
+    <div class="passo-teoria">
+        <h4>4. Ângulos Quaisquer: Usando a Tabela Trigonométrica</h4>
+        <p>Nem todo problema usa $30°$, $45°$ ou $60°$. Para outros ângulos, consultamos uma <strong>tabela trigonométrica</strong> (ou a calculadora, no modo <em>graus</em>). Alguns valores aproximados:</p>
+        <div style="overflow-x:auto;">
+        <table style="width:100%; max-width:560px; margin:15px auto; border-collapse:collapse; text-align:center; font-family:sans-serif;">
             <thead>
-                <tr>
-                    <th>Razão</th>
-                    <th>$30°$</th>
-                    <th>$45°$</th>
-                    <th>$60°$</th>
+                <tr style="background:#2c3e50; color:white;">
+                    <th style="padding:10px; border:1px solid #ddd;">Ângulo</th>
+                    <th style="padding:10px; border:1px solid #ddd;">10°</th>
+                    <th style="padding:10px; border:1px solid #ddd;">20°</th>
+                    <th style="padding:10px; border:1px solid #ddd;">35°</th>
+                    <th style="padding:10px; border:1px solid #ddd;">40°</th>
+                    <th style="padding:10px; border:1px solid #ddd;">50°</th>
+                    <th style="padding:10px; border:1px solid #ddd;">70°</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td><strong>$\sin$</strong></td>
-                    <td>$\dfrac{1}{2}$</td>
-                    <td>$\dfrac{\sqrt{2}}{2}$</td>
-                    <td>$\dfrac{\sqrt{3}}{2}$</td>
+                    <td style="padding:10px; border:1px solid #ddd; font-weight:bold; background:#eaf4fc;">seno</td>
+                    <td style="padding:10px; border:1px solid #ddd;">$0{,}174$</td>
+                    <td style="padding:10px; border:1px solid #ddd;">$0{,}342$</td>
+                    <td style="padding:10px; border:1px solid #ddd;">$0{,}574$</td>
+                    <td style="padding:10px; border:1px solid #ddd;">$0{,}643$</td>
+                    <td style="padding:10px; border:1px solid #ddd;">$0{,}766$</td>
+                    <td style="padding:10px; border:1px solid #ddd;">$0{,}940$</td>
                 </tr>
                 <tr>
-                    <td><strong>$\cos$</strong></td>
-                    <td>$\dfrac{\sqrt{3}}{2}$</td>
-                    <td>$\dfrac{\sqrt{2}}{2}$</td>
-                    <td>$\dfrac{1}{2}$</td>
+                    <td style="padding:10px; border:1px solid #ddd; font-weight:bold; background:#eaf4fc;">cosseno</td>
+                    <td style="padding:10px; border:1px solid #ddd;">$0{,}985$</td>
+                    <td style="padding:10px; border:1px solid #ddd;">$0{,}940$</td>
+                    <td style="padding:10px; border:1px solid #ddd;">$0{,}819$</td>
+                    <td style="padding:10px; border:1px solid #ddd;">$0{,}766$</td>
+                    <td style="padding:10px; border:1px solid #ddd;">$0{,}643$</td>
+                    <td style="padding:10px; border:1px solid #ddd;">$0{,}342$</td>
                 </tr>
                 <tr>
-                    <td><strong>$\tan$</strong></td>
-                    <td>$\dfrac{\sqrt{3}}{3}$</td>
-                    <td>$1$</td>
-                    <td>$\sqrt{3}$</td>
+                    <td style="padding:10px; border:1px solid #ddd; font-weight:bold; background:#eaf4fc;">tangente</td>
+                    <td style="padding:10px; border:1px solid #ddd;">$0{,}176$</td>
+                    <td style="padding:10px; border:1px solid #ddd;">$0{,}364$</td>
+                    <td style="padding:10px; border:1px solid #ddd;">$0{,}700$</td>
+                    <td style="padding:10px; border:1px solid #ddd;">$0{,}839$</td>
+                    <td style="padding:10px; border:1px solid #ddd;">$1{,}192$</td>
+                    <td style="padding:10px; border:1px solid #ddd;">$2{,}747$</td>
                 </tr>
             </tbody>
         </table>
         </div>
-        <p><strong>Dica:</strong> para o seno, a sequência $\frac{1}{2},\,\frac{\sqrt{2}}{2},\,\frac{\sqrt{3}}{2}$ pode ser lembrada como $\frac{\sqrt{1}}{2},\,\frac{\sqrt{2}}{2},\,\frac{\sqrt{3}}{2}$ — os numeradores seguem $\sqrt{1},\,\sqrt{2},\,\sqrt{3}$. O cosseno percorre a mesma sequência em ordem inversa.</p>
+        <p>A tabela também funciona "ao contrário": se descobrimos que $\cos\alpha = 0{,}766$, procuramos esse valor na linha do cosseno e concluímos que $\alpha = 40°$. Repare ainda que $\operatorname{sen}20° = \cos70°$ e $\operatorname{sen}40° = \cos50°$ — são ângulos complementares.</p>
+    </div>
 
+    <div class="passo-teoria">
+        <h4>5. Ângulos de Elevação e de Depressão</h4>
+        <p>Em problemas práticos, os ângulos costumam ser medidos a partir da <strong>linha horizontal</strong> que passa pelos olhos do observador:</p>
+        <ul>
+            <li><strong>Ângulo de elevação:</strong> o observador olha <strong>para cima</strong> (por exemplo, do chão para o topo de um prédio).</li>
+            <li><strong>Ângulo de depressão:</strong> o observador olha <strong>para baixo</strong> (por exemplo, do alto de um farol para um barco).</li>
+        </ul>
+        <p>Quando dois pontos se observam mutuamente, o ângulo de depressão de um é <strong>igual</strong> ao ângulo de elevação do outro (são ângulos alternos internos entre duas retas horizontais paralelas).</p>
         <figure class="figura-aula figura-grande">
-            <svg viewBox="0 0 580 270" xmlns="http://www.w3.org/2000/svg" width="560" height="250">
-                <!-- === Triângulo 30-60-90 === -->
-                <!-- Vértices: A(40,220), B(220,220), M(40,60) — altura do equilátero de lado 2 -->
-                <polygon points="40,220 220,220 40,60" fill="#EBF5FB" stroke="#003366" stroke-width="2"/>
-                <!-- Ângulo reto em A -->
-                <rect x="40" y="200" width="18" height="18" fill="none" stroke="#003366" stroke-width="1.5"/>
-                <!-- Labels ângulos -->
-                <text x="194" y="215" fill="#D35400" font-size="13" font-family="Arial" font-weight="bold">30°</text>
-                <text x="44" y="78" fill="#D35400" font-size="13" font-family="Arial" font-weight="bold">60°</text>
-                <!-- Labels lados -->
-                <text x="112" y="215" fill="#2ecc71" font-size="12" font-family="Arial" text-anchor="middle">1</text>
-                <text x="20" y="145" fill="#9b59b6" font-size="12" font-family="Arial">√3</text>
-                <text x="120" y="135" fill="#D35400" font-size="12" font-family="Arial" transform="rotate(-60,130,145)">2</text>
-                <!-- Título -->
-                <text x="130" y="248" fill="#003366" font-size="12" font-family="Arial" text-anchor="middle" font-weight="bold">Triângulo 30°–60°–90°</text>
-
-                <!-- === Triângulo 45-45-90 === -->
-                <!-- Vértices: D(320,220), E(500,220), F(320,40) -->
-                <polygon points="320,220 500,220 320,40" fill="#FEF9F0" stroke="#D35400" stroke-width="2"/>
-                <!-- Ângulo reto em D -->
-                <rect x="320" y="200" width="18" height="18" fill="none" stroke="#D35400" stroke-width="1.5"/>
-                <!-- Labels ângulos -->
-                <text x="474" y="215" fill="#003366" font-size="13" font-family="Arial" font-weight="bold">45°</text>
-                <text x="325" y="58" fill="#003366" font-size="13" font-family="Arial" font-weight="bold">45°</text>
-                <!-- Labels lados -->
-                <text x="408" y="215" fill="#2ecc71" font-size="12" font-family="Arial" text-anchor="middle">1</text>
-                <text x="298" y="135" fill="#9b59b6" font-size="12" font-family="Arial">1</text>
-                <text x="415" y="120" fill="#D35400" font-size="12" font-family="Arial" transform="rotate(-48,415,120)">√2</text>
-                <!-- Título -->
-                <text x="410" y="248" fill="#D35400" font-size="12" font-family="Arial" text-anchor="middle" font-weight="bold">Triângulo 45°–45°–90°</text>
+            <svg viewBox="0 0 460 290" xmlns="http://www.w3.org/2000/svg" style="width:100%; max-width:520px; height:auto; display:block; margin:0 auto; background:#fdfdfd; border-radius:10px;">
+                <line x1="20" y1="240" x2="440" y2="240" stroke="#2c3e50" stroke-width="2"/>
+                <rect x="40" y="60" width="60" height="180" fill="#eaf4fc" stroke="#3498db" stroke-width="2.5"/>
+                <text x="70" y="160" font-size="14" fill="#2c3e50" font-family="sans-serif" text-anchor="middle" font-weight="bold">farol</text>
+                <line x1="100" y1="60" x2="430" y2="60" stroke="#95a5a6" stroke-width="2" stroke-dasharray="6,4"/>
+                <text x="425" y="52" font-size="12" fill="#7f8c8d" font-family="sans-serif" text-anchor="end">horizontal</text>
+                <line x1="100" y1="60" x2="380" y2="240" stroke="#e74c3c" stroke-width="2.5"/>
+                <text x="250" y="138" font-size="13" fill="#e74c3c" font-family="sans-serif" font-weight="bold" transform="rotate(32.7 250 138)">linha de visada</text>
+                <path d="M 145,60 A 45,45 0 0 1 137.9,84.3" fill="none" stroke="#e67e22" stroke-width="2.5"/>
+                <text x="150" y="82" font-size="15" fill="#e67e22" font-family="sans-serif" font-weight="bold">θ</text>
+                <text x="175" y="40" font-size="13" fill="#e67e22" font-family="sans-serif" font-weight="bold">ângulo de depressão</text>
+                <path d="M 335,240 A 45,45 0 0 1 342.1,215.7" fill="none" stroke="#8e44ad" stroke-width="2.5"/>
+                <text x="316" y="232" font-size="15" fill="#8e44ad" font-family="sans-serif" font-weight="bold">θ</text>
+                <text x="300" y="266" font-size="13" fill="#8e44ad" font-family="sans-serif" font-weight="bold" text-anchor="middle">ângulo de elevação</text>
+                <circle cx="100" cy="60" r="4" fill="#2c3e50"/>
+                <polygon points="366,240 394,240 388,250 372,250" fill="#2c3e50"/>
+                <line x1="380" y1="240" x2="380" y2="226" stroke="#2c3e50" stroke-width="2"/>
+                <text x="404" y="236" font-size="13" fill="#2c3e50" font-family="sans-serif" font-weight="bold">barco</text>
             </svg>
-            <figcaption>Figura 2: Os dois triângulos notáveis que geram os valores exatos de seno, cosseno e tangente para 30°, 45° e 60°.</figcaption>
+            <figcaption>Figura 3: O ângulo de depressão (visto do alto do farol) é igual ao ângulo de elevação (visto do barco), pois ambos são medidos a partir de retas horizontais paralelas.</figcaption>
         </figure>
+        <p><strong>Roteiro para resolver problemas:</strong> (1) desenhe o triângulo retângulo; (2) marque o ângulo conhecido; (3) identifique quais lados são dados e qual é pedido (oposto, adjacente ou hipotenusa); (4) escolha a razão que envolve exatamente esses dois lados.</p>
     </div>
-
-    <div class="passo-teoria">
-        <h4>4. Relações Trigonométricas Fundamentais</h4>
-        <p>A partir das definições, derivam-se identidades essenciais válidas para qualquer ângulo $\theta$:</p>
-        <div class="destaque-formula">
-            <p>$$\sin^2\theta + \cos^2\theta = 1 \qquad \text{(Relação Fundamental)}$$</p>
-            <p>$$\tan\theta = \frac{\sin\theta}{\cos\theta} \qquad \sec^2\theta = 1 + \tan^2\theta \qquad \csc^2\theta = 1 + \cot^2\theta$$</p>
-        </div>
-        <p>A relação fundamental $\sin^2\theta + \cos^2\theta = 1$ decorre diretamente do <strong>Teorema de Pitágoras</strong>: dividindo $a^2 + b^2 = c^2$ por $c^2$, obtemos exatamente essa identidade.</p>
-    </div>
-
-    <div class="passo-teoria">
-        <h4>5. Teorema de Pitágoras — Revisão</h4>
-        <p>A trigonometria e o Teorema de Pitágoras andam sempre juntos. Num triângulo retângulo com catetos $a$ e $b$ e hipotenusa $c$:</p>
-        <div class="destaque-formula">
-            <p>$$c^2 = a^2 + b^2$$</p>
-        </div>
-        <p>As <strong>ternas pitagóricas</strong> mais cobradas em vestibulares são:</p>
-        <div class="tabela-wrapper">
-        <table>
-            <thead><tr><th>Cateto $a$</th><th>Cateto $b$</th><th>Hipotenusa $c$</th></tr></thead>
-            <tbody>
-                <tr><td>3</td><td>4</td><td>5</td></tr>
-                <tr><td>5</td><td>12</td><td>13</td></tr>
-                <tr><td>8</td><td>15</td><td>17</td></tr>
-                <tr><td>7</td><td>24</td><td>25</td></tr>
-                <tr><td>6</td><td>8</td><td>10</td></tr>
-            </tbody>
-        </table>
-        </div>
-    </div>
-
-    <div class="passo-teoria">
-        <h4>6. Ângulos Complementares</h4>
-        <p>Dois ângulos são complementares quando sua soma é $90°$. Em um triângulo retângulo, os dois ângulos agudos são sempre complementares. Isso gera uma relação importante:</p>
-        <div class="destaque-formula">
-            <p>$$\sin\theta = \cos(90° - \theta) \qquad \cos\theta = \sin(90° - \theta) \qquad \tan\theta = \cot(90° - \theta)$$</p>
-        </div>
-        <p>Exemplo: $\sin 30° = \cos 60° = \dfrac{1}{2}$ e $\cos 30° = \sin 60° = \dfrac{\sqrt{3}}{2}$.</p>
-    </div>
-
 </section>
 
 <section class="aplicacoes-reais">
-    <h3>💡 Matemática em Ação</h3>  
-    <div class="cards-aplicacao" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-top: 20px;">        
+    <h3>💡 Matemática em Ação</h3>
+    <div class="cards-aplicacao" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-top: 20px;">
         <div class="card" style="background: #fdfdfd; padding: 20px; border-radius: 10px; border-left: 5px solid #3498db; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
-            <h4>🏗️ Arquitetura e Engenharia</h4>
-            <p>Para calcular a altura de um edifício sem subir nele, basta medir a distância horizontal e o ângulo de elevação com um teodolito. A altura é $h = d \cdot \tan\theta$.</p>            
+            <h4>♿ Acessibilidade</h4>
+            <p>Rampas para cadeirantes têm inclinação máxima definida por norma técnica. Conhecendo o desnível a vencer e o ângulo permitido, a tangente diz qual deve ser o comprimento horizontal da rampa.</p>
         </div>
         <div class="card" style="background: #fdfdfd; padding: 20px; border-radius: 10px; border-left: 5px solid #2ecc71; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
-            <h4>⚽ Física e Esportes</h4>
-            <p>O alcance máximo de um projétil ocorre com ângulo de lançamento de 45°. Em pulos e lançamentos, as componentes horizontal e vertical da velocidade usam exatamente $\cos\theta$ e $\sin\theta$.</p>
+            <h4>✈️ Aviação</h4>
+            <p>Na aproximação para pouso, os aviões descem em uma trajetória de cerca de $3°$ em relação à pista. Com o seno e a tangente, o piloto relaciona a altitude com a distância que falta até a cabeceira.</p>
         </div>
-        <div class="card" style="background: #fdfdfd; padding: 20px; border-radius: 10px; border-left: 5px solid #D35400; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
-            <h4>🌊 Navegação e GPS</h4>
-            <p>Antes do GPS, marinheiros usavam trigonometria para calcular a posição do navio a partir de ângulos medidos em relação a estrelas ou pontos de referência na costa.</p>
-        </div>
-    </div>   
-</section>
-
-<section class="simulacao-interativa">
-    <h3>💻 Simulação Interativa: Triângulo Retângulo</h3>
-    <p>Para uma melhor experiência, clique no botão abaixo para abrir o simulador em uma tela cheia:</p>
-    <div style="text-align: center; margin: 30px auto; width: 100%;">
-        <a href="../simulacoes/simulacao_trig_retangulo.html" 
-           target="_blank" 
-           class="btn-gabarito" 
-           style="text-decoration: none; display: inline-block;">
-           🚀 Abrir Simulação em Nova Aba
-        </a>
     </div>
 </section>
-
 
 <!--------------- QUESTOES RESOLVIDAS --------------------------->
 
 <section class="questoes-resolvidas">
-    <h3>✅ 5 Questões Resolvidas (R 1 a 5)</h3>
+                    <h3>✅ 5 Questões Resolvidas (R 1 a 5)</h3>
 
-    <article class="questao">
-        <h4>R 1: Cálculo das Razões a partir dos Lados</h4>
-        <p><strong>Enunciado:</strong> Em um triângulo retângulo, os catetos medem 3 e 4. Calcule $\sin\theta$, $\cos\theta$ e $\tan\theta$ para o ângulo oposto ao cateto de medida 4.</p>
-        <div class="resolucao-bloco">
-            <p><strong>Resolução:</strong></p>
-            <p>Hipotenusa: $c = \sqrt{3^2 + 4^2} = \sqrt{9 + 16} = \sqrt{25} = 5$</p>
-            <p>O ângulo $\theta$ é oposto ao cateto 4 e adjacente ao cateto 3:</p>
-            <p>$$\sin\theta = \frac{4}{5} = 0{,}8 \qquad \cos\theta = \frac{3}{5} = 0{,}6 \qquad \tan\theta = \frac{4}{3} \approx 1{,}33$$</p>
-            <p>Verificação: $\sin^2\theta + \cos^2\theta = \left(\frac{4}{5}\right)^2 + \left(\frac{3}{5}\right)^2 = \frac{16+9}{25} = 1$ ✓</p>
-        </div>
-    </article>
+                    <article class="questao">
+                        <h4>R 1: Razões dos Dois Ângulos Agudos</h4>
+                        <p><strong>Enunciado:</strong> Os catetos de um triângulo retângulo medem $5$ cm e $12$ cm. Sendo $\alpha$ o ângulo oposto ao cateto de $5$ cm e $\beta$ o outro ângulo agudo, calcule $\operatorname{sen}\alpha$, $\cos\alpha$, $\operatorname{tg}\alpha$ e $\operatorname{sen}\beta$.</p>
+                        <div class="resolucao-bloco">
+                            <p><strong>Resolução:</strong></p>
+                            <p>1. Pelo Teorema de Pitágoras: $c^2 = 5^2 + 12^2 = 25 + 144 = 169 \implies c = 13$ cm.</p>
+                            <p>2. $\operatorname{sen}\alpha = \dfrac{5}{13}$, $\cos\alpha = \dfrac{12}{13}$ e $\operatorname{tg}\alpha = \dfrac{5}{12}$.</p>
+                            <p>3. Para $\beta$, o cateto oposto é $12$: $\operatorname{sen}\beta = \dfrac{12}{13}$ — igual a $\cos\alpha$, pois $\alpha$ e $\beta$ são complementares.</p>
+                            <p>4. Resposta: $\mathbf{\operatorname{sen}\alpha = \tfrac{5}{13},\ \cos\alpha = \tfrac{12}{13},\ \operatorname{tg}\alpha = \tfrac{5}{12},\ \operatorname{sen}\beta = \tfrac{12}{13}}$.</p>
+                        </div>
+                    </article>
 
-    <article class="questao">
-        <h4>R 2: Uso de Ângulo Notável (60°)</h4>
-        <p><strong>Enunciado:</strong> Um mastro vertical lança uma sombra horizontal de $8\text{ m}$ sobre o chão. O ângulo de elevação do sol é $60°$. Qual a altura do mastro?</p>
-        <div class="resolucao-bloco">
-            <p><strong>Resolução:</strong> A sombra é o cateto adjacente; a altura é o cateto oposto; o ângulo é $60°$.</p>
-            <p>$$\tan 60° = \frac{h}{8} \;\Rightarrow\; \sqrt{3} = \frac{h}{8} \;\Rightarrow\; h = 8\sqrt{3} \approx 13{,}9\text{ m}$$</p>
-        </div>
-    </article>
+                    <article class="questao">
+                        <h4>R 2: Decolagem com Ângulo de 20°</h4>
+                        <p><strong>Enunciado:</strong> Um avião decola fazendo um ângulo de $20°$ com o solo. Enquanto sobe em linha reta, sua sombra percorre $500$ m no chão (sol a pino). A que altura está o avião nesse instante? <em>(Use $\operatorname{tg}20° \approx 0{,}364$.)</em></p>
+                        <div class="resolucao-bloco">
+                            <p><strong>Resolução:</strong></p>
+                            <p>1. O deslocamento da sombra ($500$ m) é o cateto adjacente ao ângulo de $20°$; a altura $h$ é o cateto oposto.</p>
+                            <p>2. A razão que liga oposto e adjacente é a tangente: $\operatorname{tg}20° = \dfrac{h}{500}$.</p>
+                            <p>3. $h = 500 \times 0{,}364 = 182$.</p>
+                            <p>4. O avião está a aproximadamente $\mathbf{182\text{ m}}$ de altura.</p>
+                        </div>
+                    </article>
 
-    <article class="questao">
-        <h4>R 3: Cálculo do Lado a partir de Razão e Ângulo</h4>
-        <p><strong>Enunciado:</strong> A hipotenusa de um triângulo retângulo mede $10\text{ cm}$ e um dos ângulos agudos é $30°$. Calcule os dois catetos.</p>
-        <div class="resolucao-bloco">
-            <p><strong>Resolução:</strong> Chamando os catetos de $a$ (oposto a $30°$) e $b$ (adjacente a $30°$):</p>
-            <p>$$\sin 30° = \frac{a}{10} \;\Rightarrow\; \frac{1}{2} = \frac{a}{10} \;\Rightarrow\; a = 5\text{ cm}$$</p>
-            <p>$$\cos 30° = \frac{b}{10} \;\Rightarrow\; \frac{\sqrt{3}}{2} = \frac{b}{10} \;\Rightarrow\; b = 5\sqrt{3}\text{ cm}$$</p>
-            <p>Verificação (Pitágoras): $5^2 + (5\sqrt{3})^2 = 25 + 75 = 100 = 10^2$ ✓</p>
-        </div>
-    </article>
+                    <article class="questao">
+                        <h4>R 3: Teodolito e Altura de um Edifício</h4>
+                        <p><strong>Enunciado:</strong> Um topógrafo posiciona um teodolito a $300$ m de um edifício e mede um ângulo de elevação de $30°$ até o topo. A luneta do teodolito está a $1{,}5$ m do solo. Qual a altura do edifício? <em>(Use $\sqrt{3} \approx 1{,}732$.)</em></p>
+                        <div class="resolucao-bloco">
+                            <p><strong>Resolução:</strong></p>
+                            <p>1. A partir da luneta, a distância horizontal ($300$ m) é o cateto adjacente, e a parte do prédio acima da luneta ($x$) é o cateto oposto.</p>
+                            <p>2. $\operatorname{tg}30° = \dfrac{x}{300} \implies x = 300 \cdot \dfrac{\sqrt{3}}{3} = 100\sqrt{3} \approx 173{,}2$ m.</p>
+                            <p>3. Somamos a altura da luneta: $H = 173{,}2 + 1{,}5 = 174{,}7$.</p>
+                            <p>4. O edifício mede aproximadamente $\mathbf{174{,}7\text{ m}}$.</p>
+                        </div>
+                    </article>
 
-    <article class="questao">
-        <h4>R 4: Uso da Relação Fundamental</h4>
-        <p><strong>Enunciado:</strong> Sabendo que $\sin\theta = \dfrac{5}{13}$ e $\theta$ é agudo, calcule $\cos\theta$ e $\tan\theta$.</p>
-        <div class="resolucao-bloco">
-            <p><strong>Resolução:</strong> Usando a relação fundamental:</p>
-            <p>$$\cos^2\theta = 1 - \sin^2\theta = 1 - \frac{25}{169} = \frac{144}{169}$$</p>
-            <p>Como $\theta$ é agudo, $\cos\theta > 0$:</p>
-            <p>$$\cos\theta = \frac{12}{13}$$</p>
-            <p>$$\tan\theta = \frac{\sin\theta}{\cos\theta} = \frac{5/13}{12/13} = \frac{5}{12}$$</p>
-            <p>Verificação: terna $5$-$12$-$13$ ✓</p>
-        </div>
-    </article>
+                    <article class="questao">
+                        <h4>R 4: Ângulo de Depressão — Farol e Barco</h4>
+                        <p><strong>Enunciado:</strong> Do alto de um farol de $40$ m de altura, o faroleiro avista um barco sob um ângulo de depressão de $35°$. A que distância da base do farol está o barco? <em>(Use $\operatorname{tg}35° \approx 0{,}700$.)</em></p>
+                        <div class="resolucao-bloco">
+                            <p><strong>Resolução:</strong></p>
+                            <p>1. O ângulo de depressão ($35°$) é igual ao ângulo de elevação visto do barco (Figura 3).</p>
+                            <p>2. Visto do barco, a altura do farol ($40$ m) é o cateto oposto e a distância $d$ é o cateto adjacente: $\operatorname{tg}35° = \dfrac{40}{d}$.</p>
+                            <p>3. $d = \dfrac{40}{0{,}700} \approx 57{,}1$.</p>
+                            <p>4. O barco está a aproximadamente $\mathbf{57{,}1\text{ m}}$ da base do farol.</p>
+                        </div>
+                    </article>
 
-    <article class="questao">
-        <h4>R 5: Ângulo de Elevação e Depressão</h4>
-        <p><strong>Enunciado:</strong> Do topo de um prédio de $45\text{ m}$ de altura, o ângulo de depressão de um carro no chão é $45°$. Qual a distância horizontal do carro ao pé do prédio?</p>
-        <div class="resolucao-bloco">
-            <p><strong>Resolução:</strong> O ângulo de depressão é igual ao ângulo de elevação do carro visto do chão (ângulos alternos internos). Assim:</p>
-            <p>$$\tan 45° = \frac{45}{d} \;\Rightarrow\; 1 = \frac{45}{d} \;\Rightarrow\; d = 45\text{ m}$$</p>
-            <p>A distância horizontal é igual à altura do prédio: $d = 45\text{ m}$.</p>
-        </div>
-    </article>
-</section>
+                    <article class="questao">
+                        <h4>R 5: Descobrindo o Ângulo pela Tabela</h4>
+                        <p><strong>Enunciado:</strong> Uma escada de $10$ m está apoiada em uma parede, com o pé a $7{,}66$ m da parede. Qual o ângulo $\alpha$ que a escada forma com o chão? A que altura ela toca a parede?</p>
+                        <div class="resolucao-bloco">
+                            <p><strong>Resolução:</strong></p>
+                            <p>1. A escada é a hipotenusa ($10$ m) e a distância até a parede é o cateto adjacente a $\alpha$: $\cos\alpha = \dfrac{7{,}66}{10} = 0{,}766$.</p>
+                            <p>2. Na tabela, $\cos40° = 0{,}766$, logo $\alpha = 40°$.</p>
+                            <p>3. A altura é o cateto oposto: $h = 10 \cdot \operatorname{sen}40° = 10 \times 0{,}643 = 6{,}43$ m.</p>
+                            <p>4. Resposta: $\mathbf{\alpha = 40°}$ e $\mathbf{h \approx 6{,}43\text{ m}}$.</p>
+                        </div>
+                    </article>
+                </section>
 
-
-<!--------------- QUESTOES PROPOSTAS --------------------------->
+<!--------------- QUESTÕES PROPOSTAS --------------------------->
 
 <section class="questoes-propostas">
-    <h3>📝 5 Questões Propostas (P 1 a 5)</h3>
+                    <h3>✍️ 5 Questões Propostas (P 6 a 10)</h3>
+
+                    <article class="questao">
+                        <h4>P 6: Cálculo Direto</h4>
+                        <p><strong>Enunciado:</strong> Em um triângulo retângulo, a hipotenusa mede $25$ cm e um dos catetos mede $7$ cm. Sendo $\alpha$ o ângulo oposto ao cateto de $7$ cm, calcule $\operatorname{sen}\alpha$, $\cos\alpha$ e $\operatorname{tg}\alpha$.</p>
+                        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+                        <div class="gabarito-resolucao">
+                            <p><strong>Resolução:</strong><br>
+                            1. O outro cateto mede $\sqrt{25^2 - 7^2} = \sqrt{625 - 49} = \sqrt{576} = 24$ cm.<br>
+                            2. $\operatorname{sen}\alpha = \dfrac{7}{25} = \mathbf{0{,}28}$; $\cos\alpha = \dfrac{24}{25} = \mathbf{0{,}96}$; $\operatorname{tg}\alpha = \dfrac{7}{24} \approx \mathbf{0{,}29}$.</p>
+                        </div>
+                    </article>
+
+                    <article class="questao">
+                        <h4>P 7: Altura de uma Pipa</h4>
+                        <p><strong>Enunciado:</strong> Uma pipa está presa a uma linha esticada de $50$ m, que forma um ângulo de $35°$ com o chão. Desprezando a altura da mão de quem segura a linha, a que altura está a pipa? <em>(Use $\operatorname{sen}35° \approx 0{,}574$.)</em></p>
+                        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+                        <div class="gabarito-resolucao">
+                            <p><strong>Resolução:</strong><br>
+                            1. A linha é a hipotenusa e a altura é o cateto oposto ao ângulo de $35°$: $\operatorname{sen}35° = \dfrac{h}{50}$.<br>
+                            2. $h = 50 \times 0{,}574 = \mathbf{28{,}7\text{ m}}$.</p>
+                        </div>
+                    </article>
+
+                    <article class="questao">
+                        <h4>P 8: Ângulos Complementares</h4>
+                        <p><strong>Enunciado:</strong> Em um triângulo retângulo, os ângulos agudos são $\alpha$ e $\beta$, com $\operatorname{sen}\alpha = 0{,}6$. Calcule $\cos\alpha$, $\operatorname{tg}\alpha$, $\operatorname{sen}\beta$ e $\cos\beta$.</p>
+                        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+                        <div class="gabarito-resolucao">
+                            <p><strong>Resolução:</strong><br>
+                            1. Pela relação fundamental: $\cos^2\alpha = 1 - 0{,}6^2 = 1 - 0{,}36 = 0{,}64 \implies \cos\alpha = \mathbf{0{,}8}$ (positivo, pois $\alpha$ é agudo).<br>
+                            2. $\operatorname{tg}\alpha = \dfrac{0{,}6}{0{,}8} = \mathbf{0{,}75}$.<br>
+                            3. Como $\alpha + \beta = 90°$: $\operatorname{sen}\beta = \cos\alpha = \mathbf{0{,}8}$ e $\cos\beta = \operatorname{sen}\alpha = \mathbf{0{,}6}$.</p>
+                        </div>
+                    </article>
+
+                    <article class="questao">
+                        <h4>P 9: Duas Observações</h4>
+                        <p><strong>Enunciado:</strong> Uma pessoa vê o topo de uma torre sob um ângulo de elevação de $60°$. Ao se afastar $20$ m em linha reta (no mesmo alinhamento), passa a ver o topo sob um ângulo de $30°$. Qual a altura da torre? (Despreze a altura do observador.)</p>
+                        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+                        <div class="gabarito-resolucao">
+                            <p><strong>Resolução:</strong><br>
+                            1. Seja $x$ a distância inicial até a torre e $h$ a altura. No primeiro triângulo: $\operatorname{tg}60° = \dfrac{h}{x} \implies h = x\sqrt{3}$.<br>
+                            2. No segundo: $\operatorname{tg}30° = \dfrac{h}{x + 20} \implies h = \dfrac{x + 20}{\sqrt{3}}$.<br>
+                            3. Igualando: $x\sqrt{3} = \dfrac{x + 20}{\sqrt{3}} \implies 3x = x + 20 \implies x = 10$ m.<br>
+                            4. $h = 10\sqrt{3} \approx \mathbf{17{,}3\text{ m}}$.</p>
+                        </div>
+                    </article>
+
+                    <article class="questao">
+                        <h4>P 10: Conceitual</h4>
+                        <p><strong>Enunciado:</strong> Explique por que o seno e o cosseno de um ângulo agudo são sempre menores que $1$, enquanto a tangente pode ser maior que $1$.</p>
+                        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+                        <div class="gabarito-resolucao">
+                            <p><strong>Resolução:</strong> O seno e o cosseno são razões entre um <strong>cateto</strong> e a <strong>hipotenusa</strong>. Como a hipotenusa é sempre o maior lado do triângulo retângulo, o numerador é menor que o denominador e a razão fica entre $0$ e $1$. Já a tangente é a razão entre os <strong>dois catetos</strong>, e qualquer um deles pode ser o maior: se o cateto oposto for maior que o adjacente (o que acontece para ângulos acima de $45°$), a tangente passa de $1$.</p>
+                        </div>
+                    </article>
+                </section>
+<!--------------- TESTE  --------------------------->
+
+<section class="testes">
+    <h3>🎓 TESTES (T 11 a 15)</h3>
 
     <article class="questao">
-        <h4>P 1: Razões Trigonométricas</h4>
-        <p><strong>Enunciado:</strong> Num triângulo retângulo, os catetos medem 5 e 12. Calcule $\sin\theta$, $\cos\theta$ e $\tan\theta$ para o ângulo oposto ao cateto 12.</p>
-        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-        <div class="gabarito-resolucao">
-            <p><strong>Resolução:</strong><br>
-            Hipotenusa: $c = \sqrt{25 + 144} = \sqrt{169} = 13$<br>
-            $\sin\theta = \dfrac{12}{13}$; $\quad\cos\theta = \dfrac{5}{13}$; $\quad\tan\theta = \dfrac{12}{5}$</p>
-        </div>
+    <h4>T 11: Tangente do Menor Ângulo</h4>
+    <p>Se um cateto e a hipotenusa de um triângulo retângulo medem $2a$ e $4a$, respectivamente, então a tangente do ângulo oposto ao menor lado é:</p>
+    <p>A) $2\sqrt{3}$<br>B) $\dfrac{\sqrt{3}}{3}$<br>C) $\dfrac{\sqrt{3}}{6}$<br>D) $\dfrac{\sqrt{20}}{20}$<br>E) $3\sqrt{3}$</p>
+    <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+    <div class="gabarito-resolucao">
+        <p><strong>Resolução:</strong> Alternativa <strong>B</strong>.<br>
+        1. O outro cateto mede $\sqrt{(4a)^2 - (2a)^2} = \sqrt{16a^2 - 4a^2} = \sqrt{12a^2} = 2a\sqrt{3}$.<br>
+        2. O menor lado é $2a$; o ângulo oposto a ele tem cateto oposto $2a$ e cateto adjacente $2a\sqrt{3}$.<br>
+        3. $\operatorname{tg} = \dfrac{2a}{2a\sqrt{3}} = \dfrac{1}{\sqrt{3}} = \mathbf{\dfrac{\sqrt{3}}{3}}$ (é o ângulo de $30°$).</p>
+    </div>
+      </article>
+
+    <article class="questao">
+    <h4>T 12: Largura de um Rio</h4>
+    <p>Um observador está no ponto A, na margem de um rio, exatamente em frente a uma árvore C na margem oposta ($AC$ é perpendicular às margens). Ele caminha $100$ m ao longo da margem até o ponto B e, de lá, vê a árvore sob um ângulo $A\hat{B}C = 60°$. A largura do rio, em metros, é:</p>
+    <p>A) $50$<br>B) $100$<br>C) $100\sqrt{2}$<br>D) $100\sqrt{3}$<br>E) $200$</p>
+    <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+    <div class="gabarito-resolucao">
+        <p><strong>Resolução:</strong> Alternativa <strong>D</strong>.<br>
+        1. O triângulo ABC é retângulo em A. Em relação ao ângulo de $60°$ (em B), $AB = 100$ m é o cateto adjacente e a largura $AC$ é o cateto oposto.<br>
+        2. $\operatorname{tg}60° = \dfrac{AC}{100} \implies AC = 100\sqrt{3} \approx \mathbf{173\text{ m}}$.</p>
+    </div>
+      </article>
+
+    <article class="questao">
+    <h4>T 13: Escada Rolante</h4>
+    <p>Uma escada rolante liga dois pisos de um shopping cujo desnível é de $6$ m. Se a escada forma um ângulo de $30°$ com a horizontal, o seu comprimento é:</p>
+    <p>A) $6\text{ m}$<br>B) $6\sqrt{3}\text{ m}$<br>C) $10\text{ m}$<br>D) $12\text{ m}$<br>E) $12\sqrt{3}\text{ m}$</p>
+    <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+    <div class="gabarito-resolucao">
+        <p><strong>Resolução:</strong> Alternativa <strong>D</strong>.<br>
+        1. O desnível ($6$ m) é o cateto oposto ao ângulo de $30°$ e o comprimento $L$ da escada é a hipotenusa.<br>
+        2. $\operatorname{sen}30° = \dfrac{6}{L} \implies \dfrac{1}{2} = \dfrac{6}{L} \implies L = \mathbf{12\text{ m}}$.</p>
+    </div>
+      </article>
+
+    <article class="questao">
+    <h4>T 14: Rampa com Inclinação de 10°</h4>
+    <p>Uma rampa deve vencer um desnível de $1{,}76$ m com inclinação de $10°$ em relação à horizontal. O comprimento horizontal ocupado pela rampa é, aproximadamente: <em>(Dado: $\operatorname{tg}10° \approx 0{,}176$)</em></p>
+    <p>A) $5\text{ m}$<br>B) $8\text{ m}$<br>C) $10\text{ m}$<br>D) $12\text{ m}$<br>E) $17{,}6\text{ m}$</p>
+    <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+    <div class="gabarito-resolucao">
+        <p><strong>Resolução:</strong> Alternativa <strong>C</strong>.<br>
+        1. O desnível ($1{,}76$ m) é o cateto oposto e o comprimento horizontal $d$ é o cateto adjacente ao ângulo de $10°$.<br>
+        2. $\operatorname{tg}10° = \dfrac{1{,}76}{d} \implies d = \dfrac{1{,}76}{0{,}176} = \mathbf{10\text{ m}}$.</p>
+    </div>
     </article>
 
     <article class="questao">
-        <h4>P 2: Ângulo Notável — 45°</h4>
-        <p><strong>Enunciado:</strong> Um terreno quadrado tem diagonal de $10\sqrt{2}\text{ m}$. Qual o comprimento do lado do terreno? (Use que a diagonal forma ângulos de 45° com os lados.)</p>
-        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-        <div class="gabarito-resolucao">
-            <p><strong>Resolução:</strong><br>
-            A diagonal é a hipotenusa do triângulo retângulo isósceles formado por dois lados do quadrado.<br>
-            $\cos 45° = \dfrac{l}{10\sqrt{2}} \;\Rightarrow\; \dfrac{\sqrt{2}}{2} = \dfrac{l}{10\sqrt{2}} \;\Rightarrow\; l = 10\sqrt{2} \cdot \dfrac{\sqrt{2}}{2} = \dfrac{10 \cdot 2}{2} = 10\text{ m}$</p>
-        </div>
+    <h4>T 15: Piloto Avistando a Pista</h4>
+    <p>Um avião voa a $1500$ m de altura, e o piloto avista a cabeceira da pista sob um ângulo de depressão de $30°$. A distância horizontal entre o avião e a cabeceira é:</p>
+    <p>A) $750\text{ m}$<br>B) $1500\text{ m}$<br>C) $1500\sqrt{3}\text{ m}$<br>D) $3000\text{ m}$<br>E) $3000\sqrt{3}\text{ m}$</p>
+    <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+    <div class="gabarito-resolucao">
+        <p><strong>Resolução:</strong> Alternativa <strong>C</strong>.<br>
+        1. O ângulo de depressão ($30°$) é igual ao ângulo de elevação visto da cabeceira; a altura ($1500$ m) é o cateto oposto e a distância horizontal $d$ é o cateto adjacente.<br>
+        2. $\operatorname{tg}30° = \dfrac{1500}{d} \implies d = \dfrac{1500}{\sqrt{3}/3} = \dfrac{4500}{\sqrt{3}} = 1500\sqrt{3} \approx \mathbf{2598\text{ m}}$.<br>
+        3. <em>Atenção:</em> $3000$ m (alternativa D) é a distância em linha reta (hipotenusa), e não a horizontal.</p>
+    </div>
     </article>
-
-    <article class="questao">
-        <h4>P 3: Relação Fundamental</h4>
-        <p><strong>Enunciado:</strong> Dado que $\cos\theta = \dfrac{\sqrt{3}}{2}$ e $\theta$ é agudo, calcule $\sin\theta$, $\tan\theta$ e identifique o valor de $\theta$.</p>
-        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-        <div class="gabarito-resolucao">
-            <p><strong>Resolução:</strong><br>
-            $\sin^2\theta = 1 - \cos^2\theta = 1 - \dfrac{3}{4} = \dfrac{1}{4}$<br>
-            $\sin\theta = \dfrac{1}{2}$; $\quad\tan\theta = \dfrac{1/2}{\sqrt{3}/2} = \dfrac{1}{\sqrt{3}} = \dfrac{\sqrt{3}}{3}$<br>
-            Portanto $\theta = 30°$.</p>
-        </div>
-    </article>
-
-    <article class="questao">
-        <h4>P 4: Altura Indireta</h4>
-        <p><strong>Enunciado:</strong> A uma distância de $30\text{ m}$ da base de uma torre, o ângulo de elevação do topo é $30°$. Calcule a altura da torre.</p>
-        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-        <div class="gabarito-resolucao">
-            <p><strong>Resolução:</strong><br>
-            $\tan 30° = \dfrac{h}{30} \;\Rightarrow\; \dfrac{\sqrt{3}}{3} = \dfrac{h}{30} \;\Rightarrow\; h = \dfrac{30\sqrt{3}}{3} = 10\sqrt{3} \approx 17{,}3\text{ m}$</p>
-        </div>
-    </article>
-
-    <article class="questao">
-        <h4>P 5: Cálculo Combinado</h4>
-        <p><strong>Enunciado:</strong> Um triângulo retângulo tem hipotenusa $c = 20\text{ cm}$ e $\sin\theta = \dfrac{3}{5}$. Calcule os dois catetos.</p>
-        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-        <div class="gabarito-resolucao">
-            <p><strong>Resolução:</strong><br>
-            Cateto oposto: $a = c \cdot \sin\theta = 20 \cdot \dfrac{3}{5} = 12\text{ cm}$<br>
-            Cateto adjacente: $b = c \cdot \cos\theta$<br>
-            $\cos\theta = \sqrt{1 - \sin^2\theta} = \sqrt{1 - \frac{9}{25}} = \sqrt{\frac{16}{25}} = \dfrac{4}{5}$<br>
-            $b = 20 \cdot \dfrac{4}{5} = 16\text{ cm}$<br>
-            Verificação (Pitágoras): $12^2 + 16^2 = 144 + 256 = 400 = 20^2$ ✓</p>
-        </div>
-    </article>
-</section>
-
-
-<!--------------- QUESTOES VESTIBULAR --------------------------->
-
-<section class="questoes-vestibular">
-    <h3>🎓 10 Questões de Vestibular/ENEM (T 1 a 10)</h3>
-
-    <article class="questao">
-        <h4>T 1: (FUVEST) Razões Trigonométricas</h4>
-        <p>Em um triângulo retângulo, $\tan\theta = \dfrac{3}{4}$ e a hipotenusa mede 10. O valor do cateto oposto ao ângulo $\theta$ é:</p>
-        <p>A) $3$<br>B) $4$<br>C) $5$<br>D) $6$<br>E) $8$</p>
-        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-        <div class="gabarito-resolucao">
-            <p><strong>Resolução:</strong> Alternativa <strong>D</strong>.<br>
-            $\tan\theta = \dfrac{3}{4}$, logo cateto oposto $= 3k$ e cateto adjacente $= 4k$.<br>
-            Hipotenusa: $\sqrt{(3k)^2+(4k)^2} = 5k = 10 \Rightarrow k = 2$.<br>
-            Cateto oposto $= 3 \cdot 2 = 6$.</p>
-        </div>
-    </article>
-
-    <article class="questao">
-        <h4>T 2: (UNICAMP) Relação Fundamental</h4>
-        <p>Se $\sin\theta + \cos\theta = \dfrac{7}{5}$ e $\theta$ é agudo, quanto vale $\sin\theta \cdot \cos\theta$?</p>
-        <p>A) $\dfrac{12}{25}$<br>B) $\dfrac{24}{25}$<br>C) $\dfrac{6}{25}$<br>D) $\dfrac{7}{25}$<br>E) $\dfrac{49}{25}$</p>
-        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-        <div class="gabarito-resolucao">
-            <p><strong>Resolução:</strong> Alternativa <strong>A</strong>.<br>
-            Elevando ao quadrado: $(\sin\theta + \cos\theta)^2 = \sin^2\theta + 2\sin\theta\cos\theta + \cos^2\theta = 1 + 2\sin\theta\cos\theta$<br>
-            $\left(\dfrac{7}{5}\right)^2 = 1 + 2\sin\theta\cos\theta \;\Rightarrow\; \dfrac{49}{25} = 1 + 2\sin\theta\cos\theta$<br>
-            $2\sin\theta\cos\theta = \dfrac{24}{25} \;\Rightarrow\; \sin\theta\cos\theta = \dfrac{12}{25}$</p>
-        </div>
-    </article>
-
-    <article class="questao">
-        <h4>T 3: (PUC-SP) Ângulo de Elevação</h4>
-        <p>De um ponto no solo, o ângulo de elevação do topo de um prédio é $60°$. Sabendo que o ponto está a $20\text{ m}$ da base do prédio, a altura do prédio é:</p>
-        <p>A) $10\text{ m}$<br>B) $10\sqrt{3}\text{ m}$<br>C) $20\sqrt{3}\text{ m}$<br>D) $40\text{ m}$<br>E) $20\sqrt{2}\text{ m}$</p>
-        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-        <div class="gabarito-resolucao">
-            <p><strong>Resolução:</strong> Alternativa <strong>C</strong>.<br>
-            $\tan 60° = \dfrac{h}{20} \;\Rightarrow\; \sqrt{3} = \dfrac{h}{20} \;\Rightarrow\; h = 20\sqrt{3}\text{ m}$</p>
-        </div>
-    </article>
-
-    <article class="questao">
-        <h4>T 4: (VUNESP) Aplicação com Terna Pitagórica</h4>
-        <p>Uma rampa de acesso forma um ângulo de $30°$ com o piso horizontal. Se a extensão da rampa (medida ao longo da inclinação) é $6\text{ m}$, qual a altura que a rampa vence?</p>
-        <p>A) $2\text{ m}$<br>B) $3\text{ m}$<br>C) $3\sqrt{2}\text{ m}$<br>D) $3\sqrt{3}\text{ m}$<br>E) $6\text{ m}$</p>
-        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-        <div class="gabarito-resolucao">
-            <p><strong>Resolução:</strong> Alternativa <strong>B</strong>.<br>
-            A rampa é a hipotenusa; a altura é o cateto oposto a $30°$.<br>
-            $\sin 30° = \dfrac{h}{6} \;\Rightarrow\; \dfrac{1}{2} = \dfrac{h}{6} \;\Rightarrow\; h = 3\text{ m}$</p>
-        </div>
-    </article>
-
-    <article class="questao">
-        <h4>T 5: (UFMG) Valor de Expressão Trigonométrica</h4>
-        <p>Calcule o valor de $\sin^2 30° + \cos^2 60° + \tan^2 45°$.</p>
-        <p>A) $\dfrac{3}{2}$<br>B) $2$<br>C) $\dfrac{5}{2}$<br>D) $3$<br>E) $\dfrac{7}{4}$</p>
-        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-        <div class="gabarito-resolucao">
-            <p><strong>Resolução:</strong> Alternativa <strong>B</strong>.<br>
-            $\sin^2 30° + \cos^2 60° + \tan^2 45°$<br>
-            $= \left(\dfrac{1}{2}\right)^2 + \left(\dfrac{1}{2}\right)^2 + 1^2$<br>
-            $= \dfrac{1}{4} + \dfrac{1}{4} + 1 = \dfrac{1}{2} + 1 = \dfrac{3}{2}$</p>
-            <p><em>Obs.: a resposta correta é $\dfrac{3}{2}$, alternativa A.</em></p>
-        </div>
-    </article>
-
-    <article class="questao">
-        <h4>T 6: (ITA) Complemento e Identidades</h4>
-        <p>Sabendo que $\sin\alpha = \cos 2\alpha$ e que $\alpha$ é agudo, qual o valor de $\alpha$?</p>
-        <p>A) $20°$<br>B) $25°$<br>C) $30°$<br>D) $36°$<br>E) $45°$</p>
-        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-        <div class="gabarito-resolucao">
-            <p><strong>Resolução:</strong> Alternativa <strong>C</strong>.<br>
-            $\sin\alpha = \cos 2\alpha$<br>
-            Como $\sin\alpha = \cos(90° - \alpha)$, temos:<br>
-            $\cos(90° - \alpha) = \cos 2\alpha \;\Rightarrow\; 90° - \alpha = 2\alpha \;\Rightarrow\; \alpha = 30°$</p>
-        </div>
-    </article>
-
-    <article class="questao">
-        <h4>T 7: (UNESP) Distância por Ângulo de Depressão</h4>
-        <p>Do alto de um farol de $60\text{ m}$, o ângulo de depressão de um barco é $30°$. Qual a distância horizontal do barco ao pé do farol?</p>
-        <p>A) $20\text{ m}$<br>B) $30\text{ m}$<br>C) $30\sqrt{3}\text{ m}$<br>D) $60\sqrt{3}\text{ m}$<br>E) $60\text{ m}$</p>
-        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-        <div class="gabarito-resolucao">
-            <p><strong>Resolução:</strong> Alternativa <strong>D</strong>.<br>
-            O ângulo de depressão de $30°$ equivale ao ângulo de elevação do topo do farol visto do barco.<br>
-            $\tan 30° = \dfrac{60}{d} \;\Rightarrow\; \dfrac{\sqrt{3}}{3} = \dfrac{60}{d} \;\Rightarrow\; d = \dfrac{60 \cdot 3}{\sqrt{3}} = \dfrac{180}{\sqrt{3}} = 60\sqrt{3}\text{ m}$</p>
-        </div>
-    </article>
-
-    <article class="questao">
-        <h4>T 8: (ENEM) Aplicação Prática — Escada</h4>
-        <p>Uma escada de $5\text{ m}$ apoia-se numa parede vertical e forma com o chão um ângulo de $60°$. A que altura do chão o topo da escada encosta na parede? (Use $\sqrt{3} \approx 1{,}73$.)</p>
-        <p>A) $2{,}5\text{ m}$<br>B) $4{,}33\text{ m}$<br>C) $3{,}54\text{ m}$<br>D) $5\text{ m}$<br>E) $2{,}89\text{ m}$</p>
-        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-        <div class="gabarito-resolucao">
-            <p><strong>Resolução:</strong> Alternativa <strong>B</strong>.<br>
-            A escada é a hipotenusa; a altura na parede é o cateto oposto ao ângulo de $60°$.<br>
-            $\sin 60° = \dfrac{h}{5} \;\Rightarrow\; \dfrac{\sqrt{3}}{2} = \dfrac{h}{5} \;\Rightarrow\; h = \dfrac{5\sqrt{3}}{2} = \dfrac{5 \times 1{,}73}{2} \approx 4{,}33\text{ m}$</p>
-        </div>
-    </article>
-
-    <article class="questao">
-        <h4>T 9: (FUVEST) Determinação de $\tan\theta$ sem tabela</h4>
-        <p>Se $\sin\theta = \dfrac{2\sqrt{5}}{5}$ e $\theta$ é agudo, qual o valor de $\tan\theta$?</p>
-        <p>A) $\dfrac{1}{2}$<br>B) $1$<br>C) $2$<br>D) $\dfrac{\sqrt{5}}{5}$<br>E) $\dfrac{2}{\sqrt{5}}$</p>
-        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-        <div class="gabarito-resolucao">
-            <p><strong>Resolução:</strong> Alternativa <strong>C</strong>.<br>
-            $\sin\theta = \dfrac{2\sqrt{5}}{5} = \dfrac{2}{\sqrt{5}}$<br>
-            $\cos^2\theta = 1 - \dfrac{4}{5} = \dfrac{1}{5} \;\Rightarrow\; \cos\theta = \dfrac{1}{\sqrt{5}}$<br>
-            $\tan\theta = \dfrac{2/\sqrt{5}}{1/\sqrt{5}} = 2$</p>
-        </div>
-    </article>
-
-    <article class="questao">
-        <h4>T 10: (UNICAMP) Problema com Dois Ângulos</h4>
-        <p>De dois pontos $A$ e $B$ no chão, alinhados com a base de uma torre e separados por $30\text{ m}$, os ângulos de elevação do topo da torre são $45°$ (de $A$) e $60°$ (de $B$), com $B$ mais próximo da torre. Qual a altura $h$ da torre? (Use $\sqrt{3} \approx 1{,}73$.)</p>
-        <p>A) $h = 15(\sqrt{3}+1)\text{ m}$<br>B) $h = 30(\sqrt{3}-1)\text{ m}$<br>C) $h \approx 70{,}9\text{ m}$<br>D) $h = \dfrac{30\sqrt{3}}{\sqrt{3}-1}\text{ m}$<br>E) $h \approx 40{,}98\text{ m}$</p>
-        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-        <div class="gabarito-resolucao">
-            <p><strong>Resolução:</strong> Alternativa <strong>D</strong> (equivalente a <strong>E</strong> numericamente).<br>
-            Sejam $d_A$ e $d_B$ as distâncias horizontais de $A$ e $B$ à torre: $d_A = d_B + 30$.<br>
-            De $A$: $\tan 45° = \dfrac{h}{d_A} \Rightarrow d_A = h$<br>
-            De $B$: $\tan 60° = \dfrac{h}{d_B} \Rightarrow d_B = \dfrac{h}{\sqrt{3}}$<br>
-            Substituindo: $h = \dfrac{h}{\sqrt{3}} + 30 \;\Rightarrow\; h\!\left(1 - \dfrac{1}{\sqrt{3}}\right) = 30$<br>
-            $h = \dfrac{30}{\,1 - \frac{1}{\sqrt{3}}\,} = \dfrac{30\sqrt{3}}{\sqrt{3}-1} \cdot \dfrac{\sqrt{3}+1}{\sqrt{3}+1} = \dfrac{30\sqrt{3}(\sqrt{3}+1)}{2} = 15\sqrt{3}(\sqrt{3}+1) = 15(3+\sqrt{3}) \approx 15(3+1{,}73) \approx 70{,}95\text{ m}$</p>
-        </div>
-    </article>
-
 </section>
 
 </div>
@@ -609,7 +495,7 @@ function mostrarSlide(n) {
 
     const pHeader = document.querySelector('header p').innerText;
     const partes = pHeader.split('|');
-    if (partes.length > 1) {
+    if(partes.length > 1) {
         document.getElementById('slide-info-serie').innerText = partes[0].trim();
         document.getElementById('slide-info-aula').innerText = partes[1].trim();
     }
