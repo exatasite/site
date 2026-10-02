@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cálculo I: Definição de Derivada</title>
+    <title>Cálculo: Conceito de Derivada</title>
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../estilo.css">
     
@@ -18,10 +18,10 @@
     </script>
     <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
- 
+
 <body>
 <button class="menu-toggle" onclick="toggleMenu()">☰</button>
- 
+
 <nav id="menu-principal" class="nav-global">
     <ul>
         <li><a href="../index.html">🏠 Início</a></li>
@@ -29,10 +29,10 @@
         <li><a href="../ensino_superior.html">🎓 Ensino Superior</a></li>
     </ul>
 </nav>
- 
+
 <header id="topo">
-    <h1>CÁLCULO I</h1>
-    <p>Cálculo | Aula: Definição de Derivada</p>
+    <h1>CÁLCULO DIFERENCIAL E INTEGRAL</h1>
+    <p>Ensino Superior | Conceito de Derivada e Taxa de Variação Instantânea</p>
     <button id="btn-slides" onclick="toggleSlides()">📺 Iniciar Modo Slides</button>
 </header>
 
@@ -42,355 +42,213 @@
 
 <div class="secao-aula">
  <div class="container-resumo" id="resumo">
-    <h3>📚 Resumo </h3>
+    <h3>📚 Resumo</h3>
     <section class="resumo-conteudo">
-        <p>A <strong>derivada</strong> de $f$ no ponto $x_0$ mede a <strong>taxa de variação instantânea</strong> de $f$ nesse ponto. Ela é definida como o limite do quociente de Newton:</p>
-        <p style="text-align: center;">$$f'(x_0) = \lim_{h \to 0} \frac{f(x_0 + h) - f(x_0)}{h}$$</p>
-        <p>Geometricamente, $f'(x_0)$ é a <strong>inclinação da reta tangente</strong> ao gráfico de $f$ em $(x_0, f(x_0))$; fisicamente, se $s(t)$ é a posição, $s'(t)$ é a <strong>velocidade instantânea</strong>. Se o limite existe, dizemos que $f$ é <strong>derivável</strong> em $x_0$, e toda função derivável num ponto é contínua nesse ponto.</p>
+        <p><strong>Conceito de Derivada:</strong> A derivada de uma função $f(x)$ em um ponto $x_0$ representa a <em>taxa de variação instantânea</em> de $f$ em relação a $x$, assim como a inclinação da reta tangente ao gráfico da função nesse ponto.</p>
+        <p><strong>Definição por Limite:</strong> A derivada é definida formalmente por:<br>
+        $$f'(x) = \lim_{h \to 0} \frac{f(x + h) - f(x)}{h}$$</p>
+        <p><strong>Interpretação Geométrica:</strong> A reta secante que passa por dois pontos aproxima-se da <strong>reta tangente</strong> quando a distância $h$ entre eles tende a zero. O coeficiente angular da reta tangente é igual a $f'(x_0)$.</p>
     </section>
 </div>
 
 <section class="conteudo-teorico-completo" id="teoria">
     <div class="passo-teoria">
-        <h3>📖 O que é a Derivada?</h3>
-        <p>Quando dizemos que um carro está a 80 km/h <em>naquele instante</em>, estamos falando de uma taxa de variação que acontece num único momento, e não ao longo de um intervalo. A derivada é a ferramenta que torna essa ideia precisa: ela nasce de uma taxa média calculada num intervalo cada vez menor, até que o intervalo "desapareça" no limite.</p>
+        <h3>📖 Conceitos Fundamentais</h3>
+        <h4>1. De Razão Média a Taxa Instantânea</h4>
+        <p>Dada uma função $y = f(x)$, a razão média de variação no intervalo $[x, x + h]$ é dada por:</p>
+        $$\frac{\Delta y}{\Delta x} = \frac{f(x + h) - f(x)}{h}$$
+        <p>Ao tomarmos o limite quando $h \to 0$ ($\Delta x \to 0$), obtemos a variação instantânea no ponto $x$, que é a definição da derivada $f'(x)$.</p>
+
+        <Image src="image_agent_tag_1801847917796686810" alt="Interpretação geométrica da derivada: passagem da reta secante para a reta tangente" caption="Aproximação das retas secantes à reta tangente quando h tende a zero" />
+
+        <h4>2. Notações Usuais para a Derivada</h4>
+        <p>Existem diferentes convenções de notação para indicar a derivada de $y = f(x)$:</p>
+        <ul>
+            <li><strong>Notação de Lagrange:</strong> $f'(x)$ ou $y'$ (lê-se "$f$ linha de $x$").</li>
+            <li><strong>Notação de Leibniz:</strong> $\frac{df}{dx}$ ou $\frac{dy}{dx}$ (lê-se "derivada de $y$ em relação a $x$").</li>
+            <li><strong>Notação de Euler:</strong> $D_x f$ ou $D f$.</li>
+        </ul>
     </div>
 
     <div class="passo-teoria">
-        <h4>1. Taxa de Variação Média e Reta Secante</h4>
-        <p>Entre $x_0$ e $x_0 + h$, a função varia $\Delta y = f(x_0 + h) - f(x_0)$. A <strong>taxa de variação média</strong> é</p>
-        <p style="text-align: center;">$$\frac{\Delta y}{\Delta x} = \frac{f(x_0 + h) - f(x_0)}{h}$$</p>
-        <p>Esse quociente (chamado <strong>quociente de Newton</strong>) é a inclinação da <strong>reta secante</strong> que passa por $P(x_0, f(x_0))$ e $Q(x_0 + h, f(x_0 + h))$.</p>
-        <figure class="figura-aula figura-grande">
-            <svg viewBox="0 0 420 320" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Retas secante e tangente ao gráfico de f" style="width:100%; max-width:450px; height:auto; display:block; margin:0 auto; background:#fdfdfd; border-radius:10px;">
-                <line x1="20" y1="280" x2="400" y2="280" stroke="#2c3e50" stroke-width="2"/>
-                <polygon points="410,280 398,275 398,285" fill="#2c3e50"/>
-                <line x1="50" y1="310" x2="50" y2="15" stroke="#2c3e50" stroke-width="2"/>
-                <polygon points="50,5 45,17 55,17" fill="#2c3e50"/>
-                <text x="392" y="300" font-size="13" fill="#2c3e50" font-family="sans-serif">x</text>
-                <text x="58" y="18" font-size="13" fill="#2c3e50" font-family="sans-serif">y</text>
-                <polyline points="40.0,239.8 45.0,239.9 50.0,240.0 55.0,239.9 60.0,239.8 65.0,239.5 70.0,239.0 75.0,238.5 80.0,237.8 85.0,237.1 90.0,236.2 95.0,235.1 100.0,234.0 105.0,232.7 110.0,231.4 115.0,229.9 120.0,228.2 125.0,226.5 130.0,224.6 135.0,222.7 140.0,220.6 145.0,218.3 150.0,216.0 155.0,213.5 160.0,211.0 165.0,208.3 170.0,205.4 175.0,202.5 180.0,199.4 185.0,196.3 190.0,193.0 195.0,189.5 200.0,186.0 205.0,182.3 210.0,178.6 215.0,174.7 220.0,170.6 225.0,166.5 230.0,162.2 235.0,157.9 240.0,153.4 245.0,148.7 250.0,144.0 255.0,139.1 260.0,134.2 265.0,129.1 270.0,123.8 275.0,118.5 280.0,113.0 285.0,107.5 290.0,101.8 295.0,95.9 300.0,90.0 305.0,83.9 310.0,77.8 315.0,71.5 320.0,65.0 325.0,58.5 330.0,51.8 335.0,45.1 340.0,38.2 345.0,31.1 350.0,24.0 355.0,16.7 360.0,9.4 365.0,1.9 370.0,-5.8 375.0,-13.5" fill="none" stroke="#3498db" stroke-width="3"/>
-                <line x1="70.0" y1="285.1" x2="380.0" y2="17.3" stroke="#e67e22" stroke-width="2" stroke-dasharray="7,4"/>
-                <line x1="40.0" y1="268.8" x2="380.0" y2="105.6" stroke="#e74c3c" stroke-width="2.5"/>
-                <line x1="150.0" y1="216.0" x2="310.0" y2="216.0" stroke="#7f8c8d" stroke-width="1.5" stroke-dasharray="4,3"/>
-                <line x1="310.0" y1="216.0" x2="310.0" y2="77.8" stroke="#7f8c8d" stroke-width="1.5" stroke-dasharray="4,3"/>
-                <line x1="150.0" y1="280" x2="150.0" y2="216.0" stroke="#bdc3c7" stroke-width="1" stroke-dasharray="3,3"/>
-                <line x1="310.0" y1="280" x2="310.0" y2="216.0" stroke="#bdc3c7" stroke-width="1" stroke-dasharray="3,3"/>
-                <circle cx="150.0" cy="216.0" r="5" fill="#2c3e50"/>
-                <circle cx="310.0" cy="77.8" r="5" fill="#2c3e50"/>
-                <text x="128.0" y="206.0" font-size="14" fill="#2c3e50" font-family="sans-serif" font-weight="bold">P</text>
-                <text x="288.0" y="71.8" font-size="14" fill="#2c3e50" font-family="sans-serif" font-weight="bold">Q</text>
-                <text x="144.0" y="298" font-size="13" fill="#2c3e50" font-family="sans-serif">x₀</text>
-                <text x="296.0" y="298" font-size="13" fill="#2c3e50" font-family="sans-serif">x₀+h</text>
-                <text x="225" y="232.0" font-size="13" fill="#7f8c8d" font-family="sans-serif">h</text>
-                <text x="316.0" y="146.9" font-size="12" fill="#7f8c8d" font-family="sans-serif">f(x₀+h) − f(x₀)</text>
-                <text x="250" y="40" font-size="13" fill="#e67e22" font-family="sans-serif" font-weight="bold">secante PQ</text>
-                <text x="300" y="130" font-size="13" fill="#e74c3c" font-family="sans-serif" font-weight="bold">tangente em P</text>
-            </svg>
-            <figcaption>Figura 1: Quando $h \to 0$, o ponto $Q$ desliza sobre a curva até $P$ e a reta secante tende à reta tangente em $P$.</figcaption>
-        </figure>
-    </div>
-
-    <div class="passo-teoria">
-        <h4>2. Definição Formal de Derivada</h4>
-        <p>A derivada de $f$ em $x_0$ é o limite da taxa média quando o intervalo tende a zero, desde que esse limite exista:</p>
-        <p style="text-align: center; font-size: 1.15rem; background-color: #f8f9fa; padding: 15px; border-left: 5px solid #3498db; margin: 20px 0;">
-            $$f'(x_0) = \lim_{h \to 0} \frac{f(x_0 + h) - f(x_0)}{h} = \lim_{x \to x_0} \frac{f(x) - f(x_0)}{x - x_0}$$
-        </p>
-        <p>Trocando $x_0$ por um $x$ genérico obtemos a <strong>função derivada</strong> $f'(x)$, também escrita $\dfrac{dy}{dx}$ ou $\dfrac{df}{dx}$. <strong>Roteiro prático:</strong> (1) calcule $f(x+h)$; (2) subtraia $f(x)$; (3) divida por $h$ e simplifique (fatorando ou racionalizando); (4) faça $h \to 0$.</p>
-    </div>
-
-    <div class="passo-teoria">
-        <h4>3. Interpretação Geométrica: a Reta Tangente</h4>
-        <p>O número $f'(x_0)$ é o <strong>coeficiente angular da reta tangente</strong> ao gráfico de $f$ no ponto $(x_0, f(x_0))$. A equação dessa reta é</p>
-        <p style="text-align: center;">$$y - f(x_0) = f'(x_0)\,(x - x_0)$$</p>
-    </div>
-
-    <div class="passo-teoria">
-        <h4>4. Interpretação Física e Derivabilidade</h4>
-        <p>Se $s(t)$ é a posição de um móvel, a velocidade instantânea é $v(t) = s'(t) = \displaystyle\lim_{h \to 0} \frac{s(t+h) - s(t)}{h}$.</p>
-        <p><strong>Derivável $\Rightarrow$ contínua:</strong> se $f$ é derivável em $x_0$, então $f$ é contínua em $x_0$. A recíproca é <strong>falsa</strong>: $f(x) = |x|$ é contínua em $0$, mas não é derivável ali, pois as derivadas laterais valem $-1$ e $1$ (o gráfico tem um "bico").</p>
+        <h4>3. Equação da Reta Tangente</h4>
+        <p>A equação da reta tangente ao gráfico de $f(x)$ no ponto $(x_0, f(x_0))$ é obtida utilizando a fórmula ponto-inclinação:</p>
+        $$y - f(x_0) = f'(x_0)(x - x_0)$$
     </div>
 </section>
 
 <section class="aplicacoes-reais" id="aplicacoes">
-    <h3>💡 Matemática em Ação</h3>
+    <h3>💡 Aplicações no Mundo Real</h3>
     <div class="cards-aplicacao">
         <div class="card">
-            <h4>🚗 O Velocímetro</h4>
-            <p>O velocímetro de um carro mostra a velocidade <em>instantânea</em> $v(t) = s'(t)$, e não a velocidade média da viagem. Radares de trânsito fazem o caminho inverso: medem $\Delta s / \Delta t$ num intervalo muito pequeno para estimar essa derivada.</p>
+            <h4>🚗 Cinemática e Física</h4>
+            <p>A velocidade instantânea $v(t)$ é a derivada da posição $s(t)$ em relação ao tempo ($v = \frac{ds}{dt}$), enquanto a aceleração instantânea $a(t)$ é a derivada da velocidade ($a = \frac{dv}{dt}$).</p>
         </div>
         <div class="card" style="border-left-color: #2ecc71;">
-            <h4>⚡ Corrente Elétrica</h4>
-            <p>A corrente elétrica é a taxa de variação instantânea da carga que atravessa um condutor: $i(t) = \dfrac{dq}{dt}$. Da mesma forma, potência é a derivada da energia em relação ao tempo, $P = \dfrac{dE}{dt}$.</p>
+            <h4>📈 Economia e Finanças</h4>
+            <p>O conceito de <em>custo marginal</em> e <em>receita marginal</em> nada mais é do que a derivada das funções de custo total e receita total em relação à quantidade produzida.</p>
         </div>
     </div>
 </section>
 
 <section class="questoes-resolvidas" id="resolvidas">
     <h3>✅ 5 Questões Resolvidas (R 1 a 5)</h3>
-
+    
     <article class="questao">
-        <h4>R 1: Derivada num Ponto</h4>
-        <p><strong>Enunciado:</strong> Usando a definição, calcule $f'(3)$ para $f(x) = x^2$.</p>
+        <h4>R 1: Derivada pela Definição de Função Quadrática</h4>
+        <p><strong>Enunciado:</strong> Determine a derivada da função $f(x) = x^2 + 3x$ utilizando a definição por limite.</p>
         <div class="resolucao-bloco">
             <p><strong>Resolução:</strong><br>
-            1. Montamos o quociente de Newton: $\dfrac{f(3+h) - f(3)}{h} = \dfrac{(3+h)^2 - 9}{h}$.<br>
-            2. Expandindo: $(3+h)^2 - 9 = 9 + 6h + h^2 - 9 = 6h + h^2$.<br>
-            3. Simplificando ($h \neq 0$): $\dfrac{6h + h^2}{h} = 6 + h$.<br>
-            4. Logo, $f'(3) = \displaystyle\lim_{h \to 0} (6 + h) = \mathbf{6}$.</p>
+            1. Aplicando a fórmula $f'(x) = \lim_{h \to 0} \frac{f(x + h) - f(x)}{h}$:<br>
+               $$f(x+h) = (x+h)^2 + 3(x+h) = x^2 + 2xh + h^2 + 3x + 3h$$
+            2. Substituindo no numerador:<br>
+               $$f(x+h) - f(x) = (x^2 + 2xh + h^2 + 3x + 3h) - (x^2 + 3x) = 2xh + h^2 + 3h$$
+            3. Dividindo por $h$ e calculando o limite:<br>
+               $$\lim_{h \to 0} \frac{h(2x + h + 3)}{h} = \lim_{h \to 0} (2x + h + 3) = \mathbf{2x + 3}.$$</p>
         </div>
     </article>
 
     <article class="questao">
-        <h4>R 2: Função Derivada</h4>
-        <p><strong>Enunciado:</strong> Usando a definição, determine $f'(x)$ para $f(x) = 3x^2 - 2x$.</p>
+        <h4>R 2: Inclinação e Equação da Reta Tangente</h4>
+        <p><strong>Enunciado:</strong> Encontre a equação da reta tangente à curva $f(x) = x^2$ no ponto em que $x = 2$.</p>
         <div class="resolucao-bloco">
             <p><strong>Resolução:</strong><br>
-            1. $f(x+h) = 3(x+h)^2 - 2(x+h) = 3x^2 + 6xh + 3h^2 - 2x - 2h$.<br>
-            2. $f(x+h) - f(x) = 6xh + 3h^2 - 2h$.<br>
-            3. Dividindo por $h$: $\dfrac{f(x+h)-f(x)}{h} = 6x + 3h - 2$.<br>
-            4. Logo, $f'(x) = \displaystyle\lim_{h \to 0} (6x + 3h - 2) = \mathbf{6x - 2}$.</p>
+            1. Ponto de tangência: $x_0 = 2 \implies y_0 = f(2) = 2^2 = 4$. O ponto é $(2, 4)$.<br>
+            2. Derivada de $f(x) = x^2$: $f'(x) = 2x$.<br>
+            3. Inclinação (coeficiente angular): $m = f'(2) = 2(2) = 4$.<br>
+            4. Equação da reta: $y - 4 = 4(x - 2) \implies y - 4 = 4x - 8 \implies \mathbf{y = 4x - 4}$.</p>
         </div>
     </article>
 
     <article class="questao">
-        <h4>R 3: Racionalização</h4>
-        <p><strong>Enunciado:</strong> Usando a definição, calcule $f'(4)$ para $f(x) = \sqrt{x}$.</p>
+        <h4>R 3: Derivada pela Definição de $f(x) = \frac{1}{x}$</h4>
+        <p><strong>Enunciado:</strong> Calcule $f'(x)$ para $f(x) = \frac{1}{x}$ ($x \neq 0$) usando a definição por limite.</p>
         <div class="resolucao-bloco">
             <p><strong>Resolução:</strong><br>
-            1. $\dfrac{f(4+h) - f(4)}{h} = \dfrac{\sqrt{4+h} - 2}{h}$, que gera a indeterminação $\frac{0}{0}$.<br>
-            2. Multiplicando pelo conjugado $\sqrt{4+h} + 2$, o numerador vira $(4+h) - 4 = h$, e o quociente fica $\dfrac{1}{\sqrt{4+h} + 2}$.<br>
-            3. Logo, $f'(4) = \displaystyle\lim_{h \to 0} \dfrac{1}{\sqrt{4+h} + 2} = \dfrac{1}{2 + 2} = \mathbf{\dfrac{1}{4}}$.</p>
+            1. Calculando a diferença $f(x+h) - f(x)$:<br>
+               $$\frac{1}{x+h} - \frac{1}{x} = \frac{x - (x+h)}{x(x+h)} = \frac{-h}{x(x+h)}$$
+            2. Dividindo por $h$:<br>
+               $$\frac{\frac{-h}{x(x+h)}}{h} = \frac{-1}{x(x+h)}$$
+            3. Tomando o limite com $h \to 0$:<br>
+               $$f'(x) = \lim_{h \to 0} \frac{-1}{x(x+h)} = \mathbf{-\frac{1}{x^2}}.$$</p>
         </div>
     </article>
 
     <article class="questao">
-        <h4>R 4: Equação da Reta Tangente</h4>
-        <p><strong>Enunciado:</strong> Determine a equação da reta tangente ao gráfico de $f(x) = \dfrac{1}{x}$ no ponto de abscissa $x_0 = 1$.</p>
+        <h4>R 4: Interpretando a Velocidade Instantânea</h4>
+        <p><strong>Enunciado:</strong> A posição de uma partícula em metros é dada por $s(t) = 5t^2 - 2t + 10$, onde $t$ é medido em segundos. Qual a velocidade instantânea em $t = 3\text{ s}$?</p>
         <div class="resolucao-bloco">
             <p><strong>Resolução:</strong><br>
-            1. Ponto de tangência: $f(1) = 1$, isto é, $P(1, 1)$.<br>
-            2. $\dfrac{f(1+h) - f(1)}{h} = \dfrac{1 - (1+h)}{h\,(1+h)} = \dfrac{-1}{1+h}$.<br>
-            3. Inclinação: $m = f'(1) = \displaystyle\lim_{h \to 0} \dfrac{-1}{1+h} = -1$.<br>
-            4. Reta tangente: $y - 1 = -1\,(x - 1) \implies \mathbf{y = -x + 2}$.</p>
+            1. A velocidade instantânea é a derivada da função posição: $v(t) = s'(t)$.<br>
+            2. Calculando a derivada de $s(t)$: $s'(t) = 10t - 2$.<br>
+            3. Para $t = 3\text{ s}$:<br>
+               $$v(3) = 10(3) - 2 = 30 - 2 = \mathbf{28\text{ m/s}}.$$</p>
         </div>
     </article>
 
     <article class="questao">
-        <h4>R 5: Velocidade Instantânea</h4>
-        <p><strong>Enunciado:</strong> A posição de um corpo em queda é $s(t) = 5t^2$ (em metros, com $t$ em segundos). Calcule a velocidade instantânea em $t = 2$ s.</p>
+        <h4>R 5: Derivabilidade e Continuidade</h4>
+        <p><strong>Enunciado:</strong> Mostre por que a função módulo $f(x) = |x|$ não é derivável em $x = 0$.</p>
         <div class="resolucao-bloco">
             <p><strong>Resolução:</strong><br>
-            1. A velocidade instantânea é a derivada da posição: $v(2) = s'(2)$.<br>
-            2. $\dfrac{s(2+h) - s(2)}{h} = \dfrac{5(4 + 4h + h^2) - 20}{h} = \dfrac{20h + 5h^2}{h} = 20 + 5h$.<br>
-            3. Logo, $v(2) = \displaystyle\lim_{h \to 0} (20 + 5h) = \mathbf{20}$ m/s.</p>
+            1. Analisamos os limites laterais do quociente de Newton em $x = 0$:<br>
+               $$\lim_{h \to 0^+} \frac{|0 + h| - |0|}{h} = \lim_{h \to 0^+} \frac{h}{h} = 1$$
+               $$\lim_{h \to 0^-} \frac{|0 + h| - |0|}{h} = \lim_{h \to 0^-} \frac{-h}{h} = -1$$
+            2. Como os limites laterais são diferentes ($1 \neq -1$), o limite não existe.<br>
+            3. Portanto, $f(x) = |x|$ **não é derivável em $x = 0$** (ponto anguloso/bico).</p>
         </div>
     </article>
 </section>
- 
+
 <section class="questoes-propostas" id="propostas">
-    <h3>✍️ 10 Questões Propostas (P 6 a 15)</h3>
+    <h3>✍️ 5 Questões Propostas (P 6 a 10)</h3>
 
     <article class="questao">
-        <h4>P 6: Função Afim</h4>
-        <p><strong>Enunciado:</strong> Usando a definição, calcule $f'(x)$ para $f(x) = 5x - 3$.</p>
+        <h4>P 6: Derivada de Função Afim pela Definição</h4>
+        <p><strong>Enunciado:</strong> Use a definição por limite para encontrar a derivada da função $f(x) = 4x - 7$.</p>
         <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
         <div class="gabarito-resolucao">
             <p><strong>Resolução:</strong><br>
-            1. $f(x+h) - f(x) = 5(x+h) - 3 - (5x - 3) = 5h$.<br>
-            2. $\dfrac{5h}{h} = 5 \implies f'(x) = \mathbf{5}$ (a inclinação da própria reta).</p>
+            1. $f(x+h) = 4(x+h) - 7 = 4x + 4h - 7$.<br>
+            2. $f(x+h) - f(x) = (4x + 4h - 7) - (4x - 7) = 4h$.<br>
+            3. $f'(x) = \lim_{h \to 0} \frac{4h}{h} = \mathbf{4}$.</p>
         </div>
     </article>
 
     <article class="questao">
-        <h4>P 7: Derivada num Ponto</h4>
-        <p><strong>Enunciado:</strong> Usando a definição, calcule $f'(-2)$ para $f(x) = x^2$.</p>
+        <h4>P 7: Coeficiente Angular em um Ponto Dado</h4>
+        <p><strong>Enunciado:</strong> Dada a função $f(x) = 3x^2 - 5$, determine a inclinação da reta tangente ao seu gráfico no ponto $x = -1$.</p>
         <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
         <div class="gabarito-resolucao">
             <p><strong>Resolução:</strong><br>
-            1. $\dfrac{(-2+h)^2 - 4}{h} = \dfrac{4 - 4h + h^2 - 4}{h} = -4 + h$.<br>
-            2. $f'(-2) = \displaystyle\lim_{h \to 0} (-4 + h) = \mathbf{-4}$.</p>
+            1. Calculando $f'(x)$: $f'(x) = 6x$.<br>
+            2. Avaliando em $x = -1$: $m = f'(-1) = 6(-1) = \mathbf{-6}$.</p>
         </div>
     </article>
 
     <article class="questao">
-        <h4>P 8: Função Cúbica</h4>
-        <p><strong>Enunciado:</strong> Usando a definição, determine $f'(x)$ para $f(x) = x^3$.</p>
+        <h4>P 8: Reta Tangente a uma Parábola</h4>
+        <p><strong>Enunciado:</strong> Encontre a equação da reta tangente ao gráfico de $f(x) = x^2 - 4x + 1$ no ponto onde $x = 3$.</p>
         <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
         <div class="gabarito-resolucao">
             <p><strong>Resolução:</strong><br>
-            1. $(x+h)^3 - x^3 = 3x^2h + 3xh^2 + h^3$.<br>
-            2. Dividindo por $h$: $3x^2 + 3xh + h^2$.<br>
-            3. $f'(x) = \displaystyle\lim_{h \to 0} (3x^2 + 3xh + h^2) = \mathbf{3x^2}$.</p>
+            1. Ponto: $x_0 = 3 \implies y_0 = f(3) = 3^2 - 4(3) + 1 = 9 - 12 + 1 = -2$. Ponto $(3, -2)$.<br>
+            2. Derivada: $f'(x) = 2x - 4$.<br>
+            3. Inclinação: $m = f'(3) = 2(3) - 4 = 2$.<br>
+            4. Equação: $y - (-2) = 2(x - 3) \implies y + 2 = 2x - 6 \implies \mathbf{y = 2x - 8}$.</p>
         </div>
     </article>
 
     <article class="questao">
-        <h4>P 9: Função Derivada e Valor</h4>
-        <p><strong>Enunciado:</strong> Para $f(x) = 2x^2 + x$, determine $f'(x)$ pela definição e calcule $f'(1)$.</p>
+        <h4>P 9: Derivada por Limite para Função Cúbica Simples</h4>
+        <p><strong>Enunciado:</strong> Sabendo que $(x+h)^3 = x^3 + 3x^2h + 3xh^2 + h^3$, calcule a derivada de $f(x) = x^3$ pela definição de limite.</p>
         <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
         <div class="gabarito-resolucao">
             <p><strong>Resolução:</strong><br>
-            1. $f(x+h) - f(x) = 2(x^2 + 2xh + h^2) + x + h - 2x^2 - x = 4xh + 2h^2 + h$.<br>
-            2. Dividindo por $h$: $4x + 2h + 1 \implies f'(x) = \mathbf{4x + 1}$.<br>
-            3. $f'(1) = 4 + 1 = \mathbf{5}$.</p>
+            1. $f(x+h) - f(x) = (x^3 + 3x^2h + 3xh^2 + h^3) - x^3 = 3x^2h + 3xh^2 + h^3$.<br>
+            2. Dividindo por $h$: $\frac{h(3x^2 + 3xh + h^2)}{h} = 3x^2 + 3xh + h^2$.<br>
+            3. Tomando o limite com $h \to 0$: $\lim_{h \to 0} (3x^2 + 3xh + h^2) = \mathbf{3x^2}$.</p>
         </div>
     </article>
 
     <article class="questao">
-        <h4>P 10: Função Recíproca</h4>
-        <p><strong>Enunciado:</strong> Usando a definição, determine $f'(x)$ para $f(x) = \dfrac{1}{x}$, $x \neq 0$.</p>
+        <h4>P 10: Reta Horizontal (Pontos Críticos Preliminares)</h4>
+        <p><strong>Enunciado:</strong> Determine em qual ponto o gráfico de $f(x) = 2x^2 - 8x + 5$ possui uma reta tangente horizontal.</p>
         <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
         <div class="gabarito-resolucao">
             <p><strong>Resolução:</strong><br>
-            1. $f(x+h) - f(x) = \dfrac{1}{x+h} - \dfrac{1}{x} = \dfrac{x - (x+h)}{x(x+h)} = \dfrac{-h}{x(x+h)}$.<br>
-            2. Dividindo por $h$: $\dfrac{-1}{x(x+h)}$.<br>
-            3. $f'(x) = \displaystyle\lim_{h \to 0} \dfrac{-1}{x(x+h)} = \mathbf{-\dfrac{1}{x^2}}$.</p>
-        </div>
-    </article>
-
-    <article class="questao">
-        <h4>P 11: Raiz Quadrada</h4>
-        <p><strong>Enunciado:</strong> Usando a definição, determine $f'(x)$ para $f(x) = \sqrt{x}$, $x > 0$.</p>
-        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-        <div class="gabarito-resolucao">
-            <p><strong>Resolução:</strong><br>
-            1. $\dfrac{\sqrt{x+h} - \sqrt{x}}{h} \cdot \dfrac{\sqrt{x+h} + \sqrt{x}}{\sqrt{x+h} + \sqrt{x}} = \dfrac{h}{h(\sqrt{x+h} + \sqrt{x})} = \dfrac{1}{\sqrt{x+h} + \sqrt{x}}$.<br>
-            2. $f'(x) = \displaystyle\lim_{h \to 0} \dfrac{1}{\sqrt{x+h} + \sqrt{x}} = \mathbf{\dfrac{1}{2\sqrt{x}}}$.</p>
-        </div>
-    </article>
-
-    <article class="questao">
-        <h4>P 12: Reta Tangente</h4>
-        <p><strong>Enunciado:</strong> Determine a equação da reta tangente ao gráfico de $f(x) = x^2$ no ponto $(1, 1)$.</p>
-        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-        <div class="gabarito-resolucao">
-            <p><strong>Resolução:</strong><br>
-            1. $\dfrac{(1+h)^2 - 1}{h} = \dfrac{2h + h^2}{h} = 2 + h \implies m = f'(1) = 2$.<br>
-            2. $y - 1 = 2(x - 1) \implies \mathbf{y = 2x - 1}$.</p>
-        </div>
-    </article>
-
-    <article class="questao">
-        <h4>P 13: Velocidade Instantânea</h4>
-        <p><strong>Enunciado:</strong> Uma partícula tem posição $s(t) = 4t^2 + 2t$ (metros, segundos). Pela definição, calcule a velocidade em $t = 3$ s.</p>
-        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-        <div class="gabarito-resolucao">
-            <p><strong>Resolução:</strong><br>
-            1. $s(3) = 36 + 6 = 42$ e $s(3+h) = 4(9 + 6h + h^2) + 6 + 2h = 42 + 26h + 4h^2$.<br>
-            2. $\dfrac{s(3+h) - s(3)}{h} = 26 + 4h$.<br>
-            3. $v(3) = \displaystyle\lim_{h \to 0} (26 + 4h) = \mathbf{26}$ m/s.</p>
-        </div>
-    </article>
-
-    <article class="questao">
-        <h4>P 14: Derivabilidade do Módulo</h4>
-        <p><strong>Enunciado:</strong> Verifique, pela definição, se $f(x) = |x|$ é derivável em $x = 0$.</p>
-        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-        <div class="gabarito-resolucao">
-            <p><strong>Resolução:</strong><br>
-            1. $\dfrac{f(0+h) - f(0)}{h} = \dfrac{|h|}{h}$.<br>
-            2. Pela direita ($h > 0$): $\dfrac{h}{h} = 1$. Pela esquerda ($h < 0$): $\dfrac{-h}{h} = -1$.<br>
-            3. Os limites laterais são diferentes ($1 \neq -1$), então $f'(0)$ <strong>não existe</strong>: o gráfico tem um “bico” na origem, embora $f$ seja contínua ali.</p>
-        </div>
-    </article>
-
-    <article class="questao">
-        <h4>P 15: Reconhecendo a Definição</h4>
-        <p><strong>Enunciado:</strong> O limite $\displaystyle\lim_{h \to 0} \dfrac{(2+h)^4 - 16}{h}$ representa a derivada de qual função, em qual ponto? Calcule o seu valor.</p>
-        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-        <div class="gabarito-resolucao">
-            <p><strong>Resolução:</strong><br>
-            1. Comparando com $\displaystyle\lim_{h \to 0} \dfrac{f(a+h) - f(a)}{h}$: $f(x) = x^4$ e $a = 2$ (pois $2^4 = 16$).<br>
-            2. $(2+h)^4 = 16 + 32h + 24h^2 + 8h^3 + h^4$, então o quociente vale $32 + 24h + 8h^2 + h^3$.<br>
-            3. Limite: $\mathbf{32}$, ou seja, $f'(2) = 32$.</p>
+            1. Uma reta horizontal tem coeficiente angular $m = 0$, logo precisamos resolver $f'(x) = 0$.<br>
+            2. Derivada de $f(x)$: $f'(x) = 4x - 8$.<br>
+            3. Igualando a zero: $4x - 8 = 0 \implies 4x = 8 \implies x = 2$.<br>
+            4. Calculando a ordenada $y$: $f(2) = 2(2)^2 - 8(2) + 5 = 8 - 16 + 5 = -3$.<br>
+            5. Ponto: $\mathbf{(2, -3)}$.</p>
         </div>
     </article>
 </section>
- 
+
 <section class="TESTE" id="testes">
-    <h3>🎓 TESTES (T 16 a 20)</h3>
+    <h3>🎓 TESTES (T 11 a 15)</h3>
 
-    <article class="questao">
-        <h4>T 16: (IFN-MG 2017) A Definição de Derivada</h4>
-        <p>Derivada é um importante conceito trabalhado no ensino superior, especialmente nas disciplinas de Cálculo Diferencial e Integral. A sua definição se baseia, intuitivamente, na inclinação da reta tangente ao esboço do gráfico da função $f(x)$ que se deseja derivar, e com um maior rigor matemático, ao $\displaystyle\lim_{h \to 0} \frac{f(x+h)-f(x)}{h}$.</p>
-        <p>Em relação à função $f(x) = x^2$ (para $x \geq 0$), concluímos que os valores do domínio que determina a imagem 4 e de $f(x+h)$ são, respectivamente:</p>
-        <p>A) 2 e $x^2 + h^2$<br>B) 16 e $x^2 + 2xh + h^2$<br>C) 16 e $x^2 + h^2$<br>D) 2 e $x^2 + 2xh + h^2$</p>
-        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-        <div class="gabarito-resolucao">
-            <p><strong>Resolução:</strong> Alternativa <strong>D</strong>.<br>
-            1. $f(x) = 4 \implies x^2 = 4 \implies x = 2$ (pois $x \geq 0$).<br>
-            2. $f(x+h) = (x+h)^2 = x^2 + 2xh + h^2$ (produto notável, e não $x^2 + h^2$).<br>
-            3. Esse é exatamente o primeiro passo do quociente de Newton para $f(x) = x^2$.</p>
-        </div>
-    </article>
+    <div class="card" style="text-align:center; padding:60px 20px; background:#f8f9fa; border:2px dashed #3498db; border-radius:12px; margin-top:20px;">
+        <h2 style="color:#3498db; font-size:2.5rem; margin-bottom:15px;">
+            🚧 EM BREVE!
+        </h2>
 
-    <article class="questao">
-        <h4>T 17: (IBFC 2023 – SEC-BA) Taxa de Variação Instantânea</h4>
-        <p>A derivada $f'(a)$ é a taxa de variação instantânea de $y = f(x)$ em relação a $x$ quando temos $x = a$.</p>
-        <p>Considere a função polinomial $f(x) = x^3 - 2x + 5$, o valor da derivada da função no ponto $x = 2$, ou seja, $f'(2)$ é igual a:</p>
-        <p>A) 10<br>B) 12<br>C) $-8$<br>D) 9<br>E) 0</p>
-        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-        <div class="gabarito-resolucao">
-            <p><strong>Resolução:</strong> Alternativa <strong>A</strong>.<br>
-            1. $f(2) = 8 - 4 + 5 = 9$ e $f(2+h) = 8 + 12h + 6h^2 + h^3 - 4 - 2h + 5 = 9 + 10h + 6h^2 + h^3$.<br>
-            2. $\dfrac{f(2+h) - f(2)}{h} = 10 + 6h + h^2$.<br>
-            3. $f'(2) = \displaystyle\lim_{h \to 0} (10 + 6h + h^2) = \mathbf{10}$.</p>
-        </div>
-    </article>
-
-    <article class="questao">
-        <h4>T 18: (EsPCEx 2018) Reta Tangente</h4>
-        <p>A equação da reta tangente ao gráfico da função $f(x) = x^2 - 6x + 1$, no ponto $(4, -7)$, é igual a</p>
-        <p>A) $y = -2x + 1$<br>B) $y = 3x - 19$<br>C) $y = x - 11$<br>D) $y = -3x + 5$<br>E) $y = 2x - 15$</p>
-        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-        <div class="gabarito-resolucao">
-            <p><strong>Resolução:</strong> Alternativa <strong>E</strong>.<br>
-            1. $f(4+h) = 16 + 8h + h^2 - 24 - 6h + 1 = -7 + 2h + h^2$.<br>
-            2. $\dfrac{f(4+h) - f(4)}{h} = \dfrac{2h + h^2}{h} = 2 + h \implies m = f'(4) = 2$.<br>
-            3. $y - (-7) = 2(x - 4) \implies \mathbf{y = 2x - 15}$.</p>
-        </div>
-    </article>
-
-    <article class="questao">
-        <h4>T 19: (UFBA 2013) Derivabilidade e Continuidade</h4>
-        <p>Julgue o item a seguir.</p>
-        <p>A função $f: \mathbb{R} \to \mathbb{R}$ definida por $f(x) = \begin{cases} 2x + 1, & \text{se } x < 1 \\ x^2 + 1, & \text{se } x > 1 \end{cases}$ é derivável.</p>
-        <p>( &nbsp; ) Certo &nbsp;&nbsp;&nbsp; ( &nbsp; ) Errado</p>
-        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-        <div class="gabarito-resolucao">
-            <p><strong>Resolução:</strong> Item <strong>Errado</strong>.<br>
-            1. Toda função derivável num ponto é contínua nesse ponto (derivável $\Rightarrow$ contínua).<br>
-            2. Em $x = 1$: $\displaystyle\lim_{x \to 1^-} (2x + 1) = 3$ e $\displaystyle\lim_{x \to 1^+} (x^2 + 1) = 2$. Os limites laterais são diferentes, logo $f$ não é contínua em $x = 1$ (e a lei nem define $f(1)$).<br>
-            3. Portanto $f$ não é derivável em $x = 1$ e o item está <strong>errado</strong>.</p>
-        </div>
-    </article>
-
-    <article class="questao">
-        <h4>T 20: (Inst. Excelência 2018 – Barra Velha-SC) Propriedades da Derivada</h4>
-        <p>Do Cálculo, a derivada em um ponto de uma função $y = f(x)$ representa a taxa de variação instantânea de $y$ em relação a $x$ nesse ponto. A utilização de derivadas é amplamente significativa dentro da Matemática e em outras ciências e suas propriedades são inúmeras.</p>
-        <p>Com relação a elas, todas as afirmativas a seguir são verdadeiras, com EXCEÇÃO de que:</p>
-        <p>A) Ponto de inflexão é o ponto em que a segunda derivada de uma função muda de sinal.<br>B) A derivada de uma função de uma variável, no limite, é a inclinação da reta tangente no ponto avaliado.<br>C) As derivadas das funções trigonométricas $\operatorname{sen} x$ e $\cos x$ são, respectivamente, $\cos x$ e $\operatorname{sen} x$.<br>D) A derivada da função exponencial é uma função bem peculiar, pois $\frac{d}{dx} e^x = e^x$, ou seja, a derivada é a própria função.</p>
-        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-        <div class="gabarito-resolucao">
-            <p><strong>Resolução:</strong> Alternativa <strong>C</strong>.<br>
-            1. (B) é verdadeira: é exatamente a interpretação geométrica da definição $f'(x_0) = \displaystyle\lim_{h \to 0} \frac{f(x_0+h) - f(x_0)}{h}$.<br>
-            2. (A) e (D) são propriedades verdadeiras, estudadas mais adiante no curso.<br>
-            3. (C) é falsa: $(\operatorname{sen} x)' = \cos x$, mas $(\cos x)' = -\operatorname{sen} x$ (o sinal negativo faz diferença).</p>
-        </div>
-    </article>
+        <p style="font-size:1.2rem; color:#555;">
+            Exercícios e questões de exames de Cálculo serão disponibilizados em breve.
+        </p>
+    </div>
 </section>
- 
+
 </div>
 </main>
- 
+
 <aside class="menu-lateral">
     <iframe src="../menu_calculo.html" style="width:100%; border:none; height:600px;"></iframe>
 </aside>
- 
+
 </div>
- 
+
 <script>
 function toggleGabarito(botao) {
     const gabarito = botao.nextElementSibling;
@@ -404,20 +262,20 @@ function toggleGabarito(botao) {
         botao.style.backgroundColor = "#3498db";
     }
 }
- 
+
 function toggleMenu() {
     const menuGlobal = document.getElementById("menu-principal");
     if (menuGlobal) menuGlobal.classList.toggle("ativo");
 }
- 
+
 let slideAtual = 0;
 let slides = [];
- 
+
 function prepararSlides() {
     const seletores = '.container-resumo, .passo-teoria, .aplicacoes-reais, .questao';
     slides = document.querySelectorAll(seletores);
 }
- 
+
 function toggleSlides() {
     prepararSlides();
     const body = document.body;
@@ -430,7 +288,7 @@ function toggleSlides() {
         window.location.reload(); 
     }
 }
- 
+
 function mostrarSlide(n) {
     slides.forEach(s => {
         s.classList.remove('slide-ativo');
@@ -439,7 +297,7 @@ function mostrarSlide(n) {
     const slide = slides[n];
     slide.classList.add('slide-ativo');
     slide.style.display = 'flex'; 
- 
+
     if (slide.classList.contains('questao') && !slide.querySelector('.btn-gabarito')) {
         const resolucoes = slide.querySelectorAll('.resolucao-bloco');
         resolucoes.forEach(r => r.style.display = 'block');
@@ -452,7 +310,7 @@ function mostrarSlide(n) {
             b.style.backgroundColor = "#3498db";
         });
     }
- 
+
     const pHeader = document.querySelector('header p').innerText;
     const partes = pHeader.split('|');
     if(partes.length > 1) {
@@ -462,14 +320,14 @@ function mostrarSlide(n) {
     document.getElementById('contador-slide').innerText = (n + 1) + " / " + slides.length;
     if (window.MathJax) MathJax.typesetPromise();
 }
- 
+
 function mudarSlide(direcao) {
     slideAtual += direcao;
     if (slideAtual >= slides.length) slideAtual = 0;
     if (slideAtual < 0) slideAtual = slides.length - 1;
     mostrarSlide(slideAtual);
 }
- 
+
 document.addEventListener('keydown', function(event) {
     if (document.body.classList.contains('modo-slides')) {
         switch(event.key) {
@@ -484,7 +342,7 @@ document.addEventListener('keydown', function(event) {
             case 'PageUp':     
                 mudarSlide(-1);
                 break;
- 
+
             case 'Escape':     
                 toggleSlides();
                 break;
@@ -492,7 +350,7 @@ document.addEventListener('keydown', function(event) {
     }
 });
 </script>
- 
+
 <style>
     body.modo-slides { overflow: hidden; background-color: #1a1a1a; }
     body.modo-slides .menu-lateral, body.modo-slides header, body.modo-slides .menu-toggle, body.modo-slides #btn-slides { display: none !important; }
@@ -513,7 +371,7 @@ document.addEventListener('keydown', function(event) {
     .btn-nav { padding: 10px 20px; background: #3498db; color: white; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; }
     #contador-slide { font-family: 'Oswald', sans-serif; min-width: 60px; text-align: center; }
 </style>
- 
+
 <div class="controles-slides">
     <div id="slide-info-serie" class="info-lateral"></div>
     <div class="botoes-centrais">
