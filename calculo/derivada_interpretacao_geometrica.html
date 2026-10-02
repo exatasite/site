@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cálculo I: Interpretação Geométrica da Derivada</title>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../estilo.css">
+    
+    <script>
+        MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true
+            }
+        };
+    </script>
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body>
+<button class="menu-toggle" onclick="toggleMenu()">☰</button>
+
+<nav id="menu-principal" class="nav-global">
+    <ul>
+        <li><a href="../index.html">🏠 Início</a></li>
+        <li><a href="../ensino_medio.html">📚 Ensino Médio</a></li>
+        <li><a href="../ensino_superior.html">🎓 Ensino Superior</a></li>
+    </ul>
+</nav>
+
+<header id="topo">
+    <h1>CÁLCULO I</h1>
+    <p>Cálculo | Aula: Interpretação Geométrica da Derivada</p>
+    <button id="btn-slides" onclick="toggleSlides()">📺 Iniciar Modo Slides</button>
+</header>
+
+<div class="container">
+
+<main class="conteudo-principal">
+
+<div class="secao-aula">
+ <div class="container-resumo" id="resumo">
+    <h3>📚 Resumo </h3>
+    <section class="resumo-conteudo">
+        <p>A **derivada** de uma função $f(x)$ no ponto $x = a$, denotada por $f'(a)$, representa geometricamente a **inclinação (ou coeficinte angular) da reta tangente** ao gráfico de $f$ no ponto $(a, f(a))$.</p>
+        <p><strong>Importante:</strong> A reta secante que passa por dois pontos $(a, f(a))$ e $(a+h, f(a+h))$ tem inclinação $m_{sec} = \dfrac{f(a+h) - f(a)}{h}$. Conforme $h \to 0$, o segundo ponto se aproxima do primeiro, e a reta secante se transforma na reta tangente, cuja inclinação é dada pelo limite: $$f'(a) = \lim_{h \to 0} \frac{f(a+h) - f(a)}{h}$$</p>
+    </section>
+</div>
+
+<section class="conteudo-teorico-completo" id="teoria">
+    <div class="passo-teoria">
+        <h3>📖 A Transição da Secante para a Tangente</h3>
+        <p>O conceito central do Cálculo Diferencial nasce de um problema geométrico: como calcular a inclinação de uma curva em um único ponto? Como uma reta exige dois pontos para ser definida, utilizamos o limite do quociente de diferenças para aproximar a reta secante de uma reta tangente única.</p>
+    </div>
+
+    <div class="passo-teoria">
+        <h4>1. A Reta Secante e o Quociente de Diferenças</h4>
+        <p>Dados dois pontos no gráfico de $f(x)$, $P(a, f(a))$ e $Q(x, f(x))$, a variação vertical é $\Delta y = f(x) - f(a)$ e a variação horizontal é $\Delta x = x - a$. A inclinação da reta secante é:</p>
+        <p style="text-align: center;">$$m_{sec} = \frac{\Delta y}{\Delta x} = \frac{f(x) - f(a)}{x - a}$$</p>
+        <p>Se definirmos $x = a + h$, onde $h$ representa o deslocamento relativo, a fórmula toma a forma clássica $m_{sec} = \dfrac{f(a+h) - f(a)}{h}$.</p>
+        
+        <figure class="figura-aula figura-grande">
+            <svg viewBox="0 0 400 320" xmlns="http://www.w3.org/2000/svg" style="width:100%; max-width:450px; height:auto; display:block; margin:0 auto; background:#fdfdfd; border-radius:10px;">
+                <!-- Eixos -->
+                <line x1="30" y1="280" x2="380" y2="280" stroke="#2c3e50" stroke-width="2"/>
+                <polygon points="390,280 378,275 378,285" fill="#2c3e50"/>
+                <line x1="50" y1="300" x2="50" y2="20" stroke="#2c3e50" stroke-width="2"/>
+                <polygon points="50,10 45,22 55,22" fill="#2c3e50"/>
+                <text x="375" y="298" font-size="13" fill="#2c3e50" font-family="sans-serif">x</text>
+                <text x="58" y="25" font-size="13" fill="#2c3e50" font-family="sans-serif">y</text>
+
+                <!-- Curva f(x) -->
+                <path d="M 60 260 Q 200 240 350 40" fill="none" stroke="#e74c3c" stroke-width="3"/>
+                
+                <!-- Pontos A e B -->
+                <line x1="130" y1="280" x2="130" y2="225" stroke="#bdc3c7" stroke-width="1.5" stroke-dasharray="4,4"/>
+                <line x1="50" y1="225" x2="130" y2="225" stroke="#bdc3c7" stroke-width="1.5" stroke-dasharray="4,4"/>
+                
+                <line x1="280" y1="280" x2="280" y2="100" stroke="#bdc3c7" stroke-width="1.5" stroke-dasharray="4,4"/>
+                <line x1="50" y1="100" x2="280" y2="100" stroke="#bdc3c7" stroke-width="1.5" stroke-dasharray="4,4"/>
+
+                <!-- Reta Secante -->
+                <line x1="80" y1="266" x2="330" y2="58" stroke="#3498db" stroke-width="2.5"/>
+
+                <!-- Nós (Pontos) -->
+                <circle cx="130" cy="225" r="5" fill="#2c3e50"/>
+                <circle cx="280" cy="100" r="5" fill="#2c3e50"/>
+
+                <text x="120" y="215" font-size="12" fill="#2c3e50" font-family="sans-serif" font-weight="bold">P(a, f(a))</text>
+                <text x="270" y="90" font-size="12" fill="#2c3e50" font-family="sans-serif" font-weight="bold">Q(a+h, f(a+h))</text>
+
+                <text x="125" y="295" font-size="12" fill="#2c3e50" font-family="sans-serif">a</text>
+                <text x="268" y="295" font-size="12" fill="#2c3e50" font-family="sans-serif">a+h</text>
+                <text x="200" y="275" font-size="12" fill="#e67e22" font-family="sans-serif" font-weight="bold">← h →</text>
+                
+                <text x="250" y="45" font-size="13" fill="#3498db" font-family="sans-serif" font-weight="bold">Reta Secante</text>
+            </svg>
+            <figcaption>Figura 1: A reta secante conecta dois pontos distintos $P$ e $Q$ separados por uma distância $h$.</figcaption>
+        </figure>
+    </div>
+
+    <div class="passo-teoria">
+        <h4>2. A Reta Tangente e a Equação Fundamental</h4>
+        <p>Fazendo $h \to 0$, o ponto $Q$ "escorrega" sobre a curva em direção ao ponto $P$. A reta secante gira até se ajustar perfeitamente à inclinação local da curva, tornando-se a **reta tangente**.</p>
+        <p>Sua inclinação é $m_{tang} = f'(a)$. Conhecendo um ponto $(a, f(a))$ e a inclinação $m = f'(a)$, a **equação da reta tangente** é dada por:</p>
+        <p style="text-align: center;">$$y - f(a) = f'(a)(x - a)$$</p>
+
+        <figure class="figura-aula figura-grande">
+            <svg viewBox="0 0 400 320" xmlns="http://www.w3.org/2000/svg" style="width:100%; max-width:450px; height:auto; display:block; margin:0 auto; background:#fdfdfd; border-radius:10px;">
+                <line x1="30" y1="280" x2="380" y2="280" stroke="#2c3e50" stroke-width="2"/>
+                <polygon points="390,280 378,275 378,285" fill="#2c3e50"/>
+                <line x1="50" y1="300" x2="50" y2="20" stroke="#2c3e50" stroke-width="2"/>
+                <polygon points="50,10 45,22 55,22" fill="#2c3e50"/>
+
+                <path d="M 60 260 Q 200 240 350 40" fill="none" stroke="#e74c3c" stroke-width="3"/>
+                
+                <line x1="180" y1="280" x2="180" y2="185" stroke="#bdc3c7" stroke-width="1.5" stroke-dasharray="4,4"/>
+                <line x1="50" y1="185" x2="180" y2="185" stroke="#bdc3c7" stroke-width="1.5" stroke-dasharray="4,4"/>
+
+                <!-- Reta Tangente -->
+                <line x1="60" y1="270" x2="320" y2="100" stroke="#27ae60" stroke-width="3"/>
+
+                <circle cx="180" cy="185" r="6" fill="#2c3e50"/>
+                <text x="165" y="170" font-size="12" fill="#2c3e50" font-family="sans-serif" font-weight="bold">P(a, f(a))</text>
+                <text x="177" y="295" font-size="12" fill="#2c3e50" font-family="sans-serif">a</text>
+                <text x="250" y="115" font-size="13" fill="#27ae60" font-family="sans-serif" font-weight="bold">Reta Tangente (m = f'(a))</text>
+            </svg>
+            <figcaption>Figura 2: A reta tangente toca o gráfico localmente no ponto $P$, tendo exatamente o mesmo coeficiente angular $f'(a)$.</figcaption>
+        </figure>
+    </div>
+
+    <div class="passo-teoria">
+        <h4>3. Reta Normal</h4>
+        <p>A **reta normal** ao gráfico no ponto $(a, f(a))$ é a reta perpendicular à reta tangente nesse mesmo ponto. Como duas retas perpendiculares com inclinações $m_1$ e $m_2$ satisfazem $m_1 \cdot m_2 = -1$, a inclinação da reta normal é $m_{normal} = -\dfrac{1}{f'(a)}$ (desde que $f'(a) \neq 0$).</p>
+        <p>Sua equação é dada por: $$y - f(a) = -\frac{1}{f'(a)}(x - a)$$</p>
+    </div>
+</section>
+
+<section class="aplicacoes-reais" id="aplicacoes">
+    <h3>💡 Matemática em Ação</h3>
+    <div class="cards-aplicacao">
+        <div class="card">
+            <h4>🚗 Velocidade Instantânea</h4>
+            <p>Se $s(t)$ representa a posição de um carro em função do tempo, a derivada $s'(t)$ é a inclinação da curva no gráfico Posição x Tempo. Isso fornece a velocidade exata no relógio naquele exato instante.</p>
+        </div>
+        <div class="card" style="border-left-color: #2ecc71;">
+            <h4>📈 Design de Rampas e Montanhas-Russas</h4>
+            <p>Na engenharia civil, para garantir transições suaves sem solavancos entre seções curvas e planas de vias ou pistas, os projetistas exigem que as retas tangentes das seções se igualem nos pontos de junção.</p>
+        </div>
+    </div>
+</section>
+
+<section class="questoes-resolvidas" id="resolvidas">
+    <h3>✅ 5 Questões Resolvidas (R 1 a 5)</h3>
+
+    <article class="questao">
+        <h4>R 1: Reta Tangente a uma Parábola</h4>
+        <p><strong>Enunciado:</strong> Determine a equação da reta tangente ao gráfico de $f(x) = x^2$ no ponto $x = 2$.</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong><br>
+            1. Encontramos o ponto de tangência: $f(2) = 2^2 = 4$. O ponto é $(2, 4)$.<br>
+            2. Calculamos a derivada de $f(x)$: $f'(x) = 2x$.<br>
+            3. A inclinação da reta tangente é $m = f'(2) = 2(2) = 4$.<br>
+            4. Aplicamos a fórmula ponto-inclinação $y - f(a) = m(x - a)$:<br>
+               $$y - 4 = 4(x - 2) \implies y - 4 = 4x - 8 \implies \mathbf{y = 4x - 4}$$</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>R 2: Inclinação Horizontal (Pontos Críticos)</h4>
+        <p><strong>Enunciado:</strong> Em quais pontos o gráfico de $f(x) = x^3 - 3x$ possui tangente horizontal?</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong><br>
+            1. Uma reta horizontal possui inclinação $m = 0$. Portanto, precisamos resolver $f'(x) = 0$.<br>
+            2. Calculando a derivada: $f'(x) = 3x^2 - 3$.<br>
+            3. Igualando a zero: $3x^2 - 3 = 0 \implies 3x^2 = 3 \implies x^2 = 1 \implies x = \pm 1$.<br>
+            4. Para $x = 1$: $f(1) = 1^3 - 3(1) = -2 \implies \mathbf{(1, -2)}$.<br>
+            5. Para $x = -1$: $f(-1) = (-1)^3 - 3(-1) = 2 \implies \mathbf{(-1, 2)}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>R 3: Reta Normal</h4>
+        <p><strong>Enunciado:</strong> Encontre a equação da reta normal ao gráfico de $f(x) = \sqrt{x}$ no ponto $x = 4$.</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong><br>
+            1. Ponto de tangência: $f(4) = \sqrt{4} = 2$. O ponto é $(4, 2)$.<br>
+            2. Derivada de $f(x)$: $f'(x) = \dfrac{1}{2\sqrt{x}}$.<br>
+            3. Inclinação da tangente: $m_{tang} = f'(4) = \dfrac{1}{2\sqrt{4}} = \dfrac{1}{4}$.<br>
+            4. Inclinação da normal: $m_{norm} = -\dfrac{1}{m_{tang}} = -4$.<br>
+            5. Equação da reta normal:<br>
+               $$y - 2 = -4(x - 4) \implies y - 2 = -4x + 16 \implies \mathbf{y = -4x + 18}$$</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>R 4: Interpretação Geométrica com Derivada Negativa</h4>
+        <p><strong>Enunciado:</strong> Qual é o significado geométrico de $f'(3) = -2$ para uma função $f(x)$?</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong><br>
+            1. O valor da derivada $f'(3) = -2$ indica que a reta tangente ao gráfico em $x = 3$ tem coeficiente angular negativo.<br>
+            2. Isso significa que a reta forma um ângulo obtuso com o eixo $x$ positivo e está "inclinada para baixo".<br>
+            3. Geometricamente, a função é localmente **decrescente** no ponto $x = 3$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>R 5: Tangentes Paralelas a uma Reta Dada</h4>
+        <p><strong>Enunciado:</strong> Determine a equação da reta tangente à curva $y = x^2 - 4x + 5$ que seja paralela à reta $y = 2x + 1$.</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong><br>
+            1. Retas paralelas possuem a mesma inclinação. A reta dada $y = 2x + 1$ tem $m = 2$.<br>
+            2. Queremos $f'(x) = 2$. Derivando $f(x) = x^2 - 4x + 5$, temos $f'(x) = 2x - 4$.<br>
+            3. Igualando: $2x - 4 = 2 \implies 2x = 6 \implies x = 3$.<br>
+            4. Ponto na curva: $y = f(3) = 3^2 - 4(3) + 5 = 9 - 12 + 5 = 2$. Ponto: $(3, 2)$.<br>
+            5. Equação da tangente com $m = 2$: $y - 2 = 2(x - 3) \implies \mathbf{y = 2x - 4}$.</p>
+        </div>
+    </article>
+</section>
+
+<section class="questoes-propostas" id="propostas">
+    <h3>✍️ 10 Questões Propostas (P 6 a 15)</h3>
+
+    <article class="questao">
+        <h4>P 6: Inclinação em Ponto Específico</h4>
+        <p><strong>Enunciado:</strong> Qual é a inclinação da reta tangente ao gráfico de $f(x) = 3x^2 - 5x + 2$ no ponto de abscissa $x = 1$?</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong><br>
+            1. Calculamos a derivada geral: $f'(x) = 6x - 5$.<br>
+            2. Avaliamos em $x = 1$: $f'(1) = 6(1) - 5 = 1$.<br>
+            3. A inclinação da reta tangente é $\mathbf{m = 1}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 7: Equação Completa da Tangente</h4>
+        <p><strong>Enunciado:</strong> Determine a equação da reta tangente à curva $f(x) = x^3$ em $x = -1$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong><br>
+            1. Calculando $f(-1) = (-1)^3 = -1$. Ponto: $(-1, -1)$.<br>
+            2. Derivada: $f'(x) = 3x^2$.<br>
+            3. Inclinação: $m = f'(-1) = 3(-1)^2 = 3$.<br>
+            4. Equação: $y - (-1) = 3(x - (-1)) \implies y + 1 = 3x + 3 \implies \mathbf{y = 3x + 2}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 8: Tangente Horizontal em Função Cúbica</h4>
+        <p><strong>Enunciado:</strong> Determine os valores de $x$ nos quais a curva $f(x) = 2x^3 - 9x^2 + 12x$ possui tangente horizontal.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong><br>
+            1. Tangente horizontal implica $f'(x) = 0$.<br>
+            2. Derivada: $f'(x) = 6x^2 - 18x + 12$.<br>
+            3. Igualando a zero e dividindo por 6: $x^2 - 3x + 2 = 0$.<br>
+            4. Fatorando: $(x-1)(x-2) = 0 \implies \mathbf{x = 1 \text{ e } x = 2}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 9: Reta Normal</h4>
+        <p><strong>Enunciado:</strong> Encontre a equação da reta normal à curva $y = x^2 + 1$ no ponto $(1, 2)$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong><br>
+            1. Derivada: $y' = 2x$. Em $x = 1$, $m_{tang} = 2$.<br>
+            2. Inclinação da reta normal: $m_{norm} = -\dfrac{1}{2}$.<br>
+            3. Equação com ponto $(1, 2)$: $y - 2 = -\dfrac{1}{2}(x - 1) \implies \mathbf{y = -\dfrac{1}{2}x + \dfrac{5}{2}}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 10: Reta Tangente Perpendicular a Outra Reta</h4>
+        <p><strong>Enunciado:</strong> Encontre o ponto sobre a curva $y = x^2$ onde a reta tangente é perpendicular à reta $y = -\dfrac{1}{4}x + 3$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong><br>
+            1. A inclinação da reta dada é $m_1 = -\dfrac{1}{4}$.<br>
+            2. A reta tangente deve ser perpendicular, logo sua inclinação deve ser $m_{tang} = -\dfrac{1}{-1/4} = 4$.<br>
+            3. Como $y' = 2x$, igualamos $2x = 4 \implies x = 2$.<br>
+            4. Para $x = 2$, $y = 2^2 = 4$. O ponto é $\mathbf{(2, 4)}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 11: Ângulo da Reta Tangente</h4>
+        <p><strong>Enunciado:</strong> Qual é o ângulo de inclinação $\theta$ em relação ao eixo $x$ positivo da reta tangente à curva $f(x) = \dfrac{1}{3}x^3$ no ponto $x = 1$?</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong><br>
+            1. $f'(x) = x^2 \implies m = f'(1) = 1^2 = 1$.<br>
+            2. Como $m = \tan(\theta)$, temos $\tan(\theta) = 1$.<br>
+            3. Logo, o ângulo é $\theta = \arctan(1) = \mathbf{45^\circ \text{ (ou } \pi/4 \text{ rad)}}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 12: Função Hipérbole e Tangente</h4>
+        <p><strong>Enunciado:</strong> Determine a equação da reta tangente a $f(x) = \dfrac{1}{x}$ no ponto $x = 2$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong><br>
+            1. Ponto: $f(2) = 1/2 \implies (2, 1/2)$.<br>
+            2. Derivada: $f'(x) = -\dfrac{1}{x^2} \implies m = f'(2) = -\dfrac{1}{4}$.<br>
+            3. Equação: $y - \dfrac{1}{2} = -\dfrac{1}{4}(x - 2) \implies y - \dfrac{1}{2} = -\dfrac{1}{4}x + \dfrac{1}{2} \implies \mathbf{y = -\dfrac{1}{4}x + 1}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 13: Interseção da Tangente com os Eixos</h4>
+        <p><strong>Enunciado:</strong> A reta tangente à curva $y = x^2 - 2x$ em $x = 3$ intercepta o eixo $y$ em qual ponto?</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong><br>
+            1. Ponto: $y(3) = 3^2 - 2(3) = 3 \implies (3, 3)$.<br>
+            2. Derivada: $y' = 2x - 2 \implies m = y'(3) = 2(3) - 2 = 4$.<br>
+            3. Equação da tangente: $y - 3 = 4(x - 3) \implies y = 4x - 9$.<br>
+            4. Interseção com o eixo $y$ ($x=0$): $y = 4(0) - 9 = -9$. Ponto: $\mathbf{(0, -9)}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 14: Derivabilidade e Cúspide</h4>
+        <p><strong>Enunciado:</strong> Por que a função $f(x) = |x|$ não possui reta tangente bem definida no ponto $x = 0$?</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong><br>
+            1. O limite lateral pela direita dá inclinação $+1$: $\displaystyle\lim_{h \to 0^+} \frac{|0+h| - 0}{h} = 1$.<br>
+            2. O limite lateral pela esquerda dá inclinação $-1$: $\displaystyle\lim_{h \to 0^-} \frac{|0+h| - 0}{h} = -1$.<br>
+            3. Como os limites laterais diferem, $f'(0)$ não existe (há um "bico" no gráfico). Logo, não há tangente única em $(0,0)$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 15: Aplicação Geométrica Genérica</h4>
+        <p><strong>Enunciado:</strong> Mostre que para a parábola $y = ax^2$, a reta tangente no ponto de abscissa $x_0$ intercepta o eixo $x$ exatamente na metade da distância entre a origem e $x_0$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong><br>
+            1. Ponto: $(x_0, ax_0^2)$. Derivada: $y' = 2ax \implies m = 2ax_0$.<br>
+            2. Reta tangente: $y - ax_0^2 = 2ax_0(x - x_0)$.<br>
+            3. Interseção com eixo $x$ ($y=0$): $-ax_0^2 = 2ax_0(x - x_0) \implies -x_0 = 2(x - x_0) \implies -x_0 = 2x - 2x_0 \implies 2x = x_0 \implies \mathbf{x = \dfrac{x_0}{2}}$.</p>
+        </div>
+    </article>
+</section>
+
+<section class="TESTE" id="testes">
+    <h3>🎓 TESTES (T 16 a 20)</h3>
+
+    <div class="card" style="text-align:center; padding:60px 20px; background:#f8f9fa; border:2px dashed #3498db; border-radius:12px; margin-top:20px;">
+        <h2 style="color:#3498db; font-size:2.5rem; margin-bottom:15px;">
+            🚧 EM BREVE!
+        </h2>
+
+        <p style="font-size:1.2rem; color:#555;">
+            Questões de vestibulares (ENADE, concursos, etc) sobre Interpretação Geométrica da Derivada serão disponibilizadas nesta seção em breve.
+        </p>
+    </div>
+</section>
+
+</div>
+</main>
+
+<aside class="menu-lateral">
+    <iframe src="../menu_calculo.html" style="width:100%; border:none; height:600px;"></iframe>
+</aside>
+
+</div>
+
+<script>
+function toggleGabarito(botao) {
+    const gabarito = botao.nextElementSibling;
+    if (gabarito.style.display === "none" || gabarito.style.display === "") {
+        gabarito.style.display = "block";
+        botao.textContent = "Esconder Gabarito e Resolução";
+        botao.style.backgroundColor = "#2c3e50";
+    } else {
+        gabarito.style.display = "none";
+        botao.textContent = "Ver Gabarito e Resolução";
+        botao.style.backgroundColor = "#3498db";
+    }
+}
+
+function toggleMenu() {
+    const menuGlobal = document.getElementById("menu-principal");
+    if (menuGlobal) menuGlobal.classList.toggle("ativo");
+}
+
+let slideAtual = 0;
+let slides = [];
+
+function prepararSlides() {
+    const seletores = '.container-resumo, .passo-teoria, .aplicacoes-reais, .questao';
+    slides = document.querySelectorAll(seletores);
+}
+
+function toggleSlides() {
+    prepararSlides();
+    const body = document.body;
+    if (!body.classList.contains('modo-slides')) {
+        body.classList.add('modo-slides');
+        slideAtual = 0;
+        mostrarSlide(slideAtual);
+    } else {
+        body.classList.remove('modo-slides');
+        window.location.reload(); 
+    }
+}
+
+function mostrarSlide(n) {
+    slides.forEach(s => {
+        s.classList.remove('slide-ativo');
+        s.style.display = 'none';
+    });
+    const slide = slides[n];
+    slide.classList.add('slide-ativo');
+    slide.style.display = 'flex'; 
+
+    if (slide.classList.contains('questao') && !slide.querySelector('.btn-gabarito')) {
+        const resolucoes = slide.querySelectorAll('.resolucao-bloco');
+        resolucoes.forEach(r => r.style.display = 'block');
+    } else {
+        const gabaritos = slide.querySelectorAll('.gabarito-resolucao');
+        gabaritos.forEach(g => g.style.display = 'none');
+        const botoes = slide.querySelectorAll('.btn-gabarito');
+        botoes.forEach(b => {
+            b.textContent = "Ver Gabarito e Resolução";
+            b.style.backgroundColor = "#3498db";
+        });
+    }
+
+    const pHeader = document.querySelector('header p').innerText;
+    const partes = pHeader.split('|');
+    if(partes.length > 1) {
+        document.getElementById('slide-info-serie').innerText = partes[0].trim();
+        document.getElementById('slide-info-aula').innerText = partes[1].trim();
+    }
+    document.getElementById('contador-slide').innerText = (n + 1) + " / " + slides.length;
+    if (window.MathJax) MathJax.typesetPromise();
+}
+
+function mudarSlide(direcao) {
+    slideAtual += direcao;
+    if (slideAtual >= slides.length) slideAtual = 0;
+    if (slideAtual < 0) slideAtual = slides.length - 1;
+    mostrarSlide(slideAtual);
+}
+
+document.addEventListener('keydown', function(event) {
+    if (document.body.classList.contains('modo-slides')) {
+        switch(event.key) {
+            case 'ArrowRight': 
+            case 'PageDown':   
+            case 'Enter':      
+            case ' ':          
+                mudarSlide(1);
+                break;
+                
+            case 'ArrowLeft':  
+            case 'PageUp':     
+                mudarSlide(-1);
+                break;
+
+            case 'Escape':     
+                toggleSlides();
+                break;
+        }
+    }
+});
+</script>
+
+<style>
+    body.modo-slides { overflow: hidden; background-color: #1a1a1a; }
+    body.modo-slides .menu-lateral, body.modo-slides header, body.modo-slides .menu-toggle, body.modo-slides #btn-slides { display: none !important; }
+    .slide-ativo {
+        display: flex !important; flex-direction: column; align-items: center; justify-content: flex-start;
+        position: fixed; top: 0; left: 0; width: 100vw; height: calc(100vh - 70px);
+        background: #ffffff; padding: 40px; z-index: 999; overflow-y: auto !important; 
+        box-sizing: border-box; text-align: center;
+    }
+    .controles-slides {
+        position: fixed; bottom: 0; left: 0; width: 100%; height: 70px;
+        background: #2c3e50; color: white; display: none; 
+        justify-content: space-between; align-items: center; padding: 0 20px; z-index: 1001; box-sizing: border-box;
+    }
+    body.modo-slides .controles-slides { display: flex; }
+    .info-lateral { flex: 1; font-family: 'Oswald', sans-serif; font-size: 0.9rem; color: #bdc3c7; }
+    .botoes-centrais { display: flex; align-items: center; gap: 15px; justify-content: center; flex: 2; }
+    .btn-nav { padding: 10px 20px; background: #3498db; color: white; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; }
+    #contador-slide { font-family: 'Oswald', sans-serif; min-width: 60px; text-align: center; }
+</style>
+
+<div class="controles-slides">
+    <div id="slide-info-serie" class="info-lateral"></div>
+    <div class="botoes-centrais">
+        <button class="btn-nav" onclick="mudarSlide(-1)">⬅ Anterior</button>
+        <span id="contador-slide"></span>
+        <button class="btn-nav" onclick="mudarSlide(1)">Próximo ➡</button>
+        <button class="btn-nav" onclick="toggleSlides()" style="background:#e74c3c;">Sair</button>
+    </div>
+    <div id="slide-info-aula" class="info-lateral" style="text-align: right;"></div>
+</div>
+</body>
+</html>
