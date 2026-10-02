@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>2º Ano: Aula 41 - Espaço: Ponto, Reta, Plano e Posição Relativa entre Retas</title>
+    <title>2º Ano: Aula 41 - Espaço: Retas, Planos, Projeções e Distâncias</title>
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../estilo.css">
     <script>
@@ -33,7 +33,7 @@
 </ul></nav>
 <header id="topo">
     <h1>MATEMÁTICA EM</h1>
-    <p>2º Ano | Aula 41: Espaço: Ponto, Reta, Plano e Posição Relativa entre Retas</p>
+    <p>2º Ano | Aula 41: Espaço: Retas, Planos, Projeções e Distâncias</p>
     <button id="btn-slides" onclick="toggleSlides()">📺 Iniciar Modo Slides</button>
 </header>
 <div class="container"><main class="conteudo-principal"><div class="secao-aula">
@@ -41,62 +41,30 @@
 <div class="container-resumo" id="resumo">
     <h3>📚 Resumo</h3>
     <section class="resumo-conteudo">
-        <p><strong>Ponto</strong>, <strong>reta</strong> e <strong>plano</strong> são noções primitivas da Geometria Espacial. Dois pontos distintos determinam uma única reta; três pontos <strong>não colineares</strong> determinam um único plano.</p>
-        <p>Duas retas no espaço podem ser:</p>
-        <ul>
-            <li><strong>Coplanares:</strong> <strong>concorrentes</strong> (um ponto comum), <strong>paralelas distintas</strong> (nenhum ponto comum) ou <strong>coincidentes</strong>;</li>
-            <li><strong>Não coplanares:</strong> <strong>reversas</strong> (não se cortam e não são paralelas).</li>
-        </ul>
-        <p>Concorrentes a $90^\circ$ são <strong>perpendiculares</strong>; reversas a $90^\circ$ são <strong>ortogonais</strong>.</p>
+        <p><strong>Ponto</strong>, <strong>reta</strong> e <strong>plano</strong> são noções primitivas. Duas retas podem ser <strong>concorrentes</strong>, <strong>paralelas</strong> (ou coincidentes) ou <strong>reversas</strong>; uma reta pode estar <strong>contida</strong>, ser <strong>paralela</strong> ou <strong>secante</strong> a um plano; dois planos podem ser <strong>paralelos</strong>, <strong>coincidentes</strong> ou <strong>secantes</strong>.</p>
+        <p>A <strong>projeção ortogonal</strong> de um segmento que forma ângulo $\theta$ com o plano mede $d' = d\cos\theta$, e toda <strong>distância</strong> no espaço é medida pelo segmento <strong>perpendicular</strong> que liga os dois objetos.</p>
     </section>
 </div>
 
 <section class="conteudo-teorico-completo" id="teoria">
     <div class="passo-teoria">
-        <h3>📖 Espaço: Ponto, Reta e Plano</h3>
-        <h4>1. Noções Primitivas</h4>
-        <p>Na Geometria Espacial, <strong>ponto</strong>, <strong>reta</strong> e <strong>plano</strong> são aceitos sem definição. Notação usual: pontos com letras maiúsculas ($A$, $B$, $P$), retas com minúsculas ($r$, $s$, $t$) e planos com letras gregas ($\alpha$, $\beta$, $\pi$). O <strong>espaço</strong> é o conjunto de todos os pontos.</p>
+        <h3>📖 Espaço: Retas, Planos, Projeções e Distâncias</h3>
+        <h4>1. Espaço, Plano, Reta e Ponto</h4>
+        <p><strong>Ponto</strong> ($A$), <strong>reta</strong> ($r$) e <strong>plano</strong> ($\alpha$) são noções primitivas, aceitas sem definição; o <strong>espaço</strong> é o conjunto de todos os pontos. Pontos <strong>colineares</strong> estão numa mesma reta; pontos ou retas <strong>coplanares</strong>, num mesmo plano.</p>
         <ul>
-            <li>Pontos <strong>colineares</strong> pertencem a uma mesma reta.</li>
-            <li>Pontos ou retas <strong>coplanares</strong> pertencem a um mesmo plano.</li>
+            <li>Dois pontos distintos determinam uma <strong>única</strong> reta.</li>
+            <li>Se dois pontos de uma reta estão num plano, a reta está <strong>contida</strong> nele.</li>
+            <li><strong>Postulado de Euclides:</strong> por um ponto fora de uma reta passa uma única reta paralela a ela.</li>
         </ul>
     </div>
 
     <div class="passo-teoria">
-        <h4>2. Postulados</h4>
+        <h4>2. Posições Relativas entre Duas Retas</h4>
         <ul>
-            <li><strong>Existência:</strong> numa reta e fora dela há infinitos pontos; num plano e fora dele há infinitos pontos.</li>
-            <li><strong>Determinação da reta:</strong> dois pontos distintos determinam uma <strong>única</strong> reta.</li>
-            <li><strong>Determinação do plano:</strong> três pontos não colineares determinam um <strong>único</strong> plano.</li>
-            <li><strong>Inclusão:</strong> se dois pontos distintos de uma reta pertencem a um plano, a reta está contida nesse plano.</li>
-            <li><strong>Postulado de Euclides:</strong> por um ponto fora de uma reta passa uma <strong>única</strong> reta paralela a ela.</li>
+            <li><strong>Concorrentes:</strong> coplanares com um único ponto comum ($90^\circ$: <strong>perpendiculares</strong>). Ex.: $AB$ e $BC$.</li>
+            <li><strong>Paralelas:</strong> coplanares sem ponto comum (distintas) ou com todos os pontos comuns (coincidentes). Ex.: $AB$ e $EF$.</li>
+            <li><strong>Reversas:</strong> não coplanares; não se cortam e não são paralelas ($90^\circ$: <strong>ortogonais</strong>). Ex.: $AB$ e $DH$.</li>
         </ul>
-    </div>
-
-    <div class="passo-teoria">
-        <h4>3. Determinação de Planos</h4>
-        <p>Um plano fica determinado por:</p>
-        <ul>
-            <li>três pontos <strong>não colineares</strong>;</li>
-            <li>uma reta e um ponto <strong>fora</strong> dela;</li>
-            <li>duas retas <strong>concorrentes</strong>;</li>
-            <li>duas retas <strong>paralelas distintas</strong>.</li>
-        </ul>
-        <p><strong>Contagem:</strong> $n$ pontos, três a três não colineares, determinam $C_{n,2}$ retas; se, além disso, quatro a quatro não forem coplanares, determinam $C_{n,3}$ planos.</p>
-    </div>
-
-    <div class="passo-teoria">
-        <h4>4. Posições Relativas entre Duas Retas</h4>
-        <table style="width:100%; border-collapse: collapse; text-align:center; margin: 10px 0;" border="1" cellpadding="6">
-            <thead style="background:#2c3e50; color:#fff;"><tr><th>Posição</th><th>Coplanares?</th><th>Pontos comuns</th><th>Exemplo no cubo</th></tr></thead>
-            <tbody>
-                <tr><td>Concorrentes</td><td>Sim</td><td>1</td><td>$AB$ e $BC$</td></tr>
-                <tr><td>Paralelas distintas</td><td>Sim</td><td>0</td><td>$AB$ e $EF$</td></tr>
-                <tr><td>Coincidentes</td><td>Sim</td><td>infinitos</td><td>$AB$ e $BA$</td></tr>
-                <tr><td>Reversas</td><td>Não</td><td>0</td><td>$AB$ e $DH$</td></tr>
-            </tbody>
-        </table>
-        <p>O <strong>ângulo entre duas reversas</strong> $r$ e $s$ é o ângulo entre $s$ e uma paralela a $r$ traçada por um ponto de $s$. Se esse ângulo é reto, as reversas são <strong>ortogonais</strong>; concorrentes a $90^\circ$ são <strong>perpendiculares</strong>.</p>
         <figure class="figura-aula figura-grande">
             <svg viewBox="0 0 300 260" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Cubo ABCDEFGH" style="width:100%; max-width:300px; display:block; margin:0 auto;">
   <line x1="40" y1="230" x2="192" y2="230" stroke="#2c3e50" stroke-width="2.5"/>
@@ -120,7 +88,80 @@
   <text x="253" y="19" font-family="Oswald, sans-serif" font-size="16" fill="#2c3e50">G</text>
   <text x="77" y="19" font-family="Oswald, sans-serif" font-size="16" fill="#2c3e50">H</text>
 </svg>
-            <figcaption>Figura 1: Cubo $ABCDEFGH$ (base $ABCD$; arestas tracejadas estão ocultas). $AB$ e $DH$ são reversas ortogonais.</figcaption>
+            <figcaption>Figura 1: Cubo $ABCDEFGH$ (base $ABCD$; arestas tracejadas estão ocultas), usado nos exemplos.</figcaption>
+        </figure>
+    </div>
+
+    <div class="passo-teoria">
+        <h4>3. Determinação do Plano</h4>
+        <p>Um plano fica determinado por: três pontos <strong>não colineares</strong>; uma reta e um ponto <strong>fora</strong> dela; duas retas <strong>concorrentes</strong>; duas retas <strong>paralelas distintas</strong>.</p>
+        <p><strong>Contagem:</strong> $n$ pontos, três a três não colineares, determinam $C_{n,2}$ retas; se também forem quatro a quatro não coplanares, determinam $C_{n,3}$ planos.</p>
+    </div>
+
+    <div class="passo-teoria">
+        <h4>4. Posições Relativas entre Reta e Plano</h4>
+        <ul>
+            <li><strong>Contida:</strong> todos os pontos da reta estão no plano. Ex.: $AC \subset ABCD$.</li>
+            <li><strong>Paralela:</strong> nenhum ponto comum. Ex.: $AB \parallel$ plano $EFGH$.</li>
+            <li><strong>Secante (concorrente):</strong> um único ponto comum. Se a reta é perpendicular a <strong>duas retas concorrentes</strong> do plano, ela é <strong>perpendicular ao plano</strong> e forma $90^\circ$ com todas as retas dele. Ex.: $AE \perp ABCD$.</li>
+        </ul>
+    </div>
+
+    <div class="passo-teoria">
+        <h4>5. Projeções Ortogonais</h4>
+        <p>A projeção ortogonal de um ponto $P$ sobre $\alpha$ é o pé $P'$ da perpendicular a $\alpha$ por $P$; a projeção de uma figura é o conjunto das projeções de seus pontos.</p>
+        <ul>
+            <li>Segmento que forma ângulo $\theta$ com o plano: $A'B' = AB \cdot \cos\theta$ (se for perpendicular ao plano, projeta-se num <strong>ponto</strong>).</li>
+            <li>Com diferença de alturas $\Delta h$: $AB^2 = (A'B')^2 + (\Delta h)^2$.</li>
+            <li>Figura plana de área $A$ cujo plano forma ângulo $\theta$ com $\alpha$: $A' = A \cdot \cos\theta$.</li>
+        </ul>
+        <figure class="figura-aula figura-grande">
+            <svg viewBox="0 0 360 230" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Segmento AB e sua projeção ortogonal A'B' sobre o plano alfa" style="width:100%; max-width:380px; display:block; margin:0 auto;">
+  <polygon points="20,200 260,200 330,140 90,140" fill="#eaf2fb" stroke="#2c3e50" stroke-width="2"/>
+  <text x="290" y="190" font-family="Oswald, sans-serif" font-size="16" fill="#2c3e50">α</text>
+  <line x1="110" y1="175" x2="110" y2="105" stroke="#7f8c8d" stroke-width="1.5" stroke-dasharray="4,3"/>
+  <line x1="240" y1="165" x2="240" y2="40" stroke="#7f8c8d" stroke-width="1.5" stroke-dasharray="4,3"/>
+  <line x1="110" y1="105" x2="240" y2="40" stroke="#3498db" stroke-width="3.5"/>
+  <line x1="110" y1="175" x2="240" y2="165" stroke="#e74c3c" stroke-width="3.5"/>
+  <line x1="110" y1="105" x2="240" y2="95" stroke="#95a5a6" stroke-width="1.2"/>
+  <g fill="#2c3e50"><circle cx="110" cy="105" r="4"/><circle cx="240" cy="40" r="4"/><circle cx="110" cy="175" r="4"/><circle cx="240" cy="165" r="4"/></g>
+  <g font-family="Oswald, sans-serif" font-size="15" fill="#2c3e50"><text x="90" y="104">A</text><text x="248" y="40">B</text><text x="86" y="190">A'</text><text x="246" y="184">B'</text><text x="150" y="98" fill="#7f8c8d">θ</text></g>
+</svg>
+            <figcaption>Figura 2: O segmento $AB$ e sua projeção ortogonal $A'B'$ sobre o plano $\alpha$.</figcaption>
+        </figure>
+    </div>
+
+    <div class="passo-teoria">
+        <h4>6. Posições Relativas entre Dois Planos</h4>
+        <ul>
+            <li><strong>Paralelos:</strong> nenhum ponto comum. Ex.: $ABCD$ e $EFGH$.</li>
+            <li><strong>Coincidentes:</strong> todos os pontos comuns.</li>
+            <li><strong>Secantes:</strong> cortam-se numa <strong>reta</strong>. São <strong>perpendiculares</strong> quando um deles contém uma reta perpendicular ao outro. Ex.: $ABCD$ e $BCGF$ (interseção $BC$).</li>
+        </ul>
+        <p>Se dois planos são paralelos, toda reta de um deles é paralela ao outro.</p>
+    </div>
+
+    <div class="passo-teoria">
+        <h4>7. Distâncias no Espaço</h4>
+        <p>A distância entre dois objetos é o <strong>menor</strong> segmento que os liga, que é sempre <strong>perpendicular</strong> a eles.</p>
+        <ul>
+            <li><strong>Ponto–ponto:</strong> comprimento do segmento. No cubo de aresta $a$: diagonal da face $a\sqrt{2}$; diagonal do cubo $a\sqrt{3}$.</li>
+            <li><strong>Ponto–reta</strong> e <strong>ponto–plano:</strong> medida da perpendicular baixada do ponto ($PP'$ na figura).</li>
+            <li><strong>Retas paralelas</strong>, <strong>reta paralela a plano</strong> e <strong>planos paralelos:</strong> distância de um ponto qualquer de um até o outro.</li>
+            <li><strong>Retas reversas:</strong> medida da <strong>perpendicular comum</strong>. Ex.: no cubo, $d(AB, CG) = BC$.</li>
+        </ul>
+        <figure class="figura-aula figura-grande">
+            <svg viewBox="0 0 340 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Distância do ponto P ao plano alfa" style="width:100%; max-width:360px; display:block; margin:0 auto;">
+  <polygon points="20,190 250,190 320,130 90,130" fill="#eaf2fb" stroke="#2c3e50" stroke-width="2"/>
+  <text x="280" y="180" font-family="Oswald, sans-serif" font-size="16" fill="#2c3e50">α</text>
+  <line x1="170" y1="160" x2="170" y2="40" stroke="#e74c3c" stroke-width="3.5"/>
+  <polyline points="170,148 182,148 182,160" fill="none" stroke="#2c3e50" stroke-width="1.5"/>
+  <line x1="170" y1="40" x2="100" y2="170" stroke="#7f8c8d" stroke-width="1.5" stroke-dasharray="5,4"/>
+  <line x1="100" y1="170" x2="170" y2="160" stroke="#7f8c8d" stroke-width="1.5" stroke-dasharray="5,4"/>
+  <g fill="#2c3e50"><circle cx="170" cy="40" r="4"/><circle cx="170" cy="160" r="4"/><circle cx="100" cy="170" r="4"/></g>
+  <g font-family="Oswald, sans-serif" font-size="15" fill="#2c3e50"><text x="178" y="40">P</text><text x="176" y="176">P'</text><text x="84" y="186">A</text><text x="150" y="105" fill="#e74c3c">d</text></g>
+</svg>
+            <figcaption>Figura 3: A distância de $P$ ao plano $\alpha$ é $d = PP'$, menor que qualquer outro segmento $PA$.</figcaption>
         </figure>
     </div>
 </section>
@@ -129,41 +170,41 @@
     <h3>💡 Matemática em Ação</h3>
     <div class="cards-aplicacao">
         <div class="card">
-            <h4>🪑 A Mesa de Três Pés</h4>
-            <p>Uma mesa de três pés nunca balança: as pontas dos três pés são pontos não colineares e determinam um único plano. Com quatro pés, se o chão for irregular, o quarto pé pode ficar fora desse plano.</p>
+            <h4>🪑 Mesa de Três Pés</h4>
+            <p>As pontas de três pés são pontos não colineares e determinam um único plano: por isso uma mesa de três pés nunca balança, mesmo num chão irregular.</p>
         </div>
         <div class="card" style="border-left-color: #2ecc71;">
-            <h4>🛣️ Viadutos e Retas Reversas</h4>
-            <p>Uma rua sob um viaduto e a pista do viaduto, vistas como retas, não se cruzam e não são paralelas: são retas reversas. É por isso que os veículos de uma não colidem com os da outra.</p>
+            <h4>🏗️ Prumo e Altura</h4>
+            <p>O pedreiro usa o fio de prumo para obter a perpendicular ao chão: a altura de uma laje é a distância entre dois planos paralelos, medida sempre na vertical.</p>
         </div>
     </div>
 </section>
 <section class="questoes-resolvidas" id="resolvidas">
     <h3>✅ 5 Questões Resolvidas (R 1 a 5)</h3>
     <article class="questao">
-        <h4>R 1: Retas Determinadas por Pontos</h4>
-        <p><strong>Enunciado:</strong> Quantas retas distintas ficam determinadas por $5$ pontos, dos quais três quaisquer nunca são colineares?</p>
-        <div class="resolucao-bloco"><p><strong>Resolução:</strong><br>Pelo postulado da determinação, dois pontos distintos determinam uma única reta.<br>Como três pontos nunca estão alinhados, cada par gera uma reta diferente: $C_{5,2} = \dfrac{5 \cdot 4}{2} = \mathbf{10}$ retas.</p></div>
+        <h4>R 1: Retas e Planos por Pontos</h4>
+        <p><strong>Enunciado:</strong> Quantas retas e quantos planos ficam determinados por $5$ pontos, dos quais três nunca são colineares e quatro nunca são coplanares?</p>
+        <div class="resolucao-bloco"><p><strong>Resolução:</strong><br>Dois pontos distintos determinam uma reta: $C_{5,2} = 10$ retas.<br>Três pontos não colineares determinam um plano: $C_{5,3} = 10$ planos.<br>Resposta: $\mathbf{10}$ retas e $\mathbf{10}$ planos.</p></div>
     </article>
     <article class="questao">
-        <h4>R 2: Retas no Cubo</h4>
+        <h4>R 2: Duas Retas</h4>
         <p><strong>Enunciado:</strong> No cubo $ABCDEFGH$ (base $ABCD$; $E$, $F$, $G$, $H$ acima de $A$, $B$, $C$, $D$), classifique: (a) $AB$ e $EF$; (b) $AE$ e $EH$; (c) $AB$ e $DH$.</p>
-        <div class="resolucao-bloco"><p><strong>Resolução:</strong><br>(a) Lados opostos da face $ABFE$: <strong>paralelas</strong> distintas.<br>(b) Têm o ponto $E$ em comum e formam $90^\circ$: <strong>concorrentes perpendiculares</strong>.<br>(c) Sem ponto comum e não paralelas: <strong>reversas</strong>; como $DH \parallel AE$ e $AE \perp AB$, são reversas <strong>ortogonais</strong>.</p></div>
+        <div class="resolucao-bloco"><p><strong>Resolução:</strong><br>(a) <strong>Paralelas</strong> distintas (lados opostos da face $ABFE$).<br>(b) <strong>Concorrentes perpendiculares</strong> (ponto comum $E$).<br>(c) <strong>Reversas ortogonais</strong>: sem ponto comum, não paralelas, e $DH \parallel AE \perp AB$.</p></div>
     </article>
     <article class="questao">
-        <h4>R 3: Postulados (V ou F)</h4>
-        <p><strong>Enunciado:</strong> Classifique em V ou F: (I) Dois pontos distintos determinam uma única reta. (II) Três pontos distintos sempre determinam um plano. (III) Duas retas paralelas distintas determinam um plano.</p>
-        <div class="resolucao-bloco"><p><strong>Resolução:</strong><br>(I) <strong>V</strong>: é o postulado da determinação da reta.<br>(II) <strong>F</strong>: só se os três pontos forem <strong>não colineares</strong>.<br>(III) <strong>V</strong>: é um dos modos de determinar um plano. Resposta: <strong>V, F, V</strong>.</p></div>
+        <h4>R 3: Reta e Plano; Dois Planos</h4>
+        <p><strong>Enunciado:</strong> No cubo $ABCDEFGH$ (base $ABCD$; $E$, $F$, $G$, $H$ acima de $A$, $B$, $C$, $D$), dê a posição: (a) de $AB$ em relação ao plano $EFGH$; (b) de $AE$ em relação ao plano $ABCD$; (c) dos planos $ABCD$ e $BCGF$.</p>
+        <div class="resolucao-bloco"><p><strong>Resolução:</strong><br>(a) $AB$ não toca o topo: reta <strong>paralela</strong> ao plano.<br>(b) $AE$ fura a base em $A$ formando $90^\circ$ com $AB$ e $AD$: reta <strong>perpendicular</strong> ao plano.<br>(c) Cortam-se na reta $BC$ e $BF \perp ABCD$: planos <strong>secantes perpendiculares</strong>.</p></div>
     </article>
     <article class="questao">
-        <h4>R 4: Diagonal e Aresta</h4>
-        <p><strong>Enunciado:</strong> No mesmo cubo, classifique as retas: (a) $AC$ (diagonal da base) e $BF$; (b) $AC$ e $EG$ (diagonal do topo).</p>
-        <div class="resolucao-bloco"><p><strong>Resolução:</strong><br>(a) $B \notin AC$, então não há ponto comum; também não são paralelas (direções diferentes): <strong>reversas</strong>. Como $BF$ é perpendicular ao plano da base, ela forma $90^\circ$ com toda reta da base: reversas <strong>ortogonais</strong>.<br>(b) $AC$ e $EG$ estão no plano diagonal $ACGE$ e não se cortam: <strong>paralelas</strong>.</p></div>
+        <h4>R 4: Projeção de Segmento</h4>
+        <p><strong>Enunciado:</strong> Um segmento de $10$ cm forma $60^\circ$ com um plano $\alpha$. Calcule sua projeção ortogonal sobre $\alpha$ e a diferença de alturas entre suas extremidades.</p>
+        <div class="resolucao-bloco"><p><strong>Resolução:</strong><br>Projeção: $d' = d \cos 60^\circ = 10 \cdot \frac{1}{2} = \mathbf{5}$ cm.<br>Diferença de alturas: $10 \operatorname{sen} 60^\circ = \mathbf{5\sqrt{3}}$ cm. Confere: $5^2 + (5\sqrt{3})^2 = 100$. ✓</p></div>
     </article>
     <article class="questao">
-        <h4>R 5: Contando Planos</h4>
-        <p><strong>Enunciado:</strong> As retas $r$ e $s$ são paralelas distintas, e o ponto $P$ não pertence ao plano que elas determinam. Quantos planos distintos ficam determinados por esses três elementos, tomados dois a dois?</p>
-        <div class="resolucao-bloco"><p><strong>Resolução:</strong><br>$r$ e $s$ (paralelas distintas) determinam um plano $\alpha$.<br>$r$ e $P$ (reta e ponto fora dela) determinam um plano $\beta$; $s$ e $P$ determinam um plano $\gamma$.<br>Como $P \notin \alpha$, os três planos são distintos: $\mathbf{3}$ planos.</p></div>
+        <h4>R 5: Distâncias no Cubo</h4>
+        <p><strong>Enunciado:</strong> Num cubo $ABCDEFGH$ de aresta $6$ cm, calcule: (a) a distância de $E$ ao plano $ABCD$; (b) a distância de $A$ à reta $CG$; (c) a distância entre $A$ e $G$.</p>
+        <div class="resolucao-bloco"><p><strong>Resolução:</strong><br>(a) $EA \perp ABCD$, então $d = EA = \mathbf{6}$ cm.<br>(b) $AC \perp CG$ (pois $CG \perp ABCD$), então $d = AC = 6\sqrt{2}$ cm $\approx 8{,}5$ cm.<br>(c) Diagonal do cubo: $AG = \sqrt{AC^2 + CG^2} = \sqrt{72 + 36} = \mathbf{6\sqrt{3}}$ cm.</p></div>
     </article>
 </section>
 
@@ -171,105 +212,106 @@
     <h3>✍️ 10 Questões Propostas (P 6 a 15)</h3>
     <article class="questao">
         <h4>P 6: Retas por Pontos</h4>
-        <p><strong>Enunciado:</strong> Quantas retas distintas ficam determinadas por $7$ pontos, dos quais três quaisquer nunca são colineares?</p>
+        <p><strong>Enunciado:</strong> Quantas retas ficam determinadas por $7$ pontos, três a três não colineares?</p>
         <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>Cada par de pontos determina uma reta: $C_{7,2} = \dfrac{7 \cdot 6}{2} = \mathbf{21}$ retas.</p></div>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>$C_{7,2} = \dfrac{7 \cdot 6}{2} = \mathbf{21}$ retas.</p></div>
     </article>
     <article class="questao">
-        <h4>P 7: Retas no Cubo</h4>
-        <p><strong>Enunciado:</strong> No cubo $ABCDEFGH$, classifique: (a) $BC$ e $FG$; (b) $AB$ e $BC$; (c) $AD$ e $CG$.</p>
+        <h4>P 7: Duas Retas</h4>
+        <p><strong>Enunciado:</strong> No cubo $ABCDEFGH$ (base $ABCD$; $E$, $F$, $G$, $H$ acima de $A$, $B$, $C$, $D$), classifique: (a) $BC$ e $FG$; (b) $AB$ e $BC$; (c) $AD$ e $CG$.</p>
         <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>(a) <strong>Paralelas</strong> (lados opostos da face $BCGF$).<br>(b) <strong>Concorrentes perpendiculares</strong> (ponto comum $B$).<br>(c) <strong>Reversas ortogonais</strong> (sem ponto comum, não paralelas e $CG \perp$ base).</p></div>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>(a) <strong>Paralelas</strong>.<br>(b) <strong>Concorrentes perpendiculares</strong>.<br>(c) <strong>Reversas ortogonais</strong>.</p></div>
     </article>
     <article class="questao">
         <h4>P 8: V ou F</h4>
-        <p><strong>Enunciado:</strong> Classifique em V ou F: (I) Duas retas que não têm ponto comum são paralelas. (II) Duas retas reversas nunca são coplanares. (III) Duas retas concorrentes são sempre coplanares.</p>
+        <p><strong>Enunciado:</strong> Classifique: (I) Duas retas sem ponto comum são paralelas. (II) Duas retas reversas não são coplanares. (III) Três pontos distintos sempre determinam um plano.</p>
         <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>(I) <strong>F</strong>: podem ser reversas.<br>(II) <strong>V</strong>: é a definição de retas reversas.<br>(III) <strong>V</strong>: duas retas concorrentes determinam um plano. Resposta: <strong>F, V, V</strong>.</p></div>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>(I) <strong>F</strong>: podem ser reversas.<br>(II) <strong>V</strong>: é a definição.<br>(III) <strong>F</strong>: só se forem não colineares. Resposta: <strong>F, V, F</strong>.</p></div>
     </article>
     <article class="questao">
-        <h4>P 9: Arestas Paralelas</h4>
-        <p><strong>Enunciado:</strong> No cubo $ABCDEFGH$, quantas arestas são paralelas à aresta $AB$ (sem contar a própria $AB$)? Quais são elas?</p>
+        <h4>P 9: Reta e Plano</h4>
+        <p><strong>Enunciado:</strong> No cubo $ABCDEFGH$ (base $ABCD$; $E$, $F$, $G$, $H$ acima de $A$, $B$, $C$, $D$), dê a posição: (a) de $EF$ em relação ao plano $ABCD$; (b) de $CG$ em relação ao plano $ABCD$; (c) de $EG$ em relação ao plano $EFGH$.</p>
         <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>São as arestas com a mesma direção de $AB$: $CD$, $EF$ e $GH$.<br>Resposta: $\mathbf{3}$ arestas.</p></div>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>(a) <strong>Paralela</strong>.<br>(b) <strong>Perpendicular</strong> (secante em $C$).<br>(c) <strong>Contida</strong>.</p></div>
     </article>
     <article class="questao">
-        <h4>P 10: Arestas Reversas</h4>
-        <p><strong>Enunciado:</strong> No cubo $ABCDEFGH$, quantas arestas são reversas à aresta $AB$? Quais são elas?</p>
+        <h4>P 10: Dois Planos</h4>
+        <p><strong>Enunciado:</strong> No cubo $ABCDEFGH$ (base $ABCD$; $E$, $F$, $G$, $H$ acima de $A$, $B$, $C$, $D$), dê a posição: (a) dos planos $ABCD$ e $EFGH$; (b) dos planos $ABFE$ e $ADHE$.</p>
         <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>Das $11$ outras arestas: $3$ são paralelas a $AB$ e $4$ a cortam ($AD$, $AE$, $BC$, $BF$).<br>Sobram $11 - 3 - 4 = \mathbf{4}$ reversas: $CG$, $DH$, $EH$ e $FG$.</p></div>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>(a) Faces opostas: <strong>paralelos</strong>.<br>(b) Cortam-se na reta $AE$ e formam $90^\circ$: <strong>secantes perpendiculares</strong>.</p></div>
     </article>
     <article class="questao">
-        <h4>P 11: Retas Concorrentes</h4>
-        <p><strong>Enunciado:</strong> Duas retas $r$ e $s$ são concorrentes no ponto $P$. Quantos planos contêm, ao mesmo tempo, $r$ e $s$?</p>
+        <h4>P 11: Projeção de Segmento</h4>
+        <p><strong>Enunciado:</strong> Um segmento de $12$ cm forma $30^\circ$ com um plano. Quanto mede sua projeção ortogonal?</p>
         <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>Duas retas concorrentes determinam um <strong>único</strong> plano.<br>Resposta: $\mathbf{1}$ plano.</p></div>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>$d' = 12 \cos 30^\circ = 12 \cdot \dfrac{\sqrt{3}}{2} = \mathbf{6\sqrt{3}}$ cm.</p></div>
     </article>
     <article class="questao">
-        <h4>P 12: Postulado de Euclides</h4>
-        <p><strong>Enunciado:</strong> Dados uma reta $r$ e um ponto $P \notin r$: (a) quantas retas paralelas a $r$ passam por $P$? (b) quantas retas reversas a $r$ passam por $P$?</p>
+        <h4>P 12: Comprimento pela Projeção</h4>
+        <p><strong>Enunciado:</strong> $A$ e $B$ estão do mesmo lado de um plano, a $2$ cm e $8$ cm dele, e a projeção de $AB$ mede $8$ cm. Calcule $AB$.</p>
         <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>(a) Pelo postulado de Euclides, passa <strong>uma única</strong> paralela.<br>(b) Toda reta por $P$ que não está no plano de $r$ e $P$ é reversa a $r$: há <strong>infinitas</strong>.</p></div>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>Diferença de alturas: $6$ cm.<br>$AB = \sqrt{8^2 + 6^2} = \mathbf{10}$ cm.</p></div>
     </article>
     <article class="questao">
-        <h4>P 13: Três Paralelas</h4>
-        <p><strong>Enunciado:</strong> Três retas paralelas distintas não estão num mesmo plano. Quantos planos elas determinam, tomadas duas a duas?</p>
+        <h4>P 13: Área Projetada</h4>
+        <p><strong>Enunciado:</strong> Uma placa quadrada de lado $6$ cm está num plano que forma $60^\circ$ com o plano $\alpha$. Qual é a área da sua projeção ortogonal sobre $\alpha$?</p>
         <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>Cada par de paralelas distintas determina um plano: $C_{3,2} = 3$ pares.<br>Como as três não são coplanares, os planos são distintos: $\mathbf{3}$ planos (como as faces laterais de um prisma triangular).</p></div>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>$A' = A \cos 60^\circ = 36 \cdot \dfrac{1}{2} = \mathbf{18}$ cm².</p></div>
     </article>
     <article class="questao">
-        <h4>P 14: Pontos não Coplanares</h4>
-        <p><strong>Enunciado:</strong> Quatro pontos não são coplanares. Quantas retas e quantos planos eles determinam?</p>
+        <h4>P 14: Distâncias no Cubo</h4>
+        <p><strong>Enunciado:</strong> Num cubo $ABCDEFGH$ de aresta $4$ cm, calcule: (a) a distância entre os planos $ABCD$ e $EFGH$; (b) a distância entre as retas reversas $AB$ e $CG$; (c) a distância entre $A$ e $G$.</p>
         <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>Retas: $C_{4,2} = \mathbf{6}$ (as arestas de um tetraedro).<br>Planos: $C_{4,3} = \mathbf{4}$ (as faces do tetraedro).</p></div>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>(a) Planos paralelos: a distância é a aresta, $\mathbf{4}$ cm.<br>(b) A perpendicular comum é $BC$: $\mathbf{4}$ cm.<br>(c) $AG = 4\sqrt{3}$ cm $\approx 6{,}9$ cm.</p></div>
     </article>
     <article class="questao">
-        <h4>P 15: Ângulo entre Reversas</h4>
-        <p><strong>Enunciado:</strong> As retas $r$ e $s$ são reversas. Pelo ponto $P \in s$ traça-se a reta $t$, paralela a $r$. Qual é a posição relativa entre $t$ e $s$? Como se define o ângulo entre $r$ e $s$?</p>
+        <h4>P 15: Distância Ponto–Plano</h4>
+        <p><strong>Enunciado:</strong> Um ponto $P$ está a $13$ cm de um ponto $A$ de um plano $\alpha$, e a projeção ortogonal $P'$ de $P$ sobre $\alpha$ está a $12$ cm de $A$. Qual é a distância de $P$ a $\alpha$?</p>
         <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>$t$ e $s$ passam por $P$ e são distintas ($t \parallel r$, mas $s$ não é paralela a $r$): são <strong>concorrentes</strong>.<br>O ângulo entre as reversas $r$ e $s$ é, por definição, o ângulo entre as concorrentes $t$ e $s$. Se ele vale $90^\circ$, $r$ e $s$ são <strong>ortogonais</strong>.</p></div>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>O triângulo $PP'A$ é retângulo em $P'$.<br>$PP'^2 = 13^2 - 12^2 = 25 \implies d(P, \alpha) = \mathbf{5}$ cm.</p></div>
     </article>
 </section>
 
 <section class="TESTE" id="testes">
     <h3>🎓 TESTES (T 16 a 20)</h3>
     <article class="questao">
-        <h4>T 16: (UNICENTRO 2017) Posições Relativas de Duas Retas</h4>
-        <p>Sobre o estudo de Posições relativas de duas retas no espaço, assinale a única alternativa correta:</p>
-        <p>A) Duas retas ou mais são coplanares quando não existe um plano que contém todas elas.<br>B) Retas coplanares que não tem ponto comum são chamadas de retas paralelas distintas.<br>C) Retas que tem um único ponto em comum são chamadas retas infinitas transversais.<br>D) Duas retas quando existem um plano que contém as duas elas são chamadas de retas reversas coplanares.<br>E) Duas retas reversas são sempre concorrentes.</p>
-        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>B</strong>.<br>(A) é falsa: coplanares são as retas para as quais <strong>existe</strong> um plano que as contém.<br>(C) é falsa: com um único ponto comum, as retas são <strong>concorrentes</strong>. (D) e (E) são falsas: reversas <strong>não</strong> são coplanares e <strong>nunca</strong> se cortam.<br>(B) é a definição de retas paralelas distintas.</p></div>
-    </article>
-    <article class="questao">
-        <h4>T 17: (VUNESP 2019) Ortogonais e Perpendiculares</h4>
-        <p>Assinale a alternativa contendo uma afirmação correta sobre retas ortogonais e retas perpendiculares.</p>
-        <p>A) Os termos retas ortogonais e retas perpendiculares têm o mesmo significado e indicam que duas retas formam ângulo de $90^\circ$ entre si.<br>B) Os termos retas ortogonais e retas perpendiculares têm o mesmo significado e indicam que duas retas formam ângulo diferente de $90^\circ$ entre si.<br>C) Retas ortogonais são retas reversas que formam ângulo diferente de $90^\circ$ entre si, e retas perpendiculares são retas que formam ângulo de $90^\circ$ entre si.<br>D) Retas ortogonais são retas que formam ângulo de $90^\circ$ entre si, e retas perpendiculares são retas coplanares que formam ângulo diferente de $90^\circ$ entre si.<br>E) Retas ortogonais são retas reversas que formam ângulo de $90^\circ$ entre si, e retas perpendiculares são retas coplanares que formam ângulo de $90^\circ$ entre si.</p>
-        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>E</strong>.<br><strong>Perpendiculares</strong>: concorrentes (logo coplanares) formando $90^\circ$. Ex.: $AB$ e $BC$ no cubo.<br><strong>Ortogonais</strong>: reversas formando $90^\circ$. Ex.: $AB$ e $DH$ no cubo.<br>Só a alternativa (E) distingue corretamente os dois termos.</p></div>
-    </article>
-    <article class="questao">
-        <h4>T 18: (ITA 2013) Afirmações sobre Retas</h4>
+        <h4>T 16: (ITA 2013) Afirmações sobre Retas</h4>
         <p>Das afirmações:<br>I. Duas retas coplanares são concorrentes;<br>II. Duas retas que não têm ponto em comum são reversas;<br>III. Dadas duas retas reversas, existem dois, e apenas dois, planos paralelos, cada um contendo uma das retas;<br>IV. Os pontos médios dos lados de um quadrilátero reverso definem um paralelogramo,</p>
         <p>é(são) verdadeira(s) apenas</p>
         <p>A) III.<br>B) I e III.<br>C) II e III.<br>D) III e IV.<br>E) I e II e IV.</p>
         <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>D</strong>.<br>I é falsa: duas retas coplanares podem ser <strong>paralelas</strong>. II é falsa: sem ponto comum, podem ser <strong>paralelas</strong>.<br>III é verdadeira: pela reta $r$ traça-se o plano paralelo a $s$, e por $s$ o plano paralelo a $r$; esses dois planos são únicos e paralelos.<br>IV é verdadeira: em $ABCD$ reverso, os pontos médios $M$, $N$ de $AB$, $BC$ e $P$, $Q$ de $CD$, $DA$ dão $MN \parallel AC \parallel QP$ com $MN = QP = \frac{AC}{2}$, logo $MNPQ$ é paralelogramo.</p></div>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>D</strong>.<br>I e II são falsas: em ambos os casos as retas podem ser <strong>paralelas</strong>.<br>III é verdadeira: por $r$ passa um único plano paralelo a $s$, e por $s$ um único plano paralelo a $r$; eles são paralelos.<br>IV é verdadeira: em $ABCD$ reverso, os pontos médios formam $MNPQ$ com $MN \parallel AC \parallel QP$ e $MN = QP = \frac{AC}{2}$: paralelogramo.</p></div>
     </article>
     <article class="questao">
-        <h4>T 19: (Questão autoral) Retas Determinadas</h4>
-        <p>Seis pontos distintos estão no espaço, e três quaisquer deles nunca são colineares.</p>
-        <p>O número de retas distintas determinadas por esses pontos é:</p>
-        <p>A) 6<br>B) 12<br>C) 15<br>D) 20<br>E) 30</p>
+        <h4>T 17: (Questão autoral) Dois Planos</h4>
+        <p>Assinale a afirmação correta.</p>
+        <p>A) Dois planos distintos que têm um ponto comum são paralelos.<br>B) Se uma reta é perpendicular a um plano, todo plano que a contém é perpendicular a esse plano.<br>C) Dois planos perpendiculares a um terceiro são sempre paralelos entre si.<br>D) Se dois planos são paralelos, toda reta de um deles é perpendicular ao outro.<br>E) Dois planos secantes têm um único ponto comum.</p>
         <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>C</strong>.<br>Cada par de pontos determina uma única reta, e nenhuma reta contém três dos pontos.<br>$C_{6,2} = \dfrac{6 \cdot 5}{2} = \mathbf{15}$.</p></div>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>B</strong>.<br>(A) e (E) são falsas: planos distintos com ponto comum são secantes e se cortam numa <strong>reta</strong>.<br>(C) é falsa: no cubo, $ABFE$ e $BCGF$ são perpendiculares a $ABCD$ e se cortam em $BF$. (D) é falsa: as retas de um são <strong>paralelas</strong> ao outro.<br>(B) é o critério de perpendicularidade entre planos.</p></div>
     </article>
     <article class="questao">
-        <h4>T 20: (Questão autoral) Pares de Arestas Paralelas</h4>
-        <p>Considere as $12$ arestas de um cubo.</p>
-        <p>O número de pares de arestas paralelas é:</p>
-        <p>A) 12<br>B) 18<br>C) 24<br>D) 30<br>E) 36</p>
+        <h4>T 18: (Questão autoral) Reta Perpendicular a Plano</h4>
+        <p>Uma reta $r$ é perpendicular a um plano $\alpha$ no ponto $P$.</p>
+        <p>Então, em relação às retas de $\alpha$, a reta $r$ é:</p>
+        <p>A) perpendicular a apenas duas retas de $\alpha$.<br>B) perpendicular às retas de $\alpha$ que passam por $P$ e ortogonal às demais.<br>C) paralela a todas as retas de $\alpha$.<br>D) reversa a todas as retas de $\alpha$.<br>E) concorrente com todas as retas de $\alpha$.</p>
         <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>B</strong>.<br>As arestas do cubo têm $3$ direções, com $4$ arestas em cada uma, todas paralelas entre si.<br>Pares em cada direção: $C_{4,2} = 6$. Total: $3 \cdot 6 = \mathbf{18}$ pares.</p></div>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>B</strong>.<br>Reta perpendicular a um plano forma $90^\circ$ com <strong>todas</strong> as retas do plano.<br>As que passam por $P$ cortam $r$: são <strong>perpendiculares</strong>. As que não passam por $P$ não a cortam: são reversas a $90^\circ$, ou seja, <strong>ortogonais</strong>.</p></div>
+    </article>
+    <article class="questao">
+        <h4>T 19: (Questão autoral) Projeção de uma Rampa</h4>
+        <p>Uma rampa reta de $8$ m de comprimento forma um ângulo de $30^\circ$ com o solo horizontal.</p>
+        <p>A projeção ortogonal da rampa sobre o solo mede:</p>
+        <p>A) $4$ m<br>B) $4\sqrt{3}$ m<br>C) $8$ m<br>D) $4\sqrt{2}$ m<br>E) $6$ m</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>B</strong>.<br>$d' = d \cos\theta = 8 \cos 30^\circ = 8 \cdot \dfrac{\sqrt{3}}{2} = \mathbf{4\sqrt{3}}$ m $\approx 6{,}9$ m.<br>Atenção: $4$ m é a altura da rampa ($8 \operatorname{sen} 30^\circ$), não a projeção.</p></div>
+    </article>
+    <article class="questao">
+        <h4>T 20: (Questão autoral) Diagonal do Cubo</h4>
+        <p>Num cubo $ABCDEFGH$ de aresta $2$ m, os vértices $A$ e $G$ são opostos.</p>
+        <p>A distância entre $A$ e $G$ é:</p>
+        <p>A) $2$ m<br>B) $2\sqrt{2}$ m<br>C) $2\sqrt{3}$ m<br>D) $4$ m<br>E) $3$ m</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>C</strong>.<br>Diagonal da base: $AC = 2\sqrt{2}$; como $CG \perp AC$, o triângulo $ACG$ é retângulo em $C$.<br>$AG = \sqrt{(2\sqrt{2})^2 + 2^2} = \sqrt{12} = \mathbf{2\sqrt{3}}$ m.</p></div>
     </article>
 </section>
 
