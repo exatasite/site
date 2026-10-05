@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2º Ano: Aula 15 - Prismas e Cubos</title>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../estilo.css">
+    
+    <script>
+        MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true
+            }
+        };
+    </script>
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body>
+<button class="menu-toggle" onclick="toggleMenu()">☰</button>
+
+<nav id="menu-principal" class="nav-global">
+    <ul>
+        <li><a href="../index.html">🏠 Início</a></li>
+        <li><a href="../fisica_home.html">⚛️ Física</a></li>
+        <li><a href="../matematica_home.html">📐 Matemática</a></li>
+        <li><a href="../simulacoes_home.html">💻 Simulações</a></li>
+    </ul>
+</nav>
+
+<header id="topo">
+    <h1>MATEMÁTICA EM</h1>
+    <p>2º Ano | Aula 15: Prismas e Cubos</p>
+    <button id="btn-slides" onclick="toggleSlides()">📺 Iniciar Modo Slides</button>
+</header>
+
+<div class="container">
+
+<main class="conteudo-principal">
+
+<div class="secao-aula">
+ <div class="container-resumo" id="resumo">
+    <h3>📚 Resumo </h3>
+    <section class="resumo-conteudo">
+        <p>Um <strong>Prisma</strong> é um sólido geométrico delimitado por duas bases poligonais congruentes e paralelas e por faces laterais no formato de paralelogramos. Quando as arestas laterais são perpendiculares às bases, o prisma é chamado de <strong>reto</strong>.</p>
+        <p>O <strong>Cubo</strong> (ou hexaedro regular) e o <strong>Paralelepípedo Retângulo</strong> são casos especiais de prismas. As fórmulas para o cálculo de área da base ($A_b$), área lateral ($A_l$), área total ($A_t$), volume ($V$) e diagonal ($D$) variam de acordo com o polígono da base.</p>
+    </section>
+</div>
+
+<section class="conteudo-teorico-completo" id="teoria">
+    <div class="passo-teoria">
+        <h3>📖 Conceitos Fundamentais</h3>
+        <h4>1. Fórmulas Gerais dos Prismas</h4>
+        <p>Para qualquer prisma reto com altura $h$ e área da base $A_b$:</p>
+        <ul>
+            <li><strong>Área Total ($A_t$):</strong> $A_t = 2 \cdot A_b + A_l$ (onde $A_l$ é a soma das áreas das faces laterais).</li>
+            <li><strong>Volume ($V$):</strong> $V = A_b \cdot h$</li>
+        </ul>
+    </div>
+
+    <div class="passo-teoria">
+        <h4>2. Paralelepípedo Retângulo</h4>
+        <p>Possui três dimensões: comprimento ($a$), largura ($b$) e altura ($c$).</p>
+        <ul>
+            <li><strong>Área Total:</strong> $A_t = 2(ab + ac + bc)$</li>
+            <li><strong>Volume:</strong> $V = a \cdot b \cdot c$</li>
+            <li><strong>Diagonal Principal:</strong> $D = \sqrt{a^2 + b^2 + c^2}$</li>
+        </ul>
+    </div>
+
+    <div class="passo-teoria">
+        <h4>3. Cubo (Hexaedro Regular)</h4>
+        <p>É um prisma reto cujas 6 faces são quadrados congruentes de aresta $a$.</p>
+        <ul>
+            <li><strong>Área Total:</strong> $A_t = 6a^2$</li>
+            <li><strong>Volume:</strong> $V = a^3$</li>
+            <li><strong>Diagonal do Cubo:</strong> $D = a\sqrt{3}$</li>
+            <li><strong>Diagonal da Face:</strong> $d = a\sqrt{2}$</li>
+        </ul>
+    </div>
+</section>
+
+<section class="aplicacoes-reais" id="aplicacoes">
+    <h3>💡 Matemática em Ação</h3>
+    <div class="cards-aplicacao">
+        <div class="card">
+            <h4>📦 Logística e Embalagens</h4>
+            <p>O cálculo de volume e área superficial em caixas de papelão retangulares otimiza o espaço de transporte e reduz custos de empacotamento em fretes.</p>
+        </div>
+        <div class="card" style="border-left-color: #2ecc71;">
+            <h4>🏊 Engenharia Civil e Arquitetura</h4>
+            <p>O dimensionamento do volume de reservatórios, caixas d'água e piscinas em formato de prisma reto garante a medição exata da capacidade em litros ($1\text{ m}^3 = 1000\text{ L}$).</p>
+        </div>
+    </div>
+</section>
+
+<section class="questoes-resolvidas" id="resolvidas">
+    <h3>✅ 5 Questões Resolvidas (R 1 a 5)</h3>
+    
+    <article class="questao">
+        <h4>R 1: Volume e Área de um Cubo</h4>
+        <p><strong>Enunciado:</strong> Um cubo possui aresta medindo $5\text{ cm}$. Calcule a área total e o volume desse cubo.</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong><br>
+            1. Área Total: $A_t = 6a^2 = 6 \cdot (5)^2 = 6 \cdot 25 = \mathbf{150\text{ cm}^2}$.<br>
+            2. Volume: $V = a^3 = (5)^3 = \mathbf{125\text{ cm}^3}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>R 2: Diagonal do Cubo</h4>
+        <p><strong>Enunciado:</strong> Se a diagonal principal de um cubo mede $6\sqrt{3}\text{ cm}$, qual é o seu volume?</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong><br>
+            1. Fórmula da diagonal: $D = a\sqrt{3}$.<br>
+            2. Igualando: $6\sqrt{3} = a\sqrt{3} \implies a = 6\text{ cm}$.<br>
+            3. Volume: $V = a^3 = 6^3 = \mathbf{216\text{ cm}^3}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>R 3: Paralelepípedo Retângulo</h4>
+        <p><strong>Enunciado:</strong> Um reservatório em formato de paralelepípedo tem dimensões $2\text{ m}$, $3\text{ m}$ e $1,5\text{ m}$. Qual é a sua capacidade em litros?</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong><br>
+            1. Volume em metros cúbicos: $V = a \cdot b \cdot c = 2 \cdot 3 \cdot 1,5 = 9\text{ m}^3$.<br>
+            2. Como $1\text{ m}^3 = 1000\text{ L}$, a capacidade é: $9 \cdot 1000 = \mathbf{9000\text{ litros}}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>R 4: Prisma Triangular Regular</h4>
+        <p><strong>Enunciado:</strong> Um prisma reto tem $10\text{ cm}$ de altura e sua base é um triângulo equilátero de lado $4\text{ cm}$. Calcule o volume do prisma.</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong><br>
+            1. Área da base (Triângulo Equilátero): $A_b = \frac{l^2\sqrt{3}}{4} = \frac{4^2\sqrt{3}}{4} = 4\sqrt{3}\text{ cm}^2$.<br>
+            2. Volume: $V = A_b \cdot h = 4\sqrt{3} \cdot 10 = \mathbf{40\sqrt{3}\text{ cm}^3}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>R 5: Diagonal do Paralelepípedo</h4>
+        <p><strong>Enunciado:</strong> Calcule a diagonal de uma caixa retangular cujas dimensões são $3\text{ cm}$, $4\text{ cm}$ e $12\text{ cm}$.</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong><br>
+            1. Fórmula da diagonal: $D = \sqrt{a^2 + b^2 + c^2}$.<br>
+            2. Substituindo: $D = \sqrt{3^2 + 4^2 + 12^2} = \sqrt{9 + 16 + 144} = \sqrt{169} = \mathbf{13\text{ cm}}$.</p>
+        </div>
+    </article>
+</section>
+
+<section class="questoes-propostas" id="propostas">
+    <h3>✍️ 5 Questões Propostas (P 6 a 10)</h3>
+
+    <article class="questao">
+        <h4>P 6: Aresta a partir do Volume</h4>
+        <p><strong>Enunciado:</strong> Um cubo tem volume igual a $343\text{ cm}^3$. Determine a medida de sua aresta e sua área total.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> $V = a^3 \implies a^3 = 343 \implies a = \sqrt[3]{343} = 7\text{ cm}$.<br>Área Total: $A_t = 6a^2 = 6 \cdot (7)^2 = 6 \cdot 49 = \mathbf{294\text{ cm}^2}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 7: Prisma Hexagonal Regular</h4>
+        <p><strong>Enunciado:</strong> Um prisma hexagonal regular tem aresta da base medindo $2\text{ cm}$ e altura $6\text{ cm}$. Determine o seu volume.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> A base é composta por 6 triângulos equiláteros: $A_b = 6 \cdot \frac{l^2\sqrt{3}}{4} = 6 \cdot \frac{2^2\sqrt{3}}{4} = 6\sqrt{3}\text{ cm}^2$.<br>Volume: $V = A_b \cdot h = 6\sqrt{3} \cdot 6 = \mathbf{36\sqrt{3}\text{ cm}^3}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 8: Área Total do Paralelepípedo</h4>
+        <p><strong>Enunciado:</strong> Um bloco retangular possui dimensões $2\text{ cm}$, $5\text{ cm}$ e $8\text{ cm}$. Calcule a sua área total.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> $A_t = 2(ab + ac + bc) = 2(2 \cdot 5 + 2 \cdot 8 + 5 \cdot 8) = 2(10 + 16 + 40) = 2(66) = \mathbf{132\text{ cm}^2}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 9: Razão entre Volumes</h4>
+        <p><strong>Enunciado:</strong> Dobrando-se a medida de todas as arestas de um cubo, por quanto fica multiplicado o seu volume?</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> Se a nova aresta é $a' = 2a$, o novo volume será $V' = (2a)^3 = 8a^3 = 8V$. Portanto, o volume fica **multiplicado por 8**.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 10: Prisma Quadrangular Regular</h4>
+        <p><strong>Enunciado:</strong> Um prisma reto de base quadrada tem área da base igual a $36\text{ cm}^2$ e área lateral igual a $120\text{ cm}^2$. Qual é a altura desse prisma?</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> Lado da base quadrada: $A_b = l^2 = 36 \implies l = 6\text{ cm}$.<br>Área lateral é a soma de 4 retângulos congruentes: $A_l = 4 \cdot (l \cdot h) \implies 120 = 4 \cdot (6 \cdot h) \implies 120 = 24h \implies h = \mathbf{5\text{ cm}}$.</p>
+        </div>
+    </article>
+</section>
+
+<section class="TESTE" id="testes">
+    <h3>🎓 TESTES (T 11 a 15)</h3>
+
+    <div class="card" style="text-align:center; padding:60px 20px; background:#f8f9fa; border:2px dashed #3498db; border-radius:12px; margin-top:20px;">
+        <h2 style="color:#3498db; font-size:2.5rem; margin-bottom:15px;">
+            🚧 EM BREVE!
+        </h2>
+
+        <p style="font-size:1.2rem; color:#555;">
+            Questões de vestibulares serão disponibilizadas em breve.
+        </p>
+    </div>
+</section>
+
+</div>
+</main>
+
+<aside class="menu-lateral">
+    <iframe src="../menu_matematica.html" style="width:100%; border:none; height:600px;"></iframe>
+</aside>
+
+</div>
+
+<script>
+function toggleGabarito(botao) {
+    const gabarito = botao.nextElementSibling;
+    if (gabarito.style.display === "none" || gabarito.style.display === "") {
+        gabarito.style.display = "block";
+        botao.textContent = "Esconder Gabarito e Resolução";
+        botao.style.backgroundColor = "#2c3e50";
+    } else {
+        gabarito.style.display = "none";
+        botao.textContent = "Ver Gabarito e Resolução";
+        botao.style.backgroundColor = "#3498db";
+    }
+}
+
+function toggleMenu() {
+    const menuGlobal = document.getElementById("menu-principal");
+    if (menuGlobal) menuGlobal.classList.toggle("ativo");
+}
+
+let slideAtual = 0;
+let slides = [];
+
+function prepararSlides() {
+    const seletores = '.container-resumo, .passo-teoria, .aplicacoes-reais, .questao';
+    slides = document.querySelectorAll(seletores);
+}
+
+function toggleSlides() {
+    prepararSlides();
+    const body = document.body;
+    if (!body.classList.contains('modo-slides')) {
+        body.classList.add('modo-slides');
+        slideAtual = 0;
+        mostrarSlide(slideAtual);
+    } else {
+        body.classList.remove('modo-slides');
+        window.location.reload(); 
+    }
+}
+
+function mostrarSlide(n) {
+    slides.forEach(s => {
+        s.classList.remove('slide-ativo');
+        s.style.display = 'none';
+    });
+    const slide = slides[n];
+    slide.classList.add('slide-ativo');
+    slide.style.display = 'flex'; 
+
+    if (slide.classList.contains('questao') && !slide.querySelector('.btn-gabarito')) {
+        const resolucoes = slide.querySelectorAll('.resolucao-bloco');
+        resolucoes.forEach(r => r.style.display = 'block');
+    } else {
+        const gabaritos = slide.querySelectorAll('.gabarito-resolucao');
+        gabaritos.forEach(g => g.style.display = 'none');
+        const botoes = slide.querySelectorAll('.btn-gabarito');
+        botoes.forEach(b => {
+            b.textContent = "Ver Gabarito e Resolução";
+            b.style.backgroundColor = "#3498db";
+        });
+    }
+
+    const pHeader = document.querySelector('header p').innerText;
+    const partes = pHeader.split('|');
+    if(partes.length > 1) {
+        document.getElementById('slide-info-serie').innerText = partes[0].trim();
+        document.getElementById('slide-info-aula').innerText = partes[1].trim();
+    }
+    document.getElementById('contador-slide').innerText = (n + 1) + " / " + slides.length;
+    if (window.MathJax) MathJax.typesetPromise();
+}
+
+function mudarSlide(direcao) {
+    slideAtual += direcao;
+    if (slideAtual >= slides.length) slideAtual = 0;
+    if (slideAtual < 0) slideAtual = slides.length - 1;
+    mostrarSlide(slideAtual);
+}
+
+document.addEventListener('keydown', function(event) {
+    if (document.body.classList.contains('modo-slides')) {
+        switch(event.key) {
+            case 'ArrowRight': 
+            case 'PageDown':   
+            case 'Enter':      
+            case ' ':          
+                mudarSlide(1);
+                break;
+                
+            case 'ArrowLeft':  
+            case 'PageUp':     
+                mudarSlide(-1);
+                break;
+
+            case 'Escape':     
+                toggleSlides();
+                break;
+        }
+    }
+});
+</script>
+
+<style>
+    body.modo-slides { overflow: hidden; background-color: #1a1a1a; }
+    body.modo-slides .menu-lateral, body.modo-slides header, body.modo-slides .menu-toggle, body.modo-slides #btn-slides { display: none !important; }
+    .slide-ativo {
+        display: flex !important; flex-direction: column; align-items: center; justify-content: flex-start;
+        position: fixed; top: 0; left: 0; width: 100vw; height: calc(100vh - 70px);
+        background: #ffffff; padding: 40px; z-index: 999; overflow-y: auto !important; 
+        box-sizing: border-box; text-align: center;
+    }
+    .controles-slides {
+        position: fixed; bottom: 0; left: 0; width: 100%; height: 70px;
+        background: #2c3e50; color: white; display: none; 
+        justify-content: space-between; align-items: center; padding: 0 20px; z-index: 1001; box-sizing: border-box;
+    }
+    body.modo-slides .controles-slides { display: flex; }
+    .info-lateral { flex: 1; font-family: 'Oswald', sans-serif; font-size: 0.9rem; color: #bdc3c7; }
+    .botoes-centrais { display: flex; align-items: center; gap: 15px; justify-content: center; flex: 2; }
+    .btn-nav { padding: 10px 20px; background: #3498db; color: white; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; }
+    #contador-slide { font-family: 'Oswald', sans-serif; min-width: 60px; text-align: center; }
+</style>
+
+<div class="controles-slides">
+    <div id="slide-info-serie" class="info-lateral"></div>
+    <div class="botoes-centrais">
+        <button class="btn-nav" onclick="mudarSlide(-1)">⬅ Anterior</button>
+        <span id="contador-slide"></span>
+        <button class="btn-nav" onclick="mudarSlide(1)">Próximo ➡</button>
+        <button class="btn-nav" onclick="toggleSlides()" style="background:#e74c3c;">Sair</button>
+    </div>
+    <div id="slide-info-aula" class="info-lateral" style="text-align: right;"></div>
+</div>
+</body>
+</html>
