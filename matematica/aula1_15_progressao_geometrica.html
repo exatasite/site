@@ -6,6 +6,10 @@
     <title>1º Ano: Aula 15 - Progressão Geométrica (PG)</title>
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../estilo.css">
+<<<<<<< Updated upstream
+=======
+    
+>>>>>>> Stashed changes
     <script>
         MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']], processEscapes: true } };
     </script>
@@ -26,11 +30,24 @@
 </head>
 <body>
 <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+<<<<<<< Updated upstream
 <nav id="menu-principal" class="nav-global"><ul>
     <li><a href="../index.html">🏠 Início</a></li>
     <li><a href="../ensino_medio.html">📚 Ensino Médio</a></li>
     <li><a href="../ensino_superior.html">🎓 Ensino Superior</a></li>
 </ul></nav>
+=======
+
+<nav id="menu-principal" class="nav-global">
+    <ul>
+        <li><a href="../index.html">🏠 Início</a></li>
+        <li><a href="../fisica_home.html">⚛️ Física</a></li>
+        <li><a href="../matematica_home.html">📐 Matemática</a></li>
+        <li><a href="../simulacoes_home.html">💻 Simulações</a></li>
+    </ul>
+</nav>
+
+>>>>>>> Stashed changes
 <header id="topo">
     <h1>MATEMÁTICA EM</h1>
     <p>1º Ano | Aula 15: Progressão Geométrica (PG)</p>
@@ -38,17 +55,34 @@
 </header>
 <div class="container"><main class="conteudo-principal"><div class="secao-aula">
 
+<<<<<<< Updated upstream
 <div class="container-resumo" id="resumo">
     <h3>📚 Resumo</h3>
     <section class="resumo-conteudo">
         <p>Uma <strong>Progressão Geométrica (PG)</strong> é uma sequência em que cada termo, a partir do segundo, é obtido <strong>multiplicando</strong> o anterior por uma constante chamada <strong>razão ($q$)</strong>.</p>
         <p style="text-align: center;"><strong>Termo Geral:</strong> $$a_n = a_1 \cdot q^{\,n-1}$$</p>
         <p style="text-align: center;"><strong>Somas:</strong> $S_n = \dfrac{a_1(q^n - 1)}{q - 1}\ (q \neq 1)$ &nbsp;&nbsp;|&nbsp;&nbsp; $S_\infty = \dfrac{a_1}{1 - q}\ (-1 &lt; q &lt; 1)$</p>
+=======
+<div class="container">
+
+<main class="conteudo-principal">
+
+<div class="secao-aula">
+ <div class="container-resumo" id="resumo">
+    <h3>📚 Resumo</h3>
+    <section class="resumo-conteudo">
+        <p>Uma <strong>Progressão Geométrica (PG)</strong> é uma sequência numérica na qual cada termo, a partir do segundo, é obtido multiplicando o anterior por uma constante não nula $q$, denominada <strong>razão</strong>:</p>
+        <p>$$a_n = a_{n-1} \cdot q \iff q = \frac{a_n}{a_{n-1}}$$</p>
+        <p><strong>Fórmula do Termo Geral:</strong> $a_n = a_1 \cdot q^{n - 1}$</p>
+        <p><strong>Soma dos $n$ primeiros termos (PG Finita):</strong> $S_n = \frac{a_1 (q^n - 1)}{q - 1} \quad (q \neq 1)$</p>
+        <p><strong>Soma da PG Infinita (com $|q| < 1$):</strong> $S = \frac{a_1}{1 - q}$</p>
+>>>>>>> Stashed changes
     </section>
 </div>
 
 <section class="conteudo-teorico-completo" id="teoria">
     <div class="passo-teoria">
+<<<<<<< Updated upstream
         <h3>📖 Progressão Geométrica (PG)</h3>
         <h4>1. Definição e Razão</h4>
         <p>Uma PG é uma sequência numérica em que o <strong>quociente</strong> entre um termo qualquer (a partir do segundo) e o termo anterior é sempre o mesmo. Esse quociente constante é a <strong>razão $q$</strong>:</p>
@@ -81,10 +115,22 @@
             <li><strong>Decrescente:</strong> $a_1 &gt; 0$ e $0 &lt; q &lt; 1$, ou $a_1 &lt; 0$ e $q &gt; 1$. Ex.: $(32, 16, 8, \dots)$</li>
             <li><strong>Oscilante (alternada):</strong> $q &lt; 0$. Ex.: $(3, -6, 12, -24, \dots)$</li>
             <li><strong>Constante:</strong> $q = 1$. Ex.: $(5, 5, 5, 5, \dots)$</li>
+=======
+        <h3>📖 Conceitos Fundamentais</h3>
+        <h4>1. Classificação das Progressões Geométricas</h4>
+        <p>Dependendo dos sinais dos termos iniciais e do valor da razão $q$, a PG pode ser:</p>
+        <ul>
+            <li><strong>Crescente:</strong> $a_1 > 0$ e $q > 1$ (ex: $2, 6, 18 \dots$) ou $a_1 < 0$ e $0 < q < 1$.</li>
+            <li><strong>Decrescente:</strong> $a_1 > 0$ e $0 < q < 1$ (ex: $16, 8, 4 \dots$) ou $a_1 < 0$ e $q > 1$.</li>
+            <li><strong>Constante:</strong> $q = 1$ (ex: $5, 5, 5, 5 \dots$).</li>
+            <li><strong>Alternante / Oscilante:</strong> $q < 0$ (ex: $3, -6, 12, -24 \dots$).</li>
+            <li><strong>Stationária / Nula:</strong> $a_1 \neq 0$ e $q = 0$ (ex: $7, 0, 0, 0 \dots$).</li>
+>>>>>>> Stashed changes
         </ul>
     </div>
 
     <div class="passo-teoria">
+<<<<<<< Updated upstream
         <h4>3. Termo Geral e Média Geométrica</h4>
         <p>Partindo de $a_1$, para chegar ao termo $a_n$ multiplicamos pela razão $(n-1)$ vezes:</p>
         <p style="text-align: center; font-size: 1.25rem; font-weight: bold; background-color: #f8f9fa; padding: 15px; border-left: 5px solid #3498db; margin: 20px 0;">
@@ -102,6 +148,22 @@
         <p><strong>Soma da PG infinita (convergente):</strong> quando $-1 &lt; q &lt; 1$, os termos se aproximam de zero e a soma tende a um valor finito:</p>
         $$S_\infty = \frac{a_1}{1 - q}$$
         <p>Essa fórmula permite, por exemplo, obter a <strong>fração geratriz</strong> de dízimas periódicas.</p>
+=======
+        <h4>2. Fórmula do Termo Geral e Relação Genérica</h4>
+        <p>O $n$-ésimo termo de uma PG pode ser escrito em relação ao primeiro termo $a_1$:</p>
+        <p>$$a_n = a_1 \cdot q^{n - 1}$$</p>
+        <p>Relação entre dois termos quaisquer $a_n$ e $a_m$:</p>
+        <p>$$a_n = a_m \cdot q^{n - m}$$</p>
+    </div>
+
+    <div class="passo-teoria">
+        <h4>3. Propriedades e Somas</h4>
+        <ul>
+            <li><strong>Média Geométrica:</strong> Em três termos consecutivos $(a, b, c)$, o quadrado do termo central é igual ao produto dos vizinhos: $b^2 = a \cdot c \implies |b| = \sqrt{a \cdot c}$.</li>
+            <li><strong>Soma da PG Finita ($S_n$):</strong> Para $q \neq 1$, calcula-se por $S_n = \frac{a_1 (q^n - 1)}{q - 1}$.</li>
+            <li><strong>Soma da PG Infinita Convergente ($S$):</strong> Quando a razão atende a $-1 < q < 1$, o limite da soma infinita é $S = \frac{a_1}{1 - q}$.</li>
+        </ul>
+>>>>>>> Stashed changes
     </div>
 </section>
 
@@ -109,20 +171,30 @@
     <h3>💡 Matemática em Ação</h3>
     <div class="cards-aplicacao">
         <div class="card">
+<<<<<<< Updated upstream
             <h4>💰 Juros Compostos</h4>
             <p>Um capital aplicado a juros compostos de taxa $i$ por período cresce segundo uma PG de razão $q = 1 + i$. Por exemplo, a 10% ao mês, o montante é multiplicado por $1{,}1$ a cada mês.</p>
         </div>
         <div class="card" style="border-left-color: #2ecc71;">
             <h4>🦠 Crescimento de Populações</h4>
             <p>Em condições ideais, bactérias que se dividem em duas a cada intervalo de tempo formam uma PG de razão $q = 2$: 100, 200, 400, 800, … O mesmo modelo aparece na propagação de vírus e de mensagens em redes sociais.</p>
+=======
+            <h4>📈 Juros Compostos e Finanças</h4>
+            <p>O crescimento de uma aplicação financeira sob juros compostos obedece à estrutura de uma PG, na qual o montante a cada período cresce exponencialmente multiplicando-se pelo fator $(1 + i)$.</p>
+        </div>
+        <div class="card" style="border-left-color: #2ecc71;">
+            <h4>🦠 Biologia e Crescimento Populacional</h4>
+            <p>A divisão celular de bactérias e a propagação inicial de epidemias seguem um modelo geométrico: uma célula divide-se em $2$, depois em $4$, $8$, $16$, gerando crescimento exponencial rápido.</p>
+>>>>>>> Stashed changes
         </div>
     </div>
 </section>
 
 <section class="questoes-resolvidas" id="resolvidas">
     <h3>✅ 5 Questões Resolvidas (R 1 a 5)</h3>
-
+    
     <article class="questao">
+<<<<<<< Updated upstream
         <h4>R 1: Cálculo do Termo Geral</h4>
         <p><strong>Enunciado:</strong> Determine o 7º termo da PG $(3, 6, 12, 24, \dots)$.</p>
         <div class="resolucao-bloco"><p><strong>Resolução:</strong> Dados: $a_1 = 3$, $q = \frac{6}{3} = 2$ e $n = 7$.<br>
@@ -160,10 +232,75 @@
         <div class="resolucao-bloco"><p><strong>Resolução:</strong> Pela média geométrica: $(x+2)^2 = x\,(x+6)$.<br>
         $$x^2 + 4x + 4 = x^2 + 6x \implies 4 = 2x \implies x = 2$$
         Verificação: $(2, 4, 8)$ é PG de razão 2. Logo, $\mathbf{x = 2}$.</p></div>
+=======
+        <h4>R 1: Identificação de Razão e Termo Geral</h4>
+        <p><strong>Enunciado:</strong> Determine o $8^\circ$ termo da PG $(3, 6, 12, 24, \dots)$.</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong><br>
+            1. Identificamos o primeiro termo e a razão:<br>
+               $a_1 = 3$<br>
+               $q = \frac{6}{3} = 2$<br>
+            2. Aplicamos a fórmula do termo geral para $n = 8$:<br>
+               $a_8 = a_1 \cdot q^{8-1} = 3 \cdot 2^7$<br>
+               $a_8 = 3 \cdot 128 = \mathbf{384}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>R 2: Determinação da Razão Entre Termos Distantes</h4>
+        <p><strong>Enunciado:</strong> Em uma PG de termos positivos, o $2^\circ$ termo vale $6$ e o $5^\circ$ termo vale $48$. Qual é a razão dessa PG?</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong><br>
+            1. Utilizando a fórmula genérica $a_n = a_m \cdot q^{n-m}$ entre $a_5$ e $a_2$:<br>
+               $a_5 = a_2 \cdot q^{5-2} \implies 48 = 6 \cdot q^3$<br>
+            2. Isolando $q^3$:<br>
+               $q^3 = \frac{48}{6} = 8 \implies q = \sqrt[3]{8} \implies \mathbf{q = 2}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>R 3: Propriedade do Termo Central</h4>
+        <p><strong>Enunciado:</strong> Encontre o valor positivo de $x$ para que a sequência $(x - 1, x + 2, 3x)$ seja uma PG.</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong><br>
+            1. Pela propriedade do termo médio de uma PG: $b^2 = a \cdot c$.<br>
+               $(x + 2)^2 = (x - 1) \cdot 3x$<br>
+            2. Desenvolvendo ambos os lados:<br>
+               $x^2 + 4x + 4 = 3x^2 - 3x$<br>
+               $2x^2 - 7x - 4 = 0$<br>
+            3. Aplicando a fórmula de Bhaskara ($\Delta = (-7)^2 - 4(2)(-4) = 49 + 32 = 81$):<br>
+               $x = \frac{7 \pm 9}{4} \implies x = 4$ ou $x = -0,5$.<br>
+            4. Como busca-se o valor positivo: $\mathbf{x = 4}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>R 4: Soma dos N Termos de uma PG Finita</h4>
+        <p><strong>Enunciado:</strong> Calcule a soma dos 6 primeiros termos da PG $(2, 6, 18, 54, \dots)$.</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong><br>
+            1. Dados: $a_1 = 2$, $q = 3$, $n = 6$.<br>
+            2. Aplicando a fórmula $S_n = \frac{a_1 (q^n - 1)}{q - 1}$:<br>
+               $S_6 = \frac{2 \cdot (3^6 - 1)}{3 - 1} = \frac{2 \cdot (729 - 1)}{2} = 728$.<br>
+            3. A soma é $\mathbf{728}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>R 5: Soma de uma PG Infinita (Geratriz)</h4>
+        <p><strong>Enunciado:</strong> Calcule a soma da PG infinita $\left(1, \frac{1}{2}, \frac{1}{4}, \frac{1}{8}, \dots\right)$.</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong><br>
+            1. Identificamos: $a_1 = 1$ e $q = \frac{1/2}{1} = \frac{1}{2}$.<br>
+            2. Como $|q| < 1$, aplicamos a fórmula da soma infinita $S = \frac{a_1}{1 - q}$:<br>
+               $S = \frac{1}{1 - \frac{1}{2}} = \frac{1}{\frac{1}{2}} = \mathbf{2}$.</p>
+        </div>
+>>>>>>> Stashed changes
     </article>
 </section>
 
 <section class="questoes-propostas" id="propostas">
+<<<<<<< Updated upstream
     <h3>✍️ 10 Questões Propostas (P 6 a 15)</h3>
 
     <article class="questao">
@@ -248,10 +385,79 @@
         <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
         <div class="gabarito-resolucao"><p><strong>Resolução:</strong> $0{,}1212\dots = \frac{12}{100} + \frac{12}{10\,000} + \dots$, com $a_1 = \frac{12}{100}$ e $q = \frac{1}{100}$.<br>
         $$S_\infty = \frac{\frac{12}{100}}{\frac{99}{100}} = \frac{12}{99} = \frac{4}{33}$$</p></div>
+=======
+    <h3>✍️ 5 Questões Propostas (P 6 a 10)</h3>
+
+    <article class="questao">
+        <h4>P 6: Termo Específico de uma PG Oscilante</h4>
+        <p><strong>Enunciado:</strong> Dada a PG $(-2, 6, -18, 54, \dots)$, determine o valor do seu $6^\circ$ termo ($a_6$).</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong><br>
+            1. $a_1 = -2$, $q = \frac{6}{-2} = -3$.<br>
+            2. $a_6 = a_1 \cdot q^{6-1} = (-2) \cdot (-3)^5$.<br>
+            3. Como $(-3)^5 = -243$, temos:<br>
+               $a_6 = (-2) \cdot (-243) = \mathbf{486}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 7: Interpolação Geométrica</h4>
+        <p><strong>Enunciado:</strong> Insira (interpole) 3 meios geométricos positivos entre $5$ e $80$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong><br>
+            1. Ao inserir 3 meios entre 5 e 80, obtemos uma PG de $n = 3 + 2 = 5$ termos.<br>
+            2. $a_1 = 5$ e $a_5 = 80$.<br>
+            3. $a_5 = a_1 \cdot q^4 \implies 80 = 5 \cdot q^4 \implies q^4 = 16 \implies q = 2$ (pois os termos são positivos).<br>
+            4. Os meios inseridos são: $\mathbf{10, 20, 40}$ (Sequência completa: $5, 10, 20, 40, 80$).</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 8: Soma Infinita de Frações</h4>
+        <p><strong>Enunciado:</strong> Determine o valor limite da soma $S = 9 + 3 + 1 + \frac{1}{3} + \frac{1}{9} + \dots$</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong><br>
+            1. Trata-se de uma PG infinita com $a_1 = 9$ e $q = \frac{3}{9} = \frac{1}{3}$.<br>
+            2. Como $|q| < 1$, aplicamos $S = \frac{a_1}{1 - q}$:<br>
+               $S = \frac{9}{1 - \frac{1}{3}} = \frac{9}{\frac{2}{3}} = 9 \cdot \frac{3}{2} = \mathbf{\frac{27}{2}} \text{ (ou } 13,5\text{)}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 9: Dízima Periódica via PG Infinita</h4>
+        <p><strong>Enunciado:</strong> Utilize a soma de uma PG infinita para determinar a fração geratriz da dízima $0,444\dots$</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong><br>
+            1. Escrevemos a dízima como uma soma infinita:<br>
+               $0,444\dots = 0,4 + 0,04 + 0,004 + \dots = \frac{4}{10} + \frac{4}{100} + \frac{4}{1000} + \dots$<br>
+            2. Esta é uma PG infinita de $a_1 = \frac{4}{10}$ e $q = \frac{1}{10}$.<br>
+            3. Aplicando $S = \frac{a_1}{1 - q}$:<br>
+               $S = \frac{\frac{4}{10}}{1 - \frac{1}{10}} = \frac{\frac{4}{10}}{\frac{9}{10}} = \mathbf{\frac{4}{9}}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 10: Problema Contextualizado de Disseminação</h4>
+        <p><strong>Enunciado:</strong> Uma corrente de e-mails começa quando uma pessoa envia uma mensagem para 4 amigos no 1º dia. No 2º dia, cada um desses 4 amigos envia para 4 novas pessoas, e assim sucessivamente. Quantas pessoas no total receberam a mensagem ao final de 5 dias?</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong><br>
+            1. O número de pessoas que recebem a mensagem a cada dia forma uma PG:<br>
+               $a_1 = 4$, $q = 4$, $n = 5$.<br>
+            2. Calculamos a soma total dos 5 dias ($S_5$):<br>
+               $S_5 = \frac{a_1 (q^5 - 1)}{q - 1} = \frac{4 \cdot (4^5 - 1)}{4 - 1} = \frac{4 \cdot (1024 - 1)}{3} = \frac{4 \cdot 1023}{3}$.<br>
+            3. $S_5 = 4 \cdot 341 = \mathbf{1364 \text{ pessoas}}$.</p>
+        </div>
+>>>>>>> Stashed changes
     </article>
 </section>
 
 <section class="TESTE" id="testes">
+<<<<<<< Updated upstream
     <h3>🎓 TESTES (T 16 a 20)</h3>
 
     <article class="questao">
@@ -349,6 +555,21 @@
 
 </div></main>
 <aside class="menu-lateral"><iframe src="../menu_matematica.html" style="width:100%; border:none; height:600px;"></iframe></aside>
+=======
+    <h3>🎓 TESTES (T 11 a 15)</h3>
+
+    <div class="card" style="text-align:center; padding:60px 20px; background:#f8f9fa; border:2px dashed #3498db; border-radius:12px; margin-top:20px;">
+        <h2 style="color:#3498db; font-size:2.5rem; margin-bottom:15px;">
+            🚧 EM BREVE!
+        </h2>
+
+        <p style="font-size:1.2rem; color:#555;">
+            Questões de vestibulares serão disponibilizadas em breve.
+        </p>
+    </div>
+</section>
+
+>>>>>>> Stashed changes
 </div>
 <script>
 function toggleGabarito(botao) {
@@ -363,11 +584,25 @@ function toggleMenu() { const m = document.getElementById("menu-principal"); if 
 let slideAtual = 0; let slides = [];
 function prepararSlides() { slides = Array.from(document.querySelectorAll('.container-resumo, .passo-teoria, .card, .questao')); }
 function toggleSlides() {
+<<<<<<< Updated upstream
     prepararSlides(); const body = document.body;
     if (!body.classList.contains('modo-slides')) { body.classList.add('modo-slides'); slideAtual = 0; mostrarSlide(slideAtual); }
     else { body.classList.remove('modo-slides'); slides.forEach(s => { s.classList.remove('slide-ativo'); s.style.display = ''; }); }
+=======
+    prepararSlides();
+    const body = document.body;
+    if (!body.classList.contains('modo-slides')) {
+        body.classList.add('modo-slides');
+        slideAtual = 0;
+        mostrarSlide(slideAtual);
+    } else {
+        body.classList.remove('modo-slides');
+        window.location.reload(); 
+    }
+>>>>>>> Stashed changes
 }
 function mostrarSlide(n) {
+<<<<<<< Updated upstream
     if (!slides.length) return;
     slides.forEach(s => { s.classList.remove('slide-ativo'); s.style.display = 'none'; });
     const slide = slides[n]; slide.classList.add('slide-ativo');
@@ -387,10 +622,93 @@ document.addEventListener('keydown', function(event) {
             case 'ArrowRight': case 'PageDown': case 'Enter': case ' ': event.preventDefault(); mudarSlide(1); break;
             case 'ArrowLeft': case 'PageUp': event.preventDefault(); mudarSlide(-1); break;
             case 'Escape': event.preventDefault(); toggleSlides(); break;
+=======
+    slides.forEach(s => {
+        s.classList.remove('slide-ativo');
+        s.style.display = 'none';
+    });
+    const slide = slides[n];
+    slide.classList.add('slide-ativo');
+    slide.style.display = 'flex'; 
+
+    if (slide.classList.contains('questao') && !slide.querySelector('.btn-gabarito')) {
+        const resolucoes = slide.querySelectorAll('.resolucao-bloco');
+        resolucoes.forEach(r => r.style.display = 'block');
+    } else {
+        const gabaritos = slide.querySelectorAll('.gabarito-resolucao');
+        gabaritos.forEach(g => g.style.display = 'none');
+        const botoes = slide.querySelectorAll('.btn-gabarito');
+        botoes.forEach(b => {
+            b.textContent = "Ver Gabarito e Resolução";
+            b.style.backgroundColor = "#3498db";
+        });
+    }
+
+    const pHeader = document.querySelector('header p').innerText;
+    const partes = pHeader.split('|');
+    if(partes.length > 1) {
+        document.getElementById('slide-info-serie').innerText = partes[0].trim();
+        document.getElementById('slide-info-aula').innerText = partes[1].trim();
+    }
+    document.getElementById('contador-slide').innerText = (n + 1) + " / " + slides.length;
+    if (window.MathJax) MathJax.typesetPromise();
+}
+
+function mudarSlide(direcao) {
+    slideAtual += direcao;
+    if (slideAtual >= slides.length) slideAtual = 0;
+    if (slideAtual < 0) slideAtual = slides.length - 1;
+    mostrarSlide(slideAtual);
+}
+
+document.addEventListener('keydown', function(event) {
+    if (document.body.classList.contains('modo-slides')) {
+        switch(event.key) {
+            case 'ArrowRight': 
+            case 'PageDown':   
+            case 'Enter':      
+            case ' ':          
+                mudarSlide(1);
+                break;
+                
+            case 'ArrowLeft':  
+            case 'PageUp':     
+                mudarSlide(-1);
+                break;
+
+            case 'Escape':     
+                toggleSlides();
+                break;
+>>>>>>> Stashed changes
         }
     }
 });
 </script>
+<<<<<<< Updated upstream
+=======
+
+<style>
+    body.modo-slides { overflow: hidden; background-color: #1a1a1a; }
+    body.modo-slides .menu-lateral, body.modo-slides header, body.modo-slides .menu-toggle, body.modo-slides #btn-slides { display: none !important; }
+    .slide-ativo {
+        display: flex !important; flex-direction: column; align-items: center; justify-content: flex-start;
+        position: fixed; top: 0; left: 0; width: 100vw; height: calc(100vh - 70px);
+        background: #ffffff; padding: 40px; z-index: 999; overflow-y: auto !important; 
+        box-sizing: border-box; text-align: center;
+    }
+    .controles-slides {
+        position: fixed; bottom: 0; left: 0; width: 100%; height: 70px;
+        background: #2c3e50; color: white; display: none; 
+        justify-content: space-between; align-items: center; padding: 0 20px; z-index: 1001; box-sizing: border-box;
+    }
+    body.modo-slides .controles-slides { display: flex; }
+    .info-lateral { flex: 1; font-family: 'Oswald', sans-serif; font-size: 0.9rem; color: #bdc3c7; }
+    .botoes-centrais { display: flex; align-items: center; gap: 15px; justify-content: center; flex: 2; }
+    .btn-nav { padding: 10px 20px; background: #3498db; color: white; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; }
+    #contador-slide { font-family: 'Oswald', sans-serif; min-width: 60px; text-align: center; }
+</style>
+
+>>>>>>> Stashed changes
 <div class="controles-slides">
     <div id="slide-info-serie" class="info-lateral"></div>
     <div class="botoes-centrais">
