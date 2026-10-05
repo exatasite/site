@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2º Ano: Aula 17 - Cilindros: Área e Volume</title>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../estilo.css">
+    
+    <script>
+        MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true
+            }
+        };
+    </script>
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body>
+<button class="menu-toggle" onclick="toggleMenu()">☰</button>
+
+<nav id="menu-principal" class="nav-global">
+    <ul>
+        <li><a href="../index.html">🏠 Início</a></li>
+        <li><a href="../fisica_home.html">⚛️ Física</a></li>
+        <li><a href="../matematica_home.html">📐 Matemática</a></li>
+        <li><a href="../simulacoes_home.html">💻 Simulações</a></li>
+    </ul>
+</nav>
+
+<header id="topo">
+    <h1>MATEMÁTICA EM</h1>
+    <p>2º Ano | Aula 17: Cilindros: Área e Volume</p>
+    <button id="btn-slides" onclick="toggleSlides()">📺 Iniciar Modo Slides</button>
+</header>
+
+<div class="container">
+
+<main class="conteudo-principal">
+
+<div class="secao-aula">
+ <div class="container-resumo" id="resumo">
+    <h3>📚 Resumo </h3>
+    <section class="resumo-conteudo">
+        <p>O <strong>Cilindro Circular Reto</strong> é um sólido de revolução gerado pela rotação completa de um retângulo em torno de um de seus lados. Suas duas bases são círculos congruentes e paralelos de raio $r$, separados por uma altura $h$.</p>
+        <p>O estudo do cilindro envolve a planificação de sua superfície lateral (que resulta em um retângulo), o cálculo da **área lateral**, **área total** e a determinação de seu **volume**, além da análise especial do **cilindro eqüilátero**.</p>
+    </section>
+</div>
+
+<section class="conteudo-teorico-completo" id="teoria">
+    <div class="passo-teoria">
+        <h3>📖 Conceitos Fundamentais</h3>
+        <h4>1. Elementos e Área da Base</h4>
+        <p>Em um cilindro circular reto de raio da base $r$ e altura $h$:</p>
+        <ul>
+            <li><strong>Base:</strong> Um círculo de raio $r$.</li>
+            <li><strong>Área da Base ($A_b$):</strong> $A_b = \pi r^2$</li>
+            <li><strong>Perímetro da Base:</strong> $C = 2\pi r$</li>
+        </ul>
+    </div>
+
+    <div class="passo-teoria">
+        <h4>2. Áreas Lateral e Total</h4>
+        <p>A superfície lateral planificada forma um retângulo de comprimento $2\pi r$ e altura $h$:</p>
+        <ul>
+            <li><strong>Área Lateral ($A_l$):</strong> $A_l = 2\pi r h$</li>
+            <li><strong>Área Total ($A_t$):</strong> $A_t = 2A_b + A_l = 2\pi r^2 + 2\pi r h = 2\pi r(r + h)$</li>
+        </ul>
+    </div>
+
+    <div class="passo-teoria">
+        <h4>3. Volume e Cilindro Eqüilátero</h4>
+        <p>O volume segue o mesmo princípio dos prismas (Área da Base $\times$ Altura):</p>
+        <ul>
+            <li><strong>Volume ($V$):</strong> $V = A_b \cdot h = \pi r^2 h$</li>
+            <li><strong>Cilindro Eqüilátero:</strong> Ocorre quando a altura é igual ao diâmetro da base ($h = 2r$). Suas fórmulas simplificam para:
+                <ul>
+                    <li>$A_l = 4\pi r^2$</li>
+                    <li>$A_t = 6\pi r^2$</li>
+                    <li>$V = 2\pi r^3$</li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</section>
+
+<section class="aplicacoes-reais" id="aplicacoes">
+    <h3>💡 Matemática em Ação</h3>
+    <div class="cards-aplicacao">
+        <div class="card">
+            <h4>🛢️ Indústria Petroquímica e Armazenamento</h4>
+            <p>Tanques e reservatórios cilíndricos otimizam a distribuição de pressão interna e reduzem o gasto de material na construção de recipientes de grande capacidade.</p>
+        </div>
+        <div class="card" style="border-left-color: #2ecc71;">
+            <h4>🥫 Design de Embalagens e Latas</h4>
+            <p>O cálculo da área do cilindro determina a quantidade exata de alumínio ou aço necessária para produzir latas de refrigerantes e alimentos em conserva.</p>
+        </div>
+    </div>
+</section>
+
+<section class="questoes-resolvidas" id="resolvidas">
+    <h3>✅ 5 Questões Resolvidas (R 1 a 5)</h3>
+    
+    <article class="questao">
+        <h4>R 1: Volume Direto do Cilindro</h4>
+        <p><strong>Enunciado:</strong> Um cilindro reto possui raio da base $r = 3\text{ cm}$ e altura $h = 10\text{ cm}$. Calcule o seu volume em função de $\pi$.</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong><br>
+            1. Área da base: $A_b = \pi r^2 = \pi \cdot (3)^2 = 9\pi\text{ cm}^2$.<br>
+            2. Volume: $V = A_b \cdot h = 9\pi \cdot 10 = \mathbf{90\pi\text{ cm}^3}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>R 2: Área Total e Pintura</h4>
+        <p><strong>Enunciado:</strong> Determine a área total de um cilindro circular reto com raio da base $4\text{ cm}$ e altura $6\text{ cm}$. (Adote $\pi = 3,14$).</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong><br>
+            1. Fórmula da área total: $A_t = 2\pi r(r + h)$.<br>
+            2. Substituindo os valores: $A_t = 2 \cdot 3,14 \cdot 4(4 + 6) = 25,12 \cdot (10) = \mathbf{251,2\text{ cm}^2}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>R 3: Cilindro Eqüilátero</h4>
+        <p><strong>Enunciado:</strong> Um cilindro eqüilátero tem raio da base medindo $5\text{ cm}$. Calcule sua área total e seu volume.</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong><br>
+            1. Como o cilindro é eqüilátero, a altura é igual ao diâmetro: $h = 2r = 2 \cdot 5 = 10\text{ cm}$.<br>
+            2. Área Total: $A_t = 6\pi r^2 = 6\pi \cdot 5^2 = 6\pi \cdot 25 = \mathbf{150\pi\text{ cm}^2}$.<br>
+            3. Volume: $V = \pi r^2 h = \pi \cdot 5^2 \cdot 10 = 250\pi\text{ cm}^3$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>R 4: Capacidade em Litros</h4>
+        <p><strong>Enunciado:</strong> Um reservatório cilíndrico tem raio $1\text{ m}$ e altura $2\text{ m}$. Quantos litros de água ele pode armazenar? (Considere $\pi = 3,14$).</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong><br>
+            1. Volume: $V = \pi r^2 h = 3,14 \cdot (1)^2 \cdot 2 = 6,28\text{ m}^3$.<br>
+            2. Como $1\text{ m}^3 = 1000\text{ L}$, a capacidade é: $6,28 \cdot 1000 = \mathbf{6280\text{ litros}}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>R 5: Encontrando o Raio a partir do Volume</h4>
+        <p><strong>Enunciado:</strong> Um cilindro de altura $8\text{ cm}$ tem volume igual a $200\pi\text{ cm}^3$. Qual é a medida do raio de sua base?</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong><br>
+            1. $V = \pi r^2 h \implies 200\pi = \pi \cdot r^2 \cdot 8$.<br>
+            2. Cancelando $\pi$: $200 = 8r^2 \implies r^2 = 25 \implies r = \sqrt{25} = \mathbf{5\text{ cm}}$.</p>
+        </div>
+    </article>
+</section>
+
+<section class="questoes-propostas" id="propostas">
+    <h3>✍️ 5 Questões Propostas (P 6 a 10)</h3>
+
+    <article class="questao">
+        <h4>P 6: Área Lateral</h4>
+        <p><strong>Enunciado:</strong> Um tubo cilíndrico tem $2\text{ m}$ de comprimento e raio interno de $0,5\text{ m}$. Calcule a área de sua superfície lateral interna em função de $\pi$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> $A_l = 2\pi r h = 2\pi \cdot (0,5) \cdot 2 = \mathbf{2\pi\text{ m}^2}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 7: Razão entre Volumes</h4>
+        <p><strong>Enunciado:</strong> Se dobrarmos o raio da base de um cilindro e mantivermos a sua altura inalterada, o seu volume aumentará quantas vezes?</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> Volume original: $V = \pi r^2 h$.<br>
+            Novo volume: $V' = \pi (2r)^2 h = \pi \cdot 4r^2 \cdot h = 4(\pi r^2 h) = 4V$.<br>
+            O volume aumentará **4 vezes**.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 8: Área do Cilindro Eqüilátero</h4>
+        <p><strong>Enunciado:</strong> A área lateral de um cilindro eqüilátero é $36\pi\text{ cm}^2$. Determine o raio da base desse cilindro.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> Em cilindros eqüiláteros, $A_l = 4\pi r^2$.<br>
+            $36\pi = 4\pi r^2 \implies 36 = 4r^2 \implies r^2 = 9 \implies r = \mathbf{3\text{ cm}}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 9: Comparação de Formas</h4>
+        <p><strong>Enunciado:</strong> Um recipiente cilíndrico tem raio de $3\text{ cm}$ e altura de $12\text{ cm}$. Um cubo tem aresta de $6\text{ cm}$. Qual dos dois recipientes possui o maior volume? (Considere $\pi = 3$).</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong><br>
+            Volume do cilindro: $V_{\text{cilindro}} = \pi r^2 h = 3 \cdot (3^2) \cdot 12 = 3 \cdot 9 \cdot 12 = 324\text{ cm}^3$.<br>
+            Volume do cubo: $V_{\text{cubo}} = a^3 = 6^3 = 216\text{ cm}^3$.<br>
+            O **cilindro** possui o maior volume ($324\text{ cm}^3 > 216\text{ cm}^3$).</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 10: Relação entre Área Lateral e Altura</h4>
+        <p><strong>Enunciado:</strong> Um cilindro possui área lateral $A_l = 80\pi\text{ cm}^2$ e raio da base $r = 4\text{ cm}$. Calcule o volume desse sólido.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong><br>
+            1. Encontrando $h$: $A_l = 2\pi r h \implies 80\pi = 2\pi (4) h \implies 80 = 8h \implies h = 10\text{ cm}$.<br>
+            2. Volume: $V = \pi r^2 h = \pi (4^2) (10) = 160\pi\text{ cm}^3$.<br>
+            O volume é **$160\pi\text{ cm}^3$**.</p>
+        </div>
+    </article>
+</section>
+
+<section class="TESTE" id="testes">
+    <h3>🎓 TESTES (T 11 a 15)</h3>
+
+    <div class="card" style="text-align:center; padding:60px 20px; background:#f8f9fa; border:2px dashed #3498db; border-radius:12px; margin-top:20px;">
+        <h2 style="color:#3498db; font-size:2.5rem; margin-bottom:15px;">
+            🚧 EM BREVE!
+        </h2>
+
+        <p style="font-size:1.2rem; color:#555;">
+            Questões de vestibulares serão disponibilizadas em breve.
+        </p>
+    </div>
+</section>
+
+</div>
+</main>
+
+<aside class="menu-lateral">
+    <iframe src="../menu_matematica.html" style="width:100%; border:none; height:600px;"></iframe>
+</aside>
+
+</div>
+
+<script>
+function toggleGabarito(botao) {
+    const gabarito = botao.nextElementSibling;
+    if (gabarito.style.display === "none" || gabarito.style.display === "") {
+        gabarito.style.display = "block";
+        botao.textContent = "Esconder Gabarito e Resolução";
+        botao.style.backgroundColor = "#2c3e50";
+    } else {
+        gabarito.style.display = "none";
+        botao.textContent = "Ver Gabarito e Resolução";
+        botao.style.backgroundColor = "#3498db";
+    }
+}
+
+function toggleMenu() {
+    const menuGlobal = document.getElementById("menu-principal");
+    if (menuGlobal) menuGlobal.classList.toggle("ativo");
+}
+
+let slideAtual = 0;
+let slides = [];
+
+function prepararSlides() {
+    const seletores = '.container-resumo, .passo-teoria, .aplicacoes-reais, .questao';
+    slides = document.querySelectorAll(seletores);
+}
+
+function toggleSlides() {
+    prepararSlides();
+    const body = document.body;
+    if (!body.classList.contains('modo-slides')) {
+        body.classList.add('modo-slides');
+        slideAtual = 0;
+        mostrarSlide(slideAtual);
+    } else {
+        body.classList.remove('modo-slides');
+        window.location.reload(); 
+    }
+}
+
+function mostrarSlide(n) {
+    slides.forEach(s => {
+        s.classList.remove('slide-ativo');
+        s.style.display = 'none';
+    });
+    const slide = slides[n];
+    slide.classList.add('slide-ativo');
+    slide.style.display = 'flex'; 
+
+    if (slide.classList.contains('questao') && !slide.querySelector('.btn-gabarito')) {
+        const resolucoes = slide.querySelectorAll('.resolucao-bloco');
+        resolucoes.forEach(r => r.style.display = 'block');
+    } else {
+        const gabaritos = slide.querySelectorAll('.gabarito-resolucao');
+        gabaritos.forEach(g => g.style.display = 'none');
+        const botoes = slide.querySelectorAll('.btn-gabarito');
+        botoes.forEach(b => {
+            b.textContent = "Ver Gabarito e Resolução";
+            b.style.backgroundColor = "#3498db";
+        });
+    }
+
+    const pHeader = document.querySelector('header p').innerText;
+    const partes = pHeader.split('|');
+    if(partes.length > 1) {
+        document.getElementById('slide-info-serie').innerText = partes[0].trim();
+        document.getElementById('slide-info-aula').innerText = partes[1].trim();
+    }
+    document.getElementById('contador-slide').innerText = (n + 1) + " / " + slides.length;
+    if (window.MathJax) MathJax.typesetPromise();
+}
+
+function mudarSlide(direcao) {
+    slideAtual += direcao;
+    if (slideAtual >= slides.length) slideAtual = 0;
+    if (slideAtual < 0) slideAtual = slides.length - 1;
+    mostrarSlide(slideAtual);
+}
+
+document.addEventListener('keydown', function(event) {
+    if (document.body.classList.contains('modo-slides')) {
+        switch(event.key) {
+            case 'ArrowRight': 
+            case 'PageDown':   
+            case 'Enter':      
+            case ' ':          
+                mudarSlide(1);
+                break;
+                
+            case 'ArrowLeft':  
+            case 'PageUp':     
+                mudarSlide(-1);
+                break;
+
+            case 'Escape':     
+                toggleSlides();
+                break;
+        }
+    }
+});
+</script>
+
+<style>
+    body.modo-slides { overflow: hidden; background-color: #1a1a1a; }
+    body.modo-slides .menu-lateral, body.modo-slides header, body.modo-slides .menu-toggle, body.modo-slides #btn-slides { display: none !important; }
+    .slide-ativo {
+        display: flex !important; flex-direction: column; align-items: center; justify-content: flex-start;
+        position: fixed; top: 0; left: 0; width: 100vw; height: calc(100vh - 70px);
+        background: #ffffff; padding: 40px; z-index: 999; overflow-y: auto !important; 
+        box-sizing: border-box; text-align: center;
+    }
+    .controles-slides {
+        position: fixed; bottom: 0; left: 0; width: 100%; height: 70px;
+        background: #2c3e50; color: white; display: none; 
+        justify-content: space-between; align-items: center; padding: 0 20px; z-index: 1001; box-sizing: border-box;
+    }
+    body.modo-slides .controles-slides { display: flex; }
+    .info-lateral { flex: 1; font-family: 'Oswald', sans-serif; font-size: 0.9rem; color: #bdc3c7; }
+    .botoes-centrais { display: flex; align-items: center; gap: 15px; justify-content: center; flex: 2; }
+    .btn-nav { padding: 10px 20px; background: #3498db; color: white; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; }
+    #contador-slide { font-family: 'Oswald', sans-serif; min-width: 60px; text-align: center; }
+</style>
+
+<div class="controles-slides">
+    <div id="slide-info-serie" class="info-lateral"></div>
+    <div class="botoes-centrais">
+        <button class="btn-nav" onclick="mudarSlide(-1)">⬅ Anterior</button>
+        <span id="contador-slide"></span>
+        <button class="btn-nav" onclick="mudarSlide(1)">Próximo ➡</button>
+        <button class="btn-nav" onclick="toggleSlides()" style="background:#e74c3c;">Sair</button>
+    </div>
+    <div id="slide-info-aula" class="info-lateral" style="text-align: right;"></div>
+</div>
+</body>
+</html>
