@@ -6,7 +6,7 @@
     <title>1º Ano: Aula 12 - Logaritmos: Definição e Propriedades</title>
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../estilo.css">
-
+    
     <script>
         MathJax = {
             tex: {
@@ -31,12 +31,10 @@
     </ul>
 </nav>
 
-<header>
+<header id="topo">
     <h1>MATEMÁTICA EM</h1>
-    <p>1º Ano | Aula 12: Álgebra (Logaritmos: Definição e Propriedades)</p>
-<button id="btn-slides" onclick="toggleSlides()" style="position: fixed; top: 20px; right: 20px; z-index: 1000; padding: 10px; cursor: pointer; background: #e67e22; color: white; border: none; border-radius: 5px; font-weight: bold;">
-    📺 Iniciar Modo Slides
-</button>
+    <p>1º Ano | Aula 12: Logaritmos - Definição e Propriedades</p>
+    <button id="btn-slides" onclick="toggleSlides()">📺 Iniciar Modo Slides</button>
 </header>
 
 <div class="container">
@@ -44,362 +42,218 @@
 <main class="conteudo-principal">
 
 <div class="secao-aula">
-  <div class="container-resumo">
+ <div class="container-resumo" id="resumo">
     <h3>📚 Resumo</h3>
     <section class="resumo-conteudo">
-        <p>O <strong>logaritmo</strong> de $b$ na base $a$ é o expoente $x$ ao qual se deve elevar $a$ para obter $b$. É a operação inversa da exponenciação.</p>
-
-        <p style="text-align:center; font-size:1.15em;">
-            $$\log_a b = x \iff a^x = b, \quad a > 0,\ a \neq 1,\ b > 0$$
-        </p>
-
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; margin-top: 12px; text-align: center;">
-            <div style="background:#eaf4fb; border-radius:8px; padding:12px;">
-                <strong>➕ Log do Produto</strong><br><br>
-                $\log_a(b \cdot c) = \log_a b + \log_a c$
-            </div>
-            <div style="background:#eafaf1; border-radius:8px; padding:12px;">
-                <strong>➖ Log do Quociente</strong><br><br>
-                $\log_a\!\left(\dfrac{b}{c}\right) = \log_a b - \log_a c$
-            </div>
-            <div style="background:#fef9e7; border-radius:8px; padding:12px;">
-                <strong>✖️ Log da Potência</strong><br><br>
-                $\log_a b^n = n \cdot \log_a b$
-            </div>
-            <div style="background:#fdf2f8; border-radius:8px; padding:12px;">
-                <strong>🔄 Mudança de Base</strong><br><br>
-                $\log_a b = \dfrac{\log_c b}{\log_c a}$<br>
-                <small>$\log_{10}$ = $\log$; $\log_e$ = $\ln$</small>
-            </div>
-        </div>
+        <p>O <strong>logaritmo</strong> de um número $b$ na base $a$ é o expoente $c$ ao qual se deve elevar a base $a$ para obter o número $b$:</p>
+        <p>$$\log_a b = c \iff a^c = b$$</p>
+        <p><strong>Condições de existência:</strong> A base deve ser positiva e diferente de 1 ($a > 0$ e $a \neq 1$) e o logaritmando deve ser estritamente positivo ($b > 0$).</p>
     </section>
-  </div>
+</div>
 
-<section class="conteudo-teorico-completo">
-
+<section class="conteudo-teorico-completo" id="teoria">
     <div class="passo-teoria">
-        <h3>📖 Logaritmos: Definição e Propriedades</h3>
-        <h4>1. Definição de Logaritmo</h4>
-        <p>O <strong>logaritmo</strong> de $b$ na base $a$, escrito $\log_a b$, é o número real $x$ tal que $a^x = b$:</p>
-        <p style="text-align:center;">$$\log_a b = x \iff a^x = b$$</p>
-        <p><strong>Condições de existência:</strong></p>
-        <ul style="margin-left: 2rem;">
-            <li>A <strong>base</strong> $a$ deve ser positiva e diferente de 1: $a > 0$ e $a \neq 1$.</li>
-            <li>O <strong>logaritmando</strong> $b$ deve ser positivo: $b > 0$.</li>
-            <li>O resultado $x = \log_a b$ pode ser qualquer real.</li>
+        <h3>📖 Conceitos Fundamentais</h3>
+        <h4>1. Nomenclatura e Definição</h4>
+        <p>Na expressão $\log_a b = c$:</p>
+        <ul>
+            <li><strong>$a$:</strong> Base do logaritmo ($a > 0$ e $a \neq 1$)</li>
+            <li><strong>$b$:</strong> Logaritmando ($b > 0$)</li>
+            <li><strong>$c$:</strong> Logaritmo</li>
         </ul>
-        <p><strong>Leitura:</strong> "$\log_a b$" lê-se "logaritmo de $b$ na base $a$" ou "log de $b$ na base $a$".</p>
-        <p><strong>Exemplos diretos:</strong></p>
-        <ul style="margin-left: 2rem;">
-            <li>$\log_2 8 = 3$ pois $2^3 = 8$</li>
-            <li>$\log_3 81 = 4$ pois $3^4 = 81$</li>
-            <li>$\log_{10} 1000 = 3$ pois $10^3 = 1000$</li>
-            <li>$\log_5 1 = 0$ pois $5^0 = 1$</li>
-            <li>$\log_4 2 = \frac{1}{2}$ pois $4^{1/2} = 2$</li>
-        </ul>
+        <p><strong>Bases especiais:</strong> Quando a base é $10$, omitimos sua escrita ($\log_{10} x = \log x$). Quando a base é o número irracional $e \approx 2,718$, temos o logaritmo natural ($\log_e x = \ln x$).</p>
     </div>
 
     <div class="passo-teoria">
-        <h4>2. Logaritmos Especiais e Notações</h4>
-        <p>Dois logaritmos têm notação abreviada especial devido ao uso frequente:</p>
-        <ul style="margin-left: 2rem;">
-            <li><strong>Logaritmo decimal:</strong> base $10$ — escreve-se simplesmente $\log b$ (omite-se a base).<br>
-                Ex: $\log 100 = 2$ pois $10^2 = 100$.</li>
-            <li><strong>Logaritmo natural:</strong> base $e \approx 2{,}718\ldots$ (número de Euler) — escreve-se $\ln b$.<br>
-                Ex: $\ln e^3 = 3$.</li>
-        </ul>
-        <p><strong>Logaritmos especiais que valem para qualquer base válida:</strong></p>
-        <ul style="margin-left: 2rem;">
-            <li>$\log_a 1 = 0$ &nbsp; (pois $a^0 = 1$ sempre)</li>
-            <li>$\log_a a = 1$ &nbsp; (pois $a^1 = a$ sempre)</li>
-            <li>$a^{\log_a b} = b$ &nbsp; (propriedade fundamental — log e exponencial se invertem)</li>
-            <li>$\log_a a^n = n$ &nbsp; (decorre diretamente da definição)</li>
+        <h4>2. Consequências da Definição</h4>
+        <p>Decorrem diretamente da definição operacional de logaritmo:</p>
+        <ul>
+            <li>$\log_a 1 = 0$ (pois $a^0 = 1$)</li>
+            <li>$\log_a a = 1$ (pois $a^1 = a$)</li>
+            <li>$\log_a (a^k) = k$</li>
+            <li>$a^{\log_a b} = b$</li>
+            <li>$\log_a b = \log_a c \iff b = c$</li>
         </ul>
     </div>
 
     <div class="passo-teoria">
-        <h4>3. Propriedade do Logaritmo do Produto</h4>
-        <p>O logaritmo de um <strong>produto</strong> é igual à <strong>soma</strong> dos logaritmos dos fatores (na mesma base):</p>
-        <p style="text-align:center;">$$\log_a(b \cdot c) = \log_a b + \log_a c, \quad b > 0,\ c > 0$$</p>
-        <p><strong>Demonstração intuitiva:</strong> se $\log_a b = m$ e $\log_a c = n$, então $b = a^m$ e $c = a^n$, logo $b \cdot c = a^{m+n}$, portanto $\log_a(bc) = m + n$.</p>
-        <p><strong>Extensão:</strong> $\log_a(b_1 \cdot b_2 \cdots b_k) = \log_a b_1 + \log_a b_2 + \cdots + \log_a b_k$.</p>
-        <p><strong>Atenção:</strong> $\log_a(b + c) \neq \log_a b + \log_a c$ — a propriedade é apenas para produto!</p>
-    </div>
-
-    <div class="passo-teoria">
-        <h4>4. Propriedade do Logaritmo do Quociente e da Potência</h4>
-        <p>O logaritmo de um <strong>quociente</strong> é igual à <strong>diferença</strong> dos logaritmos:</p>
-        <p style="text-align:center;">$$\log_a\!\left(\frac{b}{c}\right) = \log_a b - \log_a c, \quad b > 0,\ c > 0$$</p>
-        <p>O logaritmo de uma <strong>potência</strong> permite "baixar" o expoente como fator multiplicativo:</p>
-        <p style="text-align:center;">$$\log_a b^n = n \cdot \log_a b, \quad b > 0,\ n \in \mathbb{R}$$</p>
-        <p><strong>Casos particulares:</strong></p>
-        <ul style="margin-left: 2rem;">
-            <li>$\log_a \sqrt{b} = \log_a b^{1/2} = \dfrac{1}{2}\log_a b$</li>
-            <li>$\log_a \dfrac{1}{b} = \log_a b^{-1} = -\log_a b$</li>
-            <li>$\log_a \sqrt[n]{b} = \dfrac{1}{n}\log_a b$</li>
+        <h4>3. Propriedades Operatórias e Mudança de Base</h4>
+        <p>Para bases e logaritmandos válidos, valem as seguintes propriedades fundamentais:</p>
+        <ul>
+            <li><strong>Logaritmo do Produto:</strong> $\log_a (x \cdot y) = \log_a x + \log_a y$</li>
+            <li><strong>Logaritmo do Quociente:</strong> $\log_a \left(\frac{x}{y}\right) = \log_a x - \log_a y$</li>
+            <li><strong>Logaritmo da Potência ("Peteco"):</strong> $\log_a (x^k) = k \cdot \log_a x$</li>
+            <li><strong>Mudança de Base:</strong> $\log_a b = \frac{\log_c b}{\log_c a}$ (para $c > 0$ e $c \neq 1$)</li>
         </ul>
     </div>
-
-    <div class="passo-teoria">
-        <h4>5. Mudança de Base</h4>
-        <p>A fórmula de <strong>mudança de base</strong> permite converter um logaritmo de qualquer base para outra base $c > 0$, $c \neq 1$:</p>
-        <p style="text-align:center;">$$\log_a b = \frac{\log_c b}{\log_c a}$$</p>
-        <p>Na prática, usa-se a base 10 (calculadora) ou a base $e$:</p>
-        <p style="text-align:center;">$$\log_a b = \frac{\log b}{\log a} = \frac{\ln b}{\ln a}$$</p>
-        <p><strong>Consequências importantes:</strong></p>
-        <ul style="margin-left: 2rem;">
-            <li>$\log_a b \cdot \log_b a = 1$ (logaritmos recíprocos)</li>
-            <li>$\log_a b = \dfrac{1}{\log_b a}$</li>
-            <li>$\log_a b \cdot \log_b c = \log_a c$ (propriedade de cadeia)</li>
-        </ul>
-    </div>
-
-    <div class="passo-teoria">
-        <h4>6. Equações e Inequações Logarítmicas</h4>
-        <p>Para resolver <strong>equações logarítmicas</strong>, usa-se a equivalência $\log_a f(x) = \log_a g(x) \iff f(x) = g(x)$ (com $f(x) > 0$ e $g(x) > 0$). Quando os logaritmos têm bases diferentes, aplica-se mudança de base.</p>
-        <p>Para <strong>inequações logarítmicas</strong>, o sentido da desigualdade depende da base:</p>
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 10px 0; text-align: center; font-size:0.95em;">
-            <div style="background:#eafaf1; border-radius:8px; padding:10px;">
-                <strong>Base $a > 1$ (função crescente)</strong><br>
-                $\log_a f(x) > \log_a g(x)$<br>
-                $\iff f(x) > g(x)$<br>
-                <small>O sentido é <strong>mantido</strong></small>
-            </div>
-            <div style="background:#fdecea; border-radius:8px; padding:10px;">
-                <strong>Base $0 < a < 1$ (função decrescente)</strong><br>
-                $\log_a f(x) > \log_a g(x)$<br>
-                $\iff f(x) < g(x)$<br>
-                <small>O sentido é <strong>invertido</strong></small>
-            </div>
-        </div>
-        <p><strong>Importante:</strong> sempre verifique as condições de existência do logaritmo ao resolver equações e inequações — os logaritmandos devem ser positivos.</p>
-    </div>
-
 </section>
 
-<section class="aplicacoes-reais">
+<section class="aplicacoes-reais" id="aplicacoes">
     <h3>💡 Matemática em Ação</h3>
-    <div class="cards-aplicacao" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-top: 20px;">
-        <div class="card" style="background: #fdfdfd; padding: 20px; border-radius: 10px; border-left: 5px solid #e74c3c; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
-            <h4>🌍 Sismologia — Escala Richter</h4>
-            <p>A magnitude de um terremoto na <strong>escala Richter</strong> é logarítmica: $M = \log\!\left(\dfrac{A}{A_0}\right)$. Um terremoto de magnitude 7 libera 10 vezes mais energia que um de magnitude 6 — a escala logarítmica comprime grandes variações em números manejáveis.</p>
+    <div class="cards-aplicacao">
+        <div class="card">
+            <h4>📈 Escala Richter e Sismologia</h4>
+            <p>A magnitude de um terremoto na Escala Richter é calculada em escala logarítmica ($M = \log_{10}\left(\frac{A}{A_0}\right)$). Cada aumento de 1 ponto na escala significa uma amplitude de onda 10 vezes maior e ~32 vezes mais energia liberada.</p>
         </div>
-        <div class="card" style="background: #fdfdfd; padding: 20px; border-radius: 10px; border-left: 5px solid #3498db; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
-            <h4>💊 Farmacologia — Tempo de Meia-Vida</h4>
-            <p>O tempo necessário para um medicamento atingir determinada concentração no sangue é calculado com logaritmos: $t = \dfrac{\ln(C/C_0)}{-k}$. Médicos usam essa equação para calcular intervalos de dosagem e evitar subdosagem ou toxicidade.</p>
-        </div>
-        <div class="card" style="background: #fdfdfd; padding: 20px; border-radius: 10px; border-left: 5px solid #27ae60; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
-            <h4>💻 Ciência da Computação — Complexidade</h4>
-            <p>Algoritmos de busca binária têm complexidade $O(\log_2 n)$ — pesquisar entre um milhão de itens requer no máximo $\log_2(10^6) \approx 20$ comparações. O <strong>logaritmo</strong> quantifica a eficiência computacional e é base da teoria da informação.</p>
+        <div class="card" style="border-left-color: #2ecc71;">
+            <h4>🧪 Escala de pH e Química</h4>
+            <p>A acidez ou alcalinidade de uma solução é medida pelo pH, definido por $\text{pH} = -\log_{10}[\text{H}^+]$. Um pH 3 possui dez vezes mais íons H⁺ do que uma solução com pH 4.</p>
         </div>
     </div>
 </section>
 
-<section class="questoes-resolvidas">
+<section class="questoes-resolvidas" id="resolvidas">
     <h3>✅ 5 Questões Resolvidas (R 1 a 5)</h3>
-
+    
     <article class="questao">
-        <h4>R 1: Calcular Logaritmos pela Definição</h4>
-        <p><strong>Enunciado:</strong> Calcule: $\log_2 32$, $\log_3 \dfrac{1}{9}$ e $\log_{25} 5$.</p>
+        <h4>R 1: Aplicação Direta da Definição</h4>
+        <p><strong>Enunciado:</strong> Calcule o valor numérico de $\log_2 32$ e de $\log_3 \left(\frac{1}{27}\right)$.</p>
         <div class="resolucao-bloco">
-            <p><strong>Resolução:</strong></p>
-            <p>$\log_2 32 = x \iff 2^x = 32 = 2^5 \implies x = 5$.</p>
-            <p>$\log_3 \dfrac{1}{9} = x \iff 3^x = \dfrac{1}{9} = 3^{-2} \implies x = -2$.</p>
-            <p>$\log_{25} 5 = x \iff 25^x = 5 \iff (5^2)^x = 5^1 \implies 2x = 1 \implies x = \dfrac{1}{2}$.</p>
+            <p><strong>Resolução:</strong><br>
+            1. Para $\log_2 32 = x$:<br>
+               $2^x = 32 \implies 2^x = 2^5 \implies \mathbf{x = 5}$.<br>
+            2. Para $\log_3 \left(\frac{1}{27}\right) = y$:<br>
+               $3^y = \frac{1}{27} \implies 3^y = 3^{-3} \implies \mathbf{y = -3}$.</p>
         </div>
     </article>
 
     <article class="questao">
-        <h4>R 2: Propriedade do Produto</h4>
-        <p><strong>Enunciado:</strong> Sabendo que $\log 2 = 0{,}3010$ e $\log 3 = 0{,}4771$, calcule $\log 6$ e $\log 12$.</p>
+        <h4>R 2: Condição de Existência</h4>
+        <p><strong>Enunciado:</strong> Determine para quais valores reais de $x$ a expressão $\log_{(x - 2)} (8 - x)$ está definida.</p>
         <div class="resolucao-bloco">
-            <p><strong>Resolução:</strong></p>
-            <p>$\log 6 = \log(2 \cdot 3) = \log 2 + \log 3 = 0{,}3010 + 0{,}4771 = 0{,}7781$.</p>
-            <p>$\log 12 = \log(4 \cdot 3) = \log 4 + \log 3 = \log 2^2 + \log 3 = 2\log 2 + \log 3$</p>
-            <p>$= 2(0{,}3010) + 0{,}4771 = 0{,}6020 + 0{,}4771 = 1{,}0791$.</p>
+            <p><strong>Resolução:</strong><br>
+            Precisamos impor as três condições simultâneas:<br>
+            1. Logaritmando positivo: $8 - x > 0 \implies x < 8$.<br>
+            2. Base positiva: $x - 2 > 0 \implies x > 2$.<br>
+            3. Base diferente de 1: $x - 2 \neq 1 \implies x \neq 3$.<br>
+            Intersecção das condições: $\mathbf{2 < x < 8 \text{ e } x \neq 3}$ ou $x \in ]2, 3[ \cup ]3, 8[$.</p>
         </div>
     </article>
 
     <article class="questao">
-        <h4>R 3: Propriedades Combinadas</h4>
-        <p><strong>Enunciado:</strong> Simplifique: $\log_3 \sqrt{27} - \log_3 3 + \log_3 9$.</p>
+        <h4>R 3: Propriedades Operatórias</h4>
+        <p><strong>Enunciado:</strong> Sabendo que $\log 2 \approx 0,30$ e $\log 3 \approx 0,48$, determine o valor aproximado de $\log 60$.</p>
         <div class="resolucao-bloco">
-            <p><strong>Resolução:</strong></p>
-            <p>$\log_3 \sqrt{27} = \log_3 27^{1/2} = \dfrac{1}{2}\log_3 3^3 = \dfrac{3}{2}$</p>
-            <p>$\log_3 3 = 1$</p>
-            <p>$\log_3 9 = \log_3 3^2 = 2$</p>
-            <p>$$\dfrac{3}{2} - 1 + 2 = \dfrac{3}{2} + 1 = \dfrac{5}{2}$$</p>
+            <p><strong>Resolução:</strong><br>
+            1. Decompondo $60$ em fatores primos / produto conveniente: $60 = 2 \cdot 3 \cdot 10$.<br>
+            2. Aplicando a propriedade do produto:<br>
+               $\log 60 = \log (2 \cdot 3 \cdot 10) = \log 2 + \log 3 + \log 10$.<br>
+            3. Como a base é $10$, sabemos que $\log 10 = 1$.<br>
+            4. Substituindo os valores: $\log 60 \approx 0,30 + 0,48 + 1 = \mathbf{1,78}$.</p>
         </div>
     </article>
 
     <article class="questao">
-        <h4>R 4: Equação Logarítmica</h4>
-        <p><strong>Enunciado:</strong> Resolva $\log_2(x + 3) = 4$.</p>
+        <h4>R 4: Propriedade da Potência</h4>
+        <p><strong>Enunciado:</strong> Dado $\log b = 0,6$, encontre o valor de $\log \sqrt[3]{b^2}$.</p>
         <div class="resolucao-bloco">
-            <p><strong>Resolução:</strong> Convertendo para forma exponencial:
-            $$x + 3 = 2^4 = 16 \implies x = 13$$
-            Verificação: $x + 3 = 16 > 0$ ✔ e $\log_2 16 = 4$ ✔</p>
+            <p><strong>Resolução:</strong><br>
+            1. Reescrevendo o radical como expoente fracionário: $\sqrt[3]{b^2} = b^{\frac{2}{3}}$.<br>
+            2. Aplicando a propriedade da potência:<br>
+               $\log \left(b^{\frac{2}{3}}\right) = \frac{2}{3} \cdot \log b$.<br>
+            3. Substituindo $\log b = 0,6 = \frac{6}{10}$:<br>
+               $\frac{2}{3} \cdot 0,6 = \frac{1,2}{3} = \mathbf{0,4}$.</p>
         </div>
     </article>
 
     <article class="questao">
         <h4>R 5: Mudança de Base</h4>
-        <p><strong>Enunciado:</strong> Calcule $\log_4 32$ usando mudança de base para a base 2.</p>
+        <p><strong>Enunciado:</strong> Sabendo que $\log_2 3 = a$ e $\log_2 5 = b$, expresse $\log_5 15$ em função de $a$ e $b$.</p>
         <div class="resolucao-bloco">
-            <p><strong>Resolução:</strong>
-            $$\log_4 32 = \frac{\log_2 32}{\log_2 4} = \frac{5}{2}$$
-            pois $\log_2 32 = 5$ (já que $2^5 = 32$) e $\log_2 4 = 2$ (já que $2^2 = 4$).</p>
-            <p>Verificação: $4^{5/2} = (2^2)^{5/2} = 2^5 = 32$ ✔</p>
+            <p><strong>Resolução:</strong><br>
+            1. Mudamos $\log_5 15$ para a base $2$:<br>
+               $\log_5 15 = \frac{\log_2 15}{\log_2 5}$.<br>
+            2. Escrevemos $15$ como produto de $3 \cdot 5$:<br>
+               $\log_2 15 = \log_2 (3 \cdot 5) = \log_2 3 + \log_2 5 = a + b$.<br>
+            3. Substituindo na fração de mudança de base:<br>
+               $\log_5 15 = \mathbf{\frac{a + b}{b}}$.</p>
         </div>
     </article>
 </section>
 
-<section class="questoes-propostas">
+<section class="questoes-propostas" id="propostas">
     <h3>✍️ 5 Questões Propostas (P 6 a 10)</h3>
 
     <article class="questao">
-        <h4>P 6: Valor de Expressão Logarítmica</h4>
-        <p><strong>Enunciado:</strong> Sabendo que $\log 2 = 0{,}3010$, calcule $\log 5$ e $\log 50$.</p>
+        <h4>P 6: Cálculo de Logaritmo</h4>
+        <p><strong>Enunciado:</strong> Qual é o valor exato de $\log_4 128$?</p>
         <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
         <div class="gabarito-resolucao">
-            <p><strong>Resolução:</strong></p>
-            <p>$\log 5 = \log \dfrac{10}{2} = \log 10 - \log 2 = 1 - 0{,}3010 = 0{,}6990$.</p>
-            <p>$\log 50 = \log \dfrac{100}{2} = \log 100 - \log 2 = 2 - 0{,}3010 = 1{,}6990$.</p>
-            <p>Ou: $\log 50 = \log(5 \times 10) = \log 5 + \log 10 = 0{,}6990 + 1 = 1{,}6990$ ✔</p>
+            <p><strong>Resolução:</strong><br>
+            1. Seja $\log_4 128 = x$. Pela definição: $4^x = 128$.<br>
+            2. Convertendo ambos para a base 2: $(2^2)^x = 2^7 \implies 2^{2x} = 2^7$.<br>
+            3. Igualando os expoentes: $2x = 7 \implies \mathbf{x = \frac{7}{2}} \text{ (ou } 3,5\text{)}$.</p>
         </div>
     </article>
 
     <article class="questao">
-        <h4>P 7: Equação Logarítmica com Propriedades</h4>
-        <p><strong>Enunciado:</strong> Resolva $\log_5(x+2) + \log_5(x-2) = 1$.</p>
+        <h4>P 7: Soma de Logaritmos</h4>
+        <p><strong>Enunciado:</strong> Calcule o valor de $S = \log_6 9 + \log_6 4$.</p>
         <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
         <div class="gabarito-resolucao">
-            <p><strong>Resolução:</strong> Condições de existência: $x + 2 > 0$ e $x - 2 > 0 \implies x > 2$.</p>
-            <p>Aplicando a propriedade do produto:
-            $$\log_5[(x+2)(x-2)] = 1 \implies (x+2)(x-2) = 5^1 = 5$$
-            $$x^2 - 4 = 5 \implies x^2 = 9 \implies x = \pm 3$$
-            $x = -3$ é rejeitado (pois $x > 2$). Solução: $S = \{3\}$.</p>
+            <p><strong>Resolução:</strong><br>
+            1. Como as bases são iguais, aplicamos a propriedade do produto no sentido inverso:<br>
+               $\log_6 9 + \log_6 4 = \log_6 (9 \cdot 4)$.<br>
+            2. $\log_6 (36) = x \implies 6^x = 36 \implies 6^x = 6^2$.<br>
+            3. Portanto, $S = \mathbf{2}$.</p>
         </div>
     </article>
 
     <article class="questao">
-        <h4>P 8: Inequação Logarítmica (Base > 1)</h4>
-        <p><strong>Enunciado:</strong> Resolva $\log_3(2x - 1) > 2$.</p>
+        <h4>P 8: Condição de Existência de Logaritmo</h4>
+        <p><strong>Enunciado:</strong> Determine o domínio de validade real para que a expressão $\log_5 (x^2 - 9)$ exista.</p>
         <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
         <div class="gabarito-resolucao">
-            <p><strong>Resolução:</strong> Condição de existência: $2x - 1 > 0 \implies x > \dfrac{1}{2}$.</p>
-            <p>Como base $3 > 1$ (função crescente), mantemos o sentido:
-            $$2x - 1 > 3^2 = 9 \implies 2x > 10 \implies x > 5$$
-            Solução: $S = (5, +\infty)$.</p>
+            <p><strong>Resolução:</strong><br>
+            1. A base é $5$ (válida). O logaritmando deve ser estritamente positivo:<br>
+               $x^2 - 9 > 0$.<br>
+            2. As raízes de $x^2 - 9 = 0$ são $x = -3$ e $x = 3$.<br>
+            3. Como a parábola tem concavidade para cima, a função é positiva para valores externos às raízes:<br>
+               $\mathbf{x < -3 \text{ ou } x > 3}$ (ou em notação de intervalo: $]-\infty, -3[ \cup ]3, +\infty[$).</p>
         </div>
     </article>
 
     <article class="questao">
-        <h4>P 9: Inequação Logarítmica (Base < 1)</h4>
-        <p><strong>Enunciado:</strong> Resolva $\log_{1/2}(x - 1) \geq -3$.</p>
+        <h4>P 9: Decomposição Logarítmica</h4>
+        <p><strong>Enunciado:</strong> Sabendo que $\log 2 = a$ e $\log 3 = b$, calcule $\log 5$ em função de $a$.</p>
         <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
         <div class="gabarito-resolucao">
-            <p><strong>Resolução:</strong> Condição de existência: $x - 1 > 0 \implies x > 1$.</p>
-            <p>Base $\dfrac{1}{2} < 1$ (função decrescente) → sentido <strong>inverte</strong>:
-            $$x - 1 \leq \left(\frac{1}{2}\right)^{-3} = 2^3 = 8 \implies x \leq 9$$
-            Combinando com $x > 1$: Solução: $S = (1,\, 9]$.</p>
+            <p><strong>Resolução:</strong><br>
+            1. Escrevemos $5$ na forma de fração de base 10: $5 = \frac{10}{2}$.<br>
+            2. Aplicando a propriedade do quociente:<br>
+               $\log 5 = \log \left(\frac{10}{2}\right) = \log 10 - \log 2$.<br>
+            3. Como $\log 10 = 1$ e $\log 2 = a$, temos: $\mathbf{\log 5 = 1 - a}$.</p>
         </div>
     </article>
 
     <article class="questao">
-        <h4>P 10: Expressão com Mudança de Base</h4>
-        <p><strong>Enunciado:</strong> Calcule $\log_2 3 \cdot \log_3 4 \cdot \log_4 8$.</p>
+        <h4>P 10: Equação Logarítmica Simples</h4>
+        <p><strong>Enunciado:</strong> Resolva a equação $\log_3 (2x - 1) = 2$.</p>
         <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
         <div class="gabarito-resolucao">
-            <p><strong>Resolução:</strong> Usando a propriedade de cadeia $\log_a b \cdot \log_b c = \log_a c$:</p>
-            <p>$$\log_2 3 \cdot \log_3 4 \cdot \log_4 8 = \log_2 4 \cdot \log_4 8 = \log_2 8 = 3$$</p>
-            <p>Pois $\log_2 8 = 3$ (já que $2^3 = 8$) ✔</p>
-            <p>Alternativa: convertendo tudo para base 2:
-            $\log_2 3 \cdot \dfrac{2}{\log_2 3} \cdot \dfrac{3}{2} = 3$ ✔</p>
+            <p><strong>Resolução:</strong><br>
+            1. Pela definição de logaritmo: $3^2 = 2x - 1 \implies 9 = 2x - 1$.<br>
+            2. $2x = 10 \implies x = 5$.<br>
+            3. Verificação da condição de existência: $2(5) - 1 = 9 > 0$ (Válido).<br>
+            4. Portanto, a solução é $\mathbf{x = 5}$.</p>
         </div>
     </article>
 </section>
 
-<section class="TESTE">
+<section class="TESTE" id="testes">
     <h3>🎓 TESTES (T 11 a 15)</h3>
 
-   <article class="questao">
-    <h4>T 11: Função Exponencial — Disseminação do Covid-19</h4>
-    <p>Dados preliminares da pandemia do Covid-19 indicam que, no início da disseminação, em determinada região, o número de pessoas contaminadas dobrava a cada 3 dias.</p>
-    <p>Usando $\log_{10} 2 \approx 0{,}3$ e $\log_{10} 5 \approx 0{,}7$, após o primeiro contágio, o número de infectados atingirá a marca de 4 mil entre:</p>
-    <p>A) o 18º dia e o 24º dia.<br>B) o 25º dia e o 31º dia.<br>C) o 32º dia e o 38º dia.<br>D) o 39º dia e o 45º dia.</p>
-    <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-    <div class="gabarito-resolucao">
-        <p><strong>Resolução:</strong> Alternativa <strong>A</strong>.<br>
-        O modelo exponencial é: $Q(t) = 1 \cdot 2^{t/3}$, onde $t$ é o número de dias.<br><br>
-        Igualando a 4.000:<br>
-        $2^{t/3} = 4\,000$<br><br>
-        Aplicando $\log_{10}$:<br>
-        $\dfrac{t}{3} \cdot \log_{10} 2 = \log_{10} 4\,000$<br><br>
-        Calculando $\log_{10} 4\,000$:<br>
-        $\log_{10} 4\,000 = \log_{10}(4 \times 10^3) = \log_{10} 4 + 3 = 2\log_{10} 2 + 3 = 2(0{,}3) + 3 = 3{,}6$.<br><br>
-        Resolvendo para $t$:<br>
-        $\dfrac{t}{3} \cdot 0{,}3 = 3{,}6$<br>
-        $\dfrac{t}{3} = 12$<br>
-        $t = 36$ dias.<br><br>
-        Como $36$ está entre $32$ e $38$, a resposta é a alternativa <strong>C</strong> — entre o 32º e o 38º dia. ✓</p>
+    <div class="card" style="text-align:center; padding:60px 20px; background:#f8f9fa; border:2px dashed #3498db; border-radius:12px; margin-top:20px;">
+        <h2 style="color:#3498db; font-size:2.5rem; margin-bottom:15px;">
+            🚧 EM BREVE!
+        </h2>
+
+        <p style="font-size:1.2rem; color:#555;">
+            Questões de vestibulares serão disponibilizadas em breve.
+        </p>
     </div>
-</article>
-
-    <article class="questao">
-        <h4>T 12: (UNICAMP) Equação Logarítmica</h4>
-        <p>A solução da equação $\log_2(x^2 - 3x) = 2$ é:</p>
-        <p>A) $x = 4$ ou $x = -1$<br>B) $x = 4$ apenas<br>C) $x = -1$ apenas<br>D) $x = 1$ ou $x = 4$<br>E) $x = 0$ ou $x = 3$</p>
-        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-        <div class="gabarito-resolucao">
-            <p><strong>Resolução:</strong> Alternativa <strong>A</strong>.<br>
-            $x^2 - 3x = 2^2 = 4 \implies x^2 - 3x - 4 = 0 \implies (x-4)(x+1) = 0$.<br>
-            $x = 4$ ou $x = -1$.<br>
-            Verificando condição $x^2 - 3x > 0$:<br>
-            $x = 4$: $16 - 12 = 4 > 0$ ✔; $x = -1$: $1 + 3 = 4 > 0$ ✔.<br>
-            $S = \{-1,\ 4\}$.</p>
-        </div>
-    </article>
-
-    <article class="questao">
-        <h4>T 13: (UNESP) Propriedades e Simplificação</h4>
-        <p>O valor de $\log_6 4 + \log_6 9$ é:</p>
-        <p>A) $1$<br>B) $2$<br>C) $3$<br>D) $\log_6 13$<br>E) $\log_6 36$</p>
-        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-        <div class="gabarito-resolucao">
-            <p><strong>Resolução:</strong> Alternativa <strong>B</strong>.<br>
-            $\log_6 4 + \log_6 9 = \log_6(4 \times 9) = \log_6 36 = \log_6 6^2 = 2$.</p>
-        </div>
-    </article>
-
-    <article class="questao">
-        <h4>T 14: (UFMG) Mudança de Base</h4>
-        <p>O valor de $\log_8 27$ é:</p>
-        <p>A) $\dfrac{1}{2}$<br>B) $\dfrac{2}{3}$<br>C) $1$<br>D) $\dfrac{3}{2}$<br>E) $\dfrac{4}{3}$</p>
-        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-        <div class="gabarito-resolucao">
-            <p><strong>Resolução:</strong> Alternativa <strong>C</strong>... verificando com base 2:<br>
-            $\log_8 27 = \dfrac{\log_2 27}{\log_2 8} = \dfrac{\log_2 3^3}{\log_2 2^3} = \dfrac{3\log_2 3}{3} = \log_2 3$.<br>
-            Como $\log_2 3 \approx 1{,}585$, nenhuma alternativa fechada bate. Recalculando com base 6:<br>
-            $8 = 2^3$ e $27 = 3^3$, então $\log_8 27 = \dfrac{3\log 3}{3\log 2} = \dfrac{\log 3}{\log 2} = \log_2 3 \approx 1{,}585$.<br>
-            <em>Alternativa mais próxima: D ($\frac{3}{2}$) em provas que arredondam. Valor exato: $\log_2 3$.</em></p>
-        </div>
-    </article>
-
-    <article class="questao">
-        <h4>T 15: (FATEC) Aplicação — Escala Richter</h4>
-        <p>A escala Richter usa $M = \log\!\left(\dfrac{A}{A_0}\right)$. Um terremoto registra amplitude $A = 10{.}000\, A_0$. Um segundo terremoto tem $A = 100\, A_0$. A diferença entre as magnitudes é:</p>
-        <p>A) $1$<br>B) $2$<br>C) $3$<br>D) $4$<br>E) $5$</p>
-        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-        <div class="gabarito-resolucao">
-            <p><strong>Resolução:</strong> Alternativa <strong>B</strong>.<br>
-            $M_1 = \log\!\left(\dfrac{10{.}000\,A_0}{A_0}\right) = \log 10{.}000 = \log 10^4 = 4$.<br>
-            $M_2 = \log\!\left(\dfrac{100\,A_0}{A_0}\right) = \log 100 = \log 10^2 = 2$.<br>
-            Diferença: $M_1 - M_2 = 4 - 2 = \mathbf{2}$.</p>
-        </div>
-    </article>
-
 </section>
+
 </div>
 </main>
 
@@ -445,7 +299,7 @@ function toggleSlides() {
         mostrarSlide(slideAtual);
     } else {
         body.classList.remove('modo-slides');
-        window.location.reload();
+        window.location.reload(); 
     }
 }
 
@@ -454,10 +308,9 @@ function mostrarSlide(n) {
         s.classList.remove('slide-ativo');
         s.style.display = 'none';
     });
-
     const slide = slides[n];
     slide.classList.add('slide-ativo');
-    slide.style.display = 'flex';
+    slide.style.display = 'flex'; 
 
     if (slide.classList.contains('questao') && !slide.querySelector('.btn-gabarito')) {
         const resolucoes = slide.querySelectorAll('.resolucao-bloco');
@@ -474,13 +327,11 @@ function mostrarSlide(n) {
 
     const pHeader = document.querySelector('header p').innerText;
     const partes = pHeader.split('|');
-    if (partes.length > 1) {
+    if(partes.length > 1) {
         document.getElementById('slide-info-serie').innerText = partes[0].trim();
         document.getElementById('slide-info-aula').innerText = partes[1].trim();
     }
-
     document.getElementById('contador-slide').innerText = (n + 1) + " / " + slides.length;
-
     if (window.MathJax) MathJax.typesetPromise();
 }
 
@@ -490,26 +341,45 @@ function mudarSlide(direcao) {
     if (slideAtual < 0) slideAtual = slides.length - 1;
     mostrarSlide(slideAtual);
 }
+
+document.addEventListener('keydown', function(event) {
+    if (document.body.classList.contains('modo-slides')) {
+        switch(event.key) {
+            case 'ArrowRight': 
+            case 'PageDown':   
+            case 'Enter':      
+            case ' ':          
+                mudarSlide(1);
+                break;
+                
+            case 'ArrowLeft':  
+            case 'PageUp':     
+                mudarSlide(-1);
+                break;
+
+            case 'Escape':     
+                toggleSlides();
+                break;
+        }
+    }
+});
 </script>
 
 <style>
     body.modo-slides { overflow: hidden; background-color: #1a1a1a; }
     body.modo-slides .menu-lateral, body.modo-slides header, body.modo-slides .menu-toggle, body.modo-slides #btn-slides { display: none !important; }
-
     .slide-ativo {
         display: flex !important; flex-direction: column; align-items: center; justify-content: flex-start;
         position: fixed; top: 0; left: 0; width: 100vw; height: calc(100vh - 70px);
-        background: #ffffff; padding: 40px; z-index: 999; overflow-y: auto !important;
+        background: #ffffff; padding: 40px; z-index: 999; overflow-y: auto !important; 
         box-sizing: border-box; text-align: center;
     }
-
     .controles-slides {
         position: fixed; bottom: 0; left: 0; width: 100%; height: 70px;
-        background: #2c3e50; color: white; display: none;
+        background: #2c3e50; color: white; display: none; 
         justify-content: space-between; align-items: center; padding: 0 20px; z-index: 1001; box-sizing: border-box;
     }
     body.modo-slides .controles-slides { display: flex; }
-
     .info-lateral { flex: 1; font-family: 'Oswald', sans-serif; font-size: 0.9rem; color: #bdc3c7; }
     .botoes-centrais { display: flex; align-items: center; gap: 15px; justify-content: center; flex: 2; }
     .btn-nav { padding: 10px 20px; background: #3498db; color: white; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; }
@@ -518,14 +388,12 @@ function mudarSlide(direcao) {
 
 <div class="controles-slides">
     <div id="slide-info-serie" class="info-lateral"></div>
-
     <div class="botoes-centrais">
         <button class="btn-nav" onclick="mudarSlide(-1)">⬅ Anterior</button>
         <span id="contador-slide"></span>
         <button class="btn-nav" onclick="mudarSlide(1)">Próximo ➡</button>
         <button class="btn-nav" onclick="toggleSlides()" style="background:#e74c3c;">Sair</button>
     </div>
-
     <div id="slide-info-aula" class="info-lateral" style="text-align: right;"></div>
 </div>
 </body>
