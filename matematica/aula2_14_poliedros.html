@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2º Ano: Aula 14 - Poliedros e Relação de Euler</title>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../estilo.css">
+    
+    <script>
+        MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true
+            }
+        };
+    </script>
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body>
+<button class="menu-toggle" onclick="toggleMenu()">☰</button>
+
+<nav id="menu-principal" class="nav-global">
+    <ul>
+        <li><a href="../index.html">🏠 Início</a></li>
+        <li><a href="../fisica_home.html">⚛️ Física</a></li>
+        <li><a href="../matematica_home.html">📐 Matemática</a></li>
+        <li><a href="../simulacoes_home.html">💻 Simulações</a></li>
+    </ul>
+</nav>
+
+<header id="topo">
+    <h1>MATEMÁTICA EM</h1>
+    <p>2º Ano | Aula 14: Poliedros e Relação de Euler</p>
+    <button id="btn-slides" onclick="toggleSlides()">📺 Iniciar Modo Slides</button>
+</header>
+
+<div class="container">
+
+<main class="conteudo-principal">
+
+<div class="secao-aula">
+ <div class="container-resumo" id="resumo">
+    <h3>📚 Resumo </h3>
+    <section class="resumo-conteudo">
+        <p><strong>Poliedros</strong> são sólidos geométricos tridimensionais limitados por polígonos planos denominados <strong>faces</strong>. Os lados dessas faces são as <strong>arestas</strong>, e os pontos de encontro das arestas são os <strong>vértices</strong>.</p>
+        <p>Para todo poliedro convexo (e alguns não convexos), vale a famosa <strong>Relação de Euler</strong>: $V - A + F = 2$. Além disso, existem exatamente cinco <strong>Poliedros de Platão</strong> (regulares): tetraedro, hexaedro (cubo), octaedro, dodecaedro e icosaedro.</p>
+    </section>
+</div>
+
+<section class="conteudo-teorico-completo" id="teoria">
+    <div class="passo-teoria">
+        <h3>📖 Conceitos Fundamentais</h3>
+        <h4>1. Elementos de um Poliedro</h4>
+        <p>Um poliedro possui três elementos principais:</p>
+        <ul>
+            <li><strong>Vértices ($V$):</strong> Pontos de interseção das arestas.</li>
+            <li><strong>Arestas ($A$):</strong> Segmentos de reta que unificam duas faces.</li>
+            <li><strong>Faces ($F$):</strong> Polígonos planos que delimitam o sólido.</li>
+        </ul>
+    </div>
+
+    <div class="passo-teoria">
+        <h4>2. Relação de Euler</h4>
+        <p>Em todo poliedro convexo com $V$ vértices, $A$ arestas e $F$ faces, é válida a igualdade:</p>
+        <p>$$V - A + F = 2 \quad \text{ou} \quad V + F = A + 2$$</p>
+        <p>A soma dos ângulos internos de todas as faces de um poliedro convexo com $V$ vértices é dada por:</p>
+        <p>$$S = (V - 2) \cdot 360^\circ$$</p>
+    </div>
+
+    <div class="passo-teoria">
+        <h4>3. Contagem de Arestas e Poliedros de Platão</h4>
+        <p>O número total de arestas relacionando o número de lados de cada face é calculado por $2A = \sum (n \cdot F_n)$, em que $F_n$ representa a quantidade de faces com $n$ lados.</p>
+        <p>Os <strong>Poliedros de Platão</strong> são os únicos cinco sólidos regulares convexos:</p>
+        <ul>
+            <li><strong>Tetraedro:</strong> 4 faces triangulares ($V=4, A=6, F=4$).</li>
+            <li><strong>Hexaedro (Cubo):</strong> 6 faces quadrangulares ($V=8, A=12, F=6$).</li>
+            <li><strong>Octaedro:</strong> 8 faces triangulares ($V=6, A=12, F=8$).</li>
+            <li><strong>Dodecaedro:</strong> 12 faces pentagonais ($V=20, A=30, F=12$).</li>
+            <li><strong>Icosaedro:</strong> 20 faces triangulares ($V=12, A=30, F=20$).</li>
+        </ul>
+    </div>
+</section>
+
+<section class="aplicacoes-reais" id="aplicacoes">
+    <h3>💡 Matemática em Ação</h3>
+    <div class="cards-aplicacao">
+        <div class="card">
+            <h4>💎 Cristalografia e Química</h4>
+            <p>A estrutura molecular de cristais (como o diamante e o sal de cozinha) e dos fulerenos organiza-se na forma de poliedros regulares e semi-regulares.</p>
+        </div>
+        <div class="card" style="border-left-color: #2ecc71;">
+            <h4>🏛️ Design e Geodésicas</h4>
+            <p>Cúpulas geodésicas utilizadas em arquitetura baseiam-se na divisão de icosaedros para criar superfícies esféricas extremamente resistentes e leves.</p>
+        </div>
+    </div>
+</section>
+
+<section class="questoes-resolvidas" id="resolvidas">
+    <h3>✅ 5 Questões Resolvidas (R 1 a 5)</h3>
+    
+    <article class="questao">
+        <h4>R 1: Aplicação Direta da Relação de Euler</h4>
+        <p><strong>Enunciado:</strong> Um poliedro convexo possui $12$ vértices e $30$ arestas. Quantas faces tem esse poliedro?</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong><br>
+            1. Dados: $V = 12$, $A = 30$, $F = ?$<br>
+            2. Pela Relação de Euler: $V - A + F = 2$<br>
+            3. Substituindo os valores: $12 - 30 + F = 2 \implies -18 + F = 2 \implies F = 20$.<br>
+            4. O poliedro tem **20 faces** (é um icosaedro).</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>R 2: Poliedro com Faces Mistas</h4>
+        <p><strong>Enunciado:</strong> Um poliedro convexo é formado por $6$ faces triangulares e $4$ faces quadrangulares. Determine o número de vértices desse poliedro.</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong><br>
+            1. Número total de faces: $F = 6 + 4 = 10$.<br>
+            2. Cálculo do número de arestas ($2A = \sum n \cdot F_n$):<br>
+               $2A = (6 \cdot 3) + (4 \cdot 4) = 18 + 16 = 34 \implies A = 17$.<br>
+            3. Aplicando Euler: $V - A + F = 2 \implies V - 17 + 10 = 2 \implies V - 7 = 2 \implies V = 9$.<br>
+            4. O poliedro possui **9 vértices**.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>R 3: Soma dos Ângulos Internos das Faces</h4>
+        <p><strong>Enunciado:</strong> Qual é a soma dos ângulos internos de todas as faces de um octaedro regular?</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong><br>
+            1. Um octaedro regular possui $V = 6$ vértices.<br>
+            2. A fórmula para a soma dos ângulos é: $S = (V - 2) \cdot 360^\circ$.<br>
+            3. Substituindo: $S = (6 - 2) \cdot 360^\circ = 4 \cdot 360^\circ = \mathbf{1440^\circ}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>R 4: Poliedro de Platão</h4>
+        <p><strong>Enunciado:</strong> Um poliedro de Platão possui 12 vértices e suas faces são triângulos equiláteros. Qual é o nome desse poliedro e quantas arestas ele possui?</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong><br>
+            1. Como as faces são triangulares ($n = 3$), temos $2A = 3F \implies F = \frac{2A}{3}$.<br>
+            2. Relação de Euler: $V - A + F = 2 \implies 12 - A + \frac{2A}{3} = 2$.<br>
+            3. $10 = A - \frac{2A}{3} \implies 10 = \frac{A}{3} \implies A = 30$.<br>
+            4. Se $A = 30$, então $F = \frac{2(30)}{3} = 20$. O sólido é o **Icosaedro** ($30$ arestas).</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>R 5: Vértices de Triangulação</h4>
+        <p><strong>Enunciado:</strong> De cada vértice de um poliedro convexo partem 3 arestas. Se o poliedro tem 12 faces, determine o número de vértices e arestas.</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong><br>
+            1. Se de cada vértice partem 3 arestas, a soma de arestas por vértice nos dá: $2A = 3V \implies V = \frac{2A}{3}$.<br>
+            2. Dado $F = 12$. Pela Relação de Euler: $V - A + F = 2$.<br>
+            3. Substituindo $V$: $\frac{2A}{3} - A + 12 = 2 \implies 10 = A - \frac{2A}{3} \implies 10 = \frac{A}{3} \implies A = 30$.<br>
+            4. Vértices: $V = \frac{2(30)}{3} = 20$. O sólido possui **20 vértices e 30 arestas** (Dodecaedro).</p>
+        </div>
+    </article>
+</section>
+
+<section class="questoes-propostas" id="propostas">
+    <h3>✍️ 5 Questões Propostas (P 6 a 10)</h3>
+
+    <article class="questao">
+        <h4>P 6: Número de Arestas do Cubo</h4>
+        <p><strong>Enunciado:</strong> Um hexaedro regular (cubo) tem 8 vértices e 6 faces. Confirme o número de arestas aplicando a Relação de Euler.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> $V = 8$ e $F = 6$. Relação de Euler: $V - A + F = 2 \implies 8 - A + 6 = 2 \implies 14 - A = 2 \implies A = \mathbf{12 \text{ arestas}}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 7: Poliedro Triangulado</h4>
+        <p><strong>Enunciado:</strong> Um poliedro convexo é formado exclusivamente por $8$ faces triangulares. Quantos vértices ele possui?</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> $F = 8$. Como todas as faces são triangulares: $2A = 8 \cdot 3 = 24 \implies A = 12$. Aplicando Euler: $V - 12 + 8 = 2 \implies V - 4 = 2 \implies V = \mathbf{6 \text{ vértices}}$ (Octaedro).</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 8: Bola de Futebol (Icosaedro Truncado)</h4>
+        <p><strong>Enunciado:</strong> Uma bola de futebol tradicional é um poliedro convexo com $12$ faces pentagonais e $20$ faces hexagonais. Quantos vértices possui essa bola?</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> Total de faces: $F = 12 + 20 = 32$.<br>Arestas: $2A = (12 \cdot 5) + (20 \cdot 6) = 60 + 120 = 180 \implies A = 90$.<br>Euler: $V - 90 + 32 = 2 \implies V - 58 = 2 \implies V = \mathbf{60 \text{ vértices}}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 9: Soma dos Ângulos das Faces</h4>
+        <p><strong>Enunciado:</strong> Determine a soma dos ângulos internos de todas as faces de um poliedro convexo que tem $10$ vértices.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> $S = (V - 2) \cdot 360^\circ = (10 - 2) \cdot 360^\circ = 8 \cdot 360^\circ = \mathbf{2880^\circ}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 10: Poliedro com Quadriláteros e Pentágonos</h4>
+        <p><strong>Enunciado:</strong> Um poliedro tem $5$ faces quadrangulares e $2$ faces pentagonais. Sabendo que ele possui $10$ vértices, encontre o número de arestas.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> Total de faces $F = 5 + 2 = 7$. $2A = (5 \cdot 4) + (2 \cdot 5) = 20 + 10 = 30 \implies A = 15$. Conferindo por Euler com $V = 10$: $10 - 15 + 7 = 2$ (Verdadeiro). Logo, $A = \mathbf{15 \text{ arestas}}$.</p>
+        </div>
+    </article>
+</section>
+
+<section class="TESTE" id="testes">
+    <h3>🎓 TESTES (T 11 a 15)</h3>
+
+    <div class="card" style="text-align:center; padding:60px 20px; background:#f8f9fa; border:2px dashed #3498db; border-radius:12px; margin-top:20px;">
+        <h2 style="color:#3498db; font-size:2.5rem; margin-bottom:15px;">
+            🚧 EM BREVE!
+        </h2>
+
+        <p style="font-size:1.2rem; color:#555;">
+            Questões de vestibulares serão disponibilizadas em breve.
+        </p>
+    </div>
+</section>
+
+</div>
+</main>
+
+<aside class="menu-lateral">
+    <iframe src="../menu_matematica.html" style="width:100%; border:none; height:600px;"></iframe>
+</aside>
+
+</div>
+
+<script>
+function toggleGabarito(botao) {
+    const gabarito = botao.nextElementSibling;
+    if (gabarito.style.display === "none" || gabarito.style.display === "") {
+        gabarito.style.display = "block";
+        botao.textContent = "Esconder Gabarito e Resolução";
+        botao.style.backgroundColor = "#2c3e50";
+    } else {
+        gabarito.style.display = "none";
+        botao.textContent = "Ver Gabarito e Resolução";
+        botao.style.backgroundColor = "#3498db";
+    }
+}
+
+function toggleMenu() {
+    const menuGlobal = document.getElementById("menu-principal");
+    if (menuGlobal) menuGlobal.classList.toggle("ativo");
+}
+
+let slideAtual = 0;
+let slides = [];
+
+function prepararSlides() {
+    const seletores = '.container-resumo, .passo-teoria, .aplicacoes-reais, .questao';
+    slides = document.querySelectorAll(seletores);
+}
+
+function toggleSlides() {
+    prepararSlides();
+    const body = document.body;
+    if (!body.classList.contains('modo-slides')) {
+        body.classList.add('modo-slides');
+        slideAtual = 0;
+        mostrarSlide(slideAtual);
+    } else {
+        body.classList.remove('modo-slides');
+        window.location.reload(); 
+    }
+}
+
+function mostrarSlide(n) {
+    slides.forEach(s => {
+        s.classList.remove('slide-ativo');
+        s.style.display = 'none';
+    });
+    const slide = slides[n];
+    slide.classList.add('slide-ativo');
+    slide.style.display = 'flex'; 
+
+    if (slide.classList.contains('questao') && !slide.querySelector('.btn-gabarito')) {
+        const resolucoes = slide.querySelectorAll('.resolucao-bloco');
+        resolucoes.forEach(r => r.style.display = 'block');
+    } else {
+        const gabaritos = slide.querySelectorAll('.gabarito-resolucao');
+        gabaritos.forEach(g => g.style.display = 'none');
+        const botoes = slide.querySelectorAll('.btn-gabarito');
+        botoes.forEach(b => {
+            b.textContent = "Ver Gabarito e Resolução";
+            b.style.backgroundColor = "#3498db";
+        });
+    }
+
+    const pHeader = document.querySelector('header p').innerText;
+    const partes = pHeader.split('|');
+    if(partes.length > 1) {
+        document.getElementById('slide-info-serie').innerText = partes[0].trim();
+        document.getElementById('slide-info-aula').innerText = partes[1].trim();
+    }
+    document.getElementById('contador-slide').innerText = (n + 1) + " / " + slides.length;
+    if (window.MathJax) MathJax.typesetPromise();
+}
+
+function mudarSlide(direcao) {
+    slideAtual += direcao;
+    if (slideAtual >= slides.length) slideAtual = 0;
+    if (slideAtual < 0) slideAtual = slides.length - 1;
+    mostrarSlide(slideAtual);
+}
+
+document.addEventListener('keydown', function(event) {
+    if (document.body.classList.contains('modo-slides')) {
+        switch(event.key) {
+            case 'ArrowRight': 
+            case 'PageDown':   
+            case 'Enter':      
+            case ' ':          
+                mudarSlide(1);
+                break;
+                
+            case 'ArrowLeft':  
+            case 'PageUp':     
+                mudarSlide(-1);
+                break;
+
+            case 'Escape':     
+                toggleSlides();
+                break;
+        }
+    }
+});
+</script>
+
+<style>
+    body.modo-slides { overflow: hidden; background-color: #1a1a1a; }
+    body.modo-slides .menu-lateral, body.modo-slides header, body.modo-slides .menu-toggle, body.modo-slides #btn-slides { display: none !important; }
+    .slide-ativo {
+        display: flex !important; flex-direction: column; align-items: center; justify-content: flex-start;
+        position: fixed; top: 0; left: 0; width: 100vw; height: calc(100vh - 70px);
+        background: #ffffff; padding: 40px; z-index: 999; overflow-y: auto !important; 
+        box-sizing: border-box; text-align: center;
+    }
+    .controles-slides {
+        position: fixed; bottom: 0; left: 0; width: 100%; height: 70px;
+        background: #2c3e50; color: white; display: none; 
+        justify-content: space-between; align-items: center; padding: 0 20px; z-index: 1001; box-sizing: border-box;
+    }
+    body.modo-slides .controles-slides { display: flex; }
+    .info-lateral { flex: 1; font-family: 'Oswald', sans-serif; font-size: 0.9rem; color: #bdc3c7; }
+    .botoes-centrais { display: flex; align-items: center; gap: 15px; justify-content: center; flex: 2; }
+    .btn-nav { padding: 10px 20px; background: #3498db; color: white; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; }
+    #contador-slide { font-family: 'Oswald', sans-serif; min-width: 60px; text-align: center; }
+</style>
+
+<div class="controles-slides">
+    <div id="slide-info-serie" class="info-lateral"></div>
+    <div class="botoes-centrais">
+        <button class="btn-nav" onclick="mudarSlide(-1)">⬅ Anterior</button>
+        <span id="contador-slide"></span>
+        <button class="btn-nav" onclick="mudarSlide(1)">Próximo ➡</button>
+        <button class="btn-nav" onclick="toggleSlides()" style="background:#e74c3c;">Sair</button>
+    </div>
+    <div id="slide-info-aula" class="info-lateral" style="text-align: right;"></div>
+</div>
+</body>
+</html>
