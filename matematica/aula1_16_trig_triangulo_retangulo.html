@@ -29,12 +29,10 @@
     </ul>
 </nav>
 
-<header>
+<header id="topo">
     <h1>MATEMÁTICA EM</h1>
     <p>1º Ano | Aula 16: Trigonometria no Triângulo Retângulo</p>
-<button id="btn-slides" onclick="toggleSlides()" style="position: fixed; top: 20px; right: 20px; z-index: 1000; padding: 10px; cursor: pointer; background: #e67e22; color: white; border: none; border-radius: 5px; font-weight: bold;">
-    📺 Iniciar Modo Slides
-</button>
+    <button id="btn-slides" onclick="toggleSlides()">📺 Iniciar Modo Slides</button>
 </header>
 
 <div class="container">
@@ -42,6 +40,7 @@
 <main class="conteudo-principal">
 
 <div class="secao-aula">
+<<<<<<< Updated upstream
  <div class="container-resumo">
     <h3>📚 Resumo: </h3>
     <section class="resumo-conteudo">
@@ -142,10 +141,48 @@
                     <th style="padding:10px; border:1px solid #ddd;">40°</th>
                     <th style="padding:10px; border:1px solid #ddd;">50°</th>
                     <th style="padding:10px; border:1px solid #ddd;">70°</th>
+=======
+ <div class="container-resumo" id="resumo">
+    <h3>📚 Resumo</h3>
+    <section class="resumo-conteudo">
+        <p>A <strong>Trigonometria no Triângulo Retângulo</strong> estabelece relações entre as medidas dos lados e dos ângulos agudos de um triângulo retângulo.</p>
+        <p><strong>Razões Trigonométricas Principais:</strong></p>
+        <p>$$\text{Seno: } \sin(\theta) = \frac{\text{Cateto Oposto}}{\text{Hipotenusa}}$$</p>
+        <p>$$\text{Cosseno: } \cos(\theta) = \frac{\text{Cateto Adjacente}}{\text{Hipotenusa}}$$</p>
+        <p>$$\text{Tangente: } \tan(\theta) = \frac{\text{Cateto Oposto}}{\text{Cateto Adjacente}} = \frac{\sin(\theta)}{\cos(\theta)}$$</p>
+    </section>
+</div>
+
+<section class="conteudo-teorico-completo" id="teoria">
+    <div class="passo-teoria">
+        <h3>📖 Conceitos Fundamentais</h3>
+        <h4>1. Identificação dos Lados</h4>
+        <p>Em um triângulo retângulo com um ângulo reto ($90^\circ$) e um ângulo agudo $\alpha$:</p>
+        <ul>
+            <li><strong>Hipotenusa ($a$):</strong> Lado oposto ao ângulo reto (o maior lado).</li>
+            <li><strong>Cateto Oposto ($b$):</strong> Lado situado diretamente em frente ao ângulo $\alpha$.</li>
+            <li><strong>Cateto Adjacente ($c$):</strong> Lado que ajuda a formar o ângulo $\alpha$ junto com a hipotenusa.</li>
+        </ul>
+        
+        <Image src="image_agent_tag_595007119864755232" alt="Relações trigonométricas no triângulo retângulo indicando seno, cosseno e tangente" caption="Razões Trigonométricas" />
+    </div>
+
+    <div class="passo-teoria">
+        <h4>2. Tabela dos Ângulos Notáveis ($30^\circ$, $45^\circ$, $60^\circ$)</h4>
+        <p>Os valores de seno, cosseno e tangente para os ângulos mais frequentes são:</p>
+        <table border="1" style="width:100%; text-align:center; border-collapse:collapse; margin-top:10px;">
+            <thead>
+                <tr style="background:#f2f2f2;">
+                    <th>Razão</th>
+                    <th>$30^\circ$</th>
+                    <th>$45^\circ$</th>
+                    <th>$60^\circ$</th>
+>>>>>>> Stashed changes
                 </tr>
             </thead>
             <tbody>
                 <tr>
+<<<<<<< Updated upstream
                     <td style="padding:10px; border:1px solid #ddd; font-weight:bold; background:#eaf4fc;">seno</td>
                     <td style="padding:10px; border:1px solid #ddd;">$0{,}174$</td>
                     <td style="padding:10px; border:1px solid #ddd;">$0{,}342$</td>
@@ -419,6 +456,192 @@
         3. <em>Atenção:</em> $3000$ m (alternativa D) é a distância em linha reta (hipotenusa), e não a horizontal.</p>
     </div>
     </article>
+=======
+                    <td><strong>$\sin$</strong></td>
+                    <td>$\frac{1}{2}$</td>
+                    <td>$\frac{\sqrt{2}}{2}$</td>
+                    <td>$\frac{\sqrt{3}}{2}$</td>
+                </tr>
+                <tr>
+                    <td><strong>$\cos$</strong></td>
+                    <td>$\frac{\sqrt{3}}{2}$</td>
+                    <td>$\frac{\sqrt{2}}{2}$</td>
+                    <td>$\frac{1}{2}$</td>
+                </tr>
+                <tr>
+                    <td><strong>$\tan$</strong></td>
+                    <td>$\frac{\sqrt{3}}{3}$</td>
+                    <td>$1$</td>
+                    <td>$\sqrt{3}$</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="passo-teoria">
+        <h4>3. Relação Fundamental e Propriedades</h4>
+        <ul>
+            <li><strong>Relação Fundamental:</strong> $\sin^2(\theta) + \cos^2(\theta) = 1$.</li>
+            <li><strong>Ângulos Complementares:</strong> Se $\alpha + \beta = 90^\circ$, então $\sin(\alpha) = \cos(\beta)$ e $\cos(\alpha) = \sin(\beta)$.</li>
+        </ul>
+    </div>
+</section>
+
+<section class="aplicacoes-reais" id="aplicacoes">
+    <h3>💡 Matemática em Ação</h3>
+    <div class="cards-aplicacao">
+        <div class="card">
+            <h4>📐 Engenharia e Topografia</h4>
+            <p>Engenheiros usam teodolitos para medir ângulos de elevação e determinar a altura de prédios, pontes e montanhas sem necessidade de medição direta.</p>
+        </div>
+        <div class="card" style="border-left-color: #2ecc71;">
+            <h4>✈️ Navegação e Aviação</h4>
+            <p>O cálculo de trajetórias de decolagem, inclinação de rampas de aproximação e rotas marítimas depende diretamente das funções trigonométricas.</p>
+        </div>
+    </div>
+</section>
+
+<section class="questoes-resolvidas" id="resolvidas">
+    <h3>✅ 5 Questões Resolvidas (R 1 a 5)</h3>
+    
+    <article class="questao">
+        <h4>R 1: Aplicação Direta do Seno</h4>
+        <p><strong>Enunciado:</strong> Um triângulo retângulo possui hipotenusa de $10\text{ cm}$ e um ângulo de $30^\circ$. Qual a medida do cateto oposto a esse ângulo?</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong><br>
+            1. Usamos a definição de seno:<br>
+               $\sin(30^\circ) = \frac{\text{Cateto Oposto}}{\text{Hipotenusa}}$<br>
+            2. Como $\sin(30^\circ) = \frac{1}{2}$:<br>
+               $\frac{1}{2} = \frac{x}{10} \implies 2x = 10 \implies \mathbf{x = 5\text{ cm}}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>R 2: Medição de Altura com Tangente</h4>
+        <p><strong>Enunciado:</strong> Um observador está a $20\text{ m}$ da base de um prédio e avista o topo sob um ângulo de elevação de $45^\circ$. Qual é a altura do prédio?</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong><br>
+            1. Usamos a tangente, pois relacionamos o cateto oposto (altura $h$) e o adjacente ($20\text{ m}$):<br>
+               $\tan(45^\circ) = \frac{h}{20}$<br>
+            2. Sabendo que $\tan(45^\circ) = 1$:<br>
+               $1 = \frac{h}{20} \implies \mathbf{h = 20\text{ m}}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>R 3: Aplicação do Cosseno</h4>
+        <p><strong>Enunciado:</strong> Uma escada de $6\text{ m}$ está apoiada em uma parede vertical, formando um ângulo de $60^\circ$ com o solo plano. A que distância a base da escada está da parede?</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong><br>
+            1. A distância $d$ é o cateto adjacente ao ângulo de $60^\circ$, e a escada é a hipotenusa ($6\text{ m}$):<br>
+               $\cos(60^\circ) = \frac{d}{6}$<br>
+            2. Como $\cos(60^\circ) = \frac{1}{2}$:<br>
+               $\frac{1}{2} = \frac{d}{6} \implies \mathbf{d = 3\text{ m}}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>R 4: Relação Fundamental da Trigonometria</h4>
+        <p><strong>Enunciado:</strong> Sabendo que $\theta$ é um ângulo agudo e que $\sin(\theta) = \frac{3}{5}$, determine o valor de $\cos(\theta)$.</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong><br>
+            1. Aplicamos a Relação Fundamental: $\sin^2(\theta) + \cos^2(\theta) = 1$.<br>
+            2. Substituindo o valor do seno:<br>
+               $\left(\frac{3}{5}\right)^2 + \cos^2(\theta) = 1 \implies \frac{9}{25} + \cos^2(\theta) = 1$<br>
+            3. Isolando o cosseno:<br>
+               $\cos^2(\theta) = 1 - \frac{9}{25} = \frac{16}{25} \implies \cos(\theta) = \sqrt{\frac{16}{25}} = \mathbf{\frac{4}{5}}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>R 5: Comprimento da Rampa com Seno</h4>
+        <p><strong>Enunciado:</strong> Uma rampa plana, de $10\text{ m}$ de comprimento, faz um ângulo de $30^\circ$ com o plano horizontal. A que altura em relação ao solo ela eleva quem a percorre?</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong><br>
+            1. A altura $h$ corresponde ao cateto oposto ao ângulo de $30^\circ$, e a rampa é a hipotenusa ($10\text{ m}$):<br>
+               $\sin(30^\circ) = \frac{h}{10}$<br>
+            2. Substituindo $\sin(30^\circ) = 0,5$:<br>
+               $0,5 = \frac{h}{10} \implies \mathbf{h = 5\text{ m}}$.</p>
+        </div>
+    </article>
+</section>
+
+<section class="questoes-propostas" id="propostas">
+    <h3>✍️ 5 Questões Propostas (P 6 a 10)</h3>
+
+    <article class="questao">
+        <h4>P 6: Cálculo de Hipotenusa</h4>
+        <p><strong>Enunciado:</strong> Em um triângulo retângulo, o cateto oposto a um ângulo de $60^\circ$ mede $6\sqrt{3}\text{ cm}$. Qual é a medida da hipotenusa?</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong><br>
+            1. $\sin(60^\circ) = \frac{\text{Cateto Oposto}}{\text{Hipotenusa}} \implies \frac{\sqrt{3}}{2} = \frac{6\sqrt{3}}{a}$.<br>
+            2. Simplificando $\sqrt{3}$ de ambos os lados: $\frac{1}{2} = \frac{6}{a} \implies \mathbf{a = 12\text{ cm}}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 7: Cálculo da Tangente por Relação entre Seno e Cosseno</h4>
+        <p><strong>Enunciado:</strong> Se para um ângulo agudo $\alpha$ temos $\sin(\alpha) = \frac{\sqrt{2}}{2}$ e $\cos(\alpha) = \frac{\sqrt{2}}{2}$, qual é o valor de $\tan(\alpha)$?</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong><br>
+            1. Usamos a identidade $\tan(\alpha) = \frac{\sin(\alpha)}{\cos(\alpha)}$.<br>
+            2. $\tan(\alpha) = \frac{\frac{\sqrt{2}}{2}}{\frac{\sqrt{2}}{2}} = \mathbf{1}$ (correspondente a $\alpha = 45^\circ$).</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 8: Comprimento do Cabo de Aço</h4>
+        <p><strong>Enunciado:</strong> Um cabo de aço é preso do topo de uma antena vertical ao solo, formando um ângulo de $60^\circ$ com a horizontal. Sabendo que a antena tem $15\sqrt{3}\text{ m}$ de altura, qual é o comprimento do cabo?</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong><br>
+            1. A altura é o cateto oposto e o cabo é a hipotenusa ($L$):<br>
+               $\sin(60^\circ) = \frac{15\sqrt{3}}{L} \implies \frac{\sqrt{3}}{2} = \frac{15\sqrt{3}}{L}$.<br>
+            2. Dividindo por $\sqrt{3}$: $\frac{1}{2} = \frac{15}{L} \implies \mathbf{L = 30\text{ m}}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 9: Sombra Projetada</h4>
+        <p><strong>Enunciado:</strong> Um poste vertical projeta uma sombra de $4\sqrt{3}\text{ m}$ no solo quando o Sol está a $30^\circ$ de elevação em relação ao horizonte. Qual é a altura do poste?</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong><br>
+            1. A altura do poste $h$ é o cateto oposto e a sombra é o cateto adjacente:<br>
+               $\tan(30^\circ) = \frac{h}{4\sqrt{3}} \implies \frac{\sqrt{3}}{3} = \frac{h}{4\sqrt{3}}$.<br>
+            2. Multiplicando cruzado:<br>
+               $3h = \sqrt{3} \cdot 4\sqrt{3} = 4 \cdot 3 = 12 \implies \mathbf{h = 4\text{ m}}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 10: Perímetro do Triângulo Retângulo</h4>
+        <p><strong>Enunciado:</strong> Um triângulo retângulo possui hipotenusa igual a $20\text{ cm}$ e um dos ângulos agudos igual a $30^\circ$. Determine o seu perímetro.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong><br>
+            1. Cateto oposto a $30^\circ$: $b = 20 \cdot \sin(30^\circ) = 20 \cdot 0,5 = 10\text{ cm}$.<br>
+            2. Cateto adjacente a $30^\circ$: $c = 20 \cdot \cos(30^\circ) = 20 \cdot \frac{\sqrt{3}}{2} = 10\sqrt{3}\text{ cm}$.<br>
+            3. Perímetro $P = 20 + 10 + 10\sqrt{3} = \mathbf{(30 + 10\sqrt{3})\text{ cm}}$.</p>
+        </div>
+    </article>
+</section>
+
+<section class="TESTE" id="testes">
+    <h3>🎓 TESTES (T 11 a 15)</h3>
+
+    <div class="card" style="text-align:center; padding:60px 20px; background:#f8f9fa; border:2px dashed #3498db; border-radius:12px; margin-top:20px;">
+        <h2 style="color:#3498db; font-size:2.5rem; margin-bottom:15px;">
+            🚧 EM BREVE!
+        </h2>
+
+        <p style="font-size:1.2rem; color:#555;">
+            Questões de vestibulares serão disponibilizadas em breve.
+        </p>
+    </div>
+>>>>>>> Stashed changes
 </section>
 
 </div>
@@ -466,7 +689,7 @@ function toggleSlides() {
         mostrarSlide(slideAtual);
     } else {
         body.classList.remove('modo-slides');
-        window.location.reload();
+        window.location.reload(); 
     }
 }
 
@@ -475,10 +698,9 @@ function mostrarSlide(n) {
         s.classList.remove('slide-ativo');
         s.style.display = 'none';
     });
-
     const slide = slides[n];
     slide.classList.add('slide-ativo');
-    slide.style.display = 'flex';
+    slide.style.display = 'flex'; 
 
     if (slide.classList.contains('questao') && !slide.querySelector('.btn-gabarito')) {
         const resolucoes = slide.querySelectorAll('.resolucao-bloco');
@@ -499,9 +721,7 @@ function mostrarSlide(n) {
         document.getElementById('slide-info-serie').innerText = partes[0].trim();
         document.getElementById('slide-info-aula').innerText = partes[1].trim();
     }
-
     document.getElementById('contador-slide').innerText = (n + 1) + " / " + slides.length;
-
     if (window.MathJax) MathJax.typesetPromise();
 }
 
@@ -511,26 +731,45 @@ function mudarSlide(direcao) {
     if (slideAtual < 0) slideAtual = slides.length - 1;
     mostrarSlide(slideAtual);
 }
+
+document.addEventListener('keydown', function(event) {
+    if (document.body.classList.contains('modo-slides')) {
+        switch(event.key) {
+            case 'ArrowRight': 
+            case 'PageDown':   
+            case 'Enter':      
+            case ' ':          
+                mudarSlide(1);
+                break;
+                
+            case 'ArrowLeft':  
+            case 'PageUp':     
+                mudarSlide(-1);
+                break;
+
+            case 'Escape':     
+                toggleSlides();
+                break;
+        }
+    }
+});
 </script>
 
 <style>
     body.modo-slides { overflow: hidden; background-color: #1a1a1a; }
     body.modo-slides .menu-lateral, body.modo-slides header, body.modo-slides .menu-toggle, body.modo-slides #btn-slides { display: none !important; }
-
     .slide-ativo {
         display: flex !important; flex-direction: column; align-items: center; justify-content: flex-start;
         position: fixed; top: 0; left: 0; width: 100vw; height: calc(100vh - 70px);
-        background: #ffffff; padding: 40px; z-index: 999; overflow-y: auto !important;
+        background: #ffffff; padding: 40px; z-index: 999; overflow-y: auto !important; 
         box-sizing: border-box; text-align: center;
     }
-
     .controles-slides {
         position: fixed; bottom: 0; left: 0; width: 100%; height: 70px;
-        background: #2c3e50; color: white; display: none;
+        background: #2c3e50; color: white; display: none; 
         justify-content: space-between; align-items: center; padding: 0 20px; z-index: 1001; box-sizing: border-box;
     }
     body.modo-slides .controles-slides { display: flex; }
-
     .info-lateral { flex: 1; font-family: 'Oswald', sans-serif; font-size: 0.9rem; color: #bdc3c7; }
     .botoes-centrais { display: flex; align-items: center; gap: 15px; justify-content: center; flex: 2; }
     .btn-nav { padding: 10px 20px; background: #3498db; color: white; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; }
