@@ -6,7 +6,7 @@
     <title>1º Ano: Aula 17 - Lei dos Senos e Cossenos</title>
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../estilo.css">
-
+    
     <script>
         MathJax = {
             tex: {
@@ -31,12 +31,10 @@
     </ul>
 </nav>
 
-<header>
+<header id="topo">
     <h1>MATEMÁTICA EM</h1>
     <p>1º Ano | Aula 17: Lei dos Senos e Cossenos</p>
-<button id="btn-slides" onclick="toggleSlides()" style="position: fixed; top: 20px; right: 20px; z-index: 1000; padding: 10px; cursor: pointer; background: #e67e22; color: white; border: none; border-radius: 5px; font-weight: bold;">
-    📺 Iniciar Modo Slides
-</button>
+    <button id="btn-slides" onclick="toggleSlides()">📺 Iniciar Modo Slides</button>
 </header>
 
 <div class="container">
@@ -44,485 +42,196 @@
 <main class="conteudo-principal">
 
 <div class="secao-aula">
- <div class="container-resumo">
-    <h3>📚 Resumo:</h3>
+ <div class="container-resumo" id="resumo">
+    <h3>📚 Resumo</h3>
     <section class="resumo-conteudo">
-        <p>No triângulo qualquer $ABC$, com lados $a$, $b$, $c$ opostos aos ângulos $A$, $B$, $C$ respectivamente, valem:</p>
-        <ul>
-            <li><strong>Lei dos Senos:</strong> $\dfrac{a}{\sin A} = \dfrac{b}{\sin B} = \dfrac{c}{\sin C} = 2R$, onde $R$ é o raio da circunferência circunscrita.</li>
-            <li><strong>Lei dos Cossenos:</strong> $a^2 = b^2 + c^2 - 2bc\cos A$</li>
-            <li>Analogamente: $b^2 = a^2 + c^2 - 2ac\cos B$ e $c^2 = a^2 + b^2 - 2ab\cos C$</li>
-            <li>Quando $A = 90°$, a Lei dos Cossenos reduz-se ao <strong>Teorema de Pitágoras</strong>.</li>
-        </ul>
+        <p>A <strong>Lei dos Senos</strong> e a <strong>Lei dos Cossenos</strong> permitem resolver triângulos acutângulos ou obtusângulos (quaisquer triângulos não necessariamente retângulos).</p>
+        <p><strong>Lei dos Senos:</strong> $\frac{a}{\sin(A)} = \frac{b}{\sin(B)} = \frac{c}{\sin(C)} = 2R$</p>
+        <p><strong>Lei dos Cossenos:</strong> $a^2 = b^2 + c^2 - 2bc \cdot \cos(A)$</p>
     </section>
 </div>
 
-<section class="conteudo-teorico-completo">
-
+<section class="conteudo-teorico-completo" id="teoria">
     <div class="passo-teoria">
-        <h3>📖 Por que precisamos dessas leis?</h3>
-        <p>As razões trigonométricas do triângulo retângulo funcionam apenas quando há um ângulo de 90°. Mas a maioria dos triângulos do mundo real — em topografia, navegação, arquitetura e astronomia — não tem ângulo reto. A <strong>Lei dos Senos</strong> e a <strong>Lei dos Cossenos</strong> estendem a trigonometria a <em>qualquer</em> triângulo, permitindo calcular lados e ângulos desconhecidos a partir de dados parciais.</p>
+        <h3>📖 Conceitos Fundamentais</h3>
+        <h4>1. Lei dos Senos</h4>
+        <p>Em qualquer triângulo, as medidas dos lados são diretamente proporcionais aos senos dos ângulos opostos a eles, e a constante de proporcionalidade é o diâmetro $2R$ da circunferência circunscrita ao triângulo:</p>
+        <p>$$\frac{a}{\sin(\hat{A})} = \frac{b}{\sin(\hat{B})} = \frac{c}{\sin(\hat{C})} = 2R$$</p>
+
+        <Image src="image_agent_tag_7878982383623484604" alt="Diagrama da Lei dos Senos em um triângulo qualquer" caption="Relação entre os lados e senos dos ângulos opostos" />
+
+        <p><strong>Quando usar?</strong> Quando conhecemos <strong>dois ângulos</strong> e <strong>um lado</strong>, ou dois lados e um ângulo oposto a um deles.</p>
     </div>
 
     <div class="passo-teoria">
-        <h4>1. Notação Padrão do Triângulo Qualquer</h4>
-        <p>A convenção usada em toda a trigonometria do triângulo qualquer é:</p>
-        <ul>
-            <li>Vértices: $A$, $B$, $C$.</li>
-            <li>Lado $a$ é oposto ao vértice $A$; lado $b$ é oposto a $B$; lado $c$ é oposto a $C$.</li>
-            <li>Os ângulos internos são $\hat{A}$, $\hat{B}$ e $\hat{C}$, com $\hat{A} + \hat{B} + \hat{C} = 180°$.</li>
-        </ul>
-        <figure class="figura-aula figura-grande">
-            <svg viewBox="0 0 520 310" xmlns="http://www.w3.org/2000/svg" width="500" height="290">
-                <!-- Triângulo: A(60,260), B(430,260), C(300,60) -->
-                <polygon points="60,260 430,260 300,60" fill="#EBF5FB" stroke="#003366" stroke-width="2"/>
-
-                <!-- Arcos dos ângulos -->
-                <!-- Ângulo A -->
-                <path d="M100,260 A38,38 0 0,0 78,226" fill="none" stroke="#D35400" stroke-width="2"/>
-                <text x="106" y="252" fill="#D35400" font-size="15" font-family="Arial" font-style="italic" font-weight="bold">A</text>
-
-                <!-- Ângulo B -->
-                <path d="M392,260 A38,38 0 0,1 412,226" fill="none" stroke="#2ecc71" stroke-width="2"/>
-                <text x="376" y="252" fill="#2ecc71" font-size="15" font-family="Arial" font-style="italic" font-weight="bold">B</text>
-
-                <!-- Ângulo C -->
-                <path d="M278,77 A28,28 0 0,0 319,76" fill="none" stroke="#9b59b6" stroke-width="2"/>
-                <text x="292" y="56" fill="#9b59b6" font-size="15" font-family="Arial" font-style="italic" font-weight="bold">C</text>
-
-                <!-- Vértices -->
-                <circle cx="60" cy="260" r="4" fill="#003366"/>
-                <text x="38" y="276" fill="#003366" font-size="15" font-family="Arial" font-weight="bold">A</text>
-                <circle cx="430" cy="260" r="4" fill="#003366"/>
-                <text x="436" y="276" fill="#003366" font-size="15" font-family="Arial" font-weight="bold">B</text>
-                <circle cx="300" cy="60" r="4" fill="#003366"/>
-                <text x="306" y="52" fill="#003366" font-size="15" font-family="Arial" font-weight="bold">C</text>
-
-                <!-- Labels dos lados -->
-                <!-- lado a = BC, oposto a A -->
-                <text x="372" y="172" fill="#D35400" font-size="16" font-family="Arial" font-weight="bold" font-style="italic">a</text>
-                <!-- lado b = AC, oposto a B -->
-                <text x="158" y="172" fill="#2ecc71" font-size="16" font-family="Arial" font-weight="bold" font-style="italic">b</text>
-                <!-- lado c = AB, oposto a C -->
-                <text x="238" y="282" fill="#9b59b6" font-size="16" font-family="Arial" font-weight="bold" font-style="italic">c</text>
-
-                <!-- Legenda -->
-                <text x="30" y="30" fill="#D35400" font-size="12" font-family="Arial">a: lado oposto a A</text>
-                <text x="30" y="48" fill="#2ecc71" font-size="12" font-family="Arial">b: lado oposto a B</text>
-                <text x="30" y="66" fill="#9b59b6" font-size="12" font-family="Arial">c: lado oposto a C</text>
-            </svg>
-            <figcaption>Figura 1: Notação padrão do triângulo qualquer. O lado minúsculo é sempre oposto ao vértice maiúsculo de mesmo nome.</figcaption>
-        </figure>
+        <h4>2. Lei dos Cossenos</h4>
+        <p>Em qualquer triângulo, o quadrado da medida de um lado é igual à soma dos quadrados das medidas dos outros dois lados, menos o duplo produto desses dois lados pelo cosseno do ângulo formado por eles:</p>
+        <p>$$a^2 = b^2 + c^2 - 2bc \cdot \cos(\hat{A})$$</p>
+        <p>$$b^2 = a^2 + c^2 - 2ac \cdot \cos(\hat{B})$$</p>
+        <p>$$c^2 = a^2 + b^2 - 2ab \cdot \cos(\hat{C})$$</p>
+        <p><strong>Quando usar?</strong> Quando conhecemos <strong>dois lados e o ângulo entre eles</strong>, ou quando conhecemos os <strong>três lados</strong> e queremos descobrir um ângulo.</p>
     </div>
-
-    <div class="passo-teoria">
-        <h4>2. Lei dos Senos</h4>
-        <p>Em qualquer triângulo, a razão entre cada lado e o seno do ângulo oposto é constante e igual ao <strong>diâmetro da circunferência circunscrita</strong> ($2R$):</p>
-        <div class="destaque-formula">
-            <p>$$\frac{a}{\sin A} = \frac{b}{\sin B} = \frac{c}{\sin C} = 2R$$</p>
-        </div>
-        <p><strong>Quando usar:</strong> a Lei dos Senos é ideal quando conhecemos:</p>
-        <ul>
-            <li>Dois ângulos e um lado qualquer (caso AAS ou ASA).</li>
-            <li>Dois lados e o ângulo oposto a um deles (caso SSA — atenção ao caso ambíguo!).</li>
-        </ul>
-        <p><strong>Demonstração resumida:</strong> trace a altura $h$ relativa ao lado $c$. No triângulo retângulo à esquerda, $\sin A = h/b$; no da direita, $\sin B = h/a$. Logo $h = b\sin A = a\sin B$, o que dá $a/\sin A = b/\sin B$. Por simetria, o resultado se estende ao terceiro lado.</p>
-
-        <figure class="figura-aula figura-grande">
-            <svg viewBox="0 0 520 260" xmlns="http://www.w3.org/2000/svg" width="500" height="240">
-                <!-- Triângulo A(60,220) B(440,220) C(280,60) -->
-                <polygon points="60,220 440,220 280,60" fill="#EBF5FB" stroke="#003366" stroke-width="2"/>
-
-                <!-- Altura h de C até AB -->
-                <line x1="280" y1="60" x2="280" y2="220" stroke="#D35400" stroke-width="1.5" stroke-dasharray="5,3"/>
-                <rect x="280" y="204" width="16" height="16" fill="none" stroke="#D35400" stroke-width="1.2"/>
-                <text x="285" y="198" fill="#D35400" font-size="13" font-family="Arial" font-style="italic">h</text>
-
-                <!-- Labels -->
-                <text x="38" y="236" fill="#003366" font-size="14" font-family="Arial" font-weight="bold">A</text>
-                <text x="446" y="236" fill="#003366" font-size="14" font-family="Arial" font-weight="bold">B</text>
-                <text x="283" y="50" fill="#003366" font-size="14" font-family="Arial" font-weight="bold">C</text>
-
-                <text x="152" y="156" fill="#2ecc71" font-size="15" font-family="Arial" font-style="italic" font-weight="bold">b</text>
-                <text x="370" y="156" fill="#D35400" font-size="15" font-family="Arial" font-style="italic" font-weight="bold">a</text>
-                <text x="242" y="244" fill="#9b59b6" font-size="15" font-family="Arial" font-style="italic" font-weight="bold">c</text>
-
-                <!-- Equação de demonstração -->
-                <text x="30" y="30" fill="#003366" font-size="12" font-family="Arial">h = b·sen A = a·sen B</text>
-                <text x="30" y="50" fill="#D35400" font-size="12" font-family="Arial">⟹  a/sen A = b/sen B</text>
-            </svg>
-            <figcaption>Figura 2: Ideia da demonstração da Lei dos Senos usando a altura $h$ do triângulo.</figcaption>
-        </figure>
-    </div>
-
-    <div class="passo-teoria">
-        <h4>3. Lei dos Cossenos</h4>
-        <p>A Lei dos Cossenos generaliza o Teorema de Pitágoras para qualquer triângulo:</p>
-        <div class="destaque-formula">
-            <p>$$a^2 = b^2 + c^2 - 2bc\cos A$$</p>
-            <p>$$b^2 = a^2 + c^2 - 2ac\cos B$$</p>
-            <p>$$c^2 = a^2 + b^2 - 2ab\cos C$$</p>
-        </div>
-        <p><strong>Quando usar:</strong></p>
-        <ul>
-            <li>Três lados conhecidos → calcular um ângulo (caso LLL).</li>
-            <li>Dois lados e o ângulo entre eles → calcular o terceiro lado (caso LAL).</li>
-        </ul>
-        <p><strong>Conexão com Pitágoras:</strong> se $A = 90°$, então $\cos 90° = 0$ e a fórmula vira $a^2 = b^2 + c^2$ — exatamente o Teorema de Pitágoras!</p>
-        <p><strong>Forma isolada para o ângulo:</strong> quando os três lados são conhecidos, isole o cosseno:</p>
-        <div class="destaque-formula">
-            <p>$$\cos A = \frac{b^2 + c^2 - a^2}{2bc}$$</p>
-        </div>
-    </div>
-
-    <div class="passo-teoria">
-        <h4>4. Guia de Escolha: Senos ou Cossenos?</h4>
-        <div class="tabela-wrapper">
-        <table>
-            <thead>
-                <tr>
-                    <th>Dados conhecidos</th>
-                    <th>Caso</th>
-                    <th>Lei a usar</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr><td>2 ângulos + 1 lado</td><td>AAS ou ASA</td><td><strong>Lei dos Senos</strong></td></tr>
-                <tr><td>2 lados + ângulo oposto a um deles</td><td>SSA</td><td><strong>Lei dos Senos</strong> (cuidado: caso ambíguo)</td></tr>
-                <tr><td>2 lados + ângulo entre eles</td><td>LAL</td><td><strong>Lei dos Cossenos</strong></td></tr>
-                <tr><td>3 lados</td><td>LLL</td><td><strong>Lei dos Cossenos</strong></td></tr>
-            </tbody>
-        </table>
-        </div>
-    </div>
-
-    <div class="passo-teoria">
-        <h4>5. Área do Triângulo Qualquer</h4>
-        <p>A área de qualquer triângulo pode ser calculada com dois lados e o ângulo entre eles:</p>
-        <div class="destaque-formula">
-            <p>$$S = \frac{1}{2}\,ab\,\sin C = \frac{1}{2}\,ac\,\sin B = \frac{1}{2}\,bc\,\sin A$$</p>
-        </div>
-        <p>Essa fórmula decorre diretamente de $S = \frac{1}{2} \cdot \text{base} \cdot \text{altura}$, onde a altura vale $h = b\sin A$ (obtida da Lei dos Senos).</p>
-        <p>Combinando com a Lei dos Senos, chega-se também à <strong>Fórmula de Heron</strong>, que usa apenas os três lados:</p>
-        <div class="destaque-formula">
-            <p>$$S = \sqrt{p(p-a)(p-b)(p-c)}, \quad p = \frac{a+b+c}{2}$$</p>
-        </div>
-    </div>
-
-    <div class="passo-teoria">
-        <h4>6. Valores Notáveis — Lembretes Essenciais</h4>
-        <p>Para resolver exercícios de triângulo qualquer, é indispensável ter decorados os valores de seno e cosseno para os ângulos mais frequentes:</p>
-        <div class="tabela-wrapper">
-        <table>
-            <thead>
-                <tr><th>Ângulo</th><th>$\sin$</th><th>$\cos$</th><th>$\tan$</th></tr>
-            </thead>
-            <tbody>
-                <tr><td>$0°$</td><td>$0$</td><td>$1$</td><td>$0$</td></tr>
-                <tr><td>$30°$</td><td>$\dfrac{1}{2}$</td><td>$\dfrac{\sqrt{3}}{2}$</td><td>$\dfrac{\sqrt{3}}{3}$</td></tr>
-                <tr><td>$45°$</td><td>$\dfrac{\sqrt{2}}{2}$</td><td>$\dfrac{\sqrt{2}}{2}$</td><td>$1$</td></tr>
-                <tr><td>$60°$</td><td>$\dfrac{\sqrt{3}}{2}$</td><td>$\dfrac{1}{2}$</td><td>$\sqrt{3}$</td></tr>
-                <tr><td>$90°$</td><td>$1$</td><td>$0$</td><td>indefinido</td></tr>
-                <tr><td>$120°$</td><td>$\dfrac{\sqrt{3}}{2}$</td><td>$-\dfrac{1}{2}$</td><td>$-\sqrt{3}$</td></tr>
-                <tr><td>$150°$</td><td>$\dfrac{1}{2}$</td><td>$-\dfrac{\sqrt{3}}{2}$</td><td>$-\dfrac{\sqrt{3}}{3}$</td></tr>
-            </tbody>
-        </table>
-        </div>
-        <p><strong>Dica:</strong> ângulos obtusos (entre 90° e 180°) têm seno positivo e cosseno negativo. Use: $\sin(180°-\theta) = \sin\theta$ e $\cos(180°-\theta) = -\cos\theta$.</p>
-    </div>
-
 </section>
 
-<section class="aplicacoes-reais">
+<section class="aplicacoes-reais" id="aplicacoes">
     <h3>💡 Matemática em Ação</h3>
-    <div class="cards-aplicacao" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-top: 20px;">
-        <div class="card" style="background: #fdfdfd; padding: 20px; border-radius: 10px; border-left: 5px solid #3498db; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
-            <h4>🗺️ Topografia e Geodésia</h4>
-            <p>Para medir a distância entre dois pontos inacessíveis (como separados por um rio), topógrafos medem uma base conhecida e dois ângulos — a Lei dos Senos resolve o problema em seguida.</p>
+    <div class="cards-aplicacao">
+        <div class="card">
+            <h4>🗺️ Triangulação e Geodesia</h4>
+            <p>Sistemas de navegação e mapeamento de terrenos utilizam a Lei dos Senos e Cossenos para calcular distâncias inacessíveis entre pontos no espaço.</p>
         </div>
-        <div class="card" style="background: #fdfdfd; padding: 20px; border-radius: 10px; border-left: 5px solid #2ecc71; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
-            <h4>⚓ Navegação Marítima</h4>
-            <p>Ao navegar entre dois portos sem rota direta, os pilotos calculam distâncias e rumos usando a Lei dos Cossenos, especialmente quando o percurso forma um triângulo com vento ou corrente lateral.</p>
-        </div>
-        <div class="card" style="background: #fdfdfd; padding: 20px; border-radius: 10px; border-left: 5px solid #D35400; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
-            <h4>🔭 Astronomia</h4>
-            <p>A distância a estrelas próximas é medida pela <em>paralaxe trigonométrica</em>: a Terra em duas posições da órbita forma a base de um triângulo enorme, e a Lei dos Senos fornece a distância à estrela.</p>
+        <div class="card" style="border-left-color: #2ecc71;">
+            <h4>🏗️ Engenharia Estrutural</h4>
+            <p>O cálculo de forças em treliças triangulares não retângulas em pontes e telhados depende diretamente das leis dos senos e cossenos para garantir o equilíbrio.</p>
         </div>
     </div>
 </section>
 
-<section class="simulacao-interativa">
-    <h3>💻 Simulação Interativa: Triângulo Qualquer</h3>
-    <p>Para uma melhor experiência, clique no botão abaixo para abrir o simulador em uma tela cheia:</p>
-    <div style="text-align: center; margin: 30px auto; width: 100%;">
-        <a href="../simulacoes/simulacao_trig_qualquer.html"
-           target="_blank"
-           class="btn-gabarito"
-           style="text-decoration: none; display: inline-block;">
-           🚀 Abrir Simulação em Nova Aba
-        </a>
-    </div>
-</section>
-
-
-<!--------------- QUESTOES RESOLVIDAS --------------------------->
-
-<section class="questoes-resolvidas">
+<section class="questoes-resolvidas" id="resolvidas">
     <h3>✅ 5 Questões Resolvidas (R 1 a 5)</h3>
-
+    
     <article class="questao">
-        <h4>R 1: Lei dos Senos — Calcular um Lado</h4>
-        <p><strong>Enunciado:</strong> Em um triângulo $ABC$, $\hat{A} = 45°$, $\hat{B} = 60°$ e $a = 8$. Calcule o lado $b$.</p>
+        <h4>R 1: Aplicação Direta da Lei dos Senos</h4>
+        <p><strong>Enunciado:</strong> Em um triângulo $ABC$, o ângulo $A = 30^\circ$, o ângulo $B = 45^\circ$ e o lado $a = 6\text{ cm}$. Determine o lado $b$.</p>
         <div class="resolucao-bloco">
-            <p><strong>Resolução:</strong> Aplicando a Lei dos Senos:</p>
-            <p>$$\frac{a}{\sin A} = \frac{b}{\sin B} \;\Rightarrow\; \frac{8}{\sin 45°} = \frac{b}{\sin 60°}$$</p>
-            <p>$$b = \frac{8 \cdot \sin 60°}{\sin 45°} = \frac{8 \cdot \dfrac{\sqrt{3}}{2}}{\dfrac{\sqrt{2}}{2}} = \frac{8\sqrt{3}}{\sqrt{2}} = \frac{8\sqrt{3} \cdot \sqrt{2}}{2} = 4\sqrt{6}$$</p>
+            <p><strong>Resolução:</strong><br>
+            1. Aplicamos a Lei dos Senos:<br>
+               $\frac{a}{\sin(A)} = \frac{b}{\sin(B)} \implies \frac{6}{\sin(30^\circ)} = \frac{b}{\sin(45^\circ)}$<br>
+            2. Substituindo os valores dos senos ($\sin(30^\circ) = 1/2$ e $\sin(45^\circ) = \sqrt{2}/2$):<br>
+               $\frac{6}{1/2} = \frac{b}{\sqrt{2}/2} \implies 12 = \frac{2b}{\sqrt{2}} \implies b = 6\sqrt{2}\text{ cm}$.</p>
         </div>
     </article>
 
     <article class="questao">
-        <h4>R 2: Lei dos Senos — Calcular um Ângulo</h4>
-        <p><strong>Enunciado:</strong> Em um triângulo $ABC$, $a = 10$, $b = 10\sqrt{3}$ e $\hat{A} = 30°$. Calcule $\hat{B}$.</p>
+        <h4>R 2: Aplicação Direta da Lei dos Cossenos</h4>
+        <p><strong>Enunciado:</strong> Dois lados de um triângulo medem $5\text{ cm}$ e $8\text{ cm}$, e o ângulo entre eles é de $60^\circ$. Calcule a medida do terceiro lado.</p>
         <div class="resolucao-bloco">
-            <p><strong>Resolução:</strong></p>
-            <p>$$\frac{a}{\sin A} = \frac{b}{\sin B} \;\Rightarrow\; \frac{10}{\sin 30°} = \frac{10\sqrt{3}}{\sin B}$$</p>
-            <p>$$\sin B = \frac{10\sqrt{3} \cdot \sin 30°}{10} = \frac{10\sqrt{3} \cdot \frac{1}{2}}{10} = \frac{\sqrt{3}}{2}$$</p>
-            <p>$\sin B = \dfrac{\sqrt{3}}{2} \;\Rightarrow\; B = 60°$ (ou $B = 120°$, caso ambíguo — verifique a consistência com os dados).</p>
+            <p><strong>Resolução:</strong><br>
+            1. Usamos a Lei dos Cossenos: $a^2 = b^2 + c^2 - 2bc \cdot \cos(A)$.<br>
+            2. Substituindo $b = 5$, $c = 8$ e $\cos(60^\circ) = 1/2$:<br>
+               $a^2 = 5^2 + 8^2 - 2(5)(8) \cdot \frac{1}{2}$<br>
+               $a^2 = 25 + 64 - 40 = 49 \implies a = \sqrt{49} = \mathbf{7\text{ cm}}$.</p>
         </div>
     </article>
 
     <article class="questao">
-        <h4>R 3: Lei dos Cossenos — Calcular um Lado (LAL)</h4>
-        <p><strong>Enunciado:</strong> Em um triângulo $ABC$, $b = 5$, $c = 7$ e $\hat{A} = 60°$. Calcule o lado $a$.</p>
+        <h4>R 3: Raio da Circunferência Circunscrita</h4>
+        <p><strong>Enunciado:</strong> Um triângulo tem um lado medindo $10\text{ cm}$ oposto a um ângulo de $45^\circ$. Determine o raio da circunferência circunscrita a esse triângulo.</p>
         <div class="resolucao-bloco">
-            <p><strong>Resolução:</strong></p>
-            <p>$$a^2 = b^2 + c^2 - 2bc\cos A = 25 + 49 - 2 \cdot 5 \cdot 7 \cdot \cos 60°$$</p>
-            <p>$$a^2 = 74 - 70 \cdot \frac{1}{2} = 74 - 35 = 39$$</p>
-            <p>$$a = \sqrt{39} \approx 6{,}24$$</p>
+            <p><strong>Resolução:</strong><br>
+            1. Usamos a relação estendida da Lei dos Senos: $\frac{a}{\sin(A)} = 2R$.<br>
+            2. Substituindo os dados ($\sin(45^\circ) = \sqrt{2}/2$):<br>
+               $\frac{10}{\sqrt{2}/2} = 2R \implies \frac{20}{\sqrt{2}} = 2R \implies R = \frac{10}{\sqrt{2}} = \mathbf{5\sqrt{2}\text{ cm}}$.</p>
         </div>
     </article>
 
     <article class="questao">
-        <h4>R 4: Lei dos Cossenos — Calcular um Ângulo (LLL)</h4>
-        <p><strong>Enunciado:</strong> Em um triângulo com lados $a = 7$, $b = 5$ e $c = 8$, calcule o ângulo $\hat{C}$.</p>
+        <h4>R 4: Determinação de Ângulo Obtuso via Cosseno</h4>
+        <p><strong>Enunciado:</strong> Os lados de um triângulo medem $3\text{ cm}$, $5\text{ cm}$ e $7\text{ cm}$. Encontre a medida do maior ângulo do triângulo.</p>
         <div class="resolucao-bloco">
-            <p><strong>Resolução:</strong></p>
-            <p>$$\cos C = \frac{a^2 + b^2 - c^2}{2ab} = \frac{49 + 25 - 64}{2 \cdot 7 \cdot 5} = \frac{10}{70} = \frac{1}{7}$$</p>
-            <p>$C = \arccos\!\left(\dfrac{1}{7}\right) \approx 81{,}79°$</p>
-            <p>Para vestibulares com valores exatos, verifique se o resultado bate com um ângulo notável; caso contrário, deixe na forma $\arccos$.</p>
+            <p><strong>Resolução:</strong><br>
+            1. O maior ângulo ($\theta$) é oposto ao maior lado ($7\text{ cm}$).<br>
+            2. Pela Lei dos Cossenos: $7^2 = 3^2 + 5^2 - 2(3)(5) \cdot \cos(\theta)$.<br>
+               $49 = 9 + 25 - 30\cos(\theta) \implies 49 = 34 - 30\cos(\theta)$<br>
+               $15 = -30\cos(\theta) \implies \cos(\theta) = -\frac{1}{2}$.<br>
+            3. Como $\cos(120^\circ) = -1/2$, o maior ângulo mede $\mathbf{120^\circ}$.</p>
         </div>
     </article>
 
     <article class="questao">
-        <h4>R 5: Área do Triângulo com Dois Lados e Ângulo</h4>
-        <p><strong>Enunciado:</strong> Calcule a área de um triângulo com lados $b = 6\text{ cm}$, $c = 10\text{ cm}$ e ângulo entre eles $\hat{A} = 30°$.</p>
+        <h4>R 5: Distância Inacessível com Lei dos Cossenos</h4>
+        <p><strong>Enunciado:</strong> Um engenheiro mede a distância de um ponto $P$ a dois pontos $A$ e $B$ em lados opostos de um lago: $PA = 100\text{ m}$ e $PB = 150\text{ m}$. O ângulo $APB$ mede $60^\circ$. Qual é a largura $AB$ do lago?</p>
         <div class="resolucao-bloco">
-            <p><strong>Resolução:</strong></p>
-            <p>$$S = \frac{1}{2}\,bc\,\sin A = \frac{1}{2} \cdot 6 \cdot 10 \cdot \sin 30° = 30 \cdot \frac{1}{2} = 15\text{ cm}^2$$</p>
+            <p><strong>Resolução:</strong><br>
+            1. Pela Lei dos Cossenos para $d = AB$:<br>
+               $d^2 = 100^2 + 150^2 - 2(100)(150) \cdot \cos(60^\circ)$<br>
+            2. Substituindo $\cos(60^\circ) = 0,5$:<br>
+               $d^2 = 10000 + 22500 - 30000 \cdot 0,5 = 32500 - 15000 = 17500$.<br>
+            3. $d = \sqrt{17500} = \sqrt{2500 \cdot 7} = \mathbf{50\sqrt{7}\text{ m}}$ (aprox. $132,28\text{ m}$).</p>
         </div>
     </article>
 </section>
 
-
-<!--------------- QUESTOES PROPOSTAS --------------------------->
-
-<section class="questoes-propostas">
-    <h3>📝 5 Questões Propostas (P 1 a 5)</h3>
+<section class="questoes-propostas" id="propostas">
+    <h3>✍️ 5 Questões Propostas (P 6 a 10)</h3>
 
     <article class="questao">
-        <h4>P 1: Lei dos Senos — Lado</h4>
-        <p><strong>Enunciado:</strong> Em um triângulo $ABC$, $\hat{B} = 45°$, $\hat{C} = 75°$ e $b = 4\sqrt{2}$. Calcule o lado $c$.</p>
+        <h4>P 6: Lado em Triângulo com Dois Ângulos</h4>
+        <p><strong>Enunciado:</strong> No triângulo $XYZ$, $\hat{X} = 45^\circ$, $\hat{Y} = 60^\circ$ e o lado $y = 8\sqrt{6}\text{ cm}$. Determine a medida do lado $x$.</p>
         <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
         <div class="gabarito-resolucao">
             <p><strong>Resolução:</strong><br>
-            $\hat{A} = 180° - 45° - 75° = 60°$<br>
-            $\dfrac{b}{\sin B} = \dfrac{c}{\sin C} \;\Rightarrow\; \dfrac{4\sqrt{2}}{\sin 45°} = \dfrac{c}{\sin 75°}$<br>
-            $\dfrac{4\sqrt{2}}{\frac{\sqrt{2}}{2}} = \dfrac{c}{\sin 75°} \;\Rightarrow\; 8 = \dfrac{c}{\sin 75°}$<br>
-            $\sin 75° = \sin(45°+30°) = \dfrac{\sqrt{6}+\sqrt{2}}{4}$<br>
-            $c = 8 \cdot \dfrac{\sqrt{6}+\sqrt{2}}{4} = 2(\sqrt{6}+\sqrt{2})$</p>
+            1. Aplicando a Lei dos Senos: $\frac{x}{\sin(45^\circ)} = \frac{y}{\sin(60^\circ)}$.<br>
+            2. $\frac{x}{\sqrt{2}/2} = \frac{8\sqrt{6}}{\sqrt{3}/2} \implies x \cdot \frac{\sqrt{3}}{2} = 8\sqrt{6} \cdot \frac{\sqrt{2}}{2}$.<br>
+            3. $x\sqrt{3} = 8\sqrt{12} \implies x\sqrt{3} = 16\sqrt{3} \implies \mathbf{x = 16\text{ cm}}$.</p>
         </div>
     </article>
 
     <article class="questao">
-        <h4>P 2: Lei dos Senos — Raio da Circunscrita</h4>
-        <p><strong>Enunciado:</strong> Em um triângulo $ABC$, $a = 12$ e $\hat{A} = 60°$. Calcule o raio $R$ da circunferência circunscrita ao triângulo.</p>
+        <h4>P 7: Cálculo do Ângulo em Triângulo Isósceles Obtusângulo</h4>
+        <p><strong>Enunciado:</strong> Um triângulo tem lados medindo $4\text{ cm}$, $4\text{ cm}$ e $4\sqrt{3}\text{ cm}$. Determine a medida do ângulo oposto ao lado $4\sqrt{3}\text{ cm}$.</p>
         <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
         <div class="gabarito-resolucao">
             <p><strong>Resolução:</strong><br>
-            $2R = \dfrac{a}{\sin A} = \dfrac{12}{\sin 60°} = \dfrac{12}{\frac{\sqrt{3}}{2}} = \dfrac{24}{\sqrt{3}} = \dfrac{24\sqrt{3}}{3} = 8\sqrt{3}$<br>
-            $R = 4\sqrt{3}$</p>
+            1. Pela Lei dos Cossenos:<br>
+               $(4\sqrt{3})^2 = 4^2 + 4^2 - 2(4)(4)\cos(\theta) \implies 48 = 16 + 16 - 32\cos(\theta)$.<br>
+            2. $48 = 32 - 32\cos(\theta) \implies 16 = -32\cos(\theta) \implies \cos(\theta) = -\frac{1}{2}$.<br>
+            3. Logo, o ângulo mede $\mathbf{120^\circ}$.</p>
         </div>
     </article>
 
     <article class="questao">
-        <h4>P 3: Lei dos Cossenos — Lado (LAL)</h4>
-        <p><strong>Enunciado:</strong> Em um triângulo, dois lados medem $a = 9$ e $b = 12$ e o ângulo entre eles é $\hat{C} = 120°$. Calcule o terceiro lado $c$.</p>
+        <h4>P 8: Determinação de Terceiro Lado com Ângulo de 120°</h4>
+        <p><strong>Enunciado:</strong> Determine o lado $c$ de um triângulo em que $a = 3\text{ cm}$, $b = 5\text{ cm}$ e o ângulo entre eles mede $120^\circ$.</p>
         <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
         <div class="gabarito-resolucao">
             <p><strong>Resolução:</strong><br>
-            $c^2 = a^2 + b^2 - 2ab\cos C = 81 + 144 - 2(9)(12)\cos 120°$<br>
-            $= 225 - 216 \cdot \left(-\dfrac{1}{2}\right) = 225 + 108 = 333$<br>
-            $c = \sqrt{333} = 3\sqrt{37}$</p>
+            1. Pela Lei dos Cossenos: $c^2 = a^2 + b^2 - 2ab \cdot \cos(120^\circ)$.<br>
+            2. Como $\cos(120^\circ) = -1/2$:<br>
+               $c^2 = 3^2 + 5^2 - 2(3)(5)(-1/2) = 9 + 25 + 15 = 49$.<br>
+            3. $c = \sqrt{49} = \mathbf{7\text{ cm}}$.</p>
         </div>
     </article>
 
     <article class="questao">
-        <h4>P 4: Lei dos Cossenos — Ângulo (LLL)</h4>
-        <p><strong>Enunciado:</strong> Um triângulo tem lados $3$, $5$ e $7$. Calcule o maior ângulo desse triângulo.</p>
+        <h4>P 9: Perímetro com Raio Circunscrito</h4>
+        <p><strong>Enunciado:</strong> Em um triângulo equilátero inscrito em uma circunferência de raio $R = 6\text{ cm}$, determine a medida de seu lado.</p>
         <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
         <div class="gabarito-resolucao">
             <p><strong>Resolução:</strong><br>
-            O maior ângulo é oposto ao maior lado ($c = 7$).<br>
-            $\cos C = \dfrac{a^2+b^2-c^2}{2ab} = \dfrac{9+25-49}{2\cdot3\cdot5} = \dfrac{-15}{30} = -\dfrac{1}{2}$<br>
-            $C = \arccos\!\left(-\dfrac{1}{2}\right) = 120°$</p>
+            1. Num triângulo equilátero, cada ângulo interno mede $60^\circ$.<br>
+            2. Pela Lei dos Senos: $\frac{\ell}{\sin(60^\circ)} = 2R \implies \frac{\ell}{\sqrt{3}/2} = 2(6) = 12$.<br>
+            3. $\ell = 12 \cdot \frac{\sqrt{3}}{2} = \mathbf{6\sqrt{3}\text{ cm}}$.</p>
         </div>
     </article>
 
     <article class="questao">
-        <h4>P 5: Área com Dois Lados e Ângulo</h4>
-        <p><strong>Enunciado:</strong> Calcule a área de um triângulo com lados $a = 8\text{ cm}$ e $b = 6\text{ cm}$ e ângulo $\hat{C} = 45°$ entre eles.</p>
+        <h4>P 10: Diagonal de um Paralelogramo</h4>
+        <p><strong>Enunciado:</strong> Um paralelogramo possui lados medindo $6\text{ cm}$ e $10\text{ cm}$, e um dos seus ângulos internos mede $60^\circ$. Determine a medida da maior diagonal desse paralelogramo.</p>
         <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
         <div class="gabarito-resolucao">
             <p><strong>Resolução:</strong><br>
-            $S = \dfrac{1}{2}\,ab\,\sin C = \dfrac{1}{2} \cdot 8 \cdot 6 \cdot \sin 45° = 24 \cdot \dfrac{\sqrt{2}}{2} = 12\sqrt{2}\text{ cm}^2$</p>
+            1. O ângulo adjacente ao de $60^\circ$ em um paralelogramo mede $180^\circ - 60^\circ = 120^\circ$.<br>
+            2. A maior diagonal $D$ opõe-se ao maior ângulo ($120^\circ$) no triângulo formado por dois lados e a diagonal:<br>
+               $D^2 = 6^2 + 10^2 - 2(6)(10)\cos(120^\circ)$.<br>
+            3. $D^2 = 36 + 100 - 120(-0,5) = 136 + 60 = 196$.<br>
+            4. $D = \sqrt{196} = \mathbf{14\text{ cm}}$.</p>
         </div>
     </article>
 </section>
 
+<section class="TESTE" id="testes">
+    <h3>🎓 TESTES (T 11 a 15)</h3>
 
-<!--------------- QUESTOES VESTIBULAR --------------------------->
+    <div class="card" style="text-align:center; padding:60px 20px; background:#f8f9fa; border:2px dashed #3498db; border-radius:12px; margin-top:20px;">
+        <h2 style="color:#3498db; font-size:2.5rem; margin-bottom:15px;">
+            🚧 EM BREVE!
+        </h2>
 
-<section class="questoes-vestibular">
-    <h3>🎓 10 Questões de Vestibular/ENEM (T 1 a 10)</h3>
-
-    <article class="questao">
-        <h4>T 1: (FUVEST) Lei dos Senos — Triângulo com Ângulo Obtuso</h4>
-        <p>Em um triângulo $ABC$, $\hat{A} = 120°$, $\hat{B} = 30°$ e $b = 4$. Qual o valor de $a$?</p>
-        <p>A) $4$<br>B) $4\sqrt{2}$<br>C) $4\sqrt{3}$<br>D) $8$<br>E) $6$</p>
-        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-        <div class="gabarito-resolucao">
-            <p><strong>Resolução:</strong> Alternativa <strong>C</strong>.<br>
-            $\dfrac{a}{\sin 120°} = \dfrac{b}{\sin 30°} = \dfrac{4}{\frac{1}{2}} = 8$<br>
-            $a = 8 \cdot \sin 120° = 8 \cdot \dfrac{\sqrt{3}}{2} = 4\sqrt{3}$</p>
-        </div>
-    </article>
-
-    <article class="questao">
-        <h4>T 2: (UNICAMP) Lei dos Cossenos — Lado</h4>
-        <p>Em um triângulo, dois lados medem 6 e 10 e o ângulo entre eles é $60°$. O terceiro lado mede:</p>
-        <p>A) $\sqrt{76}$<br>B) $\sqrt{88}$<br>C) $2\sqrt{19}$<br>D) $4\sqrt{7}$<br>E) $\sqrt{76}$</p>
-        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-        <div class="gabarito-resolucao">
-            <p><strong>Resolução:</strong> Alternativa <strong>A</strong> (equivalente a <strong>C</strong>).<br>
-            $c^2 = 36 + 100 - 2(6)(10)\cos 60° = 136 - 120 \cdot \dfrac{1}{2} = 136 - 60 = 76$<br>
-            $c = \sqrt{76} = 2\sqrt{19}$</p>
-        </div>
-    </article>
-
-    <article class="questao">
-        <h4>T 3: (PUC-SP) Identificação do Ângulo</h4>
-        <p>Num triângulo com lados 5, 7 e 8, o cosseno do maior ângulo vale:</p>
-        <p>A) $\dfrac{1}{7}$<br>B) $\dfrac{1}{8}$<br>C) $-\dfrac{1}{7}$<br>D) $\dfrac{1}{5}$<br>E) $-\dfrac{1}{4}$</p>
-        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-        <div class="gabarito-resolucao">
-            <p><strong>Resolução:</strong> Alternativa <strong>A</strong>.<br>
-            Maior ângulo oposto ao lado 8.<br>
-            $\cos C = \dfrac{5^2+7^2-8^2}{2\cdot5\cdot7} = \dfrac{25+49-64}{70} = \dfrac{10}{70} = \dfrac{1}{7}$</p>
-        </div>
-    </article>
-
-    <article class="questao">
-        <h4>T 4: (VUNESP) Área com Dois Lados e Ângulo</h4>
-        <p>Dois lados de um triângulo medem 10 cm e 14 cm e formam entre si um ângulo de $30°$. A área desse triângulo é:</p>
-        <p>A) $35\text{ cm}^2$<br>B) $70\text{ cm}^2$<br>C) $35\sqrt{3}\text{ cm}^2$<br>D) $140\text{ cm}^2$<br>E) $17{,}5\text{ cm}^2$</p>
-        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-        <div class="gabarito-resolucao">
-            <p><strong>Resolução:</strong> Alternativa <strong>A</strong>.<br>
-            $S = \dfrac{1}{2} \cdot 10 \cdot 14 \cdot \sin 30° = 70 \cdot \dfrac{1}{2} = 35\text{ cm}^2$</p>
-        </div>
-    </article>
-
-    <article class="questao">
-        <h4>T 5: (UFMG) Raio da Circunscrita</h4>
-        <p>Em um triângulo equilátero de lado $\ell$, o raio da circunferência circunscrita é:</p>
-        <p>A) $\dfrac{\ell}{2}$<br>B) $\dfrac{\ell\sqrt{3}}{2}$<br>C) $\dfrac{\ell\sqrt{3}}{3}$<br>D) $\dfrac{\ell}{\sqrt{3}}$<br>E) $\ell$</p>
-        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-        <div class="gabarito-resolucao">
-            <p><strong>Resolução:</strong> Alternativa <strong>C</strong>.<br>
-            Todo ângulo do triângulo equilátero é $60°$.<br>
-            $2R = \dfrac{a}{\sin A} = \dfrac{\ell}{\sin 60°} = \dfrac{\ell}{\frac{\sqrt{3}}{2}} = \dfrac{2\ell}{\sqrt{3}}$<br>
-            $R = \dfrac{\ell}{\sqrt{3}} = \dfrac{\ell\sqrt{3}}{3}$</p>
-        </div>
-    </article>
-
-    <article class="questao">
-        <h4>T 6: (ITA) Triângulo Isósceles com Lei dos Cossenos</h4>
-        <p>Um triângulo isósceles tem lados iguais de comprimento $a = 5$ e base $b = 6$. Calcule o cosseno do ângulo oposto à base.</p>
-        <p>A) $\dfrac{7}{25}$<br>B) $\dfrac{7}{50}$<br>C) $\dfrac{7}{25}$<br>D) $\dfrac{14}{25}$<br>E) $\dfrac{7}{10}$</p>
-        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-        <div class="gabarito-resolucao">
-            <p><strong>Resolução:</strong> Alternativa <strong>A</strong>.<br>
-            Ângulo $C$ oposto à base $c = 6$; lados $a = b = 5$.<br>
-            $\cos C = \dfrac{a^2+b^2-c^2}{2ab} = \dfrac{25+25-36}{2\cdot5\cdot5} = \dfrac{14}{50} = \dfrac{7}{25}$</p>
-        </div>
-    </article>
-
-    <article class="questao">
-        <h4>T 7: (UNESP) Distância entre Dois Pontos (Topografia)</h4>
-        <p>Dois observadores $A$ e $B$, separados por $200\text{ m}$, avistam simultaneamente uma torre $C$. O ângulo em $A$ é $60°$ e o ângulo em $B$ é $75°$. Qual a distância $AC$? (Use $\sin 45° = \dfrac{\sqrt{2}}{2}$, $\sin 60° = \dfrac{\sqrt{3}}{2}$, $\sin 75° = \dfrac{\sqrt{6}+\sqrt{2}}{4}$.)</p>
-        <p>A) $50(\sqrt{6}+\sqrt{2})\text{ m}$<br>B) $100\sqrt{3}\text{ m}$<br>C) $100(\sqrt{6}+\sqrt{2})\text{ m}$<br>D) $200\sqrt{3}\text{ m}$<br>E) $50\sqrt{6}\text{ m}$</p>
-        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-        <div class="gabarito-resolucao">
-            <p><strong>Resolução:</strong> Alternativa <strong>A</strong>.<br>
-            $\hat{C} = 180° - 60° - 75° = 45°$<br>
-            $\dfrac{AB}{\sin C} = \dfrac{AC}{\sin B} \;\Rightarrow\; \dfrac{200}{\sin 45°} = \dfrac{AC}{\sin 75°}$<br>
-            $AC = \dfrac{200 \cdot \sin 75°}{\sin 45°} = \dfrac{200 \cdot \frac{\sqrt{6}+\sqrt{2}}{4}}{\frac{\sqrt{2}}{2}} = \dfrac{200(\sqrt{6}+\sqrt{2})}{4} \cdot \dfrac{2}{\sqrt{2}} = \dfrac{100(\sqrt{6}+\sqrt{2})}{\sqrt{2}} = 50(\sqrt{6}+\sqrt{2})\cdot\sqrt{2}/\sqrt{2}$<br>
-            $= 50(\sqrt{6}+\sqrt{2})\text{ m}$</p>
-        </div>
-    </article>
-
-    <article class="questao">
-        <h4>T 8: (ENEM) Aplicação Prática — Travessia de Rio</h4>
-        <p>Um topógrafo quer medir a largura de um rio. Ele marca dois pontos $A$ e $B$ na margem, com $AB = 80\text{ m}$. De $A$, avista uma árvore $C$ na outra margem com ângulo $\hat{A} = 60°$; de $B$, com ângulo $\hat{B} = 45°$. Qual a distância $BC$? (Use $\sin 75° \approx 0{,}966$.)</p>
-        <p>A) $\approx 56{,}7\text{ m}$<br>B) $\approx 69{,}2\text{ m}$<br>C) $\approx 80\text{ m}$<br>D) $\approx 71{,}2\text{ m}$<br>E) $\approx 65{,}9\text{ m}$</p>
-        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-        <div class="gabarito-resolucao">
-            <p><strong>Resolução:</strong> Alternativa <strong>D</strong>.<br>
-            $\hat{C} = 180° - 60° - 45° = 75°$<br>
-            $\dfrac{AB}{\sin C} = \dfrac{BC}{\sin A} \;\Rightarrow\; \dfrac{80}{\sin 75°} = \dfrac{BC}{\sin 60°}$<br>
-            $BC = \dfrac{80 \cdot \frac{\sqrt{3}}{2}}{0{,}966} = \dfrac{40\sqrt{3}}{0{,}966} \approx \dfrac{69{,}28}{0{,}966} \approx 71{,}7\text{ m}$</p>
-        </div>
-    </article>
-
-    <article class="questao">
-        <h4>T 9: (FUVEST) Lei dos Cossenos — Ângulo Obtuso</h4>
-        <p>Em um triângulo com lados $a = 13$, $b = 14$ e $c = 15$, a área vale:</p>
-        <p>A) $80$<br>B) $84$<br>C) $90$<br>D) $96$<br>E) $100$</p>
-        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-        <div class="gabarito-resolucao">
-            <p><strong>Resolução:</strong> Alternativa <strong>B</strong>.<br>
-            Usando a Fórmula de Heron: $p = \dfrac{13+14+15}{2} = 21$<br>
-            $S = \sqrt{21(21-13)(21-14)(21-15)} = \sqrt{21 \cdot 8 \cdot 7 \cdot 6} = \sqrt{7056} = 84$</p>
-        </div>
-    </article>
-
-    <article class="questao">
-        <h4>T 10: (UNICAMP) Combinação das Duas Leis</h4>
-        <p>Em um triângulo $ABC$, $a = 7$, $\hat{B} = 60°$ e $c = 8$. Calcule o lado $b$ e, em seguida, o ângulo $\hat{A}$.</p>
-        <p>A) $b = \sqrt{57}$; $\hat{A} \approx 46°$<br>B) $b = \sqrt{57}$; $\hat{A} \approx 40°$<br>C) $b = \sqrt{53}$; $\hat{A} \approx 44°$<br>D) $b = 7$; $\hat{A} = 60°$<br>E) $b = \sqrt{49}$; $\hat{A} = 60°$</p>
-        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-        <div class="gabarito-resolucao">
-            <p><strong>Resolução:</strong> Alternativa <strong>A</strong>.<br>
-            <strong>Passo 1 — Lei dos Cossenos:</strong><br>
-            $b^2 = a^2 + c^2 - 2ac\cos B = 49 + 64 - 2(7)(8)\cos 60°$<br>
-            $= 113 - 112 \cdot \dfrac{1}{2} = 113 - 56 = 57 \;\Rightarrow\; b = \sqrt{57}$<br>
-            <strong>Passo 2 — Lei dos Senos:</strong><br>
-            $\dfrac{a}{\sin A} = \dfrac{b}{\sin B} \;\Rightarrow\; \sin A = \dfrac{a\sin B}{b} = \dfrac{7 \cdot \frac{\sqrt{3}}{2}}{\sqrt{57}} = \dfrac{7\sqrt{3}}{2\sqrt{57}}$<br>
-            $\approx \dfrac{12{,}12}{15{,}1} \approx 0{,}803 \;\Rightarrow\; \hat{A} \approx 53{,}4°$<br>
-            <em>(O valor exato depende de aproximações; o método é o que vale.)</em></p>
-        </div>
-    </article>
-
+        <p style="font-size:1.2rem; color:#555;">
+            Questões de vestibulares serão disponibilizadas em breve.
+        </p>
+    </div>
 </section>
 
 </div>
@@ -570,7 +279,7 @@ function toggleSlides() {
         mostrarSlide(slideAtual);
     } else {
         body.classList.remove('modo-slides');
-        window.location.reload();
+        window.location.reload(); 
     }
 }
 
@@ -579,10 +288,9 @@ function mostrarSlide(n) {
         s.classList.remove('slide-ativo');
         s.style.display = 'none';
     });
-
     const slide = slides[n];
     slide.classList.add('slide-ativo');
-    slide.style.display = 'flex';
+    slide.style.display = 'flex'; 
 
     if (slide.classList.contains('questao') && !slide.querySelector('.btn-gabarito')) {
         const resolucoes = slide.querySelectorAll('.resolucao-bloco');
@@ -599,13 +307,11 @@ function mostrarSlide(n) {
 
     const pHeader = document.querySelector('header p').innerText;
     const partes = pHeader.split('|');
-    if (partes.length > 1) {
+    if(partes.length > 1) {
         document.getElementById('slide-info-serie').innerText = partes[0].trim();
         document.getElementById('slide-info-aula').innerText = partes[1].trim();
     }
-
     document.getElementById('contador-slide').innerText = (n + 1) + " / " + slides.length;
-
     if (window.MathJax) MathJax.typesetPromise();
 }
 
@@ -615,26 +321,45 @@ function mudarSlide(direcao) {
     if (slideAtual < 0) slideAtual = slides.length - 1;
     mostrarSlide(slideAtual);
 }
+
+document.addEventListener('keydown', function(event) {
+    if (document.body.classList.contains('modo-slides')) {
+        switch(event.key) {
+            case 'ArrowRight': 
+            case 'PageDown':   
+            case 'Enter':      
+            case ' ':          
+                mudarSlide(1);
+                break;
+                
+            case 'ArrowLeft':  
+            case 'PageUp':     
+                mudarSlide(-1);
+                break;
+
+            case 'Escape':     
+                toggleSlides();
+                break;
+        }
+    }
+});
 </script>
 
 <style>
     body.modo-slides { overflow: hidden; background-color: #1a1a1a; }
     body.modo-slides .menu-lateral, body.modo-slides header, body.modo-slides .menu-toggle, body.modo-slides #btn-slides { display: none !important; }
-
     .slide-ativo {
         display: flex !important; flex-direction: column; align-items: center; justify-content: flex-start;
         position: fixed; top: 0; left: 0; width: 100vw; height: calc(100vh - 70px);
-        background: #ffffff; padding: 40px; z-index: 999; overflow-y: auto !important;
+        background: #ffffff; padding: 40px; z-index: 999; overflow-y: auto !important; 
         box-sizing: border-box; text-align: center;
     }
-
     .controles-slides {
         position: fixed; bottom: 0; left: 0; width: 100%; height: 70px;
-        background: #2c3e50; color: white; display: none;
+        background: #2c3e50; color: white; display: none; 
         justify-content: space-between; align-items: center; padding: 0 20px; z-index: 1001; box-sizing: border-box;
     }
     body.modo-slides .controles-slides { display: flex; }
-
     .info-lateral { flex: 1; font-family: 'Oswald', sans-serif; font-size: 0.9rem; color: #bdc3c7; }
     .botoes-centrais { display: flex; align-items: center; gap: 15px; justify-content: center; flex: 2; }
     .btn-nav { padding: 10px 20px; background: #3498db; color: white; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; }
