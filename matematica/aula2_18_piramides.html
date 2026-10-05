@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2º Ano: Aula 18 - Pirâmides</title>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../estilo.css">
+    
+    <script>
+        MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true
+            }
+        };
+    </script>
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body>
+<button class="menu-toggle" onclick="toggleMenu()">☰</button>
+
+<nav id="menu-principal" class="nav-global">
+    <ul>
+        <li><a href="../index.html">🏠 Início</a></li>
+        <li><a href="../fisica_home.html">⚛️ Física</a></li>
+        <li><a href="../matematica_home.html">📐 Matemática</a></li>
+        <li><a href="../simulacoes_home.html">💻 Simulações</a></li>
+    </ul>
+</nav>
+
+<header id="topo">
+    <h1>MATEMÁTICA EM</h1>
+    <p>2º Ano | Aula 18: Pirâmides</p>
+    <button id="btn-slides" onclick="toggleSlides()">📺 Iniciar Modo Slides</button>
+</header>
+
+<div class="container">
+
+<main class="conteudo-principal">
+
+<div class="secao-aula">
+ <div class="container-resumo" id="resumo">
+    <h3>📚 Resumo </h3>
+    <section class="resumo-conteudo">
+        <p>A <strong>Pirâmide</strong> é um sólido geométrico delimitado por uma base poligonal e por faces laterais triangulares que concorrem em um único ponto fora do plano da base, chamado de <strong>vértice da pirâmide</strong> ($V$).</p>
+        <p>Em uma <strong>pirâmide regular</strong>, a base é um polígono regular e as faces laterais são triângulos isósceles congruentes. O estudo abrange as relações métricas entre a altura ($h$), o apótema da pirâmide ($g$) e o apótema da base ($m$), além dos cálculos de **área lateral**, **área total** e **volume**.</p>
+    </section>
+</div>
+
+<section class="conteudo-teorico-completo" id="teoria">
+    <div class="passo-teoria">
+        <h3>📖 Conceitos Fundamentais</h3>
+        <h4>1. Elementos e Relação Pitagórica Fundamental</h4>
+        <p>Em uma pirâmide regular:</p>
+        <ul>
+            <li><strong>Altura ($h$):</strong> Distância do vértice ao plano da base.</li>
+            <li><strong>Apótema da Pirâmide ($g$):</strong> Altura de uma face lateral triangular.</li>
+            <li><strong>Apótema da Base ($m$):</strong> Distância do centro da base ao meio de um dos seus lados.</li>
+            <li><strong>Teorema de Pitágoras no Interior:</strong> $g^2 = h^2 + m^2$</li>
+        </ul>
+    </div>
+
+    <div class="passo-teoria">
+        <h4>2. Áreas Lateral e Total</h4>
+        <p>As superfícies de uma pirâmide compõem-se de uma base poligonal e $n$ triângulos laterais:</p>
+        <ul>
+            <li><strong>Área da Base ($A_b$):</strong> Calculada de acordo com o polígono da base.</li>
+            <li><strong>Área Lateral ($A_l$):</strong> Soma das áreas das $n$ faces triangulares laterais.</li>
+            <li><strong>Área Total ($A_t$):</strong> $A_t = A_b + A_l$</li>
+        </ul>
+    </div>
+
+    <div class="passo-teoria">
+        <h4>3. Volume e Tetraedro Regular</h4>
+        <p>O volume de qualquer pirâmide corresponde a um terço do produto da área da base pela altura:</p>
+        <ul>
+            <li><strong>Volume ($V$):</strong> $V = \frac{1}{3} \cdot A_b \cdot h$</li>
+            <li><strong>Tetraedro Regular:</strong> Pirâmide com 4 faces sendo triângulos equiláteros de aresta $a$:
+                <ul>
+                    <li>$A_t = a^2\sqrt{3}$</li>
+                    <li>$h = \frac{a\sqrt{6}}{3}$</li>
+                    <li>$V = \frac{a^3\sqrt{2}}{12}$</li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</section>
+
+<section class="aplicacoes-reais" id="aplicacoes">
+    <h3>💡 Matemática em Ação</h3>
+    <div class="cards-aplicacao">
+        <div class="card">
+            <h4>🏛️ Arquitetura e Engenharia</h4>
+            <p>Telhados em quatro águas e grandes monumentos (como as Pirâmides de Gizé e a pirâmide do Museu do Louvre) usam a distribuição inclinada de cargas para garantir estabilidade estrutural.</p>
+        </div>
+        <div class="card" style="border-left-color: #2ecc71;">
+            <h4>🏕️ Design de Objetos e Coberturas</h4>
+            <p>Tendas e barracas de acampamento em formato piramidal maximizam o escoamento de água de chuva gastando uma menor quantidade de lona no revestimento.</p>
+        </div>
+    </div>
+</section>
+
+<section class="questoes-resolvidas" id="resolvidas">
+    <h3>✅ 5 Questões Resolvidas (R 1 a 5)</h3>
+    
+    <article class="questao">
+        <h4>R 1: Volume de Pirâmide Quadrangular Regular</h4>
+        <p><strong>Enunciado:</strong> Uma pirâmide regular de base quadrada tem aresta da base de $6\text{ cm}$ e altura de $10\text{ cm}$. Calcule o seu volume.</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong><br>
+            1. Área da base quadrada: $A_b = l^2 = 6^2 = 36\text{ cm}^2$.<br>
+            2. Volume: $V = \frac{1}{3} \cdot A_b \cdot h = \frac{1}{3} \cdot 36 \cdot 10 = 12 \cdot 10 = \mathbf{120\text{ cm}^3}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>R 2: Relação do Apótema</h4>
+        <p><strong>Enunciado:</strong> Uma pirâmide quadrangular regular tem altura $h = 4\text{ cm}$ e aresta da base $l = 6\text{ cm}$. Encontre a medida do seu apótema $g$.</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong><br>
+            1. O apótema da base quadrada de lado $6\text{ cm}$ é a metade do lado: $m = \frac{l}{2} = \frac{6}{2} = 3\text{ cm}$.<br>
+            2. Aplicando Pitágoras: $g^2 = h^2 + m^2 \implies g^2 = 4^2 + 3^2 = 16 + 9 = 25$.<br>
+            3. $g = \sqrt{25} = \mathbf{5\text{ cm}}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>R 3: Área Total da Pirâmide</h4>
+        <p><strong>Enunciado:</strong> Para a pirâmide da questão anterior (base quadrada de lado $6\text{ cm}$ e apótema $g = 5\text{ cm}$), calcule a sua área total.</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong><br>
+            1. Área da base: $A_b = 6^2 = 36\text{ cm}^2$.<br>
+            2. Área lateral (4 triângulos de base $6$ e altura $g=5$): $A_l = 4 \cdot \left(\frac{b \cdot g}{2}\right) = 4 \cdot \left(\frac{6 \cdot 5}{2}\right) = 4 \cdot 15 = 60\text{ cm}^2$.<br>
+            3. Área Total: $A_t = A_b + A_l = 36 + 60 = \mathbf{96\text{ cm}^2}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>R 4: Tetraedro Regular</h4>
+        <p><strong>Enunciado:</strong> Um tetraedro regular possui arestas medindo $6\text{ cm}$. Calcule a sua área total.</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong><br>
+            1. O tetraedro regular é composto por 4 triângulos equiláteros congruentes de lado $a = 6\text{ cm}$.<br>
+            2. Fórmula: $A_t = a^2\sqrt{3} = 6^2\sqrt{3} = \mathbf{36\sqrt{3}\text{ cm}^2}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>R 5: Pirâmide Hexagonal Regular</h4>
+        <p><strong>Enunciado:</strong> O volume de uma pirâmide de altura $9\text{ cm}$ é $72\sqrt{3}\text{ cm}^3$. Determine a área de sua base.</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong><br>
+            1. Fórmula do volume: $V = \frac{1}{3} \cdot A_b \cdot h$.<br>
+            2. $72\sqrt{3} = \frac{1}{3} \cdot A_b \cdot 9 \implies 72\sqrt{3} = 3 A_b$.<br>
+            3. $A_b = \frac{72\sqrt{3}}{3} = \mathbf{24\sqrt{3}\text{ cm}^2}$.</p>
+        </div>
+    </article>
+</section>
+
+<section class="questoes-propostas" id="propostas">
+    <h3>✍️ 5 Questões Propostas (P 6 a 10)</h3>
+
+    <article class="questao">
+        <h4>P 6: Volume Básico</h4>
+        <p><strong>Enunciado:</strong> Uma pirâmide de base retangular com dimensões $3\text{ cm} \times 5\text{ cm}$ possui altura $8\text{ cm}$. Qual é o seu volume?</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> $A_b = 3 \cdot 5 = 15\text{ cm}^2$.<br>
+            $V = \frac{1}{3} \cdot A_b \cdot h = \frac{1}{3} \cdot 15 \cdot 8 = 5 \cdot 8 = \mathbf{40\text{ cm}^3}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 7: Apótema e Altura</h4>
+        <p><strong>Enunciado:</strong> Uma pirâmide quadrangular regular tem apótema da base $m = 8\text{ cm}$ e apótema da pirâmide $g = 10\text{ cm}$. Calcule a sua altura $h$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> $g^2 = h^2 + m^2 \implies 10^2 = h^2 + 8^2 \implies 100 = h^2 + 64 \implies h^2 = 36 \implies h = \mathbf{6\text{ cm}}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 8: Volume do Tetraedro Regular</h4>
+        <p><strong>Enunciado:</strong> Calcule o volume de um tetraedro regular de aresta $a = 3\text{ cm}$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> $V = \frac{a^3\sqrt{2}}{12} = \frac{3^3\sqrt{2}}{12} = \frac{27\sqrt{2}}{12} = \mathbf{\frac{9\sqrt{2}}{4}\text{ cm}^3}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 9: Comparação entre Prisma e Pirâmide</h4>
+        <p><strong>Enunciado:</strong> Um prisma reto e uma pirâmide têm a mesma base e a mesma altura. Qual é a razão entre o volume da pirâmide e o volume do prisma?</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> $V_{\text{prisma}} = A_b \cdot h$ e $V_{\text{pirâmide}} = \frac{1}{3} A_b \cdot h$.<br>
+            A razão $\frac{V_{\text{pirâmide}}}{V_{\text{prisma}}} = \mathbf{\frac{1}{3}}$ (o volume da pirâmide é equivalente a $1/3$ do volume do prisma).</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 10: Área Lateral da Pirâmide Triangular Regular</h4>
+        <p><strong>Enunciado:</strong> Uma pirâmide triangular regular tem lado da base igual a $4\text{ cm}$ e apótema da pirâmide igual a $6\text{ cm}$. Calcule sua área lateral.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> A base é triangular, portanto existem 3 faces laterais congruentes.<br>
+            Área de uma face: $A_{\text{face}} = \frac{b \cdot g}{2} = \frac{4 \cdot 6}{2} = 12\text{ cm}^2$.<br>
+            Área lateral: $A_l = 3 \cdot 12 = \mathbf{36\text{ cm}^2}$.</p>
+        </div>
+    </article>
+</section>
+
+<section class="TESTE" id="testes">
+    <h3>🎓 TESTES (T 11 a 15)</h3>
+
+    <div class="card" style="text-align:center; padding:60px 20px; background:#f8f9fa; border:2px dashed #3498db; border-radius:12px; margin-top:20px;">
+        <h2 style="color:#3498db; font-size:2.5rem; margin-bottom:15px;">
+            🚧 EM BREVE!
+        </h2>
+
+        <p style="font-size:1.2rem; color:#555;">
+            Questões de vestibulares serão disponibilizadas em breve.
+        </p>
+    </div>
+</section>
+
+</div>
+</main>
+
+<aside class="menu-lateral">
+    <iframe src="../menu_matematica.html" style="width:100%; border:none; height:600px;"></iframe>
+</aside>
+
+</div>
+
+<script>
+function toggleGabarito(botao) {
+    const gabarito = botao.nextElementSibling;
+    if (gabarito.style.display === "none" || gabarito.style.display === "") {
+        gabarito.style.display = "block";
+        botao.textContent = "Esconder Gabarito e Resolução";
+        botao.style.backgroundColor = "#2c3e50";
+    } else {
+        gabarito.style.display = "none";
+        botao.textContent = "Ver Gabarito e Resolução";
+        botao.style.backgroundColor = "#3498db";
+    }
+}
+
+function toggleMenu() {
+    const menuGlobal = document.getElementById("menu-principal");
+    if (menuGlobal) menuGlobal.classList.toggle("ativo");
+}
+
+let slideAtual = 0;
+let slides = [];
+
+function prepararSlides() {
+    const seletores = '.container-resumo, .passo-teoria, .aplicacoes-reais, .questao';
+    slides = document.querySelectorAll(seletores);
+}
+
+function toggleSlides() {
+    prepararSlides();
+    const body = document.body;
+    if (!body.classList.contains('modo-slides')) {
+        body.classList.add('modo-slides');
+        slideAtual = 0;
+        mostrarSlide(slideAtual);
+    } else {
+        body.classList.remove('modo-slides');
+        window.location.reload(); 
+    }
+}
+
+function mostrarSlide(n) {
+    slides.forEach(s => {
+        s.classList.remove('slide-ativo');
+        s.style.display = 'none';
+    });
+    const slide = slides[n];
+    slide.classList.add('slide-ativo');
+    slide.style.display = 'flex'; 
+
+    if (slide.classList.contains('questao') && !slide.querySelector('.btn-gabarito')) {
+        const resolucoes = slide.querySelectorAll('.resolucao-bloco');
+        resolucoes.forEach(r => r.style.display = 'block');
+    } else {
+        const gabaritos = slide.querySelectorAll('.gabarito-resolucao');
+        gabaritos.forEach(g => g.style.display = 'none');
+        const botoes = slide.querySelectorAll('.btn-gabarito');
+        botoes.forEach(b => {
+            b.textContent = "Ver Gabarito e Resolução";
+            b.style.backgroundColor = "#3498db";
+        });
+    }
+
+    const pHeader = document.querySelector('header p').innerText;
+    const partes = pHeader.split('|');
+    if(partes.length > 1) {
+        document.getElementById('slide-info-serie').innerText = partes[0].trim();
+        document.getElementById('slide-info-aula').innerText = partes[1].trim();
+    }
+    document.getElementById('contador-slide').innerText = (n + 1) + " / " + slides.length;
+    if (window.MathJax) MathJax.typesetPromise();
+}
+
+function mudarSlide(direcao) {
+    slideAtual += direcao;
+    if (slideAtual >= slides.length) slideAtual = 0;
+    if (slideAtual < 0) slideAtual = slides.length - 1;
+    mostrarSlide(slideAtual);
+}
+
+document.addEventListener('keydown', function(event) {
+    if (document.body.classList.contains('modo-slides')) {
+        switch(event.key) {
+            case 'ArrowRight': 
+            case 'PageDown':   
+            case 'Enter':      
+            case ' ':          
+                mudarSlide(1);
+                break;
+                
+            case 'ArrowLeft':  
+            case 'PageUp':     
+                mudarSlide(-1);
+                break;
+
+            case 'Escape':     
+                toggleSlides();
+                break;
+        }
+    }
+});
+</script>
+
+<style>
+    body.modo-slides { overflow: hidden; background-color: #1a1a1a; }
+    body.modo-slides .menu-lateral, body.modo-slides header, body.modo-slides .menu-toggle, body.modo-slides #btn-slides { display: none !important; }
+    .slide-ativo {
+        display: flex !important; flex-direction: column; align-items: center; justify-content: flex-start;
+        position: fixed; top: 0; left: 0; width: 100vw; height: calc(100vh - 70px);
+        background: #ffffff; padding: 40px; z-index: 999; overflow-y: auto !important; 
+        box-sizing: border-box; text-align: center;
+    }
+    .controles-slides {
+        position: fixed; bottom: 0; left: 0; width: 100%; height: 70px;
+        background: #2c3e50; color: white; display: none; 
+        justify-content: space-between; align-items: center; padding: 0 20px; z-index: 1001; box-sizing: border-box;
+    }
+    body.modo-slides .controles-slides { display: flex; }
+    .info-lateral { flex: 1; font-family: 'Oswald', sans-serif; font-size: 0.9rem; color: #bdc3c7; }
+    .botoes-centrais { display: flex; align-items: center; gap: 15px; justify-content: center; flex: 2; }
+    .btn-nav { padding: 10px 20px; background: #3498db; color: white; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; }
+    #contador-slide { font-family: 'Oswald', sans-serif; min-width: 60px; text-align: center; }
+</style>
+
+<div class="controles-slides">
+    <div id="slide-info-serie" class="info-lateral"></div>
+    <div class="botoes-centrais">
+        <button class="btn-nav" onclick="mudarSlide(-1)">⬅ Anterior</button>
+        <span id="contador-slide"></span>
+        <button class="btn-nav" onclick="mudarSlide(1)">Próximo ➡</button>
+        <button class="btn-nav" onclick="toggleSlides()" style="background:#e74c3c;">Sair</button>
+    </div>
+    <div id="slide-info-aula" class="info-lateral" style="text-align: right;"></div>
+</div>
+</body>
+</html>
