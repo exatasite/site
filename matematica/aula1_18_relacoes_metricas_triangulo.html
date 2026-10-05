@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1º Ano: Aula 18 - Relações Métricas no Triângulo Retângulo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../estilo.css">
+    <script>
+        MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']], processEscapes: true } };
+    </script>
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        body.modo-slides { overflow: hidden !important; background-color: #1a1a1a !important; margin: 0; padding: 0; }
+        body.modo-slides .menu-lateral, body.modo-slides header, body.modo-slides .menu-toggle, body.modo-slides #btn-slides, body.modo-slides .nav-global { display: none !important; }
+        .slide-ativo { display: flex !important; flex-direction: column; align-items: center; justify-content: center; position: fixed; top: 0; left: 0; width: 100vw; height: calc(100vh - 70px); background: #ffffff; padding: 40px; z-index: 999; overflow-y: auto !important; box-sizing: border-box; text-align: left; }
+        .slide-ativo > * { max-width: 900px; width: 100%; }
+        .controles-slides { position: fixed; bottom: 0; left: 0; width: 100%; height: 70px; background: #2c3e50; color: white; display: none; justify-content: space-between; align-items: center; padding: 0 20px; z-index: 1001; box-sizing: border-box; }
+        body.modo-slides .controles-slides { display: flex !important; }
+        .info-lateral { flex: 1; font-family: 'Oswald', sans-serif; font-size: 0.9rem; color: #bdc3c7; }
+        .botoes-centrais { display: flex; align-items: center; gap: 15px; justify-content: center; flex: 2; }
+        .btn-nav { padding: 10px 20px; background: #3498db; color: white; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; font-size: 0.9rem; }
+        .btn-nav:hover { background: #2980b9; }
+        #contador-slide { font-family: 'Oswald', sans-serif; min-width: 60px; text-align: center; font-size: 1.1rem; }
+    </style>
+</head>
+<body>
+<button class="menu-toggle" onclick="toggleMenu()">☰</button>
+<nav id="menu-principal" class="nav-global"><ul>
+    <li><a href="../index.html">🏠 Início</a></li>
+    <li><a href="../ensino_medio.html">📚 Ensino Médio</a></li>
+    <li><a href="../ensino_superior.html">🎓 Ensino Superior</a></li>
+</ul></nav>
+<header id="topo">
+    <h1>MATEMÁTICA EM</h1>
+    <p>1º Ano | Aula 18: Relações Métricas no Triângulo Retângulo</p>
+    <button id="btn-slides" onclick="toggleSlides()">📺 Iniciar Modo Slides</button>
+</header>
+<div class="container"><main class="conteudo-principal"><div class="secao-aula">
+
+<div class="container-resumo" id="resumo">
+    <h3>📚 Resumo</h3>
+    <section class="resumo-conteudo">
+        <p>Traçando a <strong>altura</strong> $h$ relativa à hipotenusa $a$ de um triângulo retângulo, a hipotenusa fica dividida nas <strong>projeções</strong> $m$ e $n$ dos catetos $b$ e $c$. Os dois triângulos formados são semelhantes ao original, o que gera as <strong>relações métricas</strong>:</p>
+        <p style="text-align: center;">$$b^2 = a\,m \qquad c^2 = a\,n \qquad h^2 = m\,n \qquad a\,h = b\,c \qquad a^2 = b^2 + c^2$$</p>
+    </section>
+</div>
+
+<section class="conteudo-teorico-completo" id="teoria">
+    <div class="passo-teoria">
+        <h3>📖 Relações Métricas no Triângulo Retângulo</h3>
+        <h4>1. Elementos</h4>
+        <p>No triângulo $ABC$, retângulo em $A$, seja $H$ o pé da altura traçada de $A$:</p>
+        <ul>
+            <li><strong>Hipotenusa:</strong> $a = BC$; <strong>catetos:</strong> $b = AC$ e $c = AB$;</li>
+            <li><strong>Altura relativa à hipotenusa:</strong> $h = AH$;</li>
+            <li><strong>Projeções</strong> dos catetos sobre a hipotenusa: $m = HC$ (de $b$) e $n = BH$ (de $c$), com $a = m + n$.</li>
+        </ul>
+        <figure class="figura-aula figura-grande">
+            <svg viewBox="0 0 420 250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Triângulo retângulo ABC com altura AH e projeções m e n" style="width:100%; max-width:430px; display:block; margin:0 auto;">
+  <polygon points="30,200 400,200 286,29" fill="#eaf2fb" stroke="#2c3e50" stroke-width="3"/>
+  <line x1="286" y1="29" x2="286" y2="200" stroke="#e74c3c" stroke-width="2.5" stroke-dasharray="7,4"/>
+  <polyline points="286,186 300,186 300,200" fill="none" stroke="#2c3e50" stroke-width="1.5"/>
+  <polyline points="275,46 292,57 303,40" fill="none" stroke="#2c3e50" stroke-width="1.5"/>
+  <g font-family="Oswald, sans-serif" font-size="17" fill="#2c3e50">
+    <text x="12" y="216">B</text><text x="404" y="216">C</text><text x="280" y="20">A</text><text x="281" y="222">H</text>
+    <text x="146" y="104">c</text><text x="352" y="110">b</text><text x="292" y="120" fill="#e74c3c">h</text>
+    <text x="150" y="238" fill="#3498db">n</text><text x="338" y="238" fill="#3498db">m</text><text x="210" y="246" font-size="13">a = m + n</text>
+  </g>
+  <line x1="30" y1="226" x2="282" y2="226" stroke="#3498db" stroke-width="1.5"/><line x1="290" y1="226" x2="400" y2="226" stroke="#3498db" stroke-width="1.5"/>
+</svg>
+            <figcaption>Figura 1: A altura $AH$ divide a hipotenusa nas projeções $m$ e $n$.</figcaption>
+        </figure>
+    </div>
+
+    <div class="passo-teoria">
+        <h4>2. A Semelhança por Trás das Relações</h4>
+        <p>A altura $AH$ divide o triângulo $ABC$ em dois triângulos retângulos, $HBA$ e $HAC$. Os três triângulos têm os mesmos ângulos e, portanto, são <strong>semelhantes</strong> (caso AA):</p>
+        <p style="text-align: center;">$$\triangle ABC \sim \triangle HBA \sim \triangle HAC$$</p>
+        <p>Escrevendo as proporções entre lados correspondentes, obtemos todas as relações métricas.</p>
+    </div>
+
+    <div class="passo-teoria">
+        <h4>3. As Relações Métricas</h4>
+        <ul>
+            <li>$b^2 = a \cdot m$ &nbsp;e&nbsp; $c^2 = a \cdot n$ &nbsp;(cada cateto ao quadrado é igual à hipotenusa vezes a sua projeção);</li>
+            <li>$h^2 = m \cdot n$ &nbsp;(a altura é a média geométrica das projeções);</li>
+            <li>$a \cdot h = b \cdot c$ &nbsp;(duas formas de calcular o dobro da área);</li>
+            <li>$a^2 = b^2 + c^2$ &nbsp;(Teorema de Pitágoras) &nbsp;e&nbsp; $a = m + n$.</li>
+        </ul>
+        <p style="text-align: center; font-size: 1.15rem; background-color: #f8f9fa; padding: 15px; border-left: 5px solid #3498db; margin: 20px 0;">
+            $$h^2 = m \cdot n \qquad\qquad a \cdot h = b \cdot c$$
+        </p>
+    </div>
+
+    <div class="passo-teoria">
+        <h4>4. Estratégia e Aplicações</h4>
+        <ul>
+            <li>Identifique quais dos elementos $a$, $b$, $c$, $h$, $m$, $n$ são dados e escolha a relação que liga os dados ao que se pede.</li>
+            <li><strong>Área:</strong> $A = \dfrac{b \cdot c}{2} = \dfrac{a \cdot h}{2}$.</li>
+            <li><strong>Raio da circunferência inscrita</strong> no triângulo retângulo: $r = \dfrac{b + c - a}{2}$.</li>
+            <li>No triângulo retângulo <strong>isósceles</strong>, $m = n = \dfrac{a}{2}$ e $h = \dfrac{a}{2}$.</li>
+        </ul>
+    </div>
+</section>
+
+<section class="aplicacoes-reais" id="aplicacoes">
+    <h3>💡 Matemática em Ação</h3>
+    <div class="cards-aplicacao">
+        <div class="card">
+            <h4>🏗️ Telhados e Treliças</h4>
+            <p>Em tesouras de telhado com ângulo reto no topo, a escora que desce do vértice até a viga é a altura relativa à hipotenusa: o carpinteiro calcula seu comprimento por $h^2 = m \cdot n$ conhecendo apenas os dois trechos da viga.</p>
+        </div>
+        <div class="card" style="border-left-color: #2ecc71;">
+            <h4>📐 Construindo Raízes</h4>
+            <p>A relação $h^2 = m \cdot n$ permite construir $\sqrt{x}$ com régua e compasso: com $m = 1$ e $n = x$ na hipotenusa de uma semicircunferência, a altura mede exatamente $\sqrt{x}$.</p>
+        </div>
+    </div>
+</section>
+<section class="questoes-resolvidas" id="resolvidas">
+    <h3>✅ 5 Questões Resolvidas (R 1 a 5)</h3>
+    <article class="questao">
+        <h4>R 1: Dadas as Projeções</h4>
+        <p><strong>Enunciado:</strong> As projeções dos catetos sobre a hipotenusa de um triângulo retângulo medem $m = 4$ cm e $n = 9$ cm. Calcule a hipotenusa, a altura relativa à hipotenusa e os catetos.</p>
+        <div class="resolucao-bloco"><p><strong>Resolução:</strong><br>Hipotenusa: $a = m + n = 13$ cm. Altura: $h^2 = m \cdot n = 36 \implies h = \mathbf{6}$ cm.<br>Catetos: $b^2 = a \cdot m = 52 \implies b = \mathbf{2\sqrt{13}}$ cm; $c^2 = a \cdot n = 117 \implies c = \mathbf{3\sqrt{13}}$ cm.<br>Verificação: $b^2 + c^2 = 52 + 117 = 169 = 13^2$. ✓</p></div>
+    </article>
+    <article class="questao">
+        <h4>R 2: Dados os Catetos</h4>
+        <p><strong>Enunciado:</strong> Os catetos de um triângulo retângulo medem $6$ cm e $8$ cm. Calcule a hipotenusa, a altura relativa à hipotenusa e as projeções dos catetos.</p>
+        <div class="resolucao-bloco"><p><strong>Resolução:</strong><br>$a = \sqrt{36 + 64} = 10$ cm.<br>$a \cdot h = b \cdot c \implies 10h = 48 \implies h = \mathbf{4{,}8}$ cm.<br>Projeções: $m = \dfrac{b^2}{a} = \dfrac{36}{10} = \mathbf{3{,}6}$ cm e $n = \dfrac{c^2}{a} = \dfrac{64}{10} = \mathbf{6{,}4}$ cm (soma $10$ ✓).</p></div>
+    </article>
+    <article class="questao">
+        <h4>R 3: Hipotenusa e Uma Projeção</h4>
+        <p><strong>Enunciado:</strong> A hipotenusa de um triângulo retângulo mede $25$ cm e a projeção do cateto $b$ sobre ela mede $9$ cm. Determine $b$, $c$ e $h$.</p>
+        <div class="resolucao-bloco"><p><strong>Resolução:</strong><br>$b^2 = a \cdot m = 25 \cdot 9 = 225 \implies b = \mathbf{15}$ cm.<br>$n = 25 - 9 = 16 \implies c^2 = 25 \cdot 16 = 400 \implies c = \mathbf{20}$ cm.<br>$h^2 = m \cdot n = 144 \implies h = \mathbf{12}$ cm. (Confere: $a \cdot h = 300 = b \cdot c$.)</p></div>
+    </article>
+    <article class="questao">
+        <h4>R 4: Altura e Uma Projeção</h4>
+        <p><strong>Enunciado:</strong> A altura relativa à hipotenusa de um triângulo retângulo mede $12$ cm e uma das projeções mede $9$ cm. Calcule a hipotenusa.</p>
+        <div class="resolucao-bloco"><p><strong>Resolução:</strong><br>$h^2 = m \cdot n \implies 144 = 9 \cdot n \implies n = 16$ cm.<br>$a = m + n = 9 + 16 = \mathbf{25}$ cm.</p></div>
+    </article>
+    <article class="questao">
+        <h4>R 5: O Caminho Mais Curto</h4>
+        <p><strong>Enunciado:</strong> Um terreno tem a forma de um triângulo retângulo com catetos de $30$ m e $40$ m. Deseja-se construir um caminho reto do vértice do ângulo reto até o lado maior, o mais curto possível. Qual será o seu comprimento?</p>
+        <div class="resolucao-bloco"><p><strong>Resolução:</strong><br>O caminho mais curto até a hipotenusa é a <strong>altura</strong> relativa a ela.<br>$a = \sqrt{30^2 + 40^2} = 50$ m e $a \cdot h = b \cdot c \implies 50h = 1200 \implies h = \mathbf{24}$ m.</p></div>
+    </article>
+</section>
+
+<section class="questoes-propostas" id="propostas">
+    <h3>✍️ 10 Questões Propostas (P 6 a 15)</h3>
+    <article class="questao">
+        <h4>P 6: Altura pelas Projeções</h4>
+        <p><strong>Enunciado:</strong> As projeções dos catetos sobre a hipotenusa medem $2$ cm e $8$ cm. Calcule a altura relativa à hipotenusa.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>$h^2 = m \cdot n = 16 \implies h = \mathbf{4}$ cm.</p></div>
+    </article>
+    <article class="questao">
+        <h4>P 7: Altura pelos Catetos</h4>
+        <p><strong>Enunciado:</strong> Os catetos de um triângulo retângulo medem $5$ cm e $12$ cm. Calcule a altura relativa à hipotenusa.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>$a = 13$ cm. $a \cdot h = b \cdot c \implies 13h = 60 \implies h = \mathbf{\dfrac{60}{13}}$ cm $\approx 4{,}6$ cm.</p></div>
+    </article>
+    <article class="questao">
+        <h4>P 8: Cateto pela Projeção</h4>
+        <p><strong>Enunciado:</strong> A hipotenusa de um triângulo retângulo mede $20$ cm e a projeção do cateto $b$ sobre ela mede $4$ cm. Calcule $b$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>$b^2 = a \cdot m = 20 \cdot 4 = 80 \implies b = \mathbf{4\sqrt{5}}$ cm $\approx 8{,}9$ cm.</p></div>
+    </article>
+    <article class="questao">
+        <h4>P 9: Hipotenusa pela Altura</h4>
+        <p><strong>Enunciado:</strong> A altura relativa à hipotenusa mede $6$ cm e uma das projeções mede $3$ cm. Calcule a outra projeção e a hipotenusa.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>$36 = 3 \cdot n \implies n = \mathbf{12}$ cm.<br>$a = 3 + 12 = \mathbf{15}$ cm.</p></div>
+    </article>
+    <article class="questao">
+        <h4>P 10: Projeções pelos Catetos</h4>
+        <p><strong>Enunciado:</strong> Os catetos de um triângulo retângulo medem $9$ cm e $12$ cm. Calcule as projeções dos catetos sobre a hipotenusa.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>$a = 15$ cm.<br>$m = \dfrac{81}{15} = \mathbf{5{,}4}$ cm e $n = \dfrac{144}{15} = \mathbf{9{,}6}$ cm.</p></div>
+    </article>
+    <article class="questao">
+        <h4>P 11: Descobrindo os Catetos</h4>
+        <p><strong>Enunciado:</strong> A hipotenusa de um triângulo retângulo mede $10$ cm e a altura relativa a ela mede $4{,}8$ cm. Determine os catetos.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>$b \cdot c = a \cdot h = 48$ e $b^2 + c^2 = 100$.<br>$(b + c)^2 = 100 + 2 \cdot 48 = 196 \implies b + c = 14$.<br>Números com soma $14$ e produto $48$: $\mathbf{6}$ e $\mathbf{8}$ cm.</p></div>
+    </article>
+    <article class="questao">
+        <h4>P 12: Raio da Circunferência Inscrita</h4>
+        <p><strong>Enunciado:</strong> Calcule o raio da circunferência inscrita num triângulo retângulo de catetos $5$ cm e $12$ cm.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>$a = 13$ cm. No triângulo retângulo, $r = \dfrac{b + c - a}{2}$.<br>$r = \dfrac{5 + 12 - 13}{2} = \mathbf{2}$ cm.</p></div>
+    </article>
+    <article class="questao">
+        <h4>P 13: Triângulo Retângulo Isósceles</h4>
+        <p><strong>Enunciado:</strong> Num triângulo retângulo isósceles, a hipotenusa mede $10$ cm. Calcule a altura relativa à hipotenusa.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>Por simetria, as projeções são iguais: $m = n = 5$ cm.<br>$h^2 = 5 \cdot 5 = 25 \implies h = \mathbf{5}$ cm (metade da hipotenusa).</p></div>
+    </article>
+    <article class="questao">
+        <h4>P 14: Área pelas Projeções</h4>
+        <p><strong>Enunciado:</strong> As projeções dos catetos sobre a hipotenusa medem $1$ cm e $4$ cm. Calcule a área do triângulo.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>$a = 5$ cm e $h = \sqrt{1 \cdot 4} = 2$ cm.<br>Área $= \dfrac{a \cdot h}{2} = \dfrac{5 \cdot 2}{2} = \mathbf{5}$ cm².</p></div>
+    </article>
+    <article class="questao">
+        <h4>P 15: Sistema com as Projeções</h4>
+        <p><strong>Enunciado:</strong> A altura relativa à hipotenusa mede $6$ cm e uma projeção excede a outra em $5$ cm. Calcule a hipotenusa.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>$m \cdot n = 36$ e $n = m + 5 \implies m^2 + 5m - 36 = 0 \implies m = 4$ (positivo).<br>$n = 9$ e $a = 4 + 9 = \mathbf{13}$ cm.</p></div>
+    </article>
+</section>
+
+<section class="TESTE" id="testes">
+    <h3>🎓 TESTES (T 16 a 20)</h3>
+    <article class="questao">
+        <h4>T 16: (UEA 2022) Altura e Segmentos da Hipotenusa</h4>
+        <p>Em um triângulo retângulo ABC, a altura relativa à hipotenusa mede 12 cm e a divide nos segmentos HA e HC. Sabendo que a medida do segmento HC é igual a 9 vezes a medida do segmento HA,</p>
+        <p>a medida da hipotenusa AC é</p>
+        <p>A) 36 cm<br>B) 40 cm<br>C) 54 cm<br>D) 60 cm<br>E) 72 cm</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>B</strong>.<br>Sejam $HA = x$ e $HC = 9x$ (as projeções). Pela relação $h^2 = m \cdot n$: $144 = x \cdot 9x = 9x^2$.<br>$x^2 = 16 \implies x = 4$, logo $HA = 4$ cm e $HC = 36$ cm.<br>$AC = 4 + 36 = \mathbf{40}$ cm.</p></div>
+    </article>
+    <article class="questao">
+        <h4>T 17: (UFAM 2020) Área pelas Projeções</h4>
+        <p>Sabendo que as projeções dos catetos sobre a hipotenusa de um triângulo retângulo medem, respectivamente, 3 cm e 5 cm, a área do triângulo, em cm², é de:</p>
+        <p>A) 6<br>B) 9<br>C) $4\sqrt{15}$<br>D) $5\sqrt{8}$<br>E) $7\sqrt{12}$</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>C</strong>.<br>Hipotenusa: $a = 3 + 5 = 8$ cm. Altura: $h^2 = 3 \cdot 5 = 15 \implies h = \sqrt{15}$ cm.<br>Área $= \dfrac{a \cdot h}{2} = \dfrac{8\sqrt{15}}{2} = \mathbf{4\sqrt{15}}$ cm².</p></div>
+    </article>
+    <article class="questao">
+        <h4>T 18: (UFRGS 2025) Circunferência Inscrita</h4>
+        <p>ABC é um triângulo retângulo com catetos medindo 6 e 8. A medida do raio da circunferência, inscrita no triângulo ABC, é</p>
+        <p>A) 1<br>B) 1,5<br>C) 2<br>D) 2,5<br>E) 3</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>C</strong>.<br>Hipotenusa: $a = \sqrt{6^2 + 8^2} = 10$.<br>Pela área: $\dfrac{6 \cdot 8}{2} = 24 = r \cdot p$, com semiperímetro $p = \dfrac{6 + 8 + 10}{2} = 12$, logo $r = 2$.<br>Atalho do triângulo retângulo: $r = \dfrac{b + c - a}{2} = \dfrac{6 + 8 - 10}{2} = \mathbf{2}$.</p></div>
+    </article>
+    <article class="questao">
+        <h4>T 19: (Questão autoral) Altura Relativa à Hipotenusa</h4>
+        <p>Os catetos de um triângulo retângulo medem $15$ cm e $20$ cm.</p>
+        <p>A altura relativa à hipotenusa mede:</p>
+        <p>A) 10 cm<br>B) 12 cm<br>C) 15 cm<br>D) 16 cm<br>E) 18 cm</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>B</strong>.<br>$a = \sqrt{225 + 400} = 25$ cm.<br>$a \cdot h = b \cdot c \implies 25h = 300 \implies h = \mathbf{12}$ cm.</p></div>
+    </article>
+    <article class="questao">
+        <h4>T 20: (Questão autoral) Projeções e Área</h4>
+        <p>As projeções dos catetos sobre a hipotenusa de um triângulo retângulo medem $4$ cm e $9$ cm.</p>
+        <p>A área desse triângulo é:</p>
+        <p>A) 26 cm²<br>B) 36 cm²<br>C) 39 cm²<br>D) 52 cm²<br>E) 78 cm²</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>C</strong>.<br>$a = 13$ cm e $h = \sqrt{4 \cdot 9} = 6$ cm.<br>Área $= \dfrac{13 \cdot 6}{2} = \mathbf{39}$ cm². (78 cm² seria $a \cdot h$, esquecendo de dividir por 2.)</p></div>
+    </article>
+</section>
+
+</div></main>
+<aside class="menu-lateral"><iframe src="../menu_matematica.html" style="width:100%; border:none; height:600px;"></iframe></aside>
+</div>
+<script>
+function toggleGabarito(botao) {
+    const gabarito = botao.nextElementSibling;
+    if (gabarito.style.display === "none" || gabarito.style.display === "") {
+        gabarito.style.display = "block"; botao.textContent = "Esconder Gabarito e Resolução"; botao.style.backgroundColor = "#2c3e50";
+    } else {
+        gabarito.style.display = "none"; botao.textContent = "Ver Gabarito e Resolução"; botao.style.backgroundColor = "#3498db";
+    }
+}
+function toggleMenu() { const m = document.getElementById("menu-principal"); if (m) m.classList.toggle("ativo"); }
+let slideAtual = 0; let slides = [];
+function prepararSlides() { slides = Array.from(document.querySelectorAll('.container-resumo, .passo-teoria, .card, .questao')); }
+function toggleSlides() {
+    prepararSlides(); const body = document.body;
+    if (!body.classList.contains('modo-slides')) { body.classList.add('modo-slides'); slideAtual = 0; mostrarSlide(slideAtual); }
+    else { body.classList.remove('modo-slides'); slides.forEach(s => { s.classList.remove('slide-ativo'); s.style.display = ''; }); }
+}
+function mostrarSlide(n) {
+    if (!slides.length) return;
+    slides.forEach(s => { s.classList.remove('slide-ativo'); s.style.display = 'none'; });
+    const slide = slides[n]; slide.classList.add('slide-ativo');
+    slide.querySelectorAll('.gabarito-resolucao').forEach(g => g.style.display = 'none');
+    slide.querySelectorAll('.btn-gabarito').forEach(b => { b.textContent = "Ver Gabarito e Resolução"; b.style.backgroundColor = "#3498db"; });
+    const pHeader = document.querySelector('header p');
+    if (pHeader) { const partes = pHeader.innerText.split('|'); if (partes.length > 1) {
+        document.getElementById('slide-info-serie').innerText = partes[0].trim();
+        document.getElementById('slide-info-aula').innerText = partes[1].trim(); } }
+    document.getElementById('contador-slide').innerText = (n + 1) + " / " + slides.length;
+    if (window.MathJax && window.MathJax.typesetPromise) { MathJax.typesetPromise(); }
+}
+function mudarSlide(d) { slideAtual += d; if (slideAtual >= slides.length) slideAtual = 0; if (slideAtual < 0) slideAtual = slides.length - 1; mostrarSlide(slideAtual); }
+document.addEventListener('keydown', function(event) {
+    if (document.body.classList.contains('modo-slides')) {
+        switch(event.key) {
+            case 'ArrowRight': case 'PageDown': case 'Enter': case ' ': event.preventDefault(); mudarSlide(1); break;
+            case 'ArrowLeft': case 'PageUp': event.preventDefault(); mudarSlide(-1); break;
+            case 'Escape': event.preventDefault(); toggleSlides(); break;
+        }
+    }
+});
+</script>
+<div class="controles-slides">
+    <div id="slide-info-serie" class="info-lateral"></div>
+    <div class="botoes-centrais">
+        <button class="btn-nav" onclick="mudarSlide(-1)">⬅ Anterior</button>
+        <span id="contador-slide"></span>
+        <button class="btn-nav" onclick="mudarSlide(1)">Próximo ➡</button>
+        <button class="btn-nav" onclick="toggleSlides()" style="background:#e74c3c;">Sair</button>
+    </div>
+    <div id="slide-info-aula" class="info-lateral" style="text-align: right;"></div>
+</div>
+</body>
+</html>
