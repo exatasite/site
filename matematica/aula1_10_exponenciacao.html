@@ -45,61 +45,42 @@
  <div class="container-resumo" id="resumo">
     <h3>📚 Resumo </h3>
     <section class="resumo-conteudo">
-        <p>A <strong>potenciação</strong> é a operação matemática que representa a multiplicação sucessiva de um número por ele mesmo: $a^n = a \cdot a \dots a$. Suas propriedades simplificam operações com bases iguais, expoentes negativos e potências de potências.</p>
-        <p>A <strong>radiciação</strong> é a operação inversa da potenciação, definida por $\sqrt[n]{a} = b \iff b^n = a$. A conversão entre radicais e potências com expoentes fracionários ($\sqrt[n]{a^m} = a^{\frac{m}{n}}$) une os dois conceitos em uma única estrutura algébrica.</p>
+        <p>A <strong>Potenciação</strong> representa a multiplicação sucessiva de um número por ele mesmo, enquanto a <strong>Radiciação</strong> é a sua operação inversa, buscando a base que produziu determinado resultado.</p>
+        <p>O domínio das propriedades operatórias das potências e raízes é indispensável para simplificar expressões algébricas complexas, resolver equações exponenciais e manipular expoentes fracionários e negativos.</p>
     </section>
 </div>
 
 <section class="conteudo-teorico-completo" id="teoria">
     <div class="passo-teoria">
-        <h3>📖 Potenciação e Radiciação</h3>
-        <h4>1. Potenciação e Definições Fundamentais</h4>
-        <p>Dado um número real $a$ (base) e um número inteiro $n$ (expoente), define-se a potência como a multiplicação da base por si mesma $n$ vezes:</p>
+        <h3>📖 Conceitos Fundamentais</h3>
+        <h4>1. Propriedades da Potenciação</h4>
+        <p>Para bases reais não nulas e expoentes inteiros ou reais:</p>
         <ul>
-            <li><strong>Base ($a$):</strong> O fator que se repete na multiplicação.</li>
-            <li><strong>Expoente ($n$):</strong> Indica a quantidade de vezes que a base é multiplicada.</li>
-            <li><strong>Expoente Zero:</strong> Para qualquer $a \neq 0$, tem-se $a^0 = 1$.</li>
-            <li><strong>Expoente Negativo:</strong> Inverte-se a base e altera-se o sinal do expoente: $a^{-n} = \left(\frac{1}{a}\right)^n = \frac{1}{a^n}$.</li>
+            <li><strong>Produto de mesma base:</strong> $a^m \cdot a^n = a^{m+n}$</li>
+            <li><strong>Divisão de mesma base:</strong> $\frac{a^m}{a^n} = a^{m-n}$</li>
+            <li><strong>Potência de potência:</strong> $(a^m)^n = a^{m \cdot n}$</li>
+            <li><strong>Expoente negativo:</strong> $a^{-n} = \frac{1}{a^n}$ e $\left(\frac{a}{b}\right)^{-n} = \left(\frac{b}{a}\right)^n$</li>
         </ul>
     </div>
 
     <div class="passo-teoria">
-        <h4>2. Propriedades Operatórias da Potenciação</h4>
-        <p>Para bases reais não nulas e expoentes inteiros:</p>
+        <h4>2. Propriedades da Radiciação</h4>
+        <p>Para radicais com índices válidos no conjunto dos números reais:</p>
         <ul>
-            <li><strong>Multiplicação de potências de mesma base:</strong> Conserva-se a base e somam-se os expoentes: $a^m \cdot a^n = a^{m+n}$.</li>
-            <li><strong>Divisão de potências de mesma base:</strong> Conserva-se a base e subtraem-se os expoentes: $\frac{a^m}{a^n} = a^{m-n}$.</li>
-            <li><strong>Potência de potência:</strong> Conserva-se a base e multiplicam-se os expoentes: $(a^m)^n = a^{m \cdot n}$.</li>
-            <li><strong>Potência de um produto ou quociente:</strong> Distribui-se o expoente aos fatores: $(a \cdot b)^n = a^n \cdot b^n$ e $\left(\frac{a}{b}\right)^n = \frac{a^n}{b^n}$.</li>
+            <li><strong>Produto de radicais:</strong> $\sqrt[n]{a} \cdot \sqrt[n]{b} = \sqrt[n]{a \cdot b}$</li>
+            <li><strong>Divisão de radicais:</strong> $\frac{\sqrt[n]{a}}{\sqrt[n]{b}} = \sqrt[n]{\frac{a}{b}}$</li>
+            <li><strong>Raiz de raiz:</strong> $\sqrt[m]{\sqrt[n]{a}} = \sqrt[m \cdot n]{a}$</li>
+            <li><strong>Simplificação de expoente e índice:</strong> $\sqrt[n]{a^n} = a$ (para $a \geq 0$)</li>
         </ul>
-        <figure class="figura-aula figura-grande">
-            <img src="../imagens_matematica/aula1_10_potenciacao.png" alt="Propriedades da Potenciação e Radiciação">
-            <figcaption>Figura 1: Relações fundamentais da potenciação e simplificação de expoentes.</figcaption>
-        </figure>
     </div>
 
     <div class="passo-teoria">
-        <h4>3. Radiciação e Expoente Fracionário</h4>
-        <p>A raiz enésima de um número $a$ é o número $b$ que elevado a $n$ resulta em $a$:</p>
-        <p>$$\sqrt[n]{a} = b \iff b^n = a$$</p>
-        <p>Onde $n \in \mathbb{N}$ e $n \geq 2$ é o **índice**, $a$ é o **radicando** e $b$ é a **raiz**.</p>
-        <p>Toda raiz pode ser escrita na forma de potência com **expoente fracionário**:</p>
-        <p>$$\sqrt[n]{a^m} = a^{\frac{m}{n}}$$</p>
-    </div>
-
-    <div class="passo-teoria">
-        <h4>4. Propriedades e Operações com Radicais</h4>
-        <p>Para radicais com termos bem definidos no conjunto dos números reais:</p>
+        <h4>3. Potência com Expoente Fracionário</h4>
+        <p>A ponte de conversão direta entre potenciação e radiciação:</p>
         <ul>
-            <li><strong>Produto de radicais de mesmo índice:</strong> $\sqrt[n]{a} \cdot \sqrt[n]{b} = \sqrt[n]{a \cdot b}$.</li>
-            <li><strong>Quociente de radicais de mesmo índice:</strong> $\frac{\sqrt[n]{a}}{\sqrt[n]{b}} = \sqrt[n]{\frac{a}{b}}$.</li>
-            <li><strong>Simplificação por fatoração:</strong> Extração de fatores do radical quando o expoente do fator é múltiplo do índice (ex: $\sqrt{a^2 \cdot b} = a\sqrt{b}$).</li>
-            <li><strong>Racionalização de Denominadores:</strong> Eliminação de radicais no denominador multiplicando numerador e denominador pelo fator racionalizante apropriado.</li>
+            <li><strong>Expoente Fracionário:</strong> $a^{\frac{m}{n}} = \sqrt[n]{a^m}$</li>
+            <li><em>Regra prática:</em> "O que está por cima (numerador) vai para dentro (expoente da base), o que está por baixo (denominador) vai para fora (índice da raiz)."</li>
         </ul>
-        <figure class="figura-aula figura-grande">
-            <img src="../imagens_matematica/aula1_10_radiciacao.png" alt="Simplificação e Racionalização de Radicais">
-            <figcaption>Figura 2: Processo de simplificação e racionalização de frações com radicais.</figcaption>
-        </figure>
     </div>
 </section>
 
@@ -107,12 +88,12 @@
     <h3>💡 Matemática em Ação</h3>
     <div class="cards-aplicacao">
         <div class="card">
-            <h4>🦠 Crescimento Exponencial e Biologia</h4>
-            <p>O crescimento de bactérias em uma cultura segue modelos exponenciais da forma $N(t) = N_0 \cdot 2^t$. A potenciação permite calcular a população futura rapidamente a cada ciclo de divisão celular.</p>
+            <h4>🔬 Notação Científica e Escalas Magnas</h4>
+            <p>Potências de 10 facilitam a escrita de valores extremamente grandes (como distâncias astronômicas em anos-luz) ou incrivelmente pequenos (como a massa de um elétron).</p>
         </div>
         <div class="card" style="border-left-color: #2ecc71;">
-            <h4>📉 Escala Richter e Terremotos</h4>
-            <p>A escala Richter mede a magnitude de terremotos usando potências de base $10$. Um terremoto de magnitude 7 libera aproximadamente $31,6$ vezes ($\sqrt{1000}$) mais energia do que um de magnitude 6.</p>
+            <h4>📈 Crescimento Populacional e Financeiro</h4>
+            <p>Cálculos de juros compostos e modelos de propagação de vírus utilizam bases elevadas a expoentes variáveis para prever expansões aceleradas no tempo.</p>
         </div>
     </div>
 </section>
@@ -121,70 +102,59 @@
     <h3>✅ 5 Questões Resolvidas (R 1 a 5)</h3>
     
     <article class="questao">
-        <h4>R 1: Simplificação de Expressões Potenciais</h4>
-        <p><strong>Enunciado:</strong> Simplifique a expressão numérica $E = \frac{2^5 \cdot 4^3}{8^2 \cdot 2^{-1}}$ apresentando o resultado final na forma de um número inteiro.</p>
+        <h4>R 1: Simplificação de Potências</h4>
+        <p><strong>Enunciado:</strong> Simplifique a expressão $\frac{2^5 \cdot 2^3}{2^6}$.</p>
         <div class="resolucao-bloco">
             <p><strong>Resolução:</strong><br>
-            1. Reescrevemos todas as bases como potências de base 2 ($4 = 2^2$ e $8 = 2^3$):<br>
-            $E = \frac{2^5 \cdot (2^2)^3}{(2^3)^2 \cdot 2^{-1}}$<br>
-            2. Aplicamos a propriedade de potência de potência:<br>
-            $E = \frac{2^5 \cdot 2^6}{2^6 \cdot 2^{-1}}$<br>
-            3. Aplicamos a multiplicação e divisão de mesma base:<br>
-            $E = \frac{2^{5+6}}{2^{6+(-1)}} = \frac{2^{11}}{2^5} = 2^{11-5} = 2^6 = \mathbf{64}$.</p>
+            1. Aplica-se o produto de mesma base no numerador: $2^5 \cdot 2^3 = 2^{5+3} = 2^8$.<br>
+            2. Aplica-se a divisão de mesma base: $\frac{2^8}{2^6} = 2^{8-6} = 2^2$.<br>
+            3. Resultado: $2^2 = \mathbf{4}$.</p>
         </div>
     </article>
 
     <article class="questao">
-        <h4>R 2: Conversão e Operação com Expoentes Fracionários</h4>
-        <p><strong>Enunciado:</strong> Calcule o valor exato da expressão $A = 27^{\frac{2}{3}} + 16^{\frac{3}{4}} - 81^{0,25}$.</p>
+        <h4>R 2: Expoente Negativo</h4>
+        <p><strong>Enunciado:</strong> Calcule o valor numérico de $\left(\frac{1}{3}\right)^{-2} + 4^{-1}$.</p>
         <div class="resolucao-bloco">
             <p><strong>Resolução:</strong><br>
-            1. Convertemos as bases fatoradas e expoentes fracionários/decimais ($0,25 = \frac{1}{4}$):<br>
-            $27 = 3^3 \implies (3^3)^{\frac{2}{3}} = 3^{3 \cdot \frac{2}{3}} = 3^2 = 9$<br>
-            $16 = 2^4 \implies (2^4)^{\frac{3}{4}} = 2^{4 \cdot \frac{3}{4}} = 2^3 = 8$<br>
-            $81 = 3^4 \implies (3^4)^{\frac{1}{4}} = 3^{4 \cdot \frac{1}{4}} = 3^1 = 3$<br>
-            2. Substituindo os valores encontrados na expressão:<br>
-            $A = 9 + 8 - 3 = \mathbf{14}$.</p>
+            1. Inverte-se a base do primeiro termo: $\left(\frac{1}{3}\right)^{-2} = 3^2 = 9$.<br>
+            2. Inverte-se o segundo termo: $4^{-1} = \frac{1}{4}$.<br>
+            3. Soma das frações: $9 + \frac{1}{4} = \frac{36 + 1}{4} = \mathbf{\frac{37}{4}}$ (ou $9,25$).</p>
         </div>
     </article>
 
     <article class="questao">
-        <h4>R 3: Simplificação de Radicais Semelhantes</h4>
-        <p><strong>Enunciado:</strong> Simplifique a expressão $S = \sqrt{50} + \sqrt{18} - \sqrt{200}$.</p>
+        <h4>R 3: Expoente Fracionário</h4>
+        <p><strong>Enunciado:</strong> Determine o valor da expressão $8^{\frac{2}{3}}$.</p>
         <div class="resolucao-bloco">
             <p><strong>Resolução:</strong><br>
-            1. Fatoramos os radicandos para extrair fatores da raiz:<br>
-            $\sqrt{50} = \sqrt{25 \cdot 2} = 5\sqrt{2}$<br>
-            $\sqrt{18} = \sqrt{9 \cdot 2} = 3\sqrt{2}$<br>
-            $\sqrt{200} = \sqrt{100 \cdot 2} = 10\sqrt{2}$<br>
-            2. Agrupamos os radicais semelhantes:<br>
-            $S = 5\sqrt{2} + 3\sqrt{2} - 10\sqrt{2} = (5 + 3 - 10)\sqrt{2} = \mathbf{-2\sqrt{2}}$.</p>
+            1. Transforma-se em radical: $8^{\frac{2}{3}} = \sqrt[3]{8^2}$.<br>
+            2. Como $8 = 2^3$, temos $\sqrt[3]{(2^3)^2} = \sqrt[3]{2^6}$.<br>
+            3. Dividindo expoente por índice: $2^{\frac{6}{3}} = 2^2 = \mathbf{4}$.</p>
         </div>
     </article>
 
     <article class="questao">
-        <h4>R 4: Racionalização de Denominador</h4>
-        <p><strong>Enunciado:</strong> Racionalize o denominador da fração $F = \frac{6}{\sqrt{5} - \sqrt{2}}$.</p>
+        <h4>R 4: Simplificação de Radicais</h4>
+        <p><strong>Enunciado:</strong> Simplifique o radical $\sqrt{72}$ extraindo os fatores do radicando.</p>
         <div class="resolucao-bloco">
             <p><strong>Resolução:</strong><br>
-            1. Multiplicamos o numerador e o denominador pelo conjugado do denominador $(\sqrt{5} + \sqrt{2})$:<br>
-            $F = \frac{6 \cdot (\sqrt{5} + \sqrt{2})}{(\sqrt{5} - \sqrt{2})(\sqrt{5} + \sqrt{2})}$<br>
-            2. Aplicamos o produto notável da diferença de quadrados no denominador $(a-b)(a+b) = a^2 - b^2$:<br>
-            $(\sqrt{5})^2 - (\sqrt{2})^2 = 5 - 2 = 3$<br>
-            3. Simplificamos com o numerador:<br>
-            $F = \frac{6(\sqrt{5} + \sqrt{2})}{3} = 2(\sqrt{5} + \sqrt{2}) = \mathbf{2\sqrt{5} + 2\sqrt{2}}$.</p>
+            1. Fatora-se o número 72: $72 = 36 \cdot 2 = 6^2 \cdot 2$.<br>
+            2. Aplica-se a propriedade do produto: $\sqrt{72} = \sqrt{6^2 \cdot 2} = \sqrt{6^2} \cdot \sqrt{2}$.<br>
+            3. Simplifica-se o fator ao quadrado: $\mathbf{6\sqrt{2}}$.</p>
         </div>
     </article>
 
     <article class="questao">
-        <h4>R 5: Equação Exponencial Simples com Radicais</h4>
-        <p><strong>Enunciado:</strong> Determine o valor real de $x$ que satisfaz a equação $\sqrt[3]{4^x} = 16$.</p>
+        <h4>R 5: Operações Combinadas com Raízes</h4>
+        <p><strong>Enunciado:</strong> Efetue a expressão $\sqrt{50} + \sqrt{18} - \sqrt{8}$.</p>
         <div class="resolucao-bloco">
             <p><strong>Resolução:</strong><br>
-            1. Convertemos o radical em expoente fracionário e reescrevemos na base 2:<br>
-            $\sqrt[3]{(2^2)^x} = 2^4 \implies \sqrt[3]{2^{2x}} = 2^4 \implies 2^{\frac{2x}{3}} = 2^4$<br>
-            2. Como as bases são iguais ($2$), igualamos os expoentes:<br>
-            $\frac{2x}{3} = 4 \implies 2x = 12 \implies x = \mathbf{6}$.</p>
+            1. Fatorando cada radicando:
+               $\sqrt{50} = \sqrt{25 \cdot 2} = 5\sqrt{2}$<br>
+               $\sqrt{18} = \sqrt{9 \cdot 2} = 3\sqrt{2}$<br>
+               $\sqrt{8} = \sqrt{4 \cdot 2} = 2\sqrt{2}$<br>
+            2. Efetuando a soma/subtração de radicais semelhantes: $5\sqrt{2} + 3\sqrt{2} - 2\sqrt{2} = (5 + 3 - 2)\sqrt{2} = \mathbf{6\sqrt{2}}$.</p>
         </div>
     </article>
 </section>
@@ -193,58 +163,57 @@
     <h3>✍️ 5 Questões Propostas (P 6 a 10)</h3>
 
     <article class="questao">
-        <h4>P 6: Propriedades de Potências Negativas</h4>
-        <p><strong>Enunciado:</strong> Qual é o valor numérico da expressão $\left(\frac{1}{2}\right)^{-3} + \left(\frac{1}{3}\right)^{-2}$?</p>
+        <h4>P 6: Potências de Mesma Base</h4>
+        <p><strong>Enunciado:</strong> Reduza a uma única potência a expressão $(3^4 \cdot 3^{-2})^3$.</p>
         <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
         <div class="gabarito-resolucao">
-            <p><strong>Resolução:</strong> Invertem-se as bases e trocam-se os sinais dos expoentes:<br>
-            $\left(\frac{1}{2}\right)^{-3} = 2^3 = 8$<br>
-            $\left(\frac{1}{3}\right)^{-2} = 3^2 = 9$<br>
-            Soma: $8 + 9 = \mathbf{17}$.</p>
+            <p><strong>Resolução:</strong><br>
+            1. Dentro dos parênteses: $3^{4 + (-2)} = 3^2$.<br>
+            2. Potência de potência: $(3^2)^3 = 3^{2 \cdot 3} = \mathbf{3^6}$ (ou $729$).</p>
         </div>
     </article>
 
     <article class="questao">
-        <h4>P 7: Produto de Radicais com Índices Diferentes</h4>
-        <p><strong>Enunciado:</strong> Escreva o produto $\sqrt{2} \cdot \sqrt[3]{2}$ sob a forma de um único radical.</p>
+        <h4>P 7: Cálculo com Expoente Fracionário</h4>
+        <p><strong>Enunciado:</strong> Calcule o valor exato numérico de $16^{0,75}$.</p>
         <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
         <div class="gabarito-resolucao">
-            <p><strong>Resolução:</strong> Passamos os radicais para expoentes fracionários:<br>
-            $\sqrt{2} \cdot \sqrt[3]{2} = 2^{\frac{1}{2}} \cdot 2^{\frac{1}{3}} = 2^{\frac{1}{2} + \frac{1}{3}} = 2^{\frac{3+2}{6}} = 2^{\frac{5}{6}}$<br>
-            Convertendo de volta para radical: $\mathbf{\sqrt[6]{2^5} = \sqrt[6]{32}}$.</p>
+            <p><strong>Resolução:</strong><br>
+            1. Transforma-se o decimal em fração: $0,75 = \frac{3}{4}$.<br>
+            2. $16^{\frac{3}{4}} = \sqrt[4]{16^3} = (\sqrt[4]{16})^3$.<br>
+            3. Como $\sqrt[4]{16} = 2$, temos $2^3 = \mathbf{8}$.</p>
         </div>
     </article>
 
     <article class="questao">
-        <h4>P 8: Potência com Base Negativa</h4>
-        <p><strong>Enunciado:</strong> Calcule o valor exato de $Y = (-3)^4 - 3^4 + (-2)^3$.</p>
+        <h4>P 8: Racionalização de Denominador</h4>
+        <p><strong>Enunciado:</strong> Racionalize o denominador da fração $\frac{10}{\sqrt{5}}$.</p>
         <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
         <div class="gabarito-resolucao">
-            <p><strong>Resolução:</strong> Atentar para os parênteses:<br>
-            $(-3)^4 = +81$ (expoente par, resultado positivo)<br>
-            $-3^4 = -81$ (o sinal não está elevado à potência)<br>
-            $(-2)^3 = -8$ (expoente ímpar, conserva o sinal negativo)<br>
-            $Y = 81 - 81 - 8 = \mathbf{-8}$.</p>
-        </div>
-    </article>
-
-    <article class="questao">
-        <h4>P 9: Racionalização de Radicais Simples</h4>
-        <p><strong>Enunciado:</strong> Qual é a forma mais simples da expressão racionalizada $\frac{10}{\sqrt{5}}$?</p>
-        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-        <div class="gabarito-resolucao">
-            <p><strong>Resolução:</strong> Multiplica-se numerador e denominador por $\sqrt{5}$:<br>
+            <p><strong>Resolução:</strong><br>
+            Multiplica-se numerador e denominador por $\sqrt{5}$:<br>
             $\frac{10}{\sqrt{5}} \cdot \frac{\sqrt{5}}{\sqrt{5}} = \frac{10\sqrt{5}}{5} = \mathbf{2\sqrt{5}}$.</p>
         </div>
     </article>
 
     <article class="questao">
-        <h4>P 10: Divisão de Raízes de Mesmo Índice</h4>
-        <p><strong>Enunciado:</strong> Calcule o valor exato de $\frac{\sqrt[3]{162}}{\sqrt[3]{6}}$.</p>
+        <h4>P 9: Raiz de Raiz</h4>
+        <p><strong>Enunciado:</strong> Escreva a expressão $\sqrt{\sqrt[3]{64}}$ na forma de um único número inteiro.</p>
         <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
         <div class="gabarito-resolucao">
-            <p><strong>Resolução:</strong> Aplica-se a propriedade do quociente de radicais:<br>
-            $\frac{\sqrt[3]{162}}{\sqrt[3]{6}} = \sqrt[3]{\frac{162}{6}} = \sqrt[3]{27} = \mathbf{3}$.</p>
+            <p><strong>Resolução:</strong><br>
+            1. Multiplica-se os índices dos radicais: $\sqrt[2 \cdot 3]{64} = \sqrt[6]{64}$.<br>
+            2. Como $64 = 2^6$, temos $\sqrt[6]{2^6} = \mathbf{2}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 10: Expressão Algébrica com Potências</h4>
+        <p><strong>Enunciado:</strong> Sabendo que $a = 2^3$ e $b = 2^{-1}$, encontre o valor de $\frac{a}{b}$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong><br>
+            $\frac{a}{b} = \frac{2^3}{2^{-1}} = 2^{3 - (-1)} = 2^{3 + 1} = 2^4 = \mathbf{16}$.</p>
         </div>
     </article>
 </section>
