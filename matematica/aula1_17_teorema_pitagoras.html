@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1º Ano: Aula 17 - Teorema de Pitágoras e suas Aplicações</title>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../estilo.css">
+    <script>
+        MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']], processEscapes: true } };
+    </script>
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        body.modo-slides { overflow: hidden !important; background-color: #1a1a1a !important; margin: 0; padding: 0; }
+        body.modo-slides .menu-lateral, body.modo-slides header, body.modo-slides .menu-toggle, body.modo-slides #btn-slides, body.modo-slides .nav-global { display: none !important; }
+        .slide-ativo { display: flex !important; flex-direction: column; align-items: center; justify-content: center; position: fixed; top: 0; left: 0; width: 100vw; height: calc(100vh - 70px); background: #ffffff; padding: 40px; z-index: 999; overflow-y: auto !important; box-sizing: border-box; text-align: left; }
+        .slide-ativo > * { max-width: 900px; width: 100%; }
+        .controles-slides { position: fixed; bottom: 0; left: 0; width: 100%; height: 70px; background: #2c3e50; color: white; display: none; justify-content: space-between; align-items: center; padding: 0 20px; z-index: 1001; box-sizing: border-box; }
+        body.modo-slides .controles-slides { display: flex !important; }
+        .info-lateral { flex: 1; font-family: 'Oswald', sans-serif; font-size: 0.9rem; color: #bdc3c7; }
+        .botoes-centrais { display: flex; align-items: center; gap: 15px; justify-content: center; flex: 2; }
+        .btn-nav { padding: 10px 20px; background: #3498db; color: white; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; font-size: 0.9rem; }
+        .btn-nav:hover { background: #2980b9; }
+        #contador-slide { font-family: 'Oswald', sans-serif; min-width: 60px; text-align: center; font-size: 1.1rem; }
+    </style>
+</head>
+<body>
+<button class="menu-toggle" onclick="toggleMenu()">☰</button>
+<nav id="menu-principal" class="nav-global"><ul>
+    <li><a href="../index.html">🏠 Início</a></li>
+    <li><a href="../ensino_medio.html">📚 Ensino Médio</a></li>
+    <li><a href="../ensino_superior.html">🎓 Ensino Superior</a></li>
+</ul></nav>
+<header id="topo">
+    <h1>MATEMÁTICA EM</h1>
+    <p>1º Ano | Aula 17: Teorema de Pitágoras e suas Aplicações</p>
+    <button id="btn-slides" onclick="toggleSlides()">📺 Iniciar Modo Slides</button>
+</header>
+<div class="container"><main class="conteudo-principal"><div class="secao-aula">
+
+<div class="container-resumo" id="resumo">
+    <h3>📚 Resumo</h3>
+    <section class="resumo-conteudo">
+        <p>Em todo <strong>triângulo retângulo</strong>, o quadrado da <strong>hipotenusa</strong> (lado oposto ao ângulo reto) é igual à soma dos quadrados dos <strong>catetos</strong>:</p>
+        <p style="text-align: center;">$$a^2 = b^2 + c^2$$</p>
+        <p>O teorema permite calcular lados desconhecidos, diagonais ($d = \ell\sqrt{2}$ no quadrado), alturas ($h = \frac{\ell\sqrt{3}}{2}$ no triângulo equilátero) e distâncias. Pela <strong>recíproca</strong>, se $a^2 = b^2 + c^2$, o triângulo é retângulo.</p>
+    </section>
+</div>
+
+<section class="conteudo-teorico-completo" id="teoria">
+    <div class="passo-teoria">
+        <h3>📖 Teorema de Pitágoras</h3>
+        <h4>1. O Triângulo Retângulo e o Teorema</h4>
+        <p>No triângulo retângulo, os lados que formam o ângulo reto são os <strong>catetos</strong> ($b$ e $c$) e o lado oposto a ele é a <strong>hipotenusa</strong> ($a$), sempre o maior lado. O Teorema de Pitágoras afirma que:</p>
+        <p style="text-align: center; font-size: 1.25rem; font-weight: bold; background-color: #f8f9fa; padding: 15px; border-left: 5px solid #3498db; margin: 20px 0;">
+            $$a^2 = b^2 + c^2$$
+        </p>
+        <p>Geometricamente: a área do quadrado construído sobre a hipotenusa é igual à soma das áreas dos quadrados construídos sobre os catetos.</p>
+        <figure class="figura-aula figura-grande">
+            <svg viewBox="0 -20 360 350" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Triângulo retângulo 3-4-5 com quadrados construídos sobre os lados" style="width:100%; max-width:360px; display:block; margin:0 auto;">
+  <polygon points="100,200 220,200 100,110" fill="#ffffff" stroke="#2c3e50" stroke-width="3"/>
+  <polygon points="100,200 220,200 220,320 100,320" fill="#d6e9f8" stroke="#3498db" stroke-width="2"/>
+  <polygon points="100,200 100,110 10,110 10,200" fill="#d5f5e3" stroke="#2ecc71" stroke-width="2"/>
+  <polygon points="100,110 220,200 310,80 190,-10" fill="#fdebd0" stroke="#e67e22" stroke-width="2"/>
+  <rect x="100" y="188" width="12" height="12" fill="none" stroke="#2c3e50" stroke-width="1.5"/>
+  <g font-family="Oswald, sans-serif" font-size="18" fill="#2c3e50" text-anchor="middle">
+    <text x="160" y="268">c²</text><text x="55" y="162">b²</text><text x="205" y="100">a²</text>
+    <text x="160" y="194" font-size="15">c</text><text x="88" y="160" font-size="15">b</text><text x="168" y="150" font-size="15">a</text>
+  </g>
+</svg>
+            <figcaption>Figura 1: Com catetos $3$ e $4$, os quadrados têm áreas $9$ e $16$, e o quadrado sobre a hipotenusa tem área $25$: $9 + 16 = 25$.</figcaption>
+        </figure>
+    </div>
+
+    <div class="passo-teoria">
+        <h4>2. Ternos Pitagóricos</h4>
+        <p>São trios de números inteiros que satisfazem $a^2 = b^2 + c^2$. Reconhecê-los economiza contas:</p>
+        <ul>
+            <li>$(3, 4, 5)$, $(5, 12, 13)$, $(8, 15, 17)$, $(7, 24, 25)$;</li>
+            <li>e seus múltiplos: $(6, 8, 10)$, $(9, 12, 15)$, $(30, 40, 50)$, $\dots$</li>
+        </ul>
+    </div>
+
+    <div class="passo-teoria">
+        <h4>3. Recíproca e Classificação de Triângulos</h4>
+        <p>Sendo $a$ o <strong>maior</strong> lado de um triângulo de lados $a$, $b$ e $c$:</p>
+        <ul>
+            <li>$a^2 = b^2 + c^2 \implies$ triângulo <strong>retângulo</strong>;</li>
+            <li>$a^2 &lt; b^2 + c^2 \implies$ triângulo <strong>acutângulo</strong>;</li>
+            <li>$a^2 &gt; b^2 + c^2 \implies$ triângulo <strong>obtusângulo</strong>.</li>
+        </ul>
+    </div>
+
+    <div class="passo-teoria">
+        <h4>4. Aplicações Clássicas</h4>
+        <ul>
+            <li><strong>Diagonal do quadrado</strong> de lado $\ell$: $d = \ell\sqrt{2}$.</li>
+            <li><strong>Diagonal do retângulo</strong> de lados $x$ e $y$: $d = \sqrt{x^2 + y^2}$.</li>
+            <li><strong>Altura do triângulo equilátero</strong> de lado $\ell$: $h = \dfrac{\ell\sqrt{3}}{2}$.</li>
+            <li><strong>Distância entre pontos</strong> $A(x_A, y_A)$ e $B(x_B, y_B)$: $d_{AB} = \sqrt{(\Delta x)^2 + (\Delta y)^2}$.</li>
+            <li><strong>Diagonal do paralelepípedo</strong> de dimensões $a$, $b$, $c$: $D = \sqrt{a^2 + b^2 + c^2}$ (no cubo, $D = a\sqrt{3}$).</li>
+        </ul>
+    </div>
+</section>
+
+<section class="aplicacoes-reais" id="aplicacoes">
+    <h3>💡 Matemática em Ação</h3>
+    <div class="cards-aplicacao">
+        <div class="card">
+            <h4>🧱 O Esquadro do Pedreiro</h4>
+            <p>Para conferir se uma parede está "no esquadro", o pedreiro marca $3$ m num lado e $4$ m no outro: se a distância entre as marcas der $5$ m, o canto forma exatamente $90^\circ$. É a recíproca de Pitágoras na obra.</p>
+        </div>
+        <div class="card" style="border-left-color: #2ecc71;">
+            <h4>📺 Telas em Polegadas</h4>
+            <p>O tamanho de TVs e celulares é a <strong>diagonal</strong> da tela. Uma TV de 50" no formato $16:9$ tem largura de cerca de $43{,}6$" ($\approx 111$ cm), calculada com Pitágoras.</p>
+        </div>
+    </div>
+</section>
+<section class="questoes-resolvidas" id="resolvidas">
+    <h3>✅ 5 Questões Resolvidas (R 1 a 5)</h3>
+    <article class="questao">
+        <h4>R 1: Calculando a Hipotenusa</h4>
+        <p><strong>Enunciado:</strong> Os catetos de um triângulo retângulo medem $6$ cm e $8$ cm. Quanto mede a hipotenusa?</p>
+        <div class="resolucao-bloco"><p><strong>Resolução:</strong><br>Pelo Teorema de Pitágoras: $a^2 = b^2 + c^2 = 6^2 + 8^2 = 36 + 64 = 100$.<br>$a = \sqrt{100} = \mathbf{10}$ cm.</p></div>
+    </article>
+    <article class="questao">
+        <h4>R 2: Calculando um Cateto</h4>
+        <p><strong>Enunciado:</strong> A hipotenusa de um triângulo retângulo mede $13$ cm e um dos catetos mede $5$ cm. Quanto mede o outro cateto?</p>
+        <div class="resolucao-bloco"><p><strong>Resolução:</strong><br>$13^2 = 5^2 + c^2 \implies c^2 = 169 - 25 = 144$.<br>$c = \sqrt{144} = \mathbf{12}$ cm. (Terno pitagórico $5, 12, 13$.)</p></div>
+    </article>
+    <article class="questao">
+        <h4>R 3: A Escada que Escorrega</h4>
+        <p><strong>Enunciado:</strong> Uma escada de $5$ m está apoiada numa parede vertical, com o pé a $3$ m da parede. (a) A que altura ela toca a parede? (b) Se o pé da escada for afastado mais $1$ m, quanto o topo desce?</p>
+        <div class="resolucao-bloco"><p><strong>Resolução:</strong><br>(a) $h^2 = 5^2 - 3^2 = 16 \implies h = \mathbf{4}$ m.<br>(b) Novo afastamento $4$ m: $h'^2 = 5^2 - 4^2 = 9 \implies h' = 3$ m.<br>O topo desce $4 - 3 = \mathbf{1}$ m.</p></div>
+    </article>
+    <article class="questao">
+        <h4>R 4: Altura do Triângulo Equilátero</h4>
+        <p><strong>Enunciado:</strong> Calcule a altura e a área de um triângulo equilátero de lado $6$ cm.</p>
+        <div class="resolucao-bloco"><p><strong>Resolução:</strong><br>A altura divide a base ao meio: triângulo retângulo com hipotenusa $6$ e cateto $3$.<br>$h^2 = 6^2 - 3^2 = 27 \implies h = \mathbf{3\sqrt{3}}$ cm (confere com $h = \frac{\ell\sqrt{3}}{2}$).<br>Área: $\dfrac{6 \cdot 3\sqrt{3}}{2} = \mathbf{9\sqrt{3}}$ cm².</p></div>
+    </article>
+    <article class="questao">
+        <h4>R 5: Classificando pela Recíproca</h4>
+        <p><strong>Enunciado:</strong> Um triângulo tem lados $7$, $8$ e $12$. Ele é acutângulo, retângulo ou obtusângulo?</p>
+        <div class="resolucao-bloco"><p><strong>Resolução:</strong><br>Compare o quadrado do maior lado com a soma dos quadrados dos outros dois: $12^2 = 144$ e $7^2 + 8^2 = 113$.<br>Como $144 > 113$, o ângulo oposto ao maior lado é obtuso: triângulo <strong>obtusângulo</strong>.</p></div>
+    </article>
+</section>
+
+<section class="questoes-propostas" id="propostas">
+    <h3>✍️ 10 Questões Propostas (P 6 a 15)</h3>
+    <article class="questao">
+        <h4>P 6: Hipotenusa</h4>
+        <p><strong>Enunciado:</strong> Os catetos de um triângulo retângulo medem $9$ cm e $12$ cm. Calcule a hipotenusa.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>$a^2 = 81 + 144 = 225 \implies a = \mathbf{15}$ cm.</p></div>
+    </article>
+    <article class="questao">
+        <h4>P 7: Cateto</h4>
+        <p><strong>Enunciado:</strong> A hipotenusa de um triângulo retângulo mede $25$ cm e um cateto mede $7$ cm. Calcule o outro cateto.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>$c^2 = 625 - 49 = 576 \implies c = \mathbf{24}$ cm.</p></div>
+    </article>
+    <article class="questao">
+        <h4>P 8: Diagonal do Quadrado</h4>
+        <p><strong>Enunciado:</strong> Calcule a diagonal de um quadrado de lado $5$ cm.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>$d^2 = 5^2 + 5^2 = 50 \implies d = \mathbf{5\sqrt{2}}$ cm $\approx 7{,}07$ cm.</p></div>
+    </article>
+    <article class="questao">
+        <h4>P 9: Diagonal do Retângulo</h4>
+        <p><strong>Enunciado:</strong> Um campo retangular mede $20$ m por $15$ m. Quanto mede a sua diagonal?</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>$d^2 = 400 + 225 = 625 \implies d = \mathbf{25}$ m.</p></div>
+    </article>
+    <article class="questao">
+        <h4>P 10: Triângulo Equilátero</h4>
+        <p><strong>Enunciado:</strong> Calcule a altura de um triângulo equilátero de lado $10$ cm.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>$h^2 = 10^2 - 5^2 = 75 \implies h = \mathbf{5\sqrt{3}}$ cm $\approx 8{,}66$ cm.</p></div>
+    </article>
+    <article class="questao">
+        <h4>P 11: Recíproca de Pitágoras</h4>
+        <p><strong>Enunciado:</strong> Classifique quanto aos ângulos os triângulos de lados: (a) $5$, $12$, $13$; (b) $6$, $7$, $8$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>(a) $13^2 = 169 = 25 + 144$: <strong>retângulo</strong>.<br>(b) $8^2 = 64 < 36 + 49 = 85$: <strong>acutângulo</strong>.</p></div>
+    </article>
+    <article class="questao">
+        <h4>P 12: Distância entre Pontos</h4>
+        <p><strong>Enunciado:</strong> Calcule a distância entre os pontos $A(1, 2)$ e $B(7, 10)$ do plano cartesiano.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>Catetos: $\Delta x = 7 - 1 = 6$ e $\Delta y = 10 - 2 = 8$.<br>$d_{AB} = \sqrt{6^2 + 8^2} = \sqrt{100} = \mathbf{10}$.</p></div>
+    </article>
+    <article class="questao">
+        <h4>P 13: Diagonal da Caixa</h4>
+        <p><strong>Enunciado:</strong> Uma caixa tem a forma de paralelepípedo com dimensões $3$ cm, $4$ cm e $12$ cm. Calcule a diagonal da caixa.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>Diagonal da base: $d^2 = 3^2 + 4^2 = 25 \implies d = 5$.<br>Diagonal da caixa: $D^2 = 5^2 + 12^2 = 169 \implies D = \mathbf{13}$ cm. (Em geral, $D = \sqrt{a^2 + b^2 + c^2}$.)</p></div>
+    </article>
+    <article class="questao">
+        <h4>P 14: Diagonais do Cubo</h4>
+        <p><strong>Enunciado:</strong> Num cubo de aresta $4$ cm, calcule a diagonal de uma face e a diagonal do cubo.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>Face: $d = \sqrt{4^2 + 4^2} = \mathbf{4\sqrt{2}}$ cm.<br>Cubo: $D = \sqrt{d^2 + 4^2} = \sqrt{32 + 16} = \mathbf{4\sqrt{3}}$ cm.</p></div>
+    </article>
+    <article class="questao">
+        <h4>P 15: Triângulo Isósceles</h4>
+        <p><strong>Enunciado:</strong> Um triângulo isósceles tem base $10$ cm e os lados congruentes medindo $13$ cm. Calcule a altura relativa à base e a área.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>A altura divide a base ao meio: $h^2 = 13^2 - 5^2 = 144 \implies h = \mathbf{12}$ cm.<br>Área: $\dfrac{10 \cdot 12}{2} = \mathbf{60}$ cm².</p></div>
+    </article>
+</section>
+
+<section class="TESTE" id="testes">
+    <h3>🎓 TESTES (T 16 a 20)</h3>
+    <article class="questao">
+        <h4>T 16: (ENEM 2014) Células Solares</h4>
+        <p>Diariamente, uma residência consome 20 160 Wh. Essa residência possui 100 células solares retangulares (dispositivos capazes de converter a luz solar em energia elétrica) de dimensões 6 cm $\times$ 8 cm. Cada uma das tais células produz, ao longo do dia, 24 Wh por centímetro de diagonal. O proprietário dessa residência quer produzir, por dia, exatamente a mesma quantidade de energia que sua casa consome.</p>
+        <p>Qual deve ser a ação desse proprietário para que ele atinja o seu objetivo?</p>
+        <p>A) Retirar 16 células.<br>B) Retirar 40 células.<br>C) Acrescentar 5 células.<br>D) Acrescentar 20 células.<br>E) Acrescentar 40 células.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>A</strong>.<br>Diagonal de cada célula: $d = \sqrt{6^2 + 8^2} = 10$ cm, logo cada célula produz $24 \cdot 10 = 240$ Wh por dia.<br>Células necessárias: $\dfrac{20\,160}{240} = 84$.<br>Ele tem $100$, então deve <strong>retirar</strong> $100 - 84 = \mathbf{16}$ células.</p></div>
+    </article>
+    <article class="questao">
+        <h4>T 17: (ENEM 2019 – PPL) Polegadas da TV</h4>
+        <p>A unidade de medida utilizada para anunciar o tamanho das telas de televisores no Brasil é a polegada, que corresponde a 2,54 cm. Diferentemente do que muitos imaginam, dizer que a tela de uma TV tem X polegadas significa que a diagonal do retângulo que representa sua tela mede X polegadas, conforme ilustração.</p>
+        <figure class="figura-aula">
+            <svg viewBox="0 0 280 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Tela de TV com comprimento C, altura A e diagonal X" style="width:100%; max-width:280px; display:block; margin:0 auto;">
+  <rect x="30" y="20" width="220" height="150" rx="6" fill="#2c3e50"/>
+  <rect x="40" y="30" width="200" height="130" fill="#d6e9f8"/>
+  <line x1="40" y1="160" x2="240" y2="30" stroke="#e74c3c" stroke-width="3"/>
+  <g font-family="Oswald, sans-serif" font-size="16" fill="#2c3e50"><text x="132" y="190">C</text><text x="8" y="100">A</text><text x="148" y="88" fill="#e74c3c">X</text></g>
+</svg>
+            <figcaption>Ilustração redesenhada a partir do enunciado.</figcaption>
+        </figure>
+        <p>O administrador de um museu recebeu uma TV convencional de 20 polegadas, que tem como razão do comprimento (C) pela altura (A) a proporção 4 : 3, e precisa calcular o comprimento (C) dessa TV a fim de colocá-la em uma estante para exposição. A tela dessa TV tem medida do comprimento C, em centímetro, igual a</p>
+        <p>A) 12,00<br>B) 16,00<br>C) 30,48<br>D) 40,64<br>E) 50,80</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>D</strong>.<br>Proporção $4:3$: $C = 4k$ e $A = 3k$. Pitágoras: $(4k)^2 + (3k)^2 = 20^2 \implies 25k^2 = 400 \implies k = 4$.<br>$C = 16$ polegadas $= 16 \cdot 2{,}54 = \mathbf{40{,}64}$ cm.<br>Atenção: $16{,}00$ (B) é o comprimento em polegadas, não em centímetros.</p></div>
+    </article>
+    <article class="questao">
+        <h4>T 18: (ENEM 2020) Árvore de Natal no Poste</h4>
+        <p>No período de fim de ano, o síndico de um condomínio resolveu colocar, em um poste, uma iluminação natalina em formato de cone, lembrando uma árvore de Natal, conforme as figuras 1 e 2.</p>
+        <p>A árvore deverá ser feita colocando-se mangueiras de iluminação, consideradas segmentos de reta de mesmo comprimento, a partir de um ponto situado a 3 m de altura no poste até um ponto de uma circunferência de fixação, no chão, de tal forma que esta fique dividida em 20 arcos iguais. O poste está fixado no ponto C (centro da circunferência) perpendicularmente ao plano do chão.</p>
+        <p>Para economizar, ele utilizará mangueiras de iluminação aproveitadas de anos anteriores, que juntas totalizaram pouco mais de 100 m de comprimento, dos quais ele decide usar exatamente 100 m e deixar o restante como reserva.</p>
+        <figure class="figura-aula">
+            <svg viewBox="0 0 300 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Poste com mangueiras de luz formando um cone" style="width:100%; max-width:300px; display:block; margin:0 auto;">
+  <ellipse cx="150" cy="180" rx="110" ry="25" fill="#eaf2fb" stroke="#2c3e50" stroke-width="2"/>
+  <line x1="150" y1="180" x2="150" y2="30" stroke="#7f8c8d" stroke-width="5"/>
+  <g stroke="#e67e22" stroke-width="2"><line x1="150" y1="60" x2="40" y2="180"/><line x1="150" y1="60" x2="260" y2="180"/><line x1="150" y1="60" x2="95" y2="200"/><line x1="150" y1="60" x2="205" y2="200"/><line x1="150" y1="60" x2="80" y2="160"/><line x1="150" y1="60" x2="220" y2="160"/></g>
+  <line x1="150" y1="180" x2="260" y2="180" stroke="#2c3e50" stroke-width="2" stroke-dasharray="5,3"/>
+  <g font-family="Oswald, sans-serif" font-size="15" fill="#2c3e50"><text x="156" y="125">3 m</text><text x="200" y="174">r</text><text x="138" y="196">C</text><text x="214" y="110" fill="#e67e22">g</text></g>
+</svg>
+            <figcaption>Ilustração redesenhada a partir do enunciado.</figcaption>
+        </figure>
+        <p>Para que ele atinja seu objetivo, o raio, em metro, da circunferência deverá ser de</p>
+        <p>A) 4,00<br>B) 4,87<br>C) 5,00<br>D) 5,83<br>E) 6,26</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>A</strong>.<br>São $20$ mangueiras iguais com $100$ m no total: cada uma mede $g = 5$ m.<br>Cada mangueira, a altura $3$ m do poste e o raio $r$ formam um triângulo retângulo: $5^2 = 3^2 + r^2$.<br>$r^2 = 16 \implies r = \mathbf{4{,}00}$ m.</p></div>
+    </article>
+    <article class="questao">
+        <h4>T 19: (UECE 2024) Ângulos em PA</h4>
+        <p>Em um triângulo retângulo, a medida da hipotenusa é igual a 2 m e as medidas dos ângulos internos, usando a unidade “grau”, constituem uma progressão aritmética.</p>
+        <p>Se as medidas dos catetos, em metro, são $x$ e $y$, então, o produto $x \cdot y$ é igual a</p>
+        <p>A) $\sqrt{2}$ m²<br>B) $\sqrt{3}$ m²<br>C) $2\sqrt{3}$ m²<br>D) $3\sqrt{2}$ m²</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>B</strong>.<br>Ângulos em PA com soma $180^\circ$: o termo do meio é $60^\circ$; como um deles é $90^\circ$, os ângulos são $30^\circ$, $60^\circ$ e $90^\circ$.<br>O cateto oposto a $30^\circ$ é metade da hipotenusa: $x = 1$ m. Por Pitágoras: $y^2 = 2^2 - 1^2 = 3 \implies y = \sqrt{3}$ m.<br>$x \cdot y = \mathbf{\sqrt{3}}$ m².</p></div>
+    </article>
+    <article class="questao">
+        <h4>T 20: (Questão autoral) Cerca na Diagonal</h4>
+        <p>Um terreno retangular mede $40$ m por $30$ m. O proprietário quer construir uma cerca ligando dois vértices opostos, ao longo da diagonal, ao custo de R\$&nbsp;15,00 por metro.</p>
+        <p>O custo da cerca será de:</p>
+        <p>A) R\$&nbsp;525,00<br>B) R\$&nbsp;600,00<br>C) R\$&nbsp;700,00<br>D) R\$&nbsp;750,00<br>E) R\$&nbsp;1.050,00</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>D</strong>.<br>Diagonal: $d = \sqrt{40^2 + 30^2} = \sqrt{2500} = 50$ m (terno $3, 4, 5$ multiplicado por $10$).<br>Custo: $50 \cdot 15 = 750$, ou seja, <strong>R\$&nbsp;750,00</strong>. (R\$&nbsp;1.050,00 seria o custo de cercar dois lados, $70$ m.)</p></div>
+    </article>
+</section>
+
+</div></main>
+<aside class="menu-lateral"><iframe src="../menu_matematica.html" style="width:100%; border:none; height:600px;"></iframe></aside>
+</div>
+<script>
+function toggleGabarito(botao) {
+    const gabarito = botao.nextElementSibling;
+    if (gabarito.style.display === "none" || gabarito.style.display === "") {
+        gabarito.style.display = "block"; botao.textContent = "Esconder Gabarito e Resolução"; botao.style.backgroundColor = "#2c3e50";
+    } else {
+        gabarito.style.display = "none"; botao.textContent = "Ver Gabarito e Resolução"; botao.style.backgroundColor = "#3498db";
+    }
+}
+function toggleMenu() { const m = document.getElementById("menu-principal"); if (m) m.classList.toggle("ativo"); }
+let slideAtual = 0; let slides = [];
+function prepararSlides() { slides = Array.from(document.querySelectorAll('.container-resumo, .passo-teoria, .card, .questao')); }
+function toggleSlides() {
+    prepararSlides(); const body = document.body;
+    if (!body.classList.contains('modo-slides')) { body.classList.add('modo-slides'); slideAtual = 0; mostrarSlide(slideAtual); }
+    else { body.classList.remove('modo-slides'); slides.forEach(s => { s.classList.remove('slide-ativo'); s.style.display = ''; }); }
+}
+function mostrarSlide(n) {
+    if (!slides.length) return;
+    slides.forEach(s => { s.classList.remove('slide-ativo'); s.style.display = 'none'; });
+    const slide = slides[n]; slide.classList.add('slide-ativo');
+    slide.querySelectorAll('.gabarito-resolucao').forEach(g => g.style.display = 'none');
+    slide.querySelectorAll('.btn-gabarito').forEach(b => { b.textContent = "Ver Gabarito e Resolução"; b.style.backgroundColor = "#3498db"; });
+    const pHeader = document.querySelector('header p');
+    if (pHeader) { const partes = pHeader.innerText.split('|'); if (partes.length > 1) {
+        document.getElementById('slide-info-serie').innerText = partes[0].trim();
+        document.getElementById('slide-info-aula').innerText = partes[1].trim(); } }
+    document.getElementById('contador-slide').innerText = (n + 1) + " / " + slides.length;
+    if (window.MathJax && window.MathJax.typesetPromise) { MathJax.typesetPromise(); }
+}
+function mudarSlide(d) { slideAtual += d; if (slideAtual >= slides.length) slideAtual = 0; if (slideAtual < 0) slideAtual = slides.length - 1; mostrarSlide(slideAtual); }
+document.addEventListener('keydown', function(event) {
+    if (document.body.classList.contains('modo-slides')) {
+        switch(event.key) {
+            case 'ArrowRight': case 'PageDown': case 'Enter': case ' ': event.preventDefault(); mudarSlide(1); break;
+            case 'ArrowLeft': case 'PageUp': event.preventDefault(); mudarSlide(-1); break;
+            case 'Escape': event.preventDefault(); toggleSlides(); break;
+        }
+    }
+});
+</script>
+<div class="controles-slides">
+    <div id="slide-info-serie" class="info-lateral"></div>
+    <div class="botoes-centrais">
+        <button class="btn-nav" onclick="mudarSlide(-1)">⬅ Anterior</button>
+        <span id="contador-slide"></span>
+        <button class="btn-nav" onclick="mudarSlide(1)">Próximo ➡</button>
+        <button class="btn-nav" onclick="toggleSlides()" style="background:#e74c3c;">Sair</button>
+    </div>
+    <div id="slide-info-aula" class="info-lateral" style="text-align: right;"></div>
+</div>
+</body>
+</html>
