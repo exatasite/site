@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2º Ano: Aula 13 - Geometria de Posição</title>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../estilo.css">
+    
+    <script>
+        MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true
+            }
+        };
+    </script>
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body>
+<button class="menu-toggle" onclick="toggleMenu()">☰</button>
+
+<nav id="menu-principal" class="nav-global">
+    <ul>
+        <li><a href="../index.html">🏠 Início</a></li>
+        <li><a href="../fisica_home.html">⚛️ Física</a></li>
+        <li><a href="../matematica_home.html">📐 Matemática</a></li>
+        <li><a href="../simulacoes_home.html">💻 Simulações</a></li>
+    </ul>
+</nav>
+
+<header id="topo">
+    <h1>MATEMÁTICA EM</h1>
+    <p>2º Ano | Aula 13: Geometria de Posição</p>
+    <button id="btn-slides" onclick="toggleSlides()">📺 Iniciar Modo Slides</button>
+</header>
+
+<div class="container">
+
+<main class="conteudo-principal">
+
+<div class="secao-aula">
+ <div class="container-resumo" id="resumo">
+    <h3>📚 Resumo </h3>
+    <section class="resumo-conteudo">
+        <p>A <strong>Geometria de Posição</strong> estuda as relações relativas entre os entes primitivos da geometria no espaço tridimensional: <strong>ponto, reta e plano</strong>.</p>
+        <p>Compreender os axiomas fundamentais e os postulados de determinação (como os requisitos para definir um plano) permite analisar se retas e planos são coincidentes, paralelos, concorrentes ou reversos.</p>
+    </section>
+</div>
+
+<section class="conteudo-teorico-completo" id="teoria">
+    <div class="passo-teoria">
+        <h3>📖 Conceitos Fundamentais</h3>
+        <h4>1. Entes Primitivos e Axiomas de Determinação</h4>
+        <p>Ponto, reta e plano não possuem definição formal. Os axiomas garantem que:</p>
+        <ul>
+            <li>Por dois pontos distintos passa uma **única reta**.</li>
+            <li>Três pontos **não colineares** determinam um **único plano**.</li>
+            <li>Um plano é determinado por: 3 pontos não colineares, uma reta e um ponto fora dela, duas retas concorrentes ou duas retas paralelas distintas.</li>
+        </ul>
+    </div>
+
+    <div class="passo-teoria">
+        <h4>2. Posições Relativas entre Duas Retas</h4>
+        <p>Duas retas no espaço podem ser:</p>
+        <ul>
+            <li><strong>Coplanares (estão no mesmo plano):</strong>
+                <ul>
+                    <li><em>Concorrentes:</em> possuem um único ponto em comum.</li>
+                    <li><em>Paralelas:</em> não possuem ponto em comum ou são coincidentes.</li>
+                </ul>
+            </li>
+            <li><strong>Não Coplanares:</strong>
+                <ul>
+                    <li><em>Reversas:</em> não estão no mesmo plano e não se interceptam.</li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+    <div class="passo-teoria">
+        <h4>3. Posições Relativas entre Reta e Plano / Entre Dois Planos</h4>
+        <p><strong>Reta e Plano:</strong> a reta pode estar contida no plano, ser paralela (sem pontos em comum) ou ser secante/concorrente (intercepta em um ponto).</p>
+        <p><strong>Dois Planos:</strong> podem ser coincidentes, paralelos (sem pontos em comum) ou secantes (a intersecção é uma reta).</p>
+    </div>
+</section>
+
+<section class="aplicacoes-reais" id="aplicacoes">
+    <h3>💡 Matemática em Ação</h3>
+    <div class="cards-aplicacao">
+        <div class="card">
+            <h4>🏗️ Arquitetura e Engenharia Civil</h4>
+            <p>O alinhamento de vigas e pilares exige a compreensão de perpendicularismo e retas reversas para garantir a estabilidade e estética de estruturas prediais.</p>
+        </div>
+        <div class="card" style="border-left-color: #2ecc71;">
+            <h4>🎮 Computação Gráfica e Modelagem 3D</h4>
+            <p>Motores de jogos calculam intersecções entre raios de luz (retas) e superfícies poligonais (planos) para renderizar sombras e colisões tridimensionais.</p>
+        </div>
+    </div>
+</section>
+
+<section class="questoes-resolvidas" id="resolvidas">
+    <h3>✅ 5 Questões Resolvidas (R 1 a 5)</h3>
+    
+    <article class="questao">
+        <h4>R 1: Determinação de Plano</h4>
+        <p><strong>Enunciado:</strong> Quantos planos distintos passam por quatro pontos não coplanares?</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong><br>
+            1. Três pontos não colineares determinam um plano único.<br>
+            2. Como os 4 pontos são não coplanares, qualquer combinação de 3 pontos formará um plano distinto.<br>
+            3. O número de combinações de 4 pontos tomados 3 a 3 é $C_{4,3} = \frac{4!}{3!1!} = 4$.<br>
+            4. Portanto, passam exatamente **4 planos** por esses pontos.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>R 2: Análise de Retas em um Cubo</h4>
+        <p><strong>Enunciado:</strong> Considere um cubo $ABCDEFGH$. Qual é a posição relativa entre as retas suporte das arestas $AB$ e $CG$?</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong><br>
+            1. A reta $AB$ está contida na face inferior do cubo.<br>
+            2. A reta $CG$ é uma aresta vertical da face lateral oposta.<br>
+            3. As duas retas não possuem pontos em comum e não pertencem ao mesmo plano.<br>
+            4. Logo, as retas $AB$ e $CG$ são **reversas**.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>R 3: Reta e Plano Perpendiculares</h4>
+        <p><strong>Enunciado:</strong> Se uma reta $r$ é perpendicular a duas retas concorrentes $s$ e $t$ de um plano $\alpha$ no ponto de intersecção, qual a posição relativa entre $r$ e o plano $\alpha$?</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong><br>
+            1. Pelo teorema fundamental do perpendicularismo: se uma reta é perpendicular a duas retas concorrentes de um plano no ponto de encontro delas, ela é perpendicular a todas as retas desse plano que passam por esse ponto.<br>
+            2. Assim, a reta $r$ é **perpendicular ao plano $\alpha$**.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>R 4: Intersecção de Planos</h4>
+        <p><strong>Enunciado:</strong> Dois planos distintos $\alpha$ e $\beta$ têm um ponto $P$ em comum. O que se pode afirmar sobre a intersecção de $\alpha$ e $\beta$?</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong><br>
+            1. Pelo postulado da intersecção de planos, se dois planos distintos têm um ponto em comum, eles têm pelo menos outro ponto em comum.<br>
+            2. A intersecção de dois planos secantes é sempre uma **única reta** que passa pelo ponto $P$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>R 5: Verdadeiro ou Falso em Geometria Espacial</h4>
+        <p><strong>Enunciado:</strong> Avalie a afirmação: "Duas retas paralelas a uma terceira reta são paralelas entre si." A afirmação é verdadeira ou falsa?</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong><br>
+            1. Essa afirmação é conhecida como a propriedade de transitividade do paralelismo no espaço.<br>
+            2. Se $r \parallel s$ e $t \parallel s$, então obrigatoriamente $r \parallel t$.<br>
+            3. A afirmação é **Verdadeira**.</p>
+        </div>
+    </article>
+</section>
+
+<section class="questoes-propostas" id="propostas">
+    <h3>✍️ 5 Questões Propostas (P 6 a 10)</h3>
+
+    <article class="questao">
+        <h4>P 6: Determinação de Plano por Reta e Ponto</h4>
+        <p><strong>Enunciado:</strong> É possível determinar um único plano passando por uma reta $r$ e um ponto $P$? Justifique.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> Depende da posição do ponto $P$. Se o ponto $P$ **não pertence** à reta $r$, determina-se um único plano. Se o ponto $P$ **pertence** à reta $r$, existem infinitos planos que contêm a reta e o ponto.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 7: Posições no Cubo</h4>
+        <p><strong>Enunciado:</strong> Em um cubo $ABCDEFGH$, qual é a posição relativa entre as retas que contêm as arestas $AB$ e $CD$?</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> As arestas $AB$ e $CD$ pertencem à mesma face da base do cubo e não possuem ponto de encontro. Logo, as retas são **paralelas**.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 8: Planos Paralelos e Reta Transversal</h4>
+        <p><strong>Enunciado:</strong> Se dois planos $\alpha$ e $\beta$ são paralelos e uma reta $r$ intercepta $\alpha$ em um ponto, qual é a relação entre a reta $r$ e o plano $\beta$?</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> A reta $r$ é secante (concorrente) ao plano $\alpha$. Como $\alpha \parallel \beta$, a reta $r$ também será obrigatoriamente **secante (concorrente)** ao plano $\beta$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 9: Retas Ortogonais vs Perpendiculares</h4>
+        <p><strong>Enunciado:</strong> Qual é a diferença fundamental entre duas retas perpendiculares e duas retas ortogonais no espaço?</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> Ambas formam ângulo de $90^\circ$. Porém, retas **perpendiculares** são concorrentes (estão no mesmo plano e se cruzam), enquanto retas **ortogonais** são reversas (não se cruzam e pertencem a planos distintos).</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 10: Retas não Coplanares</h4>
+        <p><strong>Enunciado:</strong> Dadas duas retas $r$ e $s$ reversas, é possível encontrar um plano que contenha ambas as retas ao mesmo tempo?</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> **Não**. Por definição, retas reversas são retas não coplanares, ou seja, não existe nenhum plano que possa conter as duas retas simultaneamente.</p>
+        </div>
+    </article>
+</section>
+
+<section class="TESTE" id="testes">
+    <h3>🎓 TESTES (T 11 a 15)</h3>
+
+    <div class="card" style="text-align:center; padding:60px 20px; background:#f8f9fa; border:2px dashed #3498db; border-radius:12px; margin-top:20px;">
+        <h2 style="color:#3498db; font-size:2.5rem; margin-bottom:15px;">
+            🚧 EM BREVE!
+        </h2>
+
+        <p style="font-size:1.2rem; color:#555;">
+            Questões de vestibulares serão disponibilizadas em breve.
+        </p>
+    </div>
+</section>
+
+</div>
+</main>
+
+<aside class="menu-lateral">
+    <iframe src="../menu_matematica.html" style="width:100%; border:none; height:600px;"></iframe>
+</aside>
+
+</div>
+
+<script>
+function toggleGabarito(botao) {
+    const gabarito = botao.nextElementSibling;
+    if (gabarito.style.display === "none" || gabarito.style.display === "") {
+        gabarito.style.display = "block";
+        botao.textContent = "Esconder Gabarito e Resolução";
+        botao.style.backgroundColor = "#2c3e50";
+    } else {
+        gabarito.style.display = "none";
+        botao.textContent = "Ver Gabarito e Resolução";
+        botao.style.backgroundColor = "#3498db";
+    }
+}
+
+function toggleMenu() {
+    const menuGlobal = document.getElementById("menu-principal");
+    if (menuGlobal) menuGlobal.classList.toggle("ativo");
+}
+
+let slideAtual = 0;
+let slides = [];
+
+function prepararSlides() {
+    const seletores = '.container-resumo, .passo-teoria, .aplicacoes-reais, .questao';
+    slides = document.querySelectorAll(seletores);
+}
+
+function toggleSlides() {
+    prepararSlides();
+    const body = document.body;
+    if (!body.classList.contains('modo-slides')) {
+        body.classList.add('modo-slides');
+        slideAtual = 0;
+        mostrarSlide(slideAtual);
+    } else {
+        body.classList.remove('modo-slides');
+        window.location.reload(); 
+    }
+}
+
+function mostrarSlide(n) {
+    slides.forEach(s => {
+        s.classList.remove('slide-ativo');
+        s.style.display = 'none';
+    });
+    const slide = slides[n];
+    slide.classList.add('slide-ativo');
+    slide.style.display = 'flex'; 
+
+    if (slide.classList.contains('questao') && !slide.querySelector('.btn-gabarito')) {
+        const resolucoes = slide.querySelectorAll('.resolucao-bloco');
+        resolucoes.forEach(r => r.style.display = 'block');
+    } else {
+        const gabaritos = slide.querySelectorAll('.gabarito-resolucao');
+        gabaritos.forEach(g => g.style.display = 'none');
+        const botoes = slide.querySelectorAll('.btn-gabarito');
+        botoes.forEach(b => {
+            b.textContent = "Ver Gabarito e Resolução";
+            b.style.backgroundColor = "#3498db";
+        });
+    }
+
+    const pHeader = document.querySelector('header p').innerText;
+    const partes = pHeader.split('|');
+    if(partes.length > 1) {
+        document.getElementById('slide-info-serie').innerText = partes[0].trim();
+        document.getElementById('slide-info-aula').innerText = partes[1].trim();
+    }
+    document.getElementById('contador-slide').innerText = (n + 1) + " / " + slides.length;
+    if (window.MathJax) MathJax.typesetPromise();
+}
+
+function mudarSlide(direcao) {
+    slideAtual += direcao;
+    if (slideAtual >= slides.length) slideAtual = 0;
+    if (slideAtual < 0) slideAtual = slides.length - 1;
+    mostrarSlide(slideAtual);
+}
+
+document.addEventListener('keydown', function(event) {
+    if (document.body.classList.contains('modo-slides')) {
+        switch(event.key) {
+            case 'ArrowRight': 
+            case 'PageDown':   
+            case 'Enter':      
+            case ' ':          
+                mudarSlide(1);
+                break;
+                
+            case 'ArrowLeft':  
+            case 'PageUp':     
+                mudarSlide(-1);
+                break;
+
+            case 'Escape':     
+                toggleSlides();
+                break;
+        }
+    }
+});
+</script>
+
+<style>
+    body.modo-slides { overflow: hidden; background-color: #1a1a1a; }
+    body.modo-slides .menu-lateral, body.modo-slides header, body.modo-slides .menu-toggle, body.modo-slides #btn-slides { display: none !important; }
+    .slide-ativo {
+        display: flex !important; flex-direction: column; align-items: center; justify-content: flex-start;
+        position: fixed; top: 0; left: 0; width: 100vw; height: calc(100vh - 70px);
+        background: #ffffff; padding: 40px; z-index: 999; overflow-y: auto !important; 
+        box-sizing: border-box; text-align: center;
+    }
+    .controles-slides {
+        position: fixed; bottom: 0; left: 0; width: 100%; height: 70px;
+        background: #2c3e50; color: white; display: none; 
+        justify-content: space-between; align-items: center; padding: 0 20px; z-index: 1001; box-sizing: border-box;
+    }
+    body.modo-slides .controles-slides { display: flex; }
+    .info-lateral { flex: 1; font-family: 'Oswald', sans-serif; font-size: 0.9rem; color: #bdc3c7; }
+    .botoes-centrais { display: flex; align-items: center; gap: 15px; justify-content: center; flex: 2; }
+    .btn-nav { padding: 10px 20px; background: #3498db; color: white; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; }
+    #contador-slide { font-family: 'Oswald', sans-serif; min-width: 60px; text-align: center; }
+</style>
+
+<div class="controles-slides">
+    <div id="slide-info-serie" class="info-lateral"></div>
+    <div class="botoes-centrais">
+        <button class="btn-nav" onclick="mudarSlide(-1)">⬅ Anterior</button>
+        <span id="contador-slide"></span>
+        <button class="btn-nav" onclick="mudarSlide(1)">Próximo ➡</button>
+        <button class="btn-nav" onclick="toggleSlides()" style="background:#e74c3c;">Sair</button>
+    </div>
+    <div id="slide-info-aula" class="info-lateral" style="text-align: right;"></div>
+</div>
+</body>
+</html>
