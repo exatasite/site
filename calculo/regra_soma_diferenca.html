@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cálculo I: Regra da Soma e da Diferença</title>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../estilo.css">
+    
+    <script>
+        MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true
+            }
+        };
+    </script>
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body>
+<button class="menu-toggle" onclick="toggleMenu()">☰</button>
+
+<nav id="menu-principal" class="nav-global">
+    <ul>
+        <li><a href="../index.html">🏠 Início</a></li>
+        <li><a href="../ensino_medio.html">📚 Ensino Médio</a></li>
+        <li><a href="../ensino_superior.html">🎓 Ensino Superior</a></li>
+    </ul>
+</nav>
+
+<header id="topo">
+    <h1>CÁLCULO I</h1>
+    <p>Cálculo | Aula: Regra da Soma e da Diferença</p>
+    <button id="btn-slides" onclick="toggleSlides()">📺 Iniciar Modo Slides</button>
+</header>
+
+<div class="container">
+
+<main class="conteudo-principal">
+
+<div class="secao-aula">
+ <div class="container-resumo" id="resumo">
+    <h3>📚 Resumo </h3>
+    <section class="resumo-conteudo">
+        <p>A <strong>regra da soma e da diferença</strong> establece que a derivada de uma soma (ou subtração) de duas funções deriváveis é igual à soma (ou subtração) das suas respectivas derivadas.</p>
+        <p>Em termos algébricos, dadas duas funções $f(x)$ e $g(x)$, temos: $$\frac{d}{dx}[f(x) \pm g(x)] = f'(x) \pm g'(x)$$</p>
+        <p>Isso significa que podemos derivar expressões polinomiais ou somas de funções complexas <strong>termo a termo</strong>.</p>
+    </section>
+</div>
+
+<section class="conteudo-teorico-completo" id="teoria">
+    <div class="passo-teoria">
+        <h3>📖 A Linearidade do Operador Derivado</h3>
+        <p>O operador de derivação é linear. Isso possui uma consequência prática imensa: para derivar uma função composta por vários termos somados ou subtraídos, basta aplicar as regras fundamentais de derivação de maneira independente em cada parcela.</p>
+    </div>
+
+    <div class="passo-teoria">
+        <h4>1. Demonstração Conceitual (A Soma)</h4>
+        <p>Utilizando o limite do quociente de Newton para a soma $h(x) = f(x) + g(x)$:</p>
+        <p style="text-align: center;">$$h'(x) = \lim_{\Delta x \to 0} \frac{[f(x+\Delta x) + g(x+\Delta x)] - [f(x) + g(x)]}{\Delta x}$$</p>
+        <p>Reagrupando os termos correspondentes de $f$ e $g$, separamos o limite em duas partes, obtendo exatamente $f'(x) + g'(x)$.</p>
+    </div>
+
+    <div class="passo-teoria">
+        <h4>2. Combinação com a Regra da Constante Multiplicativa</h4>
+        <p>Juntamente com a regra da soma, a propriedade do múltiplo constante nos garante que: $$\frac{d}{dx}[a \cdot f(x) \pm b \cdot g(x)] = a \cdot f'(x) \pm b \cdot g'(x)$$</p>
+        <p>Essa é a base estrutural para a derivação rápida de qualquer polinômio de grau $n$.</p>
+    </div>
+</section>
+
+<section class="aplicacoes-reais" id="aplicacoes">
+    <h3>💡 Matemática em Ação</h3>
+    <div class="cards-aplicacao">
+        <div class="card">
+            <h4>📈 Modelagem Econômica Combinada</h4>
+            <p>Se o custo total de uma empresa é a soma dos custos fixos de manutenção com os custos variáveis de produção (ex: $C(x) = 1500 + 45x - 0.2x^2$), a regra da soma permite isolar o impacto marginal de cada componente individualmente.</p>
+        </div>
+        <div class="card" style="border-left-color: #2ecc71;">
+            <h4>🚗 Dinâmica de Veículos com Forças Múltiplas</h4>
+            <p>Na física, a função de deslocamento de um objeto sob a ação conjugada de forças independentes costuma ser modelada por somas de funções polinomiais e trigonométricas.</p>
+        </div>
+    </div>
+</section>
+
+<section class="questoes-resolvidas" id="resolvidas">
+    <h3>✅ 5 Questões Resolvidas (R 1 a 5)</h3>
+
+    <article class="questao">
+        <h4>R 1: Derivada de uma Soma Simples</h4>
+        <p><strong>Enunciado:</strong> Encontre a derivada da função $f(x) = x^3 + x^2$.</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong><br>
+            1. Aplicamos a regra da soma, derivando cada termo separadamente.<br>
+            2. A derivada de $x^3$ é $3x^2$.<br>
+            3. A derivada de $x^2$ é $2x$.<br>
+            4. Somando os resultados: $\mathbf{f'(x) = 3x^2 + 2x}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>R 2: Regra da Diferença com Coeficientes</h4>
+        <p><strong>Enunciado:</strong> Calcule a derivada de $g(x) = 5x^4 - 3x^2$.</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong><br>
+            1. Usamos a regra da diferença combinada com o múltiplo constante.<br>
+            2. Para o primeiro termo: $5 \cdot (4x^3) = 20x^3$.<br>
+            3. Para o segundo termo: $-3 \cdot (2x) = -6x$.<br>
+            4. Juntando as partes: $\mathbf{g'(x) = 20x^3 - 6x}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>R 3: Polinômio Completo de Vários Termos</h4>
+        <p><strong>Enunciado:</strong> Determine a derivada da função $y = 2x^5 - 4x^3 + 7x - 12$.</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong><br>
+            1. Derivamos termo a termo aplicando a regra da soma e diferença:<br>
+            - Derivada de $2x^5 \implies 10x^4$<br>
+            - Derivada de $-4x^3 \implies -12x^2$<br>
+            - Derivada de $7x \implies 7$<br>
+            - Derivada da constante $-12 \implies 0$<br>
+            2. Resultado final: $\mathbf{y' = 10x^4 - 12x^2 + 7}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>R 4: Derivada Envolvendo Raízes e Termos Fracionários</h4>
+        <p><strong>Enunciado:</strong> Calcule a derivada de $f(x) = 3\sqrt{x} - \frac{2}{x}$.</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong><br>
+            1. Reescrevemos os termos na forma de potências: $f(x) = 3x^{1/2} - 2x^{-1}$.<br>
+            2. Derivamos o primeiro termo: $3 \cdot \left(\frac{1}{2}x^{-1/2}\right) = \frac{3}{2\sqrt{x}}$.<br>
+            3. Derivamos o segundo termo: $-2 \cdot (-1x^{-2}) = 2x^{-2} = \frac{2}{x^2}$.<br>
+            4. Aplicando a regra da diferença: $\mathbf{f'(x) = \frac{3}{2\sqrt{x}} + \frac{2}{x^2}}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>R 5: Aplicação em um Ponto Específico</h4>
+        <p><strong>Enunciado:</strong> Dada a função $f(x) = x^3 - 6x^2 + 9x + 2$, calcule o valor de $f'(2)$.</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong><br>
+            1. Encontramos a derivada geral aplicando a regra da soma e diferença:<br>
+               $$f'(x) = 3x^2 - 12x + 9$$<br>
+            2. Substituímos $x = 2$ na expressão da derivada:<br>
+               $$f'(2) = 3(2^2) - 12(2) + 9 = 3(4) - 24 + 9 = 12 - 24 + 9 = \mathbf{-3}$$.</p>
+        </div>
+    </article>
+</section>
+
+<section class="questoes-propostas" id="propostas">
+    <h3>✍️ 5 Questões Propostas (P 6 a 10)</h3>
+
+    <article class="questao">
+        <h4>P 6: Soma de Polinômios Simples</h4>
+        <p><strong>Enunciado:</strong> Determine a derivada da função $f(x) = 7x^3 + 4x^2 - 5x$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong><br>
+            1. Derivando termo a termo: $7(3x^2) + 4(2x) - 5(1)$.<br>
+            2. Resultado: $\mathbf{f'(x) = 21x^2 + 8x - 5}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 7: Diferença com Potências Maiores</h4>
+        <p><strong>Enunciado:</strong> Calcule $y'$ para $y = 3x^4 - 5x^3 + 2x - 8$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong><br>
+            1. Derivando cada parcela: $3(4x^3) - 5(3x^2) + 2(1) - 0$.<br>
+            2. Resposta: $\mathbf{y' = 12x^3 - 15x^2 + 2}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 8: Expressão com Raiz e Constante</h4>
+        <p><strong>Enunciado:</strong> Encontre a derivada de $f(x) = 4x^3 - 2\sqrt{x} + 10$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong><br>
+            1. Derivando cada termo: $4(3x^2) - 2\left(\frac{1}{2\sqrt{x}}\right) + 0$.<br>
+            2. Simplificando: $\mathbf{f'(x) = 12x^2 - \frac{1}{\sqrt{x}}}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 9: Análise de Tangente Horizontal</h4>
+        <p><strong>Enunciado:</strong> Encontre os pontos onde a função $f(x) = x^3 - 3x^2 - 9x + 5$ possui tangente horizontal (ou seja, $f'(x) = 0$).</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong><br>
+            1. Derivada por soma e diferença: $f'(x) = 3x^2 - 6x - 9$.<br>
+            2. Igualando a zero e dividindo por 3: $x^2 - 2x - 3 = 0$.<br>
+            3. Fatorando: $(x - 3)(x + 1) = 0 \implies \mathbf{x = 3 \text{ e } x = -1}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 10: Derivada de Segunda Ordem por Soma</h4>
+        <p><strong>Enunciado:</strong> Dada a função $f(x) = 2x^4 - 5x^3 + 6x - 1$, determine a sua derivada de segunda ordem $f''(x)$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong><br>
+            1. Primeira derivada: $f'(x) = 8x^3 - 15x^2 + 6$.<br>
+            2. Segunda derivada (derivando $f'(x)$ novamente): $f''(x) = 8(3x^2) - 15(2x) + 0 = \mathbf{24x^2 - 30x}$.</p>
+        </div>
+    </article>
+</section>
+
+<section class="TESTE" id="testes">
+    <h3>🎓 TESTES (T 11 a 15)</h3>
+
+    <div class="card" style="text-align:center; padding:60px 20px; background:#f8f9fa; border:2px dashed #3498db; border-radius:12px; margin-top:20px;">
+        <h2 style="color:#3498db; font-size:2.5rem; margin-bottom:15px;">
+            🚧 EM BREVE!
+        </h2>
+
+        <p style="font-size:1.2rem; color:#555;">
+            Questões de exames e vestibulares abordando a Regra da Soma e Diferença serão publicadas nesta seção em breve.
+        </p>
+    </div>
+</section>
+
+</div>
+</main>
+
+<aside class="menu-lateral">
+    <iframe src="../menu_calculo.html" style="width:100%; border:none; height:600px;"></iframe>
+</aside>
+
+</div>
+
+<script>
+function toggleGabarito(botao) {
+    const gabarito = botao.nextElementSibling;
+    if (gabarito.style.display === "none" || gabarito.style.display === "") {
+        gabarito.style.display = "block";
+        botao.textContent = "Esconder Gabarito e Resolução";
+        botao.style.backgroundColor = "#2c3e50";
+    } else {
+        gabarito.style.display = "none";
+        botao.textContent = "Ver Gabarito e Resolução";
+        botao.style.backgroundColor = "#3498db";
+    }
+}
+
+function toggleMenu() {
+    const menuGlobal = document.getElementById("menu-principal");
+    if (menuGlobal) menuGlobal.classList.toggle("ativo");
+}
+
+let slideAtual = 0;
+let slides = [];
+
+function prepararSlides() {
+    const seletores = '.container-resumo, .passo-teoria, .aplicacoes-reais, .questao';
+    slides = document.querySelectorAll(seletores);
+}
+
+function toggleSlides() {
+    prepararSlides();
+    const body = document.body;
+    if (!body.classList.contains('modo-slides')) {
+        body.classList.add('modo-slides');
+        slideAtual = 0;
+        mostrarSlide(slideAtual);
+    } else {
+        body.classList.remove('modo-slides');
+        window.location.reload(); 
+    }
+}
+
+function mostrarSlide(n) {
+    slides.forEach(s => {
+        s.classList.remove('slide-ativo');
+        s.style.display = 'none';
+    });
+    const slide = slides[n];
+    slide.classList.add('slide-ativo');
+    slide.style.display = 'flex'; 
+
+    if (slide.classList.contains('questao') && !slide.querySelector('.btn-gabarito')) {
+        const resolucoes = slide.querySelectorAll('.resolucao-bloco');
+        resolucoes.forEach(r => r.style.display = 'block');
+    } else {
+        const gabaritos = slide.querySelectorAll('.gabarito-resolucao');
+        gabaritos.forEach(g => g.style.display = 'none');
+        const botoes = slide.querySelectorAll('.btn-gabarito');
+        botoes.forEach(b => {
+            b.textContent = "Ver Gabarito e Resolução";
+            b.style.backgroundColor = "#3498db";
+        });
+    }
+
+    const pHeader = document.querySelector('header p').innerText;
+    const partes = pHeader.split('|');
+    if(partes.length > 1) {
+        document.getElementById('slide-info-serie').innerText = partes[0].trim();
+        document.getElementById('slide-info-aula').innerText = partes[1].trim();
+    }
+    document.getElementById('contador-slide').innerText = (n + 1) + " / " + slides.length;
+    if (window.MathJax) MathJax.typesetPromise();
+}
+
+function mudarSlide(direcao) {
+    slideAtual += direcao;
+    if (slideAtual >= slides.length) slideAtual = 0;
+    if (slideAtual < 0) slideAtual = slides.length - 1;
+    mostrarSlide(slideAtual);
+}
+
+document.addEventListener('keydown', function(event) {
+    if (document.body.classList.contains('modo-slides')) {
+        switch(event.key) {
+            case 'ArrowRight': 
+            case 'PageDown':   
+            case 'Enter':      
+            case ' ':          
+                mudarSlide(1);
+                break;
+                
+            case 'ArrowLeft':  
+            case 'PageUp':     
+                mudarSlide(-1);
+                break;
+
+            case 'Escape':     
+                toggleSlides();
+                break;
+        }
+    }
+});
+</script>
+
+<style>
+    body.modo-slides { overflow: hidden; background-color: #1a1a1a; }
+    body.modo-slides .menu-lateral, body.modo-slides header, body.modo-slides .menu-toggle, body.modo-slides #btn-slides { display: none !important; }
+    .slide-ativo {
+        display: flex !important; flex-direction: column; align-items: center; justify-content: flex-start;
+        position: fixed; top: 0; left: 0; width: 100vw; height: calc(100vh - 70px);
+        background: #ffffff; padding: 40px; z-index: 999; overflow-y: auto !important; 
+        box-sizing: border-box; text-align: center;
+    }
+    .controles-slides {
+        position: fixed; bottom: 0; left: 0; width: 100%; height: 70px;
+        background: #2c3e50; color: white; display: none; 
+        justify-content: space-between; align-items: center; padding: 0 20px; z-index: 1001; box-sizing: border-box;
+    }
+    body.modo-slides .controles-slides { display: flex; }
+    .info-lateral { flex: 1; font-family: 'Oswald', sans-serif; font-size: 0.9rem; color: #bdc3c7; }
+    .botoes-centrais { display: flex; align-items: center; gap: 15px; justify-content: center; flex: 2; }
+    .btn-nav { padding: 10px 20px; background: #3498db; color: white; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; }
+    #contador-slide { font-family: 'Oswald', sans-serif; min-width: 60px; text-align: center; }
+</style>
+
+<div class="controles-slides">
+    <div id="slide-info-serie" class="info-lateral"></div>
+    <div class="botoes-centrais">
+        <button class="btn-nav" onclick="mudarSlide(-1)">⬅ Anterior</button>
+        <span id="contador-slide"></span>
+        <button class="btn-nav" onclick="mudarSlide(1)">Próximo ➡</button>
+        <button class="btn-nav" onclick="toggleSlides()" style="background:#e74c3c;">Sair</button>
+    </div>
+    <div id="slide-info-aula" class="info-lateral" style="text-align: right;"></div>
+</div>
+</body>
+</html>
