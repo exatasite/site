@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2º Ano: Aula 20 - Esferas</title>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../estilo.css">
+    
+    <script>
+        MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true
+            }
+        };
+    </script>
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body>
+<button class="menu-toggle" onclick="toggleMenu()">☰</button>
+
+<nav id="menu-principal" class="nav-global">
+    <ul>
+        <li><a href="../index.html">🏠 Início</a></li>
+        <li><a href="../fisica_home.html">⚛️ Física</a></li>
+        <li><a href="../matematica_home.html">📐 Matemática</a></li>
+        <li><a href="../simulacoes_home.html">💻 Simulações</a></li>
+    </ul>
+</nav>
+
+<header id="topo">
+    <h1>MATEMÁTICA EM</h1>
+    <p>2º Ano | Aula 20: Esferas</p>
+    <button id="btn-slides" onclick="toggleSlides()">📺 Iniciar Modo Slides</button>
+</header>
+
+<div class="container">
+
+<main class="conteudo-principal">
+
+<div class="secao-aula">
+ <div class="container-resumo" id="resumo">
+    <h3>📚 Resumo </h3>
+    <section class="resumo-conteudo">
+        <p>A <strong>Esfera</strong> é um sólido de revolução gerado pela rotação completa de um semicírculo em torno de seu diâmetro. É o conjunto de todos os pontos no espaço tridimensional situados a uma distância menor ou igual a um raio $R$ de um ponto central $O$.</p>
+        <p>O estudo da esfera abrange o cálculo da sua **área superficial**, do seu **volume** e das propriedades geométricas das suas **seções planas** (cortes por planos secantes).</p>
+    </section>
+</div>
+
+<section class="conteudo-teorico-completo" id="teoria">
+    <div class="passo-teoria">
+        <h3>📖 Conceitos Fundamentais</h3>
+        <h4>1. Área da Superfície Esférica</h4>
+        <p>A superfície esférica é a "casca" que delimita a esfera. Sua área depende exclusivamente do raio $R$:</p>
+        <ul>
+            <li><strong>Área da Superfície ($A$):</strong> $A = 4\pi R^2$</li>
+        </ul>
+    </div>
+
+    <div class="passo-teoria">
+        <h4>2. Volume da Esfera</h4>
+        <p>O espaço tridimensional ocupado por uma esfera sólida de raio $R$ é dado por:</p>
+        <ul>
+            <li><strong>Volume ($V$):</strong> $V = \frac{4}{3}\pi R^3$</li>
+        </ul>
+    </div>
+
+    <div class="passo-teoria">
+        <h4>3. Seção Plana da Esfera</h4>
+        <p>Quando um plano intersecta uma esfera a uma distância $d$ de seu centro ($d < R$), a intersecção resulta em um círculo de raio $r$:</p>
+        <ul>
+            <li><strong>Relação Pitagórica da Seção:</strong> $R^2 = d^2 + r^2$</li>
+            <li>Quando o plano passa pelo centro ($d = 0$), o raio do corte é igual ao raio da esfera ($r = R$), formando a <strong>circunferência máxima</strong>.</li>
+        </ul>
+    </div>
+</section>
+
+<section class="aplicacoes-reais" id="aplicacoes">
+    <h3>💡 Matemática em Ação</h3>
+    <div class="cards-aplicacao">
+        <div class="card">
+            <h4>⚽ Esportes e Aerodinâmica</h4>
+            <p>Bolas de futebol, basquete e tênis adotam o formato esférico para garantir comportamento aerodinâmico uniforme e quiques simétricos em qualquer direção de impacto.</p>
+        </div>
+        <div class="card" style="border-left-color: #2ecc71;">
+            <h4>🌍 Astronomia e Geofísica</h4>
+            <p>A gravidade atrai a matéria de corpos celestes de grande massa em todas as direções para o centro com igual intensidade, resultando na forma aproximadamente esférica de planetas e estrelas.</p>
+        </div>
+    </div>
+</section>
+
+<section class="questoes-resolvidas" id="resolvidas">
+    <h3>✅ 5 Questões Resolvidas (R 1 a 5)</h3>
+    
+    <article class="questao">
+        <h4>R 1: Área da Superfície Esférica</h4>
+        <p><strong>Enunciado:</strong> Uma esfera possui raio $R = 3\text{ cm}$. Calcule a área de sua superfície esférica em função de $\pi$.</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong><br>
+            1. Fórmula da área: $A = 4\pi R^2$.<br>
+            2. Substituindo o raio: $A = 4\pi (3^2) = 4\pi \cdot 9 = \mathbf{36\pi\text{ cm}^2}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>R 2: Volume Básico da Esfera</h4>
+        <p><strong>Enunciado:</strong> Encontre o volume de uma esfera de raio $R = 6\text{ cm}$ em função de $\pi$.</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong><br>
+            1. Fórmula do volume: $V = \frac{4}{3}\pi R^3$.<br>
+            2. $V = \frac{4}{3}\pi (6^3) = \frac{4}{3}\pi (216) = 4 \cdot 72 \cdot \pi = \mathbf{288\pi\text{ cm}^3}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>R 3: Seção Plana e Pitágoras</h4>
+        <p><strong>Enunciado:</strong> Uma esfera de raio $R = 5\text{ cm}$ é seccionada por um plano que passa a uma distância $d = 3\text{ cm}$ do seu centro. Calcule o raio $r$ da seção obtida.</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong><br>
+            1. Relação métrica: $R^2 = d^2 + r^2$.<br>
+            2. $5^2 = 3^2 + r^2 \implies 25 = 9 + r^2 \implies r^2 = 16$.<br>
+            3. $r = \sqrt{16} = \mathbf{4\text{ cm}}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>R 4: Hemisfério (Sólido)</h4>
+        <p><strong>Enunciado:</strong> Um recipiente perfeitamente hemisférico (metade de uma esfera) tem raio $R = 4\text{ cm}$. Calcule a área total de sua superfície (casca + base plana).</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong><br>
+            1. Área curva (metade da superfície esférica): $A_{\text{curva}} = 2\pi R^2 = 2\pi (4^2) = 32\pi\text{ cm}^2$.<br>
+            2. Área da base plana (círculo de raio $R$): $A_{\text{base}} = \pi R^2 = 16\pi\text{ cm}^2$.<br>
+            3. Área Total: $A_t = 32\pi + 16\pi = \mathbf{48\pi\text{ cm}^2}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>R 5: Obtendo o Raio a partir da Área</h4>
+        <p><strong>Enunciado:</strong> A superfície de uma esfera mede $100\pi\text{ cm}^2$. Determine o volume dessa esfera.</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong><br>
+            1. Encontrando $R$: $A = 4\pi R^2 \implies 100\pi = 4\pi R^2 \implies R^2 = 25 \implies R = 5\text{ cm}$.<br>
+            2. Calculando o volume: $V = \frac{4}{3}\pi (5^3) = \frac{4}{3}\pi (125) = \mathbf{\frac{500\pi}{3}\text{ cm}^3}$.</p>
+        </div>
+    </article>
+</section>
+
+<section class="questoes-propostas" id="propostas">
+    <h3>✍️ 5 Questões Propostas (P 6 a 10)</h3>
+
+    <article class="questao">
+        <h4>P 6: Raio e Diâmetro</h4>
+        <p><strong>Enunciado:</strong> Uma esfera tem diâmetro de $8\text{ cm}$. Calcule a área da sua superfície esférica em função de $\pi$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> Se o diâmetro é $8\text{ cm}$, o raio é $R = 4\text{ cm}$.<br>
+            $A = 4\pi R^2 = 4\pi (4^2) = 4\pi \cdot 16 = \mathbf{64\pi\text{ cm}^2}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 7: Capacidade e Litros</h4>
+        <p><strong>Enunciado:</strong> Um reservatório esférico tem raio $R = 3\text{ m}$. Quantos litros de água cabem no reservatório? (Adote $\pi = 3,14$).</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong><br>
+            1. Volume: $V = \frac{4}{3}\pi R^3 = \frac{4}{3} \cdot 3,14 \cdot (3^3) = \frac{4}{3} \cdot 3,14 \cdot 27 = 4 \cdot 3,14 \cdot 9 = 113,04\text{ m}^3$.<br>
+            2. Como $1\text{ m}^3 = 1000\text{ L}$, capacidade = $113,04 \cdot 1000 = \mathbf{113040\text{ litros}}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 8: Área da Seção Plana</h4>
+        <p><strong>Enunciado:</strong> Uma esfera de raio $10\text{ cm}$ é cortada por um plano a $6\text{ cm}$ do centro. Calcule a área do círculo gerado pelo corte.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong><br>
+            1. Raio da seção: $R^2 = d^2 + r^2 \implies 10^2 = 6^2 + r^2 \implies 100 = 36 + r^2 \implies r^2 = 64 \implies r = 8\text{ cm}$.<br>
+            2. Área do círculo: $A_{\text{seção}} = \pi r^2 = \pi (8^2) = \mathbf{64\pi\text{ cm}^2}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 9: Efeito da Variação do Raio no Volume</h4>
+        <p><strong>Enunciado:</strong> Se dobrarmos o raio de uma esfera, o seu volume aumentará quantas vezes?</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong><br>
+            Volume inicial: $V = \frac{4}{3}\pi R^3$.<br>
+            Novo volume: $V' = \frac{4}{3}\pi (2R)^3 = \frac{4}{3}\pi (8R^3) = 8 \cdot \left(\frac{4}{3}\pi R^3\right) = 8V$.<br>
+            O volume aumentará **8 vezes**.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 10: Esfera Inscrita no Cubo</h4>
+        <p><strong>Enunciado:</strong> Uma esfera está perfeitamente inscrita em um cubo de aresta $a = 6\text{ cm}$. Determine o volume dessa esfera.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong><br>
+            1. Quando a esfera está inscrita no cubo, seu diâmetro é igual à aresta do cubo: $2R = 6 \implies R = 3\text{ cm}$.<br>
+            2. Volume: $V = \frac{4}{3}\pi (3^3) = \frac{4}{3}\pi (27) = \mathbf{36\pi\text{ cm}^3}$.</p>
+        </div>
+    </article>
+</section>
+
+<section class="TESTE" id="testes">
+    <h3>🎓 TESTES (T 11 a 15)</h3>
+
+    <div class="card" style="text-align:center; padding:60px 20px; background:#f8f9fa; border:2px dashed #3498db; border-radius:12px; margin-top:20px;">
+        <h2 style="color:#3498db; font-size:2.5rem; margin-bottom:15px;">
+            🚧 EM BREVE!
+        </h2>
+
+        <p style="font-size:1.2rem; color:#555;">
+            Questões de vestibulares serão disponibilizadas em breve.
+        </p>
+    </div>
+</section>
+
+</div>
+</main>
+
+<aside class="menu-lateral">
+    <iframe src="../menu_matematica.html" style="width:100%; border:none; height:600px;"></iframe>
+</aside>
+
+</div>
+
+<script>
+function toggleGabarito(botao) {
+    const gabarito = botao.nextElementSibling;
+    if (gabarito.style.display === "none" || gabarito.style.display === "") {
+        gabarito.style.display = "block";
+        botao.textContent = "Esconder Gabarito e Resolução";
+        botao.style.backgroundColor = "#2c3e50";
+    } else {
+        gabarito.style.display = "none";
+        botao.textContent = "Ver Gabarito e Resolução";
+        botao.style.backgroundColor = "#3498db";
+    }
+}
+
+function toggleMenu() {
+    const menuGlobal = document.getElementById("menu-principal");
+    if (menuGlobal) menuGlobal.classList.toggle("ativo");
+}
+
+let slideAtual = 0;
+let slides = [];
+
+function prepararSlides() {
+    const seletores = '.container-resumo, .passo-teoria, .aplicacoes-reais, .questao';
+    slides = document.querySelectorAll(seletores);
+}
+
+function toggleSlides() {
+    prepararSlides();
+    const body = document.body;
+    if (!body.classList.contains('modo-slides')) {
+        body.classList.add('modo-slides');
+        slideAtual = 0;
+        mostrarSlide(slideAtual);
+    } else {
+        body.classList.remove('modo-slides');
+        window.location.reload(); 
+    }
+}
+
+function mostrarSlide(n) {
+    slides.forEach(s => {
+        s.classList.remove('slide-ativo');
+        s.style.display = 'none';
+    });
+    const slide = slides[n];
+    slide.classList.add('slide-ativo');
+    slide.style.display = 'flex'; 
+
+    if (slide.classList.contains('questao') && !slide.querySelector('.btn-gabarito')) {
+        const resolucoes = slide.querySelectorAll('.resolucao-bloco');
+        resolucoes.forEach(r => r.style.display = 'block');
+    } else {
+        const gabaritos = slide.querySelectorAll('.gabarito-resolucao');
+        gabaritos.forEach(g => g.style.display = 'none');
+        const botoes = slide.querySelectorAll('.btn-gabarito');
+        botoes.forEach(b => {
+            b.textContent = "Ver Gabarito e Resolução";
+            b.style.backgroundColor = "#3498db";
+        });
+    }
+
+    const pHeader = document.querySelector('header p').innerText;
+    const partes = pHeader.split('|');
+    if(partes.length > 1) {
+        document.getElementById('slide-info-serie').innerText = partes[0].trim();
+        document.getElementById('slide-info-aula').innerText = partes[1].trim();
+    }
+    document.getElementById('contador-slide').innerText = (n + 1) + " / " + slides.length;
+    if (window.MathJax) MathJax.typesetPromise();
+}
+
+function mudarSlide(direcao) {
+    slideAtual += direcao;
+    if (slideAtual >= slides.length) slideAtual = 0;
+    if (slideAtual < 0) slideAtual = slides.length - 1;
+    mostrarSlide(slideAtual);
+}
+
+document.addEventListener('keydown', function(event) {
+    if (document.body.classList.contains('modo-slides')) {
+        switch(event.key) {
+            case 'ArrowRight': 
+            case 'PageDown':   
+            case 'Enter':      
+            case ' ':          
+                mudarSlide(1);
+                break;
+                
+            case 'ArrowLeft':  
+            case 'PageUp':     
+                mudarSlide(-1);
+                break;
+
+            case 'Escape':     
+                toggleSlides();
+                break;
+        }
+    }
+});
+</script>
+
+<style>
+    body.modo-slides { overflow: hidden; background-color: #1a1a1a; }
+    body.modo-slides .menu-lateral, body.modo-slides header, body.modo-slides .menu-toggle, body.modo-slides #btn-slides { display: none !important; }
+    .slide-ativo {
+        display: flex !important; flex-direction: column; align-items: center; justify-content: flex-start;
+        position: fixed; top: 0; left: 0; width: 100vw; height: calc(100vh - 70px);
+        background: #ffffff; padding: 40px; z-index: 999; overflow-y: auto !important; 
+        box-sizing: border-box; text-align: center;
+    }
+    .controles-slides {
+        position: fixed; bottom: 0; left: 0; width: 100%; height: 70px;
+        background: #2c3e50; color: white; display: none; 
+        justify-content: space-between; align-items: center; padding: 0 20px; z-index: 1001; box-sizing: border-box;
+    }
+    body.modo-slides .controles-slides { display: flex; }
+    .info-lateral { flex: 1; font-family: 'Oswald', sans-serif; font-size: 0.9rem; color: #bdc3c7; }
+    .botoes-centrais { display: flex; align-items: center; gap: 15px; justify-content: center; flex: 2; }
+    .btn-nav { padding: 10px 20px; background: #3498db; color: white; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; }
+    #contador-slide { font-family: 'Oswald', sans-serif; min-width: 60px; text-align: center; }
+</style>
+
+<div class="controles-slides">
+    <div id="slide-info-serie" class="info-lateral"></div>
+    <div class="botoes-centrais">
+        <button class="btn-nav" onclick="mudarSlide(-1)">⬅ Anterior</button>
+        <span id="contador-slide"></span>
+        <button class="btn-nav" onclick="mudarSlide(1)">Próximo ➡</button>
+        <button class="btn-nav" onclick="toggleSlides()" style="background:#e74c3c;">Sair</button>
+    </div>
+    <div id="slide-info-aula" class="info-lateral" style="text-align: right;"></div>
+</div>
+</body>
+</html>
