@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2º Ano: Aula 26 - Inscrição e Circunscrição de Sólidos</title>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../estilo.css">
+    <script>
+        MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']], processEscapes: true } };
+    </script>
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        body.modo-slides { overflow: hidden !important; background-color: #1a1a1a !important; margin: 0; padding: 0; }
+        body.modo-slides .menu-lateral, body.modo-slides header, body.modo-slides .menu-toggle, body.modo-slides #btn-slides, body.modo-slides .nav-global { display: none !important; }
+        .slide-ativo { display: flex !important; flex-direction: column; align-items: center; justify-content: center; position: fixed; top: 0; left: 0; width: 100vw; height: calc(100vh - 70px); background: #ffffff; padding: 40px; z-index: 999; overflow-y: auto !important; box-sizing: border-box; text-align: left; }
+        .slide-ativo > * { max-width: 900px; width: 100%; }
+        .controles-slides { position: fixed; bottom: 0; left: 0; width: 100%; height: 70px; background: #2c3e50; color: white; display: none; justify-content: space-between; align-items: center; padding: 0 20px; z-index: 1001; box-sizing: border-box; }
+        body.modo-slides .controles-slides { display: flex !important; }
+        .info-lateral { flex: 1; font-family: 'Oswald', sans-serif; font-size: 0.9rem; color: #bdc3c7; }
+        .botoes-centrais { display: flex; align-items: center; gap: 15px; justify-content: center; flex: 2; }
+        .btn-nav { padding: 10px 20px; background: #3498db; color: white; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; font-size: 0.9rem; }
+        .btn-nav:hover { background: #2980b9; }
+        #contador-slide { font-family: 'Oswald', sans-serif; min-width: 60px; text-align: center; font-size: 1.1rem; }
+    </style>
+</head>
+<body>
+<button class="menu-toggle" onclick="toggleMenu()">☰</button>
+<nav id="menu-principal" class="nav-global"><ul>
+    <li><a href="../index.html">🏠 Início</a></li>
+    <li><a href="../ensino_medio.html">📚 Ensino Médio</a></li>
+    <li><a href="../ensino_superior.html">🎓 Ensino Superior</a></li>
+</ul></nav>
+<header id="topo">
+    <h1>MATEMÁTICA EM</h1>
+    <p>2º Ano | Aula 26: Inscrição e Circunscrição de Sólidos</p>
+    <button id="btn-slides" onclick="toggleSlides()">📺 Iniciar Modo Slides</button>
+</header>
+<div class="container"><main class="conteudo-principal"><div class="secao-aula">
+
+<div class="container-resumo" id="resumo">
+    <h3>📚 Resumo</h3>
+    <section class="resumo-conteudo">
+        <p>Um sólido está <strong>inscrito</strong> em outro quando fica dentro dele tocando suas faces (ou superfícies) da maneira mais "justa" possível; o sólido de fora está <strong>circunscrito</strong> ao de dentro. O segredo é sempre o mesmo: <strong>cortar os sólidos por um plano conveniente</strong> (uma seção) e resolver o problema na geometria plana.</p>
+        <p style="text-align: center;">$$\text{cubo: } r = \frac{a}{2},\ \ R = \frac{a\sqrt{3}}{2} \qquad \text{paralelepípedo: } R = \frac{\sqrt{a^2+b^2+c^2}}{2} \qquad \text{cone equilátero: } r = \frac{h}{3},\ \ R = \frac{2h}{3}$$</p>
+    </section>
+</div>
+
+<section class="conteudo-teorico-completo" id="teoria">
+    <div class="passo-teoria">
+        <h3>📖 Inscrição e Circunscrição de Sólidos</h3>
+        <h4>1. A Estratégia da Seção</h4>
+        <p>Quase todo problema de inscrição se resolve escolhendo um plano que passe pelo centro (ou pelo eixo) dos sólidos. Nesse corte, a esfera vira um <strong>círculo máximo</strong>, o cone vira um <strong>triângulo isósceles</strong> e o cilindro vira um <strong>retângulo</strong>.</p>
+        <figure class="figura-aula figura-grande">
+            <svg viewBox="0 0 600 230" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Seções: esfera inscrita no cubo, esfera circunscrita ao cubo e esferas no cone equilátero" style="width:100%; max-width:620px; display:block; margin:0 auto;">
+  <g fill="none" stroke-width="2.5">
+    <rect x="30" y="40" width="140" height="140" fill="#eaf2fb" stroke="#2c3e50"/>
+    <circle cx="100" cy="110" r="70" stroke="#e74c3c"/>
+    <rect x="232" y="61" width="140" height="99" fill="#eaf2fb" stroke="#2c3e50"/>
+    <circle cx="302" cy="110.5" r="86" stroke="#e74c3c"/>
+    <line x1="232" y1="160" x2="372" y2="61" stroke="#3498db" stroke-dasharray="6,4"/>
+    <polygon points="440,190 580,190 510,68.8" fill="#eaf2fb" stroke="#2c3e50"/>
+    <circle cx="510" cy="149.6" r="40.4" stroke="#e74c3c"/>
+    <circle cx="510" cy="149.6" r="80.8" stroke="#2ecc71" stroke-dasharray="6,4"/>
+  </g>
+  <g font-family="Oswald, sans-serif" font-size="14" fill="#2c3e50" text-anchor="middle">
+    <text x="100" y="205">inscrita: 2r = a</text>
+    <text x="302" y="215">circunscrita: 2R = a√3</text>
+    <text x="510" y="225">cone equilátero: r = h/3, R = 2h/3</text>
+  </g>
+</svg>
+            <figcaption>Figura 1: Seções planas: esfera inscrita no cubo, esfera circunscrita ao cubo (corte pela diagonal) e esferas no cone equilátero.</figcaption>
+        </figure>
+    </div>
+
+    <div class="passo-teoria">
+        <h4>2. Esfera e Cubo (aresta $a$)</h4>
+        <ul>
+            <li><strong>Esfera inscrita</strong> (toca as 6 faces): o diâmetro é a aresta, $r = \dfrac{a}{2}$;</li>
+            <li><strong>Esfera tangente às arestas</strong>: o diâmetro é a diagonal da face, $r = \dfrac{a\sqrt{2}}{2}$;</li>
+            <li><strong>Esfera circunscrita</strong> (passa pelos 8 vértices): o diâmetro é a diagonal do cubo, $R = \dfrac{a\sqrt{3}}{2}$.</li>
+        </ul>
+        <p>Para o <strong>paralelepípedo retângulo</strong> de dimensões $a$, $b$ e $c$, a esfera circunscrita tem diâmetro igual à diagonal: $R = \dfrac{\sqrt{a^2 + b^2 + c^2}}{2}$.</p>
+    </div>
+
+    <div class="passo-teoria">
+        <h4>3. Esfera e Cilindro</h4>
+        <ul>
+            <li><strong>Esfera inscrita no cilindro</strong>: só é possível no cilindro <strong>equilátero</strong> ($h = 2r$). Arquimedes mostrou que $V_{esf} = \dfrac{2}{3}V_{cil}$ e que a área da esfera é igual à área lateral do cilindro;</li>
+            <li><strong>Cilindro inscrito na esfera</strong>: o centro da esfera é o ponto médio do eixo, e vale $R^2 = r^2 + \left(\dfrac{h}{2}\right)^2$.</li>
+        </ul>
+        <p style="text-align: center; font-size: 1.15rem; background-color: #f8f9fa; padding: 15px; border-left: 5px solid #3498db; margin: 20px 0;">
+            $$V_{esfera} = \frac{2}{3}\,V_{cilindro\ circunscrito}$$
+        </p>
+    </div>
+
+    <div class="passo-teoria">
+        <h4>4. Esfera e Cone</h4>
+        <ul>
+            <li>A seção meridiana do cone é um triângulo isósceles. A esfera inscrita corresponde ao <strong>círculo inscrito</strong> nesse triângulo: $r = \dfrac{\text{área}}{\text{semiperímetro}}$;</li>
+            <li>A esfera circunscrita corresponde ao <strong>círculo circunscrito</strong>: com o centro no eixo, $R^2 = R_b^2 + (h - R)^2$, sendo $R_b$ o raio da base;</li>
+            <li>No <strong>cone equilátero</strong> ($g = 2R_b$, $h = R_b\sqrt{3}$) a seção é um triângulo equilátero, e os centros coincidem no baricentro: $r = \dfrac{h}{3}$ e $R = \dfrac{2h}{3}$.</li>
+        </ul>
+    </div>
+
+    <div class="passo-teoria">
+        <h4>5. Outros Casos Clássicos</h4>
+        <ul>
+            <li><strong>Cone inscrito no cilindro</strong> (mesma base e altura): $V_{cone} = \dfrac{1}{3}V_{cil}$;</li>
+            <li><strong>Tetraedro regular</strong> de aresta $a$: $r = \dfrac{a\sqrt{6}}{12}$ e $R = \dfrac{a\sqrt{6}}{4}$, ou seja, $R = 3r$;</li>
+            <li><strong>Pirâmide inscrita na esfera</strong>: os vértices da base estão numa circunferência da esfera e o vértice também está na superfície.</li>
+        </ul>
+    </div>
+</section>
+
+<section class="aplicacoes-reais" id="aplicacoes">
+    <h3>💡 Matemática em Ação</h3>
+    <div class="cards-aplicacao">
+        <div class="card">
+            <h4>🎾 Lata de Bolas de Tênis</h4>
+            <p>Três bolas empilhadas numa lata justa: o cilindro tem altura $6r$ e volume $6\pi r^3$, e as bolas ocupam $3 \cdot \dfrac{4}{3}\pi r^3 = 4\pi r^3$, isto é, $\dfrac{2}{3}$ da lata. É o resultado de Arquimedes aplicado a uma embalagem.</p>
+        </div>
+        <div class="card" style="border-left-color: #2ecc71;">
+            <h4>🏛️ O Túmulo de Arquimedes</h4>
+            <p>Arquimedes considerava a razão $\dfrac{2}{3}$ entre a esfera e o cilindro circunscrito sua maior descoberta e pediu que uma esfera inscrita num cilindro fosse gravada em seu túmulo, que Cícero relatou ter encontrado séculos depois.</p>
+        </div>
+    </div>
+</section>
+<section class="questoes-resolvidas" id="resolvidas">
+    <h3>✅ 5 Questões Resolvidas (R 1 a 5)</h3>
+    <article class="questao">
+        <h4>R 1: Esferas e o Cubo</h4>
+        <p><strong>Enunciado:</strong> Um cubo tem aresta $6$ cm. Calcule o raio da esfera inscrita, o raio da esfera circunscrita e o volume da esfera inscrita.</p>
+        <div class="resolucao-bloco"><p><strong>Resolução:</strong><br>Esfera inscrita: o diâmetro é a aresta, $2r = 6 \implies r = \mathbf{3}$ cm.<br>Esfera circunscrita: o diâmetro é a diagonal do cubo, $2R = 6\sqrt{3} \implies R = \mathbf{3\sqrt{3}}$ cm.<br>Volume da inscrita: $V = \dfrac{4}{3}\pi \cdot 3^3 = \mathbf{36\pi}$ cm³.</p></div>
+    </article>
+    <article class="questao">
+        <h4>R 2: Esfera Circunscrita ao Paralelepípedo</h4>
+        <p><strong>Enunciado:</strong> Um paralelepípedo retângulo de dimensões $2$ cm, $3$ cm e $6$ cm está inscrito em uma esfera. Calcule o raio e a área da superfície dessa esfera.</p>
+        <div class="resolucao-bloco"><p><strong>Resolução:</strong><br>O diâmetro da esfera é a diagonal do paralelepípedo: $d = \sqrt{2^2 + 3^2 + 6^2} = \sqrt{49} = 7$ cm.<br>$R = \dfrac{7}{2} = \mathbf{3{,}5}$ cm.<br>Área: $A = 4\pi R^2 = 4\pi \cdot \dfrac{49}{4} = \mathbf{49\pi}$ cm².</p></div>
+    </article>
+    <article class="questao">
+        <h4>R 3: A Descoberta de Arquimedes</h4>
+        <p><strong>Enunciado:</strong> Uma esfera de raio $3$ cm está inscrita em um cilindro (tangencia as duas bases e a superfície lateral). Compare o volume da esfera com o do cilindro.</p>
+        <div class="resolucao-bloco"><p><strong>Resolução:</strong><br>O cilindro é equilátero: raio $3$ cm e altura $h = 2 \cdot 3 = 6$ cm.<br>$V_{cil} = \pi \cdot 3^2 \cdot 6 = 54\pi$ cm³ e $V_{esf} = \dfrac{4}{3}\pi \cdot 27 = 36\pi$ cm³.<br>Razão: $\dfrac{V_{esf}}{V_{cil}} = \dfrac{36\pi}{54\pi} = \mathbf{\dfrac{2}{3}}$ (resultado de Arquimedes).</p></div>
+    </article>
+    <article class="questao">
+        <h4>R 4: Esferas e o Cone Equilátero</h4>
+        <p><strong>Enunciado:</strong> Um cone equilátero tem raio da base $6$ cm. Calcule os raios das esferas inscrita e circunscrita a esse cone.</p>
+        <div class="resolucao-bloco"><p><strong>Resolução:</strong><br>Cone equilátero: geratriz $g = 2 \cdot 6 = 12$ cm; a seção meridiana é um triângulo equilátero de lado $12$ e altura $h = 6\sqrt{3}$ cm.<br>O centro das esferas é o baricentro desse triângulo: inscrita $r = \dfrac{h}{3} = \mathbf{2\sqrt{3}}$ cm.<br>Circunscrita: $R = \dfrac{2h}{3} = \mathbf{4\sqrt{3}}$ cm.</p></div>
+    </article>
+    <article class="questao">
+        <h4>R 5: Cilindro Inscrito na Esfera</h4>
+        <p><strong>Enunciado:</strong> Um cilindro de raio da base $4$ cm está inscrito em uma esfera de raio $5$ cm. Calcule a altura e o volume do cilindro.</p>
+        <div class="resolucao-bloco"><p><strong>Resolução:</strong><br>O centro da esfera é o ponto médio do eixo do cilindro: $R^2 = r^2 + \left(\dfrac{h}{2}\right)^2 \implies 25 = 16 + \left(\dfrac{h}{2}\right)^2$.<br>$\dfrac{h}{2} = 3 \implies h = \mathbf{6}$ cm.<br>$V = \pi \cdot 4^2 \cdot 6 = \mathbf{96\pi}$ cm³.</p></div>
+    </article>
+</section>
+
+<section class="questoes-propostas" id="propostas">
+    <h3>✍️ 10 Questões Propostas (P 6 a 15)</h3>
+    <article class="questao">
+        <h4>P 6: Esfera no Cubo</h4>
+        <p><strong>Enunciado:</strong> Uma esfera está inscrita em um cubo de aresta $10$ cm. Calcule o raio e o volume da esfera.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>$r = \dfrac{10}{2} = 5$ cm.<br>$V = \dfrac{4}{3}\pi \cdot 125 = \mathbf{\dfrac{500\pi}{3}}$ cm³.</p></div>
+    </article>
+    <article class="questao">
+        <h4>P 7: Da Esfera ao Cubo</h4>
+        <p><strong>Enunciado:</strong> Uma esfera de raio $4\sqrt{3}$ cm está circunscrita a um cubo. Calcule a aresta e o volume do cubo.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>$R = \dfrac{a\sqrt{3}}{2} \implies 4\sqrt{3} = \dfrac{a\sqrt{3}}{2} \implies a = \mathbf{8}$ cm.<br>$V = 8^3 = \mathbf{512}$ cm³.</p></div>
+    </article>
+    <article class="questao">
+        <h4>P 8: Cubo Inscrito na Esfera</h4>
+        <p><strong>Enunciado:</strong> Um cubo está inscrito em uma esfera de raio $\sqrt{3}$ cm. Calcule a área total do cubo.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>Diagonal do cubo $=$ diâmetro: $a\sqrt{3} = 2\sqrt{3} \implies a = 2$ cm.<br>Área total: $6a^2 = 6 \cdot 4 = \mathbf{24}$ cm².</p></div>
+    </article>
+    <article class="questao">
+        <h4>P 9: Esfera Tangente às Arestas</h4>
+        <p><strong>Enunciado:</strong> Calcule o raio da esfera que tangencia todas as arestas de um cubo de aresta $4$ cm.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>O centro é o centro do cubo e o ponto de tangência é o ponto médio de cada aresta.<br>O diâmetro é a diagonal de uma face: $2r = 4\sqrt{2} \implies r = \mathbf{2\sqrt{2}}$ cm.</p></div>
+    </article>
+    <article class="questao">
+        <h4>P 10: Paralelepípedo na Esfera</h4>
+        <p><strong>Enunciado:</strong> Um paralelepípedo retângulo de dimensões $1$ cm, $2$ cm e $2$ cm está inscrito em uma esfera. Calcule o volume da esfera.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>$d = \sqrt{1 + 4 + 4} = 3$ cm, logo $R = 1{,}5$ cm.<br>$V = \dfrac{4}{3}\pi \cdot \left(\dfrac{3}{2}\right)^3 = \dfrac{4}{3}\pi \cdot \dfrac{27}{8} = \mathbf{\dfrac{9\pi}{2}}$ cm³.</p></div>
+    </article>
+    <article class="questao">
+        <h4>P 11: Cone Dentro do Cilindro</h4>
+        <p><strong>Enunciado:</strong> Um cone está inscrito em um cilindro de raio $3$ cm e altura $10$ cm (mesma base e mesma altura). Calcule o volume do espaço do cilindro não ocupado pelo cone.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>$V_{cil} = \pi \cdot 9 \cdot 10 = 90\pi$ cm³ e $V_{cone} = \dfrac{1}{3} \cdot 90\pi = 30\pi$ cm³.<br>Espaço livre: $90\pi - 30\pi = \mathbf{60\pi}$ cm³.</p></div>
+    </article>
+    <article class="questao">
+        <h4>P 12: Áreas de Arquimedes</h4>
+        <p><strong>Enunciado:</strong> Um cilindro está circunscrito a uma esfera de raio $2$ cm. Compare a área lateral do cilindro com a área da superfície esférica.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>Cilindro equilátero: raio $2$ e altura $4$. Área lateral: $2\pi \cdot 2 \cdot 4 = 16\pi$ cm².<br>Esfera: $4\pi \cdot 2^2 = 16\pi$ cm². As áreas são <strong>iguais</strong> ($16\pi$ cm²).</p></div>
+    </article>
+    <article class="questao">
+        <h4>P 13: Esfera Inscrita no Cone</h4>
+        <p><strong>Enunciado:</strong> Um cone reto tem raio da base $6$ cm e altura $8$ cm. Calcule o raio da esfera inscrita nesse cone.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>Geratriz: $g = \sqrt{36 + 64} = 10$ cm. A seção meridiana é um triângulo isósceles de lados $10$, $10$ e $12$, com área $\dfrac{12 \cdot 8}{2} = 48$ cm².<br>O raio da esfera é o raio do círculo inscrito nesse triângulo: $r = \dfrac{\text{área}}{\text{semiperímetro}} = \dfrac{48}{16} = \mathbf{3}$ cm.</p></div>
+    </article>
+    <article class="questao">
+        <h4>P 14: O Tetraedro Regular</h4>
+        <p><strong>Enunciado:</strong> Um tetraedro regular tem aresta $6$ cm. Sabendo que $r = \dfrac{a\sqrt{6}}{12}$ e $R = \dfrac{a\sqrt{6}}{4}$, calcule os raios das esferas inscrita e circunscrita.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>$r = \dfrac{6\sqrt{6}}{12} = \mathbf{\dfrac{\sqrt{6}}{2}}$ cm.<br>$R = \dfrac{6\sqrt{6}}{4} = \mathbf{\dfrac{3\sqrt{6}}{2}}$ cm (observe que $R = 3r$).</p></div>
+    </article>
+    <article class="questao">
+        <h4>P 15: Esfera Circunscrita ao Cone</h4>
+        <p><strong>Enunciado:</strong> Um cone reto de raio da base $4$ cm e altura $8$ cm está inscrito em uma esfera. Calcule o raio da esfera.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>O centro está no eixo, a uma distância $8 - R$ da base. O raio liga o centro a um ponto da circunferência da base: $R^2 = 4^2 + (8 - R)^2$.<br>$R^2 = 16 + 64 - 16R + R^2 \implies 16R = 80 \implies R = \mathbf{5}$ cm.</p></div>
+    </article>
+</section>
+
+<section class="TESTE" id="testes">
+    <h3>🎓 TESTES (T 16 a 20)</h3>
+    <article class="questao">
+        <h4>T 16: (EsPCEx 2018) Esfera Inscrita no Cubo</h4>
+        <p>O volume de uma esfera inscrita em um cubo com volume $216$ cm³ é igual a</p>
+        <p>A) $38\pi$ cm³<br>B) $36\pi$ cm³<br>C) $34\pi$ cm³<br>D) $32\pi$ cm³<br>E) $30\pi$ cm³</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>B</strong>.<br>Aresta do cubo: $a = \sqrt[3]{216} = 6$ cm. O diâmetro da esfera inscrita é a aresta, logo $r = 3$ cm.<br>$V = \dfrac{4}{3}\pi \cdot 3^3 = \mathbf{36\pi}$ cm³.</p></div>
+    </article>
+    <article class="questao">
+        <h4>T 17: (EsPCEx 2019) Esfera Inscrita no Cone Equilátero</h4>
+        <p>Uma esfera de raio $10$ cm está inscrita em um cone equilátero. O volume desse cone, em cm³, é igual a</p>
+        <p>A) $1000\pi$<br>B) $1500\pi$<br>C) $2000\pi$<br>D) $2500\pi$<br>E) $3000\pi$</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>E</strong>.<br>A seção meridiana é um triângulo equilátero; o raio da esfera é o raio do círculo inscrito, que vale $\dfrac{1}{3}$ da altura: $h = 3 \cdot 10 = 30$ cm.<br>No triângulo equilátero de lado $2R$: $h = R\sqrt{3} \implies R = \dfrac{30}{\sqrt{3}} = 10\sqrt{3}$ cm.<br>$V = \dfrac{1}{3}\pi R^2 h = \dfrac{1}{3}\pi \cdot 300 \cdot 30 = \mathbf{3000\pi}$ cm³.</p></div>
+    </article>
+    <article class="questao">
+        <h4>T 18: (EsPCEx 2021) Esfera Circunscrita ao Cone Equilátero</h4>
+        <p>Calculando-se o volume de uma esfera circunscrita a um cone equilátero cujo raio da base mede $\sqrt{3}$ cm, obtém-se</p>
+        <p>A) $\dfrac{8\pi}{3}$ cm³<br>B) $\dfrac{4\pi}{3}$ cm³<br>C) $\dfrac{16\pi}{3}$ cm³<br>D) $\dfrac{64\pi}{3}$ cm³<br>E) $\dfrac{32\pi}{3}$ cm³</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>E</strong>.<br>Seção meridiana: triângulo equilátero de lado $2\sqrt{3}$ cm e altura $h = \sqrt{3} \cdot \sqrt{3} = 3$ cm.<br>O raio da esfera circunscrita é o raio do círculo circunscrito ao triângulo: $R = \dfrac{2h}{3} = 2$ cm.<br>$V = \dfrac{4}{3}\pi \cdot 2^3 = \mathbf{\dfrac{32\pi}{3}}$ cm³.</p></div>
+    </article>
+    <article class="questao">
+        <h4>T 19: (UECE 2021.1) Pirâmide Inscrita na Esfera</h4>
+        <p>Considere uma pirâmide regular, cuja base é um quadrado, contida em uma esfera, de tal modo que a base da pirâmide contém o centro da esfera e os vértices da pirâmide sejam pontos da superfície esférica.</p>
+        <p>Se a medida do raio da esfera é igual a $1$ metro, então, a medida do volume da pirâmide em metros cúbicos é igual a</p>
+        <p>A) $\dfrac{2}{3}$<br>B) $\dfrac{3}{5}$<br>C) $\dfrac{3}{4}$<br>D) $\dfrac{1}{2}$</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>A</strong>.<br>A base está num círculo máximo (raio $1$): a diagonal do quadrado é $2$, logo o lado é $\sqrt{2}$ e a área da base é $2$ m².<br>O vértice é o ponto da esfera mais distante da base: altura $h = R = 1$ m.<br>$V = \dfrac{1}{3} \cdot 2 \cdot 1 = \mathbf{\dfrac{2}{3}}$ m³.</p></div>
+    </article>
+    <article class="questao">
+        <h4>T 20: (Questão autoral) A Bola na Lata</h4>
+        <p>Uma bola se encaixa perfeitamente em uma lata cilíndrica fechada, tocando a base, a tampa e a superfície lateral. O volume da lata é $54\pi$ cm³.</p>
+        <p>O volume da bola é:</p>
+        <p>A) $18\pi$ cm³<br>B) $27\pi$ cm³<br>C) $36\pi$ cm³<br>D) $40\pi$ cm³<br>E) $48\pi$ cm³</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>C</strong>.<br>Cilindro equilátero: $2\pi r^3 = 54\pi \implies r = 3$ cm, logo $V_{bola} = \frac{4}{3}\pi \cdot 27 = \mathbf{36\pi}$ cm³ ($\frac{2}{3}$ da lata).</p></div>
+    </article>
+</section>
+
+</div></main>
+<aside class="menu-lateral"><iframe src="../menu_matematica.html" style="width:100%; border:none; height:600px;"></iframe></aside>
+</div>
+<script>
+function toggleGabarito(botao) {
+    const gabarito = botao.nextElementSibling;
+    if (gabarito.style.display === "none" || gabarito.style.display === "") {
+        gabarito.style.display = "block"; botao.textContent = "Esconder Gabarito e Resolução"; botao.style.backgroundColor = "#2c3e50";
+    } else {
+        gabarito.style.display = "none"; botao.textContent = "Ver Gabarito e Resolução"; botao.style.backgroundColor = "#3498db";
+    }
+}
+function toggleMenu() { const m = document.getElementById("menu-principal"); if (m) m.classList.toggle("ativo"); }
+let slideAtual = 0; let slides = [];
+function prepararSlides() { slides = Array.from(document.querySelectorAll('.container-resumo, .passo-teoria, .card, .questao')); }
+function toggleSlides() {
+    prepararSlides(); const body = document.body;
+    if (!body.classList.contains('modo-slides')) { body.classList.add('modo-slides'); slideAtual = 0; mostrarSlide(slideAtual); }
+    else { body.classList.remove('modo-slides'); slides.forEach(s => { s.classList.remove('slide-ativo'); s.style.display = ''; }); }
+}
+function mostrarSlide(n) {
+    if (!slides.length) return;
+    slides.forEach(s => { s.classList.remove('slide-ativo'); s.style.display = 'none'; });
+    const slide = slides[n]; slide.classList.add('slide-ativo');
+    slide.querySelectorAll('.gabarito-resolucao').forEach(g => g.style.display = 'none');
+    slide.querySelectorAll('.btn-gabarito').forEach(b => { b.textContent = "Ver Gabarito e Resolução"; b.style.backgroundColor = "#3498db"; });
+    const pHeader = document.querySelector('header p');
+    if (pHeader) { const partes = pHeader.innerText.split('|'); if (partes.length > 1) {
+        document.getElementById('slide-info-serie').innerText = partes[0].trim();
+        document.getElementById('slide-info-aula').innerText = partes[1].trim(); } }
+    document.getElementById('contador-slide').innerText = (n + 1) + " / " + slides.length;
+    if (window.MathJax && window.MathJax.typesetPromise) { MathJax.typesetPromise(); }
+}
+function mudarSlide(d) { slideAtual += d; if (slideAtual >= slides.length) slideAtual = 0; if (slideAtual < 0) slideAtual = slides.length - 1; mostrarSlide(slideAtual); }
+document.addEventListener('keydown', function(event) {
+    if (document.body.classList.contains('modo-slides')) {
+        switch(event.key) {
+            case 'ArrowRight': case 'PageDown': case 'Enter': case ' ': event.preventDefault(); mudarSlide(1); break;
+            case 'ArrowLeft': case 'PageUp': event.preventDefault(); mudarSlide(-1); break;
+            case 'Escape': event.preventDefault(); toggleSlides(); break;
+        }
+    }
+});
+</script>
+<div class="controles-slides">
+    <div id="slide-info-serie" class="info-lateral"></div>
+    <div class="botoes-centrais">
+        <button class="btn-nav" onclick="mudarSlide(-1)">⬅ Anterior</button>
+        <span id="contador-slide"></span>
+        <button class="btn-nav" onclick="mudarSlide(1)">Próximo ➡</button>
+        <button class="btn-nav" onclick="toggleSlides()" style="background:#e74c3c;">Sair</button>
+    </div>
+    <div id="slide-info-aula" class="info-lateral" style="text-align: right;"></div>
+</div>
+</body>
+</html>
