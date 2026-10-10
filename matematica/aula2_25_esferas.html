@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2º Ano: Aula 25 - Esferas</title>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../estilo.css">
+    <script>
+        MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']], processEscapes: true } };
+    </script>
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        body.modo-slides { overflow: hidden !important; background-color: #1a1a1a !important; margin: 0; padding: 0; }
+        body.modo-slides .menu-lateral, body.modo-slides header, body.modo-slides .menu-toggle, body.modo-slides #btn-slides, body.modo-slides .nav-global { display: none !important; }
+        .slide-ativo { display: flex !important; flex-direction: column; align-items: center; justify-content: center; position: fixed; top: 0; left: 0; width: 100vw; height: calc(100vh - 70px); background: #ffffff; padding: 40px; z-index: 999; overflow-y: auto !important; box-sizing: border-box; text-align: left; }
+        .slide-ativo > * { max-width: 900px; width: 100%; }
+        .controles-slides { position: fixed; bottom: 0; left: 0; width: 100%; height: 70px; background: #2c3e50; color: white; display: none; justify-content: space-between; align-items: center; padding: 0 20px; z-index: 1001; box-sizing: border-box; }
+        body.modo-slides .controles-slides { display: flex !important; }
+        .info-lateral { flex: 1; font-family: 'Oswald', sans-serif; font-size: 0.9rem; color: #bdc3c7; }
+        .botoes-centrais { display: flex; align-items: center; gap: 15px; justify-content: center; flex: 2; }
+        .btn-nav { padding: 10px 20px; background: #3498db; color: white; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; font-size: 0.9rem; }
+        .btn-nav:hover { background: #2980b9; }
+        #contador-slide { font-family: 'Oswald', sans-serif; min-width: 60px; text-align: center; font-size: 1.1rem; }
+    </style>
+</head>
+<body>
+<button class="menu-toggle" onclick="toggleMenu()">☰</button>
+<nav id="menu-principal" class="nav-global"><ul>
+    <li><a href="../index.html">🏠 Início</a></li>
+    <li><a href="../ensino_medio.html">📚 Ensino Médio</a></li>
+    <li><a href="../ensino_superior.html">🎓 Ensino Superior</a></li>
+</ul></nav>
+<header id="topo">
+    <h1>MATEMÁTICA EM</h1>
+    <p>2º Ano | Aula 25: Esferas</p>
+    <button id="btn-slides" onclick="toggleSlides()">📺 Iniciar Modo Slides</button>
+</header>
+<div class="container"><main class="conteudo-principal"><div class="secao-aula">
+
+<div class="container-resumo" id="resumo">
+    <h3>📚 Resumo</h3>
+    <section class="resumo-conteudo">
+        <p>A <strong>esfera</strong> de centro $O$ e raio $R$ é o sólido formado por todos os pontos do espaço cuja distância a $O$ é menor ou igual a $R$; sua "casca" é a <strong>superfície esférica</strong>. Ela é gerada pela rotação de um semicírculo em torno do seu diâmetro.</p>
+        <p style="text-align: center;">$$A = 4\pi R^2 \qquad\qquad V = \frac{4}{3}\pi R^3 \qquad\qquad R^2 = r^2 + d^2 \ \text{(secção plana)}$$</p>
+    </section>
+</div>
+
+<section class="conteudo-teorico-completo" id="teoria">
+    <div class="passo-teoria">
+        <h3>📖 Esferas</h3>
+        <h4>1. Elementos e Secção Plana</h4>
+        <ul>
+            <li><strong>Centro ($O$) e raio ($R$);</strong> diâmetro $D = 2R$;</li>
+            <li>Todo plano que corta a esfera determina um <strong>círculo</strong>. Se o plano está a uma distância $d$ do centro, o raio $r$ da secção satisfaz $R^2 = r^2 + d^2$;</li>
+            <li>Quando o plano passa pelo centro ($d = 0$), a secção é um <strong>círculo máximo</strong>, de raio $R$ (como a linha do Equador na Terra).</li>
+        </ul>
+        <figure class="figura-aula figura-grande">
+            <svg viewBox="0 0 560 250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Esfera de raio R cortada por um plano a distância d do centro, gerando um círculo de raio r; e um fuso esférico de ângulo alfa" style="width:100%; max-width:580px; display:block; margin:0 auto;">
+  <circle cx="140" cy="125" r="100" fill="#eaf2fb" stroke="#2c3e50" stroke-width="2.5"/>
+  <ellipse cx="140" cy="125" rx="100" ry="22" fill="none" stroke="#95a5a6" stroke-width="1.5" stroke-dasharray="5,4"/>
+  <ellipse cx="140" cy="65" rx="80" ry="17" fill="#fdecea" stroke="#e74c3c" stroke-width="2"/>
+  <circle cx="140" cy="125" r="3.5" fill="#2c3e50"/><circle cx="140" cy="65" r="3" fill="#e74c3c"/>
+  <line x1="140" y1="125" x2="140" y2="65" stroke="#2ecc71" stroke-width="2.5"/>
+  <line x1="140" y1="65" x2="220" y2="65" stroke="#e74c3c" stroke-width="2.5"/>
+  <line x1="140" y1="125" x2="220" y2="65" stroke="#3498db" stroke-width="2.5"/>
+  <g font-family="Oswald, sans-serif" font-size="16">
+    <text x="126" y="142" fill="#2c3e50">O</text><text x="124" y="100" fill="#2ecc71">d</text><text x="176" y="60" fill="#e74c3c">r</text><text x="186" y="104" fill="#3498db">R</text>
+    <text x="70" y="245" fill="#2c3e50" font-size="14">R² = r² + d²</text>
+  </g>
+  <circle cx="420" cy="125" r="100" fill="#f8f9fa" stroke="#2c3e50" stroke-width="2.5"/>
+  <path d="M 420 25 A 30 100 0 0 0 420 225 A 70 100 0 0 0 420 25 Z" fill="#d5f5e3" stroke="#2ecc71" stroke-width="2"/>
+  <ellipse cx="420" cy="125" rx="100" ry="22" fill="none" stroke="#95a5a6" stroke-width="1.5" stroke-dasharray="5,4"/>
+  <line x1="420" y1="15" x2="420" y2="235" stroke="#7f8c8d" stroke-width="1.5" stroke-dasharray="4,3"/>
+  <g font-family="Oswald, sans-serif" font-size="15">
+    <text x="440" y="130" fill="#27ae60">fuso</text><text x="426" y="152" fill="#2c3e50">α</text>
+    <text x="350" y="245" fill="#2c3e50" font-size="14">fuso: (α/360°)·4πR²</text>
+  </g>
+</svg>
+            <figcaption>Figura 1: Secção plana a uma distância $d$ do centro (esquerda) e fuso esférico de ângulo $\alpha$ (direita).</figcaption>
+        </figure>
+    </div>
+
+    <div class="passo-teoria">
+        <h4>2. Área da Superfície Esférica e Volume</h4>
+        <p style="text-align: center; font-size: 1.15rem; background-color: #f8f9fa; padding: 15px; border-left: 5px solid #3498db; margin: 20px 0;">
+            $$A = 4\pi R^2 \qquad\qquad V = \frac{4}{3}\pi R^3$$
+        </p>
+        <p>A área da superfície esférica é igual a <strong>quatro círculos máximos</strong>. Como a área depende de $R^2$ e o volume de $R^3$, <strong>dobrar o raio multiplica a área por 4 e o volume por 8</strong>. O <strong>hemisfério</strong> (meia esfera) tem volume $\dfrac{2}{3}\pi R^3$.</p>
+    </div>
+
+    <div class="passo-teoria">
+        <h4>3. Fuso e Cunha Esféricos</h4>
+        <p>Girando um semicírculo de um ângulo $\alpha$ (em vez de uma volta completa), obtemos uma <strong>cunha esférica</strong> (um "gomo" sólido), cuja superfície curva é o <strong>fuso esférico</strong> (a "casca do gomo"). São frações proporcionais ao ângulo:</p>
+        <table style="margin: 15px auto; border-collapse: collapse; text-align: center; font-size: 1.05rem;">
+            <tr style="background-color: #2c3e50; color: white;"><th style="padding: 8px 14px;">Parte</th><th style="padding: 8px 14px;">Fórmula (ângulo $\alpha$ em graus)</th></tr>
+            <tr><td style="padding: 8px 14px; border: 1px solid #ccc;">Superfície esférica</td><td style="padding: 8px 14px; border: 1px solid #ccc;">$A = 4\pi R^2$</td></tr>
+            <tr style="background-color: #f8f9fa;"><td style="padding: 8px 14px; border: 1px solid #ccc;">Esfera</td><td style="padding: 8px 14px; border: 1px solid #ccc;">$V = \dfrac{4}{3}\pi R^3$</td></tr>
+            <tr><td style="padding: 8px 14px; border: 1px solid #ccc;">Fuso esférico</td><td style="padding: 8px 14px; border: 1px solid #ccc;">$A_{fuso} = \dfrac{\alpha}{360^\circ} \cdot 4\pi R^2$</td></tr>
+            <tr style="background-color: #f8f9fa;"><td style="padding: 8px 14px; border: 1px solid #ccc;">Cunha esférica</td><td style="padding: 8px 14px; border: 1px solid #ccc;">$V_{cunha} = \dfrac{\alpha}{360^\circ} \cdot \dfrac{4}{3}\pi R^3$</td></tr>
+        </table>
+    </div>
+</section>
+
+<section class="aplicacoes-reais" id="aplicacoes">
+    <h3>💡 Matemática em Ação</h3>
+    <div class="cards-aplicacao">
+        <div class="card">
+            <h4>🍊 Gomos e Fusos Horários</h4>
+            <p>Os gomos de uma laranja são cunhas esféricas, e as cascas dos gomos são fusos. Na Terra, os $24$ fusos horários são fusos esféricos de $\dfrac{360^\circ}{24} = 15^\circ$ cada.</p>
+        </div>
+        <div class="card" style="border-left-color: #2ecc71;">
+            <h4>⚙️ Rolamentos e Gotas</h4>
+            <p>Esferas de aço em rolamentos e gotas de chuva têm forma esférica: entre todos os sólidos de mesmo volume, a esfera é o de <strong>menor área de superfície</strong>, por isso a natureza a "prefere".</p>
+        </div>
+    </div>
+</section>
+<section class="questoes-resolvidas" id="resolvidas">
+    <h3>✅ 5 Questões Resolvidas (R 1 a 5)</h3>
+    <article class="questao">
+        <h4>R 1: Área e Volume</h4>
+        <p><strong>Enunciado:</strong> Uma esfera tem raio $3$ cm. Calcule a área da superfície esférica e o volume.</p>
+        <div class="resolucao-bloco"><p><strong>Resolução:</strong><br>Área: $A = 4\pi R^2 = 4\pi \cdot 9 = \mathbf{36\pi}$ cm².<br>Volume: $V = \dfrac{4}{3}\pi R^3 = \dfrac{4}{3}\pi \cdot 27 = \mathbf{36\pi}$ cm³.<br>(Coincidência numérica: só acontece para $R = 3$; as unidades são diferentes!)</p></div>
+    </article>
+    <article class="questao">
+        <h4>R 2: Secção Plana</h4>
+        <p><strong>Enunciado:</strong> Uma esfera de raio $10$ cm é cortada por um plano a $6$ cm do centro. Calcule o raio e a área da secção.</p>
+        <div class="resolucao-bloco"><p><strong>Resolução:</strong><br>O raio da esfera, o raio da secção e a distância ao centro formam um triângulo retângulo: $R^2 = r^2 + d^2$.<br>$100 = r^2 + 36 \implies r = \mathbf{8}$ cm.<br>Área da secção (círculo): $\pi \cdot 64 = \mathbf{64\pi}$ cm².</p></div>
+    </article>
+    <article class="questao">
+        <h4>R 3: Do Volume à Área</h4>
+        <p><strong>Enunciado:</strong> Uma esfera tem volume $288\pi$ cm³. Calcule o raio e a área da superfície.</p>
+        <div class="resolucao-bloco"><p><strong>Resolução:</strong><br>$\dfrac{4}{3}\pi R^3 = 288\pi \implies R^3 = 216 \implies R = 6$ cm.<br>$A = 4\pi \cdot 36 = \mathbf{144\pi}$ cm².</p></div>
+    </article>
+    <article class="questao">
+        <h4>R 4: Fuso e Cunha</h4>
+        <p><strong>Enunciado:</strong> Em uma esfera de raio $6$ cm, calcule a área do fuso e o volume da cunha correspondentes a um ângulo de $60^\circ$.</p>
+        <div class="resolucao-bloco"><p><strong>Resolução:</strong><br>O fuso e a cunha são a fração $\dfrac{60^\circ}{360^\circ} = \dfrac{1}{6}$ da superfície e da esfera.<br>Fuso: $\dfrac{1}{6} \cdot 4\pi \cdot 36 = \mathbf{24\pi}$ cm².<br>Cunha: $\dfrac{1}{6} \cdot \dfrac{4}{3}\pi \cdot 216 = \mathbf{48\pi}$ cm³.</p></div>
+    </article>
+    <article class="questao">
+        <h4>R 5: Derretendo Esferas</h4>
+        <p><strong>Enunciado:</strong> Uma esfera de chumbo de raio $6$ cm é derretida e, com o material, fazem-se esferas menores de raio $2$ cm. Quantas esferas pequenas são obtidas?</p>
+        <div class="resolucao-bloco"><p><strong>Resolução:</strong><br>As esferas são semelhantes, com razão $k = \dfrac{2}{6} = \dfrac{1}{3}$: cada pequena tem $\left(\dfrac{1}{3}\right)^3 = \dfrac{1}{27}$ do volume da grande.<br>Número de esferas: $\mathbf{27}$. (Conferência: $\dfrac{\frac{4}{3}\pi \cdot 216}{\frac{4}{3}\pi \cdot 8} = 27$.)</p></div>
+    </article>
+</section>
+
+<section class="questoes-propostas" id="propostas">
+    <h3>✍️ 10 Questões Propostas (P 6 a 15)</h3>
+    <article class="questao">
+        <h4>P 6: Volume</h4>
+        <p><strong>Enunciado:</strong> Calcule o volume de uma esfera de raio $6$ cm.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>$V = \dfrac{4}{3}\pi \cdot 216$.<br>$V = \mathbf{288\pi}$ cm³.</p></div>
+    </article>
+    <article class="questao">
+        <h4>P 7: Área</h4>
+        <p><strong>Enunciado:</strong> Calcule a área da superfície de uma esfera de diâmetro $10$ cm.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>$R = 5$ cm.<br>$A = 4\pi \cdot 25 = \mathbf{100\pi}$ cm².</p></div>
+    </article>
+    <article class="questao">
+        <h4>P 8: Da Área ao Volume</h4>
+        <p><strong>Enunciado:</strong> A área de uma superfície esférica é $64\pi$ cm². Calcule o volume da esfera.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>$4\pi R^2 = 64\pi \implies R = 4$ cm.<br>$V = \dfrac{4}{3}\pi \cdot 64 = \mathbf{\dfrac{256\pi}{3}}$ cm³.</p></div>
+    </article>
+    <article class="questao">
+        <h4>P 9: Secção a 3 cm do Centro</h4>
+        <p><strong>Enunciado:</strong> Uma esfera de raio $5$ cm é cortada por um plano a $3$ cm do centro. Calcule a área da secção.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>$r^2 = 25 - 9 = 16 \implies r = 4$ cm.<br>Área: $\mathbf{16\pi}$ cm².</p></div>
+    </article>
+    <article class="questao">
+        <h4>P 10: Círculo Máximo</h4>
+        <p><strong>Enunciado:</strong> O círculo máximo de uma esfera tem área $49\pi$ cm². Calcule a área da superfície esférica.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>Círculo máximo (passa pelo centro): $\pi R^2 = 49\pi \implies R = 7$ cm.<br>$A = 4\pi R^2 = \mathbf{196\pi}$ cm² (quatro vezes o círculo máximo).</p></div>
+    </article>
+    <article class="questao">
+        <h4>P 11: Hemisfério</h4>
+        <p><strong>Enunciado:</strong> Uma tigela tem a forma de um hemisfério (meia esfera) de raio interno $9$ cm. Qual é a sua capacidade, em litros? (Use $\pi = 3$.)</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>$V = \dfrac{1}{2} \cdot \dfrac{4}{3} \cdot 3 \cdot 729 = 1\,458$ cm³.<br>$1\,458$ cm³ $= \mathbf{1{,}458}$ L.</p></div>
+    </article>
+    <article class="questao">
+        <h4>P 12: Dobrando o Raio</h4>
+        <p><strong>Enunciado:</strong> Se o raio de uma esfera dobra, o que acontece com a área da superfície e com o volume?</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>Área proporcional a $R^2$: fica multiplicada por $2^2 = \mathbf{4}$.<br>Volume proporcional a $R^3$: fica multiplicado por $2^3 = \mathbf{8}$.</p></div>
+    </article>
+    <article class="questao">
+        <h4>P 13: Gomos da Laranja</h4>
+        <p><strong>Enunciado:</strong> Uma laranja esférica de raio $4$ cm tem $8$ gomos iguais (cunhas). Calcule o volume de cada gomo e a área de casca (fuso) de cada um.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>Cada gomo é $\dfrac{1}{8}$ da esfera: $V = \dfrac{1}{8} \cdot \dfrac{4}{3}\pi \cdot 64 = \mathbf{\dfrac{32\pi}{3}}$ cm³.<br>Casca: $\dfrac{1}{8} \cdot 4\pi \cdot 16 = \mathbf{8\pi}$ cm².</p></div>
+    </article>
+    <article class="questao">
+        <h4>P 14: Bola na Água</h4>
+        <p><strong>Enunciado:</strong> Uma bola maciça de raio $3$ cm é mergulhada em um copo cilíndrico de raio $6$ cm com água, ficando totalmente submersa. Quanto sobe o nível da água?</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>Volume da bola: $\dfrac{4}{3}\pi \cdot 27 = 36\pi$ cm³.<br>$\pi \cdot 36 \cdot h = 36\pi \implies h = \mathbf{1}$ cm.</p></div>
+    </article>
+    <article class="questao">
+        <h4>P 15: Pintando a Cúpula</h4>
+        <p><strong>Enunciado:</strong> Uma cúpula tem a forma de um hemisfério de raio $10$ m. Quantos litros de tinta são necessários para pintar sua superfície externa (sem o chão), se cada litro pinta $5$ m²? (Use $\pi = 3{,}14$.)</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>Área do hemisfério: $\dfrac{1}{2} \cdot 4\pi R^2 = 2\pi \cdot 100 = 628$ m².<br>Tinta: $628 \div 5 = \mathbf{125{,}6}$ litros.</p></div>
+    </article>
+</section>
+
+<section class="TESTE" id="testes">
+    <h3>🎓 TESTES (T 16 a 20)</h3>
+    <article class="questao">
+        <h4>T 16: (ENEM 2016, 2ª aplicação) Frascos de Perfume</h4>
+        <p>Uma indústria de perfumes embala seus produtos, atualmente, em frascos esféricos de raio $R$, com volume dado por $\dfrac{4}{3}\pi R^3$. Observou-se que haverá redução de custos se forem utilizados frascos cilíndricos com raio da base $\dfrac{R}{3}$, cujo volume será dado por $\pi\left(\dfrac{R}{3}\right)^2 h$, sendo $h$ a altura da nova embalagem.</p>
+        <p>Para que seja mantida a mesma capacidade do frasco esférico, a altura do frasco cilíndrico (em termos de $R$) deverá ser igual a</p>
+        <p>A) $2R$<br>B) $4R$<br>C) $6R$<br>D) $9R$<br>E) $12R$</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>E</strong>.<br>Igualando os volumes: $\pi \cdot \dfrac{R^2}{9} \cdot h = \dfrac{4}{3}\pi R^3$.<br>$h = \dfrac{4}{3}R \cdot 9 = \mathbf{12R}$.</p></div>
+    </article>
+    <article class="questao">
+        <h4>T 17: (ENEM 2022) Esferas para Rolamentos</h4>
+        <p>Peças metálicas de aeronaves abandonadas em aeroportos serão recicladas. Uma dessas peças é maciça e tem o formato cilíndrico, com a medida do raio da base igual a $4$ cm e a da altura igual a $50$ cm. Ela será derretida, e o volume de metal resultante será utilizado para a fabricação de esferas maciças com diâmetro de $1$ cm, a serem usadas para confeccionar rolamentos. Para estimar a quantidade de esferas que poderão ser produzidas a partir de cada uma das peças cilíndricas, admite-se que não ocorre perda de material durante o processo de derretimento.</p>
+        <p>Quantas dessas esferas poderão ser obtidas a partir de cada peça cilíndrica?</p>
+        <p>A) 800<br>B) 1&thinsp;200<br>C) 2&thinsp;400<br>D) 4&thinsp;800<br>E) 6&thinsp;400</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>D</strong>.<br>Cilindro: $V = \pi \cdot 4^2 \cdot 50 = 800\pi$ cm³.<br>Esfera de raio $0{,}5$ cm: $V = \dfrac{4}{3}\pi \cdot 0{,}125 = \dfrac{\pi}{6}$ cm³.<br>$\dfrac{800\pi}{\pi/6} = 800 \cdot 6 = \mathbf{4\,800}$ esferas.</p></div>
+    </article>
+    <article class="questao">
+        <h4>T 18: (ENEM 2022) Os Docinhos</h4>
+        <p>Uma cozinheira produz docinhos especiais por encomenda. Usando uma receita-base de massa, ela prepara uma porção, com a qual produz $50$ docinhos maciços de formato esférico, com $2$ cm de diâmetro. Um cliente encomenda $150$ desses docinhos, mas pede que cada um tenha formato esférico com $4$ cm de diâmetro. A cozinheira pretende preparar o número exato de porções da receita-base de massa necessário para produzir os docinhos dessa encomenda.</p>
+        <p>Quantas porções da receita-base de massa ela deve preparar para atender esse cliente?</p>
+        <p>A) 2<br>B) 3<br>C) 6<br>D) 12<br>E) 24</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>E</strong>.<br>Dobrar o diâmetro multiplica o volume por $2^3 = 8$: cada docinho grande equivale a $8$ pequenos.<br>$150$ grandes $= 150 \cdot 8 = 1\,200$ pequenos.<br>Porções: $\dfrac{1\,200}{50} = \mathbf{24}$. (A alternativa C usa $2^1$ em vez de $2^3$.)</p></div>
+    </article>
+    <article class="questao">
+        <h4>T 19: (ENEM 2014) As Pílulas</h4>
+        <p>Uma empresa farmacêutica produz medicamentos em pílulas, cada uma na forma de um cilindro com uma semiesfera com o mesmo raio do cilindro em cada uma de suas extremidades. Essas pílulas são moldadas por uma máquina programada para que os cilindros tenham sempre $10$ mm de comprimento, adequando o raio de acordo com o volume desejado.</p>
+        <p>Um medicamento é produzido em pílulas com $5$ mm de raio. Para facilitar a deglutição, deseja-se produzir esse medicamento diminuindo o raio para $4$ mm e, por consequência, seu volume. Isso exige a reprogramação da máquina que produz essas pílulas. Use $3$ como valor aproximado para $\pi$.</p>
+        <p>A redução do volume da pílula, em milímetros cúbicos, após a reprogramação da máquina, será igual a</p>
+        <p>A) 168<br>B) 304<br>C) 306<br>D) 378<br>E) 514</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>E</strong>.<br>As duas semiesferas formam uma esfera: $V = \pi r^2 \cdot 10 + \dfrac{4}{3}\pi r^3$.<br>$r = 5$: $3 \cdot 25 \cdot 10 + 4 \cdot 125 = 750 + 500 = 1\,250$ mm³. \quad $r = 4$: $3 \cdot 16 \cdot 10 + 4 \cdot 64 = 480 + 256 = 736$ mm³.<br>Redução: $1\,250 - 736 = \mathbf{514}$ mm³.</p></div>
+    </article>
+    <article class="questao">
+        <h4>T 20: (ENEM PPL 2023, adaptada) A Bola de Chocolate</h4>
+        <p>Uma empresa produziu uma bola de chocolate esférica e oca para decorar sua loja. A bola tem diâmetro externo de $20$ cm, e a casca de chocolate tem $1$ cm de espessura. Considere que $1$ g de chocolate ocupa $0{,}75$ cm³.</p>
+        <p>Quantos gramas de chocolate foram utilizados na confecção dessa bola?</p>
+        <p>A) $\dfrac{73\pi}{3}$<br>B) $\dfrac{304\pi}{9}$<br>C) $\dfrac{4\,336\pi}{9}$<br>D) $\dfrac{4\,000\pi}{3}$<br>E) $\dfrac{18\,256\pi}{9}$</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>C</strong>.<br>Raio externo $10$ cm e raio interno $10 - 1 = 9$ cm.<br>Volume da casca: $\dfrac{4}{3}\pi(10^3 - 9^3) = \dfrac{4}{3}\pi \cdot 271 = \dfrac{1\,084\pi}{3}$ cm³.<br>Massa: $\dfrac{1\,084\pi}{3} \div 0{,}75 = \dfrac{1\,084\pi}{3} \cdot \dfrac{4}{3} = \mathbf{\dfrac{4\,336\pi}{9}}$ g.</p></div>
+    </article>
+</section>
+
+</div></main>
+<aside class="menu-lateral"><iframe src="../menu_matematica.html" style="width:100%; border:none; height:600px;"></iframe></aside>
+</div>
+<script>
+function toggleGabarito(botao) {
+    const gabarito = botao.nextElementSibling;
+    if (gabarito.style.display === "none" || gabarito.style.display === "") {
+        gabarito.style.display = "block"; botao.textContent = "Esconder Gabarito e Resolução"; botao.style.backgroundColor = "#2c3e50";
+    } else {
+        gabarito.style.display = "none"; botao.textContent = "Ver Gabarito e Resolução"; botao.style.backgroundColor = "#3498db";
+    }
+}
+function toggleMenu() { const m = document.getElementById("menu-principal"); if (m) m.classList.toggle("ativo"); }
+let slideAtual = 0; let slides = [];
+function prepararSlides() { slides = Array.from(document.querySelectorAll('.container-resumo, .passo-teoria, .card, .questao')); }
+function toggleSlides() {
+    prepararSlides(); const body = document.body;
+    if (!body.classList.contains('modo-slides')) { body.classList.add('modo-slides'); slideAtual = 0; mostrarSlide(slideAtual); }
+    else { body.classList.remove('modo-slides'); slides.forEach(s => { s.classList.remove('slide-ativo'); s.style.display = ''; }); }
+}
+function mostrarSlide(n) {
+    if (!slides.length) return;
+    slides.forEach(s => { s.classList.remove('slide-ativo'); s.style.display = 'none'; });
+    const slide = slides[n]; slide.classList.add('slide-ativo');
+    slide.querySelectorAll('.gabarito-resolucao').forEach(g => g.style.display = 'none');
+    slide.querySelectorAll('.btn-gabarito').forEach(b => { b.textContent = "Ver Gabarito e Resolução"; b.style.backgroundColor = "#3498db"; });
+    const pHeader = document.querySelector('header p');
+    if (pHeader) { const partes = pHeader.innerText.split('|'); if (partes.length > 1) {
+        document.getElementById('slide-info-serie').innerText = partes[0].trim();
+        document.getElementById('slide-info-aula').innerText = partes[1].trim(); } }
+    document.getElementById('contador-slide').innerText = (n + 1) + " / " + slides.length;
+    if (window.MathJax && window.MathJax.typesetPromise) { MathJax.typesetPromise(); }
+}
+function mudarSlide(d) { slideAtual += d; if (slideAtual >= slides.length) slideAtual = 0; if (slideAtual < 0) slideAtual = slides.length - 1; mostrarSlide(slideAtual); }
+document.addEventListener('keydown', function(event) {
+    if (document.body.classList.contains('modo-slides')) {
+        switch(event.key) {
+            case 'ArrowRight': case 'PageDown': case 'Enter': case ' ': event.preventDefault(); mudarSlide(1); break;
+            case 'ArrowLeft': case 'PageUp': event.preventDefault(); mudarSlide(-1); break;
+            case 'Escape': event.preventDefault(); toggleSlides(); break;
+        }
+    }
+});
+</script>
+<div class="controles-slides">
+    <div id="slide-info-serie" class="info-lateral"></div>
+    <div class="botoes-centrais">
+        <button class="btn-nav" onclick="mudarSlide(-1)">⬅ Anterior</button>
+        <span id="contador-slide"></span>
+        <button class="btn-nav" onclick="mudarSlide(1)">Próximo ➡</button>
+        <button class="btn-nav" onclick="toggleSlides()" style="background:#e74c3c;">Sair</button>
+    </div>
+    <div id="slide-info-aula" class="info-lateral" style="text-align: right;"></div>
+</div>
+</body>
+</html>
