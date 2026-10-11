@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2º Ano: Aula 29 - Funções Periódicas</title>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../estilo.css">
+    <script>
+        MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']], processEscapes: true } };
+    </script>
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        body.modo-slides { overflow: hidden !important; background-color: #1a1a1a !important; margin: 0; padding: 0; }
+        body.modo-slides .menu-lateral, body.modo-slides header, body.modo-slides .menu-toggle, body.modo-slides #btn-slides, body.modo-slides .nav-global { display: none !important; }
+        .slide-ativo { display: flex !important; flex-direction: column; align-items: center; justify-content: center; position: fixed; top: 0; left: 0; width: 100vw; height: calc(100vh - 70px); background: #ffffff; padding: 40px; z-index: 999; overflow-y: auto !important; box-sizing: border-box; text-align: left; }
+        .slide-ativo > * { max-width: 900px; width: 100%; }
+        .controles-slides { position: fixed; bottom: 0; left: 0; width: 100%; height: 70px; background: #2c3e50; color: white; display: none; justify-content: space-between; align-items: center; padding: 0 20px; z-index: 1001; box-sizing: border-box; }
+        body.modo-slides .controles-slides { display: flex !important; }
+        .info-lateral { flex: 1; font-family: 'Oswald', sans-serif; font-size: 0.9rem; color: #bdc3c7; }
+        .botoes-centrais { display: flex; align-items: center; gap: 15px; justify-content: center; flex: 2; }
+        .btn-nav { padding: 10px 20px; background: #3498db; color: white; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; font-size: 0.9rem; }
+        .btn-nav:hover { background: #2980b9; }
+        #contador-slide { font-family: 'Oswald', sans-serif; min-width: 60px; text-align: center; font-size: 1.1rem; }
+    </style>
+</head>
+<body>
+<button class="menu-toggle" onclick="toggleMenu()">☰</button>
+<nav id="menu-principal" class="nav-global"><ul>
+    <li><a href="../index.html">🏠 Início</a></li>
+    <li><a href="../ensino_medio.html">📚 Ensino Médio</a></li>
+    <li><a href="../ensino_superior.html">🎓 Ensino Superior</a></li>
+</ul></nav>
+<header id="topo">
+    <h1>MATEMÁTICA EM</h1>
+    <p>2º Ano | Aula 29: Funções Periódicas</p>
+    <button id="btn-slides" onclick="toggleSlides()">📺 Iniciar Modo Slides</button>
+</header>
+<div class="container"><main class="conteudo-principal"><div class="secao-aula">
+
+<div class="container-resumo" id="resumo">
+    <h3>📚 Resumo</h3>
+    <section class="resumo-conteudo">
+        <p>Uma função é <strong>periódica</strong> quando seus valores se repetem em intervalos regulares: existe $p > 0$ tal que $f(x + p) = f(x)$ para todo $x$; o menor desses $p$ é o <strong>período</strong>. Seno e cosseno são as funções periódicas mais importantes, com período $2\pi$ e imagem $[-1, 1]$. Na forma geral $f(x) = a + b\operatorname{sen}(cx + d)$:</p>
+        <p style="text-align: center;">$$\operatorname{Im}(f) = [a - |b|,\ a + |b|] \qquad \text{amplitude} = |b| \qquad p = \frac{2\pi}{|c|}$$</p>
+    </section>
+</div>
+
+<section class="conteudo-teorico-completo" id="teoria">
+    <div class="passo-teoria">
+        <h3>📖 Funções Periódicas</h3>
+        <h4>1. O que é uma Função Periódica</h4>
+        <p>Dias e noites, estações do ano, marés, batimentos cardíacos: muitos fenômenos se repetem. Uma função $f$ é <strong>periódica</strong> se existe um número $p > 0$ tal que</p>
+        <p style="text-align: center; font-size: 1.15rem; background-color: #f8f9fa; padding: 15px; border-left: 5px solid #3498db; margin: 20px 0;">
+            $$f(x + p) = f(x) \quad \text{para todo } x$$
+        </p>
+        <p>O menor valor positivo de $p$ é o <strong>período</strong>: o comprimento de um "ciclo" completo do gráfico.</p>
+    </div>
+
+    <div class="passo-teoria">
+        <h4>2. As Funções Seno e Cosseno</h4>
+        <ul>
+            <li>$f(x) = \operatorname{sen}x$ e $g(x) = \cos x$ têm domínio $\mathbb{R}$, imagem $[-1, 1]$ e período $2\pi$;</li>
+            <li>O seno começa em $0$ e sobe ($\operatorname{sen}0 = 0$); o cosseno começa no máximo ($\cos 0 = 1$);</li>
+            <li>O gráfico do cosseno é o do seno deslocado: $\cos x = \operatorname{sen}\left(x + \dfrac{\pi}{2}\right)$;</li>
+            <li>A tangente também é periódica, mas com período $\pi$.</li>
+        </ul>
+        <figure class="figura-aula figura-grande">
+            <svg viewBox="0 0 420 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Gráficos de seno (azul) e cosseno (vermelho) no intervalo de 0 a 2 pi, oscilando entre -1 e 1" style="width:100%; max-width:440px; display:block; margin:0 auto;">
+  <line x1="30" y1="110" x2="386.7" y2="110" stroke="#2c3e50" stroke-width="1.5"/>
+  <line x1="40" y1="26.0" x2="40" y2="194.0" stroke="#2c3e50" stroke-width="1.5"/>
+  <line x1="40" y1="50.0" x2="366.7" y2="50.0" stroke="#bdc3c7" stroke-dasharray="4,3"/>
+  <line x1="40" y1="170.0" x2="366.7" y2="170.0" stroke="#bdc3c7" stroke-dasharray="4,3"/>
+  <polyline points="40.0,110.0 42.0,107.6 44.1,105.3 46.1,102.9 48.2,100.6 50.2,98.3 52.3,96.0 54.3,93.7 56.3,91.5 58.4,89.2 60.4,87.0 62.5,84.9 64.5,82.8 66.5,80.7 68.6,78.7 70.6,76.7 72.7,74.7 74.7,72.9 76.8,71.0 78.8,69.3 80.8,67.6 82.9,65.9 84.9,64.4 87.0,62.9 89.0,61.5 91.1,60.1 93.1,58.8 95.1,57.7 97.2,56.5 99.2,55.5 101.3,54.6 103.3,53.7 105.3,52.9 107.4,52.3 109.4,51.7 111.5,51.2 113.5,50.7 115.6,50.4 117.6,50.2 119.6,50.0 121.7,50.0 123.7,50.0 125.8,50.2 127.8,50.4 129.8,50.7 131.9,51.2 133.9,51.7 136.0,52.3 138.0,52.9 140.1,53.7 142.1,54.6 144.1,55.5 146.2,56.5 148.2,57.7 150.3,58.8 152.3,60.1 154.4,61.5 156.4,62.9 158.4,64.4 160.5,65.9 162.5,67.6 164.6,69.3 166.6,71.0 168.6,72.9 170.7,74.7 172.7,76.7 174.8,78.7 176.8,80.7 178.9,82.8 180.9,84.9 182.9,87.0 185.0,89.2 187.0,91.5 189.1,93.7 191.1,96.0 193.2,98.3 195.2,100.6 197.2,102.9 199.3,105.3 201.3,107.6 203.4,110.0 205.4,112.4 207.4,114.7 209.5,117.1 211.5,119.4 213.6,121.7 215.6,124.0 217.7,126.3 219.7,128.5 221.7,130.8 223.8,133.0 225.8,135.1 227.9,137.2 229.9,139.3 232.0,141.3 234.0,143.3 236.0,145.3 238.1,147.1 240.1,149.0 242.2,150.7 244.2,152.4 246.2,154.1 248.3,155.6 250.3,157.1 252.4,158.5 254.4,159.9 256.5,161.2 258.5,162.3 260.5,163.5 262.6,164.5 264.6,165.4 266.7,166.3 268.7,167.1 270.7,167.7 272.8,168.3 274.8,168.8 276.9,169.3 278.9,169.6 281.0,169.8 283.0,170.0 285.0,170.0 287.1,170.0 289.1,169.8 291.2,169.6 293.2,169.3 295.3,168.8 297.3,168.3 299.3,167.7 301.4,167.1 303.4,166.3 305.5,165.4 307.5,164.5 309.5,163.5 311.6,162.3 313.6,161.2 315.7,159.9 317.7,158.5 319.8,157.1 321.8,155.6 323.8,154.1 325.9,152.4 327.9,150.7 330.0,149.0 332.0,147.1 334.1,145.3 336.1,143.3 338.1,141.3 340.2,139.3 342.2,137.2 344.3,135.1 346.3,133.0 348.3,130.8 350.4,128.5 352.4,126.3 354.5,124.0 356.5,121.7 358.6,119.4 360.6,117.1 362.6,114.7 364.7,112.4 366.7,110.0" fill="none" stroke="#3498db" stroke-width="3"/>
+  <polyline points="40.0,50.0 42.0,50.0 44.1,50.2 46.1,50.4 48.2,50.7 50.2,51.2 52.3,51.7 54.3,52.3 56.3,52.9 58.4,53.7 60.4,54.6 62.5,55.5 64.5,56.5 66.5,57.7 68.6,58.8 70.6,60.1 72.7,61.5 74.7,62.9 76.8,64.4 78.8,65.9 80.8,67.6 82.9,69.3 84.9,71.0 87.0,72.9 89.0,74.7 91.1,76.7 93.1,78.7 95.1,80.7 97.2,82.8 99.2,84.9 101.3,87.0 103.3,89.2 105.3,91.5 107.4,93.7 109.4,96.0 111.5,98.3 113.5,100.6 115.6,102.9 117.6,105.3 119.6,107.6 121.7,110.0 123.7,112.4 125.8,114.7 127.8,117.1 129.8,119.4 131.9,121.7 133.9,124.0 136.0,126.3 138.0,128.5 140.1,130.8 142.1,133.0 144.1,135.1 146.2,137.2 148.2,139.3 150.3,141.3 152.3,143.3 154.4,145.3 156.4,147.1 158.4,149.0 160.5,150.7 162.5,152.4 164.6,154.1 166.6,155.6 168.6,157.1 170.7,158.5 172.7,159.9 174.8,161.2 176.8,162.3 178.9,163.5 180.9,164.5 182.9,165.4 185.0,166.3 187.0,167.1 189.1,167.7 191.1,168.3 193.2,168.8 195.2,169.3 197.2,169.6 199.3,169.8 201.3,170.0 203.4,170.0 205.4,170.0 207.4,169.8 209.5,169.6 211.5,169.3 213.6,168.8 215.6,168.3 217.7,167.7 219.7,167.1 221.7,166.3 223.8,165.4 225.8,164.5 227.9,163.5 229.9,162.3 232.0,161.2 234.0,159.9 236.0,158.5 238.1,157.1 240.1,155.6 242.2,154.1 244.2,152.4 246.2,150.7 248.3,149.0 250.3,147.1 252.4,145.3 254.4,143.3 256.5,141.3 258.5,139.3 260.5,137.2 262.6,135.1 264.6,133.0 266.7,130.8 268.7,128.5 270.7,126.3 272.8,124.0 274.8,121.7 276.9,119.4 278.9,117.1 281.0,114.7 283.0,112.4 285.0,110.0 287.1,107.6 289.1,105.3 291.2,102.9 293.2,100.6 295.3,98.3 297.3,96.0 299.3,93.7 301.4,91.5 303.4,89.2 305.5,87.0 307.5,84.9 309.5,82.8 311.6,80.7 313.6,78.7 315.7,76.7 317.7,74.7 319.8,72.9 321.8,71.0 323.8,69.3 325.9,67.6 327.9,65.9 330.0,64.4 332.0,62.9 334.1,61.5 336.1,60.1 338.1,58.8 340.2,57.7 342.2,56.5 344.3,55.5 346.3,54.6 348.3,53.7 350.4,52.9 352.4,52.3 354.5,51.7 356.5,51.2 358.6,50.7 360.6,50.4 362.6,50.2 364.7,50.0 366.7,50.0" fill="none" stroke="#e74c3c" stroke-width="3" stroke-dasharray="7,4"/>
+  <g font-family="Oswald, sans-serif"><line x1="121.7" y1="106" x2="121.7" y2="114" stroke="#2c3e50"/><text x="113.7" y="130" font-size="13" fill="#2c3e50">π/2</text><line x1="203.4" y1="106" x2="203.4" y2="114" stroke="#2c3e50"/><text x="195.4" y="130" font-size="13" fill="#2c3e50">π</text><line x1="285.0" y1="106" x2="285.0" y2="114" stroke="#2c3e50"/><text x="277.0" y="130" font-size="13" fill="#2c3e50">3π/2</text><line x1="366.7" y1="106" x2="366.7" y2="114" stroke="#2c3e50"/><text x="358.7" y="130" font-size="13" fill="#2c3e50">2π</text>
+    <text x="16" y="55.0" font-size="13" fill="#2c3e50">1</text><text x="12" y="175.0" font-size="13" fill="#2c3e50">−1</text>
+    <text x="388.7" y="115" font-size="14" fill="#2c3e50">x</text>
+    <text x="250" y="20" font-size="14" fill="#3498db">— y = sen x</text><text x="250" y="38" font-size="14" fill="#e74c3c">- - y = cos x</text>
+  </g>
+</svg>
+            <figcaption>Figura 1: Um período completo de $y = \operatorname{sen}x$ (azul) e $y = \cos x$ (vermelho tracejado).</figcaption>
+        </figure>
+    </div>
+
+    <div class="passo-teoria">
+        <h4>3. A Forma Geral $f(x) = a + b\operatorname{sen}(cx + d)$</h4>
+        <p>Cada parâmetro transforma o gráfico de uma maneira (o mesmo vale para o cosseno):</p>
+        <table style="margin: 15px auto; border-collapse: collapse; text-align: center; font-size: 1.05rem;">
+            <tr style="background-color: #2c3e50; color: white;"><th style="padding: 8px 14px;">Parâmetro em $f(x) = a + b\operatorname{sen}(cx + d)$</th><th style="padding: 8px 14px;">Efeito no gráfico</th></tr>
+            <tr><td style="padding: 8px 14px; border: 1px solid #ccc;">$a$</td><td style="padding: 8px 14px; border: 1px solid #ccc;">desloca para cima/baixo (linha média $y = a$)</td></tr>
+            <tr style="background-color: #f8f9fa;"><td style="padding: 8px 14px; border: 1px solid #ccc;">$b$</td><td style="padding: 8px 14px; border: 1px solid #ccc;">amplitude $|b|$; imagem $[a - |b|,\ a + |b|]$</td></tr>
+            <tr><td style="padding: 8px 14px; border: 1px solid #ccc;">$c$</td><td style="padding: 8px 14px; border: 1px solid #ccc;">período $p = \dfrac{2\pi}{|c|}$ (comprime ou estica)</td></tr>
+            <tr style="background-color: #f8f9fa;"><td style="padding: 8px 14px; border: 1px solid #ccc;">$d$</td><td style="padding: 8px 14px; border: 1px solid #ccc;">desloca para a esquerda/direita</td></tr>
+        </table>
+        <p><strong>Do gráfico para a lei:</strong> $a = \dfrac{\text{máx} + \text{mín}}{2}$, $|b| = \dfrac{\text{máx} - \text{mín}}{2}$ e $|c| = \dfrac{2\pi}{p}$. Para decidir entre seno e cosseno, olhe o ponto de partida: se em $x = 0$ o gráfico está na linha média, use seno; se está no máximo (ou no mínimo), use cosseno (ou $-$cosseno).</p>
+    </div>
+</section>
+
+<section class="aplicacoes-reais" id="aplicacoes">
+    <h3>💡 Matemática em Ação</h3>
+    <div class="cards-aplicacao">
+        <div class="card">
+            <h4>🌊 Marés e Rodas-Gigantes</h4>
+            <p>A altura da maré e a altura de uma cadeira de roda-gigante variam como senos e cossenos. A linha média $a$ é o nível médio (ou a altura do centro da roda), a amplitude $|b|$ é a variação máxima (ou o raio) e o período é o tempo de um ciclo.</p>
+        </div>
+        <div class="card" style="border-left-color: #2ecc71;">
+            <h4>🔊 Som e Corrente Alternada</h4>
+            <p>Um som puro é uma onda senoidal: a amplitude determina o volume e o período determina a nota (quanto menor o período, mais agudo). A corrente elétrica das tomadas brasileiras oscila com período de $\dfrac{1}{60}$ s ($60$ Hz).</p>
+        </div>
+    </div>
+</section>
+<section class="questoes-resolvidas" id="resolvidas">
+    <h3>✅ 5 Questões Resolvidas (R 1 a 5)</h3>
+    <article class="questao">
+        <h4>R 1: Imagem e Período</h4>
+        <p><strong>Enunciado:</strong> Determine a imagem, a amplitude e o período de $f(x) = 3 + 2\operatorname{sen}x$.</p>
+        <div class="resolucao-bloco"><p><strong>Resolução:</strong><br>Como $-1 \leq \operatorname{sen}x \leq 1$: $3 - 2 \leq f(x) \leq 3 + 2$, logo $\operatorname{Im}(f) = \mathbf{[1, 5]}$.<br>Amplitude: $|b| = \mathbf{2}$ (metade da distância entre o máximo e o mínimo).<br>Período: o mesmo do seno, $p = \dfrac{2\pi}{1} = \mathbf{2\pi}$.</p></div>
+    </article>
+    <article class="questao">
+        <h4>R 2: Calculando Períodos</h4>
+        <p><strong>Enunciado:</strong> Calcule o período de (a) $f(x) = \operatorname{sen}(4x)$; (b) $g(x) = \cos\left(\dfrac{x}{2}\right)$.</p>
+        <div class="resolucao-bloco"><p><strong>Resolução:</strong><br>Para $\operatorname{sen}(cx + d)$ ou $\cos(cx + d)$, o período é $p = \dfrac{2\pi}{|c|}$.<br>(a) $p = \dfrac{2\pi}{4} = \mathbf{\dfrac{\pi}{2}}$ (o gráfico fica <strong>comprimido</strong>: $4$ ciclos em $2\pi$).<br>(b) $p = \dfrac{2\pi}{1/2} = \mathbf{4\pi}$ (o gráfico fica <strong>esticado</strong>).</p></div>
+    </article>
+    <article class="questao">
+        <h4>R 3: Máximo, Mínimo e Período</h4>
+        <p><strong>Enunciado:</strong> Para $f(x) = 1 + 3\cos(2x)$, determine o valor máximo, o valor mínimo, o período e o valor de $f(0)$.</p>
+        <div class="resolucao-bloco"><p><strong>Resolução:</strong><br>Máximo: $1 + 3 = \mathbf{4}$ (quando $\cos(2x) = 1$); mínimo: $1 - 3 = \mathbf{-2}$ (quando $\cos(2x) = -1$).<br>Período: $\dfrac{2\pi}{2} = \mathbf{\pi}$.<br>$f(0) = 1 + 3\cos0 = \mathbf{4}$ (o gráfico começa no máximo).</p></div>
+    </article>
+    <article class="questao">
+        <h4>R 4: A Maré</h4>
+        <p><strong>Enunciado:</strong> A altura da maré em um porto, em metros, é modelada por $h(t) = 2 + 1{,}5\cos\left(\dfrac{\pi t}{6}\right)$, com $t$ em horas a partir da meia-noite. Determine a maré alta, a maré baixa e o intervalo entre duas marés altas.</p>
+        <div class="resolucao-bloco"><p><strong>Resolução:</strong><br>Maré alta: $2 + 1{,}5 = \mathbf{3{,}5}$ m; maré baixa: $2 - 1{,}5 = \mathbf{0{,}5}$ m.<br>Período: $p = \dfrac{2\pi}{\pi/6} = \mathbf{12}$ horas entre duas marés altas.<br>Marés altas em $t = 0$ (meia-noite) e $t = 12$ (meio-dia).</p></div>
+    </article>
+    <article class="questao">
+        <h4>R 5: Do Gráfico à Lei</h4>
+        <p><strong>Enunciado:</strong> Uma função do tipo $f(x) = a + b\cos(cx)$, com $b > 0$ e $c > 0$, tem valor máximo $5$, valor mínimo $1$, período $\pi$ e $f(0) = 5$. Determine $a$, $b$ e $c$.</p>
+        <div class="resolucao-bloco"><p><strong>Resolução:</strong><br>$a$ é a média entre máximo e mínimo: $a = \dfrac{5 + 1}{2} = 3$; $b$ é a amplitude: $b = \dfrac{5 - 1}{2} = 2$.<br>Período: $\dfrac{2\pi}{c} = \pi \implies c = 2$.<br>$f(x) = \mathbf{3 + 2\cos(2x)}$. Conferência: $f(0) = 3 + 2 = 5$ ✓</p></div>
+    </article>
+</section>
+
+<section class="questoes-propostas" id="propostas">
+    <h3>✍️ 10 Questões Propostas (P 6 a 15)</h3>
+    <article class="questao">
+        <h4>P 6: Imagem</h4>
+        <p><strong>Enunciado:</strong> Determine a imagem de $f(x) = 4 - \operatorname{sen}x$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>$-1 \leq \operatorname{sen}x \leq 1 \implies 4 - 1 \leq f(x) \leq 4 + 1$.<br>$\operatorname{Im}(f) = \mathbf{[3, 5]}$.</p></div>
+    </article>
+    <article class="questao">
+        <h4>P 7: Período I</h4>
+        <p><strong>Enunciado:</strong> Calcule o período de $f(x) = \cos(3x)$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>$p = \dfrac{2\pi}{3}$.<br>Período: $\mathbf{\dfrac{2\pi}{3}}$.</p></div>
+    </article>
+    <article class="questao">
+        <h4>P 8: Período II</h4>
+        <p><strong>Enunciado:</strong> Calcule o período de $f(x) = 5\operatorname{sen}\left(\dfrac{x}{3}\right)$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>$p = \dfrac{2\pi}{1/3} = \mathbf{6\pi}$.<br>(O coeficiente $5$ altera a amplitude, não o período.)</p></div>
+    </article>
+    <article class="questao">
+        <h4>P 9: Amplitude e Imagem</h4>
+        <p><strong>Enunciado:</strong> Para $f(x) = -2 + 3\cos(\pi x)$, determine a amplitude, a imagem e o período.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>Amplitude $3$; imagem $[-2 - 3, -2 + 3] = \mathbf{[-5, 1]}$.<br>Período: $\dfrac{2\pi}{\pi} = \mathbf{2}$.</p></div>
+    </article>
+    <article class="questao">
+        <h4>P 10: Valor em um Ponto</h4>
+        <p><strong>Enunciado:</strong> Calcule $f\left(\dfrac{\pi}{4}\right)$ para $f(x) = 2 + \operatorname{sen}(2x)$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>$f\left(\dfrac{\pi}{4}\right) = 2 + \operatorname{sen}\dfrac{\pi}{2} = 2 + 1$.<br>$f\left(\dfrac{\pi}{4}\right) = \mathbf{3}$ (é o valor máximo).</p></div>
+    </article>
+    <article class="questao">
+        <h4>P 11: Valor de m</h4>
+        <p><strong>Enunciado:</strong> Para que valores reais de $m$ existe $x$ tal que $\operatorname{sen}x = 2m - 3$?</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>É preciso $-1 \leq 2m - 3 \leq 1 \implies 2 \leq 2m \leq 4$.<br>$\mathbf{1 \leq m \leq 2}$.</p></div>
+    </article>
+    <article class="questao">
+        <h4>P 12: Temperatura Diária</h4>
+        <p><strong>Enunciado:</strong> A temperatura de uma cidade, em °C, é $T(t) = 22 + 6\operatorname{sen}\left(\dfrac{\pi t}{12}\right)$, com $t$ em horas ($0 \leq t < 24$). Determine a maior e a menor temperatura e quando ocorre a maior.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>Máxima: $22 + 6 = \mathbf{28}$ °C; mínima: $22 - 6 = \mathbf{16}$ °C.<br>Máxima quando $\dfrac{\pi t}{12} = \dfrac{\pi}{2} \implies t = \mathbf{6}$ h.</p></div>
+    </article>
+    <article class="questao">
+        <h4>P 13: Roda-Gigante</h4>
+        <p><strong>Enunciado:</strong> A altura de uma cadeira de roda-gigante, em metros, é $h(t) = 15 - 13\cos\left(\dfrac{\pi t}{2}\right)$, com $t$ em minutos. Determine a altura no embarque ($t = 0$), a altura máxima e o tempo de uma volta.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>$h(0) = 15 - 13 = \mathbf{2}$ m (ponto mais baixo). Máxima: $15 + 13 = \mathbf{28}$ m.<br>Uma volta: $p = \dfrac{2\pi}{\pi/2} = \mathbf{4}$ minutos.</p></div>
+    </article>
+    <article class="questao">
+        <h4>P 14: Batimentos Cardíacos</h4>
+        <p><strong>Enunciado:</strong> A pressão de uma pessoa é $P(t) = 100 + 20\cos(\pi t)$, com $t$ em segundos. Quantos batimentos (ciclos completos) ocorrem por minuto?</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>Período: $\dfrac{2\pi}{\pi} = 2$ s por batimento.<br>Em $60$ s: $\dfrac{60}{2} = \mathbf{30}$ batimentos por minuto.</p></div>
+    </article>
+    <article class="questao">
+        <h4>P 15: Montando a Função</h4>
+        <p><strong>Enunciado:</strong> Determine $f(x) = a + b\operatorname{sen}(cx)$, com $b > 0$ e $c > 0$, sabendo que sua imagem é $[2, 8]$ e seu período é $4\pi$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>$a = \dfrac{2 + 8}{2} = 5$ e $b = \dfrac{8 - 2}{2} = 3$.<br>$\dfrac{2\pi}{c} = 4\pi \implies c = \dfrac{1}{2}$: $f(x) = \mathbf{5 + 3\operatorname{sen}\left(\dfrac{x}{2}\right)}$.</p></div>
+    </article>
+</section>
+
+<section class="TESTE" id="testes">
+    <h3>🎓 TESTES (T 16 a 20)</h3>
+    <article class="questao">
+        <h4>T 16: (ENEM 2018, adaptada) A Maior Roda-Gigante do Mundo</h4>
+        <p>Em 2014 foi inaugurada a maior roda-gigante do mundo, a High Roller, situada em Las Vegas. Seja $A$ uma de suas cadeiras e $O$ o centro da roda. A partir da posição em que o segmento $OA$ se encontra paralelo ao plano do solo, a roda é rotacionada no sentido anti-horário, em torno do ponto $O$. Sejam $t$ o ângulo determinado pelo segmento $OA$ em relação à sua posição inicial, e $f$ a função que descreve a altura do ponto $A$, em relação ao solo, em função de $t$.</p>
+        <p>O gráfico de $f$, após duas voltas completas, começa na altura $88$ m (em $t = 0$), sobe até o máximo de $168$ m, desce até o mínimo de $8$ m e volta a $88$ m ao final de cada volta.</p>
+        <p>A expressão da função altura é dada por</p>
+        <p>A) $f(t) = 80\operatorname{sen}(t) + 88$<br>B) $f(t) = 80\cos(t) + 88$<br>C) $f(t) = 88\cos(t) + 168$<br>D) $f(t) = 168\operatorname{sen}(t) + 88\cos(t)$<br>E) $f(t) = 88\operatorname{sen}(t) + 168\cos(t)$</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>A</strong>.<br>Linha média (altura do centro): $\dfrac{168 + 8}{2} = 88$; amplitude (raio da roda): $\dfrac{168 - 8}{2} = 80$.<br>Em $t = 0$ a cadeira está na altura do centro e começa a <strong>subir</strong>: comportamento do seno, que vale $0$ e é crescente em $t = 0$.<br>$f(t) = \mathbf{80\operatorname{sen}(t) + 88}$. (Com o cosseno, B, a cadeira começaria no topo, $168$ m.)</p></div>
+    </article>
+    <article class="questao">
+        <h4>T 17: (ENEM 2021, adaptada) A Mola</h4>
+        <p>Uma mola é solta da posição distendida. A posição $P$ (em cm) da massa $m$ presa a ela varia com o tempo $t$ (em segundos) de forma periódica, podendo ser descrita por $P(t) = \pm A\cos(\omega t)$ ou $P(t) = \pm A\operatorname{sen}(\omega t)$, em que $A > 0$ é a amplitude máxima de deslocamento e $\omega$ é a frequência, relacionada ao período $T$ pela fórmula $\omega = \dfrac{2\pi}{T}$. Despreze a ação de forças dissipativas.</p>
+        <p>O gráfico da posição oscila entre $-3$ e $3$, começa em $P(0) = -3$ e completa um ciclo a cada $\pi$ segundos.</p>
+        <p>A expressão algébrica que representa as posições $P(t)$ da massa $m$, ao longo do tempo, é</p>
+        <p>A) $-3\cos(2t)$<br>B) $-3\operatorname{sen}(2t)$<br>C) $3\cos(2t)$<br>D) $-6\cos(2t)$<br>E) $6\cos(2t)$</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>A</strong>.<br>Amplitude: $A = 3$ (oscila entre $-3$ e $3$). Período $T = \pi \implies \omega = \dfrac{2\pi}{\pi} = 2$.<br>Em $t = 0$, $P = -3$ (mínimo): o seno vale $0$ em $t = 0$, então não serve; $-3\cos(0) = -3$ ✓.<br>$P(t) = \mathbf{-3\cos(2t)}$.</p></div>
+    </article>
+    <article class="questao">
+        <h4>T 18: (ENEM 2019, adaptada) O Pistão do Motor</h4>
+        <p>Um grupo de engenheiros está projetando um motor cujo pistão se move verticalmente. A altura $h$, em centímetro, da base do pistão, em função do tempo $t$, em segundo, é dada por $h(t) = 4 + 4\operatorname{sen}\left(\dfrac{\beta t}{2} - \dfrac{\pi}{2}\right)$, em que $\beta$ é um parâmetro inteiro positivo relacionado à velocidade do pistão. Para que o motor tenha uma boa potência, é necessário e suficiente que, em menos de $4$ segundos após o início do funcionamento ($t = 0$), a altura da base do pistão alcance por três vezes o valor de $6$ cm. Use $3$ como aproximação para $\pi$.</p>
+        <p>O menor valor inteiro a ser atribuído ao parâmetro $\beta$, de forma que o motor tenha uma boa potência, é</p>
+        <p>A) 1<br>B) 2<br>C) 4<br>D) 5<br>E) 8</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>D</strong>.<br>$h = 6 \implies \operatorname{sen}\left(\dfrac{\beta t}{2} - \dfrac{\pi}{2}\right) = \dfrac{1}{2}$. Em $t = 0$ o argumento vale $-\dfrac{\pi}{2}$ e depois cresce.<br>A partir de $-\dfrac{\pi}{2}$, o seno vale $\dfrac{1}{2}$ em $\dfrac{\pi}{6}$, $\dfrac{5\pi}{6}$ e $\dfrac{13\pi}{6}$ (3ª vez): $\dfrac{\beta t}{2} = \dfrac{13\pi}{6} + \dfrac{\pi}{2} = \dfrac{8\pi}{3} \implies t = \dfrac{16\pi}{3\beta} = \dfrac{16}{\beta}$.<br>$\dfrac{16}{\beta} < 4 \implies \beta > 4$: o menor inteiro é $\mathbf{5}$.</p></div>
+    </article>
+    <article class="questao">
+        <h4>T 19: (Questão autoral) Imagem e Período</h4>
+        <p>Considere a função $f(x) = 3 - 2\cos(4x)$.</p>
+        <p>A imagem e o período de $f$ são, respectivamente:</p>
+        <p>A) $[1, 5]$ e $2\pi$<br>B) $[1, 5]$ e $\dfrac{\pi}{2}$<br>C) $[-2, 2]$ e $\dfrac{\pi}{2}$<br>D) $[3, 5]$ e $\dfrac{\pi}{4}$<br>E) $[-5, 5]$ e $4\pi$</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>B</strong>.<br>$-1 \leq \cos(4x) \leq 1 \implies 3 - 2 \leq f(x) \leq 3 + 2$: $\operatorname{Im}(f) = [1, 5]$ (o sinal de $-2$ não muda a imagem).<br>Período: $\dfrac{2\pi}{4} = \dfrac{\pi}{2}$. Resposta: $\mathbf{[1, 5]}$ e $\mathbf{\dfrac{\pi}{2}}$.</p></div>
+    </article>
+    <article class="questao">
+        <h4>T 20: (Questão autoral) Vendas Sazonais</h4>
+        <p>As vendas mensais de sorvete de uma loja, em milhares de reais, são modeladas por $V(x) = 30 + 12\cos\left(\dfrac{\pi x}{6}\right)$, em que $x = 0$ corresponde a janeiro, $x = 1$ a fevereiro, e assim por diante.</p>
+        <p>O mês de menor venda e o valor dessa venda são:</p>
+        <p>A) janeiro, R\$ 18 mil<br>B) março, R\$ 30 mil<br>C) junho, R\$ 42 mil<br>D) julho, R\$ 18 mil<br>E) dezembro, R\$ 18 mil</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>D</strong>.<br>Venda mínima quando $\cos\left(\dfrac{\pi x}{6}\right) = -1 \implies \dfrac{\pi x}{6} = \pi \implies x = 6$, que é <strong>julho</strong>.<br>$V(6) = 30 - 12 = \mathbf{18}$ mil reais. (Em janeiro, $x = 0$, ocorre a venda <strong>máxima</strong>: $42$ mil.)</p></div>
+    </article>
+</section>
+
+</div></main>
+<aside class="menu-lateral"><iframe src="../menu_matematica.html" style="width:100%; border:none; height:600px;"></iframe></aside>
+</div>
+<script>
+function toggleGabarito(botao) {
+    const gabarito = botao.nextElementSibling;
+    if (gabarito.style.display === "none" || gabarito.style.display === "") {
+        gabarito.style.display = "block"; botao.textContent = "Esconder Gabarito e Resolução"; botao.style.backgroundColor = "#2c3e50";
+    } else {
+        gabarito.style.display = "none"; botao.textContent = "Ver Gabarito e Resolução"; botao.style.backgroundColor = "#3498db";
+    }
+}
+function toggleMenu() { const m = document.getElementById("menu-principal"); if (m) m.classList.toggle("ativo"); }
+let slideAtual = 0; let slides = [];
+function prepararSlides() { slides = Array.from(document.querySelectorAll('.container-resumo, .passo-teoria, .card, .questao')); }
+function toggleSlides() {
+    prepararSlides(); const body = document.body;
+    if (!body.classList.contains('modo-slides')) { body.classList.add('modo-slides'); slideAtual = 0; mostrarSlide(slideAtual); }
+    else { body.classList.remove('modo-slides'); slides.forEach(s => { s.classList.remove('slide-ativo'); s.style.display = ''; }); }
+}
+function mostrarSlide(n) {
+    if (!slides.length) return;
+    slides.forEach(s => { s.classList.remove('slide-ativo'); s.style.display = 'none'; });
+    const slide = slides[n]; slide.classList.add('slide-ativo');
+    slide.querySelectorAll('.gabarito-resolucao').forEach(g => g.style.display = 'none');
+    slide.querySelectorAll('.btn-gabarito').forEach(b => { b.textContent = "Ver Gabarito e Resolução"; b.style.backgroundColor = "#3498db"; });
+    const pHeader = document.querySelector('header p');
+    if (pHeader) { const partes = pHeader.innerText.split('|'); if (partes.length > 1) {
+        document.getElementById('slide-info-serie').innerText = partes[0].trim();
+        document.getElementById('slide-info-aula').innerText = partes[1].trim(); } }
+    document.getElementById('contador-slide').innerText = (n + 1) + " / " + slides.length;
+    if (window.MathJax && window.MathJax.typesetPromise) { MathJax.typesetPromise(); }
+}
+function mudarSlide(d) { slideAtual += d; if (slideAtual >= slides.length) slideAtual = 0; if (slideAtual < 0) slideAtual = slides.length - 1; mostrarSlide(slideAtual); }
+document.addEventListener('keydown', function(event) {
+    if (document.body.classList.contains('modo-slides')) {
+        switch(event.key) {
+            case 'ArrowRight': case 'PageDown': case 'Enter': case ' ': event.preventDefault(); mudarSlide(1); break;
+            case 'ArrowLeft': case 'PageUp': event.preventDefault(); mudarSlide(-1); break;
+            case 'Escape': event.preventDefault(); toggleSlides(); break;
+        }
+    }
+});
+</script>
+<div class="controles-slides">
+    <div id="slide-info-serie" class="info-lateral"></div>
+    <div class="botoes-centrais">
+        <button class="btn-nav" onclick="mudarSlide(-1)">⬅ Anterior</button>
+        <span id="contador-slide"></span>
+        <button class="btn-nav" onclick="mudarSlide(1)">Próximo ➡</button>
+        <button class="btn-nav" onclick="toggleSlides()" style="background:#e74c3c;">Sair</button>
+    </div>
+    <div id="slide-info-aula" class="info-lateral" style="text-align: right;"></div>
+</div>
+</body>
+</html>
