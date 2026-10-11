@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2º Ano: Aula 30 - Revisão: Centralidade e Dispersão</title>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../estilo.css">
+    <script>
+        MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']], processEscapes: true } };
+    </script>
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        body.modo-slides { overflow: hidden !important; background-color: #1a1a1a !important; margin: 0; padding: 0; }
+        body.modo-slides .menu-lateral, body.modo-slides header, body.modo-slides .menu-toggle, body.modo-slides #btn-slides, body.modo-slides .nav-global { display: none !important; }
+        .slide-ativo { display: flex !important; flex-direction: column; align-items: center; justify-content: center; position: fixed; top: 0; left: 0; width: 100vw; height: calc(100vh - 70px); background: #ffffff; padding: 40px; z-index: 999; overflow-y: auto !important; box-sizing: border-box; text-align: left; }
+        .slide-ativo > * { max-width: 900px; width: 100%; }
+        .controles-slides { position: fixed; bottom: 0; left: 0; width: 100%; height: 70px; background: #2c3e50; color: white; display: none; justify-content: space-between; align-items: center; padding: 0 20px; z-index: 1001; box-sizing: border-box; }
+        body.modo-slides .controles-slides { display: flex !important; }
+        .info-lateral { flex: 1; font-family: 'Oswald', sans-serif; font-size: 0.9rem; color: #bdc3c7; }
+        .botoes-centrais { display: flex; align-items: center; gap: 15px; justify-content: center; flex: 2; }
+        .btn-nav { padding: 10px 20px; background: #3498db; color: white; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; font-size: 0.9rem; }
+        .btn-nav:hover { background: #2980b9; }
+        #contador-slide { font-family: 'Oswald', sans-serif; min-width: 60px; text-align: center; font-size: 1.1rem; }
+    </style>
+</head>
+<body>
+<button class="menu-toggle" onclick="toggleMenu()">☰</button>
+<nav id="menu-principal" class="nav-global"><ul>
+    <li><a href="../index.html">🏠 Início</a></li>
+    <li><a href="../ensino_medio.html">📚 Ensino Médio</a></li>
+    <li><a href="../ensino_superior.html">🎓 Ensino Superior</a></li>
+</ul></nav>
+<header id="topo">
+    <h1>MATEMÁTICA EM</h1>
+    <p>2º Ano | Aula 30: Revisão: Centralidade e Dispersão</p>
+    <button id="btn-slides" onclick="toggleSlides()">📺 Iniciar Modo Slides</button>
+</header>
+<div class="container"><main class="conteudo-principal"><div class="secao-aula">
+
+<div class="container-resumo" id="resumo">
+    <h3>📚 Resumo</h3>
+    <section class="resumo-conteudo">
+        <p>As <strong>medidas de centralidade</strong> (média, mediana e moda) resumem um conjunto de dados em um único valor "típico". As <strong>medidas de dispersão</strong> (amplitude, variância, desvio padrão e coeficiente de variação) dizem o quanto os dados se espalham em torno da média: quanto menor a dispersão, mais <strong>regular</strong> ou <strong>homogêneo</strong> é o conjunto.</p>
+        <p style="text-align: center;">$$\bar{x} = \frac{\sum x_i}{n} \qquad \sigma^2 = \frac{\sum (x_i - \bar{x})^2}{n} \qquad \sigma = \sqrt{\sigma^2} \qquad CV = \frac{\sigma}{\bar{x}}$$</p>
+    </section>
+</div>
+
+<section class="conteudo-teorico-completo" id="teoria">
+    <div class="passo-teoria">
+        <h3>📖 Centralidade e Dispersão</h3>
+        <h4>1. Medidas de Centralidade</h4>
+        <ul>
+            <li><strong>Média aritmética:</strong> $\bar{x} = \dfrac{x_1 + x_2 + \dots + x_n}{n}$;</li>
+            <li><strong>Média ponderada:</strong> $\bar{x}_p = \dfrac{x_1 p_1 + x_2 p_2 + \dots + x_n p_n}{p_1 + p_2 + \dots + p_n}$ (cada valor tem um peso $p_i$; também é usada com tabelas de frequência);</li>
+            <li><strong>Mediana:</strong> com os dados em ordem (rol), é o termo central se $n$ é ímpar, ou a média dos dois termos centrais se $n$ é par;</li>
+            <li><strong>Moda:</strong> o valor que mais se repete (pode haver mais de uma, ou nenhuma).</li>
+        </ul>
+        <p>A mediana não é afetada por valores extremos; a média, sim. Por isso salários e preços de imóveis costumam ser descritos pela mediana.</p>
+    </div>
+
+    <div class="passo-teoria">
+        <h4>2. Por que Medir a Dispersão?</h4>
+        <p>Conjuntos com a <strong>mesma média</strong> podem ser muito diferentes. Na figura, A e B têm média $7$, mas os valores de B estão bem mais espalhados:</p>
+        <figure class="figura-aula figura-grande">
+            <svg viewBox="0 0 520 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Dois conjuntos com média 7: conjunto A concentrado de 5 a 9 e conjunto B espalhado de 1 a 13" style="width:100%; max-width:540px; display:block; margin:0 auto;">
+  <line x1="40" y1="60" x2="488" y2="60" stroke="#2c3e50" stroke-width="1.5"/>
+  <line x1="40" y1="56" x2="40" y2="64" stroke="#2c3e50"/><text x="40" y="80" font-family="Oswald, sans-serif" font-size="11" fill="#7f8c8d" text-anchor="middle">0</text>
+  <line x1="72" y1="56" x2="72" y2="64" stroke="#2c3e50"/><text x="72" y="80" font-family="Oswald, sans-serif" font-size="11" fill="#7f8c8d" text-anchor="middle">1</text>
+  <line x1="104" y1="56" x2="104" y2="64" stroke="#2c3e50"/><text x="104" y="80" font-family="Oswald, sans-serif" font-size="11" fill="#7f8c8d" text-anchor="middle">2</text>
+  <line x1="136" y1="56" x2="136" y2="64" stroke="#2c3e50"/><text x="136" y="80" font-family="Oswald, sans-serif" font-size="11" fill="#7f8c8d" text-anchor="middle">3</text>
+  <line x1="168" y1="56" x2="168" y2="64" stroke="#2c3e50"/><text x="168" y="80" font-family="Oswald, sans-serif" font-size="11" fill="#7f8c8d" text-anchor="middle">4</text>
+  <line x1="200" y1="56" x2="200" y2="64" stroke="#2c3e50"/><text x="200" y="80" font-family="Oswald, sans-serif" font-size="11" fill="#7f8c8d" text-anchor="middle">5</text>
+  <line x1="232" y1="56" x2="232" y2="64" stroke="#2c3e50"/><text x="232" y="80" font-family="Oswald, sans-serif" font-size="11" fill="#7f8c8d" text-anchor="middle">6</text>
+  <line x1="264" y1="56" x2="264" y2="64" stroke="#2c3e50"/><text x="264" y="80" font-family="Oswald, sans-serif" font-size="11" fill="#7f8c8d" text-anchor="middle">7</text>
+  <line x1="296" y1="56" x2="296" y2="64" stroke="#2c3e50"/><text x="296" y="80" font-family="Oswald, sans-serif" font-size="11" fill="#7f8c8d" text-anchor="middle">8</text>
+  <line x1="328" y1="56" x2="328" y2="64" stroke="#2c3e50"/><text x="328" y="80" font-family="Oswald, sans-serif" font-size="11" fill="#7f8c8d" text-anchor="middle">9</text>
+  <line x1="360" y1="56" x2="360" y2="64" stroke="#2c3e50"/><text x="360" y="80" font-family="Oswald, sans-serif" font-size="11" fill="#7f8c8d" text-anchor="middle">10</text>
+  <line x1="392" y1="56" x2="392" y2="64" stroke="#2c3e50"/><text x="392" y="80" font-family="Oswald, sans-serif" font-size="11" fill="#7f8c8d" text-anchor="middle">11</text>
+  <line x1="424" y1="56" x2="424" y2="64" stroke="#2c3e50"/><text x="424" y="80" font-family="Oswald, sans-serif" font-size="11" fill="#7f8c8d" text-anchor="middle">12</text>
+  <line x1="456" y1="56" x2="456" y2="64" stroke="#2c3e50"/><text x="456" y="80" font-family="Oswald, sans-serif" font-size="11" fill="#7f8c8d" text-anchor="middle">13</text>
+  <line x1="488" y1="56" x2="488" y2="64" stroke="#2c3e50"/><text x="488" y="80" font-family="Oswald, sans-serif" font-size="11" fill="#7f8c8d" text-anchor="middle">14</text>
+  <circle cx="200" cy="48" r="7" fill="#3498db"/>
+  <circle cx="232" cy="48" r="7" fill="#3498db"/>
+  <circle cx="264" cy="48" r="7" fill="#3498db"/>
+  <circle cx="296" cy="48" r="7" fill="#3498db"/>
+  <circle cx="328" cy="48" r="7" fill="#3498db"/>
+  <text x="498" y="54" font-family="Oswald, sans-serif" font-size="14" fill="#3498db">A: σ ≈ 1,41</text>
+  <line x1="40" y1="140" x2="488" y2="140" stroke="#2c3e50" stroke-width="1.5"/>
+  <line x1="40" y1="136" x2="40" y2="144" stroke="#2c3e50"/><text x="40" y="160" font-family="Oswald, sans-serif" font-size="11" fill="#7f8c8d" text-anchor="middle">0</text>
+  <line x1="72" y1="136" x2="72" y2="144" stroke="#2c3e50"/><text x="72" y="160" font-family="Oswald, sans-serif" font-size="11" fill="#7f8c8d" text-anchor="middle">1</text>
+  <line x1="104" y1="136" x2="104" y2="144" stroke="#2c3e50"/><text x="104" y="160" font-family="Oswald, sans-serif" font-size="11" fill="#7f8c8d" text-anchor="middle">2</text>
+  <line x1="136" y1="136" x2="136" y2="144" stroke="#2c3e50"/><text x="136" y="160" font-family="Oswald, sans-serif" font-size="11" fill="#7f8c8d" text-anchor="middle">3</text>
+  <line x1="168" y1="136" x2="168" y2="144" stroke="#2c3e50"/><text x="168" y="160" font-family="Oswald, sans-serif" font-size="11" fill="#7f8c8d" text-anchor="middle">4</text>
+  <line x1="200" y1="136" x2="200" y2="144" stroke="#2c3e50"/><text x="200" y="160" font-family="Oswald, sans-serif" font-size="11" fill="#7f8c8d" text-anchor="middle">5</text>
+  <line x1="232" y1="136" x2="232" y2="144" stroke="#2c3e50"/><text x="232" y="160" font-family="Oswald, sans-serif" font-size="11" fill="#7f8c8d" text-anchor="middle">6</text>
+  <line x1="264" y1="136" x2="264" y2="144" stroke="#2c3e50"/><text x="264" y="160" font-family="Oswald, sans-serif" font-size="11" fill="#7f8c8d" text-anchor="middle">7</text>
+  <line x1="296" y1="136" x2="296" y2="144" stroke="#2c3e50"/><text x="296" y="160" font-family="Oswald, sans-serif" font-size="11" fill="#7f8c8d" text-anchor="middle">8</text>
+  <line x1="328" y1="136" x2="328" y2="144" stroke="#2c3e50"/><text x="328" y="160" font-family="Oswald, sans-serif" font-size="11" fill="#7f8c8d" text-anchor="middle">9</text>
+  <line x1="360" y1="136" x2="360" y2="144" stroke="#2c3e50"/><text x="360" y="160" font-family="Oswald, sans-serif" font-size="11" fill="#7f8c8d" text-anchor="middle">10</text>
+  <line x1="392" y1="136" x2="392" y2="144" stroke="#2c3e50"/><text x="392" y="160" font-family="Oswald, sans-serif" font-size="11" fill="#7f8c8d" text-anchor="middle">11</text>
+  <line x1="424" y1="136" x2="424" y2="144" stroke="#2c3e50"/><text x="424" y="160" font-family="Oswald, sans-serif" font-size="11" fill="#7f8c8d" text-anchor="middle">12</text>
+  <line x1="456" y1="136" x2="456" y2="144" stroke="#2c3e50"/><text x="456" y="160" font-family="Oswald, sans-serif" font-size="11" fill="#7f8c8d" text-anchor="middle">13</text>
+  <line x1="488" y1="136" x2="488" y2="144" stroke="#2c3e50"/><text x="488" y="160" font-family="Oswald, sans-serif" font-size="11" fill="#7f8c8d" text-anchor="middle">14</text>
+  <circle cx="72" cy="128" r="7" fill="#e74c3c"/>
+  <circle cx="168" cy="128" r="7" fill="#e74c3c"/>
+  <circle cx="264" cy="128" r="7" fill="#e74c3c"/>
+  <circle cx="360" cy="128" r="7" fill="#e74c3c"/>
+  <circle cx="456" cy="128" r="7" fill="#e74c3c"/>
+  <text x="498" y="134" font-family="Oswald, sans-serif" font-size="14" fill="#e74c3c">B: σ ≈ 4,24</text>
+  <line x1="264" y1="25" x2="264" y2="170" stroke="#2ecc71" stroke-width="2" stroke-dasharray="6,4"/>
+  <text x="270" y="22" font-family="Oswald, sans-serif" font-size="14" fill="#27ae60">média = 7</text>
+</svg>
+            <figcaption>Figura 1: Conjuntos A $= \{5, 6, 7, 8, 9\}$ e B $= \{1, 4, 7, 10, 13\}$: mesma média, dispersões diferentes.</figcaption>
+        </figure>
+    </div>
+
+    <div class="passo-teoria">
+        <h4>3. Medidas de Dispersão</h4>
+        <table style="margin: 15px auto; border-collapse: collapse; text-align: center; font-size: 1.05rem;">
+            <tr style="background-color: #2c3e50; color: white;"><th style="padding: 8px 14px;">Medida</th><th style="padding: 8px 14px;">Como calcular</th></tr>
+            <tr><td style="padding: 8px 14px; border: 1px solid #ccc;">Amplitude</td><td style="padding: 8px 14px; border: 1px solid #ccc;">maior valor $-$ menor valor</td></tr>
+            <tr style="background-color: #f8f9fa;"><td style="padding: 8px 14px; border: 1px solid #ccc;">Variância</td><td style="padding: 8px 14px; border: 1px solid #ccc;">$\sigma^2 = \dfrac{\sum (x_i - \bar{x})^2}{n}$</td></tr>
+            <tr><td style="padding: 8px 14px; border: 1px solid #ccc;">Desvio padrão</td><td style="padding: 8px 14px; border: 1px solid #ccc;">$\sigma = \sqrt{\sigma^2}$ (mesma unidade dos dados)</td></tr>
+            <tr style="background-color: #f8f9fa;"><td style="padding: 8px 14px; border: 1px solid #ccc;">Coeficiente de variação</td><td style="padding: 8px 14px; border: 1px solid #ccc;">$CV = \dfrac{\sigma}{\bar{x}}$ (em %)</td></tr>
+        </table>
+        <p><strong>Roteiro do desvio padrão:</strong> (1) calcule a média; (2) subtraia a média de cada valor; (3) eleve cada desvio ao quadrado; (4) tire a média desses quadrados (variância); (5) extraia a raiz quadrada.</p>
+        <p><strong>Propriedades:</strong> somar uma constante a todos os valores muda a média, mas <strong>não muda</strong> o desvio padrão; multiplicar todos os valores por $k$ multiplica a média e o desvio padrão por $k$ (e a variância por $k^2$).</p>
+    </div>
+
+    <div class="passo-teoria">
+        <h4>4. Regularidade e Homogeneidade</h4>
+        <p>Com médias iguais, o conjunto <strong>mais regular</strong> é o de <strong>menor desvio padrão</strong>. Para comparar conjuntos com médias diferentes (ou unidades diferentes), use o <strong>coeficiente de variação</strong> $CV = \dfrac{\sigma}{\bar{x}}$: o menor $CV$ indica o conjunto mais homogêneo.</p>
+    </div>
+</section>
+
+<section class="aplicacoes-reais" id="aplicacoes">
+    <h3>💡 Matemática em Ação</h3>
+    <div class="cards-aplicacao">
+        <div class="card">
+            <h4>🏭 Controle de Qualidade</h4>
+            <p>Uma fábrica de garrafas de $500$ mL não se contenta com a média certa: ela exige desvio padrão pequeno, para que quase todas as garrafas tenham volume próximo de $500$ mL. Se o desvio padrão aumenta, a máquina precisa de ajuste.</p>
+        </div>
+        <div class="card" style="border-left-color: #2ecc71;">
+            <h4>📈 Investimentos e Riscos</h4>
+            <p>No mercado financeiro, o desvio padrão dos rendimentos mede o <strong>risco</strong>: aplicações com rendimento médio parecido podem ter oscilações muito diferentes. A poupança tem desvio padrão baixo; as ações, alto.</p>
+        </div>
+    </div>
+</section>
+<section class="questoes-resolvidas" id="resolvidas">
+    <h3>✅ 5 Questões Resolvidas (R 1 a 5)</h3>
+    <article class="questao">
+        <h4>R 1: Média, Mediana e Moda</h4>
+        <p><strong>Enunciado:</strong> Determine a média, a mediana e a moda do conjunto $\{2, 5, 5, 6, 7, 9, 8\}$.</p>
+        <div class="resolucao-bloco"><p><strong>Resolução:</strong><br>Rol (em ordem): $2, 5, 5, 6, 7, 8, 9$ ($n = 7$).<br>Média: $\bar{x} = \dfrac{2 + 5 + 5 + 6 + 7 + 8 + 9}{7} = \dfrac{42}{7} = \mathbf{6}$.<br>Mediana (termo central, o 4º): $\mathbf{6}$. Moda (valor mais frequente): $\mathbf{5}$.</p></div>
+    </article>
+    <article class="questao">
+        <h4>R 2: Média Ponderada</h4>
+        <p><strong>Enunciado:</strong> Em uma disciplina, a nota final é a média ponderada de três avaliações: prova 1 (peso $2$), prova 2 (peso $3$) e trabalho (peso $5$). Um aluno tirou $6$, $8$ e $5$, respectivamente. Qual é a sua nota final?</p>
+        <div class="resolucao-bloco"><p><strong>Resolução:</strong><br>$\bar{x}_p = \dfrac{6 \cdot 2 + 8 \cdot 3 + 5 \cdot 5}{2 + 3 + 5} = \dfrac{12 + 24 + 25}{10}$.<br>$\bar{x}_p = \dfrac{61}{10} = \mathbf{6{,}1}$. (A média simples seria $6{,}33$: o peso alto do trabalho puxou a nota para baixo.)</p></div>
+    </article>
+    <article class="questao">
+        <h4>R 3: Mediana com n Par</h4>
+        <p><strong>Enunciado:</strong> Determine a média e a mediana de $\{3, 8, 1, 10, 6, 4\}$.</p>
+        <div class="resolucao-bloco"><p><strong>Resolução:</strong><br>Rol: $1, 3, 4, 6, 8, 10$ ($n = 6$, par).<br>Mediana: média dos dois termos centrais, $\dfrac{4 + 6}{2} = \mathbf{5}$.<br>Média: $\dfrac{32}{6} = \mathbf{\dfrac{16}{3}} \approx 5{,}33$.</p></div>
+    </article>
+    <article class="questao">
+        <h4>R 4: Variância e Desvio Padrão</h4>
+        <p><strong>Enunciado:</strong> Calcule a variância e o desvio padrão do conjunto $\{2, 4, 4, 4, 5, 5, 7, 9\}$.</p>
+        <div class="resolucao-bloco"><p><strong>Resolução:</strong><br>Média: $\bar{x} = \dfrac{40}{8} = 5$.<br>Quadrados dos desvios $(x_i - 5)^2$: $9, 1, 1, 1, 0, 0, 4, 16$, com soma $32$.<br>Variância: $\sigma^2 = \dfrac{32}{8} = \mathbf{4}$; desvio padrão: $\sigma = \sqrt{4} = \mathbf{2}$.</p></div>
+    </article>
+    <article class="questao">
+        <h4>R 5: Coeficiente de Variação</h4>
+        <p><strong>Enunciado:</strong> Na turma A, a média de altura é $170$ cm, com desvio padrão $8{,}5$ cm. Na turma B, a média é $160$ cm, com desvio padrão $9{,}6$ cm. Qual turma é mais homogênea?</p>
+        <div class="resolucao-bloco"><p><strong>Resolução:</strong><br>Coeficiente de variação: $CV = \dfrac{\sigma}{\bar{x}}$.<br>$CV_A = \dfrac{8{,}5}{170} = 0{,}05 = 5\%$ e $CV_B = \dfrac{9{,}6}{160} = 0{,}06 = 6\%$.<br>A turma <strong>A</strong> é mais homogênea (menor $CV$).</p></div>
+    </article>
+</section>
+
+<section class="questoes-propostas" id="propostas">
+    <h3>✍️ 10 Questões Propostas (P 6 a 15)</h3>
+    <article class="questao">
+        <h4>P 6: Medidas de Centralidade</h4>
+        <p><strong>Enunciado:</strong> Determine a média, a mediana e a moda de $\{4, 8, 6, 8, 9, 7, 8, 6\}$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>Rol: $4, 6, 6, 7, 8, 8, 8, 9$. Média: $\dfrac{56}{8} = \mathbf{7}$.<br>Mediana: $\dfrac{7 + 8}{2} = \mathbf{7{,}5}$. Moda: $\mathbf{8}$.</p></div>
+    </article>
+    <article class="questao">
+        <h4>P 7: Prova e Trabalho</h4>
+        <p><strong>Enunciado:</strong> A nota de um aluno é a média ponderada entre a prova (peso $3$) e o trabalho (peso $2$). Ele tirou $5$ na prova e $8$ no trabalho. Qual é a sua nota?</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>$\dfrac{5 \cdot 3 + 8 \cdot 2}{5} = \dfrac{31}{5}$.<br>Nota: $\mathbf{6{,}2}$.</p></div>
+    </article>
+    <article class="questao">
+        <h4>P 8: Nota Necessária</h4>
+        <p><strong>Enunciado:</strong> Um aluno fez três provas, com notas $5$, $6$ e $8$. Quanto ele precisa tirar na quarta prova para que a média das quatro seja $7$?</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>A soma das quatro notas deve ser $4 \cdot 7 = 28$.<br>$5 + 6 + 8 + x = 28 \implies x = \mathbf{9}$.</p></div>
+    </article>
+    <article class="questao">
+        <h4>P 9: Amplitude e Mediana</h4>
+        <p><strong>Enunciado:</strong> Determine a amplitude e a mediana do conjunto $\{12, 15, 9, 20, 14\}$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>Rol: $9, 12, 14, 15, 20$.<br>Amplitude: $20 - 9 = \mathbf{11}$. Mediana: $\mathbf{14}$.</p></div>
+    </article>
+    <article class="questao">
+        <h4>P 10: Desvio Padrão</h4>
+        <p><strong>Enunciado:</strong> Calcule a variância e o desvio padrão de $\{2, 4, 6, 8\}$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>Média: $5$. Quadrados dos desvios: $9, 1, 1, 9$ (soma $20$).<br>$\sigma^2 = \dfrac{20}{4} = \mathbf{5}$; $\sigma = \mathbf{\sqrt{5}} \approx 2{,}24$.</p></div>
+    </article>
+    <article class="questao">
+        <h4>P 11: Atleta Mais Regular</h4>
+        <p><strong>Enunciado:</strong> Dois atletas têm o mesmo tempo médio de $10{,}0$ s nos $100$ m. O desvio padrão dos tempos de A é $0{,}2$ s e o de B é $0{,}5$ s. Qual é o mais regular? Por quê?</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>Com médias iguais, o mais regular é o de <strong>menor desvio padrão</strong>.<br>O atleta <strong>A</strong> ($0{,}2 < 0{,}5$): seus tempos ficam mais próximos da média.</p></div>
+    </article>
+    <article class="questao">
+        <h4>P 12: Somando e Multiplicando</h4>
+        <p><strong>Enunciado:</strong> Um conjunto tem média $8$ e desvio padrão $2$. Determine a nova média e o novo desvio padrão se (a) somarmos $3$ a todos os valores; (b) multiplicarmos todos os valores por $2$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>(a) A média também aumenta $3$: $\mathbf{11}$; o desvio padrão <strong>não muda</strong>: $\mathbf{2}$ (os valores apenas se deslocam).<br>(b) Média: $2 \cdot 8 = \mathbf{16}$; desvio padrão: $2 \cdot 2 = \mathbf{4}$.</p></div>
+    </article>
+    <article class="questao">
+        <h4>P 13: Tabela de Frequências</h4>
+        <p><strong>Enunciado:</strong> Em uma turma de $10$ alunos, as notas foram: $5$ ($2$ alunos), $6$ ($3$ alunos), $7$ ($4$ alunos) e $8$ ($1$ aluno). Determine a média, a moda e a mediana.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>Média: $\dfrac{5 \cdot 2 + 6 \cdot 3 + 7 \cdot 4 + 8 \cdot 1}{10} = \dfrac{64}{10} = \mathbf{6{,}4}$. Moda: $\mathbf{7}$.<br>Rol: $5, 5, 6, 6, 6, 7, 7, 7, 7, 8$; mediana $= \dfrac{6 + 7}{2} = \mathbf{6{,}5}$ (5º e 6º termos).</p></div>
+    </article>
+    <article class="questao">
+        <h4>P 14: Novo Aluno</h4>
+        <p><strong>Enunciado:</strong> A média das notas de $9$ alunos é $6$. Um novo aluno, com nota $10$, entra na turma. Qual é a nova média?</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>Soma anterior: $9 \cdot 6 = 54$. Nova soma: $54 + 10 = 64$.<br>Nova média: $\dfrac{64}{10} = \mathbf{6{,}4}$.</p></div>
+    </article>
+    <article class="questao">
+        <h4>P 15: Comparando Dispersões</h4>
+        <p><strong>Enunciado:</strong> O conjunto A tem média $40$ e desvio padrão $6$; o conjunto B tem média $80$ e desvio padrão $10$. Calcule os coeficientes de variação e diga qual conjunto é mais homogêneo.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>$CV_A = \dfrac{6}{40} = 15\%$ e $CV_B = \dfrac{10}{80} = 12{,}5\%$.<br><strong>B</strong> é mais homogêneo, apesar de ter desvio padrão maior: em relação à sua média, ele varia menos.</p></div>
+    </article>
+</section>
+
+<section class="TESTE" id="testes">
+    <h3>🎓 TESTES (T 16 a 20)</h3>
+    <article class="questao">
+        <h4>T 16: (ENEM 2011, adaptada) Temperaturas</h4>
+        <p>Uma equipe de especialistas do centro meteorológico de uma cidade mediu a temperatura do ambiente, sempre no mesmo horário, durante $15$ dias intercalados, a partir do primeiro dia de um mês. Esse tipo de procedimento é frequente, uma vez que os dados coletados servem de referência para estudos e verificação de tendências climáticas ao longo dos meses e anos. As temperaturas registradas, em °C, colocadas em ordem crescente, foram:</p>
+        <p>$13{,}5$; $13{,}5$; $13{,}5$; $13{,}5$; $14$; $15{,}5$; $16$; $18$; $18$; $18{,}5$; $19{,}5$; $20$; $20$; $20$; $21{,}5$.</p>
+        <p>Em relação à temperatura, os valores da média, mediana e moda são, respectivamente, iguais a</p>
+        <p>A) $17$ °C, $17$ °C e $13{,}5$ °C<br>B) $17$ °C, $18$ °C e $13{,}5$ °C<br>C) $17$ °C, $13{,}5$ °C e $18$ °C<br>D) $17$ °C, $18$ °C e $21{,}5$ °C<br>E) $17$ °C, $13{,}5$ °C e $21{,}5$ °C</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>B</strong>.<br>Média: a soma é $255$, logo $\bar{x} = \dfrac{255}{15} = 17$ °C.<br>Mediana: com $15$ valores, é o 8º termo do rol, $18$ °C. Moda: $13{,}5$ °C (aparece $4$ vezes).<br>Resposta: $\mathbf{17}$ °C, $\mathbf{18}$ °C e $\mathbf{13{,}5}$ °C.</p></div>
+    </article>
+    <article class="questao">
+        <h4>T 17: (ENEM 2021, adaptada) Terremotos</h4>
+        <p>O quadro apresenta a quantidade de terremotos de magnitude maior ou igual a $7$, na escala Richter, ocorridos em nosso planeta nos anos de 2000 a 2011:<br> 2000: $15$; 2001: $16$; 2002: $13$; 2003: $15$; 2004: $16$; 2005: $11$; 2006: $11$; 2007: $18$; 2008: $12$; 2009: $17$; 2010: $24$; 2011: $20$.</p>
+        <p>Um pesquisador acredita que a mediana representa bem o número anual típico de terremotos em um período.</p>
+        <p>Segundo esse pesquisador, o número anual típico de terremotos de magnitude maior ou igual a $7$ é</p>
+        <p>A) 11<br>B) 15<br>C) 15,5<br>D) 15,7<br>E) 17,5</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>C</strong>.<br>Rol ($12$ valores): $11, 11, 12, 13, 15, 15, 16, 16, 17, 18, 20, 24$.<br>Com $n$ par, a mediana é a média dos dois termos centrais (6º e 7º): $\dfrac{15 + 16}{2} = \mathbf{15{,}5}$.<br>(A alternativa D, $15{,}7$, é a <strong>média</strong>: $\dfrac{188}{12} \approx 15{,}67$.)</p></div>
+    </article>
+    <article class="questao">
+        <h4>T 18: (ENEM 2010, adaptada) Marco e Paulo</h4>
+        <p>Marco e Paulo foram classificados em um concurso. Para classificação no concurso o candidato deveria obter média aritmética na pontuação igual ou superior a $14$. Em caso de empate na média, o desempate seria em favor da pontuação mais regular. Nas provas de Matemática, Português e Conhecimentos Gerais, os resultados foram:</p>
+        <p><strong>Marco:</strong> média $15$, mediana $15$, desvio padrão $0{,}32$. \quad <strong>Paulo:</strong> média $15$, mediana $18$, desvio padrão $4{,}97$ (Paulo obteve a maior pontuação entre os dois, $19$ em Português).</p>
+        <p>O candidato com pontuação mais regular, portanto mais bem classificado no concurso, é</p>
+        <p>A) Marco, pois a média e a mediana são iguais.<br>B) Marco, pois obteve menor desvio padrão.<br>C) Paulo, pois obteve a maior pontuação da tabela, 19 em Português.<br>D) Paulo, pois obteve maior mediana.<br>E) Paulo, pois obteve maior desvio padrão.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>B</strong>.<br>As médias são iguais ($15$), então vale o critério de desempate: a pontuação mais regular.<br>Regularidade é medida pela <strong>dispersão</strong>: quanto <strong>menor</strong> o desvio padrão, mais próximas da média estão as notas.<br>Marco tem desvio padrão $0{,}32 < 4{,}97$: <strong>Marco</strong>, pois obteve menor desvio padrão.</p></div>
+    </article>
+    <article class="questao">
+        <h4>T 19: (ENEM 2021) A Ração dos Coelhos</h4>
+        <p>Um zootecnista pretende testar se uma nova ração para coelhos é mais eficiente do que a que ele vem utilizando atualmente. A ração atual proporciona uma massa média de $10$ kg por coelho, com um desvio padrão de $1$ kg, alimentado com essa ração durante um período de três meses. O zootecnista selecionou uma amostra de coelhos e os alimentou com a nova ração pelo mesmo período de tempo. Ao final, anotou a massa de cada coelho, obtendo um desvio padrão de $1{,}5$ kg para a distribuição das massas dos coelhos dessa amostra.</p>
+        <p>Para avaliar a eficiência dessa ração, ele utilizará o coeficiente de variação ($CV$), que é uma medida de dispersão definida por $CV = \dfrac{s}{\bar{x}}$, em que $s$ representa o desvio padrão e $\bar{x}$, a média das massas dos coelhos que foram alimentados com uma determinada ração.</p>
+        <p>O zootecnista substituirá a ração que vinha utilizando pela nova, caso o coeficiente de variação da distribuição das massas dos coelhos que foram alimentados com a nova ração for menor do que o coeficiente de variação da distribuição das massas dos coelhos que foram alimentados com a ração atual.</p>
+        <p>A substituição da ração ocorrerá se a média da distribuição das massas dos coelhos da amostra, em quilograma, for superior a</p>
+        <p>A) 5,0<br>B) 9,5<br>C) 10,0<br>D) 10,5<br>E) 15,0</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>E</strong>.<br>Ração atual: $CV = \dfrac{1}{10} = 0{,}1$.<br>Nova ração: $\dfrac{1{,}5}{\bar{x}} < 0{,}1 \implies \bar{x} > \dfrac{1{,}5}{0{,}1} = 15$.<br>A média precisa ser superior a $\mathbf{15{,}0}$ kg.</p></div>
+    </article>
+    <article class="questao">
+        <h4>T 20: (ENEM 2012) A Variância do Café</h4>
+        <p>Um produtor de café irrigado em Minas Gerais recebeu um relatório de consultoria estatística, constando, entre outras informações, o desvio padrão das produções de uma safra dos talhões de sua propriedade. Os talhões têm a mesma área de $30\,000$ m² e o valor obtido para o desvio padrão foi de $90$ kg/talhão. O produtor deve apresentar as informações sobre a produção e a variância dessas produções em sacas de $60$ kg por hectare ($10\,000$ m²).</p>
+        <p>A variância das produções dos talhões expressa em (sacas/hectare)² é</p>
+        <p>A) 20,25<br>B) 4,50<br>C) 0,71<br>D) 0,50<br>E) 0,25</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>E</strong>.<br>Cada talhão tem $3$ hectares: $90$ kg/talhão $= 30$ kg/hectare.<br>Em sacas de $60$ kg: $\dfrac{30}{60} = 0{,}5$ saca/hectare (este é o desvio padrão; cuidado, alternativa D).<br>Variância $=$ (desvio padrão)$^2 = 0{,}5^2 = \mathbf{0{,}25}$ (sacas/hectare)².</p></div>
+    </article>
+</section>
+
+</div></main>
+<aside class="menu-lateral"><iframe src="../menu_matematica.html" style="width:100%; border:none; height:600px;"></iframe></aside>
+</div>
+<script>
+function toggleGabarito(botao) {
+    const gabarito = botao.nextElementSibling;
+    if (gabarito.style.display === "none" || gabarito.style.display === "") {
+        gabarito.style.display = "block"; botao.textContent = "Esconder Gabarito e Resolução"; botao.style.backgroundColor = "#2c3e50";
+    } else {
+        gabarito.style.display = "none"; botao.textContent = "Ver Gabarito e Resolução"; botao.style.backgroundColor = "#3498db";
+    }
+}
+function toggleMenu() { const m = document.getElementById("menu-principal"); if (m) m.classList.toggle("ativo"); }
+let slideAtual = 0; let slides = [];
+function prepararSlides() { slides = Array.from(document.querySelectorAll('.container-resumo, .passo-teoria, .card, .questao')); }
+function toggleSlides() {
+    prepararSlides(); const body = document.body;
+    if (!body.classList.contains('modo-slides')) { body.classList.add('modo-slides'); slideAtual = 0; mostrarSlide(slideAtual); }
+    else { body.classList.remove('modo-slides'); slides.forEach(s => { s.classList.remove('slide-ativo'); s.style.display = ''; }); }
+}
+function mostrarSlide(n) {
+    if (!slides.length) return;
+    slides.forEach(s => { s.classList.remove('slide-ativo'); s.style.display = 'none'; });
+    const slide = slides[n]; slide.classList.add('slide-ativo');
+    slide.querySelectorAll('.gabarito-resolucao').forEach(g => g.style.display = 'none');
+    slide.querySelectorAll('.btn-gabarito').forEach(b => { b.textContent = "Ver Gabarito e Resolução"; b.style.backgroundColor = "#3498db"; });
+    const pHeader = document.querySelector('header p');
+    if (pHeader) { const partes = pHeader.innerText.split('|'); if (partes.length > 1) {
+        document.getElementById('slide-info-serie').innerText = partes[0].trim();
+        document.getElementById('slide-info-aula').innerText = partes[1].trim(); } }
+    document.getElementById('contador-slide').innerText = (n + 1) + " / " + slides.length;
+    if (window.MathJax && window.MathJax.typesetPromise) { MathJax.typesetPromise(); }
+}
+function mudarSlide(d) { slideAtual += d; if (slideAtual >= slides.length) slideAtual = 0; if (slideAtual < 0) slideAtual = slides.length - 1; mostrarSlide(slideAtual); }
+document.addEventListener('keydown', function(event) {
+    if (document.body.classList.contains('modo-slides')) {
+        switch(event.key) {
+            case 'ArrowRight': case 'PageDown': case 'Enter': case ' ': event.preventDefault(); mudarSlide(1); break;
+            case 'ArrowLeft': case 'PageUp': event.preventDefault(); mudarSlide(-1); break;
+            case 'Escape': event.preventDefault(); toggleSlides(); break;
+        }
+    }
+});
+</script>
+<div class="controles-slides">
+    <div id="slide-info-serie" class="info-lateral"></div>
+    <div class="botoes-centrais">
+        <button class="btn-nav" onclick="mudarSlide(-1)">⬅ Anterior</button>
+        <span id="contador-slide"></span>
+        <button class="btn-nav" onclick="mudarSlide(1)">Próximo ➡</button>
+        <button class="btn-nav" onclick="toggleSlides()" style="background:#e74c3c;">Sair</button>
+    </div>
+    <div id="slide-info-aula" class="info-lateral" style="text-align: right;"></div>
+</div>
+</body>
+</html>
