@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1º Ano: Aula 25 - Medidas de Dispersão (Variância e Desvio Padrão)</title>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../estilo.css">
+    <script>
+        MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']], processEscapes: true } };
+    </script>
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        body.modo-slides { overflow: hidden !important; background-color: #1a1a1a !important; margin: 0; padding: 0; }
+        body.modo-slides .menu-lateral, body.modo-slides header, body.modo-slides .menu-toggle, body.modo-slides #btn-slides, body.modo-slides .nav-global { display: none !important; }
+        .slide-ativo { display: flex !important; flex-direction: column; align-items: center; justify-content: center; position: fixed; top: 0; left: 0; width: 100vw; height: calc(100vh - 70px); background: #ffffff; padding: 40px; z-index: 999; overflow-y: auto !important; box-sizing: border-box; text-align: left; }
+        .slide-ativo > * { max-width: 900px; width: 100%; }
+        .controles-slides { position: fixed; bottom: 0; left: 0; width: 100%; height: 70px; background: #2c3e50; color: white; display: none; justify-content: space-between; align-items: center; padding: 0 20px; z-index: 1001; box-sizing: border-box; }
+        body.modo-slides .controles-slides { display: flex !important; }
+        .info-lateral { flex: 1; font-family: 'Oswald', sans-serif; font-size: 0.9rem; color: #bdc3c7; }
+        .botoes-centrais { display: flex; align-items: center; gap: 15px; justify-content: center; flex: 2; }
+        .btn-nav { padding: 10px 20px; background: #3498db; color: white; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; font-size: 0.9rem; }
+        .btn-nav:hover { background: #2980b9; }
+        #contador-slide { font-family: 'Oswald', sans-serif; min-width: 60px; text-align: center; font-size: 1.1rem; }
+    </style>
+</head>
+<body>
+<button class="menu-toggle" onclick="toggleMenu()">☰</button>
+<nav id="menu-principal" class="nav-global"><ul>
+    <li><a href="../index.html">🏠 Início</a></li>
+    <li><a href="../ensino_medio.html">📚 Ensino Médio</a></li>
+    <li><a href="../ensino_superior.html">🎓 Ensino Superior</a></li>
+</ul></nav>
+<header id="topo">
+    <h1>MATEMÁTICA EM</h1>
+    <p>1º Ano | Aula 25: Medidas de Dispersão (Variância e Desvio Padrão)</p>
+    <button id="btn-slides" onclick="toggleSlides()">📺 Iniciar Modo Slides</button>
+</header>
+<div class="container"><main class="conteudo-principal"><div class="secao-aula">
+
+<div class="container-resumo" id="resumo">
+    <h3>📚 Resumo</h3>
+    <section class="resumo-conteudo">
+        <p>Duas turmas podem ter a mesma média e, mesmo assim, ser muito diferentes: em uma, as notas ficam todas perto da média; na outra, espalham-se. As <strong>medidas de dispersão</strong> medem esse espalhamento. A mais importante é o <strong>desvio padrão</strong>: quanto menor, mais <strong>regular</strong> (homogêneo) é o conjunto.</p>
+        <p style="text-align: center;">$$\sigma^2 = \frac{\sum (x_i - \bar{x})^2}{n} \qquad\qquad \sigma = \sqrt{\sigma^2} \qquad\qquad CV = \frac{\sigma}{\bar{x}}$$</p>
+    </section>
+</div>
+
+<section class="conteudo-teorico-completo" id="teoria">
+    <div class="passo-teoria">
+        <h3>📖 Medidas de Dispersão</h3>
+        <h4>1. Por que a Média Não Basta?</h4>
+        <p>As notas de Ana ($6, 7, 7, 8$) e de Bruno ($2, 7, 8, 11$) têm a mesma média, $7$. Mas as de Ana estão concentradas e as de Bruno, espalhadas. A <strong>amplitude</strong> (maior valor menos menor valor) já mostra isso: $2$ para Ana e $9$ para Bruno. Porém, a amplitude usa só dois valores e é muito sensível a um único valor extremo.</p>
+        <figure class="figura-aula figura-grande">
+            <svg viewBox="0 0 560 190" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Notas de Ana concentradas perto da média 7 e notas de Bruno espalhadas, com a mesma média" style="width:100%; max-width:560px; display:block; margin:0 auto;">
+  <line x1="62" y1="60" x2="530" y2="60" stroke="#2c3e50" stroke-width="1.5"/>
+  <line x1="62" y1="56" x2="62" y2="64" stroke="#2c3e50"/><text x="62" y="80" font-family="Oswald, sans-serif" font-size="11" text-anchor="middle" fill="#7f8c8d">0</text>
+  <line x1="101" y1="56" x2="101" y2="64" stroke="#2c3e50"/><text x="101" y="80" font-family="Oswald, sans-serif" font-size="11" text-anchor="middle" fill="#7f8c8d">1</text>
+  <line x1="140" y1="56" x2="140" y2="64" stroke="#2c3e50"/><text x="140" y="80" font-family="Oswald, sans-serif" font-size="11" text-anchor="middle" fill="#7f8c8d">2</text>
+  <line x1="179" y1="56" x2="179" y2="64" stroke="#2c3e50"/><text x="179" y="80" font-family="Oswald, sans-serif" font-size="11" text-anchor="middle" fill="#7f8c8d">3</text>
+  <line x1="218" y1="56" x2="218" y2="64" stroke="#2c3e50"/><text x="218" y="80" font-family="Oswald, sans-serif" font-size="11" text-anchor="middle" fill="#7f8c8d">4</text>
+  <line x1="257" y1="56" x2="257" y2="64" stroke="#2c3e50"/><text x="257" y="80" font-family="Oswald, sans-serif" font-size="11" text-anchor="middle" fill="#7f8c8d">5</text>
+  <line x1="296" y1="56" x2="296" y2="64" stroke="#2c3e50"/><text x="296" y="80" font-family="Oswald, sans-serif" font-size="11" text-anchor="middle" fill="#7f8c8d">6</text>
+  <line x1="335" y1="56" x2="335" y2="64" stroke="#2c3e50"/><text x="335" y="80" font-family="Oswald, sans-serif" font-size="11" text-anchor="middle" fill="#7f8c8d">7</text>
+  <line x1="374" y1="56" x2="374" y2="64" stroke="#2c3e50"/><text x="374" y="80" font-family="Oswald, sans-serif" font-size="11" text-anchor="middle" fill="#7f8c8d">8</text>
+  <line x1="413" y1="56" x2="413" y2="64" stroke="#2c3e50"/><text x="413" y="80" font-family="Oswald, sans-serif" font-size="11" text-anchor="middle" fill="#7f8c8d">9</text>
+  <line x1="452" y1="56" x2="452" y2="64" stroke="#2c3e50"/><text x="452" y="80" font-family="Oswald, sans-serif" font-size="11" text-anchor="middle" fill="#7f8c8d">10</text>
+  <line x1="491" y1="56" x2="491" y2="64" stroke="#2c3e50"/><text x="491" y="80" font-family="Oswald, sans-serif" font-size="11" text-anchor="middle" fill="#7f8c8d">11</text>
+  <line x1="530" y1="56" x2="530" y2="64" stroke="#2c3e50"/><text x="530" y="80" font-family="Oswald, sans-serif" font-size="11" text-anchor="middle" fill="#7f8c8d">12</text>
+  <circle cx="296" cy="50" r="6" fill="#2ecc71"/>
+  <circle cx="335" cy="50" r="6" fill="#2ecc71"/>
+  <circle cx="335" cy="38" r="6" fill="#2ecc71"/>
+  <circle cx="374" cy="50" r="6" fill="#2ecc71"/>
+  <text x="8" y="65" font-family="Oswald, sans-serif" font-size="15" fill="#2c3e50">Ana</text>
+  <line x1="62" y1="130" x2="530" y2="130" stroke="#2c3e50" stroke-width="1.5"/>
+  <line x1="62" y1="126" x2="62" y2="134" stroke="#2c3e50"/><text x="62" y="150" font-family="Oswald, sans-serif" font-size="11" text-anchor="middle" fill="#7f8c8d">0</text>
+  <line x1="101" y1="126" x2="101" y2="134" stroke="#2c3e50"/><text x="101" y="150" font-family="Oswald, sans-serif" font-size="11" text-anchor="middle" fill="#7f8c8d">1</text>
+  <line x1="140" y1="126" x2="140" y2="134" stroke="#2c3e50"/><text x="140" y="150" font-family="Oswald, sans-serif" font-size="11" text-anchor="middle" fill="#7f8c8d">2</text>
+  <line x1="179" y1="126" x2="179" y2="134" stroke="#2c3e50"/><text x="179" y="150" font-family="Oswald, sans-serif" font-size="11" text-anchor="middle" fill="#7f8c8d">3</text>
+  <line x1="218" y1="126" x2="218" y2="134" stroke="#2c3e50"/><text x="218" y="150" font-family="Oswald, sans-serif" font-size="11" text-anchor="middle" fill="#7f8c8d">4</text>
+  <line x1="257" y1="126" x2="257" y2="134" stroke="#2c3e50"/><text x="257" y="150" font-family="Oswald, sans-serif" font-size="11" text-anchor="middle" fill="#7f8c8d">5</text>
+  <line x1="296" y1="126" x2="296" y2="134" stroke="#2c3e50"/><text x="296" y="150" font-family="Oswald, sans-serif" font-size="11" text-anchor="middle" fill="#7f8c8d">6</text>
+  <line x1="335" y1="126" x2="335" y2="134" stroke="#2c3e50"/><text x="335" y="150" font-family="Oswald, sans-serif" font-size="11" text-anchor="middle" fill="#7f8c8d">7</text>
+  <line x1="374" y1="126" x2="374" y2="134" stroke="#2c3e50"/><text x="374" y="150" font-family="Oswald, sans-serif" font-size="11" text-anchor="middle" fill="#7f8c8d">8</text>
+  <line x1="413" y1="126" x2="413" y2="134" stroke="#2c3e50"/><text x="413" y="150" font-family="Oswald, sans-serif" font-size="11" text-anchor="middle" fill="#7f8c8d">9</text>
+  <line x1="452" y1="126" x2="452" y2="134" stroke="#2c3e50"/><text x="452" y="150" font-family="Oswald, sans-serif" font-size="11" text-anchor="middle" fill="#7f8c8d">10</text>
+  <line x1="491" y1="126" x2="491" y2="134" stroke="#2c3e50"/><text x="491" y="150" font-family="Oswald, sans-serif" font-size="11" text-anchor="middle" fill="#7f8c8d">11</text>
+  <line x1="530" y1="126" x2="530" y2="134" stroke="#2c3e50"/><text x="530" y="150" font-family="Oswald, sans-serif" font-size="11" text-anchor="middle" fill="#7f8c8d">12</text>
+  <circle cx="140" cy="120" r="6" fill="#e67e22"/>
+  <circle cx="335" cy="120" r="6" fill="#e67e22"/>
+  <circle cx="374" cy="120" r="6" fill="#e67e22"/>
+  <circle cx="491" cy="120" r="6" fill="#e67e22"/>
+  <text x="8" y="135" font-family="Oswald, sans-serif" font-size="15" fill="#2c3e50">Bruno</text>
+  <line x1="335" y1="20" x2="335" y2="160" stroke="#e74c3c" stroke-width="2" stroke-dasharray="6,4"/>
+  <text x="341" y="22" font-family="Oswald, sans-serif" font-size="13" fill="#e74c3c">média = 7</text>
+  <text x="280" y="184" font-family="Oswald, sans-serif" font-size="13" text-anchor="middle" fill="#2c3e50">Ana: σ ≈ 0,71 (regular)   |   Bruno: σ ≈ 3,24 (disperso)</text>
+</svg>
+            <figcaption>Figura 1: Mesma média, dispersões muito diferentes.</figcaption>
+        </figure>
+    </div>
+
+    <div class="passo-teoria">
+        <h4>2. Desvios e Variância</h4>
+        <p>O <strong>desvio</strong> de cada valor é a sua distância (com sinal) até a média: $x_i - \bar{x}$. A soma dos desvios é sempre zero (os positivos compensam os negativos), por isso elevamos ao quadrado. A <strong>variância</strong> é a média dos quadrados dos desvios:</p>
+        <p style="text-align: center; font-size: 1.15rem; background-color: #f8f9fa; padding: 15px; border-left: 5px solid #3498db; margin: 20px 0;">
+            $$\sigma^2 = \frac{(x_1 - \bar{x})^2 + (x_2 - \bar{x})^2 + \cdots + (x_n - \bar{x})^2}{n}$$
+        </p>
+        <p>Exemplo com os dados $4, 6, 8, 10, 12$:</p>
+        <table style="margin: 15px auto; border-collapse: collapse; text-align: center; font-size: 1.05rem;">
+            <tr style="background-color: #2c3e50; color: white;"><th style="padding: 8px 14px;">$x_i$</th><th style="padding: 8px 14px;">$x_i - \bar{x}$</th><th style="padding: 8px 14px;">$(x_i - \bar{x})^2$</th></tr>
+            <tr><td style="padding: 6px 14px; border: 1px solid #ccc;">4</td><td style="padding: 6px 14px; border: 1px solid #ccc;">$-4$</td><td style="padding: 6px 14px; border: 1px solid #ccc;">16</td></tr>
+            <tr style="background-color: #f8f9fa;"><td style="padding: 6px 14px; border: 1px solid #ccc;">6</td><td style="padding: 6px 14px; border: 1px solid #ccc;">$-2$</td><td style="padding: 6px 14px; border: 1px solid #ccc;">4</td></tr>
+            <tr><td style="padding: 6px 14px; border: 1px solid #ccc;">8</td><td style="padding: 6px 14px; border: 1px solid #ccc;">0</td><td style="padding: 6px 14px; border: 1px solid #ccc;">0</td></tr>
+            <tr style="background-color: #f8f9fa;"><td style="padding: 6px 14px; border: 1px solid #ccc;">10</td><td style="padding: 6px 14px; border: 1px solid #ccc;">2</td><td style="padding: 6px 14px; border: 1px solid #ccc;">4</td></tr>
+            <tr><td style="padding: 6px 14px; border: 1px solid #ccc;">12</td><td style="padding: 6px 14px; border: 1px solid #ccc;">4</td><td style="padding: 6px 14px; border: 1px solid #ccc;">16</td></tr>
+            <tr style="font-weight: bold;"><td style="padding: 6px 14px; border: 1px solid #ccc;">$\bar{x} = 8$</td><td style="padding: 6px 14px; border: 1px solid #ccc;">soma $= 0$</td><td style="padding: 6px 14px; border: 1px solid #ccc;">soma $= 40$</td></tr>
+        </table>
+        <p>$\sigma^2 = \dfrac{40}{5} = 8$. Fórmula equivalente, útil quando se conhece a soma dos quadrados: $\sigma^2 = \dfrac{\sum x_i^2}{n} - \bar{x}^2$.</p>
+    </div>
+
+    <div class="passo-teoria">
+        <h4>3. Desvio Padrão</h4>
+        <ul>
+            <li>A variância fica em "unidade ao quadrado" (cm², min²). Para voltar à unidade dos dados, tiramos a raiz: o <strong>desvio padrão</strong> é $\sigma = \sqrt{\sigma^2}$ (no exemplo, $\sqrt{8} \approx 2{,}83$);</li>
+            <li><strong>Interpretação:</strong> desvio padrão pequeno indica dados próximos da média (regularidade); $\sigma = 0$ só quando todos os valores são iguais;</li>
+            <li>Com dados de uma <strong>amostra</strong>, a Estatística costuma dividir por $n - 1$; nesta aula (e no ENEM) usamos a divisão por $n$.</li>
+        </ul>
+    </div>
+
+    <div class="passo-teoria">
+        <h4>4. Propriedades e Coeficiente de Variação</h4>
+        <ul>
+            <li><strong>Somar uma constante</strong> $k$ a todos os valores: a média aumenta $k$ e o desvio padrão <strong>não muda</strong>;</li>
+            <li><strong>Multiplicar</strong> todos os valores por $k$: a média e o desvio padrão ficam multiplicados por $|k|$ (a variância, por $k^2$);</li>
+            <li><strong>Coeficiente de variação</strong> $CV = \dfrac{\sigma}{\bar{x}}$ (em %): compara a dispersão de conjuntos com médias muito diferentes.</li>
+        </ul>
+    </div>
+</section>
+
+<section class="aplicacoes-reais" id="aplicacoes">
+    <h3>💡 Matemática em Ação</h3>
+    <div class="cards-aplicacao">
+        <div class="card">
+            <h4>🏭 Controle de Qualidade</h4>
+            <p>Uma máquina que enche pacotes de $500$ g não pode errar muito. A fábrica acompanha o desvio padrão dos pesos: se ele aumenta, é sinal de que a máquina precisa de manutenção, mesmo que a média continue em $500$ g.</p>
+        </div>
+        <div class="card" style="border-left-color: #2ecc71;">
+            <h4>📈 Risco de Investimentos</h4>
+            <p>No mercado financeiro, o desvio padrão dos rendimentos mede o <strong>risco</strong> (a volatilidade): dois investimentos com o mesmo rendimento médio podem ter riscos bem diferentes.</p>
+        </div>
+    </div>
+</section>
+<section class="questoes-resolvidas" id="resolvidas">
+    <h3>✅ 5 Questões Resolvidas (R 1 a 5)</h3>
+    <article class="questao">
+        <h4>R 1: A Média Basta?</h4>
+        <p><strong>Enunciado:</strong> As notas de dois alunos em quatro provas foram: Ana: $6$, $7$, $7$, $8$; Bruno: $2$, $7$, $8$, $11$. Compare as médias e as amplitudes.</p>
+        <div class="resolucao-bloco"><p><strong>Resolução:</strong><br>Médias: Ana $\dfrac{28}{4} = 7$; Bruno $\dfrac{28}{4} = 7$. As médias são <strong>iguais</strong>.<br>Amplitudes: Ana $8 - 6 = \mathbf{2}$; Bruno $11 - 2 = \mathbf{9}$.<br>A média sozinha não mostra a diferença: as notas de Ana são muito mais concentradas (regulares).</p></div>
+    </article>
+    <article class="questao">
+        <h4>R 2: Calculando a Variância</h4>
+        <p><strong>Enunciado:</strong> Calcule a variância e o desvio padrão dos dados $4$, $6$, $8$, $10$, $12$.</p>
+        <div class="resolucao-bloco"><p><strong>Resolução:</strong><br>Média: $\bar{x} = \dfrac{40}{5} = 8$. Desvios $x_i - \bar{x}$: $-4, -2, 0, 2, 4$ (a soma dos desvios é sempre $0$).<br>Quadrados dos desvios: $16 + 4 + 0 + 4 + 16 = 40$.<br>Variância: $\sigma^2 = \dfrac{40}{5} = \mathbf{8}$. Desvio padrão: $\sigma = \sqrt{8} = \mathbf{2\sqrt{2}} \approx 2{,}83$.</p></div>
+    </article>
+    <article class="questao">
+        <h4>R 3: Desvio Padrão Exato</h4>
+        <p><strong>Enunciado:</strong> Calcule o desvio padrão dos dados $2$, $4$, $4$, $4$, $5$, $5$, $7$, $9$.</p>
+        <div class="resolucao-bloco"><p><strong>Resolução:</strong><br>Média: $\bar{x} = \dfrac{40}{8} = 5$.<br>Quadrados dos desvios: $9 + 1 + 1 + 1 + 0 + 0 + 4 + 16 = 32$.<br>$\sigma^2 = \dfrac{32}{8} = 4$ e $\sigma = \sqrt{4} = \mathbf{2}$.</p></div>
+    </article>
+    <article class="questao">
+        <h4>R 4: Quem é Mais Regular?</h4>
+        <p><strong>Enunciado:</strong> Dois corredores fizeram três tomadas de tempo (em segundos): A: $10$, $12$, $14$; B: $8$, $12$, $16$. Qual é o mais regular?</p>
+        <div class="resolucao-bloco"><p><strong>Resolução:</strong><br>Ambos têm média $12$ s.<br>A: $\sigma_A^2 = \dfrac{4 + 0 + 4}{3} = \dfrac{8}{3}$, $\sigma_A \approx 1{,}63$ s. B: $\sigma_B^2 = \dfrac{16 + 0 + 16}{3} = \dfrac{32}{3}$, $\sigma_B \approx 3{,}27$ s.<br>Menor desvio padrão significa maior regularidade: o corredor <strong>A</strong> é o mais regular.</p></div>
+    </article>
+    <article class="questao">
+        <h4>R 5: Transformando os Dados</h4>
+        <p><strong>Enunciado:</strong> Um conjunto de dados tem média $50$ e desvio padrão $5$. O que acontece com a média e com o desvio padrão se (a) somarmos $10$ a todos os valores? (b) multiplicarmos todos os valores por $2$?</p>
+        <div class="resolucao-bloco"><p><strong>Resolução:</strong><br>(a) A média também aumenta $10$: $\mathbf{60}$. Os desvios em relação à média não mudam: $\sigma = \mathbf{5}$.<br>(b) A média dobra: $\mathbf{100}$. Os desvios dobram: $\sigma = \mathbf{10}$ (e a variância fica $4$ vezes maior: $100$).</p></div>
+    </article>
+</section>
+
+<section class="questoes-propostas" id="propostas">
+    <h3>✍️ 10 Questões Propostas (P 6 a 15)</h3>
+    <article class="questao">
+        <h4>P 6: Amplitude</h4>
+        <p><strong>Enunciado:</strong> Calcule a amplitude dos dados $3$, $9$, $4$, $15$, $7$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>Amplitude $=$ maior $-$ menor $= 15 - 3 = \mathbf{12}$.</p></div>
+    </article>
+    <article class="questao">
+        <h4>P 7: Variância e Desvio Padrão</h4>
+        <p><strong>Enunciado:</strong> Calcule a variância e o desvio padrão de $2$, $4$, $6$, $8$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>Média: $\dfrac{20}{4} = 5$. Quadrados dos desvios: $9 + 1 + 1 + 9 = 20$.<br>$\sigma^2 = \dfrac{20}{4} = \mathbf{5}$ e $\sigma = \mathbf{\sqrt{5}} \approx 2{,}24$.</p></div>
+    </article>
+    <article class="questao">
+        <h4>P 8: Desvio Padrão</h4>
+        <p><strong>Enunciado:</strong> Calcule o desvio padrão de $2$, $2$, $4$, $4$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>Média: $3$. Todos os desvios valem $\pm 1$, com quadrados $1 + 1 + 1 + 1 = 4$.<br>$\sigma^2 = \dfrac{4}{4} = 1 \implies \sigma = \mathbf{1}$.</p></div>
+    </article>
+    <article class="questao">
+        <h4>P 9: Da Variância ao Desvio</h4>
+        <p><strong>Enunciado:</strong> A variância das alturas de um grupo é $16$ cm². Qual é o desvio padrão?</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>$\sigma = \sqrt{16} = \mathbf{4}$ cm (o desvio padrão tem a mesma unidade dos dados).</p></div>
+    </article>
+    <article class="questao">
+        <h4>P 10: Dados Iguais</h4>
+        <p><strong>Enunciado:</strong> Qual é o desvio padrão do conjunto $7$, $7$, $7$, $7$, $7$? Justifique.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>A média é $7$ e todos os desvios são zero.<br>$\sigma = \mathbf{0}$: não há dispersão nenhuma.</p></div>
+    </article>
+    <article class="questao">
+        <h4>P 11: Somando uma Constante</h4>
+        <p><strong>Enunciado:</strong> O desvio padrão de $4$, $6$, $8$, $10$, $12$ é $2\sqrt{2}$. Sem refazer as contas, qual é o desvio padrão de $5$, $7$, $9$, $11$, $13$?</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>O segundo conjunto é o primeiro somado de $1$: a média sobe $1$, mas os desvios não mudam.<br>$\sigma = \mathbf{2\sqrt{2}}$.</p></div>
+    </article>
+    <article class="questao">
+        <h4>P 12: Reajuste Salarial</h4>
+        <p><strong>Enunciado:</strong> Os salários de uma empresa têm desvio padrão de R\$&nbsp;$200{,}00$. Todos recebem um reajuste de $10\%$. Qual é o novo desvio padrão?</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>Reajuste de $10\%$ é multiplicar todos os salários por $1{,}1$.<br>O desvio padrão também é multiplicado por $1{,}1$: $200 \cdot 1{,}1 = $ R\$&nbsp;$\mathbf{220{,}00}$.</p></div>
+    </article>
+    <article class="questao">
+        <h4>P 13: Controle de Qualidade</h4>
+        <p><strong>Enunciado:</strong> Duas máquinas enchem pacotes de $500$ g. Em três pacotes de cada uma, mediu-se: máquina A: $498$, $500$, $502$; máquina B: $495$, $500$, $505$ (em gramas). Qual é a mais regular?</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>Ambas têm média $500$ g. A: $\sigma_A^2 = \dfrac{4 + 0 + 4}{3} = \dfrac{8}{3}$, $\sigma_A \approx 1{,}63$ g. B: $\sigma_B^2 = \dfrac{25 + 0 + 25}{3} = \dfrac{50}{3}$, $\sigma_B \approx 4{,}08$ g.<br>A máquina <strong>A</strong> é a mais regular (menor desvio padrão).</p></div>
+    </article>
+    <article class="questao">
+        <h4>P 14: Coeficiente de Variação</h4>
+        <p><strong>Enunciado:</strong> O grupo 1 tem média $50$ e desvio padrão $5$; o grupo 2 tem média $200$ e desvio padrão $10$. Calcule o coeficiente de variação de cada um e diga qual é relativamente mais homogêneo.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>$CV_1 = \dfrac{5}{50} = 10\%$ e $CV_2 = \dfrac{10}{200} = 5\%$.<br>O <strong>grupo 2</strong> é relativamente mais homogêneo, apesar de ter desvio padrão maior.</p></div>
+    </article>
+    <article class="questao">
+        <h4>P 15: Fórmula Alternativa</h4>
+        <p><strong>Enunciado:</strong> Um conjunto de $5$ valores tem média $6$ e a soma dos quadrados dos valores é $\sum x_i^2 = 200$. Use $\sigma^2 = \dfrac{\sum x_i^2}{n} - \bar{x}^2$ para calcular a variância e o desvio padrão.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>$\sigma^2 = \dfrac{200}{5} - 6^2 = 40 - 36 = \mathbf{4}$.<br>$\sigma = \mathbf{2}$.</p></div>
+    </article>
+</section>
+
+<section class="TESTE" id="testes">
+    <h3>🎓 TESTES (T 16 a 20)</h3>
+    <article class="questao">
+        <h4>T 16: (ENEM 2012) A Variância do Café</h4>
+        <p>Um produtor de café irrigado em Minas Gerais recebeu um relatório de consultoria estatística, constando, entre outras informações, o desvio padrão das produções de uma safra dos talhões de sua propriedade. Os talhões têm a mesma área de 30 000 m² e o valor obtido para o desvio padrão foi de 90 kg/talhão. O produtor deve apresentar as informações sobre a produção e a variância dessas produções em sacas de 60 kg por hectare (10 000 m²).</p>
+        <p>A variância das produções dos talhões expressa em (sacas/hectare)² é</p>
+        <p>A) 20,25.<br>B) 4,50.<br>C) 0,71.<br>D) 0,50.<br>E) 0,25.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>E</strong>.<br>Massa: $90$ kg $= \dfrac{90}{60} = 1{,}5$ saca. Área: $30\,000$ m² $= 3$ hectares.<br>Desvio padrão na nova unidade: $\dfrac{1{,}5}{3} = 0{,}5$ saca/hectare.<br>Variância $=$ (desvio padrão)$^2 = 0{,}5^2 = \mathbf{0{,}25}$ (sacas/hectare)². Alternativa <strong>E</strong>. (A alternativa D é o desvio padrão, e não a variância.)</p></div>
+    </article>
+    <article class="questao">
+        <h4>T 17: (ENEM 2019 – PPL) O Motorista Novato</h4>
+        <p>Um fiscal de certa empresa de ônibus registra o tempo, em minuto, que um motorista novato gasta para completar certo percurso. No Quadro 1 figuram os tempos gastos pelo motorista ao realizar o mesmo percurso sete vezes. O Quadro 2 apresenta uma classificação para a variabilidade do tempo, segundo o valor do desvio padrão.</p>
+        <figure class="figura-aula">
+            <p style="text-align:center"><strong>Quadro 1</strong></p><table style="margin: 10px auto; border-collapse: collapse; text-align: center;"><tr style="background-color: #2c3e50; color: white;"><th style="padding: 6px 12px;">Percurso</th><th style="padding: 6px 12px;">Tempo (min)</th></tr><tr><td style="padding: 5px 12px; border: 1px solid #ccc;">1</td><td style="padding: 5px 12px; border: 1px solid #ccc;">48</td></tr><tr><td style="padding: 5px 12px; border: 1px solid #ccc;">2</td><td style="padding: 5px 12px; border: 1px solid #ccc;">54</td></tr><tr><td style="padding: 5px 12px; border: 1px solid #ccc;">3</td><td style="padding: 5px 12px; border: 1px solid #ccc;">50</td></tr><tr><td style="padding: 5px 12px; border: 1px solid #ccc;">4</td><td style="padding: 5px 12px; border: 1px solid #ccc;">46</td></tr><tr><td style="padding: 5px 12px; border: 1px solid #ccc;">5</td><td style="padding: 5px 12px; border: 1px solid #ccc;">44</td></tr><tr><td style="padding: 5px 12px; border: 1px solid #ccc;">6</td><td style="padding: 5px 12px; border: 1px solid #ccc;">52</td></tr><tr><td style="padding: 5px 12px; border: 1px solid #ccc;">7</td><td style="padding: 5px 12px; border: 1px solid #ccc;">49</td></tr></table><p style="text-align:center"><strong>Quadro 2</strong></p><table style="margin: 10px auto; border-collapse: collapse; text-align: center;"><tr style="background-color: #2c3e50; color: white;"><th style="padding: 6px 12px;">Variabilidade</th><th style="padding: 6px 12px;">Desvio padrão do tempo (min)</th></tr><tr><td style="padding: 5px 12px; border: 1px solid #ccc;">Extremamente baixa</td><td style="padding: 5px 12px; border: 1px solid #ccc;">0 &lt; σ ≤ 2</td></tr><tr><td style="padding: 5px 12px; border: 1px solid #ccc;">Baixa</td><td style="padding: 5px 12px; border: 1px solid #ccc;">2 &lt; σ ≤ 4</td></tr><tr><td style="padding: 5px 12px; border: 1px solid #ccc;">Moderada</td><td style="padding: 5px 12px; border: 1px solid #ccc;">4 &lt; σ ≤ 6</td></tr><tr><td style="padding: 5px 12px; border: 1px solid #ccc;">Alta</td><td style="padding: 5px 12px; border: 1px solid #ccc;">6 &lt; σ ≤ 8</td></tr><tr><td style="padding: 5px 12px; border: 1px solid #ccc;">Extremamente alta</td><td style="padding: 5px 12px; border: 1px solid #ccc;">σ > 8</td></tr></table>
+            <figcaption>Quadros reproduzidos a partir do enunciado original.</figcaption>
+        </figure>
+        <p>Com base nas informações apresentadas nos quadros, a variabilidade do tempo é</p>
+        <p>A) extremamente baixa.<br>B) baixa.<br>C) moderada.<br>D) alta.<br>E) extremamente alta.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>B</strong>.<br>Média: $\dfrac{48 + 54 + 50 + 46 + 44 + 52 + 49}{7} = \dfrac{343}{7} = 49$ min.<br>Desvios: $-1, 5, 1, -3, -5, 3, 0$; quadrados: $1 + 25 + 1 + 9 + 25 + 9 + 0 = 70$.<br>$\sigma^2 = \dfrac{70}{7} = 10 \implies \sigma = \sqrt{10} \approx 3{,}16$ min. Como $2 < 3{,}16 \leq 4$, a variabilidade é <strong>baixa</strong>. Alternativa <strong>B</strong>.</p></div>
+    </article>
+    <article class="questao">
+        <h4>T 18: (ENEM 2010) O Desempate do Concurso</h4>
+        <p>Marco e Paulo foram classificados em um concurso. Para classificação no concurso o candidato deveria obter média aritmética na pontuação igual ou superior a 14. Em caso de empate na média, o desempate seria em favor da pontuação mais regular. No quadro a seguir são apresentados os pontos obtidos nas provas de Matemática, Português e Conhecimentos Gerais, a média, a mediana e o desvio padrão dos dois candidatos.</p>
+        <figure class="figura-aula">
+            <table style="margin: 10px auto; border-collapse: collapse; text-align: center;"><tr style="background-color: #2c3e50; color: white;"><th style="padding: 6px 12px;"></th><th style="padding: 6px 12px;">Matemática</th><th style="padding: 6px 12px;">Português</th><th style="padding: 6px 12px;">Conhecimentos Gerais</th><th style="padding: 6px 12px;">Média</th><th style="padding: 6px 12px;">Mediana</th><th style="padding: 6px 12px;">Desvio padrão</th></tr><tr><td style="padding: 5px 12px; border: 1px solid #ccc;">Marco</td><td style="padding: 5px 12px; border: 1px solid #ccc;">14</td><td style="padding: 5px 12px; border: 1px solid #ccc;">15</td><td style="padding: 5px 12px; border: 1px solid #ccc;">16</td><td style="padding: 5px 12px; border: 1px solid #ccc;">15</td><td style="padding: 5px 12px; border: 1px solid #ccc;">15</td><td style="padding: 5px 12px; border: 1px solid #ccc;">0,32</td></tr><tr><td style="padding: 5px 12px; border: 1px solid #ccc;">Paulo</td><td style="padding: 5px 12px; border: 1px solid #ccc;">8</td><td style="padding: 5px 12px; border: 1px solid #ccc;">19</td><td style="padding: 5px 12px; border: 1px solid #ccc;">18</td><td style="padding: 5px 12px; border: 1px solid #ccc;">15</td><td style="padding: 5px 12px; border: 1px solid #ccc;">18</td><td style="padding: 5px 12px; border: 1px solid #ccc;">4,97</td></tr></table>
+            <figcaption>Dados dos candidatos no concurso (quadro reproduzido do enunciado original).</figcaption>
+        </figure>
+        <p>O candidato com pontuação mais regular, portanto mais bem classificado no concurso, é</p>
+        <p>A) Marco, pois a média e a mediana são iguais.<br>B) Marco, pois obteve menor desvio padrão.<br>C) Paulo, pois obteve a maior pontuação da tabela, 19 em Português.<br>D) Paulo, pois obteve maior mediana.<br>E) Paulo, pois obteve maior desvio padrão.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>B</strong>.<br>As médias são iguais ($15$), então o desempate é pela <strong>regularidade</strong>, medida pelo desvio padrão: quanto menor, mais regular.<br>Marco tem notas $14, 15, 16$, muito próximas; Paulo tem $8, 19, 18$, muito espalhadas. O quadro informa $0{,}32$ contra $4{,}97$.<br>Marco é o mais regular: alternativa <strong>B</strong>. (Observação: pela definição, o desvio padrão de $14, 15, 16$ é $\sqrt{\frac{2}{3}} \approx 0{,}82$; o de Paulo, $\approx 4{,}97$, confere com o quadro. A conclusão não muda.)</p></div>
+    </article>
+    <article class="questao">
+        <h4>T 19: (Questão autoral) Um Ponto a Mais</h4>
+        <p>As notas de uma turma em uma prova têm média $6{,}2$ e desvio padrão $1{,}5$. O professor decide acrescentar $1$ ponto à nota de todos os alunos.</p>
+        <p>Após o acréscimo, a média e o desvio padrão das notas passam a ser, respectivamente,</p>
+        <p>A) 6,2 e 1,5.<br>B) 7,2 e 1,5.<br>C) 7,2 e 2,5.<br>D) 6,2 e 2,5.<br>E) 7,2 e 2,25.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>B</strong>.<br>Somar uma constante a todos os valores soma essa constante à média: $6{,}2 + 1 = 7{,}2$.<br>Os desvios em relação à nova média não mudam, então o desvio padrão continua $1{,}5$. Alternativa <strong>B</strong>.</p></div>
+    </article>
+    <article class="questao">
+        <h4>T 20: (Questão autoral) Os Tempos de Espera</h4>
+        <p>Em cinco dias, o tempo de espera em uma fila foi de $10$, $11$, $12$, $13$ e $14$ minutos.</p>
+        <p>O desvio padrão desses tempos, em minutos, é</p>
+        <p>A) $\sqrt{2}$<br>B) 2<br>C) $2\sqrt{2}$<br>D) 4<br>E) 10</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>A</strong>.<br>Média: $\dfrac{60}{5} = 12$. Quadrados dos desvios: $4 + 1 + 0 + 1 + 4 = 10$.<br>$\sigma^2 = \dfrac{10}{5} = 2 \implies \sigma = \mathbf{\sqrt{2}} \approx 1{,}41$ min. Alternativa <strong>A</strong>. (A alternativa B é a variância.)</p></div>
+    </article>
+</section>
+
+</div></main>
+<aside class="menu-lateral"><iframe src="../menu_matematica.html" style="width:100%; border:none; height:600px;"></iframe></aside>
+</div>
+<script>
+function toggleGabarito(botao) {
+    const gabarito = botao.nextElementSibling;
+    if (gabarito.style.display === "none" || gabarito.style.display === "") {
+        gabarito.style.display = "block"; botao.textContent = "Esconder Gabarito e Resolução"; botao.style.backgroundColor = "#2c3e50";
+    } else {
+        gabarito.style.display = "none"; botao.textContent = "Ver Gabarito e Resolução"; botao.style.backgroundColor = "#3498db";
+    }
+}
+function toggleMenu() { const m = document.getElementById("menu-principal"); if (m) m.classList.toggle("ativo"); }
+let slideAtual = 0; let slides = [];
+function prepararSlides() { slides = Array.from(document.querySelectorAll('.container-resumo, .passo-teoria, .card, .questao')); }
+function toggleSlides() {
+    prepararSlides(); const body = document.body;
+    if (!body.classList.contains('modo-slides')) { body.classList.add('modo-slides'); slideAtual = 0; mostrarSlide(slideAtual); }
+    else { body.classList.remove('modo-slides'); slides.forEach(s => { s.classList.remove('slide-ativo'); s.style.display = ''; }); }
+}
+function mostrarSlide(n) {
+    if (!slides.length) return;
+    slides.forEach(s => { s.classList.remove('slide-ativo'); s.style.display = 'none'; });
+    const slide = slides[n]; slide.classList.add('slide-ativo');
+    slide.querySelectorAll('.gabarito-resolucao').forEach(g => g.style.display = 'none');
+    slide.querySelectorAll('.btn-gabarito').forEach(b => { b.textContent = "Ver Gabarito e Resolução"; b.style.backgroundColor = "#3498db"; });
+    const pHeader = document.querySelector('header p');
+    if (pHeader) { const partes = pHeader.innerText.split('|'); if (partes.length > 1) {
+        document.getElementById('slide-info-serie').innerText = partes[0].trim();
+        document.getElementById('slide-info-aula').innerText = partes[1].trim(); } }
+    document.getElementById('contador-slide').innerText = (n + 1) + " / " + slides.length;
+    if (window.MathJax && window.MathJax.typesetPromise) { MathJax.typesetPromise(); }
+}
+function mudarSlide(d) { slideAtual += d; if (slideAtual >= slides.length) slideAtual = 0; if (slideAtual < 0) slideAtual = slides.length - 1; mostrarSlide(slideAtual); }
+document.addEventListener('keydown', function(event) {
+    if (document.body.classList.contains('modo-slides')) {
+        switch(event.key) {
+            case 'ArrowRight': case 'PageDown': case 'Enter': case ' ': event.preventDefault(); mudarSlide(1); break;
+            case 'ArrowLeft': case 'PageUp': event.preventDefault(); mudarSlide(-1); break;
+            case 'Escape': event.preventDefault(); toggleSlides(); break;
+        }
+    }
+});
+</script>
+<div class="controles-slides">
+    <div id="slide-info-serie" class="info-lateral"></div>
+    <div class="botoes-centrais">
+        <button class="btn-nav" onclick="mudarSlide(-1)">⬅ Anterior</button>
+        <span id="contador-slide"></span>
+        <button class="btn-nav" onclick="mudarSlide(1)">Próximo ➡</button>
+        <button class="btn-nav" onclick="toggleSlides()" style="background:#e74c3c;">Sair</button>
+    </div>
+    <div id="slide-info-aula" class="info-lateral" style="text-align: right;"></div>
+</div>
+</body>
+</html>
