@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1º Ano: Aula 30 - Modelagem de Problemas Reais</title>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../estilo.css">
+    <script>
+        MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']], processEscapes: true } };
+    </script>
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        body.modo-slides { overflow: hidden !important; background-color: #1a1a1a !important; margin: 0; padding: 0; }
+        body.modo-slides .menu-lateral, body.modo-slides header, body.modo-slides .menu-toggle, body.modo-slides #btn-slides, body.modo-slides .nav-global { display: none !important; }
+        .slide-ativo { display: flex !important; flex-direction: column; align-items: center; justify-content: center; position: fixed; top: 0; left: 0; width: 100vw; height: calc(100vh - 70px); background: #ffffff; padding: 40px; z-index: 999; overflow-y: auto !important; box-sizing: border-box; text-align: left; }
+        .slide-ativo > * { max-width: 900px; width: 100%; }
+        .controles-slides { position: fixed; bottom: 0; left: 0; width: 100%; height: 70px; background: #2c3e50; color: white; display: none; justify-content: space-between; align-items: center; padding: 0 20px; z-index: 1001; box-sizing: border-box; }
+        body.modo-slides .controles-slides { display: flex !important; }
+        .info-lateral { flex: 1; font-family: 'Oswald', sans-serif; font-size: 0.9rem; color: #bdc3c7; }
+        .botoes-centrais { display: flex; align-items: center; gap: 15px; justify-content: center; flex: 2; }
+        .btn-nav { padding: 10px 20px; background: #3498db; color: white; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; font-size: 0.9rem; }
+        .btn-nav:hover { background: #2980b9; }
+        #contador-slide { font-family: 'Oswald', sans-serif; min-width: 60px; text-align: center; font-size: 1.1rem; }
+    </style>
+</head>
+<body>
+<button class="menu-toggle" onclick="toggleMenu()">☰</button>
+<nav id="menu-principal" class="nav-global"><ul>
+    <li><a href="../index.html">🏠 Início</a></li>
+    <li><a href="../ensino_medio.html">📚 Ensino Médio</a></li>
+    <li><a href="../ensino_superior.html">🎓 Ensino Superior</a></li>
+</ul></nav>
+<header id="topo">
+    <h1>MATEMÁTICA EM</h1>
+    <p>1º Ano | Aula 30: Modelagem de Problemas Reais</p>
+    <button id="btn-slides" onclick="toggleSlides()">📺 Iniciar Modo Slides</button>
+</header>
+<div class="container"><main class="conteudo-principal"><div class="secao-aula">
+
+<div class="container-resumo" id="resumo">
+    <h3>📚 Resumo</h3>
+    <section class="resumo-conteudo">
+        <p><strong>Modelar</strong> é traduzir uma situação real para a linguagem matemática: escolher as variáveis, relacioná-las por meio de uma função ou equação, resolver e interpretar o resultado no contexto. Os modelos mais comuns no Ensino Médio são o <strong>afim</strong> (parte fixa + parte proporcional), o <strong>quadrático</strong> (problemas de máximo e mínimo) e o <strong>exponencial</strong> (crescimento ou decrescimento percentual).</p>
+        <p style="text-align: center;">$$f(x) = ax + b \qquad f(x) = ax^2 + bx + c \;\;(x_V = -\tfrac{b}{2a}) \qquad f(t) = f_0 \cdot (1 + i)^t$$</p>
+    </section>
+</div>
+
+<section class="conteudo-teorico-completo" id="teoria">
+    <div class="passo-teoria">
+        <h3>📖 Modelagem de Problemas Reais</h3>
+        <h4>1. As Etapas da Modelagem</h4>
+        <ol>
+            <li><strong>Compreender</strong> a situação: o que se sabe e o que se quer descobrir;</li>
+            <li><strong>Escolher as variáveis</strong> (e suas unidades): quem depende de quem?</li>
+            <li><strong>Equacionar:</strong> escrever a função ou a equação que relaciona as variáveis;</li>
+            <li><strong>Resolver</strong> o problema matemático;</li>
+            <li><strong>Interpretar e validar:</strong> a resposta faz sentido? (Número de pessoas não pode ser fracionário; um tempo não pode ser negativo.)</li>
+        </ol>
+        <figure class="figura-aula figura-grande">
+            <svg viewBox="0 0 640 165" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Ciclo da modelagem: situação real, modelo matemático, solução matemática, interpretação e validação, voltando à situação real" style="width:100%; max-width:620px; display:block; margin:0 auto;">
+  <defs><marker id="seta30" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#2c3e50"/></marker></defs>
+  <g font-family="Oswald, sans-serif" font-size="14" text-anchor="middle" fill="#fff">
+    <rect x="10" y="40" width="130" height="50" rx="10" fill="#3498db"/><text x="75" y="70">Situação real</text>
+    <rect x="170" y="40" width="130" height="50" rx="10" fill="#e67e22"/><text x="235" y="70">Modelo</text>
+    <rect x="330" y="40" width="130" height="50" rx="10" fill="#27ae60"/><text x="395" y="70">Solução</text>
+    <rect x="490" y="40" width="140" height="50" rx="10" fill="#8e44ad"/><text x="560" y="70">Interpretação</text>
+  </g>
+  <g stroke="#2c3e50" stroke-width="2" fill="none" marker-end="url(#seta30)">
+    <line x1="140" y1="65" x2="166" y2="65"/><line x1="300" y1="65" x2="326" y2="65"/><line x1="460" y1="65" x2="486" y2="65"/>
+    <path d="M560,92 Q560,135 330,135 Q75,135 75,95"/>
+  </g>
+  <g font-family="Oswald, sans-serif" font-size="12" text-anchor="middle" fill="#2c3e50">
+    <text x="153" y="30">equacionar</text><text x="313" y="30">resolver</text><text x="473" y="30">traduzir</text>
+    <text x="320" y="158">validar: a resposta faz sentido? Se não, ajustar o modelo</text>
+  </g>
+</svg>
+            <figcaption>Figura 1: O ciclo da modelagem matemática.</figcaption>
+        </figure>
+    </div>
+
+    <div class="passo-teoria">
+        <h4>2. Modelos Afins: Parte Fixa + Parte Variável</h4>
+        <p>Táxis, planos de telefonia, contas de água, salários com comissão: há um valor fixo $b$ e um valor $a$ que se repete por unidade. O modelo é $f(x) = ax + b$, cuja taxa de variação $a$ é constante.</p>
+        <ul>
+            <li><strong>Comparar planos:</strong> iguale as duas funções para encontrar o ponto em que elas custam o mesmo. Antes e depois desse ponto, o mais barato se inverte;</li>
+            <li><strong>Lucro:</strong> $L(x) = R(x) - C(x)$ (receita menos custo). O <strong>ponto de equilíbrio</strong> é onde $L(x) = 0$;</li>
+            <li><strong>Dados em tabela:</strong> se a razão $\dfrac{\Delta y}{\Delta x}$ é constante, o modelo afim é adequado.</li>
+        </ul>
+        <figure class="figura-aula figura-grande">
+            <svg viewBox="0 0 440 270" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Gráfico dos planos A(x) = 30 + 0,5x e B(x) = 10 + x, que se cruzam em x = 40 GB e 50 reais" style="width:100%; max-width:420px; display:block; margin:0 auto;">
+  <line x1="50.0" y1="32.0" x2="50.0" y2="230.0" stroke="#ecf0f1"/>
+  <text x="50.0" y="246.0" font-family="Oswald, sans-serif" font-size="11" text-anchor="middle" fill="#2c3e50">0</text>
+  <line x1="95.0" y1="32.0" x2="95.0" y2="230.0" stroke="#ecf0f1"/>
+  <text x="95.0" y="246.0" font-family="Oswald, sans-serif" font-size="11" text-anchor="middle" fill="#2c3e50">10</text>
+  <line x1="140.0" y1="32.0" x2="140.0" y2="230.0" stroke="#ecf0f1"/>
+  <text x="140.0" y="246.0" font-family="Oswald, sans-serif" font-size="11" text-anchor="middle" fill="#2c3e50">20</text>
+  <line x1="185.0" y1="32.0" x2="185.0" y2="230.0" stroke="#ecf0f1"/>
+  <text x="185.0" y="246.0" font-family="Oswald, sans-serif" font-size="11" text-anchor="middle" fill="#2c3e50">30</text>
+  <line x1="230.0" y1="32.0" x2="230.0" y2="230.0" stroke="#ecf0f1"/>
+  <text x="230.0" y="246.0" font-family="Oswald, sans-serif" font-size="11" text-anchor="middle" fill="#2c3e50">40</text>
+  <line x1="275.0" y1="32.0" x2="275.0" y2="230.0" stroke="#ecf0f1"/>
+  <text x="275.0" y="246.0" font-family="Oswald, sans-serif" font-size="11" text-anchor="middle" fill="#2c3e50">50</text>
+  <line x1="320.0" y1="32.0" x2="320.0" y2="230.0" stroke="#ecf0f1"/>
+  <text x="320.0" y="246.0" font-family="Oswald, sans-serif" font-size="11" text-anchor="middle" fill="#2c3e50">60</text>
+  <line x1="365.0" y1="32.0" x2="365.0" y2="230.0" stroke="#ecf0f1"/>
+  <text x="365.0" y="246.0" font-family="Oswald, sans-serif" font-size="11" text-anchor="middle" fill="#2c3e50">70</text>
+  <line x1="410.0" y1="32.0" x2="410.0" y2="230.0" stroke="#ecf0f1"/>
+  <text x="410.0" y="246.0" font-family="Oswald, sans-serif" font-size="11" text-anchor="middle" fill="#2c3e50">80</text>
+  <line x1="50.0" y1="230.0" x2="410.0" y2="230.0" stroke="#ecf0f1"/>
+  <text x="42.0" y="234.0" font-family="Oswald, sans-serif" font-size="11" text-anchor="end" fill="#2c3e50">0</text>
+  <line x1="50.0" y1="208.0" x2="410.0" y2="208.0" stroke="#ecf0f1"/>
+  <text x="42.0" y="212.0" font-family="Oswald, sans-serif" font-size="11" text-anchor="end" fill="#2c3e50">10</text>
+  <line x1="50.0" y1="186.0" x2="410.0" y2="186.0" stroke="#ecf0f1"/>
+  <text x="42.0" y="190.0" font-family="Oswald, sans-serif" font-size="11" text-anchor="end" fill="#2c3e50">20</text>
+  <line x1="50.0" y1="164.0" x2="410.0" y2="164.0" stroke="#ecf0f1"/>
+  <text x="42.0" y="168.0" font-family="Oswald, sans-serif" font-size="11" text-anchor="end" fill="#2c3e50">30</text>
+  <line x1="50.0" y1="142.0" x2="410.0" y2="142.0" stroke="#ecf0f1"/>
+  <text x="42.0" y="146.0" font-family="Oswald, sans-serif" font-size="11" text-anchor="end" fill="#2c3e50">40</text>
+  <line x1="50.0" y1="120.0" x2="410.0" y2="120.0" stroke="#ecf0f1"/>
+  <text x="42.0" y="124.0" font-family="Oswald, sans-serif" font-size="11" text-anchor="end" fill="#2c3e50">50</text>
+  <line x1="50.0" y1="98.0" x2="410.0" y2="98.0" stroke="#ecf0f1"/>
+  <text x="42.0" y="102.0" font-family="Oswald, sans-serif" font-size="11" text-anchor="end" fill="#2c3e50">60</text>
+  <line x1="50.0" y1="76.0" x2="410.0" y2="76.0" stroke="#ecf0f1"/>
+  <text x="42.0" y="80.0" font-family="Oswald, sans-serif" font-size="11" text-anchor="end" fill="#2c3e50">70</text>
+  <line x1="50.0" y1="54.0" x2="410.0" y2="54.0" stroke="#ecf0f1"/>
+  <text x="42.0" y="58.0" font-family="Oswald, sans-serif" font-size="11" text-anchor="end" fill="#2c3e50">80</text>
+  <line x1="50.0" y1="32.0" x2="410.0" y2="32.0" stroke="#ecf0f1"/>
+  <text x="42.0" y="36.0" font-family="Oswald, sans-serif" font-size="11" text-anchor="end" fill="#2c3e50">90</text>
+  <line x1="50.0" y1="230.0" x2="428.0" y2="230.0" stroke="#2c3e50" stroke-width="1.5"/><line x1="50.0" y1="230.0" x2="50.0" y2="21.0" stroke="#2c3e50" stroke-width="1.5"/>
+  <line x1="50.0" y1="164.0" x2="410.0" y2="76.0" stroke="#3498db" stroke-width="3"/>
+  <line x1="50.0" y1="208.0" x2="410.0" y2="32.0" stroke="#e74c3c" stroke-width="3"/>
+  <circle cx="230.0" cy="120.0" r="5" fill="#2c3e50"/>
+  <g font-family="Oswald, sans-serif" font-size="13">
+    <text x="240.0" y="140.0" fill="#2c3e50">(40, 50)</text>
+    <text x="410.0" y="120.0" fill="#3498db" text-anchor="end">A(x) = 30 + 0,5x</text>
+    <text x="312.0" y="70.0" fill="#e74c3c" text-anchor="end">B(x) = 10 + x</text>
+    <text x="426.0" y="222.0" fill="#2c3e50" text-anchor="end">GB</text><text x="56.0" y="25.0" fill="#2c3e50">R$</text>
+  </g>
+</svg>
+            <figcaption>Figura 2: Plano A (azul) e plano B (vermelho). Até $40$ GB o plano B é mais barato; acima disso, o plano A.</figcaption>
+        </figure>
+    </div>
+
+    <div class="passo-teoria">
+        <h4>3. Modelos Quadráticos: Máximos e Mínimos</h4>
+        <p>Quando a pergunta é "qual a maior área?", "qual o lucro máximo?" ou "qual a altura máxima?", o modelo costuma ser uma função quadrática. O valor ótimo está no <strong>vértice</strong>: $x_V = -\dfrac{b}{2a}$ e $y_V = f(x_V)$ (ou $-\dfrac{\Delta}{4a}$).</p>
+        <p>Exemplo: com $80$ m de tela e um muro como quarto lado, $A(x) = x(80 - 2x)$ tem máximo em $x = 20$ m, com área $800$ m².</p>
+    </div>
+
+    <div class="passo-teoria">
+        <h4>4. Modelos Exponenciais: Crescimento Percentual</h4>
+        <p>Se uma grandeza aumenta sempre a mesma <strong>porcentagem</strong> por período (população, juros compostos, bactérias), ela é multiplicada por um fator constante: $f(t) = f_0 \cdot (1 + i)^t$. Se ela <strong>dobra</strong> a cada $k$ unidades de tempo, $f(t) = f_0 \cdot 2^{t/k}$.</p>
+    </div>
+</section>
+
+<section class="aplicacoes-reais" id="aplicacoes">
+    <h3>💡 Matemática em Ação</h3>
+    <div class="cards-aplicacao">
+        <div class="card">
+            <h4>📱 Escolha de Planos</h4>
+            <p>Antes de contratar internet, energia solar ou aluguel de carro, compare os modelos de custo: o ponto de encontro das retas mostra a partir de quando cada opção compensa.</p>
+        </div>
+        <div class="card" style="border-left-color: #2ecc71;">
+            <h4>🦠 Epidemiologia</h4>
+            <p>Modelos exponenciais descrevem o início de uma epidemia; ao validar o modelo com dados reais, os cientistas ajustam os parâmetros e fazem previsões para orientar a saúde pública.</p>
+        </div>
+    </div>
+</section>
+<section class="questoes-resolvidas" id="resolvidas">
+    <h3>✅ 5 Questões Resolvidas (R 1 a 5)</h3>
+    <article class="questao">
+        <h4>R 1: A Corrida de Táxi</h4>
+        <p><strong>Enunciado:</strong> Um táxi cobra bandeirada de R\$&nbsp;$4{,}50$ mais R\$&nbsp;$2{,}20$ por quilômetro rodado. Escreva o preço $P$ em função da distância $x$ (em km), calcule o preço de uma corrida de $12$ km e determine quantos quilômetros inteiros, no máximo, uma pessoa pode rodar com R\$&nbsp;$50{,}00$.</p>
+        <div class="resolucao-bloco"><p><strong>Resolução:</strong><br>Parte fixa $4{,}50$ e parte variável $2{,}20x$: $P(x) = \mathbf{2{,}20x + 4{,}50}$.<br>$P(12) = 2{,}20 \cdot 12 + 4{,}50 = 26{,}40 + 4{,}50 = \mathbf{30{,}90}$ reais.<br>$2{,}20x + 4{,}50 \le 50 \implies x \le \dfrac{45{,}50}{2{,}20} \approx 20{,}7$. No máximo $\mathbf{20}$ km inteiros.</p></div>
+    </article>
+    <article class="questao">
+        <h4>R 2: Qual Plano Compensa?</h4>
+        <p><strong>Enunciado:</strong> O plano A de internet móvel custa R\$&nbsp;$30$ fixos mais R\$&nbsp;$0{,}50$ por GB; o plano B custa R\$&nbsp;$10$ fixos mais R\$&nbsp;$1{,}00$ por GB. Para qual consumo os planos custam o mesmo? Quando o plano A é mais vantajoso?</p>
+        <div class="resolucao-bloco"><p><strong>Resolução:</strong><br>$A(x) = 30 + 0{,}5x$ e $B(x) = 10 + x$, com $x$ em GB.<br>$30 + 0{,}5x = 10 + x \implies 0{,}5x = 20 \implies x = \mathbf{40}$ GB (os dois custam R\$&nbsp;$50$).<br>Para $x > 40$ GB, o plano A é mais barato (cresce mais devagar). Para $x < 40$ GB, o plano B compensa.</p></div>
+    </article>
+    <article class="questao">
+        <h4>R 3: Lucro e Equilíbrio</h4>
+        <p><strong>Enunciado:</strong> Uma fábrica tem custo fixo mensal de R\$&nbsp;$2\,000$ e gasta R\$&nbsp;$15$ por peça produzida. Cada peça é vendida por R\$&nbsp;$40$. Escreva o lucro em função do número $x$ de peças, determine quantas peças devem ser vendidas para não haver prejuízo e calcule o lucro com $200$ peças.</p>
+        <div class="resolucao-bloco"><p><strong>Resolução:</strong><br>Receita $R(x) = 40x$; custo $C(x) = 2\,000 + 15x$. Lucro $L(x) = R(x) - C(x) = \mathbf{25x - 2\,000}$.<br>Ponto de equilíbrio: $25x - 2\,000 = 0 \implies x = \mathbf{80}$ peças.<br>$L(200) = 25 \cdot 200 - 2\,000 = \mathbf{3\,000}$ reais.</p></div>
+    </article>
+    <article class="questao">
+        <h4>R 4: O Maior Cercado</h4>
+        <p><strong>Enunciado:</strong> Com $80$ m de tela, um sitiante quer cercar um terreno retangular encostado em um muro reto (o lado do muro não precisa de tela). Quais dimensões dão a maior área possível?</p>
+        <div class="resolucao-bloco"><p><strong>Resolução:</strong><br>Sejam $x$ os dois lados perpendiculares ao muro e $80 - 2x$ o lado paralelo. Área: $A(x) = x(80 - 2x) = -2x^2 + 80x$.<br>Parábola com concavidade para baixo: máximo no vértice, $x_V = -\dfrac{80}{2 \cdot (-2)} = 20$ m.<br>Dimensões $\mathbf{20}$ m $\times$ $\mathbf{40}$ m, com área máxima $A(20) = 20 \cdot 40 = \mathbf{800}$ m².</p></div>
+    </article>
+    <article class="questao">
+        <h4>R 5: População em Crescimento</h4>
+        <p><strong>Enunciado:</strong> Uma cidade tem $50\,000$ habitantes e a população cresce $2\%$ ao ano. Escreva um modelo para a população $P$ após $t$ anos e estime a população daqui a $3$ anos.</p>
+        <div class="resolucao-bloco"><p><strong>Resolução:</strong><br>A cada ano a população é multiplicada por $1{,}02$: $P(t) = \mathbf{50\,000 \cdot 1{,}02^t}$.<br>$1{,}02^3 = 1{,}061208$, logo $P(3) = 50\,000 \cdot 1{,}061208 \approx \mathbf{53\,060}$ habitantes.<br>Note que o aumento ($3\,060$) é maior que $3 \cdot 2\% \cdot 50\,000 = 3\,000$: o crescimento exponencial incide sobre o valor já aumentado.</p></div>
+    </article>
+</section>
+
+<section class="questoes-propostas" id="propostas">
+    <h3>✍️ 10 Questões Propostas (P 6 a 15)</h3>
+    <article class="questao">
+        <h4>P 6: O Encanador</h4>
+        <p><strong>Enunciado:</strong> Um encanador cobra R\$&nbsp;$80$ pela visita mais R\$&nbsp;$45$ por hora de trabalho. Quanto ele cobra por um serviço de $3$ horas?</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>$V(h) = 80 + 45h$.<br>$V(3) = 80 + 135 = \mathbf{215}$ reais.</p></div>
+    </article>
+    <article class="questao">
+        <h4>P 7: A Conta de Água</h4>
+        <p><strong>Enunciado:</strong> Uma companhia cobra R\$&nbsp;$25$ fixos por até $10$ m³ e R\$&nbsp;$4{,}50$ por m³ que exceder $10$ m³. Qual o valor da conta de quem consumiu $18$ m³?</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>Excedente: $18 - 10 = 8$ m³.<br>Conta: $25 + 8 \cdot 4{,}50 = 25 + 36 = \mathbf{61}$ reais.</p></div>
+    </article>
+    <article class="questao">
+        <h4>P 8: A Locadora</h4>
+        <p><strong>Enunciado:</strong> A locadora A cobra R\$&nbsp;$120$ por dia mais R\$&nbsp;$0{,}80$ por km rodado; a locadora B cobra R\$&nbsp;$160$ por dia com quilometragem livre. A partir de quantos quilômetros por dia a locadora B passa a ser mais vantajosa?</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>$120 + 0{,}8x = 160 \implies 0{,}8x = 40 \implies x = 50$ km.<br>Para mais de $\mathbf{50}$ km por dia, a locadora B é mais barata.</p></div>
+    </article>
+    <article class="questao">
+        <h4>P 9: A Vela</h4>
+        <p><strong>Enunciado:</strong> Uma vela de $30$ cm queima $2{,}5$ cm por hora. Escreva a altura $h$ da vela em função do tempo $t$ (em horas) e determine em quanto tempo ela se apaga.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>$h(t) = 30 - 2{,}5t$.<br>$30 - 2{,}5t = 0 \implies t = \mathbf{12}$ horas.</p></div>
+    </article>
+    <article class="questao">
+        <h4>P 10: Inteiras e Meias</h4>
+        <p><strong>Enunciado:</strong> Um teatro vendeu $300$ ingressos, uns a R\$&nbsp;$40$ (inteira) e outros a R\$&nbsp;$20$ (meia), arrecadando R\$&nbsp;$9\,600$. Quantas inteiras foram vendidas?</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>$x + y = 300$ e $40x + 20y = 9\,600$. Substituindo $y = 300 - x$: $40x + 6\,000 - 20x = 9\,600$.<br>$20x = 3\,600 \implies x = \mathbf{180}$ inteiras (e $120$ meias).</p></div>
+    </article>
+    <article class="questao">
+        <h4>P 11: A Bola Lançada</h4>
+        <p><strong>Enunciado:</strong> A altura de uma bola, em metros, é $h(t) = -5t^2 + 20t$, com $t$ em segundos. Qual a altura máxima e em que instante ela ocorre?</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>$t_V = -\dfrac{20}{2 \cdot (-5)} = 2$ s.<br>$h(2) = -20 + 40 = \mathbf{20}$ m, no instante $\mathbf{t = 2}$ s.</p></div>
+    </article>
+    <article class="questao">
+        <h4>P 12: O Preço do Ingresso</h4>
+        <p><strong>Enunciado:</strong> Um cinema vende $300$ ingressos por sessão a R\$&nbsp;$20$. Cada R\$&nbsp;$1$ de desconto atrai $30$ espectadores a mais. Qual preço maximiza a receita?</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>Com $x$ reais de desconto: $R(x) = (20 - x)(300 + 30x) = -30x^2 + 300x + 6\,000$.<br>$x_V = -\dfrac{300}{-60} = 5$: preço de R\$&nbsp;$\mathbf{15}$, com receita $15 \cdot 450 = 6\,750$ reais.</p></div>
+    </article>
+    <article class="questao">
+        <h4>P 13: A Depreciação</h4>
+        <p><strong>Enunciado:</strong> Um carro novo custa R\$&nbsp;$60\,000$ e perde R\$&nbsp;$4\,500$ de valor por ano (depreciação linear). Qual o valor do carro após $6$ anos?</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>$V(t) = 60\,000 - 4\,500t$.<br>$V(6) = 60\,000 - 27\,000 = \mathbf{33\,000}$ reais.</p></div>
+    </article>
+    <article class="questao">
+        <h4>P 14: As Bactérias</h4>
+        <p><strong>Enunciado:</strong> Uma cultura começa com $500$ bactérias e a população dobra a cada $3$ horas. Quantas bactérias haverá após $12$ horas?</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>$N(t) = 500 \cdot 2^{t/3}$.<br>$N(12) = 500 \cdot 2^4 = 500 \cdot 16 = \mathbf{8\,000}$ bactérias.</p></div>
+    </article>
+    <article class="questao">
+        <h4>P 15: O Modelo pela Tabela</h4>
+        <p><strong>Enunciado:</strong> Uma grandeza $y$ assumiu os valores $7$, $13$ e $19$ para $x = 1$, $3$ e $5$. Verifique que um modelo afim descreve os dados e estime $y$ para $x = 10$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>Taxa: $\dfrac{13 - 7}{3 - 1} = \dfrac{19 - 13}{5 - 3} = 3$ (constante). $y = 3x + b$ com $7 = 3 + b \implies b = 4$.<br>$y = 3x + 4$ e, para $x = 10$, $y = \mathbf{34}$.</p></div>
+    </article>
+</section>
+
+<section class="TESTE" id="testes">
+    <h3>🎓 TESTES (T 16 a 20)</h3>
+    <article class="questao">
+        <h4>T 16: (ENEM 2010) Figuras com Canudos</h4>
+        <p>Uma professora realizou uma atividade com seus alunos utilizando canudos de refrigerante para montar figuras, onde cada lado foi representado por um canudo. A quantidade de canudos ($C$) de cada figura depende da quantidade de quadrados ($Q$) que formam cada figura. A estrutura de formação das figuras está representada a seguir.</p>
+        <figure class="figura-aula">
+            <svg viewBox="0 0 460 110" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Figuras de canudos: 1 quadrado com 4 canudos, 2 quadrados com 7 canudos e 3 quadrados com 10 canudos" style="width:100%; max-width:440px; display:block; margin:0 auto;">
+  <line x1="20" y1="30" x2="20" y2="64" stroke="#e67e22" stroke-width="4" stroke-linecap="round"/>
+  <line x1="54" y1="30" x2="54" y2="64" stroke="#e67e22" stroke-width="4" stroke-linecap="round"/>
+  <line x1="23" y1="30" x2="51" y2="30" stroke="#3498db" stroke-width="4" stroke-linecap="round"/>
+  <line x1="23" y1="64" x2="51" y2="64" stroke="#3498db" stroke-width="4" stroke-linecap="round"/>
+  <text x="37.0" y="94" font-family="Oswald, sans-serif" font-size="14" text-anchor="middle" fill="#2c3e50">Q = 1</text>
+  <line x1="114" y1="30" x2="114" y2="64" stroke="#e67e22" stroke-width="4" stroke-linecap="round"/>
+  <line x1="148" y1="30" x2="148" y2="64" stroke="#e67e22" stroke-width="4" stroke-linecap="round"/>
+  <line x1="182" y1="30" x2="182" y2="64" stroke="#e67e22" stroke-width="4" stroke-linecap="round"/>
+  <line x1="117" y1="30" x2="145" y2="30" stroke="#3498db" stroke-width="4" stroke-linecap="round"/>
+  <line x1="117" y1="64" x2="145" y2="64" stroke="#3498db" stroke-width="4" stroke-linecap="round"/>
+  <line x1="151" y1="30" x2="179" y2="30" stroke="#3498db" stroke-width="4" stroke-linecap="round"/>
+  <line x1="151" y1="64" x2="179" y2="64" stroke="#3498db" stroke-width="4" stroke-linecap="round"/>
+  <text x="148.0" y="94" font-family="Oswald, sans-serif" font-size="14" text-anchor="middle" fill="#2c3e50">Q = 2</text>
+  <line x1="242" y1="30" x2="242" y2="64" stroke="#e67e22" stroke-width="4" stroke-linecap="round"/>
+  <line x1="276" y1="30" x2="276" y2="64" stroke="#e67e22" stroke-width="4" stroke-linecap="round"/>
+  <line x1="310" y1="30" x2="310" y2="64" stroke="#e67e22" stroke-width="4" stroke-linecap="round"/>
+  <line x1="344" y1="30" x2="344" y2="64" stroke="#e67e22" stroke-width="4" stroke-linecap="round"/>
+  <line x1="245" y1="30" x2="273" y2="30" stroke="#3498db" stroke-width="4" stroke-linecap="round"/>
+  <line x1="245" y1="64" x2="273" y2="64" stroke="#3498db" stroke-width="4" stroke-linecap="round"/>
+  <line x1="279" y1="30" x2="307" y2="30" stroke="#3498db" stroke-width="4" stroke-linecap="round"/>
+  <line x1="279" y1="64" x2="307" y2="64" stroke="#3498db" stroke-width="4" stroke-linecap="round"/>
+  <line x1="313" y1="30" x2="341" y2="30" stroke="#3498db" stroke-width="4" stroke-linecap="round"/>
+  <line x1="313" y1="64" x2="341" y2="64" stroke="#3498db" stroke-width="4" stroke-linecap="round"/>
+  <text x="293.0" y="94" font-family="Oswald, sans-serif" font-size="14" text-anchor="middle" fill="#2c3e50">Q = 3</text>
+</svg>
+            <figcaption>Estrutura de formação das figuras (redesenhada).</figcaption>
+        </figure>
+        <p>Que expressão fornece a quantidade de canudos em função da quantidade de quadrados de cada figura?</p>
+        <p>A) $C = 4Q$<br>B) $C = 3Q + 1$<br>C) $C = 4Q + 1$<br>D) $C = Q + 3$<br>E) $C = 4Q - 2$</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>B</strong>.<br>Contando: $Q = 1 \to 4$ canudos; $Q = 2 \to 7$; $Q = 3 \to 10$. Cada quadrado novo acrescenta $3$ canudos (o lado da esquerda já existe).<br>Modelo afim: $C = 4 + 3(Q - 1) = \mathbf{3Q + 1}$. Alternativa <strong>B</strong>.<br>Teste: $Q = 2 \Rightarrow C = 7$ ✓ (a alternativa A daria $8$).</p></div>
+    </article>
+    <article class="questao">
+        <h4>T 17: (ENEM 2021) O Lucro do Produtor de Soja</h4>
+        <p>Um produtor de soja cultiva uma área de $10$ hectares, gastando em média R\$&nbsp;$1\,200{,}00$ por hectare plantado. A soja é vendida em sacas de $60$ kg, a R\$&nbsp;$50{,}00$ cada saca. Considere que o produtor colheu $x$ sacas de $60$ kg e vendeu toda a produção.</p>
+        <p>A expressão que representa o lucro $L$, em reais, obtido pelo produtor em função de $x$ é</p>
+        <p>A) $L(x) = 50x - 1\,200$<br>B) $L(x) = 50x - 12\,000$<br>C) $L(x) = 50x + 12\,000$<br>D) $L(x) = 500x - 1\,200$<br>E) $L(x) = 1\,200x - 500$</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>B</strong>.<br>Receita: $50x$ reais. Custo total: $10 \cdot 1\,200 = 12\,000$ reais.<br>Lucro $=$ receita $-$ custo: $L(x) = \mathbf{50x - 12\,000}$. Alternativa <strong>B</strong>.<br>Armadilha da alternativa A: usar o custo de um hectare só.</p></div>
+    </article>
+    <article class="questao">
+        <h4>T 18: (ENEM 2012) O Preço de Equilíbrio</h4>
+        <p>Existem no mercado as quantidades ofertada e demandada de um produto, dadas pelas equações $Q_O = -20 + 4P$ e $Q_D = 46 - 2P$, em que $Q_O$ é a quantidade de oferta, $Q_D$ é a quantidade de demanda e $P$ é o preço do produto. A partir dessas equações, os economistas encontram o preço de equilíbrio de mercado, ou seja, quando $Q_O$ e $Q_D$ se igualam.</p>
+        <p>Para a situação descrita, qual o valor do preço de equilíbrio?</p>
+        <p>A) 5<br>B) 11<br>C) 13<br>D) 23<br>E) 33</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>B</strong>.<br>Equilíbrio: $Q_O = Q_D \implies -20 + 4P = 46 - 2P$.<br>$6P = 66 \implies P = \mathbf{11}$. Alternativa <strong>B</strong>.<br>Conferência: $Q_O = -20 + 44 = 24$ e $Q_D = 46 - 22 = 24$ ✓</p></div>
+    </article>
+    <article class="questao">
+        <h4>T 19: (Cefet-MG 2015) O Taxista</h4>
+        <p>Um motorista de táxi cobra, para cada corrida, uma taxa fixa de R\$&nbsp;$5{,}00$ e mais R\$&nbsp;$2{,}00$ por quilômetro rodado. O valor total arrecadado ($R$) num dia é função da quantidade total ($x$) de quilômetros percorridos e calculado por meio da função $R(x) = ax + b$, em que $a$ é o preço cobrado por quilômetro e $b$, a soma de todas as taxas fixas recebidas no dia.</p>
+        <p>Se, em um dia, o taxista realizou $10$ corridas e arrecadou R\$&nbsp;$410{,}00$, então a média de quilômetros rodados por corrida foi de</p>
+        <p>A) 14.<br>B) 16.<br>C) 18.<br>D) 20.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>C</strong>.<br>$a = 2$ e $b = 10 \cdot 5 = 50$: $R(x) = 2x + 50$.<br>$2x + 50 = 410 \implies 2x = 360 \implies x = 180$ km no dia.<br>Média por corrida: $\dfrac{180}{10} = \mathbf{18}$ km. Alternativa <strong>C</strong>.</p></div>
+    </article>
+    <article class="questao">
+        <h4>T 20: (ENEM 2015) A Estufa das Bactérias</h4>
+        <p>Um estudante está pesquisando o desenvolvimento de certo tipo de bactéria. Para essa pesquisa, ele utiliza uma estufa para armazenar as bactérias. A temperatura no interior dessa estufa, em graus Celsius, é dada pela expressão $T(h) = -h^2 + 22h - 85$, em que $h$ representa as horas do dia. Sabe-se que o número de bactérias é o maior possível quando a estufa atinge sua temperatura máxima e, nesse momento, ele deve retirá-las da estufa. A tabela associa intervalos de temperatura, em graus Celsius, com as classificações: muito baixa, baixa, média, alta e muito alta.</p>
+        <figure class="figura-aula">
+            <table style="margin: 10px auto; border-collapse: collapse; text-align: center;"><tr style="background-color: #2c3e50; color: white;"><th style="padding: 6px 12px;">Intervalo de temperatura (°C)</th><th style="padding: 6px 12px;">Classificação</th></tr><tr><td style="padding: 5px 12px; border: 1px solid #ccc;">T &lt; 0</td><td style="padding: 5px 12px; border: 1px solid #ccc;">Muito baixa</td></tr><tr><td style="padding: 5px 12px; border: 1px solid #ccc;">0 ≤ T ≤ 17</td><td style="padding: 5px 12px; border: 1px solid #ccc;">Baixa</td></tr><tr><td style="padding: 5px 12px; border: 1px solid #ccc;">17 &lt; T &lt; 30</td><td style="padding: 5px 12px; border: 1px solid #ccc;">Média</td></tr><tr><td style="padding: 5px 12px; border: 1px solid #ccc;">30 ≤ T ≤ 43</td><td style="padding: 5px 12px; border: 1px solid #ccc;">Alta</td></tr><tr><td style="padding: 5px 12px; border: 1px solid #ccc;">T &gt; 43</td><td style="padding: 5px 12px; border: 1px solid #ccc;">Muito alta</td></tr></table>
+            <figcaption>Tabela reproduzida a partir do enunciado original.</figcaption>
+        </figure>
+        <p>Quando o estudante obtém o maior número possível de bactérias, a temperatura no interior da estufa está classificada como</p>
+        <p>A) muito baixa.<br>B) baixa.<br>C) média.<br>D) alta.<br>E) muito alta.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>D</strong>.<br>Temperatura máxima no vértice: $h_V = -\dfrac{22}{2 \cdot (-1)} = 11$ h.<br>$T(11) = -121 + 242 - 85 = \mathbf{36}$ °C.<br>Como $30 \le 36 \le 43$, a temperatura é classificada como <strong>alta</strong>. Alternativa <strong>D</strong>.</p></div>
+    </article>
+</section>
+
+</div></main>
+<aside class="menu-lateral"><iframe src="../menu_matematica.html" style="width:100%; border:none; height:600px;"></iframe></aside>
+</div>
+<script>
+function toggleGabarito(botao) {
+    const gabarito = botao.nextElementSibling;
+    if (gabarito.style.display === "none" || gabarito.style.display === "") {
+        gabarito.style.display = "block"; botao.textContent = "Esconder Gabarito e Resolução"; botao.style.backgroundColor = "#2c3e50";
+    } else {
+        gabarito.style.display = "none"; botao.textContent = "Ver Gabarito e Resolução"; botao.style.backgroundColor = "#3498db";
+    }
+}
+function toggleMenu() { const m = document.getElementById("menu-principal"); if (m) m.classList.toggle("ativo"); }
+let slideAtual = 0; let slides = [];
+function prepararSlides() { slides = Array.from(document.querySelectorAll('.container-resumo, .passo-teoria, .card, .questao')); }
+function toggleSlides() {
+    prepararSlides(); const body = document.body;
+    if (!body.classList.contains('modo-slides')) { body.classList.add('modo-slides'); slideAtual = 0; mostrarSlide(slideAtual); }
+    else { body.classList.remove('modo-slides'); slides.forEach(s => { s.classList.remove('slide-ativo'); s.style.display = ''; }); }
+}
+function mostrarSlide(n) {
+    if (!slides.length) return;
+    slides.forEach(s => { s.classList.remove('slide-ativo'); s.style.display = 'none'; });
+    const slide = slides[n]; slide.classList.add('slide-ativo');
+    slide.querySelectorAll('.gabarito-resolucao').forEach(g => g.style.display = 'none');
+    slide.querySelectorAll('.btn-gabarito').forEach(b => { b.textContent = "Ver Gabarito e Resolução"; b.style.backgroundColor = "#3498db"; });
+    const pHeader = document.querySelector('header p');
+    if (pHeader) { const partes = pHeader.innerText.split('|'); if (partes.length > 1) {
+        document.getElementById('slide-info-serie').innerText = partes[0].trim();
+        document.getElementById('slide-info-aula').innerText = partes[1].trim(); } }
+    document.getElementById('contador-slide').innerText = (n + 1) + " / " + slides.length;
+    if (window.MathJax && window.MathJax.typesetPromise) { MathJax.typesetPromise(); }
+}
+function mudarSlide(d) { slideAtual += d; if (slideAtual >= slides.length) slideAtual = 0; if (slideAtual < 0) slideAtual = slides.length - 1; mostrarSlide(slideAtual); }
+document.addEventListener('keydown', function(event) {
+    if (document.body.classList.contains('modo-slides')) {
+        switch(event.key) {
+            case 'ArrowRight': case 'PageDown': case 'Enter': case ' ': event.preventDefault(); mudarSlide(1); break;
+            case 'ArrowLeft': case 'PageUp': event.preventDefault(); mudarSlide(-1); break;
+            case 'Escape': event.preventDefault(); toggleSlides(); break;
+        }
+    }
+});
+</script>
+<div class="controles-slides">
+    <div id="slide-info-serie" class="info-lateral"></div>
+    <div class="botoes-centrais">
+        <button class="btn-nav" onclick="mudarSlide(-1)">⬅ Anterior</button>
+        <span id="contador-slide"></span>
+        <button class="btn-nav" onclick="mudarSlide(1)">Próximo ➡</button>
+        <button class="btn-nav" onclick="toggleSlides()" style="background:#e74c3c;">Sair</button>
+    </div>
+    <div id="slide-info-aula" class="info-lateral" style="text-align: right;"></div>
+</div>
+</body>
+</html>
