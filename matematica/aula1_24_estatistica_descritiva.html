@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1º Ano: Aula 24 - Estatística Descritiva: Gráficos e Medidas de Centralidade</title>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../estilo.css">
+    <script>
+        MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']], processEscapes: true } };
+    </script>
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        body.modo-slides { overflow: hidden !important; background-color: #1a1a1a !important; margin: 0; padding: 0; }
+        body.modo-slides .menu-lateral, body.modo-slides header, body.modo-slides .menu-toggle, body.modo-slides #btn-slides, body.modo-slides .nav-global { display: none !important; }
+        .slide-ativo { display: flex !important; flex-direction: column; align-items: center; justify-content: center; position: fixed; top: 0; left: 0; width: 100vw; height: calc(100vh - 70px); background: #ffffff; padding: 40px; z-index: 999; overflow-y: auto !important; box-sizing: border-box; text-align: left; }
+        .slide-ativo > * { max-width: 900px; width: 100%; }
+        .controles-slides { position: fixed; bottom: 0; left: 0; width: 100%; height: 70px; background: #2c3e50; color: white; display: none; justify-content: space-between; align-items: center; padding: 0 20px; z-index: 1001; box-sizing: border-box; }
+        body.modo-slides .controles-slides { display: flex !important; }
+        .info-lateral { flex: 1; font-family: 'Oswald', sans-serif; font-size: 0.9rem; color: #bdc3c7; }
+        .botoes-centrais { display: flex; align-items: center; gap: 15px; justify-content: center; flex: 2; }
+        .btn-nav { padding: 10px 20px; background: #3498db; color: white; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; font-size: 0.9rem; }
+        .btn-nav:hover { background: #2980b9; }
+        #contador-slide { font-family: 'Oswald', sans-serif; min-width: 60px; text-align: center; font-size: 1.1rem; }
+    </style>
+</head>
+<body>
+<button class="menu-toggle" onclick="toggleMenu()">☰</button>
+<nav id="menu-principal" class="nav-global"><ul>
+    <li><a href="../index.html">🏠 Início</a></li>
+    <li><a href="../ensino_medio.html">📚 Ensino Médio</a></li>
+    <li><a href="../ensino_superior.html">🎓 Ensino Superior</a></li>
+</ul></nav>
+<header id="topo">
+    <h1>MATEMÁTICA EM</h1>
+    <p>1º Ano | Aula 24: Estatística Descritiva: Gráficos e Medidas de Centralidade</p>
+    <button id="btn-slides" onclick="toggleSlides()">📺 Iniciar Modo Slides</button>
+</header>
+<div class="container"><main class="conteudo-principal"><div class="secao-aula">
+
+<div class="container-resumo" id="resumo">
+    <h3>📚 Resumo</h3>
+    <section class="resumo-conteudo">
+        <p>A <strong>Estatística Descritiva</strong> organiza e resume dados. Primeiro os dados são agrupados em <strong>tabelas de frequência</strong> e representados em <strong>gráficos</strong>; depois, um único número tenta representar o "centro" do conjunto: são as <strong>medidas de centralidade</strong>.</p>
+        <p style="text-align: center;">$$\bar{x} = \frac{x_1 + x_2 + \cdots + x_n}{n} \qquad \bar{x}_p = \frac{p_1 x_1 + \cdots + p_n x_n}{p_1 + \cdots + p_n} \qquad Md = \text{valor central do rol} \qquad Mo = \text{valor mais frequente}$$</p>
+    </section>
+</div>
+
+<section class="conteudo-teorico-completo" id="teoria">
+    <div class="passo-teoria">
+        <h3>📖 Estatística Descritiva</h3>
+        <h4>1. População, Amostra e Variáveis</h4>
+        <ul>
+            <li><strong>População:</strong> todo o grupo estudado; <strong>amostra:</strong> a parte da população que é efetivamente pesquisada;</li>
+            <li><strong>Variável qualitativa:</strong> expressa uma qualidade (time preferido, cor dos olhos);</li>
+            <li><strong>Variável quantitativa:</strong> expressa um número, que pode ser <strong>discreto</strong> (contagem: nº de filhos) ou <strong>contínuo</strong> (medida: altura, temperatura).</li>
+        </ul>
+    </div>
+
+    <div class="passo-teoria">
+        <h4>2. Tabelas de Frequência</h4>
+        <p>A <strong>frequência absoluta</strong> $f$ é quantas vezes cada valor aparece; a <strong>relativa</strong> é $\dfrac{f}{n}$ (em porcentagem); a <strong>acumulada</strong> soma as frequências até aquele valor e ajuda a encontrar a mediana. Exemplo com $20$ famílias:</p>
+        <table style="margin: 15px auto; border-collapse: collapse; text-align: center; font-size: 1.02rem;">
+            <tr style="background-color: #2c3e50; color: white;"><th style="padding: 8px 12px;">Nº de filhos</th><th style="padding: 8px 12px;">Frequência absoluta ($f$)</th><th style="padding: 8px 12px;">Frequência relativa</th><th style="padding: 8px 12px;">Frequência acumulada</th></tr>
+            <tr><td style="padding: 6px 12px; border: 1px solid #ccc;">0</td><td style="padding: 6px 12px; border: 1px solid #ccc;">4</td><td style="padding: 6px 12px; border: 1px solid #ccc;">20%</td><td style="padding: 6px 12px; border: 1px solid #ccc;">4</td></tr>
+            <tr style="background-color: #f8f9fa;"><td style="padding: 6px 12px; border: 1px solid #ccc;">1</td><td style="padding: 6px 12px; border: 1px solid #ccc;">6</td><td style="padding: 6px 12px; border: 1px solid #ccc;">30%</td><td style="padding: 6px 12px; border: 1px solid #ccc;">10</td></tr>
+            <tr><td style="padding: 6px 12px; border: 1px solid #ccc;">2</td><td style="padding: 6px 12px; border: 1px solid #ccc;">7</td><td style="padding: 6px 12px; border: 1px solid #ccc;">35%</td><td style="padding: 6px 12px; border: 1px solid #ccc;">17</td></tr>
+            <tr style="background-color: #f8f9fa;"><td style="padding: 6px 12px; border: 1px solid #ccc;">3</td><td style="padding: 6px 12px; border: 1px solid #ccc;">3</td><td style="padding: 6px 12px; border: 1px solid #ccc;">15%</td><td style="padding: 6px 12px; border: 1px solid #ccc;">20</td></tr>
+            <tr style="font-weight: bold;"><td style="padding: 6px 12px; border: 1px solid #ccc;">Total</td><td style="padding: 6px 12px; border: 1px solid #ccc;">20</td><td style="padding: 6px 12px; border: 1px solid #ccc;">100%</td><td style="padding: 6px 12px; border: 1px solid #ccc;">—</td></tr>
+        </table>
+    </div>
+
+    <div class="passo-teoria">
+        <h4>3. Gráficos</h4>
+        <ul>
+            <li><strong>Colunas ou barras:</strong> comparam quantidades entre categorias;</li>
+            <li><strong>Setores (pizza):</strong> mostram as partes de um todo; o ângulo de cada setor é a porcentagem vezes $360^\circ$;</li>
+            <li><strong>Linhas:</strong> mostram a evolução de um dado ao longo do tempo;</li>
+            <li><strong>Histograma:</strong> colunas encostadas que representam classes (intervalos) de uma variável contínua.</li>
+        </ul>
+        <figure class="figura-aula figura-grande">
+            <svg viewBox="0 0 620 230" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Os mesmos dados em gráfico de colunas e em gráfico de setores: futebol 45%, vôlei 25%, basquete 20%, outros 10%" style="width:100%; max-width:620px; display:block; margin:0 auto;">
+  <line x1="40" y1="190" x2="300" y2="190" stroke="#2c3e50" stroke-width="1.5"/><line x1="40" y1="190" x2="40" y2="30" stroke="#2c3e50" stroke-width="1.5"/>
+  <rect x="52" y="46.0" width="42" height="144.0" fill="#3498db"/><text x="73" y="41.0" font-family="Oswald, sans-serif" font-size="13" text-anchor="middle" fill="#2c3e50">45%</text>
+  <text x="73" y="207" font-family="Oswald, sans-serif" font-size="12" text-anchor="middle" fill="#2c3e50">Futebol</text>
+  <rect x="114" y="110.0" width="42" height="80.0" fill="#e67e22"/><text x="135" y="105.0" font-family="Oswald, sans-serif" font-size="13" text-anchor="middle" fill="#2c3e50">25%</text>
+  <text x="135" y="207" font-family="Oswald, sans-serif" font-size="12" text-anchor="middle" fill="#2c3e50">Vôlei</text>
+  <rect x="176" y="126.0" width="42" height="64.0" fill="#2ecc71"/><text x="197" y="121.0" font-family="Oswald, sans-serif" font-size="13" text-anchor="middle" fill="#2c3e50">20%</text>
+  <text x="197" y="207" font-family="Oswald, sans-serif" font-size="12" text-anchor="middle" fill="#2c3e50">Basquete</text>
+  <rect x="238" y="158.0" width="42" height="32.0" fill="#9b59b6"/><text x="259" y="153.0" font-family="Oswald, sans-serif" font-size="13" text-anchor="middle" fill="#2c3e50">10%</text>
+  <text x="259" y="207" font-family="Oswald, sans-serif" font-size="12" text-anchor="middle" fill="#2c3e50">Outros</text>
+  <path d="M 470 112 L 470.0 27.0 A 85 85 0 0 1 496.3 192.8 Z" fill="#3498db" stroke="#fff" stroke-width="2"/>
+  <text x="522.1" y="107.8" font-family="Oswald, sans-serif" font-size="12" text-anchor="middle" fill="#fff">162°</text>
+  <path d="M 470 112 L 496.3 192.8 A 85 85 0 0 1 389.2 138.3 Z" fill="#e67e22" stroke="#fff" stroke-width="2"/>
+  <text x="446.1" y="163.0" font-family="Oswald, sans-serif" font-size="12" text-anchor="middle" fill="#fff">90°</text>
+  <path d="M 470 112 L 389.2 138.3 A 85 85 0 0 1 420.0 43.2 Z" fill="#2ecc71" stroke="#fff" stroke-width="2"/>
+  <text x="419.9" y="99.7" font-family="Oswald, sans-serif" font-size="12" text-anchor="middle" fill="#fff">72°</text>
+  <path d="M 470 112 L 420.0 43.2 A 85 85 0 0 1 470.0 27.0 Z" fill="#9b59b6" stroke="#fff" stroke-width="2"/>
+  <text x="453.7" y="65.9" font-family="Oswald, sans-serif" font-size="12" text-anchor="middle" fill="#fff">36°</text>
+  <text x="170" y="222" font-family="Oswald, sans-serif" font-size="13" text-anchor="middle" fill="#2c3e50">Colunas: compara quantidades</text><text x="470" y="222" font-family="Oswald, sans-serif" font-size="13" text-anchor="middle" fill="#2c3e50">Setores: partes de um todo (ângulo = % · 360°)</text>
+</svg>
+            <figcaption>Figura 1: Os mesmos dados (esporte preferido de uma turma) em gráfico de colunas e em gráfico de setores.</figcaption>
+        </figure>
+    </div>
+
+    <div class="passo-teoria">
+        <h4>4. Medidas de Centralidade</h4>
+        <ul>
+            <li><strong>Média aritmética</strong> $\bar{x}$: soma dos valores dividida pela quantidade de valores;</li>
+            <li><strong>Média ponderada:</strong> cada valor é multiplicado pelo seu peso (ou frequência), e divide-se pela soma dos pesos;</li>
+            <li><strong>Mediana</strong> $Md$: com os dados <strong>em ordem</strong> (rol), é o valor central; se a quantidade for par, é a média dos dois valores centrais;</li>
+            <li><strong>Moda</strong> $Mo$: o valor que mais se repete (pode haver mais de uma moda, ou nenhuma).</li>
+        </ul>
+        <p style="text-align: center; font-size: 1.15rem; background-color: #f8f9fa; padding: 15px; border-left: 5px solid #3498db; margin: 20px 0;">
+            $$\bar{x} = \frac{\sum x_i}{n} \qquad\qquad \bar{x}_p = \frac{\sum p_i\,x_i}{\sum p_i}$$
+        </p>
+        <p><strong>Atenção:</strong> a média é sensível a valores extremos; a mediana não. Em salários, preços de imóveis e dados com valores muito discrepantes, a mediana costuma representar melhor o valor "típico".</p>
+    </div>
+</section>
+
+<section class="aplicacoes-reais" id="aplicacoes">
+    <h3>💡 Matemática em Ação</h3>
+    <div class="cards-aplicacao">
+        <div class="card">
+            <h4>📝 A Nota do ENEM</h4>
+            <p>Muitas universidades calculam a nota de ingresso como uma <strong>média ponderada</strong> das áreas do ENEM: um curso de Engenharia pode dar peso maior à Matemática, enquanto um de Direito valoriza mais Linguagens e a Redação.</p>
+        </div>
+        <div class="card" style="border-left-color: #2ecc71;">
+            <h4>🏠 Renda Média ou Mediana?</h4>
+            <p>Institutos de pesquisa costumam divulgar a <strong>renda mediana</strong>: como poucas pessoas têm rendas muito altas, a média fica acima do que a maioria realmente recebe.</p>
+        </div>
+    </div>
+</section>
+<section class="questoes-resolvidas" id="resolvidas">
+    <h3>✅ 5 Questões Resolvidas (R 1 a 5)</h3>
+    <article class="questao">
+        <h4>R 1: Média Aritmética</h4>
+        <p><strong>Enunciado:</strong> As idades dos seis jogadores de um time de vôlei são $15$, $16$, $16$, $17$, $18$ e $20$ anos. Calcule a idade média.</p>
+        <div class="resolucao-bloco"><p><strong>Resolução:</strong><br>Soma das idades: $15 + 16 + 16 + 17 + 18 + 20 = 102$.<br>Média: $\bar{x} = \dfrac{102}{6} = \mathbf{17}$ anos.</p></div>
+    </article>
+    <article class="questao">
+        <h4>R 2: Mediana com n Ímpar e Par</h4>
+        <p><strong>Enunciado:</strong> Determine a mediana dos dados $3$, $8$, $5$, $10$, $7$. Em seguida, acrescente o valor $12$ e calcule a nova mediana.</p>
+        <div class="resolucao-bloco"><p><strong>Resolução:</strong><br>Em ordem: $3, 5, 7, 8, 10$. Com $5$ valores, a mediana é o $3^{\text{o}}$: $Md = \mathbf{7}$.<br>Com o $12$: $3, 5, 7, 8, 10, 12$. Com $6$ valores, a mediana é a média dos dois centrais: $Md = \dfrac{7 + 8}{2} = \mathbf{7{,}5}$.</p></div>
+    </article>
+    <article class="questao">
+        <h4>R 3: Moda</h4>
+        <p><strong>Enunciado:</strong> Determine a moda de cada conjunto: (a) $2, 3, 3, 5, 5, 5, 7$; (b) $1, 1, 4, 6, 6, 9$; (c) $2, 4, 6, 8$.</p>
+        <div class="resolucao-bloco"><p><strong>Resolução:</strong><br>(a) O $5$ aparece três vezes: $Mo = \mathbf{5}$.<br>(b) O $1$ e o $6$ aparecem duas vezes cada: o conjunto é <strong>bimodal</strong> ($1$ e $6$).<br>(c) Nenhum valor se repete: o conjunto é <strong>amodal</strong>.</p></div>
+    </article>
+    <article class="questao">
+        <h4>R 4: Média Ponderada</h4>
+        <p><strong>Enunciado:</strong> Em uma escola, a nota final é a média ponderada de três provas com pesos $2$, $3$ e $5$. Um aluno tirou $6$, $7$ e $8$, nessa ordem. Qual é a sua nota final?</p>
+        <div class="resolucao-bloco"><p><strong>Resolução:</strong><br>$\bar{x}_p = \dfrac{2 \cdot 6 + 3 \cdot 7 + 5 \cdot 8}{2 + 3 + 5}$.<br>$\bar{x}_p = \dfrac{12 + 21 + 40}{10} = \dfrac{73}{10}$.<br>Nota final: $\mathbf{7{,}3}$. (A média simples seria $7$: a prova de peso maior puxou a nota para cima.)</p></div>
+    </article>
+    <article class="questao">
+        <h4>R 5: Tabela de Frequências</h4>
+        <p><strong>Enunciado:</strong> Em uma pesquisa com $20$ famílias sobre o número de filhos, obteve-se: $0$ filho: $4$ famílias; $1$ filho: $6$; $2$ filhos: $7$; $3$ filhos: $3$. Calcule a média, a mediana e a moda, e o ângulo do setor “2 filhos” num gráfico de setores.</p>
+        <div class="resolucao-bloco"><p><strong>Resolução:</strong><br>Média: $\dfrac{0 \cdot 4 + 1 \cdot 6 + 2 \cdot 7 + 3 \cdot 3}{20} = \dfrac{29}{20} = \mathbf{1{,}45}$ filho.<br>Mediana: $10^{\text{o}}$ valor $= 1$ e $11^{\text{o}} = 2$ (acumuladas $4$, $10$, $17$): $Md = \mathbf{1{,}5}$. Moda: $\mathbf{2}$.<br>Setor: $\frac{7}{20} = 35\%$ e $0{,}35 \cdot 360^\circ = \mathbf{126^\circ}$.</p></div>
+    </article>
+</section>
+
+<section class="questoes-propostas" id="propostas">
+    <h3>✍️ 10 Questões Propostas (P 6 a 15)</h3>
+    <article class="questao">
+        <h4>P 6: Média Simples</h4>
+        <p><strong>Enunciado:</strong> Calcule a média aritmética de $4$, $6$, $8$, $10$ e $12$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>$\bar{x} = \dfrac{4 + 6 + 8 + 10 + 12}{5} = \dfrac{40}{5} = \mathbf{8}$.</p></div>
+    </article>
+    <article class="questao">
+        <h4>P 7: Mediana com Quantidade Par</h4>
+        <p><strong>Enunciado:</strong> Determine a mediana de $12$, $15$, $9$, $20$, $11$ e $18$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>Em ordem: $9, 11, 12, 15, 18, 20$.<br>$Md = \dfrac{12 + 15}{2} = \mathbf{13{,}5}$.</p></div>
+    </article>
+    <article class="questao">
+        <h4>P 8: Moda</h4>
+        <p><strong>Enunciado:</strong> Determine a moda de $1, 2, 2, 3, 4, 4, 4, 5$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>O $4$ aparece três vezes, mais que qualquer outro valor: $Mo = \mathbf{4}$.</p></div>
+    </article>
+    <article class="questao">
+        <h4>P 9: A Nota que Falta</h4>
+        <p><strong>Enunciado:</strong> A média de cinco provas de um aluno foi $7$. As quatro primeiras notas foram $6$, $8$, $7$ e $5$. Qual foi a quinta nota?</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>Soma das cinco notas: $5 \cdot 7 = 35$. Soma das quatro primeiras: $6 + 8 + 7 + 5 = 26$.<br>Quinta nota: $35 - 26 = \mathbf{9}$.</p></div>
+    </article>
+    <article class="questao">
+        <h4>P 10: Preço Médio</h4>
+        <p><strong>Enunciado:</strong> Um comerciante comprou $3$ kg de um produto a R\$ $4{,}00$ o quilo e $2$ kg a R\$ $9{,}00$ o quilo. Qual foi o preço médio pago por quilo?</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>Média ponderada pelas quantidades: $\dfrac{3 \cdot 4 + 2 \cdot 9}{3 + 2} = \dfrac{30}{5}$.<br>Preço médio: R\$ $\mathbf{6{,}00}$ por quilo (e não R\$ $6{,}50$, a média simples dos preços).</p></div>
+    </article>
+    <article class="questao">
+        <h4>P 11: Gráfico de Setores</h4>
+        <p><strong>Enunciado:</strong> Em uma pesquisa, $40\%$ dos entrevistados preferem futebol. Qual é o ângulo do setor correspondente em um gráfico de setores?</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>O círculo todo ($360^\circ$) representa $100\%$.<br>$0{,}40 \cdot 360^\circ = \mathbf{144^\circ}$.</p></div>
+    </article>
+    <article class="questao">
+        <h4>P 12: Média com Frequências</h4>
+        <p><strong>Enunciado:</strong> Em uma turma de $10$ alunos, as notas foram: nota $5$: $2$ alunos; nota $6$: $3$; nota $7$: $4$; nota $8$: $1$. Calcule a média da turma.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>$\bar{x} = \dfrac{5 \cdot 2 + 6 \cdot 3 + 7 \cdot 4 + 8 \cdot 1}{10} = \dfrac{10 + 18 + 28 + 8}{10} = \dfrac{64}{10}$.<br>$\bar{x} = \mathbf{6{,}4}$.</p></div>
+    </article>
+    <article class="questao">
+        <h4>P 13: Acrescentando um Valor</h4>
+        <p><strong>Enunciado:</strong> A média de $10$ números é $12$. Acrescentando-se o número $23$, qual passa a ser a média?</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>Soma dos $10$ números: $10 \cdot 12 = 120$. Nova soma: $120 + 23 = 143$.<br>Nova média: $\dfrac{143}{11} = \mathbf{13}$.</p></div>
+    </article>
+    <article class="questao">
+        <h4>P 14: Mediana e Moda em Tabela</h4>
+        <p><strong>Enunciado:</strong> Uma loja vendeu $20$ pares de tênis em um dia: número $36$: $3$ pares; $37$: $5$; $38$: $8$; $39$: $4$. Determine a mediana e a moda dos números vendidos.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>Acumulando: $36$ vai até o $3^{\text{o}}$ par, $37$ até o $8^{\text{o}}$ e $38$ até o $16^{\text{o}}$. O $10^{\text{o}}$ e o $11^{\text{o}}$ são $38$: $Md = \mathbf{38}$.<br>Moda: $\mathbf{38}$ (maior frequência, $8$).</p></div>
+    </article>
+    <article class="questao">
+        <h4>P 15: Qual Medida Usar?</h4>
+        <p><strong>Enunciado:</strong> Em uma empresa, $8$ funcionários ganham R\$ $2\,000{,}00$ e $2$ diretores ganham R\$ $7\,000{,}00$. Calcule a média e a mediana dos salários. Qual delas representa melhor o salário típico?</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>Média: $\dfrac{8 \cdot 2\,000 + 2 \cdot 7\,000}{10} = \dfrac{30\,000}{10} = $ R\$ $\mathbf{3\,000{,}00}$.<br>Mediana: o $5^{\text{o}}$ e o $6^{\text{o}}$ salários valem $2\,000$: R\$ $\mathbf{2\,000{,}00}$.<br>A <strong>mediana</strong> representa melhor: a média é “puxada” pelos dois salários altos.</p></div>
+    </article>
+</section>
+
+<section class="TESTE" id="testes">
+    <h3>🎓 TESTES (T 16 a 20)</h3>
+    <article class="questao">
+        <h4>T 16: (ENEM 2010) Os Gols do Time</h4>
+        <p>O quadro seguinte mostra o desempenho de um time de futebol no último campeonato. A coluna da esquerda mostra o número de gols marcados e a coluna da direita informa em quantos jogos o time marcou aquele número de gols.</p>
+        <figure class="figura-aula">
+            <table style="margin: 10px auto; border-collapse: collapse; text-align: center;"><tr style="background-color: #2c3e50; color: white;"><th style="padding: 6px 14px;">Gols marcados</th><th style="padding: 6px 14px;">Quantidade de partidas</th></tr><tr><td style="padding: 5px 14px; border: 1px solid #ccc;">0</td><td style="padding: 5px 14px; border: 1px solid #ccc;">5</td></tr><tr><td style="padding: 5px 14px; border: 1px solid #ccc;">1</td><td style="padding: 5px 14px; border: 1px solid #ccc;">3</td></tr><tr><td style="padding: 5px 14px; border: 1px solid #ccc;">2</td><td style="padding: 5px 14px; border: 1px solid #ccc;">4</td></tr><tr><td style="padding: 5px 14px; border: 1px solid #ccc;">3</td><td style="padding: 5px 14px; border: 1px solid #ccc;">3</td></tr><tr><td style="padding: 5px 14px; border: 1px solid #ccc;">4</td><td style="padding: 5px 14px; border: 1px solid #ccc;">2</td></tr><tr><td style="padding: 5px 14px; border: 1px solid #ccc;">5</td><td style="padding: 5px 14px; border: 1px solid #ccc;">2</td></tr><tr><td style="padding: 5px 14px; border: 1px solid #ccc;">7</td><td style="padding: 5px 14px; border: 1px solid #ccc;">1</td></tr></table>
+            <figcaption>Quadro reproduzido a partir do enunciado original.</figcaption>
+        </figure>
+        <p>Se X, Y e Z são, respectivamente, a média, a mediana e a moda desta distribuição, então</p>
+        <p>A) X = Y < Z.<br>B) Z < X = Y.<br>C) Y < Z < X.<br>D) Z < X < Y.<br>E) Z < Y < X.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>E</strong>.<br>Total de jogos: $5 + 3 + 4 + 3 + 2 + 2 + 1 = 20$. Total de gols: $0 + 3 + 8 + 9 + 8 + 10 + 7 = 45$.<br>Média: $X = \dfrac{45}{20} = 2{,}25$.<br>Mediana: média do $10^{\text{o}}$ e do $11^{\text{o}}$ valores. Acumulando: $0$ gol até o $5^{\text{o}}$ jogo, $1$ gol até o $8^{\text{o}}$, $2$ gols até o $12^{\text{o}}$. Logo $Y = 2$.<br>Moda: $Z = 0$ (5 jogos). Portanto $Z < Y < X$. Alternativa <strong>E</strong>.</p></div>
+    </article>
+    <article class="questao">
+        <h4>T 17: (ENEM 2011) As Temperaturas da Cidade</h4>
+        <p>Uma equipe de especialistas do centro meteorológico de uma cidade mediu a temperatura do ambiente, sempre no mesmo horário, durante 15 dias intercalados, a partir do primeiro dia de um mês. Esse tipo de procedimento é frequente, uma vez que os dados coletados servem de referência para estudos e verificação de tendências climáticas ao longo dos meses e anos.</p>
+        <p>As medições ocorridas nesse período estão indicadas no quadro:</p>
+        <figure class="figura-aula">
+            <table style="margin: 10px auto; border-collapse: collapse; text-align: center;"><tr style="background-color: #2c3e50; color: white;"><th style="padding: 6px 14px;">Dia do mês</th><th style="padding: 6px 14px;">Temp. (°C)</th><th style="padding: 6px 14px;">Dia do mês</th><th style="padding: 6px 14px;">Temp. (°C)</th><th style="padding: 6px 14px;">Dia do mês</th><th style="padding: 6px 14px;">Temp. (°C)</th></tr><tr><td style="padding: 5px 14px; border: 1px solid #ccc;">1</td><td style="padding: 5px 14px; border: 1px solid #ccc;">15,5</td><td style="padding: 5px 14px; border: 1px solid #ccc;">11</td><td style="padding: 5px 14px; border: 1px solid #ccc;">20</td><td style="padding: 5px 14px; border: 1px solid #ccc;">21</td><td style="padding: 5px 14px; border: 1px solid #ccc;">18,5</td></tr><tr><td style="padding: 5px 14px; border: 1px solid #ccc;">3</td><td style="padding: 5px 14px; border: 1px solid #ccc;">14</td><td style="padding: 5px 14px; border: 1px solid #ccc;">13</td><td style="padding: 5px 14px; border: 1px solid #ccc;">13,5</td><td style="padding: 5px 14px; border: 1px solid #ccc;">23</td><td style="padding: 5px 14px; border: 1px solid #ccc;">13,5</td></tr><tr><td style="padding: 5px 14px; border: 1px solid #ccc;">5</td><td style="padding: 5px 14px; border: 1px solid #ccc;">13,5</td><td style="padding: 5px 14px; border: 1px solid #ccc;">15</td><td style="padding: 5px 14px; border: 1px solid #ccc;">13,5</td><td style="padding: 5px 14px; border: 1px solid #ccc;">25</td><td style="padding: 5px 14px; border: 1px solid #ccc;">21,5</td></tr><tr><td style="padding: 5px 14px; border: 1px solid #ccc;">7</td><td style="padding: 5px 14px; border: 1px solid #ccc;">18</td><td style="padding: 5px 14px; border: 1px solid #ccc;">17</td><td style="padding: 5px 14px; border: 1px solid #ccc;">18</td><td style="padding: 5px 14px; border: 1px solid #ccc;">27</td><td style="padding: 5px 14px; border: 1px solid #ccc;">20</td></tr><tr><td style="padding: 5px 14px; border: 1px solid #ccc;">9</td><td style="padding: 5px 14px; border: 1px solid #ccc;">19,5</td><td style="padding: 5px 14px; border: 1px solid #ccc;">19</td><td style="padding: 5px 14px; border: 1px solid #ccc;">20</td><td style="padding: 5px 14px; border: 1px solid #ccc;">29</td><td style="padding: 5px 14px; border: 1px solid #ccc;">16</td></tr></table>
+            <figcaption>Quadro redesenhado a partir do enunciado original.</figcaption>
+        </figure>
+        <p>Em relação à temperatura, os valores da média, mediana e moda são, respectivamente, iguais a</p>
+        <p>A) 17 °C, 17 °C e 13,5 °C.<br>B) 17 °C, 18 °C e 13,5 °C.<br>C) 17 °C, 13,5 °C e 18 °C.<br>D) 17 °C, 18 °C e 21,5 °C.<br>E) 17 °C, 13,5 °C e 21,5 °C.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>B</strong>.<br>Rol: 13,5; 13,5; 13,5; 13,5; 14; 15,5; 16; 18; 18; 18,5; 19,5; 20; 20; 20; 21,5.<br>Média: $\dfrac{255}{15} = 17$ °C. Mediana ($8^{\text{o}}$ valor de $15$): $18$ °C. Moda: $13{,}5$ °C (aparece $4$ vezes).<br>Alternativa <strong>B</strong>. (Cuidado: a mediana só pode ser lida depois de colocar os dados em ordem.)</p></div>
+    </article>
+    <article class="questao">
+        <h4>T 18: (ENEM 2009) A Gincana Escolar</h4>
+        <p>Suponha que a etapa final de uma gincana escolar consista em um desafio de conhecimentos. Cada equipe escolheria 10 alunos para realizar uma prova objetiva, e a pontuação da equipe seria dada pela mediana das notas obtidas pelos alunos. As provas valiam, no máximo, 10 pontos cada. Ao final, a vencedora foi a equipe Ômega, com 7,8 pontos, seguida pela equipe Delta, com 7,6 pontos.</p>
+        <p>Um dos alunos da equipe Gama, a qual ficou na terceira e última colocação, não pôde comparecer, tendo recebido nota zero na prova. As notas obtidas pelos 10 alunos da equipe Gama foram 10; 6,5; 8; 10; 7; 6,5; 7; 8; 6; 0.</p>
+        <p>Se o aluno da equipe Gama que faltou tivesse comparecido, essa equipe</p>
+        <p>A) teria a pontuação igual a 6,5 se ele obtivesse nota 0.<br>B) seria a vencedora se ele obtivesse nota 10.<br>C) seria a segunda colocada se ele obtivesse nota 8.<br>D) permaneceria na terceira posição, independentemente da nota obtida pelo aluno.<br>E) empataria com a equipe Ômega na primeira colocação se o aluno obtivesse nota 9.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>D</strong>.<br>Sem o aluno faltoso, as $9$ notas em ordem são $6;\ 6{,}5;\ 6{,}5;\ 7;\ 7;\ 8;\ 8;\ 10;\ 10$. Com $10$ notas, a mediana é a média da $5^{\text{a}}$ e da $6^{\text{a}}$.<br>Na melhor hipótese (nota $10$): $6;\ 6{,}5;\ 6{,}5;\ 7;\ \mathbf{7};\ \mathbf{8};\ 8;\ 10;\ 10;\ 10$, mediana $\dfrac{7 + 8}{2} = 7{,}5 < 7{,}6$ (Delta). Na pior (nota $0$), a mediana é $7$.<br>A pontuação fica sempre entre $7$ e $7{,}5$: a equipe permanece em terceiro lugar. Alternativa <strong>D</strong>.</p></div>
+    </article>
+    <article class="questao">
+        <h4>T 19: (ENEM 2013) A Banca Avaliadora</h4>
+        <p>As notas de um professor que participou de um processo seletivo, em que a banca avaliadora era composta por cinco membros, são apresentadas no gráfico. Sabe-se que cada membro da banca atribuiu duas notas ao professor, uma relativa aos conhecimentos específicos da área de atuação e outra, aos conhecimentos pedagógicos, e que a média final do professor foi dada pela média aritmética de todas as notas atribuídas pela banca avaliadora.</p>
+        <p>Utilizando um novo critério, essa banca avaliadora resolveu descartar a maior e a menor notas atribuídas ao professor.</p>
+        <figure class="figura-aula">
+            <svg viewBox="0 0 420 250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Gráfico de barras com as duas notas de cada avaliador" style="width:100%; max-width:430px; display:block; margin:0 auto;">
+  <line x1="50" y1="210" x2="410" y2="210" stroke="#2c3e50" stroke-width="1.5"/><line x1="50" y1="210" x2="50" y2="20" stroke="#2c3e50" stroke-width="1.5"/>
+  <line x1="46" y1="210" x2="410" y2="210" stroke="#ecf0f1"/><text x="42" y="214" font-family="Oswald, sans-serif" font-size="12" text-anchor="end" fill="#2c3e50">0</text>
+  <line x1="46" y1="165" x2="410" y2="165" stroke="#ecf0f1"/><text x="42" y="169" font-family="Oswald, sans-serif" font-size="12" text-anchor="end" fill="#2c3e50">5</text>
+  <line x1="46" y1="120" x2="410" y2="120" stroke="#ecf0f1"/><text x="42" y="124" font-family="Oswald, sans-serif" font-size="12" text-anchor="end" fill="#2c3e50">10</text>
+  <line x1="46" y1="75" x2="410" y2="75" stroke="#ecf0f1"/><text x="42" y="79" font-family="Oswald, sans-serif" font-size="12" text-anchor="end" fill="#2c3e50">15</text>
+  <line x1="46" y1="30" x2="410" y2="30" stroke="#ecf0f1"/><text x="42" y="34" font-family="Oswald, sans-serif" font-size="12" text-anchor="end" fill="#2c3e50">20</text>
+  <rect x="85" y="48" width="20" height="162" fill="#3498db"/><text x="95" y="44" font-family="Oswald, sans-serif" font-size="12" text-anchor="middle" fill="#2c3e50">18</text>
+  <rect x="107" y="66" width="20" height="144" fill="#e67e22"/><text x="117" y="62" font-family="Oswald, sans-serif" font-size="12" text-anchor="middle" fill="#2c3e50">16</text>
+  <text x="106" y="228" font-family="Oswald, sans-serif" font-size="13" text-anchor="middle" fill="#2c3e50">A</text>
+  <rect x="155" y="57" width="20" height="153" fill="#3498db"/><text x="165" y="53" font-family="Oswald, sans-serif" font-size="12" text-anchor="middle" fill="#2c3e50">17</text>
+  <rect x="177" y="93" width="20" height="117" fill="#e67e22"/><text x="187" y="89" font-family="Oswald, sans-serif" font-size="12" text-anchor="middle" fill="#2c3e50">13</text>
+  <text x="176" y="228" font-family="Oswald, sans-serif" font-size="13" text-anchor="middle" fill="#2c3e50">B</text>
+  <rect x="225" y="84" width="20" height="126" fill="#3498db"/><text x="235" y="80" font-family="Oswald, sans-serif" font-size="12" text-anchor="middle" fill="#2c3e50">14</text>
+  <rect x="247" y="201" width="20" height="9" fill="#e67e22"/><text x="257" y="197" font-family="Oswald, sans-serif" font-size="12" text-anchor="middle" fill="#2c3e50">1</text>
+  <text x="246" y="228" font-family="Oswald, sans-serif" font-size="13" text-anchor="middle" fill="#2c3e50">C</text>
+  <rect x="295" y="39" width="20" height="171" fill="#3498db"/><text x="305" y="35" font-family="Oswald, sans-serif" font-size="12" text-anchor="middle" fill="#2c3e50">19</text>
+  <rect x="317" y="84" width="20" height="126" fill="#e67e22"/><text x="327" y="80" font-family="Oswald, sans-serif" font-size="12" text-anchor="middle" fill="#2c3e50">14</text>
+  <text x="316" y="228" font-family="Oswald, sans-serif" font-size="13" text-anchor="middle" fill="#2c3e50">D</text>
+  <rect x="365" y="66" width="20" height="144" fill="#3498db"/><text x="375" y="62" font-family="Oswald, sans-serif" font-size="12" text-anchor="middle" fill="#2c3e50">16</text>
+  <rect x="387" y="102" width="20" height="108" fill="#e67e22"/><text x="397" y="98" font-family="Oswald, sans-serif" font-size="12" text-anchor="middle" fill="#2c3e50">12</text>
+  <text x="386" y="228" font-family="Oswald, sans-serif" font-size="13" text-anchor="middle" fill="#2c3e50">E</text>
+  <rect x="60" y="232" width="12" height="12" fill="#3498db"/><text x="78" y="243" font-family="Oswald, sans-serif" font-size="12" fill="#2c3e50">Conhecimentos específicos</text>
+  <rect x="240" y="232" width="12" height="12" fill="#e67e22"/><text x="258" y="243" font-family="Oswald, sans-serif" font-size="12" fill="#2c3e50">Conhecimentos pedagógicos</text>
+</svg>
+            <figcaption>Gráfico redesenhado a partir do enunciado original.</figcaption>
+        </figure>
+        <p>A nova média, em relação à média anterior, é</p>
+        <p>A) 0,25 ponto maior.<br>B) 1,00 ponto maior.<br>C) 1,00 ponto menor.<br>D) 1,25 ponto maior.<br>E) 2,00 pontos menor.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>B</strong>.<br>Soma das $10$ notas: $18 + 16 + 17 + 13 + 14 + 1 + 19 + 14 + 16 + 12 = 140$. Média anterior: $\dfrac{140}{10} = 14$.<br>Descartando a maior ($19$) e a menor ($1$): soma $140 - 20 = 120$ em $8$ notas, nova média $\dfrac{120}{8} = 15$.<br>A nova média é $1$ ponto maior. Alternativa <strong>B</strong>. (A nota $1$, muito discrepante, “puxava” a média para baixo.)</p></div>
+    </article>
+    <article class="questao">
+        <h4>T 20: (Questão autoral) As Vendas da Semana</h4>
+        <p>O gráfico mostra quantas unidades de um produto uma loja vendeu em cada dia, de segunda-feira a sábado.</p>
+        <figure class="figura-aula">
+            <svg viewBox="0 0 400 210" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Gráfico de colunas das vendas de segunda a sábado" style="width:100%; max-width:400px; display:block; margin:0 auto;">
+  <line x1="45" y1="180" x2="390" y2="180" stroke="#2c3e50" stroke-width="1.5"/><line x1="45" y1="180" x2="45" y2="15" stroke="#2c3e50" stroke-width="1.5"/>
+  <rect x="60" y="96" width="36" height="84" fill="#3498db"/><text x="78" y="91" font-family="Oswald, sans-serif" font-size="13" text-anchor="middle" fill="#2c3e50">12</text>
+  <text x="78" y="198" font-family="Oswald, sans-serif" font-size="13" text-anchor="middle" fill="#2c3e50">Seg</text>
+  <rect x="115" y="82" width="36" height="98" fill="#3498db"/><text x="133" y="77" font-family="Oswald, sans-serif" font-size="13" text-anchor="middle" fill="#2c3e50">14</text>
+  <text x="133" y="198" font-family="Oswald, sans-serif" font-size="13" text-anchor="middle" fill="#2c3e50">Ter</text>
+  <rect x="170" y="110" width="36" height="70" fill="#3498db"/><text x="188" y="105" font-family="Oswald, sans-serif" font-size="13" text-anchor="middle" fill="#2c3e50">10</text>
+  <text x="188" y="198" font-family="Oswald, sans-serif" font-size="13" text-anchor="middle" fill="#2c3e50">Qua</text>
+  <rect x="225" y="82" width="36" height="98" fill="#3498db"/><text x="243" y="77" font-family="Oswald, sans-serif" font-size="13" text-anchor="middle" fill="#2c3e50">14</text>
+  <text x="243" y="198" font-family="Oswald, sans-serif" font-size="13" text-anchor="middle" fill="#2c3e50">Qui</text>
+  <rect x="280" y="26" width="36" height="154" fill="#3498db"/><text x="298" y="21" font-family="Oswald, sans-serif" font-size="13" text-anchor="middle" fill="#2c3e50">22</text>
+  <text x="298" y="198" font-family="Oswald, sans-serif" font-size="13" text-anchor="middle" fill="#2c3e50">Sex</text>
+  <rect x="335" y="54" width="36" height="126" fill="#3498db"/><text x="353" y="49" font-family="Oswald, sans-serif" font-size="13" text-anchor="middle" fill="#2c3e50">18</text>
+  <text x="353" y="198" font-family="Oswald, sans-serif" font-size="13" text-anchor="middle" fill="#2c3e50">Sáb</text>
+</svg>
+            <figcaption>Gráfico de colunas (dados fictícios).</figcaption>
+        </figure>
+        <p>A média, a mediana e a moda das vendas diárias são, respectivamente,</p>
+        <p>A) 15, 14 e 14.<br>B) 14, 15 e 14.<br>C) 15, 15 e 14.<br>D) 14, 14 e 15.<br>E) 15, 16 e 14.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>A</strong>.<br>Média: $\dfrac{12 + 14 + 10 + 14 + 22 + 18}{6} = \dfrac{90}{6} = 15$.<br>Em ordem: $10, 12, 14, 14, 18, 22$. Mediana: $\dfrac{14 + 14}{2} = 14$. Moda: $14$. Alternativa <strong>A</strong>.</p></div>
+    </article>
+</section>
+
+</div></main>
+<aside class="menu-lateral"><iframe src="../menu_matematica.html" style="width:100%; border:none; height:600px;"></iframe></aside>
+</div>
+<script>
+function toggleGabarito(botao) {
+    const gabarito = botao.nextElementSibling;
+    if (gabarito.style.display === "none" || gabarito.style.display === "") {
+        gabarito.style.display = "block"; botao.textContent = "Esconder Gabarito e Resolução"; botao.style.backgroundColor = "#2c3e50";
+    } else {
+        gabarito.style.display = "none"; botao.textContent = "Ver Gabarito e Resolução"; botao.style.backgroundColor = "#3498db";
+    }
+}
+function toggleMenu() { const m = document.getElementById("menu-principal"); if (m) m.classList.toggle("ativo"); }
+let slideAtual = 0; let slides = [];
+function prepararSlides() { slides = Array.from(document.querySelectorAll('.container-resumo, .passo-teoria, .card, .questao')); }
+function toggleSlides() {
+    prepararSlides(); const body = document.body;
+    if (!body.classList.contains('modo-slides')) { body.classList.add('modo-slides'); slideAtual = 0; mostrarSlide(slideAtual); }
+    else { body.classList.remove('modo-slides'); slides.forEach(s => { s.classList.remove('slide-ativo'); s.style.display = ''; }); }
+}
+function mostrarSlide(n) {
+    if (!slides.length) return;
+    slides.forEach(s => { s.classList.remove('slide-ativo'); s.style.display = 'none'; });
+    const slide = slides[n]; slide.classList.add('slide-ativo');
+    slide.querySelectorAll('.gabarito-resolucao').forEach(g => g.style.display = 'none');
+    slide.querySelectorAll('.btn-gabarito').forEach(b => { b.textContent = "Ver Gabarito e Resolução"; b.style.backgroundColor = "#3498db"; });
+    const pHeader = document.querySelector('header p');
+    if (pHeader) { const partes = pHeader.innerText.split('|'); if (partes.length > 1) {
+        document.getElementById('slide-info-serie').innerText = partes[0].trim();
+        document.getElementById('slide-info-aula').innerText = partes[1].trim(); } }
+    document.getElementById('contador-slide').innerText = (n + 1) + " / " + slides.length;
+    if (window.MathJax && window.MathJax.typesetPromise) { MathJax.typesetPromise(); }
+}
+function mudarSlide(d) { slideAtual += d; if (slideAtual >= slides.length) slideAtual = 0; if (slideAtual < 0) slideAtual = slides.length - 1; mostrarSlide(slideAtual); }
+document.addEventListener('keydown', function(event) {
+    if (document.body.classList.contains('modo-slides')) {
+        switch(event.key) {
+            case 'ArrowRight': case 'PageDown': case 'Enter': case ' ': event.preventDefault(); mudarSlide(1); break;
+            case 'ArrowLeft': case 'PageUp': event.preventDefault(); mudarSlide(-1); break;
+            case 'Escape': event.preventDefault(); toggleSlides(); break;
+        }
+    }
+});
+</script>
+<div class="controles-slides">
+    <div id="slide-info-serie" class="info-lateral"></div>
+    <div class="botoes-centrais">
+        <button class="btn-nav" onclick="mudarSlide(-1)">⬅ Anterior</button>
+        <span id="contador-slide"></span>
+        <button class="btn-nav" onclick="mudarSlide(1)">Próximo ➡</button>
+        <button class="btn-nav" onclick="toggleSlides()" style="background:#e74c3c;">Sair</button>
+    </div>
+    <div id="slide-info-aula" class="info-lateral" style="text-align: right;"></div>
+</div>
+</body>
+</html>
