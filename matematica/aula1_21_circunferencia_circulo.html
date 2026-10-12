@@ -41,104 +41,105 @@
 <div class="container-resumo" id="resumo">
     <h3>📚 Resumo</h3>
     <section class="resumo-conteudo">
-        <p>A <strong>circunferência</strong> é o conjunto dos pontos do plano que estão a uma mesma distância $r$ (o raio) de um ponto $O$ (o centro); o <strong>círculo</strong> é a região limitada por ela. As <strong>relações métricas</strong> (potência de ponto) relacionam segmentos de cordas, secantes e tangentes que passam por um mesmo ponto $P$.</p>
-        <p style="text-align: center;">$$C = 2\pi r \qquad A = \pi r^2 \qquad PA \cdot PB = PC \cdot PD \qquad PT^2 = PA \cdot PB$$</p>
+        <p>A <strong>circunferência</strong> é o conjunto dos pontos de um plano que estão a uma mesma distância $r$ (o <strong>raio</strong>) de um ponto fixo $O$ (o <strong>centro</strong>). O <strong>círculo</strong> é a região formada pela circunferência e por todos os pontos do seu interior: a circunferência é a "borda", o círculo é o "disco".</p>
+        <p style="text-align: center;">$$C = 2\pi r \qquad A = \pi r^2 \qquad \text{ângulo inscrito} = \frac{\text{arco}}{2} \qquad PA \cdot PB = PC \cdot PD \qquad PT^2 = PA \cdot PB$$</p>
     </section>
 </div>
 
 <section class="conteudo-teorico-completo" id="teoria">
     <div class="passo-teoria">
         <h3>📖 Circunferência e Círculo</h3>
-        <h4>1. Elementos</h4>
+        <h4>1. Elementos da Circunferência</h4>
         <ul>
-            <li><strong>Raio ($r$):</strong> segmento do centro a um ponto da circunferência;</li>
-            <li><strong>Corda:</strong> segmento com extremidades na circunferência; a maior corda é o <strong>diâmetro</strong>, $d = 2r$;</li>
-            <li><strong>Reta secante:</strong> corta a circunferência em dois pontos; <strong>reta tangente:</strong> toca em um único ponto e é <strong>perpendicular ao raio</strong> nesse ponto;</li>
-            <li>A perpendicular do centro a uma corda passa pelo <strong>ponto médio</strong> dela.</li>
+            <li><strong>Raio:</strong> segmento que liga o centro a um ponto da circunferência;</li>
+            <li><strong>Corda:</strong> segmento que liga dois pontos da circunferência; a maior corda é o <strong>diâmetro</strong> ($d = 2r$), que passa pelo centro;</li>
+            <li><strong>Arco:</strong> parte da circunferência entre dois de seus pontos;</li>
+            <li><strong>Reta secante:</strong> corta a circunferência em dois pontos; <strong>reta tangente:</strong> toca a circunferência em um único ponto e é <strong>perpendicular ao raio</strong> nesse ponto.</li>
         </ul>
         <figure class="figura-aula figura-grande">
-            <svg viewBox="0 0 300 240" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Elementos da circunferência: centro, raio, diâmetro, corda, reta tangente e reta secante" style="width:100%; max-width:320px; display:block; margin:0 auto;">
-  <circle cx="140" cy="120" r="90" fill="#eaf2fb" stroke="#2c3e50" stroke-width="2.5"/>
-  <line x1="50" y1="120" x2="230" y2="120" stroke="#3498db" stroke-width="2.5"/>
-  <line x1="140" y1="120" x2="203.6" y2="56.4" stroke="#e74c3c" stroke-width="2.5"/>
-  <line x1="76.4" y1="183.6" x2="203.6" y2="183.6" stroke="#8e44ad" stroke-width="2.5"/>
-  <line x1="20" y1="30" x2="260" y2="30" stroke="#2ecc71" stroke-width="2.5"/>
-  <circle cx="140" cy="30" r="3.5" fill="#2ecc71"/><circle cx="140" cy="120" r="3.5" fill="#2c3e50"/>
-  <g font-family="Oswald, sans-serif" font-size="14">
-    <text x="128" y="138" fill="#2c3e50">O</text><text x="176" y="82" fill="#e74c3c">raio r</text>
-    <text x="60" y="114" fill="#3498db">diâmetro 2r</text><text x="112" y="204" fill="#8e44ad">corda</text>
-    <text x="196" y="24" fill="#2ecc71">tangente</text>
+            <svg viewBox="0 0 440 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Elementos da circunferência: centro, raio, diâmetro, corda, arco, reta tangente e reta secante" style="width:100%; max-width:460px; display:block; margin:0 auto;">
+  <circle cx="200" cy="150" r="110" fill="#eaf2fb" stroke="#2c3e50" stroke-width="3"/>
+  <line x1="90" y1="150" x2="310" y2="150" stroke="#3498db" stroke-width="2.5"/>
+  <line x1="200" y1="150" x2="277.8" y2="72.2" stroke="#e74c3c" stroke-width="2.5"/>
+  <line x1="125.1" y1="230.5" x2="272.2" y2="232.7" stroke="#2ecc71" stroke-width="2.5"/>
+  <path d="M 277.8 72.2 A 110 110 0 0 1 310 150" fill="none" stroke="#e67e22" stroke-width="6" stroke-linecap="round"/>
+  <line x1="310" y1="20" x2="310" y2="290" stroke="#8e44ad" stroke-width="2"/>
+  <line x1="40" y1="100" x2="420" y2="40" stroke="#7f8c8d" stroke-width="2" stroke-dasharray="7,4"/>
+  <circle cx="200" cy="150" r="4" fill="#2c3e50"/>
+  <g font-family="Oswald, sans-serif" font-size="15">
+    <text x="190" y="170" fill="#2c3e50">O (centro)</text>
+    <text x="110" y="142" fill="#3498db">diâmetro</text>
+    <text x="244" y="125" fill="#e74c3c">raio</text>
+    <text x="170" y="252" fill="#2ecc71">corda</text>
+    <text x="316" y="98" fill="#e67e22">arco</text>
+    <text x="316" y="250" fill="#8e44ad">tangente</text>
+    <text x="45" y="88" fill="#7f8c8d">secante</text>
   </g>
 </svg>
-            <figcaption>Figura 1: Elementos da circunferência de centro $O$ e raio $r$.</figcaption>
+            <figcaption>Figura 1: Centro, raio, diâmetro, corda, arco, reta secante e reta tangente.</figcaption>
         </figure>
     </div>
 
     <div class="passo-teoria">
-        <h4>2. Comprimento, Área, Setor e Coroa</h4>
+        <h4>2. Comprimento, Área, Arco e Setor</h4>
+        <p>Em qualquer circunferência, a razão entre o comprimento e o diâmetro é sempre o mesmo número, $\pi \approx 3{,}14$. Daí:</p>
         <p style="text-align: center; font-size: 1.15rem; background-color: #f8f9fa; padding: 15px; border-left: 5px solid #3498db; margin: 20px 0;">
-            $$C = 2\pi r = \pi d \qquad\qquad A = \pi r^2$$
+            $$C = 2\pi r \qquad\qquad A_{\text{círculo}} = \pi r^2$$
         </p>
         <ul>
-            <li><strong>Arco</strong> de ângulo central $\alpha$: $\ell = \dfrac{\alpha}{360^\circ} \cdot 2\pi r$;</li>
-            <li><strong>Setor circular</strong> de ângulo $\alpha$: $A_{setor} = \dfrac{\alpha}{360^\circ} \cdot \pi r^2$;</li>
-            <li><strong>Coroa circular</strong> (entre circunferências concêntricas de raios $R > r$): $A = \pi(R^2 - r^2)$.</li>
+            <li><strong>Arco e setor</strong> de ângulo central $\alpha$ (em graus): são a fração $\dfrac{\alpha}{360^\circ}$ da circunferência e do círculo: $\ell = \dfrac{\alpha}{360^\circ} \cdot 2\pi r$ e $A_{\text{setor}} = \dfrac{\alpha}{360^\circ} \cdot \pi r^2$;</li>
+            <li><strong>Em radianos:</strong> $\ell = \alpha \cdot r$ (uma volta completa mede $2\pi$ rad);</li>
+            <li><strong>Coroa circular</strong> (região entre duas circunferências concêntricas): $A = \pi(R^2 - r^2)$.</li>
         </ul>
-        <p>Como a área depende de $r^2$, multiplicar o raio por $k$ multiplica a área por $k^2$.</p>
     </div>
 
     <div class="passo-teoria">
-        <h4>3. Relações Métricas (Potência de Ponto)</h4>
+        <h4>3. Ângulos na Circunferência</h4>
         <ul>
-            <li><strong>Cordas que se cortam</strong> em $P$ (interior): $PA \cdot PB = PC \cdot PD$;</li>
-            <li><strong>Duas secantes</strong> a partir de $P$ (exterior): $PA \cdot PB = PC \cdot PD$ (cada uma medida <em>a partir de $P$</em>: o segmento externo vezes o segmento inteiro);</li>
-            <li><strong>Tangente e secante</strong> a partir de $P$: $PT^2 = PA \cdot PB$;</li>
-            <li><strong>Duas tangentes</strong> a partir de $P$: $PT = PT'$ (segmentos tangentes iguais).</li>
+            <li><strong>Ângulo central</strong> (vértice no centro): tem a <strong>mesma medida</strong> do arco que determina;</li>
+            <li><strong>Ângulo inscrito</strong> (vértice na circunferência e lados formados por cordas): mede a <strong>metade</strong> do arco que enxerga;</li>
+            <li>Consequência: todo ângulo inscrito numa <strong>semicircunferência</strong> é reto ($90^\circ$), e ângulos inscritos que enxergam o mesmo arco são iguais.</li>
+        </ul>
+    </div>
+
+    <div class="passo-teoria">
+        <h4>4. Relações Métricas (Potência de Ponto)</h4>
+        <ul>
+            <li><strong>Duas cordas</strong> $AB$ e $CD$ que se cortam em $P$: $PA \cdot PB = PC \cdot PD$;</li>
+            <li><strong>Duas secantes</strong> traçadas de um ponto exterior $P$: $PA \cdot PB = PC \cdot PD$ (sempre medindo de $P$ até cada ponto: a parte externa vezes a secante inteira);</li>
+            <li><strong>Tangente e secante</strong> de um ponto exterior $P$: $PT^2 = PA \cdot PB$;</li>
+            <li>Os <strong>dois segmentos tangentes</strong> traçados de um mesmo ponto exterior têm medidas iguais.</li>
         </ul>
         <figure class="figura-aula figura-grande">
-            <svg viewBox="0 0 640 190" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Três casos de potência de ponto: cordas que se cruzam, duas secantes e tangente com secante" style="width:100%; max-width:660px; display:block; margin:0 auto;">
-  <circle cx="70.0" cy="90.0" r="52" fill="#eaf2fb" stroke="#2c3e50" stroke-width="2.5"/>
-  <circle cx="278.0" cy="90.0" r="52" fill="#eaf2fb" stroke="#2c3e50" stroke-width="2.5"/>
-  <circle cx="486.0" cy="90.0" r="52" fill="#eaf2fb" stroke="#2c3e50" stroke-width="2.5"/>
-  <line x1="26.4" y1="118.4" x2="121.6" y2="83.7" stroke="#3498db" stroke-width="2.5"/>
-  <line x1="99.4" y1="132.9" x2="56.0" y2="39.9" stroke="#e74c3c" stroke-width="2.5"/>
-  <circle cx="26.4" cy="118.4" r="3.5" fill="#2c3e50"/>
-  <circle cx="121.6" cy="83.7" r="3.5" fill="#2c3e50"/>
-  <circle cx="99.4" cy="132.9" r="3.5" fill="#2c3e50"/>
-  <circle cx="56.0" cy="39.9" r="3.5" fill="#2c3e50"/>
-  <circle cx="83.0" cy="97.8" r="3.5" fill="#2c3e50"/>
-  <text x="89.0" y="113.8" font-family="Oswald, sans-serif" font-size="15" fill="#2c3e50">P</text>
-  <text x="10.4" y="128.4" font-family="Oswald, sans-serif" font-size="15" fill="#2c3e50">A</text>
-  <text x="127.6" y="83.7" font-family="Oswald, sans-serif" font-size="15" fill="#2c3e50">B</text>
-  <text x="103.4" y="148.9" font-family="Oswald, sans-serif" font-size="15" fill="#2c3e50">C</text>
-  <text x="42.0" y="35.9" font-family="Oswald, sans-serif" font-size="15" fill="#2c3e50">D</text>
-  <line x1="374.2" y1="90.0" x2="240.3" y2="54.1" stroke="#3498db" stroke-width="2.5"/>
-  <line x1="374.2" y1="90.0" x2="240.3" y2="125.9" stroke="#e74c3c" stroke-width="2.5"/>
-  <circle cx="328.5" cy="77.8" r="3.5" fill="#2c3e50"/>
-  <circle cx="240.3" cy="54.1" r="3.5" fill="#2c3e50"/>
-  <circle cx="328.5" cy="102.2" r="3.5" fill="#2c3e50"/>
-  <circle cx="240.3" cy="125.9" r="3.5" fill="#2c3e50"/>
-  <circle cx="374.2" cy="90.0" r="3.5" fill="#2c3e50"/>
-  <text x="380.2" y="95.0" font-family="Oswald, sans-serif" font-size="15" fill="#2c3e50">P</text>
-  <text x="326.5" y="69.8" font-family="Oswald, sans-serif" font-size="15" fill="#2c3e50">A</text>
-  <text x="224.3" y="48.1" font-family="Oswald, sans-serif" font-size="15" fill="#2c3e50">B</text>
-  <text x="326.5" y="120.2" font-family="Oswald, sans-serif" font-size="15" fill="#2c3e50">C</text>
-  <text x="224.3" y="141.9" font-family="Oswald, sans-serif" font-size="15" fill="#2c3e50">D</text>
-  <line x1="582.2" y1="90.0" x2="514.1" y2="46.3" stroke="#2ecc71" stroke-width="2.5"/>
-  <line x1="582.2" y1="90.0" x2="443.2" y2="119.5" stroke="#3498db" stroke-width="2.5"/>
-  <circle cx="537.1" cy="99.6" r="3.5" fill="#2c3e50"/>
-  <circle cx="443.2" cy="119.5" r="3.5" fill="#2c3e50"/>
-  <circle cx="582.2" cy="90.0" r="3.5" fill="#2c3e50"/>
-  <circle cx="514.1" cy="46.3" r="3.5" fill="#2c3e50"/>
-  <text x="588.2" y="95.0" font-family="Oswald, sans-serif" font-size="15" fill="#2c3e50">P</text>
-  <text x="510.1" y="38.3" font-family="Oswald, sans-serif" font-size="15" fill="#2c3e50">T</text>
-  <text x="535.1" y="117.6" font-family="Oswald, sans-serif" font-size="15" fill="#2c3e50">A</text>
-  <text x="427.2" y="135.5" font-family="Oswald, sans-serif" font-size="15" fill="#2c3e50">B</text>
-  <text x="85.6" y="180" font-family="Oswald, sans-serif" font-size="15" fill="#2c3e50" text-anchor="middle">PA · PB = PC · PD</text>
-  <text x="309.2" y="180" font-family="Oswald, sans-serif" font-size="15" fill="#2c3e50" text-anchor="middle">PA · PB = PC · PD</text>
-  <text x="517.2" y="180" font-family="Oswald, sans-serif" font-size="15" fill="#2c3e50" text-anchor="middle">PT² = PA · PB</text>
+            <svg viewBox="0 0 640 230" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Relações métricas: cordas que se cruzam, duas secantes e tangente com secante" style="width:100%; max-width:640px; display:block; margin:0 auto;">
+  <circle cx="95" cy="105" r="62" fill="#eaf2fb" stroke="#2c3e50" stroke-width="2.5"/>
+  <line x1="41.3" y1="136.0" x2="156.1" y2="94.3" stroke="#3498db" stroke-width="2.2"/>
+  <line x1="123.5" y1="160.1" x2="81.4" y2="44.5" stroke="#e67e22" stroke-width="2.2"/>
+  <circle cx="41.3" cy="136.0" r="3.5" fill="#2c3e50"/><text x="47.3" y="140.0" font-family="Oswald, sans-serif" font-size="15" fill="#2c3e50">A</text>
+  <circle cx="156.1" cy="94.3" r="3.5" fill="#2c3e50"/><text x="140.1" y="108.3" font-family="Oswald, sans-serif" font-size="15" fill="#2c3e50">B</text>
+  <circle cx="123.5" cy="160.1" r="3.5" fill="#2c3e50"/><text x="107.5" y="164.1" font-family="Oswald, sans-serif" font-size="15" fill="#2c3e50">C</text>
+  <circle cx="81.4" cy="44.5" r="3.5" fill="#2c3e50"/><text x="83.4" y="38.5" font-family="Oswald, sans-serif" font-size="15" fill="#2c3e50">D</text>
+  <circle cx="106.2" cy="112.4" r="3.5" fill="#2c3e50"/><text x="112.2" y="128.4" font-family="Oswald, sans-serif" font-size="15" fill="#2c3e50">P</text>
+  <text x="95" y="205" font-family="Oswald, sans-serif" font-size="15" fill="#2c3e50" text-anchor="middle">PA · PB = PC · PD</text>
+  <circle cx="270" cy="105" r="62" fill="#eaf2fb" stroke="#2c3e50" stroke-width="2.5"/>
+  <line x1="400.2" y1="105.0" x2="217.1" y2="72.7" stroke="#3498db" stroke-width="2.2"/>
+  <line x1="400.2" y1="105.0" x2="223.3" y2="145.8" stroke="#e67e22" stroke-width="2.2"/>
+  <circle cx="400.2" cy="105.0" r="3.5" fill="#2c3e50"/><text x="404.2" y="97.0" font-family="Oswald, sans-serif" font-size="15" fill="#2c3e50">P</text>
+  <circle cx="330.8" cy="92.8" r="3.5" fill="#2c3e50"/><text x="332.8" y="84.8" font-family="Oswald, sans-serif" font-size="15" fill="#2c3e50">A</text>
+  <circle cx="217.1" cy="72.7" r="3.5" fill="#2c3e50"/><text x="201.1" y="66.7" font-family="Oswald, sans-serif" font-size="15" fill="#2c3e50">B</text>
+  <circle cx="329.8" cy="121.2" r="3.5" fill="#2c3e50"/><text x="329.8" y="139.2" font-family="Oswald, sans-serif" font-size="15" fill="#2c3e50">C</text>
+  <circle cx="223.3" cy="145.8" r="3.5" fill="#2c3e50"/><text x="207.3" y="161.8" font-family="Oswald, sans-serif" font-size="15" fill="#2c3e50">D</text>
+  <text x="310" y="205" font-family="Oswald, sans-serif" font-size="15" fill="#2c3e50" text-anchor="middle">PA · PB = PC · PD</text>
+  <circle cx="480" cy="105" r="62" fill="#eaf2fb" stroke="#2c3e50" stroke-width="2.5"/>
+  <line x1="610.2" y1="105.0" x2="509.5" y2="50.5" stroke="#e74c3c" stroke-width="2.2"/>
+  <line x1="610.2" y1="105.0" x2="431.1" y2="143.1" stroke="#3498db" stroke-width="2.2"/>
+  <circle cx="610.2" cy="105.0" r="3.5" fill="#2c3e50"/><text x="614.2" y="97.0" font-family="Oswald, sans-serif" font-size="15" fill="#2c3e50">P</text>
+  <circle cx="509.5" cy="50.5" r="3.5" fill="#2c3e50"/><text x="505.5" y="40.5" font-family="Oswald, sans-serif" font-size="15" fill="#2c3e50">T</text>
+  <circle cx="540.2" cy="119.9" r="3.5" fill="#2c3e50"/><text x="540.2" y="137.9" font-family="Oswald, sans-serif" font-size="15" fill="#2c3e50">A</text>
+  <circle cx="431.1" cy="143.1" r="3.5" fill="#2c3e50"/><text x="415.1" y="159.1" font-family="Oswald, sans-serif" font-size="15" fill="#2c3e50">B</text>
+  <text x="520" y="205" font-family="Oswald, sans-serif" font-size="15" fill="#2c3e50" text-anchor="middle">PT² = PA · PB</text>
 </svg>
-            <figcaption>Figura 2: Cordas que se cruzam, duas secantes e tangente com secante.</figcaption>
+            <figcaption>Figura 2: As três relações métricas. Em todas, os segmentos são medidos a partir do ponto $P$.</figcaption>
         </figure>
     </div>
 </section>
@@ -147,12 +148,12 @@
     <h3>💡 Matemática em Ação</h3>
     <div class="cards-aplicacao">
         <div class="card">
-            <h4>🚲 Rodas e Odômetros</h4>
-            <p>A cada volta, uma roda avança exatamente o comprimento da sua circunferência, $\pi d$. Odômetros e ciclocomputadores contam as voltas e multiplicam por esse valor para medir a distância percorrida.</p>
+            <h4>🚲 O Ciclocomputador</h4>
+            <p>O medidor de velocidade da bicicleta conta quantas voltas a roda dá. Cada volta corresponde a $2\pi r$ de caminho percorrido; por isso o aparelho pede o tamanho da roda na configuração. Raio errado, distância errada!</p>
         </div>
         <div class="card" style="border-left-color: #2ecc71;">
-            <h4>🏛️ Restaurando Peças Circulares</h4>
-            <p>Arqueólogos descobrem o raio de um prato quebrado medindo uma corda $c$ e a "flecha" $h$ (a altura do arco sobre a corda): pelas cordas que se cruzam, $\dfrac{c}{2} \cdot \dfrac{c}{2} = h(2r - h)$.</p>
+            <h4>🛠️ O Arco Quebrado</h4>
+            <p>Para refazer uma peça circular quebrada, o artesão mede uma corda $c$ e a "flecha" $f$ do arco. Pelas cordas que se cruzam, $\dfrac{c}{2} \cdot \dfrac{c}{2} = f\,(2r - f)$, e daí ele encontra o raio da peça original.</p>
         </div>
     </div>
 </section>
@@ -160,28 +161,28 @@
     <h3>✅ 5 Questões Resolvidas (R 1 a 5)</h3>
     <article class="questao">
         <h4>R 1: Comprimento e Área</h4>
-        <p><strong>Enunciado:</strong> Uma circunferência tem raio $5$ cm. Calcule o seu comprimento e a área do círculo correspondente.</p>
-        <div class="resolucao-bloco"><p><strong>Resolução:</strong><br>Comprimento: $C = 2\pi r = 2\pi \cdot 5 = \mathbf{10\pi}$ cm $\approx 31{,}4$ cm.<br>Área: $A = \pi r^2 = \pi \cdot 25 = \mathbf{25\pi}$ cm² $\approx 78{,}5$ cm².</p></div>
+        <p><strong>Enunciado:</strong> Uma circunferência tem raio $5$ cm. Calcule o seu comprimento e a área do círculo que ela delimita (use $\pi \approx 3{,}14$).</p>
+        <div class="resolucao-bloco"><p><strong>Resolução:</strong><br>Comprimento: $C = 2\pi r = 2\pi \cdot 5 = \mathbf{10\pi}$ cm $\approx 31{,}4$ cm.<br>Área: $A = \pi r^2 = \pi \cdot 5^2 = \mathbf{25\pi}$ cm² $\approx 78{,}5$ cm².<br>Atenção: o comprimento é medido em cm e a área em cm².</p></div>
     </article>
     <article class="questao">
-        <h4>R 2: Setor Circular</h4>
-        <p><strong>Enunciado:</strong> Em um círculo de raio $10$ cm, considere um setor de ângulo central $72^\circ$. Calcule o comprimento do arco e a área do setor.</p>
-        <div class="resolucao-bloco"><p><strong>Resolução:</strong><br>O setor é a fração $\dfrac{72^\circ}{360^\circ} = \dfrac{1}{5}$ do círculo.<br>Arco: $\ell = \dfrac{1}{5} \cdot 2\pi \cdot 10 = \mathbf{4\pi}$ cm.<br>Área: $A = \dfrac{1}{5} \cdot \pi \cdot 10^2 = \mathbf{20\pi}$ cm².</p></div>
+        <h4>R 2: Arco e Setor Circular</h4>
+        <p><strong>Enunciado:</strong> Em um círculo de raio $6$ cm, um setor circular tem ângulo central de $60^\circ$. Calcule o comprimento do arco e a área do setor.</p>
+        <div class="resolucao-bloco"><p><strong>Resolução:</strong><br>O setor corresponde a $\dfrac{60^\circ}{360^\circ} = \dfrac{1}{6}$ do círculo.<br>Arco: $\ell = \dfrac{1}{6} \cdot 2\pi \cdot 6 = \mathbf{2\pi}$ cm.<br>Área do setor: $A = \dfrac{1}{6} \cdot \pi \cdot 6^2 = \mathbf{6\pi}$ cm².</p></div>
     </article>
     <article class="questao">
-        <h4>R 3: Cordas que se Cruzam</h4>
-        <p><strong>Enunciado:</strong> Duas cordas $AB$ e $CD$ de uma circunferência cortam-se no ponto $P$. Sabendo que $PA = 4$, $PB = 6$ e $PC = 3$ (em cm), calcule $PD$.</p>
-        <div class="resolucao-bloco"><p><strong>Resolução:</strong><br>Potência de ponto interior: $PA \cdot PB = PC \cdot PD$.<br>$4 \cdot 6 = 3 \cdot PD \implies PD = \dfrac{24}{3} = \mathbf{8}$ cm.</p></div>
+        <h4>R 3: Ângulo Inscrito</h4>
+        <p><strong>Enunciado:</strong> Os pontos $A$, $B$ e $C$ estão sobre uma circunferência de centro $O$, e o arco $AB$ (que não contém $C$) mede $100^\circ$. Calcule o ângulo central $A\hat{O}B$ e o ângulo inscrito $A\hat{C}B$.</p>
+        <div class="resolucao-bloco"><p><strong>Resolução:</strong><br>O ângulo central tem a mesma medida do arco: $A\hat{O}B = \mathbf{100^\circ}$.<br>O ângulo inscrito vale metade do arco que ele enxerga: $A\hat{C}B = \dfrac{100^\circ}{2} = \mathbf{50^\circ}$.</p></div>
     </article>
     <article class="questao">
-        <h4>R 4: Duas Secantes</h4>
-        <p><strong>Enunciado:</strong> De um ponto $P$ exterior a uma circunferência partem duas secantes. A primeira corta a circunferência em $A$ e $B$, com $PA = 4$ e $AB = 5$; a segunda corta em $C$ e $D$, com $PC = 3$ (em cm). Calcule $CD$.</p>
-        <div class="resolucao-bloco"><p><strong>Resolução:</strong><br>Potência de ponto exterior: $PA \cdot PB = PC \cdot PD$, com $PB = 4 + 5 = 9$.<br>$4 \cdot 9 = 3 \cdot PD \implies PD = 12$ cm.<br>$CD = PD - PC = 12 - 3 = \mathbf{9}$ cm.</p></div>
+        <h4>R 4: Cordas que se Cruzam</h4>
+        <p><strong>Enunciado:</strong> As cordas $AB$ e $CD$ de uma circunferência se cortam no ponto $P$. Sabendo que $PA = 4$ cm, $PB = 6$ cm e $PC = 3$ cm, calcule $PD$.</p>
+        <div class="resolucao-bloco"><p><strong>Resolução:</strong><br>Relação entre cordas: $PA \cdot PB = PC \cdot PD$.<br>$4 \cdot 6 = 3 \cdot PD \implies 24 = 3 \cdot PD \implies PD = \mathbf{8}$ cm.</p></div>
     </article>
     <article class="questao">
         <h4>R 5: Tangente e Secante</h4>
-        <p><strong>Enunciado:</strong> De um ponto $P$ exterior traçam-se a tangente $PT$ e uma secante que corta a circunferência em $A$ e $B$, com $PA = 4$ cm e $PB = 16$ cm. Calcule $PT$.</p>
-        <div class="resolucao-bloco"><p><strong>Resolução:</strong><br>Tangente e secante: $PT^2 = PA \cdot PB$.<br>$PT^2 = 4 \cdot 16 = 64 \implies PT = \mathbf{8}$ cm.</p></div>
+        <p><strong>Enunciado:</strong> De um ponto $P$ exterior a uma circunferência traçam-se a tangente $PT$, com $PT = 6$ cm, e uma secante que corta a circunferência em $A$ e $B$, com $PA = 4$ cm ($A$ entre $P$ e $B$). Calcule $PB$ e a corda $AB$.</p>
+        <div class="resolucao-bloco"><p><strong>Resolução:</strong><br>Relação tangente-secante: $PT^2 = PA \cdot PB$.<br>$6^2 = 4 \cdot PB \implies PB = \dfrac{36}{4} = \mathbf{9}$ cm.<br>Corda: $AB = PB - PA = 9 - 4 = \mathbf{5}$ cm.</p></div>
     </article>
 </section>
 
@@ -189,120 +190,137 @@
     <h3>✍️ 10 Questões Propostas (P 6 a 15)</h3>
     <article class="questao">
         <h4>P 6: A Roda da Bicicleta</h4>
-        <p><strong>Enunciado:</strong> A roda de uma bicicleta tem $60$ cm de diâmetro. Que distância a bicicleta percorre quando a roda dá $1\,000$ voltas? (Use $\pi = 3{,}14$.)</p>
+        <p><strong>Enunciado:</strong> A roda de uma bicicleta tem raio $30$ cm. Que distância a bicicleta percorre quando a roda dá $1\,000$ voltas completas? (Use $\pi \approx 3{,}14$.)</p>
         <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>Em uma volta: $C = \pi d = 3{,}14 \cdot 60 = 188{,}4$ cm.<br>Em $1\,000$ voltas: $188\,400$ cm $= \mathbf{1\,884}$ m.</p></div>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>Uma volta: $C = 2\pi \cdot 30 = 60\pi$ cm.<br>$1\,000$ voltas: $60\,000\pi$ cm $= 600\pi$ m $\approx \mathbf{1\,884}$ m.</p></div>
     </article>
     <article class="questao">
         <h4>P 7: Do Comprimento à Área</h4>
-        <p><strong>Enunciado:</strong> Uma circunferência tem comprimento $12\pi$ cm. Calcule a área do círculo.</p>
+        <p><strong>Enunciado:</strong> Uma circunferência tem comprimento $20\pi$ cm. Calcule a área do círculo correspondente.</p>
         <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>$2\pi r = 12\pi \implies r = 6$ cm.<br>$A = \pi \cdot 6^2 = \mathbf{36\pi}$ cm².</p></div>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>$2\pi r = 20\pi \implies r = 10$ cm.<br>$A = \pi \cdot 10^2 = \mathbf{100\pi}$ cm².</p></div>
     </article>
     <article class="questao">
         <h4>P 8: Coroa Circular</h4>
-        <p><strong>Enunciado:</strong> Calcule a área da coroa circular limitada por duas circunferências concêntricas de raios $10$ cm e $6$ cm.</p>
+        <p><strong>Enunciado:</strong> Duas circunferências concêntricas têm raios $5$ cm e $3$ cm. Calcule a área da coroa circular entre elas.</p>
         <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>$A = \pi(R^2 - r^2) = \pi(100 - 36)$.<br>$A = \mathbf{64\pi}$ cm².</p></div>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>$A = \pi(R^2 - r^2) = \pi(25 - 9) = \mathbf{16\pi}$ cm².</p></div>
     </article>
     <article class="questao">
-        <h4>P 9: Setor de 120°</h4>
-        <p><strong>Enunciado:</strong> Calcule a área e o comprimento do arco de um setor de $120^\circ$ em um círculo de raio $6$ cm.</p>
+        <h4>P 9: Setor de $90^\circ$</h4>
+        <p><strong>Enunciado:</strong> Calcule o comprimento do arco e a área de um setor circular de $90^\circ$ em um círculo de raio $8$ cm.</p>
         <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>Fração do círculo: $\dfrac{120^\circ}{360^\circ} = \dfrac{1}{3}$.<br>Área: $\dfrac{1}{3} \cdot 36\pi = \mathbf{12\pi}$ cm². Arco: $\dfrac{1}{3} \cdot 12\pi = \mathbf{4\pi}$ cm.</p></div>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>$90^\circ$ é $\dfrac{1}{4}$ do círculo.<br>Arco: $\dfrac{1}{4} \cdot 2\pi \cdot 8 = \mathbf{4\pi}$ cm. Área: $\dfrac{1}{4} \cdot \pi \cdot 64 = \mathbf{16\pi}$ cm².</p></div>
     </article>
     <article class="questao">
-        <h4>P 10: Cordas I</h4>
-        <p><strong>Enunciado:</strong> Duas cordas $AB$ e $CD$ cortam-se em $P$, com $PA = x$, $PB = 8$, $PC = 4$ e $PD = 6$. Calcule $x$.</p>
+        <h4>P 10: Central e Inscrito</h4>
+        <p><strong>Enunciado:</strong> Um ângulo central de uma circunferência mede $80^\circ$. Quanto mede um ângulo inscrito que enxerga o mesmo arco?</p>
         <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>$PA \cdot PB = PC \cdot PD \implies 8x = 24$.<br>$x = \mathbf{3}$.</p></div>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>O arco mede $80^\circ$ (igual ao ângulo central).<br>Inscrito: metade do arco, $\dfrac{80^\circ}{2} = \mathbf{40^\circ}$.</p></div>
     </article>
     <article class="questao">
-        <h4>P 11: Cordas II</h4>
-        <p><strong>Enunciado:</strong> Duas cordas cortam-se em um ponto $P$. Os segmentos de uma delas medem $x$ e $x + 5$; os da outra medem $6$ e $4$. Calcule $x$.</p>
+        <h4>P 11: Cordas I</h4>
+        <p><strong>Enunciado:</strong> As cordas $AB$ e $CD$ se cortam em $P$, com $PA = x$, $PB = 8$, $PC = 4$ e $PD = 6$ (em cm). Calcule $x$.</p>
         <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>$x(x + 5) = 6 \cdot 4 \implies x^2 + 5x - 24 = 0$.<br>$(x + 8)(x - 3) = 0 \implies x = \mathbf{3}$ (medida positiva).</p></div>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>$PA \cdot PB = PC \cdot PD \implies 8x = 4 \cdot 6 = 24$.<br>$x = \mathbf{3}$ cm.</p></div>
     </article>
     <article class="questao">
         <h4>P 12: Duas Secantes</h4>
-        <p><strong>Enunciado:</strong> De um ponto $P$ exterior partem duas secantes: uma corta a circunferência em $A$ e $B$, com $PA = 3$ e $AB = 9$; a outra corta em $C$ e $D$, com $PC = 4$. Calcule $PD$ e $CD$.</p>
+        <p><strong>Enunciado:</strong> De um ponto $P$ exterior saem duas secantes: a primeira corta a circunferência em $A$ e $B$, com $PA = 3$ e $PB = 12$; a segunda corta em $C$ e $D$, com $PC = 4$ e $PD = x$ (em cm). Calcule $x$.</p>
         <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>$PA \cdot PB = PC \cdot PD \implies 3 \cdot 12 = 4 \cdot PD \implies PD = \mathbf{9}$.<br>$CD = 9 - 4 = \mathbf{5}$.</p></div>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>Relação entre secantes: $PA \cdot PB = PC \cdot PD$.<br>$3 \cdot 12 = 4x \implies x = \mathbf{9}$ cm.</p></div>
     </article>
     <article class="questao">
-        <h4>P 13: Tangente e Secante</h4>
-        <p><strong>Enunciado:</strong> De um ponto $P$ exterior traçam-se a tangente $PT = 6$ cm e uma secante que corta a circunferência em $A$ e $B$, com $PA = 3$ cm. Calcule $AB$.</p>
+        <h4>P 13: O Segmento Tangente</h4>
+        <p><strong>Enunciado:</strong> De um ponto $P$ exterior traçam-se a tangente $PT$ e uma secante que corta a circunferência em $A$ e $B$, com $PA = 2$ cm e $PB = 8$ cm. Calcule $PT$.</p>
         <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>$PT^2 = PA \cdot PB \implies 36 = 3 \cdot PB \implies PB = 12$ cm.<br>$AB = 12 - 3 = \mathbf{9}$ cm.</p></div>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>$PT^2 = PA \cdot PB = 2 \cdot 8 = 16$.<br>$PT = \mathbf{4}$ cm.</p></div>
     </article>
     <article class="questao">
-        <h4>P 14: Comprimento da Tangente</h4>
-        <p><strong>Enunciado:</strong> Um ponto $P$ está a $13$ cm do centro de uma circunferência de raio $5$ cm. Calcule o comprimento do segmento tangente $PT$.</p>
+        <h4>P 14: Tangente e Raio</h4>
+        <p><strong>Enunciado:</strong> Uma circunferência tem raio $5$ cm, e um ponto $P$ está a $13$ cm do centro $O$. Calcule o comprimento do segmento tangente $PT$.</p>
         <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
         <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>A tangente é perpendicular ao raio no ponto de tangência: o triângulo $OTP$ é retângulo em $T$.<br>$PT^2 = 13^2 - 5^2 = 169 - 25 = 144 \implies PT = \mathbf{12}$ cm.</p></div>
     </article>
     <article class="questao">
-        <h4>P 15: Tangente com Incógnita</h4>
-        <p><strong>Enunciado:</strong> De um ponto $P$ exterior traçam-se a tangente $PT = 10$ e uma secante que corta a circunferência em $A$ e $B$, com $PA = x$ e $AB = x + 10$. Calcule $x$.</p>
+        <h4>P 15: Cordas II</h4>
+        <p><strong>Enunciado:</strong> As cordas $AB$ e $CD$ se cortam em $P$, com $PA = x$, $PB = 6$, $PC = 3$ e $PD = x + 2$ (em cm). Calcule $x$.</p>
         <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>$PB = x + (x + 10) = 2x + 10$. Então $PT^2 = PA \cdot PB \implies 100 = x(2x + 10)$.<br>$2x^2 + 10x - 100 = 0 \implies x^2 + 5x - 50 = 0 \implies (x + 10)(x - 5) = 0$.<br>$x = \mathbf{5}$ (medida positiva). Conferência: $5 \cdot 20 = 100$ ✓</p></div>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>$PA \cdot PB = PC \cdot PD \implies 6x = 3(x + 2)$.<br>$6x = 3x + 6 \implies 3x = 6 \implies x = \mathbf{2}$ cm. Conferência: $2 \cdot 6 = 3 \cdot 4 = 12$ ✓</p></div>
     </article>
 </section>
 
 <section class="TESTE" id="testes">
     <h3>🎓 TESTES (T 16 a 20)</h3>
     <article class="questao">
-        <h4>T 16: (ENEM 2014) Canudos de Diploma</h4>
-        <p>Uma empresa que organiza eventos de formatura confecciona canudos de diplomas a partir de folhas de papel quadradas. Para que todos os canudos fiquem idênticos, cada folha é enrolada em torno de um cilindro de madeira de diâmetro $d$ em centímetros, sem folga, dando-se $5$ voltas completas em torno de tal cilindro. Ao final, amarra-se um cordão no meio do diploma, bem ajustado, para que não ocorra o desenrolamento. Em seguida, retira-se o cilindro de madeira do meio do papel enrolado, finalizando a confecção do diploma. Considere que a espessura da folha de papel original seja desprezível.</p>
-        <p>Qual é a medida, em centímetros, do lado da folha de papel usado na confecção do diploma?</p>
-        <p>A) $\pi d$<br>B) $2\pi d$<br>C) $4\pi d$<br>D) $5\pi d$<br>E) $10\pi d$</p>
+        <h4>T 16: (ENEM 2017) O Pivô Central</h4>
+        <p>Pivô central é um sistema de irrigação muito usado na agricultura, em que uma área circular é projetada para receber uma estrutura suspensa. No centro dessa área, há uma tubulação vertical que transmite água através de um cano horizontal longo, apoiado em torres de sustentação, as quais giram, sobre rodas, em torno do centro do pivô, também chamado de base, conforme mostram as figuras. Cada torre move-se com velocidade constante.</p>
+        <p>Um pivô de três torres ($T_1$, $T_2$ e $T_3$) será instalado em uma fazenda, sendo que as distâncias entre torres consecutivas bem como da base à torre $T_1$ são iguais a $50$ m. O fazendeiro pretende ajustar as velocidades das torres, de tal forma que o pivô efetue uma volta completa em $25$ horas. Use $3$ como aproximação para $\pi$.</p>
+        <p>Para atingir seu objetivo, as velocidades das torres $T_1$, $T_2$ e $T_3$ devem ser, em metro por hora, de</p>
+        <p>A) 12, 24 e 36.<br>B) 6, 12 e 18.<br>C) 2, 4 e 6.<br>D) 300, 1\,200 e 2\,700.<br>E) 600, 2\,400 e 5\,400.</p>
         <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>D</strong>.<br>Cada volta em torno do cilindro gasta um comprimento de papel igual ao comprimento da circunferência da base: $C = 2\pi r = \pi d$.<br>Em $5$ voltas: $5 \cdot \pi d = \mathbf{5\pi d}$, que é o lado da folha quadrada.<br>Armadilha: a alternativa E ($10\pi d$) confunde diâmetro com raio.</p></div>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>A</strong>.<br>As torres estão a $50$ m, $100$ m e $150$ m da base: cada uma percorre uma circunferência de raio diferente na mesma volta.<br>Comprimentos ($\pi = 3$): $2 \cdot 3 \cdot 50 = 300$ m, $2 \cdot 3 \cdot 100 = 600$ m e $2 \cdot 3 \cdot 150 = 900$ m.<br>Em $25$ h: $\dfrac{300}{25} = 12$, $\dfrac{600}{25} = 24$ e $\dfrac{900}{25} = 36$ m/h. Alternativa <strong>A</strong>. (A alternativa D usa a área em vez do comprimento.)</p></div>
     </article>
     <article class="questao">
-        <h4>T 17: (UNEMAT 2012) Aumento do Raio</h4>
-        <p>Se o raio de um círculo aumentar em $20\%$, em quantos por cento aumentará a sua área?</p>
-        <p>A) $0\%$<br>B) $10\%$<br>C) $20\%$<br>D) $40\%$<br>E) $44\%$</p>
-        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>E</strong>.<br>Novo raio: $1{,}2r$. Nova área: $\pi(1{,}2r)^2 = 1{,}44\,\pi r^2$.<br>A área fica multiplicada por $1{,}44$, isto é, aumenta $\mathbf{44\%}$ (e não $20\%$: a área depende do <strong>quadrado</strong> do raio).</p></div>
-    </article>
-    <article class="questao">
-        <h4>T 18: (ENEM 2018) O Passeio da Praça</h4>
-        <p>A figura mostra uma praça circular que contém um chafariz em seu centro e, em seu entorno, um passeio. Os círculos que definem a praça e o chafariz são concêntricos. O passeio terá seu piso revestido com ladrilhos.</p>
-        <p>Sem condições de calcular os raios, pois o chafariz está cheio, um engenheiro fez a seguinte medição: esticou uma trena tangente ao chafariz, medindo a distância entre dois pontos $A$ e $B$, conforme a figura. Com isso, obteve a medida do segmento de reta $AB$: $16$ m.</p>
+        <h4>T 17: (ENEM 2015) As Antenas de Telefonia</h4>
+        <p>Uma empresa de telefonia celular possui duas antenas que serão substituídas por uma nova, mais potente. As áreas de cobertura das antenas que serão substituídas são círculos de raio $2$ km, cujas circunferências se tangenciam no ponto O, como mostra a figura.</p>
+        <p>O ponto O indica a posição da nova antena, e sua região de cobertura será um círculo cuja circunferência tangenciará externamente as circunferências das áreas de cobertura menores.</p>
         <figure class="figura-aula">
-            <svg viewBox="0 0 240 240" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Praça circular com chafariz concêntrico; segmento AB tangente ao chafariz" style="width:100%; max-width:240px; display:block; margin:0 auto;">
-  <circle cx="120" cy="120" r="100" fill="#d5f5e3" stroke="#2c3e50" stroke-width="2.5"/>
-  <circle cx="120" cy="120" r="60" fill="#d6eaf8" stroke="#3498db" stroke-width="2.5"/>
-  <line x1="40.0" y1="60" x2="200.0" y2="60" stroke="#e74c3c" stroke-width="3"/>
-  <circle cx="40.0" cy="60" r="3.5" fill="#e74c3c"/><circle cx="200.0" cy="60" r="3.5" fill="#e74c3c"/>
-  <g font-family="Oswald, sans-serif" font-size="15" fill="#2c3e50">
-    <text x="24.0" y="56">A</text><text x="206.0" y="56">B</text>
-    <text x="104" y="52" fill="#e74c3c">16 m</text><text x="96" y="126" fill="#3498db">chafariz</text><text x="96" y="200">passeio</text>
+            <svg viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Duas circunferências de raio 2 tangentes no ponto O e uma circunferência maior de centro O tangente a ambas" style="width:100%; max-width:260px; display:block; margin:0 auto;">
+  <circle cx="150" cy="150" r="130" fill="#eaf2fb" stroke="#2c3e50" stroke-width="2.5"/>
+  <circle cx="85" cy="150" r="65" fill="#fdfdfd" stroke="#3498db" stroke-width="2.5"/>
+  <circle cx="215" cy="150" r="65" fill="#fdfdfd" stroke="#3498db" stroke-width="2.5"/>
+  <circle cx="150" cy="150" r="4" fill="#e74c3c"/>
+  <line x1="215" y1="150" x2="280" y2="150" stroke="#2c3e50" stroke-width="1.5" stroke-dasharray="5,3"/>
+  <g font-family="Oswald, sans-serif" font-size="16" fill="#2c3e50"><text x="140" y="140">O</text><text x="236" y="143">2 km</text></g>
+</svg>
+            <figcaption>Figura redesenhada a partir do enunciado original.</figcaption>
+        </figure>
+        <p>Com a instalação da nova antena, a medida da área de cobertura, em quilômetros quadrados, foi ampliada em</p>
+        <p>A) $8\pi$.<br>B) $12\pi$.<br>C) $16\pi$.<br>D) $32\pi$.<br>E) $64\pi$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>A</strong>.<br>Pela figura, o raio do novo círculo é a soma dos dois diâmetros dividida por $2$: $R = 2 + 2 = 4$ km.<br>Área antiga: $2 \cdot \pi \cdot 2^2 = 8\pi$ km². Área nova: $\pi \cdot 4^2 = 16\pi$ km².<br>Ampliação: $16\pi - 8\pi = \mathbf{8\pi}$ km². (A alternativa C é a área nova, e não o aumento.)</p></div>
+    </article>
+    <article class="questao">
+        <h4>T 18: (ENEM 2019) A Área Pavimentada do Condomínio</h4>
+        <p>Em um condomínio, uma área pavimentada, que tem a forma de um círculo com diâmetro medindo $6$ m, é cercada por grama. A administração do condomínio deseja ampliar essa área, mantendo seu formato circular, e aumentando, em $8$ m, o diâmetro dessa região, mantendo o revestimento da parte já existente. O condomínio dispõe, em estoque, de material suficiente para pavimentar mais $100$ m² de área. O síndico do condomínio irá avaliar se esse material disponível será suficiente para pavimentar a região a ser ampliada.</p>
+        <p>Utilize $3$ como aproximação para $\pi$.</p>
+        <p>A conclusão correta a que o síndico deverá chegar, considerando a nova área a ser pavimentada, é a de que o material disponível em estoque</p>
+        <p>A) será suficiente, pois a área da nova região a ser pavimentada mede 21 m².<br>B) será suficiente, pois a área da nova região a ser pavimentada mede 24 m².<br>C) será suficiente, pois a área da nova região a ser pavimentada mede 48 m².<br>D) não será suficiente, pois a área da nova região a ser pavimentada mede 108 m².<br>E) não será suficiente, pois a área da nova região a ser pavimentada mede 120 m².</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>E</strong>.<br>Diâmetro novo: $6 + 8 = 14$ m, logo $R = 7$ m; o raio antigo é $r = 3$ m.<br>A região a pavimentar é uma coroa circular: $A = \pi(R^2 - r^2) = 3(49 - 9) = \mathbf{120}$ m².<br>Como $120 > 100$, o estoque não será suficiente. Alternativa <strong>E</strong>.</p></div>
+    </article>
+    <article class="questao">
+        <h4>T 19: (ENEM 2019 – PPL) A Pista de Ginástica</h4>
+        <p>Uma pista circular delimitada por duas circunferências concêntricas foi construída. Na circunferência interna dessa pista, de raio $0{,}3$ km, serão colocados aparelhos de ginástica localizados nos pontos P, Q e R, conforme a figura.</p>
+        <p>O segmento RP é um diâmetro dessa circunferência interna, e o ângulo $P\hat{R}Q$ tem medida igual a $\dfrac{\pi}{5}$ radianos.</p>
+        <figure class="figura-aula">
+            <svg viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Pista entre duas circunferências concêntricas; P, Q e R na circunferência interna, RP diâmetro e ângulo PRQ de pi sobre 5" style="width:100%; max-width:260px; display:block; margin:0 auto;">
+  <circle cx="150" cy="150" r="130" fill="#eaf2fb" stroke="#2c3e50" stroke-width="2.5"/>
+  <circle cx="150" cy="150" r="95" fill="#fdfdfd" stroke="#2c3e50" stroke-width="2.5"/>
+  <line x1="55.0" y1="150.0" x2="245.0" y2="150.0" stroke="#3498db" stroke-width="2"/>
+  <line x1="55.0" y1="150.0" x2="179.4" y2="59.6" stroke="#3498db" stroke-width="2"/>
+  <path d="M 85.0 150.0 A 30 30 0 0 0 79.3 132.4" fill="none" stroke="#e74c3c" stroke-width="2"/>
+  <g fill="#2c3e50"><circle cx="245.0" cy="150.0" r="4"/><circle cx="55.0" cy="150.0" r="4"/><circle cx="179.4" cy="59.6" r="4"/><circle cx="150" cy="150" r="2.5"/></g>
+  <g font-family="Oswald, sans-serif" font-size="16" fill="#2c3e50">
+    <text x="251.0" y="144.0">P</text><text x="37.0" y="144.0">R</text><text x="183.4" y="51.6">Q</text>
+    <text x="89.0" y="144.0" font-size="13" fill="#e74c3c">π/5</text><text x="140" y="170" font-size="13">0,3 km</text>
   </g>
 </svg>
             <figcaption>Figura redesenhada a partir do enunciado original.</figcaption>
         </figure>
-        <p>Dispondo apenas dessa medida, o engenheiro calculou corretamente a medida da área do passeio, em metro quadrado. A medida encontrada pelo engenheiro foi</p>
-        <p>A) $4\pi$<br>B) $8\pi$<br>C) $48\pi$<br>D) $64\pi$<br>E) $192\pi$</p>
+        <p>Para uma pessoa ir do ponto P ao ponto Q andando pela circunferência interna no sentido anti-horário, ela percorrerá uma distância, em quilômetro, igual a</p>
+        <p>A) $0{,}009\pi$<br>B) $0{,}03\pi$<br>C) $0{,}06\pi$<br>D) $0{,}12\pi$<br>E) $0{,}18\pi$</p>
         <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>D</strong>.<br>Sejam $R$ o raio da praça e $r$ o do chafariz. A trena é tangente ao chafariz, logo é perpendicular ao raio $r$ no ponto de tangência, que é o ponto médio de $AB$.<br>No triângulo retângulo formado pelo centro, o ponto de tangência e $A$: $R^2 = r^2 + 8^2 \implies R^2 - r^2 = 64$.<br>Área do passeio (coroa): $\pi(R^2 - r^2) = \mathbf{64\pi}$ m², sem precisar conhecer os raios!</p></div>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>D</strong>.<br>$P\hat{R}Q$ é um ângulo inscrito; o arco $PQ$ que ele enxerga mede o dobro: $2 \cdot \dfrac{\pi}{5} = \dfrac{2\pi}{5}$ rad.<br>Comprimento do arco: $\ell = \alpha \cdot r = \dfrac{2\pi}{5} \cdot 0{,}3 = \mathbf{0{,}12\pi}$ km.<br>Conferência: $\dfrac{2\pi}{5}$ é $\dfrac{1}{5}$ da volta, e $\dfrac{1}{5} \cdot 2\pi \cdot 0{,}3 = 0{,}12\pi$ ✓ (a alternativa C esquece de dobrar o ângulo inscrito).</p></div>
     </article>
     <article class="questao">
-        <h4>T 19: (ENEM 2020, adaptada) A Árvore de Natal</h4>
-        <p>No final do ano, um síndico decidiu montar no pátio do condomínio uma decoração em forma de árvore de Natal. Mangueiras de iluminação, consideradas segmentos de reta de mesmo comprimento, partem de um ponto de um poste situado a $3$ m do chão e vão até os pontos de uma circunferência fixada no chão. O poste é perpendicular ao chão e está no centro $C$ da circunferência, que foi dividida em $20$ arcos iguais; em cada ponto de divisão prende-se uma mangueira. O síndico vai utilizar exatamente $100$ m de mangueira.</p>
-        <p>Para que ele atinja seu objetivo, o raio, em metro, da circunferência deverá ser de</p>
-        <p>A) 4,00<br>B) 4,87<br>C) 5,00<br>D) 5,83<br>E) 6,26</p>
+        <h4>T 20: (Questão autoral) A Tangente pelo Ponto Exterior</h4>
+        <p>De um ponto $P$ exterior a uma circunferência traçam-se uma reta tangente, que toca a circunferência em $T$, e uma reta secante, que a corta nos pontos $A$ e $B$, com $A$ entre $P$ e $B$. Sabe-se que $PA = 5$ cm e que a corda $AB$ mede $15$ cm.</p>
+        <p>A medida do segmento $PT$ é:</p>
+        <p>A) 5 cm<br>B) 8 cm<br>C) 10 cm<br>D) 12 cm<br>E) 15 cm</p>
         <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>A</strong>.<br>São $20$ mangueiras iguais: cada uma mede $\dfrac{100}{20} = 5$ m.<br>Cada mangueira é a hipotenusa de um triângulo retângulo de catetos $3$ m (altura no poste) e $r$ (raio da circunferência).<br>$r^2 + 3^2 = 5^2 \implies r^2 = 16 \implies r = \mathbf{4{,}00}$ m.</p></div>
-    </article>
-    <article class="questao">
-        <h4>T 20: (Questão autoral) Tangente e Secante</h4>
-        <p>De um ponto $P$ exterior a uma circunferência traçam-se o segmento tangente $PT$, de medida $12$ cm, e uma secante que corta a circunferência nos pontos $A$ e $B$, com $A$ entre $P$ e $B$ e $PA = 8$ cm.</p>
-        <p>A medida da corda $AB$ é:</p>
-        <p>A) 6&nbsp;cm<br>B) 8&nbsp;cm<br>C) 10&nbsp;cm<br>D) 12&nbsp;cm<br>E) 18&nbsp;cm</p>
-        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>C</strong>.<br>$PT^2 = PA \cdot PB \implies 144 = 8 \cdot PB \implies PB = 18$ cm.<br>$AB = PB - PA = 18 - 8 = \mathbf{10}$ cm. (A alternativa E é $PB$, não $AB$.)</p></div>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>C</strong>.<br>$PB = PA + AB = 5 + 15 = 20$ cm.<br>Relação tangente-secante: $PT^2 = PA \cdot PB = 5 \cdot 20 = 100 \implies PT = \mathbf{10}$ cm. (Usar $PA \cdot AB = 75$ seria o erro mais comum.)</p></div>
     </article>
 </section>
 
