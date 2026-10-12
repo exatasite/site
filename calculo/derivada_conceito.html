@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cálculo: Conceito de Derivada</title>
+    <title>Cálculo I: Conceito de Derivada</title>
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../estilo.css">
     
@@ -31,8 +31,8 @@
 </nav>
 
 <header id="topo">
-    <h1>CÁLCULO DIFERENCIAL E INTEGRAL</h1>
-    <p>Ensino Superior | Conceito de Derivada e Taxa de Variação Instantânea</p>
+    <h1>CÁLCULO I</h1>
+    <p>Cálculo | Aula: Conceito de Derivada</p>
     <button id="btn-slides" onclick="toggleSlides()">📺 Iniciar Modo Slides</button>
 </header>
 
@@ -42,202 +42,342 @@
 
 <div class="secao-aula">
  <div class="container-resumo" id="resumo">
-    <h3>📚 Resumo</h3>
+    <h3>📚 Resumo </h3>
     <section class="resumo-conteudo">
-        <p><strong>Conceito de Derivada:</strong> A derivada de uma função $f(x)$ em um ponto $x_0$ representa a <em>taxa de variação instantânea</em> de $f$ em relação a $x$, assim como a inclinação da reta tangente ao gráfico da função nesse ponto.</p>
-        <p><strong>Definição por Limite:</strong> A derivada é definida formalmente por:<br>
-        $$f'(x) = \lim_{h \to 0} \frac{f(x + h) - f(x)}{h}$$</p>
-        <p><strong>Interpretação Geométrica:</strong> A reta secante que passa por dois pontos aproxima-se da <strong>reta tangente</strong> quando a distância $h$ entre eles tende a zero. O coeficiente angular da reta tangente é igual a $f'(x_0)$.</p>
+        <p>A <strong>derivada</strong> de uma função $f$ no ponto $x = a$ mede a <strong>taxa de variação instantânea</strong> de $f$ nesse ponto: o quanto $y$ varia, por unidade de $x$, exatamente em $x = a$. Ela é obtida a partir da <strong>taxa de variação média</strong> num intervalo $[a, a + h]$, fazendo o intervalo encolher ($h \to 0$):</p>
+        <p style="text-align: center;">$$f'(a) = \lim_{h \to 0} \frac{f(a+h) - f(a)}{h}$$</p>
+        <p>A unidade de $f'(a)$ é "unidade de $y$ por unidade de $x$" (m/s, $^\circ$C/min, reais por unidade...). O <strong>sinal</strong> de $f'(a)$ indica se $f$ está crescendo ($f'(a) &gt; 0$) ou decrescendo ($f'(a) &lt; 0$) naquele ponto.</p>
     </section>
 </div>
 
 <section class="conteudo-teorico-completo" id="teoria">
     <div class="passo-teoria">
-        <h3>📖 Conceitos Fundamentais</h3>
-        <h4>1. De Razão Média a Taxa Instantânea</h4>
-        <p>Dada uma função $y = f(x)$, a razão média de variação no intervalo $[x, x + h]$ é dada por:</p>
-        $$\frac{\Delta y}{\Delta x} = \frac{f(x + h) - f(x)}{h}$$
-        <p>Ao tomarmos o limite quando $h \to 0$ ($\Delta x \to 0$), obtemos a variação instantânea no ponto $x$, que é a definição da derivada $f'(x)$.</p>
-
-        <Image src="image_agent_tag_1801847917796686810" alt="Interpretação geométrica da derivada: passagem da reta secante para a reta tangente" caption="Aproximação das retas secantes à reta tangente quando h tende a zero" />
-
-        <h4>2. Notações Usuais para a Derivada</h4>
-        <p>Existem diferentes convenções de notação para indicar a derivada de $y = f(x)$:</p>
-        <ul>
-            <li><strong>Notação de Lagrange:</strong> $f'(x)$ ou $y'$ (lê-se "$f$ linha de $x$").</li>
-            <li><strong>Notação de Leibniz:</strong> $\frac{df}{dx}$ ou $\frac{dy}{dx}$ (lê-se "derivada de $y$ em relação a $x$").</li>
-            <li><strong>Notação de Euler:</strong> $D_x f$ ou $D f$.</li>
-        </ul>
+        <h3>📖 Da Taxa Média à Taxa Instantânea</h3>
+        <p>Quando um carro percorre 120 km em 2 horas, sua velocidade <em>média</em> é 60 km/h, mas o velocímetro mostrou valores diferentes a cada momento. O Cálculo nasceu justamente para responder: <em>qual é a taxa de variação em um único instante?</em> A resposta é a <strong>derivada</strong>.</p>
     </div>
 
     <div class="passo-teoria">
-        <h4>3. Equação da Reta Tangente</h4>
-        <p>A equação da reta tangente ao gráfico de $f(x)$ no ponto $(x_0, f(x_0))$ é obtida utilizando a fórmula ponto-inclinação:</p>
-        $$y - f(x_0) = f'(x_0)(x - x_0)$$
+        <h4>1. Taxa de Variação Média</h4>
+        <p>Quando $x$ passa de $a$ para $b$, a variação de $x$ é $\Delta x = b - a$ e a variação de $y = f(x)$ é $\Delta y = f(b) - f(a)$. A <strong>taxa de variação média</strong> de $f$ no intervalo $[a, b]$ é</p>
+        <p style="text-align: center;">$$\frac{\Delta y}{\Delta x} = \frac{f(b) - f(a)}{b - a}$$</p>
+        <p><strong>Exemplo:</strong> um objeto em queda livre tem posição $s(t) = 5t^2$ (metros, segundos). Entre $t = 1$ s e $t = 3$ s, a velocidade média é $\dfrac{s(3) - s(1)}{3 - 1} = \dfrac{45 - 5}{2} = 20$ m/s.</p>
+    </div>
+
+    <div class="passo-teoria">
+        <h4>2. Encolhendo o Intervalo</h4>
+        <p>Para saber a velocidade <em>exatamente</em> em $t = 2$ s, calculamos a velocidade média em intervalos $[2,\ 2 + h]$ cada vez menores. Como $\dfrac{s(2+h) - s(2)}{h} = \dfrac{5(4 + 4h + h^2) - 20}{h} = 20 + 5h$, obtemos:</p>
+        <table style="margin: 15px auto; border-collapse: collapse; text-align: center; font-size: 1.05rem;">
+            <tr style="background-color: #2c3e50; color: white;"><th style="padding: 8px 16px;">Intervalo</th><th style="padding: 8px 16px;">$h$</th><th style="padding: 8px 16px;">Velocidade média (m/s)</th></tr>
+            <tr><td style="padding: 6px 16px; border: 1px solid #ccc;">$[2;\ 3]$</td><td style="padding: 6px 16px; border: 1px solid #ccc;">$1$</td><td style="padding: 6px 16px; border: 1px solid #ccc;">$25$</td></tr>
+            <tr style="background-color: #f8f9fa;"><td style="padding: 6px 16px; border: 1px solid #ccc;">$[2;\ 2{,}1]$</td><td style="padding: 6px 16px; border: 1px solid #ccc;">$0{,}1$</td><td style="padding: 6px 16px; border: 1px solid #ccc;">$20{,}5$</td></tr>
+            <tr><td style="padding: 6px 16px; border: 1px solid #ccc;">$[2;\ 2{,}01]$</td><td style="padding: 6px 16px; border: 1px solid #ccc;">$0{,}01$</td><td style="padding: 6px 16px; border: 1px solid #ccc;">$20{,}05$</td></tr>
+            <tr style="background-color: #f8f9fa;"><td style="padding: 6px 16px; border: 1px solid #ccc;">$[2;\ 2{,}001]$</td><td style="padding: 6px 16px; border: 1px solid #ccc;">$0{,}001$</td><td style="padding: 6px 16px; border: 1px solid #ccc;">$20{,}005$</td></tr>
+            <tr><td style="padding: 6px 16px; border: 1px solid #ccc;" colspan="2"><strong>$h \to 0$</strong></td><td style="padding: 6px 16px; border: 1px solid #ccc;"><strong>$20$</strong></td></tr>
+        </table>
+        <p>Os valores se aproximam de $20$: a velocidade <strong>instantânea</strong> em $t = 2$ s é $v(2) = 20$ m/s. Geometricamente, cada taxa média é a inclinação de uma reta secante, e o limite é a inclinação da reta tangente.</p>
+        <figure class="figura-aula figura-grande">
+            <svg viewBox="0 0 440 320" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Retas secantes se aproximando da reta tangente" style="width:100%; max-width:470px; height:auto; display:block; margin:0 auto; background:#fdfdfd; border-radius:10px;">
+<line x1="15" y1="273.75" x2="428" y2="273.75" stroke="#2c3e50" stroke-width="2"/><polygon points="436,273.75 424,268.75 424,278.75" fill="#2c3e50"/><line x1="77.0" y1="312" x2="77.0" y2="14" stroke="#2c3e50" stroke-width="2"/><polygon points="77.0,6 72.0,18 82.0,18" fill="#2c3e50"/><text x="422" y="291.75" font-size="13" fill="#2c3e50" font-family="sans-serif">x</text><text x="85.0" y="18" font-size="13" fill="#2c3e50" font-family="sans-serif">y</text>
+<polyline points="40.0,254.2 43.1,254.8 46.2,255.2 49.2,255.7 52.3,256.1 55.4,256.4 58.5,256.7 61.6,256.9 64.7,257.1 67.8,257.3 70.8,257.4 73.9,257.5 77.0,257.5 80.1,257.5 83.2,257.4 86.2,257.3 89.3,257.1 92.4,256.9 95.5,256.7 98.6,256.4 101.7,256.1 104.8,255.7 107.8,255.2 110.9,254.8 114.0,254.2 117.1,253.7 120.2,253.1 123.2,252.4 126.3,251.7 129.4,251.0 132.5,250.2 135.6,249.4 138.7,248.5 141.8,247.5 144.8,246.6 147.9,245.6 151.0,244.5 154.1,243.4 157.2,242.2 160.2,241.0 163.3,239.8 166.4,238.5 169.5,237.2 172.6,235.8 175.7,234.4 178.8,232.9 181.8,231.4 184.9,229.9 188.0,228.2 191.1,226.6 194.2,224.9 197.2,223.2 200.3,221.4 203.4,219.6 206.5,217.7 209.6,215.8 212.7,213.8 215.8,211.8 218.8,209.7 221.9,207.6 225.0,205.5 228.1,203.3 231.2,201.1 234.2,198.8 237.3,196.5 240.4,194.1 243.5,191.7 246.6,189.2 249.7,186.7 252.7,184.2 255.8,181.6 258.9,178.9 262.0,176.2 265.1,173.5 268.2,170.7 271.2,167.9 274.3,165.1 277.4,162.1 280.5,159.2 283.6,156.2 286.7,153.1 289.8,150.0 292.8,146.9 295.9,143.7 299.0,140.5 302.1,137.2 305.2,133.9 308.2,130.5 311.3,127.1 314.4,123.7 317.5,120.2 320.6,116.6 323.7,113.1 326.8,109.4 329.8,105.7 332.9,102.0 336.0,98.2 339.1,94.4 342.2,90.6 345.2,86.7 348.3,82.7 351.4,78.7 354.5,74.7 357.6,70.6 360.7,66.5 363.8,62.3 366.8,58.1 369.9,53.8 373.0,49.5 376.1,45.1 379.2,40.7 382.2,36.3 385.3,31.8 388.4,27.3 391.5,22.7 394.6,18.1 397.7,13.4 400.8,8.7 403.8,3.9 406.9,-0.9 410.0,-5.8" fill="none" stroke="#3498db" stroke-width="3"/>
+<line x1="113.2" y1="289.1" x2="392.7" y2="31.3" stroke="#f39c12" stroke-width="1.8" stroke-dasharray="7,4"/>
+<circle cx="373.0" cy="49.5" r="4.5" fill="#f39c12"/>
+<text x="380.0" y="53.5" font-size="13" fill="#f39c12" font-family="sans-serif" font-weight="bold">Q1</text>
+<line x1="96.9" y1="289.8" x2="405.4" y2="66.3" stroke="#e67e22" stroke-width="1.8" stroke-dasharray="7,4"/>
+<circle cx="289.8" cy="150.0" r="4.5" fill="#e67e22"/>
+<text x="296.8" y="154.0" font-size="13" fill="#e67e22" font-family="sans-serif" font-weight="bold">Q2</text>
+<line x1="77.1" y1="289.9" x2="405.4" y2="102.5" stroke="#d35400" stroke-width="1.8" stroke-dasharray="7,4"/>
+<circle cx="225.0" cy="205.5" r="4.5" fill="#d35400"/>
+<text x="232.0" y="209.5" font-size="13" fill="#d35400" font-family="sans-serif" font-weight="bold">Q3</text>
+<line x1="50.0" y1="289.7" x2="405.4" y2="133.6" stroke="#e74c3c" stroke-width="2.8"/>
+<line x1="169.5" y1="273.75" x2="169.5" y2="237.2" stroke="#bdc3c7" stroke-dasharray="3,3"/>
+<circle cx="169.5" cy="237.2" r="5" fill="#2c3e50"/>
+<text x="149.5" y="229.2" font-size="14" fill="#2c3e50" font-family="sans-serif" font-weight="bold">P</text>
+<text x="165.5" y="290.75" font-size="13" fill="#2c3e50" font-family="sans-serif">a</text>
+<text x="270" y="270" font-size="13" fill="#e74c3c" font-family="sans-serif" font-weight="bold">tangente em P</text>
+<text x="270" y="286" font-size="13" fill="#e67e22" font-family="sans-serif" font-weight="bold">secantes PQ₁, PQ₂, PQ₃</text>
+</svg>
+            <figcaption>Figura 1: Quando $Q$ se aproxima de $P$, as secantes $PQ_1$, $PQ_2$, $PQ_3$ tendem à reta tangente em $P$.</figcaption>
+        </figure>
+    </div>
+
+    <div class="passo-teoria">
+        <h4>3. A Derivada como Taxa Instantânea</h4>
+        <p>A <strong>derivada de $f$ em $x = a$</strong> é o limite da taxa de variação média quando o intervalo tende a zero, desde que esse limite exista:</p>
+        <p style="text-align: center; font-size: 1.15rem; background-color: #f8f9fa; padding: 15px; border-left: 5px solid #3498db; margin: 20px 0;">
+            $$f'(a) = \lim_{h \to 0} \frac{f(a+h) - f(a)}{h}$$
+        </p>
+        <p>Também se escreve $\dfrac{dy}{dx}\Big|_{x=a}$ (notação de Leibniz), lembrando que a derivada é o limite de $\dfrac{\Delta y}{\Delta x}$. Se $s(t)$ é a posição, $s'(t)$ é a velocidade; se $v(t)$ é a velocidade, $v'(t)$ é a aceleração.</p>
+    </div>
+
+    <div class="passo-teoria">
+        <h4>4. Interpretando o Valor e o Sinal de $f'(a)$</h4>
+        <ul>
+            <li><strong>$f'(a) &gt; 0$:</strong> $f$ está crescendo em $x = a$; <strong>$f'(a) &lt; 0$:</strong> $f$ está decrescendo; <strong>$f'(a) = 0$:</strong> $f$ está momentaneamente "parada" (ponto estacionário);</li>
+            <li>Quanto maior $|f'(a)|$, mais rápida é a variação de $f$ perto de $a$;</li>
+            <li><strong>Unidade:</strong> se $y$ está em metros e $x$ em segundos, $f'(a)$ está em m/s;</li>
+            <li><strong>Estimativa:</strong> para $h$ pequeno, $f(a + h) \approx f(a) + f'(a)\cdot h$. É isso que permite usar a derivada para prever pequenas variações (por exemplo, o custo da próxima unidade produzida).</li>
+        </ul>
     </div>
 </section>
 
 <section class="aplicacoes-reais" id="aplicacoes">
-    <h3>💡 Aplicações no Mundo Real</h3>
+    <h3>💡 Matemática em Ação</h3>
     <div class="cards-aplicacao">
         <div class="card">
-            <h4>🚗 Cinemática e Física</h4>
-            <p>A velocidade instantânea $v(t)$ é a derivada da posição $s(t)$ em relação ao tempo ($v = \frac{ds}{dt}$), enquanto a aceleração instantânea $a(t)$ é a derivada da velocidade ($a = \frac{dv}{dt}$).</p>
+            <h4>🚗 Velocímetro e Radar</h4>
+            <p>O velocímetro mostra a velocidade <em>instantânea</em> $v(t) = s'(t)$. Já o radar de trânsito mede o deslocamento num intervalo de tempo muito curto e calcula $\Delta s / \Delta t$: é uma taxa média num intervalo tão pequeno que praticamente coincide com a derivada.</p>
         </div>
         <div class="card" style="border-left-color: #2ecc71;">
-            <h4>📈 Economia e Finanças</h4>
-            <p>O conceito de <em>custo marginal</em> e <em>receita marginal</em> nada mais é do que a derivada das funções de custo total e receita total em relação à quantidade produzida.</p>
+            <h4>📈 Custo Marginal</h4>
+            <p>Na Economia, a derivada do custo total, $C'(x)$, é o <strong>custo marginal</strong>: aproximadamente quanto custa produzir uma unidade a mais quando já se produzem $x$ unidades. Comparando-o com a receita marginal $R'(x)$, a empresa decide se vale a pena aumentar a produção.</p>
         </div>
     </div>
 </section>
 
 <section class="questoes-resolvidas" id="resolvidas">
     <h3>✅ 5 Questões Resolvidas (R 1 a 5)</h3>
-    
+
     <article class="questao">
-        <h4>R 1: Derivada pela Definição de Função Quadrática</h4>
-        <p><strong>Enunciado:</strong> Determine a derivada da função $f(x) = x^2 + 3x$ utilizando a definição por limite.</p>
+        <h4>R 1: Taxa de Variação Média</h4>
+        <p><strong>Enunciado:</strong> Calcule a taxa de variação média de $f(x) = x^2 + 1$ no intervalo $[1, 3]$.</p>
         <div class="resolucao-bloco">
             <p><strong>Resolução:</strong><br>
-            1. Aplicando a fórmula $f'(x) = \lim_{h \to 0} \frac{f(x + h) - f(x)}{h}$:<br>
-               $$f(x+h) = (x+h)^2 + 3(x+h) = x^2 + 2xh + h^2 + 3x + 3h$$
-            2. Substituindo no numerador:<br>
-               $$f(x+h) - f(x) = (x^2 + 2xh + h^2 + 3x + 3h) - (x^2 + 3x) = 2xh + h^2 + 3h$$
-            3. Dividindo por $h$ e calculando o limite:<br>
-               $$\lim_{h \to 0} \frac{h(2x + h + 3)}{h} = \lim_{h \to 0} (2x + h + 3) = \mathbf{2x + 3}.$$</p>
+            1. Taxa média: $\dfrac{\Delta y}{\Delta x} = \dfrac{f(3) - f(1)}{3 - 1}$.<br>
+            2. $f(3) = 9 + 1 = 10$ e $f(1) = 1 + 1 = 2$.<br>
+            3. $\dfrac{\Delta y}{\Delta x} = \dfrac{10 - 2}{2} = \mathbf{4}$: em média, $y$ aumenta $4$ unidades para cada unidade de $x$.</p>
         </div>
     </article>
 
     <article class="questao">
-        <h4>R 2: Inclinação e Equação da Reta Tangente</h4>
-        <p><strong>Enunciado:</strong> Encontre a equação da reta tangente à curva $f(x) = x^2$ no ponto em que $x = 2$.</p>
+        <h4>R 2: Média e Instantânea</h4>
+        <p><strong>Enunciado:</strong> Um corpo tem posição $s(t) = 4t^2$ (metros, com $t$ em segundos). Calcule a velocidade média no intervalo $[2, 5]$ e a velocidade instantânea em $t = 2$ s.</p>
         <div class="resolucao-bloco">
             <p><strong>Resolução:</strong><br>
-            1. Ponto de tangência: $x_0 = 2 \implies y_0 = f(2) = 2^2 = 4$. O ponto é $(2, 4)$.<br>
-            2. Derivada de $f(x) = x^2$: $f'(x) = 2x$.<br>
-            3. Inclinação (coeficiente angular): $m = f'(2) = 2(2) = 4$.<br>
-            4. Equação da reta: $y - 4 = 4(x - 2) \implies y - 4 = 4x - 8 \implies \mathbf{y = 4x - 4}$.</p>
+            1. Média: $v_m = \dfrac{s(5) - s(2)}{5 - 2} = \dfrac{100 - 16}{3} = \mathbf{28}$ m/s.<br>
+            2. Instantânea: $\dfrac{s(2+h) - s(2)}{h} = \dfrac{4(4 + 4h + h^2) - 16}{h} = \dfrac{16h + 4h^2}{h} = 16 + 4h$.<br>
+            3. $v(2) = \displaystyle\lim_{h \to 0} (16 + 4h) = \mathbf{16}$ m/s. A média ($28$ m/s) não descreve o que ocorre no instante $t = 2$ s.</p>
         </div>
     </article>
 
     <article class="questao">
-        <h4>R 3: Derivada pela Definição de $f(x) = \frac{1}{x}$</h4>
-        <p><strong>Enunciado:</strong> Calcule $f'(x)$ para $f(x) = \frac{1}{x}$ ($x \neq 0$) usando a definição por limite.</p>
+        <h4>R 3: Estimando por uma Tabela</h4>
+        <p><strong>Enunciado:</strong> Para $f(x) = x^3$, calcule a taxa média em $[1, 1 + h]$ para $h = 0{,}1$ e $h = 0{,}01$, estime $f'(1)$ e confirme o valor pelo limite.</p>
         <div class="resolucao-bloco">
             <p><strong>Resolução:</strong><br>
-            1. Calculando a diferença $f(x+h) - f(x)$:<br>
-               $$\frac{1}{x+h} - \frac{1}{x} = \frac{x - (x+h)}{x(x+h)} = \frac{-h}{x(x+h)}$$
-            2. Dividindo por $h$:<br>
-               $$\frac{\frac{-h}{x(x+h)}}{h} = \frac{-1}{x(x+h)}$$
-            3. Tomando o limite com $h \to 0$:<br>
-               $$f'(x) = \lim_{h \to 0} \frac{-1}{x(x+h)} = \mathbf{-\frac{1}{x^2}}.$$</p>
+            1. $h = 0{,}1$: $\dfrac{1{,}1^3 - 1}{0{,}1} = \dfrac{0{,}331}{0{,}1} = 3{,}31$. \quad $h = 0{,}01$: $\dfrac{1{,}01^3 - 1}{0{,}01} = \dfrac{0{,}030301}{0{,}01} = 3{,}0301$.<br>
+            2. Os valores se aproximam de $3$. Pelo limite: $(1+h)^3 - 1 = 3h + 3h^2 + h^3$, logo a taxa média é $3 + 3h + h^2$.<br>
+            3. $f'(1) = \displaystyle\lim_{h \to 0} (3 + 3h + h^2) = \mathbf{3}$, confirmando a estimativa.</p>
         </div>
     </article>
 
     <article class="questao">
-        <h4>R 4: Interpretando a Velocidade Instantânea</h4>
-        <p><strong>Enunciado:</strong> A posição de uma partícula em metros é dada por $s(t) = 5t^2 - 2t + 10$, onde $t$ é medido em segundos. Qual a velocidade instantânea em $t = 3\text{ s}$?</p>
+        <h4>R 4: Interpretando o Sinal</h4>
+        <p><strong>Enunciado:</strong> A temperatura de uma peça é $T(t) = 20 + 6t - t^2$ (em $^\circ$C, com $t$ em minutos). Calcule $T'(t)$ pela definição e interprete $T'(1)$ e $T'(4)$.</p>
         <div class="resolucao-bloco">
             <p><strong>Resolução:</strong><br>
-            1. A velocidade instantânea é a derivada da função posição: $v(t) = s'(t)$.<br>
-            2. Calculando a derivada de $s(t)$: $s'(t) = 10t - 2$.<br>
-            3. Para $t = 3\text{ s}$:<br>
-               $$v(3) = 10(3) - 2 = 30 - 2 = \mathbf{28\text{ m/s}}.$$</p>
+            1. $T(t+h) - T(t) = 6h - 2th - h^2$, logo $\dfrac{T(t+h) - T(t)}{h} = 6 - 2t - h$ e $T'(t) = \mathbf{6 - 2t}$ $^\circ$C/min.<br>
+            2. $T'(1) = 4 &gt; 0$: em $t = 1$ min a peça está <strong>esquentando</strong> a $4$ $^\circ$C por minuto.<br>
+            3. $T'(4) = -2 &lt; 0$: em $t = 4$ min a peça está <strong>esfriando</strong> a $2$ $^\circ$C por minuto.</p>
         </div>
     </article>
 
     <article class="questao">
-        <h4>R 5: Derivabilidade e Continuidade</h4>
-        <p><strong>Enunciado:</strong> Mostre por que a função módulo $f(x) = |x|$ não é derivável em $x = 0$.</p>
+        <h4>R 5: Custo Marginal</h4>
+        <p><strong>Enunciado:</strong> O custo para produzir $x$ unidades é $C(x) = 1000 + 20x + 0{,}1x^2$ (em reais). Calcule $C'(50)$ pela definição e compare com o custo real da $51^{\text{a}}$ unidade.</p>
         <div class="resolucao-bloco">
             <p><strong>Resolução:</strong><br>
-            1. Analisamos os limites laterais do quociente de Newton em $x = 0$:<br>
-               $$\lim_{h \to 0^+} \frac{|0 + h| - |0|}{h} = \lim_{h \to 0^+} \frac{h}{h} = 1$$
-               $$\lim_{h \to 0^-} \frac{|0 + h| - |0|}{h} = \lim_{h \to 0^-} \frac{-h}{h} = -1$$
-            2. Como os limites laterais são diferentes ($1 \neq -1$), o limite não existe.<br>
-            3. Portanto, $f(x) = |x|$ **não é derivável em $x = 0$** (ponto anguloso/bico).</p>
+            1. $C(50+h) - C(50) = 20h + 0{,}1\,(100h + h^2) = 30h + 0{,}1h^2$.<br>
+            2. $C'(50) = \displaystyle\lim_{h \to 0} (30 + 0{,}1h) = \mathbf{30}$ reais por unidade (custo marginal).<br>
+            3. Custo real da $51^{\text{a}}$ unidade: $C(51) - C(50) = 2280{,}10 - 2250 = 30{,}10$ reais, muito próximo de $C'(50)$.</p>
         </div>
     </article>
 </section>
 
 <section class="questoes-propostas" id="propostas">
-    <h3>✍️ 5 Questões Propostas (P 6 a 10)</h3>
+    <h3>✍️ 10 Questões Propostas (P 6 a 15)</h3>
 
     <article class="questao">
-        <h4>P 6: Derivada de Função Afim pela Definição</h4>
-        <p><strong>Enunciado:</strong> Use a definição por limite para encontrar a derivada da função $f(x) = 4x - 7$.</p>
+        <h4>P 6: Taxa Média</h4>
+        <p><strong>Enunciado:</strong> Calcule a taxa de variação média de $f(x) = x^2 - 4x$ no intervalo $[1, 4]$.</p>
         <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
         <div class="gabarito-resolucao">
             <p><strong>Resolução:</strong><br>
-            1. $f(x+h) = 4(x+h) - 7 = 4x + 4h - 7$.<br>
-            2. $f(x+h) - f(x) = (4x + 4h - 7) - (4x - 7) = 4h$.<br>
-            3. $f'(x) = \lim_{h \to 0} \frac{4h}{h} = \mathbf{4}$.</p>
+            1. $f(4) = 16 - 16 = 0$ e $f(1) = 1 - 4 = -3$.<br>
+            2. $\dfrac{0 - (-3)}{4 - 1} = \dfrac{3}{3} = \mathbf{1}$.</p>
         </div>
     </article>
 
     <article class="questao">
-        <h4>P 7: Coeficiente Angular em um Ponto Dado</h4>
-        <p><strong>Enunciado:</strong> Dada a função $f(x) = 3x^2 - 5$, determine a inclinação da reta tangente ao seu gráfico no ponto $x = -1$.</p>
+        <h4>P 7: Velocidade Média</h4>
+        <p><strong>Enunciado:</strong> Uma partícula tem posição $s(t) = t^2 + 3t$ (metros, segundos). Calcule a velocidade média entre $t = 0$ e $t = 2$ s.</p>
         <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
         <div class="gabarito-resolucao">
             <p><strong>Resolução:</strong><br>
-            1. Calculando $f'(x)$: $f'(x) = 6x$.<br>
-            2. Avaliando em $x = -1$: $m = f'(-1) = 6(-1) = \mathbf{-6}$.</p>
+            1. $s(2) = 4 + 6 = 10$ e $s(0) = 0$.<br>
+            2. $v_m = \dfrac{10 - 0}{2 - 0} = \mathbf{5}$ m/s.</p>
         </div>
     </article>
 
     <article class="questao">
-        <h4>P 8: Reta Tangente a uma Parábola</h4>
-        <p><strong>Enunciado:</strong> Encontre a equação da reta tangente ao gráfico de $f(x) = x^2 - 4x + 1$ no ponto onde $x = 3$.</p>
+        <h4>P 8: Velocidade Instantânea</h4>
+        <p><strong>Enunciado:</strong> Para a mesma partícula, $s(t) = t^2 + 3t$, calcule pela definição a velocidade instantânea em $t = 2$ s.</p>
         <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
         <div class="gabarito-resolucao">
             <p><strong>Resolução:</strong><br>
-            1. Ponto: $x_0 = 3 \implies y_0 = f(3) = 3^2 - 4(3) + 1 = 9 - 12 + 1 = -2$. Ponto $(3, -2)$.<br>
-            2. Derivada: $f'(x) = 2x - 4$.<br>
-            3. Inclinação: $m = f'(3) = 2(3) - 4 = 2$.<br>
-            4. Equação: $y - (-2) = 2(x - 3) \implies y + 2 = 2x - 6 \implies \mathbf{y = 2x - 8}$.</p>
+            1. $s(2+h) - s(2) = (4 + 4h + h^2) + (6 + 3h) - 10 = 7h + h^2$.<br>
+            2. $v(2) = \displaystyle\lim_{h \to 0} \dfrac{7h + h^2}{h} = \displaystyle\lim_{h \to 0} (7 + h) = \mathbf{7}$ m/s.</p>
         </div>
     </article>
 
     <article class="questao">
-        <h4>P 9: Derivada por Limite para Função Cúbica Simples</h4>
-        <p><strong>Enunciado:</strong> Sabendo que $(x+h)^3 = x^3 + 3x^2h + 3xh^2 + h^3$, calcule a derivada de $f(x) = x^3$ pela definição de limite.</p>
+        <h4>P 9: Derivada num Ponto</h4>
+        <p><strong>Enunciado:</strong> Calcule $f'(1)$ pela definição, sendo $f(x) = 3x^2$.</p>
         <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
         <div class="gabarito-resolucao">
             <p><strong>Resolução:</strong><br>
-            1. $f(x+h) - f(x) = (x^3 + 3x^2h + 3xh^2 + h^3) - x^3 = 3x^2h + 3xh^2 + h^3$.<br>
-            2. Dividindo por $h$: $\frac{h(3x^2 + 3xh + h^2)}{h} = 3x^2 + 3xh + h^2$.<br>
-            3. Tomando o limite com $h \to 0$: $\lim_{h \to 0} (3x^2 + 3xh + h^2) = \mathbf{3x^2}$.</p>
+            1. $f(1+h) - f(1) = 3(1 + 2h + h^2) - 3 = 6h + 3h^2$.<br>
+            2. $f'(1) = \displaystyle\lim_{h \to 0} (6 + 3h) = \mathbf{6}$.</p>
         </div>
     </article>
 
     <article class="questao">
-        <h4>P 10: Reta Horizontal (Pontos Críticos Preliminares)</h4>
-        <p><strong>Enunciado:</strong> Determine em qual ponto o gráfico de $f(x) = 2x^2 - 8x + 5$ possui uma reta tangente horizontal.</p>
+        <h4>P 10: Estimativa Numérica</h4>
+        <p><strong>Enunciado:</strong> Para $f(x) = x^2$, calcule a taxa média em $[3, 3 + h]$ para $h = 0{,}1$ e $h = 0{,}01$ e use os resultados para estimar $f'(3)$.</p>
         <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
         <div class="gabarito-resolucao">
             <p><strong>Resolução:</strong><br>
-            1. Uma reta horizontal tem coeficiente angular $m = 0$, logo precisamos resolver $f'(x) = 0$.<br>
-            2. Derivada de $f(x)$: $f'(x) = 4x - 8$.<br>
-            3. Igualando a zero: $4x - 8 = 0 \implies 4x = 8 \implies x = 2$.<br>
-            4. Calculando a ordenada $y$: $f(2) = 2(2)^2 - 8(2) + 5 = 8 - 16 + 5 = -3$.<br>
-            5. Ponto: $\mathbf{(2, -3)}$.</p>
+            1. $h = 0{,}1$: $\dfrac{9{,}61 - 9}{0{,}1} = 6{,}1$. \quad $h = 0{,}01$: $\dfrac{9{,}0601 - 9}{0{,}01} = 6{,}01$.<br>
+            2. Os valores se aproximam de $6$; de fato, a taxa média é $6 + h$, e $f'(3) = \mathbf{6}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 11: Crescendo ou Decrescendo?</h4>
+        <p><strong>Enunciado:</strong> Para $f(x) = x^2 - 6x$, calcule $f'(x)$ pela definição e diga se $f$ está crescendo ou decrescendo em $x = 1$ e em $x = 5$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong><br>
+            1. $\dfrac{f(x+h) - f(x)}{h} = \dfrac{2xh + h^2 - 6h}{h} = 2x - 6 + h \implies f'(x) = \mathbf{2x - 6}$.<br>
+            2. $f'(1) = -4 &lt; 0$: <strong>decrescendo</strong>. \quad $f'(5) = 4 &gt; 0$: <strong>crescendo</strong>.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 12: Tanque Vazando</h4>
+        <p><strong>Enunciado:</strong> O volume de água em um tanque é $V(t) = 500 - 10t$ (litros, com $t$ em minutos). Calcule $V'(t)$ pela definição e interprete o resultado.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong><br>
+            1. $V(t+h) - V(t) = -10h \implies V'(t) = \displaystyle\lim_{h \to 0} (-10) = \mathbf{-10}$ L/min.<br>
+            2. O sinal negativo indica que o volume <strong>diminui</strong>: o tanque perde $10$ litros por minuto, em qualquer instante.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 13: Crescimento de uma Colônia</h4>
+        <p><strong>Enunciado:</strong> Uma colônia tem $P(t) = 1000 + 50t + 2t^2$ bactérias após $t$ horas. Calcule, pela definição, a taxa de crescimento em $t = 5$ h.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong><br>
+            1. $P(5+h) - P(5) = 50h + 2(10h + h^2) = 70h + 2h^2$.<br>
+            2. $P'(5) = \displaystyle\lim_{h \to 0} (70 + 2h) = \mathbf{70}$ bactérias por hora.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 14: Estimativa com a Derivada</h4>
+        <p><strong>Enunciado:</strong> Para uma função posição $s(t)$ (metros, segundos), sabe-se que $s(2) = 10$ e $s'(2) = -3$. Interprete $s'(2)$ e estime $s(2{,}1)$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong><br>
+            1. $s'(2) = -3$: em $t = 2$ s o móvel se desloca no sentido negativo, a $3$ m/s.<br>
+            2. $s(2{,}1) \approx s(2) + s'(2) \cdot 0{,}1 = 10 - 0{,}3 = \mathbf{9{,}7}$ m.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 15: Receita Marginal</h4>
+        <p><strong>Enunciado:</strong> A receita com a venda de $x$ unidades é $R(x) = 50x - 0{,}5x^2$ (em reais). Calcule $R'(40)$ pela definição e interprete.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong><br>
+            1. $R(40+h) - R(40) = 50h - 0{,}5\,(80h + h^2) = 10h - 0{,}5h^2$.<br>
+            2. $R'(40) = \displaystyle\lim_{h \to 0} (10 - 0{,}5h) = \mathbf{10}$: a $41^{\text{a}}$ unidade acrescenta cerca de R\$ 10 à receita.</p>
         </div>
     </article>
 </section>
 
 <section class="TESTE" id="testes">
-    <h3>🎓 TESTES (T 11 a 15)</h3>
+    <h3>🎓 TESTES (T 16 a 20)</h3>
 
-    <div class="card" style="text-align:center; padding:60px 20px; background:#f8f9fa; border:2px dashed #3498db; border-radius:12px; margin-top:20px;">
-        <h2 style="color:#3498db; font-size:2.5rem; margin-bottom:15px;">
-            🚧 EM BREVE!
-        </h2>
+    <article class="questao">
+        <h4>T 16: (FGV 2026 – AL-RO) A Taxa de Aquecimento do Forno</h4>
+        <p>Um forno industrial é ligado em $t = 0$, à temperatura ambiente, e recebe potência máxima para aquecer rapidamente. À medida que a temperatura se aproxima de $200\,^\circ$C, o sistema de controle reduz a potência, e a temperatura se estabiliza em $200\,^\circ$C. Seja $T'(t)$ a taxa de variação da temperatura em relação ao tempo (enunciado adaptado).</p>
+        <p>Sobre $T'(t)$ ao longo do processo de aquecimento, é correto afirmar que</p>
+        <p>A) é constante e positiva durante todo o processo, pois a temperatura do forno está sempre aumentando até atingir o alvo.<br>B) começa com um valor positivo alto e diminui progressivamente, aproximando-se de zero conforme a temperatura estabiliza em $200\,^\circ$C.<br>C) é inicialmente zero, aumenta conforme o forno esquenta e atinge seu valor máximo exatamente no momento em que a temperatura chega a $200\,^\circ$C.<br>D) torna-se negativa assim que o sistema começa a reduzir a potência, indicando que o aquecimento está perdendo força.<br>E) é igual a $200$ no momento da estabilização, representando o valor final da função temperatura.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> Alternativa <strong>B</strong>.<br>
+            1. $T'(t)$ mede a rapidez com que a temperatura sobe. Com potência máxima no início, a temperatura sobe depressa: $T'$ é <strong>positiva e grande</strong>.<br>
+            2. Ao reduzir a potência, a temperatura continua subindo, porém mais devagar: $T'$ continua positiva, mas diminui (não fica negativa, o que descarta D).<br>
+            3. Na estabilização a temperatura fica constante, logo $T' \to 0$ (e não $200$, que é o valor de $T$, não de $T'$). Alternativa <strong>B</strong>.</p>
+        </div>
+    </article>
 
-        <p style="font-size:1.2rem; color:#555;">
-            Exercícios e questões de exames de Cálculo serão disponibilizados em breve.
-        </p>
-    </div>
+    <article class="questao">
+        <h4>T 17: (Instituto IACP 2026 – Pref. Colônia Leopoldina-AL) Derivada num Ponto</h4>
+        <p>Considerando a função $f(x) = x^3 - 2x^2 + 5$, assinale a alternativa que indica corretamente o valor de $f'(2)$.</p>
+        <p>A) 2<br>B) 4<br>C) 6<br>D) 8<br>E) 10</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> Alternativa <strong>B</strong>.<br>
+            1. $f(2) = 8 - 8 + 5 = 5$ e $f(2+h) = (8 + 12h + 6h^2 + h^3) - 2(4 + 4h + h^2) + 5 = 5 + 4h + 4h^2 + h^3$.<br>
+            2. $\dfrac{f(2+h) - f(2)}{h} = 4 + 4h + h^2$.<br>
+            3. $f'(2) = \displaystyle\lim_{h \to 0} (4 + 4h + h^2) = \mathbf{4}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>T 18: (IBFC 2023 – SEC-BA) Taxa de Variação Instantânea</h4>
+        <p>A derivada $f'(a)$ é a taxa de variação instantânea de $y = f(x)$ em relação a $x$ quando temos $x = a$.</p>
+        <p>Considere a função polinomial $f(x) = x^3 - 2x + 5$, o valor da derivada da função no ponto $x = 2$, ou seja, $f'(2)$ é igual a:</p>
+        <p>A) 10<br>B) 12<br>C) $-8$<br>D) 9<br>E) 0</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> Alternativa <strong>A</strong>.<br>
+            1. $f(2) = 8 - 4 + 5 = 9$ e $f(2+h) = 8 + 12h + 6h^2 + h^3 - 4 - 2h + 5 = 9 + 10h + 6h^2 + h^3$.<br>
+            2. $\dfrac{f(2+h) - f(2)}{h} = 10 + 6h + h^2$.<br>
+            3. $f'(2) = \displaystyle\lim_{h \to 0} (10 + 6h + h^2) = \mathbf{10}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>T 19: (Inst. Excelência 2018 – Barra Velha-SC) Propriedades da Derivada</h4>
+        <p>Do Cálculo, a derivada em um ponto de uma função $y = f(x)$ representa a taxa de variação instantânea de $y$ em relação a $x$ nesse ponto. A utilização de derivadas é amplamente significativa dentro da Matemática e em outras ciências e suas propriedades são inúmeras.</p>
+        <p>Com relação a elas, todas as afirmativas a seguir são verdadeiras, com EXCEÇÃO de que:</p>
+        <p>A) Ponto de inflexão é o ponto em que a segunda derivada de uma função muda de sinal.<br>B) A derivada de uma função de uma variável, no limite, é a inclinação da reta tangente no ponto avaliado.<br>C) As derivadas das funções trigonométricas $\operatorname{sen} x$ e $\cos x$ são, respectivamente, $\cos x$ e $\operatorname{sen} x$.<br>D) A derivada da função exponencial é uma função bem peculiar, pois $\frac{d}{dx} e^x = e^x$, ou seja, a derivada é a própria função.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> Alternativa <strong>C</strong>.<br>
+            1. (B) é verdadeira: a derivada é o limite das inclinações das secantes, isto é, a inclinação da reta tangente.<br>
+            2. (A) e (D) são propriedades verdadeiras, estudadas mais adiante no curso.<br>
+            3. (C) é falsa: $(\operatorname{sen} x)' = \cos x$, mas $(\cos x)' = -\operatorname{sen} x$ (o sinal negativo faz diferença).</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>T 20: (Questão autoral) Velocidade Média e Instantânea</h4>
+        <p>Um carro se desloca em linha reta com posição $s(t) = 2t^2 + t$ (metros, com $t$ em segundos).</p>
+        <p>A velocidade média entre $t = 1$ s e $t = 3$ s e a velocidade instantânea em $t = 3$ s valem, respectivamente:</p>
+        <p>A) 9 m/s e 9 m/s<br>B) 9 m/s e 13 m/s<br>C) 13 m/s e 9 m/s<br>D) 10,5 m/s e 13 m/s<br>E) 18 m/s e 13 m/s</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> Alternativa <strong>B</strong>.<br>
+            1. $s(1) = 3$ e $s(3) = 21$: $v_m = \dfrac{21 - 3}{3 - 1} = 9$ m/s.<br>
+            2. $s(3+h) - s(3) = 2(6h + h^2) + h = 13h + 2h^2 \implies v(3) = \displaystyle\lim_{h \to 0} (13 + 2h) = 13$ m/s.<br>
+            3. Alternativa <strong>B</strong>. (A média $9$ m/s é menor porque o carro está acelerando.)</p>
+        </div>
+    </article>
 </section>
 
 </div>
