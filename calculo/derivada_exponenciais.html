@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cálculo I: Derivada de Funções Exponenciais</title>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../estilo.css">
+    
+    <script>
+        MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true
+            }
+        };
+    </script>
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body>
+<button class="menu-toggle" onclick="toggleMenu()">☰</button>
+
+<nav id="menu-principal" class="nav-global">
+    <ul>
+        <li><a href="../index.html">🏠 Início</a></li>
+        <li><a href="../ensino_medio.html">📚 Ensino Médio</a></li>
+        <li><a href="../ensino_superior.html">🎓 Ensino Superior</a></li>
+    </ul>
+</nav>
+
+<header id="topo">
+    <h1>CÁLCULO I</h1>
+    <p>Cálculo | Aula: Derivada de Funções Exponenciais</p>
+    <button id="btn-slides" onclick="toggleSlides()">📺 Iniciar Modo Slides</button>
+</header>
+
+<div class="container">
+
+<main class="conteudo-principal">
+
+<div class="secao-aula">
+ <div class="container-resumo" id="resumo">
+    <h3>📚 Resumo </h3>
+    <section class="resumo-conteudo">
+        <p>A exponencial natural é a única função (a menos de constante) igual à sua própria derivada: $(e^x)' = e^x$. Para outras bases e para expoentes que são funções de $x$, combinamos essa regra com a regra da cadeia:</p>
+        <p style="text-align: center;">$$(e^x)' = e^x \qquad (a^x)' = a^x \ln a \qquad (e^{u})' = e^{u}\,u' \qquad (a^{u})' = a^{u}\ln a \cdot u'$$</p>
+        <p>Quando base e expoente variam, como em $x^x$, reescrevemos $u^v = e^{v\ln u}$. Toda função do tipo $y = C\,e^{kt}$ satisfaz $y' = k\,y$: a taxa de variação é proporcional ao próprio valor, o que descreve crescimento populacional, juros contínuos, decaimento radioativo e resfriamento.</p>
+    </section>
+</div>
+
+<section class="conteudo-teorico-completo" id="teoria">
+    <div class="passo-teoria">
+        <h3>📖 A Função que É Sua Própria Derivada</h3>
+        <p>Na aula de derivadas fundamentais vimos que $(e^x)' = e^x$, porque o número $e \approx 2{,}718$ é exatamente a base para a qual $\displaystyle\lim_{h \to 0}\frac{e^h - 1}{h} = 1$. Geometricamente: em cada ponto do gráfico de $y = e^x$, a <strong>inclinação da tangente é igual à altura</strong> do ponto.</p>
+        <figure class="figura-aula figura-grande">
+            <svg viewBox="0 0 460 330" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Gráficos de e elevado a x e 2 elevado a x com tangentes" style="width:100%; max-width:470px; height:auto; display:block; margin:0 auto; background:#fdfdfd; border-radius:10px;">
+<line x1="12" y1="300.0" x2="448" y2="300.0" stroke="#2c3e50" stroke-width="2"/><polygon points="456,300.0 444,295.0 444,305.0" fill="#2c3e50"/><line x1="210.0" y1="322" x2="210.0" y2="14" stroke="#2c3e50" stroke-width="2"/><polygon points="210.0,6 205.0,18 215.0,18" fill="#2c3e50"/><text x="442" y="318.0" font-size="13" fill="#2c3e50" font-family="sans-serif">x</text><text x="218.0" y="18" font-size="13" fill="#2c3e50" font-family="sans-serif">y</text>
+<polyline points="14.0,295.1 15.4,295.0 16.8,295.0 18.2,294.9 19.6,294.8 21.0,294.8 22.4,294.7 23.8,294.6 25.2,294.5 26.6,294.5 28.0,294.4 29.4,294.3 30.8,294.2 32.2,294.2 33.6,294.1 35.0,294.0 36.4,293.9 37.8,293.8 39.2,293.7 40.6,293.6 42.0,293.6 43.4,293.5 44.8,293.4 46.2,293.3 47.6,293.2 49.0,293.1 50.4,293.0 51.8,292.9 53.2,292.8 54.6,292.7 56.0,292.6 57.4,292.5 58.8,292.4 60.2,292.3 61.6,292.2 63.0,292.1 64.4,292.0 65.8,291.8 67.2,291.7 68.6,291.6 70.0,291.5 71.4,291.4 72.8,291.3 74.2,291.1 75.6,291.0 77.0,290.9 78.4,290.8 79.8,290.6 81.2,290.5 82.6,290.4 84.0,290.2 85.4,290.1 86.8,290.0 88.2,289.8 89.6,289.7 91.0,289.5 92.4,289.4 93.8,289.2 95.2,289.1 96.6,288.9 98.0,288.8 99.4,288.6 100.8,288.5 102.2,288.3 103.6,288.1 105.0,288.0 106.4,287.8 107.8,287.6 109.2,287.5 110.6,287.3 112.0,287.1 113.4,286.9 114.8,286.8 116.2,286.6 117.6,286.4 119.0,286.2 120.4,286.0 121.8,285.8 123.2,285.6 124.6,285.4 126.0,285.2 127.4,285.0 128.8,284.8 130.2,284.6 131.6,284.4 133.0,284.1 134.4,283.9 135.8,283.7 137.2,283.5 138.6,283.2 140.0,283.0 141.4,282.8 142.8,282.5 144.2,282.3 145.6,282.0 147.0,281.8 148.4,281.5 149.8,281.3 151.2,281.0 152.6,280.7 154.0,280.5 155.4,280.2 156.8,279.9 158.2,279.6 159.6,279.4 161.0,279.1 162.4,278.8 163.8,278.5 165.2,278.2 166.6,277.9 168.0,277.6 169.4,277.3 170.8,276.9 172.2,276.6 173.6,276.3 175.0,276.0 176.4,275.6 177.8,275.3 179.2,274.9 180.6,274.6 182.0,274.2 183.4,273.9 184.8,273.5 186.2,273.1 187.6,272.8 189.0,272.4 190.4,272.0 191.8,271.6 193.2,271.2 194.6,270.8 196.0,270.4 197.4,270.0 198.8,269.6 200.2,269.1 201.6,268.7 203.0,268.3 204.4,267.8 205.8,267.4 207.2,266.9 208.6,266.5 210.0,266.0 211.4,265.5 212.8,265.0 214.2,264.6 215.6,264.1 217.0,263.6 218.4,263.1 219.8,262.5 221.2,262.0 222.6,261.5 224.0,260.9 225.4,260.4 226.8,259.8 228.2,259.3 229.6,258.7 231.0,258.1 232.4,257.6 233.8,257.0 235.2,256.4 236.6,255.8 238.0,255.1 239.4,254.5 240.8,253.9 242.2,253.2 243.6,252.6 245.0,251.9 246.4,251.2 247.8,250.6 249.2,249.9 250.6,249.2 252.0,248.5 253.4,247.7 254.8,247.0 256.2,246.3 257.6,245.5 259.0,244.8 260.4,244.0 261.8,243.2 263.2,242.4 264.6,241.6 266.0,240.8 267.4,240.0 268.8,239.1 270.2,238.3 271.6,237.4 273.0,236.6 274.4,235.7 275.8,234.8 277.2,233.9 278.6,232.9 280.0,232.0 281.4,231.1 282.8,230.1 284.2,229.1 285.6,228.1 287.0,227.1 288.4,226.1 289.8,225.1 291.2,224.0 292.6,223.0 294.0,221.9 295.4,220.8 296.8,219.7 298.2,218.6 299.6,217.4 301.0,216.3 302.4,215.1 303.8,213.9 305.2,212.7 306.6,211.5 308.0,210.3 309.4,209.0 310.8,207.8 312.2,206.5 313.6,205.2 315.0,203.8 316.4,202.5 317.8,201.1 319.2,199.7 320.6,198.4 322.0,196.9 323.4,195.5 324.8,194.0 326.2,192.6 327.6,191.1 329.0,189.5 330.4,188.0 331.8,186.4 333.2,184.8 334.6,183.2 336.0,181.6 337.4,180.0 338.8,178.3 340.2,176.6 341.6,174.9 343.0,173.1 344.4,171.3 345.8,169.5 347.2,167.7 348.6,165.9 350.0,164.0 351.4,162.1 352.8,160.2 354.2,158.2 355.6,156.2 357.0,154.2 358.4,152.2 359.8,150.1 361.2,148.0 362.6,145.9 364.0,143.8 365.4,141.6 366.8,139.4 368.2,137.1 369.6,134.9 371.0,132.6 372.4,130.2 373.8,127.9 375.2,125.5 376.6,123.0" fill="none" stroke="#27ae60" stroke-width="3"/>
+<polyline points="14.0,297.9 15.4,297.9 16.8,297.8 18.2,297.8 19.6,297.8 21.0,297.7 22.4,297.7 23.8,297.6 25.2,297.6 26.6,297.5 28.0,297.5 29.4,297.4 30.8,297.4 32.2,297.3 33.6,297.3 35.0,297.2 36.4,297.2 37.8,297.1 39.2,297.0 40.6,297.0 42.0,296.9 43.4,296.9 44.8,296.8 46.2,296.7 47.6,296.7 49.0,296.6 50.4,296.5 51.8,296.5 53.2,296.4 54.6,296.3 56.0,296.2 57.4,296.2 58.8,296.1 60.2,296.0 61.6,295.9 63.0,295.8 64.4,295.8 65.8,295.7 67.2,295.6 68.6,295.5 70.0,295.4 71.4,295.3 72.8,295.2 74.2,295.1 75.6,295.0 77.0,294.9 78.4,294.8 79.8,294.7 81.2,294.6 82.6,294.5 84.0,294.4 85.4,294.3 86.8,294.2 88.2,294.0 89.6,293.9 91.0,293.8 92.4,293.7 93.8,293.5 95.2,293.4 96.6,293.3 98.0,293.1 99.4,293.0 100.8,292.9 102.2,292.7 103.6,292.6 105.0,292.4 106.4,292.3 107.8,292.1 109.2,291.9 110.6,291.8 112.0,291.6 113.4,291.4 114.8,291.3 116.2,291.1 117.6,290.9 119.0,290.7 120.4,290.5 121.8,290.4 123.2,290.2 124.6,290.0 126.0,289.8 127.4,289.6 128.8,289.3 130.2,289.1 131.6,288.9 133.0,288.7 134.4,288.5 135.8,288.2 137.2,288.0 138.6,287.7 140.0,287.5 141.4,287.2 142.8,287.0 144.2,286.7 145.6,286.5 147.0,286.2 148.4,285.9 149.8,285.6 151.2,285.3 152.6,285.0 154.0,284.7 155.4,284.4 156.8,284.1 158.2,283.8 159.6,283.5 161.0,283.1 162.4,282.8 163.8,282.4 165.2,282.1 166.6,281.7 168.0,281.3 169.4,281.0 170.8,280.6 172.2,280.2 173.6,279.8 175.0,279.4 176.4,279.0 177.8,278.5 179.2,278.1 180.6,277.7 182.0,277.2 183.4,276.7 184.8,276.3 186.2,275.8 187.6,275.3 189.0,274.8 190.4,274.3 191.8,273.8 193.2,273.3 194.6,272.7 196.0,272.2 197.4,271.6 198.8,271.0 200.2,270.4 201.6,269.8 203.0,269.2 204.4,268.6 205.8,268.0 207.2,267.3 208.6,266.7 210.0,266.0 211.4,265.3 212.8,264.6 214.2,263.9 215.6,263.2 217.0,262.4 218.4,261.7 219.8,260.9 221.2,260.1 222.6,259.3 224.0,258.5 225.4,257.6 226.8,256.8 228.2,255.9 229.6,255.0 231.0,254.1 232.4,253.2 233.8,252.2 235.2,251.3 236.6,250.3 238.0,249.3 239.4,248.3 240.8,247.2 242.2,246.1 243.6,245.1 245.0,243.9 246.4,242.8 247.8,241.7 249.2,240.5 250.6,239.3 252.0,238.0 253.4,236.8 254.8,235.5 256.2,234.2 257.6,232.9 259.0,231.5 260.4,230.1 261.8,228.7 263.2,227.3 264.6,225.8 266.0,224.3 267.4,222.8 268.8,221.2 270.2,219.7 271.6,218.0 273.0,216.4 274.4,214.7 275.8,213.0 277.2,211.2 278.6,209.4 280.0,207.6 281.4,205.7 282.8,203.8 284.2,201.9 285.6,199.9 287.0,197.9 288.4,195.8 289.8,193.7 291.2,191.5 292.6,189.4 294.0,187.1 295.4,184.8 296.8,182.5 298.2,180.1 299.6,177.7 301.0,175.2 302.4,172.7 303.8,170.2 305.2,167.5 306.6,164.9 308.0,162.1 309.4,159.3 310.8,156.5 312.2,153.6 313.6,150.6 315.0,147.6 316.4,144.5 317.8,141.4 319.2,138.2 320.6,134.9 322.0,131.6 323.4,128.2 324.8,124.7 326.2,121.2 327.6,117.6 329.0,113.9 330.4,110.1 331.8,106.3 333.2,102.4 334.6,98.4 336.0,94.3 337.4,90.2 338.8,85.9 340.2,81.6 341.6,77.2 343.0,72.7 344.4,68.1 345.8,63.4 347.2,58.6 348.6,53.7 350.0,48.8 351.4,43.7 352.8,38.5 354.2,33.2 355.6,27.8 357.0,22.4 358.4,16.7" fill="none" stroke="#3498db" stroke-width="3"/>
+<line x1="157.5" y1="291.5" x2="262.5" y2="240.5" stroke="#e74c3c" stroke-width="2.3"/>
+<circle cx="210.0" cy="266.0" r="4.5" fill="#2c3e50"/>
+<line x1="210.0" y1="300.0" x2="210.0" y2="266.0" stroke="#bdc3c7" stroke-dasharray="3,3"/>
+<line x1="262.5" y1="261.9" x2="367.5" y2="33.3" stroke="#e74c3c" stroke-width="2.3"/>
+<circle cx="315.0" cy="147.6" r="4.5" fill="#2c3e50"/>
+<line x1="315.0" y1="300.0" x2="315.0" y2="147.6" stroke="#bdc3c7" stroke-dasharray="3,3"/>
+<text x="217.0" y="281.3" font-size="13" fill="#e74c3c" font-family="sans-serif" font-weight="bold">m = e⁰ = 1</text>
+<text x="323.4" y="143.6" font-size="13" fill="#e74c3c" font-family="sans-serif" font-weight="bold">m = e^1,5 ≈ 4,48</text>
+<text x="14.0" y="40" font-size="14" fill="#3498db" font-family="sans-serif" font-weight="bold">y = eˣ: inclinação = altura</text>
+<text x="14.0" y="60" font-size="14" fill="#27ae60" font-family="sans-serif" font-weight="bold">y = 2ˣ: inclinação = 2ˣ·ln 2</text>
+</svg>
+            <figcaption>Figura 1: Em $y = e^x$, a inclinação da tangente em cada ponto é igual à ordenada do ponto; para $y = 2^x$, a inclinação é $2^x \ln 2 \approx 0{,}69 \cdot 2^x$.</figcaption>
+        </figure>
+    </div>
+
+    <div class="passo-teoria">
+        <h4>1. Exponencial de Base Qualquer</h4>
+        <p>Toda base $a &gt; 0$ pode ser escrita como potência de $e$: $a = e^{\ln a}$, logo $a^x = e^{x\ln a}$. Pela regra da cadeia:</p>
+        <p style="text-align: center; font-size: 1.15rem; background-color: #f8f9fa; padding: 15px; border-left: 5px solid #3498db; margin: 20px 0;">
+            $$(a^x)' = e^{x\ln a} \cdot \ln a = a^x \ln a$$
+        </p>
+        <p>O fator $\ln a$ mede quão "rápida" é a base: $\ln 2 \approx 0{,}69 &lt; 1$ e $\ln 10 \approx 2{,}30 &gt; 1$. Só para $a = e$ esse fator vale $1$, e por isso $e$ é a base natural do Cálculo. Para $0 &lt; a &lt; 1$, $\ln a &lt; 0$ e a exponencial é decrescente.</p>
+    </div>
+
+    <div class="passo-teoria">
+        <h4>2. Expoente Variável: $e^{u}$ e $a^{u}$</h4>
+        <p>Se o expoente é uma função $u(x)$, a regra da cadeia dá</p>
+        <p style="text-align: center;">$$(e^{u})' = e^{u} \cdot u' \qquad\qquad (a^{u})' = a^{u} \ln a \cdot u'$$</p>
+        <p><strong>Exemplos:</strong> $(e^{5x})' = 5e^{5x}$; &nbsp; $(e^{-x})' = -e^{-x}$; &nbsp; $(e^{x^2})' = 2x\,e^{x^2}$; &nbsp; $(10^{3x})' = 3\ln 10 \cdot 10^{3x}$. A exponencial "se repete" e é multiplicada pela derivada do expoente.</p>
+    </div>
+
+    <div class="passo-teoria">
+        <h4>3. Base e Expoente Variáveis: $u^{v}$</h4>
+        <p>Em $x^x$ não vale a regra da potência (o expoente varia) nem a da exponencial (a base varia). O truque é escrever na base $e$:</p>
+        <p style="text-align: center;">$$u^{v} = e^{v\ln u} \implies \left(u^{v}\right)' = u^{v}\left(v'\ln u + v\,\frac{u'}{u}\right)$$</p>
+        <p><strong>Exemplo:</strong> $(x^x)' = x^x(\ln x + 1)$.</p>
+    </div>
+
+    <div class="passo-teoria">
+        <h4>4. A Equação $y' = k\,y$</h4>
+        <p>Para $y = C\,e^{kt}$, temos $y' = C\,e^{kt} \cdot k = k\,y$. Ou seja, a <strong>taxa de variação é proporcional ao valor atual</strong>:</p>
+        <ul>
+            <li>$k &gt; 0$: <strong>crescimento exponencial</strong> (populações, juros contínuos $M = M_0e^{rt}$);</li>
+            <li>$k &lt; 0$: <strong>decaimento exponencial</strong> (radioatividade, eliminação de medicamentos, descarga de capacitores);</li>
+            <li>Resfriamento de Newton: $T(t) = T_a + (T_0 - T_a)\,e^{-kt}$ satisfaz $T' = -k\,(T - T_a)$.</li>
+        </ul>
+    </div>
+</section>
+
+<section class="aplicacoes-reais" id="aplicacoes">
+    <h3>💡 Matemática em Ação</h3>
+    <div class="cards-aplicacao">
+        <div class="card">
+            <h4>☢️ Datação por Carbono-14</h4>
+            <p>A quantidade de carbono-14 num fóssil decai segundo $N(t) = N_0e^{-kt}$, com meia-vida de cerca de $5730$ anos. Como $N' = -kN$, medir a taxa de desintegração atual permite estimar quanto C-14 resta e, daí, a idade do material.</p>
+        </div>
+        <div class="card" style="border-left-color: #2ecc71;">
+            <h4>⚡ Carga e Descarga de Capacitores</h4>
+            <p>Num circuito RC, a tensão no capacitor durante a descarga é $V(t) = V_0e^{-t/RC}$. A corrente, proporcional a $V'(t) = -\dfrac{V_0}{RC}e^{-t/RC}$, é máxima no início e cai exponencialmente: base do funcionamento de flashes de câmeras e temporizadores.</p>
+        </div>
+    </div>
+</section>
+
+<section class="questoes-resolvidas" id="resolvidas">
+    <h3>✅ 5 Questões Resolvidas (R 1 a 5)</h3>
+
+    <article class="questao">
+        <h4>R 1: Exponenciais Compostas</h4>
+        <p><strong>Enunciado:</strong> Derive: (a) $f(x) = e^{3x}$; &nbsp; (b) $g(x) = e^{-x^2}$; &nbsp; (c) $h(x) = 2^{5x}$.</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong><br>
+            1. (a) $(e^u)' = e^u\,u'$ com $u = 3x$: $f'(x) = \mathbf{3e^{3x}}$.<br>
+            2. (b) $u = -x^2$, $u' = -2x$: $g'(x) = \mathbf{-2x\,e^{-x^2}}$.<br>
+            3. (c) $(a^u)' = a^u \ln a \cdot u'$ com $a = 2$, $u = 5x$: $h'(x) = \mathbf{5\ln 2 \cdot 2^{5x}}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>R 2: Produto com Exponencial</h4>
+        <p><strong>Enunciado:</strong> Derive $f(x) = x^2 e^{-x}$ e encontre os pontos onde a tangente é horizontal.</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong><br>
+            1. Produto e cadeia: $f'(x) = 2x\,e^{-x} + x^2 \cdot (-e^{-x}) = e^{-x}(2x - x^2)$.<br>
+            2. Como $e^{-x} &gt; 0$: $f'(x) = 0 \iff x(2 - x) = 0 \iff x = 0$ ou $x = 2$.<br>
+            3. Pontos $\mathbf{(0, 0)}$ e $\mathbf{(2,\ 4e^{-2})} \approx (2;\ 0{,}54)$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>R 3: Decaimento Radioativo</h4>
+        <p><strong>Enunciado:</strong> A massa de um material radioativo é $m(t) = 80\,e^{-0{,}05t}$ gramas ($t$ em anos). Calcule $m'(t)$, $m'(0)$ e mostre que $m'(t)$ é proporcional a $m(t)$.</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong><br>
+            1. $m'(t) = 80 \cdot e^{-0{,}05t} \cdot (-0{,}05) = -4\,e^{-0{,}05t}$; &nbsp; $m'(0) = \mathbf{-4}$ g/ano.<br>
+            2. $m'(t) = -0{,}05 \cdot 80\,e^{-0{,}05t} = \mathbf{-0{,}05\,m(t)}$: a taxa de decaimento é proporcional à massa presente.<br>
+            3. Essa é a marca registrada das exponenciais: $y' = k\,y$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>R 4: A Função $x^x$</h4>
+        <p><strong>Enunciado:</strong> Derive $f(x) = x^x$, para $x &gt; 0$, e calcule $f'(1)$.</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong><br>
+            1. Escrevemos com base $e$: $x^x = e^{x\ln x}$.<br>
+            2. Cadeia e produto: $f'(x) = e^{x\ln x} \cdot (x\ln x)' = x^x\left(\ln x + x \cdot \dfrac{1}{x}\right) = \mathbf{x^x(\ln x + 1)}$.<br>
+            3. $f'(1) = 1^1(0 + 1) = \mathbf{1}$. (Não se pode usar a regra da potência, pois o expoente é variável, nem a da exponencial, pois a base é variável.)</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>R 5: Reta Tangente</h4>
+        <p><strong>Enunciado:</strong> Determine a equação da reta tangente ao gráfico de $f(x) = e^{2x}$ no ponto de abscissa $x = 0$.</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong><br>
+            1. $f(0) = e^0 = 1$: ponto $P(0, 1)$.<br>
+            2. $f'(x) = 2e^{2x} \implies m = f'(0) = 2$.<br>
+            3. $y - 1 = 2(x - 0) \implies \mathbf{y = 2x + 1}$.</p>
+        </div>
+    </article>
+</section>
+
+<section class="questoes-propostas" id="propostas">
+    <h3>✍️ 10 Questões Propostas (P 6 a 15)</h3>
+
+    <article class="questao">
+        <h4>P 6: Exponenciais Simples</h4>
+        <p><strong>Enunciado:</strong> Derive: (a) $f(x) = e^{5x}$; &nbsp; (b) $g(x) = e^{x/2}$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong><br>
+            1. (a) $f'(x) = \mathbf{5e^{5x}}$.<br>
+            2. (b) $g'(x) = \mathbf{\dfrac{1}{2}e^{x/2}}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 7: Base Qualquer</h4>
+        <p><strong>Enunciado:</strong> Derive $f(x) = 3^{x^2}$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong><br>
+            1. $(a^u)' = a^u \ln a \cdot u'$ com $a = 3$ e $u = x^2$.<br>
+            2. $f'(x) = \mathbf{2x\ln 3 \cdot 3^{x^2}}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 8: Exponencial do Seno</h4>
+        <p><strong>Enunciado:</strong> Para $f(x) = e^{\operatorname{sen} x}$, calcule $f'(x)$ e $f'(0)$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong><br>
+            1. $f'(x) = e^{\operatorname{sen} x} \cdot \cos x$.<br>
+            2. $f'(0) = e^0 \cdot 1 = \mathbf{1}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 9: Produto</h4>
+        <p><strong>Enunciado:</strong> Derive $f(x) = x\,e^{2x}$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong><br>
+            1. $f'(x) = 1 \cdot e^{2x} + x \cdot 2e^{2x}$.<br>
+            2. $f'(x) = \mathbf{e^{2x}(1 + 2x)}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 10: Quociente</h4>
+        <p><strong>Enunciado:</strong> Para $f(x) = \dfrac{e^x}{1 + e^x}$, calcule $f'(x)$ e $f'(0)$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong><br>
+            1. $f'(x) = \dfrac{e^x(1 + e^x) - e^x \cdot e^x}{(1 + e^x)^2} = \dfrac{e^x}{(1 + e^x)^2}$.<br>
+            2. $f'(0) = \dfrac{1}{4}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 11: Equação $y' = ky$</h4>
+        <p><strong>Enunciado:</strong> Verifique que $y(t) = 5e^{-2t}$ satisfaz a equação $y' = -2y$ e a condição $y(0) = 5$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong><br>
+            1. $y'(t) = 5e^{-2t} \cdot (-2) = -10e^{-2t} = -2 \cdot (5e^{-2t}) = -2y$ ✓<br>
+            2. $y(0) = 5e^0 = 5$ ✓</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 12: Reta Tangente</h4>
+        <p><strong>Enunciado:</strong> Determine a equação da reta tangente ao gráfico de $f(x) = e^{-x}$ no ponto de abscissa $x = 0$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong><br>
+            1. $f(0) = 1$ e $f'(x) = -e^{-x} \implies m = f'(0) = -1$.<br>
+            2. $y - 1 = -1(x - 0) \implies \mathbf{y = -x + 1}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 13: Juros Contínuos</h4>
+        <p><strong>Enunciado:</strong> Um capital aplicado com capitalização contínua tem montante $M(t) = 1000\,e^{0{,}1t}$ reais ($t$ em anos). Calcule $M'(0)$ e $M'(10)$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong><br>
+            1. $M'(t) = 1000 \cdot 0{,}1\,e^{0{,}1t} = 100\,e^{0{,}1t}$.<br>
+            2. $M'(0) = \mathbf{100}$ reais/ano e $M'(10) = 100e \approx \mathbf{271{,}83}$ reais/ano: o rendimento acelera porque é proporcional ao montante.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 14: A Forma $u^v$</h4>
+        <p><strong>Enunciado:</strong> Derive $f(x) = x^{2x}$, para $x &gt; 0$, e calcule $f'(1)$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong><br>
+            1. $x^{2x} = e^{2x\ln x} \implies f'(x) = x^{2x} \cdot (2x\ln x)' = x^{2x}(2\ln x + 2)$.<br>
+            2. $f'(1) = 1 \cdot (0 + 2) = \mathbf{2}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 15: Resfriamento</h4>
+        <p><strong>Enunciado:</strong> Um café é deixado numa sala a $20\,^\circ$C e sua temperatura é $T(t) = 20 + 60\,e^{-0{,}1t}$ ($^\circ$C, $t$ em minutos). Calcule $T'(0)$ e $T'(10)$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong><br>
+            1. $T'(t) = 60\,e^{-0{,}1t} \cdot (-0{,}1) = -6\,e^{-0{,}1t}$.<br>
+            2. $T'(0) = \mathbf{-6}$ $^\circ$C/min e $T'(10) = -\dfrac{6}{e} \approx \mathbf{-2{,}21}$ $^\circ$C/min: o café esfria cada vez mais devagar.</p>
+        </div>
+    </article>
+</section>
+
+<section class="TESTE" id="testes">
+    <h3>🎓 TESTES (T 16 a 20)</h3>
+
+    <article class="questao">
+        <h4>T 16: (UNIVALI 2025 – Pref. Luiz Alves-SC) Solução de uma Equação Diferencial</h4>
+        <p>Um técnico de refrigeração modela a temperatura $y(x)$ de um compartimento pela equação diferencial $y' - 3y = 6$, com condição inicial $y(0) = 2$ (unidades arbitrárias).</p>
+        <p>Qual é a solução que satisfaz essa condição?</p>
+        <p>A) A solução é $y(x) = -2 + 4 \cdot e^{3x}$.<br>B) A solução é $y(x) = 4 \cdot e^{-3x} - 2$.<br>C) A solução é $y(x) = 2 \cdot e^{3x} + 6$.<br>D) A solução é $y(x) = 6 \cdot e^{3x} - 2$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> Alternativa <strong>A</strong>.<br>
+            1. Basta testar cada alternativa. Em (A): $y' = 4 \cdot 3e^{3x} = 12e^{3x}$ e $y' - 3y = 12e^{3x} + 6 - 12e^{3x} = 6$ ✓; além disso, $y(0) = -2 + 4 = 2$ ✓.<br>
+            2. Em (B): $y' - 3y = -12e^{-3x} - 12e^{-3x} + 6 \neq 6$. Em (C): $y(0) = 8 \neq 2$. Em (D): $y(0) = 4 \neq 2$.<br>
+            3. Alternativa <strong>A</strong>.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>T 17: (Marinha 2015 – CEM) Exponencial do Seno</h4>
+        <p>A derivada de $f(x) = \exp(\operatorname{sen} x^2)$ é a função $f'(x)$ igual a</p>
+        <p>A) $2x(\cos x^2)\exp(\operatorname{sen} x^2)$<br>B) $-2x(\cos x^2)\exp(\operatorname{sen} x^2)$<br>C) $x(\cos x^2)\exp(\operatorname{sen} x^2)$<br>D) $-x(\cos x^2)\exp(\operatorname{sen} x^2)$<br>E) $4x(\cos x^2)\exp(\operatorname{sen} x^2)$</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> Alternativa <strong>A</strong>.<br>
+            1. $\exp(u) = e^u$, com $u = \operatorname{sen}(x^2)$. Cadeia com três elos: $(e^u)' = e^u \cdot u'$.<br>
+            2. $u' = \cos(x^2) \cdot 2x$.<br>
+            3. $f'(x) = 2x\cos(x^2)\,e^{\operatorname{sen} x^2}$. Alternativa <strong>A</strong>.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>T 18: (Marinha 2017 – CEM) Pontos de Máximo</h4>
+        <p>Os pontos de máximo local de $f(x) = \exp(-\cos(3x))$, $x \in \mathbb{R}$, são</p>
+        <p>A) $\dfrac{2k\pi}{3}$, $k \in \mathbb{Z}$<br>B) $(2k + 1)\pi$, $k \in \mathbb{Z}$<br>C) $2k\pi$, $k \in \mathbb{Z}$<br>D) $\dfrac{(2k + 1)\pi}{3}$, $k \in \mathbb{Z}$<br>E) $\dfrac{k\pi}{3}$, $k \in \mathbb{Z}$</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> Alternativa <strong>D</strong>.<br>
+            1. $f'(x) = e^{-\cos 3x} \cdot 3\operatorname{sen}(3x)$, que se anula quando $\operatorname{sen}(3x) = 0$, isto é, $x = \frac{k\pi}{3}$.<br>
+            2. Como $e^u$ é crescente, $f$ é máxima onde $-\cos(3x)$ é máxima, ou seja, onde $\cos(3x) = -1$: $3x = (2k + 1)\pi$.<br>
+            3. $x = \dfrac{(2k + 1)\pi}{3}$ (onde $f = e$). Alternativa <strong>D</strong>. (Em $x = \frac{2k\pi}{3}$ ocorrem os mínimos, $f = e^{-1}$.)</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>T 19: (Marinha 2013 – CEM) Seno de uma Exponencial</h4>
+        <p>A derivada de $f(x) = \operatorname{sen}(1 - e^{2x})$ no ponto $x = 0$ é:</p>
+        <p>A) $-e$<br>B) $-2$<br>C) $0$<br>D) $2$<br>E) $e$</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> Alternativa <strong>B</strong>.<br>
+            1. $f'(x) = \cos(1 - e^{2x}) \cdot (1 - e^{2x})' = \cos(1 - e^{2x}) \cdot (-2e^{2x})$.<br>
+            2. Em $x = 0$: $1 - e^0 = 0$, $\cos 0 = 1$ e $-2e^0 = -2$.<br>
+            3. $f'(0) = -2$. Alternativa <strong>B</strong>.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>T 20: (CESGRANRIO 2012 – Transpetro) O Ponto Crítico de $x^x$</h4>
+        <p>A função $f$, definida por $f(x) = x^x$ (para $x &gt; 0$), possui um único ponto crítico, que ocorre em $x$ igual a</p>
+        <p>A) $0$<br>B) $\dfrac{1}{e}$<br>C) $1$<br>D) $e$<br>E) $e^e$</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> Alternativa <strong>B</strong>.<br>
+            1. $x^x = e^{x\ln x} \implies f'(x) = x^x(\ln x + 1)$.<br>
+            2. Como $x^x &gt; 0$: $f'(x) = 0 \iff \ln x = -1 \iff x = e^{-1} = \dfrac{1}{e}$.<br>
+            3. Alternativa <strong>B</strong>. (Esse ponto crítico é o mínimo de $x^x$, de valor $e^{-1/e} \approx 0{,}69$.)</p>
+        </div>
+    </article>
+</section>
+
+</div>
+</main>
+
+<aside class="menu-lateral">
+    <iframe src="../menu_calculo.html" style="width:100%; border:none; height:600px;"></iframe>
+</aside>
+
+</div>
+
+<script>
+function toggleGabarito(botao) {
+    const gabarito = botao.nextElementSibling;
+    if (gabarito.style.display === "none" || gabarito.style.display === "") {
+        gabarito.style.display = "block";
+        botao.textContent = "Esconder Gabarito e Resolução";
+        botao.style.backgroundColor = "#2c3e50";
+    } else {
+        gabarito.style.display = "none";
+        botao.textContent = "Ver Gabarito e Resolução";
+        botao.style.backgroundColor = "#3498db";
+    }
+}
+
+function toggleMenu() {
+    const menuGlobal = document.getElementById("menu-principal");
+    if (menuGlobal) menuGlobal.classList.toggle("ativo");
+}
+
+let slideAtual = 0;
+let slides = [];
+
+function prepararSlides() {
+    const seletores = '.container-resumo, .passo-teoria, .aplicacoes-reais, .questao';
+    slides = document.querySelectorAll(seletores);
+}
+
+function toggleSlides() {
+    prepararSlides();
+    const body = document.body;
+    if (!body.classList.contains('modo-slides')) {
+        body.classList.add('modo-slides');
+        slideAtual = 0;
+        mostrarSlide(slideAtual);
+    } else {
+        body.classList.remove('modo-slides');
+        window.location.reload(); 
+    }
+}
+
+function mostrarSlide(n) {
+    slides.forEach(s => {
+        s.classList.remove('slide-ativo');
+        s.style.display = 'none';
+    });
+    const slide = slides[n];
+    slide.classList.add('slide-ativo');
+    slide.style.display = 'flex'; 
+
+    if (slide.classList.contains('questao') && !slide.querySelector('.btn-gabarito')) {
+        const resolucoes = slide.querySelectorAll('.resolucao-bloco');
+        resolucoes.forEach(r => r.style.display = 'block');
+    } else {
+        const gabaritos = slide.querySelectorAll('.gabarito-resolucao');
+        gabaritos.forEach(g => g.style.display = 'none');
+        const botoes = slide.querySelectorAll('.btn-gabarito');
+        botoes.forEach(b => {
+            b.textContent = "Ver Gabarito e Resolução";
+            b.style.backgroundColor = "#3498db";
+        });
+    }
+
+    const pHeader = document.querySelector('header p').innerText;
+    const partes = pHeader.split('|');
+    if(partes.length > 1) {
+        document.getElementById('slide-info-serie').innerText = partes[0].trim();
+        document.getElementById('slide-info-aula').innerText = partes[1].trim();
+    }
+    document.getElementById('contador-slide').innerText = (n + 1) + " / " + slides.length;
+    if (window.MathJax) MathJax.typesetPromise();
+}
+
+function mudarSlide(direcao) {
+    slideAtual += direcao;
+    if (slideAtual >= slides.length) slideAtual = 0;
+    if (slideAtual < 0) slideAtual = slides.length - 1;
+    mostrarSlide(slideAtual);
+}
+
+document.addEventListener('keydown', function(event) {
+    if (document.body.classList.contains('modo-slides')) {
+        switch(event.key) {
+            case 'ArrowRight': 
+            case 'PageDown':   
+            case 'Enter':      
+            case ' ':          
+                mudarSlide(1);
+                break;
+                
+            case 'ArrowLeft':  
+            case 'PageUp':     
+                mudarSlide(-1);
+                break;
+
+            case 'Escape':     
+                toggleSlides();
+                break;
+        }
+    }
+});
+</script>
+
+<style>
+    body.modo-slides { overflow: hidden; background-color: #1a1a1a; }
+    body.modo-slides .menu-lateral, body.modo-slides header, body.modo-slides .menu-toggle, body.modo-slides #btn-slides { display: none !important; }
+    .slide-ativo {
+        display: flex !important; flex-direction: column; align-items: center; justify-content: flex-start;
+        position: fixed; top: 0; left: 0; width: 100vw; height: calc(100vh - 70px);
+        background: #ffffff; padding: 40px; z-index: 999; overflow-y: auto !important; 
+        box-sizing: border-box; text-align: center;
+    }
+    .controles-slides {
+        position: fixed; bottom: 0; left: 0; width: 100%; height: 70px;
+        background: #2c3e50; color: white; display: none; 
+        justify-content: space-between; align-items: center; padding: 0 20px; z-index: 1001; box-sizing: border-box;
+    }
+    body.modo-slides .controles-slides { display: flex; }
+    .info-lateral { flex: 1; font-family: 'Oswald', sans-serif; font-size: 0.9rem; color: #bdc3c7; }
+    .botoes-centrais { display: flex; align-items: center; gap: 15px; justify-content: center; flex: 2; }
+    .btn-nav { padding: 10px 20px; background: #3498db; color: white; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; }
+    #contador-slide { font-family: 'Oswald', sans-serif; min-width: 60px; text-align: center; }
+</style>
+
+<div class="controles-slides">
+    <div id="slide-info-serie" class="info-lateral"></div>
+    <div class="botoes-centrais">
+        <button class="btn-nav" onclick="mudarSlide(-1)">⬅ Anterior</button>
+        <span id="contador-slide"></span>
+        <button class="btn-nav" onclick="mudarSlide(1)">Próximo ➡</button>
+        <button class="btn-nav" onclick="toggleSlides()" style="background:#e74c3c;">Sair</button>
+    </div>
+    <div id="slide-info-aula" class="info-lateral" style="text-align: right;"></div>
+</div>
+</body>
+</html>
