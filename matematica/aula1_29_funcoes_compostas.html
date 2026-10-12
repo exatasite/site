@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1º Ano: Aula 29 - Funções Compostas e Inversas</title>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../estilo.css">
+    <script>
+        MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']], processEscapes: true } };
+    </script>
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        body.modo-slides { overflow: hidden !important; background-color: #1a1a1a !important; margin: 0; padding: 0; }
+        body.modo-slides .menu-lateral, body.modo-slides header, body.modo-slides .menu-toggle, body.modo-slides #btn-slides, body.modo-slides .nav-global { display: none !important; }
+        .slide-ativo { display: flex !important; flex-direction: column; align-items: center; justify-content: center; position: fixed; top: 0; left: 0; width: 100vw; height: calc(100vh - 70px); background: #ffffff; padding: 40px; z-index: 999; overflow-y: auto !important; box-sizing: border-box; text-align: left; }
+        .slide-ativo > * { max-width: 900px; width: 100%; }
+        .controles-slides { position: fixed; bottom: 0; left: 0; width: 100%; height: 70px; background: #2c3e50; color: white; display: none; justify-content: space-between; align-items: center; padding: 0 20px; z-index: 1001; box-sizing: border-box; }
+        body.modo-slides .controles-slides { display: flex !important; }
+        .info-lateral { flex: 1; font-family: 'Oswald', sans-serif; font-size: 0.9rem; color: #bdc3c7; }
+        .botoes-centrais { display: flex; align-items: center; gap: 15px; justify-content: center; flex: 2; }
+        .btn-nav { padding: 10px 20px; background: #3498db; color: white; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; font-size: 0.9rem; }
+        .btn-nav:hover { background: #2980b9; }
+        #contador-slide { font-family: 'Oswald', sans-serif; min-width: 60px; text-align: center; font-size: 1.1rem; }
+    </style>
+</head>
+<body>
+<button class="menu-toggle" onclick="toggleMenu()">☰</button>
+<nav id="menu-principal" class="nav-global"><ul>
+    <li><a href="../index.html">🏠 Início</a></li>
+    <li><a href="../ensino_medio.html">📚 Ensino Médio</a></li>
+    <li><a href="../ensino_superior.html">🎓 Ensino Superior</a></li>
+</ul></nav>
+<header id="topo">
+    <h1>MATEMÁTICA EM</h1>
+    <p>1º Ano | Aula 29: Funções Compostas e Inversas</p>
+    <button id="btn-slides" onclick="toggleSlides()">📺 Iniciar Modo Slides</button>
+</header>
+<div class="container"><main class="conteudo-principal"><div class="secao-aula">
+
+<div class="container-resumo" id="resumo">
+    <h3>📚 Resumo</h3>
+    <section class="resumo-conteudo">
+        <p>A <strong>função composta</strong> $g \circ f$ aplica primeiro $f$ e depois $g$: $(g \circ f)(x) = g(f(x))$. A <strong>função inversa</strong> $f^{-1}$ "desfaz" o que $f$ faz: se $f(a) = b$, então $f^{-1}(b) = a$. Só tem inversa a função <strong>bijetora</strong> (injetora e sobrejetora), e os gráficos de $f$ e $f^{-1}$ são simétricos em relação à reta $y = x$.</p>
+        <p style="text-align: center;">$$(g \circ f)(x) = g(f(x)) \qquad f(a) = b \iff f^{-1}(b) = a \qquad f(f^{-1}(x)) = f^{-1}(f(x)) = x$$</p>
+    </section>
+</div>
+
+<section class="conteudo-teorico-completo" id="teoria">
+    <div class="passo-teoria">
+        <h3>📖 Funções Compostas e Inversas</h3>
+        <h4>1. Função Composta</h4>
+        <p>Pense em duas "máquinas" ligadas em sequência: o número $x$ entra em $f$, sai $f(x)$, que entra em $g$ e sai $g(f(x))$.</p>
+        <figure class="figura-aula figura-grande">
+            <svg viewBox="0 0 640 120" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Esquema da composição: x entra em f, sai f(x), que entra em g e sai g(f(x))" style="width:100%; max-width:600px; display:block; margin:0 auto;">
+  <defs><marker id="seta29" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#2c3e50"/></marker></defs>
+  <g stroke="#2c3e50" stroke-width="2" fill="none" marker-end="url(#seta29)">
+    <line x1="40" y1="60" x2="128" y2="60"/><line x1="232" y1="60" x2="358" y2="60"/><line x1="462" y1="60" x2="555" y2="60"/>
+  </g>
+  <rect x="130" y="30" width="100" height="60" rx="10" fill="#3498db"/><rect x="360" y="30" width="100" height="60" rx="10" fill="#e67e22"/>
+  <g font-family="Oswald, sans-serif" font-size="22" text-anchor="middle">
+    <text x="180" y="68" fill="#fff">f</text><text x="410" y="68" fill="#fff">g</text>
+    <text x="25" y="67" fill="#2c3e50">x</text><text x="295" y="50" fill="#2c3e50" font-size="18">f(x)</text>
+    <text x="580" y="50" fill="#2c3e50" font-size="18">g(f(x))</text>
+  </g>
+  <text x="300" y="112" font-family="Oswald, sans-serif" font-size="14" text-anchor="middle" fill="#2c3e50">(g ∘ f)(x) = g(f(x)): primeiro aplica-se f, depois g</text>
+</svg>
+            <figcaption>Figura 1: A composição como duas máquinas em sequência.</figcaption>
+        </figure>
+        <p style="text-align: center; font-size: 1.15rem; background-color: #f8f9fa; padding: 15px; border-left: 5px solid #3498db; margin: 20px 0;">
+            $$(g \circ f)(x) = g(f(x)) \qquad\qquad (f \circ g)(x) = f(g(x))$$
+        </p>
+        <ul>
+            <li><strong>A ordem importa:</strong> em geral, $f \circ g \neq g \circ f$. Com $f(x) = 2x + 1$ e $g(x) = x^2$: $f(g(x)) = 2x^2 + 1$, mas $g(f(x)) = (2x + 1)^2$;</li>
+            <li>Para obter a lei de $f(g(x))$, substitua cada $x$ da lei de $f$ pela expressão de $g(x)$ (entre parênteses!);</li>
+            <li>A composta $g \circ f$ só existe para os $x$ do domínio de $f$ cujas imagens $f(x)$ estão no domínio de $g$.</li>
+        </ul>
+    </div>
+
+    <div class="passo-teoria">
+        <h4>2. Descobrindo uma das Funções</h4>
+        <ul>
+            <li><strong>Conhecidas $f$ e $f \circ g$</strong> (a de fora): escreva $f(g(x))$ usando a lei de $f$ e isole $g(x)$. Ex.: $f(x) = 2x + 3$ e $f(g(x)) = 6x - 1 \Rightarrow 2g(x) + 3 = 6x - 1 \Rightarrow g(x) = 3x - 2$;</li>
+            <li><strong>Conhecidas $g$ e $f \circ g$</strong> (a de dentro): faça $u = g(x)$, escreva $x$ em função de $u$ e substitua.</li>
+        </ul>
+    </div>
+
+    <div class="passo-teoria">
+        <h4>3. Função Inversa</h4>
+        <ul>
+            <li>$f$ é <strong>injetora</strong> quando valores diferentes de $x$ têm imagens diferentes, e <strong>sobrejetora</strong> quando a imagem é todo o contradomínio. Sendo as duas coisas (<strong>bijetora</strong>), $f$ tem inversa;</li>
+            <li><strong>Como calcular:</strong> escreva $y = f(x)$, troque $x$ por $y$ (e $y$ por $x$) e isole $y$;</li>
+            <li>O domínio de $f^{-1}$ é a imagem de $f$, e a imagem de $f^{-1}$ é o domínio de $f$;</li>
+            <li>$f(f^{-1}(x)) = x$ e $f^{-1}(f(x)) = x$: uma função desfaz a outra.</li>
+        </ul>
+        <p>Exemplo: $f(x) = 2x + 1 \Rightarrow x = 2y + 1 \Rightarrow f^{-1}(x) = \dfrac{x - 1}{2}$.</p>
+    </div>
+
+    <div class="passo-teoria">
+        <h4>4. Gráfico da Inversa</h4>
+        <p>Se o ponto $(a, b)$ está no gráfico de $f$, o ponto $(b, a)$ está no gráfico de $f^{-1}$. Por isso os dois gráficos são <strong>simétricos em relação à reta</strong> $y = x$ (a bissetriz dos quadrantes ímpares).</p>
+        <figure class="figura-aula figura-grande">
+            <svg viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Gráficos de f(x) = 2x + 1 e de sua inversa, simétricos em relação à reta y = x" style="width:100%; max-width:330px; display:block; margin:0 auto;">
+  <line x1="30" y1="30" x2="30" y2="270" stroke="#ecf0f1"/><line x1="30" y1="30" x2="270" y2="30" stroke="#ecf0f1"/>
+  <line x1="54" y1="30" x2="54" y2="270" stroke="#ecf0f1"/><line x1="30" y1="54" x2="270" y2="54" stroke="#ecf0f1"/>
+  <line x1="78" y1="30" x2="78" y2="270" stroke="#ecf0f1"/><line x1="30" y1="78" x2="270" y2="78" stroke="#ecf0f1"/>
+  <line x1="102" y1="30" x2="102" y2="270" stroke="#ecf0f1"/><line x1="30" y1="102" x2="270" y2="102" stroke="#ecf0f1"/>
+  <line x1="126" y1="30" x2="126" y2="270" stroke="#ecf0f1"/><line x1="30" y1="126" x2="270" y2="126" stroke="#ecf0f1"/>
+  <line x1="150" y1="30" x2="150" y2="270" stroke="#ecf0f1"/><line x1="30" y1="150" x2="270" y2="150" stroke="#ecf0f1"/>
+  <line x1="174" y1="30" x2="174" y2="270" stroke="#ecf0f1"/><line x1="30" y1="174" x2="270" y2="174" stroke="#ecf0f1"/>
+  <line x1="198" y1="30" x2="198" y2="270" stroke="#ecf0f1"/><line x1="30" y1="198" x2="270" y2="198" stroke="#ecf0f1"/>
+  <line x1="222" y1="30" x2="222" y2="270" stroke="#ecf0f1"/><line x1="30" y1="222" x2="270" y2="222" stroke="#ecf0f1"/>
+  <line x1="246" y1="30" x2="246" y2="270" stroke="#ecf0f1"/><line x1="30" y1="246" x2="270" y2="246" stroke="#ecf0f1"/>
+  <line x1="270" y1="30" x2="270" y2="270" stroke="#ecf0f1"/><line x1="30" y1="270" x2="270" y2="270" stroke="#ecf0f1"/>
+  <line x1="25" y1="150" x2="275" y2="150" stroke="#2c3e50" stroke-width="1.5"/><line x1="150" y1="275" x2="150" y2="25" stroke="#2c3e50" stroke-width="1.5"/>
+  <line x1="30" y1="270" x2="270" y2="30" stroke="#7f8c8d" stroke-width="1.5" stroke-dasharray="6,4"/>
+  <line x1="78" y1="270" x2="198" y2="30" stroke="#3498db" stroke-width="3"/>
+  <line x1="30" y1="222" x2="270" y2="102" stroke="#e74c3c" stroke-width="3"/>
+  <circle cx="174" cy="78" r="5" fill="#3498db"/>
+  <circle cx="222" cy="126" r="5" fill="#e74c3c"/>
+  <line x1="174" y1="78" x2="222" y2="126" stroke="#2c3e50" stroke-width="1.2" stroke-dasharray="3,3"/>
+  <g font-family="Oswald, sans-serif" font-size="13">
+    <text x="116" y="72" fill="#3498db">(1, 3)</text><text x="228" y="142" fill="#e74c3c">(3, 1)</text>
+    <text x="202" y="44" fill="#3498db">f</text><text x="240" y="94" fill="#e74c3c">f⁻¹</text>
+    <text x="240" y="32" fill="#7f8c8d">y = x</text>
+  </g>
+</svg>
+            <figcaption>Figura 2: $f(x) = 2x + 1$ (azul) e $f^{-1}(x) = \frac{x - 1}{2}$ (vermelho). O ponto $(1, 3)$ de $f$ corresponde ao ponto $(3, 1)$ de $f^{-1}$.</figcaption>
+        </figure>
+    </div>
+</section>
+
+<section class="aplicacoes-reais" id="aplicacoes">
+    <h3>💡 Matemática em Ação</h3>
+    <div class="cards-aplicacao">
+        <div class="card">
+            <h4>🌡️ Celsius e Fahrenheit</h4>
+            <p>A conversão $F = 1{,}8\,C + 32$ é uma função; a sua inversa, $C = \dfrac{F - 32}{1{,}8}$, faz o caminho de volta. Aplicar uma e depois a outra devolve a temperatura original.</p>
+        </div>
+        <div class="card" style="border-left-color: #2ecc71;">
+            <h4>🛒 Desconto e Imposto</h4>
+            <p>Um preço sofre desconto $d(x) = 0{,}9x$ e depois imposto $t(x) = 1{,}2x$: o valor final é a composta $t(d(x)) = 1{,}08x$. Em códigos secretos, a mensagem é codificada por uma função e decodificada pela sua inversa.</p>
+        </div>
+    </div>
+</section>
+<section class="questoes-resolvidas" id="resolvidas">
+    <h3>✅ 5 Questões Resolvidas (R 1 a 5)</h3>
+    <article class="questao">
+        <h4>R 1: A Ordem Importa</h4>
+        <p><strong>Enunciado:</strong> Sendo $f(x) = 2x + 1$ e $g(x) = x^2$, determine $f(g(x))$ e $g(f(x))$ e calcule $f(g(2))$ e $g(f(2))$.</p>
+        <div class="resolucao-bloco"><p><strong>Resolução:</strong><br>$f(g(x)) = 2 \cdot g(x) + 1 = \mathbf{2x^2 + 1}$.<br>$g(f(x)) = (f(x))^2 = (2x + 1)^2 = \mathbf{4x^2 + 4x + 1}$.<br>$f(g(2)) = 2 \cdot 4 + 1 = \mathbf{9}$ e $g(f(2)) = 5^2 = \mathbf{25}$: em geral, $f \circ g \neq g \circ f$.</p></div>
+    </article>
+    <article class="questao">
+        <h4>R 2: Compondo f com f</h4>
+        <p><strong>Enunciado:</strong> Sendo $f(x) = 3x - 2$, determine $f(f(x))$.</p>
+        <div class="resolucao-bloco"><p><strong>Resolução:</strong><br>$f(f(x)) = 3 \cdot f(x) - 2 = 3(3x - 2) - 2$.<br>$f(f(x)) = 9x - 6 - 2 = \mathbf{9x - 8}$.</p></div>
+    </article>
+    <article class="questao">
+        <h4>R 3: A Função de Dentro</h4>
+        <p><strong>Enunciado:</strong> Sabendo que $f(x) = 2x + 3$ e $f(g(x)) = 6x - 1$, determine $g(x)$.</p>
+        <div class="resolucao-bloco"><p><strong>Resolução:</strong><br>$f(g(x)) = 2 \cdot g(x) + 3$. Igualando: $2\,g(x) + 3 = 6x - 1$.<br>$2\,g(x) = 6x - 4 \implies g(x) = \mathbf{3x - 2}$.<br>Conferência: $f(3x - 2) = 2(3x - 2) + 3 = 6x - 1$ ✓</p></div>
+    </article>
+    <article class="questao">
+        <h4>R 4: Inversa da Função Afim</h4>
+        <p><strong>Enunciado:</strong> Determine a inversa de $f(x) = 3x - 6$ e verifique que $f(f^{-1}(x)) = x$.</p>
+        <div class="resolucao-bloco"><p><strong>Resolução:</strong><br>$y = 3x - 6$. Trocando $x$ e $y$: $x = 3y - 6$.<br>Isolando $y$: $y = \dfrac{x + 6}{3}$, ou seja, $f^{-1}(x) = \mathbf{\dfrac{x + 6}{3}}$.<br>Verificação: $f\left(\dfrac{x + 6}{3}\right) = 3 \cdot \dfrac{x + 6}{3} - 6 = x$ ✓</p></div>
+    </article>
+    <article class="questao">
+        <h4>R 5: Inversa Racional</h4>
+        <p><strong>Enunciado:</strong> Determine a inversa de $f(x) = \dfrac{2x + 1}{x - 3}$, definida para $x \neq 3$, e indique o domínio da inversa.</p>
+        <div class="resolucao-bloco"><p><strong>Resolução:</strong><br>Trocando $x$ e $y$: $x = \dfrac{2y + 1}{y - 3} \implies x(y - 3) = 2y + 1 \implies xy - 2y = 3x + 1$.<br>$y(x - 2) = 3x + 1 \implies f^{-1}(x) = \mathbf{\dfrac{3x + 1}{x - 2}}$.<br>Domínio da inversa: $x \neq 2$ (que é exatamente a imagem de $f$: o domínio e a imagem trocam de papel).</p></div>
+    </article>
+</section>
+
+<section class="questoes-propostas" id="propostas">
+    <h3>✍️ 10 Questões Propostas (P 6 a 15)</h3>
+    <article class="questao">
+        <h4>P 6: Valores da Composta</h4>
+        <p><strong>Enunciado:</strong> Sendo $f(x) = x + 4$ e $g(x) = 5x$, calcule $f(g(3))$ e $g(f(3))$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>$g(3) = 15 \implies f(g(3)) = 15 + 4 = \mathbf{19}$.<br>$f(3) = 7 \implies g(f(3)) = 5 \cdot 7 = \mathbf{35}$.</p></div>
+    </article>
+    <article class="questao">
+        <h4>P 7: Lei da Composta</h4>
+        <p><strong>Enunciado:</strong> Sendo $f(x) = x^2 - 1$ e $g(x) = x + 2$, determine $f(g(x))$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>$f(g(x)) = (x + 2)^2 - 1 = x^2 + 4x + 4 - 1$.<br>$f(g(x)) = \mathbf{x^2 + 4x + 3}$.</p></div>
+    </article>
+    <article class="questao">
+        <h4>P 8: Três Composições</h4>
+        <p><strong>Enunciado:</strong> Sendo $f(x) = 2x + 1$, calcule $f(f(f(0)))$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>$f(0) = 1$, $f(1) = 3$ e $f(3) = 7$.<br>$f(f(f(0))) = \mathbf{7}$.</p></div>
+    </article>
+    <article class="questao">
+        <h4>P 9: Descobrindo a Função de Fora</h4>
+        <p><strong>Enunciado:</strong> Sabendo que $g(x) = x - 3$ e $f(g(x)) = 2x - 5$, determine $f(x)$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>Seja $u = g(x) = x - 3$, ou seja, $x = u + 3$. Então $f(u) = 2(u + 3) - 5 = 2u + 1$.<br>$f(x) = \mathbf{2x + 1}$.</p></div>
+    </article>
+    <article class="questao">
+        <h4>P 10: Inversa da Afim</h4>
+        <p><strong>Enunciado:</strong> Determine a inversa de $f(x) = 5x + 2$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>$x = 5y + 2 \implies y = \dfrac{x - 2}{5}$.<br>$f^{-1}(x) = \mathbf{\dfrac{x - 2}{5}}$.</p></div>
+    </article>
+    <article class="questao">
+        <h4>P 11: Valor da Inversa</h4>
+        <p><strong>Enunciado:</strong> Sendo $f(x) = \dfrac{x - 1}{4}$, calcule $f^{-1}(3)$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>$f^{-1}(3)$ é o número $a$ tal que $f(a) = 3$: $\dfrac{a - 1}{4} = 3 \implies a = 13$.<br>$f^{-1}(3) = \mathbf{13}$.</p></div>
+    </article>
+    <article class="questao">
+        <h4>P 12: Inversa da Cúbica</h4>
+        <p><strong>Enunciado:</strong> Sendo $f(x) = x^3$, determine $f^{-1}(x)$ e calcule $f^{-1}(-8)$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>$x = y^3 \implies f^{-1}(x) = \sqrt[3]{x}$.<br>$f^{-1}(-8) = \sqrt[3]{-8} = \mathbf{-2}$.</p></div>
+    </article>
+    <article class="questao">
+        <h4>P 13: Propriedades da Inversa</h4>
+        <p><strong>Enunciado:</strong> Uma função bijetora $f$ satisfaz $f(2) = 7$. Calcule $f^{-1}(7)$ e $f(f^{-1}(10))$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>$f(2) = 7 \iff f^{-1}(7) = \mathbf{2}$.<br>Uma função “desfaz” a outra: $f(f^{-1}(10)) = \mathbf{10}$.</p></div>
+    </article>
+    <article class="questao">
+        <h4>P 14: Inversa Racional</h4>
+        <p><strong>Enunciado:</strong> Determine a inversa de $f(x) = \dfrac{x + 1}{x - 2}$, $x \neq 2$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>$x = \dfrac{y + 1}{y - 2} \implies xy - 2x = y + 1 \implies y(x - 1) = 2x + 1$.<br>$f^{-1}(x) = \mathbf{\dfrac{2x + 1}{x - 1}}$, $x \neq 1$.</p></div>
+    </article>
+    <article class="questao">
+        <h4>P 15: Interseção com a Inversa</h4>
+        <p><strong>Enunciado:</strong> Determine o ponto em que o gráfico de $f(x) = 2x + 4$ intersecta o gráfico de sua inversa.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>Para funções crescentes, a interseção está sobre a reta $y = x$: $2x + 4 = x \implies x = -4$.<br>Ponto: $\mathbf{(-4, -4)}$. (Conferência: $f^{-1}(x) = \frac{x - 4}{2}$ e $f^{-1}(-4) = -4$.)</p></div>
+    </article>
+</section>
+
+<section class="TESTE" id="testes">
+    <h3>🎓 TESTES (T 16 a 20)</h3>
+    <article class="questao">
+        <h4>T 16: (ESA) A Composta de Duas Afins</h4>
+        <p>Sejam $f$ a função dada por $f(x) = 2x + 4$ e $g$ a função dada por $g(x) = 3x - 2$.</p>
+        <p>A função $f \circ g$ deve ser dada por</p>
+        <p>A) $f(g(x)) = 6x$<br>B) $f(g(x)) = 6x + 4$<br>C) $f(g(x)) = 2x - 2$<br>D) $f(g(x)) = 3x + 4$<br>E) $f(g(x)) = 3x + 2$</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>A</strong>.<br>$f(g(x)) = 2 \cdot g(x) + 4 = 2(3x - 2) + 4$.<br>$f(g(x)) = 6x - 4 + 4 = \mathbf{6x}$. Alternativa <strong>A</strong>.</p></div>
+    </article>
+    <article class="questao">
+        <h4>T 17: (EsPCEx) A Composta Negativa</h4>
+        <p>Sejam $f(x) = 4x^2 - 12x + 5$ e $g(x) = x + 2$ funções reais.</p>
+        <p>O menor inteiro para o qual $f(g(x)) < 0$ é</p>
+        <p>A) $-2$.<br>B) $-1$.<br>C) $0$.<br>D) $1$.<br>E) $2$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>B</strong>.<br>$f(g(x)) = 4(x + 2)^2 - 12(x + 2) + 5 = 4x^2 + 16x + 16 - 12x - 24 + 5 = 4x^2 + 4x - 3$.<br>Raízes: $x = \dfrac{-4 \pm 8}{8}$, isto é, $-\dfrac{3}{2}$ e $\dfrac{1}{2}$. A parábola (concavidade para cima) é negativa entre as raízes: $-\dfrac{3}{2} < x < \dfrac{1}{2}$.<br>Inteiros nesse intervalo: $-1$ e $0$. O menor é $\mathbf{-1}$. Alternativa <strong>B</strong>.</p></div>
+    </article>
+    <article class="questao">
+        <h4>T 18: (EEAR) O Valor da Inversa</h4>
+        <p>Seja a função $f: \mathbb{R} \to \mathbb{R}$ definida por $f(x) = 4x - 3$.</p>
+        <p>Se $f^{-1}$ é a função inversa de $f$, então $f^{-1}(5)$ é</p>
+        <p>A) 17.<br>B) $\dfrac{1}{17}$.<br>C) 2.<br>D) $\dfrac{1}{2}$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>C</strong>.<br>$f^{-1}(5)$ é o valor $a$ tal que $f(a) = 5$: $4a - 3 = 5 \implies a = 2$.<br>Ou, pela lei da inversa: $f^{-1}(x) = \dfrac{x + 3}{4}$ e $f^{-1}(5) = \dfrac{8}{4} = \mathbf{2}$. Alternativa <strong>C</strong>. (A alternativa A é $f(5)$.)</p></div>
+    </article>
+    <article class="questao">
+        <h4>T 19: (UERN) Os Coeficientes da Inversa</h4>
+        <p>Seja $f(x)$ uma função do primeiro grau que intercepta os eixos cartesianos nos pontos $(0, 4)$ e $(2, 0)$.</p>
+        <p>O produto dos coeficientes da função inversa de $f(x)$ é</p>
+        <p>A) 2.<br>B) $-1$.<br>C) 4.<br>D) $-2$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>B</strong>.<br>Coeficiente linear $4$ e angular $\dfrac{0 - 4}{2 - 0} = -2$: $f(x) = -2x + 4$.<br>Inversa: $x = -2y + 4 \implies y = -\dfrac{x}{2} + 2$, com coeficientes $-\dfrac{1}{2}$ e $2$.<br>Produto: $-\dfrac{1}{2} \cdot 2 = \mathbf{-1}$. Alternativa <strong>B</strong>.</p></div>
+    </article>
+    <article class="questao">
+        <h4>T 20: (Unicamp) A Transformação de Möbius</h4>
+        <p>Uma transformação de Möbius é um quociente de polinômios de grau $1$. Considere a função $y = f(x) = \dfrac{x + 1}{x - 1}$ definida para $x \in \mathbb{R}$, $x \neq 1$.</p>
+        <p>Sobre a função inversa de $f(x)$, é correto afirmar que</p>
+        <p>A) $f^{-1}(x) = f(x)$, para $x \neq 1$.<br>B) $f^{-1}(x) = \dfrac{1}{f(x)}$, para $x \neq \pm 1$.<br>C) $f^{-1}(x) = -f(x)$, para $x \neq 1$.<br>D) $f^{-1}(x) = f(-x)$, para $x \neq 1$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>A</strong>.<br>Trocando $x$ e $y$: $x = \dfrac{y + 1}{y - 1} \implies xy - x = y + 1 \implies y(x - 1) = x + 1$.<br>$f^{-1}(x) = \dfrac{x + 1}{x - 1} = f(x)$: a função é a sua própria inversa. Alternativa <strong>A</strong>.<br>Conferência: $f(f(2)) = f(3) = \dfrac{4}{2} = 2$ ✓</p></div>
+    </article>
+</section>
+
+</div></main>
+<aside class="menu-lateral"><iframe src="../menu_matematica.html" style="width:100%; border:none; height:600px;"></iframe></aside>
+</div>
+<script>
+function toggleGabarito(botao) {
+    const gabarito = botao.nextElementSibling;
+    if (gabarito.style.display === "none" || gabarito.style.display === "") {
+        gabarito.style.display = "block"; botao.textContent = "Esconder Gabarito e Resolução"; botao.style.backgroundColor = "#2c3e50";
+    } else {
+        gabarito.style.display = "none"; botao.textContent = "Ver Gabarito e Resolução"; botao.style.backgroundColor = "#3498db";
+    }
+}
+function toggleMenu() { const m = document.getElementById("menu-principal"); if (m) m.classList.toggle("ativo"); }
+let slideAtual = 0; let slides = [];
+function prepararSlides() { slides = Array.from(document.querySelectorAll('.container-resumo, .passo-teoria, .card, .questao')); }
+function toggleSlides() {
+    prepararSlides(); const body = document.body;
+    if (!body.classList.contains('modo-slides')) { body.classList.add('modo-slides'); slideAtual = 0; mostrarSlide(slideAtual); }
+    else { body.classList.remove('modo-slides'); slides.forEach(s => { s.classList.remove('slide-ativo'); s.style.display = ''; }); }
+}
+function mostrarSlide(n) {
+    if (!slides.length) return;
+    slides.forEach(s => { s.classList.remove('slide-ativo'); s.style.display = 'none'; });
+    const slide = slides[n]; slide.classList.add('slide-ativo');
+    slide.querySelectorAll('.gabarito-resolucao').forEach(g => g.style.display = 'none');
+    slide.querySelectorAll('.btn-gabarito').forEach(b => { b.textContent = "Ver Gabarito e Resolução"; b.style.backgroundColor = "#3498db"; });
+    const pHeader = document.querySelector('header p');
+    if (pHeader) { const partes = pHeader.innerText.split('|'); if (partes.length > 1) {
+        document.getElementById('slide-info-serie').innerText = partes[0].trim();
+        document.getElementById('slide-info-aula').innerText = partes[1].trim(); } }
+    document.getElementById('contador-slide').innerText = (n + 1) + " / " + slides.length;
+    if (window.MathJax && window.MathJax.typesetPromise) { MathJax.typesetPromise(); }
+}
+function mudarSlide(d) { slideAtual += d; if (slideAtual >= slides.length) slideAtual = 0; if (slideAtual < 0) slideAtual = slides.length - 1; mostrarSlide(slideAtual); }
+document.addEventListener('keydown', function(event) {
+    if (document.body.classList.contains('modo-slides')) {
+        switch(event.key) {
+            case 'ArrowRight': case 'PageDown': case 'Enter': case ' ': event.preventDefault(); mudarSlide(1); break;
+            case 'ArrowLeft': case 'PageUp': event.preventDefault(); mudarSlide(-1); break;
+            case 'Escape': event.preventDefault(); toggleSlides(); break;
+        }
+    }
+});
+</script>
+<div class="controles-slides">
+    <div id="slide-info-serie" class="info-lateral"></div>
+    <div class="botoes-centrais">
+        <button class="btn-nav" onclick="mudarSlide(-1)">⬅ Anterior</button>
+        <span id="contador-slide"></span>
+        <button class="btn-nav" onclick="mudarSlide(1)">Próximo ➡</button>
+        <button class="btn-nav" onclick="toggleSlides()" style="background:#e74c3c;">Sair</button>
+    </div>
+    <div id="slide-info-aula" class="info-lateral" style="text-align: right;"></div>
+</div>
+</body>
+</html>
