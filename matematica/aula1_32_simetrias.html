@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1º Ano: Aula 32 - Simetrias no Plano Cartesiano</title>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../estilo.css">
+    <script>
+        MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']], processEscapes: true } };
+    </script>
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        body.modo-slides { overflow: hidden !important; background-color: #1a1a1a !important; margin: 0; padding: 0; }
+        body.modo-slides .menu-lateral, body.modo-slides header, body.modo-slides .menu-toggle, body.modo-slides #btn-slides, body.modo-slides .nav-global { display: none !important; }
+        .slide-ativo { display: flex !important; flex-direction: column; align-items: center; justify-content: center; position: fixed; top: 0; left: 0; width: 100vw; height: calc(100vh - 70px); background: #ffffff; padding: 40px; z-index: 999; overflow-y: auto !important; box-sizing: border-box; text-align: left; }
+        .slide-ativo > * { max-width: 900px; width: 100%; }
+        .controles-slides { position: fixed; bottom: 0; left: 0; width: 100%; height: 70px; background: #2c3e50; color: white; display: none; justify-content: space-between; align-items: center; padding: 0 20px; z-index: 1001; box-sizing: border-box; }
+        body.modo-slides .controles-slides { display: flex !important; }
+        .info-lateral { flex: 1; font-family: 'Oswald', sans-serif; font-size: 0.9rem; color: #bdc3c7; }
+        .botoes-centrais { display: flex; align-items: center; gap: 15px; justify-content: center; flex: 2; }
+        .btn-nav { padding: 10px 20px; background: #3498db; color: white; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; font-size: 0.9rem; }
+        .btn-nav:hover { background: #2980b9; }
+        #contador-slide { font-family: 'Oswald', sans-serif; min-width: 60px; text-align: center; font-size: 1.1rem; }
+    </style>
+</head>
+<body>
+<button class="menu-toggle" onclick="toggleMenu()">☰</button>
+<nav id="menu-principal" class="nav-global"><ul>
+    <li><a href="../index.html">🏠 Início</a></li>
+    <li><a href="../ensino_medio.html">📚 Ensino Médio</a></li>
+    <li><a href="../ensino_superior.html">🎓 Ensino Superior</a></li>
+</ul></nav>
+<header id="topo">
+    <h1>MATEMÁTICA EM</h1>
+    <p>1º Ano | Aula 32: Simetrias no Plano Cartesiano</p>
+    <button id="btn-slides" onclick="toggleSlides()">📺 Iniciar Modo Slides</button>
+</header>
+<div class="container"><main class="conteudo-principal"><div class="secao-aula">
+
+<div class="container-resumo" id="resumo">
+    <h3>📚 Resumo</h3>
+    <section class="resumo-conteudo">
+        <p>Dois pontos são <strong>simétricos em relação a uma reta</strong> quando ela é a mediatriz do segmento que os une (o ponto médio está na reta e o segmento é perpendicular a ela). São <strong>simétricos em relação a um ponto</strong> $M$ quando $M$ é o ponto médio do segmento. Nos eixos, na origem e nas bissetrizes, basta trocar sinais e/ou a ordem das coordenadas.</p>
+        <p style="text-align: center;">$$\text{eixo } x\!: (x, -y) \quad \text{eixo } y\!: (-x, y) \quad \text{origem}\!: (-x, -y) \quad y = x\!: (y, x) \quad P' = 2M - P$$</p>
+    </section>
+</div>
+
+<section class="conteudo-teorico-completo" id="teoria">
+    <div class="passo-teoria">
+        <h3>📖 Simetrias no Plano Cartesiano</h3>
+        <h4>1. Simetria em Relação aos Eixos, à Origem e às Bissetrizes</h4>
+        <p>Pense na reta como um <strong>espelho</strong>: o simétrico fica do outro lado, à mesma distância, na mesma perpendicular.</p>
+        <table style="margin: 15px auto; border-collapse: collapse; text-align: center; font-size: 1.05rem;">
+  <tr style="background-color: #2c3e50; color: white;"><th style="padding: 6px 14px;">Simetria em relação a</th><th style="padding: 6px 14px;">$P(x, y)$ vira</th><th style="padding: 6px 14px;">Exemplo: $(3, 2)$</th></tr>
+  <tr><td style="padding: 5px 14px; border: 1px solid #ccc;">eixo $x$</td><td style="padding: 5px 14px; border: 1px solid #ccc;">$(x, -y)$</td><td style="padding: 5px 14px; border: 1px solid #ccc;">$(3, -2)$</td></tr>
+  <tr><td style="padding: 5px 14px; border: 1px solid #ccc;">eixo $y$</td><td style="padding: 5px 14px; border: 1px solid #ccc;">$(-x, y)$</td><td style="padding: 5px 14px; border: 1px solid #ccc;">$(-3, 2)$</td></tr>
+  <tr><td style="padding: 5px 14px; border: 1px solid #ccc;">origem</td><td style="padding: 5px 14px; border: 1px solid #ccc;">$(-x, -y)$</td><td style="padding: 5px 14px; border: 1px solid #ccc;">$(-3, -2)$</td></tr>
+  <tr><td style="padding: 5px 14px; border: 1px solid #ccc;">reta $y = x$</td><td style="padding: 5px 14px; border: 1px solid #ccc;">$(y, x)$</td><td style="padding: 5px 14px; border: 1px solid #ccc;">$(2, 3)$</td></tr>
+  <tr><td style="padding: 5px 14px; border: 1px solid #ccc;">reta $y = -x$</td><td style="padding: 5px 14px; border: 1px solid #ccc;">$(-y, -x)$</td><td style="padding: 5px 14px; border: 1px solid #ccc;">$(-2, -3)$</td></tr>
+</table>
+        <figure class="figura-aula figura-grande">
+            <svg viewBox="0 0 320 320" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="O ponto P(3, 2) e seus simétricos: (3, −2) em relação ao eixo x, (−3, 2) ao eixo y, (−3, −2) à origem, (2, 3) à reta y = x e (−2, −3) à reta y = −x" style="width:100%; max-width:360px; display:block; margin:0 auto;">
+  <line x1="16" y1="16" x2="16" y2="304" stroke="#ecf0f1"/><line x1="16" y1="16" x2="304" y2="16" stroke="#ecf0f1"/>
+  <line x1="52" y1="16" x2="52" y2="304" stroke="#ecf0f1"/><line x1="16" y1="52" x2="304" y2="52" stroke="#ecf0f1"/>
+  <line x1="88" y1="16" x2="88" y2="304" stroke="#ecf0f1"/><line x1="16" y1="88" x2="304" y2="88" stroke="#ecf0f1"/>
+  <line x1="124" y1="16" x2="124" y2="304" stroke="#ecf0f1"/><line x1="16" y1="124" x2="304" y2="124" stroke="#ecf0f1"/>
+  <line x1="160" y1="16" x2="160" y2="304" stroke="#ecf0f1"/><line x1="16" y1="160" x2="304" y2="160" stroke="#ecf0f1"/>
+  <line x1="196" y1="16" x2="196" y2="304" stroke="#ecf0f1"/><line x1="16" y1="196" x2="304" y2="196" stroke="#ecf0f1"/>
+  <line x1="232" y1="16" x2="232" y2="304" stroke="#ecf0f1"/><line x1="16" y1="232" x2="304" y2="232" stroke="#ecf0f1"/>
+  <line x1="268" y1="16" x2="268" y2="304" stroke="#ecf0f1"/><line x1="16" y1="268" x2="304" y2="268" stroke="#ecf0f1"/>
+  <line x1="304" y1="16" x2="304" y2="304" stroke="#ecf0f1"/><line x1="16" y1="304" x2="304" y2="304" stroke="#ecf0f1"/>
+  <line x1="5.200000000000017" y1="160" x2="314.79999999999995" y2="160" stroke="#2c3e50" stroke-width="1.5"/><line x1="160" y1="314.79999999999995" x2="160" y2="5.200000000000017" stroke="#2c3e50" stroke-width="1.5"/>
+  <line x1="16" y1="304" x2="304" y2="16" stroke="#8e44ad" stroke-width="1.3" stroke-dasharray="6,4"/>
+  <line x1="16" y1="16" x2="304" y2="304" stroke="#c0392b" stroke-width="1.3" stroke-dasharray="6,4"/>
+  <g font-family="Oswald, sans-serif" font-size="12">
+    <circle cx="268" cy="88" r="5" fill="#2c3e50"/>
+    <text x="276" y="80" fill="#2c3e50" text-anchor="start">P(3, 2)</text>
+    <circle cx="268" cy="232" r="5" fill="#3498db"/>
+    <text x="276" y="248" fill="#3498db" text-anchor="start">eixo x</text>
+    <circle cx="52" cy="88" r="5" fill="#27ae60"/>
+    <text x="44" y="80" fill="#27ae60" text-anchor="end">eixo y</text>
+    <circle cx="52" cy="232" r="5" fill="#e67e22"/>
+    <text x="44" y="248" fill="#e67e22" text-anchor="end">origem</text>
+    <circle cx="232" cy="52" r="5" fill="#8e44ad"/>
+    <text x="224" y="44" fill="#8e44ad" text-anchor="end">y = x</text>
+    <circle cx="88" cy="268" r="5" fill="#c0392b"/>
+    <text x="96" y="284" fill="#c0392b" text-anchor="start">y = −x</text>
+    <text x="300" y="10" fill="#8e44ad" text-anchor="end">y = x</text><text x="300" y="318" fill="#c0392b" text-anchor="end">y = −x</text>
+  </g>
+</svg>
+            <figcaption>Figura 1: O ponto $P(3, 2)$ e seus cinco simétricos.</figcaption>
+        </figure>
+    </div>
+
+    <div class="passo-teoria">
+        <h4>2. Simetria em Relação a um Ponto (Simetria Central)</h4>
+        <p>$P'$ é o simétrico de $P$ em relação a $M$ quando $M$ é o <strong>ponto médio</strong> de $PP'$. Equivale a girar $P$ em $180°$ em torno de $M$:</p>
+        <p style="text-align: center; font-size: 1.15rem; background-color: #f8f9fa; padding: 15px; border-left: 5px solid #3498db; margin: 20px 0;">
+            $$P' = 2M - P = (2x_M - x_P,\; 2y_M - y_P)$$
+        </p>
+        <p>A simetria em relação à origem é o caso $M = (0, 0)$.</p>
+    </div>
+
+    <div class="passo-teoria">
+        <h4>3. Simetria em Relação a uma Reta Qualquer</h4>
+        <ul>
+            <li><strong>Reta vertical</strong> $x = k$: $P(x, y) \to (2k - x,\, y)$. <strong>Reta horizontal</strong> $y = k$: $P(x, y) \to (x,\, 2k - y)$;</li>
+            <li><strong>Reta inclinada</strong> $r$: (1) trace por $P$ a reta $s$ perpendicular a $r$ (coeficientes angulares com produto $-1$); (2) ache $M = r \cap s$; (3) $P' = 2M - P$;</li>
+            <li>O conjunto dos pontos equidistantes de $A$ e $B$ é a <strong>mediatriz</strong> de $AB$: o eixo de simetria que leva $A$ em $B$.</li>
+        </ul>
+    </div>
+
+    <div class="passo-teoria">
+        <h4>4. Simetria de Gráficos</h4>
+        <ul>
+            <li><strong>Função par</strong> ($f(-x) = f(x)$): gráfico simétrico em relação ao <strong>eixo $y$</strong>. Ex.: $x^2$, $x^4 - 2x^2$, $|x|$;</li>
+            <li><strong>Função ímpar</strong> ($f(-x) = -f(x)$): gráfico simétrico em relação à <strong>origem</strong>. Ex.: $x^3$, $x^3 - 4x$;</li>
+            <li><strong>Parábola:</strong> simétrica em relação à reta vertical $x = x_V$. Pontos com a mesma imagem estão à mesma distância do eixo;</li>
+            <li><strong>Função inversa:</strong> os gráficos de $f$ e $f^{-1}$ são simétricos em relação à reta $y = x$.</li>
+        </ul>
+        <figure class="figura-aula figura-grande">
+            <svg viewBox="0 0 280 250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Parábola y = x² − 4x + 3, simétrica em relação à reta x = 2; os pontos (0, 3) e (4, 3) são simétricos" style="width:100%; max-width:300px; display:block; margin:0 auto;">
+  <line x1="9.6" y1="200" x2="254.4" y2="200" stroke="#2c3e50" stroke-width="1.5"/>
+  <line x1="60" y1="250.4" x2="60" y2="12.8" stroke="#2c3e50" stroke-width="1.5"/>
+  <line x1="132" y1="250.4" x2="132" y2="20" stroke="#e67e22" stroke-width="1.5" stroke-dasharray="6,4"/>
+  <polyline points="49.2,45.6 52.8,61.8 56.4,77.2 60.0,92.0 63.6,106.0 67.2,119.4 70.8,132.0 74.4,143.8 78.0,155.0 81.6,165.4 85.2,175.2 88.8,184.2 92.4,192.4 96.0,200.0 99.6,206.8 103.2,213.0 106.8,218.4 110.4,223.0 114.0,227.0 117.6,230.2 121.2,232.8 124.8,234.6 128.4,235.6 132.0,236.0 135.6,235.6 139.2,234.6 142.8,232.8 146.4,230.2 150.0,227.0 153.6,223.0 157.2,218.4 160.8,213.0 164.4,206.8 168.0,200.0 171.6,192.4 175.2,184.2 178.8,175.2 182.4,165.4 186.0,155.0 189.6,143.8 193.2,132.0 196.8,119.4 200.4,106.0 204.0,92.0 207.6,77.2 211.2,61.8 214.8,45.6" fill="none" stroke="#3498db" stroke-width="3"/>
+  <line x1="60" y1="92" x2="204" y2="92" stroke="#2c3e50" stroke-width="1.2" stroke-dasharray="3,3"/>
+  <circle cx="60" cy="92" r="5" fill="#e74c3c"/><circle cx="204" cy="92" r="5" fill="#e74c3c"/>
+  <g font-family="Oswald, sans-serif" font-size="12">
+    <text x="68" y="84" fill="#e74c3c">(0, 3)</text><text x="212" y="108" fill="#e74c3c">(4, 3)</text>
+    <text x="138" y="30" fill="#e67e22">x = 2</text>
+    <text x="252.4" y="216" fill="#2c3e50" text-anchor="end">x</text>
+  </g>
+</svg>
+            <figcaption>Figura 2: $y = x^2 - 4x + 3$ é simétrica em relação à reta $x = 2$; $(0, 3)$ e $(4, 3)$ são pontos simétricos.</figcaption>
+        </figure>
+    </div>
+</section>
+
+<section class="aplicacoes-reais" id="aplicacoes">
+    <h3>💡 Matemática em Ação</h3>
+    <div class="cards-aplicacao">
+        <div class="card">
+            <h4>🎮 Computação Gráfica</h4>
+            <p>Para "espelhar" um personagem num jogo, o computador troca o sinal da coordenada $x$ de cada ponto do desenho: é a simetria em relação ao eixo $y$, aplicada a milhares de pontos por segundo.</p>
+        </div>
+        <div class="card" style="border-left-color: #2ecc71;">
+            <h4>📡 Localização</h4>
+            <p>Instalar uma antena ou câmera à mesma distância de dois pontos é escolher um ponto da mediatriz, o eixo de simetria entre eles (como no ENEM PPL 2019).</p>
+        </div>
+    </div>
+</section>
+<section class="questoes-resolvidas" id="resolvidas">
+    <h3>✅ 5 Questões Resolvidas (R 1 a 5)</h3>
+    <article class="questao">
+        <h4>R 1: As Cinco Simetrias</h4>
+        <p><strong>Enunciado:</strong> Dado o ponto $A(4, -3)$, determine o seu simétrico em relação: a) ao eixo $x$; b) ao eixo $y$; c) à origem; d) à bissetriz dos quadrantes ímpares ($y = x$); e) à bissetriz dos quadrantes pares ($y = -x$).</p>
+        <div class="resolucao-bloco"><p><strong>Resolução:</strong><br>a) Eixo $x$: troca o sinal de $y$: $\mathbf{(4, 3)}$. \ b) Eixo $y$: troca o sinal de $x$: $\mathbf{(-4, -3)}$.<br>c) Origem: troca os dois sinais: $\mathbf{(-4, 3)}$.<br>d) $y = x$: troca as coordenadas de lugar: $\mathbf{(-3, 4)}$. \ e) $y = -x$: troca de lugar e de sinal: $\mathbf{(3, -4)}$.</p></div>
+    </article>
+    <article class="questao">
+        <h4>R 2: Simetria Central</h4>
+        <p><strong>Enunciado:</strong> Determine o simétrico do ponto $P(1, 5)$ em relação ao ponto $M(3, 2)$.</p>
+        <div class="resolucao-bloco"><p><strong>Resolução:</strong><br>$M$ é o ponto médio de $PP'$: $\dfrac{1 + x'}{2} = 3$ e $\dfrac{5 + y'}{2} = 2$.<br>$x' = 5$ e $y' = -1$: $P' = \mathbf{(5, -1)}$. (Atalho: $P' = 2M - P = (6 - 1, 4 - 5)$.)</p></div>
+    </article>
+    <article class="questao">
+        <h4>R 3: Retas Verticais e Horizontais</h4>
+        <p><strong>Enunciado:</strong> Determine o simétrico de $P(5, 3)$ em relação: a) à reta $x = 2$; b) à reta $y = -1$.</p>
+        <div class="resolucao-bloco"><p><strong>Resolução:</strong><br>a) $P$ está $3$ unidades à direita de $x = 2$; o simétrico fica $3$ unidades à esquerda: $x' = 2 - 3 = -1$. $P' = \mathbf{(-1, 3)}$.<br>b) $P$ está $4$ unidades acima de $y = -1$; o simétrico fica $4$ abaixo: $y' = -1 - 4 = -5$. $P' = \mathbf{(5, -5)}$.<br>Em geral: em relação a $x = k$, $x' = 2k - x$; em relação a $y = k$, $y' = 2k - y$.</p></div>
+    </article>
+    <article class="questao">
+        <h4>R 4: Simetria em Relação a uma Reta</h4>
+        <p><strong>Enunciado:</strong> Determine o simétrico do ponto $P(3, 0)$ em relação à reta $r$: $y = x + 1$.</p>
+        <div class="resolucao-bloco"><p><strong>Resolução:</strong><br>A reta $s$ que passa por $P$ e é perpendicular a $r$ (coeficiente $1$) tem coeficiente $-1$: $y = -x + 3$.<br>Interseção de $r$ e $s$: $x + 1 = -x + 3 \implies x = 1$, $y = 2$. O ponto $M(1, 2)$ é o ponto médio de $PP'$.<br>$P' = 2M - P = (2 - 3, 4 - 0) = \mathbf{(-1, 4)}$. Conferência: inclinação de $PP'$ é $\frac{4 - 0}{-1 - 3} = -1$ ✓</p></div>
+    </article>
+    <article class="questao">
+        <h4>R 5: O Eixo da Parábola</h4>
+        <p><strong>Enunciado:</strong> Para $f(x) = x^2 - 6x + 8$, tem-se $f(1) = 3$. Sem resolver equações, encontre outro valor de $x$ com $f(x) = 3$.</p>
+        <div class="resolucao-bloco"><p><strong>Resolução:</strong><br>O gráfico é simétrico em relação ao eixo $x = x_V = -\dfrac{-6}{2} = 3$.<br>$x = 1$ está $2$ unidades à esquerda do eixo; seu simétrico está $2$ unidades à direita: $x = \mathbf{5}$.<br>Conferência: $f(5) = 25 - 30 + 8 = 3$ ✓</p></div>
+    </article>
+</section>
+
+<section class="questoes-propostas" id="propostas">
+    <h3>✍️ 10 Questões Propostas (P 6 a 15)</h3>
+    <article class="questao">
+        <h4>P 6: Eixo das Abscissas</h4>
+        <p><strong>Enunciado:</strong> Qual o simétrico de $(-2, 7)$ em relação ao eixo $x$?</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>Mantém $x$ e troca o sinal de $y$.<br>$\mathbf{(-2, -7)}$.</p></div>
+    </article>
+    <article class="questao">
+        <h4>P 7: Origem</h4>
+        <p><strong>Enunciado:</strong> Qual o simétrico de $(5, -1)$ em relação à origem?</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>Trocam-se os sinais das duas coordenadas.<br>$\mathbf{(-5, 1)}$.</p></div>
+    </article>
+    <article class="questao">
+        <h4>P 8: Bissetriz Ímpar</h4>
+        <p><strong>Enunciado:</strong> Qual o simétrico de $(6, -2)$ em relação à reta $y = x$?</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>As coordenadas trocam de lugar.<br>$\mathbf{(-2, 6)}$.</p></div>
+    </article>
+    <article class="questao">
+        <h4>P 9: Triângulo Refletido</h4>
+        <p><strong>Enunciado:</strong> O triângulo $A(1, 1)$, $B(4, 1)$, $C(2, 3)$ é refletido no eixo $y$. Dê os vértices da imagem e compare as áreas.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>$A'(-1, 1)$, $B'(-4, 1)$, $C'(-2, 3)$.<br>A reflexão preserva distâncias: as duas áreas valem $\dfrac{3 \cdot 2}{2} = \mathbf{3}$.</p></div>
+    </article>
+    <article class="questao">
+        <h4>P 10: Encontrando Parâmetros</h4>
+        <p><strong>Enunciado:</strong> Determine $a$ e $b$ para que $P(a + 1, 4)$ e $Q(3, b - 2)$ sejam simétricos em relação ao eixo $y$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>Simetria no eixo $y$: abscissas opostas e ordenadas iguais.<br>$a + 1 = -3 \implies a = \mathbf{-4}$; \ $b - 2 = 4 \implies b = \mathbf{6}$.</p></div>
+    </article>
+    <article class="questao">
+        <h4>P 11: Simétrico de um Ponto</h4>
+        <p><strong>Enunciado:</strong> Qual o simétrico de $P(2, 5)$ em relação ao ponto $M(-1, 3)$?</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>$P' = 2M - P = (-2 - 2, 6 - 5)$.<br>$P' = \mathbf{(-4, 1)}$.</p></div>
+    </article>
+    <article class="questao">
+        <h4>P 12: Reta Vertical</h4>
+        <p><strong>Enunciado:</strong> Qual o simétrico de $(4, 1)$ em relação à reta $x = -1$?</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>$x' = 2 \cdot (-1) - 4 = -6$; a ordenada não muda.<br>$\mathbf{(-6, 1)}$.</p></div>
+    </article>
+    <article class="questao">
+        <h4>P 13: Função Par</h4>
+        <p><strong>Enunciado:</strong> Verifique que $f(x) = x^4 - 2x^2$ é par e diga qual é a simetria do seu gráfico.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>$f(-x) = (-x)^4 - 2(-x)^2 = x^4 - 2x^2 = f(x)$: $f$ é <strong>par</strong>.<br>O gráfico é simétrico em relação ao <strong>eixo</strong> $\mathbf{y}$.</p></div>
+    </article>
+    <article class="questao">
+        <h4>P 14: Função Ímpar</h4>
+        <p><strong>Enunciado:</strong> Sendo $g(x) = x^3 - 4x$, verifique que $g$ é ímpar e use a simetria para obter $g(-1)$ a partir de $g(1)$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>$g(-x) = -x^3 + 4x = -g(x)$: <strong>ímpar</strong> (gráfico simétrico em relação à origem).<br>$g(1) = 1 - 4 = -3 \implies g(-1) = -g(1) = \mathbf{3}$.</p></div>
+    </article>
+    <article class="questao">
+        <h4>P 15: Reflexão numa Reta Inclinada</h4>
+        <p><strong>Enunciado:</strong> Determine o simétrico de $P(4, 0)$ em relação à reta $y = x - 2$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>Perpendicular por $P$: $y = -x + 4$. Interseção: $x - 2 = -x + 4 \implies M(3, 1)$.<br>$P' = 2M - P = (6 - 4, 2 - 0) = \mathbf{(2, 2)}$.</p></div>
+    </article>
+</section>
+
+<section class="TESTE" id="testes">
+    <h3>🎓 TESTES (T 16 a 20)</h3>
+    <article class="questao">
+        <h4>T 16: (UDESC) Simetria de Funções Pares e Ímpares</h4>
+        <p>Uma função $f$ é dita par quando $f(-x) = f(x)$ para todo $x$ do seu domínio, e uma função $g$ é dita ímpar quando $g(-x) = -g(x)$ para todo $x$ do seu domínio. Analise as sentenças:</p>
+        <p>I. O gráfico de uma função ímpar é simétrico em relação à origem do sistema cartesiano.</p>
+        <p>II. O gráfico de uma função par é simétrico em relação à origem do sistema cartesiano.</p>
+        <p>III. O gráfico de uma função ímpar é simétrico em relação ao eixo das ordenadas.</p>
+        <p>IV. O gráfico de uma função par é simétrico em relação ao eixo das ordenadas.</p>
+        <p>V. Os gráficos das funções pares e ímpares possuem a mesma simetria.</p>
+        <p>Assinale a alternativa correta.</p>
+        <p>A) Somente uma sentença está correta.<br>B) Três sentenças estão corretas.<br>C) Duas sentenças estão corretas.<br>D) Quatro sentenças estão corretas.<br>E) Cinco sentenças estão corretas.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>C</strong>.<br>Par: $f(-x) = f(x)$, os pontos $(x, y)$ e $(-x, y)$ estão no gráfico: simetria em relação ao <strong>eixo das ordenadas</strong>. Logo IV é verdadeira e II é falsa.<br>Ímpar: $(x, y)$ e $(-x, -y)$ estão no gráfico: simetria em relação à <strong>origem</strong>. Logo I é verdadeira e III é falsa. V é falsa.<br>Corretas: I e IV, ou seja, $\mathbf{duas}$. Alternativa <strong>C</strong>.</p></div>
+    </article>
+    <article class="questao">
+        <h4>T 17: (Cesgranrio) Duas Reflexões Seguidas</h4>
+        <p>Seja $P = (x, y)$ um ponto do plano. Se $Q$ é o simétrico de $P$ em relação ao eixo dos $y$ e $R$ é o simétrico de $Q$ em relação à reta $y = 1$.</p>
+        <p>As coordenadas de $R$ são</p>
+        <p>A) $(x, 1 - y)$<br>B) $(0, 1)$<br>C) $(-x, 1 - y)$<br>D) $(-x, 2 - y)$<br>E) $(y, -x)$</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>D</strong>.<br>Simetria no eixo $y$: $Q = (-x, y)$.<br>Simetria em relação a $y = 1$: a abscissa se mantém e a ordenada vira $2 \cdot 1 - y = 2 - y$.<br>$R = \mathbf{(-x, 2 - y)}$. Alternativa <strong>D</strong>. (Teste: $P = (1, 3) \to Q = (-1, 3) \to R = (-1, -1)$.)</p></div>
+    </article>
+    <article class="questao">
+        <h4>T 18: (ENEM PPL 2019) A Terceira Câmera</h4>
+        <p>Uma empresa, investindo na segurança, contrata uma firma para instalar mais uma câmera de segurança no teto de uma sala. Para iniciar o serviço, o representante da empresa informa ao instalador que nesta sala já estão instaladas duas câmeras e, a terceira, deverá ser colocada de maneira a ficar equidistante destas. Além disso, ele apresenta outras duas informações: (i) um esboço em um sistema de coordenadas cartesianas, do teto da sala, onde estão inseridas as posições das câmeras 1 e 2, conforme a figura; (ii) cinco relações entre as coordenadas $(x;\, y)$ da posição onde a câmera 3 deverá ser instalada:</p>
+        <p>$R_1$: $y = x$; \ $R_2$: $y = -3x + 5$; \ $R_3$: $y = -3x + 10$; \ $R_4$: $y = \dfrac{1}{3}x + \dfrac{5}{3}$; \ $R_5$: $y = \dfrac{1}{3}x + \dfrac{1}{10}$.</p>
+        <figure class="figura-aula">
+            <svg viewBox="0 0 300 290" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Esboço do teto em coordenadas cartesianas: câmera 1 no ponto (3, 1) e câmera 2 no ponto (2, 4)" style="width:100%; max-width:280px; display:block; margin:0 auto;">
+  <line x1="40" y1="250" x2="40" y2="30" stroke="#ecf0f1"/>
+  <line x1="40" y1="250" x2="260" y2="250" stroke="#ecf0f1"/>
+  <line x1="84" y1="250" x2="84" y2="30" stroke="#ecf0f1"/>
+  <line x1="40" y1="206" x2="260" y2="206" stroke="#ecf0f1"/>
+  <line x1="128" y1="250" x2="128" y2="30" stroke="#ecf0f1"/>
+  <line x1="40" y1="162" x2="260" y2="162" stroke="#ecf0f1"/>
+  <line x1="172" y1="250" x2="172" y2="30" stroke="#ecf0f1"/>
+  <line x1="40" y1="118" x2="260" y2="118" stroke="#ecf0f1"/>
+  <line x1="216" y1="250" x2="216" y2="30" stroke="#ecf0f1"/>
+  <line x1="40" y1="74" x2="260" y2="74" stroke="#ecf0f1"/>
+  <line x1="260" y1="250" x2="260" y2="30" stroke="#ecf0f1"/>
+  <line x1="40" y1="30" x2="260" y2="30" stroke="#ecf0f1"/>
+  <line x1="40" y1="250" x2="277.6" y2="250" stroke="#2c3e50" stroke-width="1.5"/><line x1="40" y1="250" x2="40" y2="12.399999999999977" stroke="#2c3e50" stroke-width="1.5"/>
+  <g font-family="Oswald, sans-serif" font-size="12" fill="#2c3e50" text-anchor="middle">
+    <text x="84" y="266">1</text>
+    <text x="30" y="210">1</text>
+    <text x="128" y="266">2</text>
+    <text x="30" y="166">2</text>
+    <text x="172" y="266">3</text>
+    <text x="30" y="122">3</text>
+    <text x="216" y="266">4</text>
+    <text x="30" y="78">4</text>
+    <text x="260" y="266">5</text>
+    <text x="30" y="34">5</text>
+    <text x="30" y="266">0</text><text x="285.6" y="254">x</text><text x="40" y="6.399999999999977">y</text>
+  </g>
+  <circle cx="172" cy="206" r="7" fill="#e74c3c"/>
+  <text x="184" y="198" font-family="Oswald, sans-serif" font-size="13" fill="#e74c3c">Câmera 1</text>
+  <circle cx="128" cy="74" r="7" fill="#e74c3c"/>
+  <text x="140" y="66" font-family="Oswald, sans-serif" font-size="13" fill="#e74c3c">Câmera 2</text>
+</svg>
+            <figcaption>Esboço redesenhado com as posições das câmeras do enunciado original.</figcaption>
+        </figure>
+        <p>O instalador, após analisar as informações e as cinco relações, faz a opção correta dentre as relações apresentadas para instalar a terceira câmera. A relação escolhida pelo instalador foi a</p>
+        <p>A) $R_1$.<br>B) $R_2$.<br>C) $R_3$.<br>D) $R_4$.<br>E) $R_5$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>D</strong>.<br>Os pontos equidistantes de $C_1(3, 1)$ e $C_2(2, 4)$ formam a <strong>mediatriz</strong> de $C_1C_2$, que é o eixo de simetria entre as duas câmeras.<br>Ponto médio: $\left(\dfrac{5}{2}, \dfrac{5}{2}\right)$. Inclinação de $C_1C_2$: $\dfrac{4 - 1}{2 - 3} = -3$; a mediatriz é perpendicular, com inclinação $\dfrac{1}{3}$.<br>$y - \dfrac{5}{2} = \dfrac{1}{3}\left(x - \dfrac{5}{2}\right) \implies y = \dfrac{1}{3}x + \dfrac{5}{3}$, que é $\mathbf{R_4}$. Alternativa <strong>D</strong>.</p></div>
+    </article>
+    <article class="questao">
+        <h4>T 19: (FEI) Reflexão numa Reta</h4>
+        <p>Considere o ponto $A = (1, 1)$ e a reta $r$: $2x + 2y - 1 = 0$.</p>
+        <p>O ponto $A'$, simétrico de $A$ em relação à reta $r$, é</p>
+        <p>A) $(1, 1)$<br>B) $\left(\dfrac{1}{2}, -\dfrac{3}{2}\right)$<br>C) $\left(-\dfrac{1}{2}, -\dfrac{1}{2}\right)$<br>D) $\left(-\dfrac{1}{2}, -\dfrac{3}{2}\right)$<br>E) $\left(\dfrac{1}{2}, \dfrac{3}{2}\right)$</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>C</strong>.<br>$r$: $y = -x + \dfrac{1}{2}$ (inclinação $-1$). Perpendicular por $A$: inclinação $1$, $y = x$.<br>Interseção: $x = -x + \dfrac{1}{2} \implies M\left(\dfrac{1}{4}, \dfrac{1}{4}\right)$, ponto médio de $AA'$.<br>$A' = 2M - A = \left(\dfrac{1}{2} - 1, \dfrac{1}{2} - 1\right) = \mathbf{\left(-\dfrac{1}{2}, -\dfrac{1}{2}\right)}$. Alternativa <strong>C</strong>.</p></div>
+    </article>
+    <article class="questao">
+        <h4>T 20: (UEL 2020) A Borboleta do Museu</h4>
+        <p>Na exposição virtual “A Beleza da Matemática”, realizada no Museu do Amanhã, a simetria é apresentada por meio da imagem de uma borboleta. Dois pontos distintos $P$ e $Q$ são simétricos em relação a uma reta $r$ se: I) $P$ e $Q$ estão à mesma distância de $r$; II) a reta que passa por $P$ e $Q$ é perpendicular a $r$.</p>
+        <p>Considere o eixo de simetria $r$ dado pela equação $y + x = 2$ e o ponto $P = (-2, 0)$.</p>
+        <p>Assinale a alternativa que apresenta, corretamente, o ponto simétrico a $P$ em relação a $r$.</p>
+        <p>A) $(0, 2)$<br>B) $(2, 0)$<br>C) $(2, 2)$<br>D) $(2, 4)$<br>E) $(4, 2)$</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>D</strong>.<br>$r$: $y = -x + 2$ (inclinação $-1$). Perpendicular por $P$: inclinação $1$, $y = x + 2$.<br>Interseção: $x + (x + 2) = 2 \implies x = 0$, $y = 2$. O ponto médio de $PP'$ é $M(0, 2)$.<br>$P' = 2M - P = (0 + 2, 4 - 0) = \mathbf{(2, 4)}$. Alternativa <strong>D</strong>. (A alternativa A é o ponto médio.)</p></div>
+    </article>
+</section>
+
+</div></main>
+<aside class="menu-lateral"><iframe src="../menu_matematica.html" style="width:100%; border:none; height:600px;"></iframe></aside>
+</div>
+<script>
+function toggleGabarito(botao) {
+    const gabarito = botao.nextElementSibling;
+    if (gabarito.style.display === "none" || gabarito.style.display === "") {
+        gabarito.style.display = "block"; botao.textContent = "Esconder Gabarito e Resolução"; botao.style.backgroundColor = "#2c3e50";
+    } else {
+        gabarito.style.display = "none"; botao.textContent = "Ver Gabarito e Resolução"; botao.style.backgroundColor = "#3498db";
+    }
+}
+function toggleMenu() { const m = document.getElementById("menu-principal"); if (m) m.classList.toggle("ativo"); }
+let slideAtual = 0; let slides = [];
+function prepararSlides() { slides = Array.from(document.querySelectorAll('.container-resumo, .passo-teoria, .card, .questao')); }
+function toggleSlides() {
+    prepararSlides(); const body = document.body;
+    if (!body.classList.contains('modo-slides')) { body.classList.add('modo-slides'); slideAtual = 0; mostrarSlide(slideAtual); }
+    else { body.classList.remove('modo-slides'); slides.forEach(s => { s.classList.remove('slide-ativo'); s.style.display = ''; }); }
+}
+function mostrarSlide(n) {
+    if (!slides.length) return;
+    slides.forEach(s => { s.classList.remove('slide-ativo'); s.style.display = 'none'; });
+    const slide = slides[n]; slide.classList.add('slide-ativo');
+    slide.querySelectorAll('.gabarito-resolucao').forEach(g => g.style.display = 'none');
+    slide.querySelectorAll('.btn-gabarito').forEach(b => { b.textContent = "Ver Gabarito e Resolução"; b.style.backgroundColor = "#3498db"; });
+    const pHeader = document.querySelector('header p');
+    if (pHeader) { const partes = pHeader.innerText.split('|'); if (partes.length > 1) {
+        document.getElementById('slide-info-serie').innerText = partes[0].trim();
+        document.getElementById('slide-info-aula').innerText = partes[1].trim(); } }
+    document.getElementById('contador-slide').innerText = (n + 1) + " / " + slides.length;
+    if (window.MathJax && window.MathJax.typesetPromise) { MathJax.typesetPromise(); }
+}
+function mudarSlide(d) { slideAtual += d; if (slideAtual >= slides.length) slideAtual = 0; if (slideAtual < 0) slideAtual = slides.length - 1; mostrarSlide(slideAtual); }
+document.addEventListener('keydown', function(event) {
+    if (document.body.classList.contains('modo-slides')) {
+        switch(event.key) {
+            case 'ArrowRight': case 'PageDown': case 'Enter': case ' ': event.preventDefault(); mudarSlide(1); break;
+            case 'ArrowLeft': case 'PageUp': event.preventDefault(); mudarSlide(-1); break;
+            case 'Escape': event.preventDefault(); toggleSlides(); break;
+        }
+    }
+});
+</script>
+<div class="controles-slides">
+    <div id="slide-info-serie" class="info-lateral"></div>
+    <div class="botoes-centrais">
+        <button class="btn-nav" onclick="mudarSlide(-1)">⬅ Anterior</button>
+        <span id="contador-slide"></span>
+        <button class="btn-nav" onclick="mudarSlide(1)">Próximo ➡</button>
+        <button class="btn-nav" onclick="toggleSlides()" style="background:#e74c3c;">Sair</button>
+    </div>
+    <div id="slide-info-aula" class="info-lateral" style="text-align: right;"></div>
+</div>
+</body>
+</html>
