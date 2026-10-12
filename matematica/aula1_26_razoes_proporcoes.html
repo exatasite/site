@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1º Ano: Aula 26 - Razões, Proporções, Escalas e Regra de Três</title>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../estilo.css">
+    <script>
+        MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']], processEscapes: true } };
+    </script>
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        body.modo-slides { overflow: hidden !important; background-color: #1a1a1a !important; margin: 0; padding: 0; }
+        body.modo-slides .menu-lateral, body.modo-slides header, body.modo-slides .menu-toggle, body.modo-slides #btn-slides, body.modo-slides .nav-global { display: none !important; }
+        .slide-ativo { display: flex !important; flex-direction: column; align-items: center; justify-content: center; position: fixed; top: 0; left: 0; width: 100vw; height: calc(100vh - 70px); background: #ffffff; padding: 40px; z-index: 999; overflow-y: auto !important; box-sizing: border-box; text-align: left; }
+        .slide-ativo > * { max-width: 900px; width: 100%; }
+        .controles-slides { position: fixed; bottom: 0; left: 0; width: 100%; height: 70px; background: #2c3e50; color: white; display: none; justify-content: space-between; align-items: center; padding: 0 20px; z-index: 1001; box-sizing: border-box; }
+        body.modo-slides .controles-slides { display: flex !important; }
+        .info-lateral { flex: 1; font-family: 'Oswald', sans-serif; font-size: 0.9rem; color: #bdc3c7; }
+        .botoes-centrais { display: flex; align-items: center; gap: 15px; justify-content: center; flex: 2; }
+        .btn-nav { padding: 10px 20px; background: #3498db; color: white; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; font-size: 0.9rem; }
+        .btn-nav:hover { background: #2980b9; }
+        #contador-slide { font-family: 'Oswald', sans-serif; min-width: 60px; text-align: center; font-size: 1.1rem; }
+    </style>
+</head>
+<body>
+<button class="menu-toggle" onclick="toggleMenu()">☰</button>
+<nav id="menu-principal" class="nav-global"><ul>
+    <li><a href="../index.html">🏠 Início</a></li>
+    <li><a href="../ensino_medio.html">📚 Ensino Médio</a></li>
+    <li><a href="../ensino_superior.html">🎓 Ensino Superior</a></li>
+</ul></nav>
+<header id="topo">
+    <h1>MATEMÁTICA EM</h1>
+    <p>1º Ano | Aula 26: Razões, Proporções, Escalas e Regra de Três</p>
+    <button id="btn-slides" onclick="toggleSlides()">📺 Iniciar Modo Slides</button>
+</header>
+<div class="container"><main class="conteudo-principal"><div class="secao-aula">
+
+<div class="container-resumo" id="resumo">
+    <h3>📚 Resumo</h3>
+    <section class="resumo-conteudo">
+        <p>A <strong>razão</strong> entre $a$ e $b$ é o quociente $\dfrac{a}{b}$ (com $b \neq 0$); uma <strong>proporção</strong> é a igualdade entre duas razões. Duas grandezas são <strong>diretamente proporcionais</strong> quando a razão entre elas é constante e <strong>inversamente proporcionais</strong> quando o produto é constante. A <strong>escala</strong> é a razão entre uma medida no desenho e a medida real, e a <strong>regra de três</strong> é o método para encontrar o valor desconhecido de uma proporção.</p>
+        <p style="text-align: center;">$$\frac{a}{b} = \frac{c}{d} \iff a \cdot d = b \cdot c \qquad\qquad E = \frac{\text{medida no desenho}}{\text{medida real}}$$</p>
+    </section>
+</div>
+
+<section class="conteudo-teorico-completo" id="teoria">
+    <div class="passo-teoria">
+        <h3>📖 Razões e Proporções</h3>
+        <h4>1. Razão</h4>
+        <ul>
+            <li>A razão entre $a$ e $b$ é $\dfrac{a}{b}$ (lê-se "$a$ está para $b$"); $a$ é o antecedente e $b$ o consequente;</li>
+            <li>Para comparar grandezas de mesma natureza, use a <strong>mesma unidade</strong>: a razão entre $30$ min e $2$ h é $\dfrac{30}{120} = \dfrac{1}{4}$;</li>
+            <li><strong>Razões especiais:</strong> velocidade média ($\dfrac{\text{distância}}{\text{tempo}}$), densidade demográfica ($\dfrac{\text{habitantes}}{\text{área}}$), densidade ($\dfrac{\text{massa}}{\text{volume}}$) e escala.</li>
+        </ul>
+    </div>
+
+    <div class="passo-teoria">
+        <h4>2. Proporção e Divisão Proporcional</h4>
+        <p>Uma proporção é uma igualdade de razões. Vale a <strong>propriedade fundamental</strong>: o produto dos meios é igual ao produto dos extremos.</p>
+        <p style="text-align: center; font-size: 1.15rem; background-color: #f8f9fa; padding: 15px; border-left: 5px solid #3498db; margin: 20px 0;">
+            $$\frac{a}{b} = \frac{c}{d} \iff a \cdot d = b \cdot c$$
+        </p>
+        <p><strong>Divisão proporcional:</strong> para dividir um total em partes proporcionais a $2$ e $3$, somamos as "partes" ($2 + 3 = 5$), achamos o valor de uma parte e multiplicamos. Também vale: se $\dfrac{a}{b} = \dfrac{c}{d}$, então $\dfrac{a + c}{b + d} = \dfrac{a}{b}$.</p>
+    </div>
+
+    <div class="passo-teoria">
+        <h4>3. Grandezas Proporcionais</h4>
+        <ul>
+            <li><strong>Diretamente proporcionais:</strong> quando uma dobra, a outra dobra; a razão $\dfrac{y}{x} = k$ é constante (gráfico: reta pela origem). Ex.: quantidade comprada e preço pago;</li>
+            <li><strong>Inversamente proporcionais:</strong> quando uma dobra, a outra cai pela metade; o produto $x \cdot y = k$ é constante (gráfico: hipérbole). Ex.: velocidade e tempo de viagem.</li>
+        </ul>
+        <figure class="figura-aula figura-grande">
+            <svg viewBox="0 0 600 240" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Gráfico de grandezas diretamente proporcionais (reta pela origem) e inversamente proporcionais (hipérbole)" style="width:100%; max-width:600px; display:block; margin:0 auto;">
+  <line x1="40" y1="190" x2="270" y2="190" stroke="#2c3e50" stroke-width="1.5"/><line x1="40" y1="190" x2="40" y2="20" stroke="#2c3e50" stroke-width="1.5"/>
+  <text x="268" y="206" font-family="Oswald, sans-serif" font-size="13" fill="#2c3e50">x</text><text x="26" y="28" font-family="Oswald, sans-serif" font-size="13" fill="#2c3e50">y</text>
+  <text x="155" y="230" font-family="Oswald, sans-serif" font-size="13" text-anchor="middle" fill="#2c3e50">Diretamente proporcionais: y = k·x</text>
+  <line x1="340" y1="190" x2="570" y2="190" stroke="#2c3e50" stroke-width="1.5"/><line x1="340" y1="190" x2="340" y2="20" stroke="#2c3e50" stroke-width="1.5"/>
+  <text x="568" y="206" font-family="Oswald, sans-serif" font-size="13" fill="#2c3e50">x</text><text x="326" y="28" font-family="Oswald, sans-serif" font-size="13" fill="#2c3e50">y</text>
+  <text x="455" y="230" font-family="Oswald, sans-serif" font-size="13" text-anchor="middle" fill="#2c3e50">Inversamente proporcionais: x·y = k</text>
+  <line x1="40" y1="190" x2="243" y2="42.4" stroke="#3498db" stroke-width="3"/>
+  <circle cx="95" cy="150" r="4.5" fill="#e67e22"/><text x="103" y="166" font-family="Oswald, sans-serif" font-size="12" fill="#2c3e50">(1; 2)</text>
+  <circle cx="150" cy="110" r="4.5" fill="#e67e22"/><text x="158" y="126" font-family="Oswald, sans-serif" font-size="12" fill="#2c3e50">(2; 4)</text>
+  <circle cx="205" cy="70" r="4.5" fill="#e67e22"/><text x="213" y="86" font-family="Oswald, sans-serif" font-size="12" fill="#2c3e50">(3; 6)</text>
+  <polyline points="367.5,30.0 372.3,53.8 377.1,71.5 381.9,85.1 386.8,95.9 391.6,104.7 396.4,112.0 401.2,118.1 406.0,123.3 410.8,127.9 415.6,131.8 420.4,135.3 425.2,138.4 430.1,141.1 434.9,143.6 439.7,145.9 444.5,147.9 449.3,149.7 454.1,151.4 458.9,153.0 463.8,154.4 468.6,155.8 473.4,157.0 478.2,158.2 483.0,159.2 487.8,160.2 492.6,161.2 497.4,162.1 502.2,162.9 507.1,163.7 511.9,164.4 516.7,165.1 521.5,165.8 526.3,166.4 531.1,167.0 535.9,167.5 540.8,168.1 545.6,168.6 550.4,169.1 555.2,169.6 560.0,170.0" fill="none" stroke="#3498db" stroke-width="3"/>
+  <circle cx="395" cy="110.0" r="4.5" fill="#e67e22"/><text x="403" y="100.0" font-family="Oswald, sans-serif" font-size="12" fill="#2c3e50">(1; 2)</text>
+  <circle cx="450" cy="150.0" r="4.5" fill="#e67e22"/><text x="458" y="140.0" font-family="Oswald, sans-serif" font-size="12" fill="#2c3e50">(2; 1)</text>
+  <circle cx="560" cy="170.0" r="4.5" fill="#e67e22"/><text x="530" y="160.0" font-family="Oswald, sans-serif" font-size="12" fill="#2c3e50">(4; 0,5)</text>
+</svg>
+            <figcaption>Figura 1: À esquerda, $y = 2x$ (razão constante); à direita, $x \cdot y = 2$ (produto constante).</figcaption>
+        </figure>
+    </div>
+
+    <div class="passo-teoria">
+        <h4>4. Escala</h4>
+        <p style="text-align: center; font-size: 1.15rem; background-color: #f8f9fa; padding: 15px; border-left: 5px solid #3498db; margin: 20px 0;">
+            $$E = \frac{d}{D} = \frac{\text{medida no desenho}}{\text{medida real}} \quad (\text{na mesma unidade})$$
+        </p>
+        <p>A escala $1 : 500\,000$ significa que $1$ cm no mapa representa $500\,000$ cm $= 5$ km na realidade. Lembre: $1$ km $= 100\,000$ cm. Quanto <strong>maior</strong> o denominador, <strong>menor</strong> a escala (o mapa mostra menos detalhes de uma região maior).</p>
+    </div>
+
+    <div class="passo-teoria">
+        <h4>5. Regra de Três</h4>
+        <ul>
+            <li><strong>Simples:</strong> duas grandezas. Monte a tabela, verifique se são diretas ou inversas e resolva a proporção (nas inversas, inverta uma das razões ou iguale os produtos);</li>
+            <li><strong>Composta:</strong> três ou mais grandezas. Compare cada grandeza com a da incógnita, separadamente, e classifique-a como direta ou inversa; depois multiplique as razões.</li>
+        </ul>
+        <p>Exemplo: $8$ máquinas, $6$ h/dia, $15$ dias; com $10$ máquinas e $8$ h/dia: $x = 15 \cdot \dfrac{8}{10} \cdot \dfrac{6}{8} = 9$ dias (as duas grandezas são inversas em relação aos dias).</p>
+    </div>
+</section>
+
+<section class="aplicacoes-reais" id="aplicacoes">
+    <h3>💡 Matemática em Ação</h3>
+    <div class="cards-aplicacao">
+        <div class="card">
+            <h4>🗺️ Mapas e Plantas</h4>
+            <p>Arquitetos desenham plantas em escala $1 : 50$ ou $1 : 100$; mapas rodoviários usam escalas como $1 : 2\,500\,000$. Os aplicativos de mapas mostram uma barrinha de escala que muda quando você aproxima ou afasta a imagem.</p>
+        </div>
+        <div class="card" style="border-left-color: #2ecc71;">
+            <h4>🍞 Receitas na Cozinha</h4>
+            <p>Para fazer uma receita de pão com o dobro de rendimento, todos os ingredientes são multiplicados por $2$: as quantidades são diretamente proporcionais ao número de pães. Já o tempo de amassar com duas batedeiras não cai pela metade de forma tão simples!</p>
+        </div>
+    </div>
+</section>
+<section class="questoes-resolvidas" id="resolvidas">
+    <h3>✅ 5 Questões Resolvidas (R 1 a 5)</h3>
+    <article class="questao">
+        <h4>R 1: Razão e Proporção</h4>
+        <p><strong>Enunciado:</strong> (a) Qual é a razão entre $30$ minutos e $2$ horas? (b) Determine $x$ na proporção $\dfrac{x}{12} = \dfrac{5}{4}$.</p>
+        <div class="resolucao-bloco"><p><strong>Resolução:</strong><br>(a) Na mesma unidade: $2$ h $= 120$ min, logo $\dfrac{30}{120} = \mathbf{\dfrac{1}{4}}$.<br>(b) Propriedade fundamental (produto dos meios $=$ produto dos extremos): $4x = 12 \cdot 5 = 60 \implies x = \mathbf{15}$.</p></div>
+    </article>
+    <article class="questao">
+        <h4>R 2: Escala</h4>
+        <p><strong>Enunciado:</strong> Em um mapa de escala $1 : 500\,000$, a distância entre duas cidades é de $6$ cm. Qual é a distância real, em quilômetros?</p>
+        <div class="resolucao-bloco"><p><strong>Resolução:</strong><br>Cada $1$ cm no mapa corresponde a $500\,000$ cm na realidade.<br>$6 \cdot 500\,000 = 3\,000\,000$ cm $= 30\,000$ m $= \mathbf{30}$ km.</p></div>
+    </article>
+    <article class="questao">
+        <h4>R 3: Regra de Três Direta</h4>
+        <p><strong>Enunciado:</strong> Se $5$ kg de um produto custam R\$&nbsp;$40{,}00$, quanto custam $8$ kg?</p>
+        <div class="resolucao-bloco"><p><strong>Resolução:</strong><br>Mais quilos, mais dinheiro: grandezas diretamente proporcionais.<br>$\dfrac{5}{8} = \dfrac{40}{x} \implies 5x = 320 \implies x = $ R\$&nbsp;$\mathbf{64{,}00}$.</p></div>
+    </article>
+    <article class="questao">
+        <h4>R 4: Regra de Três Inversa</h4>
+        <p><strong>Enunciado:</strong> Seis pedreiros constroem um muro em $10$ dias. Em quantos dias quatro pedreiros, com o mesmo ritmo, construiriam o mesmo muro?</p>
+        <div class="resolucao-bloco"><p><strong>Resolução:</strong><br>Menos pedreiros, mais dias: grandezas inversamente proporcionais (o produto é constante).<br>$6 \cdot 10 = 4 \cdot x \implies x = \dfrac{60}{4} = \mathbf{15}$ dias.</p></div>
+    </article>
+    <article class="questao">
+        <h4>R 5: Regra de Três Composta</h4>
+        <p><strong>Enunciado:</strong> Oito máquinas, funcionando $6$ horas por dia, produzem um lote em $15$ dias. Em quantos dias $10$ máquinas, funcionando $8$ horas por dia, produzem o mesmo lote?</p>
+        <div class="resolucao-bloco"><p><strong>Resolução:</strong><br>Mais máquinas $\Rightarrow$ menos dias (inversa); mais horas por dia $\Rightarrow$ menos dias (inversa).<br>O total de “horas-máquina” é constante: $8 \cdot 6 \cdot 15 = 10 \cdot 8 \cdot x$.<br>$720 = 80x \implies x = \mathbf{9}$ dias.</p></div>
+    </article>
+</section>
+
+<section class="questoes-propostas" id="propostas">
+    <h3>✍️ 10 Questões Propostas (P 6 a 15)</h3>
+    <article class="questao">
+        <h4>P 6: Razão Simplificada</h4>
+        <p><strong>Enunciado:</strong> Uma turma tem $18$ meninas e $24$ meninos. Qual é a razão entre o número de meninas e o de meninos?</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>$\dfrac{18}{24} = \mathbf{\dfrac{3}{4}}$ (dividindo por $6$).</p></div>
+    </article>
+    <article class="questao">
+        <h4>P 7: Proporção</h4>
+        <p><strong>Enunciado:</strong> Determine $x$ em $\dfrac{x}{9} = \dfrac{8}{12}$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>$12x = 72 \implies x = \mathbf{6}$.</p></div>
+    </article>
+    <article class="questao">
+        <h4>P 8: Divisão Proporcional</h4>
+        <p><strong>Enunciado:</strong> Divida R\$&nbsp;$1\,200{,}00$ entre duas pessoas em partes diretamente proporcionais a $2$ e $3$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>Total de partes: $2 + 3 = 5$; cada parte vale $\dfrac{1\,200}{5} = 240$.<br>As pessoas recebem R\$&nbsp;$\mathbf{480{,}00}$ e R\$&nbsp;$\mathbf{720{,}00}$.</p></div>
+    </article>
+    <article class="questao">
+        <h4>P 9: Planta de uma Casa</h4>
+        <p><strong>Enunciado:</strong> Na planta de uma casa, desenhada na escala $1 : 50$, uma parede mede $8$ cm. Qual é o comprimento real da parede?</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>$8 \cdot 50 = 400$ cm $= \mathbf{4}$ m.</p></div>
+    </article>
+    <article class="questao">
+        <h4>P 10: Descobrindo a Escala</h4>
+        <p><strong>Enunciado:</strong> Duas cidades distantes $12$ km aparecem a $4$ cm uma da outra em um mapa. Qual é a escala do mapa?</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>Mesma unidade: $12$ km $= 1\,200\,000$ cm.<br>$E = \dfrac{4}{1\,200\,000} = \dfrac{1}{300\,000}$, isto é, $\mathbf{1 : 300\,000}$.</p></div>
+    </article>
+    <article class="questao">
+        <h4>P 11: Tinta e Área</h4>
+        <p><strong>Enunciado:</strong> Com $3$ litros de tinta pinta-se uma parede de $45$ m². Quantos metros quadrados se pintam com $7$ litros?</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>Diretamente proporcionais: $\dfrac{3}{7} = \dfrac{45}{x} \implies 3x = 315 \implies x = \mathbf{105}$ m².</p></div>
+    </article>
+    <article class="questao">
+        <h4>P 12: Velocidade e Tempo</h4>
+        <p><strong>Enunciado:</strong> Um carro a $60$ km/h faz um percurso em $4$ horas. Em quanto tempo faria o mesmo percurso a $80$ km/h?</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>Inversamente proporcionais: $60 \cdot 4 = 80 \cdot x$.<br>$x = \dfrac{240}{80} = \mathbf{3}$ horas.</p></div>
+    </article>
+    <article class="questao">
+        <h4>P 13: Razões Especiais</h4>
+        <p><strong>Enunciado:</strong> (a) Um ônibus percorreu $240$ km em $3$ horas. Qual foi a velocidade média? (b) Uma cidade tem $2\,000\,000$ de habitantes em $500$ km². Qual é a densidade demográfica?</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>(a) $v_m = \dfrac{240}{3} = \mathbf{80}$ km/h.<br>(b) $\dfrac{2\,000\,000}{500} = \mathbf{4\,000}$ hab/km².</p></div>
+    </article>
+    <article class="questao">
+        <h4>P 14: Torneiras e Tanques</h4>
+        <p><strong>Enunciado:</strong> Quatro torneiras iguais enchem um tanque em $6$ horas. Em quantas horas três dessas torneiras encheriam dois tanques iguais ao primeiro?</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>Menos torneiras $\Rightarrow$ mais horas (inversa); mais tanques $\Rightarrow$ mais horas (direta).<br>$x = 6 \cdot \dfrac{4}{3} \cdot \dfrac{2}{1} = \mathbf{16}$ horas.</p></div>
+    </article>
+    <article class="questao">
+        <h4>P 15: Operários e Estrada</h4>
+        <p><strong>Enunciado:</strong> Doze operários pavimentam $240$ m de estrada em $9$ dias. Quantos metros $15$ operários pavimentam em $12$ dias, no mesmo ritmo?</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>Mais operários e mais dias $\Rightarrow$ mais metros (ambas diretas).<br>$x = 240 \cdot \dfrac{15}{12} \cdot \dfrac{12}{9} = 240 \cdot \dfrac{180}{108} = \mathbf{400}$ m.</p></div>
+    </article>
+</section>
+
+<section class="TESTE" id="testes">
+    <h3>🎓 TESTES (T 16 a 20)</h3>
+    <article class="questao">
+        <h4>T 16: (ENEM 2011) A Escala do Mapa</h4>
+        <p>Sabe-se que a distância real, em linha reta, de uma cidade A, localizada no estado de São Paulo, a uma cidade B, localizada no estado de Alagoas, é igual a 2 000 km. Um estudante, ao analisar um mapa, verificou com sua régua que a distância entre essas duas cidades, A e B, era 8 cm.</p>
+        <p>Os dados nos indicam que o mapa observado pelo estudante está na escala de</p>
+        <p>A) 1 : 250.<br>B) 1 : 2 500.<br>C) 1 : 25 000.<br>D) 1 : 250 000.<br>E) 1 : 25 000 000.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>E</strong>.<br>Mesma unidade: $2\,000$ km $= 2\,000 \cdot 100\,000$ cm $= 200\,000\,000$ cm.<br>$E = \dfrac{8}{200\,000\,000} = \dfrac{1}{25\,000\,000}$. Alternativa <strong>E</strong>. (Esquecer de converter km em cm leva às alternativas erradas.)</p></div>
+    </article>
+    <article class="questao">
+        <h4>T 17: (ENEM 2021 – PPL) A Mistura de Tintas</h4>
+        <p>Uma loja que vende tintas tem uma máquina que efetua misturas de variadas cores para obter diferentes tonalidades. Um cliente havia comprado 7 litros de tinta de uma tonalidade, proveniente da mistura das cores verde e branco, na proporção de 5 para 2, respectivamente. Tendo sido insuficiente a quantidade de tinta comprada, o cliente retorna à loja para comprar mais 3,5 litros da mesma mistura de tintas, com a mesma tonalidade que havia comprado anteriormente.</p>
+        <p>A quantidade de tinta verde, em litro, que o funcionário dessa loja deverá empregar na mistura com a tinta branca para conseguir a mesma tonalidade obtida na primeira compra é</p>
+        <p>A) 14.<br>B) 1,5.<br>C) 1,7.<br>D) 2,3.<br>E) 2,5.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>E</strong>.<br>Na proporção $5 : 2$, a cada $5 + 2 = 7$ partes, $5$ são de verde: a fração de verde é $\dfrac{5}{7}$.<br>Em $3{,}5$ L: $\dfrac{5}{7} \cdot 3{,}5 = \mathbf{2{,}5}$ L de verde (e $1$ L de branco). Alternativa <strong>E</strong>.</p></div>
+    </article>
+    <article class="questao">
+        <h4>T 18: (ENEM 2022) O Borrifador Automático</h4>
+        <p>Um borrifador de atuação automática libera, a cada acionamento, uma mesma quantidade de inseticida. O recipiente desse produto, quando cheio, contém 360 mL de inseticida, que duram 60 dias se o borrifador permanecer ligado ininterruptamente e for acionado a cada 48 minutos.</p>
+        <p>A quantidade de inseticida que é liberada a cada acionamento do borrifador, em mililitro, é</p>
+        <p>A) 0,125.<br>B) 0,200.<br>C) 4,800.<br>D) 6,000.<br>E) 12,000.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>B</strong>.<br>Tempo total: $60$ dias $= 60 \cdot 24 \cdot 60 = 86\,400$ min.<br>Número de acionamentos: $\dfrac{86\,400}{48} = 1\,800$.<br>Por acionamento: $\dfrac{360}{1\,800} = \mathbf{0{,}2}$ mL. Alternativa <strong>B</strong>.</p></div>
+    </article>
+    <article class="questao">
+        <h4>T 19: (ENEM 2022 – PPL) O Relógio que Atrasa</h4>
+        <p>Um jovem, no trajeto que usa para ir para a escola, sempre passa por um grande relógio digital que há no centro da sua cidade e compara a hora nele mostrada com a hora que marca o seu relógio de pulso. Ao longo de 30 dias de observação, constata que o seu relógio atrasa 2 minutos, a cada 15 dias, em relação ao do centro da cidade.</p>
+        <p>Após 90 dias, sem nenhum dos dois relógios receberem ajustes e mantida a mesma parcela de atraso diário, ao ler as marcações de horário dos dois relógios, verificou que o do centro da cidade marcava exatamente 7 horas.</p>
+        <p>Qual horário marcava seu relógio de pulso nesse instante?</p>
+        <p>A) 6 h e 48 min<br>B) 6 h e 54 min<br>C) 6 h e 58 min<br>D) 7 h e 06 min<br>E) 7 h e 12 min</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>A</strong>.<br>Atraso e tempo são diretamente proporcionais: $\dfrac{2 \text{ min}}{15 \text{ dias}} = \dfrac{x}{90 \text{ dias}} \implies x = 12$ min.<br>O relógio de pulso está $12$ min atrasado: $7$ h $- 12$ min $=$ <strong>6 h e 48 min</strong>. Alternativa <strong>A</strong>. (Somar o atraso daria a alternativa E.)</p></div>
+    </article>
+    <article class="questao">
+        <h4>T 20: (Questão autoral) As Impressoras da Gráfica</h4>
+        <p>Em uma gráfica, $3$ impressoras iguais imprimem $1\,200$ folhas em $2$ horas.</p>
+        <p>Mantido o mesmo ritmo, quantas folhas $5$ dessas impressoras imprimem em $3$ horas?</p>
+        <p>A) 1 800<br>B) 2 400<br>C) 3 000<br>D) 3 600<br>E) 4 500</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>C</strong>.<br>Mais impressoras $\Rightarrow$ mais folhas (direta); mais horas $\Rightarrow$ mais folhas (direta).<br>$x = 1\,200 \cdot \dfrac{5}{3} \cdot \dfrac{3}{2} = \mathbf{3\,000}$ folhas. Alternativa <strong>C</strong>.</p></div>
+    </article>
+</section>
+
+</div></main>
+<aside class="menu-lateral"><iframe src="../menu_matematica.html" style="width:100%; border:none; height:600px;"></iframe></aside>
+</div>
+<script>
+function toggleGabarito(botao) {
+    const gabarito = botao.nextElementSibling;
+    if (gabarito.style.display === "none" || gabarito.style.display === "") {
+        gabarito.style.display = "block"; botao.textContent = "Esconder Gabarito e Resolução"; botao.style.backgroundColor = "#2c3e50";
+    } else {
+        gabarito.style.display = "none"; botao.textContent = "Ver Gabarito e Resolução"; botao.style.backgroundColor = "#3498db";
+    }
+}
+function toggleMenu() { const m = document.getElementById("menu-principal"); if (m) m.classList.toggle("ativo"); }
+let slideAtual = 0; let slides = [];
+function prepararSlides() { slides = Array.from(document.querySelectorAll('.container-resumo, .passo-teoria, .card, .questao')); }
+function toggleSlides() {
+    prepararSlides(); const body = document.body;
+    if (!body.classList.contains('modo-slides')) { body.classList.add('modo-slides'); slideAtual = 0; mostrarSlide(slideAtual); }
+    else { body.classList.remove('modo-slides'); slides.forEach(s => { s.classList.remove('slide-ativo'); s.style.display = ''; }); }
+}
+function mostrarSlide(n) {
+    if (!slides.length) return;
+    slides.forEach(s => { s.classList.remove('slide-ativo'); s.style.display = 'none'; });
+    const slide = slides[n]; slide.classList.add('slide-ativo');
+    slide.querySelectorAll('.gabarito-resolucao').forEach(g => g.style.display = 'none');
+    slide.querySelectorAll('.btn-gabarito').forEach(b => { b.textContent = "Ver Gabarito e Resolução"; b.style.backgroundColor = "#3498db"; });
+    const pHeader = document.querySelector('header p');
+    if (pHeader) { const partes = pHeader.innerText.split('|'); if (partes.length > 1) {
+        document.getElementById('slide-info-serie').innerText = partes[0].trim();
+        document.getElementById('slide-info-aula').innerText = partes[1].trim(); } }
+    document.getElementById('contador-slide').innerText = (n + 1) + " / " + slides.length;
+    if (window.MathJax && window.MathJax.typesetPromise) { MathJax.typesetPromise(); }
+}
+function mudarSlide(d) { slideAtual += d; if (slideAtual >= slides.length) slideAtual = 0; if (slideAtual < 0) slideAtual = slides.length - 1; mostrarSlide(slideAtual); }
+document.addEventListener('keydown', function(event) {
+    if (document.body.classList.contains('modo-slides')) {
+        switch(event.key) {
+            case 'ArrowRight': case 'PageDown': case 'Enter': case ' ': event.preventDefault(); mudarSlide(1); break;
+            case 'ArrowLeft': case 'PageUp': event.preventDefault(); mudarSlide(-1); break;
+            case 'Escape': event.preventDefault(); toggleSlides(); break;
+        }
+    }
+});
+</script>
+<div class="controles-slides">
+    <div id="slide-info-serie" class="info-lateral"></div>
+    <div class="botoes-centrais">
+        <button class="btn-nav" onclick="mudarSlide(-1)">⬅ Anterior</button>
+        <span id="contador-slide"></span>
+        <button class="btn-nav" onclick="mudarSlide(1)">Próximo ➡</button>
+        <button class="btn-nav" onclick="toggleSlides()" style="background:#e74c3c;">Sair</button>
+    </div>
+    <div id="slide-info-aula" class="info-lateral" style="text-align: right;"></div>
+</div>
+</body>
+</html>
