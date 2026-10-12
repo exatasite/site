@@ -44,97 +44,120 @@
  <div class="container-resumo" id="resumo">
     <h3>📚 Resumo </h3>
     <section class="resumo-conteudo">
-        <p>A **derivada** de uma função $f(x)$ no ponto $x = a$, denotada por $f'(a)$, representa geometricamente a **inclinação (ou coeficinte angular) da reta tangente** ao gráfico de $f$ no ponto $(a, f(a))$.</p>
-        <p><strong>Importante:</strong> A reta secante que passa por dois pontos $(a, f(a))$ e $(a+h, f(a+h))$ tem inclinação $m_{sec} = \dfrac{f(a+h) - f(a)}{h}$. Conforme $h \to 0$, o segundo ponto se aproxima do primeiro, e a reta secante se transforma na reta tangente, cuja inclinação é dada pelo limite: $$f'(a) = \lim_{h \to 0} \frac{f(a+h) - f(a)}{h}$$</p>
+        <p>Geometricamente, a derivada $f'(a)$ é o <strong>coeficiente angular da reta tangente</strong> ao gráfico de $f$ no ponto $P(a, f(a))$. Ela é o limite das inclinações das <strong>retas secantes</strong> $PQ$ quando o ponto $Q$ desliza sobre a curva até $P$.</p>
+        <p style="text-align: center;">$$\text{tangente: } y - f(a) = f'(a)\,(x - a) \qquad\qquad \text{normal: } y - f(a) = -\frac{1}{f'(a)}\,(x - a)$$</p>
+        <p>Onde o gráfico tem um <strong>bico</strong>, uma <strong>tangente vertical</strong> ou um <strong>salto</strong>, a derivada não existe.</p>
     </section>
 </div>
 
 <section class="conteudo-teorico-completo" id="teoria">
     <div class="passo-teoria">
-        <h3>📖 A Transição da Secante para a Tangente</h3>
-        <p>O conceito central do Cálculo Diferencial nasce de um problema geométrico: como calcular a inclinação de uma curva em um único ponto? Como uma reta exige dois pontos para ser definida, utilizamos o limite do quociente de diferenças para aproximar a reta secante de uma reta tangente única.</p>
+        <h3>📖 A Derivada como Inclinação</h3>
+        <p>Para uma reta, a inclinação é a mesma em todos os pontos. Uma curva, porém, "muda de inclinação" a cada ponto. A derivada resolve esse problema: a inclinação de uma curva num ponto é, por definição, a inclinação da <strong>reta tangente</strong> naquele ponto.</p>
     </div>
 
     <div class="passo-teoria">
-        <h4>1. A Reta Secante e o Quociente de Diferenças</h4>
-        <p>Dados dois pontos no gráfico de $f(x)$, $P(a, f(a))$ e $Q(x, f(x))$, a variação vertical é $\Delta y = f(x) - f(a)$ e a variação horizontal é $\Delta x = x - a$. A inclinação da reta secante é:</p>
-        <p style="text-align: center;">$$m_{sec} = \frac{\Delta y}{\Delta x} = \frac{f(x) - f(a)}{x - a}$$</p>
-        <p>Se definirmos $x = a + h$, onde $h$ representa o deslocamento relativo, a fórmula toma a forma clássica $m_{sec} = \dfrac{f(a+h) - f(a)}{h}$.</p>
-        
+        <h4>1. Da Secante à Tangente</h4>
+        <p>A reta que passa por $P(a, f(a))$ e $Q(a + h, f(a + h))$ é uma <strong>secante</strong>, com inclinação $m_{sec} = \dfrac{f(a+h) - f(a)}{h}$. Quando $h \to 0$, $Q$ se aproxima de $P$ e a secante gira até a posição da <strong>tangente</strong>:</p>
+        <p style="text-align: center; font-size: 1.15rem; background-color: #f8f9fa; padding: 15px; border-left: 5px solid #3498db; margin: 20px 0;">
+            $$m_{tan} = \lim_{h \to 0} \frac{f(a+h) - f(a)}{h} = f'(a)$$
+        </p>
         <figure class="figura-aula figura-grande">
-            <svg viewBox="0 0 400 320" xmlns="http://www.w3.org/2000/svg" style="width:100%; max-width:450px; height:auto; display:block; margin:0 auto; background:#fdfdfd; border-radius:10px;">
-                <!-- Eixos -->
-                <line x1="30" y1="280" x2="380" y2="280" stroke="#2c3e50" stroke-width="2"/>
-                <polygon points="390,280 378,275 378,285" fill="#2c3e50"/>
-                <line x1="50" y1="300" x2="50" y2="20" stroke="#2c3e50" stroke-width="2"/>
-                <polygon points="50,10 45,22 55,22" fill="#2c3e50"/>
-                <text x="375" y="298" font-size="13" fill="#2c3e50" font-family="sans-serif">x</text>
-                <text x="58" y="25" font-size="13" fill="#2c3e50" font-family="sans-serif">y</text>
-
-                <!-- Curva f(x) -->
-                <path d="M 60 260 Q 200 240 350 40" fill="none" stroke="#e74c3c" stroke-width="3"/>
-                
-                <!-- Pontos A e B -->
-                <line x1="130" y1="280" x2="130" y2="225" stroke="#bdc3c7" stroke-width="1.5" stroke-dasharray="4,4"/>
-                <line x1="50" y1="225" x2="130" y2="225" stroke="#bdc3c7" stroke-width="1.5" stroke-dasharray="4,4"/>
-                
-                <line x1="280" y1="280" x2="280" y2="100" stroke="#bdc3c7" stroke-width="1.5" stroke-dasharray="4,4"/>
-                <line x1="50" y1="100" x2="280" y2="100" stroke="#bdc3c7" stroke-width="1.5" stroke-dasharray="4,4"/>
-
-                <!-- Reta Secante -->
-                <line x1="80" y1="266" x2="330" y2="58" stroke="#3498db" stroke-width="2.5"/>
-
-                <!-- Nós (Pontos) -->
-                <circle cx="130" cy="225" r="5" fill="#2c3e50"/>
-                <circle cx="280" cy="100" r="5" fill="#2c3e50"/>
-
-                <text x="120" y="215" font-size="12" fill="#2c3e50" font-family="sans-serif" font-weight="bold">P(a, f(a))</text>
-                <text x="270" y="90" font-size="12" fill="#2c3e50" font-family="sans-serif" font-weight="bold">Q(a+h, f(a+h))</text>
-
-                <text x="125" y="295" font-size="12" fill="#2c3e50" font-family="sans-serif">a</text>
-                <text x="268" y="295" font-size="12" fill="#2c3e50" font-family="sans-serif">a+h</text>
-                <text x="200" y="275" font-size="12" fill="#e67e22" font-family="sans-serif" font-weight="bold">← h →</text>
-                
-                <text x="250" y="45" font-size="13" fill="#3498db" font-family="sans-serif" font-weight="bold">Reta Secante</text>
-            </svg>
-            <figcaption>Figura 1: A reta secante conecta dois pontos distintos $P$ e $Q$ separados por uma distância $h$.</figcaption>
+            <svg viewBox="0 0 440 320" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Retas secantes se aproximando da reta tangente" style="width:100%; max-width:470px; height:auto; display:block; margin:0 auto; background:#fdfdfd; border-radius:10px;">
+<line x1="15" y1="273.40425531914894" x2="428" y2="273.40425531914894" stroke="#2c3e50" stroke-width="2"/><polygon points="436,273.40425531914894 424,268.40425531914894 424,278.40425531914894" fill="#2c3e50"/><line x1="75.23809523809524" y1="312" x2="75.23809523809524" y2="14" stroke="#2c3e50" stroke-width="2"/><polygon points="75.23809523809524,6 70.23809523809524,18 80.23809523809524,18" fill="#2c3e50"/><text x="422" y="291.40425531914894" font-size="13" fill="#2c3e50" font-family="sans-serif">x</text><text x="83.23809523809524" y="18" font-size="13" fill="#2c3e50" font-family="sans-serif">y</text>
+<polyline points="40.0,243.1 43.1,243.5 46.2,243.9 49.2,244.3 52.3,244.6 55.4,244.9 58.5,245.1 61.6,245.3 64.7,245.5 67.8,245.6 70.8,245.7 73.9,245.7 77.0,245.7 80.1,245.7 83.2,245.6 86.2,245.5 89.3,245.3 92.4,245.1 95.5,244.9 98.6,244.6 101.7,244.3 104.8,243.9 107.8,243.5 110.9,243.0 114.0,242.5 117.1,242.0 120.2,241.4 123.2,240.8 126.3,240.2 129.4,239.5 132.5,238.7 135.6,238.0 138.7,237.1 141.8,236.3 144.8,235.4 147.9,234.4 151.0,233.5 154.1,232.5 157.2,231.4 160.2,230.3 163.3,229.1 166.4,228.0 169.5,226.7 172.6,225.5 175.7,224.2 178.7,222.8 181.8,221.4 184.9,220.0 188.0,218.6 191.1,217.0 194.2,215.5 197.2,213.9 200.3,212.3 203.4,210.6 206.5,208.9 209.6,207.1 212.7,205.4 215.8,203.5 218.8,201.7 221.9,199.7 225.0,197.8 228.1,195.8 231.2,193.8 234.2,191.7 237.3,189.6 240.4,187.4 243.5,185.2 246.6,183.0 249.7,180.7 252.7,178.4 255.8,176.0 258.9,173.6 262.0,171.2 265.1,168.7 268.2,166.1 271.2,163.6 274.3,161.0 277.4,158.3 280.5,155.6 283.6,152.9 286.7,150.2 289.8,147.3 292.8,144.5 295.9,141.6 299.0,138.7 302.1,135.7 305.2,132.7 308.3,129.6 311.3,126.5 314.4,123.4 317.5,120.2 320.6,117.0 323.7,113.8 326.8,110.5 329.8,107.1 332.9,103.8 336.0,100.3 339.1,96.9 342.2,93.4 345.2,89.8 348.3,86.3 351.4,82.6 354.5,79.0 357.6,75.3 360.7,71.5 363.7,67.7 366.8,63.9 369.9,60.1 373.0,56.1 376.1,52.2 379.2,48.2 382.2,44.2 385.3,40.1 388.4,36.0 391.5,31.9 394.6,27.7 397.7,23.4 400.8,19.2 403.8,14.8 406.9,10.5 410.0,6.1" fill="none" stroke="#3498db" stroke-width="3"/>
+<line x1="91.4" y1="288.8" x2="402.0" y2="31.3" stroke="#f39c12" stroke-width="1.8" stroke-dasharray="7,4"/>
+<circle cx="374.8" cy="53.9" r="4.5" fill="#f39c12"/>
+<text x="381.8" y="57.9" font-size="13" fill="#f39c12" font-family="sans-serif" font-weight="bold">Q1</text>
+<line x1="71.5" y1="289.7" x2="405.6" y2="69.4" stroke="#e67e22" stroke-width="1.8" stroke-dasharray="7,4"/>
+<circle cx="295.5" cy="142.0" r="4.5" fill="#e67e22"/>
+<text x="302.5" y="146.0" font-size="13" fill="#e67e22" font-family="sans-serif" font-weight="bold">Q2</text>
+<line x1="44.4" y1="289.6" x2="405.6" y2="105.9" stroke="#d35400" stroke-width="1.8" stroke-dasharray="7,4"/>
+<circle cx="225.0" cy="197.8" r="4.5" fill="#d35400"/>
+<text x="232.0" y="201.8" font-size="13" fill="#d35400" font-family="sans-serif" font-weight="bold">Q3</text>
+<line x1="44.4" y1="274.0" x2="405.6" y2="137.9" stroke="#e74c3c" stroke-width="2.8"/>
+<line x1="163.3" y1="273.40425531914894" x2="163.3" y2="229.1" stroke="#bdc3c7" stroke-dasharray="3,3"/>
+<circle cx="163.3" cy="229.1" r="5" fill="#2c3e50"/>
+<text x="143.3" y="221.1" font-size="14" fill="#2c3e50" font-family="sans-serif" font-weight="bold">P</text>
+<text x="159.3" y="290.40425531914894" font-size="13" fill="#2c3e50" font-family="sans-serif">a</text>
+<text x="270" y="270" font-size="13" fill="#e74c3c" font-family="sans-serif" font-weight="bold">tangente em P</text>
+<text x="270" y="286" font-size="13" fill="#e67e22" font-family="sans-serif" font-weight="bold">secantes PQ₁, PQ₂, PQ₃</text>
+</svg>
+            <figcaption>Figura 1: As secantes $PQ_1$, $PQ_2$, $PQ_3$ tendem à reta tangente em $P$ quando $Q \to P$.</figcaption>
         </figure>
     </div>
 
     <div class="passo-teoria">
-        <h4>2. A Reta Tangente e a Equação Fundamental</h4>
-        <p>Fazendo $h \to 0$, o ponto $Q$ "escorrega" sobre a curva em direção ao ponto $P$. A reta secante gira até se ajustar perfeitamente à inclinação local da curva, tornando-se a **reta tangente**.</p>
-        <p>Sua inclinação é $m_{tang} = f'(a)$. Conhecendo um ponto $(a, f(a))$ e a inclinação $m = f'(a)$, a **equação da reta tangente** é dada por:</p>
-        <p style="text-align: center;">$$y - f(a) = f'(a)(x - a)$$</p>
+        <h4>2. Equação da Reta Tangente e Ângulo de Inclinação</h4>
+        <p>Conhecidos o ponto $P(a, f(a))$ e a inclinação $m = f'(a)$, a reta tangente é</p>
+        <p style="text-align: center;">$$y - f(a) = f'(a)\,(x - a)$$</p>
+        <p>Se $\theta$ é o ângulo que a tangente forma com o eixo $x$ (medido no sentido anti-horário, $0^\circ \le \theta &lt; 180^\circ$), então $f'(a) = \operatorname{tg}\theta$. Por exemplo, $f'(a) = 1$ corresponde a $\theta = 45^\circ$ e $f'(a) = -1$, a $\theta = 135^\circ$.</p>
+    </div>
 
+    <div class="passo-teoria">
+        <h4>3. A Reta Normal</h4>
+        <p>A <strong>reta normal</strong> ao gráfico em $P$ é a reta perpendicular à tangente nesse ponto. Como retas perpendiculares têm coeficientes angulares $m_1 \cdot m_2 = -1$:</p>
+        <p style="text-align: center;">$$y - f(a) = -\frac{1}{f'(a)}\,(x - a) \qquad (f'(a) \neq 0)$$</p>
+        <p>Se $f'(a) = 0$, a tangente é horizontal ($y = f(a)$) e a normal é vertical ($x = a$).</p>
         <figure class="figura-aula figura-grande">
-            <svg viewBox="0 0 400 320" xmlns="http://www.w3.org/2000/svg" style="width:100%; max-width:450px; height:auto; display:block; margin:0 auto; background:#fdfdfd; border-radius:10px;">
-                <line x1="30" y1="280" x2="380" y2="280" stroke="#2c3e50" stroke-width="2"/>
-                <polygon points="390,280 378,275 378,285" fill="#2c3e50"/>
-                <line x1="50" y1="300" x2="50" y2="20" stroke="#2c3e50" stroke-width="2"/>
-                <polygon points="50,10 45,22 55,22" fill="#2c3e50"/>
-
-                <path d="M 60 260 Q 200 240 350 40" fill="none" stroke="#e74c3c" stroke-width="3"/>
-                
-                <line x1="180" y1="280" x2="180" y2="185" stroke="#bdc3c7" stroke-width="1.5" stroke-dasharray="4,4"/>
-                <line x1="50" y1="185" x2="180" y2="185" stroke="#bdc3c7" stroke-width="1.5" stroke-dasharray="4,4"/>
-
-                <!-- Reta Tangente -->
-                <line x1="60" y1="270" x2="320" y2="100" stroke="#27ae60" stroke-width="3"/>
-
-                <circle cx="180" cy="185" r="6" fill="#2c3e50"/>
-                <text x="165" y="170" font-size="12" fill="#2c3e50" font-family="sans-serif" font-weight="bold">P(a, f(a))</text>
-                <text x="177" y="295" font-size="12" fill="#2c3e50" font-family="sans-serif">a</text>
-                <text x="250" y="115" font-size="13" fill="#27ae60" font-family="sans-serif" font-weight="bold">Reta Tangente (m = f'(a))</text>
-            </svg>
-            <figcaption>Figura 2: A reta tangente toca o gráfico localmente no ponto $P$, tendo exatamente o mesmo coeficiente angular $f'(a)$.</figcaption>
+            <svg viewBox="0 0 420 320" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Reta tangente e reta normal ao gráfico no ponto P" style="width:100%; max-width:450px; height:auto; display:block; margin:0 auto; background:#fdfdfd; border-radius:10px;">
+<line x1="15" y1="270" x2="408" y2="270" stroke="#2c3e50" stroke-width="2"/><polygon points="416,270 404,265 404,275" fill="#2c3e50"/><line x1="70" y1="312" x2="70" y2="14" stroke="#2c3e50" stroke-width="2"/><polygon points="70,6 65,18 75,18" fill="#2c3e50"/><text x="402" y="288" font-size="13" fill="#2c3e50" font-family="sans-serif">x</text><text x="78" y="18" font-size="13" fill="#2c3e50" font-family="sans-serif">y</text>
+<polyline points="12.8,228.3 15.4,229.7 18.0,231.0 20.6,232.3 23.2,233.5 25.8,234.6 28.4,235.7 31.0,236.7 33.6,237.6 36.2,238.5 38.8,239.3 41.4,240.1 44.0,240.8 46.6,241.4 49.2,241.9 51.8,242.4 54.4,242.8 57.0,243.2 59.6,243.5 62.2,243.7 64.8,243.9 67.4,244.0 70.0,244.0 72.6,244.0 75.2,243.9 77.8,243.7 80.4,243.5 83.0,243.2 85.6,242.8 88.2,242.4 90.8,241.9 93.4,241.4 96.0,240.8 98.6,240.1 101.2,239.3 103.8,238.5 106.4,237.6 109.0,236.7 111.6,235.7 114.2,234.6 116.8,233.5 119.4,232.3 122.0,231.0 124.6,229.7 127.2,228.3 129.8,226.8 132.4,225.3 135.0,223.7 137.6,222.0 140.2,220.3 142.8,218.5 145.4,216.7 148.0,214.8 150.6,212.8 153.2,210.7 155.8,208.6 158.4,206.4 161.0,204.2 163.6,201.9 166.2,199.5 168.8,197.1 171.4,194.6 174.0,192.0 176.6,189.4 179.2,186.7 181.8,183.9 184.4,181.1 187.0,178.2 189.6,175.2 192.2,172.2 194.8,169.1 197.4,166.0 200.0,162.8 202.6,159.5 205.2,156.1 207.8,152.7 210.4,149.2 213.0,145.7 215.6,142.1 218.2,138.4 220.8,134.7 223.4,130.9 226.0,127.0 228.6,123.1 231.2,119.1 233.8,115.0 236.4,110.9 239.0,106.7 241.6,102.4 244.2,98.1 246.8,93.7 249.4,89.3 252.0,84.7 254.6,80.2 257.2,75.5 259.8,70.8 262.4,66.0 265.0,61.2 267.6,56.3 270.2,51.3 272.8,46.3 275.4,41.2 278.0,36.0 280.6,30.8 283.2,25.5 285.8,20.1 288.4,14.7" fill="none" stroke="#3498db" stroke-width="3"/>
+<line x1="38.8" y1="327.2" x2="361.2" y2="4.8" stroke="#e74c3c" stroke-width="2.6"/>
+<line x1="90.8" y1="108.8" x2="288.4" y2="306.4" stroke="#27ae60" stroke-width="2.4" stroke-dasharray="8,4"/>
+<polyline points="184.3,181.7 174.0,171.4 163.7,181.7" fill="none" stroke="#2c3e50" stroke-width="1.4"/>
+<path d="M 130.0 270 A 34 34 0 0 0 120.0 246.0" fill="none" stroke="#8e44ad" stroke-width="2"/>
+<text x="134.0" y="262" font-size="14" fill="#8e44ad" font-family="sans-serif" font-weight="bold">θ</text>
+<circle cx="174.0" cy="192.0" r="5" fill="#2c3e50"/>
+<text x="182.0" y="210.0" font-size="14" fill="#2c3e50" font-family="sans-serif" font-weight="bold">P(a, f(a))</text>
+<text x="283.2" y="104.8" font-size="13" fill="#e74c3c" font-family="sans-serif" font-weight="bold">tangente: m = f′(a) = tg θ</text>
+<text x="83.0" y="100.8" font-size="13" fill="#27ae60" font-family="sans-serif" font-weight="bold">normal: m = −1/f′(a)</text>
+<text x="18.0" y="221.0" font-size="13" fill="#3498db" font-family="sans-serif" font-weight="bold">f</text>
+</svg>
+            <figcaption>Figura 2: Reta tangente (vermelha) e reta normal (verde) ao gráfico de $f$ no ponto $P$.</figcaption>
         </figure>
     </div>
 
     <div class="passo-teoria">
-        <h4>3. Reta Normal</h4>
-        <p>A **reta normal** ao gráfico no ponto $(a, f(a))$ é a reta perpendicular à reta tangente nesse mesmo ponto. Como duas retas perpendiculares com inclinações $m_1$ e $m_2$ satisfazem $m_1 \cdot m_2 = -1$, a inclinação da reta normal é $m_{normal} = -\dfrac{1}{f'(a)}$ (desde que $f'(a) \neq 0$).</p>
-        <p>Sua equação é dada por: $$y - f(a) = -\frac{1}{f'(a)}(x - a)$$</p>
+        <h4>4. Lendo o Gráfico pela Tangente</h4>
+        <ul>
+            <li><strong>$f'(a) &gt; 0$:</strong> a tangente "sobe" da esquerda para a direita e $f$ é crescente perto de $a$;</li>
+            <li><strong>$f'(a) &lt; 0$:</strong> a tangente "desce" e $f$ é decrescente perto de $a$;</li>
+            <li><strong>$f'(a) = 0$:</strong> a tangente é <strong>horizontal</strong>, como no topo ou no fundo de uma curva (por exemplo, no vértice de uma parábola).</li>
+        </ul>
+    </div>
+
+    <div class="passo-teoria">
+        <h4>5. Onde a Derivada Não Existe</h4>
+        <p>Se $f$ é derivável em $a$, então $f$ é contínua em $a$. Mas a recíproca é falsa. A derivada deixa de existir quando:</p>
+        <ul>
+            <li><strong>Há um bico</strong> (ex.: $|x|$ em $0$): as derivadas laterais são diferentes;</li>
+            <li><strong>A tangente é vertical</strong> (ex.: $\sqrt[3]{x}$ em $0$): o quociente de Newton tende a $\pm\infty$;</li>
+            <li><strong>Há um salto</strong> ou outra descontinuidade: sem continuidade não há derivada.</li>
+        </ul>
+        <figure class="figura-aula figura-grande">
+            <svg viewBox="0 0 600 210" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Três casos sem derivada: bico, tangente vertical e salto" style="width:100%; max-width:620px; height:auto; display:block; margin:0 auto; background:#fdfdfd; border-radius:10px;">
+<line x1="15" y1="105" x2="185" y2="105" stroke="#95a5a6" stroke-width="1.5"/>
+<line x1="100" y1="180" x2="100" y2="30" stroke="#95a5a6" stroke-width="1.5"/>
+<polyline points="25,30 100,105 175,30" fill="none" stroke="#3498db" stroke-width="3"/>
+<circle cx="100" cy="105" r="5" fill="#e74c3c"/>
+<text x="100" y="202" font-size="14" fill="#2c3e50" font-family="sans-serif" text-anchor="middle" font-weight="bold">Bico: f(x) = |x|</text>
+<line x1="215" y1="105" x2="385" y2="105" stroke="#95a5a6" stroke-width="1.5"/>
+<line x1="300" y1="180" x2="300" y2="30" stroke="#95a5a6" stroke-width="1.5"/>
+<polyline points="223.2,165.0 224.2,164.7 225.1,164.5 226.1,164.2 227.0,164.0 228.0,163.7 229.0,163.4 229.9,163.2 230.9,162.9 231.8,162.6 232.8,162.4 233.8,162.1 234.7,161.8 235.7,161.5 236.6,161.3 237.6,161.0 238.6,160.7 239.5,160.4 240.5,160.1 241.4,159.8 242.4,159.5 243.4,159.2 244.3,158.9 245.3,158.6 246.2,158.3 247.2,157.9 248.2,157.6 249.1,157.3 250.1,157.0 251.0,156.6 252.0,156.3 253.0,155.9 253.9,155.6 254.9,155.2 255.8,154.9 256.8,154.5 257.8,154.1 258.7,153.8 259.7,153.4 260.6,153.0 261.6,152.6 262.6,152.2 263.5,151.8 264.5,151.4 265.4,151.0 266.4,150.5 267.4,150.1 268.3,149.7 269.3,149.2 270.2,148.7 271.2,148.3 272.2,147.8 273.1,147.3 274.1,146.8 275.0,146.2 276.0,145.7 277.0,145.2 277.9,144.6 278.9,144.0 279.8,143.4 280.8,142.8 281.8,142.1 282.7,141.5 283.7,140.8 284.6,140.1 285.6,139.3 286.6,138.6 287.5,137.7 288.5,136.9 289.4,136.0 290.4,135.0 291.4,134.0 292.3,132.8 293.3,131.6 294.2,130.3 295.2,128.8 296.2,127.1 297.1,125.1 298.1,122.5 299.0,118.9 300.0,105.0 301.0,91.1 301.9,87.5 302.9,84.9 303.8,82.9 304.8,81.2 305.8,79.7 306.7,78.4 307.7,77.2 308.6,76.0 309.6,75.0 310.6,74.0 311.5,73.1 312.5,72.3 313.4,71.4 314.4,70.7 315.4,69.9 316.3,69.2 317.3,68.5 318.2,67.9 319.2,67.2 320.2,66.6 321.1,66.0 322.1,65.4 323.0,64.8 324.0,64.3 325.0,63.8 325.9,63.2 326.9,62.7 327.8,62.2 328.8,61.7 329.8,61.3 330.7,60.8 331.7,60.3 332.6,59.9 333.6,59.5 334.6,59.0 335.5,58.6 336.5,58.2 337.4,57.8 338.4,57.4 339.4,57.0 340.3,56.6 341.3,56.2 342.2,55.9 343.2,55.5 344.2,55.1 345.1,54.8 346.1,54.4 347.0,54.1 348.0,53.7 349.0,53.4 349.9,53.0 350.9,52.7 351.8,52.4 352.8,52.1 353.8,51.7 354.7,51.4 355.7,51.1 356.6,50.8 357.6,50.5 358.6,50.2 359.5,49.9 360.5,49.6 361.4,49.3 362.4,49.0 363.4,48.7 364.3,48.5 365.3,48.2 366.2,47.9 367.2,47.6 368.2,47.4 369.1,47.1 370.1,46.8 371.0,46.6 372.0,46.3 373.0,46.0 373.9,45.8 374.9,45.5 375.8,45.3 376.8,45.0" fill="none" stroke="#3498db" stroke-width="3"/>
+<line x1="300" y1="35" x2="300" y2="175" stroke="#e74c3c" stroke-width="2.4" stroke-dasharray="6,4"/>
+<circle cx="300" cy="105" r="5" fill="#e74c3c"/>
+<text x="300" y="202" font-size="14" fill="#2c3e50" font-family="sans-serif" text-anchor="middle" font-weight="bold">Tangente vertical: f(x) = ∛x</text>
+<line x1="415" y1="105" x2="585" y2="105" stroke="#95a5a6" stroke-width="1.5"/>
+<line x1="500" y1="180" x2="500" y2="30" stroke="#95a5a6" stroke-width="1.5"/>
+<line x1="425" y1="125" x2="500" y2="125" stroke="#3498db" stroke-width="3"/>
+<circle cx="500" cy="125" r="5" fill="#3498db"/>
+<line x1="500" y1="75" x2="575" y2="75" stroke="#3498db" stroke-width="3"/>
+<circle cx="500" cy="75" r="5" fill="#fdfdfd" stroke="#3498db" stroke-width="2.5"/>
+<text x="500" y="202" font-size="14" fill="#2c3e50" font-family="sans-serif" text-anchor="middle" font-weight="bold">Salto (descontínua)</text>
+</svg>
+            <figcaption>Figura 3: Três situações em que a derivada não existe no ponto destacado.</figcaption>
+        </figure>
     </div>
 </section>
 
@@ -142,12 +165,12 @@
     <h3>💡 Matemática em Ação</h3>
     <div class="cards-aplicacao">
         <div class="card">
-            <h4>🚗 Velocidade Instantânea</h4>
-            <p>Se $s(t)$ representa a posição de um carro em função do tempo, a derivada $s'(t)$ é a inclinação da curva no gráfico Posição x Tempo. Isso fornece a velocidade exata no relógio naquele exato instante.</p>
+            <h4>🛣️ Estradas, Rampas e Trilhos</h4>
+            <p>No projeto de estradas e montanhas-russas, o perfil do terreno é uma função $y = f(x)$ e a inclinação da pista em cada ponto é $f'(x)$. Os trechos são emendados de modo que as tangentes coincidam nas junções: um "bico" no perfil seria um tranco perigoso para o veículo.</p>
         </div>
         <div class="card" style="border-left-color: #2ecc71;">
-            <h4>📈 Design de Rampas e Montanhas-Russas</h4>
-            <p>Na engenharia civil, para garantir transições suaves sem solavancos entre seções curvas e planas de vias ou pistas, os projetistas exigem que as retas tangentes das seções se igualem nos pontos de junção.</p>
+            <h4>💡 Espelhos e a Reta Normal</h4>
+            <p>Na reflexão da luz, os ângulos de incidência e de reflexão são medidos em relação à <strong>reta normal</strong> à superfície. Para projetar faróis e antenas parabólicas, os engenheiros calculam a normal em cada ponto da curva usando a derivada.</p>
         </div>
     </div>
 </section>
@@ -156,66 +179,57 @@
     <h3>✅ 5 Questões Resolvidas (R 1 a 5)</h3>
 
     <article class="questao">
-        <h4>R 1: Reta Tangente a uma Parábola</h4>
-        <p><strong>Enunciado:</strong> Determine a equação da reta tangente ao gráfico de $f(x) = x^2$ no ponto $x = 2$.</p>
+        <h4>R 1: Inclinação e Ângulo</h4>
+        <p><strong>Enunciado:</strong> Calcule, pela definição, o coeficiente angular da reta tangente ao gráfico de $f(x) = x^2$ no ponto de abscissa $x = \frac{1}{2}$ e o ângulo que essa reta forma com o eixo $x$.</p>
         <div class="resolucao-bloco">
             <p><strong>Resolução:</strong><br>
-            1. Encontramos o ponto de tangência: $f(2) = 2^2 = 4$. O ponto é $(2, 4)$.<br>
-            2. Calculamos a derivada de $f(x)$: $f'(x) = 2x$.<br>
-            3. A inclinação da reta tangente é $m = f'(2) = 2(2) = 4$.<br>
-            4. Aplicamos a fórmula ponto-inclinação $y - f(a) = m(x - a)$:<br>
-               $$y - 4 = 4(x - 2) \implies y - 4 = 4x - 8 \implies \mathbf{y = 4x - 4}$$</p>
+            1. $\dfrac{f(\frac{1}{2} + h) - f(\frac{1}{2})}{h} = \dfrac{\frac{1}{4} + h + h^2 - \frac{1}{4}}{h} = 1 + h$.<br>
+            2. $m = f'(\tfrac{1}{2}) = \displaystyle\lim_{h \to 0} (1 + h) = \mathbf{1}$.<br>
+            3. $\operatorname{tg}\theta = m = 1 \implies \theta = \mathbf{45^\circ}$.</p>
         </div>
     </article>
 
     <article class="questao">
-        <h4>R 2: Inclinação Horizontal (Pontos Críticos)</h4>
-        <p><strong>Enunciado:</strong> Em quais pontos o gráfico de $f(x) = x^3 - 3x$ possui tangente horizontal?</p>
+        <h4>R 2: Equação da Reta Tangente</h4>
+        <p><strong>Enunciado:</strong> Determine a equação da reta tangente ao gráfico de $f(x) = x^3$ no ponto de abscissa $x = 1$.</p>
         <div class="resolucao-bloco">
             <p><strong>Resolução:</strong><br>
-            1. Uma reta horizontal possui inclinação $m = 0$. Portanto, precisamos resolver $f'(x) = 0$.<br>
-            2. Calculando a derivada: $f'(x) = 3x^2 - 3$.<br>
-            3. Igualando a zero: $3x^2 - 3 = 0 \implies 3x^2 = 3 \implies x^2 = 1 \implies x = \pm 1$.<br>
-            4. Para $x = 1$: $f(1) = 1^3 - 3(1) = -2 \implies \mathbf{(1, -2)}$.<br>
-            5. Para $x = -1$: $f(-1) = (-1)^3 - 3(-1) = 2 \implies \mathbf{(-1, 2)}$.</p>
+            1. Ponto de tangência: $f(1) = 1$, isto é, $P(1, 1)$.<br>
+            2. $\dfrac{(1+h)^3 - 1}{h} = 3 + 3h + h^2 \implies m = f'(1) = 3$.<br>
+            3. $y - 1 = 3(x - 1) \implies \mathbf{y = 3x - 2}$.</p>
         </div>
     </article>
 
     <article class="questao">
-        <h4>R 3: Reta Normal</h4>
-        <p><strong>Enunciado:</strong> Encontre a equação da reta normal ao gráfico de $f(x) = \sqrt{x}$ no ponto $x = 4$.</p>
+        <h4>R 3: Retas Tangente e Normal</h4>
+        <p><strong>Enunciado:</strong> Determine as equações das retas tangente e normal ao gráfico de $f(x) = x^2$ no ponto $(2, 4)$.</p>
         <div class="resolucao-bloco">
             <p><strong>Resolução:</strong><br>
-            1. Ponto de tangência: $f(4) = \sqrt{4} = 2$. O ponto é $(4, 2)$.<br>
-            2. Derivada de $f(x)$: $f'(x) = \dfrac{1}{2\sqrt{x}}$.<br>
-            3. Inclinação da tangente: $m_{tang} = f'(4) = \dfrac{1}{2\sqrt{4}} = \dfrac{1}{4}$.<br>
-            4. Inclinação da normal: $m_{norm} = -\dfrac{1}{m_{tang}} = -4$.<br>
-            5. Equação da reta normal:<br>
-               $$y - 2 = -4(x - 4) \implies y - 2 = -4x + 16 \implies \mathbf{y = -4x + 18}$$</p>
+            1. $\dfrac{(2+h)^2 - 4}{h} = 4 + h \implies m_t = f'(2) = 4$. Tangente: $y - 4 = 4(x - 2) \implies \mathbf{y = 4x - 4}$.<br>
+            2. A normal é perpendicular à tangente: $m_n = -\dfrac{1}{m_t} = -\dfrac{1}{4}$.<br>
+            3. Normal: $y - 4 = -\dfrac{1}{4}(x - 2) \implies \mathbf{y = -\dfrac{x}{4} + \dfrac{9}{2}}$.</p>
         </div>
     </article>
 
     <article class="questao">
-        <h4>R 4: Interpretação Geométrica com Derivada Negativa</h4>
-        <p><strong>Enunciado:</strong> Qual é o significado geométrico de $f'(3) = -2$ para uma função $f(x)$?</p>
+        <h4>R 4: Tangente Horizontal</h4>
+        <p><strong>Enunciado:</strong> Em que ponto do gráfico de $f(x) = x^2 - 6x + 5$ a reta tangente é horizontal? Escreva a equação dessa tangente.</p>
         <div class="resolucao-bloco">
             <p><strong>Resolução:</strong><br>
-            1. O valor da derivada $f'(3) = -2$ indica que a reta tangente ao gráfico em $x = 3$ tem coeficiente angular negativo.<br>
-            2. Isso significa que a reta forma um ângulo obtuso com o eixo $x$ positivo e está "inclinada para baixo".<br>
-            3. Geometricamente, a função é localmente **decrescente** no ponto $x = 3$.</p>
+            1. $\dfrac{f(a+h) - f(a)}{h} = \dfrac{2ah + h^2 - 6h}{h} = 2a - 6 + h \implies f'(a) = 2a - 6$.<br>
+            2. Tangente horizontal $\iff$ inclinação zero: $2a - 6 = 0 \implies a = 3$, e $f(3) = 9 - 18 + 5 = -4$.<br>
+            3. Ponto $\mathbf{(3, -4)}$ (vértice da parábola); tangente: $\mathbf{y = -4}$.</p>
         </div>
     </article>
 
     <article class="questao">
-        <h4>R 5: Tangentes Paralelas a uma Reta Dada</h4>
-        <p><strong>Enunciado:</strong> Determine a equação da reta tangente à curva $y = x^2 - 4x + 5$ que seja paralela à reta $y = 2x + 1$.</p>
+        <h4>R 5: Um Bico no Gráfico</h4>
+        <p><strong>Enunciado:</strong> Verifique se $f(x) = |x - 2|$ é derivável em $x = 2$ e interprete geometricamente.</p>
         <div class="resolucao-bloco">
             <p><strong>Resolução:</strong><br>
-            1. Retas paralelas possuem a mesma inclinação. A reta dada $y = 2x + 1$ tem $m = 2$.<br>
-            2. Queremos $f'(x) = 2$. Derivando $f(x) = x^2 - 4x + 5$, temos $f'(x) = 2x - 4$.<br>
-            3. Igualando: $2x - 4 = 2 \implies 2x = 6 \implies x = 3$.<br>
-            4. Ponto na curva: $y = f(3) = 3^2 - 4(3) + 5 = 9 - 12 + 5 = 2$. Ponto: $(3, 2)$.<br>
-            5. Equação da tangente com $m = 2$: $y - 2 = 2(x - 3) \implies \mathbf{y = 2x - 4}$.</p>
+            1. $\dfrac{f(2+h) - f(2)}{h} = \dfrac{|h|}{h}$, que vale $1$ se $h &gt; 0$ e $-1$ se $h &lt; 0$.<br>
+            2. Os limites laterais são $1$ (pela direita) e $-1$ (pela esquerda): são diferentes, logo $f'(2)$ <strong>não existe</strong>.<br>
+            3. Geometricamente, o gráfico tem um <strong>bico</strong> em $(2, 0)$: as secantes da direita e da esquerda tendem a retas diferentes, e não há uma única tangente. Note que $f$ é contínua em $x = 2$.</p>
         </div>
     </article>
 </section>
@@ -224,126 +238,112 @@
     <h3>✍️ 10 Questões Propostas (P 6 a 15)</h3>
 
     <article class="questao">
-        <h4>P 6: Inclinação em Ponto Específico</h4>
-        <p><strong>Enunciado:</strong> Qual é a inclinação da reta tangente ao gráfico de $f(x) = 3x^2 - 5x + 2$ no ponto de abscissa $x = 1$?</p>
+        <h4>P 6: Coeficiente Angular</h4>
+        <p><strong>Enunciado:</strong> Calcule, pela definição, o coeficiente angular da reta tangente ao gráfico de $f(x) = x^2 + 1$ no ponto de abscissa $x = 3$.</p>
         <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
         <div class="gabarito-resolucao">
             <p><strong>Resolução:</strong><br>
-            1. Calculamos a derivada geral: $f'(x) = 6x - 5$.<br>
-            2. Avaliamos em $x = 1$: $f'(1) = 6(1) - 5 = 1$.<br>
-            3. A inclinação da reta tangente é $\mathbf{m = 1}$.</p>
+            1. $\dfrac{(3+h)^2 + 1 - 10}{h} = \dfrac{6h + h^2}{h} = 6 + h$.<br>
+            2. $m = f'(3) = \mathbf{6}$.</p>
         </div>
     </article>
 
     <article class="questao">
-        <h4>P 7: Equação Completa da Tangente</h4>
-        <p><strong>Enunciado:</strong> Determine a equação da reta tangente à curva $f(x) = x^3$ em $x = -1$.</p>
+        <h4>P 7: Reta Tangente</h4>
+        <p><strong>Enunciado:</strong> Determine a equação da reta tangente ao gráfico de $f(x) = x^2 + 1$ no ponto de abscissa $x = 3$.</p>
         <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
         <div class="gabarito-resolucao">
             <p><strong>Resolução:</strong><br>
-            1. Calculando $f(-1) = (-1)^3 = -1$. Ponto: $(-1, -1)$.<br>
-            2. Derivada: $f'(x) = 3x^2$.<br>
-            3. Inclinação: $m = f'(-1) = 3(-1)^2 = 3$.<br>
-            4. Equação: $y - (-1) = 3(x - (-1)) \implies y + 1 = 3x + 3 \implies \mathbf{y = 3x + 2}$.</p>
+            1. $f(3) = 10$ e, pelo exercício anterior, $m = 6$.<br>
+            2. $y - 10 = 6(x - 3) \implies \mathbf{y = 6x - 8}$.</p>
         </div>
     </article>
 
     <article class="questao">
-        <h4>P 8: Tangente Horizontal em Função Cúbica</h4>
-        <p><strong>Enunciado:</strong> Determine os valores de $x$ nos quais a curva $f(x) = 2x^3 - 9x^2 + 12x$ possui tangente horizontal.</p>
+        <h4>P 8: Tangente à Hipérbole</h4>
+        <p><strong>Enunciado:</strong> Determine a equação da reta tangente ao gráfico de $f(x) = \dfrac{1}{x}$ no ponto de abscissa $x = 2$.</p>
         <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
         <div class="gabarito-resolucao">
             <p><strong>Resolução:</strong><br>
-            1. Tangente horizontal implica $f'(x) = 0$.<br>
-            2. Derivada: $f'(x) = 6x^2 - 18x + 12$.<br>
-            3. Igualando a zero e dividindo por 6: $x^2 - 3x + 2 = 0$.<br>
-            4. Fatorando: $(x-1)(x-2) = 0 \implies \mathbf{x = 1 \text{ e } x = 2}$.</p>
+            1. $\dfrac{\frac{1}{2+h} - \frac{1}{2}}{h} = \dfrac{2 - (2+h)}{2h(2+h)} = \dfrac{-1}{2(2+h)} \implies m = f'(2) = -\dfrac{1}{4}$.<br>
+            2. $f(2) = \dfrac{1}{2}$: $y - \dfrac{1}{2} = -\dfrac{1}{4}(x - 2) \implies \mathbf{y = -\dfrac{x}{4} + 1}$.</p>
         </div>
     </article>
 
     <article class="questao">
         <h4>P 9: Reta Normal</h4>
-        <p><strong>Enunciado:</strong> Encontre a equação da reta normal à curva $y = x^2 + 1$ no ponto $(1, 2)$.</p>
+        <p><strong>Enunciado:</strong> Determine a equação da reta normal ao gráfico de $f(x) = x^2$ no ponto de abscissa $x = -1$.</p>
         <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
         <div class="gabarito-resolucao">
             <p><strong>Resolução:</strong><br>
-            1. Derivada: $y' = 2x$. Em $x = 1$, $m_{tang} = 2$.<br>
-            2. Inclinação da reta normal: $m_{norm} = -\dfrac{1}{2}$.<br>
-            3. Equação com ponto $(1, 2)$: $y - 2 = -\dfrac{1}{2}(x - 1) \implies \mathbf{y = -\dfrac{1}{2}x + \dfrac{5}{2}}$.</p>
+            1. $\dfrac{(-1+h)^2 - 1}{h} = -2 + h \implies m_t = f'(-1) = -2$; logo $m_n = -\dfrac{1}{-2} = \dfrac{1}{2}$.<br>
+            2. $f(-1) = 1$: $y - 1 = \dfrac{1}{2}(x + 1) \implies \mathbf{y = \dfrac{x}{2} + \dfrac{3}{2}}$.</p>
         </div>
     </article>
 
     <article class="questao">
-        <h4>P 10: Reta Tangente Perpendicular a Outra Reta</h4>
-        <p><strong>Enunciado:</strong> Encontre o ponto sobre a curva $y = x^2$ onde a reta tangente é perpendicular à reta $y = -\dfrac{1}{4}x + 3$.</p>
+        <h4>P 10: Tangente Horizontal</h4>
+        <p><strong>Enunciado:</strong> Em que ponto do gráfico de $f(x) = -x^2 + 4x$ a reta tangente é horizontal?</p>
         <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
         <div class="gabarito-resolucao">
             <p><strong>Resolução:</strong><br>
-            1. A inclinação da reta dada é $m_1 = -\dfrac{1}{4}$.<br>
-            2. A reta tangente deve ser perpendicular, logo sua inclinação deve ser $m_{tang} = -\dfrac{1}{-1/4} = 4$.<br>
-            3. Como $y' = 2x$, igualamos $2x = 4 \implies x = 2$.<br>
-            4. Para $x = 2$, $y = 2^2 = 4$. O ponto é $\mathbf{(2, 4)}$.</p>
+            1. $\dfrac{f(a+h) - f(a)}{h} = \dfrac{-2ah - h^2 + 4h}{h} = -2a + 4 - h \implies f'(a) = -2a + 4$.<br>
+            2. $-2a + 4 = 0 \implies a = 2$ e $f(2) = 4$: ponto $\mathbf{(2, 4)}$, com tangente $y = 4$.</p>
         </div>
     </article>
 
     <article class="questao">
-        <h4>P 11: Ângulo da Reta Tangente</h4>
-        <p><strong>Enunciado:</strong> Qual é o ângulo de inclinação $\theta$ em relação ao eixo $x$ positivo da reta tangente à curva $f(x) = \dfrac{1}{3}x^3$ no ponto $x = 1$?</p>
+        <h4>P 11: Tangente Paralela</h4>
+        <p><strong>Enunciado:</strong> Em que ponto do gráfico de $f(x) = x^2$ a reta tangente é paralela à reta $y = 6x - 1$?</p>
         <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
         <div class="gabarito-resolucao">
             <p><strong>Resolução:</strong><br>
-            1. $f'(x) = x^2 \implies m = f'(1) = 1^2 = 1$.<br>
-            2. Como $m = \tan(\theta)$, temos $\tan(\theta) = 1$.<br>
-            3. Logo, o ângulo é $\theta = \arctan(1) = \mathbf{45^\circ \text{ (ou } \pi/4 \text{ rad)}}$.</p>
+            1. Pela definição, $f'(a) = \displaystyle\lim_{h \to 0} \dfrac{(a+h)^2 - a^2}{h} = \displaystyle\lim_{h \to 0} (2a + h) = 2a$.<br>
+            2. Retas paralelas têm o mesmo coeficiente angular: $2a = 6 \implies a = 3$. Ponto $\mathbf{(3, 9)}$.</p>
         </div>
     </article>
 
     <article class="questao">
-        <h4>P 12: Função Hipérbole e Tangente</h4>
-        <p><strong>Enunciado:</strong> Determine a equação da reta tangente a $f(x) = \dfrac{1}{x}$ no ponto $x = 2$.</p>
+        <h4>P 12: Ângulo de Inclinação</h4>
+        <p><strong>Enunciado:</strong> Calcule, pela definição, a inclinação da reta tangente ao gráfico de $f(x) = -x^2$ em $x = \frac{1}{2}$ e o ângulo que ela forma com o eixo $x$.</p>
         <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
         <div class="gabarito-resolucao">
             <p><strong>Resolução:</strong><br>
-            1. Ponto: $f(2) = 1/2 \implies (2, 1/2)$.<br>
-            2. Derivada: $f'(x) = -\dfrac{1}{x^2} \implies m = f'(2) = -\dfrac{1}{4}$.<br>
-            3. Equação: $y - \dfrac{1}{2} = -\dfrac{1}{4}(x - 2) \implies y - \dfrac{1}{2} = -\dfrac{1}{4}x + \dfrac{1}{2} \implies \mathbf{y = -\dfrac{1}{4}x + 1}$.</p>
+            1. $\dfrac{-(\frac{1}{2} + h)^2 + \frac{1}{4}}{h} = \dfrac{-h - h^2}{h} = -1 - h \implies m = -1$.<br>
+            2. $\operatorname{tg}\theta = -1$ com $0^\circ \le \theta &lt; 180^\circ \implies \theta = \mathbf{135^\circ}$.</p>
         </div>
     </article>
 
     <article class="questao">
-        <h4>P 13: Interseção da Tangente com os Eixos</h4>
-        <p><strong>Enunciado:</strong> A reta tangente à curva $y = x^2 - 2x$ em $x = 3$ intercepta o eixo $y$ em qual ponto?</p>
+        <h4>P 13: Tangente Vertical</h4>
+        <p><strong>Enunciado:</strong> Mostre que $f(x) = \sqrt[3]{x}$ não é derivável em $x = 0$ e interprete geometricamente.</p>
         <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
         <div class="gabarito-resolucao">
             <p><strong>Resolução:</strong><br>
-            1. Ponto: $y(3) = 3^2 - 2(3) = 3 \implies (3, 3)$.<br>
-            2. Derivada: $y' = 2x - 2 \implies m = y'(3) = 2(3) - 2 = 4$.<br>
-            3. Equação da tangente: $y - 3 = 4(x - 3) \implies y = 4x - 9$.<br>
-            4. Interseção com o eixo $y$ ($x=0$): $y = 4(0) - 9 = -9$. Ponto: $\mathbf{(0, -9)}$.</p>
+            1. $\dfrac{f(0+h) - f(0)}{h} = \dfrac{\sqrt[3]{h}}{h} = \dfrac{1}{\sqrt[3]{h^2}}$, que tende a $+\infty$ quando $h \to 0$.<br>
+            2. O limite não é um número real: $f'(0)$ não existe. Geometricamente, a reta tangente em $(0, 0)$ é <strong>vertical</strong> ($x = 0$), e uma reta vertical não tem coeficiente angular.</p>
         </div>
     </article>
 
     <article class="questao">
-        <h4>P 14: Derivabilidade e Cúspide</h4>
-        <p><strong>Enunciado:</strong> Por que a função $f(x) = |x|$ não possui reta tangente bem definida no ponto $x = 0$?</p>
+        <h4>P 14: Tangente Perpendicular</h4>
+        <p><strong>Enunciado:</strong> Determine a equação da reta tangente ao gráfico de $f(x) = x^2$ que é perpendicular à reta $x + 4y - 5 = 0$.</p>
         <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
         <div class="gabarito-resolucao">
             <p><strong>Resolução:</strong><br>
-            1. O limite lateral pela direita dá inclinação $+1$: $\displaystyle\lim_{h \to 0^+} \frac{|0+h| - 0}{h} = 1$.<br>
-            2. O limite lateral pela esquerda dá inclinação $-1$: $\displaystyle\lim_{h \to 0^-} \frac{|0+h| - 0}{h} = -1$.<br>
-            3. Como os limites laterais diferem, $f'(0)$ não existe (há um "bico" no gráfico). Logo, não há tangente única em $(0,0)$.</p>
+            1. A reta dada tem coeficiente angular $-\dfrac{1}{4}$; a perpendicular a ela tem coeficiente $4$. Como $f'(a) = 2a$, temos $2a = 4 \implies a = 2$.<br>
+            2. Ponto $(2, 4)$: $y - 4 = 4(x - 2) \implies \mathbf{y = 4x - 4}$.</p>
         </div>
     </article>
 
     <article class="questao">
-        <h4>P 15: Aplicação Geométrica Genérica</h4>
-        <p><strong>Enunciado:</strong> Mostre que para a parábola $y = ax^2$, a reta tangente no ponto de abscissa $x_0$ intercepta o eixo $x$ exatamente na metade da distância entre a origem e $x_0$.</p>
+        <h4>P 15: Junção Suave</h4>
+        <p><strong>Enunciado:</strong> Seja $f(x) = x^2$ para $x \le 1$ e $f(x) = 2x - 1$ para $x &gt; 1$. Verifique, pelas derivadas laterais, se $f$ é derivável em $x = 1$ e interprete.</p>
         <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
         <div class="gabarito-resolucao">
             <p><strong>Resolução:</strong><br>
-            1. Ponto: $(x_0, ax_0^2)$. Derivada: $y' = 2ax \implies m = 2ax_0$.<br>
-            2. Reta tangente: $y - ax_0^2 = 2ax_0(x - x_0)$.<br>
-            3. Interseção com eixo $x$ ($y=0$): $-ax_0^2 = 2ax_0(x - x_0) \implies -x_0 = 2(x - x_0) \implies -x_0 = 2x - 2x_0 \implies 2x = x_0 \implies \mathbf{x = \dfrac{x_0}{2}}$.</p>
+            1. $f(1) = 1$. Pela esquerda: $\dfrac{(1+h)^2 - 1}{h} = 2 + h \to 2$. Pela direita: $\dfrac{2(1+h) - 1 - 1}{h} = \dfrac{2h}{h} = 2$.<br>
+            2. As derivadas laterais são iguais: $f$ é <strong>derivável</strong> em $x = 1$ e $f'(1) = 2$. A reta $y = 2x - 1$ é justamente a tangente à parábola em $(1, 1)$: a junção é suave, sem bico.</p>
         </div>
     </article>
 </section>
@@ -351,15 +351,72 @@
 <section class="TESTE" id="testes">
     <h3>🎓 TESTES (T 16 a 20)</h3>
 
-    <div class="card" style="text-align:center; padding:60px 20px; background:#f8f9fa; border:2px dashed #3498db; border-radius:12px; margin-top:20px;">
-        <h2 style="color:#3498db; font-size:2.5rem; margin-bottom:15px;">
-            🚧 EM BREVE!
-        </h2>
+    <article class="questao">
+        <h4>T 16: (EsPCEx 2018) Reta Tangente</h4>
+        <p>A equação da reta tangente ao gráfico da função $f(x) = x^2 - 6x + 1$, no ponto $(4, -7)$, é igual a</p>
+        <p>A) $y = -2x + 1$<br>B) $y = 3x - 19$<br>C) $y = x - 11$<br>D) $y = -3x + 5$<br>E) $y = 2x - 15$</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> Alternativa <strong>E</strong>.<br>
+            1. $f(4+h) = 16 + 8h + h^2 - 24 - 6h + 1 = -7 + 2h + h^2$.<br>
+            2. $\dfrac{f(4+h) - f(4)}{h} = \dfrac{2h + h^2}{h} = 2 + h \implies m = f'(4) = 2$.<br>
+            3. $y - (-7) = 2(x - 4) \implies \mathbf{y = 2x - 15}$.</p>
+        </div>
+    </article>
 
-        <p style="font-size:1.2rem; color:#555;">
-            Questões de vestibulares (ENADE, concursos, etc) sobre Interpretação Geométrica da Derivada serão disponibilizadas nesta seção em breve.
-        </p>
-    </div>
+    <article class="questao">
+        <h4>T 17: (FGV 2026 – Pref. São José dos Campos-SP) Tangente à Parábola</h4>
+        <p>Seja $f(x) = 3x^2 - x - 1$ uma função real de variável real.</p>
+        <p>Uma equação da reta tangente a essa função no ponto de abscissa $x = 2$ é</p>
+        <p>A) $11x - y + 13 = 0$<br>B) $11x + y + 13 = 0$<br>C) $11x - y - 13 = 0$<br>D) $13x - y - 17 = 0$<br>E) $13x + y - 35 = 0$</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> Alternativa <strong>C</strong>.<br>
+            1. $f(2) = 12 - 2 - 1 = 9$ e $f(2+h) = 3(4 + 4h + h^2) - (2 + h) - 1 = 9 + 11h + 3h^2$.<br>
+            2. $\dfrac{f(2+h) - f(2)}{h} = 11 + 3h \implies m = f'(2) = 11$.<br>
+            3. $y - 9 = 11(x - 2) \implies y = 11x - 13 \implies \mathbf{11x - y - 13 = 0}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>T 18: (UFBA 2013) Derivabilidade e Continuidade</h4>
+        <p>Julgue o item a seguir.</p>
+        <p>A função $f: \mathbb{R} \to \mathbb{R}$ definida por $f(x) = \begin{cases} 2x + 1, & \text{se } x &lt; 1 \\ x^2 + 1, & \text{se } x &gt; 1 \end{cases}$ é derivável.</p>
+        <p>( &nbsp; ) Certo &nbsp;&nbsp;&nbsp; ( &nbsp; ) Errado</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> Item <strong>Errado</strong>.<br>
+            1. Toda função derivável num ponto é contínua nesse ponto: o gráfico de uma função derivável não pode ter saltos nem bicos.<br>
+            2. Em $x = 1$: $\displaystyle\lim_{x \to 1^-} (2x + 1) = 3$ e $\displaystyle\lim_{x \to 1^+} (x^2 + 1) = 2$. O gráfico dá um <strong>salto</strong> (e a lei nem define $f(1)$).<br>
+            3. Portanto $f$ não é derivável em $x = 1$ e o item está <strong>errado</strong>.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>T 19: (Questão autoral) Tangente Horizontal</h4>
+        <p>A reta tangente ao gráfico de $f(x) = x^2 - 4x + 3$ é horizontal no ponto:</p>
+        <p>A) $(1, 0)$<br>B) $(2, -1)$<br>C) $(3, 0)$<br>D) $(0, 3)$<br>E) $(4, 3)$</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> Alternativa <strong>B</strong>.<br>
+            1. $\dfrac{f(a+h) - f(a)}{h} = 2a - 4 + h \implies f'(a) = 2a - 4$.<br>
+            2. Tangente horizontal: $2a - 4 = 0 \implies a = 2$, e $f(2) = 4 - 8 + 3 = -1$.<br>
+            3. Ponto $(2, -1)$, o vértice da parábola. Alternativa <strong>B</strong>. (Em $(1, 0)$ e $(3, 0)$ o gráfico corta o eixo $x$, mas a tangente não é horizontal.)</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>T 20: (Questão autoral) Reta Normal</h4>
+        <p>A equação da reta normal ao gráfico de $f(x) = x^2 + 1$ no ponto de abscissa $x = 1$ é:</p>
+        <p>A) $y = 2x$<br>B) $y = -2x + 4$<br>C) $y = -\dfrac{x}{2} + \dfrac{5}{2}$<br>D) $y = \dfrac{x}{2} + \dfrac{3}{2}$<br>E) $y = -\dfrac{x}{2} + 2$</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> Alternativa <strong>C</strong>.<br>
+            1. $f(1) = 2$ e $\dfrac{(1+h)^2 + 1 - 2}{h} = 2 + h \implies m_t = f'(1) = 2$ (a tangente é $y = 2x$, alternativa A).<br>
+            2. Normal: $m_n = -\dfrac{1}{2}$, passando por $(1, 2)$: $y - 2 = -\dfrac{1}{2}(x - 1)$.<br>
+            3. $y = -\dfrac{x}{2} + \dfrac{5}{2}$. Alternativa <strong>C</strong>.</p>
+        </div>
+    </article>
 </section>
 
 </div>
