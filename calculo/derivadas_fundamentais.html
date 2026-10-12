@@ -44,34 +44,101 @@
  <div class="container-resumo" id="resumo">
     <h3>📚 Resumo </h3>
     <section class="resumo-conteudo">
-        <p>As <strong>derivadas fundamentais</strong> (ou regras de derivação) nos permitem calcular taxas de variação de funções elementares de forma direta e ágil, dispensando o cálculo exaustivo do limite do quociente de Newton para cada caso.</p>
-        <p>A ferramenta algébrica central para monômios e polinômios é a <strong>Regra da Potência</strong>: se $f(x) = x^n$, então a sua derivada é dada por $$f'(x) = n \cdot x^{n-1}$$</p>
+        <p>Calcular derivadas sempre pela definição seria muito trabalhoso. Aplicando a definição <strong>uma única vez</strong> a cada função básica, obtemos uma <strong>tabela de derivadas fundamentais</strong>, que passa a ser usada diretamente:</p>
+        <p style="text-align: center;">$$(c)' = 0 \qquad (x^n)' = n\,x^{n-1} \qquad (c\,f)' = c\,f' \qquad (e^x)' = e^x \qquad (\ln x)' = \frac{1}{x} \qquad (\operatorname{sen} x)' = \cos x \qquad (\cos x)' = -\operatorname{sen} x$$</p>
+        <p>A <strong>regra da potência</strong> vale para qualquer expoente real: raízes e frações são reescritas como potências antes de derivar, por exemplo $\sqrt{x} = x^{1/2}$ e $\dfrac{1}{x^3} = x^{-3}$.</p>
     </section>
 </div>
 
 <section class="conteudo-teorico-completo" id="teoria">
     <div class="passo-teoria">
-        <h3>📖 As Principais Regras de Derivação</h3>
-        <p>Em vez de apelar para limites complexos a cada operação, o cálculo diferencial consolida fórmulas prontas para funções padrão que compõem estruturas matemáticas maiores.</p>
+        <h3>📖 Das Definições às Regras</h3>
+        <p>Na aula anterior, cada derivada exigiu montar o quociente de Newton e calcular um limite. Agora vamos fazer esse trabalho uma vez para cada função básica e guardar o resultado. Com a tabela (e, nas próximas aulas, com as regras da soma, do produto, do quociente e da cadeia), derivar torna-se um processo direto.</p>
     </div>
 
     <div class="passo-teoria">
-        <h4>1. Derivada da Função Constante</h4>
-        <p>Se uma função é constante ($f(x) = k$), seu valor não sofre alteração alguma, logo sua taxa de variação é nula:</p>
-        <p style="text-align: center;">$$f'(x) = 0$$</p>
+        <h4>1. Constante e Função Identidade</h4>
+        <p>Se $f(x) = c$, então $f(x+h) - f(x) = c - c = 0$, e o limite do quociente é $0$: $\boxed{(c)' = 0}$. Geometricamente, o gráfico é uma reta horizontal (inclinação zero). Se $f(x) = x$, o quociente vale $\dfrac{(x+h) - x}{h} = 1$: $(x)' = 1$.</p>
     </div>
 
     <div class="passo-teoria">
-        <h4>2. A Regra do Tombo (Potência)</h4>
-        <p>Para qualquer função potência com expoente real, o expoente "tomba" multiplicando a frente e subtraímos uma unidade do expoente original: $$\text{Se } f(x) = x^n \implies f'(x) = n \cdot x^{n-1}$$</p>
+        <h4>2. Regra da Potência</h4>
+        <p>Para $n$ natural, pelo binômio de Newton, $(x+h)^n = x^n + n\,x^{n-1}h + (\text{termos com } h^2, h^3, \dots)$. Assim,</p>
+        <p style="text-align: center;">$$\frac{(x+h)^n - x^n}{h} = n\,x^{n-1} + (\text{termos com } h) \xrightarrow{\ h \to 0\ } n\,x^{n-1}$$</p>
+        <p style="text-align: center; font-size: 1.15rem; background-color: #f8f9fa; padding: 15px; border-left: 5px solid #3498db; margin: 20px 0;">
+            $$\frac{d}{dx}\left(x^n\right) = n\,x^{n-1} \qquad (n \in \mathbb{R})$$
+        </p>
+        <p>A fórmula continua válida para expoentes negativos e fracionários. <strong>Exemplos:</strong> $(x^5)' = 5x^4$; $\left(\dfrac{1}{x}\right)' = (x^{-1})' = -x^{-2} = -\dfrac{1}{x^2}$; $(\sqrt{x})' = (x^{1/2})' = \dfrac{1}{2}x^{-1/2} = \dfrac{1}{2\sqrt{x}}$. Os dois últimos resultados coincidem com os que obtivemos, com bem mais esforço, pela definição.</p>
     </div>
 
     <div class="passo-teoria">
-        <h4>3. Propriedades Operatórias Básicas</h4>
-        <ul>
-            <li><strong>Múltiplo Constante:</strong> $[c \cdot f(x)]' = c \cdot f'(x)$</li>
-            <li><strong>Soma e Subtração:</strong> $[f(x) \pm g(x)]' = f'(x) \pm g'(x)$</li>
-        </ul>
+        <h4>3. Múltiplo Constante</h4>
+        <p>Se $c$ é uma constante, $\dfrac{c\,f(x+h) - c\,f(x)}{h} = c \cdot \dfrac{f(x+h) - f(x)}{h}$, e a constante sai do limite:</p>
+        <p style="text-align: center;">$$\big(c \cdot f(x)\big)' = c \cdot f'(x) \qquad \text{Ex.: } (7x^3)' = 7 \cdot 3x^2 = 21x^2$$</p>
+    </div>
+
+    <div class="passo-teoria">
+        <h4>4. Exponencial e Logaritmo</h4>
+        <p>Para $f(x) = e^x$: $\dfrac{e^{x+h} - e^x}{h} = e^x \cdot \dfrac{e^h - 1}{h}$. O número $e \approx 2{,}718$ é exatamente a base para a qual $\displaystyle\lim_{h \to 0}\frac{e^h - 1}{h} = 1$. Logo, $(e^x)' = e^x$: a exponencial natural é igual à sua própria derivada. Para outras bases, $(a^x)' = a^x \ln a$.</p>
+        <p>Para os logaritmos (com $x &gt; 0$): $(\ln x)' = \dfrac{1}{x}$ e $(\log_a x)' = \dfrac{1}{x \ln a}$.</p>
+    </div>
+
+    <div class="passo-teoria">
+        <h4>5. Seno e Cosseno</h4>
+        <p>Usando $\operatorname{sen}(x+h) = \operatorname{sen}x\cos h + \cos x\operatorname{sen}h$ e os limites fundamentais $\displaystyle\lim_{h \to 0}\frac{\operatorname{sen}h}{h} = 1$ e $\displaystyle\lim_{h \to 0}\frac{\cos h - 1}{h} = 0$ (com $h$ em <strong>radianos</strong>), obtém-se</p>
+        <p style="text-align: center;">$$(\operatorname{sen} x)' = \cos x \qquad\qquad (\cos x)' = -\operatorname{sen} x$$</p>
+        <p>Na figura, as inclinações das tangentes ao gráfico do seno ($1$, $0$, $-1$, $0$) são exatamente os valores do cosseno nesses pontos.</p>
+        <figure class="figura-aula figura-grande">
+            <svg viewBox="0 0 600 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Gráfico de seno com retas tangentes; as inclinações seguem o cosseno" style="width:100%; max-width:620px; height:auto; display:block; margin:0 auto; background:#fdfdfd; border-radius:10px;">
+<line x1="12" y1="150.0" x2="588" y2="150.0" stroke="#2c3e50" stroke-width="2"/><polygon points="596,150.0 584,145.0 584,155.0" fill="#2c3e50"/><line x1="40.0" y1="292" x2="40.0" y2="14" stroke="#2c3e50" stroke-width="2"/><polygon points="40.0,6 35.0,18 45.0,18" fill="#2c3e50"/><text x="582" y="168.0" font-size="13" fill="#2c3e50" font-family="sans-serif">x</text><text x="48.0" y="18" font-size="13" fill="#2c3e50" font-family="sans-serif">y</text>
+<polyline points="16.0,73.6 20.0,72.5 24.0,71.6 28.0,70.9 32.0,70.4 36.0,70.1 40.0,70.0 44.0,70.1 48.0,70.4 52.0,70.9 56.0,71.6 60.0,72.5 64.0,73.6 68.0,74.9 72.0,76.3 76.0,78.0 80.0,79.8 84.0,81.8 88.0,84.0 92.0,86.3 96.0,88.8 100.0,91.5 104.0,94.3 108.0,97.2 112.0,100.3 116.0,103.5 120.0,106.8 124.0,110.2 128.0,113.7 132.0,117.3 136.0,121.0 140.0,124.8 144.0,128.6 148.0,132.5 152.0,136.4 156.0,140.4 160.0,144.3 164.0,148.3 168.0,152.3 172.0,156.3 176.0,160.3 180.0,164.3 184.0,168.2 188.0,172.0 192.0,175.9 196.0,179.6 200.0,183.3 204.0,186.9 208.0,190.4 212.0,193.8 216.0,197.1 220.0,200.3 224.0,203.3 228.0,206.2 232.0,209.0 236.0,211.6 240.0,214.1 244.0,216.4 248.0,218.6 252.0,220.5 256.0,222.3 260.0,223.9 264.0,225.4 268.0,226.6 272.0,227.7 276.0,228.5 280.0,229.2 284.0,229.7 288.0,229.9 292.0,230.0 296.0,229.9 300.0,229.5 304.0,229.0 308.0,228.3 312.0,227.3 316.0,226.2 320.0,224.9 324.0,223.4 328.0,221.7 332.0,219.9 336.0,217.8 340.0,215.6 344.0,213.3 348.0,210.8 352.0,208.1 356.0,205.3 360.0,202.3 364.0,199.2 368.0,196.0 372.0,192.7 376.0,189.2 380.0,185.7 384.0,182.1 388.0,178.4 392.0,174.6 396.0,170.8 400.0,166.9 404.0,162.9 408.0,159.0 412.0,155.0 416.0,151.0 420.0,147.0 424.0,143.0 428.0,139.0 432.0,135.1 436.0,131.2 440.0,127.3 444.0,123.5 448.0,119.8 452.0,116.1 456.0,112.5 460.0,109.0 464.0,105.7 468.0,102.4 472.0,99.2 476.0,96.2 480.0,93.3 484.0,90.6 488.0,88.0 492.0,85.5 496.0,83.2 500.0,81.1 504.0,79.2 508.0,77.4 512.0,75.8 516.0,74.4 520.0,73.2 524.0,72.2 528.0,71.3 532.0,70.7 536.0,70.3 540.0,70.0 544.0,70.0 548.0,70.2" fill="none" stroke="#27ae60" stroke-width="2" stroke-dasharray="7,5"/>
+<polyline points="16.0,173.6 20.0,169.8 24.0,165.9 28.0,162.0 32.0,158.0 36.0,154.0 40.0,150.0 44.0,146.0 48.0,142.0 52.0,138.0 56.0,134.1 60.0,130.2 64.0,126.4 68.0,122.6 72.0,118.8 76.0,115.2 80.0,111.6 84.0,108.2 88.0,104.8 92.0,101.6 96.0,98.5 100.0,95.5 104.0,92.6 108.0,89.9 112.0,87.3 116.0,84.9 120.0,82.7 124.0,80.6 128.0,78.7 132.0,77.0 136.0,75.4 140.0,74.1 144.0,72.9 148.0,71.9 152.0,71.2 156.0,70.6 160.0,70.2 164.0,70.0 168.0,70.0 172.0,70.3 176.0,70.7 180.0,71.3 184.0,72.1 188.0,73.1 192.0,74.3 196.0,75.7 200.0,77.3 204.0,79.0 208.0,80.9 212.0,83.0 216.0,85.3 220.0,87.8 224.0,90.3 228.0,93.1 232.0,96.0 236.0,99.0 240.0,102.1 244.0,105.4 248.0,108.8 252.0,112.2 256.0,115.8 260.0,119.5 264.0,123.2 268.0,127.0 272.0,130.9 276.0,134.8 280.0,138.7 284.0,142.7 288.0,146.7 292.0,150.7 296.0,154.7 300.0,158.7 304.0,162.6 308.0,166.6 312.0,170.4 316.0,174.3 320.0,178.1 324.0,181.8 328.0,185.4 332.0,188.9 336.0,192.4 340.0,195.7 344.0,198.9 348.0,202.1 352.0,205.0 356.0,207.9 360.0,210.5 364.0,213.1 368.0,215.5 372.0,217.7 376.0,219.7 380.0,221.6 384.0,223.3 388.0,224.8 392.0,226.1 396.0,227.3 400.0,228.2 404.0,228.9 408.0,229.5 412.0,229.8 416.0,230.0 420.0,229.9 424.0,229.7 428.0,229.2 432.0,228.6 436.0,227.8 440.0,226.7 444.0,225.5 448.0,224.1 452.0,222.5 456.0,220.7 460.0,218.7 464.0,216.6 468.0,214.3 472.0,211.8 476.0,209.2 480.0,206.4 484.0,203.5 488.0,200.5 492.0,197.3 496.0,194.1 500.0,190.7 504.0,187.2 508.0,183.6 512.0,179.9 516.0,176.2 520.0,172.4 524.0,168.5 528.0,164.6 532.0,160.6 536.0,156.6 540.0,152.7 544.0,148.7 548.0,144.7" fill="none" stroke="#3498db" stroke-width="3"/>
+<line x1="-20.0" y1="210.0" x2="100.0" y2="90.0" stroke="#e74c3c" stroke-width="2.4"/>
+<circle cx="40.0" cy="150.0" r="4.5" fill="#2c3e50"/>
+<line x1="40.0" y1="150.0" x2="40.0" y2="70.0" stroke="#bdc3c7" stroke-dasharray="3,3"/>
+<circle cx="40.0" cy="70.0" r="4" fill="#27ae60"/>
+<line x1="105.7" y1="70.0" x2="225.7" y2="70.0" stroke="#e74c3c" stroke-width="2.4"/>
+<circle cx="165.7" cy="70.0" r="4.5" fill="#2c3e50"/>
+<line x1="165.7" y1="150.0" x2="165.7" y2="150.0" stroke="#bdc3c7" stroke-dasharray="3,3"/>
+<circle cx="165.7" cy="150.0" r="4" fill="#27ae60"/>
+<line x1="231.3" y1="90.0" x2="351.3" y2="210.0" stroke="#e74c3c" stroke-width="2.4"/>
+<circle cx="291.3" cy="150.0" r="4.5" fill="#2c3e50"/>
+<line x1="291.3" y1="150.0" x2="291.3" y2="230.0" stroke="#bdc3c7" stroke-dasharray="3,3"/>
+<circle cx="291.3" cy="230.0" r="4" fill="#27ae60"/>
+<line x1="357.0" y1="230.0" x2="477.0" y2="230.0" stroke="#e74c3c" stroke-width="2.4"/>
+<circle cx="417.0" cy="230.0" r="4.5" fill="#2c3e50"/>
+<line x1="417.0" y1="150.0" x2="417.0" y2="150.0" stroke="#bdc3c7" stroke-dasharray="3,3"/>
+<circle cx="417.0" cy="150.0" r="4" fill="#27ae60"/>
+<text x="46.0" y="136.0" font-size="13" fill="#e74c3c" font-family="sans-serif" font-weight="bold">m = 1</text>
+<text x="171.7" y="56.0" font-size="13" fill="#e74c3c" font-family="sans-serif" font-weight="bold">m = 0</text>
+<text x="297.3" y="136.0" font-size="13" fill="#e74c3c" font-family="sans-serif" font-weight="bold">m = −1</text>
+<text x="423.0" y="254.0" font-size="13" fill="#e74c3c" font-family="sans-serif" font-weight="bold">m = 0</text>
+<text x="157.7" y="168.0" font-size="13" fill="#2c3e50" font-family="sans-serif">π/2</text>
+<text x="283.3" y="168.0" font-size="13" fill="#2c3e50" font-family="sans-serif">π</text>
+<text x="409.0" y="168.0" font-size="13" fill="#2c3e50" font-family="sans-serif">3π/2</text>
+<text x="534.7" y="168.0" font-size="13" fill="#2c3e50" font-family="sans-serif">2π</text>
+<text x="450" y="40" font-size="14" fill="#3498db" font-family="sans-serif" font-weight="bold">y = sen x</text>
+<text x="450" y="60" font-size="14" fill="#27ae60" font-family="sans-serif" font-weight="bold">y = cos x</text>
+</svg>
+            <figcaption>Figura 1: A inclinação da tangente ao gráfico de $\operatorname{sen} x$ em cada ponto é igual a $\cos x$ (pontos verdes).</figcaption>
+        </figure>
+    </div>
+
+    <div class="passo-teoria">
+        <h4>6. Tabela de Derivadas Fundamentais</h4>
+        <table style="margin: 15px auto; border-collapse: collapse; text-align: center; font-size: 1.08rem;">
+            <tr style="background-color: #2c3e50; color: white;"><th style="padding: 8px 22px;">Função $f(x)$</th><th style="padding: 8px 22px;">Derivada $f'(x)$</th><th style="padding: 8px 22px;">Observação</th></tr>
+            <tr><td style="padding: 7px 22px; border: 1px solid #ccc;">$c$ (constante)</td><td style="padding: 7px 22px; border: 1px solid #ccc;">$0$</td><td style="padding: 7px 22px; border: 1px solid #ccc;">gráfico horizontal</td></tr>
+            <tr style="background-color: #f8f9fa;"><td style="padding: 7px 22px; border: 1px solid #ccc;">$x^n$</td><td style="padding: 7px 22px; border: 1px solid #ccc;">$n\,x^{n-1}$</td><td style="padding: 7px 22px; border: 1px solid #ccc;">$n$ real</td></tr>
+            <tr><td style="padding: 7px 22px; border: 1px solid #ccc;">$c \cdot f(x)$</td><td style="padding: 7px 22px; border: 1px solid #ccc;">$c \cdot f'(x)$</td><td style="padding: 7px 22px; border: 1px solid #ccc;">a constante "sai"</td></tr>
+            <tr style="background-color: #f8f9fa;"><td style="padding: 7px 22px; border: 1px solid #ccc;">$e^x$</td><td style="padding: 7px 22px; border: 1px solid #ccc;">$e^x$</td><td style="padding: 7px 22px; border: 1px solid #ccc;">igual à própria função</td></tr>
+            <tr><td style="padding: 7px 22px; border: 1px solid #ccc;">$a^x$</td><td style="padding: 7px 22px; border: 1px solid #ccc;">$a^x \ln a$</td><td style="padding: 7px 22px; border: 1px solid #ccc;">$a &gt; 0$, $a \neq 1$</td></tr>
+            <tr style="background-color: #f8f9fa;"><td style="padding: 7px 22px; border: 1px solid #ccc;">$\ln x$</td><td style="padding: 7px 22px; border: 1px solid #ccc;">$\dfrac{1}{x}$</td><td style="padding: 7px 22px; border: 1px solid #ccc;">$x &gt; 0$</td></tr>
+            <tr><td style="padding: 7px 22px; border: 1px solid #ccc;">$\log_a x$</td><td style="padding: 7px 22px; border: 1px solid #ccc;">$\dfrac{1}{x \ln a}$</td><td style="padding: 7px 22px; border: 1px solid #ccc;">$x &gt; 0$</td></tr>
+            <tr style="background-color: #f8f9fa;"><td style="padding: 7px 22px; border: 1px solid #ccc;">$\operatorname{sen} x$</td><td style="padding: 7px 22px; border: 1px solid #ccc;">$\cos x$</td><td style="padding: 7px 22px; border: 1px solid #ccc;">$x$ em radianos</td></tr>
+            <tr><td style="padding: 7px 22px; border: 1px solid #ccc;">$\cos x$</td><td style="padding: 7px 22px; border: 1px solid #ccc;">$-\operatorname{sen} x$</td><td style="padding: 7px 22px; border: 1px solid #ccc;">atenção ao sinal!</td></tr>
+        </table>
+        <p><strong>Cuidado:</strong> $\pi^2$, $e^3$, $\ln 5$ são números (constantes), e sua derivada é zero. Não confunda $x^n$ (base variável, regra da potência) com $a^x$ (expoente variável, regra da exponencial).</p>
     </div>
 </section>
 
@@ -79,12 +146,12 @@
     <h3>💡 Matemática em Ação</h3>
     <div class="cards-aplicacao">
         <div class="card">
-            <h4>🚗 Cinemática e MRUV</h4>
-            <p>Se a posição de um veículo em rodovia é modelada por uma função polinomial do 2º ou 3º grau, aplicar as regras fundamentais fornece de imediato as equações da velocidade e da aceleração instantâneas.</p>
+            <h4>🍎 Queda Livre</h4>
+            <p>Desprezando a resistência do ar, um corpo solto do repouso percorre $s(t) = 4{,}9\,t^2$ metros em $t$ segundos. Pela regra da potência, $v(t) = 9{,}8\,t$ e $a(t) = 9{,}8$ m/s²: a aceleração da gravidade aparece como a derivada da velocidade.</p>
         </div>
         <div class="card" style="border-left-color: #2ecc71;">
-            <h4>📈 Otimização de Custos e Produção</h4>
-            <p>Economistas e administradores aplicam regras de potências em funções de custo total para estimar o custo marginal exato de fabricação industrial.</p>
+            <h4>⚡ Corrente Alternada</h4>
+            <p>A tensão da tomada é senoidal, $v(t) = V_0\operatorname{sen}(\omega t)$. Como a derivada do seno é o cosseno, num capacitor a corrente $i = C\,\dfrac{dv}{dt}$ fica "adiantada" de um quarto de ciclo em relação à tensão: um fato central dos circuitos elétricos.</p>
         </div>
     </div>
 </section>
@@ -93,134 +160,253 @@
     <h3>✅ 5 Questões Resolvidas (R 1 a 5)</h3>
 
     <article class="questao">
-        <h4>R 1: Regra do Tombo Direta</h4>
-        <p><strong>Enunciado:</strong> Calcule a derivada da função $f(x) = x^6$.</p>
+        <h4>R 1: Regra da Potência</h4>
+        <p><strong>Enunciado:</strong> Derive: (a) $f(x) = x^7$; \ (b) $g(x) = \dfrac{1}{x^4}$; \ (c) $h(x) = \sqrt[3]{x^2}$.</p>
         <div class="resolucao-bloco">
             <p><strong>Resolução:</strong><br>
-            1. Aplicamos a regra da potência com $n = 6$.<br>
-            2. O expoente 6 passa multiplicando e subtraímos 1 do expoente.<br>
-            $$f'(x) = 6 \cdot x^{6-1} = \mathbf{6x^5}$$</p>
+            1. (a) Regra da potência com $n = 7$: $f'(x) = 7x^{7-1} = \mathbf{7x^6}$.<br>
+            2. (b) Escrevemos como potência: $g(x) = x^{-4}$. Então $g'(x) = -4x^{-5} = \mathbf{-\dfrac{4}{x^5}}$.<br>
+            3. (c) $h(x) = x^{2/3}$. Então $h'(x) = \dfrac{2}{3}x^{\frac{2}{3} - 1} = \dfrac{2}{3}x^{-1/3} = \mathbf{\dfrac{2}{3\sqrt[3]{x}}}$.</p>
         </div>
     </article>
 
     <article class="questao">
-        <h4>R 2: Derivada de Polinômio Completo</h4>
-        <p><strong>Enunciado:</strong> Determine a derivada da função polinomial $f(x) = 4x^3 - 5x^2 + 7x - 9$.</p>
+        <h4>R 2: Múltiplo Constante</h4>
+        <p><strong>Enunciado:</strong> Derive: (a) $f(x) = 5x^3$; \ (b) $g(x) = 6\sqrt{x}$; \ (c) $h(x) = -\dfrac{2}{x}$.</p>
         <div class="resolucao-bloco">
             <p><strong>Resolução:</strong><br>
-            1. Derivamos termo a termo:<br>
-            - Derivada de $4x^3 \implies 4 \cdot (3x^2) = 12x^2$<br>
-            - Derivada de $-5x^2 \implies -5 \cdot (2x) = -10x$<br>
-            - Derivada de $7x \implies 7 \cdot (1) = 7$<br>
-            - Derivada de $-9 \implies 0$<br>
-            2. Resultado final: $\mathbf{f'(x) = 12x^2 - 10x + 7}$.</p>
+            1. (a) A constante <strong>sai da derivada</strong>: $f'(x) = 5 \cdot 3x^2 = \mathbf{15x^2}$.<br>
+            2. (b) $g(x) = 6x^{1/2} \implies g'(x) = 6 \cdot \dfrac{1}{2}x^{-1/2} = 3x^{-1/2} = \mathbf{\dfrac{3}{\sqrt{x}}}$.<br>
+            3. (c) $h(x) = -2x^{-1} \implies h'(x) = -2 \cdot (-1)x^{-2} = \mathbf{\dfrac{2}{x^2}}$.</p>
         </div>
     </article>
 
     <article class="questao">
-        <h4>R 3: Derivada com Expoente Fracionário (Raiz)</h4>
-        <p><strong>Enunciado:</strong> Encontre a derivada da função $f(x) = \sqrt{x}$.</p>
+        <h4>R 3: Reta Tangente sem Limite</h4>
+        <p><strong>Enunciado:</strong> Determine a equação da reta tangente ao gráfico de $f(x) = \sqrt{x}$ no ponto de abscissa $x = 4$.</p>
         <div class="resolucao-bloco">
             <p><strong>Resolução:</strong><br>
-            1. Reescrevemos como potência: $f(x) = x^{1/2}$.<br>
-            2. Aplicamos o tombo: $f'(x) = \frac{1}{2}x^{\frac{1}{2} - 1} = \frac{1}{2}x^{-1/2}$.<br>
-            3. Escrevendo com raiz no denominador: $\mathbf{\frac{1}{2\sqrt{x}}}$.</p>
+            1. Ponto de tangência: $f(4) = \sqrt{4} = 2$, isto é, $P(4, 2)$.<br>
+            2. $f(x) = x^{1/2} \implies f'(x) = \dfrac{1}{2}x^{-1/2} = \dfrac{1}{2\sqrt{x}}$, logo $m = f'(4) = \dfrac{1}{4}$.<br>
+            3. $y - 2 = \dfrac{1}{4}(x - 4) \implies \mathbf{y = \dfrac{x}{4} + 1}$. (Compare com o trabalho de calcular o mesmo limite pela definição!)</p>
         </div>
     </article>
 
     <article class="questao">
-        <h4>R 4: Derivada de Função Racional</h4>
-        <p><strong>Enunciado:</strong> Calcule a derivada de $f(x) = \frac{1}{x^2}$.</p>
+        <h4>R 4: Funções Transcendentes</h4>
+        <p><strong>Enunciado:</strong> Calcule: (a) $f'(\frac{\pi}{3})$ para $f(x) = \operatorname{sen} x$; \ (b) $g'(\frac{\pi}{3})$ para $g(x) = \cos x$; \ (c) $h'(0)$ para $h(x) = e^x$; \ (d) $k'(2)$ para $k(x) = \ln x$.</p>
         <div class="resolucao-bloco">
             <p><strong>Resolução:</strong><br>
-            1. Passamos para o numerador: $f(x) = x^{-2}$.<br>
-            2. Aplicamos a regra da potência: $f'(x) = -2x^{-2-1} = -2x^{-3}$.<br>
-            3. Retornando ao formato fracionário: $\mathbf{-\frac{2}{x^3}}$.</p>
+            1. (a) $f'(x) = \cos x \implies f'(\frac{\pi}{3}) = \cos\frac{\pi}{3} = \mathbf{\dfrac{1}{2}}$.<br>
+            2. (b) $g'(x) = -\operatorname{sen} x \implies g'(\frac{\pi}{3}) = -\operatorname{sen}\frac{\pi}{3} = \mathbf{-\dfrac{\sqrt{3}}{2}}$.<br>
+            3. (c) $h'(x) = e^x \implies h'(0) = e^0 = \mathbf{1}$. \quad (d) $k'(x) = \dfrac{1}{x} \implies k'(2) = \mathbf{\dfrac{1}{2}}$.</p>
         </div>
     </article>
 
     <article class="questao">
-        <h4>R 5: Aplicação Física de Velocidade</h4>
-        <p><strong>Enunciado:</strong> A posição de um móvel é $s(t) = 2t^3 - 6t^2 + 4$. Qual é a velocidade do corpo no instante $t = 3$ s?</p>
+        <h4>R 5: Área do Círculo</h4>
+        <p><strong>Enunciado:</strong> A área de um círculo de raio $r$ é $A(r) = \pi r^2$. Calcule a taxa de variação da área em relação ao raio quando $r = 5$ cm e interprete o resultado.</p>
         <div class="resolucao-bloco">
             <p><strong>Resolução:</strong><br>
-            1. A velocidade é a derivada da posição: $v(t) = s'(t) = 6t^2 - 12t$.<br>
-            2. Calculamos para $t = 3$: $v(3) = 6(3^2) - 12(3) = 6(9) - 36 = 54 - 36 = \mathbf{18 \text{ m/s}}$.</p>
+            1. $\pi$ é constante: $A'(r) = \pi \cdot 2r = 2\pi r$.<br>
+            2. $A'(5) = 2\pi \cdot 5 = \mathbf{10\pi}$ cm$^2$ por cm de raio ($\approx 31{,}4$).<br>
+            3. Note que $A'(r) = 2\pi r$ é o <strong>comprimento da circunferência</strong>: aumentar o raio em $\Delta r$ acrescenta uma faixa fina de área $\approx 2\pi r \cdot \Delta r$.</p>
         </div>
     </article>
 </section>
 
 <section class="questoes-propostas" id="propostas">
-    <h3>✍️ 5 Questões Propostas (P 6 a 10)</h3>
+    <h3>✍️ 10 Questões Propostas (P 6 a 15)</h3>
 
     <article class="questao">
-        <h4>P 6: Polinômio de 4º Grau</h4>
-        <p><strong>Enunciado:</strong> Determine a derivada da função $f(x) = 2x^4 - 3x^3 + 8x - 12$.</p>
+        <h4>P 6: Potências</h4>
+        <p><strong>Enunciado:</strong> Derive: (a) $f(x) = x^{10}$; \ (b) $g(x) = x^{-2}$.</p>
         <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
         <div class="gabarito-resolucao">
             <p><strong>Resolução:</strong><br>
-            1. Derivando cada termo: $2(4x^3) - 3(3x^2) + 8(1) - 0$.<br>
-            2. Resposta: $\mathbf{f'(x) = 8x^3 - 9x^2 + 8}$.</p>
+            1. (a) $f'(x) = \mathbf{10x^9}$.<br>
+            2. (b) $g'(x) = -2x^{-3} = \mathbf{-\dfrac{2}{x^3}}$.</p>
         </div>
     </article>
 
     <article class="questao">
-        <h4>P 7: Taxa de Variação em Ponto</h4>
-        <p><strong>Enunciado:</strong> Qual é o valor da derivada da função $f(x) = x^3 - 2x$ no ponto de abscissa $x = 2$?</p>
+        <h4>P 7: Raízes como Potências</h4>
+        <p><strong>Enunciado:</strong> Derive: (a) $f(x) = \sqrt[4]{x^3}$; \ (b) $g(x) = \dfrac{1}{\sqrt{x}}$.</p>
         <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
         <div class="gabarito-resolucao">
             <p><strong>Resolução:</strong><br>
-            1. $f'(x) = 3x^2 - 2$.<br>
-            2. $f'(2) = 3(2^2) - 2 = 3(4) - 2 = \mathbf{10}$.</p>
+            1. (a) $f(x) = x^{3/4} \implies f'(x) = \dfrac{3}{4}x^{-1/4} = \mathbf{\dfrac{3}{4\sqrt[4]{x}}}$.<br>
+            2. (b) $g(x) = x^{-1/2} \implies g'(x) = -\dfrac{1}{2}x^{-3/2} = \mathbf{-\dfrac{1}{2x\sqrt{x}}}$.</p>
         </div>
     </article>
 
     <article class="questao">
-        <h4>P 8: Soma com Raiz</h4>
-        <p><strong>Enunciado:</strong> Calcule $f'(x)$ para $f(x) = 5x^3 + 4\sqrt{x}$.</p>
+        <h4>P 8: Constantes Disfarçadas</h4>
+        <p><strong>Enunciado:</strong> Derive: (a) $f(x) = \pi^2$; \ (b) $g(x) = 7x$; \ (c) $h(x) = e^3$.</p>
         <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
         <div class="gabarito-resolucao">
             <p><strong>Resolução:</strong><br>
-            1. Derivando termo a termo: $15x^2 + 4 \cdot \left(\frac{1}{2\sqrt{x}}\right)$.<br>
-            2. Simplificando: $\mathbf{15x^2 + \frac{2}{\sqrt{x}}}$.</p>
+            1. (a) $\pi^2$ é um número (constante): $f'(x) = \mathbf{0}$. \quad (b) $g'(x) = 7 \cdot 1 = \mathbf{7}$.<br>
+            2. (c) $e^3 \approx 20{,}09$ também é constante: $h'(x) = \mathbf{0}$ (não confunda com $e^x$).</p>
         </div>
     </article>
 
     <article class="questao">
-        <h4>P 9: Pontos de Derivada Nula</h4>
-        <p><strong>Enunciado:</strong> Determine os valores de $x$ onde a derivada de $f(x) = x^3 - 3x^2$ seja igual a zero.</p>
+        <h4>P 9: Múltiplo Constante</h4>
+        <p><strong>Enunciado:</strong> Derive: (a) $f(x) = \dfrac{x^6}{3}$; \ (b) $g(x) = \dfrac{3}{x^2}$.</p>
         <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
         <div class="gabarito-resolucao">
             <p><strong>Resolução:</strong><br>
-            1. $f'(x) = 3x^2 - 6x = 0 \implies 3x(x - 2) = 0$.<br>
-            2. Soluções: $\mathbf{x = 0 \text{ e } x = 2}$.</p>
+            1. (a) $f'(x) = \dfrac{1}{3} \cdot 6x^5 = \mathbf{2x^5}$.<br>
+            2. (b) $g(x) = 3x^{-2} \implies g'(x) = -6x^{-3} = \mathbf{-\dfrac{6}{x^3}}$.</p>
         </div>
     </article>
 
     <article class="questao">
-        <h4>P 10: Derivada de Segunda Ordem</h4>
-        <p><strong>Enunciado:</strong> Dada $f(x) = x^4 - 5x^2$, determine a derivada de segunda ordem $f''(x)$.</p>
+        <h4>P 10: Valor da Derivada</h4>
+        <p><strong>Enunciado:</strong> Para $f(x) = x^4$, calcule $f'(-2)$ e interprete o sinal.</p>
         <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
         <div class="gabarito-resolucao">
             <p><strong>Resolução:</strong><br>
-            1. Primeira derivada: $f'(x) = 4x^3 - 10x$.<br>
-            2. Segunda derivada: $f''(x) = 12x^2 - 10$.</p>
+            1. $f'(x) = 4x^3 \implies f'(-2) = 4 \cdot (-8) = \mathbf{-32}$.<br>
+            2. Como $f'(-2) &lt; 0$, a função é decrescente perto de $x = -2$ (a tangente desce).</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 11: Reta Tangente</h4>
+        <p><strong>Enunciado:</strong> Determine a equação da reta tangente ao gráfico de $f(x) = \dfrac{1}{x^2}$ no ponto de abscissa $x = 1$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong><br>
+            1. $f(1) = 1$ e $f'(x) = -2x^{-3} \implies m = f'(1) = -2$.<br>
+            2. $y - 1 = -2(x - 1) \implies \mathbf{y = -2x + 3}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 12: Seno e Cosseno</h4>
+        <p><strong>Enunciado:</strong> Calcule $f'(0)$ para $f(x) = \operatorname{sen} x$ e $g'(\frac{\pi}{2})$ para $g(x) = \cos x$. Qual é a reta tangente ao gráfico do seno na origem?</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong><br>
+            1. $f'(0) = \cos 0 = \mathbf{1}$ e $g'(\frac{\pi}{2}) = -\operatorname{sen}\frac{\pi}{2} = \mathbf{-1}$.<br>
+            2. Tangente ao seno em $(0, 0)$, com inclinação $1$: $\mathbf{y = x}$ (por isso $\operatorname{sen} x \approx x$ para $x$ pequeno, em radianos).</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 13: Exponencial e Logaritmo</h4>
+        <p><strong>Enunciado:</strong> Calcule $f'(0)$ para $f(x) = 2^x$ e $g'(5)$ para $g(x) = \ln x$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong><br>
+            1. $f'(x) = 2^x \ln 2 \implies f'(0) = 2^0 \ln 2 = \mathbf{\ln 2} \approx 0{,}693$.<br>
+            2. $g'(x) = \dfrac{1}{x} \implies g'(5) = \mathbf{\dfrac{1}{5}}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 14: Inclinação Dada</h4>
+        <p><strong>Enunciado:</strong> Em que ponto do gráfico de $f(x) = x^3$, com $x &gt; 0$, a reta tangente tem inclinação $12$?</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong><br>
+            1. $f'(x) = 3x^2 = 12 \implies x^2 = 4 \implies x = 2$ (pois $x &gt; 0$).<br>
+            2. $f(2) = 8$: ponto $\mathbf{(2, 8)}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 15: Queda Livre</h4>
+        <p><strong>Enunciado:</strong> Um objeto em queda livre percorre $s(t) = 4{,}9t^2$ metros em $t$ segundos. Calcule a velocidade em $t = 3$ s.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong><br>
+            1. $v(t) = s'(t) = 4{,}9 \cdot 2t = 9{,}8t$.<br>
+            2. $v(3) = 9{,}8 \cdot 3 = \mathbf{29{,}4}$ m/s.</p>
         </div>
     </article>
 </section>
 
 <section class="TESTE" id="testes">
-    <h3>🎓 TESTES (T 11 a 15)</h3>
+    <h3>🎓 TESTES (T 16 a 20)</h3>
 
-    <div class="card" style="text-align:center; padding:60px 20px; background:#f8f9fa; border:2px dashed #3498db; border-radius:12px; margin-top:20px;">
-        <h2 style="color:#3498db; font-size:2.5rem; margin-bottom:15px;">
-            🚧 EM BREVE!
-        </h2>
+    <article class="questao">
+        <h4>T 16: (FUNDATEC 2025 – IF Sertão-PE) Volume da Esfera</h4>
+        <p>A taxa de variação do volume de uma esfera em relação ao seu raio $r$ é igual ao(à):</p>
+        <p>A) Seu raio.<br>B) Seu diâmetro.<br>C) Área de sua superfície.<br>D) Metade da área de sua superfície.<br>E) Quarta parte da área de sua superfície.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> Alternativa <strong>C</strong>.<br>
+            1. Volume da esfera: $V(r) = \dfrac{4}{3}\pi r^3$.<br>
+            2. Múltiplo constante e potência: $V'(r) = \dfrac{4}{3}\pi \cdot 3r^2 = 4\pi r^2$.<br>
+            3. $4\pi r^2$ é a <strong>área da superfície esférica</strong>. Alternativa <strong>C</strong>.</p>
+        </div>
+    </article>
 
-        <p style="font-size:1.2rem; color:#555;">
-            Questões de exames e vestibulares sobre Derivadas Fundamentais serão publicadas nesta seção em breve.
-        </p>
-    </div>
+    <article class="questao">
+        <h4>T 17: (MS Consultoria 2023 – Pref. Ituberá-BA) Verdadeiro ou Falso</h4>
+        <p>Analise as informações com V (Verdadeiro) ou F (Falso).</p>
+        <p>1 – $f'(x)$ é a derivada da função $f$ no ponto $x$, i.e. a tangente do declive nesse ponto – tendo-se como exemplo: se $f(x) = x^2$, então $f'(x) = 2x^2$.</p>
+        <p>2 – $f: X \to Y$ significa: a função $f$ mapeia o conjunto $X$ no conjunto $Y$.</p>
+        <p>3 – Função é uma regra que relaciona cada elemento de um conjunto a um único elemento de outro.</p>
+        <p>4 – O gráfico da função exponencial sempre corta o eixo dos $y$ no ponto $(0; 1)$.</p>
+        <p>Após análise, marque a série correta.</p>
+        <p>A) V; V; F; V.<br>B) V; V; V; V.<br>C) F; V; F; V.<br>D) F; V; V; V.<br>E) V; V; F; F.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> Alternativa <strong>D</strong>.<br>
+            1. Item 1: pela regra da potência, $(x^2)' = 2x^{2-1} = 2x$, e não $2x^2$. <strong>Falso</strong>.<br>
+            2. Itens 2 e 3: definições corretas de função. <strong>Verdadeiros</strong>.<br>
+            3. Item 4: $y = a^x$ vale $a^0 = 1$ em $x = 0$. <strong>Verdadeiro</strong>. Série F; V; V; V: alternativa <strong>D</strong>.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>T 18: (CESPE/CEBRASPE 2022 – Petrobras) Taxa com uma Variável Fixa</h4>
+        <p>No que concerne à teoria de funções deriváveis de duas variáveis reais, julgue o item seguinte.</p>
+        <p>Se $P(x, y) = \dfrac{x^3}{y^2}$ representa o consumo de gasolina em uma cidade em função do preço $y$ e da quantidade $x$ de veículos da cidade, a taxa instantânea de variação do consumo quando $y$ varia e $x$ é mantido fixo é igual a $\dfrac{x^3}{2y}$.</p>
+        <p>( &nbsp; ) Certo &nbsp;&nbsp;&nbsp; ( &nbsp; ) Errado</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> Item <strong>Errado</strong>.<br>
+            1. Com $x$ fixo, $x^3$ é uma <strong>constante</strong>: $P = x^3 \cdot y^{-2}$.<br>
+            2. Múltiplo constante e potência (derivando em $y$): $\dfrac{dP}{dy} = x^3 \cdot (-2)y^{-3} = -\dfrac{2x^3}{y^3}$.<br>
+            3. Esse valor é diferente de $\dfrac{x^3}{2y}$ (inclusive no sinal: o consumo cai quando o preço sobe). Item <strong>errado</strong>.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>T 19: (AMAUC 2024 – Pref. Piratuba-SC) Afirmativas sobre Derivadas</h4>
+        <p>A derivada de uma função é um conceito fundamental no cálculo diferencial, uma área da matemática que estuda as taxas de variação e as inclinações de curvas. Sobre conhecimentos de derivadas, analise as afirmativas a seguir:</p>
+        <p>I. Se uma função é contínua em um ponto, então sua derivada também é contínua nesse ponto.</p>
+        <p>II. A derivada de uma constante é sempre zero.</p>
+        <p>III. Se $f'(a) &gt; 0$, então a função $f(x)$ é crescente no ponto $x = a$.</p>
+        <p>IV. Se a derivada segunda de uma função é negativa em um ponto, então a função tem um ponto de inflexão nesse ponto.</p>
+        <p>Assinale a alternativa correta:</p>
+        <p>A) Apenas as afirmativas II e IV são verdadeiras.<br>B) Apenas as afirmativas II e III são verdadeiras.<br>C) Apenas as afirmativas III e IV são verdadeiras.<br>D) Apenas as afirmativas I e III são verdadeiras.<br>E) Apenas as afirmativas I e II são verdadeiras.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> Alternativa <strong>B</strong>.<br>
+            1. I. Falsa: $f(x) = |x|$ é contínua em $0$, mas nem sequer tem derivada nesse ponto.<br>
+            2. II. Verdadeira: $(c)' = 0$. \quad III. Verdadeira: derivada positiva indica tangente subindo, isto é, $f$ crescente perto de $a$.<br>
+            3. IV. Falsa: ponto de inflexão exige <strong>mudança de sinal</strong> da derivada segunda, e não apenas valor negativo. Alternativa <strong>B</strong>.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>T 20: (MS Concursos 2025 – Pref. Santana de Parnaíba-SP) A Função $e^{2x}$</h4>
+        <p>Considere-se a função definida por $f(x) = e^{2x}$, a afirmação verdadeira referente à função é:</p>
+        <p>A) É uma função estritamente crescente.<br>B) A derivada da função $f(x) = e^{2x}$ é a própria função $f'(x) = e^{2x}$.<br>C) O gráfico passa pelo ponto $(0, 0)$.<br>D) A imagem da função é o conjunto $\mathbb{R}$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> Alternativa <strong>A</strong>.<br>
+            1. $e^{2x} = (e^2)^x$ é uma exponencial de base $a = e^2$: $f'(x) = (e^2)^x \ln(e^2) = 2e^{2x}$. Logo (B) é falsa.<br>
+            2. Como $f'(x) = 2e^{2x} &gt; 0$ para todo $x$, $f$ é <strong>estritamente crescente</strong>: (A) é verdadeira.<br>
+            3. (C) é falsa, pois $f(0) = e^0 = 1$; (D) é falsa, pois a imagem é $(0, +\infty)$. Alternativa <strong>A</strong>.</p>
+        </div>
+    </article>
 </section>
 
 </div>
