@@ -44,26 +44,67 @@
  <div class="container-resumo" id="resumo">
     <h3>📚 Resumo </h3>
     <section class="resumo-conteudo">
-        <p>A <strong>regra do produto</strong> é utilizada para encontrar a derivada da multiplicação de duas funções deriváveis. Um erro comum é achar que a derivada do produto é o produto das derivadas; na verdade, existe uma fórmula específica.</p>
-        <p>Sejam $f(x)$ e $g(x)$ duas funções deriváveis. A derivada do produto é dada por: $$\frac{d}{dx}[f(x) \cdot g(x)] = f'(x) \cdot g(x) + f(x) \cdot g'(x)$$</p>
-        <p>Em palavras: <em>"A derivada da primeira vezes a segunda, mais a primeira vezes a derivada da segunda."</em></p>
+        <p>A derivada de um produto <strong>não</strong> é o produto das derivadas. A <strong>regra do produto</strong> diz que "deriva-se o primeiro vezes o segundo, mais o primeiro vezes a derivada do segundo":</p>
+        <p style="text-align: center;">$$\big(f(x)\,g(x)\big)' = f'(x)\,g(x) + f(x)\,g'(x) \qquad \text{ou} \qquad (uv)' = u'v + uv'$$</p>
+        <p>Para três fatores: $(uvw)' = u'vw + uv'w + uvw'$ (deriva-se um fator de cada vez).</p>
     </section>
 </div>
 
 <section class="conteudo-teorico-completo" id="teoria">
     <div class="passo-teoria">
-        <h3>📖 Por que a Regra do Produto é Necessária?</h3>
-        <p>Quando multiplicamos duas funções algébricas (como $h(x) = x^2 \cdot \sin(x)$ ou $h(x) = (2x+1)(x^3-4)$), a taxa de variação combinada não é simplesmente a multiplicação das taxas individuais. O acréscimo simultâneo nas duas variáveis gera uma interação geométrica de áreas que exige a formulação analítica correta.</p>
+        <h3>📖 Por que Não Basta Multiplicar as Derivadas?</h3>
+        <p>Considere $f(x) = x$ e $g(x) = x$. O produto é $f(x)\,g(x) = x^2$, cuja derivada é $2x$. Mas $f'(x) \cdot g'(x) = 1 \cdot 1 = 1$. Portanto, $(f\,g)' \neq f' \cdot g'$: precisamos de uma regra própria para produtos.</p>
     </div>
 
     <div class="passo-teoria">
-        <h4>1. Justificativa Geométrica (A Área do Retângulo)</h4>
-        <p>Imagine um retângulo cujos lados variam em função do tempo $t$ com dimensões $f(t)$ e $g(t)$. A área total é $A(t) = f(t) \cdot g(t)$. Quando os lados crescem com pequenos incrementos, o acréscimo total da área é composto pelas faixas laterais geradas pelo crescimento de uma das dimensões enquanto a outra é mantida constante, resultando exatamente na soma dos produtos cruzados.</p>
+        <h4>1. Visualizando com a Área de um Retângulo</h4>
+        <p>Pense em $u \cdot v$ como a área de um retângulo de lados $u$ e $v$. Se $u$ aumenta $\Delta u$ e $v$ aumenta $\Delta v$, a área ganha três faixas:</p>
+        <p style="text-align: center;">$$\Delta(uv) = v\,\Delta u + u\,\Delta v + \Delta u\,\Delta v$$</p>
+        <figure class="figura-aula figura-grande">
+            <svg viewBox="0 0 460 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Retângulo de lados u e v; o acréscimo de área é u·Δv + v·Δu + Δu·Δv" style="width:100%; max-width:470px; height:auto; display:block; margin:0 auto; background:#fdfdfd; border-radius:10px;">
+<rect x="60" y="90" width="230" height="160" fill="#d6eaf8" stroke="#2c3e50" stroke-width="2"/>
+<rect x="290" y="90" width="70" height="160" fill="#fadbd8" stroke="#2c3e50" stroke-width="2"/>
+<rect x="60" y="40" width="230" height="50" fill="#d5f5e3" stroke="#2c3e50" stroke-width="2"/>
+<rect x="290" y="40" width="70" height="50" fill="#f9e79f" stroke="#2c3e50" stroke-width="2"/>
+<text x="175.0" y="176.0" font-size="20" fill="#2c3e50" font-family="sans-serif" text-anchor="middle" font-weight="bold">u · v</text>
+<text x="325.0" y="176.0" font-size="15" fill="#c0392b" font-family="sans-serif" text-anchor="middle" font-weight="bold">v·Δu</text>
+<text x="175.0" y="71.0" font-size="15" fill="#1e8449" font-family="sans-serif" text-anchor="middle" font-weight="bold">u·Δv</text>
+<text x="325.0" y="70.0" font-size="12" fill="#7d6608" font-family="sans-serif" text-anchor="middle" font-weight="bold">Δu·Δv</text>
+<text x="175.0" y="272" font-size="15" fill="#2c3e50" font-family="sans-serif" text-anchor="middle">u</text>
+<text x="325.0" y="272" font-size="15" fill="#2c3e50" font-family="sans-serif" text-anchor="middle">Δu</text>
+<text x="46" y="175.0" font-size="15" fill="#2c3e50" font-family="sans-serif" text-anchor="middle">v</text>
+<text x="42" y="70.0" font-size="15" fill="#2c3e50" font-family="sans-serif" text-anchor="middle">Δv</text>
+</svg>
+            <figcaption>Figura 1: O acréscimo da área $uv$ é formado pelas faixas $v\,\Delta u$ e $u\,\Delta v$ e pelo pequeno canto $\Delta u\,\Delta v$, que se torna desprezível no limite.</figcaption>
+        </figure>
+        <p>Dividindo por $\Delta x$ e fazendo $\Delta x \to 0$, o canto $\Delta u\,\Delta v$ some (é "pequeno vezes pequeno"), e sobra $(uv)' = u'v + uv'$.</p>
     </div>
 
     <div class="passo-teoria">
-        <h4>2. Extensão para Três ou Mais Funções</h4>
-        <p>A regra do produto pode ser estendida de forma natural para o produto de três funções. Por exemplo, para $h(x) = f(x) \cdot g(x) \cdot k(x)$, derivamos uma por vez mantendo as outras inalteradas: $$h'(x) = f'(x)g(x)k(x) + f(x)g'(x)k(x) + f(x)g(x)k'(x)$$</p>
+        <h4>2. Demonstração</h4>
+        <p>Somamos e subtraímos $f(x+h)\,g(x)$ no numerador do quociente de Newton:</p>
+        <p style="text-align: center;">$$\frac{f(x+h)g(x+h) - f(x)g(x)}{h} = f(x+h)\cdot\frac{g(x+h) - g(x)}{h} + g(x)\cdot\frac{f(x+h) - f(x)}{h}$$</p>
+        <p>Quando $h \to 0$: $f(x+h) \to f(x)$ (toda função derivável é contínua), e os quocientes tendem a $g'(x)$ e $f'(x)$. Logo:</p>
+        <p style="text-align: center; font-size: 1.15rem; background-color: #f8f9fa; padding: 15px; border-left: 5px solid #3498db; margin: 20px 0;">
+            $$\big(f\,g\big)' = f'\,g + f\,g'$$
+        </p>
+    </div>
+
+    <div class="passo-teoria">
+        <h4>3. Aplicando a Regra</h4>
+        <ul>
+            <li><strong>Roteiro:</strong> (1) identifique $u$ e $v$; (2) calcule $u'$ e $v'$ pela tabela; (3) monte $u'v + uv'$; (4) simplifique (colocar fatores em evidência ajuda);</li>
+            <li><strong>Exemplo:</strong> $\left(x^3\cos x\right)' = 3x^2\cos x + x^3\,(-\operatorname{sen} x) = 3x^2\cos x - x^3\operatorname{sen} x$;</li>
+            <li><strong>Exemplo:</strong> $\left(e^x\ln x\right)' = e^x\ln x + \dfrac{e^x}{x}$;</li>
+            <li>Com uma constante, a regra recai no múltiplo constante: $(c\,f)' = 0 \cdot f + c\,f' = c\,f'$.</li>
+        </ul>
+    </div>
+
+    <div class="passo-teoria">
+        <h4>4. Produto de Três Fatores</h4>
+        <p>Aplicando a regra duas vezes, $(uvw)' = \big((uv)\,w\big)' = (uv)'\,w + (uv)\,w'$, isto é,</p>
+        <p style="text-align: center;">$$(uvw)' = u'vw + uv'w + uvw'$$</p>
+        <p>Em cada parcela deriva-se <strong>um</strong> fator e mantêm-se os demais. <strong>Exemplo:</strong> $\left(x\,e^x\cos x\right)' = e^x\cos x + x\,e^x\cos x - x\,e^x\operatorname{sen} x$.</p>
     </div>
 </section>
 
@@ -71,12 +112,12 @@
     <h3>💡 Matemática em Ação</h3>
     <div class="cards-aplicacao">
         <div class="card">
-            <h4>📈 Funções de Receita Marginal em Mercados Complexos</h4>
-            <p>Em economia, a receita total $R(x)$ de uma empresa é frequentemente o produto do preço unitário variável $p(x)$ pela quantidade demandada $x$. A regra do produto permite calcular instantaneamente a receita marginal gerada por variações de preço.</p>
+            <h4>🚀 Foguetes e Quantidade de Movimento</h4>
+            <p>A quantidade de movimento é $p = m\,v$. Num foguete, a massa diminui enquanto o combustível é queimado, e $\dfrac{dp}{dt} = \dfrac{dm}{dt}\,v + m\,\dfrac{dv}{dt}$. O termo extra $\dfrac{dm}{dt}\,v$ é a origem da equação dos foguetes.</p>
         </div>
         <div class="card" style="border-left-color: #2ecc71;">
-            <h4>🌊 Física Ondulatória e Amortecimento</h4>
-            <p>Fenômenos físicos como ondas sonoras ou oscilações mecânicas amortecidas são descritos por funções que multiplicam uma exponencial decrescente por uma função trigonométrica (ex: $f(t) = e^{-t}\cos(t)$), exigindo a regra do produto para analisar velocidades de vibração.</p>
+            <h4>💰 Receita = Preço × Quantidade</h4>
+            <p>Se o preço $p(t)$ e a quantidade vendida $q(t)$ mudam ao longo do tempo, a receita $R = p\,q$ varia a uma taxa $R' = p'\,q + p\,q'$: um aumento de preço pode ser anulado (ou superado) pela queda nas vendas.</p>
         </div>
     </div>
 </section>
@@ -85,142 +126,244 @@
     <h3>✅ 5 Questões Resolvidas (R 1 a 5)</h3>
 
     <article class="questao">
-        <h4>R 1: Produto de Dois Polinômios Simples</h4>
-        <p><strong>Enunciado:</strong> Calcule a derivada da função $h(x) = (x^2 + 1)(3x - 2)$.</p>
+        <h4>R 1: Polinômio vezes Seno</h4>
+        <p><strong>Enunciado:</strong> Derive $f(x) = x^2 \operatorname{sen} x$.</p>
         <div class="resolucao-bloco">
             <p><strong>Resolução:</strong><br>
-            1. Identificamos as partes: $f(x) = x^2 + 1$ e $g(x) = 3x - 2$.<br>
-            2. Calculamos as derivadas individuais: $f'(x) = 2x$ e $g'(x) = 3$.<br>
-            3. Aplicamos a regra do produto [$f'g + fg'$]:<br>
-               $$h'(x) = (2x)(3x - 2) + (x^2 + 1)(3)$$<br>
-            4. Desenvolvemos e simplificamos a expressão algébrica:<br>
-               $$h'(x) = (6x^2 - 4x) + (3x^2 + 3) = \mathbf{9x^2 - 4x + 3}$$</p>
+            1. Identificamos $u = x^2$ e $v = \operatorname{sen} x$, com $u' = 2x$ e $v' = \cos x$.<br>
+            2. Regra do produto: $f'(x) = u'v + uv' = 2x \cdot \operatorname{sen} x + x^2 \cdot \cos x$.<br>
+            3. $f'(x) = \mathbf{2x\operatorname{sen} x + x^2\cos x}$.</p>
         </div>
     </article>
 
     <article class="questao">
-        <h4>R 2: Comparação com Desenvolvimento Prévio</h4>
-        <p><strong>Enunciado:</strong> Resolva a derivada de $h(x) = x^2(x^3 + 2x)$ aplicando a regra do produto e confirme multiplicando antes.</p>
+        <h4>R 2: Polinômio vezes Exponencial</h4>
+        <p><strong>Enunciado:</strong> Derive $f(x) = x\,e^x$ e calcule $f'(0)$.</p>
         <div class="resolucao-bloco">
             <p><strong>Resolução:</strong><br>
-            1. Pela Regra do Produto: $f(x) = x^2 \implies f'(x) = 2x$ e $g(x) = x^3 + 2x \implies g'(x) = 3x^2 + 2$.<br>
-            2. Montamos: $h'(x) = (2x)(x^3 + 2x) + (x^2)(3x^2 + 2)$.<br>
-            3. Expandimos: $(2x^4 + 4x^2) + (3x^4 + 2x^2) = \mathbf{5x^4 + 6x^2}$.<br>
-            4. Verificação por expansão prévia: $h(x) = x^5 + 2x^3 \implies h'(x) = 5x^4 + 6x^2$ (mesmo resultado!).</p>
+            1. $u = x$, $u' = 1$; $v = e^x$, $v' = e^x$.<br>
+            2. $f'(x) = 1 \cdot e^x + x \cdot e^x = \mathbf{(x + 1)\,e^x}$.<br>
+            3. $f'(0) = (0 + 1)\,e^0 = \mathbf{1}$.</p>
         </div>
     </article>
 
     <article class="questao">
-        <h4>R 3: Produto Envolvendo Raiz Quadrada</h4>
-        <p><strong>Enunciado:</strong> Determine a derivada da função $f(x) = x \cdot \sqrt{x}$.</p>
+        <h4>R 3: Conferindo pela Expansão</h4>
+        <p><strong>Enunciado:</strong> Derive $f(x) = (x^2 + 1)(x^3 - 2)$ de duas maneiras: pela regra do produto e desenvolvendo o produto antes.</p>
         <div class="resolucao-bloco">
             <p><strong>Resolução:</strong><br>
-            1. Definimos as partes: $u(x) = x \implies u'(x) = 1$ e $v(x) = \sqrt{x} = x^{1/2} \implies v'(x) = \frac{1}{2\sqrt{x}}$.<br>
-            2. Aplicamos a regra do produto: $f'(x) = (1)(\sqrt{x}) + (x)\left(\frac{1}{2\sqrt{x}}\right)$.<br>
-            3. Simplificamos os termos: $\sqrt{x} + \frac{x}{2\sqrt{x}} = \sqrt{x} + \frac{\sqrt{x}}{2}$.<br>
-            4. Somando as frações semelhantes: $\mathbf{\frac{3\sqrt{x}}{2}}$ (ou $\frac{3}{2}x^{1/2}$).</p>
+            1. Produto: $f'(x) = 2x\,(x^3 - 2) + (x^2 + 1)\,3x^2 = 2x^4 - 4x + 3x^4 + 3x^2 = 5x^4 + 3x^2 - 4x$.<br>
+            2. Expandindo: $f(x) = x^5 + x^3 - 2x^2 - 2 \implies f'(x) = 5x^4 + 3x^2 - 4x$.<br>
+            3. Os resultados coincidem: $f'(x) = \mathbf{5x^4 + 3x^2 - 4x}$. (O erro comum $f' = 2x \cdot 3x^2 = 6x^3$ daria um resultado errado!)</p>
         </div>
     </article>
 
     <article class="questao">
-        <h4>R 4: Valor da Derivada em um Ponto</h4>
-        <p><strong>Enunciado:</strong> Dada a função $f(x) = (2x - 3)(x^2 + 4)$, calcule o valor numérico de $f'(1)$.</p>
+        <h4>R 4: Reta Tangente</h4>
+        <p><strong>Enunciado:</strong> Determine a equação da reta tangente ao gráfico de $f(x) = x\ln x$ no ponto de abscissa $x = 1$.</p>
         <div class="resolucao-bloco">
             <p><strong>Resolução:</strong><br>
-            1. Derivamos usando a regra do produto: $f'(x) = (2)(x^2 + 4) + (2x - 3)(2x)$.<br>
-            2. Substituímos diretamente $x = 1$ sem precisar expandir toda a expressão:<br>
-               $$f'(1) = (2)(1^2 + 4) + (2(1) - 3)(2(1))$$<br>
-            3. Calculamos passo a passo: $(2)(5) + (-1)(2) = 10 - 2 = \mathbf{8}$.</p>
+            1. $f(1) = 1 \cdot \ln 1 = 0$: ponto $P(1, 0)$.<br>
+            2. $f'(x) = 1 \cdot \ln x + x \cdot \dfrac{1}{x} = \ln x + 1 \implies m = f'(1) = 0 + 1 = 1$.<br>
+            3. $y - 0 = 1\,(x - 1) \implies \mathbf{y = x - 1}$.</p>
         </div>
     </article>
 
     <article class="questao">
-        <h4>R 5: Produto com Três Fatores Algébricos</h4>
-        <p><strong>Enunciado:</strong> Encontre a derivada da função $h(x) = x \cdot (x+1) \cdot (x+2)$.</p>
+        <h4>R 5: Usando Valores Tabelados</h4>
+        <p><strong>Enunciado:</strong> Sabe-se que $f(2) = 3$, $f'(2) = -1$, $g(2) = 4$ e $g'(2) = 5$. Sendo $h(x) = f(x)\,g(x)$, calcule $h'(2)$.</p>
         <div class="resolucao-bloco">
             <p><strong>Resolução:</strong><br>
-            1. Aplicamos a extensão da regra do produto para 3 fatores ($u \cdot v \cdot w$):<br>
-               $$h'(x) = u'vw + uv'w + uvw'$$<br>
-            2. Derivando cada um dos termos por vez:<br>
-               $$h'(x) = (1)(x+1)(x+2) + (x)(1)(x+2) + (x)(x+1)(1)$$<br>
-            3. Expandindo as multiplicações: $(x^2 + 3x + 2) + (x^2 + 2x) + (x^2 + x) = \mathbf{3x^2 + 6x + 2}$.</p>
+            1. Regra do produto em $x = 2$: $h'(2) = f'(2)\,g(2) + f(2)\,g'(2)$.<br>
+            2. $h'(2) = (-1) \cdot 4 + 3 \cdot 5 = -4 + 15 = \mathbf{11}$.<br>
+            3. Observe que o produto das derivadas, $f'(2) \cdot g'(2) = -5$, daria um valor completamente diferente.</p>
         </div>
     </article>
 </section>
 
 <section class="questoes-propostas" id="propostas">
-    <h3>✍️ 5 Questões Propostas (P 6 a 10)</h3>
+    <h3>✍️ 10 Questões Propostas (P 6 a 15)</h3>
 
     <article class="questao">
-        <h4>P 6: Produto Binomial Simples</h4>
-        <p><strong>Enunciado:</strong> Calcule a derivada da função $f(x) = (x + 3)(2x - 5)$.</p>
+        <h4>P 6: Potência vezes Exponencial</h4>
+        <p><strong>Enunciado:</strong> Derive $f(x) = x^3 e^x$.</p>
         <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
         <div class="gabarito-resolucao">
             <p><strong>Resolução:</strong><br>
-            1. $f'(x) = (1)(2x - 5) + (x + 3)(2)$.<br>
-            2. $f'(x) = 2x - 5 + 2x + 6 = \mathbf{4x + 1}$.</p>
+            1. $f'(x) = 3x^2 \cdot e^x + x^3 \cdot e^x$.<br>
+            2. $f'(x) = \mathbf{x^2 e^x\,(x + 3)}$.</p>
         </div>
     </article>
 
     <article class="questao">
-        <h4>P 7: Polinômio com Grau Maior</h4>
-        <p><strong>Enunciado:</strong> Determine a derivada de $g(x) = (x^2 - 2)(x^3 + 4x)$.</p>
+        <h4>P 7: Dois Polinômios</h4>
+        <p><strong>Enunciado:</strong> Derive $f(x) = (2x + 1)(x^2 - 3)$ pela regra do produto.</p>
         <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
         <div class="gabarito-resolucao">
             <p><strong>Resolução:</strong><br>
-            1. $g'(x) = (2x)(x^3 + 4x) + (x^2 - 2)(3x^2 + 4)$.<br>
-            2. Expandindo: $(2x^4 + 8x^2) + (3x^4 + 4x^2 - 6x^2 - 8) = \mathbf{5x^4 + 6x^2 - 8}$.</p>
+            1. $f'(x) = 2\,(x^2 - 3) + (2x + 1)\cdot 2x = 2x^2 - 6 + 4x^2 + 2x$.<br>
+            2. $f'(x) = \mathbf{6x^2 + 2x - 6}$.</p>
         </div>
     </article>
 
     <article class="questao">
-        <h4>P 8: Produto com Termo Constante e Variável</h4>
-        <p><strong>Enunciado:</strong> Encontre a derivada de $y = (3x^2 - 1)(\sqrt{x} + 2)$.</p>
+        <h4>P 8: Seno vezes Cosseno</h4>
+        <p><strong>Enunciado:</strong> Derive $f(x) = \operatorname{sen} x \cos x$.</p>
         <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
         <div class="gabarito-resolucao">
             <p><strong>Resolução:</strong><br>
-            1. $y' = (6x)(\sqrt{x} + 2) + (3x^2 - 1)\left(\frac{1}{2\sqrt{x}}\right)$.<br>
-            2. Deixando na forma fatorada/simplificada: $\mathbf{6x(\sqrt{x} + 2) + \frac{3x^2 - 1}{2\sqrt{x}}}$.</p>
+            1. $f'(x) = \cos x \cdot \cos x + \operatorname{sen} x \cdot (-\operatorname{sen} x)$.<br>
+            2. $f'(x) = \mathbf{\cos^2 x - \operatorname{sen}^2 x}$ $\big(= \cos 2x\big)$.</p>
         </div>
     </article>
 
     <article class="questao">
-        <h4>P 9: Equação da Reta Tangente por Produto</h4>
-        <p><strong>Enunciado:</strong> Determine a equação da reta tangente à curva $f(x) = x(x^2 - 3)$ no ponto de abscissa $x = 1$.</p>
+        <h4>P 9: Raiz vezes Logaritmo</h4>
+        <p><strong>Enunciado:</strong> Derive $f(x) = \sqrt{x}\,\ln x$, para $x &gt; 0$.</p>
         <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
         <div class="gabarito-resolucao">
             <p><strong>Resolução:</strong><br>
-            1. Ponto de tangência: $f(1) = 1(1^2 - 3) = -2$ (ponto $(1, -2)$).<br>
-            2. Derivada por produto: $f'(x) = (1)(x^2 - 3) + (x)(2x) = x^2 - 3 + 2x^2 = 3x^2 - 3$.<br>
-            3. Inclinação: $m = f'(1) = 3(1^2) - 3 = 0$.<br>
-            4. Equação da reta tangente: $y - (-2) = 0(x - 1) \implies \mathbf{y = -2}$.</p>
+            1. $f'(x) = \dfrac{1}{2\sqrt{x}}\ln x + \sqrt{x} \cdot \dfrac{1}{x} = \dfrac{\ln x}{2\sqrt{x}} + \dfrac{1}{\sqrt{x}}$.<br>
+            2. $f'(x) = \mathbf{\dfrac{\ln x + 2}{2\sqrt{x}}}$.</p>
         </div>
     </article>
 
     <article class="questao">
-        <h4>P 10: Propriedade Geral com Funções Genéricas</h4>
-        <p><strong>Enunciado:</strong> Se $f(2) = 3$, $f'(2) = 4$, $g(2) = -1$ e $g'(2) = 5$, calcule o valor de $h'(2)$ para $h(x) = f(x) \cdot g(x)$.</p>
+        <h4>P 10: Exponencial vezes Seno</h4>
+        <p><strong>Enunciado:</strong> Derive $f(x) = e^x \operatorname{sen} x$ e calcule $f'(0)$.</p>
         <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
         <div class="gabarito-resolucao">
             <p><strong>Resolução:</strong><br>
-            1. Pela regra do produto: $h'(2) = f'(2)g(2) + f(2)g'(2)$.<br>
-            2. Substituímos os valores dados: $(4)(-1) + (3)(5) = -4 + 15 = \mathbf{11}$.</p>
+            1. $f'(x) = e^x\operatorname{sen} x + e^x\cos x = e^x(\operatorname{sen} x + \cos x)$.<br>
+            2. $f'(0) = 1 \cdot (0 + 1) = \mathbf{1}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 11: Reta Tangente</h4>
+        <p><strong>Enunciado:</strong> Determine a equação da reta tangente ao gráfico de $f(x) = x\,e^x$ no ponto de abscissa $x = 0$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong><br>
+            1. $f(0) = 0$ e $f'(x) = (x + 1)\,e^x \implies m = f'(0) = 1$.<br>
+            2. $y - 0 = 1\,(x - 0) \implies \mathbf{y = x}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 12: Derivada num Ponto</h4>
+        <p><strong>Enunciado:</strong> Para $f(x) = x^2\ln x$, calcule $f'(e)$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong><br>
+            1. $f'(x) = 2x\ln x + x^2 \cdot \dfrac{1}{x} = 2x\ln x + x$.<br>
+            2. $f'(e) = 2e \cdot 1 + e = \mathbf{3e}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 13: Três Fatores</h4>
+        <p><strong>Enunciado:</strong> Derive $f(x) = x\,e^x \operatorname{sen} x$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong><br>
+            1. Para três fatores: $(uvw)' = u'vw + uv'w + uvw'$.<br>
+            2. $f'(x) = \mathbf{e^x\operatorname{sen} x + x\,e^x\operatorname{sen} x + x\,e^x\cos x}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 14: Tangente Horizontal</h4>
+        <p><strong>Enunciado:</strong> Em que ponto do gráfico de $f(x) = x\,e^x$ a reta tangente é horizontal?</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong><br>
+            1. $f'(x) = (x + 1)\,e^x = 0$. Como $e^x &gt; 0$ sempre, $x + 1 = 0 \implies x = -1$.<br>
+            2. $f(-1) = -e^{-1}$: ponto $\mathbf{\left(-1, -\dfrac{1}{e}\right)}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 15: Receita em Movimento</h4>
+        <p><strong>Enunciado:</strong> A receita de uma loja é $R = p \cdot q$ (preço vezes quantidade vendida). Em certo mês, $p = 25$ reais, subindo $0{,}50$ real por mês, e $q = 80$ unidades, caindo $2$ unidades por mês. A receita está aumentando ou diminuindo, e a que taxa?</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong><br>
+            1. $R'(t) = p'\,q + p\,q' = 0{,}5 \cdot 80 + 25 \cdot (-2) = 40 - 50$.<br>
+            2. $R' = \mathbf{-10}$ reais por mês: a receita está <strong>diminuindo</strong> (a queda nas vendas pesa mais que o aumento do preço).</p>
         </div>
     </article>
 </section>
 
 <section class="TESTE" id="testes">
-    <h3>🎓 TESTES (T 11 a 15)</h3>
+    <h3>🎓 TESTES (T 16 a 20)</h3>
 
-    <div class="card" style="text-align:center; padding:60px 20px; background:#f8f9fa; border:2px dashed #3498db; border-radius:12px; margin-top:20px;">
-        <h2 style="color:#3498db; font-size:2.5rem; margin-bottom:15px;">
-            🚧 EM BREVE!
-        </h2>
+    <article class="questao">
+        <h4>T 16: (CESGRANRIO 2022 – Eletronuclear) Quantidade de Movimento</h4>
+        <p>A derivada no tempo da quantidade de movimento linear de um corpo de massa $m$ e velocidade $v$ é dada por</p>
+        <p>A) $m\dfrac{dv}{dt} + mv$<br>B) $m\dfrac{dv}{dt} + ma$<br>C) $\dfrac{dm}{dt}v + mv^2$<br>D) $\dfrac{dm}{dt}v + ma$<br>E) $mv + ma$</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> Alternativa <strong>D</strong>.<br>
+            1. A quantidade de movimento é o <strong>produto</strong> $p = m \cdot v$, em que tanto $m$ quanto $v$ podem variar com o tempo.<br>
+            2. Regra do produto: $\dfrac{dp}{dt} = \dfrac{dm}{dt}\,v + m\,\dfrac{dv}{dt}$.<br>
+            3. Como $\dfrac{dv}{dt} = a$: $\dfrac{dp}{dt} = \dfrac{dm}{dt}\,v + ma$. Alternativa <strong>D</strong>. (Com massa constante, recupera-se $F = ma$.)</p>
+        </div>
+    </article>
 
-        <p style="font-size:1.2rem; color:#555;">
-            Questões de exames e vestibulares abordando a Regra do Produto serão publicadas nesta seção em breve.
-        </p>
-    </div>
+    <article class="questao">
+        <h4>T 17: (Instituto IACP 2026 – Pref. Satuba-AL) Derivada de um Produto</h4>
+        <p>Assinale a alternativa que contém CORRETAMENTE a derivada de $f(x) = x^2(3x - 1)$.</p>
+        <p>A) $6x^2 - 2x$<br>B) $6x^2 + 2x$<br>C) $9x^2 - 2x$<br>D) $9x^2 + 2x$<br>E) $12x - 1$</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> Alternativa <strong>C</strong>.<br>
+            1. $u = x^2$, $u' = 2x$; $v = 3x - 1$, $v' = 3$.<br>
+            2. $f'(x) = 2x\,(3x - 1) + x^2 \cdot 3 = 6x^2 - 2x + 3x^2 = 9x^2 - 2x$.<br>
+            3. Conferência: $f(x) = 3x^3 - x^2 \implies f'(x) = 9x^2 - 2x$. Alternativa <strong>C</strong>.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>T 18: (OBJETIVA 2024 – Pref. Turuçu-RS) Potência vezes Exponencial</h4>
+        <p>Calcular a derivada da função $Y = 4x^3 \cdot e^x$ e assinalar a alternativa CORRETA:</p>
+        <p>A) $4x^3 \cdot e^x + 4x^3$<br>B) $12x^2 \cdot e^x + e^x$<br>C) $4x^3 \cdot e^x + 2x^2 \cdot e^x$<br>D) $12x^2 \cdot e^x + 4x^3 \cdot e^x$</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> Alternativa <strong>D</strong>.<br>
+            1. $u = 4x^3$, $u' = 12x^2$; $v = e^x$, $v' = e^x$.<br>
+            2. $Y' = u'v + uv' = 12x^2 \cdot e^x + 4x^3 \cdot e^x$.<br>
+            3. Alternativa <strong>D</strong>.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>T 19: (Avança SP 2024 – Pref. Ubatuba-SP) Eficiência Máxima</h4>
+        <p>Dois sistemas eletrônicos A e B serão conectados. Eles irão funcionar ambos numa dada frequência $\omega_0$. Porém, a eficiência do sistema A é dada em função da frequência por $\varepsilon_A(\omega) = \omega + 3$, já a eficiência do sistema B é dada por $\varepsilon_B(\omega) = -\omega^2 + 9\omega - 12$. Sabe-se que após a conexão, a eficiência do sistema será dada por $\varepsilon_A(\omega) \cdot \varepsilon_B(\omega)$.</p>
+        <p>Qual deve ser o $\omega = \omega_0 &gt; 0$ para que a eficiência do sistema em conjunto seja máxima?</p>
+        <p>A) 1<br>B) 5<br>C) 4<br>D) 2<br>E) 6</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> Alternativa <strong>B</strong>.<br>
+            1. $E(\omega) = \varepsilon_A \cdot \varepsilon_B \implies E'(\omega) = 1 \cdot (-\omega^2 + 9\omega - 12) + (\omega + 3)(-2\omega + 9)$.<br>
+            2. $E'(\omega) = -3\omega^2 + 12\omega + 15 = -3(\omega - 5)(\omega + 1)$, que se anula em $\omega = 5$ (a raiz positiva).<br>
+            3. Para $0 &lt; \omega &lt; 5$, $E' &gt; 0$ ($E$ cresce); para $\omega &gt; 5$, $E' &lt; 0$ ($E$ decresce): o máximo ocorre em $\omega_0 = \mathbf{5}$. Alternativa <strong>B</strong>.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>T 20: (FGV 2024 – EPE) Derivada de Ordem $n$</h4>
+        <p>Calcule o valor da derivada de ordem $n$ da expressão a seguir, $f(x) = e^{-x} + x\,e^x$, considerando $n$ um número natural par.</p>
+        <p>A derivada de ordem $n$ é:</p>
+        <p>A) $e^{-x} + (x + n)\,e^x$<br>B) $e^{-x} + (x + n^2)\,e^x$<br>C) $e^{-x} + (x + 2n)\,e^x$<br>D) $e^{-x} + (x^n + n)\,e^x$<br>E) $e^{-nx} + (x + n)\,e^x$</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> Alternativa <strong>A</strong>.<br>
+            1. $e^{-x} = \left(\frac{1}{e}\right)^x$, logo $(e^{-x})' = \left(\frac{1}{e}\right)^x \ln\frac{1}{e} = -e^{-x}$; a cada derivação o sinal troca, e para $n$ par volta a $+e^{-x}$.<br>
+            2. Regra do produto: $(x e^x)' = e^x + x e^x = (x + 1)e^x$; de novo, $\big((x + 1)e^x\big)' = e^x + (x + 1)e^x = (x + 2)e^x$. Cada derivação soma $1$: a $n$-ésima é $(x + n)e^x$.<br>
+            3. $f^{(n)}(x) = e^{-x} + (x + n)\,e^x$. Alternativa <strong>A</strong>.</p>
+        </div>
+    </article>
 </section>
 
 </div>
