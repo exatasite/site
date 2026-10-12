@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cálculo I: Regra da Cadeia ou Derivada da Função Composta</title>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../estilo.css">
+    
+    <script>
+        MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true
+            }
+        };
+    </script>
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body>
+<button class="menu-toggle" onclick="toggleMenu()">☰</button>
+
+<nav id="menu-principal" class="nav-global">
+    <ul>
+        <li><a href="../index.html">🏠 Início</a></li>
+        <li><a href="../ensino_medio.html">📚 Ensino Médio</a></li>
+        <li><a href="../ensino_superior.html">🎓 Ensino Superior</a></li>
+    </ul>
+</nav>
+
+<header id="topo">
+    <h1>CÁLCULO I</h1>
+    <p>Cálculo | Aula: Regra da Cadeia ou Derivada da Função Composta</p>
+    <button id="btn-slides" onclick="toggleSlides()">📺 Iniciar Modo Slides</button>
+</header>
+
+<div class="container">
+
+<main class="conteudo-principal">
+
+<div class="secao-aula">
+ <div class="container-resumo" id="resumo">
+    <h3>📚 Resumo </h3>
+    <section class="resumo-conteudo">
+        <p>Uma <strong>função composta</strong> $y = f(g(x))$ é uma "função dentro de outra". A <strong>regra da cadeia</strong> diz que sua derivada é a derivada da função de fora (calculada na de dentro) vezes a derivada da função de dentro:</p>
+        <p style="text-align: center;">$$\big(f(g(x))\big)' = f'(g(x)) \cdot g'(x) \qquad \text{ou} \qquad \frac{dy}{dx} = \frac{dy}{du} \cdot \frac{du}{dx}$$</p>
+        <p>Casos mais usados, com $u = u(x)$: $(u^n)' = n\,u^{n-1}u'$; $(\operatorname{sen} u)' = \cos u \cdot u'$; $(\cos u)' = -\operatorname{sen} u \cdot u'$; $(\ln u)' = \dfrac{u'}{u}$; $(e^u)' = e^u\,u'$.</p>
+    </section>
+</div>
+
+<section class="conteudo-teorico-completo" id="teoria">
+    <div class="passo-teoria">
+        <h3>📖 Funções Dentro de Funções</h3>
+        <p>Como derivar $(3x^2 - 5)^{40}$ sem expandir? Ou $\operatorname{sen}(3x^2)$, que não está na tabela? Essas funções são <strong>composições</strong>: primeiro calcula-se $u = g(x)$ (a função de dentro) e depois $y = f(u)$ (a função de fora). A regra da cadeia reduz a derivada de qualquer composição às derivadas da tabela.</p>
+    </div>
+
+    <div class="passo-teoria">
+        <h4>1. A Ideia: as Taxas se Multiplicam</h4>
+        <p>Se $u$ varia $3$ vezes mais depressa que $x$ e $y$ varia $2$ vezes mais depressa que $u$, então $y$ varia $2 \cdot 3 = 6$ vezes mais depressa que $x$. É como um sistema de engrenagens:</p>
+        <figure class="figura-aula figura-grande">
+            <svg viewBox="0 0 600 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Esquema da regra da cadeia: x passa por g e depois por f; as taxas se multiplicam" style="width:100%; max-width:620px; height:auto; display:block; margin:0 auto; background:#fdfdfd; border-radius:10px;">
+<defs><marker id="sc" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#2c3e50"/></marker></defs>
+<circle cx="70" cy="90" r="52" fill="#3498db" fill-opacity="0.12" stroke="#3498db" stroke-width="3"/>
+<text x="70" y="96" font-size="17" fill="#3498db" font-family="sans-serif" text-anchor="middle" font-weight="bold">x</text>
+<circle cx="300" cy="90" r="52" fill="#27ae60" fill-opacity="0.12" stroke="#27ae60" stroke-width="3"/>
+<text x="300" y="96" font-size="17" fill="#27ae60" font-family="sans-serif" text-anchor="middle" font-weight="bold">u = g(x)</text>
+<circle cx="530" cy="90" r="52" fill="#8e44ad" fill-opacity="0.12" stroke="#8e44ad" stroke-width="3"/>
+<text x="530" y="96" font-size="17" fill="#8e44ad" font-family="sans-serif" text-anchor="middle" font-weight="bold">y = f(u)</text>
+<line x1="125" y1="90" x2="243" y2="90" stroke="#2c3e50" stroke-width="2.5" marker-end="url(#sc)"/>
+<line x1="355" y1="90" x2="473" y2="90" stroke="#2c3e50" stroke-width="2.5" marker-end="url(#sc)"/>
+<text x="184" y="78" font-size="15" fill="#27ae60" font-family="sans-serif" text-anchor="middle" font-weight="bold">du/dx</text>
+<text x="414" y="78" font-size="15" fill="#8e44ad" font-family="sans-serif" text-anchor="middle" font-weight="bold">dy/du</text>
+<text x="184" y="114" font-size="13" fill="#2c3e50" font-family="sans-serif" text-anchor="middle">ex.: 3</text>
+<text x="414" y="114" font-size="13" fill="#2c3e50" font-family="sans-serif" text-anchor="middle">ex.: 2</text>
+<path d="M 70 150 Q 300 225 530 150" fill="none" stroke="#e74c3c" stroke-width="2.5" stroke-dasharray="7,4" marker-end="url(#sc)"/>
+<text x="300" y="178" font-size="16" fill="#e74c3c" font-family="sans-serif" text-anchor="middle" font-weight="bold">dy/dx = (dy/du)·(du/dx) = 2 · 3 = 6</text>
+</svg>
+            <figcaption>Figura 1: Na composição $x \to u \to y$, a taxa total é o produto das taxas de cada etapa.</figcaption>
+        </figure>
+        <p style="text-align: center; font-size: 1.15rem; background-color: #f8f9fa; padding: 15px; border-left: 5px solid #3498db; margin: 20px 0;">
+            $$\frac{dy}{dx} = \frac{dy}{du} \cdot \frac{du}{dx} \qquad \text{isto é,} \qquad \big(f(g(x))\big)' = f'(g(x)) \cdot g'(x)$$
+        </p>
+        <p><strong>Justificativa:</strong> $\dfrac{\Delta y}{\Delta x} = \dfrac{\Delta y}{\Delta u} \cdot \dfrac{\Delta u}{\Delta x}$; quando $\Delta x \to 0$, também $\Delta u \to 0$ (pois $g$ é contínua), e cada fração tende à derivada correspondente. (A demonstração rigorosa trata à parte o caso em que $\Delta u = 0$.)</p>
+    </div>
+
+    <div class="passo-teoria">
+        <h4>2. Roteiro: "de Fora para Dentro"</h4>
+        <ul>
+            <li>(1) Identifique a função de <strong>fora</strong> e a de <strong>dentro</strong> ($u$);</li>
+            <li>(2) Derive a de fora <strong>mantendo</strong> a de dentro intacta;</li>
+            <li>(3) Multiplique pela derivada da de dentro, $u'$;</li>
+            <li>(4) Se a de dentro também for composta, repita (cadeia com mais elos).</li>
+        </ul>
+        <p><strong>Exemplos:</strong> $\left[(x^2 + 1)^{10}\right]' = 10(x^2 + 1)^9 \cdot 2x$; &nbsp; $\left[\cos(4x)\right]' = -4\operatorname{sen}(4x)$; &nbsp; $\left[\operatorname{sen}^3 x\right]' = 3\operatorname{sen}^2 x\cos x$; &nbsp; $\left[\operatorname{sen}(\operatorname{sen} x)\right]' = \cos(\operatorname{sen} x)\cos x$.</p>
+    </div>
+
+    <div class="passo-teoria">
+        <h4>3. Tabela Generalizada</h4>
+        <p>Combinando a regra da cadeia com as derivadas fundamentais, obtemos, para $u = u(x)$:</p>
+        <p style="text-align: center;">$$(u^n)' = n\,u^{n-1}u' \qquad (\sqrt{u})' = \frac{u'}{2\sqrt{u}} \qquad (\ln u)' = \frac{u'}{u} \qquad (e^u)' = e^u\,u'$$</p>
+        <p style="text-align: center;">$$(\operatorname{sen} u)' = \cos u \cdot u' \qquad (\cos u)' = -\operatorname{sen} u \cdot u' \qquad (\operatorname{tg} u)' = \sec^2 u \cdot u'$$</p>
+        <p>O erro mais comum é esquecer o fator $u'$: $\left[\operatorname{sen}(5x)\right]' = 5\cos(5x)$, e não $\cos(5x)$.</p>
+    </div>
+
+    <div class="passo-teoria">
+        <h4>4. Taxas Relacionadas</h4>
+        <p>Quando duas grandezas ligadas por uma fórmula variam com o tempo, a regra da cadeia relaciona suas taxas. Se $A = \pi r^2$ e o raio cresce com o tempo, então $\dfrac{dA}{dt} = 2\pi r \cdot \dfrac{dr}{dt}$. <strong>Exemplo:</strong> uma mancha de óleo circular de raio $100$ m cujo raio cresce $10$ m/h tem área crescendo $2\pi \cdot 100 \cdot 10 = 2000\pi$ m²/h.</p>
+    </div>
+</section>
+
+<section class="aplicacoes-reais" id="aplicacoes">
+    <h3>💡 Matemática em Ação</h3>
+    <div class="cards-aplicacao">
+        <div class="card">
+            <h4>⚙️ Engrenagens e Polias</h4>
+            <p>Se a engrenagem A gira 3 vezes mais rápido que B, e B gira 2 vezes mais rápido que C, então A gira $3 \cdot 2 = 6$ vezes mais rápido que C. É exatamente a regra da cadeia: as taxas de cada etapa se multiplicam.</p>
+        </div>
+        <div class="card" style="border-left-color: #2ecc71;">
+            <h4>🌊 Ondas e Oscilações</h4>
+            <p>Em uma onda $y = A\operatorname{sen}(\omega t)$, a velocidade de oscilação é $y' = A\omega\cos(\omega t)$: o fator $\omega$ vem da regra da cadeia. Por isso, quanto maior a frequência, maior a velocidade máxima de vibração de uma corda ou de um alto-falante.</p>
+        </div>
+    </div>
+</section>
+
+<section class="questoes-resolvidas" id="resolvidas">
+    <h3>✅ 5 Questões Resolvidas (R 1 a 5)</h3>
+
+    <article class="questao">
+        <h4>R 1: Potência de um Polinômio</h4>
+        <p><strong>Enunciado:</strong> Derive $f(x) = (3x^2 - 5)^4$.</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong><br>
+            1. Função de fora: $(\ \cdot\ )^4$; função de dentro: $u = 3x^2 - 5$, com $u' = 6x$.<br>
+            2. Regra da cadeia: $f'(x) = 4u^3 \cdot u' = 4(3x^2 - 5)^3 \cdot 6x$.<br>
+            3. $f'(x) = \mathbf{24x\,(3x^2 - 5)^3}$. (Expandir $(3x^2 - 5)^4$ antes seria muito mais trabalhoso.)</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>R 2: Raiz de uma Função</h4>
+        <p><strong>Enunciado:</strong> Para $f(x) = \sqrt{x^2 + 9}$, calcule $f'(4)$.</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong><br>
+            1. $f(x) = (x^2 + 9)^{1/2} \implies f'(x) = \dfrac{1}{2}(x^2 + 9)^{-1/2} \cdot 2x = \dfrac{x}{\sqrt{x^2 + 9}}$.<br>
+            2. $f'(4) = \dfrac{4}{\sqrt{16 + 9}} = \mathbf{\dfrac{4}{5}}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>R 3: Trigonométricas Compostas</h4>
+        <p><strong>Enunciado:</strong> Derive: (a) $f(x) = \operatorname{sen}(3x^2)$; &nbsp; (b) $g(x) = \cos^3 x$.</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong><br>
+            1. (a) Fora: $\operatorname{sen}$; dentro: $u = 3x^2$, $u' = 6x$. Logo $f'(x) = \cos(3x^2) \cdot 6x = \mathbf{6x\cos(3x^2)}$.<br>
+            2. (b) $g(x) = (\cos x)^3$. Fora: $(\ \cdot\ )^3$; dentro: $\cos x$. Logo $g'(x) = 3\cos^2 x \cdot (-\operatorname{sen} x) = \mathbf{-3\cos^2 x \operatorname{sen} x}$.<br>
+            3. Observe a diferença: em $\operatorname{sen}(3x^2)$ a potência está <strong>dentro</strong>; em $\cos^3 x$, <strong>fora</strong>.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>R 4: Logaritmo de uma Função</h4>
+        <p><strong>Enunciado:</strong> Derive $f(x) = \ln(x^2 + 1)$ e determine a inclinação da tangente em $x = 1$.</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong><br>
+            1. Fora: $\ln$, com $(\ln u)' = \dfrac{1}{u}$; dentro: $u = x^2 + 1$, $u' = 2x$.<br>
+            2. $f'(x) = \dfrac{1}{x^2 + 1} \cdot 2x = \mathbf{\dfrac{2x}{x^2 + 1}}$.<br>
+            3. $f'(1) = \dfrac{2}{2} = \mathbf{1}$: a tangente forma $45^\circ$ com o eixo $x$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>R 5: Enchendo um Balão</h4>
+        <p><strong>Enunciado:</strong> O raio de um balão esférico aumenta à taxa de $2$ cm/s. Com que rapidez o volume aumenta quando o raio mede $10$ cm?</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong><br>
+            1. $V = \dfrac{4}{3}\pi r^3$, e $r$ depende do tempo. Regra da cadeia: $\dfrac{dV}{dt} = \dfrac{dV}{dr} \cdot \dfrac{dr}{dt} = 4\pi r^2 \cdot \dfrac{dr}{dt}$.<br>
+            2. Com $r = 10$ e $\dfrac{dr}{dt} = 2$: $\dfrac{dV}{dt} = 4\pi \cdot 100 \cdot 2 = \mathbf{800\pi}$ cm$^3$/s ($\approx 2513$ cm$^3$/s).</p>
+        </div>
+    </article>
+</section>
+
+<section class="questoes-propostas" id="propostas">
+    <h3>✍️ 10 Questões Propostas (P 6 a 15)</h3>
+
+    <article class="questao">
+        <h4>P 6: Potência</h4>
+        <p><strong>Enunciado:</strong> Derive $f(x) = (2x + 1)^5$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong><br>
+            1. $f'(x) = 5(2x + 1)^4 \cdot 2$.<br>
+            2. $f'(x) = \mathbf{10(2x + 1)^4}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 7: Potência Negativa</h4>
+        <p><strong>Enunciado:</strong> Derive $f(x) = \dfrac{1}{(x^2 + 1)^3}$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong><br>
+            1. $f(x) = (x^2 + 1)^{-3} \implies f'(x) = -3(x^2 + 1)^{-4} \cdot 2x$.<br>
+            2. $f'(x) = \mathbf{-\dfrac{6x}{(x^2 + 1)^4}}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 8: Seno e Cosseno</h4>
+        <p><strong>Enunciado:</strong> Derive: (a) $f(x) = \cos(5x)$; &nbsp; (b) $g(x) = \operatorname{sen}^2 x$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong><br>
+            1. (a) $f'(x) = -\operatorname{sen}(5x) \cdot 5 = \mathbf{-5\operatorname{sen}(5x)}$.<br>
+            2. (b) $g'(x) = 2\operatorname{sen} x \cdot \cos x$ $\big(= \operatorname{sen} 2x\big)$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 9: Tangente Composta</h4>
+        <p><strong>Enunciado:</strong> Derive $f(x) = \operatorname{tg}(x^2)$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong><br>
+            1. $(\operatorname{tg} u)' = \sec^2 u \cdot u'$, com $u = x^2$.<br>
+            2. $f'(x) = \mathbf{2x\sec^2(x^2)}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 10: Logaritmo</h4>
+        <p><strong>Enunciado:</strong> Para $f(x) = \ln(3x + 2)$, calcule $f'(x)$ e $f'(0)$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong><br>
+            1. $f'(x) = \dfrac{1}{3x + 2} \cdot 3 = \dfrac{3}{3x + 2}$.<br>
+            2. $f'(0) = \mathbf{\dfrac{3}{2}}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 11: Semicircunferência</h4>
+        <p><strong>Enunciado:</strong> Para $f(x) = \sqrt{1 - x^2}$, calcule $f'(0{,}6)$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong><br>
+            1. $f'(x) = \dfrac{1}{2\sqrt{1 - x^2}} \cdot (-2x) = -\dfrac{x}{\sqrt{1 - x^2}}$.<br>
+            2. $f'(0{,}6) = -\dfrac{0{,}6}{\sqrt{0{,}64}} = -\dfrac{0{,}6}{0{,}8} = \mathbf{-\dfrac{3}{4}}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 12: Reta Tangente</h4>
+        <p><strong>Enunciado:</strong> Determine a equação da reta tangente ao gráfico de $f(x) = (x^2 - 3)^2$ no ponto de abscissa $x = 2$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong><br>
+            1. $f(2) = 1$ e $f'(x) = 2(x^2 - 3) \cdot 2x = 4x(x^2 - 3) \implies m = f'(2) = 8$.<br>
+            2. $y - 1 = 8(x - 2) \implies \mathbf{y = 8x - 15}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 13: Valores Tabelados</h4>
+        <p><strong>Enunciado:</strong> Sabe-se que $g(1) = 2$, $g'(1) = 3$ e $f'(2) = -1$. Calcule $h'(1)$ para $h(x) = f(g(x))$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong><br>
+            1. $h'(x) = f'(g(x)) \cdot g'(x)$.<br>
+            2. $h'(1) = f'(g(1)) \cdot g'(1) = f'(2) \cdot 3 = (-1)(3) = \mathbf{-3}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 14: Composição Dupla</h4>
+        <p><strong>Enunciado:</strong> Derive $f(x) = \operatorname{sen}(\cos x)$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong><br>
+            1. Fora: $\operatorname{sen}$; dentro: $\cos x$, com derivada $-\operatorname{sen} x$.<br>
+            2. $f'(x) = \cos(\cos x) \cdot (-\operatorname{sen} x) = \mathbf{-\operatorname{sen} x\,\cos(\cos x)}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 15: Área de um Quadrado</h4>
+        <p><strong>Enunciado:</strong> O lado de um quadrado aumenta $0{,}5$ cm/s. Com que rapidez a área aumenta quando o lado mede $4$ cm?</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong><br>
+            1. $A = \ell^2 \implies \dfrac{dA}{dt} = 2\ell \cdot \dfrac{d\ell}{dt}$.<br>
+            2. $\dfrac{dA}{dt} = 2 \cdot 4 \cdot 0{,}5 = \mathbf{4}$ cm$^2$/s.</p>
+        </div>
+    </article>
+</section>
+
+<section class="TESTE" id="testes">
+    <h3>🎓 TESTES (T 16 a 20)</h3>
+
+    <article class="questao">
+        <h4>T 16: (IF-MT 2024) Potência de um Polinômio</h4>
+        <p>A regra da cadeia estabelece que, se $f$ e $g$ forem diferenciáveis e $F = f \circ g$ for uma função composta definida por $F(x) = f(g(x))$, então $F$ é diferenciável e $F'$ é dada pelo produto $F'(x) = f'(g(x))\,g'(x)$.</p>
+        <p>A partir da regra da cadeia, qual é a derivada da função $F(x) = (x^3 + 4x)^7$?</p>
+        <p>A) $F'(x) = (x^2 + 4x)^6(3x^2 + 4)$<br>B) $F'(x) = 7(x^3 + 4x)^6(3x^2 + 4)$<br>C) $F'(x) = 7x^6(x^3 + 4x)^6(2x^2 + 4)$<br>D) $F'(x) = 7(x^2 + 4)^6(3x^2 + 4)$<br>E) $F'(x) = 7x(x^3 + 4x)^6(3x^2 + 4)$</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> Alternativa <strong>B</strong>.<br>
+            1. Fora: $f(u) = u^7$, $f'(u) = 7u^6$; dentro: $g(x) = x^3 + 4x$, $g'(x) = 3x^2 + 4$.<br>
+            2. $F'(x) = 7(x^3 + 4x)^6 \cdot (3x^2 + 4)$.<br>
+            3. Alternativa <strong>B</strong>.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>T 17: (CESGRANRIO 2010 – Petroquímica Suape) Derivada de uma Raiz</h4>
+        <p>Se $f(x) = \sqrt{25 + 3x^2}$, para todo $x$ real, então $f'(5)$ é igual a</p>
+        <p>A) $\dfrac{1}{2}$<br>B) $1$<br>C) $\dfrac{3}{2}$<br>D) $\dfrac{5}{2}$<br>E) $5$</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> Alternativa <strong>C</strong>.<br>
+            1. $f(x) = (25 + 3x^2)^{1/2} \implies f'(x) = \dfrac{1}{2}(25 + 3x^2)^{-1/2} \cdot 6x = \dfrac{3x}{\sqrt{25 + 3x^2}}$.<br>
+            2. $f'(5) = \dfrac{15}{\sqrt{25 + 75}} = \dfrac{15}{10} = \mathbf{\dfrac{3}{2}}$.<br>
+            3. Alternativa <strong>C</strong>.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>T 18: (Marinha 2022 – Quadro Complementar) Derivada em Relação ao Tempo</h4>
+        <p>Sendo $w = \operatorname{tg}(x)$ e $x = 4t^2 + t$, calcule $\dfrac{dw}{dt}$ e assinale a opção correta.</p>
+        <p>A) $(8t + 1)\,\sec^2(4t^2)$<br>B) $(8t + 1)\,\sec^2(4t^2 + t)$<br>C) $(8t + 1)\,\sec^2(4t + 1)$<br>D) $\sec^2(4t^2)$<br>E) $\sec^2(4t^2 + t)$</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> Alternativa <strong>B</strong>.<br>
+            1. Regra da cadeia: $\dfrac{dw}{dt} = \dfrac{dw}{dx} \cdot \dfrac{dx}{dt}$, com $\dfrac{dw}{dx} = \sec^2 x$ e $\dfrac{dx}{dt} = 8t + 1$.<br>
+            2. $\dfrac{dw}{dt} = \sec^2(4t^2 + t) \cdot (8t + 1)$.<br>
+            3. Alternativa <strong>B</strong>. (E esquece a derivada da função de dentro.)</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>T 19: (IDECAN 2019 – IF Baiano) Composta com Seno</h4>
+        <p>Sejam $f, g: \mathbb{R} \to \mathbb{R}$ deriváveis e seja $g(x) = f(\operatorname{sen}(5 - x))$ e suponha que $f'(0) = 3$. Calcule $g'(5)$.</p>
+        <p>A) $g'(5) = 7$<br>B) $g'(5) = 2$<br>C) $g'(5) = -3$<br>D) $g'(5) = -5$<br>E) $g'(5) = -7$</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> Alternativa <strong>C</strong>.<br>
+            1. Cadeia em dois níveis: $g'(x) = f'(\operatorname{sen}(5 - x)) \cdot \cos(5 - x) \cdot (-1)$.<br>
+            2. Em $x = 5$: $\operatorname{sen} 0 = 0$ e $\cos 0 = 1$, logo $g'(5) = f'(0) \cdot 1 \cdot (-1) = -3$.<br>
+            3. Alternativa <strong>C</strong>.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>T 20: (Legalle 2026 – Campestre da Serra-RS) Acessos a uma Plataforma</h4>
+        <p>Em modelos matemáticos de crescimento populacional ou de propagação de informações, é comum a utilização de funções logarítmicas compostas para descrever ritmos de crescimento que desaceleram com o passar do tempo. Um analista de dados de um Instituto Federal observou que o número acumulado de acessos $N(t)$, em milhares, a uma nova plataforma de aprendizagem digital, em função do tempo $t$ (em semanas, com $t \geq 0$), pode ser modelado pela função $N(t) = \ln(t^2 + 1)$.</p>
+        <p>A taxa de variação instantânea do número de acessos em relação ao tempo quantifica a velocidade com que a plataforma ganha popularidade em um determinado instante.</p>
+        <p>Com base nesse modelo, a taxa de variação instantânea do número de acessos à plataforma no instante $t = 3$, em milhar de acessos por semana, é de:</p>
+        <p>A) 0,1.<br>B) 0,3.<br>C) 0,4.<br>D) 0,6.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> Alternativa <strong>D</strong>.<br>
+            1. $N'(t) = \dfrac{1}{t^2 + 1} \cdot 2t = \dfrac{2t}{t^2 + 1}$.<br>
+            2. $N'(3) = \dfrac{6}{10} = \mathbf{0{,}6}$ mil acessos por semana.<br>
+            3. Alternativa <strong>D</strong>.</p>
+        </div>
+    </article>
+</section>
+
+</div>
+</main>
+
+<aside class="menu-lateral">
+    <iframe src="../menu_calculo.html" style="width:100%; border:none; height:600px;"></iframe>
+</aside>
+
+</div>
+
+<script>
+function toggleGabarito(botao) {
+    const gabarito = botao.nextElementSibling;
+    if (gabarito.style.display === "none" || gabarito.style.display === "") {
+        gabarito.style.display = "block";
+        botao.textContent = "Esconder Gabarito e Resolução";
+        botao.style.backgroundColor = "#2c3e50";
+    } else {
+        gabarito.style.display = "none";
+        botao.textContent = "Ver Gabarito e Resolução";
+        botao.style.backgroundColor = "#3498db";
+    }
+}
+
+function toggleMenu() {
+    const menuGlobal = document.getElementById("menu-principal");
+    if (menuGlobal) menuGlobal.classList.toggle("ativo");
+}
+
+let slideAtual = 0;
+let slides = [];
+
+function prepararSlides() {
+    const seletores = '.container-resumo, .passo-teoria, .aplicacoes-reais, .questao';
+    slides = document.querySelectorAll(seletores);
+}
+
+function toggleSlides() {
+    prepararSlides();
+    const body = document.body;
+    if (!body.classList.contains('modo-slides')) {
+        body.classList.add('modo-slides');
+        slideAtual = 0;
+        mostrarSlide(slideAtual);
+    } else {
+        body.classList.remove('modo-slides');
+        window.location.reload(); 
+    }
+}
+
+function mostrarSlide(n) {
+    slides.forEach(s => {
+        s.classList.remove('slide-ativo');
+        s.style.display = 'none';
+    });
+    const slide = slides[n];
+    slide.classList.add('slide-ativo');
+    slide.style.display = 'flex'; 
+
+    if (slide.classList.contains('questao') && !slide.querySelector('.btn-gabarito')) {
+        const resolucoes = slide.querySelectorAll('.resolucao-bloco');
+        resolucoes.forEach(r => r.style.display = 'block');
+    } else {
+        const gabaritos = slide.querySelectorAll('.gabarito-resolucao');
+        gabaritos.forEach(g => g.style.display = 'none');
+        const botoes = slide.querySelectorAll('.btn-gabarito');
+        botoes.forEach(b => {
+            b.textContent = "Ver Gabarito e Resolução";
+            b.style.backgroundColor = "#3498db";
+        });
+    }
+
+    const pHeader = document.querySelector('header p').innerText;
+    const partes = pHeader.split('|');
+    if(partes.length > 1) {
+        document.getElementById('slide-info-serie').innerText = partes[0].trim();
+        document.getElementById('slide-info-aula').innerText = partes[1].trim();
+    }
+    document.getElementById('contador-slide').innerText = (n + 1) + " / " + slides.length;
+    if (window.MathJax) MathJax.typesetPromise();
+}
+
+function mudarSlide(direcao) {
+    slideAtual += direcao;
+    if (slideAtual >= slides.length) slideAtual = 0;
+    if (slideAtual < 0) slideAtual = slides.length - 1;
+    mostrarSlide(slideAtual);
+}
+
+document.addEventListener('keydown', function(event) {
+    if (document.body.classList.contains('modo-slides')) {
+        switch(event.key) {
+            case 'ArrowRight': 
+            case 'PageDown':   
+            case 'Enter':      
+            case ' ':          
+                mudarSlide(1);
+                break;
+                
+            case 'ArrowLeft':  
+            case 'PageUp':     
+                mudarSlide(-1);
+                break;
+
+            case 'Escape':     
+                toggleSlides();
+                break;
+        }
+    }
+});
+</script>
+
+<style>
+    body.modo-slides { overflow: hidden; background-color: #1a1a1a; }
+    body.modo-slides .menu-lateral, body.modo-slides header, body.modo-slides .menu-toggle, body.modo-slides #btn-slides { display: none !important; }
+    .slide-ativo {
+        display: flex !important; flex-direction: column; align-items: center; justify-content: flex-start;
+        position: fixed; top: 0; left: 0; width: 100vw; height: calc(100vh - 70px);
+        background: #ffffff; padding: 40px; z-index: 999; overflow-y: auto !important; 
+        box-sizing: border-box; text-align: center;
+    }
+    .controles-slides {
+        position: fixed; bottom: 0; left: 0; width: 100%; height: 70px;
+        background: #2c3e50; color: white; display: none; 
+        justify-content: space-between; align-items: center; padding: 0 20px; z-index: 1001; box-sizing: border-box;
+    }
+    body.modo-slides .controles-slides { display: flex; }
+    .info-lateral { flex: 1; font-family: 'Oswald', sans-serif; font-size: 0.9rem; color: #bdc3c7; }
+    .botoes-centrais { display: flex; align-items: center; gap: 15px; justify-content: center; flex: 2; }
+    .btn-nav { padding: 10px 20px; background: #3498db; color: white; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; }
+    #contador-slide { font-family: 'Oswald', sans-serif; min-width: 60px; text-align: center; }
+</style>
+
+<div class="controles-slides">
+    <div id="slide-info-serie" class="info-lateral"></div>
+    <div class="botoes-centrais">
+        <button class="btn-nav" onclick="mudarSlide(-1)">⬅ Anterior</button>
+        <span id="contador-slide"></span>
+        <button class="btn-nav" onclick="mudarSlide(1)">Próximo ➡</button>
+        <button class="btn-nav" onclick="toggleSlides()" style="background:#e74c3c;">Sair</button>
+    </div>
+    <div id="slide-info-aula" class="info-lateral" style="text-align: right;"></div>
+</div>
+</body>
+</html>
