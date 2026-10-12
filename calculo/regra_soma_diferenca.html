@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cálculo I: Regra da Soma e da Diferença</title>
+    <title>Cálculo I: Regra da Soma e Diferença</title>
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../estilo.css">
     
@@ -32,7 +32,7 @@
 
 <header id="topo">
     <h1>CÁLCULO I</h1>
-    <p>Cálculo | Aula: Regra da Soma e da Diferença</p>
+    <p>Cálculo | Aula: Regra da Soma e Diferença</p>
     <button id="btn-slides" onclick="toggleSlides()">📺 Iniciar Modo Slides</button>
 </header>
 
@@ -44,29 +44,74 @@
  <div class="container-resumo" id="resumo">
     <h3>📚 Resumo </h3>
     <section class="resumo-conteudo">
-        <p>A <strong>regra da soma e da diferença</strong> establece que a derivada de uma soma (ou subtração) de duas funções deriváveis é igual à soma (ou subtração) das suas respectivas derivadas.</p>
-        <p>Em termos algébricos, dadas duas funções $f(x)$ e $g(x)$, temos: $$\frac{d}{dx}[f(x) \pm g(x)] = f'(x) \pm g'(x)$$</p>
-        <p>Isso significa que podemos derivar expressões polinomiais ou somas de funções complexas <strong>termo a termo</strong>.</p>
+        <p>A <strong>derivada de uma soma (ou diferença)</strong> é a soma (ou diferença) das derivadas:</p>
+        <p style="text-align: center;">$$\big(f(x) \pm g(x)\big)' = f'(x) \pm g'(x)$$</p>
+        <p>Junto com a regra da potência e o múltiplo constante, ela permite derivar <strong>qualquer polinômio termo a termo</strong>: $\left(a_n x^n + \dots + a_1 x + a_0\right)' = n\,a_n x^{n-1} + \dots + a_1$. Derivando de novo, obtemos as <strong>derivadas sucessivas</strong> $f''$, $f^{\prime\prime\prime}$, ...</p>
     </section>
 </div>
 
 <section class="conteudo-teorico-completo" id="teoria">
     <div class="passo-teoria">
-        <h3>📖 A Linearidade do Operador Derivado</h3>
-        <p>O operador de derivação é linear. Isso possui uma consequência prática imensa: para derivar uma função composta por vários termos somados ou subtraídos, basta aplicar as regras fundamentais de derivação de maneira independente em cada parcela.</p>
+        <h3>📖 Derivando Termo a Termo</h3>
+        <p>As funções que aparecem nas aplicações raramente são uma única potência: são somas como $s(t) = 5 + 20t - 4{,}9t^2$ ou $C(x) = 1000 + 20x + 0{,}1x^2$. A regra da soma garante que podemos derivar cada parcela separadamente e somar os resultados.</p>
     </div>
 
     <div class="passo-teoria">
-        <h4>1. Demonstração Conceitual (A Soma)</h4>
-        <p>Utilizando o limite do quociente de Newton para a soma $h(x) = f(x) + g(x)$:</p>
-        <p style="text-align: center;">$$h'(x) = \lim_{\Delta x \to 0} \frac{[f(x+\Delta x) + g(x+\Delta x)] - [f(x) + g(x)]}{\Delta x}$$</p>
-        <p>Reagrupando os termos correspondentes de $f$ e $g$, separamos o limite em duas partes, obtendo exatamente $f'(x) + g'(x)$.</p>
+        <h4>1. A Regra e sua Demonstração</h4>
+        <p>Se $f$ e $g$ são deriváveis em $x$, separamos o quociente de Newton em duas partes:</p>
+        <p style="text-align: center;">$$\frac{[f(x+h) + g(x+h)] - [f(x) + g(x)]}{h} = \frac{f(x+h) - f(x)}{h} + \frac{g(x+h) - g(x)}{h}$$</p>
+        <p>Como o limite de uma soma é a soma dos limites, quando $h \to 0$ o lado direito tende a $f'(x) + g'(x)$. O mesmo vale para a diferença:</p>
+        <p style="text-align: center; font-size: 1.15rem; background-color: #f8f9fa; padding: 15px; border-left: 5px solid #3498db; margin: 20px 0;">
+            $$\big(f \pm g\big)' = f' \pm g'$$
+        </p>
+        <p>Geometricamente, a inclinação do gráfico de $f + g$ em cada ponto é a soma das inclinações dos gráficos de $f$ e de $g$.</p>
+        <figure class="figura-aula figura-grande">
+            <svg viewBox="0 0 460 320" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Gráficos de f, g e f+g com retas tangentes; a inclinação de f+g é a soma das inclinações" style="width:100%; max-width:470px; height:auto; display:block; margin:0 auto; background:#fdfdfd; border-radius:10px;">
+<line x1="12" y1="290.0" x2="448" y2="290.0" stroke="#2c3e50" stroke-width="2"/><polygon points="456,290.0 444,285.0 444,295.0" fill="#2c3e50"/><line x1="50.0" y1="312" x2="50.0" y2="14" stroke="#2c3e50" stroke-width="2"/><polygon points="50.0,6 45.0,18 55.0,18" fill="#2c3e50"/><text x="442" y="308.0" font-size="13" fill="#2c3e50" font-family="sans-serif">x</text><text x="58.0" y="18" font-size="13" fill="#2c3e50" font-family="sans-serif">y</text>
+<polyline points="16.0,287.5 20.2,288.1 24.5,288.6 28.8,289.0 33.0,289.4 37.2,289.7 41.5,289.8 45.8,290.0 50.0,290.0 54.2,290.0 58.5,289.8 62.8,289.7 67.0,289.4 71.2,289.0 75.5,288.6 79.8,288.1 84.0,287.5 88.2,286.9 92.5,286.1 96.8,285.3 101.0,284.4 105.2,283.5 109.5,282.4 113.8,281.3 118.0,280.1 122.2,278.8 126.5,277.4 130.8,276.0 135.0,274.5 139.3,272.9 143.5,271.2 147.8,269.5 152.0,267.7 156.2,265.8 160.5,263.8 164.8,261.8 169.0,259.6 173.2,257.4 177.5,255.1 181.8,252.8 186.0,250.3 190.3,247.8 194.5,245.2 198.8,242.5 203.0,239.8 207.2,237.0 211.5,234.0 215.8,231.1 220.0,228.0 224.3,224.9 228.5,221.6 232.8,218.4 237.0,215.0 241.3,211.5 245.5,208.0 249.8,204.4 254.0,200.7 258.2,197.0 262.5,193.1 266.8,189.2 271.0,185.2 275.2,181.2 279.5,177.0 283.8,172.8 288.0,168.5 292.2,164.1 296.5,159.6 300.8,155.1 305.0,150.5 309.2,145.8 313.5,141.0 317.8,136.2 322.0,131.3 326.3,126.3 330.5,121.2 334.8,116.1 339.0,110.8 343.2,105.5 347.5,100.1 351.8,94.7 356.0,89.1 360.2,83.5 364.5,77.8 368.8,72.0 373.0,66.2 377.2,60.3 381.5,54.2 385.8,48.2 390.0,42.0 394.2,35.8 398.5,29.4 402.7,23.1 407.0,16.6" fill="none" stroke="#3498db" stroke-width="3"/>
+<line x1="101.0" y1="294.3" x2="237.0" y2="224.9" stroke="#e74c3c" stroke-width="2" stroke-dasharray="6,3"/>
+<circle cx="169.0" cy="259.6" r="4.5" fill="#3498db"/>
+<text x="249.7" y="222.4" font-size="13" fill="#3498db" font-family="sans-serif" font-weight="bold">f: m = 0,7</text>
+<polyline points="16.0,265.2 20.2,263.6 24.5,262.1 28.8,260.6 33.0,259.0 37.2,257.4 41.5,255.9 45.8,254.3 50.0,252.8 54.2,251.2 58.5,249.7 62.8,248.2 67.0,246.6 71.2,245.1 75.5,243.5 79.8,241.9 84.0,240.4 88.2,238.8 92.5,237.3 96.8,235.8 101.0,234.2 105.2,232.7 109.5,231.1 113.8,229.6 118.0,228.0 122.2,226.4 126.5,224.9 130.8,223.4 135.0,221.8 139.3,220.2 143.5,218.7 147.8,217.2 152.0,215.6 156.2,214.1 160.5,212.5 164.8,210.9 169.0,209.4 173.2,207.8 177.5,206.3 181.8,204.8 186.0,203.2 190.3,201.6 194.5,200.1 198.8,198.6 203.0,197.0 207.2,195.4 211.5,193.9 215.8,192.3 220.0,190.8 224.3,189.2 228.5,187.7 232.8,186.1 237.0,184.6 241.3,183.1 245.5,181.5 249.8,179.9 254.0,178.4 258.2,176.8 262.5,175.3 266.8,173.8 271.0,172.2 275.2,170.6 279.5,169.1 283.8,167.6 288.0,166.0 292.2,164.4 296.5,162.9 300.8,161.3 305.0,159.8 309.2,158.2 313.5,156.7 317.8,155.1 322.0,153.6 326.3,152.0 330.5,150.5 334.8,149.0 339.0,147.4 343.2,145.8 347.5,144.3 351.8,142.8 356.0,141.2 360.2,139.7 364.5,138.1 368.8,136.5 373.0,135.0 377.2,133.5 381.5,131.9 385.8,130.3 390.0,128.8 394.2,127.2 398.5,125.7 402.7,124.2 407.0,122.6 411.2,121.0 415.5,119.5 419.7,118.0 424.0,116.4" fill="none" stroke="#27ae60" stroke-width="3"/>
+<line x1="101.0" y1="234.2" x2="237.0" y2="184.6" stroke="#e74c3c" stroke-width="2" stroke-dasharray="6,3"/>
+<circle cx="169.0" cy="209.4" r="4.5" fill="#27ae60"/>
+<text x="249.7" y="183.9" font-size="13" fill="#27ae60" font-family="sans-serif" font-weight="bold">g: m = 0,5</text>
+<polyline points="16.0,262.7 20.2,261.8 24.5,260.7 28.8,259.6 33.0,258.4 37.2,257.1 41.5,255.7 45.8,254.3 50.0,252.8 54.2,251.2 58.5,249.5 62.8,247.8 67.0,246.0 71.2,244.1 75.5,242.1 79.8,240.1 84.0,237.9 88.2,235.7 92.5,233.4 96.8,231.1 101.0,228.6 105.2,226.1 109.5,223.5 113.8,220.8 118.0,218.1 122.2,215.3 126.5,212.3 130.8,209.4 135.0,206.3 139.3,203.2 143.5,199.9 147.8,196.7 152.0,193.3 156.2,189.8 160.5,186.3 164.8,182.7 169.0,179.0 173.2,175.3 177.5,171.4 181.8,167.5 186.0,163.5 190.3,159.5 194.5,155.3 198.8,151.1 203.0,146.8 207.2,142.4 211.5,137.9 215.8,133.4 220.0,128.8 224.3,124.1 228.5,119.3 232.8,114.5 237.0,109.6 241.3,104.6 245.5,99.5 249.8,94.4 254.0,89.1 258.2,83.8 262.5,78.4 266.8,73.0 271.0,67.4 275.2,61.8 279.5,56.1 283.8,50.3 288.0,44.5 292.2,38.6 296.5,32.5 300.8,26.5 305.0,20.3 309.2,14.1" fill="none" stroke="#8e44ad" stroke-width="3"/>
+<line x1="101.0" y1="238.5" x2="237.0" y2="119.5" stroke="#e74c3c" stroke-width="2" stroke-dasharray="6,3"/>
+<circle cx="169.0" cy="179.0" r="4.5" fill="#8e44ad"/>
+<text x="249.7" y="112.3" font-size="13" fill="#8e44ad" font-family="sans-serif" font-weight="bold">f + g: m = 1,2</text>
+<line x1="169.0" y1="290.0" x2="169.0" y2="179.0" stroke="#bdc3c7" stroke-dasharray="3,3"/>
+<text x="165.0" y="307.0" font-size="13" fill="#2c3e50" font-family="sans-serif">a</text>
+<text x="24.5" y="40" font-size="13" fill="#2c3e50" font-family="sans-serif">0,7 + 0,5 = 1,2</text>
+</svg>
+            <figcaption>Figura 1: Em $x = a$, a inclinação da tangente a $f + g$ ($1{,}2$) é a soma das inclinações das tangentes a $f$ ($0{,}7$) e a $g$ ($0{,}5$).</figcaption>
+        </figure>
     </div>
 
     <div class="passo-teoria">
-        <h4>2. Combinação com a Regra da Constante Multiplicativa</h4>
-        <p>Juntamente com a regra da soma, a propriedade do múltiplo constante nos garante que: $$\frac{d}{dx}[a \cdot f(x) \pm b \cdot g(x)] = a \cdot f'(x) \pm b \cdot g'(x)$$</p>
-        <p>Essa é a base estrutural para a derivação rápida de qualquer polinômio de grau $n$.</p>
+        <h4>2. Polinômios e Combinações</h4>
+        <p>Combinando a regra da soma com o múltiplo constante, vale a <strong>linearidade</strong> da derivada: $\big(a\,f + b\,g\big)' = a\,f' + b\,g'$, para constantes $a$ e $b$. Assim:</p>
+        <ul>
+            <li>$\left(5x^4 - 3x^2 + 2x - 7\right)' = 20x^3 - 6x + 2$ (a constante $-7$ desaparece);</li>
+            <li>$\left(2\sqrt{x} - \dfrac{3}{x} + 4\operatorname{sen} x\right)' = \dfrac{1}{\sqrt{x}} + \dfrac{3}{x^2} + 4\cos x$;</li>
+            <li><strong>Dica:</strong> produtos e quocientes simples podem ser <strong>desenvolvidos antes</strong>: $(x+1)^2 = x^2 + 2x + 1$ e $\dfrac{x^2 + 1}{x} = x + x^{-1}$ já ficam prontos para derivar termo a termo.</li>
+        </ul>
+    </div>
+
+    <div class="passo-teoria">
+        <h4>3. Derivadas Sucessivas</h4>
+        <p>A derivada de $f'$ é a <strong>derivada segunda</strong> $f''$ (ou $\dfrac{d^2y}{dx^2}$); a derivada de $f''$ é a terceira, $f^{\prime\prime\prime}$, e assim por diante. Em Física, se $s(t)$ é a posição, $v = s'$ é a velocidade e $a = s''$ é a aceleração.</p>
+        <p style="text-align: center;">$$f(x) = x^4 - 2x^3 \ \Rightarrow\ f'(x) = 4x^3 - 6x^2 \ \Rightarrow\ f''(x) = 12x^2 - 12x \ \Rightarrow\ f^{\prime\prime\prime}(x) = 24x - 12$$</p>
+        <p>Cada derivação reduz em uma unidade o grau de um polinômio; a derivada de ordem $n + 1$ de um polinômio de grau $n$ é zero.</p>
+    </div>
+
+    <div class="passo-teoria">
+        <h4>4. Cuidados Frequentes</h4>
+        <ul>
+            <li>A derivada de uma constante somada é zero: $(x^2 + 10)' = 2x$, e não $2x + 10$;</li>
+            <li>Atenção aos sinais: $(5 - 3\cos x)' = 3\operatorname{sen} x$;</li>
+            <li>A regra da soma <strong>não</strong> se estende a produtos: $(x^2 \cdot x^3)' = (x^5)' = 5x^4$, que é diferente de $2x \cdot 3x^2 = 6x^3$. O produto tem regra própria (próxima aula).</li>
+        </ul>
     </div>
 </section>
 
@@ -74,12 +119,12 @@
     <h3>💡 Matemática em Ação</h3>
     <div class="cards-aplicacao">
         <div class="card">
-            <h4>📈 Modelagem Econômica Combinada</h4>
-            <p>Se o custo total de uma empresa é a soma dos custos fixos de manutenção com os custos variáveis de produção (ex: $C(x) = 1500 + 45x - 0.2x^2$), a regra da soma permite isolar o impacto marginal de cada componente individualmente.</p>
+            <h4>⚽ Lançamento Vertical</h4>
+            <p>Uma bola lançada para cima a $20$ m/s, de $1{,}5$ m de altura, tem $s(t) = 1{,}5 + 20t - 4{,}9t^2$. Derivando termo a termo, $v(t) = 20 - 9{,}8t$: a bola sobe enquanto $v &gt; 0$ e atinge a altura máxima quando $v = 0$, em $t \approx 2{,}04$ s.</p>
         </div>
         <div class="card" style="border-left-color: #2ecc71;">
-            <h4>🚗 Dinâmica de Veículos com Forças Múltiplas</h4>
-            <p>Na física, a função de deslocamento de um objeto sob a ação conjugada de forças independentes costuma ser modelada por somas de funções polinomiais e trigonométricas.</p>
+            <h4>💰 Lucro Marginal</h4>
+            <p>O lucro é $L(x) = R(x) - C(x)$. Pela regra da diferença, o lucro marginal é $L'(x) = R'(x) - C'(x)$: produzir mais compensa enquanto a receita marginal supera o custo marginal.</p>
         </div>
     </div>
 </section>
@@ -88,140 +133,244 @@
     <h3>✅ 5 Questões Resolvidas (R 1 a 5)</h3>
 
     <article class="questao">
-        <h4>R 1: Derivada de uma Soma Simples</h4>
-        <p><strong>Enunciado:</strong> Encontre a derivada da função $f(x) = x^3 + x^2$.</p>
+        <h4>R 1: Derivando um Polinômio</h4>
+        <p><strong>Enunciado:</strong> Derive $f(x) = 4x^5 - 3x^3 + 7x - 9$.</p>
         <div class="resolucao-bloco">
             <p><strong>Resolução:</strong><br>
-            1. Aplicamos a regra da soma, derivando cada termo separadamente.<br>
-            2. A derivada de $x^3$ é $3x^2$.<br>
-            3. A derivada de $x^2$ é $2x$.<br>
-            4. Somando os resultados: $\mathbf{f'(x) = 3x^2 + 2x}$.</p>
+            1. Derivamos termo a termo (regra da soma e diferença): $f'(x) = (4x^5)' - (3x^3)' + (7x)' - (9)'$.<br>
+            2. Múltiplo constante e potência: $(4x^5)' = 20x^4$, $(3x^3)' = 9x^2$, $(7x)' = 7$ e $(9)' = 0$.<br>
+            3. $f'(x) = \mathbf{20x^4 - 9x^2 + 7}$.</p>
         </div>
     </article>
 
     <article class="questao">
-        <h4>R 2: Regra da Diferença com Coeficientes</h4>
-        <p><strong>Enunciado:</strong> Calcule a derivada de $g(x) = 5x^4 - 3x^2$.</p>
+        <h4>R 2: Funções de Tipos Diferentes</h4>
+        <p><strong>Enunciado:</strong> Derive $g(x) = 3\sqrt{x} + \dfrac{2}{x} - 5\operatorname{sen} x + e^x$.</p>
         <div class="resolucao-bloco">
             <p><strong>Resolução:</strong><br>
-            1. Usamos a regra da diferença combinada com o múltiplo constante.<br>
-            2. Para o primeiro termo: $5 \cdot (4x^3) = 20x^3$.<br>
-            3. Para o segundo termo: $-3 \cdot (2x) = -6x$.<br>
-            4. Juntando as partes: $\mathbf{g'(x) = 20x^3 - 6x}$.</p>
+            1. Reescrevendo: $g(x) = 3x^{1/2} + 2x^{-1} - 5\operatorname{sen} x + e^x$.<br>
+            2. Termo a termo: $\dfrac{3}{2}x^{-1/2} - 2x^{-2} - 5\cos x + e^x$.<br>
+            3. $g'(x) = \mathbf{\dfrac{3}{2\sqrt{x}} - \dfrac{2}{x^2} - 5\cos x + e^x}$.</p>
         </div>
     </article>
 
     <article class="questao">
-        <h4>R 3: Polinômio Completo de Vários Termos</h4>
-        <p><strong>Enunciado:</strong> Determine a derivada da função $y = 2x^5 - 4x^3 + 7x - 12$.</p>
+        <h4>R 3: Reta Tangente</h4>
+        <p><strong>Enunciado:</strong> Determine a equação da reta tangente ao gráfico de $f(x) = x^3 - 4x + 1$ no ponto de abscissa $x = 2$.</p>
         <div class="resolucao-bloco">
             <p><strong>Resolução:</strong><br>
-            1. Derivamos termo a termo aplicando a regra da soma e diferença:<br>
-            - Derivada de $2x^5 \implies 10x^4$<br>
-            - Derivada de $-4x^3 \implies -12x^2$<br>
-            - Derivada de $7x \implies 7$<br>
-            - Derivada da constante $-12 \implies 0$<br>
-            2. Resultado final: $\mathbf{y' = 10x^4 - 12x^2 + 7}$.</p>
+            1. $f(2) = 8 - 8 + 1 = 1$: ponto $P(2, 1)$.<br>
+            2. $f'(x) = 3x^2 - 4 \implies m = f'(2) = 12 - 4 = 8$.<br>
+            3. $y - 1 = 8(x - 2) \implies \mathbf{y = 8x - 15}$.</p>
         </div>
     </article>
 
     <article class="questao">
-        <h4>R 4: Derivada Envolvendo Raízes e Termos Fracionários</h4>
-        <p><strong>Enunciado:</strong> Calcule a derivada de $f(x) = 3\sqrt{x} - \frac{2}{x}$.</p>
+        <h4>R 4: Tangentes Horizontais</h4>
+        <p><strong>Enunciado:</strong> Determine os pontos do gráfico de $f(x) = x^3 - 3x^2 - 9x + 2$ em que a reta tangente é horizontal.</p>
         <div class="resolucao-bloco">
             <p><strong>Resolução:</strong><br>
-            1. Reescrevemos os termos na forma de potências: $f(x) = 3x^{1/2} - 2x^{-1}$.<br>
-            2. Derivamos o primeiro termo: $3 \cdot \left(\frac{1}{2}x^{-1/2}\right) = \frac{3}{2\sqrt{x}}$.<br>
-            3. Derivamos o segundo termo: $-2 \cdot (-1x^{-2}) = 2x^{-2} = \frac{2}{x^2}$.<br>
-            4. Aplicando a regra da diferença: $\mathbf{f'(x) = \frac{3}{2\sqrt{x}} + \frac{2}{x^2}}$.</p>
+            1. $f'(x) = 3x^2 - 6x - 9$. Tangente horizontal: $f'(x) = 0 \implies x^2 - 2x - 3 = 0 \implies x = -1$ ou $x = 3$.<br>
+            2. $f(-1) = -1 - 3 + 9 + 2 = 7$ e $f(3) = 27 - 27 - 27 + 2 = -25$.<br>
+            3. Pontos $\mathbf{(-1, 7)}$ e $\mathbf{(3, -25)}$ (um máximo local e um mínimo local, como veremos adiante).</p>
         </div>
     </article>
 
     <article class="questao">
-        <h4>R 5: Aplicação em um Ponto Específico</h4>
-        <p><strong>Enunciado:</strong> Dada a função $f(x) = x^3 - 6x^2 + 9x + 2$, calcule o valor de $f'(2)$.</p>
+        <h4>R 5: Velocidade e Aceleração</h4>
+        <p><strong>Enunciado:</strong> Uma partícula tem posição $s(t) = t^3 - 6t^2 + 9t$ (metros, com $t$ em segundos). Determine a velocidade e a aceleração em $t = 4$ s e os instantes em que a partícula para.</p>
         <div class="resolucao-bloco">
             <p><strong>Resolução:</strong><br>
-            1. Encontramos a derivada geral aplicando a regra da soma e diferença:<br>
-               $$f'(x) = 3x^2 - 12x + 9$$<br>
-            2. Substituímos $x = 2$ na expressão da derivada:<br>
-               $$f'(2) = 3(2^2) - 12(2) + 9 = 3(4) - 24 + 9 = 12 - 24 + 9 = \mathbf{-3}$$.</p>
+            1. $v(t) = s'(t) = 3t^2 - 12t + 9$ e $a(t) = v'(t) = s”(t) = 6t - 12$.<br>
+            2. $v(4) = 48 - 48 + 9 = \mathbf{9}$ m/s e $a(4) = 24 - 12 = \mathbf{12}$ m/s$^2$.<br>
+            3. Para: $v(t) = 0 \implies t^2 - 4t + 3 = 0 \implies t = \mathbf{1}$ s ou $t = \mathbf{3}$ s.</p>
         </div>
     </article>
 </section>
 
 <section class="questoes-propostas" id="propostas">
-    <h3>✍️ 5 Questões Propostas (P 6 a 10)</h3>
+    <h3>✍️ 10 Questões Propostas (P 6 a 15)</h3>
 
     <article class="questao">
-        <h4>P 6: Soma de Polinômios Simples</h4>
-        <p><strong>Enunciado:</strong> Determine a derivada da função $f(x) = 7x^3 + 4x^2 - 5x$.</p>
+        <h4>P 6: Polinômio</h4>
+        <p><strong>Enunciado:</strong> Derive $f(x) = 2x^4 - 5x^2 + 3x - 8$.</p>
         <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
         <div class="gabarito-resolucao">
             <p><strong>Resolução:</strong><br>
-            1. Derivando termo a termo: $7(3x^2) + 4(2x) - 5(1)$.<br>
-            2. Resultado: $\mathbf{f'(x) = 21x^2 + 8x - 5}$.</p>
+            1. Termo a termo: $(2x^4)' = 8x^3$, $(5x^2)' = 10x$, $(3x)' = 3$, $(8)' = 0$.<br>
+            2. $f'(x) = \mathbf{8x^3 - 10x + 3}$.</p>
         </div>
     </article>
 
     <article class="questao">
-        <h4>P 7: Diferença com Potências Maiores</h4>
-        <p><strong>Enunciado:</strong> Calcule $y'$ para $y = 3x^4 - 5x^3 + 2x - 8$.</p>
+        <h4>P 7: Frações e Raízes</h4>
+        <p><strong>Enunciado:</strong> Derive $f(x) = \dfrac{x^3}{3} - \dfrac{1}{x} + 4\sqrt{x}$.</p>
         <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
         <div class="gabarito-resolucao">
             <p><strong>Resolução:</strong><br>
-            1. Derivando cada parcela: $3(4x^3) - 5(3x^2) + 2(1) - 0$.<br>
-            2. Resposta: $\mathbf{y' = 12x^3 - 15x^2 + 2}$.</p>
+            1. $f(x) = \dfrac{1}{3}x^3 - x^{-1} + 4x^{1/2}$.<br>
+            2. $f'(x) = x^2 + x^{-2} + 2x^{-1/2} = \mathbf{x^2 + \dfrac{1}{x^2} + \dfrac{2}{\sqrt{x}}}$.</p>
         </div>
     </article>
 
     <article class="questao">
-        <h4>P 8: Expressão com Raiz e Constante</h4>
-        <p><strong>Enunciado:</strong> Encontre a derivada de $f(x) = 4x^3 - 2\sqrt{x} + 10$.</p>
+        <h4>P 8: Combinando a Tabela</h4>
+        <p><strong>Enunciado:</strong> Derive $f(x) = 2e^x - 3\cos x + \ln x$.</p>
         <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
         <div class="gabarito-resolucao">
             <p><strong>Resolução:</strong><br>
-            1. Derivando cada termo: $4(3x^2) - 2\left(\frac{1}{2\sqrt{x}}\right) + 0$.<br>
-            2. Simplificando: $\mathbf{f'(x) = 12x^2 - \frac{1}{\sqrt{x}}}$.</p>
+            1. $(2e^x)' = 2e^x$, $(3\cos x)' = -3\operatorname{sen} x$ e $(\ln x)' = \dfrac{1}{x}$.<br>
+            2. $f'(x) = \mathbf{2e^x + 3\operatorname{sen} x + \dfrac{1}{x}}$ (o \textit{menos} com o \textit{menos} vira \textit{mais}).</p>
         </div>
     </article>
 
     <article class="questao">
-        <h4>P 9: Análise de Tangente Horizontal</h4>
-        <p><strong>Enunciado:</strong> Encontre os pontos onde a função $f(x) = x^3 - 3x^2 - 9x + 5$ possui tangente horizontal (ou seja, $f'(x) = 0$).</p>
+        <h4>P 9: Expandir Antes</h4>
+        <p><strong>Enunciado:</strong> Derive $f(x) = (x + 3)^2$ desenvolvendo o quadrado.</p>
         <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
         <div class="gabarito-resolucao">
             <p><strong>Resolução:</strong><br>
-            1. Derivada por soma e diferença: $f'(x) = 3x^2 - 6x - 9$.<br>
-            2. Igualando a zero e dividindo por 3: $x^2 - 2x - 3 = 0$.<br>
-            3. Fatorando: $(x - 3)(x + 1) = 0 \implies \mathbf{x = 3 \text{ e } x = -1}$.</p>
+            1. $f(x) = x^2 + 6x + 9$.<br>
+            2. $f'(x) = \mathbf{2x + 6}$.</p>
         </div>
     </article>
 
     <article class="questao">
-        <h4>P 10: Derivada de Segunda Ordem por Soma</h4>
-        <p><strong>Enunciado:</strong> Dada a função $f(x) = 2x^4 - 5x^3 + 6x - 1$, determine a sua derivada de segunda ordem $f''(x)$.</p>
+        <h4>P 10: Dividir Antes</h4>
+        <p><strong>Enunciado:</strong> Derive $f(x) = \dfrac{x^3 + 2x^2 - 5}{x}$, para $x \neq 0$, simplificando primeiro.</p>
         <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
         <div class="gabarito-resolucao">
             <p><strong>Resolução:</strong><br>
-            1. Primeira derivada: $f'(x) = 8x^3 - 15x^2 + 6$.<br>
-            2. Segunda derivada (derivando $f'(x)$ novamente): $f''(x) = 8(3x^2) - 15(2x) + 0 = \mathbf{24x^2 - 30x}$.</p>
+            1. Dividindo cada termo por $x$: $f(x) = x^2 + 2x - 5x^{-1}$.<br>
+            2. $f'(x) = 2x + 2 + 5x^{-2} = \mathbf{2x + 2 + \dfrac{5}{x^2}}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 11: Derivada num Ponto</h4>
+        <p><strong>Enunciado:</strong> Para $f(x) = x^4 - 2x^3 + x$, calcule $f'(2)$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong><br>
+            1. $f'(x) = 4x^3 - 6x^2 + 1$.<br>
+            2. $f'(2) = 32 - 24 + 1 = \mathbf{9}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 12: Reta Tangente</h4>
+        <p><strong>Enunciado:</strong> Determine a equação da reta tangente ao gráfico de $f(x) = 2x^2 - 3x + 1$ no ponto de abscissa $x = 1$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong><br>
+            1. $f(1) = 0$ e $f'(x) = 4x - 3 \implies m = f'(1) = 1$.<br>
+            2. $y - 0 = 1(x - 1) \implies \mathbf{y = x - 1}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 13: Tangente Paralela</h4>
+        <p><strong>Enunciado:</strong> Em que ponto do gráfico de $f(x) = x^2 - 5x + 6$ a reta tangente é paralela à reta $y = 3x + 1$?</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong><br>
+            1. Mesma inclinação: $f'(x) = 2x - 5 = 3 \implies x = 4$.<br>
+            2. $f(4) = 16 - 20 + 6 = 2$: ponto $\mathbf{(4, 2)}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 14: Derivadas Sucessivas</h4>
+        <p><strong>Enunciado:</strong> Para $f(x) = x^5 - 3x^3 + 2x$, calcule $f'(x)$, $f”(x)$ e $f^{\prime\prime\prime}(x)$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong><br>
+            1. $f'(x) = 5x^4 - 9x^2 + 2$.<br>
+            2. $f”(x) = 20x^3 - 18x$ e $f^{\prime\prime\prime}(x) = \mathbf{60x^2 - 18}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 15: Lucro Marginal</h4>
+        <p><strong>Enunciado:</strong> A receita e o custo na venda de $x$ unidades são $R(x) = 80x - 0{,}2x^2$ e $C(x) = 500 + 20x$ (em reais). Calcule o lucro marginal $L'(x)$ e o valor de $x$ em que ele se anula.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong><br>
+            1. $L(x) = R(x) - C(x) \implies L'(x) = R'(x) - C'(x) = (80 - 0{,}4x) - 20 = \mathbf{60 - 0{,}4x}$.<br>
+            2. $L'(x) = 0 \implies x = \mathbf{150}$ unidades (a partir daí, cada unidade a mais reduz o lucro).</p>
         </div>
     </article>
 </section>
 
 <section class="TESTE" id="testes">
-    <h3>🎓 TESTES (T 11 a 15)</h3>
+    <h3>🎓 TESTES (T 16 a 20)</h3>
 
-    <div class="card" style="text-align:center; padding:60px 20px; background:#f8f9fa; border:2px dashed #3498db; border-radius:12px; margin-top:20px;">
-        <h2 style="color:#3498db; font-size:2.5rem; margin-bottom:15px;">
-            🚧 EM BREVE!
-        </h2>
+    <article class="questao">
+        <h4>T 16: (Instituto IACP 2026 – Pref. Caiçara-PB) Derivada de um Polinômio</h4>
+        <p>Considere a função: $f(x) = 3x^2 - 5x + 4$. Calcule $f'(x)$, isto é, a derivada da função e, em seguida, assinale a alternativa correta:</p>
+        <p>A) $6x - 5$<br>B) $6x + 5$<br>C) $3x - 5$<br>D) $2x - 5$<br>E) $6x^2 - 5$</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> Alternativa <strong>A</strong>.<br>
+            1. Regra da soma e diferença: $f'(x) = (3x^2)' - (5x)' + (4)'$.<br>
+            2. $(3x^2)' = 6x$, $(5x)' = 5$ e $(4)' = 0$.<br>
+            3. $f'(x) = \mathbf{6x - 5}$. Alternativa <strong>A</strong>.</p>
+        </div>
+    </article>
 
-        <p style="font-size:1.2rem; color:#555;">
-            Questões de exames e vestibulares abordando a Regra da Soma e Diferença serão publicadas nesta seção em breve.
-        </p>
-    </div>
+    <article class="questao">
+        <h4>T 17: (Instituto UniFil 2025 – Pref. Mandirituba-PR) Derivada num Ponto</h4>
+        <p>Considere a função $f(x) = 3x^3 + 2x^2 - 5x$, e $f'(x)$ sua derivada. O valor de $f'(-1)$ é igual a</p>
+        <p>A) $-3$<br>B) $0$<br>C) $2$<br>D) $5$<br>E) $8$</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> Alternativa <strong>B</strong>.<br>
+            1. $f'(x) = 9x^2 + 4x - 5$.<br>
+            2. $f'(-1) = 9 \cdot 1 + 4 \cdot (-1) - 5 = 9 - 4 - 5 = \mathbf{0}$.<br>
+            3. Alternativa <strong>B</strong> (em $x = -1$ a tangente é horizontal).</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>T 18: (AMEOSC 2025 – Pref. Guaraciaba-SC) Velocidade Instantânea</h4>
+        <p>Em um teste de desempenho em pista fechada, os engenheiros de uma montadora registraram a posição de um carro esportivo em função do tempo. O deslocamento, medido em metros, é dado pela função $f(x) = 3x^3 - 5x^2 + 2x$, em que $x$ representa o tempo em segundos.</p>
+        <p>Sabendo que a velocidade instantânea de um veículo é obtida pela derivada da função posição em relação ao tempo, determine a função que expressa a velocidade instantânea desse carro ao longo da corrida.</p>
+        <p>A) $3x^2 - 10x + 2$<br>B) $9x^2 - 10x$<br>C) $6x^2 - 5x + 2$<br>D) $9x^2 - 10x + 2$</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> Alternativa <strong>D</strong>.<br>
+            1. $v(x) = f'(x) = (3x^3)' - (5x^2)' + (2x)'$.<br>
+            2. $(3x^3)' = 9x^2$, $(5x^2)' = 10x$ e $(2x)' = 2$.<br>
+            3. $v(x) = \mathbf{9x^2 - 10x + 2}$. Alternativa <strong>D</strong>. (B esquece a derivada de $2x$.)</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>T 19: (IESES 2025 – CRC-SC) Reta Tangente</h4>
+        <p>Dada a função $f(x) = x^3 - 2x^2$, qual é a equação da reta tangente ao gráfico de $f(x)$ no ponto onde $x = 2$?</p>
+        <p>A) $y = 2x - 4$<br>B) $y = 4x - 8$<br>C) $y = 4x$<br>D) $y = 8x - 16$</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> Alternativa <strong>B</strong>.<br>
+            1. $f(2) = 8 - 8 = 0$: ponto $(2, 0)$.<br>
+            2. $f'(x) = 3x^2 - 4x \implies m = f'(2) = 12 - 8 = 4$.<br>
+            3. $y - 0 = 4(x - 2) \implies \mathbf{y = 4x - 8}$. Alternativa <strong>B</strong>.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>T 20: (FCM 2022 – IF-AM) Menor Valor da Função</h4>
+        <p>Considere a função $f: [1, 4] \to \mathbb{R}$, definida por $f(x) = \dfrac{x^2}{16} + \dfrac{1}{x}$.</p>
+        <p>Sobre essa função é correto afirmar que</p>
+        <p>A) $f$ é uma função crescente.<br>B) $f(2)$ é o menor valor de $f$.<br>C) O gráfico de $f$ intercepta o eixo das ordenadas.<br>D) A função derivada de $f$ está definida para todo $x \in \mathbb{R}$.<br>E) A reta tangente ao seu gráfico de $f$ em $x = 3$ é paralela ao eixo das abscissas.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> Alternativa <strong>B</strong>.<br>
+            1. $f(x) = \dfrac{1}{16}x^2 + x^{-1} \implies f'(x) = \dfrac{x}{8} - \dfrac{1}{x^2}$, que se anula quando $x^3 = 8$, isto é, $x = 2$.<br>
+            2. Para $1 \le x &lt; 2$, $f'(x) &lt; 0$ ($f$ decresce); para $2 &lt; x \le 4$, $f'(x) &gt; 0$ ($f$ cresce). Logo $f(2) = \frac{1}{4} + \frac{1}{2} = \frac{3}{4}$ é o <strong>menor valor</strong>.<br>
+            3. (A) falsa; (C) falsa ($0 \notin [1, 4]$); (D) falsa ($f'$ não existe em $x = 0$); (E) falsa ($f'(3) = \frac{3}{8} - \frac{1}{9} \neq 0$). Alternativa <strong>B</strong>.</p>
+        </div>
+    </article>
 </section>
 
 </div>
