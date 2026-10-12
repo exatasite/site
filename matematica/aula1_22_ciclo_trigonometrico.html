@@ -41,70 +41,118 @@
 <div class="container-resumo" id="resumo">
     <h3>📚 Resumo</h3>
     <section class="resumo-conteudo">
-        <p>O <strong>ciclo trigonométrico</strong> é uma circunferência de raio $1$ centrada na origem, percorrida a partir do ponto $(1, 0)$ no sentido <strong>anti-horário</strong>. Para o ponto $P$ de um arco $\alpha$, o <strong>cosseno</strong> é a abscissa e o <strong>seno</strong> é a ordenada. Assim, seno e cosseno passam a existir para qualquer arco, e as <strong>equações trigonométricas</strong> se resolvem "olhando" o ciclo.</p>
-        <p style="text-align: center;">$$\pi \text{ rad} = 180^\circ \qquad P = (\cos\alpha,\ \operatorname{sen}\alpha) \qquad \operatorname{sen}^2\alpha + \cos^2\alpha = 1$$</p>
+        <p>O <strong>ciclo trigonométrico</strong> é uma circunferência de raio $1$, centrada na origem, em que os arcos partem do ponto $A(1, 0)$ e são positivos no sentido <strong>anti-horário</strong>. Para cada arco $x$, o ponto final $P$ tem coordenadas $(\cos x, \operatorname{sen}x)$: o <strong>cosseno</strong> é a abscissa e o <strong>seno</strong> é a ordenada. Isso estende seno, cosseno e tangente a qualquer ângulo, inclusive maiores que $90^\circ$ e negativos.</p>
+        <p style="text-align: center;">$$\pi \text{ rad} = 180^\circ \qquad \operatorname{sen}x = a \Rightarrow x = \alpha \text{ ou } \pi - \alpha \qquad \cos x = a \Rightarrow x = \pm\alpha \qquad \operatorname{tg}x = a \Rightarrow x = \alpha + k\pi$$</p>
     </section>
 </div>
 
 <section class="conteudo-teorico-completo" id="teoria">
     <div class="passo-teoria">
         <h3>📖 O Ciclo Trigonométrico</h3>
-        <h4>1. Radianos e Arcos Côngruos</h4>
-        <ul>
-            <li>Um <strong>radiano</strong> é o ângulo central que determina um arco de comprimento igual ao raio. Uma volta completa mede $2\pi$ rad $= 360^\circ$, logo $\pi$ rad $= 180^\circ$;</li>
-            <li>Comprimento do arco: $\ell = \alpha \cdot r$ (com $\alpha$ em radianos);</li>
-            <li><strong>Arcos côngruos</strong> têm a mesma extremidade no ciclo e diferem por voltas inteiras: $\alpha + 2k\pi$ ($k$ inteiro). A <strong>primeira determinação</strong> é o representante entre $0$ e $2\pi$.</li>
-        </ul>
+        <h4>1. Arcos em Radianos</h4>
+        <p>Um <strong>radiano</strong> é a medida do arco cujo comprimento é igual ao raio. Como a circunferência inteira mede $2\pi r$, uma volta tem $2\pi$ rad:</p>
+        <p style="text-align: center; font-size: 1.15rem; background-color: #f8f9fa; padding: 15px; border-left: 5px solid #3498db; margin: 20px 0;">
+            $$2\pi \text{ rad} = 360^\circ \qquad \pi \text{ rad} = 180^\circ \qquad \ell = \alpha \cdot r \ (\alpha \text{ em rad})$$
+        </p>
+        <p>Para converter, basta uma regra de três: $x^\circ = x \cdot \dfrac{\pi}{180}$ rad. Exemplos: $30^\circ = \dfrac{\pi}{6}$, $45^\circ = \dfrac{\pi}{4}$, $60^\circ = \dfrac{\pi}{3}$, $90^\circ = \dfrac{\pi}{2}$, $270^\circ = \dfrac{3\pi}{2}$.</p>
     </div>
 
     <div class="passo-teoria">
-        <h4>2. Seno, Cosseno e Sinais</h4>
-        <p>No ciclo de raio $1$, o ponto $P$ associado ao arco $\alpha$ tem coordenadas $(\cos\alpha, \operatorname{sen}\alpha)$. Por isso $-1 \leq \operatorname{sen}\alpha \leq 1$, $-1 \leq \cos\alpha \leq 1$ e $\operatorname{tg}\alpha = \dfrac{\operatorname{sen}\alpha}{\cos\alpha}$.</p>
+        <h4>2. Ciclo, Quadrantes e Arcos Côngruos</h4>
+        <ul>
+            <li>Os eixos dividem o ciclo em quatro <strong>quadrantes</strong>: I ($0$ a $\frac{\pi}{2}$), II ($\frac{\pi}{2}$ a $\pi$), III ($\pi$ a $\frac{3\pi}{2}$) e IV ($\frac{3\pi}{2}$ a $2\pi$);</li>
+            <li>Arcos que terminam no mesmo ponto são <strong>côngruos</strong>: diferem por voltas inteiras, $x + k \cdot 360^\circ$ ou $x + 2k\pi$, com $k \in \mathbb{Z}$;</li>
+            <li>A <strong>primeira determinação positiva</strong> é o resto da divisão por $360^\circ$ (ex.: $1\,110^\circ = 3 \cdot 360^\circ + 30^\circ$). Para arcos negativos, some voltas até cair entre $0$ e $2\pi$.</li>
+        </ul>
         <figure class="figura-aula figura-grande">
-            <svg viewBox="0 0 340 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Ciclo trigonométrico de raio 1: o ponto P do arco alfa tem abscissa cos alfa e ordenada sen alfa; sinais de seno e cosseno nos quatro quadrantes" style="width:100%; max-width:360px; display:block; margin:0 auto;">
-  <line x1="20" y1="150" x2="320" y2="150" stroke="#2c3e50" stroke-width="1.5"/>
-  <line x1="170" y1="285" x2="170" y2="15" stroke="#2c3e50" stroke-width="1.5"/>
-  <circle cx="170" cy="150" r="110" fill="#eaf2fb" fill-opacity="0.5" stroke="#3498db" stroke-width="2.5"/>
-  <line x1="170" y1="150" x2="254.3" y2="79.3" stroke="#2c3e50" stroke-width="2"/>
-  <line x1="254.3" y1="79.3" x2="254.3" y2="150" stroke="#e74c3c" stroke-width="1.5" stroke-dasharray="5,3"/>
-  <line x1="254.3" y1="79.3" x2="170" y2="79.3" stroke="#2ecc71" stroke-width="1.5" stroke-dasharray="5,3"/>
-  <line x1="170" y1="150" x2="254.3" y2="150" stroke="#e74c3c" stroke-width="4"/>
-  <line x1="170" y1="150" x2="170" y2="79.3" stroke="#2ecc71" stroke-width="4"/>
-  <circle cx="254.3" cy="79.3" r="4" fill="#2c3e50"/>
-  <path d="M 200 150 A 30 30 0 0 0 193.0 130.7" fill="none" stroke="#2c3e50" stroke-width="1.5"/>
-  <g font-family="Oswald, sans-serif" font-size="14" fill="#2c3e50">
-    <text x="260.3" y="73.3">P</text><text x="206" y="142">α</text>
-    <text x="194.1" y="168" fill="#e74c3c">cos α</text><text x="118" y="114.6" fill="#2ecc71">sen α</text>
-    <text x="284" y="166">0</text><text x="176" y="34">π/2</text><text x="42" y="166">π</text><text x="176" y="278">3π/2</text>
-    <text x="250" y="40">I: sen +, cos +</text><text x="16" y="40">II: sen +, cos −</text>
-    <text x="16" y="270">III: sen −, cos −</text><text x="236" y="270">IV: sen −, cos +</text>
+            <svg viewBox="0 0 470 340" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Ciclo trigonométrico de raio 1 com ângulo alfa, seno no eixo vertical, cosseno no eixo horizontal e tangente no eixo das tangentes" style="width:100%; max-width:480px; display:block; margin:0 auto;">
+  <line x1="40" y1="170" x2="350" y2="170" stroke="#2c3e50" stroke-width="1.8"/><polygon points="358,170 346,165 346,175" fill="#2c3e50"/>
+  <line x1="190" y1="320" x2="190" y2="20" stroke="#2c3e50" stroke-width="1.8"/><polygon points="190,12 185,24 195,24" fill="#2c3e50"/>
+  <circle cx="190" cy="170" r="120" fill="#eaf2fb" fill-opacity="0.6" stroke="#2c3e50" stroke-width="2.5"/>
+  <line x1="310" y1="300" x2="310" y2="30" stroke="#8e44ad" stroke-width="1.8" stroke-dasharray="6,4"/>
+  <line x1="190" y1="170" x2="310.0" y2="86.0" stroke="#7f8c8d" stroke-width="1.5" stroke-dasharray="4,3"/>
+  <line x1="190" y1="170" x2="288.3" y2="101.2" stroke="#2c3e50" stroke-width="2.5"/>
+  <line x1="288.3" y1="101.2" x2="288.3" y2="170" stroke="#e74c3c" stroke-width="2" stroke-dasharray="5,3"/>
+  <line x1="288.3" y1="101.2" x2="190" y2="101.2" stroke="#3498db" stroke-width="2" stroke-dasharray="5,3"/>
+  <line x1="190" y1="170" x2="190" y2="101.2" stroke="#e74c3c" stroke-width="5"/>
+  <line x1="190" y1="170" x2="288.3" y2="170" stroke="#3498db" stroke-width="5"/>
+  <line x1="310" y1="170" x2="310.0" y2="86.0" stroke="#8e44ad" stroke-width="5"/>
+  <path d="M 225 170 A 35 35 0 0 0 218.7 149.9" fill="none" stroke="#e67e22" stroke-width="2"/>
+  <circle cx="288.3" cy="101.2" r="5" fill="#2c3e50"/><circle cx="310" cy="170" r="4" fill="#2c3e50"/>
+  <g font-family="Oswald, sans-serif" font-size="15">
+    <text x="230" y="164" fill="#e67e22">α</text>
+    <text x="292.3" y="91.2" fill="#2c3e50">P</text>
+    <text x="132" y="140.6" fill="#e74c3c">sen α</text>
+    <text x="210" y="190" fill="#3498db">cos α</text>
+    <text x="316" y="133.0" fill="#8e44ad">tg α</text>
+    <text x="316" y="188" fill="#2c3e50">A(1, 0)</text>
+    <text x="316" y="46" fill="#8e44ad" font-size="13">eixo das tangentes</text>
+    <text x="280" y="70" fill="#2c3e50" font-size="14">I</text><text x="92" y="70" fill="#2c3e50" font-size="14">II</text>
+    <text x="90" y="276" fill="#2c3e50" font-size="14">III</text><text x="276" y="276" fill="#2c3e50" font-size="14">IV</text>
   </g>
 </svg>
-            <figcaption>Figura 1: O cosseno é a abscissa (vermelho) e o seno é a ordenada (verde) do ponto $P$; os sinais dependem do quadrante.</figcaption>
+            <figcaption>Figura 1: No ciclo, $P = (\cos\alpha, \operatorname{sen}\alpha)$; a tangente é lida no eixo vertical que passa por $A(1, 0)$.</figcaption>
         </figure>
-        <p>Valores nos eixos: $\operatorname{sen}0 = 0$, $\cos 0 = 1$; $\operatorname{sen}\frac{\pi}{2} = 1$, $\cos\frac{\pi}{2} = 0$; $\operatorname{sen}\pi = 0$, $\cos\pi = -1$; $\operatorname{sen}\frac{3\pi}{2} = -1$, $\cos\frac{3\pi}{2} = 0$.</p>
     </div>
 
     <div class="passo-teoria">
-        <h4>3. Redução ao 1º Quadrante</h4>
-        <p>Por simetria, todo arco tem um "correspondente" no 1º quadrante; muda apenas o sinal:</p>
+        <h4>3. Seno, Cosseno e Tangente no Ciclo</h4>
         <ul>
-            <li><strong>2º quadrante</strong> ($\pi - x$): $\operatorname{sen}(\pi - x) = \operatorname{sen}x$ e $\cos(\pi - x) = -\cos x$;</li>
-            <li><strong>3º quadrante</strong> ($\pi + x$): $\operatorname{sen}(\pi + x) = -\operatorname{sen}x$ e $\cos(\pi + x) = -\cos x$;</li>
-            <li><strong>4º quadrante</strong> ($2\pi - x$): $\operatorname{sen}(2\pi - x) = -\operatorname{sen}x$ e $\cos(2\pi - x) = \cos x$.</li>
+            <li><strong>Seno</strong> = ordenada de $P$ (eixo vertical); <strong>cosseno</strong> = abscissa de $P$ (eixo horizontal); ambos ficam entre $-1$ e $1$;</li>
+            <li><strong>Tangente:</strong> $\operatorname{tg}x = \dfrac{\operatorname{sen}x}{\cos x}$, lida no eixo das tangentes; não existe para $x = \dfrac{\pi}{2} + k\pi$;</li>
+            <li>A <strong>relação fundamental</strong> $\operatorname{sen}^2 x + \cos^2 x = 1$ continua valendo (é Pitágoras no ciclo de raio 1);</li>
+            <li>Valores nos eixos: $\operatorname{sen}0 = 0$, $\operatorname{sen}\frac{\pi}{2} = 1$, $\operatorname{sen}\pi = 0$, $\operatorname{sen}\frac{3\pi}{2} = -1$; $\cos 0 = 1$, $\cos\frac{\pi}{2} = 0$, $\cos\pi = -1$, $\cos\frac{3\pi}{2} = 0$.</li>
         </ul>
+        <table style="margin: 15px auto; border-collapse: collapse; text-align: center; font-size: 1.05rem;">
+            <tr style="background-color: #2c3e50; color: white;"><th style="padding: 8px 14px;">Quadrante</th><th style="padding: 8px 14px;">I</th><th style="padding: 8px 14px;">II</th><th style="padding: 8px 14px;">III</th><th style="padding: 8px 14px;">IV</th></tr>
+            <tr><td style="padding: 8px 14px; border: 1px solid #ccc;"><strong>seno</strong></td><td style="padding: 8px 14px; border: 1px solid #ccc;">$+$</td><td style="padding: 8px 14px; border: 1px solid #ccc;">$+$</td><td style="padding: 8px 14px; border: 1px solid #ccc;">$-$</td><td style="padding: 8px 14px; border: 1px solid #ccc;">$-$</td></tr>
+            <tr style="background-color: #f8f9fa;"><td style="padding: 8px 14px; border: 1px solid #ccc;"><strong>cosseno</strong></td><td style="padding: 8px 14px; border: 1px solid #ccc;">$+$</td><td style="padding: 8px 14px; border: 1px solid #ccc;">$-$</td><td style="padding: 8px 14px; border: 1px solid #ccc;">$-$</td><td style="padding: 8px 14px; border: 1px solid #ccc;">$+$</td></tr>
+            <tr><td style="padding: 8px 14px; border: 1px solid #ccc;"><strong>tangente</strong></td><td style="padding: 8px 14px; border: 1px solid #ccc;">$+$</td><td style="padding: 8px 14px; border: 1px solid #ccc;">$-$</td><td style="padding: 8px 14px; border: 1px solid #ccc;">$+$</td><td style="padding: 8px 14px; border: 1px solid #ccc;">$-$</td></tr>
+        </table>
     </div>
 
     <div class="passo-teoria">
-        <h4>4. Equações Trigonométricas</h4>
-        <p>Para resolver, encontre o arco de referência $\alpha$ no 1º quadrante e use o sinal para descobrir os quadrantes das soluções:</p>
-        <table style="margin: 15px auto; border-collapse: collapse; text-align: center; font-size: 1.05rem;">
-            <tr style="background-color: #2c3e50; color: white;"><th style="padding: 8px 14px;">Equação</th><th style="padding: 8px 14px;">Soluções (com $\alpha$ do 1º quadrante)</th></tr>
-            <tr><td style="padding: 8px 14px; border: 1px solid #ccc;">$\operatorname{sen}x = \operatorname{sen}\alpha$</td><td style="padding: 8px 14px; border: 1px solid #ccc;">$x = \alpha + 2k\pi$ ou $x = \pi - \alpha + 2k\pi$</td></tr>
-            <tr style="background-color: #f8f9fa;"><td style="padding: 8px 14px; border: 1px solid #ccc;">$\cos x = \cos\alpha$</td><td style="padding: 8px 14px; border: 1px solid #ccc;">$x = \alpha + 2k\pi$ ou $x = -\alpha + 2k\pi$</td></tr>
-            <tr><td style="padding: 8px 14px; border: 1px solid #ccc;">$\operatorname{tg}x = \operatorname{tg}\alpha$</td><td style="padding: 8px 14px; border: 1px solid #ccc;">$x = \alpha + k\pi$</td></tr>
-        </table>
-        <p>Quando a equação tem $\operatorname{sen}^2 x$ ou $\cos^2 x$, faça uma <strong>substituição</strong> ($y = \operatorname{sen}x$ ou $y = \cos x$), resolva a equação do 2º grau e descarte valores fora de $[-1, 1]$.</p>
+        <h4>4. Redução ao 1º Quadrante</h4>
+        <p>Todo arco do ciclo tem um "arco de referência" no 1º quadrante, com os mesmos valores em módulo; o sinal vem do quadrante:</p>
+        <ul>
+            <li><strong>2º quadrante</strong> ($180^\circ - \alpha$): $\operatorname{sen}(180^\circ - \alpha) = \operatorname{sen}\alpha$ e $\cos(180^\circ - \alpha) = -\cos\alpha$;</li>
+            <li><strong>3º quadrante</strong> ($180^\circ + \alpha$): $\operatorname{sen}(180^\circ + \alpha) = -\operatorname{sen}\alpha$ e $\cos(180^\circ + \alpha) = -\cos\alpha$;</li>
+            <li><strong>4º quadrante</strong> ($360^\circ - \alpha$): $\operatorname{sen}(360^\circ - \alpha) = -\operatorname{sen}\alpha$ e $\cos(360^\circ - \alpha) = \cos\alpha$.</li>
+        </ul>
+        <p>Exemplo: $\cos 210^\circ = -\cos 30^\circ = -\dfrac{\sqrt{3}}{2}$, pois $210^\circ = 180^\circ + 30^\circ$ está no 3º quadrante.</p>
+    </div>
+
+    <div class="passo-teoria">
+        <h4>5. Equações Trigonométricas</h4>
+        <ul>
+            <li><strong>$\operatorname{sen}x = a$</strong> ($-1 \leq a \leq 1$): dois pontos simétricos em relação ao eixo vertical, $x = \alpha$ ou $x = \pi - \alpha$ (mais $2k\pi$);</li>
+            <li><strong>$\cos x = a$</strong>: dois pontos simétricos em relação ao eixo horizontal, $x = \alpha$ ou $x = 2\pi - \alpha$ (isto é, $\pm\alpha + 2k\pi$);</li>
+            <li><strong>$\operatorname{tg}x = a$</strong>: pontos diametralmente opostos, $x = \alpha + k\pi$;</li>
+            <li><strong>Equações do 2º grau</strong> em $\operatorname{sen}x$ ou $\cos x$: troque por $y$, resolva e descarte valores fora de $[-1, 1]$.</li>
+        </ul>
+        <figure class="figura-aula figura-grande">
+            <svg viewBox="0 0 560 230" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Soluções de sen x = 1/2 (pi/6 e 5pi/6) e de cos x = 1/2 (pi/3 e 5pi/3) no ciclo" style="width:100%; max-width:560px; display:block; margin:0 auto;">
+  <line x1="40" y1="110" x2="240" y2="110" stroke="#2c3e50" stroke-width="1.5"/><line x1="140" y1="205" x2="140" y2="15" stroke="#2c3e50" stroke-width="1.5"/>
+  <circle cx="140" cy="110" r="80" fill="#eaf2fb" fill-opacity="0.6" stroke="#2c3e50" stroke-width="2.5"/>
+  <line x1="45" y1="70.0" x2="235" y2="70.0" stroke="#e74c3c" stroke-width="2" stroke-dasharray="6,4"/>
+  <text x="222" y="88.0" font-family="Oswald, sans-serif" font-size="14" fill="#e74c3c">y = 1/2</text>
+  <text x="140" y="218" font-family="Oswald, sans-serif" font-size="15" fill="#2c3e50" text-anchor="middle">sen x = 1/2 → x = π/6 ou 5π/6</text>
+  <line x1="140" y1="110" x2="209.3" y2="70.0" stroke="#2c3e50" stroke-width="2"/><circle cx="209.3" cy="70.0" r="5" fill="#e67e22"/>
+  <text x="217.3" y="62.0" font-family="Oswald, sans-serif" font-size="15" fill="#e67e22">π/6</text>
+  <line x1="140" y1="110" x2="70.7" y2="70.0" stroke="#2c3e50" stroke-width="2"/><circle cx="70.7" cy="70.0" r="5" fill="#e67e22"/>
+  <text x="24.7" y="62.0" font-family="Oswald, sans-serif" font-size="15" fill="#e67e22">5π/6</text>
+  <line x1="320" y1="110" x2="520" y2="110" stroke="#2c3e50" stroke-width="1.5"/><line x1="420" y1="205" x2="420" y2="15" stroke="#2c3e50" stroke-width="1.5"/>
+  <circle cx="420" cy="110" r="80" fill="#eaf2fb" fill-opacity="0.6" stroke="#2c3e50" stroke-width="2.5"/>
+  <line x1="460.0" y1="15" x2="460.0" y2="205" stroke="#3498db" stroke-width="2" stroke-dasharray="6,4"/>
+  <text x="466.0" y="200" font-family="Oswald, sans-serif" font-size="14" fill="#3498db">x = 1/2</text>
+  <text x="420" y="218" font-family="Oswald, sans-serif" font-size="15" fill="#2c3e50" text-anchor="middle">cos x = 1/2 → x = π/3 ou 5π/3</text>
+  <line x1="420" y1="110" x2="460.0" y2="40.7" stroke="#2c3e50" stroke-width="2"/><circle cx="460.0" cy="40.7" r="5" fill="#e67e22"/>
+  <text x="468.0" y="32.7" font-family="Oswald, sans-serif" font-size="15" fill="#e67e22">π/3</text>
+  <line x1="420" y1="110" x2="460.0" y2="179.3" stroke="#2c3e50" stroke-width="2"/><circle cx="460.0" cy="179.3" r="5" fill="#e67e22"/>
+  <text x="468.0" y="171.3" font-family="Oswald, sans-serif" font-size="15" fill="#e67e22">5π/3</text>
+</svg>
+            <figcaption>Figura 2: A reta horizontal $y = \frac{1}{2}$ corta o ciclo nas soluções de $\operatorname{sen}x = \frac{1}{2}$; a reta vertical $x = \frac{1}{2}$, nas de $\cos x = \frac{1}{2}$.</figcaption>
+        </figure>
     </div>
 </section>
 
@@ -112,12 +160,12 @@
     <h3>💡 Matemática em Ação</h3>
     <div class="cards-aplicacao">
         <div class="card">
-            <h4>🎡 Roda-Gigante</h4>
-            <p>A altura de uma cadeira de roda-gigante é dada por $h(t) = C + R\operatorname{sen}(\omega t)$: o movimento circular, projetado na vertical, é exatamente o seno do ciclo trigonométrico. Saber quando a cadeira está a certa altura é resolver uma equação trigonométrica.</p>
+            <h4>🎡 A Roda-Gigante</h4>
+            <p>A altura de uma cadeira da roda-gigante é dada por uma expressão com seno do ângulo girado. Descobrir <em>em que instantes</em> a cadeira passa por certa altura é resolver uma equação trigonométrica, e ela sempre tem duas respostas por volta: uma subindo e outra descendo.</p>
         </div>
         <div class="card" style="border-left-color: #2ecc71;">
-            <h4>🌊 Marés e Batimentos</h4>
-            <p>Fenômenos que se repetem (marés, batimentos cardíacos, preços de produtos sazonais) são modelados por senos e cossenos. Os máximos e mínimos ocorrem quando o seno ou o cosseno vale $1$ ou $-1$.</p>
+            <h4>⚡ A Tomada de Casa</h4>
+            <p>A tensão da rede elétrica oscila como $V(t) = V_{\text{máx}}\operatorname{sen}(\omega t)$, completando $60$ voltas no ciclo por segundo no Brasil ($60$ Hz). Os instantes em que a tensão vale metade do máximo vêm de $\operatorname{sen}(\omega t) = \frac{1}{2}$.</p>
         </div>
     </div>
 </section>
@@ -125,136 +173,136 @@
     <h3>✅ 5 Questões Resolvidas (R 1 a 5)</h3>
     <article class="questao">
         <h4>R 1: Graus e Radianos</h4>
-        <p><strong>Enunciado:</strong> Converta (a) $150^\circ$ para radianos; (b) $\dfrac{7\pi}{4}$ rad para graus.</p>
-        <div class="resolucao-bloco"><p><strong>Resolução:</strong><br>Regra de três com $\pi$ rad $= 180^\circ$.<br>(a) $150^\circ = 150 \cdot \dfrac{\pi}{180}$ rad $= \mathbf{\dfrac{5\pi}{6}}$ rad.<br>(b) $\dfrac{7\pi}{4} = \dfrac{7 \cdot 180^\circ}{4} = \mathbf{315^\circ}$.</p></div>
+        <p><strong>Enunciado:</strong> Converta $150^\circ$ para radianos e $\dfrac{7\pi}{4}$ rad para graus.</p>
+        <div class="resolucao-bloco"><p><strong>Resolução:</strong><br>Regra de três com $\pi \text{ rad} = 180^\circ$.<br>$150^\circ = 150 \cdot \dfrac{\pi}{180} = \mathbf{\dfrac{5\pi}{6}}$ rad.<br>$\dfrac{7\pi}{4} = \dfrac{7 \cdot 180^\circ}{4} = \mathbf{315^\circ}$.</p></div>
     </article>
     <article class="questao">
         <h4>R 2: Primeira Determinação</h4>
-        <p><strong>Enunciado:</strong> Determine a primeira determinação positiva e o quadrante dos arcos (a) $1\,110^\circ$; (b) $\dfrac{17\pi}{3}$ rad.</p>
-        <div class="resolucao-bloco"><p><strong>Resolução:</strong><br>(a) $1\,110^\circ = 3 \cdot 360^\circ + 30^\circ$: primeira determinação $\mathbf{30^\circ}$, no <strong>1º quadrante</strong>.<br>(b) $\dfrac{17\pi}{3} = 4\pi + \dfrac{5\pi}{3}$ (duas voltas completas): primeira determinação $\mathbf{\dfrac{5\pi}{3}}$ ($300^\circ$), no <strong>4º quadrante</strong>.</p></div>
+        <p><strong>Enunciado:</strong> Determine a primeira determinação positiva do arco de $1\,110^\circ$, o número de voltas completas, o quadrante e o seno desse arco.</p>
+        <div class="resolucao-bloco"><p><strong>Resolução:</strong><br>Dividindo por $360^\circ$: $1\,110 = 3 \cdot 360 + 30$.<br>São $\mathbf{3}$ voltas completas e a primeira determinação é $\mathbf{30^\circ}$, no <strong>1º quadrante</strong>.<br>Arcos côngruos têm o mesmo seno: $\operatorname{sen}1\,110^\circ = \operatorname{sen}30^\circ = \mathbf{\dfrac{1}{2}}$.</p></div>
     </article>
     <article class="questao">
         <h4>R 3: Redução ao 1º Quadrante</h4>
-        <p><strong>Enunciado:</strong> Calcule $\operatorname{sen}\dfrac{5\pi}{6}$, $\cos\dfrac{7\pi}{6}$ e $\operatorname{sen}\dfrac{5\pi}{3}$.</p>
-        <div class="resolucao-bloco"><p><strong>Resolução:</strong><br>$\dfrac{5\pi}{6} = \pi - \dfrac{\pi}{6}$ (2º Q, seno positivo): $\operatorname{sen}\dfrac{5\pi}{6} = \operatorname{sen}\dfrac{\pi}{6} = \mathbf{\dfrac{1}{2}}$.<br>$\dfrac{7\pi}{6} = \pi + \dfrac{\pi}{6}$ (3º Q, cosseno negativo): $\cos\dfrac{7\pi}{6} = -\cos\dfrac{\pi}{6} = \mathbf{-\dfrac{\sqrt{3}}{2}}$.<br>$\dfrac{5\pi}{3} = 2\pi - \dfrac{\pi}{3}$ (4º Q, seno negativo): $\operatorname{sen}\dfrac{5\pi}{3} = -\operatorname{sen}\dfrac{\pi}{3} = \mathbf{-\dfrac{\sqrt{3}}{2}}$.</p></div>
+        <p><strong>Enunciado:</strong> Calcule $\operatorname{sen}150^\circ$, $\cos 240^\circ$ e $\operatorname{tg}315^\circ$.</p>
+        <div class="resolucao-bloco"><p><strong>Resolução:</strong><br>$150^\circ = 180^\circ - 30^\circ$ (2º Q, seno positivo): $\operatorname{sen}150^\circ = \operatorname{sen}30^\circ = \mathbf{\dfrac{1}{2}}$.<br>$240^\circ = 180^\circ + 60^\circ$ (3º Q, cosseno negativo): $\cos 240^\circ = -\cos 60^\circ = \mathbf{-\dfrac{1}{2}}$.<br>$315^\circ = 360^\circ - 45^\circ$ (4º Q, tangente negativa): $\operatorname{tg}315^\circ = -\operatorname{tg}45^\circ = \mathbf{-1}$.</p></div>
     </article>
     <article class="questao">
         <h4>R 4: Equação com Seno</h4>
-        <p><strong>Enunciado:</strong> Resolva $\operatorname{sen}x = \dfrac{\sqrt{3}}{2}$ para $0 \leq x < 2\pi$.</p>
-        <div class="resolucao-bloco"><p><strong>Resolução:</strong><br>O arco do 1º quadrante com seno $\dfrac{\sqrt{3}}{2}$ é $\dfrac{\pi}{3}$.<br>O seno também é positivo no 2º quadrante: $x = \pi - \dfrac{\pi}{3} = \dfrac{2\pi}{3}$.<br>$S = \left\{\mathbf{\dfrac{\pi}{3}},\ \mathbf{\dfrac{2\pi}{3}}\right\}$.</p></div>
+        <p><strong>Enunciado:</strong> Resolva $\operatorname{sen}x = \dfrac{\sqrt{3}}{2}$ para $0 \leq x < 2\pi$ e escreva a solução geral.</p>
+        <div class="resolucao-bloco"><p><strong>Resolução:</strong><br>O seno é positivo no 1º e no 2º quadrantes, e $\operatorname{sen}\dfrac{\pi}{3} = \dfrac{\sqrt{3}}{2}$.<br>Soluções: $x = \dfrac{\pi}{3}$ e $x = \pi - \dfrac{\pi}{3} = \dfrac{2\pi}{3}$, isto é, $S = \mathbf{\left\{\dfrac{\pi}{3}, \dfrac{2\pi}{3}\right\}}$.<br>Solução geral: $x = \dfrac{\pi}{3} + 2k\pi$ ou $x = \dfrac{2\pi}{3} + 2k\pi$, $k \in \mathbb{Z}$.</p></div>
     </article>
     <article class="questao">
-        <h4>R 5: Equação do 2º Grau em Cosseno</h4>
-        <p><strong>Enunciado:</strong> Resolva $2\cos^2 x - \cos x - 1 = 0$ para $0 \leq x < 2\pi$.</p>
-        <div class="resolucao-bloco"><p><strong>Resolução:</strong><br>Fazendo $y = \cos x$: $2y^2 - y - 1 = 0 \implies y = \dfrac{1 \pm 3}{4} \implies y = 1$ ou $y = -\dfrac{1}{2}$.<br>$\cos x = 1 \implies x = 0$. \quad $\cos x = -\dfrac{1}{2} \implies x = \dfrac{2\pi}{3}$ ou $x = \dfrac{4\pi}{3}$ (2º e 3º quadrantes).<br>$S = \left\{\mathbf{0},\ \mathbf{\dfrac{2\pi}{3}},\ \mathbf{\dfrac{4\pi}{3}}\right\}$.</p></div>
+        <h4>R 5: Equação do 2º Grau</h4>
+        <p><strong>Enunciado:</strong> Resolva $2\operatorname{sen}^2 x - \operatorname{sen}x - 1 = 0$ para $0 \leq x < 2\pi$.</p>
+        <div class="resolucao-bloco"><p><strong>Resolução:</strong><br>Fazendo $y = \operatorname{sen}x$: $2y^2 - y - 1 = 0 \implies y = \dfrac{1 \pm 3}{4}$, ou seja, $y = 1$ ou $y = -\dfrac{1}{2}$.<br>$\operatorname{sen}x = 1 \implies x = \dfrac{\pi}{2}$.<br>$\operatorname{sen}x = -\dfrac{1}{2}$ (3º e 4º Q) $\implies x = \dfrac{7\pi}{6}$ ou $x = \dfrac{11\pi}{6}$.<br>$S = \mathbf{\left\{\dfrac{\pi}{2}, \dfrac{7\pi}{6}, \dfrac{11\pi}{6}\right\}}$.</p></div>
     </article>
 </section>
 
 <section class="questoes-propostas" id="propostas">
     <h3>✍️ 10 Questões Propostas (P 6 a 15)</h3>
     <article class="questao">
-        <h4>P 6: Conversões</h4>
-        <p><strong>Enunciado:</strong> Converta (a) $240^\circ$ para radianos; (b) $\dfrac{3\pi}{5}$ rad para graus.</p>
+        <h4>P 6: Para Radianos</h4>
+        <p><strong>Enunciado:</strong> Converta $210^\circ$ para radianos.</p>
         <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>(a) $240 \cdot \dfrac{\pi}{180} = \mathbf{\dfrac{4\pi}{3}}$ rad.<br>(b) $\dfrac{3 \cdot 180^\circ}{5} = \mathbf{108^\circ}$.</p></div>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>$210 \cdot \dfrac{\pi}{180} = \mathbf{\dfrac{7\pi}{6}}$ rad.</p></div>
     </article>
     <article class="questao">
-        <h4>P 7: Comprimento de Arco</h4>
-        <p><strong>Enunciado:</strong> Em uma circunferência de raio $9$ cm, um arco mede $6\pi$ cm. Qual é a medida do ângulo central correspondente, em radianos e em graus?</p>
+        <h4>P 7: Para Graus</h4>
+        <p><strong>Enunciado:</strong> Converta $\dfrac{5\pi}{3}$ rad para graus.</p>
         <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>Em radianos, $\alpha = \dfrac{\ell}{r} = \dfrac{6\pi}{9} = \mathbf{\dfrac{2\pi}{3}}$ rad.<br>Em graus: $\dfrac{2 \cdot 180^\circ}{3} = \mathbf{120^\circ}$.</p></div>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>$\dfrac{5 \cdot 180^\circ}{3} = \mathbf{300^\circ}$.</p></div>
     </article>
     <article class="questao">
         <h4>P 8: Muitas Voltas</h4>
-        <p><strong>Enunciado:</strong> Determine a primeira determinação positiva e o quadrante do arco de $2\,000^\circ$.</p>
+        <p><strong>Enunciado:</strong> Determine a primeira determinação positiva e o quadrante do arco de $2\,010^\circ$.</p>
         <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>$2\,000^\circ = 5 \cdot 360^\circ + 200^\circ$.<br>Primeira determinação: $\mathbf{200^\circ}$, no <strong>3º quadrante</strong>.</p></div>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>$2\,010 = 5 \cdot 360 + 210$.<br>Primeira determinação: $\mathbf{210^\circ}$, no <strong>3º quadrante</strong> (após 5 voltas).</p></div>
     </article>
     <article class="questao">
-        <h4>P 9: Jogo de Sinais</h4>
-        <p><strong>Enunciado:</strong> Determine o sinal do produto $\operatorname{sen}200^\circ \cdot \cos300^\circ \cdot \operatorname{tg}135^\circ$.</p>
+        <h4>P 9: Arco Negativo</h4>
+        <p><strong>Enunciado:</strong> Determine o arco côngruo positivo de $-\dfrac{\pi}{4}$ na primeira volta e o seu quadrante.</p>
         <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>$200^\circ$ (3º Q): seno negativo. $300^\circ$ (4º Q): cosseno positivo. $135^\circ$ (2º Q): tangente negativa.<br>Produto: $(-) \cdot (+) \cdot (-) = $ <strong>positivo</strong>.</p></div>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>Somando uma volta: $-\dfrac{\pi}{4} + 2\pi = \mathbf{\dfrac{7\pi}{4}}$.<br>$\dfrac{7\pi}{4} = 315^\circ$: <strong>4º quadrante</strong>.</p></div>
     </article>
     <article class="questao">
-        <h4>P 10: Valores Notáveis</h4>
-        <p><strong>Enunciado:</strong> Calcule $\cos\dfrac{3\pi}{4}$, $\operatorname{sen}\dfrac{7\pi}{6}$ e $\operatorname{tg}\dfrac{5\pi}{3}$.</p>
+        <h4>P 10: Redução ao 1º Quadrante</h4>
+        <p><strong>Enunciado:</strong> Calcule $\cos 120^\circ$, $\operatorname{sen}225^\circ$ e $\operatorname{tg}150^\circ$.</p>
         <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>$\cos\dfrac{3\pi}{4} = -\cos\dfrac{\pi}{4} = \mathbf{-\dfrac{\sqrt{2}}{2}}$; \quad $\operatorname{sen}\dfrac{7\pi}{6} = -\operatorname{sen}\dfrac{\pi}{6} = \mathbf{-\dfrac{1}{2}}$.<br>$\operatorname{tg}\dfrac{5\pi}{3} = -\operatorname{tg}\dfrac{\pi}{3} = \mathbf{-\sqrt{3}}$ (4º quadrante).</p></div>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>$\cos 120^\circ = -\cos 60^\circ = \mathbf{-\dfrac{1}{2}}$.<br>$\operatorname{sen}225^\circ = -\operatorname{sen}45^\circ = \mathbf{-\dfrac{\sqrt{2}}{2}}$.<br>$\operatorname{tg}150^\circ = -\operatorname{tg}30^\circ = \mathbf{-\dfrac{\sqrt{3}}{3}}$.</p></div>
     </article>
     <article class="questao">
-        <h4>P 11: Seno Igual a 1/2</h4>
-        <p><strong>Enunciado:</strong> Resolva $\operatorname{sen}x = \dfrac{1}{2}$ para $0 \leq x < 2\pi$.</p>
+        <h4>P 11: Expressão no Ciclo</h4>
+        <p><strong>Enunciado:</strong> Calcule $E = \operatorname{sen}330^\circ + \cos 300^\circ + \operatorname{tg}225^\circ$.</p>
         <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>1º quadrante: $x = \dfrac{\pi}{6}$; 2º quadrante: $x = \pi - \dfrac{\pi}{6} = \dfrac{5\pi}{6}$.<br>$S = \left\{\mathbf{\dfrac{\pi}{6}},\ \mathbf{\dfrac{5\pi}{6}}\right\}$.</p></div>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>$\operatorname{sen}330^\circ = -\dfrac{1}{2}$, $\cos 300^\circ = \dfrac{1}{2}$ e $\operatorname{tg}225^\circ = \operatorname{tg}45^\circ = 1$.<br>$E = -\dfrac{1}{2} + \dfrac{1}{2} + 1 = \mathbf{1}$.</p></div>
     </article>
     <article class="questao">
-        <h4>P 12: Cosseno Negativo</h4>
-        <p><strong>Enunciado:</strong> Resolva $\cos x = -\dfrac{\sqrt{2}}{2}$ para $0 \leq x < 2\pi$.</p>
+        <h4>P 12: Equação com Cosseno</h4>
+        <p><strong>Enunciado:</strong> Resolva $\cos x = -\dfrac{1}{2}$ para $0 \leq x < 2\pi$.</p>
         <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>Ângulo de referência: $\dfrac{\pi}{4}$. Cosseno negativo: 2º e 3º quadrantes.<br>$x = \pi - \dfrac{\pi}{4} = \mathbf{\dfrac{3\pi}{4}}$ ou $x = \pi + \dfrac{\pi}{4} = \mathbf{\dfrac{5\pi}{4}}$.</p></div>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>Cosseno negativo: 2º e 3º quadrantes; o arco de referência é $\dfrac{\pi}{3}$.<br>$x = \pi - \dfrac{\pi}{3} = \dfrac{2\pi}{3}$ ou $x = \pi + \dfrac{\pi}{3} = \dfrac{4\pi}{3}$: $S = \mathbf{\left\{\dfrac{2\pi}{3}, \dfrac{4\pi}{3}\right\}}$.</p></div>
     </article>
     <article class="questao">
         <h4>P 13: Equação com Tangente</h4>
-        <p><strong>Enunciado:</strong> Resolva $\operatorname{tg}x = 1$ para $0 \leq x < 2\pi$.</p>
+        <p><strong>Enunciado:</strong> Resolva $\operatorname{tg}x = \sqrt{3}$ para $0 \leq x < 2\pi$.</p>
         <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>A tangente se repete a cada $\pi$: $x = \dfrac{\pi}{4} + k\pi$.<br>$S = \left\{\mathbf{\dfrac{\pi}{4}},\ \mathbf{\dfrac{5\pi}{4}}\right\}$.</p></div>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>Tangente positiva: 1º e 3º quadrantes; $\operatorname{tg}\dfrac{\pi}{3} = \sqrt{3}$.<br>$x = \dfrac{\pi}{3}$ ou $x = \pi + \dfrac{\pi}{3} = \dfrac{4\pi}{3}$: $S = \mathbf{\left\{\dfrac{\pi}{3}, \dfrac{4\pi}{3}\right\}}$.</p></div>
     </article>
     <article class="questao">
         <h4>P 14: Isolando o Seno</h4>
-        <p><strong>Enunciado:</strong> Resolva $2\operatorname{sen}x + \sqrt{3} = 0$ para $0 \leq x < 2\pi$.</p>
+        <p><strong>Enunciado:</strong> Resolva $2\operatorname{sen}x + 1 = 0$ para $0 \leq x < 2\pi$.</p>
         <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>$\operatorname{sen}x = -\dfrac{\sqrt{3}}{2}$: ângulo de referência $\dfrac{\pi}{3}$, seno negativo no 3º e no 4º quadrantes.<br>$x = \pi + \dfrac{\pi}{3} = \mathbf{\dfrac{4\pi}{3}}$ ou $x = 2\pi - \dfrac{\pi}{3} = \mathbf{\dfrac{5\pi}{3}}$.</p></div>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>$\operatorname{sen}x = -\dfrac{1}{2}$: 3º e 4º quadrantes, com referência $\dfrac{\pi}{6}$.<br>$x = \pi + \dfrac{\pi}{6} = \dfrac{7\pi}{6}$ ou $x = 2\pi - \dfrac{\pi}{6} = \dfrac{11\pi}{6}$: $S = \mathbf{\left\{\dfrac{7\pi}{6}, \dfrac{11\pi}{6}\right\}}$.</p></div>
     </article>
     <article class="questao">
-        <h4>P 15: Seno ao Quadrado</h4>
-        <p><strong>Enunciado:</strong> Resolva $\operatorname{sen}^2 x = \dfrac{1}{4}$ para $0 \leq x < 2\pi$. Quantas soluções há?</p>
+        <h4>P 15: Solução Geral</h4>
+        <p><strong>Enunciado:</strong> Escreva a solução geral, em $\mathbb{R}$, da equação $\cos x = 0$.</p>
         <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>$\operatorname{sen}x = \dfrac{1}{2}$ ou $\operatorname{sen}x = -\dfrac{1}{2}$ (não esqueça a raiz negativa!).<br>$S = \left\{\dfrac{\pi}{6},\ \dfrac{5\pi}{6},\ \dfrac{7\pi}{6},\ \dfrac{11\pi}{6}\right\}$: <strong>4 soluções</strong>.</p></div>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>No ciclo, a abscissa é zero nos pontos $\dfrac{\pi}{2}$ e $\dfrac{3\pi}{2}$, que distam meia volta.<br>Solução geral: $\mathbf{x = \dfrac{\pi}{2} + k\pi}$, $k \in \mathbb{Z}$.</p></div>
     </article>
 </section>
 
 <section class="TESTE" id="testes">
     <h3>🎓 TESTES (T 16 a 20)</h3>
     <article class="questao">
-        <h4>T 16: (ENEM 2017) Raios de Sol no Lago</h4>
-        <p>Raios de luz solar estão atingindo a superfície de um lago formando um ângulo $x$ com a sua superfície. Em determinadas condições, pode-se supor que a intensidade luminosa desses raios, na superfície do lago, seja dada aproximadamente por $I(x) = k \cdot \operatorname{sen}(x)$, sendo $k$ uma constante, e supondo-se que $x$ está entre $0^\circ$ e $90^\circ$.</p>
-        <p>Quando $x = 30^\circ$, a intensidade luminosa se reduz a qual percentual de seu valor máximo?</p>
-        <p>A) $33\%$<br>B) $50\%$<br>C) $57\%$<br>D) $70\%$<br>E) $86\%$</p>
+        <h4>T 16: (IFAL) O Arco de 23π/3 rad</h4>
+        <p>Considerando-se o arco trigonométrico $\alpha = \dfrac{23\pi}{3}$ rad, assinale a alternativa falsa.</p>
+        <p>A) $\alpha = 1\,380^\circ$.<br>B) $\alpha$ dá três voltas e para no 4º quadrante.<br>C) $\operatorname{sen}\alpha = -\operatorname{sen}60^\circ$.<br>D) $\cos\alpha = \cos 60^\circ$.<br>E) $\alpha$ dá três voltas e para no 1º quadrante.</p>
         <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>B</strong>.<br>Para $0^\circ < x \leq 90^\circ$, o seno é máximo em $x = 90^\circ$ ($\operatorname{sen}90^\circ = 1$): $I_{máx} = k$.<br>$I(30^\circ) = k \cdot \operatorname{sen}30^\circ = \dfrac{k}{2}$, ou seja, $\mathbf{50\%}$ do máximo.</p></div>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>E</strong>.<br>$\dfrac{23\pi}{3} = \dfrac{23 \cdot 180^\circ}{3} = 1\,380^\circ$ (A é verdadeira).<br>$1\,380 = 3 \cdot 360 + 300$: três voltas e parada em $300^\circ$, no 4º quadrante (B verdadeira, E <strong>falsa</strong>).<br>$300^\circ = 360^\circ - 60^\circ$: $\operatorname{sen}300^\circ = -\operatorname{sen}60^\circ$ e $\cos 300^\circ = \cos 60^\circ$ (C e D verdadeiras). Alternativa <strong>E</strong>.</p></div>
     </article>
     <article class="questao">
-        <h4>T 17: (ENEM 2015, adaptada) Produtos Sazonais</h4>
-        <p>Segundo o IBGE, produtos sazonais são aqueles que apresentam ciclos bem definidos de produção, consumo e preço: há épocas do ano em que sua disponibilidade é escassa, com preços elevados, e épocas em que é abundante, com preços mais baixos, o que ocorre no mês de produção máxima da safra. A partir de uma série histórica, observou-se que o preço $P$, em reais, do quilograma de certo produto sazonal pode ser descrito pela função $P(x) = 8 + 5\cos\left(\dfrac{\pi x - \pi}{6}\right)$, em que $x$ representa o mês do ano ($x = 1$ para janeiro, $x = 2$ para fevereiro, …, $x = 12$ para dezembro).</p>
-        <p>Na safra, o mês de produção máxima desse produto é</p>
-        <p>A) janeiro.<br>B) abril.<br>C) junho.<br>D) julho.<br>E) outubro.</p>
+        <h4>T 17: (UFAL) O Seno de 2370°</h4>
+        <p>O seno de um arco de medida $2\,370^\circ$ é igual a:</p>
+        <p>A) $-1$<br>B) $-\dfrac{1}{2}$<br>C) $0$<br>D) $\dfrac{\sqrt{3}}{2}$<br>E) $1$</p>
         <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>D</strong>.<br>Produção máxima $\leftrightarrow$ preço mínimo $\leftrightarrow$ $\cos\left(\dfrac{\pi x - \pi}{6}\right) = -1$.<br>O cosseno vale $-1$ no arco $\pi$: $\dfrac{\pi x - \pi}{6} = \pi \implies \pi x - \pi = 6\pi \implies x = 7$.<br>$x = 7$ é <strong>julho</strong> (preço de $8 - 5 = 3$ reais por quilograma).</p></div>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>B</strong>.<br>$2\,370 = 6 \cdot 360 + 210$: o arco é côngruo a $210^\circ$ (3º quadrante).<br>$\operatorname{sen}210^\circ = -\operatorname{sen}30^\circ = \mathbf{-\dfrac{1}{2}}$.</p></div>
     </article>
     <article class="questao">
-        <h4>T 18: (ENEM 2017, adaptada) Pressão Arterial</h4>
-        <p>Um cientista, em seus estudos para modelar a pressão arterial de uma pessoa, utiliza uma função do tipo $P(t) = A + B\cos(kt)$, em que $A$, $B$ e $k$ são constantes reais positivas e $t$ representa a variável tempo, medida em segundo. Considere que um batimento cardíaco representa o intervalo de tempo entre duas sucessivas pressões máximas. Ao analisar um caso específico, o cientista obteve: pressão mínima $78$, pressão máxima $120$ e $90$ batimentos cardíacos por minuto.</p>
-        <p>A função $P(t)$ obtida por este cientista, ao analisar o caso específico, foi</p>
-        <p>A) $P(t) = 99 + 21\cos(3\pi t)$<br>B) $P(t) = 78 + 42\cos(3\pi t)$<br>C) $P(t) = 99 + 21\cos(2\pi t)$<br>D) $P(t) = 99 + 21\cos(t)$<br>E) $P(t) = 78 + 42\cos(t)$</p>
+        <h4>T 18: (UFRGS) Tangentes Relacionadas a 88°</h4>
+        <p>Considere as afirmativas abaixo.</p>
+        <p>I. $\operatorname{tan}92^\circ = -\operatorname{tan}88^\circ$</p>
+        <p>II. $\operatorname{tan}178^\circ = \operatorname{tan}88^\circ$</p>
+        <p>III. $\operatorname{tan}268^\circ = \operatorname{tan}88^\circ$</p>
+        <p>IV. $\operatorname{tan}272^\circ = -\operatorname{tan}88^\circ$</p>
+        <p>Quais estão corretas?</p>
+        <p>A) Apenas I e III.<br>B) Apenas III e IV.<br>C) Apenas I, II e IV.<br>D) Apenas I, III e IV.<br>E) Apenas II, III e IV.</p>
         <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>A</strong>.<br>Como $-1 \leq \cos(kt) \leq 1$: máximo $A + B = 120$ e mínimo $A - B = 78$, logo $A = 99$ e $B = 21$.<br>$90$ batimentos por minuto: um batimento a cada $\dfrac{60}{90} = \dfrac{2}{3}$ s, que é o período $\dfrac{2\pi}{k}$.<br>$\dfrac{2\pi}{k} = \dfrac{2}{3} \implies k = 3\pi$: $\mathbf{P(t) = 99 + 21\cos(3\pi t)}$.</p></div>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>D</strong>.<br>I: $92^\circ = 180^\circ - 88^\circ$ (2º Q, tangente negativa): $\operatorname{tg}92^\circ = -\operatorname{tg}88^\circ$. Correta.<br>II: $178^\circ = 180^\circ - 2^\circ$: $\operatorname{tg}178^\circ = -\operatorname{tg}2^\circ$, que não é $\operatorname{tg}88^\circ$. Incorreta.<br>III: $268^\circ = 180^\circ + 88^\circ$ (3º Q, tangente positiva): correta. IV: $272^\circ = 360^\circ - 88^\circ$ (4º Q, tangente negativa): correta. Alternativa <strong>D</strong>.</p></div>
     </article>
     <article class="questao">
-        <h4>T 19: (Fuvest 2017, adaptada) O Gás e o Seno</h4>
-        <p>Uma quantidade fixa de um gás ideal é mantida a temperatura constante, e seu volume varia com o tempo de acordo com a fórmula $V(t) = \log_2\big(5 + 2\operatorname{sen}(\pi t)\big)$, $0 \leq t \leq 2$, em que $t$ é medido em horas e $V(t)$ em m³. A temperatura constante, a pressão do gás é inversamente proporcional ao seu volume.</p>
-        <p>A pressão máxima do gás no intervalo de tempo $[0, 2]$ ocorre no instante</p>
-        <p>A) $t = 0{,}4$<br>B) $t = 0{,}5$<br>C) $t = 1$<br>D) $t = 1{,}5$<br>E) $t = 2$</p>
+        <h4>T 19: (Unirio) Seno Igual ao Cosseno</h4>
+        <p>O conjunto-solução da equação $\operatorname{sen}x = \cos x$, sendo $0 \leq x < 2\pi$, é:</p>
+        <p>A) $\left\{\dfrac{\pi}{4}\right\}$<br>B) $\left\{\dfrac{\pi}{3}\right\}$<br>C) $\left\{\dfrac{5\pi}{4}\right\}$<br>D) $\left\{\dfrac{\pi}{3}, \dfrac{4\pi}{3}\right\}$<br>E) $\left\{\dfrac{\pi}{4}, \dfrac{5\pi}{4}\right\}$</p>
         <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>D</strong>.<br>Pressão máxima $\leftrightarrow$ volume mínimo. Como $\log_2$ é crescente, o volume é mínimo quando $5 + 2\operatorname{sen}(\pi t)$ é mínimo, isto é, $\operatorname{sen}(\pi t) = -1$.<br>No ciclo, o seno vale $-1$ no arco $\dfrac{3\pi}{2}$: $\pi t = \dfrac{3\pi}{2} \implies t = \mathbf{1{,}5}$ h (único valor com $0 \leq \pi t \leq 2\pi$).</p></div>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>E</strong>.<br>Se $\cos x = 0$, então $\operatorname{sen}x = \pm 1 \neq 0$; logo $\cos x \neq 0$ e podemos dividir: $\operatorname{tg}x = 1$.<br>Tangente positiva no 1º e no 3º quadrantes: $x = \dfrac{\pi}{4}$ ou $x = \dfrac{5\pi}{4}$.<br>$S = \mathbf{\left\{\dfrac{\pi}{4}, \dfrac{5\pi}{4}\right\}}$ (a alternativa A esquece a solução do 3º quadrante).</p></div>
     </article>
     <article class="questao">
-        <h4>T 20: (Questão autoral) Soma das Soluções</h4>
-        <p>Considere a equação $2\operatorname{sen}^2 x - \operatorname{sen}x - 1 = 0$, com $0 \leq x < 2\pi$.</p>
-        <p>A soma de todas as soluções dessa equação é:</p>
-        <p>A) $2\pi$<br>B) $3\pi$<br>C) $\dfrac{7\pi}{2}$<br>D) $4\pi$<br>E) $\dfrac{9\pi}{2}$</p>
+        <h4>T 20: (Fatec) Equação do 2º Grau em Cosseno</h4>
+        <p>O conjunto solução da equação $2\cos^2 x + \cos x - 1 = 0$, no universo $U = [0, 2\pi]$, é</p>
+        <p>A) $\left\{\dfrac{\pi}{3}, \pi, \dfrac{5\pi}{3}\right\}$<br>B) $\left\{\dfrac{\pi}{6}, \pi, \dfrac{5\pi}{6}\right\}$<br>C) $\left\{\dfrac{\pi}{3}, \dfrac{\pi}{6}, \pi\right\}$<br>D) $\left\{\dfrac{\pi}{6}, \dfrac{\pi}{3}, \pi, \dfrac{2\pi}{3}, \dfrac{5\pi}{3}\right\}$<br>E) $\left\{\dfrac{\pi}{3}, \dfrac{2\pi}{3}, \pi, \dfrac{4\pi}{3}, \dfrac{5\pi}{3}, 2\pi\right\}$</p>
         <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>C</strong>.<br>Com $y = \operatorname{sen}x$: $2y^2 - y - 1 = 0 \implies y = 1$ ou $y = -\dfrac{1}{2}$.<br>$\operatorname{sen}x = 1 \implies x = \dfrac{\pi}{2}$; \ $\operatorname{sen}x = -\dfrac{1}{2} \implies x = \dfrac{7\pi}{6}$ ou $\dfrac{11\pi}{6}$.<br>Soma: $\dfrac{3\pi}{6} + \dfrac{7\pi}{6} + \dfrac{11\pi}{6} = \dfrac{21\pi}{6} = \mathbf{\dfrac{7\pi}{2}}$.</p></div>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>A</strong>.<br>Com $y = \cos x$: $2y^2 + y - 1 = 0 \implies y = \dfrac{-1 \pm 3}{4}$, ou seja, $y = \dfrac{1}{2}$ ou $y = -1$.<br>$\cos x = \dfrac{1}{2} \implies x = \dfrac{\pi}{3}$ ou $x = \dfrac{5\pi}{3}$; $\cos x = -1 \implies x = \pi$.<br>$S = \mathbf{\left\{\dfrac{\pi}{3}, \pi, \dfrac{5\pi}{3}\right\}}$. Alternativa <strong>A</strong>.</p></div>
     </article>
 </section>
 
