@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3º Ano: Aula 22 - Circuito Geral: Gerador, Receptor e Resistor</title>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../estilo.css">
+    <script>
+        MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']], processEscapes: true } };
+    </script>
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        body.modo-slides { overflow: hidden !important; background-color: #1a1a1a !important; margin: 0; padding: 0; }
+        body.modo-slides .menu-lateral, body.modo-slides header, body.modo-slides .menu-toggle, body.modo-slides #btn-slides, body.modo-slides .nav-global { display: none !important; }
+        .slide-ativo { display: flex !important; flex-direction: column; align-items: center; justify-content: center; position: fixed; top: 0; left: 0; width: 100vw; height: calc(100vh - 70px); background: #ffffff; padding: 40px; z-index: 999; overflow-y: auto !important; box-sizing: border-box; text-align: left; }
+        .slide-ativo > * { max-width: 900px; width: 100%; }
+        .controles-slides { position: fixed; bottom: 0; left: 0; width: 100%; height: 70px; background: #2c3e50; color: white; display: none; justify-content: space-between; align-items: center; padding: 0 20px; z-index: 1001; box-sizing: border-box; }
+        body.modo-slides .controles-slides { display: flex !important; }
+        .info-lateral { flex: 1; font-family: 'Oswald', sans-serif; font-size: 0.9rem; color: #bdc3c7; }
+        .botoes-centrais { display: flex; align-items: center; gap: 15px; justify-content: center; flex: 2; }
+        .btn-nav { padding: 10px 20px; background: #3498db; color: white; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; font-size: 0.9rem; }
+        .btn-nav:hover { background: #2980b9; }
+        #contador-slide { font-family: 'Oswald', sans-serif; min-width: 60px; text-align: center; font-size: 1.1rem; }
+    </style>
+</head>
+<body>
+<button class="menu-toggle" onclick="toggleMenu()">☰</button>
+<nav id="menu-principal" class="nav-global"><ul>
+    <li><a href="../index.html">🏠 Início</a></li>
+    <li><a href="../ensino_medio.html">📚 Ensino Médio</a></li>
+    <li><a href="../ensino_superior.html">🎓 Ensino Superior</a></li>
+</ul></nav>
+<header id="topo">
+    <h1>FÍSICA EM</h1>
+    <p>3º Ano | Aula 22: Circuito Geral: Gerador, Receptor e Resistor</p>
+    <button id="btn-slides" onclick="toggleSlides()">📺 Iniciar Modo Slides</button>
+</header>
+<div class="container"><main class="conteudo-principal"><div class="secao-aula">
+
+<div class="container-resumo" id="resumo">
+    <h3>📚 Resumo</h3>
+    <section class="resumo-conteudo">
+        <p>Num <strong>circuito geral</strong> em série aparecem geradores, receptores e resistores. A corrente é dada pela <strong>Lei de Pouillet generalizada</strong>: a soma das forças eletromotrizes menos a soma das forças contra-eletromotrizes, dividida pela soma de todas as resistências do circuito.</p>
+        <p style="text-align: center;">$$i = \frac{\sum E - \sum E'}{\sum R + \sum r + \sum r'}$$</p>
+    </section>
+</div>
+
+<section class="conteudo-teorico-completo" id="teoria">
+    <div class="passo-teoria">
+        <h3>📖 Circuito Geral</h3>
+        <h4>1. Os Três Elementos</h4>
+        <ul>
+            <li><strong>Gerador</strong> ($E$, $r$): $U = E - r i$; a corrente sai pelo polo $+$;</li>
+            <li><strong>Receptor</strong> ($E'$, $r'$): $U = E' + r' i$; a corrente entra pelo polo $+$;</li>
+            <li><strong>Resistor</strong> ($R$): $U = R i$; toda a energia vira calor.</li>
+        </ul>
+        <figure class="figura-aula figura-grande">
+            <svg viewBox="0 0 480 230" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Circuito geral: gerador, resistor e receptor em série" style="width:100%; max-width:420px; display:block; margin:0 auto; font-family:sans-serif;">
+            <rect x="150" y="40" width="180" height="150" fill="none" stroke="#2c3e50" stroke-width="2"/>
+            <rect x="136" y="107.0" width="28" height="16" fill="#fff" stroke="none"/>
+            <line x1="134" y1="110.0" x2="166" y2="110.0" stroke="#3498db" stroke-width="3"/>
+            <line x1="142" y1="120.0" x2="158" y2="120.0" stroke="#3498db" stroke-width="5"/>
+            <text x="170" y="107.0" font-size="12" fill="#3498db">+</text>
+            <text x="124" y="120.0" font-size="14" text-anchor="end" fill="#2c3e50">Gerador E, r</text>
+            <rect x="316" y="107.0" width="28" height="16" fill="#fff" stroke="none"/>
+            <line x1="314" y1="110.0" x2="346" y2="110.0" stroke="#e74c3c" stroke-width="3"/>
+            <line x1="322" y1="120.0" x2="338" y2="120.0" stroke="#e74c3c" stroke-width="5"/>
+            <text x="306" y="107.0" font-size="12" fill="#e74c3c">+</text>
+            <text x="356" y="120.0" font-size="14" text-anchor="start" fill="#2c3e50">Receptor E′, r′</text>
+            <rect x="216.0" y="31" width="48" height="18" fill="#fff" stroke="none"/>
+            <polyline points="216.0,40.0 224.0,47.0 232.0,33.0 240.0,47.0 248.0,33.0 256.0,47.0 264.0,40.0" fill="none" stroke="#8e44ad" stroke-width="2.5"/>
+            <text x="240.0" y="18" font-size="14" text-anchor="middle" fill="#2c3e50">Resistor R</text>
+            <path d="M 210 120 A 30 30 0 1 1 270 120" fill="none" stroke="#c0392b" stroke-width="2" marker-end="url(#seta_i)"/>
+            <defs><marker id="seta_i" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#c0392b"/></marker></defs>
+            <text x="240" y="140" font-size="15" text-anchor="middle" fill="#c0392b">i</text>
+            </svg>
+            <figcaption>Figura 1: Circuito geral em série. A corrente circula no sentido imposto pelo gerador.</figcaption>
+        </figure>
+    </div>
+
+    <div class="passo-teoria">
+        <h4>2. Lei de Pouillet Generalizada</h4>
+        <p style="text-align: center; font-size: 1.15rem; background-color: #f8f9fa; padding: 15px; border-left: 5px solid #3498db; margin: 20px 0;">
+            $$i = \frac{\sum E - \sum E'}{\sum R + \sum r + \sum r'}$$
+        </p>
+        <p><strong>Quem é gerador?</strong> Quando duas baterias estão em <strong>oposição</strong>, a de maior fem impõe o sentido da corrente e funciona como gerador; a outra é percorrida "ao contrário" e funciona como receptor (é carregada). Se o resultado der $i &lt; 0$, a suposição estava errada: troque os papéis.</p>
+    </div>
+
+    <div class="passo-teoria">
+        <h4>3. Balanço de Potências</h4>
+        <p>A energia se conserva: a potência gerada é igual à potência útil dos receptores mais as potências dissipadas em todas as resistências:</p>
+        $$E i = E' i + (R + r + r')\,i^2$$
+        <p>O <strong>rendimento global</strong> do circuito (energia útil no receptor sobre energia gerada) é $\dfrac{E'}{E}$.</p>
+    </div>
+
+    <div class="passo-teoria">
+        <h4>4. Ponto de Operação (Método Gráfico)</h4>
+        <p>Quando um gerador é ligado diretamente a um receptor, a ddp é a mesma nos dois. No gráfico $U \times i$, o funcionamento acontece no <strong>ponto de cruzamento</strong> das duas curvas características.</p>
+        <figure class="figura-aula">
+            <svg viewBox="0 0 420 260" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Curvas características do gerador e do receptor e o ponto de operação" style="width:100%; max-width:430px; display:block; margin:0 auto; font-family:sans-serif;">
+            <line x1="60" y1="220" x2="380" y2="220" stroke="#2c3e50" stroke-width="2"/>
+            <line x1="60" y1="220" x2="60" y2="15" stroke="#2c3e50" stroke-width="2"/>
+            <text x="385" y="225" font-size="13" fill="#2c3e50">i (A)</text>
+            <text x="50" y="12" font-size="13" fill="#2c3e50">U (V)</text>
+            <text x="110" y="236" font-size="11" text-anchor="middle" fill="#2c3e50">1</text>
+            <text x="160" y="236" font-size="11" text-anchor="middle" fill="#2c3e50">2</text>
+            <text x="210" y="236" font-size="11" text-anchor="middle" fill="#2c3e50">3</text>
+            <text x="260" y="236" font-size="11" text-anchor="middle" fill="#2c3e50">4</text>
+            <text x="310" y="236" font-size="11" text-anchor="middle" fill="#2c3e50">5</text>
+            <text x="360" y="236" font-size="11" text-anchor="middle" fill="#2c3e50">6</text>
+            <text x="52" y="192" font-size="11" text-anchor="end" fill="#2c3e50">2</text>
+            <text x="52" y="161" font-size="11" text-anchor="end" fill="#2c3e50">4</text>
+            <text x="52" y="129" font-size="11" text-anchor="end" fill="#2c3e50">6</text>
+            <text x="52" y="97" font-size="11" text-anchor="end" fill="#2c3e50">8</text>
+            <text x="52" y="66" font-size="11" text-anchor="end" fill="#2c3e50">10</text>
+            <text x="52" y="34" font-size="11" text-anchor="end" fill="#2c3e50">12</text>
+            <line x1="60.0" y1="30.0" x2="360.0" y2="220.0" stroke="#3498db" stroke-width="3"/>
+            <line x1="60.0" y1="125.0" x2="360.0" y2="30.0" stroke="#e74c3c" stroke-width="3"/>
+            <polyline points="160.0,220 160.0,93.3 60,93.3" fill="none" stroke="#7f8c8d" stroke-dasharray="5,4"/>
+            <circle cx="160.0" cy="93.3" r="5" fill="#2c3e50"/>
+            <text x="168.0" y="85.3" font-size="13" fill="#2c3e50" font-weight="bold">P (2 A; 8 V)</text>
+            <text x="258.0" y="151.8" font-size="13" text-anchor="start" fill="#3498db">gerador: U = E − r·i</text>
+            <text x="356.0" y="48.0" font-size="13" text-anchor="end" fill="#e74c3c">receptor: U = E′ + r′·i</text>
+            </svg>
+            <figcaption>Figura 2: Gerador ($E = 12$ V, $r = 2\ \Omega$) ligado a um receptor ($E' = 6$ V, $r' = 1\ \Omega$): ponto de operação $P(2\ \text{A};\ 8\ \text{V})$.</figcaption>
+        </figure>
+    </div>
+</section>
+
+<section class="aplicacoes-reais" id="aplicacoes">
+    <h3>💡 Física em Ação</h3>
+    <div class="cards-aplicacao">
+        <div class="card">
+            <h4>🚗 Carga da Bateria do Carro</h4>
+            <p>Com o motor ligado, o alternador (gerador) carrega a bateria (receptor). Ele precisa fornecer uma tensão maior que a fem da bateria, cerca de 14 V para uma bateria de 12 V, para que a corrente entre pelo polo positivo.</p>
+        </div>
+        <div class="card" style="border-left-color: #2ecc71;">
+            <h4>🔋 Pilha Invertida</h4>
+            <p>Uma pilha colocada ao contrário num controle remoto vira receptor: as outras forçam corrente através dela, a fem útil do conjunto cai e a pilha invertida pode aquecer e vazar.</p>
+        </div>
+    </div>
+</section>
+<section class="questoes-resolvidas" id="resolvidas">
+    <h3>✅ 5 Questões Resolvidas (R 1 a 5)</h3>
+    <article class="questao">
+        <h4>R 1: Lei de Pouillet Generalizada</h4>
+        <p><strong>Enunciado:</strong> Um circuito em série tem um gerador ($E = 24$ V, $r = 1\ \Omega$), um receptor ($E' = 12$ V, $r' = 2\ \Omega$) e um resistor $R = 3\ \Omega$. Calcule a corrente e as ddp no gerador, no receptor e no resistor.</p>
+        <div class="resolucao-bloco"><p><strong>Resolução:</strong><br>$i = \dfrac{E - E'}{R + r + r'} = \dfrac{24 - 12}{3 + 1 + 2} = \dfrac{12}{6} = \mathbf{2}$ A.<br>Gerador: $U = 24 - 1 \cdot 2 = \mathbf{22}$ V; receptor: $U' = 12 + 2 \cdot 2 = \mathbf{16}$ V; resistor: $U_R = 3 \cdot 2 = \mathbf{6}$ V.<br>Conferência: $16 + 6 = 22$ V ✓ (a ddp do gerador é repartida entre os outros elementos).</p></div>
+    </article>
+    <article class="questao">
+        <h4>R 2: Balanço de Potências</h4>
+        <p><strong>Enunciado:</strong> No circuito do R1 ($i = 2$ A), calcule a potência gerada, as potências dissipadas e a potência útil do receptor, e confira o balanço de energia.</p>
+        <div class="resolucao-bloco"><p><strong>Resolução:</strong><br>Gerada: $E i = 24 \cdot 2 = \mathbf{48}$ W. Dissipada no gerador: $r i^2 = 4$ W.<br>Receptor: útil $E' i = \mathbf{24}$ W e dissipada $r' i^2 = 8$ W. Resistor: $R i^2 = 12$ W.<br>Balanço: $4 + 24 + 8 + 12 = 48$ W ✓.</p></div>
+    </article>
+    <article class="questao">
+        <h4>R 3: Quem é Gerador e Quem é Receptor?</h4>
+        <p><strong>Enunciado:</strong> Duas baterias, $E_1 = 12$ V e $E_2 = 6$ V, ambas com resistência interna $0{,}5\ \Omega$, são ligadas em oposição, em série com um resistor de $5\ \Omega$. Identifique o gerador e o receptor e calcule a corrente e a ddp na bateria de $6$ V.</p>
+        <div class="resolucao-bloco"><p><strong>Resolução:</strong><br>A corrente circula no sentido imposto pela maior fem: a bateria de $12$ V é o <strong>gerador</strong> e a de $6$ V, o <strong>receptor</strong> (está sendo carregada).<br>$i = \dfrac{12 - 6}{5 + 0{,}5 + 0{,}5} = \mathbf{1}$ A.<br>Na bateria de $6$ V: $U' = E' + r'i = 6 + 0{,}5 \cdot 1 = \mathbf{6{,}5}$ V.</p></div>
+    </article>
+    <article class="questao">
+        <h4>R 4: Carregando uma Bateria</h4>
+        <p><strong>Enunciado:</strong> Um carregador ($E = 15$ V, $r = 0{,}5\ \Omega$) carrega uma bateria ($E' = 12$ V, $r' = 0{,}5\ \Omega$) através de um resistor $R$. Qual deve ser $R$ para que a corrente de carga seja $2$ A?</p>
+        <div class="resolucao-bloco"><p><strong>Resolução:</strong><br>Pouillet: $2 = \dfrac{15 - 12}{R + 0{,}5 + 0{,}5}$.<br>$R + 1 = \dfrac{3}{2} = 1{,}5 \implies R = \mathbf{0{,}5\ \Omega}$.</p></div>
+    </article>
+    <article class="questao">
+        <h4>R 5: Ponto de Operação</h4>
+        <p><strong>Enunciado:</strong> Um gerador ($E = 12$ V, $r = 2\ \Omega$) é ligado diretamente a um receptor ($E' = 6$ V, $r' = 1\ \Omega$). Determine graficamente e algebricamente a corrente e a ddp comum.</p>
+        <div class="resolucao-bloco"><p><strong>Resolução:</strong><br>A ddp é a mesma nos dois: $E - r i = E' + r' i \implies 12 - 2i = 6 + i$.<br>$3i = 6 \implies i = \mathbf{2}$ A e $U = 12 - 2 \cdot 2 = \mathbf{8}$ V.<br>No gráfico $U \times i$, é o ponto onde a reta do gerador cruza a reta do receptor: $P(2\ \text{A};\ 8\ \text{V})$.</p></div>
+    </article>
+</section>
+
+<section class="questoes-propostas" id="propostas">
+    <h3>✍️ 10 Questões Propostas (P 6 a 15)</h3>
+    <article class="questao">
+        <h4>P 6: Corrente no Circuito</h4>
+        <p><strong>Enunciado:</strong> Um gerador ($E = 30$ V, $r = 2\ \Omega$), um receptor ($E' = 10$ V, $r' = 3\ \Omega$) e um resistor de $5\ \Omega$ estão em série. Calcule a corrente.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>$i = \dfrac{30 - 10}{2 + 3 + 5} = \dfrac{20}{10} = \mathbf{2}$ A.</p></div>
+    </article>
+    <article class="questao">
+        <h4>P 7: DDP nos Elementos</h4>
+        <p><strong>Enunciado:</strong> No circuito do P6, calcule a ddp nos terminais do gerador e do receptor.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>Gerador: $U = 30 - 2 \cdot 2 = \mathbf{26}$ V.<br>Receptor: $U' = 10 + 3 \cdot 2 = \mathbf{16}$ V (e o resistor: $10$ V; $16 + 10 = 26$ ✓).</p></div>
+    </article>
+    <article class="questao">
+        <h4>P 8: Dois Geradores e um Receptor</h4>
+        <p><strong>Enunciado:</strong> Dois geradores ($9$ V e $3$ V, cada um com $r = 0{,}5\ \Omega$) estão em série, a favor um do outro, com um receptor ($E' = 6$ V, $r' = 1\ \Omega$) e um resistor de $4\ \Omega$. Calcule a corrente.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>$\sum E = 9 + 3 = 12$ V; $\sum R = 0{,}5 + 0{,}5 + 1 + 4 = 6\ \Omega$.<br>$i = \dfrac{12 - 6}{6} = \mathbf{1}$ A.</p></div>
+    </article>
+    <article class="questao">
+        <h4>P 9: Baterias em Oposição</h4>
+        <p><strong>Enunciado:</strong> Baterias de $20$ V e de $8$ V, ambas com $r = 1\ \Omega$, são ligadas em oposição com um resistor de $10\ \Omega$. Calcule a corrente e a potência total recebida pela bateria de $8$ V.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>$i = \dfrac{20 - 8}{1 + 1 + 10} = \mathbf{1}$ A; a de $8$ V é o receptor.<br>$U' = 8 + 1 \cdot 1 = 9$ V $\implies P_t = U' i = \mathbf{9}$ W ($8$ W úteis).</p></div>
+    </article>
+    <article class="questao">
+        <h4>P 10: Motor e Linha de Transmissão</h4>
+        <p><strong>Enunciado:</strong> Um gerador ($E = 130$ V, $r = 1\ \Omega$) alimenta um motor ($E' = 100$ V, $r' = 5\ \Omega$) por fios de resistência total $4\ \Omega$. Calcule a corrente, a ddp no motor e seu rendimento.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>$i = \dfrac{130 - 100}{1 + 5 + 4} = \mathbf{3}$ A.<br>$U' = 100 + 5 \cdot 3 = \mathbf{115}$ V.<br>$\eta = \dfrac{100}{115} \approx \mathbf{87\%}$.</p></div>
+    </article>
+    <article class="questao">
+        <h4>P 11: Balanço do P10</h4>
+        <p><strong>Enunciado:</strong> No circuito do P10, calcule a potência gerada, a potência útil do motor e a potência total dissipada.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>Gerada: $130 \cdot 3 = \mathbf{390}$ W; útil: $100 \cdot 3 = \mathbf{300}$ W.<br>Dissipada: $(1 + 5 + 4) \cdot 3^2 = \mathbf{90}$ W; $300 + 90 = 390$ ✓.</p></div>
+    </article>
+    <article class="questao">
+        <h4>P 12: Descobrindo a FCEM</h4>
+        <p><strong>Enunciado:</strong> Um gerador ($E = 24$ V, $r = 1\ \Omega$), um receptor ($r' = 2\ \Omega$) e um resistor de $3\ \Omega$ em série são percorridos por $1{,}5$ A. Calcule a fcem $E'$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>$1{,}5 = \dfrac{24 - E'}{1 + 2 + 3} \implies 24 - E' = 9$.<br>$E' = \mathbf{15}$ V.</p></div>
+    </article>
+    <article class="questao">
+        <h4>P 13: Carregador de Celular</h4>
+        <p><strong>Enunciado:</strong> Um carregador ($E = 6$ V, $r = 0{,}2\ \Omega$) carrega uma bateria ($E' = 3{,}8$ V, $r' = 0{,}3\ \Omega$) através de um resistor $R$. Calcule $R$ para uma corrente de carga de $2$ A.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>$2 = \dfrac{6 - 3{,}8}{R + 0{,}5} \implies R + 0{,}5 = 1{,}1$.<br>$R = \mathbf{0{,}6\ \Omega}$.</p></div>
+    </article>
+    <article class="questao">
+        <h4>P 14: Ponto de Operação</h4>
+        <p><strong>Enunciado:</strong> As curvas de um gerador e de um receptor são $U = 20 - 2i$ e $U = 8 + 2i$ (SI). Ligados diretamente, qual é a corrente e a ddp comum?</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>$20 - 2i = 8 + 2i \implies 4i = 12 \implies i = \mathbf{3}$ A.<br>$U = 20 - 2 \cdot 3 = \mathbf{14}$ V.</p></div>
+    </article>
+    <article class="questao">
+        <h4>P 15: Rendimento do Circuito</h4>
+        <p><strong>Enunciado:</strong> No circuito do P6, que fração da energia gerada (potência $E i$) é transformada em energia útil no receptor?</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>$\dfrac{E' i}{E i} = \dfrac{E'}{E} = \dfrac{10}{30} \approx \mathbf{33{,}3\%}$.<br>Os outros $66{,}7\%$ viram calor nas resistências ($r$, $r'$ e $R$).</p></div>
+    </article>
+</section>
+
+<section class="TESTE" id="testes">
+    <h3>🎓 TESTES (T 16 a 20)</h3>
+    <article class="questao">
+        <h4>T 16: (UEMA) Bateria, Motor e Lâmpada</h4>
+        <p>Um circuito em série é formado por uma bateria de força eletromotriz $E = 12$ V e resistência interna $r = 0{,}3\ \Omega$, um motor de força contraeletromotriz $E' = 8$ V e resistência interna $r' = 3\ \Omega$ e uma lâmpada de resistência $4{,}7\ \Omega$.</p>
+        <figure class="figura-aula">
+            <svg viewBox="0 0 480 230" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Bateria, lâmpada e motor em série" style="width:100%; max-width:380px; display:block; margin:0 auto; font-family:sans-serif;">
+            <rect x="150" y="40" width="180" height="150" fill="none" stroke="#2c3e50" stroke-width="2"/>
+            <rect x="136" y="107.0" width="28" height="16" fill="#fff" stroke="none"/>
+            <line x1="134" y1="110.0" x2="166" y2="110.0" stroke="#3498db" stroke-width="3"/>
+            <line x1="142" y1="120.0" x2="158" y2="120.0" stroke="#3498db" stroke-width="5"/>
+            <text x="170" y="107.0" font-size="12" fill="#3498db">+</text>
+            <text x="124" y="120.0" font-size="14" text-anchor="end" fill="#2c3e50">12 V; 0,3 Ω</text>
+            <circle cx="330" cy="115.0" r="17" fill="#fff" stroke="#e67e22" stroke-width="2.5"/>
+            <text x="330" y="121.0" font-size="17" text-anchor="middle" fill="#e67e22" font-weight="bold">M</text>
+            <text x="356" y="120.0" font-size="14" text-anchor="start" fill="#2c3e50">8 V; 3 Ω</text>
+            <circle cx="240.0" cy="40" r="15" fill="#fff" stroke="#e67e22" stroke-width="2.5"/>
+            <line x1="229.4" y1="29.4" x2="250.6" y2="50.6" stroke="#e67e22" stroke-width="2.5"/>
+            <line x1="229.4" y1="50.6" x2="250.6" y2="29.4" stroke="#e67e22" stroke-width="2.5"/>
+            <text x="240.0" y="18" font-size="14" text-anchor="middle" fill="#2c3e50">4,7 Ω</text>
+            <path d="M 210 120 A 30 30 0 1 1 270 120" fill="none" stroke="#c0392b" stroke-width="2" marker-end="url(#seta_i)"/>
+            <defs><marker id="seta_i" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#c0392b"/></marker></defs>
+            <text x="240" y="140" font-size="15" text-anchor="middle" fill="#c0392b">i</text>
+            </svg>
+            <figcaption>Figura redesenhada a partir do enunciado.</figcaption>
+        </figure>
+        <p>A intensidade da corrente elétrica fornecida pela bateria é</p>
+        <p>A) 2,5 A<br>B) 1,5 A<br>C) 1,0 A<br>D) 0,8 A<br>E) 0,5 A</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>E</strong>.<br>Pouillet: $i = \dfrac{E - E'}{r + r' + R} = \dfrac{12 - 8}{0{,}3 + 3 + 4{,}7} = \dfrac{4}{8}$.<br>$i = \mathbf{0{,}5}$ A.</p></div>
+    </article>
+    <article class="questao">
+        <h4>T 17: (UFRGS) Potência Consumida pelo Motor</h4>
+        <p>Três pilhas ideais de $1{,}5$ V, um resistor $R$ de $1{,}0\ \Omega$ e um motor estão ligados em série, e os fios de ligação têm resistência desprezível. A diferença de potencial entre os terminais $A$ e $B$ do motor é $4{,}0$ V.</p>
+        <figure class="figura-aula">
+            <svg viewBox="0 0 480 230" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Três pilhas, resistor e motor em série" style="width:100%; max-width:380px; display:block; margin:0 auto; font-family:sans-serif;">
+            <rect x="150" y="40" width="180" height="150" fill="none" stroke="#2c3e50" stroke-width="2"/>
+            <rect x="136" y="107.0" width="28" height="16" fill="#fff" stroke="none"/>
+            <line x1="134" y1="110.0" x2="166" y2="110.0" stroke="#3498db" stroke-width="3"/>
+            <line x1="142" y1="120.0" x2="158" y2="120.0" stroke="#3498db" stroke-width="5"/>
+            <text x="170" y="107.0" font-size="12" fill="#3498db">+</text>
+            <text x="124" y="120.0" font-size="14" text-anchor="end" fill="#2c3e50">3 × 1,5 V</text>
+            <circle cx="330" cy="115.0" r="17" fill="#fff" stroke="#e67e22" stroke-width="2.5"/>
+            <text x="330" y="121.0" font-size="17" text-anchor="middle" fill="#e67e22" font-weight="bold">M</text>
+            <text x="356" y="120.0" font-size="14" text-anchor="start" fill="#2c3e50">motor (A–B)</text>
+            <rect x="216.0" y="31" width="48" height="18" fill="#fff" stroke="none"/>
+            <polyline points="216.0,40.0 224.0,47.0 232.0,33.0 240.0,47.0 248.0,33.0 256.0,47.0 264.0,40.0" fill="none" stroke="#8e44ad" stroke-width="2.5"/>
+            <text x="240.0" y="18" font-size="14" text-anchor="middle" fill="#2c3e50">R = 1,0 Ω</text>
+            <path d="M 210 120 A 30 30 0 1 1 270 120" fill="none" stroke="#c0392b" stroke-width="2" marker-end="url(#seta_i)"/>
+            <defs><marker id="seta_i" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#c0392b"/></marker></defs>
+            <text x="240" y="140" font-size="15" text-anchor="middle" fill="#c0392b">i</text>
+            </svg>
+            <figcaption>Figura redesenhada a partir do enunciado.</figcaption>
+        </figure>
+        <p>Qual é a potência elétrica consumida pelo motor?</p>
+        <p>A) 0,5 W<br>B) 1,0 W<br>C) 1,5 W<br>D) 2,0 W<br>E) 2,5 W</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>D</strong>.<br>As pilhas fornecem $3 \cdot 1{,}5 = 4{,}5$ V; sobram $4{,}5 - 4{,}0 = 0{,}5$ V no resistor.<br>$i = \dfrac{0{,}5}{1{,}0} = 0{,}5$ A e $P_{motor} = U i = 4{,}0 \cdot 0{,}5 = \mathbf{2{,}0}$ W.</p></div>
+    </article>
+    <article class="questao">
+        <h4>T 18: (Cesgranrio) Carga de uma Bateria</h4>
+        <p>Um gerador G fornece ao circuito uma ddp de $60$ V e uma corrente de $8{,}0$ A. No circuito, uma bateria de força eletromotriz $12$ V e resistência interna $1{,}0\ \Omega$ está sendo carregada, em série com um resistor variável $R$.</p>
+        <figure class="figura-aula">
+            <svg viewBox="0 0 480 230" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Gerador carregando uma bateria através de um resistor variável" style="width:100%; max-width:380px; display:block; margin:0 auto; font-family:sans-serif;">
+            <rect x="150" y="40" width="180" height="150" fill="none" stroke="#2c3e50" stroke-width="2"/>
+            <rect x="136" y="107.0" width="28" height="16" fill="#fff" stroke="none"/>
+            <line x1="134" y1="110.0" x2="166" y2="110.0" stroke="#3498db" stroke-width="3"/>
+            <line x1="142" y1="120.0" x2="158" y2="120.0" stroke="#3498db" stroke-width="5"/>
+            <text x="170" y="107.0" font-size="12" fill="#3498db">+</text>
+            <text x="124" y="120.0" font-size="14" text-anchor="end" fill="#2c3e50">G (60 V)</text>
+            <rect x="316" y="107.0" width="28" height="16" fill="#fff" stroke="none"/>
+            <line x1="314" y1="110.0" x2="346" y2="110.0" stroke="#e74c3c" stroke-width="3"/>
+            <line x1="322" y1="120.0" x2="338" y2="120.0" stroke="#e74c3c" stroke-width="5"/>
+            <text x="306" y="107.0" font-size="12" fill="#e74c3c">+</text>
+            <text x="356" y="120.0" font-size="14" text-anchor="start" fill="#2c3e50">12 V; 1 Ω</text>
+            <rect x="216.0" y="31" width="48" height="18" fill="#fff" stroke="none"/>
+            <polyline points="216.0,40.0 224.0,47.0 232.0,33.0 240.0,47.0 248.0,33.0 256.0,47.0 264.0,40.0" fill="none" stroke="#8e44ad" stroke-width="2.5"/>
+            <text x="240.0" y="18" font-size="14" text-anchor="middle" fill="#2c3e50">R</text>
+            <path d="M 210 120 A 30 30 0 1 1 270 120" fill="none" stroke="#c0392b" stroke-width="2" marker-end="url(#seta_i)"/>
+            <defs><marker id="seta_i" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#c0392b"/></marker></defs>
+            <text x="240" y="140" font-size="15" text-anchor="middle" fill="#c0392b">i</text>
+            </svg>
+            <figcaption>Figura redesenhada a partir do enunciado.</figcaption>
+        </figure>
+        <p>Para que a bateria seja carregada com uma corrente de $8{,}0$ A, o valor de $R$ deve ser</p>
+        <p>A) $1{,}0\ \Omega$<br>B) $2{,}0\ \Omega$<br>C) $3{,}0\ \Omega$<br>D) $4{,}0\ \Omega$<br>E) $5{,}0\ \Omega$</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>E</strong>.<br>Os $60$ V do gerador se repartem entre a bateria (receptor) e o resistor: $60 = (12 + 1{,}0 \cdot 8{,}0) + R \cdot 8{,}0$.<br>$60 = 20 + 8R \implies R = \mathbf{5{,}0\ \Omega}$.</p></div>
+    </article>
+    <article class="questao">
+        <h4>T 19: (Questão autoral) Gerador Ligado a um Receptor</h4>
+        <p>Um gerador de força eletromotriz $18$ V e resistência interna $2\ \Omega$ é ligado diretamente a um receptor de força contra-eletromotriz $6$ V e resistência interna $1\ \Omega$.</p>
+        <p>A ddp comum aos terminais dos dois elementos vale</p>
+        <p>A) 6 V<br>B) 8 V<br>C) 10 V<br>D) 12 V<br>E) 14 V</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>C</strong>.<br>$i = \dfrac{18 - 6}{2 + 1} = 4$ A.<br>$U = 18 - 2 \cdot 4 = \mathbf{10}$ V (confere: $6 + 1 \cdot 4 = 10$ V).</p></div>
+    </article>
+    <article class="questao">
+        <h4>T 20: (Questão autoral) Energia Armazenada na Bateria</h4>
+        <p>Uma bateria de $24$ V e outra de $12$ V, ambas com resistência interna $1\ \Omega$, são ligadas em oposição, em série com um resistor de $4\ \Omega$.</p>
+        <p>A potência transformada em energia química na bateria de $12$ V é</p>
+        <p>A) 12 W<br>B) 24 W<br>C) 28 W<br>D) 44 W<br>E) 48 W</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>B</strong>.<br>A bateria de $24$ V é o gerador: $i = \dfrac{24 - 12}{1 + 1 + 4} = 2$ A.<br>Potência útil do receptor: $E' i = 12 \cdot 2 = \mathbf{24}$ W ($28$ W seria a potência total recebida, incluindo os $4$ W dissipados).</p></div>
+    </article>
+</section>
+
+</div></main>
+<aside class="menu-lateral"><iframe src="../menu_fisica.html" style="width:100%; border:none; height:600px;"></iframe></aside>
+</div>
+<script>
+function toggleGabarito(botao) {
+    const gabarito = botao.nextElementSibling;
+    if (gabarito.style.display === "none" || gabarito.style.display === "") {
+        gabarito.style.display = "block"; botao.textContent = "Esconder Gabarito e Resolução"; botao.style.backgroundColor = "#2c3e50";
+    } else {
+        gabarito.style.display = "none"; botao.textContent = "Ver Gabarito e Resolução"; botao.style.backgroundColor = "#3498db";
+    }
+}
+function toggleMenu() { const m = document.getElementById("menu-principal"); if (m) m.classList.toggle("ativo"); }
+let slideAtual = 0; let slides = [];
+function prepararSlides() { slides = Array.from(document.querySelectorAll('.container-resumo, .passo-teoria, .card, .questao')); }
+function toggleSlides() {
+    prepararSlides(); const body = document.body;
+    if (!body.classList.contains('modo-slides')) { body.classList.add('modo-slides'); slideAtual = 0; mostrarSlide(slideAtual); }
+    else { body.classList.remove('modo-slides'); slides.forEach(s => { s.classList.remove('slide-ativo'); s.style.display = ''; }); }
+}
+function mostrarSlide(n) {
+    if (!slides.length) return;
+    slides.forEach(s => { s.classList.remove('slide-ativo'); s.style.display = 'none'; });
+    const slide = slides[n]; slide.classList.add('slide-ativo');
+    slide.querySelectorAll('.gabarito-resolucao').forEach(g => g.style.display = 'none');
+    slide.querySelectorAll('.btn-gabarito').forEach(b => { b.textContent = "Ver Gabarito e Resolução"; b.style.backgroundColor = "#3498db"; });
+    const pHeader = document.querySelector('header p');
+    if (pHeader) { const partes = pHeader.innerText.split('|'); if (partes.length > 1) {
+        document.getElementById('slide-info-serie').innerText = partes[0].trim();
+        document.getElementById('slide-info-aula').innerText = partes[1].trim(); } }
+    document.getElementById('contador-slide').innerText = (n + 1) + " / " + slides.length;
+    if (window.MathJax && window.MathJax.typesetPromise) { MathJax.typesetPromise(); }
+}
+function mudarSlide(d) { slideAtual += d; if (slideAtual >= slides.length) slideAtual = 0; if (slideAtual < 0) slideAtual = slides.length - 1; mostrarSlide(slideAtual); }
+document.addEventListener('keydown', function(event) {
+    if (document.body.classList.contains('modo-slides')) {
+        switch(event.key) {
+            case 'ArrowRight': case 'PageDown': case 'Enter': case ' ': event.preventDefault(); mudarSlide(1); break;
+            case 'ArrowLeft': case 'PageUp': event.preventDefault(); mudarSlide(-1); break;
+            case 'Escape': event.preventDefault(); toggleSlides(); break;
+        }
+    }
+});
+</script>
+<div class="controles-slides">
+    <div id="slide-info-serie" class="info-lateral"></div>
+    <div class="botoes-centrais">
+        <button class="btn-nav" onclick="mudarSlide(-1)">⬅ Anterior</button>
+        <span id="contador-slide"></span>
+        <button class="btn-nav" onclick="mudarSlide(1)">Próximo ➡</button>
+        <button class="btn-nav" onclick="toggleSlides()" style="background:#e74c3c;">Sair</button>
+    </div>
+    <div id="slide-info-aula" class="info-lateral" style="text-align: right;"></div>
+</div>
+</body>
+</html>
