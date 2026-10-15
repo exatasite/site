@@ -406,7 +406,7 @@ async function encerrarPergunta(){
     <div class="dist">${it.alts.map((a,k)=>`<div class="col c${k} ${it.certas.includes(k)?'certa':'errada'}"><span class="rot">${X.naipe(k)} ${dist[k]}${it.certas.includes(k)?' ✓':''}</span><div class="bar" style="height:${Math.round(100*dist[k]/max)}%"></div></div>`).join('')}</div>
     <div class="alts revelado">${it.alts.map((a,k)=>`<div class="alt c${k} ${it.certas.includes(k)?'certa':'errada'}">${X.naipe(k)}<span>${esc(a.txt)}</span><em>${it.certas.includes(k)?'✓':'✗'}</em></div>`).join('')}</div>
     ${H.cfg.resol&&it.q.exp?`<div class="explica"><b>Resolução</b><p>${esc(it.q.exp)}</p></div>`:''}
-    <div class="linha-btn"><button class="btn btn-prim btn-gde" id="bt-avancar">Placar</button></div></div>`);
+    <div class="linha-btn"><button class="btn btn-prim btn-gde" id="bt-avancar">Ver placar</button></div></div>`);
 }
 async function placar(){
   H.fase='placar'; setHud(); try{ await DB.update(sala('atual'),{fase:'placar'}); }catch(e){}
