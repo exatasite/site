@@ -1,0 +1,653 @@
+<title>Exata Quiz</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&display=swap">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+<style>
+/* Layout: biblioteca em grade · editor em três colunas (lista | pergunta | ajustes), como o Kahoot · jogo em palco de tela única */
+:root{
+  --marinho:#003366; --marinho-esc:#00264d; --laranja:#D35400; --laranja-esc:#A04000;
+  --texto:#2C3E50; --suave:#5d6d7c; --fundo:#F4F7F6; --branco:#ffffff;
+  --linha:#dde4e8; --linha-forte:#c3ced6; --realce:#eef3f8;
+  --espadas:#1C2B3A; --copas:#B71C1C; --ouros:#D35400; --paus:#1E7A46;
+  --ok:#1E7A46; --erro:#B71C1C; --aviso-bg:#FDEBD0;
+  --f-titulo:'Oswald','Arial Narrow',Arial,sans-serif;
+  --f-corpo:Arial,Helvetica,sans-serif;
+  --padrao:none;
+  color-scheme:light;
+}
+html,body{height:100%}
+body{background:var(--fundo);color:var(--texto);font-family:var(--f-corpo);font-size:16px;line-height:1.5;margin:0}
+*{box-sizing:border-box}
+h1,h2,h3{font-family:var(--f-titulo);line-height:1.15;text-wrap:balance;margin:0}
+p{margin:0}
+button,input,select,textarea{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--laranja);outline-offset:2px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.gut{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+svg.naipe{width:1em;height:1em;fill:currentColor;flex:none}
+.eyebrow{font-family:var(--f-titulo);text-transform:uppercase;letter-spacing:.08em;font-size:.85rem;color:var(--laranja);font-weight:600}
+.meta{color:var(--suave);font-size:.92rem}
+.dica{color:var(--suave);font-size:.88rem}
+
+/* Botões no padrão do site (.btn-gabarito) */
+.btn{border:0;border-radius:4px;padding:.6em 1.1em;font-family:var(--f-titulo);font-weight:500;letter-spacing:.02em;cursor:pointer;transition:background .15s,transform .15s;display:inline-flex;align-items:center;justify-content:center;gap:.4em;text-decoration:none;white-space:nowrap}
+.btn:hover{transform:translateY(-1px)}
+.btn-prim{background:var(--laranja);color:var(--branco)}
+.btn-prim:hover{background:var(--laranja-esc)}
+.btn-sec{background:var(--marinho);color:var(--branco)}
+.btn-sec:hover{background:var(--marinho-esc)}
+.btn-ghost{background:var(--branco);color:var(--marinho);box-shadow:inset 0 0 0 2px var(--linha-forte)}
+.btn-ghost:hover{box-shadow:inset 0 0 0 2px var(--marinho)}
+.btn-ghost-esc{background:transparent;color:var(--branco);box-shadow:inset 0 0 0 2px rgba(255,255,255,.45)}
+.btn-ghost-esc:hover{box-shadow:inset 0 0 0 2px var(--branco)}
+.btn-perigo{background:var(--branco);color:var(--erro);box-shadow:inset 0 0 0 2px var(--erro)}
+.btn-perigo.confirmar{background:var(--erro);color:var(--branco)}
+.btn-gde{font-size:1.25rem;padding:.65em 1.6em}
+.lnk{background:none;border:0;padding:.2em 0;color:var(--marinho);cursor:pointer;font-size:.88rem;text-decoration:underline;text-underline-offset:3px}
+.lnk.perigo{color:var(--erro)}
+.lnk.perigo.confirmar{font-weight:700}
+
+/* Cabeçalho igual ao do ExataSite */
+.topo{background:var(--marinho);color:var(--branco);border-bottom:5px solid var(--laranja);box-shadow:0 3px 10px rgba(0,0,0,.12)}
+.topo-in{max-width:1180px;margin:0 auto;padding-block:26px 22px;display:flex;align-items:flex-end;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.topo h1{font-size:clamp(2rem,5vw,2.8rem);font-weight:700;letter-spacing:.04em;display:flex;align-items:center;gap:.35em}
+.topo h1 .naipes{display:inline-flex;gap:.08em;font-size:.55em}
+.topo h1 .naipes svg:nth-child(2),.topo h1 .naipes svg:nth-child(3){color:#ff8a65}
+.topo p{opacity:.85;font-size:.95rem}
+.topo a{color:var(--branco);font-size:.9rem;opacity:.85}
+.topo a:hover{opacity:1}
+
+.wrap{max-width:1180px;margin:0 auto;padding-block:28px 48px}
+.barra-acoes{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:22px}
+.barra-acoes h2{font-size:1.5rem;margin-right:auto;color:var(--marinho)}
+.lista{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:18px}
+.qcard{background:var(--branco);border:2px solid var(--linha);border-radius:10px;padding:20px;display:flex;flex-direction:column;gap:10px;transition:border-color .2s,transform .2s,box-shadow .2s}
+.qcard:hover{border-color:var(--laranja);transform:translateY(-3px);box-shadow:0 10px 20px rgba(0,51,102,.08)}
+.qcard-naipes{display:flex;gap:6px;font-size:1.25rem}
+.n0{color:var(--espadas)}.n1{color:var(--copas)}.n2{color:var(--ouros)}.n3{color:var(--paus)}
+.qcard h3{font-size:1.3rem;color:var(--marinho)}
+.alerta{color:var(--erro);font-weight:700}
+.qcard-acoes{display:flex;gap:8px;flex-wrap:wrap;margin-top:4px}
+.qcard-mais{display:flex;gap:14px;flex-wrap:wrap;border-top:1px solid var(--linha);padding-top:10px;margin-top:auto}
+.vazio{grid-column:1/-1;background:var(--branco);border:2px dashed var(--linha-forte);border-radius:10px;padding:36px;text-align:center;color:var(--suave)}
+.como{margin-top:34px;background:var(--branco);border-left:4px solid var(--laranja);border-radius:8px;padding:18px 20px;max-width:760px}
+.como h3{font-size:1.1rem;color:var(--marinho);margin-bottom:6px}
+.como ol{margin:0;padding-left:1.2em;color:var(--suave);font-size:.93rem}
+
+/* Editor */
+#v-editor{min-height:100%;display:flex;flex-direction:column}
+.ed-topo{background:var(--marinho);border-bottom:4px solid var(--laranja);color:var(--branco);position:sticky;top:env(safe-area-inset-top,0px);z-index:5}
+.ed-topo-in{display:flex;gap:10px;align-items:center;flex-wrap:wrap;padding-block:10px}
+.ed-titulo{flex:1 1 220px;min-width:0;background:rgba(255,255,255,.1);border:2px solid transparent;border-radius:4px;padding:.45em .7em;color:var(--branco);font-family:var(--f-titulo);font-size:1.15rem}
+.ed-titulo:focus{border-color:var(--laranja);outline:none;background:rgba(255,255,255,.16)}
+.ed-titulo::placeholder{color:rgba(255,255,255,.6)}
+.ed-status{font-size:.82rem;opacity:.75;min-width:5.5em}
+.ed-topo-acoes{display:flex;gap:8px;flex-wrap:wrap}
+.ed-grade{flex:1;display:grid;grid-template-columns:210px minmax(0,1fr) 250px;min-height:0}
+.ed-lista{background:var(--branco);border-right:1px solid var(--linha);padding:14px 12px;display:flex;flex-direction:column;gap:10px;overflow:auto;max-height:calc(100vh - 70px);position:sticky;top:70px}
+.thumbs{display:flex;flex-direction:column;gap:8px}
+.thumb{display:grid;grid-template-columns:auto 1fr;grid-template-rows:auto auto;gap:4px 8px;text-align:left;background:var(--fundo);border:2px solid var(--linha);border-radius:6px;padding:8px;cursor:pointer}
+.thumb.ativo{border-color:var(--laranja);background:var(--branco);box-shadow:0 0 0 2px rgba(211,84,0,.15)}
+.t-num{grid-row:1/3;font-family:var(--f-titulo);font-weight:600;color:var(--marinho);font-size:.95rem}
+.t-alerta{display:inline-grid;place-items:center;width:1.2em;height:1.2em;border-radius:50%;background:var(--erro);color:var(--branco);font-size:.75rem}
+.t-txt{font-size:.78rem;line-height:1.3;color:var(--texto);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;min-width:0}
+.t-mini{display:grid;grid-template-columns:repeat(4,1fr);gap:3px}
+.t-mini i{height:7px;border-radius:2px;background:var(--linha-forte)}
+.t-mini i.vazio{background:transparent;box-shadow:inset 0 0 0 1px var(--linha-forte)}
+.t-mini i.certo{background:var(--ok)}
+.ed-centro{padding-block:22px 40px;display:flex;flex-direction:column;gap:16px;max-width:980px;width:100%;margin:0 auto;min-width:0}
+.ed-q-box{position:relative;background:var(--branco);border-bottom:5px solid var(--laranja);border-radius:6px;box-shadow:0 2px 8px rgba(0,51,102,.08)}
+.ed-q-box textarea{width:100%;border:0;resize:none;background:transparent;padding:18px 20px 26px;font-family:var(--f-titulo);font-size:clamp(1.25rem,2.4vw,1.75rem);text-align:center;color:var(--marinho)}
+.ed-q-box textarea:focus{outline:none}
+.cont{position:absolute;right:10px;bottom:6px;font-size:.75rem;color:var(--suave);font-variant-numeric:tabular-nums}
+.ed-img{display:flex;justify-content:center}
+.drop{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;width:min(420px,100%);aspect-ratio:16/9;max-width:100%;border:2px dashed var(--linha-forte);border-radius:8px;background:var(--branco);color:var(--suave);cursor:pointer;text-align:center;padding:12px;font-size:.92rem}
+.drop:hover,.drop.sobre{border-color:var(--laranja);color:var(--laranja)}
+.drop b{font-family:var(--f-titulo);font-size:2rem;line-height:1;color:var(--laranja)}
+.img-prev{display:flex;flex-direction:column;align-items:center;gap:8px}
+.img-prev img{max-height:240px;border-radius:6px;box-shadow:0 2px 10px rgba(0,0,0,.12)}
+.ed-respostas{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.resp-ed{--cor:var(--espadas);display:flex;align-items:center;gap:10px;background:var(--branco);border-radius:6px;padding:8px;min-height:74px;box-shadow:inset 0 0 0 2px var(--linha);transition:background .15s}
+.resp-ed.r1{--cor:var(--copas)}.resp-ed.r2{--cor:var(--ouros)}.resp-ed.r3{--cor:var(--paus)}
+.resp-naipe{display:grid;place-items:center;width:46px;align-self:stretch;border-radius:4px;background:var(--cor);color:var(--branco);font-size:1.6rem;flex:none}
+.resp-ed input{flex:1;min-width:0;border:0;background:transparent;padding:.4em .2em;font-weight:700;font-size:1rem}
+.resp-ed input:focus{outline:none}
+.resp-ed.cheia{background:var(--cor);box-shadow:none}
+.resp-ed.cheia input{color:var(--branco)}
+.resp-ed.cheia .resp-naipe{background:rgba(255,255,255,.16)}
+.marcar{width:38px;height:38px;border-radius:50%;border:3px solid var(--linha-forte);background:var(--branco);color:transparent;cursor:pointer;display:grid;place-items:center;flex:none;padding:0}
+.marcar svg{width:22px;height:22px}
+.resp-ed.cheia .marcar{border-color:rgba(255,255,255,.8);background:transparent}
+.marcar.on{background:var(--ok)!important;border-color:var(--branco)!important;color:var(--branco)}
+.campo{display:flex;flex-direction:column;gap:6px;font-family:var(--f-titulo);font-weight:500;color:var(--marinho);font-size:.98rem}
+.campo .opc{font-family:var(--f-corpo);font-weight:400;font-size:.82rem;color:var(--suave)}
+.campo input,.campo select,.campo textarea{font-family:var(--f-corpo);font-weight:400;color:var(--texto);background:var(--branco);border:2px solid var(--linha);border-radius:6px;padding:.55em .7em;font-size:.95rem;width:100%}
+.campo input:focus,.campo select:focus,.campo textarea:focus{border-color:var(--marinho);outline:none}
+.campo textarea{resize:vertical}
+.ed-lado{background:var(--branco);border-left:1px solid var(--linha);padding:18px 16px;display:flex;flex-direction:column;gap:16px}
+.ed-lado-btns{display:flex;flex-direction:column;gap:8px}
+.ed-lado-btns .btn{justify-content:flex-start}
+
+/* Jogo */
+#v-play{min-height:100%;display:flex;flex-direction:column;background-color:var(--fundo);background-image:var(--padrao)}
+.hud{background:var(--marinho);color:var(--branco);border-bottom:4px solid var(--laranja)}
+.hud-in{display:flex;align-items:center;gap:14px;padding-block:8px;flex-wrap:wrap}
+.marca{font-family:var(--f-titulo);font-weight:700;letter-spacing:.06em;font-size:1.15rem}
+.marca b{color:#ff8a65;font-weight:700}
+.hud-prog,.hud-pts{font-family:var(--f-titulo);font-variant-numeric:tabular-nums;background:rgba(255,255,255,.12);border-radius:20px;padding:.15em .8em;font-size:.95rem}
+.hud-prog:empty,.hud-pts:empty{display:none}
+.hud-btns{margin-left:auto;display:flex;gap:6px;flex-wrap:wrap}
+.btn-hud{background:transparent;border:1px solid rgba(255,255,255,.4);color:var(--branco);border-radius:4px;padding:.3em .7em;font-size:.82rem;cursor:pointer}
+.btn-hud:hover{border-color:var(--branco)}
+.btn-hud.confirmar{background:var(--erro);border-color:var(--erro)}
+#palco{flex:1;display:flex;flex-direction:column;padding-block:20px 24px}
+.centro{max-width:720px;width:100%;margin:auto;display:flex;flex-direction:column;align-items:center;gap:16px;text-align:center}
+.lobby{background:var(--branco);border-radius:12px;border-top:6px solid var(--laranja);box-shadow:0 10px 30px rgba(0,51,102,.12);padding:30px 26px}
+.lobby h2{font-size:clamp(1.7rem,4vw,2.4rem);color:var(--marinho)}
+.lobby .campo{width:min(340px,100%);text-align:left}
+.legenda-naipes{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;width:100%;max-width:440px}
+.carta{background:var(--branco);border:2px solid var(--linha);border-radius:8px;aspect-ratio:5/7;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;font-size:2.2rem;max-width:100%}
+.carta span{font-size:.8rem;font-family:var(--f-titulo);color:var(--texto)}
+.carta.c0{color:var(--espadas)}.carta.c1{color:var(--copas)}.carta.c2{color:var(--ouros)}.carta.c3{color:var(--paus)}
+.opcoes{display:flex;gap:16px;flex-wrap:wrap;justify-content:center;font-size:.92rem;color:var(--suave)}
+.opcoes label{display:flex;gap:6px;align-items:center;cursor:pointer}
+.linha-btn{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
+
+.contagem{margin:auto;display:flex;flex-direction:column;align-items:center;gap:18px}
+.carta-gde{width:min(200px,50vw);aspect-ratio:5/7;background:var(--branco);border-radius:14px;box-shadow:0 14px 34px rgba(0,51,102,.22);position:relative;display:grid;place-items:center;font-family:var(--f-titulo);font-weight:700;font-size:clamp(4rem,14vw,7rem);color:var(--marinho);animation:vira .45s ease-out}
+.carta-gde .canto{position:absolute;font-size:1.8rem}
+.carta-gde .canto.a{top:10px;left:12px}.carta-gde .canto.b{bottom:10px;right:12px;transform:rotate(180deg)}
+.contagem p{font-family:var(--f-titulo);font-size:1.4rem;color:var(--marinho)}
+@keyframes vira{from{transform:rotateY(90deg)}to{transform:rotateY(0)}}
+
+.intro{margin:auto;max-width:960px;width:100%;display:flex;flex-direction:column;align-items:center;gap:22px;text-align:center}
+.intro h2{font-size:clamp(1.6rem,4vw,2.8rem);color:var(--marinho);background:var(--branco);border-bottom:6px solid var(--laranja);border-radius:8px;padding:28px 24px;width:100%;box-shadow:0 6px 18px rgba(0,51,102,.1)}
+.barra{width:min(520px,100%);height:10px;border-radius:5px;background:var(--linha);overflow:hidden}
+.barra span{display:block;height:100%;width:0;background:var(--laranja);transition:width 3s linear}
+
+.pergunta,.revela{max-width:1200px;width:100%;margin:0 auto;display:flex;flex-direction:column;gap:16px;flex:1}
+.q-barra{background:var(--branco);border-bottom:5px solid var(--laranja);border-radius:6px;padding:16px 22px;box-shadow:0 4px 12px rgba(0,51,102,.08)}
+.q-barra h2{font-size:clamp(1.25rem,2.6vw,2.1rem);text-align:center;color:var(--marinho);font-weight:600}
+.q-meio{flex:1;display:grid;grid-template-columns:130px minmax(0,1fr) 170px;align-items:center;gap:16px;min-height:150px}
+.relogio{--p:1;width:104px;height:104px;border-radius:50%;background:conic-gradient(var(--laranja) calc(var(--p) * 360deg),var(--linha) 0);display:grid;place-items:center;justify-self:center}
+.relogio span{width:82px;height:82px;border-radius:50%;background:var(--marinho);color:var(--branco);display:grid;place-items:center;font-family:var(--f-titulo);font-weight:700;font-size:2.2rem;font-variant-numeric:tabular-nums}
+.relogio.fim span{background:var(--erro)}
+.q-midia{display:flex;justify-content:center;align-items:center;min-width:0}
+.q-midia img{max-height:36vh;border-radius:8px;box-shadow:0 6px 18px rgba(0,0,0,.15)}
+.q-sem-img{display:flex;gap:.15em;font-size:clamp(2.4rem,6vw,4.5rem);opacity:.9}
+.q-lado{justify-self:center;text-align:center}
+.q-pontos{background:var(--branco);border-radius:8px;padding:10px 16px;box-shadow:0 2px 8px rgba(0,51,102,.1)}
+.q-pontos span{display:block;font-size:.78rem;text-transform:uppercase;letter-spacing:.08em;color:var(--suave)}
+.q-pontos b{font-family:var(--f-titulo);font-size:1.6rem;color:var(--marinho);font-variant-numeric:tabular-nums}
+.alts{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.alt{--cor:var(--espadas);background:var(--cor);color:var(--branco);border:0;border-radius:6px;min-height:clamp(70px,13vh,120px);display:flex;align-items:center;gap:16px;padding:14px 18px;text-align:left;font-weight:700;font-size:clamp(1rem,1.9vw,1.4rem);line-height:1.25;box-shadow:inset 0 -6px 0 rgba(0,0,0,.22);position:relative;transition:transform .12s,filter .12s,opacity .3s}
+button.alt{cursor:pointer}
+button.alt:hover{filter:brightness(1.08);transform:translateY(-2px)}
+.sala button.alt{cursor:default}
+.sala button.alt:hover{filter:none;transform:none}
+.alt.c1{--cor:var(--copas)}.alt.c2{--cor:var(--ouros)}.alt.c3{--cor:var(--paus)}
+.alt svg.naipe{font-size:clamp(1.8rem,3.4vw,2.6rem)}
+.alt span{flex:1;min-width:0;overflow-wrap:anywhere}
+.alt em{font-style:normal;font-size:1.8rem;font-family:var(--f-titulo)}
+.alt small{position:absolute;top:-10px;left:14px;background:var(--branco);color:var(--texto);font-size:.72rem;font-weight:700;padding:1px 8px;border-radius:10px;box-shadow:0 1px 4px rgba(0,0,0,.2)}
+.revelado .alt.errada{opacity:.32}
+.revelado .alt.certa{box-shadow:inset 0 -6px 0 rgba(0,0,0,.22),0 0 0 4px var(--branco),0 0 0 7px var(--cor)}
+.veredito{color:var(--branco);border-radius:8px;padding:16px 20px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:2px;animation:surge .35s ease-out}
+.veredito.ok{background:var(--ok)}.veredito.erro{background:var(--erro)}
+.veredito b{font-family:var(--f-titulo);font-size:clamp(1.6rem,4vw,2.4rem);line-height:1.1}
+.veredito span{font-family:var(--f-titulo);font-size:1.2rem}
+.veredito small{opacity:.9}
+@keyframes surge{from{transform:scale(.92);opacity:0}to{transform:none;opacity:1}}
+.explica{background:var(--branco);border-left:5px solid var(--marinho);border-radius:6px;padding:14px 18px;max-width:900px;width:100%;margin:0 auto}
+.explica b{font-family:var(--f-titulo);color:var(--marinho);display:block;margin-bottom:2px}
+
+.fim{max-width:820px;width:100%;margin:0 auto;display:flex;flex-direction:column;gap:20px;align-items:center;text-align:center}
+.placar{font-size:clamp(3.4rem,10vw,5.6rem);color:var(--marinho);font-weight:700;font-variant-numeric:tabular-nums;display:flex;align-items:baseline;gap:.25em}
+.placar small{font-size:.3em;color:var(--laranja);font-weight:500;text-transform:uppercase;letter-spacing:.08em}
+.rank{list-style:none;margin:0;padding:0;width:min(460px,100%);display:flex;flex-direction:column;gap:6px}
+.rank li{display:grid;grid-template-columns:2.6em 1fr auto;align-items:center;gap:10px;background:var(--branco);border-radius:6px;padding:8px 14px;border:2px solid var(--linha);text-align:left;font-variant-numeric:tabular-nums}
+.rank li.voce{border-color:var(--laranja)}
+.rank .pos{font-family:var(--f-titulo);font-weight:700;color:var(--marinho);font-size:1.15rem}
+.rank .pts{font-family:var(--f-titulo);font-weight:600;color:var(--marinho)}
+.rank-tit{font-family:var(--f-titulo);color:var(--marinho);font-size:1.2rem}
+.revisao{width:100%;background:var(--branco);border-radius:8px;border:2px solid var(--linha);text-align:left}
+.revisao summary{cursor:pointer;padding:12px 16px;font-family:var(--f-titulo);color:var(--marinho);font-size:1.1rem}
+.revisao ol{margin:0;padding:0 16px 14px 2.4em;display:flex;flex-direction:column;gap:10px}
+.revisao li{padding-left:6px}
+.revisao li.ok::marker{color:var(--ok);font-weight:700}
+.revisao li.erro::marker{color:var(--erro);font-weight:700}
+.revisao .r{font-size:.88rem;color:var(--suave)}
+
+#toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translate(-50%,20px);background:var(--marinho);color:var(--branco);padding:10px 18px;border-radius:6px;border-left:5px solid var(--laranja);box-shadow:0 8px 24px rgba(0,0,0,.25);opacity:0;pointer-events:none;transition:opacity .25s,transform .25s;z-index:50;max-width:calc(100% - 32px);font-size:.93rem}
+#toast.vis{opacity:1;transform:translate(-50%,0)}
+
+@media (max-width:980px){
+  .ed-grade{grid-template-columns:1fr}
+  .ed-lista{position:static;max-height:none;border-right:0;border-bottom:1px solid var(--linha);flex-direction:row;align-items:stretch;overflow-x:auto}
+  .thumbs{flex-direction:row}
+  .thumb{width:150px;flex:none}
+  #ed-add{flex:none}
+  .ed-lado{border-left:0;border-top:1px solid var(--linha)}
+  .ed-lado-btns{flex-direction:row;flex-wrap:wrap}
+}
+@media (max-width:640px){
+  .ed-respostas,.alts{grid-template-columns:1fr}
+  .q-meio{grid-template-columns:auto 1fr;min-height:0}
+  .q-midia{grid-column:1/-1;order:3}
+  .q-sem-img{display:none}
+  .relogio{width:80px;height:80px}.relogio span{width:62px;height:62px;font-size:1.7rem}
+  .legenda-naipes{gap:6px}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+
+<div id="v-home">
+  <header class="topo">
+    <div class="topo-in gut">
+      <div>
+        <h1>EXATA QUIZ <span class="naipes"><svg class="naipe"><use href="#s-spade"/></svg><svg class="naipe"><use href="#s-heart"/></svg><svg class="naipe"><use href="#s-diamond"/></svg><svg class="naipe"><use href="#s-club"/></svg></span></h1>
+        <p>ExataSite · Portal de Apoio aos Estudantes · Prof. Wanderson P. Schneider</p>
+      </div>
+      <a href="https://exatasite.github.io/site/" target="_blank" rel="noopener">Voltar ao ExataSite</a>
+    </div>
+  </header>
+  <main class="wrap gut">
+    <div class="barra-acoes">
+      <h2>Meus quizzes</h2>
+      <button class="btn btn-prim" id="bt-novo">+ Novo quiz</button>
+      <button class="btn btn-sec" id="bt-imp-xlsx">Importar planilha do Kahoot</button>
+      <button class="btn btn-ghost" id="bt-imp-json">Importar JSON</button>
+    </div>
+    <div class="lista" id="lista"></div>
+    <section class="como">
+      <h3>Como usar</h3>
+      <ol>
+        <li><b>Jogar</b>: o aluno responde sozinho, com tempo e pontuação por rapidez, como no Kahoot.</li>
+        <li><b>Apresentar</b>: para o projetor. Os alunos respondem levantando a carta do naipe (♠ ♥ ♦ ♣) e você revela a resposta.</li>
+        <li><b>Importar planilha</b>: aceita o mesmo .xlsx do modelo do Kahoot. Se houver a aba “Resoluções”, ela vira a explicação de cada pergunta.</li>
+        <li>Os quizzes ficam salvos neste navegador. Use “Exportar JSON” para levar para outro computador.</li>
+      </ol>
+    </section>
+  </main>
+</div>
+
+<div id="v-editor" hidden>
+  <div class="ed-topo">
+    <div class="ed-topo-in gut">
+      <button class="btn btn-ghost-esc" id="ed-voltar">← Biblioteca</button>
+      <label class="sr" for="ed-titulo">Título do quiz</label>
+      <input id="ed-titulo" class="ed-titulo" maxlength="80" placeholder="Título do quiz">
+      <span id="ed-status" class="ed-status">Salvo</span>
+      <div class="ed-topo-acoes">
+        <button class="btn btn-ghost-esc" id="ed-xlsx">Exportar Kahoot</button>
+        <button class="btn btn-prim" id="ed-testar">▶ Testar quiz</button>
+      </div>
+    </div>
+  </div>
+  <div class="ed-grade">
+    <aside class="ed-lista">
+      <div id="thumbs" class="thumbs"></div>
+      <button class="btn btn-sec" id="ed-add">+ Pergunta</button>
+    </aside>
+    <section class="ed-centro gut">
+      <p class="eyebrow" id="ed-num"></p>
+      <div class="ed-q-box">
+        <label class="sr" for="ed-q">Texto da pergunta</label>
+        <textarea id="ed-q" maxlength="120" rows="2" placeholder="Comece a digitar sua pergunta"></textarea>
+        <span class="cont" id="ed-q-cont"></span>
+      </div>
+      <div id="ed-img" class="ed-img"></div>
+      <div id="ed-respostas" class="ed-respostas"></div>
+      <label class="campo" for="ed-exp">Resolução <span class="opc">aparece depois que a resposta é revelada</span>
+        <textarea id="ed-exp" rows="2" maxlength="300" placeholder="Ex.: U = ε − r·i = 12 − 0,5·4 = 10 V"></textarea>
+      </label>
+    </section>
+    <aside class="ed-lado">
+      <label class="campo" for="ed-tempo">Limite de tempo
+        <select id="ed-tempo">
+          <option value="5">5 segundos</option><option value="10">10 segundos</option><option value="20">20 segundos</option><option value="30">30 segundos</option>
+          <option value="60">1 minuto</option><option value="90">1 min 30 s</option><option value="120">2 minutos</option><option value="240">4 minutos</option>
+        </select>
+      </label>
+      <label class="campo" for="ed-pontos">Pontos
+        <select id="ed-pontos">
+          <option value="std">Padrão</option><option value="double">Pontos em dobro</option><option value="none">Sem pontos</option>
+        </select>
+      </label>
+      <div class="ed-lado-btns">
+        <button class="btn btn-ghost" id="ed-up">↑ Mover para cima</button>
+        <button class="btn btn-ghost" id="ed-down">↓ Mover para baixo</button>
+        <button class="btn btn-ghost" id="ed-dup">Duplicar pergunta</button>
+        <button class="btn btn-perigo" id="ed-del">Excluir pergunta</button>
+      </div>
+      <p class="dica">Clique no círculo ao lado da resposta para marcá-la como correta. Pode marcar mais de uma. As respostas 3 e 4 são opcionais (para Verdadeiro/Falso, use só duas).</p>
+    </aside>
+  </div>
+</div>
+
+<div id="v-play" hidden>
+  <div class="hud">
+    <div class="hud-in gut">
+      <span class="marca">EXATA <b>QUIZ</b></span>
+      <span id="hud-prog" class="hud-prog"></span>
+      <span id="hud-pts" class="hud-pts"></span>
+      <div class="hud-btns">
+        <button class="btn-hud" id="bt-som" aria-pressed="true">Som ligado</button>
+        <button class="btn-hud" id="bt-tela">Tela cheia</button>
+        <button class="btn-hud" id="bt-sair">Sair</button>
+      </div>
+    </div>
+  </div>
+  <main id="palco" class="gut"></main>
+</div>
+
+<input type="file" id="f-xlsx" accept=".xlsx,.xls" hidden>
+<input type="file" id="f-json" accept=".json,application/json" hidden>
+<input type="file" id="ed-img-file" accept="image/*" hidden>
+<div id="toast" role="status" aria-live="polite"></div>
+
+<script>
+(function(){
+'use strict';
+const $=s=>document.querySelector(s);
+const TIMES=[5,10,20,30,60,90,120,240];
+const SUITS=[{id:'spade',nome:'Espadas'},{id:'heart',nome:'Copas'},{id:'diamond',nome:'Ouros'},{id:'club',nome:'Paus'}];
+const SHAPE={
+  spade:'<path d="M12 2C9.5 5.5 3 9.2 3 13.6 3 16.4 5.2 18.4 7.7 18.4c1.5 0 2.8-.6 3.6-1.6-.3 1.9-1.1 3.3-2.6 4.7h6.6c-1.5-1.4-2.3-2.8-2.6-4.7.8 1 2.1 1.6 3.6 1.6 2.5 0 4.7-2 4.7-4.8C21 9.2 14.5 5.5 12 2z"/>',
+  heart:'<path d="M12 21.3l-1.4-1.3C5.4 15.4 2 12.3 2 8.5 2 5.4 4.4 3 7.5 3c1.7 0 3.4.8 4.5 2.1C13.1 3.8 14.8 3 16.5 3 19.6 3 22 5.4 22 8.5c0 3.8-3.4 6.9-8.6 11.5L12 21.3z"/>',
+  diamond:'<path d="M12 1.5C14.3 5 17 8.6 20 12c-3 3.4-5.7 7-8 10.5C9.7 19 7 15.4 4 12c3-3.4 5.7-7 8-10.5z"/>',
+  club:'<circle cx="12" cy="6.8" r="4.3"/><circle cx="6.8" cy="13" r="4.3"/><circle cx="17.2" cy="13" r="4.3"/><circle cx="12" cy="12" r="2.6"/><path d="M10.7 12.5h2.6c.2 3.5 1 6.2 3 8.9H7.7c2-2.7 2.8-5.4 3-8.9z"/>'
+};
+document.body.insertAdjacentHTML('afterbegin','<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>'+Object.entries(SHAPE).map(([k,v])=>`<symbol id="s-${k}" viewBox="0 0 24 24">${v}</symbol>`).join('')+'</defs></svg>');
+(function(){const pos=[['spade',10,10],['heart',90,30],['diamond',30,100],['club',110,110]];
+  const svg=`<svg xmlns="http://www.w3.org/2000/svg" width="160" height="160"><g fill="#003366" fill-opacity="0.045">${pos.map(([k,x,y])=>`<g transform="translate(${x} ${y}) scale(1.7)">${SHAPE[k]}</g>`).join('')}</g></svg>`;
+  document.documentElement.style.setProperty('--padrao',`url("data:image/svg+xml,${encodeURIComponent(svg)}")`);})();
+const suitSvg=(i,cls='')=>`<svg class="naipe ${cls}" aria-hidden="true"><use href="#s-${SUITS[i].id}"/></svg>`;
+const esc=s=>String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const fmt=n=>Number(n).toLocaleString('pt-BR');
+const uid=()=>Date.now().toString(36)+Math.random().toString(36).slice(2,7);
+const fmtData=t=>new Date(t||Date.now()).toLocaleDateString('pt-BR');
+function toast(msg){const t=$('#toast');t.textContent=msg;t.classList.add('vis');clearTimeout(toast.t);toast.t=setTimeout(()=>t.classList.remove('vis'),3200);}
+function embaralhar(a){a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
+
+/* ---------- Armazenamento ---------- */
+const KEY='exataquiz.v1',KRANK='exataquiz.rank.v1',KNICK='exataquiz.nick';
+function lerLS(k){try{const s=localStorage.getItem(k);return s?JSON.parse(s):null;}catch(e){return null;}}
+function gravarLS(k,v){try{localStorage.setItem(k,JSON.stringify(v));return true;}catch(e){return false;}}
+const state={quizzes:[],edit:null,view:'home'};
+function salvar(){const ok=gravarLS(KEY,state.quizzes);if(!ok)toast('Não foi possível salvar neste navegador. Imagens grandes ocupam muito espaço; remova algumas ou exporte em JSON.');return ok;}
+const getQuiz=id=>state.quizzes.find(q=>q.id===id);
+
+/* ---------- Modelo ---------- */
+const blankQ=()=>({q:'',a:['','','',''],c:[],t:20,p:'std',img:null,exp:''});
+function normQ(o){o=o||{};const a=[0,1,2,3].map(i=>String((o.a||[])[i]||'').slice(0,75));
+  return{q:String(o.q||'').slice(0,120),a,c:(Array.isArray(o.c)?o.c:[]).map(Number).filter(x=>x>=0&&x<4),t:TIMES.includes(Number(o.t))?Number(o.t):20,
+    p:['std','double','none'].includes(o.p)?o.p:'std',img:typeof o.img==='string'&&o.img.startsWith('data:image')?o.img:null,exp:String(o.exp||'').slice(0,300)};}
+function normQuiz(o){return{id:uid(),title:String(o&&o.title||'Quiz importado').slice(0,80),updated:Date.now(),questions:(o&&Array.isArray(o.questions)?o.questions:[]).map(normQ)};}
+const valid=q=>q.q.trim()&&q.a.filter(x=>x.trim()).length>=2&&q.c.some(i=>q.a[i]&&q.a[i].trim());
+
+const SEED=[
+ ["Um gerador elétrico é um dispositivo que:",["Converte energia elétrica em térmica","Converte outra forma de energia em elétrica","Armazena cargas elétricas","Consome energia elétrica"],2,20,"Gerador: transforma energia (química, mecânica...) em energia elétrica."],
+ ["Qual é a equação característica de um gerador real?",["U = ε + r·i","U = R·i²","U = ε − r·i","U = ε / r"],3,20,"Parte da fem se perde na resistência interna: U = ε − r·i."],
+ ["Gerador com ε = 12 V e r = 0,5 Ω fornece i = 4 A. Qual a ddp U em seus terminais?",["14 V","10 V","12 V","8 V"],2,60,"U = 12 − 0,5·4 = 12 − 2 = 10 V."],
+ ["Gerador com ε = 24 V e r = 2 Ω. Qual a corrente de curto-circuito?",["12 A","48 A","6 A","24 A"],1,60,"i_cc = ε/r = 24/2 = 12 A."],
+ ["Um gerador de fem 20 V mantém U = 16 V nos terminais. Seu rendimento é:",["16%","125%","20%","80%"],4,60,"η = U/ε = 16/20 = 0,8 = 80%."],
+ ["Um gerador transfere potência máxima ao circuito externo quando:",["R externa = 0","R externa = r interna","R externa é infinita","A corrente é nula"],2,20,"Máxima transferência: R = r (rendimento de 50%)."],
+ ["Gerador com ε = 12 V e r = 1 Ω. Qual a máxima potência útil que ele pode fornecer?",["36 W","144 W","72 W","12 W"],1,90,"P_máx = ε²/(4r) = 144/4 = 36 W."],
+ ["No gráfico U × i de um gerador real, obtemos:",["Reta crescente pela origem","Parábola","Reta horizontal","Reta decrescente"],4,20,"U = ε − r·i: reta decrescente; corta U em ε e i em i_cc."],
+ ["Gerador (ε = 12 V, r = 1 Ω) ligado a resistor de 5 Ω. A corrente no circuito é:",["2,4 A","12 A","2 A","3 A"],3,60,"i = ε/(R + r) = 12/(5 + 1) = 2 A."],
+ ["Um receptor elétrico (ex.: motor) é um dispositivo que:",["Converte energia elétrica em outra forma não só térmica","Gera energia elétrica","Converte energia elétrica só em calor","Não possui resistência interna"],1,20,"Receptor: transforma energia elétrica em outra forma útil (mecânica, química...)."],
+ ["A grandeza ε' de um receptor é chamada de:",["Força eletromotriz","Resistência interna","Força contraeletromotriz","Potência dissipada"],3,20,"ε' é a força contraeletromotriz (fcem)."],
+ ["Qual é a equação característica de um receptor?",["U = ε' − r'·i","U = ε' + r'·i","U = r'·i","U = ε'·i"],2,20,"O receptor recebe U, usa ε' e dissipa r'·i: U = ε' + r'·i."],
+ ["Motor com ε' = 100 V e r' = 2 Ω percorrido por i = 5 A. Qual a ddp U aplicada a ele?",["90 V","100 V","110 V","120 V"],3,60,"U = 100 + 2·5 = 110 V."],
+ ["Receptor com ε' = 90 V ligado a U = 120 V. Seu rendimento é:",["75%","133%","25%","90%"],1,60,"η = ε'/U = 90/120 = 0,75 = 75%."],
+ ["Receptor com ε' = 40 V e i = 3 A. Sua potência útil é:",["13,3 W","43 W","37 W","120 W"],4,60,"P_útil = ε'·i = 40·3 = 120 W."],
+ ["Se o eixo de um motor ligado for travado (bloqueado), o que acontece?",["A corrente diminui","ε' se anula e a corrente aumenta","A corrente fica nula","O motor vira gerador"],2,30,"Travado, ε' = 0: o motor age como resistor, i cresce e ele pode queimar."],
+ ["Circuito: gerador (30 V; 1 Ω), receptor (12 V; 2 Ω) e resistor de 3 Ω. A corrente é:",["7 A","3 A","6 A","2 A"],2,90,"i = (ε − ε')/(r + r' + R) = (30 − 12)/(1 + 2 + 3) = 18/6 = 3 A."]
+];
+const seedQuiz=()=>({id:uid(),title:'Geradores e Receptores Elétricos',updated:Date.now(),questions:SEED.map(([q,a,c,t,exp])=>({q,a,c:[c-1],t,p:'std',img:null,exp}))});
+
+/* ---------- Navegação ---------- */
+function show(v){state.view=v;['home','editor','play'].forEach(n=>$('#v-'+n).hidden=n!==v);window.scrollTo(0,0);}
+
+/* ---------- Biblioteca ---------- */
+function renderHome(){
+  const L=$('#lista');const qs=[...state.quizzes].sort((a,b)=>b.updated-a.updated);
+  if(!qs.length){L.innerHTML='<div class="vazio"><p><b>Nenhum quiz ainda.</b></p><p>Crie um novo quiz ou importe uma planilha no modelo do Kahoot.</p></div>';return;}
+  L.innerHTML=qs.map(q=>{const n=q.questions.length,ok=q.questions.filter(valid).length,inc=n-ok;
+    return `<article class="qcard" data-id="${q.id}">
+      <div class="qcard-naipes">${[0,1,2,3].map(i=>suitSvg(i,'n'+i)).join('')}</div>
+      <h3>${esc(q.title||'Quiz sem título')}</h3>
+      <p class="meta">${n} pergunta${n!==1?'s':''}${inc?` · <span class="alerta">${inc} incompleta${inc!==1?'s':''}</span>`:''} · editado em ${fmtData(q.updated)}</p>
+      <div class="qcard-acoes"><button class="btn btn-prim" data-act="play">▶ Jogar</button><button class="btn btn-sec" data-act="sala">Apresentar</button><button class="btn btn-ghost" data-act="edit">Editar</button></div>
+      <div class="qcard-mais"><button class="lnk" data-act="dup">Duplicar</button><button class="lnk" data-act="xlsx">Exportar Kahoot</button><button class="lnk" data-act="json">Exportar JSON</button><button class="lnk perigo" data-act="del">Excluir</button></div>
+    </article>`;}).join('');
+}
+function confirmar2(btn,txt,acao){
+  if(btn.dataset.conf){acao();return;}
+  const orig=btn.textContent;btn.dataset.conf='1';btn.textContent=txt;btn.classList.add('confirmar');
+  setTimeout(()=>{if(btn.isConnected&&btn.dataset.conf){delete btn.dataset.conf;btn.textContent=orig;btn.classList.remove('confirmar');}},4000);
+}
+$('#lista').addEventListener('click',e=>{
+  const b=e.target.closest('button[data-act]');if(!b)return;const id=b.closest('.qcard').dataset.id;const quiz=getQuiz(id);if(!quiz)return;
+  const act=b.dataset.act;
+  if(act==='play')startGame(id,'solo');
+  else if(act==='sala')startGame(id,'sala');
+  else if(act==='edit')openEditor(id);
+  else if(act==='dup'){const c=JSON.parse(JSON.stringify(quiz));c.id=uid();c.title=quiz.title+' (cópia)';c.updated=Date.now();state.quizzes.push(c);salvar();renderHome();toast('Quiz duplicado.');}
+  else if(act==='json')exportJson(quiz);
+  else if(act==='xlsx')exportXlsx(quiz);
+  else if(act==='del')confirmar2(b,'Confirmar exclusão',()=>{state.quizzes=state.quizzes.filter(q=>q.id!==id);salvar();renderHome();toast('Quiz excluído.');});
+});
+$('#bt-novo').addEventListener('click',()=>{const q={id:uid(),title:'Novo quiz',updated:Date.now(),questions:[blankQ()]};state.quizzes.push(q);salvar();openEditor(q.id);setTimeout(()=>$('#ed-titulo').select(),50);});
+$('#bt-imp-xlsx').addEventListener('click',()=>$('#f-xlsx').click());
+$('#bt-imp-json').addEventListener('click',()=>$('#f-json').click());
+
+/* ---------- Importar / exportar ---------- */
+$('#f-xlsx').addEventListener('change',async e=>{const f=e.target.files[0];e.target.value='';if(f)await importXlsx(f);});
+$('#f-json').addEventListener('change',async e=>{const f=e.target.files[0];e.target.value='';if(!f)return;
+  try{const d=JSON.parse(await f.text());const lista=Array.isArray(d)?d:[d];const novos=lista.filter(x=>x&&Array.isArray(x.questions)).map(normQuiz);
+    if(!novos.length)throw 0;state.quizzes.push(...novos);salvar();renderHome();toast(`${novos.length} quiz${novos.length>1?'zes importados':' importado'}.`);
+  }catch(err){toast('Este arquivo não é um quiz do Exata Quiz em JSON.');}
+});
+async function importXlsx(file){
+  if(typeof XLSX==='undefined'){toast('A leitura de planilhas não carregou. Verifique a conexão com a internet e recarregue a página.');return;}
+  try{
+    const wb=XLSX.read(await file.arrayBuffer(),{type:'array'});
+    const rows=XLSX.utils.sheet_to_json(wb.Sheets[wb.SheetNames[0]],{header:1,defval:''});
+    const h=rows.findIndex(r=>r.some(c=>/^\s*(question|pergunta)/i.test(String(c))));
+    if(h<0){toast('Não encontrei a coluna "Question" do modelo do Kahoot nesta planilha.');return;}
+    const hdr=rows[h].map(c=>String(c).trim().toLowerCase());const col=re=>hdr.findIndex(c=>re.test(c));
+    const cq=col(/^(question|pergunta)/),ct=col(/time|tempo/),cc=col(/correct|correta/);
+    const ca=[1,2,3,4].map(n=>col(new RegExp('^(answer|resposta|alternativa)\\s*'+n)));
+    const qs=[];
+    for(const r of rows.slice(h+1)){
+      const q=String(r[cq]||'').trim();if(!q)continue;
+      const a=ca.map(ci=>ci>=0?String(r[ci]).trim():'');const t=parseInt(r[ct],10);
+      const c=String(cc>=0?r[cc]:'').split(/[,;\s]+/).map(x=>parseInt(x,10)-1).filter(x=>x>=0&&x<4&&a[x]);
+      qs.push(normQ({q,a,c,t:TIMES.includes(t)?t:20}));
+    }
+    const rs=wb.SheetNames.find(n=>/resolu|explica/i.test(n));
+    if(rs){const rr=XLSX.utils.sheet_to_json(wb.Sheets[rs],{header:1,defval:''});const hh=(rr[0]||[]).map(c=>String(c).toLowerCase());
+      const ce=hh.findIndex(c=>/resolu|explica/.test(c)),cn=hh.findIndex(c=>/^n/.test(c));
+      if(ce>=0)rr.slice(1).forEach((r,k)=>{const idx=cn>=0&&parseInt(r[cn],10)?parseInt(r[cn],10)-1:k;if(qs[idx]&&r[ce])qs[idx].exp=String(r[ce]).slice(0,300);});}
+    if(!qs.length){toast('A planilha não tem perguntas preenchidas abaixo do cabeçalho.');return;}
+    const title=file.name.replace(/\.[^.]+$/,'').replace(/[_-]+/g,' ').trim()||'Quiz importado';
+    state.quizzes.push({id:uid(),title,updated:Date.now(),questions:qs});salvar();renderHome();
+    toast(`Importado: ${qs.length} perguntas${rs?' com resoluções':''}.`);
+  }catch(err){toast('Não consegui ler esta planilha. Confira se é um arquivo .xlsx no modelo do Kahoot.');}
+}
+const slug=s=>String(s||'quiz').normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/[^a-z0-9]+/gi,'_').replace(/^_|_$/g,'')||'quiz';
+function baixar(nome,blob){const u=URL.createObjectURL(blob);const a=document.createElement('a');a.href=u;a.download=nome;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(u),3000);toast('Arquivo gerado: '+nome);}
+function exportJson(quiz){baixar(slug(quiz.title)+'.json',new Blob([JSON.stringify(quiz,null,1)],{type:'application/json'}));}
+function exportXlsx(quiz){
+  if(typeof XLSX==='undefined'){toast('A geração de planilhas não carregou. Verifique a internet.');return;}
+  const aoa=[[],['',quiz.title],[],['','Gerado pelo Exata Quiz · modelo de importação do Kahoot'],[],[],[],
+    ['','Question - max 120 characters','Answer 1 - max 75 characters','Answer 2 - max 75 characters','Answer 3 - max 75 characters','Answer 4 - max 75 characters','Time limit (sec) – 5, 10, 20, 30, 60, 90, 120, or 240 secs','Correct answer(s) - choose at least one']];
+  quiz.questions.filter(valid).forEach((q,i)=>aoa.push([i+1,q.q,...q.a,q.t,q.c.filter(k=>q.a[k].trim()).map(k=>k+1).join(',')]));
+  const wb=XLSX.utils.book_new();const ws=XLSX.utils.aoa_to_sheet(aoa);ws['!cols']=[{wch:4},{wch:60},{wch:30},{wch:30},{wch:30},{wch:30},{wch:14},{wch:14}];
+  XLSX.utils.book_append_sheet(wb,ws,'Kahoot');
+  const r=[['Nº','Pergunta','Resposta correta','Resolução'],...quiz.questions.filter(valid).map((q,i)=>[i+1,q.q,q.c.filter(k=>q.a[k].trim()).map(k=>q.a[k]).join(' / '),q.exp||''])];
+  const ws2=XLSX.utils.aoa_to_sheet(r);ws2['!cols']=[{wch:4},{wch:60},{wch:30},{wch:60}];XLSX.utils.book_append_sheet(wb,ws2,'Resoluções');
+  baixar(slug(quiz.title)+'_kahoot.xlsx',new Blob([XLSX.write(wb,{bookType:'xlsx',type:'array'})],{type:'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'}));
+}
+
+/* ---------- Editor ---------- */
+function openEditor(id,idx){const quiz=getQuiz(id);if(!quiz)return;if(!quiz.questions.length)quiz.questions.push(blankQ());
+  state.edit={quiz,idx:Math.max(0,Math.min(idx||0,quiz.questions.length-1))};$('#ed-titulo').value=quiz.title;$('#ed-status').textContent='Salvo';
+  renderThumbs();renderQ();show('editor');}
+const cur=()=>state.edit.quiz.questions[state.edit.idx];
+let tSalva;function mexeu(){state.edit.quiz.updated=Date.now();$('#ed-status').textContent='Salvando…';clearTimeout(tSalva);tSalva=setTimeout(()=>{$('#ed-status').textContent=salvar()?'Salvo':'Não salvo';},400);}
+function renderThumbs(rolar){const qs=state.edit.quiz.questions;
+  $('#thumbs').innerHTML=qs.map((q,i)=>`<button class="thumb${i===state.edit.idx?' ativo':''}" data-i="${i}" aria-label="Pergunta ${i+1}">
+    <span class="t-num">${i+1}${valid(q)?'':' <b class="t-alerta" title="Pergunta incompleta">!</b>'}</span>
+    <span class="t-txt">${esc(q.q||'Pergunta sem texto')}</span>
+    <span class="t-mini">${[0,1,2,3].map(k=>`<i class="${q.a[k].trim()?(q.c.includes(k)?'certo':''):'vazio'}"></i>`).join('')}</span></button>`).join('');
+  if(rolar){const a=$('#thumbs .ativo');if(a)a.scrollIntoView({block:'nearest',inline:'nearest'});}}
+function cont(){const n=$('#ed-q').value.length;$('#ed-q-cont').textContent=`${n}/120`;}
+function renderImg(){const q=cur();$('#ed-img').innerHTML=q.img?`<div class="img-prev"><img src="${q.img}" alt="Imagem da pergunta"><button class="lnk perigo" id="ed-img-rem">Remover imagem</button></div>`
+  :`<label class="drop" for="ed-img-file" id="ed-drop"><b>+</b>Inserir imagem<small>clique ou arraste um arquivo aqui</small></label>`;}
+function renderQ(){const q=cur(),i=state.edit.idx;
+  $('#ed-num').textContent=`Pergunta ${i+1} de ${state.edit.quiz.questions.length}`;
+  $('#ed-q').value=q.q;cont();renderImg();
+  $('#ed-respostas').innerHTML=[0,1,2,3].map(k=>`<div class="resp-ed r${k}${q.a[k].trim()?' cheia':''}">
+    <span class="resp-naipe" title="${SUITS[k].nome}">${suitSvg(k)}</span>
+    <label class="sr" for="ed-a${k}">Resposta ${k+1} (${SUITS[k].nome})</label>
+    <input id="ed-a${k}" data-k="${k}" maxlength="75" placeholder="Resposta ${k+1}${k>1?' (opcional)':''}" value="${esc(q.a[k])}">
+    <button class="marcar${q.c.includes(k)?' on':''}" data-k="${k}" aria-pressed="${q.c.includes(k)}" aria-label="Marcar resposta ${k+1} como correta"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>`).join('');
+  $('#ed-exp').value=q.exp||'';$('#ed-tempo').value=String(q.t);$('#ed-pontos').value=q.p;}
+function irPara(i){state.edit.idx=i;renderThumbs(true);renderQ();}
+$('#thumbs').addEventListener('click',e=>{const b=e.target.closest('.thumb');if(b)irPara(+b.dataset.i);});
+$('#ed-q').addEventListener('input',e=>{cur().q=e.target.value;cont();renderThumbs();mexeu();});
+$('#ed-respostas').addEventListener('input',e=>{const k=+e.target.dataset.k;if(isNaN(k))return;cur().a[k]=e.target.value;e.target.closest('.resp-ed').classList.toggle('cheia',!!e.target.value.trim());renderThumbs();mexeu();});
+$('#ed-respostas').addEventListener('click',e=>{const b=e.target.closest('.marcar');if(!b)return;const k=+b.dataset.k,q=cur();
+  q.c=q.c.includes(k)?q.c.filter(x=>x!==k):[...q.c,k].sort();b.classList.toggle('on',q.c.includes(k));b.setAttribute('aria-pressed',q.c.includes(k));renderThumbs();mexeu();});
+$('#ed-exp').addEventListener('input',e=>{cur().exp=e.target.value;mexeu();});
+$('#ed-tempo').addEventListener('change',e=>{cur().t=+e.target.value;mexeu();});
+$('#ed-pontos').addEventListener('change',e=>{cur().p=e.target.value;mexeu();});
+$('#ed-titulo').addEventListener('input',e=>{state.edit.quiz.title=e.target.value;mexeu();});
+$('#ed-add').addEventListener('click',()=>{const qs=state.edit.quiz.questions;qs.splice(state.edit.idx+1,0,blankQ());mexeu();irPara(state.edit.idx+1);$('#ed-q').focus();});
+$('#ed-dup').addEventListener('click',()=>{const qs=state.edit.quiz.questions;qs.splice(state.edit.idx+1,0,JSON.parse(JSON.stringify(cur())));mexeu();irPara(state.edit.idx+1);toast('Pergunta duplicada.');});
+function mover(d){const qs=state.edit.quiz.questions,i=state.edit.idx,j=i+d;if(j<0||j>=qs.length)return;[qs[i],qs[j]]=[qs[j],qs[i]];mexeu();irPara(j);}
+$('#ed-up').addEventListener('click',()=>mover(-1));$('#ed-down').addEventListener('click',()=>mover(1));
+$('#ed-del').addEventListener('click',e=>confirmar2(e.currentTarget,'Confirmar exclusão',()=>{const b=$('#ed-del');delete b.dataset.conf;b.textContent='Excluir pergunta';b.classList.remove('confirmar');
+  const qs=state.edit.quiz.questions;qs.splice(state.edit.idx,1);if(!qs.length)qs.push(blankQ());mexeu();irPara(Math.min(state.edit.idx,qs.length-1));toast('Pergunta excluída.');}));
+$('#ed-voltar').addEventListener('click',()=>{salvar();renderHome();show('home');});
+$('#ed-testar').addEventListener('click',()=>{salvar();startGame(state.edit.quiz.id,'solo');});
+$('#ed-xlsx').addEventListener('click',()=>exportXlsx(state.edit.quiz));
+function lerImagem(file){return new Promise((res,rej)=>{const fr=new FileReader();fr.onload=()=>{const im=new Image();im.onload=()=>{const M=900,s=Math.min(1,M/Math.max(im.width,im.height));
+  const cv=document.createElement('canvas');cv.width=Math.round(im.width*s);cv.height=Math.round(im.height*s);const cx=cv.getContext('2d');cx.fillStyle='#fff';cx.fillRect(0,0,cv.width,cv.height);cx.drawImage(im,0,0,cv.width,cv.height);res(cv.toDataURL('image/jpeg',.82));};im.onerror=rej;im.src=fr.result;};fr.onerror=rej;fr.readAsDataURL(file);});}
+async function usarImagem(f){if(!f||!/^image\//.test(f.type)){toast('Escolha um arquivo de imagem (PNG ou JPG).');return;}
+  try{cur().img=await lerImagem(f);renderImg();mexeu();}catch(e){toast('Não consegui abrir esta imagem.');}}
+$('#ed-img-file').addEventListener('change',e=>{const f=e.target.files[0];e.target.value='';usarImagem(f);});
+$('#ed-img').addEventListener('click',e=>{if(e.target.id==='ed-img-rem'){cur().img=null;renderImg();mexeu();}});
+$('#ed-img').addEventListener('dragover',e=>{e.preventDefault();const d=$('#ed-drop');if(d)d.classList.add('sobre');});
+$('#ed-img').addEventListener('dragleave',()=>{const d=$('#ed-drop');if(d)d.classList.remove('sobre');});
+$('#ed-img').addEventListener('drop',e=>{e.preventDefault();usarImagem(e.dataTransfer.files[0]);});
+
+/* ---------- Som ---------- */
+let ac=null,som=true;
+function beep(f,d,type,v){if(!som)return;try{ac=ac||new(window.AudioContext||window.webkitAudioContext)();if(ac.state==='suspended')ac.resume();
+  const o=ac.createOscillator(),g=ac.createGain();o.type=type||'sine';o.frequency.value=f;g.gain.setValueAtTime(v||.08,ac.currentTime);g.gain.exponentialRampToValueAtTime(.0001,ac.currentTime+d);o.connect(g).connect(ac.destination);o.start();o.stop(ac.currentTime+d);}catch(e){}}
+const somAcerto=()=>{beep(660,.15);setTimeout(()=>beep(880,.25),120);};
+const somErro=()=>beep(170,.4,'sawtooth',.05);
+const somTick=()=>beep(1000,.05,'square',.03);
+$('#bt-som').addEventListener('click',e=>{som=!som;e.currentTarget.setAttribute('aria-pressed',som);e.currentTarget.textContent=som?'Som ligado':'Som desligado';});
+$('#bt-tela').addEventListener('click',()=>{try{const d=document;if(d.fullscreenElement)d.exitFullscreen();else{const p=d.documentElement.requestFullscreen();if(p&&p.catch)p.catch(()=>toast('Tela cheia não está disponível aqui.'));}}catch(e){toast('Tela cheia não está disponível aqui.');}});
+
+/* ---------- Jogo ---------- */
+let G=null;
+const palco=html=>{$('#palco').innerHTML=html;};
+function limpar(){if(G&&G.tm){clearTimeout(G.tm);clearInterval(G.tm);G.tm=null;}}
+function setFase(f){if(!G)return;$('#v-play').dataset.fase=f;$('#palco').classList.toggle('sala',G.mode==='sala');
+  const N=G.qs.length;$('#hud-prog').textContent=['intro','resp','revela'].includes(f)?`${G.i+1} / ${N}`:'';
+  $('#hud-pts').textContent=G.mode==='solo'&&f!=='lobby'&&f!=='cont'?`${fmt(G.score)} pts`:'';}
+function startGame(id,mode){const quiz=getQuiz(id);if(!quiz)return;const qs=quiz.questions.filter(valid);
+  if(!qs.length){toast('Este quiz ainda não tem perguntas completas: cada uma precisa de texto, duas respostas e uma correta.');return;}
+  limpar();G={quiz,mode,qs,i:0,score:0,streak:0,hits:0,log:[],tm:null,origem:state.view,nick:''};show('play');lobby();}
+function lobby(){limpar();setFase('lobby');const n=G.qs.length;
+  palco(`<div class="centro lobby">
+    <p class="eyebrow">${G.mode==='solo'?'Modo individual':'Modo sala · projetor'}</p>
+    <h2>${esc(G.quiz.title)}</h2><p class="meta">${n} pergunta${n>1?'s':''}</p>
+    ${G.mode==='solo'?`<label class="campo" for="nick">Seu nome<input id="nick" maxlength="20" placeholder="Digite seu nome" value="${esc(lerLS(KNICK)||'')}"></label>`
+      :`<div class="legenda-naipes">${SUITS.map((s,i)=>`<div class="carta c${i}">${suitSvg(i)}<span>${s.nome}</span></div>`).join('')}</div>
+        <p class="dica">Cada alternativa tem um naipe. A turma responde levantando a carta do naipe escolhido. Depois você clica em “Revelar resposta”.</p>`}
+    <div class="opcoes"><label for="op-q"><input type="checkbox" id="op-q"> Embaralhar perguntas</label><label for="op-a"><input type="checkbox" id="op-a"> Embaralhar alternativas</label></div>
+    <div class="linha-btn"><button class="btn btn-prim btn-gde" id="bt-comecar">Começar</button><button class="btn btn-ghost" id="bt-voltar">Voltar</button></div></div>`);
+  const nk=$('#nick');if(nk)nk.focus();}
+function comecar(){const nk=$('#nick');if(nk){G.nick=nk.value.trim()||'Jogador';gravarLS(KNICK,G.nick);}
+  if($('#op-q').checked)G.qs=embaralhar(G.qs);G.embA=$('#op-a').checked;beep(1,.01,'sine',.0001);contagem(3);}
+function contagem(n){setFase('cont');if(n===0){intro(0);return;}const s=(3-n)%4;
+  palco(`<div class="contagem"><div class="carta-gde n${s}"><span class="canto a">${suitSvg(s)}</span>${n}<span class="canto b">${suitSvg(s)}</span></div><p>Prepare-se!</p></div>`);
+  beep(520,.12);G.tm=setTimeout(()=>contagem(n-1),900);}
+function intro(i){limpar();G.i=i;const q=G.qs[i];let alts=q.a.map((txt,orig)=>({txt,orig})).filter(x=>x.txt.trim());if(G.embA)alts=embaralhar(alts);G.atual={q,alts};
+  setFase('intro');palco(`<div class="intro"><p class="eyebrow">Pergunta ${i+1} de ${G.qs.length}${q.p==='double'?' · pontos em dobro':''}</p><h2>${esc(q.q)}</h2><div class="barra"><span id="barra"></span></div></div>`);
+  requestAnimationFrame(()=>requestAnimationFrame(()=>{const b=$('#barra');if(b)b.style.width='100%';}));G.tm=setTimeout(perguntar,3000);}
+function perguntar(){limpar();const{q,alts}=G.atual,T=q.t;setFase('resp');
+  palco(`<div class="pergunta"><div class="q-barra"><h2>${esc(q.q)}</h2></div>
+    <div class="q-meio"><div class="relogio" id="relogio"><span id="seg">${T}</span></div>
+      <div class="q-midia">${q.img?`<img src="${q.img}" alt="Imagem da pergunta">`:`<div class="q-sem-img">${[0,1,2,3].map(k=>suitSvg(k,'n'+k)).join('')}</div>`}</div>
+      <div class="q-lado">${G.mode==='sala'?'<button class="btn btn-prim btn-gde" id="bt-revelar">Revelar resposta</button>':`<div class="q-pontos"><span>Seus pontos</span><b>${fmt(G.score)}</b></div>`}</div></div>
+    <div class="alts">${alts.map((a,k)=>`<button class="alt c${k}" data-k="${k}" aria-label="${SUITS[k].nome}: ${esc(a.txt)}">${suitSvg(k)}<span>${esc(a.txt)}</span></button>`).join('')}</div></div>`);
+  G.t0=performance.now();G.resp=false;let ult=T;
+  G.tm=setInterval(()=>{const el=(performance.now()-G.t0)/1000,rest=Math.max(0,T-el),s=Math.ceil(rest);const sg=$('#seg'),rl=$('#relogio');if(!sg)return;
+    sg.textContent=s;rl.style.setProperty('--p',rest/T);rl.classList.toggle('fim',s<=5);
+    if(s!==ult){ult=s;if(s<=5&&s>0)somTick();}
+    if(rest<=0)revelar(null,T);},100);}
+function revelar(k,rt){if(G.resp)return;G.resp=true;limpar();const{q,alts}=G.atual;
+  const certo=k!=null&&q.c.includes(alts[k].orig);let pts=0,bonus=0;
+  if(G.mode==='solo'){
+    if(certo){G.hits++;G.streak++;if(q.p!=='none'){pts=Math.round(1000*(1-(rt/q.t)/2))*(q.p==='double'?2:1);bonus=G.streak>1?Math.min(100*(G.streak-1),500):0;}somAcerto();}
+    else{G.streak=0;somErro();}
+    G.score+=pts+bonus;}
+  else somAcerto();
+  G.log.push({q:q.q,escolha:k!=null?alts[k].txt:null,certa:alts.filter(a=>q.c.includes(a.orig)).map(a=>a.txt),ok:certo});
+  setFase('revela');const ultima=G.i+1>=G.qs.length;
+  palco(`<div class="revela">
+    ${G.mode==='solo'?`<div class="veredito ${certo?'ok':'erro'}"><b>${certo?'Correto!':(k==null?'Tempo esgotado':'Incorreto')}</b>
+      <span>${certo?(q.p==='none'?'Pergunta sem pontos':`+${fmt(pts+bonus)} pontos`):'Sequência zerada'}</span>
+      ${certo&&G.streak>1?`<small>Sequência de ${G.streak} acertos${bonus?` · bônus de ${bonus}`:''}</small>`:''}</div>`:''}
+    <div class="q-barra"><h2>${esc(q.q)}</h2></div>
+    <div class="alts revelado">${alts.map((a,j)=>{const c=q.c.includes(a.orig);return `<div class="alt c${j} ${c?'certa':'errada'}">${j===k?'<small>Sua resposta</small>':''}${suitSvg(j)}<span>${esc(a.txt)}</span><em>${c?'✓':'✗'}</em></div>`;}).join('')}</div>
+    ${q.exp?`<div class="explica"><b>Resolução</b><p>${esc(q.exp)}</p></div>`:''}
+    <div class="linha-btn"><button class="btn btn-prim btn-gde" id="bt-prox">${ultima?'Ver resultado':'Próxima pergunta'}</button></div></div>`);
+  const b=$('#bt-prox');if(b)b.focus({preventScroll:true});}
+function proxima(){if(G.i+1<G.qs.length)intro(G.i+1);else fim();}
+function salvarRank(){const r=lerLS(KRANK)||{};const lista=r[G.quiz.id]||[];const eu={n:G.nick,pts:G.score,ac:G.hits,tot:G.qs.length,d:Date.now()};
+  lista.push(eu);lista.sort((a,b)=>b.pts-a.pts);r[G.quiz.id]=lista.slice(0,10);gravarLS(KRANK,r);return{lista:r[G.quiz.id],eu};}
+function fim(){limpar();setFase('fim');const N=G.qs.length;let topo='',rank='';
+  if(G.mode==='solo'){const{lista,eu}=salvarRank();const pct=Math.round(100*G.hits/N);
+    topo=`<p class="eyebrow">${esc(G.nick)}</p><h2 class="placar">${fmt(G.score)}<small>pontos</small></h2><p class="meta">${G.hits} de ${N} acertos · ${pct}%</p>`;
+    rank=`<p class="rank-tit">Ranking neste navegador</p><ol class="rank">${lista.slice(0,5).map((x,i)=>`<li class="${x.d===eu.d?'voce':''}"><span class="pos">${i+1}º</span><span>${esc(x.n)} · ${x.ac}/${x.tot}</span><span class="pts">${fmt(x.pts)}</span></li>`).join('')}</ol>`;
+    if(pct>=70)setTimeout(()=>{beep(523,.15);setTimeout(()=>beep(659,.15),140);setTimeout(()=>beep(784,.3),280);},200);}
+  else topo=`<h2 class="placar" style="font-size:clamp(2.4rem,7vw,3.6rem)">Fim do quiz</h2><p class="meta">${N} perguntas apresentadas</p>`;
+  palco(`<div class="fim">${topo}${rank}
+    <details class="revisao"${G.mode==='sala'?'':' open'}><summary>Revisão das perguntas</summary><ol>${G.log.map(l=>`<li class="${G.mode==='solo'?(l.ok?'ok':'erro'):''}"><p>${esc(l.q)}</p><p class="r">Correta: <b>${esc(l.certa.join(' / '))}</b>${G.mode==='solo'?` · Você: ${l.escolha!=null?esc(l.escolha):'sem resposta'}`:''}</p></li>`).join('')}</ol></details>
+    <div class="linha-btn"><button class="btn btn-prim" id="bt-denovo">Jogar novamente</button><button class="btn btn-ghost" id="bt-volta">${G.origem==='editor'?'Voltar ao editor':'Voltar à biblioteca'}</button></div></div>`);}
+function sairJogo(){limpar();const o=G?G.origem:'home';const id=G&&G.quiz.id;G=null;
+  if(o==='editor'&&state.edit&&getQuiz(id)){show('editor');renderThumbs();renderQ();}else{renderHome();show('home');}}
+$('#palco').addEventListener('click',e=>{if(!G)return;const t=e.target;
+  if(t.closest('#bt-comecar'))comecar();
+  else if(t.closest('#bt-voltar')||t.closest('#bt-volta'))sairJogo();
+  else if(t.closest('#bt-revelar'))revelar(null,0);
+  else if(t.closest('#bt-prox'))proxima();
+  else if(t.closest('#bt-denovo')){const id=G.quiz.id,m=G.mode,o=G.origem;startGame(id,m);G.origem=o;}
+  else{const b=t.closest('button.alt');if(b&&G.mode==='solo'&&!G.resp&&$('#v-play').dataset.fase==='resp')revelar(+b.dataset.k,(performance.now()-G.t0)/1000);}
+});
+$('#palco').addEventListener('keydown',e=>{if(e.key==='Enter'&&e.target.id==='nick')comecar();});
+$('#bt-sair').addEventListener('click',e=>confirmar2(e.currentTarget,'Sair do jogo?',()=>{const b=$('#bt-sair');delete b.dataset.conf;b.textContent='Sair';b.classList.remove('confirmar');sairJogo();}));
+document.addEventListener('keydown',e=>{if(state.view!=='play'||!G)return;if(/INPUT|TEXTAREA|SELECT/.test(e.target.tagName))return;const f=$('#v-play').dataset.fase;
+  if(f==='resp'&&G.mode==='solo'&&/^[1-4]$/.test(e.key)){const k=+e.key-1;if(k<G.atual.alts.length)revelar(k,(performance.now()-G.t0)/1000);}
+  else if(f==='resp'&&G.mode==='sala'&&(e.key===' '||e.key==='Enter')){e.preventDefault();revelar(null,0);}
+  else if(f==='revela'&&(e.key==='Enter'||e.key===' '||e.key==='ArrowRight')){e.preventDefault();proxima();}});
+
+/* ---------- Início ---------- */
+const dados=lerLS(KEY);
+state.quizzes=Array.isArray(dados)?dados.map(q=>({id:q.id||uid(),title:q.title||'Quiz',updated:q.updated||Date.now(),questions:(q.questions||[]).map(normQ)})):[seedQuiz()];
+if(!Array.isArray(dados))gravarLS(KEY,state.quizzes);
+renderHome();show('home');
+})();
+</script>
