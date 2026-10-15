@@ -41,70 +41,79 @@
 <div class="container-resumo" id="resumo">
     <h3>📚 Resumo</h3>
     <section class="resumo-conteudo">
-        <p>O <strong>cilindro circular reto</strong> é o sólido gerado pela rotação de um retângulo em torno de um de seus lados. Ele tem duas <strong>bases</strong> circulares de raio $r$, paralelas e congruentes, e uma <strong>superfície lateral</strong> que, planificada, é um retângulo de lados $2\pi r$ e $h$.</p>
-        <p style="text-align: center;">$$A_\ell = 2\pi r h \qquad A_t = 2\pi r h + 2\pi r^2 = 2\pi r(h + r) \qquad V = \pi r^2 h$$</p>
+        <p>O <strong>cilindro circular reto</strong> tem duas bases circulares de raio $r$, paralelas, e altura $h$; suas geratrizes são perpendiculares às bases ($g = h$). Planificado, a superfície lateral vira um retângulo de lados $2\pi r$ e $h$. Como num prisma, o volume é a área da base vezes a altura.</p>
+        <p style="text-align: center;">$$A_B = \pi r^2 \qquad A_L = 2\pi r h \qquad A_T = 2\pi r(r + h) \qquad V = \pi r^2 h$$</p>
     </section>
 </div>
 
 <section class="conteudo-teorico-completo" id="teoria">
     <div class="passo-teoria">
-        <h3>📖 Cilindros</h3>
+        <h3>📖 Cilindros: Área e Volume</h3>
         <h4>1. Elementos e Planificação</h4>
-        <ul>
-            <li><strong>Bases:</strong> dois círculos de raio $r$, em planos paralelos;</li>
-            <li><strong>Eixo:</strong> reta que passa pelos centros das bases; no cilindro <strong>reto</strong>, o eixo é perpendicular às bases;</li>
-            <li><strong>Altura ($h$):</strong> distância entre as bases; <strong>geratriz ($g$):</strong> segmento paralelo ao eixo com extremidades nas bases (no cilindro reto, $g = h$).</li>
-        </ul>
         <figure class="figura-aula figura-grande">
-            <svg viewBox="0 0 560 250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Cilindro reto de raio r e altura h e sua planificação: duas bases circulares e um retângulo de lados 2 pi r e h" style="width:100%; max-width:580px; display:block; margin:0 auto;">
-  <g stroke="#2c3e50" stroke-width="2.5">
-    <path d="M 40 50 L 40 200 A 70 22 0 0 0 180 200 L 180 50" fill="#eaf2fb"/>
-    <ellipse cx="110" cy="50" rx="70" ry="22" fill="#d6eaf8"/>
-    <path d="M 40 200 A 70 22 0 0 1 180 200" fill="none" stroke-dasharray="6,4" stroke-width="1.5"/>
+            <svg viewBox="0 0 560 230" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Cilindro reto de raio r e altura h e sua planificação: um retângulo de lados 2πr e h e dois círculos de raio r" style="width:100%; max-width:560px; display:block; margin:0 auto;">
+  <path d="M45.0,185.0 A55.0,16.5 0 0,0 155.0,185.0 L155.0,55.0 A55.0,16.5 0 0,0 45.0,55.0 Z" fill="#3498db" fill-opacity="0.13" stroke="none"/>
+  <path d="M45.0,185.0 A55.0,16.5 0 0,1 155.0,185.0" fill="none" stroke="#2c3e50" stroke-width="1.4" stroke-dasharray="6,4" stroke-opacity="0.7"/>
+  <path d="M45.0,185.0 A55.0,16.5 0 0,0 155.0,185.0" fill="none" stroke="#2c3e50" stroke-width="2.2"/>
+  <ellipse cx="100.0" cy="55.0" rx="55.0" ry="16.5" fill="#3498db" fill-opacity="0.18" stroke="#2c3e50" stroke-width="2.2"/>
+  <line x1="45.0" y1="185.0" x2="45.0" y2="55.0" stroke="#2c3e50" stroke-width="2.2"/><line x1="155.0" y1="185.0" x2="155.0" y2="55.0" stroke="#2c3e50" stroke-width="2.2"/>
+  <line x1="100" y1="185" x2="155" y2="185" stroke="#e74c3c" stroke-width="2.5"/>
+  <line x1="100" y1="185" x2="100" y2="55" stroke="#27ae60" stroke-width="2" stroke-dasharray="5,3"/>
+  <circle cx="100" cy="185" r="3" fill="#2c3e50"/><circle cx="100" cy="55" r="3" fill="#2c3e50"/>
+  <g font-family="Oswald, sans-serif" font-size="15" text-anchor="middle">
+    <text x="127.5" y="205" fill="#e74c3c">r</text><text x="110" y="120.0" fill="#27ae60">h</text>
+    <text x="31" y="120.0" fill="#2c3e50" font-size="12">g</text>
   </g>
-  <line x1="110" y1="50" x2="110" y2="200" stroke="#7f8c8d" stroke-width="1.5" stroke-dasharray="4,3"/>
-  <line x1="110" y1="50" x2="180" y2="50" stroke="#e74c3c" stroke-width="2.5"/>
-  <line x1="195" y1="50" x2="195" y2="200" stroke="#3498db" stroke-width="2"/>
-  <g fill="#eaf2fb" stroke="#2c3e50" stroke-width="2.5">
-    <circle cx="380" cy="40" r="30" fill="#d6eaf8"/>
-    <rect x="285" y="72" width="190" height="110"/>
-    <circle cx="380" cy="214" r="30" fill="#d6eaf8"/>
-  </g>
-  <g font-family="Oswald, sans-serif" font-size="16">
-    <text x="136" y="44" fill="#e74c3c">r</text><text x="201" y="130" fill="#3498db">h</text><text x="114" y="130" fill="#7f8c8d" font-size="13">eixo</text>
-    <text x="350" y="132" fill="#2c3e50">A&#8467; = 2πr · h</text>
-    <text x="345" y="196" fill="#e74c3c" font-size="14">2πr</text><text x="482" y="132" fill="#3498db">h</text>
-    <text x="480" y="44" fill="#2c3e50" font-size="14">base: πr²</text>
+  <rect x="260" y="70" width="220" height="90" fill="#3498db" fill-opacity="0.2" stroke="#2c3e50" stroke-width="2"/>
+  <circle cx="370.0" cy="36" r="34" fill="#8e44ad" fill-opacity="0.2" stroke="#2c3e50" stroke-width="2"/>
+  <circle cx="370.0" cy="194" r="34" fill="#8e44ad" fill-opacity="0.2" stroke="#2c3e50" stroke-width="2"/>
+  <g font-family="Oswald, sans-serif" font-size="14" fill="#2c3e50" text-anchor="middle">
+    <text x="370.0" y="120.0">área lateral: 2πr · h</text>
+    <text x="496" y="120.0">h</text><text x="315.0" y="176">2πr</text>
+    <text x="434.0" y="41" font-size="12">πr²</text>
   </g>
 </svg>
-            <figcaption>Figura 1: Cilindro reto e sua planificação: a superfície lateral "desenrolada" é um retângulo de lados $2\pi r$ (contorno da base) e $h$.</figcaption>
+            <figcaption>Figura 1: Cilindro de raio $r$ e altura $h$, e sua planificação.</figcaption>
         </figure>
-    </div>
-
-    <div class="passo-teoria">
-        <h4>2. Áreas</h4>
         <ul>
-            <li><strong>Área da base:</strong> $A_b = \pi r^2$;</li>
-            <li><strong>Área lateral:</strong> $A_\ell = 2\pi r h$ (área do retângulo da planificação);</li>
-            <li><strong>Área total:</strong> $A_t = A_\ell + 2A_b = 2\pi r h + 2\pi r^2$.</li>
+            <li><strong>Bases:</strong> dois círculos congruentes e paralelos; <strong>eixo:</strong> reta que passa pelos centros;</li>
+            <li><strong>Geratriz</strong> $g$: segmento lateral paralelo ao eixo; no cilindro <strong>reto</strong>, $g = h$ (no oblíquo, o eixo é inclinado);</li>
+            <li><strong>Superfície lateral:</strong> ao "desenrolar", vira um retângulo com base igual ao comprimento da circunferência, $2\pi r$, e altura $h$.</li>
         </ul>
-        <p><strong>Atenção:</strong> em uma embalagem <em>aberta</em> (um copo, por exemplo), soma-se apenas uma base.</p>
     </div>
 
     <div class="passo-teoria">
-        <h4>3. Volume</h4>
-        <p>Pelo Princípio de Cavalieri, o volume de qualquer cilindro é o produto da área da base pela altura:</p>
+        <h4>2. Áreas e Volume</h4>
         <p style="text-align: center; font-size: 1.15rem; background-color: #f8f9fa; padding: 15px; border-left: 5px solid #3498db; margin: 20px 0;">
-            $$V = A_b \cdot h = \pi r^2 h$$
+            $$A_L = 2\pi r h \qquad A_T = 2\pi r h + 2\pi r^2 = 2\pi r(r + h) \qquad V = \pi r^2 h$$
         </p>
-        <p>Como o volume depende de $r^2$, <strong>dobrar o raio quadruplica o volume</strong>, enquanto dobrar a altura apenas dobra o volume. Conversões úteis: $1$ dm³ $= 1$ L, $1$ m³ $= 1\,000$ L e $1$ cm³ $= 1$ mL.</p>
+        <p>Pelo princípio de Cavalieri, $V = A_B \cdot h$ vale também para o cilindro oblíquo. Como $r$ aparece ao quadrado, dobrar o raio multiplica o volume por $4$, e dobrar a altura, por $2$.</p>
     </div>
 
     <div class="passo-teoria">
-        <h4>4. Secção Meridiana e Cilindro Equilátero</h4>
+        <h4>3. Seção Meridiana e Cilindro Equilátero</h4>
+        <figure class="figura-aula figura-grande">
+            <svg viewBox="0 0 420 210" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Seção meridiana de um cilindro: retângulo de base 2r e altura h; no cilindro equilátero, a seção é um quadrado" style="width:100%; max-width:420px; display:block; margin:0 auto;">
+  <path d="M50.0,170.0 A50.0,15.0 0 0,0 150.0,170.0 L150.0,30.0 A50.0,15.0 0 0,0 50.0,30.0 Z" fill="#7f8c8d" fill-opacity="0.13" stroke="none"/>
+  <path d="M50.0,170.0 A50.0,15.0 0 0,1 150.0,170.0" fill="none" stroke="#2c3e50" stroke-width="1.4" stroke-dasharray="6,4" stroke-opacity="0.7"/>
+  <path d="M50.0,170.0 A50.0,15.0 0 0,0 150.0,170.0" fill="none" stroke="#2c3e50" stroke-width="2.2"/>
+  <ellipse cx="100.0" cy="30.0" rx="50.0" ry="15.0" fill="#7f8c8d" fill-opacity="0.18" stroke="#2c3e50" stroke-width="2.2"/>
+  <line x1="50.0" y1="170.0" x2="50.0" y2="30.0" stroke="#2c3e50" stroke-width="2.2"/><line x1="150.0" y1="170.0" x2="150.0" y2="30.0" stroke="#2c3e50" stroke-width="2.2"/>
+  <polygon points="59.0,178.6 141.0,161.4 141.0,21.4 59.0,38.6" fill="#e67e22" fill-opacity="0.4" stroke="#e67e22" stroke-width="2"/>
+  <text x="100" y="200" font-family="Oswald, sans-serif" font-size="13" text-anchor="middle" fill="#2c3e50">cilindro qualquer</text>
+  <path d="M250.0,170.0 A60.0,18.0 0 0,0 370.0,170.0 L370.0,50.0 A60.0,18.0 0 0,0 250.0,50.0 Z" fill="#7f8c8d" fill-opacity="0.13" stroke="none"/>
+  <path d="M250.0,170.0 A60.0,18.0 0 0,1 370.0,170.0" fill="none" stroke="#2c3e50" stroke-width="1.4" stroke-dasharray="6,4" stroke-opacity="0.7"/>
+  <path d="M250.0,170.0 A60.0,18.0 0 0,0 370.0,170.0" fill="none" stroke="#2c3e50" stroke-width="2.2"/>
+  <ellipse cx="310.0" cy="50.0" rx="60.0" ry="18.0" fill="#7f8c8d" fill-opacity="0.18" stroke="#2c3e50" stroke-width="2.2"/>
+  <line x1="250.0" y1="170.0" x2="250.0" y2="50.0" stroke="#2c3e50" stroke-width="2.2"/><line x1="370.0" y1="170.0" x2="370.0" y2="50.0" stroke="#2c3e50" stroke-width="2.2"/>
+  <polygon points="260.9,180.3 359.1,159.7 359.1,39.7 260.9,60.3" fill="#e67e22" fill-opacity="0.4" stroke="#e67e22" stroke-width="2"/>
+  <text x="310" y="200" font-family="Oswald, sans-serif" font-size="13" text-anchor="middle" fill="#2c3e50">equilátero: h = 2r</text>
+</svg>
+            <figcaption>Figura 2: A seção meridiana (plano que contém o eixo) é um retângulo $2r \times h$; no cilindro equilátero, um quadrado.</figcaption>
+        </figure>
         <ul>
-            <li><strong>Secção meridiana:</strong> corte do cilindro por um plano que contém o eixo; é um retângulo de lados $2r$ e $h$;</li>
-            <li><strong>Cilindro equilátero:</strong> a secção meridiana é um quadrado, ou seja, $h = 2r$. Nesse caso, $A_t = 6\pi r^2$ e $V = 2\pi r^3$.</li>
+            <li>Seção meridiana: retângulo de base $2r$ e altura $h$, com área $2rh$;</li>
+            <li><strong>Cilindro equilátero:</strong> a seção meridiana é um quadrado, ou seja, $h = 2r$. Então $A_L = 4\pi r^2$, $A_T = 6\pi r^2$ e $V = 2\pi r^3$.</li>
         </ul>
     </div>
 </section>
@@ -113,41 +122,41 @@
     <h3>💡 Matemática em Ação</h3>
     <div class="cards-aplicacao">
         <div class="card">
-            <h4>🥫 Latas e Embalagens</h4>
-            <p>O volume diz quanto produto cabe na lata ($\pi r^2 h$), e a área total diz quanto material é gasto para fabricá-la ($2\pi r h + 2\pi r^2$). As indústrias escolhem $r$ e $h$ para guardar o volume desejado gastando o mínimo de metal.</p>
+            <h4>🥫 Embalagens</h4>
+            <p>Uma lata de $350$ mL usa menos alumínio quando a altura é próxima do diâmetro (cilindro quase equilátero): é a forma que minimiza a área total para um volume fixo.</p>
         </div>
         <div class="card" style="border-left-color: #2ecc71;">
-            <h4>💧 Caixas-d'Água e Reservatórios</h4>
-            <p>Reservatórios cilíndricos são dimensionados pelo consumo: multiplica-se o número de pessoas pelo consumo diário e pelo número de dias, converte-se para m³ e divide-se pela área da base para obter a altura necessária.</p>
+            <h4>🚰 Encanamentos</h4>
+            <p>Um cano de $4$ cm de diâmetro e $50$ m de comprimento guarda $\pi \cdot 2^2 \cdot 5\,000 \approx 62{,}8$ litros de água: é a água que sai "fria" da torneira antes de chegar a quente.</p>
         </div>
     </div>
 </section>
 <section class="questoes-resolvidas" id="resolvidas">
     <h3>✅ 5 Questões Resolvidas (R 1 a 5)</h3>
     <article class="questao">
-        <h4>R 1: Áreas e Volume</h4>
-        <p><strong>Enunciado:</strong> Um cilindro reto tem raio da base $3$ cm e altura $10$ cm. Calcule a área lateral, a área total e o volume.</p>
-        <div class="resolucao-bloco"><p><strong>Resolução:</strong><br>Área da base: $A_b = \pi r^2 = 9\pi$ cm².<br>Área lateral (retângulo $2\pi r \times h$): $A_\ell = 2\pi \cdot 3 \cdot 10 = \mathbf{60\pi}$ cm².<br>Área total: $A_t = A_\ell + 2A_b = 60\pi + 18\pi = \mathbf{78\pi}$ cm². Volume: $V = 9\pi \cdot 10 = \mathbf{90\pi}$ cm³.</p></div>
+        <h4>R 1: O Cilindro Completo</h4>
+        <p><strong>Enunciado:</strong> Um cilindro reto tem raio da base $3$ cm e altura $10$ cm. Calcule a área da base, a área lateral, a área total e o volume.</p>
+        <div class="resolucao-bloco"><p><strong>Resolução:</strong><br>$A_B = \pi r^2 = \mathbf{9\pi}$ cm². \ $A_L = 2\pi r h = 2\pi \cdot 3 \cdot 10 = \mathbf{60\pi}$ cm².<br>$A_T = A_L + 2A_B = 60\pi + 18\pi = \mathbf{78\pi}$ cm².<br>$V = A_B \cdot h = 9\pi \cdot 10 = \mathbf{90\pi}$ cm³.</p></div>
     </article>
     <article class="questao">
-        <h4>R 2: Cilindro Equilátero</h4>
-        <p><strong>Enunciado:</strong> Um cilindro equilátero tem raio da base $4$ cm. Calcule a área total e o volume.</p>
-        <div class="resolucao-bloco"><p><strong>Resolução:</strong><br>No cilindro equilátero, a secção meridiana é um quadrado: $h = 2r = 8$ cm.<br>$A_t = 2\pi r h + 2\pi r^2 = 2\pi \cdot 4 \cdot 8 + 2\pi \cdot 16 = 64\pi + 32\pi = \mathbf{96\pi}$ cm² ($= 6\pi r^2$).<br>$V = \pi \cdot 16 \cdot 8 = \mathbf{128\pi}$ cm³ ($= 2\pi r^3$).</p></div>
+        <h4>R 2: O Cilindro Equilátero</h4>
+        <p><strong>Enunciado:</strong> Um cilindro equilátero tem raio da base $4$ cm. Calcule a área da seção meridiana, a área total e o volume.</p>
+        <div class="resolucao-bloco"><p><strong>Resolução:</strong><br>Equilátero: $h = 2r = 8$ cm. A seção meridiana é um quadrado $8 \times 8$: área $\mathbf{64}$ cm².<br>$A_T = 2\pi r(r + h) = 2\pi \cdot 4 \cdot 12 = \mathbf{96\pi}$ cm².<br>$V = \pi \cdot 16 \cdot 8 = \mathbf{128\pi}$ cm³.</p></div>
     </article>
     <article class="questao">
         <h4>R 3: A Lata de Refrigerante</h4>
-        <p><strong>Enunciado:</strong> Uma lata cilíndrica tem diâmetro da base $6$ cm e altura $12$ cm. Quantos mililitros ela comporta? (Use $\pi = 3{,}14$ e $1$ cm³ $= 1$ mL.)</p>
-        <div class="resolucao-bloco"><p><strong>Resolução:</strong><br>Raio: $r = 3$ cm. Volume: $V = \pi r^2 h = 3{,}14 \cdot 9 \cdot 12$.<br>$V = 339{,}12$ cm³ $\approx \mathbf{339}$ mL.</p></div>
+        <p><strong>Enunciado:</strong> Uma lata cilíndrica tem $8$ cm de diâmetro e $12$ cm de altura. Qual a sua capacidade, em mL? (Use $\pi = 3{,}14$.)</p>
+        <div class="resolucao-bloco"><p><strong>Resolução:</strong><br>$r = 4$ cm: $V = \pi \cdot 16 \cdot 12 = 192\pi$ cm³.<br>$V \approx 192 \cdot 3{,}14 = 602{,}88$ cm³ $\approx \mathbf{603}$ mL.</p></div>
     </article>
     <article class="questao">
-        <h4>R 4: Da Planificação ao Cilindro</h4>
-        <p><strong>Enunciado:</strong> A superfície lateral de um cilindro, planificada, é um retângulo de $12\pi$ cm por $10$ cm, em que $12\pi$ cm é o comprimento da circunferência da base. Calcule o raio e o volume do cilindro.</p>
-        <div class="resolucao-bloco"><p><strong>Resolução:</strong><br>O lado $12\pi$ é o contorno da base: $2\pi r = 12\pi \implies r = 6$ cm; a altura é $h = 10$ cm.<br>$V = \pi \cdot 6^2 \cdot 10 = \mathbf{360\pi}$ cm³.</p></div>
+        <h4>R 4: Enrolando a Folha</h4>
+        <p><strong>Enunciado:</strong> Uma folha retangular de $31{,}4$ cm por $20$ cm é enrolada, unindo os lados de $20$ cm, formando a superfície lateral de um cilindro. Qual o volume desse cilindro? (Use $\pi = 3{,}14$.)</p>
+        <div class="resolucao-bloco"><p><strong>Resolução:</strong><br>O lado de $31{,}4$ cm vira a circunferência da base: $2\pi r = 31{,}4 \implies r = 5$ cm; a altura é $20$ cm.<br>$V = 3{,}14 \cdot 25 \cdot 20 = \mathbf{1\,570}$ cm³.</p></div>
     </article>
     <article class="questao">
-        <h4>R 5: Secção Meridiana</h4>
-        <p><strong>Enunciado:</strong> A secção meridiana de um cilindro reto é um retângulo de área $48$ cm². Sabendo que a altura mede $6$ cm, calcule o volume do cilindro.</p>
-        <div class="resolucao-bloco"><p><strong>Resolução:</strong><br>A secção meridiana (corte pelo eixo) é um retângulo de base $2r$ e altura $h$: $2r \cdot 6 = 48 \implies r = 4$ cm.<br>$V = \pi \cdot 16 \cdot 6 = \mathbf{96\pi}$ cm³.</p></div>
+        <h4>R 5: Mais Largo ou Mais Alto?</h4>
+        <p><strong>Enunciado:</strong> Compare os volumes de dois cilindros: o primeiro com raio $2$ e altura $9$; o segundo com raio $3$ e altura $4$.</p>
+        <div class="resolucao-bloco"><p><strong>Resolução:</strong><br>$V_1 = \pi \cdot 4 \cdot 9 = 36\pi$ e $V_2 = \pi \cdot 9 \cdot 4 = 36\pi$.<br>Os volumes são <strong>iguais</strong>. O raio aparece ao quadrado: aumentar o raio pesa mais do que aumentar a altura na mesma proporção.</p></div>
     </article>
 </section>
 
@@ -155,108 +164,107 @@
     <h3>✍️ 10 Questões Propostas (P 6 a 15)</h3>
     <article class="questao">
         <h4>P 6: Volume</h4>
-        <p><strong>Enunciado:</strong> Calcule o volume de um cilindro de raio $5$ cm e altura $8$ cm.</p>
+        <p><strong>Enunciado:</strong> Calcule o volume de um cilindro de raio $5$ cm e altura $4$ cm.</p>
         <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>$V = \pi r^2 h = \pi \cdot 25 \cdot 8$.<br>$V = \mathbf{200\pi}$ cm³.</p></div>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>$V = \pi \cdot 25 \cdot 4$.<br>$V = \mathbf{100\pi}$ cm³.</p></div>
     </article>
     <article class="questao">
-        <h4>P 7: Área Lateral e Total</h4>
-        <p><strong>Enunciado:</strong> Calcule a área lateral e a área total de um cilindro de raio $2$ cm e altura $7$ cm.</p>
+        <h4>P 7: Área Lateral</h4>
+        <p><strong>Enunciado:</strong> Calcule a área lateral de um cilindro de raio $2$ cm e altura $7$ cm.</p>
         <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>$A_\ell = 2\pi \cdot 2 \cdot 7 = \mathbf{28\pi}$ cm².<br>$A_t = 28\pi + 2 \cdot 4\pi = \mathbf{36\pi}$ cm².</p></div>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>$A_L = 2\pi \cdot 2 \cdot 7$.<br>$A_L = \mathbf{28\pi}$ cm².</p></div>
     </article>
     <article class="questao">
-        <h4>P 8: Caixa-d'Água</h4>
-        <p><strong>Enunciado:</strong> Uma caixa-d'água cilíndrica tem diâmetro interno de $2$ m e altura interna de $1{,}5$ m. Quantos litros ela comporta? (Use $\pi = 3$ e $1$ m³ $= 1\,000$ L.)</p>
+        <h4>P 8: Área Total</h4>
+        <p><strong>Enunciado:</strong> Calcule a área total de um cilindro de raio $3$ cm e altura $5$ cm.</p>
         <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>$r = 1$ m: $V = 3 \cdot 1^2 \cdot 1{,}5 = 4{,}5$ m³.<br>$4{,}5$ m³ $= \mathbf{4\,500}$ litros.</p></div>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>$A_T = 2\pi r(r + h) = 2\pi \cdot 3 \cdot 8$.<br>$A_T = \mathbf{48\pi}$ cm².</p></div>
     </article>
     <article class="questao">
-        <h4>P 9: Cilindro Equilátero</h4>
-        <p><strong>Enunciado:</strong> Um cilindro equilátero tem altura $10$ cm. Calcule o seu volume e a sua área total.</p>
+        <h4>P 9: A Caixa-d'Água</h4>
+        <p><strong>Enunciado:</strong> Uma caixa-d'água cilíndrica tem raio $1$ m e altura $1{,}5$ m. Quantos litros ela comporta? (Use $\pi = 3{,}14$.)</p>
         <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>$h = 2r = 10 \implies r = 5$ cm.<br>$V = \pi \cdot 25 \cdot 10 = \mathbf{250\pi}$ cm³; \ $A_t = 6\pi r^2 = \mathbf{150\pi}$ cm².</p></div>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>$V = 3{,}14 \cdot 1 \cdot 1{,}5 = 4{,}71$ m³.<br>$4{,}71$ m³ $= \mathbf{4\,710}$ L.</p></div>
     </article>
     <article class="questao">
-        <h4>P 10: Encontrando a Altura</h4>
-        <p><strong>Enunciado:</strong> Um cilindro tem volume $45\pi$ cm³ e raio da base $3$ cm. Calcule a sua altura.</p>
+        <h4>P 10: A Altura</h4>
+        <p><strong>Enunciado:</strong> Um cilindro de raio $3$ cm tem volume $72\pi$ cm³. Qual a sua altura?</p>
         <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>$\pi \cdot 9 \cdot h = 45\pi$.<br>$h = \mathbf{5}$ cm.</p></div>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>$9\pi h = 72\pi$.<br>$h = \mathbf{8}$ cm.</p></div>
     </article>
     <article class="questao">
-        <h4>P 11: Rótulo da Lata</h4>
-        <p><strong>Enunciado:</strong> Um rótulo cobre toda a superfície lateral de uma lata cilíndrica de raio $4$ cm e altura $11$ cm, sem sobreposição. Qual é a área do rótulo? (Use $\pi = 3{,}14$.)</p>
+        <h4>P 11: Equilátero pela Altura</h4>
+        <p><strong>Enunciado:</strong> Um cilindro equilátero tem altura $10$ cm. Qual o seu volume?</p>
         <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>O rótulo é a superfície lateral: $A_\ell = 2\pi r h = 2 \cdot 3{,}14 \cdot 4 \cdot 11$.<br>$A_\ell = \mathbf{276{,}32}$ cm².</p></div>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>$h = 2r \implies r = 5$ cm.<br>$V = \pi \cdot 25 \cdot 10 = \mathbf{250\pi}$ cm³.</p></div>
     </article>
     <article class="questao">
-        <h4>P 12: Dobrando o Raio</h4>
-        <p><strong>Enunciado:</strong> O que acontece com o volume de um cilindro quando (a) a altura é dobrada; (b) o raio é dobrado?</p>
+        <h4>P 12: Pela Seção Meridiana</h4>
+        <p><strong>Enunciado:</strong> A seção meridiana de um cilindro é um retângulo de $6$ cm (base) por $10$ cm (altura). Qual o volume do cilindro?</p>
         <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>(a) $V = \pi r^2 h$ é proporcional a $h$: o volume <strong>dobra</strong>.<br>(b) $V$ é proporcional a $r^2$: o volume fica multiplicado por $2^2$, isto é, <strong>quadruplica</strong>.</p></div>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>Diâmetro $6 \implies r = 3$; $h = 10$.<br>$V = \pi \cdot 9 \cdot 10 = \mathbf{90\pi}$ cm³.</p></div>
     </article>
     <article class="questao">
-        <h4>P 13: Transferindo Líquido</h4>
-        <p><strong>Enunciado:</strong> Um recipiente cilíndrico de raio $10$ cm contém água até a altura de $9$ cm. Toda essa água é despejada em outro recipiente cilíndrico de raio $15$ cm. Que altura a água atinge?</p>
+        <h4>P 13: O Nível Sobe</h4>
+        <p><strong>Enunciado:</strong> Num copo cilíndrico de raio $4$ cm com água, coloca-se uma pedra de volume $100\pi$ cm³, que afunda totalmente. Quanto o nível sobe?</p>
         <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>Volume de água: $\pi \cdot 100 \cdot 9 = 900\pi$ cm³.<br>No novo recipiente: $\pi \cdot 225 \cdot h = 900\pi \implies h = \mathbf{4}$ cm.</p></div>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>$\Delta V = \pi r^2 \cdot \Delta h \implies 100\pi = 16\pi \, \Delta h$.<br>$\Delta h = \mathbf{6{,}25}$ cm.</p></div>
     </article>
     <article class="questao">
-        <h4>P 14: Tubo Oco</h4>
-        <p><strong>Enunciado:</strong> Um tubo cilíndrico tem raio externo $5$ cm, raio interno $4$ cm e comprimento $20$ cm. Calcule o volume de material do tubo.</p>
+        <h4>P 14: Dobrando o Raio</h4>
+        <p><strong>Enunciado:</strong> Se o raio de um cilindro dobra e a altura se mantém, o que acontece com o volume?</p>
         <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>$V = \pi(R^2 - r^2)h = \pi(25 - 16) \cdot 20$.<br>$V = \mathbf{180\pi}$ cm³.</p></div>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>$V' = \pi (2r)^2 h = 4\pi r^2 h$.<br>O volume fica <strong>multiplicado por 4</strong>.</p></div>
     </article>
     <article class="questao">
-        <h4>P 15: Elevação do Nível</h4>
-        <p><strong>Enunciado:</strong> Uma pedra é mergulhada em um aquário cilíndrico de raio $10$ cm com água, ficando totalmente submersa, e o nível da água sobe $3$ cm. Qual é o volume da pedra? (Use $\pi = 3{,}14$.)</p>
+        <h4>P 15: O Rolo de Pintura</h4>
+        <p><strong>Enunciado:</strong> Um rolo de pintura cilíndrico tem raio $3$ cm e comprimento $20$ cm. Que área ele pinta em uma volta completa? (Use $\pi = 3{,}14$.)</p>
         <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>O volume da pedra é o volume do cilindro de água deslocada: $V = \pi \cdot 10^2 \cdot 3 = 300\pi$ cm³.<br>$V = 300 \cdot 3{,}14 = \mathbf{942}$ cm³.</p></div>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>Uma volta pinta a área lateral: $A_L = 2\pi \cdot 3 \cdot 20 = 120\pi$ cm².<br>$A_L \approx \mathbf{376{,}8}$ cm².</p></div>
     </article>
 </section>
 
 <section class="TESTE" id="testes">
     <h3>🎓 TESTES (T 16 a 20)</h3>
     <article class="questao">
-        <h4>T 16: (ENEM 2011, 2ª aplicação) Dobrando o Raio do Reservatório</h4>
-        <p>Uma cidade possui um reservatório de água $C_1$ na forma de um cilindro circular reto, com $5$ metros de altura e capacidade para $100$ m³ de água. Foi construído outro reservatório $C_2$, com o mesmo formato do anterior, com a mesma altura, cujo raio da base é o dobro de $C_1$.</p>
-        <p>Nessas condições, a razão entre os volumes de $C_1$ e de $C_2$ é igual a</p>
-        <p>A) 2<br>B) 1<br>C) $\dfrac{1}{2}$<br>D) $\dfrac{1}{4}$<br>E) $\dfrac{1}{8}$</p>
+        <h4>T 16: (UECE) A Superfície Total</h4>
+        <p>Um cilindro circular reto tem altura e raio da base iguais a $2$ m.</p>
+        <p>A medida da área da superfície total desse cilindro, em m², é</p>
+        <p>A) $14\pi$.<br>B) $12\pi$.<br>C) $16\pi$.<br>D) $10\pi$.</p>
         <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>D</strong>.<br>Com a mesma altura, o volume $V = \pi r^2 h$ é proporcional a $r^2$.<br>Raio dobrado: $V_2 = \pi(2r)^2h = 4\pi r^2 h = 4V_1$.<br>$\dfrac{V_1}{V_2} = \mathbf{\dfrac{1}{4}}$ (os $100$ m³ e os $5$ m de altura não são necessários).</p></div>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>C</strong>.<br>$A_T = 2\pi r(r + h) = 2\pi \cdot 2 \cdot 4 = \mathbf{16\pi}$ m². Alternativa <strong>C</strong>.</p></div>
     </article>
     <article class="questao">
-        <h4>T 17: (ENEM 2021) O Reservatório da Vila</h4>
-        <p>Uma vila com $100$ habitantes passa por uma estiagem prolongada, e o governo local decide construir um reservatório na forma de um cilindro circular reto, com diâmetro interno da base de $5$ metros, que deverá abastecer a população por exatamente sete dias consecutivos. No oitavo dia, o reservatório vazio é completamente reabastecido por carros-pipa. Considere que cada habitante consome, em média, $120$ litros de água por dia. Use $3$ como aproximação para $\pi$.</p>
-        <p>Nas condições apresentadas, o reservatório deverá ser construído com uma altura interna mínima, em metro, igual a</p>
-        <p>A) 1,12<br>B) 3,10<br>C) 4,35<br>D) 4,48<br>E) 5,60</p>
+        <h4>T 17: (Cesgranrio) O Recipiente a 40%</h4>
+        <p>Um recipiente cilíndrico tem diâmetro da base de $40$ cm e altura de $\dfrac{100}{\pi}$ cm. Ele está com $40\%$ de sua capacidade ocupada por um líquido.</p>
+        <p>O volume de líquido, em litros, é aproximadamente</p>
+        <p>A) 16.<br>B) 18.<br>C) 20.<br>D) 30.<br>E) 40.</p>
         <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>D</strong>.<br>Consumo em $7$ dias: $100 \cdot 120 \cdot 7 = 84\,000$ L $= 84$ m³.<br>Base: $r = 2{,}5$ m, $A_b = 3 \cdot 2{,}5^2 = 18{,}75$ m².<br>$18{,}75 \cdot h = 84 \implies h = \mathbf{4{,}48}$ m.</p></div>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>A</strong>.<br>$V = \pi \cdot 20^2 \cdot \frac{100}{\pi} = 40\,000$ cm³ $= 40$ L; $40\%$ disso: $\mathbf{16}$ L. Alternativa <strong>A</strong>.</p></div>
     </article>
     <article class="questao">
-        <h4>T 18: (ENEM 2023, adaptada) Economia de Água</h4>
-        <p>Os $75$ moradores de uma vila são abastecidos por um reservatório na forma de um cilindro circular reto com raio da base de $5$ m, reabastecido no primeiro dia de cada mês. Cada morador consome, em média, $200$ litros de água por dia. Em junho, uma festa aumentou o consumo nos primeiros $20$ dias e, ao final desse período, a coluna de água estava com $1{,}5$ m de altura. Os moradores decidiram então racionar a água nos $10$ dias seguintes. Use $3$ como aproximação para $\pi$.</p>
-        <p>Qual é a quantidade mínima de água, em litro, que cada morador, em média, deverá economizar por dia, de modo que o reservatório não fique sem água nos próximos $10$ dias?</p>
-        <p>A) 50<br>B) 60<br>C) 80<br>D) 140<br>E) 150</p>
+        <h4>T 18: (FAAP) O Ar na Lata de Azeite</h4>
+        <p>Uma lata de azeite tem a forma de um cilindro com $8$ cm de diâmetro e $18{,}5$ cm de altura. No rótulo, o conteúdo indicado é de $900$ mL. Use $\pi = 3{,}14$.</p>
+        <p>O volume de ar dentro da lata “cheia” e fechada é de</p>
+        <p>A) 29,44 mL.<br>B) 10,0 mL.<br>C) 15,60 mL.<br>D) 21,72 mL.<br>E) 35,50 mL.</p>
         <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>A</strong>.<br>Água restante: $V = 3 \cdot 5^2 \cdot 1{,}5 = 112{,}5$ m³ $= 112\,500$ L.<br>Por morador e por dia, durante $10$ dias: $\dfrac{112\,500}{75 \cdot 10} = 150$ L.<br>Economia: $200 - 150 = \mathbf{50}$ L por dia. (A alternativa E, $150$, é o consumo permitido, não a economia.)</p></div>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>A</strong>.<br>$V = 3{,}14 \cdot 4^2 \cdot 18{,}5 = 929{,}44$ mL; ar: $929{,}44 - 900 = \mathbf{29{,}44}$ mL. Alternativa <strong>A</strong>.</p></div>
     </article>
     <article class="questao">
-        <h4>T 19: (ENEM 2019, adaptada) Vasos Comunicantes</h4>
-        <p>Uma construtora pretende conectar um reservatório central cilíndrico ($R_c$), de raio interno $2$ m e altura interna $3{,}30$ m, a quatro reservatórios cilíndricos auxiliares ($R_1$, $R_2$, $R_3$ e $R_4$), cada um com raio interno e altura interna de $1{,}5$ m. As ligações são feitas por canos cilíndricos de $0{,}10$ m de diâmetro interno e $20$ m de comprimento, conectados próximos às bases dos reservatórios.</p>
-        <p>Inicialmente, $R_c$ está cheio e os auxiliares, vazios. Abertos os registros, a água escoa e, pelo princípio dos vasos comunicantes, as alturas das colunas de água em todos os reservatórios se igualam quando o fluxo cessa.</p>
-        <p>A medida, em metro, das alturas das colunas de água nos reservatórios auxiliares, após cessar o fluxo entre eles, é</p>
-        <p>A) 1,44<br>B) 1,16<br>C) 1,10<br>D) 1,00<br>E) 0,95</p>
+        <h4>T 19: (Fuvest) A Caixa e o Cano</h4>
+        <p>Uma caixa-d'água em forma de cubo de $1$ m de aresta está cheia de água e ligada a um cano cilíndrico de $4$ cm de diâmetro e $50$ m de comprimento, inicialmente vazio. Abre-se o registro e a água passa da caixa para o cano até enchê-lo completamente.</p>
+        <p>Nesse momento, a altura da água na caixa é aproximadamente</p>
+        <p>A) 90 cm.<br>B) 92 cm.<br>C) 94 cm.<br>D) 96 cm.<br>E) 98 cm.</p>
         <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>D</strong>.<br>Água inicial: $V = \pi \cdot 2^2 \cdot 3{,}3 = 13{,}2\pi$ m³. Os $4$ canos ficam cheios: $4 \cdot \pi \cdot 0{,}05^2 \cdot 20 = 0{,}2\pi$ m³.<br>Sobram $13\pi$ m³ para os reservatórios, que ficam com a mesma altura $h$: área total das bases $= \pi \cdot 2^2 + 4 \cdot \pi \cdot 1{,}5^2 = 13\pi$ m².<br>$13\pi \cdot h = 13\pi \implies h = \mathbf{1{,}00}$ m. (Quem esquece a água dos canos encontra $\approx 1{,}02$ m.)</p></div>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>C</strong>.<br>Cano: $r = 2$ cm, $h = 5\,000$ cm: $V = 20\,000\pi$ cm³. Na caixa (base $10\,000$ cm²), o nível baixa $2\pi \approx 6{,}28$ cm.<br>Altura: $100 - 6{,}28 \approx \mathbf{94}$ cm. Alternativa <strong>C</strong>.</p></div>
     </article>
     <article class="questao">
-        <h4>T 20: (Questão autoral) Embalagem de Papelão</h4>
-        <p>Uma embalagem cilíndrica fechada, de papelão, tem raio da base $5$ cm e altura $20$ cm. Despreze a espessura do papelão e as sobreposições. Use $\pi = 3$.</p>
-        <p>A quantidade mínima de papelão para fabricar uma embalagem é:</p>
-        <p>A) 450&nbsp;cm²<br>B) 600&nbsp;cm²<br>C) 750&nbsp;cm²<br>D) 900&nbsp;cm²<br>E) 1&thinsp;500&nbsp;cm²</p>
+        <h4>T 20: (Puccamp) O Custo do Tambor</h4>
+        <p>Um tambor cilíndrico, com tampa, tem raio da base $30$ cm e altura $80$ cm. O material da tampa e da lateral custa R\$&nbsp;$100{,}00$ o metro quadrado, e o do fundo, R\$&nbsp;$200{,}00$ o metro quadrado. Use $\pi = 3{,}14$.</p>
+        <p>Desprezando perdas, o custo do material para fabricar o tambor é</p>
+        <p>A) R\$&nbsp;$235{,}50$.<br>B) R\$&nbsp;$242{,}50$.<br>C) R\$&nbsp;$247{,}90$.<br>D) R\$&nbsp;$249{,}10$.<br>E) R\$&nbsp;$250{,}00$.</p>
         <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>C</strong>.<br>Embalagem fechada: área total $= A_\ell + 2A_b = 2\pi r h + 2\pi r^2$.<br>$A_t = 2 \cdot 3 \cdot 5 \cdot 20 + 2 \cdot 3 \cdot 25 = 600 + 150 = \mathbf{750}$ cm². (A alternativa B esquece as duas tampas; a E é o volume, em cm³.)</p></div>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>A</strong>.<br>Lateral $1{,}5072$ m²; tampa e fundo $0{,}2826$ m² cada. Custo: $1{,}7898 \cdot 100 + 0{,}2826 \cdot 200 = $ R\$&nbsp;$\mathbf{235{,}50}$. Alternativa <strong>A</strong>.</p></div>
     </article>
 </section>
 
