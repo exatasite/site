@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2º Ano: Aula 20 - Áreas e Volume no Prisma</title>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../estilo.css">
+    <script>
+        MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']], processEscapes: true } };
+    </script>
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        body.modo-slides { overflow: hidden !important; background-color: #1a1a1a !important; margin: 0; padding: 0; }
+        body.modo-slides .menu-lateral, body.modo-slides header, body.modo-slides .menu-toggle, body.modo-slides #btn-slides, body.modo-slides .nav-global { display: none !important; }
+        .slide-ativo { display: flex !important; flex-direction: column; align-items: center; justify-content: center; position: fixed; top: 0; left: 0; width: 100vw; height: calc(100vh - 70px); background: #ffffff; padding: 40px; z-index: 999; overflow-y: auto !important; box-sizing: border-box; text-align: left; }
+        .slide-ativo > * { max-width: 900px; width: 100%; }
+        .controles-slides { position: fixed; bottom: 0; left: 0; width: 100%; height: 70px; background: #2c3e50; color: white; display: none; justify-content: space-between; align-items: center; padding: 0 20px; z-index: 1001; box-sizing: border-box; }
+        body.modo-slides .controles-slides { display: flex !important; }
+        .info-lateral { flex: 1; font-family: 'Oswald', sans-serif; font-size: 0.9rem; color: #bdc3c7; }
+        .botoes-centrais { display: flex; align-items: center; gap: 15px; justify-content: center; flex: 2; }
+        .btn-nav { padding: 10px 20px; background: #3498db; color: white; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; font-size: 0.9rem; }
+        .btn-nav:hover { background: #2980b9; }
+        #contador-slide { font-family: 'Oswald', sans-serif; min-width: 60px; text-align: center; font-size: 1.1rem; }
+    </style>
+</head>
+<body>
+<button class="menu-toggle" onclick="toggleMenu()">☰</button>
+<nav id="menu-principal" class="nav-global"><ul>
+    <li><a href="../index.html">🏠 Início</a></li>
+    <li><a href="../ensino_medio.html">📚 Ensino Médio</a></li>
+    <li><a href="../ensino_superior.html">🎓 Ensino Superior</a></li>
+</ul></nav>
+<header id="topo">
+    <h1>MATEMÁTICA EM</h1>
+    <p>2º Ano | Aula 20: Áreas e Volume no Prisma</p>
+    <button id="btn-slides" onclick="toggleSlides()">📺 Iniciar Modo Slides</button>
+</header>
+<div class="container"><main class="conteudo-principal"><div class="secao-aula">
+
+<div class="container-resumo" id="resumo">
+    <h3>📚 Resumo</h3>
+    <section class="resumo-conteudo">
+        <p>A <strong>área lateral</strong> de um prisma reto é a soma das áreas dos retângulos laterais: perímetro da base vezes a altura. A <strong>área total</strong> soma as duas bases. Pelo <strong>princípio de Cavalieri</strong>, todo prisma (reto ou oblíquo) tem volume igual à área da base vezes a altura. Para capacidade: $1$ dm³ $= 1$ L e $1$ m³ $= 1\,000$ L.</p>
+        <p style="text-align: center;">$$A_L = 2p \cdot h \qquad A_T = A_L + 2A_B \qquad V = A_B \cdot h$$</p>
+    </section>
+</div>
+
+<section class="conteudo-teorico-completo" id="teoria">
+    <div class="passo-teoria">
+        <h3>📖 Áreas e Volume no Prisma</h3>
+        <h4>1. Planificação e Áreas</h4>
+        <figure class="figura-aula figura-grande">
+            <svg viewBox="0 0 600 260" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Prisma triangular reto e sua planificação: três retângulos laterais de lados ℓ e h e dois triângulos equiláteros de lado ℓ" style="width:100%; max-width:600px; display:block; margin:0 auto;">
+  <polygon points="48.7,109.9 125.6,87.5 35.6,87.5" fill="#3498db" fill-opacity="0.13" stroke="none"/>
+  <polygon points="48.7,229.9 125.6,207.5 125.6,87.5 48.7,109.9" fill="#3498db" fill-opacity="0.13" stroke="none"/>
+  <polygon points="35.6,207.5 48.7,229.9 48.7,109.9 35.6,87.5" fill="#3498db" fill-opacity="0.13" stroke="none"/>
+  <line x1="48.7" y1="229.9" x2="125.6" y2="207.5" stroke="#2c3e50" stroke-width="2.2"/>
+  <line x1="125.6" y1="207.5" x2="35.6" y2="207.5" stroke="#2c3e50" stroke-width="1.4" stroke-dasharray="6,4" stroke-opacity="0.7"/>
+  <line x1="48.7" y1="229.9" x2="35.6" y2="207.5" stroke="#2c3e50" stroke-width="2.2"/>
+  <line x1="48.7" y1="109.9" x2="125.6" y2="87.5" stroke="#2c3e50" stroke-width="2.2"/>
+  <line x1="125.6" y1="87.5" x2="35.6" y2="87.5" stroke="#2c3e50" stroke-width="2.2"/>
+  <line x1="48.7" y1="109.9" x2="35.6" y2="87.5" stroke="#2c3e50" stroke-width="2.2"/>
+  <line x1="125.6" y1="207.5" x2="125.6" y2="87.5" stroke="#2c3e50" stroke-width="2.2"/>
+  <line x1="48.7" y1="229.9" x2="48.7" y2="109.9" stroke="#2c3e50" stroke-width="2.2"/>
+  <line x1="35.6" y1="207.5" x2="35.6" y2="87.5" stroke="#2c3e50" stroke-width="2.2"/>
+  <text x="110" y="250" font-family="Oswald, sans-serif" font-size="13" text-anchor="middle" fill="#2c3e50">prisma</text>
+  <rect x="250" y="70" width="78" height="104" fill="#3498db" fill-opacity="0.25" stroke="#2c3e50" stroke-width="2"/>
+  <rect x="328" y="70" width="78" height="104" fill="#e67e22" fill-opacity="0.25" stroke="#2c3e50" stroke-width="2"/>
+  <rect x="406" y="70" width="78" height="104" fill="#27ae60" fill-opacity="0.25" stroke="#2c3e50" stroke-width="2"/>
+  <polygon points="328,70 406,70 367.0,2.5" fill="#8e44ad" fill-opacity="0.25" stroke="#2c3e50" stroke-width="2"/>
+  <polygon points="328,174 406,174 367.0,241.5" fill="#8e44ad" fill-opacity="0.25" stroke="#2c3e50" stroke-width="2"/>
+  <g font-family="Oswald, sans-serif" font-size="14" fill="#2c3e50" text-anchor="middle">
+    <text x="289.0" y="192">ℓ</text><text x="240" y="127.0">h</text>
+    <text x="494" y="118.0" font-size="12" text-anchor="start">3 retângulos ℓ × h</text>
+    <text x="494" y="136.0" font-size="12" text-anchor="start">2 triângulos (bases)</text>
+  </g>
+</svg>
+            <figcaption>Figura 1: Planificação de um prisma triangular regular: $3$ retângulos $\ell \times h$ e $2$ triângulos equiláteros.</figcaption>
+        </figure>
+        <ul>
+            <li><strong>Área lateral</strong> (prisma reto): $A_L = 2p \cdot h$, em que $2p$ é o perímetro da base;</li>
+            <li><strong>Área total:</strong> $A_T = A_L + 2A_B$;</li>
+            <li><strong>Bases regulares mais usadas:</strong> triângulo equilátero $A_B = \dfrac{\ell^2\sqrt{3}}{4}$; quadrado $A_B = \ell^2$; hexágono regular $A_B = 6 \cdot \dfrac{\ell^2\sqrt{3}}{4} = \dfrac{3\ell^2\sqrt{3}}{2}$.</li>
+        </ul>
+    </div>
+
+    <div class="passo-teoria">
+        <h4>2. Volume e Princípio de Cavalieri</h4>
+        <figure class="figura-aula figura-grande">
+            <svg viewBox="0 0 520 230" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Princípio de Cavalieri: um prisma reto e um prisma oblíquo com bases de mesma área e mesma altura, cortados por um plano horizontal em seções de mesma área, têm o mesmo volume" style="width:100%; max-width:520px; display:block; margin:0 auto;">
+  <polygon points="50.0,200.0 141.2,200.0 141.2,63.2 50.0,63.2" fill="#3498db" fill-opacity="0.13" stroke="none"/>
+  <polygon points="141.2,200.0 178.6,173.8 178.6,37.0 141.2,63.2" fill="#3498db" fill-opacity="0.13" stroke="none"/>
+  <polygon points="50.0,63.2 141.2,63.2 178.6,37.0 87.4,37.0" fill="#3498db" fill-opacity="0.13" stroke="none"/>
+  <line x1="50.0" y1="200.0" x2="141.2" y2="200.0" stroke="#2c3e50" stroke-width="2.2"/>
+  <line x1="141.2" y1="200.0" x2="141.2" y2="63.2" stroke="#2c3e50" stroke-width="2.2"/>
+  <line x1="50.0" y1="63.2" x2="141.2" y2="63.2" stroke="#2c3e50" stroke-width="2.2"/>
+  <line x1="50.0" y1="200.0" x2="50.0" y2="63.2" stroke="#2c3e50" stroke-width="2.2"/>
+  <line x1="87.4" y1="173.8" x2="178.6" y2="173.8" stroke="#2c3e50" stroke-width="1.4" stroke-dasharray="6,4" stroke-opacity="0.7"/>
+  <line x1="178.6" y1="173.8" x2="178.6" y2="37.0" stroke="#2c3e50" stroke-width="2.2"/>
+  <line x1="87.4" y1="37.0" x2="178.6" y2="37.0" stroke="#2c3e50" stroke-width="2.2"/>
+  <line x1="87.4" y1="173.8" x2="87.4" y2="37.0" stroke="#2c3e50" stroke-width="1.4" stroke-dasharray="6,4" stroke-opacity="0.7"/>
+  <line x1="50.0" y1="200.0" x2="87.4" y2="173.8" stroke="#2c3e50" stroke-width="1.4" stroke-dasharray="6,4" stroke-opacity="0.7"/>
+  <line x1="50.0" y1="63.2" x2="87.4" y2="37.0" stroke="#2c3e50" stroke-width="2.2"/>
+  <line x1="141.2" y1="200.0" x2="178.6" y2="173.8" stroke="#2c3e50" stroke-width="2.2"/>
+  <line x1="141.2" y1="63.2" x2="178.6" y2="37.0" stroke="#2c3e50" stroke-width="2.2"/>
+  <polygon points="280.0,200.0 371.2,200.0 432.0,63.2 340.8,63.2" fill="#e67e22" fill-opacity="0.13" stroke="none"/>
+  <polygon points="371.2,200.0 408.6,173.8 469.4,37.0 432.0,63.2" fill="#e67e22" fill-opacity="0.13" stroke="none"/>
+  <polygon points="340.8,63.2 432.0,63.2 469.4,37.0 378.2,37.0" fill="#e67e22" fill-opacity="0.13" stroke="none"/>
+  <line x1="280.0" y1="200.0" x2="371.2" y2="200.0" stroke="#2c3e50" stroke-width="2.2"/>
+  <line x1="371.2" y1="200.0" x2="432.0" y2="63.2" stroke="#2c3e50" stroke-width="2.2"/>
+  <line x1="340.8" y1="63.2" x2="432.0" y2="63.2" stroke="#2c3e50" stroke-width="2.2"/>
+  <line x1="280.0" y1="200.0" x2="340.8" y2="63.2" stroke="#2c3e50" stroke-width="2.2"/>
+  <line x1="317.4" y1="173.8" x2="408.6" y2="173.8" stroke="#2c3e50" stroke-width="1.4" stroke-dasharray="6,4" stroke-opacity="0.7"/>
+  <line x1="408.6" y1="173.8" x2="469.4" y2="37.0" stroke="#2c3e50" stroke-width="2.2"/>
+  <line x1="378.2" y1="37.0" x2="469.4" y2="37.0" stroke="#2c3e50" stroke-width="2.2"/>
+  <line x1="317.4" y1="173.8" x2="378.2" y2="37.0" stroke="#2c3e50" stroke-width="1.4" stroke-dasharray="6,4" stroke-opacity="0.7"/>
+  <line x1="280.0" y1="200.0" x2="317.4" y2="173.8" stroke="#2c3e50" stroke-width="1.4" stroke-dasharray="6,4" stroke-opacity="0.7"/>
+  <line x1="340.8" y1="63.2" x2="378.2" y2="37.0" stroke="#2c3e50" stroke-width="2.2"/>
+  <line x1="371.2" y1="200.0" x2="408.6" y2="173.8" stroke="#2c3e50" stroke-width="2.2"/>
+  <line x1="432.0" y1="63.2" x2="469.4" y2="37.0" stroke="#2c3e50" stroke-width="2.2"/>
+  <polygon points="50.0,131.6 141.2,131.6 178.6,105.4 87.4,105.4" fill="#e74c3c" fill-opacity="0.35" stroke="#e74c3c" stroke-width="1.5"/>
+  <polygon points="310.4,131.6 401.6,131.6 439.0,105.4 347.8,105.4" fill="#e74c3c" fill-opacity="0.35" stroke="#e74c3c" stroke-width="1.5"/>
+  <line x1="25.9" y1="118.5" x2="475.9" y2="118.5" stroke="#e74c3c" stroke-width="1.2" stroke-dasharray="5,4"/>
+  <g font-family="Oswald, sans-serif" font-size="13" fill="#2c3e50" text-anchor="middle">
+    <text x="120" y="224">reto</text><text x="370" y="224">oblíquo</text>
+    <text x="260" y="22">mesma base, mesma altura, seções iguais ⇒ mesmo volume</text>
+  </g>
+</svg>
+            <figcaption>Figura 2: Sólidos de mesma altura cujas seções horizontais têm sempre a mesma área têm o mesmo volume.</figcaption>
+        </figure>
+        <p style="text-align: center; font-size: 1.15rem; background-color: #f8f9fa; padding: 15px; border-left: 5px solid #3498db; margin: 20px 0;">
+            $$V = A_B \cdot h$$
+        </p>
+        <p>O paralelepípedo ($V = abc$) é o caso em que a base é um retângulo $a \times b$ e a altura é $c$. Um prisma oblíquo tem o mesmo volume que o prisma reto de mesma base e mesma altura.</p>
+    </div>
+
+    <div class="passo-teoria">
+        <h4>3. Capacidade e Variação de Nível</h4>
+        <ul>
+            <li>$1$ cm³ $= 1$ mL; $\;1$ dm³ $= 1$ L; $\;1$ m³ $= 1\,000$ L;</li>
+            <li>Em um recipiente prismático, um volume $\Delta V$ de líquido (ou de um objeto mergulhado) muda o nível em $\Delta h = \dfrac{\Delta V}{A_B}$;</li>
+            <li>Mudar a posição de um recipiente fechado não muda o volume do líquido: só muda a base de apoio e, portanto, a altura.</li>
+        </ul>
+    </div>
+</section>
+
+<section class="aplicacoes-reais" id="aplicacoes">
+    <h3>💡 Matemática em Ação</h3>
+    <div class="cards-aplicacao">
+        <div class="card">
+            <h4>🏊 Piscinas e Reservatórios</h4>
+            <p>Uma piscina de $8 \times 4 \times 1{,}5$ m guarda $48$ m³ $= 48\,000$ L. Com a vazão da mangueira, calcula-se o tempo para enchê-la; com a área da base, quanto o nível baixa em um dia de evaporação.</p>
+        </div>
+        <div class="card" style="border-left-color: #2ecc71;">
+            <h4>🏺 Arquimedes</h4>
+            <p>Para medir o volume de um objeto irregular, basta mergulhá-lo num recipiente prismático: o volume é a área da base vezes a subida do nível, a ideia atribuída a Arquimedes.</p>
+        </div>
+    </div>
+</section>
+<section class="questoes-resolvidas" id="resolvidas">
+    <h3>✅ 5 Questões Resolvidas (R 1 a 5)</h3>
+    <article class="questao">
+        <h4>R 1: Prisma Triangular Regular</h4>
+        <p><strong>Enunciado:</strong> Um prisma triangular regular tem aresta da base $6$ cm e altura $10$ cm. Calcule a área da base, a área lateral, a área total e o volume.</p>
+        <div class="resolucao-bloco"><p><strong>Resolução:</strong><br>Base (triângulo equilátero): $A_B = \dfrac{\ell^2\sqrt{3}}{4} = \dfrac{36\sqrt{3}}{4} = \mathbf{9\sqrt{3}}$ cm².<br>Lateral: $3$ retângulos $6 \times 10$: $A_L = \mathbf{180}$ cm². Total: $A_T = A_L + 2A_B = \mathbf{180 + 18\sqrt{3}}$ cm².<br>Volume: $V = A_B \cdot h = 9\sqrt{3} \cdot 10 = \mathbf{90\sqrt{3}}$ cm³.</p></div>
+    </article>
+    <article class="questao">
+        <h4>R 2: Prisma Hexagonal Regular</h4>
+        <p><strong>Enunciado:</strong> Um prisma hexagonal regular tem aresta da base $4$ cm e altura $10$ cm. Calcule a área total e o volume.</p>
+        <div class="resolucao-bloco"><p><strong>Resolução:</strong><br>Base: $6$ triângulos equiláteros: $A_B = 6 \cdot \dfrac{16\sqrt{3}}{4} = 24\sqrt{3}$ cm².<br>$A_L = 6 \cdot 4 \cdot 10 = 240$ cm², logo $A_T = \mathbf{240 + 48\sqrt{3}}$ cm².<br>$V = 24\sqrt{3} \cdot 10 = \mathbf{240\sqrt{3}}$ cm³.</p></div>
+    </article>
+    <article class="questao">
+        <h4>R 3: Base Triangular Retângula</h4>
+        <p><strong>Enunciado:</strong> A base de um prisma reto é um triângulo retângulo de catetos $6$ cm e $8$ cm, e a altura do prisma é $12$ cm. Calcule a área total e o volume.</p>
+        <div class="resolucao-bloco"><p><strong>Resolução:</strong><br>Hipotenusa $10$ cm; $A_B = \dfrac{6 \cdot 8}{2} = 24$ cm².<br>$A_L = (\text{perímetro da base}) \cdot h = 24 \cdot 12 = 288$ cm², e $A_T = 288 + 48 = \mathbf{336}$ cm².<br>$V = 24 \cdot 12 = \mathbf{288}$ cm³.</p></div>
+    </article>
+    <article class="questao">
+        <h4>R 4: A Caixa-d'Água</h4>
+        <p><strong>Enunciado:</strong> Uma caixa-d'água tem a forma de um paralelepípedo de $2$ m por $1{,}5$ m de base e $1$ m de altura. Quantos litros ela comporta? Quanto tempo uma torneira de $20$ L/min leva para enchê-la?</p>
+        <div class="resolucao-bloco"><p><strong>Resolução:</strong><br>$V = 2 \cdot 1{,}5 \cdot 1 = 3$ m³. Como $1$ m³ $= 1\,000$ L, a capacidade é $\mathbf{3\,000}$ L.<br>Tempo: $\dfrac{3\,000}{20} = 150$ min $= \mathbf{2}$ h $\mathbf{30}$ min.</p></div>
+    </article>
+    <article class="questao">
+        <h4>R 5: A Pedra no Aquário</h4>
+        <p><strong>Enunciado:</strong> Um aquário com base de $50$ cm por $30$ cm contém água. Ao mergulhar totalmente uma pedra, o nível sobe $2$ cm. Qual é o volume da pedra?</p>
+        <div class="resolucao-bloco"><p><strong>Resolução:</strong><br>O volume da pedra é o volume de água deslocada: um prisma de base $50 \times 30$ e altura $2$.<br>$V = 50 \cdot 30 \cdot 2 = 3\,000$ cm³ $= \mathbf{3}$ L.</p></div>
+    </article>
+</section>
+
+<section class="questoes-propostas" id="propostas">
+    <h3>✍️ 10 Questões Propostas (P 6 a 15)</h3>
+    <article class="questao">
+        <h4>P 6: Volume</h4>
+        <p><strong>Enunciado:</strong> Calcule o volume de um prisma quadrangular regular de aresta da base $5$ cm e altura $8$ cm.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>$A_B = 25$ cm².<br>$V = 25 \cdot 8 = \mathbf{200}$ cm³.</p></div>
+    </article>
+    <article class="questao">
+        <h4>P 7: Áreas</h4>
+        <p><strong>Enunciado:</strong> Para o prisma do exercício anterior, calcule a área lateral e a área total.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>$A_L = 4 \cdot 5 \cdot 8 = 160$ cm².<br>$A_T = 160 + 2 \cdot 25 = \mathbf{210}$ cm².</p></div>
+    </article>
+    <article class="questao">
+        <h4>P 8: Prisma Triangular</h4>
+        <p><strong>Enunciado:</strong> Calcule o volume de um prisma triangular regular de aresta da base $4$ cm e altura $5$ cm.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>$A_B = \dfrac{16\sqrt{3}}{4} = 4\sqrt{3}$ cm².<br>$V = 4\sqrt{3} \cdot 5 = \mathbf{20\sqrt{3}}$ cm³.</p></div>
+    </article>
+    <article class="questao">
+        <h4>P 9: Prisma Hexagonal</h4>
+        <p><strong>Enunciado:</strong> Calcule o volume de um prisma hexagonal regular de aresta da base $2$ m e altura $3$ m.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>$A_B = 6 \cdot \dfrac{4\sqrt{3}}{4} = 6\sqrt{3}$ m².<br>$V = 6\sqrt{3} \cdot 3 = \mathbf{18\sqrt{3}}$ m³.</p></div>
+    </article>
+    <article class="questao">
+        <h4>P 10: A Piscina</h4>
+        <p><strong>Enunciado:</strong> Quantos litros de água cabem em uma piscina de $8$ m por $4$ m com $1{,}5$ m de profundidade?</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>$V = 8 \cdot 4 \cdot 1{,}5 = 48$ m³.<br>$48$ m³ $= \mathbf{48\,000}$ L.</p></div>
+    </article>
+    <article class="questao">
+        <h4>P 11: A Altura da Caixa</h4>
+        <p><strong>Enunciado:</strong> Uma caixa com base de $30$ cm por $40$ cm tem capacidade de $60$ L. Qual a sua altura?</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>$60$ L $= 60\,000$ cm³ e $A_B = 1\,200$ cm².<br>$h = \dfrac{60\,000}{1\,200} = \mathbf{50}$ cm.</p></div>
+    </article>
+    <article class="questao">
+        <h4>P 12: Altura pelo Volume</h4>
+        <p><strong>Enunciado:</strong> Um prisma tem área da base $15$ cm² e volume $120$ cm³. Qual a sua altura?</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>$V = A_B \cdot h \implies 120 = 15h$.<br>$h = \mathbf{8}$ cm.</p></div>
+    </article>
+    <article class="questao">
+        <h4>P 13: Área Lateral</h4>
+        <p><strong>Enunciado:</strong> Calcule a área lateral de um prisma hexagonal regular de aresta da base $3$ cm e altura $10$ cm.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>São $6$ retângulos de $3 \times 10$.<br>$A_L = 6 \cdot 30 = \mathbf{180}$ cm².</p></div>
+    </article>
+    <article class="questao">
+        <h4>P 14: Subindo o Nível</h4>
+        <p><strong>Enunciado:</strong> Despejam-se $5$ L de água em um aquário com base de $40$ cm por $25$ cm. Quanto o nível sobe?</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>$5$ L $= 5\,000$ cm³ e $A_B = 1\,000$ cm².<br>$\Delta h = \dfrac{5\,000}{1\,000} = \mathbf{5}$ cm.</p></div>
+    </article>
+    <article class="questao">
+        <h4>P 15: A Embalagem</h4>
+        <p><strong>Enunciado:</strong> Uma embalagem tem a forma de um prisma triangular regular de aresta da base $10$ cm e altura $20$ cm. Quanto material (área total) é necessário para fabricá-la?</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>$A_L = 3 \cdot 10 \cdot 20 = 600$ cm² e $2A_B = 2 \cdot 25\sqrt{3} = 50\sqrt{3}$ cm².<br>$A_T = \mathbf{600 + 50\sqrt{3}} \approx 686{,}6$ cm².</p></div>
+    </article>
+</section>
+
+<section class="TESTE" id="testes">
+    <h3>🎓 TESTES (T 16 a 20)</h3>
+    <article class="questao">
+        <h4>T 16: (UECE) Prisma de Base Triangular</h4>
+        <p>Um prisma reto tem como base um triângulo retângulo cujos catetos medem $3$ m e $4$ m. O volume desse prisma é $18$ m³.</p>
+        <p>A medida da área total da superfície do prisma, em m², é</p>
+        <p>A) 36.<br>B) 48.<br>C) 32.<br>D) 52.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>B</strong>.<br>$A_B = \dfrac{3 \cdot 4}{2} = 6$ m², logo $h = \dfrac{18}{6} = 3$ m. A hipotenusa da base mede $5$ m.<br>$A_L = (3 + 4 + 5) \cdot 3 = 36$ m² e $A_T = 36 + 2 \cdot 6 = \mathbf{48}$ m². Alternativa <strong>B</strong>.</p></div>
+    </article>
+    <article class="questao">
+        <h4>T 17: (PUC-PR) A Projeção do Cateto</h4>
+        <p>A base de um prisma reto é o triângulo $ABC$, retângulo em $A$. O cateto $AB$ mede $6$ cm e sua projeção sobre a hipotenusa $BC$ mede $3{,}6$ cm. A altura do prisma é $5$ cm.</p>
+        <p>O volume desse prisma, em cm³, é</p>
+        <p>A) 36.<br>B) 100.<br>C) 120.<br>D) 150.<br>E) 240.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>C</strong>.<br>Relação métrica: $AB^2 = BC \cdot m \implies 36 = BC \cdot 3{,}6 \implies BC = 10$ cm. Então $AC = \sqrt{100 - 36} = 8$ cm.<br>$A_B = \dfrac{6 \cdot 8}{2} = 24$ cm² e $V = 24 \cdot 5 = \mathbf{120}$ cm³. Alternativa <strong>C</strong>.</p></div>
+    </article>
+    <article class="questao">
+        <h4>T 18: (FAMEMA) O Prisma Deitado</h4>
+        <p>Um recipiente tem a forma de um prisma reto de base quadrada, com aresta da base $6$ cm e altura $15$ cm. Com o recipiente apoiado sobre a base, a água em seu interior atinge $10$ cm de altura. O recipiente é então fechado e deitado, apoiado sobre uma de suas faces laterais (não quadradas).</p>
+        <p>Nessa nova posição, a altura atingida pela água será de</p>
+        <p>A) 4 cm.<br>B) 3,5 cm.<br>C) 3 cm.<br>D) 2,5 cm.<br>E) 2 cm.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>A</strong>.<br>Volume de água: $6 \cdot 6 \cdot 10 = 360$ cm³ (não muda).<br>Deitado, a base de apoio é um retângulo $6 \times 15 = 90$ cm².<br>Altura: $\dfrac{360}{90} = \mathbf{4}$ cm. Alternativa <strong>A</strong>.</p></div>
+    </article>
+    <article class="questao">
+        <h4>T 19: (UFRGS) Hexágono contra Triângulo</h4>
+        <p>Um prisma reto de base hexagonal regular de aresta $h$ e um prisma reto de base triangular equilátera de aresta $t$ têm a mesma altura e o mesmo volume.</p>
+        <p>A razão $\dfrac{h}{t}$ é</p>
+        <p>A) $\dfrac{1}{\sqrt{6}}$<br>B) $\dfrac{1}{6}$<br>C) 1<br>D) $\sqrt{6}$<br>E) 6</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>A</strong>.<br>Mesma altura e mesmo volume $\implies$ mesma área da base: $6 \cdot \dfrac{h^2\sqrt{3}}{4} = \dfrac{t^2\sqrt{3}}{4}$.<br>$6h^2 = t^2 \implies \dfrac{h^2}{t^2} = \dfrac{1}{6} \implies \dfrac{h}{t} = \mathbf{\dfrac{1}{\sqrt{6}}}$. Alternativa <strong>A</strong>.</p></div>
+    </article>
+    <article class="questao">
+        <h4>T 20: (UEFS) O Cubo Furado</h4>
+        <p>Um cubo de aresta $6$ cm foi atravessado, de uma face à face oposta, por um furo em forma de prisma reto de bases quadradas com $2$ cm de lado, perpendicular às faces. Toda a superfície do sólido resultante, inclusive a parte interna do furo, será pintada com uma tinta que custa R\$&nbsp;$0{,}05$ por cm².</p>
+        <p>O custo total da pintura será de</p>
+        <p>A) R\$&nbsp;$10{,}60$.<br>B) R\$&nbsp;$12{,}80$.<br>C) R\$&nbsp;$12{,}20$.<br>D) R\$&nbsp;$10{,}40$.<br>E) R\$&nbsp;$13{,}20$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>B</strong>.<br>Faces externas: $6 \cdot 36 = 216$ cm², menos os dois quadrados do furo: $216 - 2 \cdot 4 = 208$ cm².<br>Parede interna do furo: $4$ retângulos de $2 \times 6$: $48$ cm². Total: $208 + 48 = 256$ cm².<br>Custo: $256 \cdot 0{,}05 = $ R\$&nbsp;$\mathbf{12{,}80}$. Alternativa <strong>B</strong>.</p></div>
+    </article>
+</section>
+
+</div></main>
+<aside class="menu-lateral"><iframe src="../menu_matematica.html" style="width:100%; border:none; height:600px;"></iframe></aside>
+</div>
+<script>
+function toggleGabarito(botao) {
+    const gabarito = botao.nextElementSibling;
+    if (gabarito.style.display === "none" || gabarito.style.display === "") {
+        gabarito.style.display = "block"; botao.textContent = "Esconder Gabarito e Resolução"; botao.style.backgroundColor = "#2c3e50";
+    } else {
+        gabarito.style.display = "none"; botao.textContent = "Ver Gabarito e Resolução"; botao.style.backgroundColor = "#3498db";
+    }
+}
+function toggleMenu() { const m = document.getElementById("menu-principal"); if (m) m.classList.toggle("ativo"); }
+let slideAtual = 0; let slides = [];
+function prepararSlides() { slides = Array.from(document.querySelectorAll('.container-resumo, .passo-teoria, .card, .questao')); }
+function toggleSlides() {
+    prepararSlides(); const body = document.body;
+    if (!body.classList.contains('modo-slides')) { body.classList.add('modo-slides'); slideAtual = 0; mostrarSlide(slideAtual); }
+    else { body.classList.remove('modo-slides'); slides.forEach(s => { s.classList.remove('slide-ativo'); s.style.display = ''; }); }
+}
+function mostrarSlide(n) {
+    if (!slides.length) return;
+    slides.forEach(s => { s.classList.remove('slide-ativo'); s.style.display = 'none'; });
+    const slide = slides[n]; slide.classList.add('slide-ativo');
+    slide.querySelectorAll('.gabarito-resolucao').forEach(g => g.style.display = 'none');
+    slide.querySelectorAll('.btn-gabarito').forEach(b => { b.textContent = "Ver Gabarito e Resolução"; b.style.backgroundColor = "#3498db"; });
+    const pHeader = document.querySelector('header p');
+    if (pHeader) { const partes = pHeader.innerText.split('|'); if (partes.length > 1) {
+        document.getElementById('slide-info-serie').innerText = partes[0].trim();
+        document.getElementById('slide-info-aula').innerText = partes[1].trim(); } }
+    document.getElementById('contador-slide').innerText = (n + 1) + " / " + slides.length;
+    if (window.MathJax && window.MathJax.typesetPromise) { MathJax.typesetPromise(); }
+}
+function mudarSlide(d) { slideAtual += d; if (slideAtual >= slides.length) slideAtual = 0; if (slideAtual < 0) slideAtual = slides.length - 1; mostrarSlide(slideAtual); }
+document.addEventListener('keydown', function(event) {
+    if (document.body.classList.contains('modo-slides')) {
+        switch(event.key) {
+            case 'ArrowRight': case 'PageDown': case 'Enter': case ' ': event.preventDefault(); mudarSlide(1); break;
+            case 'ArrowLeft': case 'PageUp': event.preventDefault(); mudarSlide(-1); break;
+            case 'Escape': event.preventDefault(); toggleSlides(); break;
+        }
+    }
+});
+</script>
+<div class="controles-slides">
+    <div id="slide-info-serie" class="info-lateral"></div>
+    <div class="botoes-centrais">
+        <button class="btn-nav" onclick="mudarSlide(-1)">⬅ Anterior</button>
+        <span id="contador-slide"></span>
+        <button class="btn-nav" onclick="mudarSlide(1)">Próximo ➡</button>
+        <button class="btn-nav" onclick="toggleSlides()" style="background:#e74c3c;">Sair</button>
+    </div>
+    <div id="slide-info-aula" class="info-lateral" style="text-align: right;"></div>
+</div>
+</body>
+</html>
