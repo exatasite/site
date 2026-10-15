@@ -41,75 +41,77 @@
 <div class="container-resumo" id="resumo">
     <h3>📚 Resumo</h3>
     <section class="resumo-conteudo">
-        <p>O <strong>cone circular reto</strong> é o sólido gerado pela rotação de um triângulo retângulo em torno de um de seus catetos. Seus elementos são o raio da base $r$, a altura $h$ e a geratriz $g$, ligados por $g^2 = h^2 + r^2$. Cortando um cone por um plano paralelo à base, obtemos um cone menor (semelhante ao original) e um <strong>tronco de cone</strong>.</p>
-        <p style="text-align: center;">$$A_\ell = \pi r g \qquad A_t = \pi r(g + r) \qquad V = \frac{1}{3}\pi r^2 h \qquad V_{tronco} = \frac{\pi h}{3}(R^2 + Rr + r^2)$$</p>
+        <p>No <strong>cone circular reto</strong>, a altura $h$, o raio $r$ e a geratriz $g$ formam um triângulo retângulo: $g^2 = h^2 + r^2$. Planificada, a superfície lateral é um setor circular de raio $g$. O volume é um terço do volume do cilindro de mesma base e mesma altura. Um plano paralelo à base separa um cone menor (semelhante) e um <strong>tronco de cone</strong>.</p>
+        <p style="text-align: center;">$$A_L = \pi r g \qquad A_T = \pi r(g + r) \qquad V = \frac{\pi r^2 h}{3} \qquad V_{\text{tronco}} = \frac{\pi h}{3}(R^2 + Rr + r^2)$$</p>
     </section>
 </div>
 
 <section class="conteudo-teorico-completo" id="teoria">
     <div class="passo-teoria">
         <h3>📖 Cones e Tronco de Cone</h3>
-        <h4>1. Elementos do Cone</h4>
-        <ul>
-            <li><strong>Base:</strong> círculo de raio $r$; <strong>vértice:</strong> ponto fora do plano da base;</li>
-            <li><strong>Altura ($h$):</strong> distância do vértice ao plano da base (no cone reto, cai no centro da base);</li>
-            <li><strong>Geratriz ($g$):</strong> segmento do vértice a um ponto da circunferência da base. No cone reto, $g^2 = h^2 + r^2$.</li>
-        </ul>
+        <h4>1. Elementos e Planificação</h4>
         <figure class="figura-aula figura-grande">
-            <svg viewBox="0 0 560 260" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Cone reto de raio r, altura h e geratriz g; tronco de cone de raios R e r, altura h e geratriz g" style="width:100%; max-width:580px; display:block; margin:0 auto;">
-  <g stroke="#2c3e50" stroke-width="2.5">
-    <path d="M 130 20 L 50 210 A 80 24 0 0 0 210 210 Z" fill="#eaf2fb"/>
-    <path d="M 50 210 A 80 24 0 0 1 210 210" fill="none" stroke-dasharray="6,4" stroke-width="1.5"/>
+            <svg viewBox="0 0 560 230" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Cone reto de raio r, altura h e geratriz g, e sua planificação: um setor circular de raio g e ângulo θ e um círculo de raio r" style="width:100%; max-width:560px; display:block; margin:0 auto;">
+  <path d="M40.0,190.0 A60.0,18.0 0 0,0 160.0,190.0 L100.0,50.0 Z" fill="#3498db" fill-opacity="0.13" stroke="none"/>
+  <path d="M40.0,190.0 A60.0,18.0 0 0,1 160.0,190.0" fill="none" stroke="#2c3e50" stroke-width="1.4" stroke-dasharray="6,4" stroke-opacity="0.7"/>
+  <path d="M40.0,190.0 A60.0,18.0 0 0,0 160.0,190.0" fill="none" stroke="#2c3e50" stroke-width="2.2"/>
+  <line x1="40.0" y1="190.0" x2="100.0" y2="50.0" stroke="#2c3e50" stroke-width="2.2"/><line x1="160.0" y1="190.0" x2="100.0" y2="50.0" stroke="#2c3e50" stroke-width="2.2"/>
+  <polygon points="100,190 160,190 100,50" fill="#f1c40f" fill-opacity="0.35" stroke="none"/>
+  <line x1="100" y1="190" x2="160" y2="190" stroke="#e74c3c" stroke-width="2.5"/>
+  <line x1="100" y1="190" x2="100" y2="50" stroke="#27ae60" stroke-width="2" stroke-dasharray="5,3"/>
+  <line x1="160" y1="190" x2="100" y2="50" stroke="#8e44ad" stroke-width="3"/>
+  <g font-family="Oswald, sans-serif" font-size="15" text-anchor="middle">
+    <text x="130.0" y="210" fill="#e74c3c">r</text><text x="90" y="140.0" fill="#27ae60">h</text><text x="144.0" y="120.0" fill="#8e44ad">g</text>
   </g>
-  <line x1="130" y1="20" x2="130" y2="210" stroke="#3498db" stroke-width="2" stroke-dasharray="5,3"/>
-  <line x1="130" y1="210" x2="210" y2="210" stroke="#e74c3c" stroke-width="2.5"/>
-  <polyline points="130,200 140,200 140,210" fill="none" stroke="#2c3e50" stroke-width="1.5"/>
-  <g stroke="#2c3e50" stroke-width="2.5">
-    <path d="M 365 60 L 310 210 A 110 26 0 0 0 530 210 L 475 60" fill="#eaf2fb"/>
-    <ellipse cx="420" cy="60" rx="55" ry="13" fill="#d6eaf8"/>
-    <path d="M 310 210 A 110 26 0 0 1 530 210" fill="none" stroke-dasharray="6,4" stroke-width="1.5"/>
-  </g>
-  <line x1="420" y1="60" x2="420" y2="210" stroke="#3498db" stroke-width="2" stroke-dasharray="5,3"/>
-  <line x1="420" y1="60" x2="475" y2="60" stroke="#e74c3c" stroke-width="2.5"/>
-  <line x1="420" y1="210" x2="530" y2="210" stroke="#e74c3c" stroke-width="2.5"/>
-  <g font-family="Oswald, sans-serif" font-size="16">
-    <text x="112" y="125" fill="#3498db">h</text><text x="166" y="204" fill="#e74c3c">r</text><text x="182" y="110" fill="#2c3e50">g</text>
-    <text x="80" y="255" fill="#2c3e50">cone</text>
-    <text x="403" y="140" fill="#3498db">h</text><text x="442" y="54" fill="#e74c3c">r</text><text x="470" y="204" fill="#e74c3c">R</text><text x="508" y="140" fill="#2c3e50">g</text>
-    <text x="375" y="255" fill="#2c3e50">tronco de cone</text>
+  <path d="M360,150 L449.8,118.9 A95,95 0 0,0 270.2,118.9 Z" fill="#3498db" fill-opacity="0.2" stroke="#2c3e50" stroke-width="2"/>
+  <circle cx="502.9" cy="140" r="37.4" fill="#8e44ad" fill-opacity="0.2" stroke="#2c3e50" stroke-width="2"/>
+  <g font-family="Oswald, sans-serif" font-size="14" fill="#2c3e50" text-anchor="middle">
+    <text x="416.9" y="138.5">g</text><text x="360" y="170">θ = 360°·r/g</text>
+    <text x="360" y="47" font-size="12">arco = 2πr</text>
+    <text x="502.9" y="195.4" font-size="12">base πr²</text>
   </g>
 </svg>
-            <figcaption>Figura 1: Cone reto (raio $r$, altura $h$, geratriz $g$) e tronco de cone (raios $R$ e $r$, altura $h$, geratriz $g$).</figcaption>
+            <figcaption>Figura 1: Cone de raio $r$, altura $h$ e geratriz $g$ (triângulo retângulo em amarelo) e sua planificação.</figcaption>
         </figure>
-    </div>
-
-    <div class="passo-teoria">
-        <h4>2. Planificação e Áreas</h4>
-        <p>A superfície lateral planificada é um <strong>setor circular</strong> de raio $g$ cujo arco mede $2\pi r$ (o contorno da base). Seu ângulo central é $\theta = \dfrac{r}{g} \cdot 360^\circ$.</p>
         <ul>
-            <li><strong>Área lateral:</strong> $A_\ell = \pi r g$;</li>
-            <li><strong>Área total:</strong> $A_t = \pi r g + \pi r^2 = \pi r(g + r)$.</li>
+            <li>$g^2 = h^2 + r^2$ (triângulo retângulo formado pela altura, pelo raio e pela geratriz);</li>
+            <li>Planificação: um <strong>setor circular</strong> de raio $g$ cujo arco mede $2\pi r$. Seu ângulo é $\theta = 360^\circ \cdot \dfrac{r}{g}$, e sua área é a área lateral: $A_L = \pi r g$;</li>
+            <li><strong>Seção meridiana:</strong> triângulo isósceles de lados $g$, $g$ e $2r$. No <strong>cone equilátero</strong>, ela é um triângulo equilátero: $g = 2r$ e $h = r\sqrt{3}$.</li>
         </ul>
     </div>
 
     <div class="passo-teoria">
-        <h4>3. Volume e Cone Equilátero</h4>
+        <h4>2. Áreas e Volume do Cone</h4>
         <p style="text-align: center; font-size: 1.15rem; background-color: #f8f9fa; padding: 15px; border-left: 5px solid #3498db; margin: 20px 0;">
-            $$V_{cone} = \frac{1}{3}\,A_b \cdot h = \frac{1}{3}\pi r^2 h$$
+            $$A_L = \pi r g \qquad A_T = \pi r g + \pi r^2 = \pi r(g + r) \qquad V = \frac{1}{3}\pi r^2 h$$
         </p>
-        <p>O volume do cone é <strong>um terço</strong> do volume do cilindro de mesma base e mesma altura. No <strong>cone equilátero</strong>, a secção meridiana é um triângulo equilátero: $g = 2r$ e $h = r\sqrt{3}$.</p>
+        <p>Assim como a pirâmide é um terço do prisma, o cone é um terço do cilindro de mesma base e mesma altura: três cones enchem o cilindro.</p>
     </div>
 
     <div class="passo-teoria">
-        <h4>4. Secção Paralela à Base e Tronco de Cone</h4>
-        <p>Um plano paralelo à base, a uma distância $h'$ do vértice, determina um cone menor <strong>semelhante</strong> ao original, com razão $k = \dfrac{h'}{h}$: os comprimentos ficam multiplicados por $k$, as áreas por $k^2$ e os <strong>volumes por $k^3$</strong>. A parte entre o plano e a base é o <strong>tronco de cone</strong>, que pode ser calculado como diferença de dois cones ou pelas fórmulas:</p>
-        <table style="margin: 15px auto; border-collapse: collapse; text-align: center; font-size: 1.05rem;">
-            <tr style="background-color: #2c3e50; color: white;"><th style="padding: 8px 14px;"></th><th style="padding: 8px 14px;">Cone</th><th style="padding: 8px 14px;">Tronco de cone</th></tr>
-            <tr><td style="padding: 8px 14px; border: 1px solid #ccc;"><strong>Geratriz</strong></td><td style="padding: 8px 14px; border: 1px solid #ccc;">$g^2 = h^2 + r^2$</td><td style="padding: 8px 14px; border: 1px solid #ccc;">$g^2 = h^2 + (R - r)^2$</td></tr>
-            <tr style="background-color: #f8f9fa;"><td style="padding: 8px 14px; border: 1px solid #ccc;"><strong>Área lateral</strong></td><td style="padding: 8px 14px; border: 1px solid #ccc;">$\pi r g$</td><td style="padding: 8px 14px; border: 1px solid #ccc;">$\pi g(R + r)$</td></tr>
-            <tr><td style="padding: 8px 14px; border: 1px solid #ccc;"><strong>Área total</strong></td><td style="padding: 8px 14px; border: 1px solid #ccc;">$\pi r(g + r)$</td><td style="padding: 8px 14px; border: 1px solid #ccc;">$\pi g(R + r) + \pi R^2 + \pi r^2$</td></tr>
-            <tr style="background-color: #f8f9fa;"><td style="padding: 8px 14px; border: 1px solid #ccc;"><strong>Volume</strong></td><td style="padding: 8px 14px; border: 1px solid #ccc;">$\dfrac{1}{3}\pi r^2 h$</td><td style="padding: 8px 14px; border: 1px solid #ccc;">$\dfrac{\pi h}{3}(R^2 + Rr + r^2)$</td></tr>
-        </table>
+        <h4>3. Seção Paralela e Tronco de Cone</h4>
+        <figure class="figura-aula figura-grande">
+            <svg viewBox="0 0 300 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Tronco de cone de raios R e r, altura h e geratriz g, com o trapézio retângulo de lados h, R menos r e g" style="width:100%; max-width:300px; display:block; margin:0 auto;">
+  <path d="M65.0,185.0 A85.0,25.5 0 0,0 235.0,185.0 L195.0,65.0 A45.0,13.5 0 0,0 105.0,65.0 Z" fill="#27ae60" fill-opacity="0.13" stroke="none"/>
+  <path d="M65.0,185.0 A85.0,25.5 0 0,1 235.0,185.0" fill="none" stroke="#2c3e50" stroke-width="1.4" stroke-dasharray="6,4" stroke-opacity="0.7"/>
+  <path d="M65.0,185.0 A85.0,25.5 0 0,0 235.0,185.0" fill="none" stroke="#2c3e50" stroke-width="2.2"/>
+  <ellipse cx="150.0" cy="65.0" rx="45.0" ry="13.5" fill="#27ae60" fill-opacity="0.18" stroke="#2c3e50" stroke-width="2.2"/>
+  <line x1="65.0" y1="185.0" x2="105.0" y2="65.0" stroke="#2c3e50" stroke-width="2.2"/><line x1="235.0" y1="185.0" x2="195.0" y2="65.0" stroke="#2c3e50" stroke-width="2.2"/>
+  <polygon points="195,65 195,185 235,185" fill="#f1c40f" fill-opacity="0.4" stroke="none"/>
+  <line x1="150" y1="185" x2="235" y2="185" stroke="#e74c3c" stroke-width="2.5"/><line x1="150" y1="65" x2="195" y2="65" stroke="#e74c3c" stroke-width="2.5"/>
+  <line x1="195" y1="185" x2="195" y2="65" stroke="#27ae60" stroke-width="2" stroke-dasharray="5,3"/><line x1="150" y1="185" x2="150" y2="65" stroke="#7f8c8d" stroke-width="1.2" stroke-dasharray="3,3"/>
+  <g font-family="Oswald, sans-serif" font-size="15" text-anchor="middle">
+    <text x="192.5" y="205" fill="#e74c3c">R</text><text x="172.5" y="57" fill="#e74c3c">r</text>
+    <text x="185" y="125.0" fill="#27ae60">h</text><text x="229.0" y="125.0" fill="#8e44ad">g</text>
+  </g>
+</svg>
+            <figcaption>Figura 2: Tronco de cone de raios $R$ e $r$, altura $h$ e geratriz $g$.</figcaption>
+        </figure>
+        <ul>
+            <li>Plano paralelo à base a uma distância $d$ do vértice: cone menor semelhante, com $k = \dfrac{d}{h}$; volumes ficam multiplicados por $k^3$ (líquido num funil ou cisterna cônica);</li>
+            <li><strong>Tronco de cone:</strong> $g^2 = h^2 + (R - r)^2$; $\;A_L = \pi g(R + r)$; $\;A_T = A_L + \pi R^2 + \pi r^2$;</li>
+            <li>$V_{\text{tronco}} = \dfrac{\pi h}{3}\left(R^2 + Rr + r^2\right)$, ou a diferença entre o cone completo e o cone retirado.</li>
+        </ul>
     </div>
 </section>
 
@@ -117,41 +119,41 @@
     <h3>💡 Matemática em Ação</h3>
     <div class="cards-aplicacao">
         <div class="card">
-            <h4>⏳ Ampulhetas e Funis</h4>
-            <p>Em um recipiente cônico de vértice para baixo, encher até a <strong>metade da altura</strong> corresponde a apenas $\left(\dfrac{1}{2}\right)^3 = \dfrac{1}{8}$ da capacidade. Por isso a areia de uma ampulheta parece "acelerar" no final.</p>
+            <h4>🍦 Casquinhas e Funis</h4>
+            <p>Num copo cônico, o líquido na metade da altura ocupa só $\left(\frac{1}{2}\right)^3 = \frac{1}{8}$ da capacidade: a "metade da altura" engana o olho.</p>
         </div>
         <div class="card" style="border-left-color: #2ecc71;">
-            <h4>🪣 Baldes, Copos e Abajures</h4>
-            <p>Baldes, copos plásticos, vasos e cúpulas de abajur têm forma de tronco de cone: as bases de tamanhos diferentes permitem empilhá-los, economizando espaço no transporte.</p>
+            <h4>🏖️ Pilhas de Areia e Baldes</h4>
+            <p>Areia e grãos amontoados formam cones; baldes, copos e vasos são troncos de cone. Medindo raios e altura, calcula-se o volume sem precisar encher nada.</p>
         </div>
     </div>
 </section>
 <section class="questoes-resolvidas" id="resolvidas">
     <h3>✅ 5 Questões Resolvidas (R 1 a 5)</h3>
     <article class="questao">
-        <h4>R 1: Geratriz, Áreas e Volume</h4>
-        <p><strong>Enunciado:</strong> Um cone reto tem raio da base $6$ cm e altura $8$ cm. Calcule a geratriz, a área lateral, a área total e o volume.</p>
-        <div class="resolucao-bloco"><p><strong>Resolução:</strong><br>Geratriz (Pitágoras no triângulo $h$, $r$, $g$): $g^2 = 8^2 + 6^2 = 100 \implies g = \mathbf{10}$ cm.<br>$A_\ell = \pi r g = \pi \cdot 6 \cdot 10 = \mathbf{60\pi}$ cm²; \ $A_t = 60\pi + 36\pi = \mathbf{96\pi}$ cm².<br>$V = \dfrac{1}{3}\pi r^2 h = \dfrac{1}{3}\pi \cdot 36 \cdot 8 = \mathbf{96\pi}$ cm³.</p></div>
+        <h4>R 1: O Cone Completo</h4>
+        <p><strong>Enunciado:</strong> Um cone reto tem raio da base $3$ cm e altura $4$ cm. Calcule a geratriz, a área lateral, a área total e o volume.</p>
+        <div class="resolucao-bloco"><p><strong>Resolução:</strong><br>$g^2 = h^2 + r^2 = 16 + 9 \implies g = \mathbf{5}$ cm.<br>$A_L = \pi r g = \mathbf{15\pi}$ cm²; $A_T = \pi r(g + r) = \pi \cdot 3 \cdot 8 = \mathbf{24\pi}$ cm².<br>$V = \dfrac{\pi r^2 h}{3} = \dfrac{\pi \cdot 9 \cdot 4}{3} = \mathbf{12\pi}$ cm³.</p></div>
     </article>
     <article class="questao">
-        <h4>R 2: Planificação</h4>
-        <p><strong>Enunciado:</strong> A superfície lateral de um cone reto de raio $3$ cm e geratriz $5$ cm é planificada. Calcule o ângulo central do setor circular obtido.</p>
-        <div class="resolucao-bloco"><p><strong>Resolução:</strong><br>O setor tem raio $g = 5$ e arco igual ao contorno da base, $2\pi r = 6\pi$.<br>Regra de três com a circunferência de raio $5$ ($10\pi \leftrightarrow 360^\circ$): $\theta = \dfrac{6\pi}{10\pi} \cdot 360^\circ$.<br>$\theta = \mathbf{216^\circ}$ (atalho: $\theta = \dfrac{r}{g} \cdot 360^\circ$).</p></div>
+        <h4>R 2: O Setor da Planificação</h4>
+        <p><strong>Enunciado:</strong> Um cone tem raio da base $4$ cm e geratriz $10$ cm. Qual o ângulo do setor circular obtido ao planificar sua superfície lateral?</p>
+        <div class="resolucao-bloco"><p><strong>Resolução:</strong><br>O arco do setor (raio $g$) mede o comprimento da circunferência da base: $\dfrac{\theta}{360^\circ} \cdot 2\pi g = 2\pi r$.<br>$\theta = 360^\circ \cdot \dfrac{r}{g} = 360^\circ \cdot \dfrac{4}{10} = \mathbf{144^\circ}$. (Área lateral: $\pi r g = 40\pi$ cm².)</p></div>
     </article>
     <article class="questao">
-        <h4>R 3: Cone Equilátero</h4>
-        <p><strong>Enunciado:</strong> Um cone equilátero tem raio da base $2$ cm. Calcule a altura e o volume.</p>
-        <div class="resolucao-bloco"><p><strong>Resolução:</strong><br>No cone equilátero, a secção meridiana é um triângulo equilátero: $g = 2r = 4$ cm.<br>$h = \sqrt{g^2 - r^2} = \sqrt{16 - 4} = \mathbf{2\sqrt{3}}$ cm ($= r\sqrt{3}$).<br>$V = \dfrac{1}{3}\pi \cdot 4 \cdot 2\sqrt{3} = \mathbf{\dfrac{8\sqrt{3}\pi}{3}}$ cm³.</p></div>
+        <h4>R 3: O Cone Equilátero</h4>
+        <p><strong>Enunciado:</strong> Um cone equilátero tem raio da base $2$ cm. Calcule a geratriz, a altura, a área total e o volume.</p>
+        <div class="resolucao-bloco"><p><strong>Resolução:</strong><br>Equilátero: a seção meridiana é um triângulo equilátero, logo $g = 2r = \mathbf{4}$ cm e $h = r\sqrt{3} = \mathbf{2\sqrt{3}}$ cm.<br>$A_T = \pi r(g + r) = \pi \cdot 2 \cdot 6 = \mathbf{12\pi}$ cm².<br>$V = \dfrac{\pi \cdot 4 \cdot 2\sqrt{3}}{3} = \mathbf{\dfrac{8\sqrt{3}\,\pi}{3}}$ cm³.</p></div>
     </article>
     <article class="questao">
-        <h4>R 4: Corte Paralelo à Base</h4>
-        <p><strong>Enunciado:</strong> Um cone de altura $12$ cm e volume $216$ cm³ é cortado por um plano paralelo à base, a $4$ cm do vértice. Calcule o volume do cone menor e o volume do tronco.</p>
-        <div class="resolucao-bloco"><p><strong>Resolução:</strong><br>O cone menor é semelhante ao original, com razão $k = \dfrac{4}{12} = \dfrac{1}{3}$; volumes na razão $k^3 = \dfrac{1}{27}$.<br>$V_{menor} = \dfrac{216}{27} = \mathbf{8}$ cm³.<br>$V_{tronco} = 216 - 8 = \mathbf{208}$ cm³.</p></div>
+        <h4>R 4: O Tronco de Cone</h4>
+        <p><strong>Enunciado:</strong> Um tronco de cone reto tem raios das bases $6$ cm e $3$ cm e altura $4$ cm. Calcule a geratriz, a área total e o volume.</p>
+        <div class="resolucao-bloco"><p><strong>Resolução:</strong><br>$g^2 = h^2 + (R - r)^2 = 16 + 9 \implies g = 5$ cm.<br>$A_L = \pi g(R + r) = 45\pi$; $A_T = 45\pi + 36\pi + 9\pi = \mathbf{90\pi}$ cm².<br>$V = \dfrac{\pi h}{3}(R^2 + Rr + r^2) = \dfrac{4\pi}{3}(36 + 18 + 9) = \mathbf{84\pi}$ cm³.</p></div>
     </article>
     <article class="questao">
-        <h4>R 5: Tronco de Cone</h4>
-        <p><strong>Enunciado:</strong> Um tronco de cone tem raios das bases $R = 6$ cm e $r = 3$ cm e altura $h = 4$ cm. Calcule a geratriz e o volume.</p>
-        <div class="resolucao-bloco"><p><strong>Resolução:</strong><br>Geratriz: $g^2 = h^2 + (R - r)^2 = 16 + 9 = 25 \implies g = \mathbf{5}$ cm.<br>$V = \dfrac{\pi h}{3}(R^2 + Rr + r^2) = \dfrac{4\pi}{3}(36 + 18 + 9) = \dfrac{4\pi}{3} \cdot 63$.<br>$V = \mathbf{84\pi}$ cm³.</p></div>
+        <h4>R 5: O Copo Cônico</h4>
+        <p><strong>Enunciado:</strong> Um copo cônico (vértice para baixo) tem capacidade de $216$ mL. Quanto líquido ele contém quando o nível atinge $\frac{2}{3}$ da altura?</p>
+        <div class="resolucao-bloco"><p><strong>Resolução:</strong><br>O líquido forma um cone semelhante ao copo, com razão $k = \dfrac{2}{3}$.<br>$V = 216 \cdot \left(\dfrac{2}{3}\right)^3 = 216 \cdot \dfrac{8}{27} = \mathbf{64}$ mL.</p></div>
     </article>
 </section>
 
@@ -159,107 +161,124 @@
     <h3>✍️ 10 Questões Propostas (P 6 a 15)</h3>
     <article class="questao">
         <h4>P 6: Volume</h4>
-        <p><strong>Enunciado:</strong> Calcule o volume de um cone de raio $3$ cm e altura $10$ cm.</p>
+        <p><strong>Enunciado:</strong> Calcule o volume de um cone de raio $3$ cm e altura $7$ cm.</p>
         <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>$V = \dfrac{1}{3}\pi \cdot 9 \cdot 10$.<br>$V = \mathbf{30\pi}$ cm³.</p></div>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>$V = \dfrac{\pi \cdot 9 \cdot 7}{3}$.<br>$V = \mathbf{21\pi}$ cm³.</p></div>
     </article>
     <article class="questao">
-        <h4>P 7: Geratriz e Área Total</h4>
-        <p><strong>Enunciado:</strong> Um cone reto tem raio $5$ cm e altura $12$ cm. Calcule a geratriz e a área total.</p>
+        <h4>P 7: Geratriz</h4>
+        <p><strong>Enunciado:</strong> Calcule a geratriz de um cone de raio $5$ cm e altura $12$ cm.</p>
         <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>$g = \sqrt{144 + 25} = \mathbf{13}$ cm.<br>$A_t = \pi r(g + r) = \pi \cdot 5 \cdot 18 = \mathbf{90\pi}$ cm².</p></div>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>$g^2 = 144 + 25 = 169$.<br>$g = \mathbf{13}$ cm.</p></div>
     </article>
     <article class="questao">
-        <h4>P 8: Da Geratriz à Altura</h4>
-        <p><strong>Enunciado:</strong> Um cone tem geratriz $10$ cm e raio da base $6$ cm. Calcule a altura e o volume.</p>
+        <h4>P 8: Área Lateral</h4>
+        <p><strong>Enunciado:</strong> Calcule a área lateral de um cone de raio $6$ cm e geratriz $10$ cm.</p>
         <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>$h = \sqrt{100 - 36} = 8$ cm.<br>$V = \dfrac{1}{3}\pi \cdot 36 \cdot 8 = \mathbf{96\pi}$ cm³.</p></div>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>$A_L = \pi r g = \pi \cdot 6 \cdot 10$.<br>$A_L = \mathbf{60\pi}$ cm².</p></div>
     </article>
     <article class="questao">
-        <h4>P 9: Copo Cônico</h4>
-        <p><strong>Enunciado:</strong> Um copo cônico de papel tem raio da boca $3$ cm e altura $8$ cm. Quantos mililitros ele comporta, cheio? (Use $\pi = 3$.)</p>
+        <h4>P 9: Área Total</h4>
+        <p><strong>Enunciado:</strong> Calcule a área total de um cone de raio $4$ cm e geratriz $6$ cm.</p>
         <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>$V = \dfrac{1}{3} \cdot 3 \cdot 9 \cdot 8$.<br>$V = \mathbf{72}$ cm³ $= 72$ mL.</p></div>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>$A_T = \pi r(g + r) = \pi \cdot 4 \cdot 10$.<br>$A_T = \mathbf{40\pi}$ cm².</p></div>
     </article>
     <article class="questao">
-        <h4>P 10: Cone e Cilindro</h4>
-        <p><strong>Enunciado:</strong> Um cone e um cilindro têm a mesma base e a mesma altura. O volume do cilindro é $90$ cm³. Qual é o volume do cone? Quantos cones cheios enchem o cilindro?</p>
+        <h4>P 10: Ângulo do Setor</h4>
+        <p><strong>Enunciado:</strong> Qual o ângulo do setor da planificação de um cone de raio $5$ cm e geratriz $15$ cm?</p>
         <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>$V_{cone} = \dfrac{1}{3}V_{cil} = \mathbf{30}$ cm³.<br>São necessários <strong>3</strong> cones cheios.</p></div>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>$\theta = 360^\circ \cdot \dfrac{r}{g} = 360^\circ \cdot \dfrac{5}{15}$.<br>$\theta = \mathbf{120^\circ}$.</p></div>
     </article>
     <article class="questao">
-        <h4>P 11: Setor Planificado</h4>
-        <p><strong>Enunciado:</strong> A planificação da superfície lateral de um cone é um semicírculo de raio $8$ cm. Calcule o raio da base e a altura do cone.</p>
+        <h4>P 11: Cone e Cilindro</h4>
+        <p><strong>Enunciado:</strong> Um cone tem volume $50$ cm³. Qual o volume de um cilindro com a mesma base e a mesma altura?</p>
         <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>$g = 8$ e o arco do semicírculo ($8\pi$) é o contorno da base: $2\pi r = 8\pi \implies r = \mathbf{4}$ cm.<br>$h = \sqrt{64 - 16} = \sqrt{48} = \mathbf{4\sqrt{3}}$ cm (é um cone equilátero).</p></div>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>$V_{\text{cil}} = \pi r^2 h = 3 V_{\text{cone}}$.<br>$V_{\text{cil}} = \mathbf{150}$ cm³.</p></div>
     </article>
     <article class="questao">
-        <h4>P 12: Monte de Areia</h4>
-        <p><strong>Enunciado:</strong> Um monte de areia tem a forma de um cone de raio $3$ m e altura $1{,}2$ m. Quantos caminhões de $6$ m³ são necessários para transportá-lo? (Use $\pi = 3{,}14$.)</p>
+        <h4>P 12: Equilátero pela Geratriz</h4>
+        <p><strong>Enunciado:</strong> Um cone equilátero tem geratriz $8$ cm. Calcule o raio, a altura e a área total.</p>
         <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>$V = \dfrac{1}{3} \cdot 3{,}14 \cdot 9 \cdot 1{,}2 = 11{,}304$ m³.<br>$11{,}304 \div 6 \approx 1{,}88$: são necessários <strong>2</strong> caminhões.</p></div>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>$r = \dfrac{g}{2} = 4$ cm e $h = 4\sqrt{3}$ cm.<br>$A_T = \pi \cdot 4 \cdot 12 = \mathbf{48\pi}$ cm².</p></div>
     </article>
     <article class="questao">
-        <h4>P 13: Água no Funil</h4>
-        <p><strong>Enunciado:</strong> Um funil cônico, com o vértice para baixo, tem altura $9$ cm e capacidade $243$ mL. Se a água atinge a altura de $3$ cm (a partir do vértice), qual é o volume de água?</p>
+        <h4>P 13: Volume do Tronco</h4>
+        <p><strong>Enunciado:</strong> Calcule o volume de um tronco de cone de raios $5$ cm e $2$ cm e altura $4$ cm.</p>
         <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>A água forma um cone semelhante ao funil, com $k = \dfrac{3}{9} = \dfrac{1}{3}$.<br>$V_{água} = 243 \cdot \left(\dfrac{1}{3}\right)^3 = \mathbf{9}$ mL.</p></div>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>$V = \dfrac{4\pi}{3}(25 + 10 + 4) = \dfrac{4\pi \cdot 39}{3}$.<br>$V = \mathbf{52\pi}$ cm³.</p></div>
     </article>
     <article class="questao">
-        <h4>P 14: Balde em Tronco de Cone</h4>
-        <p><strong>Enunciado:</strong> Um balde tem a forma de um tronco de cone com raios $R = 15$ cm e $r = 10$ cm e altura $30$ cm. Qual é a sua capacidade, em litros? (Use $\pi = 3$.)</p>
+        <h4>P 14: Área Lateral do Tronco</h4>
+        <p><strong>Enunciado:</strong> Calcule a área lateral do tronco do exercício anterior.</p>
         <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>$V = \dfrac{\pi h}{3}(R^2 + Rr + r^2) = \dfrac{3 \cdot 30}{3}(225 + 150 + 100) = 30 \cdot 475$.<br>$V = 14\,250$ cm³ $= \mathbf{14{,}25}$ litros.</p></div>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>$g = \sqrt{16 + 9} = 5$ cm.<br>$A_L = \pi \cdot 5 \cdot (5 + 2) = \mathbf{35\pi}$ cm².</p></div>
     </article>
     <article class="questao">
-        <h4>P 15: Área Lateral do Tronco</h4>
-        <p><strong>Enunciado:</strong> Calcule a área lateral de um tronco de cone com raios $R = 7$ cm e $r = 4$ cm e altura $4$ cm.</p>
+        <h4>P 15: A Pilha de Areia</h4>
+        <p><strong>Enunciado:</strong> Uma pilha de areia tem forma de cone com raio da base $3$ m e altura $2$ m. Qual o volume de areia? (Use $\pi = 3{,}14$.)</p>
         <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>$g = \sqrt{4^2 + (7 - 4)^2} = \sqrt{25} = 5$ cm.<br>$A_\ell = \pi g(R + r) = \pi \cdot 5 \cdot 11 = \mathbf{55\pi}$ cm².</p></div>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>$V = \dfrac{\pi \cdot 9 \cdot 2}{3} = 6\pi$ m³.<br>$V \approx \mathbf{18{,}84}$ m³.</p></div>
     </article>
 </section>
 
 <section class="TESTE" id="testes">
     <h3>🎓 TESTES (T 16 a 20)</h3>
     <article class="questao">
-        <h4>T 16: (ENEM 2010, adaptada) As Taças de Champanhe</h4>
-        <p>Em um casamento, os donos da festa serviam champanhe aos seus convidados em taças com formato de um hemisfério (metade de uma esfera) de raio $3$ cm. Porém, um acidente na cozinha culminou na quebra de grande parte desses recipientes. Para substituir as taças quebradas, utilizou-se outro tipo, com formato de cone, também de raio $3$ cm. No entanto, os noivos solicitaram que o volume de champanhe nos dois tipos de taças fosse igual. Considere: $V_{esfera} = \dfrac{4}{3}\pi R^3$ e $V_{cone} = \dfrac{1}{3}\pi R^2 h$.</p>
-        <p>Sabendo que a taça com o formato de hemisfério é servida completamente cheia, a altura do volume de champanhe que deve ser colocado na outra taça, em centímetros, é de</p>
-        <p>A) 1,33<br>B) 6,00<br>C) 12,00<br>D) 56,52<br>E) 113,04</p>
+        <h4>T 16: (ESA) Área da Base</h4>
+        <p>Um cone reto tem altura $8$ cm e geratriz $10$ cm.</p>
+        <p>A área da base desse cone é</p>
+        <p>A) $64\pi$ cm²<br>B) $9\pi$ cm²<br>C) $16\pi$ cm²<br>D) $36\pi$ cm²<br>E) $25\pi$ cm²</p>
         <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>B</strong>.<br>Hemisfério: $V = \dfrac{1}{2} \cdot \dfrac{4}{3}\pi \cdot 3^3 = 18\pi$ cm³.<br>Cone de raio $3$: $\dfrac{1}{3}\pi \cdot 9 \cdot h = 3\pi h$.<br>$3\pi h = 18\pi \implies h = \mathbf{6{,}00}$ cm. (A alternativa C usa a esfera inteira.)</p></div>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>D</strong>.<br>$r^2 = g^2 - h^2 = 100 - 64 = 36 \implies r = 6$ cm.<br>$A_B = \pi r^2 = \mathbf{36\pi}$ cm². Alternativa <strong>D</strong>.</p></div>
     </article>
     <article class="questao">
-        <h4>T 17: (ENEM 2015, 2ª aplicação) O Poço e o Monte de Terra</h4>
-        <p>Ao se perfurar um poço no chão, na forma de um cilindro circular reto, toda a terra retirada é amontoada na forma de um cone circular reto, cujo raio da base é o triplo do raio do poço e a altura é $2{,}4$ metros. Sabe-se que o volume desse cone de terra é $20\%$ maior do que o volume do poço cilíndrico, pois a terra fica mais fofa após ser escavada.</p>
-        <p>Qual é a profundidade, em metros, desse poço?</p>
-        <p>A) 1,44<br>B) 6,00<br>C) 7,20<br>D) 8,64<br>E) 36,00</p>
+        <h4>T 17: (Cefet-PR) Pela Seção Meridiana</h4>
+        <p>Um cone circular reto tem raio da base igual a $3$ m, e o perímetro de sua seção meridiana é $16$ m.</p>
+        <p>O volume desse cone é</p>
+        <p>A) $8\pi$ m³<br>B) $10\pi$ m³<br>C) $14\pi$ m³<br>D) $12\pi$ m³<br>E) $36\pi$ m³</p>
         <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>B</strong>.<br>Poço de raio $r$ e profundidade $h$: $V_{poço} = \pi r^2 h$. Cone: $V_{cone} = \dfrac{1}{3}\pi (3r)^2 \cdot 2{,}4 = 7{,}2\pi r^2$.<br>$V_{cone} = 1{,}2 \cdot V_{poço} \implies 7{,}2\pi r^2 = 1{,}2\pi r^2 h$.<br>$h = \dfrac{7{,}2}{1{,}2} = \mathbf{6{,}00}$ m.</p></div>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>D</strong>.<br>A seção meridiana é um triângulo isósceles de lados $g$, $g$ e $2r = 6$: $2g + 6 = 16 \implies g = 5$ m.<br>$h = \sqrt{25 - 9} = 4$ m e $V = \dfrac{\pi \cdot 9 \cdot 4}{3} = \mathbf{12\pi}$ m³. Alternativa <strong>D</strong>.</p></div>
     </article>
     <article class="questao">
-        <h4>T 18: (ENEM 2021, adaptada) A Caneca de Sopa</h4>
-        <p>Uma pessoa comprou uma caneca para tomar sopa. A caneca tem a forma de um tronco de cone: a borda superior é uma circunferência de diâmetro $10$ cm, o fundo é um círculo de diâmetro $8$ cm, e a altura, medida entre os centros dessas duas circunferências, é de $12$ cm. Considere $1$ cm³ $= 1$ mL e use $3$ como aproximação para $\pi$.</p>
-        <p>A capacidade volumétrica, em mililitro, dessa caneca é</p>
-        <p>A) 216<br>B) 408<br>C) 732<br>D) 2&thinsp;196<br>E) 2&thinsp;928</p>
+        <h4>T 18: (Fuvest) O Ângulo do Setor</h4>
+        <p>Um cone circular reto tem raio da base $4$ cm e altura $3$ cm. Sua superfície lateral, planificada, é um setor circular.</p>
+        <p>O ângulo central desse setor mede</p>
+        <p>A) $144^\circ$<br>B) $192^\circ$<br>C) $240^\circ$<br>D) $288^\circ$<br>E) $336^\circ$</p>
         <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>C</strong>.<br>Raios: $R = 5$ cm e $r = 4$ cm; altura $h = 12$ cm.<br>$V = \dfrac{\pi h}{3}(R^2 + Rr + r^2) = \dfrac{3 \cdot 12}{3}(25 + 20 + 16) = 12 \cdot 61$.<br>$V = \mathbf{732}$ mL. (Pela diferença de cones: $1\,500 - 768 = 732$.)</p></div>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>D</strong>.<br>$g = \sqrt{3^2 + 4^2} = 5$ cm.<br>$\theta = 360^\circ \cdot \dfrac{r}{g} = 360^\circ \cdot \dfrac{4}{5} = \mathbf{288^\circ}$. Alternativa <strong>D</strong>.</p></div>
     </article>
     <article class="questao">
-        <h4>T 19: (ENEM 2024, adaptada) Sólido de Revolução</h4>
-        <p>Uma professora construiu um sólido de revolução. Ela recortou um trapézio retângulo $PQRS$ de um material rígido e fixou o lado $PS$ (o lado perpendicular às duas bases do trapézio) em uma haste reta e fixa, que serviu de eixo. Em seguida, girou o trapézio $360^\circ$ em torno dessa haste.</p>
-        <p>O sólido obtido foi um(a)</p>
-        <p>A) cone.<br>B) cilindro.<br>C) pirâmide.<br>D) tronco de cone.<br>E) tronco de pirâmide.</p>
+        <h4>T 19: (UFN) A Cisterna Cônica</h4>
+        <p>Uma cisterna tem a forma de um cone circular reto, com o vértice voltado para baixo, e capacidade de $13\,500$ litros. Num certo momento, o nível da água está a $\frac{1}{3}$ da altura da cisterna, medida a partir do vértice.</p>
+        <p>Nesse momento, o volume de água na cisterna é de</p>
+        <p>A) 500 litros.<br>B) 1 500 litros.<br>C) 2 250 litros.<br>D) 4 500 litros.<br>E) 6 750 litros.</p>
         <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>D</strong>.<br>Ao girar, as duas bases do trapézio (perpendiculares ao eixo) geram dois círculos paralelos de raios diferentes.<br>O lado oblíquo gera uma superfície cônica entre esses círculos: o sólido é um <strong>tronco de cone</strong>.<br>(Se as bases tivessem o mesmo tamanho, o trapézio seria um retângulo e o sólido, um cilindro; se uma base tivesse medida zero, seria um cone.)</p></div>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>A</strong>.<br>A água forma um cone semelhante à cisterna, com razão $k = \dfrac{1}{3}$; volumes ficam multiplicados por $k^3 = \dfrac{1}{27}$.<br>$\dfrac{13\,500}{27} = \mathbf{500}$ litros. Alternativa <strong>A</strong>. (A alternativa D usa $k$ em vez de $k^3$.)</p></div>
     </article>
     <article class="questao">
-        <h4>T 20: (Questão autoral) O Cone de Sorvete</h4>
-        <p>Uma casquinha de sorvete tem a forma de um cone reto com raio da boca $3$ cm e altura $10$ cm. Ela está totalmente cheia de sorvete derretido. Uma criança toma parte do sorvete, e o nível do líquido baixa até a metade da altura da casquinha.</p>
-        <p>A fração do sorvete que a criança tomou é:</p>
-        <p>A) $\dfrac{1}{2}$<br>B) $\dfrac{1}{8}$<br>C) $\dfrac{3}{4}$<br>D) $\dfrac{7}{8}$<br>E) $\dfrac{1}{4}$</p>
+        <h4>T 20: (ENEM 2023) A Escultura de Madeira</h4>
+        <p>Um artista esculpe uma peça a partir de um bloco de madeira, em etapas. Primeiro, obtém um cone reto de $36$ cm de altura e $18$ cm de diâmetro da base. Depois, retira desse cone um cone menor, de $6$ cm de diâmetro da base, obtendo um tronco de cone. Por fim, perfura o tronco com um cilindro reto de $6$ cm de diâmetro, com o mesmo eixo do cone original. A densidade da madeira é $0{,}6$ g/cm³. Considere $\pi = 3$.</p>
+        <figure class="figura-aula">
+            <svg viewBox="0 0 300 230" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Escultura: tronco de cone de raios 9 cm e 3 cm e altura 24 cm, perfurado por um cilindro de raio 3 cm ao longo do eixo" style="width:100%; max-width:280px; display:block; margin:0 auto;">
+  <path d="M96.0,205.0 A54.0,16.2 0 0,0 204.0,205.0 L168.0,61.0 A18.0,5.4 0 0,0 132.0,61.0 Z" fill="#e67e22" fill-opacity="0.13" stroke="none"/>
+  <path d="M96.0,205.0 A54.0,16.2 0 0,1 204.0,205.0" fill="none" stroke="#2c3e50" stroke-width="1.4" stroke-dasharray="6,4" stroke-opacity="0.7"/>
+  <path d="M96.0,205.0 A54.0,16.2 0 0,0 204.0,205.0" fill="none" stroke="#2c3e50" stroke-width="2.2"/>
+  <ellipse cx="150.0" cy="61.0" rx="18.0" ry="5.4" fill="#e67e22" fill-opacity="0.18" stroke="#2c3e50" stroke-width="2.2"/>
+  <line x1="96.0" y1="205.0" x2="132.0" y2="61.0" stroke="#2c3e50" stroke-width="2.2"/><line x1="204.0" y1="205.0" x2="168.0" y2="61.0" stroke="#2c3e50" stroke-width="2.2"/>
+  <line x1="132" y1="205" x2="132" y2="61" stroke="#2c3e50" stroke-width="1.3" stroke-dasharray="5,4"/>
+  <line x1="168" y1="205" x2="168" y2="61" stroke="#2c3e50" stroke-width="1.3" stroke-dasharray="5,4"/>
+  <ellipse cx="150" cy="61" rx="17.6" ry="5.3" fill="#ffffff" stroke="#2c3e50" stroke-width="1.5"/>
+  <g font-family="Oswald, sans-serif" font-size="13" fill="#2c3e50">
+    <text x="210" y="209">Ø 18 cm</text><text x="176" y="57">Ø 6 cm</text>
+    <text x="189.48" y="133.0">24 cm</text>
+  </g>
+</svg>
+            <figcaption>Esquema redesenhado a partir dos dados do enunciado original.</figcaption>
+        </figure>
+        <p>A massa, em grama, da escultura é</p>
+        <p>A) 1 198,8<br>B) 1 296,0<br>C) 1 360,8<br>D) 4 665,6<br>E) 4 860,0</p>
         <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>D</strong>.<br>O sorvete restante forma um cone semelhante à casquinha, com razão $k = \dfrac{1}{2}$: volume $k^3 = \dfrac{1}{8}$ do total.<br>A criança tomou $1 - \dfrac{1}{8} = \mathbf{\dfrac{7}{8}}$ do sorvete. (A alternativa B é o que <strong>sobrou</strong>.)</p></div>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>B</strong>.<br>O cone retirado é semelhante ao original, com $k = \dfrac{6}{18} = \dfrac{1}{3}$: altura $12$ cm. O tronco tem altura $36 - 12 = 24$ cm.<br>$V_{\text{tronco}} = \dfrac{3 \cdot 81 \cdot 36}{3} - \dfrac{3 \cdot 9 \cdot 12}{3} = 2\,916 - 108 = 2\,808$ cm³; furo: $3 \cdot 9 \cdot 24 = 648$ cm³.<br>$V = 2\,808 - 648 = 2\,160$ cm³ e massa $= 2\,160 \cdot 0{,}6 = \mathbf{1\,296}$ g. Alternativa <strong>B</strong>.</p></div>
     </article>
 </section>
 
