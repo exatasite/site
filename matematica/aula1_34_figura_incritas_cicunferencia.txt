@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1º Ano: Aula 34 - Figuras Inscritas na Circunferência</title>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../estilo.css">
+    <script>
+        MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']], processEscapes: true } };
+    </script>
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        body.modo-slides { overflow: hidden !important; background-color: #1a1a1a !important; margin: 0; padding: 0; }
+        body.modo-slides .menu-lateral, body.modo-slides header, body.modo-slides .menu-toggle, body.modo-slides #btn-slides, body.modo-slides .nav-global { display: none !important; }
+        .slide-ativo { display: flex !important; flex-direction: column; align-items: center; justify-content: center; position: fixed; top: 0; left: 0; width: 100vw; height: calc(100vh - 70px); background: #ffffff; padding: 40px; z-index: 999; overflow-y: auto !important; box-sizing: border-box; text-align: left; }
+        .slide-ativo > * { max-width: 900px; width: 100%; }
+        .controles-slides { position: fixed; bottom: 0; left: 0; width: 100%; height: 70px; background: #2c3e50; color: white; display: none; justify-content: space-between; align-items: center; padding: 0 20px; z-index: 1001; box-sizing: border-box; }
+        body.modo-slides .controles-slides { display: flex !important; }
+        .info-lateral { flex: 1; font-family: 'Oswald', sans-serif; font-size: 0.9rem; color: #bdc3c7; }
+        .botoes-centrais { display: flex; align-items: center; gap: 15px; justify-content: center; flex: 2; }
+        .btn-nav { padding: 10px 20px; background: #3498db; color: white; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; font-size: 0.9rem; }
+        .btn-nav:hover { background: #2980b9; }
+        #contador-slide { font-family: 'Oswald', sans-serif; min-width: 60px; text-align: center; font-size: 1.1rem; }
+    </style>
+</head>
+<body>
+<button class="menu-toggle" onclick="toggleMenu()">☰</button>
+<nav id="menu-principal" class="nav-global"><ul>
+    <li><a href="../index.html">🏠 Início</a></li>
+    <li><a href="../ensino_medio.html">📚 Ensino Médio</a></li>
+    <li><a href="../ensino_superior.html">🎓 Ensino Superior</a></li>
+</ul></nav>
+<header id="topo">
+    <h1>MATEMÁTICA EM</h1>
+    <p>1º Ano | Aula 34: Figuras Inscritas na Circunferência</p>
+    <button id="btn-slides" onclick="toggleSlides()">📺 Iniciar Modo Slides</button>
+</header>
+<div class="container"><main class="conteudo-principal"><div class="secao-aula">
+
+<div class="container-resumo" id="resumo">
+    <h3>📚 Resumo</h3>
+    <section class="resumo-conteudo">
+        <p>Um polígono está <strong>inscrito</strong> em uma circunferência quando todos os seus vértices pertencem a ela; nesse caso, a circunferência está <strong>circunscrita</strong> ao polígono. Nos polígonos regulares, o raio $R$ da circunscrita liga o centro a um vértice, e o <strong>apótema</strong> $a$ liga o centro ao ponto médio de um lado (é o raio da circunferência inscrita no polígono). Um ângulo inscrito mede a metade do arco que ele enxerga.</p>
+        <p style="text-align: center;">$$\ell_3 = R\sqrt{3},\; a_3 = \tfrac{R}{2} \qquad \ell_4 = R\sqrt{2},\; a_4 = \tfrac{R\sqrt{2}}{2} \qquad \ell_6 = R,\; a_6 = \tfrac{R\sqrt{3}}{2}$$</p>
+    </section>
+</div>
+
+<section class="conteudo-teorico-completo" id="teoria">
+    <div class="passo-teoria">
+        <h3>📖 Figuras Inscritas na Circunferência</h3>
+        <h4>1. Polígonos Regulares Inscritos</h4>
+        <figure class="figura-aula figura-grande">
+            <svg viewBox="0 0 600 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Triângulo equilátero, quadrado e hexágono regular inscritos em circunferências de raio R, com o raio e o apótema destacados" style="width:100%; max-width:580px; display:block; margin:0 auto;">
+  <circle cx="100" cy="95" r="70" fill="none" stroke="#7f8c8d" stroke-width="1.5"/>
+  <polygon points="100.0,25.0 39.4,130.0 160.6,130.0" fill="#3498db" fill-opacity="0.2" stroke="#2c3e50" stroke-width="2"/>
+  <line x1="100" y1="95" x2="100.0" y2="25.0" stroke="#e74c3c" stroke-width="2.5"/>
+  <line x1="100" y1="95" x2="100.0" y2="130.0" stroke="#27ae60" stroke-width="2.5"/>
+  <circle cx="100" cy="95" r="3" fill="#2c3e50"/>
+  <text x="106.0" y="56.0" font-family="Oswald, sans-serif" font-size="14" fill="#e74c3c">R</text>
+  <text x="106.0" y="116.5" font-family="Oswald, sans-serif" font-size="14" fill="#27ae60">a</text>
+  <text x="100" y="187" font-family="Oswald, sans-serif" font-size="13" text-anchor="middle" fill="#2c3e50">ℓ = R√3,  a = R/2</text>
+  <circle cx="300" cy="95" r="70" fill="none" stroke="#7f8c8d" stroke-width="1.5"/>
+  <polygon points="349.5,45.5 250.5,45.5 250.5,144.5 349.5,144.5" fill="#3498db" fill-opacity="0.2" stroke="#2c3e50" stroke-width="2"/>
+  <line x1="300" y1="95" x2="349.5" y2="45.5" stroke="#e74c3c" stroke-width="2.5"/>
+  <line x1="300" y1="95" x2="300.0" y2="144.5" stroke="#27ae60" stroke-width="2.5"/>
+  <circle cx="300" cy="95" r="3" fill="#2c3e50"/>
+  <text x="330.7" y="66.3" font-family="Oswald, sans-serif" font-size="14" fill="#e74c3c">R</text>
+  <text x="306.0" y="123.7" font-family="Oswald, sans-serif" font-size="14" fill="#27ae60">a</text>
+  <text x="300" y="187" font-family="Oswald, sans-serif" font-size="13" text-anchor="middle" fill="#2c3e50">ℓ = R√2,  a = R√2/2</text>
+  <circle cx="500" cy="95" r="70" fill="none" stroke="#7f8c8d" stroke-width="1.5"/>
+  <polygon points="570.0,95.0 535.0,34.4 465.0,34.4 430.0,95.0 465.0,155.6 535.0,155.6" fill="#3498db" fill-opacity="0.2" stroke="#2c3e50" stroke-width="2"/>
+  <line x1="500" y1="95" x2="570.0" y2="95.0" stroke="#e74c3c" stroke-width="2.5"/>
+  <line x1="500" y1="95" x2="500.0" y2="155.6" stroke="#27ae60" stroke-width="2.5"/>
+  <circle cx="500" cy="95" r="3" fill="#2c3e50"/>
+  <text x="541.0" y="91.0" font-family="Oswald, sans-serif" font-size="14" fill="#e74c3c">R</text>
+  <text x="506.0" y="129.3" font-family="Oswald, sans-serif" font-size="14" fill="#27ae60">a</text>
+  <text x="500" y="187" font-family="Oswald, sans-serif" font-size="13" text-anchor="middle" fill="#2c3e50">ℓ = R,  a = R√3/2</text>
+</svg>
+            <figcaption>Figura 1: Triângulo, quadrado e hexágono inscritos: raio $R$ (vermelho) e apótema $a$ (verde).</figcaption>
+        </figure>
+        <ul>
+            <li><strong>Quadrado:</strong> a diagonal é o diâmetro: $\ell\sqrt{2} = 2R \Rightarrow \ell = R\sqrt{2}$, e $a = \dfrac{\ell}{2}$;</li>
+            <li><strong>Hexágono:</strong> é formado por $6$ triângulos equiláteros de lado $R$: $\ell = R$ e $a = \dfrac{R\sqrt{3}}{2}$ (altura de um desses triângulos);</li>
+            <li><strong>Triângulo equilátero:</strong> o centro é o baricentro e divide a altura $h$ em $\dfrac{2}{3}$ e $\dfrac{1}{3}$: $R = \dfrac{2h}{3}$, $a = \dfrac{h}{3} = \dfrac{R}{2}$ e $\ell = R\sqrt{3}$.</li>
+        </ul>
+        <p style="text-align: center; font-size: 1.15rem; background-color: #f8f9fa; padding: 15px; border-left: 5px solid #3498db; margin: 20px 0;">
+            $$\text{Área de um polígono regular} = \frac{\text{perímetro} \cdot \text{apótema}}{2}$$
+        </p>
+    </div>
+
+    <div class="passo-teoria">
+        <h4>2. Circunferência Inscrita no Polígono</h4>
+        <p>Quando a circunferência tangencia todos os lados, ela está <strong>inscrita</strong> no polígono, e seu raio é o <strong>apótema</strong>. Para o quadrado de lado $\ell$: $r = \dfrac{\ell}{2}$ (inscrita) e $R = \dfrac{\ell\sqrt{2}}{2}$ (circunscrita). Para o triângulo equilátero, $R = 2r$.</p>
+    </div>
+
+    <div class="passo-teoria">
+        <h4>3. Ângulo Inscrito e Quadrilátero Inscrito</h4>
+        <figure class="figura-aula figura-grande">
+            <svg viewBox="0 0 300 240" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Ângulo inscrito de vértice V e ângulo central de vértice O que enxergam o mesmo arco AB: o central é o dobro do inscrito" style="width:100%; max-width:300px; display:block; margin:0 auto;">
+  <circle cx="150" cy="120" r="95" fill="none" stroke="#7f8c8d" stroke-width="1.5"/>
+  <path d="M60.7,152.5 A95,95 0 0,0 239.3,152.5" fill="none" stroke="#e67e22" stroke-width="5"/>
+  <polyline points="60.7,152.5 117.5,30.7 239.3,152.5" fill="none" stroke="#3498db" stroke-width="2.5"/>
+  <polyline points="60.7,152.5 150,120 239.3,152.5" fill="none" stroke="#e74c3c" stroke-width="2.5"/>
+  <circle cx="150" cy="120" r="3.5" fill="#2c3e50"/>
+  <g font-family="Oswald, sans-serif" font-size="15" fill="#2c3e50" text-anchor="middle">
+    <text x="48.7" y="158.5">A</text><text x="251.3" y="158.5">B</text><text x="113.5" y="22.7">V</text><text x="150" y="110">O</text>
+    <text x="123.5" y="66.7" fill="#3498db" font-size="14">α</text><text x="150" y="148" fill="#e74c3c" font-size="14">2α</text>
+    <text x="150" y="233" fill="#e67e22" font-size="13">arco AB = 2α</text>
+  </g>
+</svg>
+            <figcaption>Figura 2: O ângulo inscrito $\alpha$ mede a metade do ângulo central $2\alpha$ que enxerga o mesmo arco.</figcaption>
+        </figure>
+        <ul>
+            <li><strong>Ângulo inscrito</strong> = metade do arco (ou do ângulo central) correspondente;</li>
+            <li>Ângulo inscrito numa <strong>semicircunferência</strong> é reto: todo triângulo retângulo inscrito tem a hipotenusa como diâmetro ($R = \dfrac{\text{hipotenusa}}{2}$);</li>
+            <li><strong>Quadrilátero inscrito:</strong> os ângulos opostos são suplementares ($\hat{A} + \hat{C} = \hat{B} + \hat{D} = 180^\circ$).</li>
+        </ul>
+    </div>
+</section>
+
+<section class="aplicacoes-reais" id="aplicacoes">
+    <h3>💡 Matemática em Ação</h3>
+    <div class="cards-aplicacao">
+        <div class="card">
+            <h4>🔩 Porcas e Parafusos</h4>
+            <p>A porca sextavada é um hexágono regular: para fabricá-la a partir de uma barra redonda de raio $R$, o lado é exatamente $R$. A chave de boca mede a distância entre lados opostos, $2a = R\sqrt{3}$.</p>
+        </div>
+        <div class="card" style="border-left-color: #2ecc71;">
+            <h4>🐝 Colmeias e Pisos</h4>
+            <p>Abelhas e projetistas de pisos usam hexágonos: entre os polígonos que cobrem o plano, é o que mais se aproxima do círculo, aproveitando melhor o espaço.</p>
+        </div>
+    </div>
+</section>
+<section class="questoes-resolvidas" id="resolvidas">
+    <h3>✅ 5 Questões Resolvidas (R 1 a 5)</h3>
+    <article class="questao">
+        <h4>R 1: O Quadrado Inscrito</h4>
+        <p><strong>Enunciado:</strong> Um quadrado está inscrito em uma circunferência de raio $6$ cm. Calcule o lado, o apótema e a área do quadrado.</p>
+        <div class="resolucao-bloco"><p><strong>Resolução:</strong><br>A diagonal do quadrado é o diâmetro: $\ell\sqrt{2} = 2R \implies \ell = R\sqrt{2} = \mathbf{6\sqrt{2}}$ cm.<br>Apótema (metade do lado): $a = \dfrac{\ell}{2} = \dfrac{R\sqrt{2}}{2} = \mathbf{3\sqrt{2}}$ cm.<br>Área: $\ell^2 = (6\sqrt{2})^2 = \mathbf{72}$ cm².</p></div>
+    </article>
+    <article class="questao">
+        <h4>R 2: O Triângulo Inscrito</h4>
+        <p><strong>Enunciado:</strong> Um triângulo equilátero está inscrito em uma circunferência de raio $4$ cm. Calcule o lado, o apótema e a área do triângulo.</p>
+        <div class="resolucao-bloco"><p><strong>Resolução:</strong><br>$\ell = R\sqrt{3} = \mathbf{4\sqrt{3}}$ cm. O centro é o baricentro, que divide a altura na razão $2:1$: $a = \dfrac{R}{2} = \mathbf{2}$ cm.<br>Altura: $h = R + a = 6$ cm.<br>Área: $\dfrac{\ell \cdot h}{2} = \dfrac{4\sqrt{3} \cdot 6}{2} = \mathbf{12\sqrt{3}}$ cm².</p></div>
+    </article>
+    <article class="questao">
+        <h4>R 3: O Hexágono Inscrito</h4>
+        <p><strong>Enunciado:</strong> Um hexágono regular está inscrito em uma circunferência de raio $10$ cm. Calcule o perímetro, o apótema e a área do hexágono.</p>
+        <div class="resolucao-bloco"><p><strong>Resolução:</strong><br>O hexágono é formado por $6$ triângulos equiláteros de lado $R$: $\ell = R = 10$ cm e perímetro $\mathbf{60}$ cm.<br>Apótema (altura de cada triângulo): $a = \dfrac{R\sqrt{3}}{2} = \mathbf{5\sqrt{3}}$ cm.<br>Área: $6 \cdot \dfrac{\ell^2\sqrt{3}}{4} = 6 \cdot \dfrac{100\sqrt{3}}{4} = \mathbf{150\sqrt{3}}$ cm².</p></div>
+    </article>
+    <article class="questao">
+        <h4>R 4: Ângulo Inscrito</h4>
+        <p><strong>Enunciado:</strong> a) Um ângulo inscrito determina na circunferência um arco de $110^\circ$. Qual a sua medida? b) Um triângulo retângulo de catetos $6$ e $8$ está inscrito numa circunferência. Qual o raio?</p>
+        <div class="resolucao-bloco"><p><strong>Resolução:</strong><br>a) O ângulo inscrito mede a metade do arco (ou do ângulo central) correspondente: $\dfrac{110^\circ}{2} = \mathbf{55^\circ}$.<br>b) O ângulo reto é inscrito e enxerga um arco de $180^\circ$: a hipotenusa é um <strong>diâmetro</strong>.<br>Hipotenusa $= \sqrt{6^2 + 8^2} = 10$, logo $R = \mathbf{5}$.</p></div>
+    </article>
+    <article class="questao">
+        <h4>R 5: Quadrilátero Inscrito</h4>
+        <p><strong>Enunciado:</strong> Um quadrilátero $ABCD$ está inscrito em uma circunferência, com $\hat{A} = 3x + 10^\circ$ e $\hat{C} = 2x + 20^\circ$. Determine $\hat{A}$ e $\hat{C}$.</p>
+        <div class="resolucao-bloco"><p><strong>Resolução:</strong><br>Em um quadrilátero inscrito, os ângulos opostos são <strong>suplementares</strong>: $\hat{A} + \hat{C} = 180^\circ$.<br>$5x + 30^\circ = 180^\circ \implies x = 30^\circ$.<br>$\hat{A} = \mathbf{100^\circ}$ e $\hat{C} = \mathbf{80^\circ}$.</p></div>
+    </article>
+</section>
+
+<section class="questoes-propostas" id="propostas">
+    <h3>✍️ 10 Questões Propostas (P 6 a 15)</h3>
+    <article class="questao">
+        <h4>P 6: Lado do Quadrado</h4>
+        <p><strong>Enunciado:</strong> Um quadrado está inscrito em uma circunferência de raio $5\sqrt{2}$ cm. Qual o lado do quadrado?</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>$\ell = R\sqrt{2} = 5\sqrt{2} \cdot \sqrt{2}$.<br>$\ell = \mathbf{10}$ cm.</p></div>
+    </article>
+    <article class="questao">
+        <h4>P 7: Perímetro do Hexágono</h4>
+        <p><strong>Enunciado:</strong> Qual o perímetro de um hexágono regular inscrito em uma circunferência de raio $8$ cm?</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>No hexágono inscrito, $\ell = R = 8$ cm.<br>Perímetro: $6 \cdot 8 = \mathbf{48}$ cm.</p></div>
+    </article>
+    <article class="questao">
+        <h4>P 8: Raio do Triângulo</h4>
+        <p><strong>Enunciado:</strong> Um triângulo equilátero de lado $9$ cm está inscrito em uma circunferência. Qual o raio?</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>$\ell = R\sqrt{3} \implies R = \dfrac{9}{\sqrt{3}} = \dfrac{9\sqrt{3}}{3}$.<br>$R = \mathbf{3\sqrt{3}}$ cm.</p></div>
+    </article>
+    <article class="questao">
+        <h4>P 9: Inscrita e Circunscrita</h4>
+        <p><strong>Enunciado:</strong> Um quadrado tem lado $8$ cm. Calcule o raio da circunferência circunscrita, o raio da inscrita e a razão entre as áreas dos dois círculos.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>Circunscrita: $R = \dfrac{8\sqrt{2}}{2} = 4\sqrt{2}$ cm. Inscrita: $r = \dfrac{8}{2} = 4$ cm.<br>Razão das áreas: $\dfrac{\pi R^2}{\pi r^2} = \dfrac{32}{16} = \mathbf{2}$.</p></div>
+    </article>
+    <article class="questao">
+        <h4>P 10: Apótema do Hexágono</h4>
+        <p><strong>Enunciado:</strong> Qual o apótema de um hexágono regular inscrito em uma circunferência de raio $12$ cm?</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>$a = \dfrac{R\sqrt{3}}{2} = \dfrac{12\sqrt{3}}{2}$.<br>$a = \mathbf{6\sqrt{3}}$ cm.</p></div>
+    </article>
+    <article class="questao">
+        <h4>P 11: Ângulo Inscrito</h4>
+        <p><strong>Enunciado:</strong> Um ângulo inscrito enxerga um arco de $140^\circ$. Quanto ele mede? E o ângulo central correspondente?</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>Central $=$ arco $= 140^\circ$.<br>Inscrito $= \dfrac{140^\circ}{2} = \mathbf{70^\circ}$.</p></div>
+    </article>
+    <article class="questao">
+        <h4>P 12: Triângulo na Semicircunferência</h4>
+        <p><strong>Enunciado:</strong> Um triângulo retângulo de catetos $5$ cm e $12$ cm está inscrito em uma circunferência. Qual o raio?</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>A hipotenusa é diâmetro: $\sqrt{25 + 144} = 13$ cm.<br>$R = \mathbf{6{,}5}$ cm.</p></div>
+    </article>
+    <article class="questao">
+        <h4>P 13: Ângulos Opostos</h4>
+        <p><strong>Enunciado:</strong> Em um quadrilátero $ABCD$ inscrito, $\hat{B} = 105^\circ$. Quanto mede $\hat{D}$?</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>Ângulos opostos são suplementares.<br>$\hat{D} = 180^\circ - 105^\circ = \mathbf{75^\circ}$.</p></div>
+    </article>
+    <article class="questao">
+        <h4>P 14: A Região entre as Figuras</h4>
+        <p><strong>Enunciado:</strong> Calcule a área da região do círculo de raio $6$ cm que fica fora do quadrado inscrito nele.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>Círculo: $36\pi$. Quadrado: $\ell = 6\sqrt{2}$, área $72$.<br>Região: $36\pi - 72 = \mathbf{36(\pi - 2)}$ cm² $\approx 41{,}1$ cm².</p></div>
+    </article>
+    <article class="questao">
+        <h4>P 15: Do Apótema ao Lado</h4>
+        <p><strong>Enunciado:</strong> O apótema de um triângulo equilátero inscrito em uma circunferência mede $3$ cm. Calcule o raio e o lado do triângulo.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>$a = \dfrac{R}{2} \implies R = 6$ cm.<br>$\ell = R\sqrt{3} = \mathbf{6\sqrt{3}}$ cm (e $R = \mathbf{6}$ cm).</p></div>
+    </article>
+</section>
+
+<section class="TESTE" id="testes">
+    <h3>🎓 TESTES (T 16 a 20)</h3>
+    <article class="questao">
+        <h4>T 16: (EEAR 2013) Razão entre Apótemas</h4>
+        <p>Um hexágono regular e um triângulo equilátero têm o mesmo lado $\ell$.</p>
+        <p>A razão entre o apótema do hexágono e o apótema do triângulo é</p>
+        <p>A) 4.<br>B) 3.<br>C) 2.<br>D) 1.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>B</strong>.<br>Hexágono: $6$ triângulos equiláteros de lado $\ell$; o apótema é a altura de um deles: $a_6 = \dfrac{\ell\sqrt{3}}{2}$.<br>Triângulo: o apótema é $\dfrac{1}{3}$ da altura: $a_3 = \dfrac{1}{3} \cdot \dfrac{\ell\sqrt{3}}{2} = \dfrac{\ell\sqrt{3}}{6}$.<br>Razão: $\dfrac{a_6}{a_3} = \dfrac{\ell\sqrt{3}/2}{\ell\sqrt{3}/6} = \mathbf{3}$. Alternativa <strong>B</strong>.</p></div>
+    </article>
+    <article class="questao">
+        <h4>T 17: (ENEM PPL 2018) O Pula-Pula Hexagonal</h4>
+        <p>Um brinquedo chamado pula-pula, quando visto de cima, consiste de uma cama elástica com contorno em formato de um hexágono regular.</p>
+        <p>Se a área do círculo inscrito no hexágono é $3\pi$ metros quadrados, então a área do hexágono, em metro quadrado, é</p>
+        <p>A) $9$<br>B) $6\sqrt{3}$<br>C) $9\sqrt{2}$<br>D) $12$<br>E) $12\sqrt{3}$</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>B</strong>.<br>O raio do círculo inscrito é o apótema: $\pi a^2 = 3\pi \implies a = \sqrt{3}$ m.<br>$a = \dfrac{\ell\sqrt{3}}{2} = \sqrt{3} \implies \ell = 2$ m.<br>Área: $6 \cdot \dfrac{\ell^2\sqrt{3}}{4} = 6 \cdot \dfrac{4\sqrt{3}}{4} = \mathbf{6\sqrt{3}}$ m². Alternativa <strong>B</strong>.</p></div>
+    </article>
+    <article class="questao">
+        <h4>T 18: (FGV-SP) O Polígono AQCEF</h4>
+        <p>Na figura, $ABCDEF$ é um hexágono regular de lado $1$ dm, e $Q$ é o centro da circunferência inscrita a ele.</p>
+        <figure class="figura-aula">
+            <svg viewBox="0 0 300 240" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Hexágono regular ABCDEF de lado 1 dm, com a circunferência inscrita de centro Q e o polígono AQCEF destacado" style="width:100%; max-width:300px; display:block; margin:0 auto;">
+  <polygon points="55.0,120.0 102.5,37.7 197.5,37.7 245.0,120.0 197.5,202.3 102.5,202.3" fill="none" stroke="#2c3e50" stroke-width="2"/>
+  <circle cx="150" cy="120" r="82.3" fill="none" stroke="#7f8c8d" stroke-width="1.3" stroke-dasharray="5,4"/>
+  <polygon points="55.0,120.0 150.0,120.0 197.5,37.7 197.5,202.3 102.5,202.3" fill="#3498db" fill-opacity="0.25" stroke="#e74c3c" stroke-width="3"/>
+  <circle cx="150" cy="120" r="4" fill="#2c3e50"/>
+  <g font-family="Oswald, sans-serif" font-size="15" fill="#2c3e50" text-anchor="middle">
+    <text x="39.0" y="125.0">A</text>
+    <text x="94.5" y="28.9">B</text>
+    <text x="205.5" y="28.9">C</text>
+    <text x="261.0" y="125.0">D</text>
+    <text x="205.5" y="221.1">E</text>
+    <text x="94.5" y="221.1">F</text>
+    <text x="164" y="138">Q</text>
+  </g>
+</svg>
+            <figcaption>Figura redesenhada a partir do enunciado original.</figcaption>
+        </figure>
+        <p>O perímetro do polígono $AQCEF$, em dm, é igual a</p>
+        <p>A) $4 + \sqrt{2}$<br>B) $4 + \sqrt{3}$<br>C) $6$<br>D) $4 + \sqrt{5}$<br>E) $2(2 + \sqrt{2})$</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>B</strong>.<br>$Q$ também é o centro da circunferência circunscrita, cujo raio é igual ao lado: $AQ = QC = 1$. Além disso, $EF = FA = 1$ (lados).<br>$CE$ é uma diagonal menor do hexágono: no triângulo $CDE$, com $CD = DE = 1$ e $\hat{D} = 120^\circ$, $CE = \sqrt{1 + 1 - 2\cos 120^\circ} = \sqrt{3}$.<br>Perímetro: $1 + 1 + \sqrt{3} + 1 + 1 = \mathbf{4 + \sqrt{3}}$ dm. Alternativa <strong>B</strong>.</p></div>
+    </article>
+    <article class="questao">
+        <h4>T 19: (UFPR) Polígonos que Viram Círculo</h4>
+        <p>Considere a seguinte sequência de polígonos regulares inscritos em um círculo de raio $2$ cm. Sabe-se que a área $A$ de um polígono regular de $n$ lados inscrito nesse círculo pode ser calculada por $A = 2n \cdot \operatorname{sen}\left(\dfrac{2\pi}{n}\right)$. Considere as afirmativas:</p>
+        <p>1. As áreas do triângulo equilátero e do quadrado nessa sequência são, respectivamente, $3\sqrt{3}$ cm² e $8$ cm². \ 2. O polígono regular de $12$ lados, obtido nessa sequência, terá área de $12$ cm². \ 3. À medida que $n$ aumenta, o valor $A$ se aproxima de $4\pi$ cm².</p>
+        <figure class="figura-aula">
+            <svg viewBox="0 0 560 130" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Sequência de polígonos regulares inscritos em círculos de mesmo raio: triângulo, quadrado, pentágono, hexágono" style="width:100%; max-width:500px; display:block; margin:0 auto;">
+  <circle cx="65" cy="62" r="48" fill="none" stroke="#7f8c8d" stroke-width="1.5"/>
+  <polygon points="65.0,14.0 23.4,86.0 106.6,86.0" fill="#3498db" fill-opacity="0.25" stroke="#2c3e50" stroke-width="2"/>
+  <text x="65" y="126" font-family="Oswald, sans-serif" font-size="13" text-anchor="middle" fill="#2c3e50">n = 3</text>
+  <circle cx="195" cy="62" r="48" fill="none" stroke="#7f8c8d" stroke-width="1.5"/>
+  <polygon points="195.0,14.0 147.0,62.0 195.0,110.0 243.0,62.0" fill="#3498db" fill-opacity="0.25" stroke="#2c3e50" stroke-width="2"/>
+  <text x="195" y="126" font-family="Oswald, sans-serif" font-size="13" text-anchor="middle" fill="#2c3e50">n = 4</text>
+  <circle cx="325" cy="62" r="48" fill="none" stroke="#7f8c8d" stroke-width="1.5"/>
+  <polygon points="325.0,14.0 279.3,47.2 296.8,100.8 353.2,100.8 370.7,47.2" fill="#3498db" fill-opacity="0.25" stroke="#2c3e50" stroke-width="2"/>
+  <text x="325" y="126" font-family="Oswald, sans-serif" font-size="13" text-anchor="middle" fill="#2c3e50">n = 5</text>
+  <circle cx="455" cy="62" r="48" fill="none" stroke="#7f8c8d" stroke-width="1.5"/>
+  <polygon points="455.0,14.0 413.4,38.0 413.4,86.0 455.0,110.0 496.6,86.0 496.6,38.0" fill="#3498db" fill-opacity="0.25" stroke="#2c3e50" stroke-width="2"/>
+  <text x="455" y="126" font-family="Oswald, sans-serif" font-size="13" text-anchor="middle" fill="#2c3e50">n = 6</text>
+  <text x="520" y="66" font-family="Oswald, sans-serif" font-size="18" text-anchor="start" fill="#2c3e50">…</text>
+</svg>
+            <figcaption>Ilustração da sequência de polígonos inscritos (redesenhada).</figcaption>
+        </figure>
+        <p>Assinale a alternativa correta.</p>
+        <p>A) Somente a afirmativa 1 é verdadeira.<br>B) Somente as afirmativas 1 e 2 são verdadeiras.<br>C) Somente as afirmativas 1 e 3 são verdadeiras.<br>D) Somente as afirmativas 2 e 3 são verdadeiras.<br>E) As afirmativas 1, 2 e 3 são verdadeiras.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>E</strong>.<br>$n = 3$: $6 \operatorname{sen} 120^\circ = 6 \cdot \dfrac{\sqrt{3}}{2} = 3\sqrt{3}$. $n = 4$: $8 \operatorname{sen} 90^\circ = 8$. Verdadeira.<br>$n = 12$: $24 \operatorname{sen} 30^\circ = 24 \cdot \dfrac{1}{2} = 12$. Verdadeira.<br>Com mais lados, o polígono tende ao círculo, de área $4\pi$. Verdadeira. Alternativa <strong>E</strong>.</p></div>
+    </article>
+    <article class="questao">
+        <h4>T 20: (UECE) O Polígono das 9 Diagonais</h4>
+        <p>Um polígono regular convexo, circunscrito a uma circunferência de raio igual a $1$ u.c., possui $9$ diagonais.</p>
+        <p>A área desse polígono é</p>
+        <p>A) $2\sqrt{3}$ u.a.<br>B) $3\sqrt{3}$ u.a.<br>C) $4\sqrt{3}$ u.a.<br>D) $5\sqrt{3}$ u.a.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>A</strong>.<br>$\dfrac{n(n - 3)}{2} = 9 \implies n = 6$ (hexágono). O raio $1$ da circunferência inscrita é o apótema: $\dfrac{\ell\sqrt{3}}{2} = 1 \implies \ell = \dfrac{2}{\sqrt{3}}$.<br>Área $= \dfrac{6\ell \cdot 1}{2} = \dfrac{6}{\sqrt{3}} = \mathbf{2\sqrt{3}}$ u.a. Alternativa <strong>A</strong>.</p></div>
+    </article>
+</section>
+
+</div></main>
+<aside class="menu-lateral"><iframe src="../menu_matematica.html" style="width:100%; border:none; height:600px;"></iframe></aside>
+</div>
+<script>
+function toggleGabarito(botao) {
+    const gabarito = botao.nextElementSibling;
+    if (gabarito.style.display === "none" || gabarito.style.display === "") {
+        gabarito.style.display = "block"; botao.textContent = "Esconder Gabarito e Resolução"; botao.style.backgroundColor = "#2c3e50";
+    } else {
+        gabarito.style.display = "none"; botao.textContent = "Ver Gabarito e Resolução"; botao.style.backgroundColor = "#3498db";
+    }
+}
+function toggleMenu() { const m = document.getElementById("menu-principal"); if (m) m.classList.toggle("ativo"); }
+let slideAtual = 0; let slides = [];
+function prepararSlides() { slides = Array.from(document.querySelectorAll('.container-resumo, .passo-teoria, .card, .questao')); }
+function toggleSlides() {
+    prepararSlides(); const body = document.body;
+    if (!body.classList.contains('modo-slides')) { body.classList.add('modo-slides'); slideAtual = 0; mostrarSlide(slideAtual); }
+    else { body.classList.remove('modo-slides'); slides.forEach(s => { s.classList.remove('slide-ativo'); s.style.display = ''; }); }
+}
+function mostrarSlide(n) {
+    if (!slides.length) return;
+    slides.forEach(s => { s.classList.remove('slide-ativo'); s.style.display = 'none'; });
+    const slide = slides[n]; slide.classList.add('slide-ativo');
+    slide.querySelectorAll('.gabarito-resolucao').forEach(g => g.style.display = 'none');
+    slide.querySelectorAll('.btn-gabarito').forEach(b => { b.textContent = "Ver Gabarito e Resolução"; b.style.backgroundColor = "#3498db"; });
+    const pHeader = document.querySelector('header p');
+    if (pHeader) { const partes = pHeader.innerText.split('|'); if (partes.length > 1) {
+        document.getElementById('slide-info-serie').innerText = partes[0].trim();
+        document.getElementById('slide-info-aula').innerText = partes[1].trim(); } }
+    document.getElementById('contador-slide').innerText = (n + 1) + " / " + slides.length;
+    if (window.MathJax && window.MathJax.typesetPromise) { MathJax.typesetPromise(); }
+}
+function mudarSlide(d) { slideAtual += d; if (slideAtual >= slides.length) slideAtual = 0; if (slideAtual < 0) slideAtual = slides.length - 1; mostrarSlide(slideAtual); }
+document.addEventListener('keydown', function(event) {
+    if (document.body.classList.contains('modo-slides')) {
+        switch(event.key) {
+            case 'ArrowRight': case 'PageDown': case 'Enter': case ' ': event.preventDefault(); mudarSlide(1); break;
+            case 'ArrowLeft': case 'PageUp': event.preventDefault(); mudarSlide(-1); break;
+            case 'Escape': event.preventDefault(); toggleSlides(); break;
+        }
+    }
+});
+</script>
+<div class="controles-slides">
+    <div id="slide-info-serie" class="info-lateral"></div>
+    <div class="botoes-centrais">
+        <button class="btn-nav" onclick="mudarSlide(-1)">⬅ Anterior</button>
+        <span id="contador-slide"></span>
+        <button class="btn-nav" onclick="mudarSlide(1)">Próximo ➡</button>
+        <button class="btn-nav" onclick="toggleSlides()" style="background:#e74c3c;">Sair</button>
+    </div>
+    <div id="slide-info-aula" class="info-lateral" style="text-align: right;"></div>
+</div>
+</body>
+</html>
