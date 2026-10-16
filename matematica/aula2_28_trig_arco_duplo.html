@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2º Ano: Aula 28 - Arco Duplo, Arco Metade e Transformação em Produto</title>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../estilo.css">
+    <script>
+        MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']], processEscapes: true } };
+    </script>
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        body.modo-slides { overflow: hidden !important; background-color: #1a1a1a !important; margin: 0; padding: 0; }
+        body.modo-slides .menu-lateral, body.modo-slides header, body.modo-slides .menu-toggle, body.modo-slides #btn-slides, body.modo-slides .nav-global { display: none !important; }
+        .slide-ativo { display: flex !important; flex-direction: column; align-items: center; justify-content: center; position: fixed; top: 0; left: 0; width: 100vw; height: calc(100vh - 70px); background: #ffffff; padding: 40px; z-index: 999; overflow-y: auto !important; box-sizing: border-box; text-align: left; }
+        .slide-ativo > * { max-width: 900px; width: 100%; }
+        .controles-slides { position: fixed; bottom: 0; left: 0; width: 100%; height: 70px; background: #2c3e50; color: white; display: none; justify-content: space-between; align-items: center; padding: 0 20px; z-index: 1001; box-sizing: border-box; }
+        body.modo-slides .controles-slides { display: flex !important; }
+        .info-lateral { flex: 1; font-family: 'Oswald', sans-serif; font-size: 0.9rem; color: #bdc3c7; }
+        .botoes-centrais { display: flex; align-items: center; gap: 15px; justify-content: center; flex: 2; }
+        .btn-nav { padding: 10px 20px; background: #3498db; color: white; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; font-size: 0.9rem; }
+        .btn-nav:hover { background: #2980b9; }
+        #contador-slide { font-family: 'Oswald', sans-serif; min-width: 60px; text-align: center; font-size: 1.1rem; }
+    </style>
+</head>
+<body>
+<button class="menu-toggle" onclick="toggleMenu()">☰</button>
+<nav id="menu-principal" class="nav-global"><ul>
+    <li><a href="../index.html">🏠 Início</a></li>
+    <li><a href="../ensino_medio.html">📚 Ensino Médio</a></li>
+    <li><a href="../ensino_superior.html">🎓 Ensino Superior</a></li>
+</ul></nav>
+<header id="topo">
+    <h1>MATEMÁTICA EM</h1>
+    <p>2º Ano | Aula 28: Arco Duplo, Arco Metade e Transformação em Produto</p>
+    <button id="btn-slides" onclick="toggleSlides()">📺 Iniciar Modo Slides</button>
+</header>
+<div class="container"><main class="conteudo-principal"><div class="secao-aula">
+
+<div class="container-resumo" id="resumo">
+    <h3>📚 Resumo</h3>
+    <section class="resumo-conteudo">
+        <p>Fazendo $b = a$ nas fórmulas de adição, obtemos o <strong>arco duplo</strong>. Isolando o cosseno do arco duplo, chegamos ao <strong>arco metade</strong>, cujo sinal é decidido pelo quadrante de $\frac{x}{2}$. As fórmulas de <strong>transformação em produto</strong> (prostaférese) convertem somas de senos ou cossenos em produtos, úteis para simplificar expressões e resolver equações.</p>
+        <p style="text-align: center;">$$\operatorname{sen} 2a = 2\operatorname{sen} a \cos a \qquad \cos^2\frac{x}{2} = \frac{1 + \cos x}{2} \qquad \operatorname{sen} p + \operatorname{sen} q = 2\operatorname{sen}\frac{p + q}{2}\cos\frac{p - q}{2}$$</p>
+    </section>
+</div>
+
+<section class="conteudo-teorico-completo" id="teoria">
+    <div class="passo-teoria">
+        <h3>📖 Arco Duplo, Arco Metade e Transformação em Produto</h3>
+        <h4>1. Arco Duplo</h4>
+        <p style="text-align: center; font-size: 1.1rem; background-color: #f8f9fa; padding: 15px; border-left: 5px solid #3498db; margin: 20px 0;">
+            $$\operatorname{sen} 2a = 2\operatorname{sen} a \cos a \qquad \operatorname{tg} 2a = \frac{2\operatorname{tg} a}{1 - \operatorname{tg}^2 a}$$
+            $$\cos 2a = \cos^2 a - \operatorname{sen}^2 a = 2\cos^2 a - 1 = 1 - 2\operatorname{sen}^2 a$$
+        </p>
+        <figure class="figura-aula figura-grande">
+            <svg viewBox="0 0 520 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Gráficos de y = sen x e y = sen 2x entre 0 e 2π: o arco duplo completa dois ciclos no mesmo intervalo" style="width:100%; max-width:520px; display:block; margin:0 auto;">
+  <line x1="40" y1="110" x2="493.8" y2="110" stroke="#2c3e50" stroke-width="1.3"/>
+  <line x1="40" y1="19.0" x2="40" y2="201.0" stroke="#2c3e50" stroke-width="1.3"/>
+  <line x1="150.0" y1="106" x2="150.0" y2="114" stroke="#2c3e50"/><text x="150.0" y="130" font-family="Oswald, sans-serif" font-size="12" text-anchor="middle" fill="#2c3e50">π/2</text>
+  <line x1="259.9" y1="106" x2="259.9" y2="114" stroke="#2c3e50"/><text x="259.9" y="130" font-family="Oswald, sans-serif" font-size="12" text-anchor="middle" fill="#2c3e50">π</text>
+  <line x1="369.9" y1="106" x2="369.9" y2="114" stroke="#2c3e50"/><text x="369.9" y="130" font-family="Oswald, sans-serif" font-size="12" text-anchor="middle" fill="#2c3e50">3π/2</text>
+  <line x1="479.8" y1="106" x2="479.8" y2="114" stroke="#2c3e50"/><text x="479.8" y="130" font-family="Oswald, sans-serif" font-size="12" text-anchor="middle" fill="#2c3e50">2π</text>
+  <text x="32" y="44.0" font-family="Oswald, sans-serif" font-size="12" text-anchor="end" fill="#2c3e50">1</text><line x1="40" y1="40.0" x2="479.8" y2="40.0" stroke="#ecf0f1"/>
+  <text x="32" y="184.0" font-family="Oswald, sans-serif" font-size="12" text-anchor="end" fill="#2c3e50">-1</text><line x1="40" y1="180.0" x2="479.8" y2="180.0" stroke="#ecf0f1"/>
+  <polyline points="40.0,110.0 44.4,105.6 48.8,101.2 53.2,96.9 57.6,92.6 62.0,88.4 66.4,84.2 70.8,80.2 75.2,76.3 79.6,72.5 84.0,68.9 88.4,65.4 92.8,62.1 97.2,59.0 101.6,56.1 106.0,53.4 110.4,50.9 114.8,48.7 119.2,46.7 123.6,44.9 128.0,43.4 132.4,42.2 136.8,41.2 141.2,40.6 145.6,40.1 150.0,40.0 154.4,40.1 158.8,40.6 163.2,41.2 167.5,42.2 171.9,43.4 176.3,44.9 180.7,46.7 185.1,48.7 189.5,50.9 193.9,53.4 198.3,56.1 202.7,59.0 207.1,62.1 211.5,65.4 215.9,68.9 220.3,72.5 224.7,76.3 229.1,80.2 233.5,84.2 237.9,88.4 242.3,92.6 246.7,96.9 251.1,101.2 255.5,105.6 259.9,110.0 264.3,114.4 268.7,118.8 273.1,123.1 277.5,127.4 281.9,131.6 286.3,135.8 290.7,139.8 295.1,143.7 299.5,147.5 303.9,151.1 308.3,154.6 312.7,157.9 317.1,161.0 321.5,163.9 325.9,166.6 330.3,169.1 334.7,171.3 339.1,173.3 343.5,175.1 347.9,176.6 352.3,177.8 356.7,178.8 361.1,179.4 365.5,179.9 369.9,180.0 374.3,179.9 378.7,179.4 383.1,178.8 387.5,177.8 391.9,176.6 396.3,175.1 400.7,173.3 405.1,171.3 409.5,169.1 413.8,166.6 418.2,163.9 422.6,161.0 427.0,157.9 431.4,154.6 435.8,151.1 440.2,147.5 444.6,143.7 449.0,139.8 453.4,135.8 457.8,131.6 462.2,127.4 466.6,123.1 471.0,118.8 475.4,114.4 479.8,110.0" fill="none" stroke="#3498db" stroke-width="2.8"/>
+  <polyline points="40.0,110.0 44.4,101.2 48.8,92.6 53.2,84.2 57.6,76.3 62.0,68.9 66.4,62.1 70.8,56.1 75.2,50.9 79.6,46.7 84.0,43.4 88.4,41.2 92.8,40.1 97.2,40.1 101.6,41.2 106.0,43.4 110.4,46.7 114.8,50.9 119.2,56.1 123.6,62.1 128.0,68.9 132.4,76.3 136.8,84.2 141.2,92.6 145.6,101.2 150.0,110.0 154.4,118.8 158.8,127.4 163.2,135.8 167.5,143.7 171.9,151.1 176.3,157.9 180.7,163.9 185.1,169.1 189.5,173.3 193.9,176.6 198.3,178.8 202.7,179.9 207.1,179.9 211.5,178.8 215.9,176.6 220.3,173.3 224.7,169.1 229.1,163.9 233.5,157.9 237.9,151.1 242.3,143.7 246.7,135.8 251.1,127.4 255.5,118.8 259.9,110.0 264.3,101.2 268.7,92.6 273.1,84.2 277.5,76.3 281.9,68.9 286.3,62.1 290.7,56.1 295.1,50.9 299.5,46.7 303.9,43.4 308.3,41.2 312.7,40.1 317.1,40.1 321.5,41.2 325.9,43.4 330.3,46.7 334.7,50.9 339.1,56.1 343.5,62.1 347.9,68.9 352.3,76.3 356.7,84.2 361.1,92.6 365.5,101.2 369.9,110.0 374.3,118.8 378.7,127.4 383.1,135.8 387.5,143.7 391.9,151.1 396.3,157.9 400.7,163.9 405.1,169.1 409.5,173.3 413.8,176.6 418.2,178.8 422.6,179.9 427.0,179.9 431.4,178.8 435.8,176.6 440.2,173.3 444.6,169.1 449.0,163.9 453.4,157.9 457.8,151.1 462.2,143.7 466.6,135.8 471.0,127.4 475.4,118.8 479.8,110.0" fill="none" stroke="#e74c3c" stroke-width="2.8"/>
+  <g font-family="Oswald, sans-serif" font-size="14">
+    <text x="187.0" y="36.5" fill="#3498db">y = sen x</text><text x="78.5" y="29.5" fill="#e74c3c">y = sen 2x</text>
+  </g>
+</svg>
+            <figcaption>Figura 1: $\operatorname{sen} 2x$ (vermelho) completa dois ciclos enquanto $\operatorname{sen} x$ (azul) completa um. Note que $\operatorname{sen} 2x \neq 2\operatorname{sen} x$.</figcaption>
+        </figure>
+    </div>
+
+    <div class="passo-teoria">
+        <h4>2. Arco Metade</h4>
+        <p>De $\cos x = 2\cos^2\frac{x}{2} - 1 = 1 - 2\operatorname{sen}^2\frac{x}{2}$:</p>
+        <p style="text-align: center; font-size: 1.1rem; background-color: #f8f9fa; padding: 15px; border-left: 5px solid #3498db; margin: 20px 0;">
+            $$\cos^2\frac{x}{2} = \frac{1 + \cos x}{2} \qquad \operatorname{sen}^2\frac{x}{2} = \frac{1 - \cos x}{2} \qquad \operatorname{tg}^2\frac{x}{2} = \frac{1 - \cos x}{1 + \cos x}$$
+        </p>
+        <p>A raiz quadrada dá dois sinais: escolha o sinal pelo <strong>quadrante de $\frac{x}{2}$</strong> (por exemplo, se $90^\circ < x < 180^\circ$, então $45^\circ < \frac{x}{2} < 90^\circ$).</p>
+    </div>
+
+    <div class="passo-teoria">
+        <h4>3. Transformação em Produto (Prostaférese)</h4>
+        <ul>
+            <li>$\operatorname{sen} p + \operatorname{sen} q = 2\operatorname{sen}\dfrac{p + q}{2}\cos\dfrac{p - q}{2}$</li>
+            <li>$\operatorname{sen} p - \operatorname{sen} q = 2\operatorname{sen}\dfrac{p - q}{2}\cos\dfrac{p + q}{2}$</li>
+            <li>$\cos p + \cos q = 2\cos\dfrac{p + q}{2}\cos\dfrac{p - q}{2}$</li>
+            <li>$\cos p - \cos q = -2\operatorname{sen}\dfrac{p + q}{2}\operatorname{sen}\dfrac{p - q}{2}$</li>
+        </ul>
+        <p>Para resolver uma equação como $\operatorname{sen} 3x + \operatorname{sen} x = 0$, transforme a soma em produto e use "produto nulo": cada fator igual a zero.</p>
+    </div>
+</section>
+
+<section class="aplicacoes-reais" id="aplicacoes">
+    <h3>💡 Matemática em Ação</h3>
+    <div class="cards-aplicacao">
+        <div class="card">
+            <h4>🎸 Batimentos Musicais</h4>
+            <p>Duas notas de frequências próximas somam $\operatorname{sen} p + \operatorname{sen} q = 2\operatorname{sen}\frac{p + q}{2}\cos\frac{p - q}{2}$: ouvimos o som médio "pulsando" no ritmo da diferença. Músicos usam esses batimentos para afinar instrumentos.</p>
+        </div>
+        <div class="card" style="border-left-color: #2ecc71;">
+            <h4>⚽ Alcance de um Lançamento</h4>
+            <p>Sem resistência do ar, o alcance de um lançamento é $\frac{v^2 \cdot 2\operatorname{sen}\theta\cos\theta}{g} = \frac{v^2 \operatorname{sen} 2\theta}{g}$: é máximo quando $2\theta = 90^\circ$, ou seja, $\theta = 45^\circ$.</p>
+        </div>
+    </div>
+</section>
+<section class="questoes-resolvidas" id="resolvidas">
+    <h3>✅ 5 Questões Resolvidas (R 1 a 5)</h3>
+    <article class="questao">
+        <h4>R 1: O Arco Duplo</h4>
+        <p><strong>Enunciado:</strong> Sabendo que $\operatorname{sen} a = \dfrac{3}{5}$, com $a$ no 1º quadrante, calcule $\operatorname{sen} 2a$, $\cos 2a$ e $\operatorname{tg} 2a$.</p>
+        <div class="resolucao-bloco"><p><strong>Resolução:</strong><br>$\cos a = \dfrac{4}{5}$. \ $\operatorname{sen} 2a = 2\operatorname{sen} a \cos a = 2 \cdot \dfrac{3}{5} \cdot \dfrac{4}{5} = \mathbf{\dfrac{24}{25}}$.<br>$\cos 2a = \cos^2 a - \operatorname{sen}^2 a = \dfrac{16}{25} - \dfrac{9}{25} = \mathbf{\dfrac{7}{25}}$.<br>$\operatorname{tg} 2a = \dfrac{\operatorname{sen} 2a}{\cos 2a} = \mathbf{\dfrac{24}{7}}$ $\left(\text{ou } \dfrac{2 \cdot \frac{3}{4}}{1 - \frac{9}{16}} = \dfrac{24}{7}\ \checkmark\right)$.</p></div>
+    </article>
+    <article class="questao">
+        <h4>R 2: Arcos pela Metade</h4>
+        <p><strong>Enunciado:</strong> Use as fórmulas do arco metade para calcular $\cos 15^\circ$ e $\operatorname{sen} 22{,}5^\circ$.</p>
+        <div class="resolucao-bloco"><p><strong>Resolução:</strong><br>$\cos^2\dfrac{x}{2} = \dfrac{1 + \cos x}{2}$: \ $\cos^2 15^\circ = \dfrac{1 + \frac{\sqrt{3}}{2}}{2} = \dfrac{2 + \sqrt{3}}{4}$, logo $\cos 15^\circ = \mathbf{\dfrac{\sqrt{2 + \sqrt{3}}}{2}}$.<br>$\operatorname{sen}^2\dfrac{x}{2} = \dfrac{1 - \cos x}{2}$: \ $\operatorname{sen}^2 22{,}5^\circ = \dfrac{1 - \frac{\sqrt{2}}{2}}{2} = \dfrac{2 - \sqrt{2}}{4}$, logo $\operatorname{sen} 22{,}5^\circ = \mathbf{\dfrac{\sqrt{2 - \sqrt{2}}}{2}}$.<br>Os dois são positivos (1º quadrante). Confira: $\dfrac{\sqrt{2 + \sqrt{3}}}{2} = \dfrac{\sqrt{6} + \sqrt{2}}{4} \approx 0{,}966$.</p></div>
+    </article>
+    <article class="questao">
+        <h4>R 3: O Sinal do Arco Metade</h4>
+        <p><strong>Enunciado:</strong> Sabendo que $\cos a = -\dfrac{3}{5}$, com $90^\circ < a < 180^\circ$, calcule $\operatorname{sen}\dfrac{a}{2}$, $\cos\dfrac{a}{2}$ e $\operatorname{tg}\dfrac{a}{2}$.</p>
+        <div class="resolucao-bloco"><p><strong>Resolução:</strong><br>$45^\circ < \dfrac{a}{2} < 90^\circ$: o arco metade está no 1º quadrante, e todas as razões são positivas.<br>$\cos^2\dfrac{a}{2} = \dfrac{1 - \frac{3}{5}}{2} = \dfrac{1}{5} \implies \cos\dfrac{a}{2} = \mathbf{\dfrac{\sqrt{5}}{5}}$; \ $\operatorname{sen}^2\dfrac{a}{2} = \dfrac{1 + \frac{3}{5}}{2} = \dfrac{4}{5} \implies \operatorname{sen}\dfrac{a}{2} = \mathbf{\dfrac{2\sqrt{5}}{5}}$.<br>$\operatorname{tg}\dfrac{a}{2} = \mathbf{2}$.</p></div>
+    </article>
+    <article class="questao">
+        <h4>R 4: Soma em Produto</h4>
+        <p><strong>Enunciado:</strong> Transforme em produto e calcule: a) $\operatorname{sen} 75^\circ + \operatorname{sen} 15^\circ$; \ b) $\cos 75^\circ - \cos 15^\circ$.</p>
+        <div class="resolucao-bloco"><p><strong>Resolução:</strong><br>a) $\operatorname{sen} p + \operatorname{sen} q = 2\operatorname{sen}\dfrac{p + q}{2}\cos\dfrac{p - q}{2} = 2\operatorname{sen} 45^\circ \cos 30^\circ = 2 \cdot \dfrac{\sqrt{2}}{2} \cdot \dfrac{\sqrt{3}}{2} = \mathbf{\dfrac{\sqrt{6}}{2}}$.<br>b) $\cos p - \cos q = -2\operatorname{sen}\dfrac{p + q}{2}\operatorname{sen}\dfrac{p - q}{2} = -2\operatorname{sen} 45^\circ \operatorname{sen} 30^\circ = \mathbf{-\dfrac{\sqrt{2}}{2}}$.</p></div>
+    </article>
+    <article class="questao">
+        <h4>R 5: Resolvendo com Produto</h4>
+        <p><strong>Enunciado:</strong> Resolva $\operatorname{sen} 3x + \operatorname{sen} x = 0$ para $0 \le x \le \pi$.</p>
+        <div class="resolucao-bloco"><p><strong>Resolução:</strong><br>$\operatorname{sen} 3x + \operatorname{sen} x = 2\operatorname{sen} 2x \cos x = 0$.<br>$\operatorname{sen} 2x = 0 \implies x \in \left\{0, \dfrac{\pi}{2}, \pi\right\}$; \ $\cos x = 0 \implies x = \dfrac{\pi}{2}$.<br>$S = \mathbf{\left\{0, \dfrac{\pi}{2}, \pi\right\}}$. (Conferência: $\operatorname{sen}\dfrac{3\pi}{2} + \operatorname{sen}\dfrac{\pi}{2} = -1 + 1 = 0$ ✓)</p></div>
+    </article>
+</section>
+
+<section class="questoes-propostas" id="propostas">
+    <h3>✍️ 10 Questões Propostas (P 6 a 15)</h3>
+    <article class="questao">
+        <h4>P 6: Seno do Dobro</h4>
+        <p><strong>Enunciado:</strong> Sendo $\operatorname{sen} x = \dfrac{1}{2}$ e $\cos x = \dfrac{\sqrt{3}}{2}$, calcule $\operatorname{sen} 2x$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>$\operatorname{sen} 2x = 2 \cdot \dfrac{1}{2} \cdot \dfrac{\sqrt{3}}{2}$.<br>$= \mathbf{\dfrac{\sqrt{3}}{2}}$.</p></div>
+    </article>
+    <article class="questao">
+        <h4>P 7: Cosseno do Dobro</h4>
+        <p><strong>Enunciado:</strong> Sendo $\cos x = \dfrac{3}{5}$, calcule $\cos 2x$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>$\cos 2x = 2\cos^2 x - 1 = \dfrac{18}{25} - 1$.<br>$= \mathbf{-\dfrac{7}{25}}$.</p></div>
+    </article>
+    <article class="questao">
+        <h4>P 8: Tangente do Dobro</h4>
+        <p><strong>Enunciado:</strong> Sendo $\operatorname{tg} x = 2$, calcule $\operatorname{tg} 2x$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>$\operatorname{tg} 2x = \dfrac{2 \cdot 2}{1 - 4}$.<br>$= \mathbf{-\dfrac{4}{3}}$.</p></div>
+    </article>
+    <article class="questao">
+        <h4>P 9: Produto Notável</h4>
+        <p><strong>Enunciado:</strong> Calcule $\operatorname{sen} 15^\circ \cos 15^\circ$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>$\operatorname{sen} x \cos x = \dfrac{\operatorname{sen} 2x}{2}$.<br>$= \dfrac{\operatorname{sen} 30^\circ}{2} = \mathbf{\dfrac{1}{4}}$.</p></div>
+    </article>
+    <article class="questao">
+        <h4>P 10: Diferença de Quadrados</h4>
+        <p><strong>Enunciado:</strong> Calcule $\cos^2 22{,}5^\circ - \operatorname{sen}^2 22{,}5^\circ$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>É $\cos(2 \cdot 22{,}5^\circ)$.<br>$= \cos 45^\circ = \mathbf{\dfrac{\sqrt{2}}{2}}$.</p></div>
+    </article>
+    <article class="questao">
+        <h4>P 11: Cosseno da Metade</h4>
+        <p><strong>Enunciado:</strong> Sendo $\cos x = \dfrac{1}{9}$, com $x$ agudo, calcule $\cos\dfrac{x}{2}$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>$\cos^2\dfrac{x}{2} = \dfrac{1 + \frac{1}{9}}{2} = \dfrac{5}{9}$.<br>$\cos\dfrac{x}{2} = \mathbf{\dfrac{\sqrt{5}}{3}}$ (positivo).</p></div>
+    </article>
+    <article class="questao">
+        <h4>P 12: Seno da Metade</h4>
+        <p><strong>Enunciado:</strong> Sendo $\cos x = 0{,}5$, calcule $\operatorname{sen}^2\dfrac{x}{2}$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>$\operatorname{sen}^2\dfrac{x}{2} = \dfrac{1 - 0{,}5}{2}$.<br>$= \mathbf{\dfrac{1}{4}}$.</p></div>
+    </article>
+    <article class="questao">
+        <h4>P 13: Soma de Cossenos</h4>
+        <p><strong>Enunciado:</strong> Transforme em produto: $\cos 80^\circ + \cos 40^\circ$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>$2\cos\dfrac{80^\circ + 40^\circ}{2}\cos\dfrac{80^\circ - 40^\circ}{2} = 2\cos 60^\circ \cos 20^\circ$.<br>$= \mathbf{\cos 20^\circ}$.</p></div>
+    </article>
+    <article class="questao">
+        <h4>P 14: Diferença de Senos</h4>
+        <p><strong>Enunciado:</strong> Calcule $\operatorname{sen} 105^\circ - \operatorname{sen} 15^\circ$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>$2\operatorname{sen}\dfrac{105^\circ - 15^\circ}{2}\cos\dfrac{105^\circ + 15^\circ}{2} = 2\operatorname{sen} 45^\circ \cos 60^\circ$.<br>$= \mathbf{\dfrac{\sqrt{2}}{2}}$.</p></div>
+    </article>
+    <article class="questao">
+        <h4>P 15: Um Quadrado Útil</h4>
+        <p><strong>Enunciado:</strong> Sabendo que $\operatorname{sen} 2x = 0{,}44$ e que $x$ é agudo, calcule $\operatorname{sen} x + \cos x$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>$(\operatorname{sen} x + \cos x)^2 = 1 + 2\operatorname{sen} x \cos x = 1 + \operatorname{sen} 2x = 1{,}44$.<br>Como $x$ é agudo, a soma é positiva: $\mathbf{1{,}2}$.</p></div>
+    </article>
+</section>
+
+<section class="TESTE" id="testes">
+    <h3>🎓 TESTES (T 16 a 20)</h3>
+    <article class="questao">
+        <h4>T 16: (UCPEL) Da Tangente ao Seno do Dobro</h4>
+        <p>Sabe-se que $\operatorname{tg} a = 2$, com $0 < a < \dfrac{\pi}{2}$.</p>
+        <p>O valor de $\operatorname{sen} 2a$ é</p>
+        <p>A) $\dfrac{4}{5}$<br>B) $\dfrac{5}{4}$<br>C) $\dfrac{5}{3}$<br>D) $\dfrac{2}{5}$<br>E) $\dfrac{4}{3}$</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>A</strong>.<br>$\operatorname{sen} a = 2\cos a$ e $\operatorname{sen}^2 a + \cos^2 a = 1 \implies 5\cos^2 a = 1 \implies \cos a = \dfrac{\sqrt{5}}{5}$ e $\operatorname{sen} a = \dfrac{2\sqrt{5}}{5}$.<br>$\operatorname{sen} 2a = 2 \cdot \dfrac{2\sqrt{5}}{5} \cdot \dfrac{\sqrt{5}}{5} = \mathbf{\dfrac{4}{5}}$. Alternativa <strong>A</strong>.</p></div>
+    </article>
+    <article class="questao">
+        <h4>T 17: (UNIFENAS) O Cosseno da Metade</h4>
+        <p>Sabe-se que $\operatorname{sen}\theta = 0{,}8$, com $0^\circ < \theta < 90^\circ$.</p>
+        <p>O valor de $\cos\dfrac{\theta}{2}$ é</p>
+        <p>A) $\sqrt{1{,}5}$<br>B) $\sqrt{1{,}2}$<br>C) $\sqrt{0{,}8}$<br>D) $\sqrt{0{,}7}$<br>E) $\sqrt{0{,}3}$</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>C</strong>.<br>$\cos\theta = \sqrt{1 - 0{,}64} = 0{,}6$ ($\theta$ agudo).<br>$\cos^2\dfrac{\theta}{2} = \dfrac{1 + 0{,}6}{2} = 0{,}8 \implies \cos\dfrac{\theta}{2} = \mathbf{\sqrt{0{,}8}}$. Alternativa <strong>C</strong>.</p></div>
+    </article>
+    <article class="questao">
+        <h4>T 18: (Unaerp) Uma Soma de Frações</h4>
+        <p>Considere a expressão $\dfrac{\operatorname{tg} x}{1 + \operatorname{tg} x} + \dfrac{\operatorname{tg} x}{1 - \operatorname{tg} x}$, definida para os valores de $x$ que não anulam os denominadores.</p>
+        <p>Essa expressão é equivalente a</p>
+        <p>A) $\operatorname{sen} 2x$<br>B) $\cos 2x$<br>C) $\operatorname{tg} 2x$<br>D) $\operatorname{cotg} 2x$<br>E) $\sec 2x$</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>C</strong>.<br>Denominador comum: $\dfrac{\operatorname{tg} x(1 - \operatorname{tg} x) + \operatorname{tg} x(1 + \operatorname{tg} x)}{1 - \operatorname{tg}^2 x} = \dfrac{2\operatorname{tg} x}{1 - \operatorname{tg}^2 x}$.<br>É a fórmula de $\mathbf{\operatorname{tg} 2x}$. Alternativa <strong>C</strong>.</p></div>
+    </article>
+    <article class="questao">
+        <h4>T 19: (Mackenzie) Tangente Menos Cotangente</h4>
+        <p>Sabe-se que $\operatorname{tg} x - \operatorname{cotg} x = 1$.</p>
+        <p>Então $\operatorname{tg} 2x$ vale</p>
+        <p>A) $2$<br>B) $1$<br>C) $0$<br>D) $-1$<br>E) $-2$</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>E</strong>.<br>Com $t = \operatorname{tg} x$: $t - \dfrac{1}{t} = 1 \implies \dfrac{t^2 - 1}{t} = 1$, ou seja, $\dfrac{1 - t^2}{t} = -1$.<br>$\operatorname{tg} 2x = \dfrac{2t}{1 - t^2} = \dfrac{2}{\frac{1 - t^2}{t}} = \dfrac{2}{-1} = \mathbf{-2}$. Alternativa <strong>E</strong>.</p></div>
+    </article>
+    <article class="questao">
+        <h4>T 20: (Fuvest) O Quadrado de 22°30'</h4>
+        <p>Considere o número $\left(\operatorname{sen} 22^\circ 30' + \cos 22^\circ 30'\right)^2$.</p>
+        <p>O valor desse número é</p>
+        <p>A) $\dfrac{3}{2}$<br>B) $\dfrac{2 + \sqrt{3}}{2}$<br>C) $\dfrac{2 + \sqrt{2}}{2}$<br>D) $1$<br>E) $2$</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>C</strong>.<br>$(\operatorname{sen} x + \cos x)^2 = \operatorname{sen}^2 x + \cos^2 x + 2\operatorname{sen} x \cos x = 1 + \operatorname{sen} 2x$.<br>Com $x = 22^\circ 30'$: $1 + \operatorname{sen} 45^\circ = 1 + \dfrac{\sqrt{2}}{2} = \mathbf{\dfrac{2 + \sqrt{2}}{2}}$. Alternativa <strong>C</strong>.</p></div>
+    </article>
+</section>
+
+</div></main>
+<aside class="menu-lateral"><iframe src="../menu_matematica.html" style="width:100%; border:none; height:600px;"></iframe></aside>
+</div>
+<script>
+function toggleGabarito(botao) {
+    const gabarito = botao.nextElementSibling;
+    if (gabarito.style.display === "none" || gabarito.style.display === "") {
+        gabarito.style.display = "block"; botao.textContent = "Esconder Gabarito e Resolução"; botao.style.backgroundColor = "#2c3e50";
+    } else {
+        gabarito.style.display = "none"; botao.textContent = "Ver Gabarito e Resolução"; botao.style.backgroundColor = "#3498db";
+    }
+}
+function toggleMenu() { const m = document.getElementById("menu-principal"); if (m) m.classList.toggle("ativo"); }
+let slideAtual = 0; let slides = [];
+function prepararSlides() { slides = Array.from(document.querySelectorAll('.container-resumo, .passo-teoria, .card, .questao')); }
+function toggleSlides() {
+    prepararSlides(); const body = document.body;
+    if (!body.classList.contains('modo-slides')) { body.classList.add('modo-slides'); slideAtual = 0; mostrarSlide(slideAtual); }
+    else { body.classList.remove('modo-slides'); slides.forEach(s => { s.classList.remove('slide-ativo'); s.style.display = ''; }); }
+}
+function mostrarSlide(n) {
+    if (!slides.length) return;
+    slides.forEach(s => { s.classList.remove('slide-ativo'); s.style.display = 'none'; });
+    const slide = slides[n]; slide.classList.add('slide-ativo');
+    slide.querySelectorAll('.gabarito-resolucao').forEach(g => g.style.display = 'none');
+    slide.querySelectorAll('.btn-gabarito').forEach(b => { b.textContent = "Ver Gabarito e Resolução"; b.style.backgroundColor = "#3498db"; });
+    const pHeader = document.querySelector('header p');
+    if (pHeader) { const partes = pHeader.innerText.split('|'); if (partes.length > 1) {
+        document.getElementById('slide-info-serie').innerText = partes[0].trim();
+        document.getElementById('slide-info-aula').innerText = partes[1].trim(); } }
+    document.getElementById('contador-slide').innerText = (n + 1) + " / " + slides.length;
+    if (window.MathJax && window.MathJax.typesetPromise) { MathJax.typesetPromise(); }
+}
+function mudarSlide(d) { slideAtual += d; if (slideAtual >= slides.length) slideAtual = 0; if (slideAtual < 0) slideAtual = slides.length - 1; mostrarSlide(slideAtual); }
+document.addEventListener('keydown', function(event) {
+    if (document.body.classList.contains('modo-slides')) {
+        switch(event.key) {
+            case 'ArrowRight': case 'PageDown': case 'Enter': case ' ': event.preventDefault(); mudarSlide(1); break;
+            case 'ArrowLeft': case 'PageUp': event.preventDefault(); mudarSlide(-1); break;
+            case 'Escape': event.preventDefault(); toggleSlides(); break;
+        }
+    }
+});
+</script>
+<div class="controles-slides">
+    <div id="slide-info-serie" class="info-lateral"></div>
+    <div class="botoes-centrais">
+        <button class="btn-nav" onclick="mudarSlide(-1)">⬅ Anterior</button>
+        <span id="contador-slide"></span>
+        <button class="btn-nav" onclick="mudarSlide(1)">Próximo ➡</button>
+        <button class="btn-nav" onclick="toggleSlides()" style="background:#e74c3c;">Sair</button>
+    </div>
+    <div id="slide-info-aula" class="info-lateral" style="text-align: right;"></div>
+</div>
+</body>
+</html>
