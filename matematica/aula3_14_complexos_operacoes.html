@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3º Ano: Aula 14 - Operações na Forma Trigonométrica (Fórmulas de Moivre)</title>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../estilo.css">
+    <script>
+        MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']], processEscapes: true } };
+    </script>
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        body.modo-slides { overflow: hidden !important; background-color: #1a1a1a !important; margin: 0; padding: 0; }
+        body.modo-slides .menu-lateral, body.modo-slides header, body.modo-slides .menu-toggle, body.modo-slides #btn-slides, body.modo-slides .nav-global { display: none !important; }
+        .slide-ativo { display: flex !important; flex-direction: column; align-items: center; justify-content: center; position: fixed; top: 0; left: 0; width: 100vw; height: calc(100vh - 70px); background: #ffffff; padding: 40px; z-index: 999; overflow-y: auto !important; box-sizing: border-box; text-align: left; }
+        .slide-ativo > * { max-width: 900px; width: 100%; }
+        .controles-slides { position: fixed; bottom: 0; left: 0; width: 100%; height: 70px; background: #2c3e50; color: white; display: none; justify-content: space-between; align-items: center; padding: 0 20px; z-index: 1001; box-sizing: border-box; }
+        body.modo-slides .controles-slides { display: flex !important; }
+        .info-lateral { flex: 1; font-family: 'Oswald', sans-serif; font-size: 0.9rem; color: #bdc3c7; }
+        .botoes-centrais { display: flex; align-items: center; gap: 15px; justify-content: center; flex: 2; }
+        .btn-nav { padding: 10px 20px; background: #3498db; color: white; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; font-size: 0.9rem; }
+        .btn-nav:hover { background: #2980b9; }
+        #contador-slide { font-family: 'Oswald', sans-serif; min-width: 60px; text-align: center; font-size: 1.1rem; }
+    </style>
+</head>
+<body>
+<button class="menu-toggle" onclick="toggleMenu()">☰</button>
+<nav id="menu-principal" class="nav-global"><ul>
+    <li><a href="../index.html">🏠 Início</a></li>
+    <li><a href="../ensino_medio.html">📚 Ensino Médio</a></li>
+    <li><a href="../ensino_superior.html">🎓 Ensino Superior</a></li>
+</ul></nav>
+<header id="topo">
+    <h1>MATEMÁTICA EM</h1>
+    <p>3º Ano | Aula 14: Operações na Forma Trigonométrica (Fórmulas de Moivre)</p>
+    <button id="btn-slides" onclick="toggleSlides()">📺 Iniciar Modo Slides</button>
+</header>
+<div class="container"><main class="conteudo-principal"><div class="secao-aula">
+
+<div class="container-resumo" id="resumo">
+    <h3>📚 Resumo</h3>
+    <section class="resumo-conteudo">
+        <p>Na forma trigonométrica, as operações ficam simples: no <strong>produto</strong> multiplicam-se os módulos e somam-se os argumentos; no <strong>quociente</strong> dividem-se os módulos e subtraem-se os argumentos. Repetindo o produto, obtém-se a <strong>1ª Fórmula de Moivre</strong> (potências); invertendo-a, a <strong>2ª Fórmula de Moivre</strong> (raízes), que resolve as equações binômias $z^n = w$.</p>
+        <p style="text-align: center;">$$z^n = \rho^n[\cos(n\theta) + i\,\operatorname{sen}(n\theta)] \qquad w_k = \sqrt[n]{\rho}\left[\cos\frac{\theta + k \cdot 360^\circ}{n} + i\,\operatorname{sen}\frac{\theta + k \cdot 360^\circ}{n}\right]$$</p>
+    </section>
+</div>
+
+<section class="conteudo-teorico-completo" id="teoria">
+    <div class="passo-teoria">
+        <h3>📖 Operações na Forma Trigonométrica</h3>
+        <h4>1. Multiplicação e Divisão</h4>
+        <p>Sejam $z_1 = \rho_1(\cos\theta_1 + i\,\operatorname{sen}\theta_1)$ e $z_2 = \rho_2(\cos\theta_2 + i\,\operatorname{sen}\theta_2)$. Usando as fórmulas de adição de arcos:</p>
+        <p style="text-align: center; font-size: 1.15rem; background-color: #f8f9fa; padding: 15px; border-left: 5px solid #3498db; margin: 20px 0;">
+            $$z_1 z_2 = \rho_1\rho_2[\cos(\theta_1 + \theta_2) + i\,\operatorname{sen}(\theta_1 + \theta_2)] \qquad \frac{z_1}{z_2} = \frac{\rho_1}{\rho_2}[\cos(\theta_1 - \theta_2) + i\,\operatorname{sen}(\theta_1 - \theta_2)]$$
+        </p>
+        <p><strong>Interpretação geométrica:</strong> multiplicar $z$ por $u = \cos\alpha + i\,\operatorname{sen}\alpha$ (módulo $1$) <strong>gira</strong> o afixo de $z$ de um ângulo $\alpha$ em torno da origem, no sentido anti-horário. Multiplicar por um real positivo $k$ amplia (ou reduz) a distância à origem. Em particular, multiplicar por $i$ gira $90^\circ$ e por $-1$ gira $180^\circ$.</p>
+    </div>
+
+    <div class="passo-teoria">
+        <h4>2. Potenciação: 1ª Fórmula de Moivre</h4>
+        <p>Multiplicando $z$ por si mesmo $n$ vezes, o módulo fica elevado a $n$ e o argumento fica multiplicado por $n$:</p>
+        <p style="text-align: center; font-size: 1.15rem; background-color: #f8f9fa; padding: 15px; border-left: 5px solid #3498db; margin: 20px 0;">
+            $$z^n = \rho^n[\cos(n\theta) + i\,\operatorname{sen}(n\theta)], \quad n \in \mathbb{Z}$$
+        </p>
+        <p>A fórmula também vale para expoentes negativos ($z \neq 0$). <strong>Dica:</strong> para potências altas, reduza $n\theta$ à primeira volta, retirando múltiplos de $360^\circ$. Por exemplo, $(-1 + i)^{10}$: $\theta = 135^\circ$ e $10 \cdot 135^\circ = 1350^\circ = 3 \cdot 360^\circ + 270^\circ$.</p>
+    </div>
+
+    <div class="passo-teoria">
+        <h4>3. Radiciação: 2ª Fórmula de Moivre</h4>
+        <p>Todo complexo $w = \rho(\cos\theta + i\,\operatorname{sen}\theta) \neq 0$ tem exatamente $n$ raízes $n$-ésimas:</p>
+        <p style="text-align: center; font-size: 1.15rem; background-color: #f8f9fa; padding: 15px; border-left: 5px solid #3498db; margin: 20px 0;">
+            $$w_k = \sqrt[n]{\rho}\left[\cos\left(\frac{\theta + k \cdot 360^\circ}{n}\right) + i\,\operatorname{sen}\left(\frac{\theta + k \cdot 360^\circ}{n}\right)\right], \quad k = 0, 1, \ldots, n - 1$$
+        </p>
+        <p>Basta achar a primeira raiz ($k = 0$) e ir somando $\dfrac{360^\circ}{n}$ ao argumento.</p>
+    </div>
+
+    <div class="passo-teoria">
+        <h4>4. Equações Binômias e Geometria das Raízes</h4>
+        <p>Uma <strong>equação binômia</strong> tem a forma $a z^n + b = 0$, ou seja, $z^n = w$ com $w = -\frac{b}{a}$. Suas soluções são as $n$ raízes $n$-ésimas de $w$. Para $n \geq 3$, os afixos são os vértices de um <strong>polígono regular</strong> de $n$ lados inscrito na circunferência de raio $\sqrt[n]{|w|}$.</p>
+        <figure class="figura-aula figura-grande">
+            <svg viewBox="0 0 320 308" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Raízes sextas de 64: hexágono regular inscrito na circunferência de raio 2" style="width:100%; max-width:380px; height:auto; display:block; margin:0 auto; background:#fdfdfd; border-radius:10px;">
+    <line x1="22.0" y1="286.0" x2="22.0" y2="22.0" stroke="#e5e8eb" stroke-width="1"/>
+    <line x1="66.0" y1="286.0" x2="66.0" y2="22.0" stroke="#e5e8eb" stroke-width="1"/>
+    <line x1="110.0" y1="286.0" x2="110.0" y2="22.0" stroke="#e5e8eb" stroke-width="1"/>
+    <line x1="154.0" y1="286.0" x2="154.0" y2="22.0" stroke="#e5e8eb" stroke-width="1"/>
+    <line x1="198.0" y1="286.0" x2="198.0" y2="22.0" stroke="#e5e8eb" stroke-width="1"/>
+    <line x1="242.0" y1="286.0" x2="242.0" y2="22.0" stroke="#e5e8eb" stroke-width="1"/>
+    <line x1="286.0" y1="286.0" x2="286.0" y2="22.0" stroke="#e5e8eb" stroke-width="1"/>
+    <line x1="22.0" y1="286.0" x2="286.0" y2="286.0" stroke="#e5e8eb" stroke-width="1"/>
+    <line x1="22.0" y1="242.0" x2="286.0" y2="242.0" stroke="#e5e8eb" stroke-width="1"/>
+    <line x1="22.0" y1="198.0" x2="286.0" y2="198.0" stroke="#e5e8eb" stroke-width="1"/>
+    <line x1="22.0" y1="154.0" x2="286.0" y2="154.0" stroke="#e5e8eb" stroke-width="1"/>
+    <line x1="22.0" y1="110.0" x2="286.0" y2="110.0" stroke="#e5e8eb" stroke-width="1"/>
+    <line x1="22.0" y1="66.0" x2="286.0" y2="66.0" stroke="#e5e8eb" stroke-width="1"/>
+    <line x1="22.0" y1="22.0" x2="286.0" y2="22.0" stroke="#e5e8eb" stroke-width="1"/>
+    <line x1="14.0" y1="154.0" x2="294.0" y2="154.0" stroke="#2c3e50" stroke-width="1.8"/>
+    <polygon points="300.0,154.0 290.0,150.0 290.0,158.0" fill="#2c3e50"/>
+    <text x="292.0" y="170.0" font-size="13" fill="#2c3e50" font-family="sans-serif">Re</text>
+    <line x1="154.0" y1="294.0" x2="154.0" y2="14.0" stroke="#2c3e50" stroke-width="1.8"/>
+    <polygon points="154.0,8.0 150.0,18.0 158.0,18.0" fill="#2c3e50"/>
+    <text x="161.0" y="16.0" font-size="13" fill="#2c3e50" font-family="sans-serif">Im</text>
+    <circle cx="154.0" cy="154.0" r="88.0" fill="none" stroke="#7f8c8d" stroke-width="2.6" stroke-dasharray="6,4"/>
+    <line x1="242.0" y1="154.0" x2="198.0" y2="77.8" stroke="#3498db" stroke-width="2.4"/>
+    <line x1="198.0" y1="77.8" x2="110.0" y2="77.8" stroke="#3498db" stroke-width="2.4"/>
+    <line x1="110.0" y1="77.8" x2="66.0" y2="154.0" stroke="#3498db" stroke-width="2.4"/>
+    <line x1="66.0" y1="154.0" x2="110.0" y2="230.2" stroke="#3498db" stroke-width="2.4"/>
+    <line x1="110.0" y1="230.2" x2="198.0" y2="230.2" stroke="#3498db" stroke-width="2.4"/>
+    <line x1="198.0" y1="230.2" x2="242.0" y2="154.0" stroke="#3498db" stroke-width="2.4"/>
+    <line x1="154.0" y1="154.0" x2="198.0" y2="77.8" stroke="#e67e22" stroke-width="2.4" stroke-dasharray="6,4"/>
+    <line x1="154.0" y1="154.0" x2="242.0" y2="154.0" stroke="#e67e22" stroke-width="2.4" stroke-dasharray="6,4"/>
+    <circle cx="242.0" cy="154.0" r="4.5" fill="#e74c3c"/>
+    <text x="248.0" y="147.0" font-size="14" font-weight="bold" fill="#e74c3c" font-family="sans-serif" text-anchor="start">w₀</text>
+    <circle cx="198.0" cy="77.8" r="4.5" fill="#e74c3c"/>
+    <text x="204.0" y="70.8" font-size="14" font-weight="bold" fill="#e74c3c" font-family="sans-serif" text-anchor="start">w₁</text>
+    <circle cx="110.0" cy="77.8" r="4.5" fill="#e74c3c"/>
+    <text x="104.0" y="70.8" font-size="14" font-weight="bold" fill="#e74c3c" font-family="sans-serif" text-anchor="end">w₂</text>
+    <circle cx="66.0" cy="154.0" r="4.5" fill="#e74c3c"/>
+    <text x="60.0" y="147.0" font-size="14" font-weight="bold" fill="#e74c3c" font-family="sans-serif" text-anchor="end">w₃</text>
+    <circle cx="110.0" cy="230.2" r="4.5" fill="#e74c3c"/>
+    <text x="104.0" y="246.2" font-size="14" font-weight="bold" fill="#e74c3c" font-family="sans-serif" text-anchor="end">w₄</text>
+    <circle cx="198.0" cy="230.2" r="4.5" fill="#e74c3c"/>
+    <text x="204.0" y="246.2" font-size="14" font-weight="bold" fill="#e74c3c" font-family="sans-serif" text-anchor="start">w₅</text>
+    <text x="187.0" y="144.9" font-size="13" fill="#e67e22" font-family="sans-serif" text-anchor="middle">60°</text>
+</svg>
+            <figcaption>Figura 1: As seis soluções de $z^6 = 64$ têm módulo $2$ e argumentos $0^\circ, 60^\circ, \ldots, 300^\circ$: são os vértices de um hexágono regular de lado $2$.</figcaption>
+        </figure>
+    </div>
+</section>
+
+<section class="aplicacoes-reais" id="aplicacoes">
+    <h3>💡 Matemática em Ação</h3>
+    <div class="cards-aplicacao">
+        <div class="card">
+            <h4>🎵 Processamento de Sinais</h4>
+            <p>A Transformada Rápida de Fourier (FFT), usada para comprimir músicas em MP3 e imagens em JPEG, se baseia nas raízes $n$-ésimas da unidade: os pontos igualmente espaçados da circunferência de raio $1$ dados pela 2ª Fórmula de Moivre.</p>
+        </div>
+        <div class="card" style="border-left-color: #2ecc71;">
+            <h4>🌀 Fractais</h4>
+            <p>O conjunto de Mandelbrot é desenhado repetindo a operação $z \mapsto z^2 + c$ milhões de vezes. Elevar ao quadrado dobra o argumento e eleva o módulo ao quadrado, exatamente a 1ª Fórmula de Moivre com $n = 2$.</p>
+        </div>
+    </div>
+</section>
+<section class="questoes-resolvidas" id="resolvidas">
+    <h3>✅ 5 Questões Resolvidas (R 1 a 5)</h3>
+    <article class="questao">
+        <h4>R 1: Produto e Quociente</h4>
+        <p><strong>Enunciado:</strong> Dados $z_1 = 4(\cos 75^\circ + i\,\operatorname{sen} 75^\circ)$ e $z_2 = 2(\cos 15^\circ + i\,\operatorname{sen} 15^\circ)$, calcule $z_1 z_2$ e $\dfrac{z_1}{z_2}$ na forma algébrica.</p>
+        <div class="resolucao-bloco"><p><strong>Resolução:</strong><br>Produto: $z_1 z_2 = 4 \cdot 2\,[\cos(75^\circ + 15^\circ) + i\,\operatorname{sen}(75^\circ + 15^\circ)] = 8(\cos 90^\circ + i\,\operatorname{sen} 90^\circ) = \mathbf{8i}$.<br>Quociente: $\dfrac{z_1}{z_2} = \dfrac{4}{2}[\cos(75^\circ - 15^\circ) + i\,\operatorname{sen}(75^\circ - 15^\circ)] = 2(\cos 60^\circ + i\,\operatorname{sen} 60^\circ) = \mathbf{1 + i\sqrt{3}}$.</p></div>
+    </article>
+    <article class="questao">
+        <h4>R 2: Rotação de um Afixo</h4>
+        <p><strong>Enunciado:</strong> O afixo de $z = 4 + 2i$ é girado de $60^\circ$ no sentido anti-horário em torno da origem. Determine o novo número complexo.</p>
+        <div class="resolucao-bloco"><p><strong>Resolução:</strong><br>Girar de $60^\circ$ é multiplicar por $u = (\cos 60^\circ + i\,\operatorname{sen} 60^\circ) = \dfrac{1}{2} + \dfrac{\sqrt{3}}{2}i$, que tem módulo $1$.<br>$z \cdot u = (4 + 2i)\left(\dfrac{1}{2} + \dfrac{\sqrt{3}}{2}i\right) = 2 + 2\sqrt{3}\,i + i + \sqrt{3}\,i^2$.<br>Novo número: $\mathbf{(2 - \sqrt{3}) + (2\sqrt{3} + 1)i}$ (o módulo continua $\sqrt{20}$).</p></div>
+    </article>
+    <article class="questao">
+        <h4>R 3: Potência Alta</h4>
+        <p><strong>Enunciado:</strong> Calcule $(-1 + i)^{10}$.</p>
+        <div class="resolucao-bloco"><p><strong>Resolução:</strong><br>$\rho = \sqrt{2}$ e $\theta = 135^\circ$ (2º quadrante): $-1 + i = \sqrt{2}(\cos 135^\circ + i\,\operatorname{sen} 135^\circ)$.<br>1ª Fórmula de Moivre: $(-1 + i)^{10} = (\sqrt{2})^{10}[\cos 1350^\circ + i\,\operatorname{sen} 1350^\circ]$.<br>$1350^\circ = 3 \cdot 360^\circ + 270^\circ$: $(-1 + i)^{10} = 32(\cos 270^\circ + i\,\operatorname{sen} 270^\circ) = \mathbf{-32i}$.</p></div>
+    </article>
+    <article class="questao">
+        <h4>R 4: Quociente e Potência</h4>
+        <p><strong>Enunciado:</strong> Calcule $w^{12}$, sendo $w = \dfrac{1 + i\sqrt{3}}{1 + i}$.</p>
+        <div class="resolucao-bloco"><p><strong>Resolução:</strong><br>$1 + i\sqrt{3} = 2(\cos 60^\circ + i\,\operatorname{sen} 60^\circ)$ e $1 + i = \sqrt{2}(\cos 45^\circ + i\,\operatorname{sen} 45^\circ)$.<br>$w = \dfrac{2}{\sqrt{2}}[\cos(60^\circ - 45^\circ) + i\,\operatorname{sen}(60^\circ - 45^\circ)] = \sqrt{2}(\cos 15^\circ + i\,\operatorname{sen} 15^\circ)$.<br>$w^{12} = (\sqrt{2})^{12}(\cos 180^\circ + i\,\operatorname{sen} 180^\circ) = 64 \cdot (-1) = \mathbf{-64}$.</p></div>
+    </article>
+    <article class="questao">
+        <h4>R 5: Equação Binômia</h4>
+        <p><strong>Enunciado:</strong> Resolva, em $\mathbb{C}$, a equação $z^3 = 8i$.</p>
+        <div class="resolucao-bloco"><p><strong>Resolução:</strong><br>$8i = 8(\cos 90^\circ + i\,\operatorname{sen} 90^\circ)$. Pela 2ª Fórmula de Moivre, as raízes têm módulo $\sqrt[3]{8} = 2$ e argumentos $\dfrac{90^\circ + k \cdot 360^\circ}{3}$.<br>$k = 0$: $30^\circ$; $k = 1$: $150^\circ$; $k = 2$: $270^\circ$.<br>$S = \{\mathbf{\sqrt{3} + i},\ \mathbf{-\sqrt{3} + i},\ \mathbf{-2i}\}$: vértices de um triângulo equilátero.</p></div>
+    </article>
+</section>
+
+<section class="questoes-propostas" id="propostas">
+    <h3>✍️ 10 Questões Propostas (P 6 a 15)</h3>
+    <article class="questao">
+        <h4>P 6: Produto</h4>
+        <p><strong>Enunciado:</strong> Calcule $z_1 z_2$ na forma algébrica, para $z_1 = 3(\cos 20^\circ + i\,\operatorname{sen} 20^\circ)$ e $z_2 = 5(\cos 25^\circ + i\,\operatorname{sen} 25^\circ)$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>$z_1 z_2 = 15(\cos 45^\circ + i\,\operatorname{sen} 45^\circ)$.<br>$z_1 z_2 = \mathbf{\dfrac{15\sqrt{2}}{2} + \dfrac{15\sqrt{2}}{2}i}$.</p></div>
+    </article>
+    <article class="questao">
+        <h4>P 7: Quociente</h4>
+        <p><strong>Enunciado:</strong> Calcule $\dfrac{z_1}{z_2}$ para $z_1 = 8(\cos 200^\circ + i\,\operatorname{sen} 200^\circ)$ e $z_2 = 4(\cos 20^\circ + i\,\operatorname{sen} 20^\circ)$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>$\dfrac{z_1}{z_2} = 2(\cos 180^\circ + i\,\operatorname{sen} 180^\circ)$.<br>$\dfrac{z_1}{z_2} = \mathbf{-2}$.</p></div>
+    </article>
+    <article class="questao">
+        <h4>P 8: Rotação de 90°</h4>
+        <p><strong>Enunciado:</strong> O afixo de $z = 3 + i$ é girado de $90^\circ$ no sentido anti-horário em torno da origem. Qual é o novo complexo?</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>Girar $90^\circ$ é multiplicar por $i$.<br>$i(3 + i) = 3i + i^2 = \mathbf{-1 + 3i}$.</p></div>
+    </article>
+    <article class="questao">
+        <h4>P 9: Potência I</h4>
+        <p><strong>Enunciado:</strong> Calcule $(\sqrt{3} - i)^6$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>$\sqrt{3} - i = 2(\cos 330^\circ + i\,\operatorname{sen} 330^\circ)$.<br>$(\sqrt{3} - i)^6 = 64(\cos 1980^\circ + i\,\operatorname{sen} 1980^\circ) = 64(\cos 180^\circ + i\,\operatorname{sen} 180^\circ) = \mathbf{-64}$.</p></div>
+    </article>
+    <article class="questao">
+        <h4>P 10: Potência II</h4>
+        <p><strong>Enunciado:</strong> Calcule $(1 + i)^{20}$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>$(1 + i)^{20} = (\sqrt{2})^{20}(\cos 900^\circ + i\,\operatorname{sen} 900^\circ)$.<br>$900^\circ = 2 \cdot 360^\circ + 180^\circ$: $(1 + i)^{20} = 1024 \cdot (-1) = \mathbf{-1024}$.</p></div>
+    </article>
+    <article class="questao">
+        <h4>P 11: Potência na Forma Polar</h4>
+        <p><strong>Enunciado:</strong> Calcule $\left[2(\cos 15^\circ + i\,\operatorname{sen} 15^\circ)\right]^6$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>Módulo $2^6 = 64$ e argumento $6 \cdot 15^\circ = 90^\circ$.<br>Resultado: $64(\cos 90^\circ + i\,\operatorname{sen} 90^\circ) = \mathbf{64i}$.</p></div>
+    </article>
+    <article class="questao">
+        <h4>P 12: Expoente Negativo</h4>
+        <p><strong>Enunciado:</strong> Calcule $(1 + i)^{-4}$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>Moivre vale para expoentes inteiros: $(1 + i)^{-4} = (\sqrt{2})^{-4}[\cos(-180^\circ) + i\,\operatorname{sen}(-180^\circ)]$.<br>$(1 + i)^{-4} = \dfrac{1}{4} \cdot (-1) = \mathbf{-\dfrac{1}{4}}$.</p></div>
+    </article>
+    <article class="questao">
+        <h4>P 13: Imaginário Puro</h4>
+        <p><strong>Enunciado:</strong> Determine o menor natural $n \geq 1$ para o qual $(\sqrt{3} + i)^n$ é imaginário puro.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>$\sqrt{3} + i = 2(\cos 30^\circ + i\,\operatorname{sen} 30^\circ)$; $(\sqrt{3} + i)^n$ é imaginário puro quando $\cos(30^\circ n) = 0$.<br>$30^\circ n = 90^\circ + k \cdot 180^\circ \implies n = \mathbf{3}$ (de fato, $(\sqrt{3} + i)^3 = 8i$).</p></div>
+    </article>
+    <article class="questao">
+        <h4>P 14: Equação Binômia</h4>
+        <p><strong>Enunciado:</strong> Resolva, em $\mathbb{C}$, a equação $z^4 = -16$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>$-16 = 16(\cos 180^\circ + i\,\operatorname{sen} 180^\circ)$: módulo das raízes $2$ e argumentos $45^\circ$, $135^\circ$, $225^\circ$ e $315^\circ$.<br>Soluções: $\mathbf{\sqrt{2} + \sqrt{2}\,i}$, $\mathbf{-\sqrt{2} + \sqrt{2}\,i}$, $\mathbf{-\sqrt{2} - \sqrt{2}\,i}$ e $\mathbf{\sqrt{2} - \sqrt{2}\,i}$.</p></div>
+    </article>
+    <article class="questao">
+        <h4>P 15: Hexágono das Raízes</h4>
+        <p><strong>Enunciado:</strong> Resolva $z^6 = 64$ e calcule a área do polígono cujos vértices são os afixos das raízes.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>Módulo $\sqrt[6]{64} = 2$ e argumentos $0^\circ, 60^\circ, \ldots, 300^\circ$: $\pm 2$, $\pm 1 \pm i\sqrt{3}$.<br>Hexágono regular de lado $2$: área $= 6 \cdot \dfrac{2^2\sqrt{3}}{4} = \mathbf{6\sqrt{3}}$.</p></div>
+    </article>
+</section>
+
+<section class="TESTE" id="testes">
+    <h3>🎓 TESTES (T 16 a 20)</h3>
+    <article class="questao">
+        <h4>T 16: (UEL) Produto de Afixos</h4>
+        <p>Os pontos $P(-3,\ 4)$ e $Q(2,\ -3)$ do plano de Argand-Gauss são os afixos dos números complexos $z_1$ e $z_2$, respectivamente.</p>
+        <p>O produto $z_1 \cdot z_2$ é igual a:</p>
+        <p>A) $-18 + 17i$<br>B) $-6 - 12i$<br>C) $-1 + i$<br>D) $5 + 7i$<br>E) $6 + 17i$</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>E</strong>.<br>$z_1 = -3 + 4i$ e $z_2 = 2 - 3i$.<br>$z_1 z_2 = -6 + 9i + 8i - 12i^2 = -6 + 17i + 12 = \mathbf{6 + 17i}$.<br>Interpretação: o módulo do produto é $|z_1| \cdot |z_2| = 5\sqrt{13}$ e o argumento é a soma dos argumentos (composição de rotações).</p></div>
+    </article>
+    <article class="questao">
+        <h4>T 17: (Cesgranrio) Raiz Quadrada de i</h4>
+        <p>O módulo do número complexo $z$ tal que $z^2 = i$ é:</p>
+        <p>A) $0$<br>B) $\dfrac{\sqrt{2}}{2}$<br>C) $1$<br>D) $\sqrt{2}$<br>E) $2$</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>C</strong>.<br>$i = 1(\cos 90^\circ + i\,\operatorname{sen} 90^\circ)$. Pela 2ª Fórmula de Moivre, as raízes quadradas têm módulo $\sqrt{1} = 1$ (argumentos $45^\circ$ e $225^\circ$).<br>Ou: $|z|^2 = |z^2| = |i| = 1 \implies |z| = \mathbf{1}$.</p></div>
+    </article>
+    <article class="questao">
+        <h4>T 18: (Fuvest 2017) Cubo de uma Raiz Complexa</h4>
+        <p>O polinômio $P(x) = x^3 - 3x^2 + 7x - 5$ possui uma raiz complexa $\xi$ cuja parte imaginária é positiva.</p>
+        <p>A parte real de $\xi^3$ é igual a:</p>
+        <p>A) $-11$<br>B) $-7$<br>C) $9$<br>D) $10$<br>E) $12$</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>A</strong>.<br>$P(1) = 1 - 3 + 7 - 5 = 0$, e $P(x) = (x - 1)(x^2 - 2x + 5)$ (confira multiplicando).<br>$x^2 - 2x + 5 = 0 \implies x = \dfrac{2 \pm 4i}{2} = 1 \pm 2i$. Logo $\xi = 1 + 2i$.<br>$\xi^2 = 1 + 4i + 4i^2 = -3 + 4i$ e $\xi^3 = (-3 + 4i)(1 + 2i) = -3 - 6i + 4i - 8 = -11 - 2i$: parte real $\mathbf{-11}$.</p></div>
+    </article>
+    <article class="questao">
+        <h4>T 19: (ITA) Raízes Quartas e Cúbicas</h4>
+        <p>O número complexo $-2 + 2i$ é uma das raízes quartas de um número complexo $z$.</p>
+        <p>A área do triângulo cujos vértices são os afixos das raízes cúbicas de $z$ é:</p>
+        <p>A) $4(\sqrt{3} + 1)$<br>B) $6\sqrt{3}$<br>C) $8(\sqrt{3} - 1)$<br>D) $10\sqrt{3}$<br>E) $12\sqrt{3}$</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>E</strong>.<br>$-2 + 2i = 2\sqrt{2}(\cos 135^\circ + i\,\operatorname{sen} 135^\circ)$, logo $z = (-2 + 2i)^4 = 64(\cos 540^\circ + i\,\operatorname{sen} 540^\circ) = -64$.<br>As raízes cúbicas de $-64$ têm módulo $\sqrt[3]{64} = 4$ e formam um triângulo equilátero inscrito na circunferência de raio $4$.<br>Lado $\ell = 4\sqrt{3}$ e área $= \dfrac{\ell^2\sqrt{3}}{4} = \dfrac{48\sqrt{3}}{4} = \mathbf{12\sqrt{3}}$.</p></div>
+    </article>
+    <article class="questao">
+        <h4>T 20: (Questão autoral) Quociente de Potências</h4>
+        <p>O valor de $\dfrac{(1 + i)^{12}}{(1 - i)^{10}}$ é:</p>
+        <p>A) $2i$<br>B) $-2i$<br>C) $2$<br>D) $-2$<br>E) $4i$</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>B</strong>.<br>$(1 + i)^{12} = (\sqrt{2})^{12}(\cos 540^\circ + i\,\operatorname{sen} 540^\circ) = -64$.<br>$(1 - i)^{10} = (\sqrt{2})^{10}[\cos(-450^\circ) + i\,\operatorname{sen}(-450^\circ)] = 32(\cos 270^\circ + i\,\operatorname{sen} 270^\circ) = -32i$.<br>$\dfrac{-64}{-32i} = \dfrac{2}{i} = \dfrac{2i}{i^2} = \mathbf{-2i}$.</p></div>
+    </article>
+</section>
+
+</div></main>
+<aside class="menu-lateral"><iframe src="../menu_matematica.html" style="width:100%; border:none; height:600px;"></iframe></aside>
+</div>
+<script>
+function toggleGabarito(botao) {
+    const gabarito = botao.nextElementSibling;
+    if (gabarito.style.display === "none" || gabarito.style.display === "") {
+        gabarito.style.display = "block"; botao.textContent = "Esconder Gabarito e Resolução"; botao.style.backgroundColor = "#2c3e50";
+    } else {
+        gabarito.style.display = "none"; botao.textContent = "Ver Gabarito e Resolução"; botao.style.backgroundColor = "#3498db";
+    }
+}
+function toggleMenu() { const m = document.getElementById("menu-principal"); if (m) m.classList.toggle("ativo"); }
+let slideAtual = 0; let slides = [];
+function prepararSlides() { slides = Array.from(document.querySelectorAll('.container-resumo, .passo-teoria, .card, .questao')); }
+function toggleSlides() {
+    prepararSlides(); const body = document.body;
+    if (!body.classList.contains('modo-slides')) { body.classList.add('modo-slides'); slideAtual = 0; mostrarSlide(slideAtual); }
+    else { body.classList.remove('modo-slides'); slides.forEach(s => { s.classList.remove('slide-ativo'); s.style.display = ''; }); }
+}
+function mostrarSlide(n) {
+    if (!slides.length) return;
+    slides.forEach(s => { s.classList.remove('slide-ativo'); s.style.display = 'none'; });
+    const slide = slides[n]; slide.classList.add('slide-ativo');
+    slide.querySelectorAll('.gabarito-resolucao').forEach(g => g.style.display = 'none');
+    slide.querySelectorAll('.btn-gabarito').forEach(b => { b.textContent = "Ver Gabarito e Resolução"; b.style.backgroundColor = "#3498db"; });
+    const pHeader = document.querySelector('header p');
+    if (pHeader) { const partes = pHeader.innerText.split('|'); if (partes.length > 1) {
+        document.getElementById('slide-info-serie').innerText = partes[0].trim();
+        document.getElementById('slide-info-aula').innerText = partes[1].trim(); } }
+    document.getElementById('contador-slide').innerText = (n + 1) + " / " + slides.length;
+    if (window.MathJax && window.MathJax.typesetPromise) { MathJax.typesetPromise(); }
+}
+function mudarSlide(d) { slideAtual += d; if (slideAtual >= slides.length) slideAtual = 0; if (slideAtual < 0) slideAtual = slides.length - 1; mostrarSlide(slideAtual); }
+document.addEventListener('keydown', function(event) {
+    if (document.body.classList.contains('modo-slides')) {
+        switch(event.key) {
+            case 'ArrowRight': case 'PageDown': case 'Enter': case ' ': event.preventDefault(); mudarSlide(1); break;
+            case 'ArrowLeft': case 'PageUp': event.preventDefault(); mudarSlide(-1); break;
+            case 'Escape': event.preventDefault(); toggleSlides(); break;
+        }
+    }
+});
+</script>
+<div class="controles-slides">
+    <div id="slide-info-serie" class="info-lateral"></div>
+    <div class="botoes-centrais">
+        <button class="btn-nav" onclick="mudarSlide(-1)">⬅ Anterior</button>
+        <span id="contador-slide"></span>
+        <button class="btn-nav" onclick="mudarSlide(1)">Próximo ➡</button>
+        <button class="btn-nav" onclick="toggleSlides()" style="background:#e74c3c;">Sair</button>
+    </div>
+    <div id="slide-info-aula" class="info-lateral" style="text-align: right;"></div>
+</div>
+</body>
+</html>
