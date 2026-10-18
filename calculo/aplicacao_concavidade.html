@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cálculo I: Concavidade e Pontos de Inflexão</title>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../estilo.css">
+    
+    <script>
+        MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true
+            }
+        };
+    </script>
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body>
+<button class="menu-toggle" onclick="toggleMenu()">☰</button>
+
+<nav id="menu-principal" class="nav-global">
+    <ul>
+        <li><a href="../index.html">🏠 Início</a></li>
+        <li><a href="../ensino_medio.html">📚 Ensino Médio</a></li>
+        <li><a href="../ensino_superior.html">🎓 Ensino Superior</a></li>
+    </ul>
+</nav>
+
+<header id="topo">
+    <h1>CÁLCULO I</h1>
+    <p>Cálculo | Aula: Concavidade e Pontos de Inflexão</p>
+    <button id="btn-slides" onclick="toggleSlides()">📺 Iniciar Modo Slides</button>
+</header>
+
+<div class="container">
+
+<main class="conteudo-principal">
+
+<div class="secao-aula">
+ <div class="container-resumo" id="resumo">
+    <h3>📚 Resumo </h3>
+    <section class="resumo-conteudo">
+        <p>A <strong>segunda derivada</strong> mede como a inclinação muda. Se $f''(x) > 0$ num intervalo, as inclinações aumentam e o gráfico é <strong>côncavo para cima</strong> (∪); se $f''(x) < 0$, as inclinações diminuem e o gráfico é <strong>côncavo para baixo</strong> (∩).</p>
+        <p>Um <strong>ponto de inflexão</strong> é onde a concavidade muda. Os candidatos são os pontos em que $f'' = 0$ ou $f''$ não existe, mas só são inflexões se $f''$ <strong>trocar de sinal</strong>.</p>
+    </section>
+</div>
+
+<section class="conteudo-teorico-completo" id="teoria">
+    <div class="passo-teoria">
+        <h3>📖 Tigelas e Cúpulas</h3>
+        <p>Um gráfico é <strong>côncavo para cima</strong> num intervalo quando fica <strong>acima</strong> de todas as suas retas tangentes (forma de tigela) e <strong>côncavo para baixo</strong> quando fica <strong>abaixo</strong> delas (forma de cúpula). De forma equivalente: côncavo para cima quando $f'$ é crescente, e para baixo quando $f'$ é decrescente.</p>
+        <figure class="figura-aula figura-grande">
+            <svg viewBox="0 0 480 270" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Côncava para cima (tangentes abaixo do gráfico) e côncava para baixo (tangentes acima)" style="width:100%; max-width:500px; height:auto; display:block; margin:0 auto; background:#fdfdfd; border-radius:10px;">
+  <polyline points="39.1,124.9 40.3,127.1 41.5,129.1 42.7,131.2 43.9,133.2 45.1,135.2 46.3,137.2 47.5,139.2 48.7,141.1 49.9,143.0 51.1,144.9 52.3,146.7 53.5,148.6 54.7,150.3 55.9,152.1 57.1,153.9 58.3,155.6 59.5,157.3 60.7,158.9 61.9,160.6 63.1,162.2 64.3,163.7 65.5,165.3 66.7,166.8 67.9,168.3 69.1,169.8 70.3,171.2 71.5,172.7 72.7,174.1 73.9,175.4 75.1,176.8 76.3,178.1 77.5,179.4 78.7,180.6 79.9,181.9 81.1,183.1 82.3,184.3 83.5,185.4 84.7,186.6 85.9,187.7 87.1,188.7 88.3,189.8 89.5,190.8 90.7,191.8 91.9,192.8 93.1,193.7 94.3,194.6 95.5,195.5 96.7,196.4 97.9,197.2 99.0,198.0 100.2,198.8 101.4,199.6 102.6,200.3 103.8,201.0 105.0,201.7 106.2,202.3 107.4,203.0 108.6,203.6 109.8,204.1 111.0,204.7 112.2,205.2 113.4,205.7 114.6,206.2 115.8,206.6 117.0,207.0 118.2,207.4 119.4,207.8 120.6,208.1 121.8,208.4 123.0,208.7 124.2,208.9 125.4,209.1 126.6,209.3 127.8,209.5 129.0,209.7 130.2,209.8 131.4,209.9 132.6,209.9 133.8,210.0 135.0,210.0 136.2,210.0 137.4,209.9 138.6,209.9 139.8,209.8 141.0,209.7 142.2,209.5 143.4,209.3 144.6,209.1 145.8,208.9 147.0,208.7 148.2,208.4 149.4,208.1 150.6,207.8 151.8,207.4 153.0,207.0 154.2,206.6 155.4,206.2 156.6,205.7 157.8,205.2 159.0,204.7 160.2,204.1 161.4,203.6 162.6,203.0 163.8,202.3 165.0,201.7 166.2,201.0 167.4,200.3 168.6,199.6 169.8,198.8 171.0,198.0 172.1,197.2 173.3,196.4 174.5,195.5 175.7,194.6 176.9,193.7 178.1,192.8 179.3,191.8 180.5,190.8 181.7,189.8 182.9,188.7 184.1,187.7 185.3,186.6 186.5,185.4 187.7,184.3 188.9,183.1 190.1,181.9 191.3,180.6 192.5,179.4 193.7,178.1 194.9,176.8 196.1,175.4 197.3,174.1 198.5,172.7 199.7,171.2 200.9,169.8 202.1,168.3 203.3,166.8 204.5,165.3 205.7,163.7 206.9,162.2 208.1,160.6 209.3,158.9 210.5,157.3 211.7,155.6 212.9,153.9 214.1,152.1 215.3,150.3 216.5,148.6 217.7,146.7 218.9,144.9 220.1,143.0 221.3,141.1 222.5,139.2 223.7,137.2 224.9,135.2 226.1,133.2 227.3,131.2 228.5,129.1 229.7,127.1 230.9,125.0" fill="none" stroke="#27ae60" stroke-width="3.5"/>
+  <polyline points="249.1,157.9 250.3,155.8 251.5,153.7 252.7,151.6 253.9,149.6 255.1,147.6 256.3,145.6 257.5,143.7 258.7,141.7 259.9,139.8 261.1,138.0 262.3,136.1 263.5,134.3 264.7,132.5 265.9,130.7 267.1,129.0 268.3,127.3 269.5,125.6 270.7,123.9 271.9,122.3 273.1,120.7 274.3,119.1 275.5,117.6 276.7,116.0 277.9,114.5 279.1,113.1 280.3,111.6 281.5,110.2 282.7,108.8 283.9,107.4 285.1,106.1 286.3,104.8 287.5,103.5 288.7,102.2 289.9,101.0 291.1,99.8 292.3,98.6 293.5,97.4 294.7,96.3 295.9,95.2 297.1,94.1 298.3,93.1 299.5,92.0 300.7,91.0 301.9,90.1 303.1,89.1 304.3,88.2 305.5,87.3 306.7,86.5 307.9,85.6 309.0,84.8 310.2,84.0 311.4,83.3 312.6,82.5 313.8,81.8 315.0,81.2 316.2,80.5 317.4,79.9 318.6,79.3 319.8,78.7 321.0,78.2 322.2,77.7 323.4,77.2 324.6,76.7 325.8,76.3 327.0,75.8 328.2,75.5 329.4,75.1 330.6,74.8 331.8,74.5 333.0,74.2 334.2,73.9 335.4,73.7 336.6,73.5 337.8,73.3 339.0,73.2 340.2,73.1 341.4,73.0 342.6,72.9 343.8,72.9 345.0,72.9 346.2,72.9 347.4,72.9 348.6,73.0 349.8,73.1 351.0,73.2 352.2,73.3 353.4,73.5 354.6,73.7 355.8,73.9 357.0,74.2 358.2,74.5 359.4,74.8 360.6,75.1 361.8,75.5 363.0,75.8 364.2,76.3 365.4,76.7 366.6,77.2 367.8,77.7 369.0,78.2 370.2,78.7 371.4,79.3 372.6,79.9 373.8,80.5 375.0,81.2 376.2,81.8 377.4,82.5 378.6,83.3 379.8,84.0 381.0,84.8 382.1,85.6 383.3,86.5 384.5,87.3 385.7,88.2 386.9,89.1 388.1,90.1 389.3,91.0 390.5,92.0 391.7,93.1 392.9,94.1 394.1,95.2 395.3,96.3 396.5,97.4 397.7,98.6 398.9,99.8 400.1,101.0 401.3,102.2 402.5,103.5 403.7,104.8 404.9,106.1 406.1,107.4 407.3,108.8 408.5,110.2 409.7,111.6 410.9,113.1 412.1,114.5 413.3,116.0 414.5,117.6 415.7,119.1 416.9,120.7 418.1,122.3 419.3,123.9 420.5,125.6 421.7,127.3 422.9,129.0 424.1,130.7 425.3,132.5 426.5,134.3 427.7,136.1 428.9,138.0 430.1,139.8 431.3,141.7 432.5,143.7 433.7,145.6 434.9,147.6 436.1,149.6 437.3,151.6 438.5,153.7 439.7,155.8 440.9,157.9" fill="none" stroke="#e74c3c" stroke-width="3.5"/>
+  <polyline points="43.7,145.2 44.2,145.7 44.6,146.1 45.1,146.6 45.5,147.1 46.0,147.5 46.4,148.0 46.9,148.4 47.3,148.9 47.8,149.4 48.3,149.8 48.7,150.3 49.2,150.8 49.6,151.2 50.1,151.7 50.5,152.1 51.0,152.6 51.5,153.1 51.9,153.5 52.4,154.0 52.8,154.5 53.3,154.9 53.7,155.4 54.2,155.8 54.7,156.3 55.1,156.8 55.6,157.2 56.0,157.7 56.5,158.2 56.9,158.6 57.4,159.1 57.8,159.5 58.3,160.0 58.8,160.5 59.2,160.9 59.7,161.4 60.1,161.9 60.6,162.3 61.0,162.8 61.5,163.3 62.0,163.7 62.4,164.2 62.9,164.6 63.3,165.1 63.8,165.6 64.2,166.0 64.7,166.5 65.2,167.0 65.6,167.4 66.1,167.9 66.5,168.3 67.0,168.8 67.4,169.3 67.9,169.7 68.3,170.2 68.8,170.7 69.3,171.1 69.7,171.6 70.2,172.0 70.6,172.5 71.1,173.0 71.5,173.4 72.0,173.9 72.5,174.4 72.9,174.8 73.4,175.3 73.8,175.7 74.3,176.2 74.7,176.7 75.2,177.1 75.7,177.6 76.1,178.1 76.6,178.5 77.0,179.0 77.5,179.5 77.9,179.9 78.4,180.4 78.8,180.8 79.3,181.3 79.8,181.8 80.2,182.2 80.7,182.7 81.1,183.2 81.6,183.6 82.0,184.1 82.5,184.5 83.0,185.0 83.4,185.5 83.9,185.9 84.3,186.4 84.8,186.9 85.2,187.3 85.7,187.8 86.2,188.2 86.6,188.7 87.1,189.2 87.5,189.6 88.0,190.1 88.4,190.6 88.9,191.0 89.3,191.5 89.8,191.9 90.3,192.4 90.7,192.9 91.2,193.3 91.6,193.8 92.1,194.3 92.5,194.7 93.0,195.2 93.5,195.7 93.9,196.1 94.4,196.6 94.8,197.0 95.3,197.5 95.7,198.0 96.2,198.4 96.7,198.9 97.1,199.4 97.6,199.8 98.0,200.3 98.5,200.7 98.9,201.2 99.4,201.7 99.8,202.1 100.3,202.6 100.8,203.1 101.2,203.5 101.7,204.0 102.1,204.4 102.6,204.9 103.0,205.4 103.5,205.8 104.0,206.3 104.4,206.8 104.9,207.2 105.3,207.7 105.8,208.1 106.2,208.6 106.7,209.1 107.2,209.5 107.6,210.0 108.1,210.5 108.5,210.9 109.0,211.4 109.4,211.9 109.9,212.3 110.3,212.8 110.8,213.2 111.3,213.7 111.7,214.2 112.2,214.6 112.6,215.1 113.1,215.6 113.5,216.0 114.0,216.5 114.5,216.9 114.9,217.4 115.4,217.9 115.8,218.3 116.3,218.8 116.7,219.3" fill="none" stroke="#7f8c8d" stroke-width="1.8" stroke-dasharray="5,3"/>
+  <circle cx="80.2" cy="182.2" r="4" fill="#2c3e50"/>
+  <polyline points="148.7,220.6 149.2,220.2 149.6,219.8 150.1,219.3 150.5,218.9 151.0,218.5 151.4,218.1 151.9,217.6 152.3,217.2 152.8,216.8 153.3,216.4 153.7,215.9 154.2,215.5 154.6,215.1 155.1,214.7 155.5,214.2 156.0,213.8 156.5,213.4 156.9,213.0 157.4,212.5 157.8,212.1 158.3,211.7 158.7,211.3 159.2,210.8 159.7,210.4 160.1,210.0 160.6,209.6 161.0,209.2 161.5,208.7 161.9,208.3 162.4,207.9 162.8,207.5 163.3,207.0 163.8,206.6 164.2,206.2 164.7,205.8 165.1,205.3 165.6,204.9 166.0,204.5 166.5,204.1 167.0,203.6 167.4,203.2 167.9,202.8 168.3,202.4 168.8,201.9 169.2,201.5 169.7,201.1 170.2,200.7 170.6,200.2 171.1,199.8 171.5,199.4 172.0,199.0 172.4,198.5 172.9,198.1 173.3,197.7 173.8,197.3 174.3,196.8 174.7,196.4 175.2,196.0 175.6,195.6 176.1,195.2 176.5,194.7 177.0,194.3 177.5,193.9 177.9,193.5 178.4,193.0 178.8,192.6 179.3,192.2 179.7,191.8 180.2,191.3 180.7,190.9 181.1,190.5 181.6,190.1 182.0,189.6 182.5,189.2 182.9,188.8 183.4,188.4 183.8,187.9 184.3,187.5 184.8,187.1 185.2,186.7 185.7,186.2 186.1,185.8 186.6,185.4 187.0,185.0 187.5,184.5 188.0,184.1 188.4,183.7 188.9,183.3 189.3,182.8 189.8,182.4 190.2,182.0 190.7,181.6 191.2,181.1 191.6,180.7 192.1,180.3 192.5,179.9 193.0,179.5 193.4,179.0 193.9,178.6 194.3,178.2 194.8,177.8 195.3,177.3 195.7,176.9 196.2,176.5 196.6,176.1 197.1,175.6 197.5,175.2 198.0,174.8 198.5,174.4 198.9,173.9 199.4,173.5 199.8,173.1 200.3,172.7 200.7,172.2 201.2,171.8 201.7,171.4 202.1,171.0 202.6,170.5 203.0,170.1 203.5,169.7 203.9,169.3 204.4,168.8 204.8,168.4 205.3,168.0 205.8,167.6 206.2,167.1 206.7,166.7 207.1,166.3 207.6,165.9 208.0,165.5 208.5,165.0 209.0,164.6 209.4,164.2 209.9,163.8 210.3,163.3 210.8,162.9 211.2,162.5 211.7,162.1 212.2,161.6 212.6,161.2 213.1,160.8 213.5,160.4 214.0,159.9 214.4,159.5 214.9,159.1 215.3,158.7 215.8,158.2 216.3,157.8 216.7,157.4 217.2,157.0 217.6,156.5 218.1,156.1 218.5,155.7 219.0,155.3 219.5,154.8 219.9,154.4 220.4,154.0 220.8,153.6 221.3,153.1 221.7,152.7" fill="none" stroke="#7f8c8d" stroke-width="1.8" stroke-dasharray="5,3"/>
+  <circle cx="185.2" cy="186.7" r="4" fill="#2c3e50"/>
+  <polyline points="258.3,130.1 258.7,129.7 259.2,129.3 259.6,128.9 260.1,128.4 260.5,128.0 261.0,127.6 261.5,127.2 261.9,126.7 262.4,126.3 262.8,125.9 263.3,125.5 263.7,125.0 264.2,124.6 264.7,124.2 265.1,123.8 265.6,123.3 266.0,122.9 266.5,122.5 266.9,122.1 267.4,121.6 267.8,121.2 268.3,120.8 268.8,120.4 269.2,120.0 269.7,119.5 270.1,119.1 270.6,118.7 271.0,118.3 271.5,117.8 272.0,117.4 272.4,117.0 272.9,116.6 273.3,116.1 273.8,115.7 274.2,115.3 274.7,114.9 275.2,114.4 275.6,114.0 276.1,113.6 276.5,113.2 277.0,112.7 277.4,112.3 277.9,111.9 278.3,111.5 278.8,111.0 279.3,110.6 279.7,110.2 280.2,109.8 280.6,109.3 281.1,108.9 281.5,108.5 282.0,108.1 282.5,107.6 282.9,107.2 283.4,106.8 283.8,106.4 284.3,106.0 284.7,105.5 285.2,105.1 285.7,104.7 286.1,104.3 286.6,103.8 287.0,103.4 287.5,103.0 287.9,102.6 288.4,102.1 288.8,101.7 289.3,101.3 289.8,100.9 290.2,100.4 290.7,100.0 291.1,99.6 291.6,99.2 292.0,98.7 292.5,98.3 293.0,97.9 293.4,97.5 293.9,97.0 294.3,96.6 294.8,96.2 295.2,95.8 295.7,95.3 296.2,94.9 296.6,94.5 297.1,94.1 297.5,93.6 298.0,93.2 298.4,92.8 298.9,92.4 299.3,92.0 299.8,91.5 300.3,91.1 300.7,90.7 301.2,90.3 301.6,89.8 302.1,89.4 302.5,89.0 303.0,88.6 303.5,88.1 303.9,87.7 304.4,87.3 304.8,86.9 305.3,86.4 305.7,86.0 306.2,85.6 306.7,85.2 307.1,84.7 307.6,84.3 308.0,83.9 308.5,83.5 308.9,83.0 309.4,82.6 309.8,82.2 310.3,81.8 310.8,81.3 311.2,80.9 311.7,80.5 312.1,80.1 312.6,79.6 313.0,79.2 313.5,78.8 314.0,78.4 314.4,77.9 314.9,77.5 315.3,77.1 315.8,76.7 316.2,76.3 316.7,75.8 317.2,75.4 317.6,75.0 318.1,74.6 318.5,74.1 319.0,73.7 319.4,73.3 319.9,72.9 320.3,72.4 320.8,72.0 321.3,71.6 321.7,71.2 322.2,70.7 322.6,70.3 323.1,69.9 323.5,69.5 324.0,69.0 324.5,68.6 324.9,68.2 325.4,67.8 325.8,67.3 326.3,66.9 326.7,66.5 327.2,66.1 327.7,65.6 328.1,65.2 328.6,64.8 329.0,64.4 329.5,63.9 329.9,63.5 330.4,63.1 330.8,62.7 331.3,62.3" fill="none" stroke="#7f8c8d" stroke-width="1.8" stroke-dasharray="5,3"/>
+  <circle cx="294.8" cy="96.2" r="4" fill="#2c3e50"/>
+  <polyline points="363.3,63.6 363.7,64.1 364.2,64.5 364.6,65.0 365.1,65.5 365.5,65.9 366.0,66.4 366.5,66.8 366.9,67.3 367.4,67.8 367.8,68.2 368.3,68.7 368.7,69.2 369.2,69.6 369.7,70.1 370.1,70.5 370.6,71.0 371.0,71.5 371.5,71.9 371.9,72.4 372.4,72.9 372.8,73.3 373.3,73.8 373.8,74.2 374.2,74.7 374.7,75.2 375.1,75.6 375.6,76.1 376.0,76.6 376.5,77.0 377.0,77.5 377.4,77.9 377.9,78.4 378.3,78.9 378.8,79.3 379.2,79.8 379.7,80.3 380.2,80.7 380.6,81.2 381.1,81.7 381.5,82.1 382.0,82.6 382.4,83.0 382.9,83.5 383.3,84.0 383.8,84.4 384.3,84.9 384.7,85.4 385.2,85.8 385.6,86.3 386.1,86.7 386.5,87.2 387.0,87.7 387.5,88.1 387.9,88.6 388.4,89.1 388.8,89.5 389.3,90.0 389.7,90.4 390.2,90.9 390.7,91.4 391.1,91.8 391.6,92.3 392.0,92.8 392.5,93.2 392.9,93.7 393.4,94.1 393.8,94.6 394.3,95.1 394.8,95.5 395.2,96.0 395.7,96.5 396.1,96.9 396.6,97.4 397.0,97.9 397.5,98.3 398.0,98.8 398.4,99.2 398.9,99.7 399.3,100.2 399.8,100.6 400.2,101.1 400.7,101.6 401.2,102.0 401.6,102.5 402.1,102.9 402.5,103.4 403.0,103.9 403.4,104.3 403.9,104.8 404.3,105.3 404.8,105.7 405.3,106.2 405.7,106.6 406.2,107.1 406.6,107.6 407.1,108.0 407.5,108.5 408.0,109.0 408.5,109.4 408.9,109.9 409.4,110.3 409.8,110.8 410.3,111.3 410.7,111.7 411.2,112.2 411.7,112.7 412.1,113.1 412.6,113.6 413.0,114.1 413.5,114.5 413.9,115.0 414.4,115.4 414.8,115.9 415.3,116.4 415.8,116.8 416.2,117.3 416.7,117.8 417.1,118.2 417.6,118.7 418.0,119.1 418.5,119.6 419.0,120.1 419.4,120.5 419.9,121.0 420.3,121.5 420.8,121.9 421.2,122.4 421.7,122.8 422.2,123.3 422.6,123.8 423.1,124.2 423.5,124.7 424.0,125.2 424.4,125.6 424.9,126.1 425.3,126.5 425.8,127.0 426.3,127.5 426.7,127.9 427.2,128.4 427.6,128.9 428.1,129.3 428.5,129.8 429.0,130.3 429.5,130.7 429.9,131.2 430.4,131.6 430.8,132.1 431.3,132.6 431.7,133.0 432.2,133.5 432.7,134.0 433.1,134.4 433.6,134.9 434.0,135.3 434.5,135.8 434.9,136.3 435.4,136.7 435.8,137.2 436.3,137.7" fill="none" stroke="#7f8c8d" stroke-width="1.8" stroke-dasharray="5,3"/>
+  <circle cx="399.8" cy="100.6" r="4" fill="#2c3e50"/>
+  <text x="135.0" y="47.1" font-size="14" fill="#27ae60" font-family="sans-serif" font-weight="bold" text-anchor="middle">côncava para cima ∪</text>
+  <text x="135.0" y="229.3" font-size="12" fill="#2c3e50" font-family="sans-serif" text-anchor="middle">f'' > 0: tangentes abaixo do gráfico</text>
+  <text x="345.0" y="47.1" font-size="14" fill="#e74c3c" font-family="sans-serif" font-weight="bold" text-anchor="middle">côncava para baixo ∩</text>
+  <text x="345.0" y="229.3" font-size="12" fill="#2c3e50" font-family="sans-serif" text-anchor="middle">f'' < 0: tangentes acima do gráfico</text>
+</svg>
+            <figcaption>Figura 1: À esquerda, as tangentes (tracejadas) ficam abaixo do gráfico: concavidade para cima. À direita, ficam acima: concavidade para baixo.</figcaption>
+        </figure>
+    </div>
+
+    <div class="passo-teoria">
+        <h4>1. Teste da Concavidade</h4>
+        <p>Seja $f$ duas vezes derivável num intervalo aberto $I$:</p>
+        <p style="text-align: center; font-size: 1.15rem; background-color: #f8f9fa; padding: 15px; border-left: 5px solid #3498db; margin: 20px 0;">
+            $$f''(x) > 0 \text{ em } I \Rightarrow \cup \qquad \qquad f''(x) < 0 \text{ em } I \Rightarrow \cap$$
+        </p>
+        <p>Atenção: concavidade e crescimento são coisas diferentes. $e^{-x}$ é decrescente e côncava para cima; $\ln x$ é crescente e côncava para baixo.</p>
+    </div>
+
+    <div class="passo-teoria">
+        <h4>2. Pontos de Inflexão</h4>
+        <ul>
+            <li><strong>Definição:</strong> ponto $(c, f(c))$ do gráfico, com $f$ contínua em $c$, em que a concavidade muda;</li>
+            <li><strong>Candidatos:</strong> valores $c$ do domínio em que $f''(c) = 0$ ou $f''(c)$ não existe;</li>
+            <li><strong>Confirmação:</strong> estude o sinal de $f''$ antes e depois de $c$. Só há inflexão se o sinal trocar.</li>
+        </ul>
+        <p><strong>Contraexemplos clássicos:</strong> em $f(x) = x^4$, $f''(0) = 0$, mas $f'' = 12x^2$ não troca de sinal: não há inflexão. Já em $f(x) = \sqrt[3]{x}$, $f''(0)$ não existe e mesmo assim há inflexão em $(0, 0)$.</p>
+    </div>
+
+    <div class="passo-teoria">
+        <h4>3. Teste da Segunda Derivada</h4>
+        <p>Se $f'(c) = 0$ e $f''$ é contínua perto de $c$:</p>
+        <ul>
+            <li>$f''(c) > 0$ ⇒ a curva é uma "tigela" em torno de $c$: <strong>mínimo local</strong>;</li>
+            <li>$f''(c) < 0$ ⇒ "cúpula": <strong>máximo local</strong>;</li>
+            <li>$f''(c) = 0$ ⇒ o teste é <strong>inconclusivo</strong>; use o sinal de $f'$. Se $f''(c) = 0$ e $f'''(c) \neq 0$, há inflexão em $c$.</li>
+        </ul>
+    </div>
+</section>
+
+<section class="aplicacoes-reais" id="aplicacoes">
+    <h3>💡 Matemática em Ação</h3>
+    <div class="cards-aplicacao">
+        <div class="card">
+            <h4>📉 Retornos Decrescentes</h4>
+            <p>Em economia, a produção $P(x)$ em função do investimento $x$ costuma ser côncava para baixo: cada real a mais rende um pouco menos que o anterior. O ponto de inflexão de uma curva de vendas marca quando o crescimento começa a desacelerar.</p>
+        </div>
+        <div class="card" style="border-left-color: #2ecc71;">
+            <h4>🌉 Curvatura de Vigas e Cabos</h4>
+            <p>Uma viga biapoiada sob carga se curva com concavidade para cima, pois $EI\,y'' = M > 0$. Nos pontos em que o momento fletor se anula e troca de sinal, a viga tem inflexão: ali muda o lado que fica tracionado.</p>
+        </div>
+    </div>
+</section>
+
+<section class="questoes-resolvidas" id="resolvidas">
+    <h3>✅ 5 Questões Resolvidas (R 1 a 5)</h3>
+
+    <article class="questao">
+        <h4>R 1: Concavidade de uma Cúbica</h4>
+        <p><strong>Enunciado:</strong> Estude a concavidade de $f(x) = x^3 - 6x^2 + 5$ e determine o ponto de inflexão.</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong><br>
+            1. $f'(x) = 3x^2 - 12x$ e $f”(x) = 6x - 12$, que se anula em $x = 2$.<br>
+            2. $f” < 0$ para $x < 2$: côncava para <strong>baixo</strong> em $(-\infty, 2)$. $f” > 0$ para $x > 2$: côncava para <strong>cima</strong> em $(2, +\infty)$.<br>
+            3. Como $f”$ troca de sinal em $x = 2$, há inflexão: $f(2) = 8 - 24 + 5 = -11$. Ponto $\mathbf{(2, -11)}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>R 2: Duas Inflexões</h4>
+        <p><strong>Enunciado:</strong> Determine os intervalos de concavidade e os pontos de inflexão de $f(x) = x^4 - 6x^2 + 1$.</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong><br>
+            1. $f'(x) = 4x^3 - 12x$ e $f”(x) = 12x^2 - 12 = 12(x - 1)(x + 1)$.<br>
+            2. $f” > 0$ em $(-\infty, -1)$ e $(1, +\infty)$ (para cima); $f” < 0$ em $(-1, 1)$ (para baixo).<br>
+            3. Inflexões em $x = \pm 1$, com $f(\pm 1) = 1 - 6 + 1 = -4$: pontos $\mathbf{(-1, -4)}$ e $\mathbf{(1, -4)}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>R 3: Cuidado: $f''(c) = 0$ não Basta</h4>
+        <p><strong>Enunciado:</strong> Mostre que $f”(0) = 0$ para $f(x) = x^4$, mas $(0, 0)$ não é ponto de inflexão.</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong><br>
+            1. $f'(x) = 4x^3$ e $f”(x) = 12x^2$, logo $f”(0) = 0$.<br>
+            2. Porém $f”(x) = 12x^2 > 0$ para todo $x \neq 0$: a segunda derivada <strong>não troca de sinal</strong>.<br>
+            3. A concavidade é sempre para cima, e $(0, 0)$ <strong>não</strong> é ponto de inflexão (é ponto de mínimo).</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>R 4: Produto com Exponencial</h4>
+        <p><strong>Enunciado:</strong> Estude a concavidade de $f(x) = xe^x$ e encontre o ponto de inflexão.</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong><br>
+            1. $f'(x) = e^x + xe^x = (x + 1)e^x$ e $f”(x) = e^x + (x + 1)e^x = (x + 2)e^x$.<br>
+            2. Como $e^x > 0$, o sinal de $f”$ é o de $x + 2$: para baixo em $(-\infty, -2)$ e para cima em $(-2, +\infty)$.<br>
+            3. Inflexão em $x = -2$: $f(-2) = -2e^{-2}$. Ponto $\mathbf{\left(-2, -\frac{2}{e^2}\right)}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>R 5: Teste da Segunda Derivada</h4>
+        <p><strong>Enunciado:</strong> Para $f(x) = x^3 - 3x^2 - 9x + 4$, classifique os pontos críticos pelo teste da segunda derivada e encontre a inflexão.</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong><br>
+            1. $f'(x) = 3x^2 - 6x - 9 = 3(x - 3)(x + 1)$: críticos $x = -1$ e $x = 3$. E $f”(x) = 6x - 6$.<br>
+            2. $f”(3) = 12 > 0$: <strong>mínimo</strong> local $f(3) = 27 - 27 - 27 + 4 = -23$. $f”(-1) = -12 < 0$: <strong>máximo</strong> local $f(-1) = -1 - 3 + 9 + 4 = 9$.<br>
+            3. $f”$ troca de sinal em $x = 1$: inflexão em $\mathbf{(1, -7)}$, exatamente no meio do caminho entre o máximo e o mínimo.</p>
+        </div>
+    </article>
+</section>
+
+<section class="questoes-propostas" id="propostas">
+    <h3>✍️ 10 Questões Propostas (P 6 a 15)</h3>
+
+    <article class="questao">
+        <h4>P 6: Cúbica Simples</h4>
+        <p><strong>Enunciado:</strong> Estude a concavidade de $f(x) = x^3 - 3x^2$ e determine o ponto de inflexão.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong><br>
+            1. $f”(x) = 6x - 6$: para baixo em $(-\infty, 1)$ e para cima em $(1, +\infty)$.<br>
+            2. Inflexão em $\mathbf{(1, -2)}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 7: Cúbica Invertida</h4>
+        <p><strong>Enunciado:</strong> Estude a concavidade de $f(x) = -2x^3 + 6x^2$ e determine o ponto de inflexão.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong><br>
+            1. $f'(x) = -6x^2 + 12x$ e $f”(x) = -12x + 12$: para cima em $(-\infty, 1)$, para baixo em $(1, +\infty)$.<br>
+            2. Inflexão em $\mathbf{(1, 4)}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 8: Quártica com Duas Inflexões</h4>
+        <p><strong>Enunciado:</strong> Determine os intervalos de concavidade e os pontos de inflexão de $f(x) = x^4 - 8x^3 + 18x^2$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong><br>
+            1. $f”(x) = 12x^2 - 48x + 36 = 12(x - 1)(x - 3)$: para cima em $(-\infty, 1)$ e $(3, +\infty)$; para baixo em $(1, 3)$.<br>
+            2. Inflexões: $\mathbf{(1, 11)}$ e $\mathbf{(3, 27)}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 9: Hipérbole</h4>
+        <p><strong>Enunciado:</strong> Estude a concavidade de $f(x) = \dfrac{1}{x}$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong><br>
+            1. $f'(x) = -\dfrac{1}{x^2}$ e $f”(x) = \dfrac{2}{x^3}$.<br>
+            2. Para baixo em $(-\infty, 0)$ e para cima em $(0, +\infty)$. <strong>Não há inflexão</strong>: $x = 0$ não está no domínio.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 10: Logaritmo</h4>
+        <p><strong>Enunciado:</strong> Estude a concavidade de $f(x) = \ln x$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong><br>
+            1. $f'(x) = \dfrac{1}{x}$ e $f”(x) = -\dfrac{1}{x^2} < 0$ para todo $x > 0$.<br>
+            2. $f$ é côncava para <strong>baixo</strong> em todo o domínio $(0, +\infty)$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 11: Exponencial Decrescente</h4>
+        <p><strong>Enunciado:</strong> Estude a concavidade de $f(x) = e^{-x}$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong><br>
+            1. $f'(x) = -e^{-x}$ e $f”(x) = e^{-x} > 0$.<br>
+            2. $f$ é côncava para <strong>cima</strong> em todo $\mathbb{R}$ (embora seja decrescente).</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 12: Seno</h4>
+        <p><strong>Enunciado:</strong> Estude a concavidade de $f(x) = \operatorname{sen} x$ no intervalo $[0, 2\pi]$ e encontre a inflexão interna.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong><br>
+            1. $f”(x) = -\operatorname{sen} x$: negativa em $(0, \pi)$ e positiva em $(\pi, 2\pi)$.<br>
+            2. Para baixo em $(0, \pi)$, para cima em $(\pi, 2\pi)$; inflexão em $\mathbf{(\pi, 0)}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 13: Inflexão sem $f''$</h4>
+        <p><strong>Enunciado:</strong> Mostre que $f(x) = \sqrt[3]{x}$ tem ponto de inflexão em $(0, 0)$, embora $f”(0)$ não exista.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong><br>
+            1. $f'(x) = \dfrac{1}{3}x^{-2/3}$ e $f”(x) = -\dfrac{2}{9}x^{-5/3}$, que não existe em $x = 0$.<br>
+            2. $f” > 0$ para $x < 0$ e $f” < 0$ para $x > 0$: a concavidade muda e $f$ é contínua em $0$. Logo, $\mathbf{(0, 0)}$ é inflexão.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 14: Teste da Segunda Derivada</h4>
+        <p><strong>Enunciado:</strong> Classifique os pontos críticos de $f(x) = 2x^3 - 9x^2 + 12x$ pelo teste da segunda derivada.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong><br>
+            1. $f'(x) = 6x^2 - 18x + 12 = 6(x - 1)(x - 2)$ e $f”(x) = 12x - 18$.<br>
+            2. $f”(1) = -6 < 0$: máximo $\mathbf{(1, 5)}$. $f”(2) = 6 > 0$: mínimo $\mathbf{(2, 4)}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 15: Inflexão Escolhida</h4>
+        <p><strong>Enunciado:</strong> Determine $a$ para que $f(x) = x^3 + ax^2 + 1$ tenha ponto de inflexão em $x = 2$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong><br>
+            1. $f”(x) = 6x + 2a$. Impondo $f”(2) = 0$: $12 + 2a = 0 \implies \mathbf{a = -6}$.<br>
+            2. Conferência: $f”(x) = 6x - 12$ troca de sinal em $x = 2$ ✓</p>
+        </div>
+    </article>
+</section>
+
+<section class="TESTE" id="testes">
+    <h3>🎓 TESTES (T 16 a 20)</h3>
+
+    <article class="questao">
+        <h4>T 16: (CESPE/CEBRASPE 2018 – ABIN) Mudança de Concavidade</h4>
+        <p>Considerando a função $f: D \to \mathbb{R}$, em que $f(x) = x^3 - 3x^2 + 10$ para $x \in D = \{x \in \mathbb{R} \mid -2 \leq x \leq 3\}$, julgue o item a seguir.</p>
+        <p>A função $f$ muda a concavidade de negativa, ou para baixo, para positiva, ou para cima, em $x = 1$.</p>
+        <p>( &nbsp; ) Certo &nbsp;&nbsp;&nbsp; ( &nbsp; ) Errado</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> Item <strong>Certo</strong>.<br>
+            1. $f'(x) = 3x^2 - 6x$ e $f”(x) = 6x - 6$.<br>
+            2. Para $-2 \leq x < 1$: $f” < 0$ (para baixo). Para $1 < x \leq 3$: $f” > 0$ (para cima).<br>
+            3. A concavidade passa de baixo para cima em $x = 1$ (ponto de inflexão $(1, 8)$). Item <strong>certo</strong>.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>T 17: (UFBA 2013 – Vestibular) Concavidade a partir de $f'$</h4>
+        <p>Marque C, se a proposição é certa; E, se a proposição é errada.</p>
+        <p>De uma função $f$, de domínio $\mathbb{R}$, sabe-se que sua derivada $f'$ é definida por $f'(x) = (2x + 4)e^x$. Assim, é correto afirmar:</p>
+        <p>O gráfico de $f$ tem concavidade voltada para cima.</p>
+        <p>( &nbsp; ) Certo &nbsp;&nbsp;&nbsp; ( &nbsp; ) Errado</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> Item <strong>Errado</strong>.<br>
+            1. Derivando $f'$: $f”(x) = 2e^x + (2x + 4)e^x = (2x + 6)e^x$.<br>
+            2. O sinal de $f”$ é o de $2x + 6$: negativo para $x < -3$ e positivo para $x > -3$.<br>
+            3. A concavidade é para baixo em $(-\infty, -3)$ e para cima em $(-3, +\infty)$; não é sempre para cima. Item <strong>errado</strong>.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>T 18: (Instituto AOCP 2016 – IF-BA) Afirmação Incorreta</h4>
+        <p>Assinale a alternativa INCORRETA.</p>
+        <p>A) Sempre que a derivada segunda de uma função $f$ mudar de sinal, o gráfico de $f$ apresenta ponto de inflexão.<br>B) O teste da derivada segunda falha quando $f”(c)$ não existe ou é inconclusivo quando $f”(c) = 0$, sendo $c$ ponto crítico de $f$.<br>C) O gráfico da função $f$ definida por $f(x) = x^4$ apresenta ponto de inflexão.<br>D) O gráfico de uma função polinomial do $3^\circ$ grau tem sempre um ponto de inflexão.<br>E) Se existir um ponto sobre o gráfico de uma função no qual há mudança no sentido de sua concavidade, então o gráfico intercepta sua reta tangente nesse ponto.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> Alternativa <strong>C</strong>.<br>
+            1. Para $f(x) = x^4$: $f”(x) = 12x^2 \geq 0$, que não muda de sinal. A concavidade é sempre para cima e <strong>não há</strong> inflexão: (C) é incorreta.<br>
+            2. (D) é verdadeira: $f” = 6ax + 2b$ ($a \neq 0$) é do 1º grau e sempre troca de sinal. (A), (B) e (E) são propriedades corretas.<br>
+            3. Alternativa <strong>C</strong>.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>T 19: (CESGRANRIO 2012 – Petrobras) Derivada Terceira</h4>
+        <p>Durante a resolução de um problema de otimização, é comum terem de ser classificados os pontos críticos de uma função $f$ infinitamente diferenciável.</p>
+        <p>Se um ponto $x_0$ é tal que $f'(x_0) = f”(x_0) = 0$ e $f”'(x_0) \neq 0$, então o ponto crítico $x_0$ é um ponto de</p>
+        <p>A) mínimo relativo, que não é absoluto.<br>B) máximo relativo, que não é absoluto.<br>C) inflexão.<br>D) mínimo absoluto.<br>E) máximo absoluto.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> Alternativa <strong>C</strong>.<br>
+            1. Se $f”'(x_0) \neq 0$, então $f”$ é crescente ou decrescente perto de $x_0$; como $f”(x_0) = 0$, $f”$ <strong>troca de sinal</strong> em $x_0$.<br>
+            2. Logo a concavidade muda em $x_0$: é ponto de <strong>inflexão</strong> (com tangente horizontal), como $x^3$ em $x = 0$. Alternativa <strong>C</strong>.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>T 20: (AMAUC 2024 – Pref. de Piratuba-SC) Afirmativas sobre Derivadas</h4>
+        <p>A derivada de uma função é um conceito fundamental no cálculo diferencial, uma área da matemática que estuda as taxas de variação e as inclinações de curvas. Sobre conhecimentos de derivadas, analise as afirmativas a seguir:</p>
+        <p>I. Se uma função é contínua em um ponto, então sua derivada também é contínua nesse ponto.</p>
+        <p>II. A derivada de uma constante é sempre zero.</p>
+        <p>III. Se $f'(a) > 0$, então a função $f(x)$ é crescente no ponto $x = a$.</p>
+        <p>IV. Se a derivada segunda de uma função é negativa em um ponto, então a função tem um ponto de inflexão nesse ponto.</p>
+        <p>Assinale a alternativa correta:</p>
+        <p>A) Apenas as afirmativas II e IV são verdadeiras.<br>B) Apenas as afirmativas II e III são verdadeiras.<br>C) Apenas as afirmativas III e IV são verdadeiras.<br>D) Apenas as afirmativas I e III são verdadeiras.<br>E) Apenas as afirmativas I e II são verdadeiras.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> Alternativa <strong>B</strong>.<br>
+            1. (I) Falsa: $|x|$ é contínua em $0$ e nem sequer é derivável ali. (II) Verdadeira.<br>
+            2. (III) Verdadeira: com $f'(a) > 0$, a função cresce ao passar por $a$.<br>
+            3. (IV) Falsa: $f”(a) < 0$ indica concavidade para baixo; inflexão exige <strong>troca de sinal</strong> de $f”$. Alternativa <strong>B</strong>.</p>
+        </div>
+    </article>
+</section>
+
+</div>
+</main>
+
+<aside class="menu-lateral">
+    <iframe src="../menu_calculo.html" style="width:100%; border:none; height:600px;"></iframe>
+</aside>
+
+</div>
+
+<script>
+function toggleGabarito(botao) {
+    const gabarito = botao.nextElementSibling;
+    if (gabarito.style.display === "none" || gabarito.style.display === "") {
+        gabarito.style.display = "block";
+        botao.textContent = "Esconder Gabarito e Resolução";
+        botao.style.backgroundColor = "#2c3e50";
+    } else {
+        gabarito.style.display = "none";
+        botao.textContent = "Ver Gabarito e Resolução";
+        botao.style.backgroundColor = "#3498db";
+    }
+}
+
+function toggleMenu() {
+    const menuGlobal = document.getElementById("menu-principal");
+    if (menuGlobal) menuGlobal.classList.toggle("ativo");
+}
+
+let slideAtual = 0;
+let slides = [];
+
+function prepararSlides() {
+    const seletores = '.container-resumo, .passo-teoria, .aplicacoes-reais, .questao';
+    slides = document.querySelectorAll(seletores);
+}
+
+function toggleSlides() {
+    prepararSlides();
+    const body = document.body;
+    if (!body.classList.contains('modo-slides')) {
+        body.classList.add('modo-slides');
+        slideAtual = 0;
+        mostrarSlide(slideAtual);
+    } else {
+        body.classList.remove('modo-slides');
+        window.location.reload(); 
+    }
+}
+
+function mostrarSlide(n) {
+    slides.forEach(s => {
+        s.classList.remove('slide-ativo');
+        s.style.display = 'none';
+    });
+    const slide = slides[n];
+    slide.classList.add('slide-ativo');
+    slide.style.display = 'flex'; 
+
+    if (slide.classList.contains('questao') && !slide.querySelector('.btn-gabarito')) {
+        const resolucoes = slide.querySelectorAll('.resolucao-bloco');
+        resolucoes.forEach(r => r.style.display = 'block');
+    } else {
+        const gabaritos = slide.querySelectorAll('.gabarito-resolucao');
+        gabaritos.forEach(g => g.style.display = 'none');
+        const botoes = slide.querySelectorAll('.btn-gabarito');
+        botoes.forEach(b => {
+            b.textContent = "Ver Gabarito e Resolução";
+            b.style.backgroundColor = "#3498db";
+        });
+    }
+
+    const pHeader = document.querySelector('header p').innerText;
+    const partes = pHeader.split('|');
+    if(partes.length > 1) {
+        document.getElementById('slide-info-serie').innerText = partes[0].trim();
+        document.getElementById('slide-info-aula').innerText = partes[1].trim();
+    }
+    document.getElementById('contador-slide').innerText = (n + 1) + " / " + slides.length;
+    if (window.MathJax) MathJax.typesetPromise();
+}
+
+function mudarSlide(direcao) {
+    slideAtual += direcao;
+    if (slideAtual >= slides.length) slideAtual = 0;
+    if (slideAtual < 0) slideAtual = slides.length - 1;
+    mostrarSlide(slideAtual);
+}
+
+document.addEventListener('keydown', function(event) {
+    if (document.body.classList.contains('modo-slides')) {
+        switch(event.key) {
+            case 'ArrowRight': 
+            case 'PageDown':   
+            case 'Enter':      
+            case ' ':          
+                mudarSlide(1);
+                break;
+                
+            case 'ArrowLeft':  
+            case 'PageUp':     
+                mudarSlide(-1);
+                break;
+
+            case 'Escape':     
+                toggleSlides();
+                break;
+        }
+    }
+});
+</script>
+
+<style>
+    body.modo-slides { overflow: hidden; background-color: #1a1a1a; }
+    body.modo-slides .menu-lateral, body.modo-slides header, body.modo-slides .menu-toggle, body.modo-slides #btn-slides { display: none !important; }
+    .slide-ativo {
+        display: flex !important; flex-direction: column; align-items: center; justify-content: flex-start;
+        position: fixed; top: 0; left: 0; width: 100vw; height: calc(100vh - 70px);
+        background: #ffffff; padding: 40px; z-index: 999; overflow-y: auto !important; 
+        box-sizing: border-box; text-align: center;
+    }
+    .controles-slides {
+        position: fixed; bottom: 0; left: 0; width: 100%; height: 70px;
+        background: #2c3e50; color: white; display: none; 
+        justify-content: space-between; align-items: center; padding: 0 20px; z-index: 1001; box-sizing: border-box;
+    }
+    body.modo-slides .controles-slides { display: flex; }
+    .info-lateral { flex: 1; font-family: 'Oswald', sans-serif; font-size: 0.9rem; color: #bdc3c7; }
+    .botoes-centrais { display: flex; align-items: center; gap: 15px; justify-content: center; flex: 2; }
+    .btn-nav { padding: 10px 20px; background: #3498db; color: white; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; }
+    #contador-slide { font-family: 'Oswald', sans-serif; min-width: 60px; text-align: center; }
+</style>
+
+<div class="controles-slides">
+    <div id="slide-info-serie" class="info-lateral"></div>
+    <div class="botoes-centrais">
+        <button class="btn-nav" onclick="mudarSlide(-1)">⬅ Anterior</button>
+        <span id="contador-slide"></span>
+        <button class="btn-nav" onclick="mudarSlide(1)">Próximo ➡</button>
+        <button class="btn-nav" onclick="toggleSlides()" style="background:#e74c3c;">Sair</button>
+    </div>
+    <div id="slide-info-aula" class="info-lateral" style="text-align: right;"></div>
+</div>
+</body>
+</html>
