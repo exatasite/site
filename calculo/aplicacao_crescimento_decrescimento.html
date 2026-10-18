@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cálculo I: Crescimento e Decrescimento de Funções</title>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../estilo.css">
+    
+    <script>
+        MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true
+            }
+        };
+    </script>
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body>
+<button class="menu-toggle" onclick="toggleMenu()">☰</button>
+
+<nav id="menu-principal" class="nav-global">
+    <ul>
+        <li><a href="../index.html">🏠 Início</a></li>
+        <li><a href="../ensino_medio.html">📚 Ensino Médio</a></li>
+        <li><a href="../ensino_superior.html">🎓 Ensino Superior</a></li>
+    </ul>
+</nav>
+
+<header id="topo">
+    <h1>CÁLCULO I</h1>
+    <p>Cálculo | Aula: Crescimento e Decrescimento de Funções</p>
+    <button id="btn-slides" onclick="toggleSlides()">📺 Iniciar Modo Slides</button>
+</header>
+
+<div class="container">
+
+<main class="conteudo-principal">
+
+<div class="secao-aula">
+ <div class="container-resumo" id="resumo">
+    <h3>📚 Resumo </h3>
+    <section class="resumo-conteudo">
+        <p>O <strong>sinal da derivada</strong> diz se a função sobe ou desce: num intervalo em que $f'(x) > 0$, a função é <strong>crescente</strong>; em que $f'(x) < 0$, é <strong>decrescente</strong>.</p>
+        <p>Os <strong>pontos críticos</strong> (onde $f' = 0$ ou $f'$ não existe) separam esses intervalos. Pelo <strong>teste da primeira derivada</strong>, se $f'$ passa de $+$ para $-$, há um <strong>máximo local</strong>; se passa de $-$ para $+$, um <strong>mínimo local</strong>.</p>
+    </section>
+</div>
+
+<section class="conteudo-teorico-completo" id="teoria">
+    <div class="passo-teoria">
+        <h3>📖 Subindo e Descendo pelo Gráfico</h3>
+        <p>Uma função $f$ é <strong>crescente</strong> num intervalo $I$ quando $x_1 < x_2$ implica $f(x_1) < f(x_2)$, e <strong>decrescente</strong> quando $x_1 < x_2$ implica $f(x_1) > f(x_2)$. Como $f'(x)$ é a inclinação da reta tangente, tangentes "subindo" indicam crescimento, e tangentes "descendo" indicam decrescimento.</p>
+        <figure class="figura-aula figura-grande">
+            <svg viewBox="0 0 440 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Gráfico de f(x) = x³ − 3x: crescente (verde) e decrescente (vermelho)" style="width:100%; max-width:460px; height:auto; display:block; margin:0 auto; background:#fdfdfd; border-radius:10px;">
+  <line x1="20" y1="150.0" x2="422" y2="150.0" stroke="#2c3e50" stroke-width="2"/>
+  <polygon points="430,150.0 418,145.0 418,155.0" fill="#2c3e50"/>
+  <line x1="220.0" y1="280" x2="220.0" y2="18" stroke="#2c3e50" stroke-width="2"/>
+  <polygon points="220.0,10 215.0,22 225.0,22" fill="#2c3e50"/>
+  <text x="416" y="168.0" font-size="13" fill="#2c3e50" font-family="sans-serif">x</text>
+  <text x="228.0" y="20" font-size="13" fill="#2c3e50" font-family="sans-serif">y</text>
+  <polyline points="42.6,270.0 43.2,270.0 43.8,270.0 44.5,270.0 45.1,270.0 45.7,270.0 46.3,269.5 46.9,266.4 47.6,263.4 48.2,260.4 48.8,257.4 49.4,254.4 50.0,251.5 50.7,248.6 51.3,245.7 51.9,242.9 52.5,240.1 53.1,237.3 53.7,234.5 54.4,231.8 55.0,229.1 55.6,226.4 56.2,223.8 56.8,221.1 57.5,218.6 58.1,216.0 58.7,213.4 59.3,210.9 59.9,208.4 60.6,206.0 61.2,203.5 61.8,201.1 62.4,198.7 63.0,196.4 63.7,194.0 64.3,191.7 64.9,189.4 65.5,187.2 66.1,184.9 66.8,182.7 67.4,180.5 68.0,178.4 68.6,176.2 69.2,174.1 69.9,172.1 70.5,170.0 71.1,168.0 71.7,165.9 72.3,164.0 73.0,162.0 73.6,160.1 74.2,158.1 74.8,156.2 75.4,154.4 76.1,152.5 76.7,150.7 77.3,148.9 77.9,147.1 78.5,145.4 79.2,143.7 79.8,142.0 80.4,140.3 81.0,138.6 81.6,137.0 82.2,135.4 82.9,133.8 83.5,132.2 84.1,130.7 84.7,129.1 85.3,127.6 86.0,126.1 86.6,124.7 87.2,123.3 87.8,121.8 88.4,120.4 89.1,119.1 89.7,117.7 90.3,116.4 90.9,115.1 91.5,113.8 92.2,112.5 92.8,111.3 93.4,110.1 94.0,108.9 94.6,107.7 95.3,106.5 95.9,105.4 96.5,104.3 97.1,103.2 97.7,102.1 98.4,101.0 99.0,100.0 99.6,98.9 100.2,97.9 100.8,97.0 101.5,96.0 102.1,95.1 102.7,94.1 103.3,93.2 103.9,92.3 104.6,91.5 105.2,90.6 105.8,89.8 106.4,89.0 107.0,88.2 107.7,87.4 108.3,86.7 108.9,85.9 109.5,85.2 110.1,84.5 110.7,83.8 111.4,83.2 112.0,82.5 112.6,81.9 113.2,81.3 113.8,80.7 114.5,80.1 115.1,79.5 115.7,79.0 116.3,78.5 116.9,78.0 117.6,77.5 118.2,77.0 118.8,76.5 119.4,76.1 120.0,75.7 120.7,75.3 121.3,74.9 121.9,74.5 122.5,74.1 123.1,73.8 123.8,73.4 124.4,73.1 125.0,72.8 125.6,72.6 126.2,72.3 126.9,72.0 127.5,71.8 128.1,71.6 128.7,71.4 129.3,71.2 130.0,71.0 130.6,70.8 131.2,70.7 131.8,70.6 132.4,70.4 133.1,70.3 133.7,70.2 134.3,70.2 134.9,70.1 135.5,70.1 136.2,70.0 136.8,70.0 137.4,70.0" fill="none" stroke="#27ae60" stroke-width="3.5"/>
+  <polyline points="137.4,70.0 138.4,70.0 139.5,70.1 140.5,70.2 141.5,70.3 142.6,70.5 143.6,70.7 144.6,70.9 145.7,71.2 146.7,71.5 147.7,71.8 148.8,72.2 149.8,72.6 150.8,73.0 151.8,73.5 152.9,74.0 153.9,74.5 154.9,75.0 156.0,75.6 157.0,76.2 158.0,76.9 159.1,77.5 160.1,78.2 161.1,79.0 162.2,79.7 163.2,80.5 164.2,81.3 165.3,82.1 166.3,83.0 167.3,83.9 168.4,84.8 169.4,85.7 170.4,86.6 171.5,87.6 172.5,88.6 173.5,89.6 174.6,90.7 175.6,91.7 176.6,92.8 177.7,93.9 178.7,95.0 179.7,96.1 180.8,97.3 181.8,98.5 182.8,99.6 183.9,100.8 184.9,102.1 185.9,103.3 187.0,104.6 188.0,105.8 189.0,107.1 190.1,108.4 191.1,109.7 192.1,111.0 193.2,112.4 194.2,113.7 195.2,115.1 196.2,116.5 197.3,117.8 198.3,119.2 199.3,120.6 200.4,122.0 201.4,123.5 202.4,124.9 203.5,126.3 204.5,127.8 205.5,129.2 206.6,130.7 207.6,132.1 208.6,133.6 209.7,135.1 210.7,136.6 211.7,138.0 212.8,139.5 213.8,141.0 214.8,142.5 215.9,144.0 216.9,145.5 217.9,147.0 219.0,148.5 220.0,150.0 221.0,151.5 222.1,153.0 223.1,154.5 224.1,156.0 225.2,157.5 226.2,159.0 227.2,160.5 228.3,162.0 229.3,163.4 230.3,164.9 231.4,166.4 232.4,167.9 233.4,169.3 234.5,170.8 235.5,172.2 236.5,173.7 237.6,175.1 238.6,176.5 239.6,178.0 240.7,179.4 241.7,180.8 242.7,182.2 243.8,183.5 244.8,184.9 245.8,186.3 246.8,187.6 247.9,189.0 248.9,190.3 249.9,191.6 251.0,192.9 252.0,194.2 253.0,195.4 254.1,196.7 255.1,197.9 256.1,199.2 257.2,200.4 258.2,201.5 259.2,202.7 260.3,203.9 261.3,205.0 262.3,206.1 263.4,207.2 264.4,208.3 265.4,209.3 266.5,210.4 267.5,211.4 268.5,212.4 269.6,213.4 270.6,214.3 271.6,215.2 272.7,216.1 273.7,217.0 274.7,217.9 275.8,218.7 276.8,219.5 277.8,220.3 278.9,221.0 279.9,221.8 280.9,222.5 282.0,223.1 283.0,223.8 284.0,224.4 285.1,225.0 286.1,225.5 287.1,226.0 288.2,226.5 289.2,227.0 290.2,227.4 291.2,227.8 292.3,228.2 293.3,228.5 294.3,228.8 295.4,229.1 296.4,229.3 297.4,229.5 298.5,229.7 299.5,229.8 300.5,229.9 301.6,230.0 302.6,230.0" fill="none" stroke="#e74c3c" stroke-width="3.5"/>
+  <polyline points="302.6,230.0 303.2,230.0 303.8,230.0 304.5,229.9 305.1,229.9 305.7,229.8 306.3,229.8 306.9,229.7 307.6,229.6 308.2,229.4 308.8,229.3 309.4,229.2 310.0,229.0 310.7,228.8 311.3,228.6 311.9,228.4 312.5,228.2 313.1,228.0 313.8,227.7 314.4,227.4 315.0,227.2 315.6,226.9 316.2,226.6 316.9,226.2 317.5,225.9 318.1,225.5 318.7,225.1 319.3,224.7 320.0,224.3 320.6,223.9 321.2,223.5 321.8,223.0 322.4,222.5 323.1,222.0 323.7,221.5 324.3,221.0 324.9,220.5 325.5,219.9 326.2,219.3 326.8,218.7 327.4,218.1 328.0,217.5 328.6,216.8 329.2,216.2 329.9,215.5 330.5,214.8 331.1,214.1 331.7,213.3 332.3,212.6 333.0,211.8 333.6,211.0 334.2,210.2 334.8,209.4 335.4,208.5 336.1,207.7 336.7,206.8 337.3,205.9 337.9,204.9 338.5,204.0 339.2,203.0 339.8,202.1 340.4,201.1 341.0,200.0 341.6,199.0 342.3,197.9 342.9,196.8 343.5,195.7 344.1,194.6 344.7,193.5 345.4,192.3 346.0,191.1 346.6,189.9 347.2,188.7 347.8,187.5 348.5,186.2 349.1,184.9 349.7,183.6 350.3,182.3 350.9,180.9 351.6,179.6 352.2,178.2 352.8,176.7 353.4,175.3 354.0,173.9 354.7,172.4 355.3,170.9 355.9,169.3 356.5,167.8 357.1,166.2 357.8,164.6 358.4,163.0 359.0,161.4 359.6,159.7 360.2,158.0 360.8,156.3 361.5,154.6 362.1,152.9 362.7,151.1 363.3,149.3 363.9,147.5 364.6,145.6 365.2,143.8 365.8,141.9 366.4,139.9 367.0,138.0 367.7,136.0 368.3,134.1 368.9,132.0 369.5,130.0 370.1,127.9 370.8,125.9 371.4,123.8 372.0,121.6 372.6,119.5 373.2,117.3 373.9,115.1 374.5,112.8 375.1,110.6 375.7,108.3 376.3,106.0 377.0,103.6 377.6,101.3 378.2,98.9 378.8,96.5 379.4,94.0 380.1,91.6 380.7,89.1 381.3,86.6 381.9,84.0 382.5,81.4 383.2,78.9 383.8,76.2 384.4,73.6 385.0,70.9 385.6,68.2 386.3,65.5 386.9,62.7 387.5,59.9 388.1,57.1 388.7,54.3 389.3,51.4 390.0,48.5 390.6,45.6 391.2,42.6 391.8,39.6 392.4,36.6 393.1,33.6 393.7,30.5 394.3,30.0 394.9,30.0 395.5,30.0 396.2,30.0 396.8,30.0 397.4,30.0" fill="none" stroke="#27ae60" stroke-width="3.5"/>
+  <polyline points="87.8,70.0 88.4,70.0 89.1,70.0 89.7,70.0 90.3,70.0 90.9,70.0 91.5,70.0 92.2,70.0 92.8,70.0 93.4,70.0 94.0,70.0 94.6,70.0 95.3,70.0 95.9,70.0 96.5,70.0 97.1,70.0 97.7,70.0 98.4,70.0 99.0,70.0 99.6,70.0 100.2,70.0 100.8,70.0 101.5,70.0 102.1,70.0 102.7,70.0 103.3,70.0 103.9,70.0 104.6,70.0 105.2,70.0 105.8,70.0 106.4,70.0 107.0,70.0 107.7,70.0 108.3,70.0 108.9,70.0 109.5,70.0 110.1,70.0 110.7,70.0 111.4,70.0 112.0,70.0 112.6,70.0 113.2,70.0 113.8,70.0 114.5,70.0 115.1,70.0 115.7,70.0 116.3,70.0 116.9,70.0 117.6,70.0 118.2,70.0 118.8,70.0 119.4,70.0 120.0,70.0 120.7,70.0 121.3,70.0 121.9,70.0 122.5,70.0 123.1,70.0 123.8,70.0 124.4,70.0 125.0,70.0 125.6,70.0 126.2,70.0 126.9,70.0 127.5,70.0 128.1,70.0 128.7,70.0 129.3,70.0 130.0,70.0 130.6,70.0 131.2,70.0 131.8,70.0 132.4,70.0 133.1,70.0 133.7,70.0 134.3,70.0 134.9,70.0 135.5,70.0 136.2,70.0 136.8,70.0 137.4,70.0 138.0,70.0 138.6,70.0 139.2,70.0 139.9,70.0 140.5,70.0 141.1,70.0 141.7,70.0 142.3,70.0 143.0,70.0 143.6,70.0 144.2,70.0 144.8,70.0 145.4,70.0 146.1,70.0 146.7,70.0 147.3,70.0 147.9,70.0 148.5,70.0 149.2,70.0 149.8,70.0 150.4,70.0 151.0,70.0 151.6,70.0 152.3,70.0 152.9,70.0 153.5,70.0 154.1,70.0 154.7,70.0 155.4,70.0 156.0,70.0 156.6,70.0 157.2,70.0 157.8,70.0 158.5,70.0 159.1,70.0 159.7,70.0 160.3,70.0 160.9,70.0 161.6,70.0 162.2,70.0 162.8,70.0 163.4,70.0 164.0,70.0 164.7,70.0 165.3,70.0 165.9,70.0 166.5,70.0 167.1,70.0 167.8,70.0 168.4,70.0 169.0,70.0 169.6,70.0 170.2,70.0 170.8,70.0 171.5,70.0 172.1,70.0 172.7,70.0 173.3,70.0 173.9,70.0 174.6,70.0 175.2,70.0 175.8,70.0 176.4,70.0 177.0,70.0 177.7,70.0 178.3,70.0 178.9,70.0 179.5,70.0 180.1,70.0 180.8,70.0 181.4,70.0 182.0,70.0 182.6,70.0 183.2,70.0 183.9,70.0 184.5,70.0 185.1,70.0 185.7,70.0 186.3,70.0 187.0,70.0" fill="none" stroke="#7f8c8d" stroke-width="1.5" stroke-dasharray="5,3"/>
+  <polyline points="253.0,230.0 253.7,230.0 254.3,230.0 254.9,230.0 255.5,230.0 256.1,230.0 256.8,230.0 257.4,230.0 258.0,230.0 258.6,230.0 259.2,230.0 259.9,230.0 260.5,230.0 261.1,230.0 261.7,230.0 262.3,230.0 263.0,230.0 263.6,230.0 264.2,230.0 264.8,230.0 265.4,230.0 266.1,230.0 266.7,230.0 267.3,230.0 267.9,230.0 268.5,230.0 269.2,230.0 269.8,230.0 270.4,230.0 271.0,230.0 271.6,230.0 272.2,230.0 272.9,230.0 273.5,230.0 274.1,230.0 274.7,230.0 275.3,230.0 276.0,230.0 276.6,230.0 277.2,230.0 277.8,230.0 278.4,230.0 279.1,230.0 279.7,230.0 280.3,230.0 280.9,230.0 281.5,230.0 282.2,230.0 282.8,230.0 283.4,230.0 284.0,230.0 284.6,230.0 285.3,230.0 285.9,230.0 286.5,230.0 287.1,230.0 287.7,230.0 288.4,230.0 289.0,230.0 289.6,230.0 290.2,230.0 290.8,230.0 291.5,230.0 292.1,230.0 292.7,230.0 293.3,230.0 293.9,230.0 294.6,230.0 295.2,230.0 295.8,230.0 296.4,230.0 297.0,230.0 297.7,230.0 298.3,230.0 298.9,230.0 299.5,230.0 300.1,230.0 300.8,230.0 301.4,230.0 302.0,230.0 302.6,230.0 303.2,230.0 303.8,230.0 304.5,230.0 305.1,230.0 305.7,230.0 306.3,230.0 306.9,230.0 307.6,230.0 308.2,230.0 308.8,230.0 309.4,230.0 310.0,230.0 310.7,230.0 311.3,230.0 311.9,230.0 312.5,230.0 313.1,230.0 313.8,230.0 314.4,230.0 315.0,230.0 315.6,230.0 316.2,230.0 316.9,230.0 317.5,230.0 318.1,230.0 318.7,230.0 319.3,230.0 320.0,230.0 320.6,230.0 321.2,230.0 321.8,230.0 322.4,230.0 323.1,230.0 323.7,230.0 324.3,230.0 324.9,230.0 325.5,230.0 326.2,230.0 326.8,230.0 327.4,230.0 328.0,230.0 328.6,230.0 329.3,230.0 329.9,230.0 330.5,230.0 331.1,230.0 331.7,230.0 332.3,230.0 333.0,230.0 333.6,230.0 334.2,230.0 334.8,230.0 335.4,230.0 336.1,230.0 336.7,230.0 337.3,230.0 337.9,230.0 338.5,230.0 339.2,230.0 339.8,230.0 340.4,230.0 341.0,230.0 341.6,230.0 342.3,230.0 342.9,230.0 343.5,230.0 344.1,230.0 344.7,230.0 345.4,230.0 346.0,230.0 346.6,230.0 347.2,230.0 347.8,230.0 348.5,230.0 349.1,230.0 349.7,230.0 350.3,230.0 350.9,230.0 351.6,230.0 352.2,230.0" fill="none" stroke="#7f8c8d" stroke-width="1.5" stroke-dasharray="5,3"/>
+  <circle cx="137.4" cy="70.0" r="5" fill="#2c3e50"/>
+  <circle cx="302.6" cy="230.0" r="5" fill="#2c3e50"/>
+  <text x="137.4" y="58.0" font-size="12" fill="#2c3e50" font-family="sans-serif" text-anchor="middle">máx. (−1, 2): f' = 0</text>
+  <text x="302.6" y="252.0" font-size="12" fill="#2c3e50" font-family="sans-serif" text-anchor="middle">mín. (1, −2): f' = 0</text>
+  <text x="38.3" y="254.0" font-size="13" fill="#27ae60" font-family="sans-serif" font-weight="bold" text-anchor="start">f' > 0: cresce</text>
+  <text x="158.0" y="126.0" font-size="13" fill="#e74c3c" font-family="sans-serif" font-weight="bold" text-anchor="start">f' < 0: decresce</text>
+  <text x="323.3" y="46.0" font-size="13" fill="#27ae60" font-family="sans-serif" font-weight="bold" text-anchor="start">f' > 0: cresce</text>
+</svg>
+            <figcaption>Figura 1: $f(x) = x^3 - 3x$ cresce onde $f' > 0$ (verde) e decresce onde $f' < 0$ (vermelho). Nos pontos de máximo e de mínimo locais, a tangente é horizontal.</figcaption>
+        </figure>
+    </div>
+
+    <div class="passo-teoria">
+        <h4>1. O Teste da Monotonicidade</h4>
+        <p>Seja $f$ contínua em $[a, b]$ e derivável em $(a, b)$. Como consequência do Teorema do Valor Médio:</p>
+        <p style="text-align: center; font-size: 1.15rem; background-color: #f8f9fa; padding: 15px; border-left: 5px solid #3498db; margin: 20px 0;">
+            $$f'(x) > 0 \text{ em } (a, b) \Rightarrow f \text{ crescente} \qquad f'(x) < 0 \text{ em } (a, b) \Rightarrow f \text{ decrescente}$$
+        </p>
+        <p>E, se $f'(x) = 0$ em todo o intervalo, $f$ é constante nele.</p>
+    </div>
+
+    <div class="passo-teoria">
+        <h4>2. Pontos Críticos</h4>
+        <p>Um número $c$ do domínio é <strong>ponto crítico</strong> de $f$ quando $f'(c) = 0$ ou quando $f'(c)$ não existe (por exemplo, o "bico" de $|x|$ em $0$). É só nesses pontos que $f'$ pode trocar de sinal; por isso eles dividem a reta em intervalos onde a função apenas cresce ou apenas decresce.</p>
+    </div>
+
+    <div class="passo-teoria">
+        <h4>3. Roteiro e Quadro de Sinais</h4>
+        <ul>
+            <li>determine o domínio de $f$;</li>
+            <li>calcule $f'(x)$ e fatore-a, se possível;</li>
+            <li>encontre os pontos críticos ($f' = 0$ ou $f'$ inexistente);</li>
+            <li>monte o quadro de sinais de $f'$ e conclua onde $f$ cresce ou decresce.</li>
+        </ul>
+        <p>Exemplo: para $f(x) = x^3 - 3x$, $f'(x) = 3x^2 - 3 = 3(x - 1)(x + 1)$, com pontos críticos $x = \pm 1$:</p>
+        <table style="margin: 15px auto; border-collapse: collapse; text-align: center; font-size: 1.05rem;">
+            <tr style="background-color: #2c3e50; color: white;"><th style="padding: 8px 14px;">Intervalo</th><th style="padding: 8px 14px;">$x < -1$</th><th style="padding: 8px 14px;">$-1 < x < 1$</th><th style="padding: 8px 14px;">$x > 1$</th></tr>
+            <tr><td style="padding: 8px 14px; border: 1px solid #ccc;">Sinal de $f'(x) = 3(x - 1)(x + 1)$</td><td style="padding: 8px 14px; border: 1px solid #ccc; color: #27ae60;"><strong>+</strong></td><td style="padding: 8px 14px; border: 1px solid #ccc; color: #e74c3c;"><strong>−</strong></td><td style="padding: 8px 14px; border: 1px solid #ccc; color: #27ae60;"><strong>+</strong></td></tr>
+            <tr style="background-color: #f8f9fa;"><td style="padding: 8px 14px; border: 1px solid #ccc;">Comportamento de $f$</td><td style="padding: 8px 14px; border: 1px solid #ccc;">cresce ↗</td><td style="padding: 8px 14px; border: 1px solid #ccc;">decresce ↘</td><td style="padding: 8px 14px; border: 1px solid #ccc;">cresce ↗</td></tr>
+        </table>
+    </div>
+
+    <div class="passo-teoria">
+        <h4>4. Teste da Primeira Derivada</h4>
+        <p>Seja $c$ um ponto crítico de $f$ contínua:</p>
+        <ul>
+            <li>se $f'$ passa de <strong>positiva para negativa</strong> em $c$, então $f(c)$ é <strong>máximo local</strong>;</li>
+            <li>se $f'$ passa de <strong>negativa para positiva</strong> em $c$, então $f(c)$ é <strong>mínimo local</strong>;</li>
+            <li>se $f'$ <strong>não muda de sinal</strong> em $c$, não há extremo em $c$ (exemplo: $f(x) = x^3$ em $x = 0$).</li>
+        </ul>
+    </div>
+</section>
+
+<section class="aplicacoes-reais" id="aplicacoes">
+    <h3>💡 Matemática em Ação</h3>
+    <div class="cards-aplicacao">
+        <div class="card">
+            <h4>💰 Lucro Marginal</h4>
+            <p>Se $L(q)$ é o lucro na venda de $q$ unidades, enquanto $L'(q) > 0$ vale a pena produzir mais; quando $L'(q)$ fica negativo, cada unidade extra reduz o lucro. A produção ideal está no ponto em que $L'$ troca de sinal.</p>
+        </div>
+        <div class="card" style="border-left-color: #2ecc71;">
+            <h4>💊 Concentração de Medicamentos</h4>
+            <p>Após uma dose, a concentração $C(t)$ de um remédio no sangue sobe ($C' > 0$) enquanto ele é absorvido e depois cai ($C' < 0$) enquanto é eliminado. O pico ($C' = 0$) orienta o intervalo entre as doses.</p>
+        </div>
+    </div>
+</section>
+
+<section class="questoes-resolvidas" id="resolvidas">
+    <h3>✅ 5 Questões Resolvidas (R 1 a 5)</h3>
+
+    <article class="questao">
+        <h4>R 1: Função Quadrática</h4>
+        <p><strong>Enunciado:</strong> Determine os intervalos de crescimento e de decrescimento de $f(x) = x^2 - 6x + 5$ e o seu ponto extremo.</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong><br>
+            1. $f'(x) = 2x - 6$. Ponto crítico: $2x - 6 = 0 \implies x = 3$.<br>
+            2. Sinal: $f'(x) < 0$ para $x < 3$ e $f'(x) > 0$ para $x > 3$. Logo, $f$ é <strong>decrescente</strong> em $(-\infty, 3]$ e <strong>crescente</strong> em $[3, +\infty)$.<br>
+            3. Como $f'$ passa de $-$ para $+$, há mínimo em $x = 3$: $f(3) = 9 - 18 + 5 = -4$. Ponto de mínimo: $\mathbf{(3, -4)}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>R 2: Função Cúbica</h4>
+        <p><strong>Enunciado:</strong> Estude o crescimento de $f(x) = x^3 - 12x + 1$ e classifique os pontos críticos.</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong><br>
+            1. $f'(x) = 3x^2 - 12 = 3(x - 2)(x + 2)$. Pontos críticos: $x = -2$ e $x = 2$.<br>
+            2. Quadro de sinais: $f' > 0$ em $(-\infty, -2)$, $f' < 0$ em $(-2, 2)$ e $f' > 0$ em $(2, +\infty)$.<br>
+            3. $f$ cresce em $(-\infty, -2]$ e em $[2, +\infty)$; decresce em $[-2, 2]$.<br>
+            4. Máximo local: $f(-2) = -8 + 24 + 1 = 17$, ponto $\mathbf{(-2, 17)}$. Mínimo local: $f(2) = 8 - 24 + 1 = -15$, ponto $\mathbf{(2, -15)}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>R 3: Produto com Exponencial</h4>
+        <p><strong>Enunciado:</strong> Determine os intervalos de crescimento e de decrescimento de $f(x) = xe^{-x}$.</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong><br>
+            1. Regra do produto: $f'(x) = e^{-x} + x(-e^{-x}) = (1 - x)e^{-x}$.<br>
+            2. Como $e^{-x} > 0$ sempre, o sinal de $f'$ é o sinal de $1 - x$: positivo para $x < 1$ e negativo para $x > 1$.<br>
+            3. $f$ cresce em $(-\infty, 1]$ e decresce em $[1, +\infty)$, com máximo em $\mathbf{\left(1, \frac{1}{e}\right)}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>R 4: Ponto Crítico sem Extremo</h4>
+        <p><strong>Enunciado:</strong> Mostre que $x = 0$ é ponto crítico de $f(x) = x^3$, mas não é ponto de máximo nem de mínimo.</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong><br>
+            1. $f'(x) = 3x^2$, logo $f'(0) = 0$: $x = 0$ é ponto crítico.<br>
+            2. Mas $f'(x) = 3x^2 > 0$ para todo $x \neq 0$: a derivada <strong>não muda de sinal</strong> em $x = 0$.<br>
+            3. Pelo teste da primeira derivada, não há extremo em $x = 0$; $f$ é <strong>crescente em todo</strong> $\mathbb{R}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>R 5: Concentração de um Medicamento</h4>
+        <p><strong>Enunciado:</strong> A concentração de um medicamento no sangue, $t$ horas após a aplicação, é $C(t) = \dfrac{20t}{t^2 + 4}$ (em mg/L), para $t \geq 0$. Em que intervalo a concentração aumenta e qual é a concentração máxima?</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong><br>
+            1. Regra do quociente: $C'(t) = \dfrac{20(t^2 + 4) - 20t \cdot 2t}{(t^2 + 4)^2} = \dfrac{20(4 - t^2)}{(t^2 + 4)^2}$.<br>
+            2. Para $t \geq 0$: $C' > 0$ quando $0 \leq t < 2$ e $C' < 0$ quando $t > 2$. A concentração aumenta nas <strong>2 primeiras horas</strong>.<br>
+            3. Máximo em $t = 2$ h: $C(2) = \dfrac{40}{8} = \mathbf{5}$ mg/L.</p>
+        </div>
+    </article>
+</section>
+
+<section class="questoes-propostas" id="propostas">
+    <h3>✍️ 10 Questões Propostas (P 6 a 15)</h3>
+
+    <article class="questao">
+        <h4>P 6: Parábola com Mínimo</h4>
+        <p><strong>Enunciado:</strong> Determine os intervalos de crescimento e de decrescimento de $f(x) = x^2 + 4x - 1$ e o seu ponto extremo.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong><br>
+            1. $f'(x) = 2x + 4 = 0 \implies x = -2$; $f' < 0$ antes e $f' > 0$ depois.<br>
+            2. Decrescente em $(-\infty, -2]$, crescente em $[-2, +\infty)$; mínimo $\mathbf{(-2, -5)}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 7: Parábola com Máximo</h4>
+        <p><strong>Enunciado:</strong> Determine os intervalos de crescimento e de decrescimento de $f(x) = -x^2 + 6x$ e o seu ponto extremo.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong><br>
+            1. $f'(x) = -2x + 6 = 0 \implies x = 3$; $f' > 0$ antes e $f' < 0$ depois.<br>
+            2. Crescente em $(-\infty, 3]$, decrescente em $[3, +\infty)$; máximo $\mathbf{(3, 9)}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 8: Cúbica Completa</h4>
+        <p><strong>Enunciado:</strong> Estude o crescimento de $f(x) = 2x^3 - 3x^2 - 12x + 5$ e encontre os extremos locais.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong><br>
+            1. $f'(x) = 6x^2 - 6x - 12 = 6(x - 2)(x + 1)$: críticos $x = -1$ e $x = 2$.<br>
+            2. Crescente em $(-\infty, -1]$ e $[2, +\infty)$; decrescente em $[-1, 2]$.<br>
+            3. Máximo local $\mathbf{(-1, 12)}$ e mínimo local $\mathbf{(2, -15)}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 9: Função Biquadrada</h4>
+        <p><strong>Enunciado:</strong> Determine os intervalos de crescimento e de decrescimento de $f(x) = x^4 - 2x^2$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong><br>
+            1. $f'(x) = 4x^3 - 4x = 4x(x - 1)(x + 1)$: críticos $-1$, $0$ e $1$.<br>
+            2. Decrescente em $(-\infty, -1]$ e $[0, 1]$; crescente em $[-1, 0]$ e $[1, +\infty)$.<br>
+            3. Mínimos $\mathbf{(\pm 1, -1)}$ e máximo local $\mathbf{(0, 0)}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 10: Logaritmo menos Reta</h4>
+        <p><strong>Enunciado:</strong> Determine os intervalos de crescimento e de decrescimento de $f(x) = \ln x - x$, para $x > 0$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong><br>
+            1. $f'(x) = \dfrac{1}{x} - 1 = \dfrac{1 - x}{x}$; para $x > 0$, o sinal é o de $1 - x$.<br>
+            2. Crescente em $(0, 1]$, decrescente em $[1, +\infty)$; máximo $\mathbf{(1, -1)}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 11: Soma com Fração</h4>
+        <p><strong>Enunciado:</strong> Estude o crescimento de $f(x) = x + \dfrac{4}{x}$, para $x \neq 0$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong><br>
+            1. $f'(x) = 1 - \dfrac{4}{x^2} = \dfrac{x^2 - 4}{x^2}$: críticos $x = \pm 2$ ($x = 0$ não está no domínio).<br>
+            2. Crescente em $(-\infty, -2]$ e $[2, +\infty)$; decrescente em $[-2, 0)$ e $(0, 2]$.<br>
+            3. Máximo local $\mathbf{(-2, -4)}$ e mínimo local $\mathbf{(2, 4)}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 12: Exponencial menos Reta</h4>
+        <p><strong>Enunciado:</strong> Determine os intervalos de crescimento e de decrescimento de $f(x) = e^x - x$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong><br>
+            1. $f'(x) = e^x - 1$: negativa para $x < 0$ e positiva para $x > 0$.<br>
+            2. Decrescente em $(-\infty, 0]$, crescente em $[0, +\infty)$; mínimo $\mathbf{(0, 1)}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 13: Sempre Crescente</h4>
+        <p><strong>Enunciado:</strong> Mostre que $f(x) = x^3 + 3x + 1$ é crescente em todo $\mathbb{R}$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong><br>
+            1. $f'(x) = 3x^2 + 3 = 3(x^2 + 1)$.<br>
+            2. Como $x^2 + 1 > 0$, temos $f'(x) > 0$ para todo $x$: $f$ é <strong>crescente em</strong> $\mathbb{R}$ e não tem extremos.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 14: Parâmetro</h4>
+        <p><strong>Enunciado:</strong> Determine os valores de $k$ para que $f(x) = x^3 + kx$ seja crescente em todo $\mathbb{R}$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong><br>
+            1. $f'(x) = 3x^2 + k$. Precisamos de $f'(x) \geq 0$ para todo $x$, anulando-se só em pontos isolados.<br>
+            2. O menor valor de $3x^2 + k$ é $k$ (em $x = 0$). Logo, $\mathbf{k \geq 0}$ (para $k = 0$, $f = x^3$ é crescente, como no R4).</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 15: Lucro de uma Empresa</h4>
+        <p><strong>Enunciado:</strong> O lucro mensal de uma pequena fábrica é $L(q) = -q^2 + 40q - 300$ (em R\$), em que $q$ é o número de unidades vendidas. Até quantas unidades o lucro cresce e qual é o lucro máximo?</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong><br>
+            1. $L'(q) = -2q + 40 = 0 \implies q = 20$; $L' > 0$ para $q < 20$ e $L' < 0$ para $q > 20$.<br>
+            2. O lucro cresce até $\mathbf{20}$ unidades, e o máximo é $L(20) = -400 + 800 - 300 = $ <strong>R\$ 100</strong>.</p>
+        </div>
+    </article>
+</section>
+
+<section class="TESTE" id="testes">
+    <h3>🎓 TESTES (T 16 a 20)</h3>
+
+    <article class="questao">
+        <h4>T 16: (CESPE/CEBRASPE 2019 – PGE-PE) Função Biquadrada</h4>
+        <p>A respeito da função $f(x) = x^4 - 8x^2 + 12$, em que $-\infty < x < \infty$, julgue o item a seguir.</p>
+        <p>No intervalo $-2 < x < 0$, essa função é crescente.</p>
+        <p>( &nbsp; ) Certo &nbsp;&nbsp;&nbsp; ( &nbsp; ) Errado</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> Item <strong>Certo</strong>.<br>
+            1. $f'(x) = 4x^3 - 16x = 4x(x - 2)(x + 2)$.<br>
+            2. Para $-2 < x < 0$: $4x < 0$, $x - 2 < 0$ e $x + 2 > 0$, logo $f'(x) > 0$ (ex.: $f'(-1) = -4 + 16 = 12$).<br>
+            3. Com derivada positiva, $f$ é crescente nesse intervalo: item <strong>certo</strong>.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>T 17: (FCM 2022 – IF-AM) Função num Intervalo Fechado</h4>
+        <p>Considere a função $f: [1, 4] \to \mathbb{R}$, definida por $f(x) = \dfrac{x^2}{16} + \dfrac{1}{x}$.</p>
+        <p>Sobre essa função é correto afirmar que</p>
+        <p>A) $f$ é uma função crescente.<br>B) $f(2)$ é o menor valor de $f$.<br>C) O gráfico de $f$ intercepta o eixo das ordenadas.<br>D) A função derivada de $f$ está definida para todo $x \in \mathbb{R}$.<br>E) A reta tangente ao seu gráfico de $f$ em $x = 3$ é paralela ao eixo das abscissas.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> Alternativa <strong>B</strong>.<br>
+            1. $f'(x) = \dfrac{x}{8} - \dfrac{1}{x^2} = \dfrac{x^3 - 8}{8x^2}$, que se anula em $x = 2$; $f' < 0$ em $[1, 2)$ e $f' > 0$ em $(2, 4]$.<br>
+            2. Então $f$ decresce até $x = 2$ e cresce depois: $f(2) = \frac{4}{16} + \frac{1}{2} = \frac{3}{4}$ é o menor valor (B correta; A falsa). Compare: $f(1) = \frac{17}{16}$ e $f(4) = \frac{5}{4}$.<br>
+            3. (C) $x = 0$ não está no domínio. (D) $f'$ não existe em $x = 0$. (E) $f'(3) = \frac{3}{8} - \frac{1}{9} \neq 0$. Alternativa <strong>B</strong>.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>T 18: (UFBA 2013 – Vestibular) Sinal de uma Derivada Dada</h4>
+        <p>Marque C, se a proposição é certa; E, se a proposição é errada.</p>
+        <p>De uma função $f$, de domínio $\mathbb{R}$, sabe-se que sua derivada $f'$ é definida por $f'(x) = (2x + 4)e^x$. Assim, é correto afirmar:</p>
+        <p>A função $f$ é crescente no intervalo $]-\infty, -2[$.</p>
+        <p>( &nbsp; ) Certo &nbsp;&nbsp;&nbsp; ( &nbsp; ) Errado</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> Item <strong>Errado</strong>.<br>
+            1. Como $e^x > 0$, o sinal de $f'(x) = (2x + 4)e^x$ é o sinal de $2x + 4$.<br>
+            2. Para $x < -2$: $2x + 4 < 0$, logo $f'(x) < 0$ e $f$ é <strong>decrescente</strong> em $]-\infty, -2[$.<br>
+            3. Item <strong>errado</strong>. (Em $x = -2$ a derivada passa de $-$ para $+$: $f(-2)$ é o menor valor de $f$.)</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>T 19: (Instituto IBED 2026 – Pref. de Bela Vista do Piauí-PI) Como Achar Pontos Críticos</h4>
+        <p>Dada a função $f(x) = x^3 - 3x^2 + 2x$, para encontrar seus pontos críticos, deve-se inicialmente calcular a segunda derivada e igualá-la a zero.</p>
+        <p>( &nbsp; ) Certo &nbsp;&nbsp;&nbsp; ( &nbsp; ) Errado</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> Item <strong>Errado</strong>.<br>
+            1. Pontos críticos são os pontos do domínio em que $f'(x) = 0$ ou $f'$ não existe: usa-se a <strong>primeira</strong> derivada.<br>
+            2. Aqui, $f'(x) = 3x^2 - 6x + 2 = 0 \implies x = 1 \pm \dfrac{\sqrt{3}}{3}$.<br>
+            3. Igualar $f”$ a zero serve para procurar pontos de <strong>inflexão</strong>. Item <strong>errado</strong>.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>T 20: (MS Concursos 2025 – Pref. de Santana de Parnaíba-SP) A Função Exponencial</h4>
+        <p>Considere-se a função $f: \mathbb{R} \to \mathbb{R}$ definida por $f(x) = e^{2x}$, a afirmação verdadeira referente à função é:</p>
+        <p>A) É uma função estritamente crescente.<br>B) A derivada da função $f(x) = e^{2x}$ é a própria função $f'(x) = e^{2x}$.<br>C) O gráfico passa pelo ponto $(0, 0)$.<br>D) A imagem da função é o conjunto $\mathbb{R}$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> Alternativa <strong>A</strong>.<br>
+            1. $f'(x) = 2e^{2x} > 0$ para todo $x$: $f$ é <strong>estritamente crescente</strong> (A correta).<br>
+            2. (B) A derivada é $2e^{2x}$, e não $e^{2x}$ (falta a regra da cadeia). (C) $f(0) = e^0 = 1$. (D) A imagem é $(0, +\infty)$.<br>
+            3. Alternativa <strong>A</strong>.</p>
+        </div>
+    </article>
+</section>
+
+</div>
+</main>
+
+<aside class="menu-lateral">
+    <iframe src="../menu_calculo.html" style="width:100%; border:none; height:600px;"></iframe>
+</aside>
+
+</div>
+
+<script>
+function toggleGabarito(botao) {
+    const gabarito = botao.nextElementSibling;
+    if (gabarito.style.display === "none" || gabarito.style.display === "") {
+        gabarito.style.display = "block";
+        botao.textContent = "Esconder Gabarito e Resolução";
+        botao.style.backgroundColor = "#2c3e50";
+    } else {
+        gabarito.style.display = "none";
+        botao.textContent = "Ver Gabarito e Resolução";
+        botao.style.backgroundColor = "#3498db";
+    }
+}
+
+function toggleMenu() {
+    const menuGlobal = document.getElementById("menu-principal");
+    if (menuGlobal) menuGlobal.classList.toggle("ativo");
+}
+
+let slideAtual = 0;
+let slides = [];
+
+function prepararSlides() {
+    const seletores = '.container-resumo, .passo-teoria, .aplicacoes-reais, .questao';
+    slides = document.querySelectorAll(seletores);
+}
+
+function toggleSlides() {
+    prepararSlides();
+    const body = document.body;
+    if (!body.classList.contains('modo-slides')) {
+        body.classList.add('modo-slides');
+        slideAtual = 0;
+        mostrarSlide(slideAtual);
+    } else {
+        body.classList.remove('modo-slides');
+        window.location.reload(); 
+    }
+}
+
+function mostrarSlide(n) {
+    slides.forEach(s => {
+        s.classList.remove('slide-ativo');
+        s.style.display = 'none';
+    });
+    const slide = slides[n];
+    slide.classList.add('slide-ativo');
+    slide.style.display = 'flex'; 
+
+    if (slide.classList.contains('questao') && !slide.querySelector('.btn-gabarito')) {
+        const resolucoes = slide.querySelectorAll('.resolucao-bloco');
+        resolucoes.forEach(r => r.style.display = 'block');
+    } else {
+        const gabaritos = slide.querySelectorAll('.gabarito-resolucao');
+        gabaritos.forEach(g => g.style.display = 'none');
+        const botoes = slide.querySelectorAll('.btn-gabarito');
+        botoes.forEach(b => {
+            b.textContent = "Ver Gabarito e Resolução";
+            b.style.backgroundColor = "#3498db";
+        });
+    }
+
+    const pHeader = document.querySelector('header p').innerText;
+    const partes = pHeader.split('|');
+    if(partes.length > 1) {
+        document.getElementById('slide-info-serie').innerText = partes[0].trim();
+        document.getElementById('slide-info-aula').innerText = partes[1].trim();
+    }
+    document.getElementById('contador-slide').innerText = (n + 1) + " / " + slides.length;
+    if (window.MathJax) MathJax.typesetPromise();
+}
+
+function mudarSlide(direcao) {
+    slideAtual += direcao;
+    if (slideAtual >= slides.length) slideAtual = 0;
+    if (slideAtual < 0) slideAtual = slides.length - 1;
+    mostrarSlide(slideAtual);
+}
+
+document.addEventListener('keydown', function(event) {
+    if (document.body.classList.contains('modo-slides')) {
+        switch(event.key) {
+            case 'ArrowRight': 
+            case 'PageDown':   
+            case 'Enter':      
+            case ' ':          
+                mudarSlide(1);
+                break;
+                
+            case 'ArrowLeft':  
+            case 'PageUp':     
+                mudarSlide(-1);
+                break;
+
+            case 'Escape':     
+                toggleSlides();
+                break;
+        }
+    }
+});
+</script>
+
+<style>
+    body.modo-slides { overflow: hidden; background-color: #1a1a1a; }
+    body.modo-slides .menu-lateral, body.modo-slides header, body.modo-slides .menu-toggle, body.modo-slides #btn-slides { display: none !important; }
+    .slide-ativo {
+        display: flex !important; flex-direction: column; align-items: center; justify-content: flex-start;
+        position: fixed; top: 0; left: 0; width: 100vw; height: calc(100vh - 70px);
+        background: #ffffff; padding: 40px; z-index: 999; overflow-y: auto !important; 
+        box-sizing: border-box; text-align: center;
+    }
+    .controles-slides {
+        position: fixed; bottom: 0; left: 0; width: 100%; height: 70px;
+        background: #2c3e50; color: white; display: none; 
+        justify-content: space-between; align-items: center; padding: 0 20px; z-index: 1001; box-sizing: border-box;
+    }
+    body.modo-slides .controles-slides { display: flex; }
+    .info-lateral { flex: 1; font-family: 'Oswald', sans-serif; font-size: 0.9rem; color: #bdc3c7; }
+    .botoes-centrais { display: flex; align-items: center; gap: 15px; justify-content: center; flex: 2; }
+    .btn-nav { padding: 10px 20px; background: #3498db; color: white; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; }
+    #contador-slide { font-family: 'Oswald', sans-serif; min-width: 60px; text-align: center; }
+</style>
+
+<div class="controles-slides">
+    <div id="slide-info-serie" class="info-lateral"></div>
+    <div class="botoes-centrais">
+        <button class="btn-nav" onclick="mudarSlide(-1)">⬅ Anterior</button>
+        <span id="contador-slide"></span>
+        <button class="btn-nav" onclick="mudarSlide(1)">Próximo ➡</button>
+        <button class="btn-nav" onclick="toggleSlides()" style="background:#e74c3c;">Sair</button>
+    </div>
+    <div id="slide-info-aula" class="info-lateral" style="text-align: right;"></div>
+</div>
+</body>
+</html>
