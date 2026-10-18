@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cálculo I: Derivadas Sucessivas</title>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../estilo.css">
+    
+    <script>
+        MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true
+            }
+        };
+    </script>
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body>
+<button class="menu-toggle" onclick="toggleMenu()">☰</button>
+
+<nav id="menu-principal" class="nav-global">
+    <ul>
+        <li><a href="../index.html">🏠 Início</a></li>
+        <li><a href="../ensino_medio.html">📚 Ensino Médio</a></li>
+        <li><a href="../ensino_superior.html">🎓 Ensino Superior</a></li>
+    </ul>
+</nav>
+
+<header id="topo">
+    <h1>CÁLCULO I</h1>
+    <p>Cálculo | Aula: Derivadas Sucessivas</p>
+    <button id="btn-slides" onclick="toggleSlides()">📺 Iniciar Modo Slides</button>
+</header>
+
+<div class="container">
+
+<main class="conteudo-principal">
+
+<div class="secao-aula">
+ <div class="container-resumo" id="resumo">
+    <h3>📚 Resumo </h3>
+    <section class="resumo-conteudo">
+        <p>Se $f'$ também é derivável, sua derivada é a <strong>derivada segunda</strong> $f''$; derivando de novo, obtemos $f'''$, $f^{(4)}$, …, $f^{(n)}$. São as <strong>derivadas sucessivas</strong> (ou de ordem superior):</p>
+        <p style="text-align: center;">$$f''(x) = \frac{d^2y}{dx^2} \qquad f'''(x) = \frac{d^3y}{dx^3} \qquad f^{(n)}(x) = \frac{d^ny}{dx^n}$$</p>
+        <p>Na física, se $s(t)$ é a posição, $s'' = a$ é a <strong>aceleração</strong>. Na geometria, o sinal de $f''$ dá a <strong>concavidade</strong> do gráfico, e os pontos onde $f''$ muda de sinal são os <strong>pontos de inflexão</strong>.</p>
+    </section>
+</div>
+
+<section class="conteudo-teorico-completo" id="teoria">
+    <div class="passo-teoria">
+        <h3>📖 Derivar a Derivada</h3>
+        <p>Nada de novo nas regras: para achar $f''$ basta derivar $f'$ com as mesmas técnicas já estudadas. Exemplo: $f(x) = x^4$ dá $f' = 4x^3$, $f'' = 12x^2$, $f''' = 24x$, $f^{(4)} = 24$ e $f^{(5)} = 0$.</p>
+        <ul>
+            <li><strong>Notação de Lagrange:</strong> $f'$, $f''$, $f'''$ e, a partir da quarta, $f^{(4)}, f^{(5)}, \ldots$ (o número entre parênteses, para não confundir com potência);</li>
+            <li><strong>Notação de Leibniz:</strong> $\dfrac{d^2y}{dx^2} = \dfrac{d}{dx}\left(\dfrac{dy}{dx}\right)$, $\dfrac{d^3y}{dx^3}$, …</li>
+        </ul>
+    </div>
+
+    <div class="passo-teoria">
+        <h4>1. Polinômios: as Derivadas Acabam</h4>
+        <p>Cada derivação baixa o grau em uma unidade. Se $p$ tem grau $n$ e coeficiente líder $a_n$, então $p^{(n)}(x) = n!\,a_n$ (constante) e $p^{(k)}(x) = 0$ para todo $k > n$.</p>
+    </div>
+
+    <div class="passo-teoria">
+        <h4>2. Padrões que se Repetem</h4>
+        <ul>
+            <li><strong>Exponencial:</strong> $(e^{kx})^{(n)} = k^n e^{kx}$;</li>
+            <li><strong>Seno e cosseno:</strong> ciclo de período $4$: $\operatorname{sen} x \to \cos x \to -\operatorname{sen} x \to -\cos x \to \operatorname{sen} x$. Para achar $f^{(n)}$, olhe o <strong>resto da divisão de $n$ por 4</strong>;</li>
+            <li><strong>Potências negativas:</strong> $\left(\dfrac{1}{x}\right)^{(n)} = \dfrac{(-1)^n\,n!}{x^{n + 1}}$;</li>
+            <li><strong>Logaritmo:</strong> $(\ln x)^{(n)} = \dfrac{(-1)^{n - 1}(n - 1)!}{x^n}$, para $n \geq 1$.</li>
+        </ul>
+        <p style="text-align: center; font-size: 1.15rem; background-color: #f8f9fa; padding: 15px; border-left: 5px solid #3498db; margin: 20px 0;">
+            $$(\operatorname{sen} x)^{(n)}: \quad n = 4k+1 \to \cos x \quad n = 4k+2 \to -\operatorname{sen} x \quad n = 4k+3 \to -\cos x \quad n = 4k \to \operatorname{sen} x$$
+        </p>
+    </div>
+
+    <div class="passo-teoria">
+        <h4>3. Interpretação Física</h4>
+        <p>Se $s(t)$ é a posição de um móvel: $v(t) = s'(t)$ é a <strong>velocidade</strong>, $a(t) = v'(t) = s''(t)$ é a <strong>aceleração</strong> e $j(t) = s'''(t)$ é o <strong>arranco</strong> (<em>jerk</em>), a taxa de variação da aceleração.</p>
+        <p style="text-align: center;">$$s(t) \xrightarrow{\ \frac{d}{dt}\ } v(t) \xrightarrow{\ \frac{d}{dt}\ } a(t) \xrightarrow{\ \frac{d}{dt}\ } j(t)$$</p>
+    </div>
+
+    <div class="passo-teoria">
+        <h4>4. Concavidade, Inflexão e Teste da Segunda Derivada</h4>
+        <ul>
+            <li>$f''(x) > 0$ num intervalo: $f'$ cresce e o gráfico é <strong>côncavo para cima</strong> (∪);</li>
+            <li>$f''(x) < 0$ num intervalo: o gráfico é <strong>côncavo para baixo</strong> (∩);</li>
+            <li><strong>Ponto de inflexão:</strong> ponto do gráfico onde a concavidade muda (em geral, onde $f''$ troca de sinal);</li>
+            <li><strong>Teste da 2ª derivada:</strong> se $f'(p) = 0$ e $f''(p) > 0$, há <strong>mínimo</strong> local em $p$; se $f'(p) = 0$ e $f''(p) < 0$, há <strong>máximo</strong> local.</li>
+        </ul>
+        <figure class="figura-aula figura-grande">
+            <svg viewBox="0 0 440 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Gráfico de f(x) = x³ − 3x² + 2 com máximo, mínimo e ponto de inflexão" style="width:100%; max-width:460px; height:auto; display:block; margin:0 auto; background:#fdfdfd; border-radius:10px;">
+  <rect x="20" y="20" width="200.0" height="260" fill="#fdecea" opacity="0.6"/>
+  <rect x="220.0" y="20" width="200.0" height="260" fill="#eafaf1" opacity="0.6"/>
+  <line x1="20" y1="150.0" x2="422" y2="150.0" stroke="#2c3e50" stroke-width="2"/>
+  <polygon points="430,150.0 418,145.0 418,155.0" fill="#2c3e50"/>
+  <line x1="140.8" y1="280" x2="140.8" y2="18" stroke="#2c3e50" stroke-width="2"/>
+  <polygon points="140.8,10 135.8,22 145.8,22" fill="#2c3e50"/>
+  <text x="416" y="168.0" font-size="13" fill="#2c3e50" font-family="sans-serif">x</text>
+  <text x="148.8" y="20" font-size="13" fill="#2c3e50" font-family="sans-serif">y</text>
+  <polyline points="50.8,270.0 53.0,270.0 55.2,260.9 57.5,249.8 59.7,239.2 61.9,228.9 64.1,219.0 66.4,209.5 68.6,200.3 70.8,191.5 73.0,183.1 75.3,175.0 77.5,167.3 79.7,159.9 82.0,152.8 84.2,146.1 86.4,139.7 88.6,133.6 90.9,127.9 93.1,122.4 95.3,117.3 97.5,112.4 99.8,107.9 102.0,103.6 104.2,99.6 106.4,95.9 108.7,92.5 110.9,89.3 113.1,86.4 115.4,83.8 117.6,81.4 119.8,79.2 122.0,77.3 124.3,75.6 126.5,74.2 128.7,73.0 130.9,72.0 133.2,71.2 135.4,70.6 137.6,70.2 139.8,70.0 142.1,70.0 144.3,70.2 146.5,70.6 148.8,71.2 151.0,71.9 153.2,72.8 155.4,73.8 157.7,75.0 159.9,76.4 162.1,77.9 164.3,79.5 166.6,81.3 168.8,83.2 171.0,85.2 173.2,87.4 175.5,89.6 177.7,92.0 179.9,94.4 182.1,97.0 184.4,99.6 186.6,102.4 188.8,105.2 191.1,108.1 193.3,111.0 195.5,114.1 197.7,117.1 200.0,120.3 202.2,123.5 204.4,126.7 206.6,129.9 208.9,133.2 211.1,136.6 213.3,139.9 215.5,143.3 217.8,146.6 220.0,150.0 222.2,153.4 224.5,156.7 226.7,160.1 228.9,163.4 231.1,166.8 233.4,170.1 235.6,173.3 237.8,176.5 240.0,179.7 242.3,182.9 244.5,185.9 246.7,189.0 248.9,191.9 251.2,194.8 253.4,197.6 255.6,200.4 257.9,203.0 260.1,205.6 262.3,208.0 264.5,210.4 266.8,212.6 269.0,214.8 271.2,216.8 273.4,218.7 275.7,220.5 277.9,222.1 280.1,223.6 282.3,225.0 284.6,226.2 286.8,227.2 289.0,228.1 291.2,228.8 293.5,229.4 295.7,229.8 297.9,230.0 300.2,230.0 302.4,229.8 304.6,229.4 306.8,228.8 309.1,228.0 311.3,227.0 313.5,225.8 315.7,224.4 318.0,222.7 320.2,220.8 322.4,218.6 324.6,216.2 326.9,213.6 329.1,210.7 331.3,207.5 333.6,204.1 335.8,200.4 338.0,196.4 340.2,192.1 342.5,187.6 344.7,182.7 346.9,177.6 349.1,172.1 351.4,166.4 353.6,160.3 355.8,153.9 358.0,147.2 360.3,140.1 362.5,132.7 364.7,125.0 367.0,116.9 369.2,108.5 371.4,99.7 373.6,90.5 375.9,81.0 378.1,71.1 380.3,60.8 382.5,50.2 384.8,39.1 387.0,30.0 389.2,30.0" fill="none" stroke="#3498db" stroke-width="3"/>
+  <circle cx="140.8" cy="70.0" r="5" fill="#2c3e50"/>
+  <circle cx="299.2" cy="230.0" r="5" fill="#2c3e50"/>
+  <circle cx="220.0" cy="150.0" r="6" fill="#e74c3c"/>
+  <text x="147.2" y="60.0" font-size="13" fill="#2c3e50" font-family="sans-serif" text-anchor="start">máximo (0, 2)</text>
+  <text x="263.5" y="252.0" font-size="13" fill="#2c3e50" font-family="sans-serif" text-anchor="start">mínimo (2, −2)</text>
+  <text x="229.5" y="140.0" font-size="13" fill="#e74c3c" font-family="sans-serif" font-weight="bold" text-anchor="start">inflexão (1, 0)</text>
+  <text x="41.9" y="254.0" font-size="12" fill="#c0392b" font-family="sans-serif" font-weight="bold" text-anchor="start">f'' &lt; 0: côncava para baixo ∩</text>
+  <text x="275.4" y="46.0" font-size="12" fill="#1e8449" font-family="sans-serif" font-weight="bold" text-anchor="start">f'' &gt; 0: côncava para cima ∪</text>
+</svg>
+            <figcaption>Figura 1: $f(x) = x^3 - 3x^2 + 2$ tem $f''(x) = 6x - 6$: côncava para baixo antes de $x = 1$ e para cima depois. O ponto $(1, 0)$ é de inflexão.</figcaption>
+        </figure>
+    </div>
+</section>
+
+<section class="aplicacoes-reais" id="aplicacoes">
+    <h3>💡 Matemática em Ação</h3>
+    <div class="cards-aplicacao">
+        <div class="card">
+            <h4>🎢 Arranco em Elevadores e Montanhas-Russas</h4>
+            <p>O conforto de um passageiro depende não só da aceleração $s''$, mas também do arranco $s'''$: variações bruscas de aceleração dão o "tranco". Projetistas de elevadores, trens e montanhas-russas limitam a terceira derivada da posição.</p>
+        </div>
+        <div class="card" style="border-left-color: #2ecc71;">
+            <h4>🏗️ Deflexão de Vigas</h4>
+            <p>Na Resistência dos Materiais, a curvatura de uma viga é dada pela derivada segunda da linha elástica: $EI\,y''(x) = M(x)$, em que $M$ é o momento fletor. Derivando mais vezes, obtém-se o esforço cortante ($EIy'''$) e a carga distribuída ($EIy^{(4)}$).</p>
+        </div>
+    </div>
+</section>
+
+<section class="questoes-resolvidas" id="resolvidas">
+    <h3>✅ 5 Questões Resolvidas (R 1 a 5)</h3>
+
+    <article class="questao">
+        <h4>R 1: Derivando até Zerar</h4>
+        <p><strong>Enunciado:</strong> Calcule todas as derivadas sucessivas de $f(x) = 2x^4 - 3x^3 + x - 7$.</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong><br>
+            1. $f'(x) = 8x^3 - 9x^2 + 1$ e $f”(x) = 24x^2 - 18x$.<br>
+            2. $f”'(x) = 48x - 18$ e $f^{(4)}(x) = 48$.<br>
+            3. A partir da quinta, todas são nulas: $f^{(n)}(x) = \mathbf{0}$ para $n \geq 5$ (o grau do polinômio é $4$).</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>R 2: Padrão da Exponencial</h4>
+        <p><strong>Enunciado:</strong> Encontre uma fórmula para $f^{(n)}(x)$, sendo $f(x) = e^{3x}$, e calcule $f^{(4)}(0)$.</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong><br>
+            1. $f'(x) = 3e^{3x}$, $f”(x) = 3^2e^{3x}$, $f”'(x) = 3^3e^{3x}$: cada derivação multiplica por $3$.<br>
+            2. Padrão: $f^{(n)}(x) = \mathbf{3^n e^{3x}}$.<br>
+            3. $f^{(4)}(0) = 3^4 \cdot e^0 = \mathbf{81}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>R 3: O Ciclo do Seno</h4>
+        <p><strong>Enunciado:</strong> Calcule $f^{(2026)}(x)$ para $f(x) = \operatorname{sen} x$.</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong><br>
+            1. As derivadas do seno se repetem de $4$ em $4$: $\operatorname{sen} x \to \cos x \to -\operatorname{sen} x \to -\cos x \to \operatorname{sen} x$.<br>
+            2. Dividimos a ordem por $4$: $2026 = 4 \cdot 506 + 2$, ou seja, resto $2$.<br>
+            3. Logo, $f^{(2026)}(x) = f”(x) = \mathbf{-\operatorname{sen} x}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>R 4: Velocidade e Aceleração</h4>
+        <p><strong>Enunciado:</strong> Uma partícula se move com posição $s(t) = t^3 - 6t^2 + 9t$ (em metros, com $t$ em segundos). Calcule a aceleração em $t = 3$ s e a velocidade no instante em que a aceleração se anula.</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong><br>
+            1. Velocidade: $v(t) = s'(t) = 3t^2 - 12t + 9$. Aceleração: $a(t) = v'(t) = s”(t) = 6t - 12$.<br>
+            2. Em $t = 3$: $a(3) = 18 - 12 = \mathbf{6}$ m/s².<br>
+            3. $a(t) = 0 \iff t = 2$ s, e então $v(2) = 12 - 24 + 9 = \mathbf{-3}$ m/s.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>R 5: Concavidade e Inflexão</h4>
+        <p><strong>Enunciado:</strong> Para $f(x) = x^3 - 3x^2 + 2$, estude a concavidade, encontre o ponto de inflexão e classifique os pontos críticos pelo teste da segunda derivada.</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong><br>
+            1. $f'(x) = 3x^2 - 6x$ e $f”(x) = 6x - 6$. Temos $f” < 0$ para $x < 1$ (côncava para baixo) e $f” > 0$ para $x > 1$ (côncava para cima).<br>
+            2. Ponto de inflexão: $f”$ muda de sinal em $x = 1$, com $f(1) = 0$: $\mathbf{(1, 0)}$.<br>
+            3. Pontos críticos: $f'(x) = 0 \iff x = 0$ ou $x = 2$. Como $f”(0) = -6 < 0$, $\mathbf{(0, 2)}$ é máximo local; como $f”(2) = 6 > 0$, $\mathbf{(2, -2)}$ é mínimo local.</p>
+        </div>
+    </article>
+</section>
+
+<section class="questoes-propostas" id="propostas">
+    <h3>✍️ 10 Questões Propostas (P 6 a 15)</h3>
+
+    <article class="questao">
+        <h4>P 6: Derivada Terceira</h4>
+        <p><strong>Enunciado:</strong> Calcule a derivada terceira de $f(x) = x^5$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong><br>
+            1. $f'(x) = 5x^4$ e $f”(x) = 20x^3$.<br>
+            2. $f”'(x) = \mathbf{60x^2}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 7: Derivada Segunda</h4>
+        <p><strong>Enunciado:</strong> Calcule $f”(x)$ para $f(x) = 3x^4 - 2x^3 + 5x$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong><br>
+            1. $f'(x) = 12x^3 - 6x^2 + 5$.<br>
+            2. $f”(x) = \mathbf{36x^2 - 12x}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 8: Ciclo do Cosseno</h4>
+        <p><strong>Enunciado:</strong> Calcule $f^{(100)}(x)$ para $f(x) = \cos x$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong><br>
+            1. O ciclo $\cos x \to -\operatorname{sen} x \to -\cos x \to \operatorname{sen} x \to \cos x$ tem período $4$.<br>
+            2. $100 = 4 \cdot 25$ (resto $0$): $f^{(100)}(x) = \mathbf{\cos x}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 9: Potência Negativa</h4>
+        <p><strong>Enunciado:</strong> Calcule $f”'(x)$ para $f(x) = \dfrac{1}{x}$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong><br>
+            1. $f(x) = x^{-1} \implies f'(x) = -x^{-2}$ e $f”(x) = 2x^{-3}$.<br>
+            2. $f”'(x) = -6x^{-4} = \mathbf{-\dfrac{6}{x^4}}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 10: Derivadas do Logaritmo</h4>
+        <p><strong>Enunciado:</strong> Calcule $f”(x)$ e $f”'(x)$ para $f(x) = \ln x$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong><br>
+            1. $f'(x) = \dfrac{1}{x} = x^{-1}$.<br>
+            2. $f”(x) = \mathbf{-\dfrac{1}{x^2}}$ e $f”'(x) = \mathbf{\dfrac{2}{x^3}}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 11: Produto com Exponencial</h4>
+        <p><strong>Enunciado:</strong> Calcule $f”(x)$ para $f(x) = xe^x$ e deduza uma fórmula para $f^{(n)}(x)$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong><br>
+            1. $f'(x) = e^x + xe^x = (x + 1)e^x$ e $f”(x) = e^x + (x + 1)e^x = \mathbf{(x + 2)e^x}$.<br>
+            2. Cada derivação soma $1$ ao coeficiente: $f^{(n)}(x) = \mathbf{(x + n)e^x}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 12: Verificando uma Equação</h4>
+        <p><strong>Enunciado:</strong> Mostre que $y = \operatorname{sen}(2x)$ satisfaz $y” + 4y = 0$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong><br>
+            1. $y' = 2\cos(2x)$ e $y” = -4\operatorname{sen}(2x)$.<br>
+            2. $y” + 4y = -4\operatorname{sen}(2x) + 4\operatorname{sen}(2x) = \mathbf{0}$ ✓</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 13: Aceleração Nula</h4>
+        <p><strong>Enunciado:</strong> A posição de um móvel é $s(t) = 2t^3 - 9t^2 + 12t$ (em metros, com $t$ em segundos). Em que instante a aceleração é nula?</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong><br>
+            1. $v(t) = 6t^2 - 18t + 12$ e $a(t) = 12t - 18$.<br>
+            2. $a(t) = 0 \iff t = \mathbf{1{,}5}$ s.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 14: Pontos de Inflexão</h4>
+        <p><strong>Enunciado:</strong> Determine os pontos de inflexão de $f(x) = x^4 - 6x^2$ e os intervalos de concavidade.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong><br>
+            1. $f”(x) = 12x^2 - 12 = 12(x - 1)(x + 1)$: positiva para $|x| > 1$ e negativa para $-1 < x < 1$.<br>
+            2. Côncava para cima em $(-\infty, -1)$ e $(1, +\infty)$; para baixo em $(-1, 1)$. Inflexões: $\mathbf{(-1, -5)}$ e $\mathbf{(1, -5)}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 15: Exponencial em uma Equação</h4>
+        <p><strong>Enunciado:</strong> Determine os valores de $a$ para os quais $y = e^{ax}$ satisfaz $y” - 5y' + 6y = 0$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong><br>
+            1. $y' = ae^{ax}$ e $y” = a^2e^{ax}$. Substituindo: $(a^2 - 5a + 6)e^{ax} = 0$.<br>
+            2. Como $e^{ax} > 0$: $a^2 - 5a + 6 = 0 \implies \mathbf{a = 2}$ ou $\mathbf{a = 3}$.</p>
+        </div>
+    </article>
+</section>
+
+<section class="TESTE" id="testes">
+    <h3>🎓 TESTES (T 16 a 20)</h3>
+
+    <article class="questao">
+        <h4>T 16: (OBJETIVA 2025 – Pref. de Arvorezinha-RS) Derivada Terceira de um Polinômio</h4>
+        <p>Assinalar a alternativa que corresponde à derivada terceira da função abaixo: $f(x) = x^5 + 4x^4 - 6x^3 - 5x^2 + 2x - 15$</p>
+        <p>A) $f”'(x) = 60x^2 + 96x$<br>B) $f”'(x) = 120x + 96$<br>C) $f”'(x) = 60x^2 + 96x - 36$<br>D) $f”'(x) = 20x^3 + 32x^2 - 36x$</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> Alternativa <strong>C</strong>.<br>
+            1. $f'(x) = 5x^4 + 16x^3 - 18x^2 - 10x + 2$.<br>
+            2. $f”(x) = 20x^3 + 48x^2 - 36x - 10$.<br>
+            3. $f”'(x) = \mathbf{60x^2 + 96x - 36}$. (A alternativa A esquece o termo $-36$, que vem de $-6x^3$; D é a derivada de $f”$ sem os termos certos.)</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>T 17: (FCM 2026 – IF-AM) Derivadas do Seno no Computador</h4>
+        <p>Um aluno simulou num computador as derivadas sucessivas da função $f(x) = \operatorname{sen}(x)$ até a derivada de ordem $2.739$. O número de vezes que essas derivadas são iguais a $-\cos(x)$ é</p>
+        <p>A) 683.<br>B) 685.<br>C) 687.<br>D) 689.<br>E) 691.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> Alternativa <strong>B</strong>.<br>
+            1. Ciclo: $f' = \cos x$, $f” = -\operatorname{sen} x$, $f”' = -\cos x$, $f^{(4)} = \operatorname{sen} x$. Logo, $f^{(n)} = -\cos x$ quando $n$ deixa resto $3$ na divisão por $4$.<br>
+            2. As ordens são $3, 7, 11, \ldots$ Como $2739 = 4 \cdot 684 + 3$, a última é a própria $2739$.<br>
+            3. Quantidade: $\dfrac{2739 - 3}{4} + 1 = 684 + 1 = \mathbf{685}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>T 18: (Instituto Legalle 2026 – Pref. de Silveira Martins-RS) O Robô de Logística</h4>
+        <p>Uma empresa de logística automatizada utiliza robôs móveis para o transporte de mercadorias em seu centro de distribuição. A velocidade $v$, em metros por segundo, de um desses robôs durante o processo de desaceleração e parada controlada é modelada em função do tempo $t$ em segundos (com $0 < t < 6$), pela função polinomial: $v(t) = -t^3 + 6t^2 + 15t$.</p>
+        <p>Para garantir a estabilidade das cargas mais sensíveis, o sistema de segurança do robô exige identificar o instante exato $t$ em que a variação da aceleração atinge seu valor máximo absoluto (ponto em que a desaceleração começa a perder intensidade de forma mais acentuada, caracterizando o ponto de inflexão da curva de velocidade).</p>
+        <p>Analisando a função do movimento, o engenheiro responsável utiliza a segunda derivada da função velocidade, $v”(t)$, igualando-a a zero para determinar esse instante crítico. Com isso, o instante $t$, em segundos, em que ocorre esse ponto de inflexão na curva de velocidade do robô é:</p>
+        <p>A) 5,5.<br>B) 4,0.<br>C) 3,0.<br>D) 2,5.<br>E) 2,0.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> Alternativa <strong>E</strong>.<br>
+            1. $v'(t) = -3t^2 + 12t + 15$ (a aceleração) e $v”(t) = -6t + 12$.<br>
+            2. $v”(t) = 0 \iff -6t + 12 = 0 \iff t = \mathbf{2{,}0}$ s.<br>
+            3. Confirmação: $v”$ passa de positiva para negativa em $t = 2$, logo há inflexão na curva da velocidade (e a aceleração é máxima nesse instante).</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>T 19: (Marinha 2022 – Quadro Complementar) Derivada Segunda da Secante</h4>
+        <p>Encontre a derivada segunda de $f\left(\frac{\pi}{3}\right)$ se $f(x) = \sec(x)$, dado que $\operatorname{sen}\left(\frac{\pi}{3}\right) = \frac{\sqrt{3}}{2}$; $\cos\left(\frac{\pi}{3}\right) = \frac{1}{2}$ e assinale a opção correta.</p>
+        <p>A) 13<br>B) 14<br>C) 15<br>D) 16<br>E) 17</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> Alternativa <strong>B</strong>.<br>
+            1. $f'(x) = \sec x\operatorname{tg} x$. Pela regra do produto: $f”(x) = \sec x\operatorname{tg} x \cdot \operatorname{tg} x + \sec x \cdot \sec^2 x = \sec x\operatorname{tg}^2 x + \sec^3 x$.<br>
+            2. Em $x = \frac{\pi}{3}$: $\sec = \frac{1}{\cos} = 2$ e $\operatorname{tg} = \frac{\operatorname{sen}}{\cos} = \sqrt{3}$.<br>
+            3. $f”\left(\frac{\pi}{3}\right) = 2 \cdot 3 + 2^3 = 6 + 8 = \mathbf{14}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>T 20: (COPEVE-UFAL 2026 – IFAL) Concavidade de $x\ln x$</h4>
+        <p>Para a função $f(x) = x\ln x$ (domínio: $x > 0$), determine o intervalo em que a função é côncava para cima.</p>
+        <p>A) $(0, \infty)$<br>B) $(0, 1)$<br>C) $(1, \infty)$<br>D) $(-\infty, 0)$<br>E) $(-\infty, 1)$</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> Alternativa <strong>A</strong>.<br>
+            1. $f'(x) = \ln x + 1$ e $f”(x) = \dfrac{1}{x}$.<br>
+            2. Para todo $x > 0$, $f”(x) = \dfrac{1}{x} > 0$: a função é côncava para cima em todo o domínio, $\mathbf{(0, \infty)}$.<br>
+            3. D e E incluem valores fora do domínio ($x \leq 0$).</p>
+        </div>
+    </article>
+</section>
+
+</div>
+</main>
+
+<aside class="menu-lateral">
+    <iframe src="../menu_calculo.html" style="width:100%; border:none; height:600px;"></iframe>
+</aside>
+
+</div>
+
+<script>
+function toggleGabarito(botao) {
+    const gabarito = botao.nextElementSibling;
+    if (gabarito.style.display === "none" || gabarito.style.display === "") {
+        gabarito.style.display = "block";
+        botao.textContent = "Esconder Gabarito e Resolução";
+        botao.style.backgroundColor = "#2c3e50";
+    } else {
+        gabarito.style.display = "none";
+        botao.textContent = "Ver Gabarito e Resolução";
+        botao.style.backgroundColor = "#3498db";
+    }
+}
+
+function toggleMenu() {
+    const menuGlobal = document.getElementById("menu-principal");
+    if (menuGlobal) menuGlobal.classList.toggle("ativo");
+}
+
+let slideAtual = 0;
+let slides = [];
+
+function prepararSlides() {
+    const seletores = '.container-resumo, .passo-teoria, .aplicacoes-reais, .questao';
+    slides = document.querySelectorAll(seletores);
+}
+
+function toggleSlides() {
+    prepararSlides();
+    const body = document.body;
+    if (!body.classList.contains('modo-slides')) {
+        body.classList.add('modo-slides');
+        slideAtual = 0;
+        mostrarSlide(slideAtual);
+    } else {
+        body.classList.remove('modo-slides');
+        window.location.reload(); 
+    }
+}
+
+function mostrarSlide(n) {
+    slides.forEach(s => {
+        s.classList.remove('slide-ativo');
+        s.style.display = 'none';
+    });
+    const slide = slides[n];
+    slide.classList.add('slide-ativo');
+    slide.style.display = 'flex'; 
+
+    if (slide.classList.contains('questao') && !slide.querySelector('.btn-gabarito')) {
+        const resolucoes = slide.querySelectorAll('.resolucao-bloco');
+        resolucoes.forEach(r => r.style.display = 'block');
+    } else {
+        const gabaritos = slide.querySelectorAll('.gabarito-resolucao');
+        gabaritos.forEach(g => g.style.display = 'none');
+        const botoes = slide.querySelectorAll('.btn-gabarito');
+        botoes.forEach(b => {
+            b.textContent = "Ver Gabarito e Resolução";
+            b.style.backgroundColor = "#3498db";
+        });
+    }
+
+    const pHeader = document.querySelector('header p').innerText;
+    const partes = pHeader.split('|');
+    if(partes.length > 1) {
+        document.getElementById('slide-info-serie').innerText = partes[0].trim();
+        document.getElementById('slide-info-aula').innerText = partes[1].trim();
+    }
+    document.getElementById('contador-slide').innerText = (n + 1) + " / " + slides.length;
+    if (window.MathJax) MathJax.typesetPromise();
+}
+
+function mudarSlide(direcao) {
+    slideAtual += direcao;
+    if (slideAtual >= slides.length) slideAtual = 0;
+    if (slideAtual < 0) slideAtual = slides.length - 1;
+    mostrarSlide(slideAtual);
+}
+
+document.addEventListener('keydown', function(event) {
+    if (document.body.classList.contains('modo-slides')) {
+        switch(event.key) {
+            case 'ArrowRight': 
+            case 'PageDown':   
+            case 'Enter':      
+            case ' ':          
+                mudarSlide(1);
+                break;
+                
+            case 'ArrowLeft':  
+            case 'PageUp':     
+                mudarSlide(-1);
+                break;
+
+            case 'Escape':     
+                toggleSlides();
+                break;
+        }
+    }
+});
+</script>
+
+<style>
+    body.modo-slides { overflow: hidden; background-color: #1a1a1a; }
+    body.modo-slides .menu-lateral, body.modo-slides header, body.modo-slides .menu-toggle, body.modo-slides #btn-slides { display: none !important; }
+    .slide-ativo {
+        display: flex !important; flex-direction: column; align-items: center; justify-content: flex-start;
+        position: fixed; top: 0; left: 0; width: 100vw; height: calc(100vh - 70px);
+        background: #ffffff; padding: 40px; z-index: 999; overflow-y: auto !important; 
+        box-sizing: border-box; text-align: center;
+    }
+    .controles-slides {
+        position: fixed; bottom: 0; left: 0; width: 100%; height: 70px;
+        background: #2c3e50; color: white; display: none; 
+        justify-content: space-between; align-items: center; padding: 0 20px; z-index: 1001; box-sizing: border-box;
+    }
+    body.modo-slides .controles-slides { display: flex; }
+    .info-lateral { flex: 1; font-family: 'Oswald', sans-serif; font-size: 0.9rem; color: #bdc3c7; }
+    .botoes-centrais { display: flex; align-items: center; gap: 15px; justify-content: center; flex: 2; }
+    .btn-nav { padding: 10px 20px; background: #3498db; color: white; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; }
+    #contador-slide { font-family: 'Oswald', sans-serif; min-width: 60px; text-align: center; }
+</style>
+
+<div class="controles-slides">
+    <div id="slide-info-serie" class="info-lateral"></div>
+    <div class="botoes-centrais">
+        <button class="btn-nav" onclick="mudarSlide(-1)">⬅ Anterior</button>
+        <span id="contador-slide"></span>
+        <button class="btn-nav" onclick="mudarSlide(1)">Próximo ➡</button>
+        <button class="btn-nav" onclick="toggleSlides()" style="background:#e74c3c;">Sair</button>
+    </div>
+    <div id="slide-info-aula" class="info-lateral" style="text-align: right;"></div>
+</div>
+</body>
+</html>
