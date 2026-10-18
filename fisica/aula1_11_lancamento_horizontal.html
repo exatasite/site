@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>1º Ano: Aula 11 - Lançamento Horizontal</title>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../estilo.css">
+<script>
+MathJax = {tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true}};
+</script>
+<script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<style>
+.conteudo-teorico-completo .passo-teoria,.container-resumo,.questao,.card{margin-bottom:18px}
+.passo-teoria{padding:18px;border-radius:10px;background:#fff;box-shadow:0 2px 8px #00000012}
+.passo-teoria h4{margin-top:12px}
+.formula{padding:10px;background:#eef6fc;border-left:4px solid #3498db;text-align:center;overflow-x:auto}
+.figura-aula svg{max-width:100%;height:auto}
+.questao{padding:18px;border-radius:10px;background:#fff;box-shadow:0 2px 8px #00000012}
+.resolucao-bloco,.gabarito-resolucao{padding:12px 16px;background:#f3f7fa;border-radius:8px;margin-top:12px}
+.gabarito-resolucao{display:none}
+.btn-gabarito{padding:9px 14px;background:#3498db;color:white;border:0;border-radius:5px;cursor:pointer}
+.alternativas{list-style-type:upper-alpha}
+.nota-modelo{font-size:.94em;color:#555}
+@media(max-width:700px){.slide-ativo{padding:18px}.questao,.passo-teoria{padding:12px}}
+</style>
+</head>
+<body>
+<button class="menu-toggle" onclick="toggleMenu()">☰</button>
+<nav id="menu-principal" class="nav-global"><ul>
+<li><a href="../index.html">🏠 Início</a></li>
+<li><a href="../ensino_medio.html">📚 Ensino Médio</a></li>
+<li><a href="../ensino_superior.html">🎓 Ensino Superior</a></li>
+</ul></nav>
+<header id="topo">
+<h1>FÍSICA EM</h1><p>1º Ano | Aula 11: Lançamento Horizontal</p>
+<button id="btn-slides" onclick="toggleSlides()">📺 Iniciar Modo Slides</button>
+</header>
+<div class="container">
+<main class="conteudo-principal">
+<div class="secao-aula">
+<div class="container-resumo" id="resumo"><h3>📚 Resumo</h3><section class="resumo-conteudo">
+<p>O <strong>lançamento horizontal</strong> ocorre quando um corpo deixa uma posição inicial com velocidade horizontal e passa a se mover sob ação da gravidade. Desprezando a resistência do ar, o movimento pode ser analisado como a combinação de um <strong>movimento uniforme na horizontal</strong> e uma <strong>queda livre na vertical</strong>.</p>
+<p>A velocidade horizontal permanece constante, enquanto a velocidade vertical aumenta em módulo. A trajetória é parabólica, e o tempo de queda depende da altura e da gravidade, não da velocidade horizontal.</p>
+</section></div>
+<section class="conteudo-teorico-completo" id="teoria">
+<div class="passo-teoria"><h3>📖 1. O princípio da independência dos movimentos</h3>
+<p>Na aproximação usual, desprezamos a resistência do ar e consideramos a aceleração da gravidade constante. O movimento horizontal e o vertical podem ser estudados separadamente, usando o mesmo intervalo de tempo.</p>
+<ul><li><strong>Eixo horizontal (x):</strong> aceleração nula, portanto a velocidade horizontal é constante.</li><li><strong>Eixo vertical (y):</strong> aceleração constante para baixo, igual a $g$.</li></ul>
+<p class="formula">$$x=v_0t \qquad y=h-\frac{gt^2}{2}$$</p>
+<p>Adotamos a origem horizontal no ponto de lançamento e o solo como $y=0$. Aqui, $v_0$ é a velocidade inicial horizontal (m/s), $t$ é o tempo (s), $h$ é a altura inicial (m) e $g$ é o módulo da aceleração gravitacional (m/s²).</p></div>
+<div class="passo-teoria"><h3>2. Tempo de queda</h3>
+<p>Como o lançamento é horizontal, a velocidade vertical inicial é zero: $v_{y0}=0$. No eixo vertical, a equação da posição é $y=h-gt^2/2$. Ao chegar ao chão, $y=0$.</p>
+<p class="formula">$$0=h-\frac{gt^2}{2}\\quad\\Rightarrow\\quad t_q=\sqrt{\frac{2h}{g}}$$</p>
+<p>O tempo de queda depende somente da altura e da gravidade, desde que o ar seja desprezado. Para $g=10\,\text{m/s}^2$ e $h=20\,\text{m}$, por exemplo, $t_q=\sqrt{40/10}=2\,\text{s}$.</p></div>
+<div class="passo-teoria"><h3>3. Alcance horizontal</h3>
+<p>O alcance $A$ é a distância horizontal entre o ponto de lançamento e o ponto de impacto. Como $v_x=v_0$ é constante, usamos o movimento uniforme:</p>
+<p class="formula">$$A=v_0t_q=v_0\sqrt{\frac{2h}{g}}$$</p>
+<p>Assim, mantendo a mesma altura, dobrar a velocidade horizontal dobra o alcance. Mantendo a velocidade, aumentar a altura aumenta o tempo de queda e o alcance.</p></div>
+<div class="passo-teoria"><h3>4. Velocidade durante a queda</h3>
+<p>As componentes da velocidade são $v_x=v_0$ e $v_y=gt$ em módulo. A velocidade resultante faz um ângulo abaixo da horizontal e tem módulo:</p>
+<p class="formula">$$v=\sqrt{v_x^2+v_y^2}=\sqrt{v_0^2+(gt)^2}$$</p>
+<p>A componente horizontal não diminui no modelo ideal; a componente vertical cresce com o tempo. No instante do lançamento, $v_y=0$ e o módulo da velocidade é $v_0$.</p></div>
+<div class="passo-teoria"><h3>5. Como é a trajetória?</h3>
+<p>Eliminando o tempo entre $x=v_0t$ e $y=h-gt^2/2$, obtemos:</p>
+<p class="formula">$$y=h-\frac{g}{2v_0^2}x^2$$</p>
+<p>Essa expressão é uma parábola. A trajetória observada por um referencial em movimento pode ser diferente; aqui, consideramos um observador parado em relação ao solo.</p>
+<figure class="figura-aula figura-grande"><svg viewBox="0 0 620 300" role="img" aria-label="Trajetória parabólica de uma esfera lançada horizontalmente de uma altura h"><line x1="55" y1="30" x2="55" y2="250" stroke="#34495e" stroke-width="2"/><line x1="55" y1="250" x2="575" y2="250" stroke="#34495e" stroke-width="2"/><path d="M55 70 Q250 70 520 250" fill="none" stroke="#3498db" stroke-width="4"/><circle cx="55" cy="70" r="7" fill="#e67e22"/><circle cx="520" cy="250" r="7" fill="#e67e22"/><line x1="55" y1="70" x2="150" y2="70" stroke="#e67e22" stroke-width="3"/><polygon points="150,70 139,64 139,76" fill="#e67e22"/><line x1="55" y1="70" x2="55" y2="250" stroke="#7f8c8d" stroke-dasharray="5 5"/><text x="70" y="56" font-size="15" fill="#2c3e50">v₀</text><text x="20" y="165" font-size="15" fill="#2c3e50">h</text><text x="280" y="290" font-size="15" fill="#2c3e50">alcance horizontal A</text><text x="300" y="45" font-size="15" fill="#3498db">trajetória parabólica</text><text x="70" y="240" font-size="13" fill="#2c3e50">solo</text></svg><figcaption>Esquema ilustrativo, sem escala. A velocidade inicial é horizontal; a gravidade curva a trajetória para baixo.</figcaption></figure></div>
+<div class="passo-teoria"><h3>6. Procedimento para resolver exercícios</h3><ol><li>Identifique a altura $h$, a velocidade horizontal $v_0$ e a gravidade $g$.</li><li>Calcule o tempo de queda pela equação vertical.</li><li>Use o tempo no eixo horizontal para encontrar o alcance ou a posição.</li><li>Se pedirem a velocidade no impacto, calcule as componentes e combine-as por Pitágoras.</li></ol><p><strong>Erros comuns:</strong> usar $v_0$ como velocidade vertical; supor que a gravidade altera a componente horizontal; esquecer unidades; ou afirmar que a massa muda o tempo de queda no modelo sem resistência do ar.</p></div>
+</section>
+<section class="aplicacoes-reais" id="aplicacoes"><h3>💡 Física em Ação</h3><div class="cards-aplicacao">
+<div class="card"><h4>🚁 Entrega por drone</h4><p>Um objeto solto de um drone em movimento mantém, inicialmente, a velocidade horizontal do drone. Por isso, ele avança enquanto cai.</p></div>
+<div class="card"><h4>🏀 Bola saindo de uma mesa</h4><p>Uma bola que rola até a borda de uma mesa começa a cair com velocidade horizontal e descreve uma trajetória curva.</p></div>
+<div class="card"><h4>💧 Jato de água</h4><p>Um jato que sai horizontalmente de uma abertura permite estimar a velocidade de saída medindo a altura e o alcance, dentro das hipóteses do modelo.</p></div>
+</div></section>
+<section class="questoes-resolvidas" id="resolvidas"><h3>✅ 5 Questões Resolvidas (R1 a R5)</h3>
+<article class="questao"><h4>R1: Tempo de queda</h4><p><strong>Enunciado:</strong> Uma bolinha sai horizontalmente de uma mesa de 1,25 m de altura. Despreze o ar e use $g=10\,\text{m/s}^2$. Quanto tempo ela leva para atingir o chão?</p><div class="resolucao-bloco"><p><strong>Dados:</strong> $h=1,25\,\text{m}$; $g=10\,\text{m/s}^2$; $v_{y0}=0$.</p><p>Na vertical: $h=gt^2/2$. Logo, $t=\sqrt{2h/g}=\sqrt{2(1,25)/10}=\sqrt{0,25}=\\mathbf{0,50\,\text{s}}$.</p><p><strong>Interpretação:</strong> o tempo é determinado pela altura, não pela velocidade horizontal.</p></div></article>
+<article class="questao"><h4>R2: Alcance horizontal</h4><p><strong>Enunciado:</strong> Uma esfera deixa uma plataforma de 20 m de altura com velocidade horizontal de 6 m/s. Calcule o alcance. Use $g=10\,\text{m/s}^2$.</p><div class="resolucao-bloco"><p>Tempo: $t=\sqrt{2h/g}=\sqrt{40/10}=2\,\text{s}$.</p><p>Na horizontal, $A=v_0t=6\cdot2=\\mathbf{12\,\text{m}}$.</p><p>O resultado representa a distância horizontal percorrida antes de tocar o solo.</p></div></article>
+<article class="questao"><h4>R3: Determinar a velocidade inicial</h4><p><strong>Enunciado:</strong> Um objeto é lançado horizontalmente de 45 m de altura e atinge o solo a 18 m da base. Determine sua velocidade horizontal inicial. Use $g=10\,\text{m/s}^2$.</p><div class="resolucao-bloco"><p>Tempo de queda: $t=\sqrt{2(45)/10}=\sqrt9=3\,\text{s}$.</p><p>Como $A=v_0t$, então $v_0=A/t=18/3=\\mathbf{6\,\text{m/s}}$.</p></div></article>
+<article class="questao"><h4>R4: Velocidade no impacto</h4><p><strong>Enunciado:</strong> Uma bola é lançada horizontalmente a 8 m/s de uma altura de 20 m. Determine o módulo da velocidade imediatamente antes do impacto. Use $g=10\,\text{m/s}^2$.</p><div class="resolucao-bloco"><p>Tempo: $t=\sqrt{2(20)/10}=2\,\text{s}$. A componente horizontal continua $v_x=8\,\text{m/s}$.</p><p>A componente vertical no impacto é $v_y=gt=10\cdot2=20\,\text{m/s}$.</p><p>Logo, $v=\sqrt{v_x^2+v_y^2}=\sqrt{8^2+20^2}=\sqrt{464}\\approx\\mathbf{21,5\,\text{m/s}}$.</p></div></article>
+<article class="questao"><h4>R5: Comparação de alcances</h4><p><strong>Enunciado:</strong> Dois objetos são lançados horizontalmente da mesma altura. O primeiro tem velocidade de 4 m/s e o segundo, 10 m/s. Se o primeiro percorre 8 m horizontalmente até o solo, qual é o alcance do segundo?</p><div class="resolucao-bloco"><p>Como a altura é igual, o tempo de queda é o mesmo. Para o primeiro, $t=A_1/v_1=8/4=2\,\text{s}$.</p><p>Para o segundo: $A_2=v_2t=10\cdot2=\\mathbf{20\,\text{m}}$.</p><p>O alcance é proporcional à velocidade horizontal quando a altura é mantida.</p></div></article>
+</section>
+<section class="questoes-propostas" id="propostas"><h3>✍️ 10 Questões Propostas (P6 a P15)</h3>
+<article class="questao"><h4>P6: Tempo de queda</h4><p><strong>Enunciado:</strong> Uma caixa é lançada horizontalmente de uma altura de 5 m. Determine o tempo até o solo, usando g = 10 m/s².</p><button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button><div class="gabarito-resolucao"><p><strong>Resposta:</strong> t = √(2h/g) = √(10/10) = 1 s.</p></div></article>
+<article class="questao"><h4>P7: Alcance</h4><p><strong>Enunciado:</strong> Uma bolinha sai de uma mesa de 1,8 m de altura a 5 m/s. Qual é o alcance? Use g = 10 m/s².</p><button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button><div class="gabarito-resolucao"><p><strong>Resposta:</strong> t = √(3,6/10) = 0,6 s; A = 5 × 0,6 = 3 m.</p></div></article>
+<article class="questao"><h4>P8: Velocidade inicial</h4><p><strong>Enunciado:</strong> Um corpo cai de uma plataforma de 20 m e alcança 15 m horizontalmente. Use g = 10 m/s². Determine a velocidade inicial horizontal.</p><button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button><div class="gabarito-resolucao"><p><strong>Resposta:</strong> t = √(40/10) = 2 s; v₀ = 15/2 = 7,5 m/s.</p></div></article>
+<article class="questao"><h4>P9: Altura a partir do tempo</h4><p><strong>Enunciado:</strong> Um objeto lançado horizontalmente leva 3 s para atingir o solo. Considerando g = 10 m/s², de que altura foi lançado?</p><button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button><div class="gabarito-resolucao"><p><strong>Resposta:</strong> h = gt²/2 = 10 × 9/2 = 45 m.</p></div></article>
+<article class="questao"><h4>P10: Componente vertical</h4><p><strong>Enunciado:</strong> Um objeto cai durante 2,5 s após lançamento horizontal. Qual é o módulo de sua velocidade vertical nesse instante? Use g = 10 m/s².</p><button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button><div class="gabarito-resolucao"><p><strong>Resposta:</strong> vᵧ = gt = 10 × 2,5 = 25 m/s para baixo.</p></div></article>
+<article class="questao"><h4>P11: Velocidade resultante</h4><p><strong>Enunciado:</strong> Uma esfera é lançada horizontalmente a 12 m/s de uma altura de 5 m. Determine o módulo da velocidade no impacto. Use g = 10 m/s².</p><button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button><div class="gabarito-resolucao"><p><strong>Resposta:</strong> t = 1 s; vᵧ = 10 m/s; v = √(12² + 10²) = √244 ≈ 15,6 m/s.</p></div></article>
+<article class="questao"><h4>P12: Efeito da altura</h4><p><strong>Enunciado:</strong> Dois corpos são lançados horizontalmente com a mesma velocidade, um de 5 m e outro de 20 m. Quantas vezes o tempo de queda do segundo é o do primeiro?</p><button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button><div class="gabarito-resolucao"><p><strong>Resposta:</strong> t ∝ √h; t₂/t₁ = √(20/5) = 2 vezes.</p></div></article>
+<article class="questao"><h4>P13: Efeito da velocidade</h4><p><strong>Enunciado:</strong> Um objeto lançado de uma altura fixa percorre 24 m horizontalmente com velocidade de 8 m/s. Qual seria o alcance se a velocidade fosse 6 m/s?</p><button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button><div class="gabarito-resolucao"><p><strong>Resposta:</strong> O tempo não muda; t = 24/8 = 3 s; A = 6 × 3 = 18 m.</p></div></article>
+<article class="questao"><h4>P14: Massa e queda</h4><p><strong>Enunciado:</strong> Duas esferas de massas diferentes saem horizontalmente da mesma altura e com velocidades horizontais distintas. Desprezando o ar, qual chega primeiro ao solo? Justifique.</p><button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button><div class="gabarito-resolucao"><p><strong>Resposta:</strong> Chegam simultaneamente: o tempo depende da altura e de g, não da massa nem da velocidade horizontal.</p></div></article>
+<article class="questao"><h4>P15: Interpretar a trajetória</h4><p><strong>Enunciado:</strong> No modelo sem resistência do ar, como variam as componentes horizontal e vertical da velocidade durante o voo?</p><button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button><div class="gabarito-resolucao"><p><strong>Resposta:</strong> A componente horizontal permanece constante; a componente vertical aumenta em módulo para baixo, com aceleração g.</p></div></article>
+</section>
+<section class="TESTE" id="testes"><h3>🎓 TESTES (T16 a T20)</h3>
+<article class="questao"><h4>T16: (Questão autoral) Tempo de queda</h4><p><strong>Enunciado:</strong> Uma bola é lançada horizontalmente de uma altura de 80 m. Adote g = 10 m/s². O tempo de queda é:</p><p>A) 2 s.  B) 4 s.  C) 8 s.  D) 10 s.  E) 16 s.</p><button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button><div class="gabarito-resolucao"><p><strong>Gabarito: B.</strong> t = √(2 × 80/10) = √16 = 4 s.</p></div></article>
+<article class="questao"><h4>T17: (Questão autoral) Alcance</h4><p><strong>Enunciado:</strong> Um objeto sai horizontalmente de 45 m de altura a 4 m/s. Com g = 10 m/s², seu alcance é:</p><p>A) 6 m.  B) 8 m.  C) 12 m.  D) 18 m.  E) 45 m.</p><button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button><div class="gabarito-resolucao"><p><strong>Gabarito: C.</strong> t = √(90/10) = 3 s; A = 4 × 3 = 12 m.</p></div></article>
+<article class="questao"><h4>T18: (Questão autoral) Independência dos movimentos</h4><p><strong>Enunciado:</strong> Dois corpos partem da mesma altura no mesmo instante: um é solto e o outro é lançado horizontalmente. Desprezando o ar, qual afirmação é correta?</p><p>A) O lançado cai mais rápido. B) O solto cai mais rápido. C) Ambos chegam juntos ao solo. D) A massa determina o tempo. E) A velocidade horizontal reduz g.</p><button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button><div class="gabarito-resolucao"><p><strong>Gabarito: C.</strong> As componentes verticais iniciais são nulas e ambos têm a mesma aceleração vertical g; portanto, o tempo de queda é igual.</p></div></article>
+<article class="questao"><h4>T19: ENEM 2016 — 2ª aplicação (enunciado adaptado)</h4><p><strong>Enunciado:</strong> Duas motos de massas diferentes deixam horizontalmente pistas de mesma altura, no mesmo instante, e a resistência do ar é desprezível. Por que atingem o solo simultaneamente?</p><p>A) Têm a mesma massa. B) Têm o mesmo momento linear. C) Têm a mesma velocidade horizontal. D) Têm a mesma aceleração vertical. E) Não sofrem gravidade.</p><button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button><div class="gabarito-resolucao"><p><strong>Gabarito: D.</strong> Na queda livre, ambas têm aceleração vertical g, independentemente da massa. A questão é identificada como ENEM 2016, 2ª aplicação; consulte a prova original para o enunciado integral.</p></div></article>
+<article class="questao"><h4>T20: ENEM 2022 (enunciado adaptado)</h4><p><strong>Enunciado:</strong> Em um experimento, água sai horizontalmente de uma mangueira a 1 m do chão e atinge o solo a 3 m de distância. Com g = 10 m/s², estime a altura máxima que o jato atingiria se a saída fosse vertical com a mesma velocidade inicial.</p><p>A) 1,5 m. B) 2,25 m. C) 4,0 m. D) 4,5 m. E) 5,0 m.</p><button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button><div class="gabarito-resolucao"><p><strong>Gabarito: B.</strong> Na saída horizontal, t = √(2 × 1/10) = √0,2 s. A velocidade horizontal é v = 3/t. Se lançada verticalmente com essa velocidade, H = v²/(2g) = 9/(4) = 2,25 m. Fonte: ENEM 2022, questão identificada em banco de questões; confirmar no caderno e gabarito oficiais antes de usar em avaliação formal.</p></div></article>
+</section></div></main>
+<aside class="menu-lateral"><iframe src="../menu_fisica.html" style="width:100%;border:none;height:600px;"></iframe></aside>
+</div>
+<script>
+function toggleGabarito(botao){const g=botao.nextElementSibling;if(g.style.display==="none"||g.style.display===""){g.style.display="block";botao.textContent="Esconder Gabarito e Resolução";botao.style.backgroundColor="#2c3e50";}else{g.style.display="none";botao.textContent="Ver Gabarito e Resolução";botao.style.backgroundColor="#3498db";}}
+function toggleMenu(){const m=document.getElementById("menu-principal");if(m)m.classList.toggle("ativo");}
+let slideAtual=0,slides=[];
+function prepararSlides(){slides=Array.from(document.querySelectorAll('.container-resumo,.passo-teoria,.aplicacoes-reais,.questao'));}
+function toggleSlides(){prepararSlides();const b=document.body;if(!b.classList.contains('modo-slides')){b.classList.add('modo-slides');slideAtual=0;mostrarSlide(slideAtual);}else{b.classList.remove('modo-slides');slides.forEach(s=>{s.style.display='';s.classList.remove('slide-ativo');});document.querySelectorAll('.controles-slides').forEach(x=>x.remove());}}
+function mostrarSlide(n){slides.forEach(s=>{s.classList.remove('slide-ativo');s.style.display='none';});const s=slides[n];if(!s)return;s.classList.add('slide-ativo');s.style.display='flex';const g=s.querySelectorAll('.gabarito-resolucao');g.forEach(x=>x.style.display='none');const b=s.querySelectorAll('.btn-gabarito');b.forEach(x=>{x.textContent='Ver Gabarito e Resolução';x.style.backgroundColor='#3498db';});document.getElementById('contador-slide').textContent=(n+1)+' / '+slides.length;if(window.MathJax)MathJax.typesetPromise();}
+function mudarSlide(d){slideAtual=(slideAtual+d+slides.length)%slides.length;mostrarSlide(slideAtual);}
+document.addEventListener('keydown',e=>{if(document.body.classList.contains('modo-slides')){if(['ArrowRight','PageDown','Enter',' '].includes(e.key)){e.preventDefault();mudarSlide(1);}else if(['ArrowLeft','PageUp'].includes(e.key)){mudarSlide(-1);}else if(e.key==='Escape'){toggleSlides();}}});
+</script>
+<style>
+body.modo-slides{overflow:hidden;background:#1a1a1a}
+body.modo-slides .menu-lateral,body.modo-slides header,body.modo-slides .menu-toggle,body.modo-slides #btn-slides{display:none!important}
+.slide-ativo{display:flex!important;flex-direction:column;align-items:center;justify-content:flex-start;position:fixed;top:0;left:0;width:100vw;height:calc(100vh - 70px);background:#fff;padding:40px;z-index:999;overflow-y:auto!important;box-sizing:border-box;text-align:center}
+.controles-slides{position:fixed;bottom:0;left:0;width:100%;height:70px;background:#2c3e50;color:white;display:none;justify-content:space-between;align-items:center;padding:0 20px;z-index:1001;box-sizing:border-box}
+body.modo-slides .controles-slides{display:flex}
+.info-lateral{flex:1;font-family:'Oswald',sans-serif;font-size:.9rem;color:#bdc3c7}
+.botoes-centrais{display:flex;align-items:center;gap:15px;justify-content:center;flex:2}
+.btn-nav{padding:10px 20px;background:#3498db;color:white;border:0;border-radius:5px;cursor:pointer;font-weight:bold}
+#contador-slide{font-family:'Oswald',sans-serif;min-width:60px;text-align:center}
+</style>
+<div class="controles-slides"><div class="info-lateral">Física | Aula 11</div><div class="botoes-centrais"><button class="btn-nav" onclick="mudarSlide(-1)">⬅ Anterior</button><span id="contador-slide"></span><button class="btn-nav" onclick="mudarSlide(1)">Próximo ➡</button><button class="btn-nav" onclick="toggleSlides()" style="background:#e74c3c">Sair</button></div><div class="info-lateral" style="text-align:right">Lançamento Horizontal</div></div>
+</body></html>
