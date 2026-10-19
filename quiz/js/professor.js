@@ -8,7 +8,7 @@ X.injetarNaipes();
 if(DB.modo==='local'){ $('#faixa-teste').hidden=false; }
 if(X.erroFirebase){ const f=$('#faixa-teste'); f.hidden=false; f.textContent=X.erroFirebase; }
 
-const S={user:null,base:'',pastas:{},quizzes:{},historico:{},pastaSel:'__todos',edit:null,unsubs:[],view:''};
+const S={user:null,base:'',pastas:{},quizzes:{},biblioteca:{},historico:{},isAdmin:false,pastaSel:'__todos',edit:null,unsubs:[],view:''};
 function show(v){ S.view=v; ['login','painel','editor','host'].forEach(n=>$('#v-'+n).hidden=n!==v); window.scrollTo(0,0); }
 function erroBanco(e){
   const m=String(e&&(e.code||e.message)||'');
@@ -90,20 +90,28 @@ DB.onAuth(u=>{
   if(H) return; /* não interrompe um jogo em andamento */
   pararOuvintes();
   if(!u||u.anon){ S.user=null; show('login'); return; }
-  S.user=u; S.base='professores/'+u.uid; $('#quem').textContent=u.email||''; iniciarPainel();
+  S.user=u; S.base='professores/'+u.uid; S.isAdmin=String(u.email||'').toLowerCase()===String(window.EXATA_PROFESSOR_EMAIL||'').toLowerCase(); $('#quem').textContent=(u.email||'')+(S.isAdmin?' · Administrador':''); iniciarPainel();
 });
 
 async function iniciarPainel(){
   show('painel');
   try{
-    const sem=await DB.get(S.base+'/semeado');
-    if(!sem){ const pid=DB.chave(), qid=DB.chave();
-      await DB.update(S.base,{['pastas/'+pid]:{nome:'Física III',criado:Date.now()},
-        ['quizzes/'+qid]:{titulo:'Geradores e Receptores Elétricos',pasta:pid,atualizado:Date.now(),perguntas:seedPerguntas()},semeado:true}); }
+    /* Compatibilidade: contas antigas mantêm seus quizzes. A conta administradora
+       publica um quiz inicial na biblioteca apenas se ela ainda estiver vazia. */
+    if(S.isAdmin){
+      const pub=await DB.get('biblioteca');
+      if(!pub||!Object.keys(pub).length){
+        const id=DB.chave();
+        await DB.set('biblioteca/'+id,{titulo:'Geradores e Receptores Elétricos',atualizado:Date.now(),publicadoPor:S.user.email,perguntas:seedPerguntas()});
+      }
+    }
   }catch(e){ erroBanco(e); }
   S.unsubs.push(DB.on(S.base+'/pastas',v=>{ S.pastas=v||{}; renderPastas(); renderLista(); }));
   S.unsubs.push(DB.on(S.base+'/quizzes',v=>{ S.quizzes=v||{}; renderPastas(); renderLista(); }));
   S.unsubs.push(DB.on(S.base+'/historico',v=>{ S.historico=v||{}; renderHist(); }));
+  S.unsubs.push(DB.on('biblioteca',v=>{ S.biblioteca=v||{}; renderBiblioteca(); }));
+  if(S.isAdmin) $('#aviso-admin').hidden=false;
+  abrirAba('biblioteca');
   limparSalasAntigas();
 }
 async function limparSalasAntigas(){
@@ -142,7 +150,7 @@ function renderLista(){
       <p class="meta">${n} pergunta${n!==1?'s':''}${inc?` · <span class="alerta">${inc} incompleta${inc!==1?'s':''}</span>`:''} · editado em ${X.fmtData(q.atualizado)}</p>
       <div class="qcard-acoes"><button class="btn btn-prim" data-act="jogar">▶ Iniciar jogo</button><button class="btn btn-ghost" data-act="editar">Editar</button></div>
       <label class="qcard-mover">Pasta: <select data-act="mover" aria-label="Mover para a pasta">${opts(q.pasta)}</select></label>
-      <div class="qcard-mais"><button class="lnk" data-act="dup">Duplicar</button><button class="lnk" data-act="xlsx">Exportar Quiz</button><button class="lnk" data-act="json">Exportar JSON</button><button class="lnk perigo" data-act="del">Excluir</button></div>
+      <div class="qcard-mais"><button class="lnk" data-act="dup">Duplicar</button><button class="lnk" data-act="xlsx">Exportar Quiz</button><button class="lnk" data-act="json">Exportar JSON</button>${S.isAdmin?'<button class="lnk" data-act="publicar">Publicar na biblioteca</button>':''}<button class="lnk perigo" data-act="del">Excluir</button></div>
     </article>`; }).join('');
 }
 $('#titulo-pasta').addEventListener('click',e=>{
@@ -165,6 +173,7 @@ $('#lista').addEventListener('click',e=>{
   else if(a==='dup'){ const nid=DB.chave(); DB.set(`${S.base}/quizzes/${nid}`,{titulo:quiz.titulo+' (cópia)',pasta:quiz.pasta,atualizado:Date.now(),perguntas:quiz.perguntas}).then(()=>toast('Quiz duplicado.')).catch(erroBanco); }
   else if(a==='xlsx') exportarKahoot(quiz);
   else if(a==='json') exportarJson(quiz);
+  else if(a==='publicar'&&S.isAdmin){ const pid=DB.chave(); DB.set('biblioteca/'+pid,{titulo:quiz.titulo,atualizado:Date.now(),publicadoPor:S.user.email,perguntas:quiz.perguntas}).then(()=>{toast('Quiz publicado na biblioteca.');abrirAba('biblioteca');}).catch(erroBanco); }
   else if(a==='del') X.confirmar2(b,'Confirmar exclusão',()=>DB.remove(`${S.base}/quizzes/${id}`).then(()=>toast('Quiz excluído.')).catch(erroBanco));
 });
 $('#lista').addEventListener('change',e=>{ if(e.target.dataset.act!=='mover') return; const id=e.target.closest('.qcard').dataset.id;
@@ -173,8 +182,33 @@ function pastaAtual(){ return S.pastas[S.pastaSel]?S.pastaSel:''; }
 $('#bt-novo').addEventListener('click',async()=>{ const id=DB.chave();
   try{ await DB.set(`${S.base}/quizzes/${id}`,{titulo:'Novo quiz',pasta:pastaAtual(),atualizado:Date.now(),perguntas:[X.blankQ()]}); S.quizzes[id]={titulo:'Novo quiz',pasta:pastaAtual(),perguntas:[X.blankQ()]}; abrirEditor(id); setTimeout(()=>$('#ed-titulo').select(),60); }catch(e){ erroBanco(e); } });
 
+/* ---------- Biblioteca compartilhada ---------- */
+function renderBiblioteca(){
+  const lista=Object.entries(S.biblioteca).sort((a,b)=>(b[1].atualizado||0)-(a[1].atualizado||0));
+  if(!lista.length){ $('#lista-biblioteca').innerHTML='<div class="vazio"><p><b>A biblioteca ainda está vazia.</b></p><p>O administrador pode publicar quizzes a partir da seção “Meus quizzes”.</p></div>'; return; }
+  $('#lista-biblioteca').innerHTML=lista.map(([id,q])=>{ const ps=X.toArr(q.perguntas).map(X.normQ), n=ps.length, inc=n-ps.filter(X.valida).length;
+    return `<article class="qcard" data-id="${esc(id)}"><div class="qcard-naipes">${X.naipes4()}</div><h3>${esc(q.titulo||'Quiz sem título')}</h3><p class="meta">${n} pergunta${n!==1?'s':''}${inc?` · <span class="alerta">${inc} incompleta${inc!==1?'s':''}</span>`:''} · Biblioteca compartilhada</p><div class="qcard-acoes"><button class="btn btn-prim" data-act="lib-jogar">▶ Iniciar jogo</button><button class="btn btn-sec" data-act="lib-copiar">Copiar para meus quizzes</button></div><div class="qcard-mais"><button class="lnk" data-act="lib-xlsx">Exportar Quiz</button><button class="lnk" data-act="lib-json">Exportar JSON</button>${S.isAdmin?'<button class="lnk perigo" data-act="lib-del">Remover da biblioteca</button>':''}</div></article>`;
+  }).join('');
+}
+$('#lista-biblioteca').addEventListener('click',async e=>{
+  const b=e.target.closest('button[data-act]'); if(!b) return; const card=b.closest('.qcard'), id=card.dataset.id, raw=S.biblioteca[id]; if(!raw) return;
+  const q={id,titulo:raw.titulo||'Quiz sem título',pasta:'',atualizado:raw.atualizado||0,perguntas:X.toArr(raw.perguntas).map(X.normQ)};
+  try{
+    if(b.dataset.act==='lib-jogar') iniciarJogo(q);
+    else if(b.dataset.act==='lib-copiar'){ const nid=DB.chave(); await DB.set(S.base+'/quizzes/'+nid,{titulo:q.titulo+' (cópia)',pasta:pastaAtual(),atualizado:Date.now(),perguntas:q.perguntas}); toast('Cópia criada em Meus quizzes.'); abrirAba('quizzes'); }
+    else if(b.dataset.act==='lib-xlsx') exportarKahoot(q);
+    else if(b.dataset.act==='lib-json') exportarJson(q);
+    else if(b.dataset.act==='lib-del'&&S.isAdmin) X.confirmar2(b,'Confirmar remoção',()=>DB.remove('biblioteca/'+id).then(()=>toast('Quiz removido da biblioteca.')).catch(erroBanco));
+  }catch(err){ erroBanco(err); }
+});
+
 /* Abas */
-function abrirAba(n){ document.querySelectorAll('.aba').forEach(b=>b.classList.toggle('ativa',b.dataset.aba===n)); $('#sec-quizzes').hidden=n!=='quizzes'; $('#sec-resultados').hidden=n!=='resultados'; }
+function abrirAba(n){
+  document.querySelectorAll('.aba').forEach(b=>b.classList.toggle('ativa',b.dataset.aba===n));
+  $('#sec-biblioteca').hidden=n!=='biblioteca'; $('#sec-quizzes').hidden=n!=='quizzes'; $('#sec-resultados').hidden=n!=='resultados';
+  $('#v-painel').classList.toggle('modo-biblioteca',n==='biblioteca');
+  $('#v-painel').classList.toggle('modo-resultados',n==='resultados');
+}
 document.querySelectorAll('.aba').forEach(b=>b.addEventListener('click',()=>abrirAba(b.dataset.aba)));
 
 /* ---------- Histórico de partidas ---------- */
@@ -322,7 +356,7 @@ function ranking(){ return Object.entries(H.jog).map(([pid,j])=>({pid,nome:Strin
   .sort((a,b)=>b.pontos-a.pontos||b.acertos-a.acertos||a.nome.localeCompare(b.nome,'pt-BR')); }
 
 async function iniciarJogo(id){
-  const q=quizObj(id); if(!q) return; const validas=q.perguntas.filter(X.valida);
+  const q=(id&&typeof id==='object')?id:quizObj(id); if(!q) return; const validas=q.perguntas.filter(X.valida);
   if(!validas.length){ toast('Este quiz não tem perguntas completas: cada uma precisa de texto, duas respostas e uma correta.'); return; }
   let pin='', t=0;
   try{ do{ pin=String(Math.floor(100000+Math.random()*900000)); t++; } while(t<8 && await DB.get('salas/'+pin+'/dono'));
