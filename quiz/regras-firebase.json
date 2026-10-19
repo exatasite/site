@@ -2,14 +2,16 @@
   "rules": {
     "professores": {
       "$uid": {
-        ".read": "auth != null && auth.uid === $uid",
-        ".write": "auth != null && auth.uid === $uid"
+        ".read": "auth != null && auth.uid === $uid && auth.token.email != null",
+        ".write": "auth != null && auth.uid === $uid && auth.token.email != null"
       }
     },
+    "biblioteca": {
+      ".read": "auth != null && auth.token.email != null",
+      ".write": "auth != null && auth.token.email === 'wpsexatas@gmail.com'"
+    },
     "salas": {
-      ".indexOn": [
-        "dono"
-      ],
+      ".indexOn": ["dono"],
       "$pin": {
         ".read": "auth != null",
         ".write": "auth != null && (auth.uid === data.child('dono').val() || auth.uid === newData.child('dono').val())",
