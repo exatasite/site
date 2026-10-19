@@ -133,7 +133,7 @@ function renderLista(){
   const titulo=sel==='__todos'?'Todos os quizzes':sel==='__sem'?'Sem pasta':(S.pastas[sel]||{}).nome;
   if(!h.querySelector('#ren-inp')) h.innerHTML=esc(titulo)+(S.pastas[sel]?' <span class="pasta-ops"><button class="lnk" id="pasta-ren">Renomear</button><button class="lnk perigo" id="pasta-del">Excluir pasta</button></span>':'');
   const lista=Object.entries(S.quizzes).filter(([,q])=>naPasta(q,sel)).sort((a,b)=>(b[1].atualizado||0)-(a[1].atualizado||0));
-  if(!lista.length){ $('#lista').innerHTML=`<div class="vazio"><p><b>Nenhum quiz ${sel==='__todos'?'ainda':'nesta pasta'}.</b></p><p>Crie um novo quiz ou importe uma planilha no modelo do Kahoot.</p></div>`; return; }
+  if(!lista.length){ $('#lista').innerHTML=`<div class="vazio"><p><b>Nenhum quiz ${sel==='__todos'?'ainda':'nesta pasta'}.</b></p><p>Crie um novo quiz ou importe uma planilha no modelo do Quiz.</p></div>`; return; }
   const opts=pasta=>'<option value="">Sem pasta</option>'+ordenarPastas().map(([pid,p])=>`<option value="${pid}"${pasta===pid?' selected':''}>${esc(p.nome)}</option>`).join('');
   $('#lista').innerHTML=lista.map(([id,q])=>{ const ps=X.toArr(q.perguntas).map(X.normQ), n=ps.length, inc=n-ps.filter(X.valida).length;
     return `<article class="qcard" data-id="${id}">
@@ -142,7 +142,7 @@ function renderLista(){
       <p class="meta">${n} pergunta${n!==1?'s':''}${inc?` · <span class="alerta">${inc} incompleta${inc!==1?'s':''}</span>`:''} · editado em ${X.fmtData(q.atualizado)}</p>
       <div class="qcard-acoes"><button class="btn btn-prim" data-act="jogar">▶ Iniciar jogo</button><button class="btn btn-ghost" data-act="editar">Editar</button></div>
       <label class="qcard-mover">Pasta: <select data-act="mover" aria-label="Mover para a pasta">${opts(q.pasta)}</select></label>
-      <div class="qcard-mais"><button class="lnk" data-act="dup">Duplicar</button><button class="lnk" data-act="xlsx">Exportar Kahoot</button><button class="lnk" data-act="json">Exportar JSON</button><button class="lnk perigo" data-act="del">Excluir</button></div>
+      <div class="qcard-mais"><button class="lnk" data-act="dup">Duplicar</button><button class="lnk" data-act="xlsx">Exportar Quiz</button><button class="lnk" data-act="json">Exportar JSON</button><button class="lnk perigo" data-act="del">Excluir</button></div>
     </article>`; }).join('');
 }
 $('#titulo-pasta').addEventListener('click',e=>{
@@ -207,7 +207,7 @@ async function importarXlsx(file){
     const wb=XLSX.read(await file.arrayBuffer(),{type:'array'});
     const rows=XLSX.utils.sheet_to_json(wb.Sheets[wb.SheetNames[0]],{header:1,defval:''});
     const h=rows.findIndex(r=>r.some(c=>/^\s*(question|pergunta)/i.test(String(c))));
-    if(h<0){ toast('Não encontrei a coluna "Question" do modelo do Kahoot nesta planilha.'); return; }
+    if(h<0){ toast('Não encontrei a coluna "Question" do modelo do Quiz nesta planilha.'); return; }
     const hdr=rows[h].map(c=>String(c).trim().toLowerCase()), col=re=>hdr.findIndex(c=>re.test(c));
     const cq=col(/^(question|pergunta)/), ct=col(/time|tempo/), cc=col(/correct|correta/);
     const ca=[1,2,3,4].map(n=>col(new RegExp('^(answer|resposta|alternativa)\\s*'+n)));
