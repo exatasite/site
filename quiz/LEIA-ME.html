@@ -58,7 +58,7 @@
   <li>Não é necessário substituir e-mail nas regras. Elas identificam cada professor pelo UID seguro do Firebase Authentication.</li>
   <li>Clique em <b>Publicar</b>.</li>
 </ol>
-<p class="dica">As regras permitem que cada professor acesse apenas seus próprios quizzes e resultados. Os alunos entram anonimamente e só podem registrar o próprio nome e as próprias respostas.</p></section>
+<p class="dica">As regras separam os dados privados de cada professor e a biblioteca compartilhada. Todos os professores autenticados por e-mail podem ler a biblioteca; somente o e-mail administrador configurado pode publicar ou remover quizzes dela. Os alunos entram anonimamente e só podem registrar o próprio nome e as próprias respostas.</p></section>
 
 <section class="passo"><span class="num">4</span><h2>Ativar os logins</h2>
 <ol>
@@ -66,6 +66,7 @@
   <li>Na aba <b>Método de login</b>, ative <b>E-mail/senha</b> e salve.</li>
   <li>Clique em <b>Adicionar novo provedor</b>, ative <b>Anônimo</b> e salve. (É assim que os alunos entram sem criar conta.)</li>
   <li>Não precisa cadastrar professores manualmente nesta tela. Cada professor poderá clicar em <b>Criar conta de professor</b> na página do Exata Quiz.</li>
+  <li>A conta administradora é a indicada em <code>window.EXATA_PROFESSOR_EMAIL</code> no arquivo <code>js/config.js</code>. O mesmo e-mail deve aparecer na regra de escrita de <code>biblioteca</code> em <code>regras-firebase.json</code>.</li>
   <li>Na aba <b>Configurações</b> → <b>Domínios autorizados</b>, confira se o domínio do site está autorizado. Para este exemplo: <code>exatasite.github.io</code>.</li>
 </ol></section>
 
@@ -86,7 +87,7 @@
 };
 window.EXATA_PROFESSOR_EMAIL = "seu.email@gmail.com";</pre>
 <p class="dica">Se o <code>databaseURL</code> não aparecer no bloco, copie o endereço que aparece no topo da página do Realtime Database (começa com <code>https://</code> e termina em <code>firebaseio.com</code> ou <code>firebasedatabase.app</code>).</p>
-<p class="dica">Pode ficar tranquilo: essa “apiKey” é pública por natureza. Quem protege os dados são as regras do passo 3.</p></section>
+<p class="dica">Pode ficar tranquilo: essa “apiKey” é pública por natureza. Quem protege os dados são as regras do passo 3. O e-mail em <code>EXATA_PROFESSOR_EMAIL</code> identifica a conta administradora que pode publicar quizzes na biblioteca; se você mudar esse e-mail, atualize também a regra Firebase correspondente.</p></section>
 
 <section class="passo"><span class="num">6</span><h2>Enviar a pasta para o GitHub</h2>
 <ol>
@@ -96,7 +97,17 @@ window.EXATA_PROFESSOR_EMAIL = "seu.email@gmail.com";</pre>
   <li>Clique em <b>Commit changes</b> e espere 1 ou 2 minutos.</li>
 </ol></section>
 
-<section class="passo"><span class="num">7</span><h2>Pronto! Os endereços</h2>
+<section class="passo"><span class="num">7</span><h2>Como administrar a biblioteca compartilhada</h2>
+<ol>
+  <li>Entre na área do professor com o e-mail administrador configurado em <code>js/config.js</code>.</li>
+  <li>Abra <b>Meus quizzes</b>. Cada quiz particular terá a opção <b>Publicar na biblioteca</b>.</li>
+  <li>Para adicionar mais quizzes, crie-os ou importe-os para “Meus quizzes” e depois publique cada um na biblioteca.</li>
+  <li>Todos os professores cadastrados verão esses quizzes em <b>Biblioteca compartilhada</b>. Eles podem iniciar o jogo diretamente ou usar <b>Copiar para meus quizzes</b> para editar uma cópia particular.</li>
+  <li>Somente a conta administradora pode remover quizzes da biblioteca. A exclusão de um quiz particular não remove automaticamente a publicação compartilhada.</li>
+</ol>
+<p class="dica">A biblioteca recebe inicialmente o quiz de exemplo “Geradores e Receptores Elétricos” quando o administrador entra pela primeira vez e ela ainda está vazia.</p></section>
+
+<section class="passo"><span class="num">8</span><h2>Pronto! Os endereços</h2>
 <ul>
   <li><b>Professor:</b> <code>exatasite.github.io/site/quiz/professor.html</code></li>
   <li><b>Alunos:</b> <code>exatasite.github.io/site/quiz/</code> (ou pelo QR Code que aparece na tela do jogo)</li>
@@ -106,18 +117,18 @@ window.EXATA_PROFESSOR_EMAIL = "seu.email@gmail.com";</pre>
 <div class="mapa"><h2>O que tem em cada arquivo</h2>
 <table>
 <tr><td>index.html</td><td>Página dos alunos: digitam o PIN e o nome e respondem pelos naipes ♠ ♥ ♦ ♣.</td></tr>
-<tr><td>professor.html</td><td>Área do professor: login, pastas, editor, iniciar jogo, tela do projetor, pódio e histórico.</td></tr>
+<tr><td>professor.html</td><td>Área do professor: biblioteca compartilhada, quizzes particulares, pastas, editor, partidas e histórico.</td></tr>
 <tr><td>css/exataquiz.css</td><td>Visual do ExataSite (cores, fontes, botões).</td></tr>
 <tr><td>js/config.js</td><td><b>O único arquivo que você edita</b>: dados do Firebase e seu e-mail.</td></tr>
 <tr><td>js/comum.js</td><td>Funções usadas pelas duas páginas (naipes, banco de dados, sons).</td></tr>
 <tr><td>js/professor.js</td><td>Funcionamento da área do professor.</td></tr>
 <tr><td>js/aluno.js</td><td>Funcionamento da página dos alunos.</td></tr>
-<tr><td>regras-firebase.json</td><td>Regras de segurança para colar no Firebase (passo 3).</td></tr>
+<tr><td>regras-firebase.json</td><td>Regras de segurança para colar no Firebase (passo 3), incluindo biblioteca compartilhada com escrita exclusiva da conta administradora.</td></tr>
 </table></div>
 
 <section class="passo"><span class="num">?</span><h2>Se algo não funcionar</h2>
 <ul>
-  <li><b>“O banco recusou a operação”</b>: confira se o e-mail nas regras (passo 3), no <code>config.js</code> e no usuário do Authentication é exatamente o mesmo.</li>
+  <li><b>“O banco recusou a operação”</b>: confira se publicou as regras atualizadas e se o usuário está autenticado. Para publicar na biblioteca, o e-mail de login deve ser exatamente o mesmo definido em <code>EXATA_PROFESSOR_EMAIL</code> e na regra de <code>biblioteca</code>.</li>
   <li><b>Aluno vê “acesso de alunos não está ativado”</b>: falta ativar o login <b>Anônimo</b> (passo 4).</li>
   <li><b>Login dá erro de domínio</b>: falta adicionar <code>exatasite.github.io</code> nos domínios autorizados (passo 4).</li>
   <li><b>Mudou algo e não apareceu no site</b>: espere 2 minutos e recarregue com <kbd>Ctrl</kbd>+<kbd>F5</kbd>.</li>
