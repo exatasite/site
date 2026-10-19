@@ -55,18 +55,18 @@
   <li>Ainda no Realtime Database, abra a aba <b>Regras</b>.</li>
   <li>Apague tudo o que estiver lá.</li>
   <li>Abra o arquivo <code>regras-firebase.json</code> (no Bloco de Notas), copie todo o conteúdo e cole no Firebase.</li>
-  <li>Troque <b>todas</b> as ocorrências de <code>SEU_EMAIL_AQUI</code> pelo seu e-mail de professor (são 5 lugares). Dica: use <kbd>Ctrl</kbd>+<kbd>H</kbd> no Bloco de Notas antes de copiar.</li>
+  <li>Não é necessário substituir e-mail nas regras. Elas identificam cada professor pelo UID seguro do Firebase Authentication.</li>
   <li>Clique em <b>Publicar</b>.</li>
 </ol>
-<p class="dica">As regras garantem que só o seu e-mail cria quizzes e salas. Os alunos só conseguem entrar com o nome e enviar a própria resposta.</p></section>
+<p class="dica">As regras permitem que cada professor acesse apenas seus próprios quizzes e resultados. Os alunos entram anonimamente e só podem registrar o próprio nome e as próprias respostas.</p></section>
 
 <section class="passo"><span class="num">4</span><h2>Ativar os logins</h2>
 <ol>
   <li>No menu, abra <b>Criação</b> → <b>Authentication</b> → <b>Vamos começar</b>.</li>
   <li>Na aba <b>Método de login</b>, ative <b>E-mail/senha</b> e salve.</li>
   <li>Clique em <b>Adicionar novo provedor</b>, ative <b>Anônimo</b> e salve. (É assim que os alunos entram sem criar conta.)</li>
-  <li>Na aba <b>Usuários</b>, clique em <b>Adicionar usuário</b>: digite seu e-mail (o mesmo do passo 3) e uma senha. Essa é a senha da sua área de professor.</li>
-  <li>Na aba <b>Configurações</b> → <b>Domínios autorizados</b>, clique em <b>Adicionar domínio</b> e digite <code>exatasite.github.io</code>.</li>
+  <li>Não precisa cadastrar professores manualmente nesta tela. Cada professor poderá clicar em <b>Criar conta de professor</b> na página do Exata Quiz.</li>
+  <li>Na aba <b>Configurações</b> → <b>Domínios autorizados</b>, confira se o domínio do site está autorizado. Para este exemplo: <code>exatasite.github.io</code>.</li>
 </ol></section>
 
 <section class="passo"><span class="num">5</span><h2>Copiar a “chave” do projeto para o arquivo config.js</h2>
