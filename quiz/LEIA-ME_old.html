@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Exata Quiz · Como configurar</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="css/exataquiz.css">
+<style>
+  .guia{max-width:820px;margin:0 auto;padding-block:28px 60px;display:flex;flex-direction:column;gap:22px}
+  .passo{background:var(--branco);border-radius:10px;border:2px solid var(--linha);padding:20px 22px;display:grid;grid-template-columns:auto minmax(0,1fr);gap:4px 16px}
+  .passo .num{grid-row:1/4;font-family:var(--f-titulo);font-weight:700;font-size:2.2rem;color:var(--laranja);line-height:1}
+  .passo h2{font-size:1.35rem;color:var(--marinho)}
+  .passo ol,.passo ul{margin:6px 0 0;padding-left:1.2em;display:flex;flex-direction:column;gap:6px}
+  .passo p{margin-top:6px}
+  code,kbd{background:var(--realce);border:1px solid var(--linha);border-radius:4px;padding:.05em .4em;font-size:.92em;overflow-wrap:anywhere}
+  pre{background:var(--marinho);color:#fff;border-radius:8px;padding:14px;overflow-x:auto;font-size:.85rem;margin:8px 0 0}
+  .aviso{background:var(--aviso);border-left:5px solid var(--laranja);border-radius:6px;padding:12px 16px}
+  .ok{background:#e7f4ec;border-left:5px solid var(--ok);border-radius:6px;padding:12px 16px}
+  .mapa{background:var(--branco);border-radius:10px;border:2px solid var(--linha);padding:18px 22px}
+  .mapa h2{font-size:1.35rem;color:var(--marinho);margin-bottom:6px}
+  .mapa table{border-collapse:collapse;width:100%;font-size:.95rem}
+  .mapa td{padding:.4em .6em;border-bottom:1px solid var(--linha);vertical-align:top}
+  .mapa td:first-child{font-family:monospace;white-space:nowrap;color:var(--marinho)}
+</style>
+</head>
+<body>
+<header class="topo"><div class="topo-in gut">
+  <div><span class="logo">EXATA QUIZ</span><p>Guia de configuração · leva uns 15 minutos, uma vez só</p></div>
+</div></header>
+<main class="guia gut">
+
+<div class="aviso"><b>Por que o Firebase?</b> O GitHub Pages só guarda páginas; ele não consegue ligar o celular de cada aluno à tela do professor em tempo real. O Firebase (do Google, gratuito) faz essa ponte e também protege o seu login de professor. O plano grátis aguenta até 100 aparelhos conectados ao mesmo tempo, o suficiente para uma turma inteira.</div>
+
+<div class="ok"><b>Quer só experimentar antes?</b> Sem configurar nada, abra <code>professor.html</code> numa aba e <code>index.html</code> em outras abas <i>do mesmo navegador</i>. Funciona em “modo de teste local”, com cada aba fazendo o papel de um aluno.</div>
+
+<section class="passo"><span class="num">1</span><h2>Criar o projeto no Firebase</h2>
+<ol>
+  <li>Acesse <b>console.firebase.google.com</b> e entre com sua conta Google.</li>
+  <li>Clique em <b>Criar um projeto</b> (ou “Adicionar projeto”). Nome sugerido: <code>exata-quiz</code>.</li>
+  <li>Na tela do Google Analytics, <b>desative</b> a opção (não precisa) e clique em <b>Criar projeto</b>.</li>
+</ol></section>
+
+<section class="passo"><span class="num">2</span><h2>Criar o banco de dados</h2>
+<ol>
+  <li>No menu da esquerda, abra <b>Criação</b> (Build) → <b>Realtime Database</b>.</li>
+  <li>Clique em <b>Criar banco de dados</b>. Local: <b>Estados Unidos (us-central1)</b>.</li>
+  <li>Escolha <b>Iniciar no modo bloqueado</b> e clique em <b>Ativar</b>.</li>
+</ol>
+<p class="dica">Atenção: é o <b>Realtime Database</b>, não o “Firestore”.</p></section>
+
+<section class="passo"><span class="num">3</span><h2>Colar as regras de segurança</h2>
+<ol>
+  <li>Ainda no Realtime Database, abra a aba <b>Regras</b>.</li>
+  <li>Apague tudo o que estiver lá.</li>
+  <li>Abra o arquivo <code>regras-firebase.json</code> (no Bloco de Notas), copie todo o conteúdo e cole no Firebase.</li>
+  <li>Troque <b>todas</b> as ocorrências de <code>SEU_EMAIL_AQUI</code> pelo seu e-mail de professor (são 5 lugares). Dica: use <kbd>Ctrl</kbd>+<kbd>H</kbd> no Bloco de Notas antes de copiar.</li>
+  <li>Clique em <b>Publicar</b>.</li>
+</ol>
+<p class="dica">As regras garantem que só o seu e-mail cria quizzes e salas. Os alunos só conseguem entrar com o nome e enviar a própria resposta.</p></section>
+
+<section class="passo"><span class="num">4</span><h2>Ativar os logins</h2>
+<ol>
+  <li>No menu, abra <b>Criação</b> → <b>Authentication</b> → <b>Vamos começar</b>.</li>
+  <li>Na aba <b>Método de login</b>, ative <b>E-mail/senha</b> e salve.</li>
+  <li>Clique em <b>Adicionar novo provedor</b>, ative <b>Anônimo</b> e salve. (É assim que os alunos entram sem criar conta.)</li>
+  <li>Na aba <b>Usuários</b>, clique em <b>Adicionar usuário</b>: digite seu e-mail (o mesmo do passo 3) e uma senha. Essa é a senha da sua área de professor.</li>
+  <li>Na aba <b>Configurações</b> → <b>Domínios autorizados</b>, clique em <b>Adicionar domínio</b> e digite <code>exatasite.github.io</code>.</li>
+</ol></section>
+
+<section class="passo"><span class="num">5</span><h2>Copiar a “chave” do projeto para o arquivo config.js</h2>
+<ol>
+  <li>Clique na engrenagem ⚙ ao lado de “Visão geral do projeto” → <b>Configurações do projeto</b>.</li>
+  <li>Em <b>Seus apps</b>, clique no ícone <b>&lt;/&gt;</b> (Web). Apelido: <code>exata-quiz</code>. Não marque o Hosting. Clique em <b>Registrar app</b>.</li>
+  <li>Vai aparecer um bloco com <code>const firebaseConfig = { ... }</code>. Copie os valores para o arquivo <code>js/config.js</code>, assim:</li>
+</ol>
+<pre>window.EXATA_FIREBASE = {
+  apiKey: "AIzaSy...",
+  authDomain: "exata-quiz.firebaseapp.com",
+  databaseURL: "https://exata-quiz-default-rtdb.firebaseio.com",
+  projectId: "exata-quiz",
+  storageBucket: "exata-quiz.appspot.com",
+  messagingSenderId: "1234567890",
+  appId: "1:1234567890:web:abc123"
+};
+window.EXATA_PROFESSOR_EMAIL = "seu.email@gmail.com";</pre>
+<p class="dica">Se o <code>databaseURL</code> não aparecer no bloco, copie o endereço que aparece no topo da página do Realtime Database (começa com <code>https://</code> e termina em <code>firebaseio.com</code> ou <code>firebasedatabase.app</code>).</p>
+<p class="dica">Pode ficar tranquilo: essa “apiKey” é pública por natureza. Quem protege os dados são as regras do passo 3.</p></section>
+
+<section class="passo"><span class="num">6</span><h2>Enviar a pasta para o GitHub</h2>
+<ol>
+  <li>Abra o repositório do seu site no GitHub (o que publica <code>exatasite.github.io/site</code>).</li>
+  <li>Clique em <b>Add file</b> → <b>Upload files</b>.</li>
+  <li>Arraste a pasta <b>quiz</b> inteira para a janela (com o <code>config.js</code> já preenchido).</li>
+  <li>Clique em <b>Commit changes</b> e espere 1 ou 2 minutos.</li>
+</ol></section>
+
+<section class="passo"><span class="num">7</span><h2>Pronto! Os endereços</h2>
+<ul>
+  <li><b>Professor:</b> <code>exatasite.github.io/site/quiz/professor.html</code></li>
+  <li><b>Alunos:</b> <code>exatasite.github.io/site/quiz/</code> (ou pelo QR Code que aparece na tela do jogo)</li>
+</ul>
+<p>Para colocar um botão no seu site, use um link para <code>quiz/index.html</code>. Não coloque link público para a página do professor; ela já pede senha, mas assim fica mais discreta.</p></section>
+
+<div class="mapa"><h2>O que tem em cada arquivo</h2>
+<table>
+<tr><td>index.html</td><td>Página dos alunos: digitam o PIN e o nome e respondem pelos naipes ♠ ♥ ♦ ♣.</td></tr>
+<tr><td>professor.html</td><td>Área do professor: login, pastas, editor, iniciar jogo, tela do projetor, pódio e histórico.</td></tr>
+<tr><td>css/exataquiz.css</td><td>Visual do ExataSite (cores, fontes, botões).</td></tr>
+<tr><td>js/config.js</td><td><b>O único arquivo que você edita</b>: dados do Firebase e seu e-mail.</td></tr>
+<tr><td>js/comum.js</td><td>Funções usadas pelas duas páginas (naipes, banco de dados, sons).</td></tr>
+<tr><td>js/professor.js</td><td>Funcionamento da área do professor.</td></tr>
+<tr><td>js/aluno.js</td><td>Funcionamento da página dos alunos.</td></tr>
+<tr><td>regras-firebase.json</td><td>Regras de segurança para colar no Firebase (passo 3).</td></tr>
+</table></div>
+
+<section class="passo"><span class="num">?</span><h2>Se algo não funcionar</h2>
+<ul>
+  <li><b>“O banco recusou a operação”</b>: confira se o e-mail nas regras (passo 3), no <code>config.js</code> e no usuário do Authentication é exatamente o mesmo.</li>
+  <li><b>Aluno vê “acesso de alunos não está ativado”</b>: falta ativar o login <b>Anônimo</b> (passo 4).</li>
+  <li><b>Login dá erro de domínio</b>: falta adicionar <code>exatasite.github.io</code> nos domínios autorizados (passo 4).</li>
+  <li><b>Mudou algo e não apareceu no site</b>: espere 2 minutos e recarregue com <kbd>Ctrl</kbd>+<kbd>F5</kbd>.</li>
+</ul></section>
+
+</main>
+</body>
+</html>
