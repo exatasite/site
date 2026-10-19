@@ -52,12 +52,35 @@ function traduzErro(e){
 $('#form-login').addEventListener('submit',e=>{
   e.preventDefault(); $('#lg-erro').textContent='';
   const em=$('#lg-email').value.trim(), se=$('#lg-senha').value;
-  if(DB.modo==='firebase'&&X.PROF_EMAIL&&em.toLowerCase()!==X.PROF_EMAIL){ $('#lg-erro').textContent='Este e-mail não é o do professor cadastrado.'; return; }
   Promise.resolve(DB.entrar(em,se)).catch(err=>{ $('#lg-erro').textContent=traduzErro(err); });
 });
 $('#lg-esqueci').addEventListener('click',()=>{
   const em=$('#lg-email').value.trim(); if(!em){ $('#lg-erro').textContent='Digite seu e-mail acima e clique de novo.'; return; }
   Promise.resolve(DB.redefinirSenha(em)).then(()=>toast('Enviamos um link para redefinir a senha no seu e-mail.')).catch(err=>{ $('#lg-erro').textContent=traduzErro(err); });
+});
+
+/* Cadastro individual de professores */
+$('#bt-mostrar-cadastro').addEventListener('click',()=>{
+  $('#form-login').hidden=true; $('#form-cadastro').hidden=false; $('#cad-erro').textContent='';
+});
+$('#bt-voltar-login').addEventListener('click',()=>{
+  $('#form-cadastro').hidden=true; $('#form-login').hidden=false; $('#lg-erro').textContent='';
+});
+$('#form-cadastro').addEventListener('submit',async e=>{
+  e.preventDefault(); $('#cad-erro').textContent='';
+  const nome=$('#cad-nome').value.trim(), email=$('#cad-email').value.trim(), senha=$('#cad-senha').value;
+  if(nome.length<2){ $('#cad-erro').textContent='Informe seu nome.'; return; }
+  if(senha.length<6){ $('#cad-erro').textContent='A senha deve ter pelo menos 6 caracteres.'; return; }
+  try { await DB.criarConta(email,senha,nome); }
+  catch(err){
+    const c=err&&err.code||'';
+    if(c==='auth/email-already-in-use') $('#cad-erro').textContent='Este e-mail já possui uma conta. Entre ou recupere sua senha.';
+    else if(c==='auth/weak-password') $('#cad-erro').textContent='Escolha uma senha com pelo menos 6 caracteres.';
+    else if(c==='auth/invalid-email') $('#cad-erro').textContent='Digite um e-mail válido.';
+    else if(c==='auth/operation-not-allowed') $('#cad-erro').textContent='Ative o método E-mail/senha no Firebase Authentication.';
+    else if(/network/.test(c)) $('#cad-erro').textContent='Sem conexão com a internet.';
+    else $('#cad-erro').textContent='Não foi possível criar a conta. ('+(c||'erro')+')';
+  }
 });
 if(DB.modo==='local'){ $('#lg-senha').placeholder='No modo de teste, qualquer senha serve'; $('#lg-email').value='professor@teste'; }
 $('#bt-sair-conta').addEventListener('click',()=>DB.sair());
@@ -67,7 +90,6 @@ DB.onAuth(u=>{
   if(H) return; /* não interrompe um jogo em andamento */
   pararOuvintes();
   if(!u||u.anon){ S.user=null; show('login'); return; }
-  if(DB.modo==='firebase'&&X.PROF_EMAIL&&String(u.email||'').toLowerCase()!==X.PROF_EMAIL){ $('#lg-erro').textContent='Este e-mail não é o do professor cadastrado.'; DB.sair(); return; }
   S.user=u; S.base='professores/'+u.uid; $('#quem').textContent=u.email||''; iniciarPainel();
 });
 
@@ -111,7 +133,7 @@ function renderLista(){
   const titulo=sel==='__todos'?'Todos os quizzes':sel==='__sem'?'Sem pasta':(S.pastas[sel]||{}).nome;
   if(!h.querySelector('#ren-inp')) h.innerHTML=esc(titulo)+(S.pastas[sel]?' <span class="pasta-ops"><button class="lnk" id="pasta-ren">Renomear</button><button class="lnk perigo" id="pasta-del">Excluir pasta</button></span>':'');
   const lista=Object.entries(S.quizzes).filter(([,q])=>naPasta(q,sel)).sort((a,b)=>(b[1].atualizado||0)-(a[1].atualizado||0));
-  if(!lista.length){ $('#lista').innerHTML=`<div class="vazio"><p><b>Nenhum quiz ${sel==='__todos'?'ainda':'nesta pasta'}.</b></p><p>Crie um novo quiz ou importe uma planilha no modelo do ExataQuiz.</p></div>`; return; }
+  if(!lista.length){ $('#lista').innerHTML=`<div class="vazio"><p><b>Nenhum quiz ${sel==='__todos'?'ainda':'nesta pasta'}.</b></p><p>Crie um novo quiz ou importe uma planilha no modelo do Kahoot.</p></div>`; return; }
   const opts=pasta=>'<option value="">Sem pasta</option>'+ordenarPastas().map(([pid,p])=>`<option value="${pid}"${pasta===pid?' selected':''}>${esc(p.nome)}</option>`).join('');
   $('#lista').innerHTML=lista.map(([id,q])=>{ const ps=X.toArr(q.perguntas).map(X.normQ), n=ps.length, inc=n-ps.filter(X.valida).length;
     return `<article class="qcard" data-id="${id}">
@@ -120,7 +142,7 @@ function renderLista(){
       <p class="meta">${n} pergunta${n!==1?'s':''}${inc?` · <span class="alerta">${inc} incompleta${inc!==1?'s':''}</span>`:''} · editado em ${X.fmtData(q.atualizado)}</p>
       <div class="qcard-acoes"><button class="btn btn-prim" data-act="jogar">▶ Iniciar jogo</button><button class="btn btn-ghost" data-act="editar">Editar</button></div>
       <label class="qcard-mover">Pasta: <select data-act="mover" aria-label="Mover para a pasta">${opts(q.pasta)}</select></label>
-      <div class="qcard-mais"><button class="lnk" data-act="dup">Duplicar</button><button class="lnk" data-act="xlsx">Exportar ExataQuiz</button><button class="lnk" data-act="json">Exportar JSON</button><button class="lnk perigo" data-act="del">Excluir</button></div>
+      <div class="qcard-mais"><button class="lnk" data-act="dup">Duplicar</button><button class="lnk" data-act="xlsx">Exportar Kahoot</button><button class="lnk" data-act="json">Exportar JSON</button><button class="lnk perigo" data-act="del">Excluir</button></div>
     </article>`; }).join('');
 }
 $('#titulo-pasta').addEventListener('click',e=>{
@@ -185,7 +207,7 @@ async function importarXlsx(file){
     const wb=XLSX.read(await file.arrayBuffer(),{type:'array'});
     const rows=XLSX.utils.sheet_to_json(wb.Sheets[wb.SheetNames[0]],{header:1,defval:''});
     const h=rows.findIndex(r=>r.some(c=>/^\s*(question|pergunta)/i.test(String(c))));
-    if(h<0){ toast('Não encontrei a coluna "Question" do modelo do ExataQuiz nesta planilha.'); return; }
+    if(h<0){ toast('Não encontrei a coluna "Question" do modelo do Kahoot nesta planilha.'); return; }
     const hdr=rows[h].map(c=>String(c).trim().toLowerCase()), col=re=>hdr.findIndex(c=>re.test(c));
     const cq=col(/^(question|pergunta)/), ct=col(/time|tempo/), cc=col(/correct|correta/);
     const ca=[1,2,3,4].map(n=>col(new RegExp('^(answer|resposta|alternativa)\\s*'+n)));
@@ -204,7 +226,7 @@ async function importarXlsx(file){
     const titulo=file.name.replace(/\.[^.]+$/,'').replace(/[_-]+/g,' ').trim()||'Quiz importado';
     await DB.set(`${S.base}/quizzes/${DB.chave()}`,{titulo,pasta:pastaAtual(),atualizado:Date.now(),perguntas:qs});
     toast(`Importado: ${qs.length} perguntas${rs?' com resoluções':''}.`);
-  }catch(err){ console.error(err); toast('Não consegui ler esta planilha. Confira se é um .xlsx no modelo do ExataQuiz.'); }
+  }catch(err){ console.error(err); toast('Não consegui ler esta planilha. Confira se é um .xlsx no modelo do Kahoot.'); }
 }
 const slug=s=>String(s||'quiz').normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/[^a-z0-9]+/gi,'_').replace(/^_|_$/g,'')||'quiz';
 function baixar(nome,blob){ const u=URL.createObjectURL(blob); const a=document.createElement('a'); a.href=u; a.download=nome; document.body.appendChild(a); a.click(); a.remove(); setTimeout(()=>URL.revokeObjectURL(u),3000); toast('Arquivo gerado: '+nome); }
@@ -213,7 +235,7 @@ function exportarJson(q){ baixar(slug(q.titulo)+'.json',new Blob([JSON.stringify
 function exportarKahoot(q){
   if(typeof XLSX==='undefined'){ toast('A geração de planilhas não carregou. Verifique a internet.'); return; }
   const ok=q.perguntas.filter(X.valida);
-  const aoa=[[],['',q.titulo],[],['','Gerado pelo Exata Quiz · modelo de importação do ExataQuiz'],[],[],[],
+  const aoa=[[],['',q.titulo],[],['','Gerado pelo Exata Quiz · modelo de importação do Kahoot'],[],[],[],
     ['','Question - max 120 characters','Answer 1 - max 75 characters','Answer 2 - max 75 characters','Answer 3 - max 75 characters','Answer 4 - max 75 characters','Time limit (sec) – 5, 10, 20, 30, 60, 90, 120, or 240 secs','Correct answer(s) - choose at least one']];
   ok.forEach((p,i)=>aoa.push([i+1,p.q,...p.a,p.t,p.c.filter(k=>p.a[k].trim()).map(k=>k+1).join(',')]));
   const wb=XLSX.utils.book_new(), ws=XLSX.utils.aoa_to_sheet(aoa); ws['!cols']=[{wch:4},{wch:60},{wch:30},{wch:30},{wch:30},{wch:30},{wch:14},{wch:14}];
@@ -406,7 +428,7 @@ async function encerrarPergunta(){
     <div class="dist">${it.alts.map((a,k)=>`<div class="col c${k} ${it.certas.includes(k)?'certa':'errada'}"><span class="rot">${X.naipe(k)} ${dist[k]}${it.certas.includes(k)?' ✓':''}</span><div class="bar" style="height:${Math.round(100*dist[k]/max)}%"></div></div>`).join('')}</div>
     <div class="alts revelado">${it.alts.map((a,k)=>`<div class="alt c${k} ${it.certas.includes(k)?'certa':'errada'}">${X.naipe(k)}<span>${esc(a.txt)}</span><em>${it.certas.includes(k)?'✓':'✗'}</em></div>`).join('')}</div>
     ${H.cfg.resol&&it.q.exp?`<div class="explica"><b>Resolução</b><p>${esc(it.q.exp)}</p></div>`:''}
-    <div class="linha-btn"><button class="btn btn-prim btn-gde" id="bt-avancar">Ver placar</button></div></div>`);
+    <div class="linha-btn"><button class="btn btn-prim btn-gde" id="bt-avancar">Placar</button></div></div>`);
 }
 async function placar(){
   H.fase='placar'; setHud(); try{ await DB.update(sala('atual'),{fase:'placar'}); }catch(e){}
