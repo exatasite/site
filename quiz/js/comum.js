@@ -92,6 +92,11 @@ function criarFirebase(cfg){
     uid: ()=>auth.currentUser&&auth.currentUser.uid,
     onAuth: cb=>auth.onAuthStateChanged(u=>cb(u?{uid:u.uid,email:u.email,anon:u.isAnonymous}:null)),
     entrar: (e,s)=>auth.signInWithEmailAndPassword(e,s),
+    criarConta: async (e,s,n)=>{
+      const cred=await auth.createUserWithEmailAndPassword(e,s);
+      if(cred.user && n) await cred.user.updateProfile({displayName:n});
+      return cred;
+    },
     sair: ()=>auth.signOut(),
     redefinirSenha: e=>auth.sendPasswordResetEmail(e),
     anonimo: async ()=>{
@@ -135,7 +140,8 @@ function criarLocal(){
     agora:()=>Date.now(),
     uid:()=>usuario&&usuario.uid,
     onAuth:cb=>{ cbs.push(cb); setTimeout(()=>cb(usuario),0); },
-    entrar:async e=>{ usuario={uid:'prof_local',email:e||'professor@teste',anon:false}; try{ localStorage.setItem('exq.localprof',usuario.email); }catch(_){} emitir(); },
+    entrar:async (e)=>{ usuario={uid:'prof_local',email:e||'professor@teste',anon:false}; try{ localStorage.setItem('exq.localprof',usuario.email); }catch(_){} emitir(); },
+    criarConta:async (e,s,n)=>{ usuario={uid:'prof_local',email:e,displayName:n,anon:false}; try{ localStorage.setItem('exq.localprof',usuario.email); }catch(_){} emitir(); },
     sair:async()=>{ usuario=null; try{ localStorage.removeItem('exq.localprof'); }catch(_){} emitir(); },
     redefinirSenha:async()=>{},
     anonimo:async()=>({uid:uidAba()}),
@@ -156,7 +162,7 @@ if(temFb && !window.firebase){
 }else{
   X.DB=temFb?criarFirebase(cfg):criarLocal();
 }
-X.PROF_EMAIL=String(window.EXATA_PROFESSOR_EMAIL||'').trim().toLowerCase();
+X.PROF_EMAIL='';
 
 /* Endereço da página dos alunos (mesma pasta) */
 X.urlAluno = () => { const u=new URL('index.html',location.href); return u.href; };
