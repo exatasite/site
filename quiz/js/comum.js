@@ -84,6 +84,11 @@ function limpo(v){ return v===undefined ? null : JSON.parse(JSON.stringify(v)); 
 function criarFirebase(cfg){
   firebase.initializeApp(cfg);
   const db=firebase.database(), auth=firebase.auth();
+  /* Mantém a sessão anônima do aluno entre saídas, recargas e reaberturas do navegador.
+     Sem persistência local explícita, alguns contextos podem criar outro UID e duplicar o aluno. */
+  const persistenciaAuth = auth.setPersistence(firebase.auth.Auth.Persistence.LOCAL).catch(err=>{
+    console.warn('Não foi possível definir persistência LOCAL do Firebase Auth:', err);
+  });
   let off=0; db.ref('.info/serverTimeOffset').on('value',s=>{off=s.val()||0;});
   return {
     modo:'firebase',
@@ -100,8 +105,14 @@ function criarFirebase(cfg){
     sair: ()=>auth.signOut(),
     redefinirSenha: e=>auth.sendPasswordResetEmail(e),
     anonimo: async ()=>{
-      /* espera o Firebase recuperar a sessão anterior (para o aluno não "virar outra pessoa" ao recarregar) */
-      const u=await new Promise(res=>{ const un=auth.onAuthStateChanged(x=>{ un(); res(x); }); });
+      /* Primeiro garante persistência local; depois espera a restauração da sessão anterior.
+         Assim, voltar ao jogo no mesmo navegador reutiliza o UID e a inscrição original. */
+      await persistenciaAuth;
+      if(auth.currentUser) return {uid:auth.currentUser.uid};
+      const u=await new Promise(res=>{
+        let un=null;
+        un=auth.onAuthStateChanged(x=>{ if(un) un(); res(x); });
+      });
       if(u) return {uid:u.uid};
       const c=await auth.signInAnonymously(); return {uid:c.user.uid}; },
     get: async p=>(await db.ref(p).get()).val(),
