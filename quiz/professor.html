@@ -29,12 +29,23 @@
   <div class="gut">
     <form class="login-box" id="form-login">
       <h2>Entrar</h2>
-      <p class="meta">Acesso restrito ao professor. Os alunos entram pela página do jogo, com o PIN.</p>
+      <p class="meta">Entre com sua conta ou crie uma conta de professor. Os alunos entram pelo PIN, sem cadastro.</p>
       <label class="campo" for="lg-email">E-mail<input id="lg-email" type="email" autocomplete="username" required></label>
-      <label class="campo" for="lg-senha">Senha<input id="lg-senha" type="password" autocomplete="current-password"></label>
+      <label class="campo" for="lg-senha">Senha<input id="lg-senha" type="password" autocomplete="current-password" required></label>
       <p class="erro-msg" id="lg-erro"></p>
       <button class="btn btn-prim btn-gde" type="submit">Entrar</button>
       <button class="lnk" type="button" id="lg-esqueci">Esqueci minha senha</button>
+      <button class="btn btn-sec btn-gde" type="button" id="bt-mostrar-cadastro">Criar conta de professor</button>
+    </form>
+    <form class="login-box" id="form-cadastro" hidden>
+      <h2>Criar conta</h2>
+      <p class="meta">Use seu nome, e-mail e uma senha com pelo menos 6 caracteres.</p>
+      <label class="campo" for="cad-nome">Nome<input id="cad-nome" type="text" autocomplete="name" maxlength="80" required></label>
+      <label class="campo" for="cad-email">E-mail<input id="cad-email" type="email" autocomplete="email" required></label>
+      <label class="campo" for="cad-senha">Senha<input id="cad-senha" type="password" autocomplete="new-password" minlength="6" required></label>
+      <p class="erro-msg" id="cad-erro"></p>
+      <button class="btn btn-prim btn-gde" type="submit">Criar conta</button>
+      <button class="lnk" type="button" id="bt-voltar-login">Já tenho conta · Voltar ao login</button>
     </form>
   </div>
 </div>
@@ -46,6 +57,7 @@
     <p>Área do professor · ExataSite</p></div>
     <div class="topo-acoes"><span class="quem" id="quem"></span><a class="btn btn-ghost-esc" href="index.html" target="_blank" rel="noopener">Página dos alunos</a><button class="btn btn-ghost-esc" id="bt-sair-conta">Sair</button></div>
   </div></header>
+  <div id="aviso-admin" class="aviso-admin gut" hidden>Você está usando a conta administradora. Em “Meus quizzes”, você pode publicar quizzes na biblioteca compartilhada.</div>
   <div class="painel gut">
     <aside class="pastas" aria-label="Pastas">
       <h3>Pastas</h3>
@@ -58,14 +70,20 @@
     </aside>
     <main class="conteudo">
       <div class="abas" role="tablist">
-        <button class="aba ativa" data-aba="quizzes" role="tab">Quizzes</button>
+        <button class="aba ativa" data-aba="biblioteca" role="tab">Biblioteca compartilhada</button>
+        <button class="aba" data-aba="quizzes" role="tab">Meus quizzes</button>
         <button class="aba" data-aba="resultados" role="tab">Resultados das partidas</button>
       </div>
-      <section id="sec-quizzes">
+      <section id="sec-biblioteca">
+        <div class="barra-acoes"><h2>Biblioteca de quizzes</h2></div>
+        <p class="aviso-biblioteca">Quizzes publicados pelo administrador. Você pode aplicá-los diretamente ou copiar para seus quizzes para fazer alterações.</p>
+        <div class="lista" id="lista-biblioteca"></div>
+      </section>
+      <section id="sec-quizzes" hidden>
         <div class="barra-acoes">
           <h2 id="titulo-pasta">Todos os quizzes</h2>
           <button class="btn btn-prim" id="bt-novo">+ Novo quiz</button>
-          <button class="btn btn-sec" id="bt-imp-xlsx">Importar planilha com o Quiz</button>
+          <button class="btn btn-sec" id="bt-imp-xlsx">Importar planilha do Quiz</button>
           <button class="btn btn-ghost" id="bt-imp-json">Importar JSON</button>
         </div>
         <div class="lista" id="lista"></div>
@@ -87,7 +105,7 @@
       <input id="ed-titulo" class="ed-titulo" maxlength="80" placeholder="Título do quiz">
       <span id="ed-status" class="ed-status">Salvo</span>
       <div class="ed-topo-acoes">
-        <button class="btn btn-ghost-esc" id="ed-xlsx">Exportar</button>
+        <button class="btn btn-ghost-esc" id="ed-xlsx">Exportar Quiz</button>
         <button class="btn btn-prim" id="ed-jogar">▶ Iniciar jogo</button>
       </div>
     </div>

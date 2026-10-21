@@ -84,6 +84,11 @@ function limpo(v){ return v===undefined ? null : JSON.parse(JSON.stringify(v)); 
 function criarFirebase(cfg){
   firebase.initializeApp(cfg);
   const db=firebase.database(), auth=firebase.auth();
+  /* Mantém a sessão anônima do aluno entre saídas, recargas e reaberturas do navegador.
+     Sem persistência local explícita, alguns contextos podem criar outro UID e duplicar o aluno. */
+  const persistenciaAuth = auth.setPersistence(firebase.auth.Auth.Persistence.LOCAL).catch(err=>{
+    console.warn('Não foi possível definir persistência LOCAL do Firebase Auth:', err);
+  });
   let off=0; db.ref('.info/serverTimeOffset').on('value',s=>{off=s.val()||0;});
   return {
     modo:'firebase',
@@ -92,11 +97,22 @@ function criarFirebase(cfg){
     uid: ()=>auth.currentUser&&auth.currentUser.uid,
     onAuth: cb=>auth.onAuthStateChanged(u=>cb(u?{uid:u.uid,email:u.email,anon:u.isAnonymous}:null)),
     entrar: (e,s)=>auth.signInWithEmailAndPassword(e,s),
+    criarConta: async (e,s,n)=>{
+      const cred=await auth.createUserWithEmailAndPassword(e,s);
+      if(cred.user && n) await cred.user.updateProfile({displayName:n});
+      return cred;
+    },
     sair: ()=>auth.signOut(),
     redefinirSenha: e=>auth.sendPasswordResetEmail(e),
     anonimo: async ()=>{
-      /* espera o Firebase recuperar a sessão anterior (para o aluno não "virar outra pessoa" ao recarregar) */
-      const u=await new Promise(res=>{ const un=auth.onAuthStateChanged(x=>{ un(); res(x); }); });
+      /* Primeiro garante persistência local; depois espera a restauração da sessão anterior.
+         Assim, voltar ao jogo no mesmo navegador reutiliza o UID e a inscrição original. */
+      await persistenciaAuth;
+      if(auth.currentUser) return {uid:auth.currentUser.uid};
+      const u=await new Promise(res=>{
+        let un=null;
+        un=auth.onAuthStateChanged(x=>{ if(un) un(); res(x); });
+      });
       if(u) return {uid:u.uid};
       const c=await auth.signInAnonymously(); return {uid:c.user.uid}; },
     get: async p=>(await db.ref(p).get()).val(),
@@ -135,7 +151,8 @@ function criarLocal(){
     agora:()=>Date.now(),
     uid:()=>usuario&&usuario.uid,
     onAuth:cb=>{ cbs.push(cb); setTimeout(()=>cb(usuario),0); },
-    entrar:async e=>{ usuario={uid:'prof_local',email:e||'professor@teste',anon:false}; try{ localStorage.setItem('exq.localprof',usuario.email); }catch(_){} emitir(); },
+    entrar:async (e)=>{ usuario={uid:'prof_local',email:e||'professor@teste',anon:false}; try{ localStorage.setItem('exq.localprof',usuario.email); }catch(_){} emitir(); },
+    criarConta:async (e,s,n)=>{ usuario={uid:'prof_local',email:e,displayName:n,anon:false}; try{ localStorage.setItem('exq.localprof',usuario.email); }catch(_){} emitir(); },
     sair:async()=>{ usuario=null; try{ localStorage.removeItem('exq.localprof'); }catch(_){} emitir(); },
     redefinirSenha:async()=>{},
     anonimo:async()=>({uid:uidAba()}),
@@ -156,7 +173,7 @@ if(temFb && !window.firebase){
 }else{
   X.DB=temFb?criarFirebase(cfg):criarLocal();
 }
-X.PROF_EMAIL=String(window.EXATA_PROFESSOR_EMAIL||'').trim().toLowerCase();
+X.PROF_EMAIL='';
 
 /* Endereço da página dos alunos (mesma pasta) */
 X.urlAluno = () => { const u=new URL('index.html',location.href); return u.href; };

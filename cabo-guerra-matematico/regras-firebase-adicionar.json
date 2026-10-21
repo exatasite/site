@@ -1,0 +1,22 @@
+{
+  "cabos": {
+    "$pin": {
+      ".read": "auth != null",
+      ".write": "auth != null && (auth.uid === data.child('dono').val() || (!data.exists() && auth.uid === newData.child('dono').val()))",
+      "jogadores": {
+        "$uid": {
+          ".write": "auth != null && auth.uid === $uid && root.child('cabos').child($pin).child('estado').val() !== 'fim' && (!data.exists() || !root.child('cabos').child($pin).child('estado').exists() || root.child('cabos').child($pin).child('estado').val() === 'lobby')",
+          ".validate": "newData.child('nome').isString() && newData.child('nome').val().length >= 2 && newData.child('nome').val().length <= 20"
+        }
+      },
+      "respostas": {
+        "$indice": {
+          "$uid": {
+            ".write": "auth != null && auth.uid === $uid && !data.exists() && root.child('cabos').child($pin).child('jogadores').child($uid).exists() && root.child('cabos').child($pin).child('estado').val() === 'pergunta' && root.child('cabos').child($pin).child('indice').val() === $indice",
+            ".validate": "newData.child('opcao').isNumber() && newData.child('opcao').val() >= 0 && newData.child('opcao').val() <= 3"
+          }
+        }
+      }
+    }
+  }
+}

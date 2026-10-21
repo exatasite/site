@@ -324,3 +324,12 @@ table.rk tr:nth-child(even) td{background:var(--realce)}
   .dist{height:130px}
 }
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.degrau{opacity:1;transform:none}}
+
+
+/* Biblioteca compartilhada */
+#v-painel.modo-biblioteca .painel{grid-template-columns:minmax(0,1fr)}
+#v-painel.modo-biblioteca .pastas{display:none}
+#v-painel.modo-resultados .painel{grid-template-columns:250px minmax(0,1fr)}
+.aviso-biblioteca{margin:-8px 0 18px;color:var(--suave);max-width:850px}
+.aviso-admin{padding:12px 18px;margin:10px auto 0;border:1px solid var(--laranja);border-radius:8px;background:#fff8eb;color:var(--marinho);font-weight:500}
+@media(max-width:760px){#v-painel.modo-resultados .painel{grid-template-columns:1fr}}
