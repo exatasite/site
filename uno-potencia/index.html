@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#12345a"><title>UNO de Potência · ExataSite</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="uno.css">
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
+<!-- Reutiliza a configuração do ExataQuiz; não duplique suas chaves. -->
+<script src="../quiz/js/config.js"></script>
+</head>
+<body>
+<header><a href="../index.html" class="back">← ExataSite</a><div class="brand">UNO <b>DE POTÊNCIA</b></div><div class="tag">MATEMÁTICA EM JOGO</div></header>
+<main>
+<section id="setup" class="panel">
+  <p class="eyebrow">JOGO ONLINE · 2 A 6 JOGADORES</p><h1>Prepare a partida</h1>
+  <p>Entre em uma sala existente ou crie uma nova. Cada jogador usa seu próprio celular ou computador.</p>
+  <label>Seu nome<input id="playerName" maxlength="18" placeholder="Ex.: Ana" autocomplete="nickname"></label>
+  <div class="setup-grid">
+    <button id="createBtn" class="primary">Criar sala</button>
+    <div class="join-box"><label for="roomCode">PIN da sala</label><input id="roomCode" maxlength="5" inputmode="numeric" placeholder="12345"><button id="joinBtn">Entrar na sala</button></div>
+  </div>
+  <p id="setupMsg" class="message" role="status"></p>
+  <p class="small">O jogo online exige o Firebase do ExataQuiz e a regra de banco indicada no arquivo LEIA-ME.txt deste pacote.</p>
+</section>
+<section id="lobby" class="panel" hidden>
+  <div class="room-heading"><div><p class="eyebrow">SALA DE JOGO</p><h1>PIN <span id="pinDisplay"></span></h1></div><button id="copyLink" class="quiet">Copiar convite</button></div>
+  <p>Compartilhe o PIN com os demais jogadores. São necessários de 2 a 6 participantes.</p>
+  <div id="playersList" class="players"></div>
+  <p id="lobbyMsg" class="message" role="status"></p>
+  <div class="actions"><button id="startBtn" class="primary">Iniciar partida</button><button id="leaveBtn" class="quiet">Sair da sala</button></div>
+</section>
+<section id="game" hidden>
+  <div class="game-top panel"><div><p class="eyebrow">SALA <span id="gamePin"></span></p><h2 id="turnTitle">Aguardando...</h2></div><div class="turn-badge" id="turnBadge"></div></div>
+  <div class="table-area">
+    <div class="opponents" id="opponents"></div>
+    <div class="center-table">
+      <div class="draw-pile"><button id="drawBtn" aria-label="Comprar carta"><span>+</span><small>COMPRAR</small></button><span id="deckCount"></span></div>
+      <div id="topCard" class="card big-card"></div>
+      <button id="unoBtn" class="uno-button">UNO!</button>
+    </div>
+    <p id="gameMsg" class="message" role="status"></p>
+  </div>
+  <section id="hand-panel" class="hand-panel panel"><div class="hand-heading"><h2>Sua mão</h2><span id="handCount"></span></div><div id="hand" class="hand"></div></section>
+  <details class="rules panel"><summary>Regras rápidas</summary><ul><li>Jogue uma carta da mesma cor ou com o mesmo resultado matemático da carta do topo.</li><li>Se não puder jogar, compre uma carta. Se ela servir, pode baixá-la imediatamente.</li><li>Ao baixar uma carta, explique o cálculo. Errou? Recolha a carta e compre mais uma.</li><li>Com uma carta na mão, pressione UNO! Se esquecer e alguém apontar antes da próxima jogada, compre duas cartas.</li><li>Vence quem descartar todas as cartas com cálculo correto.</li></ul></details>
+</section>
+</main>
+<footer>ExataSite · UNO de Potência</footer>
+<script src="uno.js"></script>
+</body></html>
