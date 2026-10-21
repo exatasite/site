@@ -97,6 +97,9 @@
   timerHandle=setTimeout(async()=>{if(scoring)return;scoring=true;const snap=await roomRef.once('value'),r=snap.val();if(r&&r.estado==='pergunta'&&r.indice===i)await scoreRound(r,i);},Number($('seconds').value)*1000);
  }
  async function scoreRound(r,i){
+  if(!r || r.estado!=='pergunta' || r.indice!==i) return;
+  scoring=true;
+  if(timerHandle){clearTimeout(timerHandle);timerHandle=null;}
   const players=r.jogadores||{},answers=(r.respostas&&r.respostas[i])||{},teams={azul:{n:0,correct:0},vermelha:{n:0,correct:0}};
   Object.values(players).forEach(p=>{if(teams[p.equipe])teams[p.equipe].n++;});
   Object.entries(answers).forEach(([id,a])=>{if(teams[a.equipe]&&Number(a.opcao)===Number(r.perguntas[i].correta))teams[a.equipe].correct++;});
@@ -110,5 +113,21 @@
  }
  $('end-game').onclick=finishGame;
  async function finishGame(){if(!roomRef)return;if(timerHandle)clearTimeout(timerHandle);await roomRef.update({estado:'fim',encerrado:firebase.database.ServerValue.TIMESTAMP});$('next-question').disabled=true;$('start-game').disabled=true;$('end-game').disabled=true;show('control-msg','Partida encerrada.');}
- function updateHost(r){if(!r)return;const players=Object.values(r.jogadores||{}),blue=players.filter(p=>p.equipe==='azul').length,red=players.filter(p=>p.equipe==='vermelha').length;$('control-msg').textContent='Participantes: '+players.length+' · Azul: '+blue+' · Vermelha: '+red+'. Estado: '+r.estado+'.';$('results').innerHTML=r.ultimaRodada?'<p><b>Última rodada:</b> Azul '+r.ultimaRodada.azul.correct+'/'+r.ultimaRodada.azul.n+' · Vermelha '+r.ultimaRodada.vermelha.correct+'/'+r.ultimaRodada.vermelha.n+'</p>':'';}
+ function updateHost(r){
+  if(!r)return;
+  const entries=Object.entries(r.jogadores||{}),players=entries.map(([,p])=>p),blue=players.filter(p=>p.equipe==='azul').length,red=players.filter(p=>p.equipe==='vermelha').length;
+  $('control-msg').textContent='Participantes: '+players.length+' · Azul: '+blue+' · Vermelha: '+red+'. Estado: '+r.estado+'.';
+  $('results').innerHTML=r.ultimaRodada?'<p><b>Última rodada:</b> Azul '+r.ultimaRodada.azul.correct+'/'+r.ultimaRodada.azul.n+' · Vermelha '+r.ultimaRodada.vermelha.correct+'/'+r.ultimaRodada.vermelha.n+'</p>':'';
+  // Quando todos os participantes que escolheram equipe respondem, calcula a rodada imediatamente.
+  // Se alguém não responder, o cronômetro continua sendo o limite da rodada.
+  if(r.estado==='pergunta' && Number.isInteger(r.indice) && !scoring){
+   const active=entries.filter(([,p])=>p.equipe==='azul'||p.equipe==='vermelha');
+   const answers=(r.respostas&&r.respostas[r.indice])||{};
+   if(active.length>0 && active.every(([uid])=>Object.prototype.hasOwnProperty.call(answers,uid))){
+    scoring=true;
+    if(timerHandle){clearTimeout(timerHandle);timerHandle=null;}
+    scoreRound(r,r.indice).catch(err=>{console.error(err);scoring=false;show('control-msg','Erro ao calcular a rodada. Confira as regras do Firebase.',true);});
+   }
+  }
+ }
 })();
