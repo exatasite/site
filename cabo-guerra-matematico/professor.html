@@ -5,6 +5,13 @@
 <title>Cabo de Guerra Matemático · Professor</title><link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/jogo.css">
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script><script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script><script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script><script src="js/config.js"></script><script src="js/comum.js"></script>
+<style>
+.qr-access{display:flex;align-items:center;gap:16px;margin-top:16px;padding:14px;background:#f1f7fb;border-radius:12px;flex-wrap:wrap}
+#join-qr{width:150px;height:150px;min-width:150px;background:#fff;padding:8px;border-radius:8px;display:flex;align-items:center;justify-content:center}
+#join-qr img,#join-qr canvas{max-width:150px;max-height:150px}
+.qr-access p{margin:6px 0;font-size:.92rem}
+.qr-access a{font-weight:800;overflow-wrap:anywhere}
+</style>
 </head><body>
 <header class="topbar"><a class="brand" href="professor.html">EXATA<span>PLAY</span></a><span>PAINEL DO PROFESSOR</span></header>
 <main class="teacher-wrap">
@@ -18,7 +25,7 @@
 <label>Tempo por pergunta<select id="seconds"><option value="15">15 segundos</option><option value="20" selected>20 segundos</option><option value="30">30 segundos</option><option value="45">45 segundos</option><option value="60">60 segundos</option></select></label>
 <label>Critério de força<select id="force-mode"><option value="percentual">Percentual de acertos (equilibra equipes)</option><option value="acertos">Número de acertos</option></select></label>
 <button class="btn primary wide" id="create-room">Criar partida</button><p id="room-msg" class="message"></p>
-<div id="room-info" hidden class="room-info"><span>PIN DA PARTIDA</span><strong id="room-pin"></strong><div class="button-row"><button id="copy-pin" class="btn secondary">Copiar PIN</button><a id="open-screen" class="btn secondary" target="_blank" rel="noopener">Abrir tela projetada</a></div><p>Os alunos entram em <b>index.html</b> e informam este PIN.</p></div>
+<div id="room-info" hidden class="room-info"><span>PIN DA PARTIDA</span><strong id="room-pin"></strong><div class="button-row"><button id="copy-pin" class="btn secondary">Copiar PIN</button><a id="open-screen" class="btn secondary" target="_blank" rel="noopener">Abrir tela projetada</a></div><div class="qr-access"><div id="join-qr" aria-label="QR Code para entrada dos alunos"></div><div><b>Entre pelo QR Code</b><p>Os alunos podem apontar a câmera do celular para abrir a página de entrada com o PIN preenchido automaticamente.</p><a id="join-link" target="_blank" rel="noopener">Abrir página de entrada</a></div></div></div>
 </section>
 <section class="panel"><h2>2. Escolher quiz do Exata Quiz</h2>
 <p class="muted">Selecione um quiz dos seus quizzes particulares ou da biblioteca compartilhada. O original não será alterado.</p>
@@ -29,4 +36,4 @@
 <div id="question-list" class="question-list"></div>
 </section></div>
 <section class="panel controls"><h2>3. Controlar a partida</h2><p class="muted">Confira os participantes na tela projetada. Os alunos precisam escolher uma equipe antes de começar.</p><div class="button-row"><button id="start-game" class="btn primary" disabled>Iniciar partida</button><button id="next-question" class="btn secondary" disabled>Próxima pergunta</button><button id="end-game" class="btn danger" disabled>Encerrar partida</button></div><p id="control-msg" class="message"></p><div id="results"></div></section>
-</section></main><script src="js/professor.js"></script></body></html>
+</section></main><script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script><script src="js/professor.js"></script></body></html>
