@@ -1,7 +1,7 @@
 (function(){
  'use strict';
  const $=id=>document.getElementById(id);
- let user=null,questions=[],pin=null,roomRef=null,selectedQuiz=null,quizCatalog=[],timerHandle=null,advanceHandle=null,scoredIndex=null;
+ let user=null,questions=[],pin=null,roomRef=null,selectedQuiz=null,quizCatalog=[],timerHandle=null;
  const esc=window.escapeHtml;
  const db=window.db,auth=window.auth;
  const show=(id,msg,error=false)=>window.showMessage($(id),msg,error);
@@ -13,7 +13,7 @@
  });
  auth.onAuthStateChanged(async u=>{
   if(u&&!u.isAnonymous){user=u;$('login-panel').hidden=true;$('dashboard').hidden=false;await loadQuizCatalog();}
-  else{user=null;$('login-panel').hidden=false;$('dashboard').hidden=true;}
+  else{user=null;$('login-panel').hidden=false;$('dashboard').hidden=true;if(pin)show('login-msg','Sua sessão de professor saiu. Entre de novo para continuar controlando a partida '+pin+'.',true);}
  });
  $('logout').onclick=()=>auth.signOut();
 
@@ -75,7 +75,7 @@
    for(let i=0;i<12;i++){const candidate=newPin(),snap=await db.ref('cabos/'+candidate).once('value');if(!snap.exists()){pin=candidate;found=true;break;}}
    if(!found)throw new Error('Não foi possível gerar um PIN livre.');
    roomRef=db.ref('cabos/'+pin);
-   await roomRef.set({dono:user.uid,titulo:$('game-title').value.trim()||selectedQuiz.titulo,origemQuiz:{id:selectedQuiz.id,titulo:selectedQuiz.titulo,tipo:selectedQuiz.origem},estado:'lobby',criado:firebase.database.ServerValue.TIMESTAMP,segundos:Number($('seconds').value),modoForca:$('force-mode').value,indice:-1,perguntas:questions,forca:0,pontos:{azul:0,vermelha:0}});
+   await roomRef.set({dono:user.uid,titulo:$('game-title').value.trim()||selectedQuiz.titulo,origemQuiz:{id:selectedQuiz.id,titulo:selectedQuiz.titulo,tipo:selectedQuiz.origem},estado:'lobby',criado:firebase.database.ServerValue.TIMESTAMP,segundos:Number($('seconds').value),autoAvanco:Number($('auto-next').value),modoForca:$('force-mode').value,indice:-1,perguntas:questions,forca:0,pontos:{azul:0,vermelha:0}});
    $('room-pin').textContent=pin;$('room-info').hidden=false;$('open-screen').href='tela.html?pin='+pin;
    const joinUrl=new URL('index.html?pin='+encodeURIComponent(pin),window.location.href).href;
    $('join-link').href=joinUrl;$('join-link').textContent=joinUrl;
@@ -84,66 +84,36 @@
    else $('join-qr').textContent='QR Code indisponível; use o link ao lado.';
    $('create-room').disabled=true;$('start-game').disabled=false;$('end-game').disabled=false;
    show('room-msg','Sala criada. Compartilhe o PIN com os alunos.');show('control-msg','Sala aberta. Aguardando participantes.');
-   roomRef.on('value',snap=>updateHost(snap.val()));
+   motor=window.CaboMotor(roomRef);roomRef.on('value',snap=>updateHost(snap.val()));
   }catch(e){console.error(e);show('room-msg','Falha ao criar sala. Confira as regras do Firebase.',true);pin=null;roomRef=null;renderQuestions();}
  };
  $('copy-pin').onclick=async()=>{try{await navigator.clipboard.writeText(pin);show('room-msg','PIN copiado.');}catch(e){show('room-msg','PIN: '+pin);}};
- $('start-game').onclick=async()=>{if(!roomRef||!questions.length)return;$('start-game').disabled=true;await launchQuestion(0);};
- // Botão do professor: durante a pergunta encerra a rodada na hora; no resultado passa para a próxima.
- $('next-question').onclick=async()=>{
-  if(!roomRef)return;
-  const r=(await roomRef.once('value')).val();if(!r)return;
-  if(r.estado==='pergunta')await scoreRound(r,r.indice);
-  else if(r.estado==='resultado')await goNext();
+ let motor=null;
+ $('start-game').onclick=async()=>{
+  if(!roomRef||!questions.length)return;$('start-game').disabled=true;
+  try{await roomRef.update({indice:0,indiceTexto:'0',estado:'pergunta',atual:questions[0],perguntaInicio:Date.now(),respostas:null,proximaEm:null,autoAvanco:Number($('auto-next').value)});}
+  catch(e){console.error(e);$('start-game').disabled=false;show('control-msg','Não foi possível iniciar: '+(e.message||e)+'. Entre de novo com sua conta de professor.',true);}
  };
- function autoDelay(){const v=Number(($('auto-next')||{}).value);return Number.isFinite(v)?v:5;}
- function clearTimers(){if(timerHandle){clearTimeout(timerHandle);timerHandle=null;}if(advanceHandle){clearTimeout(advanceHandle);advanceHandle=null;}}
- async function goNext(){
-  clearTimers();
-  const r=(await roomRef.once('value')).val();if(!r||r.estado==='fim')return;
-  const total=(r.perguntas&&r.perguntas.length)||questions.length;
-  if(r.indice+1<total)await launchQuestion(r.indice+1);else await finishGame();
- }
- async function launchQuestion(i){
-  clearTimers();scoredIndex=null;
-  const q=questions[i];
-  await roomRef.update({indice:i,indiceTexto:String(i),estado:'pergunta',atual:q,perguntaInicio:Date.now(),respostas:null,proximaEm:null});
-  $('next-question').disabled=false;$('next-question').textContent='Encerrar esta rodada agora';
-  show('control-msg','Pergunta '+(i+1)+' de '+questions.length+' iniciada.');
-  timerHandle=setTimeout(async()=>{const r=(await roomRef.once('value')).val();await scoreRound(r,i);},Number($('seconds').value)*1000+500);
- }
- async function scoreRound(r,i){
-  if(!r||r.estado!=='pergunta'||r.indice!==i||scoredIndex===i)return;
-  scoredIndex=i;clearTimers();
-  try{
-   const players=r.jogadores||{},answers=(r.respostas&&r.respostas[i])||{},teams={azul:{n:0,correct:0},vermelha:{n:0,correct:0}};
-   Object.values(players).forEach(p=>{if(p&&teams[p.equipe])teams[p.equipe].n++;});
-   Object.values(answers).forEach(a=>{if(a&&teams[a.equipe]&&Number(a.opcao)===Number(r.perguntas[i].correta))teams[a.equipe].correct++;});
-   const mode=r.modoForca||'percentual';let delta=0;
-   if(mode==='acertos')delta=teams.azul.correct-teams.vermelha.correct;
-   else{const pa=teams.azul.n?teams.azul.correct/teams.azul.n:0,pv=teams.vermelha.n?teams.vermelha.correct/teams.vermelha.n:0;delta=Math.round((pa-pv)*3);}
-   const old=Number(r.forca)||0,force=Math.max(-10,Math.min(10,old+delta));
-   const prev=r.pontos||{},pontos={azul:(Number(prev.azul)||0)+teams.azul.correct,vermelha:(Number(prev.vermelha)||0)+teams.vermelha.correct};
-   const ultima=i+1>=((r.perguntas&&r.perguntas.length)||questions.length);
-   const delay=autoDelay();
-   await roomRef.update({estado:'resultado',forca:force,pontos,ultimaRodada:{indice:i,azul:teams.azul,vermelha:teams.vermelha,delta},proximaEm:delay>0?Date.now()+delay*1000:null});
-   $('next-question').disabled=false;$('next-question').textContent=ultima?'Encerrar / ver resultado':'Próxima pergunta';
-   show('control-msg','Rodada '+(i+1)+': azul '+teams.azul.correct+' acertos; vermelha '+teams.vermelha.correct+' acertos.'+(delay>0?' Avançando em '+delay+' s...':''));
-   if(delay>0)advanceHandle=setTimeout(()=>goNext().catch(console.error),delay*1000);
-  }catch(err){console.error(err);scoredIndex=null;show('control-msg','Erro ao calcular a rodada: '+(err.message||err),true);}
- }
- $('end-game').onclick=finishGame;
- async function finishGame(){if(!roomRef)return;clearTimers();await roomRef.update({estado:'fim',proximaEm:null,encerrado:firebase.database.ServerValue.TIMESTAMP});$('next-question').disabled=true;$('start-game').disabled=true;$('end-game').disabled=true;show('control-msg','Partida encerrada.');}
+ $('auto-next').onchange=()=>{if(roomRef)roomRef.update({autoAvanco:Number($('auto-next').value)}).catch(console.error);};
+ // Durante a pergunta: encerra a rodada na hora. No resultado: vai para a próxima pergunta.
+ $('next-question').onclick=async()=>{
+  if(!roomRef||!motor)return;
+  try{const r=(await roomRef.once('value')).val();if(!r)return;
+   if(r.estado==='pergunta')await motor.fecharRodada(r.indice);else if(r.estado==='resultado')await motor.avancar(r.indice);}
+  catch(e){console.error(e);show('control-msg','Erro: '+(e.message||e)+'. Confira se você ainda está logado como professor.',true);}
+ };
+ $('end-game').onclick=async()=>{if(!roomRef)return;try{await roomRef.update({estado:'fim',proximaEm:null,encerrado:firebase.database.ServerValue.TIMESTAMP});}catch(e){console.error(e);show('control-msg','Erro ao encerrar: '+(e.message||e),true);}};
  function updateHost(r){
   if(!r)return;
+  if(motor)motor.agendar(r);
   const entries=Object.entries(r.jogadores||{}).filter(([,p])=>p),players=entries.map(([,p])=>p),blue=players.filter(p=>p.equipe==='azul').length,red=players.filter(p=>p.equipe==='vermelha').length;
   const answers=(r.estado==='pergunta'&&r.respostas&&r.respostas[r.indice])||{};
-  const nAns=Object.keys(answers).length;
-  $('results').innerHTML='<p>Participantes: <b>'+players.length+'</b> · Azul: <b>'+blue+'</b> · Vermelha: <b>'+red+'</b>'+(r.estado==='pergunta'?' · Responderam: <b>'+nAns+'</b>':'')+'</p>'+(r.ultimaRodada?'<p><b>Última rodada:</b> Azul '+r.ultimaRodada.azul.correct+'/'+r.ultimaRodada.azul.n+' · Vermelha '+r.ultimaRodada.vermelha.correct+'/'+r.ultimaRodada.vermelha.n+'</p>':'');
-  // Todos que escolheram equipe responderam? Fecha a rodada na hora (sem esperar o cronômetro).
-  if(r.estado==='pergunta'&&Number.isInteger(r.indice)&&scoredIndex!==r.indice){
-   const active=entries.filter(([,p])=>p.equipe==='azul'||p.equipe==='vermelha');
-   if(active.length>0&&active.every(([uid])=>Object.prototype.hasOwnProperty.call(answers,uid)))scoreRound(r,r.indice);
-  }
+  const total=(r.perguntas&&r.perguntas.length)||questions.length;
+  $('results').innerHTML='<p>Participantes: <b>'+players.length+'</b> · Azul: <b>'+blue+'</b> · Vermelha: <b>'+red+'</b>'+(r.estado==='pergunta'?' · Responderam: <b>'+Object.keys(answers).length+'</b>':'')+'</p>'+(r.ultimaRodada?'<p><b>Última rodada:</b> Azul '+r.ultimaRodada.azul.correct+'/'+r.ultimaRodada.azul.n+' · Vermelha '+r.ultimaRodada.vermelha.correct+'/'+r.ultimaRodada.vermelha.n+'</p>':'');
+  const nb=$('next-question');
+  if(r.estado==='lobby'){nb.disabled=true;show('control-msg','Sala aberta. Aguardando participantes.');}
+  else if(r.estado==='pergunta'){$('start-game').disabled=true;nb.disabled=false;nb.textContent='Encerrar esta rodada agora';show('control-msg','Pergunta '+(r.indice+1)+' de '+total+' em andamento.');}
+  else if(r.estado==='resultado'){$('start-game').disabled=true;nb.disabled=false;nb.textContent=r.indice+1>=total?'Encerrar / ver resultado':'Próxima pergunta';show('control-msg','Rodada '+(r.indice+1)+' encerrada.'+(r.proximaEm?' Avançando automaticamente...':' Clique em “'+nb.textContent+'”.'));}
+  else if(r.estado==='fim'){$('start-game').disabled=true;nb.disabled=true;$('end-game').disabled=true;show('control-msg','Partida encerrada.');}
  }
 })();
