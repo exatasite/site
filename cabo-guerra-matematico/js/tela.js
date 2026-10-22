@@ -2,7 +2,7 @@
  const $=id=>document.getElementById(id),pin=new URLSearchParams(location.search).get("pin");let roomRef=null,timerInt=null;
  if(!pin){$("screen-question").textContent="Abra esta tela pelo link gerado no painel do professor.";return;}
  $("screen-pin").textContent="PIN "+pin;$("pin-bottom").textContent=pin;
- signInAnonymous().then(()=>{roomRef=db.ref("cabos/"+pin);roomRef.on("value",s=>render(s.val()));}).catch(console.error);
+ signInAnonymous().then(()=>{roomRef=db.ref("cabos/"+pin);const motor=window.CaboMotor(roomRef);roomRef.on("value",s=>{const r=s.val();motor.agendar(r);render(r);});}).catch(console.error);
  function render(r){if(!r)return;const players=Object.values(r.jogadores||{}),blue=players.filter(p=>p.equipe==="azul"),red=players.filter(p=>p.equipe==="vermelha");
   $("count-blue").textContent=blue.length+" participantes";$("count-red").textContent=red.length+" participantes";
   $("blue-players").innerHTML=blue.map(p=>avatar(p,"blue")).join("");$("red-players").innerHTML=red.map(p=>avatar(p,"red")).join("");
