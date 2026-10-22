@@ -92,7 +92,7 @@
  $('next-question').onclick=async()=>{if(!roomRef)return;const snap=await roomRef.once('value'),r=snap.val();if(r.indice+1<r.perguntas.length)await launchQuestion(r.indice+1);else await finishGame();};
  async function launchQuestion(i){
   if(timerHandle)clearTimeout(timerHandle);scoring=false;
-  const q=questions[i];await roomRef.update({indice:i,estado:'pergunta',atual:q,perguntaInicio:Date.now(),respostas:null});
+  const q=questions[i];await roomRef.update({indice:i,indiceTexto:String(i),estado:'pergunta',atual:q,perguntaInicio:Date.now(),respostas:null});
   $('next-question').disabled=true;show('control-msg','Pergunta '+(i+1)+' iniciada.');
   timerHandle=setTimeout(async()=>{if(scoring)return;scoring=true;const snap=await roomRef.once('value'),r=snap.val();if(r&&r.estado==='pergunta'&&r.indice===i)await scoreRound(r,i);},Number($('seconds').value)*1000);
  }
