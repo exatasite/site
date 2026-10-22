@@ -1,7 +1,7 @@
 (function(){
  'use strict';
  const $=id=>document.getElementById(id);
- let user=null,questions=[],pin=null,roomRef=null,selectedQuiz=null,quizCatalog=[],timerHandle=null,scoring=false;
+ let user=null,questions=[],pin=null,roomRef=null,selectedQuiz=null,quizCatalog=[],timerHandle=null,advanceHandle=null,scoredIndex=null;
  const esc=window.escapeHtml;
  const db=window.db,auth=window.auth;
  const show=(id,msg,error=false)=>window.showMessage($(id),msg,error);
@@ -88,46 +88,62 @@
   }catch(e){console.error(e);show('room-msg','Falha ao criar sala. Confira as regras do Firebase.',true);pin=null;roomRef=null;renderQuestions();}
  };
  $('copy-pin').onclick=async()=>{try{await navigator.clipboard.writeText(pin);show('room-msg','PIN copiado.');}catch(e){show('room-msg','PIN: '+pin);}};
- $('start-game').onclick=async()=>{if(!roomRef||!questions.length)return;await launchQuestion(0);};
- $('next-question').onclick=async()=>{if(!roomRef)return;const snap=await roomRef.once('value'),r=snap.val();if(r.indice+1<r.perguntas.length)await launchQuestion(r.indice+1);else await finishGame();};
+ $('start-game').onclick=async()=>{if(!roomRef||!questions.length)return;$('start-game').disabled=true;await launchQuestion(0);};
+ // Botão do professor: durante a pergunta encerra a rodada na hora; no resultado passa para a próxima.
+ $('next-question').onclick=async()=>{
+  if(!roomRef)return;
+  const r=(await roomRef.once('value')).val();if(!r)return;
+  if(r.estado==='pergunta')await scoreRound(r,r.indice);
+  else if(r.estado==='resultado')await goNext();
+ };
+ function autoDelay(){const v=Number(($('auto-next')||{}).value);return Number.isFinite(v)?v:5;}
+ function clearTimers(){if(timerHandle){clearTimeout(timerHandle);timerHandle=null;}if(advanceHandle){clearTimeout(advanceHandle);advanceHandle=null;}}
+ async function goNext(){
+  clearTimers();
+  const r=(await roomRef.once('value')).val();if(!r||r.estado==='fim')return;
+  const total=(r.perguntas&&r.perguntas.length)||questions.length;
+  if(r.indice+1<total)await launchQuestion(r.indice+1);else await finishGame();
+ }
  async function launchQuestion(i){
-  if(timerHandle)clearTimeout(timerHandle);scoring=false;
-  const q=questions[i];await roomRef.update({indice:i,indiceTexto:String(i),estado:'pergunta',atual:q,perguntaInicio:Date.now(),respostas:null});
-  $('next-question').disabled=true;show('control-msg','Pergunta '+(i+1)+' iniciada.');
-  timerHandle=setTimeout(async()=>{if(scoring)return;scoring=true;const snap=await roomRef.once('value'),r=snap.val();if(r&&r.estado==='pergunta'&&r.indice===i)await scoreRound(r,i);},Number($('seconds').value)*1000);
+  clearTimers();scoredIndex=null;
+  const q=questions[i];
+  await roomRef.update({indice:i,indiceTexto:String(i),estado:'pergunta',atual:q,perguntaInicio:Date.now(),respostas:null,proximaEm:null});
+  $('next-question').disabled=false;$('next-question').textContent='Encerrar esta rodada agora';
+  show('control-msg','Pergunta '+(i+1)+' de '+questions.length+' iniciada.');
+  timerHandle=setTimeout(async()=>{const r=(await roomRef.once('value')).val();await scoreRound(r,i);},Number($('seconds').value)*1000+500);
  }
  async function scoreRound(r,i){
-  if(!r || r.estado!=='pergunta' || r.indice!==i) return;
-  scoring=true;
-  if(timerHandle){clearTimeout(timerHandle);timerHandle=null;}
-  const players=r.jogadores||{},answers=(r.respostas&&r.respostas[i])||{},teams={azul:{n:0,correct:0},vermelha:{n:0,correct:0}};
-  Object.values(players).forEach(p=>{if(teams[p.equipe])teams[p.equipe].n++;});
-  Object.entries(answers).forEach(([id,a])=>{if(teams[a.equipe]&&Number(a.opcao)===Number(r.perguntas[i].correta))teams[a.equipe].correct++;});
-  const mode=r.modoForca||'percentual';let delta=0;
-  if(mode==='acertos')delta=teams.azul.correct-teams.vermelha.correct;
-  else{const pa=teams.azul.n?teams.azul.correct/teams.azul.n:0,pv=teams.vermelha.n?teams.vermelha.correct/teams.vermelha.n:0;delta=Math.round((pa-pv)*3);}
-  const old=Number(r.forca)||0,force=Math.max(-10,Math.min(10,old+delta));
-  await roomRef.update({estado:'resultado',forca:force,pontos:{azul:teams.azul.correct,vermelha:teams.vermelha.correct},ultimaRodada:{indice:i,azul:teams.azul,vermelha:teams.vermelha,delta}});
-  $('next-question').disabled=false;$('next-question').textContent=i+1>=questions.length?'Encerrar / ver resultado':'Próxima pergunta';
-  show('control-msg','Rodada '+(i+1)+': azul '+teams.azul.correct+' acertos; vermelha '+teams.vermelha.correct+' acertos.');
+  if(!r||r.estado!=='pergunta'||r.indice!==i||scoredIndex===i)return;
+  scoredIndex=i;clearTimers();
+  try{
+   const players=r.jogadores||{},answers=(r.respostas&&r.respostas[i])||{},teams={azul:{n:0,correct:0},vermelha:{n:0,correct:0}};
+   Object.values(players).forEach(p=>{if(p&&teams[p.equipe])teams[p.equipe].n++;});
+   Object.values(answers).forEach(a=>{if(a&&teams[a.equipe]&&Number(a.opcao)===Number(r.perguntas[i].correta))teams[a.equipe].correct++;});
+   const mode=r.modoForca||'percentual';let delta=0;
+   if(mode==='acertos')delta=teams.azul.correct-teams.vermelha.correct;
+   else{const pa=teams.azul.n?teams.azul.correct/teams.azul.n:0,pv=teams.vermelha.n?teams.vermelha.correct/teams.vermelha.n:0;delta=Math.round((pa-pv)*3);}
+   const old=Number(r.forca)||0,force=Math.max(-10,Math.min(10,old+delta));
+   const prev=r.pontos||{},pontos={azul:(Number(prev.azul)||0)+teams.azul.correct,vermelha:(Number(prev.vermelha)||0)+teams.vermelha.correct};
+   const ultima=i+1>=((r.perguntas&&r.perguntas.length)||questions.length);
+   const delay=autoDelay();
+   await roomRef.update({estado:'resultado',forca:force,pontos,ultimaRodada:{indice:i,azul:teams.azul,vermelha:teams.vermelha,delta},proximaEm:delay>0?Date.now()+delay*1000:null});
+   $('next-question').disabled=false;$('next-question').textContent=ultima?'Encerrar / ver resultado':'Próxima pergunta';
+   show('control-msg','Rodada '+(i+1)+': azul '+teams.azul.correct+' acertos; vermelha '+teams.vermelha.correct+' acertos.'+(delay>0?' Avançando em '+delay+' s...':''));
+   if(delay>0)advanceHandle=setTimeout(()=>goNext().catch(console.error),delay*1000);
+  }catch(err){console.error(err);scoredIndex=null;show('control-msg','Erro ao calcular a rodada: '+(err.message||err),true);}
  }
  $('end-game').onclick=finishGame;
- async function finishGame(){if(!roomRef)return;if(timerHandle)clearTimeout(timerHandle);await roomRef.update({estado:'fim',encerrado:firebase.database.ServerValue.TIMESTAMP});$('next-question').disabled=true;$('start-game').disabled=true;$('end-game').disabled=true;show('control-msg','Partida encerrada.');}
+ async function finishGame(){if(!roomRef)return;clearTimers();await roomRef.update({estado:'fim',proximaEm:null,encerrado:firebase.database.ServerValue.TIMESTAMP});$('next-question').disabled=true;$('start-game').disabled=true;$('end-game').disabled=true;show('control-msg','Partida encerrada.');}
  function updateHost(r){
   if(!r)return;
-  const entries=Object.entries(r.jogadores||{}),players=entries.map(([,p])=>p),blue=players.filter(p=>p.equipe==='azul').length,red=players.filter(p=>p.equipe==='vermelha').length;
-  $('control-msg').textContent='Participantes: '+players.length+' · Azul: '+blue+' · Vermelha: '+red+'. Estado: '+r.estado+'.';
-  $('results').innerHTML=r.ultimaRodada?'<p><b>Última rodada:</b> Azul '+r.ultimaRodada.azul.correct+'/'+r.ultimaRodada.azul.n+' · Vermelha '+r.ultimaRodada.vermelha.correct+'/'+r.ultimaRodada.vermelha.n+'</p>':'';
-  // Quando todos os participantes que escolheram equipe respondem, calcula a rodada imediatamente.
-  // Se alguém não responder, o cronômetro continua sendo o limite da rodada.
-  if(r.estado==='pergunta' && Number.isInteger(r.indice) && !scoring){
+  const entries=Object.entries(r.jogadores||{}).filter(([,p])=>p),players=entries.map(([,p])=>p),blue=players.filter(p=>p.equipe==='azul').length,red=players.filter(p=>p.equipe==='vermelha').length;
+  const answers=(r.estado==='pergunta'&&r.respostas&&r.respostas[r.indice])||{};
+  const nAns=Object.keys(answers).length;
+  $('results').innerHTML='<p>Participantes: <b>'+players.length+'</b> · Azul: <b>'+blue+'</b> · Vermelha: <b>'+red+'</b>'+(r.estado==='pergunta'?' · Responderam: <b>'+nAns+'</b>':'')+'</p>'+(r.ultimaRodada?'<p><b>Última rodada:</b> Azul '+r.ultimaRodada.azul.correct+'/'+r.ultimaRodada.azul.n+' · Vermelha '+r.ultimaRodada.vermelha.correct+'/'+r.ultimaRodada.vermelha.n+'</p>':'');
+  // Todos que escolheram equipe responderam? Fecha a rodada na hora (sem esperar o cronômetro).
+  if(r.estado==='pergunta'&&Number.isInteger(r.indice)&&scoredIndex!==r.indice){
    const active=entries.filter(([,p])=>p.equipe==='azul'||p.equipe==='vermelha');
-   const answers=(r.respostas&&r.respostas[r.indice])||{};
-   if(active.length>0 && active.every(([uid])=>Object.prototype.hasOwnProperty.call(answers,uid))){
-    scoring=true;
-    if(timerHandle){clearTimeout(timerHandle);timerHandle=null;}
-    scoreRound(r,r.indice).catch(err=>{console.error(err);scoring=false;show('control-msg','Erro ao calcular a rodada. Confira as regras do Firebase.',true);});
-   }
+   if(active.length>0&&active.every(([uid])=>Object.prototype.hasOwnProperty.call(answers,uid)))scoreRound(r,r.indice);
   }
  }
 })();
