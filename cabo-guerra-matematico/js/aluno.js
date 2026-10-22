@@ -30,7 +30,7 @@
    $("question").textContent=room.atual.texto;
    const already=room.respostas&&room.respostas[room.indice]&&room.respostas[room.indice][pid];
    $("answers").innerHTML=room.atual.opcoes.map((op,i)=>`<button class="answer-btn" data-i="${i}" ${already?"disabled":""}>${String.fromCharCode(65+i)} · ${escapeHtml(op)}</button>`).join("");
-   if(already){$("answer-msg").textContent="Resposta registrada. Aguarde a próxima rodada.";answeredKey=room.indice;}
+   if(already){$("answer-msg").textContent="Resposta registrada. Aguarde a próxima rodada.";answeredKey=room.indice;}else if(answeredKey!==room.indice){$("answer-msg").textContent="";$("answer-msg").classList.remove("error");answeredKey=null;}
    $("answers").querySelectorAll("button").forEach(b=>b.addEventListener("click",async()=>{
     if(!p?.equipe){showMessage($("answer-msg"),"Escolha uma equipe antes de responder.",true);return;}
     try{await roomRef.child("respostas/"+room.indice+"/"+pid).set({opcao:Number(b.dataset.i),equipe:p.equipe,tempo:firebase.database.ServerValue.TIMESTAMP});$("answers").querySelectorAll("button").forEach(x=>x.disabled=true);showMessage($("answer-msg"),"Resposta registrada. Aguarde!");}catch(e){console.error(e);showMessage($("answer-msg"),"Não foi possível registrar a resposta.",true);}
