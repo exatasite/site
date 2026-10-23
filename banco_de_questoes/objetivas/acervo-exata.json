@@ -1,0 +1,23 @@
+[
+  {
+    "disciplina": "matematica",
+    "serie": "1EM",
+    "assunto": "Trigonometria no triângulo retângulo",
+    "dificuldade": "media",
+    "tipo": "objetiva",
+    "origem": "enem",
+    "banca": "ENEM Libras",
+    "ano": "2017",
+    "enunciado": "A famosa Torre de Pisa, localizada na Itália, assim como muitos outros prédios, por motivos adversos, sofrem inclinações durante ou após suas construções. Um prédio, quando construído, dispunha-se verticalmente e tinha $60$ metros de altura. Ele sofreu uma inclinação de um ângulo $\\alpha$, e a projeção ortogonal de sua fachada lateral sobre o solo tem largura medindo $1{,}80$ metro. O valor do ângulo de inclinação pode ser determinado fazendo-se o uso de uma tabela como a apresentada.\n\n$$\\begin{array}{|c|c|}\\hline \\text{Ângulo } \\alpha \\text{ (grau)} & \\text{Seno} \\\\ \\hline 0{,}0 & 0{,}000 \\\\ \\hline 1{,}0 & 0{,}017 \\\\ \\hline 1{,}5 & 0{,}026 \\\\ \\hline 1{,}8 & 0{,}031 \\\\ \\hline 2{,}0 & 0{,}034 \\\\ \\hline 3{,}0 & 0{,}052 \\\\ \\hline \\end{array}$$\n\nUma estimativa para o ângulo de inclinação $\\alpha$, quando dado em grau, é tal que:",
+    "imagemUrl": "",
+    "alternativas": [
+      "$0 \\leq \\alpha < 1{,}0$",
+      "$1{,}0 \\leq \\alpha < 1{,}5$",
+      "$1{,}5 \\leq \\alpha < 1{,}8$",
+      "$1{,}8 \\leq \\alpha < 2{,}0$",
+      "$2{,}0 \\leq \\alpha < 3{,}0$"
+    ],
+    "correta": 2,
+    "resolucao": "1. O prédio inclinado ($60$ m) é a hipotenusa do triângulo retângulo; a projeção da fachada sobre o solo ($1{,}80$ m) é o cateto oposto ao ângulo de inclinação $\\alpha$ (medido em relação à vertical).\n\n2. Usamos o seno: $\\operatorname{sen}\\alpha = \\dfrac{1{,}8}{60} = 0{,}03$.\n\n3. Pela tabela: $\\operatorname{sen}1{,}5° = 0{,}026 < 0{,}03 < 0{,}031 = \\operatorname{sen}1{,}8°$. Como o seno cresce com o ângulo (entre $0°$ e $90°$), temos $\\mathbf{1{,}5° \\leq \\alpha < 1{,}8°}$.\n\nAlternativa C.\n\nFonte: ENEM Libras 2017, 2º dia, caderno verde, questão 139."
+  }
+]
