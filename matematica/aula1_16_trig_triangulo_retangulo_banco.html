@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1º Ano: Aula 16 - Trigonometria no Triângulo Retângulo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../estilo.css">
+    <script>
+        MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']], processEscapes: true } };
+    </script>
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        body.modo-slides { overflow: hidden !important; background-color: #1a1a1a !important; margin: 0; padding: 0; }
+        body.modo-slides .menu-lateral, body.modo-slides header, body.modo-slides .menu-toggle, body.modo-slides #btn-slides, body.modo-slides .nav-global { display: none !important; }
+        .slide-ativo { display: flex !important; flex-direction: column; align-items: center; justify-content: center; position: fixed; top: 0; left: 0; width: 100vw; height: calc(100vh - 70px); background: #ffffff; padding: 40px; z-index: 999; overflow-y: auto !important; box-sizing: border-box; text-align: left; }
+        .slide-ativo > * { max-width: 900px; width: 100%; }
+        .controles-slides { position: fixed; bottom: 0; left: 0; width: 100%; height: 70px; background: #2c3e50; color: white; display: none; justify-content: space-between; align-items: center; padding: 0 20px; z-index: 1001; box-sizing: border-box; }
+        body.modo-slides .controles-slides { display: flex !important; }
+        .info-lateral { flex: 1; font-family: 'Oswald', sans-serif; font-size: 0.9rem; color: #bdc3c7; }
+        .botoes-centrais { display: flex; align-items: center; gap: 15px; justify-content: center; flex: 2; }
+        .btn-nav { padding: 10px 20px; background: #3498db; color: white; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; font-size: 0.9rem; }
+        .btn-nav:hover { background: #2980b9; }
+        #contador-slide { font-family: 'Oswald', sans-serif; min-width: 60px; text-align: center; font-size: 1.1rem; }
+        /* Tabela de ângulos notáveis */
+        .tabela-trig { width: 100%; max-width: 520px; margin: 15px auto; border-collapse: collapse; text-align: center; }
+        .tabela-trig th { background: #2c3e50; color: white; padding: 8px; border: 1px solid #ddd; }
+        .tabela-trig td { padding: 8px; border: 1px solid #ddd; }
+        /* Testes vindos do banco de questões */
+        .aviso-banco { padding: 15px; border-left: 5px solid #3498db; background: #f8f9fa; margin: 15px 0; }
+        .aviso-banco.erro { border-left-color: #e74c3c; background: #fdf0ef; }
+        .questao .figura-banco { text-align: center; margin: 12px 0; }
+        .questao .figura-banco img { max-width: 100%; height: auto; }
+    </style>
+</head>
+<body>
+<button class="menu-toggle" onclick="toggleMenu()">☰</button>
+<nav id="menu-principal" class="nav-global"><ul>
+    <li><a href="../index.html">🏠 Início</a></li>
+    <li><a href="../ensino_medio.html">📚 Ensino Médio</a></li>
+    <li><a href="../ensino_superior.html">🎓 Ensino Superior</a></li>
+</ul></nav>
+<header id="topo">
+    <h1>MATEMÁTICA EM</h1>
+    <p>1º Ano | Aula 16: Trigonometria no Triângulo Retângulo</p>
+    <button id="btn-slides" onclick="toggleSlides()">📺 Iniciar Modo Slides</button>
+</header>
+<div class="container"><main class="conteudo-principal"><div class="secao-aula">
+
+<div class="container-resumo" id="resumo">
+    <h3>📚 Resumo</h3>
+    <section class="resumo-conteudo">
+        <p>Em um triângulo retângulo, cada ângulo agudo $\alpha$ define três <strong>razões trigonométricas</strong>, que dependem só do ângulo e não do tamanho do triângulo. A <strong>hipotenusa</strong> é o lado oposto ao ângulo reto; os <strong>catetos</strong> são chamados de oposto e adjacente em relação a $\alpha$. Para $30°$, $45°$ e $60°$ os valores são exatos; para os demais ângulos, usa-se uma tabela ou a calculadora.</p>
+        <p style="text-align: center;">$$\operatorname{sen}\alpha = \frac{\text{cateto oposto}}{\text{hipotenusa}} \qquad \cos\alpha = \frac{\text{cateto adjacente}}{\text{hipotenusa}} \qquad \operatorname{tg}\alpha = \frac{\text{cateto oposto}}{\text{cateto adjacente}}$$</p>
+    </section>
+</div>
+
+<section class="conteudo-teorico-completo" id="teoria">
+    <div class="passo-teoria">
+        <h3>📖 Trigonometria no Triângulo Retângulo</h3>
+        <h4>1. Os Lados e as Razões</h4>
+        <figure class="figura-aula figura-grande">
+            <svg viewBox="0 0 560 240" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Triângulo retângulo com ângulo alfa no vértice da esquerda: a hipotenusa liga esse vértice ao topo, o cateto adjacente fica na base e o cateto oposto é o lado vertical" style="width:100%; max-width:560px; display:block; margin:0 auto;">
+  <polygon points="60,200 380,200 380,40" fill="#3498db" fill-opacity="0.13" stroke="none"/>
+  <line x1="60" y1="200" x2="380" y2="40" stroke="#e74c3c" stroke-width="2.6"/>
+  <line x1="60" y1="200" x2="380" y2="200" stroke="#27ae60" stroke-width="2.6"/>
+  <line x1="380" y1="200" x2="380" y2="40" stroke="#e67e22" stroke-width="2.6"/>
+  <polyline points="365,200 365,185 380,185" fill="none" stroke="#2c3e50" stroke-width="1.6"/>
+  <path d="M 100 200 A 40 40 0 0 0 95.8 182.1" fill="none" stroke="#2c3e50" stroke-width="2"/>
+  <g font-family="Oswald, sans-serif" font-size="15" fill="#2c3e50">
+    <text x="108" y="194">α</text>
+    <text x="175" y="105" fill="#e74c3c" transform="rotate(-26.6 175 105)">hipotenusa</text>
+    <text x="220" y="224" fill="#27ae60" text-anchor="middle">cateto adjacente a α</text>
+    <text x="392" y="125" fill="#e67e22">cateto oposto a α</text>
+  </g>
+</svg>
+            <figcaption>Figura 1: Em relação ao ângulo $\alpha$, a hipotenusa fica oposta ao ângulo reto, o cateto oposto "olha" para $\alpha$ e o cateto adjacente encosta em $\alpha$.</figcaption>
+        </figure>
+        <ul>
+            <li><strong>Seno:</strong> $\operatorname{sen}\alpha = \dfrac{\text{CO}}{\text{H}}$; <strong>cosseno:</strong> $\cos\alpha = \dfrac{\text{CA}}{\text{H}}$; <strong>tangente:</strong> $\operatorname{tg}\alpha = \dfrac{\text{CO}}{\text{CA}}$;</li>
+            <li>Como a hipotenusa é o maior lado, para $0° < \alpha < 90°$ temos $0 < \operatorname{sen}\alpha < 1$ e $0 < \cos\alpha < 1$;</li>
+            <li>Triângulos retângulos com o mesmo ângulo agudo são <strong>semelhantes</strong>: por isso as razões dependem só do ângulo.</li>
+        </ul>
+    </div>
+
+    <div class="passo-teoria">
+        <h4>2. Ângulos Notáveis ($30°$, $45°$ e $60°$)</h4>
+        <figure class="figura-aula figura-grande">
+            <svg viewBox="0 0 540 230" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="À esquerda, metade de um quadrado: triângulo com catetos 1 e 1, hipotenusa raiz de 2 e ângulos de 45 graus. À direita, metade de um triângulo equilátero: catetos 1 e raiz de 3, hipotenusa 2, ângulos de 30 e 60 graus" style="width:100%; max-width:540px; display:block; margin:0 auto;">
+  <polygon points="40,190 190,190 190,40" fill="#3498db" fill-opacity="0.15" stroke="#2c3e50" stroke-width="2.2"/>
+  <polyline points="176,190 176,176 190,176" fill="none" stroke="#2c3e50" stroke-width="1.5"/>
+  <polygon points="324.1,190 480,190 480,100" fill="#e67e22" fill-opacity="0.15" stroke="#2c3e50" stroke-width="2.2"/>
+  <polyline points="466,190 466,176 480,176" fill="none" stroke="#2c3e50" stroke-width="1.5"/>
+  <g font-family="Oswald, sans-serif" font-size="15" fill="#2c3e50" text-anchor="middle">
+    <text x="115" y="208">1</text><text x="203" y="120">1</text><text x="100" y="105">√2</text>
+    <text x="80" y="183">45°</text><text x="176" y="78">45°</text>
+    <text x="402" y="208">√3</text><text x="493" y="150">1</text><text x="395" y="135">2</text>
+    <text x="365" y="184">30°</text><text x="466" y="125">60°</text>
+    <text x="115" y="226" font-size="12">metade de um quadrado</text>
+    <text x="402" y="226" font-size="12">metade de um triângulo equilátero</text>
+  </g>
+</svg>
+            <figcaption>Figura 2: A diagonal do quadrado gera o ângulo de $45°$; a altura do triângulo equilátero gera os ângulos de $30°$ e $60°$.</figcaption>
+        </figure>
+        <table class="tabela-trig">
+            <thead><tr><th></th><th>$30°$</th><th>$45°$</th><th>$60°$</th></tr></thead>
+            <tbody>
+                <tr><td><strong>sen</strong></td><td>$\dfrac{1}{2}$</td><td>$\dfrac{\sqrt{2}}{2}$</td><td>$\dfrac{\sqrt{3}}{2}$</td></tr>
+                <tr><td><strong>cos</strong></td><td>$\dfrac{\sqrt{3}}{2}$</td><td>$\dfrac{\sqrt{2}}{2}$</td><td>$\dfrac{1}{2}$</td></tr>
+                <tr><td><strong>tg</strong></td><td>$\dfrac{\sqrt{3}}{3}$</td><td>$1$</td><td>$\sqrt{3}$</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="passo-teoria">
+        <h4>3. Relações e Uso da Tabela</h4>
+        <p style="text-align: center; font-size: 1.15rem; background-color: #f8f9fa; padding: 15px; border-left: 5px solid #3498db; margin: 20px 0;">
+            $$\operatorname{sen}^2\alpha + \cos^2\alpha = 1 \qquad \operatorname{tg}\alpha = \frac{\operatorname{sen}\alpha}{\cos\alpha} \qquad \operatorname{sen}\alpha = \cos(90° - \alpha)$$
+        </p>
+        <ul>
+            <li>A primeira relação vem do Teorema de Pitágoras ($\text{CO}^2 + \text{CA}^2 = \text{H}^2$, dividindo tudo por $\text{H}^2$);</li>
+            <li>Os dois ângulos agudos são <strong>complementares</strong>: o seno de um é o cosseno do outro;</li>
+            <li>Para ângulos não notáveis, calcula-se a razão e procura-se o ângulo numa <strong>tabela</strong>: entre $0°$ e $90°$, o seno e a tangente crescem com o ângulo, e o cosseno decresce.</li>
+        </ul>
+    </div>
+</section>
+
+<section class="aplicacoes-reais" id="aplicacoes">
+    <h3>💡 Matemática em Ação</h3>
+    <div class="cards-aplicacao">
+        <div class="card">
+            <h4>♿ Rampas de Acessibilidade</h4>
+            <p>Uma inclinação de $8{,}33\%$ significa subir $1$ m a cada $12$ m na horizontal: $\operatorname{tg}\alpha = \dfrac{1}{12} \approx 0{,}083$, ou seja, $\alpha$ fica entre $4°$ e $5°$. É a tangente que garante uma rampa segura para cadeiras de rodas.</p>
+        </div>
+        <div class="card" style="border-left-color: #2ecc71;">
+            <h4>📐 Topografia</h4>
+            <p>Com um teodolito, o topógrafo mede o ângulo de elevação até o topo de um prédio e a distância até sua base. A tangente transforma essas duas medidas na altura do prédio, sem precisar subir nele.</p>
+        </div>
+    </div>
+</section>
+<section class="questoes-resolvidas" id="resolvidas">
+    <h3>✅ 5 Questões Resolvidas (R 1 a 5)</h3>
+    <article class="questao">
+        <h4>R 1: As Três Razões</h4>
+        <p><strong>Enunciado:</strong> Um triângulo retângulo tem catetos $6$ cm e $8$ cm. Calcule o seno, o cosseno e a tangente do ângulo $\alpha$ oposto ao cateto de $6$ cm.</p>
+        <div class="resolucao-bloco"><p><strong>Resolução:</strong><br>Hipotenusa: $\text{H}^2 = 6^2 + 8^2 = 100 \implies \text{H} = 10$ cm.<br>$\operatorname{sen}\alpha = \dfrac{6}{10} = \mathbf{0{,}6}$, $\;\cos\alpha = \dfrac{8}{10} = \mathbf{0{,}8}$, $\;\operatorname{tg}\alpha = \dfrac{6}{8} = \mathbf{0{,}75}$.</p></div>
+    </article>
+    <article class="questao">
+        <h4>R 2: A Escada na Parede</h4>
+        <p><strong>Enunciado:</strong> Uma escada de $6$ m está apoiada numa parede e forma $60°$ com o chão. A que altura ela toca a parede, e a que distância da parede está seu pé?</p>
+        <div class="resolucao-bloco"><p><strong>Resolução:</strong><br>A escada é a hipotenusa. Altura (cateto oposto a $60°$): $h = 6 \cdot \operatorname{sen}60° = 6 \cdot \dfrac{\sqrt{3}}{2} = \mathbf{3\sqrt{3}} \approx 5{,}2$ m.<br>Distância (cateto adjacente): $d = 6 \cdot \cos 60° = 6 \cdot \dfrac{1}{2} = \mathbf{3}$ m.</p></div>
+    </article>
+    <article class="questao">
+        <h4>R 3: Ângulo de Elevação</h4>
+        <p><strong>Enunciado:</strong> Uma pessoa, com os olhos a $1{,}6$ m do chão e a $30$ m de um prédio, vê o topo sob um ângulo de elevação de $30°$. Qual é a altura do prédio? (Use $\sqrt{3} \approx 1{,}73$.)</p>
+        <div class="resolucao-bloco"><p><strong>Resolução:</strong><br>Acima dos olhos: $x = 30 \cdot \operatorname{tg}30° = 30 \cdot \dfrac{\sqrt{3}}{3} = 10\sqrt{3} \approx 17{,}3$ m.<br>Altura total: $17{,}3 + 1{,}6 \approx \mathbf{18{,}9}$ m.</p></div>
+    </article>
+    <article class="questao">
+        <h4>R 4: Do Seno às Outras Razões</h4>
+        <p><strong>Enunciado:</strong> Sabendo que $\alpha$ é agudo e $\operatorname{sen}\alpha = \dfrac{3}{5}$, calcule $\cos\alpha$ e $\operatorname{tg}\alpha$.</p>
+        <div class="resolucao-bloco"><p><strong>Resolução:</strong><br>$\cos^2\alpha = 1 - \dfrac{9}{25} = \dfrac{16}{25} \implies \cos\alpha = \mathbf{\dfrac{4}{5}}$ (positivo, pois $\alpha$ é agudo).<br>$\operatorname{tg}\alpha = \dfrac{3/5}{4/5} = \mathbf{\dfrac{3}{4}}$.</p></div>
+    </article>
+    <article class="questao">
+        <h4>R 5: A Rampa e a Tabela</h4>
+        <p><strong>Enunciado:</strong> Uma rampa sobe $1$ m ao longo de $12$ m na horizontal. Usando $\operatorname{tg}4° \approx 0{,}070$ e $\operatorname{tg}5° \approx 0{,}087$, estime o ângulo de inclinação $\alpha$.</p>
+        <div class="resolucao-bloco"><p><strong>Resolução:</strong><br>$\operatorname{tg}\alpha = \dfrac{1}{12} \approx 0{,}083$.<br>Como $0{,}070 < 0{,}083 < 0{,}087$ e a tangente cresce com o ângulo: $\mathbf{4° < \alpha < 5°}$.</p></div>
+    </article>
+</section>
+
+<section class="questoes-propostas" id="propostas">
+    <h3>✍️ 10 Questões Propostas (P 6 a 15)</h3>
+    <article class="questao">
+        <h4>P 6: Triângulo 5-12-13</h4>
+        <p><strong>Enunciado:</strong> Um triângulo retângulo tem catetos $5$ cm e $12$ cm e hipotenusa $13$ cm. Calcule seno, cosseno e tangente do ângulo oposto ao cateto de $5$ cm.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>$\operatorname{sen}\alpha = \mathbf{\dfrac{5}{13}}$, $\;\cos\alpha = \mathbf{\dfrac{12}{13}}$, $\;\operatorname{tg}\alpha = \mathbf{\dfrac{5}{12}}$.</p></div>
+    </article>
+    <article class="questao">
+        <h4>P 7: Os Catetos</h4>
+        <p><strong>Enunciado:</strong> A hipotenusa de um triângulo retângulo mede $20$ cm e um dos ângulos agudos mede $30°$. Calcule os catetos.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>Oposto a $30°$: $20 \cdot \operatorname{sen}30° = \mathbf{10}$ cm.<br>Adjacente: $20 \cdot \cos30° = 20 \cdot \dfrac{\sqrt{3}}{2} = \mathbf{10\sqrt{3}}$ cm.</p></div>
+    </article>
+    <article class="questao">
+        <h4>P 8: O Ângulo de 45°</h4>
+        <p><strong>Enunciado:</strong> Em um triângulo retângulo, o cateto adjacente a um ângulo de $45°$ mede $7$ cm. Calcule o outro cateto e a hipotenusa.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>$\operatorname{tg}45° = 1 \implies$ cateto oposto $= \mathbf{7}$ cm.<br>$\text{H} = \dfrac{7}{\cos45°} = \dfrac{7}{\sqrt{2}/2} = \mathbf{7\sqrt{2}}$ cm.</p></div>
+    </article>
+    <article class="questao">
+        <h4>P 9: A Pipa</h4>
+        <p><strong>Enunciado:</strong> A linha de uma pipa, com $50$ m e bem esticada, forma $60°$ com o chão. A que altura está a pipa? (Use $\sqrt{3} \approx 1{,}73$ e despreze a altura da mão.)</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>$h = 50 \cdot \operatorname{sen}60° = 25\sqrt{3}$.<br>$h \approx 25 \cdot 1{,}73 = \mathbf{43{,}25}$ m.</p></div>
+    </article>
+    <article class="questao">
+        <h4>P 10: A Sombra do Poste</h4>
+        <p><strong>Enunciado:</strong> Quando os raios do sol formam $45°$ com o chão, um poste projeta uma sombra de $6$ m. Qual é a altura do poste?</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>$\operatorname{tg}45° = \dfrac{h}{6} = 1$.<br>$h = \mathbf{6}$ m.</p></div>
+    </article>
+    <article class="questao">
+        <h4>P 11: Do Cosseno às Outras Razões</h4>
+        <p><strong>Enunciado:</strong> Sabendo que $\alpha$ é agudo e $\cos\alpha = 0{,}8$, calcule $\operatorname{sen}\alpha$ e $\operatorname{tg}\alpha$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>$\operatorname{sen}^2\alpha = 1 - 0{,}64 = 0{,}36 \implies \operatorname{sen}\alpha = \mathbf{0{,}6}$.<br>$\operatorname{tg}\alpha = \dfrac{0{,}6}{0{,}8} = \mathbf{0{,}75}$.</p></div>
+    </article>
+    <article class="questao">
+        <h4>P 12: Expressão Numérica</h4>
+        <p><strong>Enunciado:</strong> Calcule o valor de $E = \operatorname{sen}30° \cdot \cos60° + \operatorname{tg}45°$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>$E = \dfrac{1}{2} \cdot \dfrac{1}{2} + 1 = \dfrac{1}{4} + 1$.<br>$E = \mathbf{\dfrac{5}{4}}$.</p></div>
+    </article>
+    <article class="questao">
+        <h4>P 13: A Decolagem</h4>
+        <p><strong>Enunciado:</strong> Um avião decola sob um ângulo constante de $30°$ com a pista e percorre $3\,000$ m em linha reta. A que altura ele está?</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>O trajeto é a hipotenusa: $h = 3\,000 \cdot \operatorname{sen}30°$.<br>$h = 3\,000 \cdot \dfrac{1}{2} = \mathbf{1\,500}$ m.</p></div>
+    </article>
+    <article class="questao">
+        <h4>P 14: A Diagonal do Retângulo</h4>
+        <p><strong>Enunciado:</strong> A diagonal de um retângulo forma $30°$ com o lado maior, que mede $12$ cm. Calcule o lado menor e a diagonal.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>Lado menor: $12 \cdot \operatorname{tg}30° = 12 \cdot \dfrac{\sqrt{3}}{3} = \mathbf{4\sqrt{3}}$ cm.<br>Diagonal: $\dfrac{12}{\cos30°} = \dfrac{24}{\sqrt{3}} = \mathbf{8\sqrt{3}}$ cm. (Conferência: $48 + 144 = 192 = (8\sqrt{3})^2$.)</p></div>
+    </article>
+    <article class="questao">
+        <h4>P 15: Duas Observações</h4>
+        <p><strong>Enunciado:</strong> De um ponto no chão, vê-se o topo de uma torre sob $60°$. Afastando-se $20$ m em linha reta, o ângulo passa a ser $30°$. Calcule a altura da torre. (Use $\sqrt{3} \approx 1{,}73$.)</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>Seja $d$ a distância inicial: $h = d\sqrt{3}$ e $h = \dfrac{d + 20}{\sqrt{3}}$.<br>$3d = d + 20 \implies d = 10$ m, logo $h = \mathbf{10\sqrt{3}} \approx 17{,}3$ m.</p></div>
+    </article>
+</section>
+
+<!-- TESTES: as questões NÃO ficam escritas aqui. Elas são buscadas no banco de questões (arquivo JSON). -->
+<section class="TESTE" id="testes">
+    <h3 id="titulo-testes">🎓 TESTES</h3>
+    <div id="lista-testes"><p class="aviso-banco">Carregando as questões do banco...</p></div>
+</section>
+
+</div></main>
+<aside class="menu-lateral"><iframe src="../menu_matematica.html" style="width:100%; border:none; height:600px;"></iframe></aside>
+</div>
+<script>
+// =====================================================================
+//  CONFIGURAÇÃO DOS TESTES (é só mexer aqui em cada aula)
+// =====================================================================
+const BANCO = {
+    // Caminhos a partir da pasta desta aula (matematica/)
+    arquivo: '../bando_de_questoes/objetivas/arcevo_exata.json',
+    imagens: '../bando_de_questoes/imagens_objetivas/',
+    // Quais questões entram nesta aula (sem diferença entre maiúsculas e acentos)
+    filtro: {
+        disciplina: 'matematica',
+        assunto: ['Trigonometria no triângulo retângulo']
+    },
+    quantidade: 5,      // no máximo quantas questões
+    primeiroNumero: 16  // numeração: T 16, T 17, ...
+};
+
+// =====================================================================
+//  CARREGAMENTO DOS TESTES A PARTIR DO BANCO
+// =====================================================================
+function normalizar(s) {
+    return String(s || '').normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().trim();
+}
+function escHTML(s) {
+    return String(s ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+}
+// Linha em branco = novo parágrafo; quebra simples = <br>
+function paragrafos(texto) {
+    return String(texto || '').trim().split(/\n\s*\n/)
+        .map(p => '<p>' + escHTML(p).replace(/\n/g, '<br>') + '</p>').join('');
+}
+function caminhoImagem(nome) {
+    if (!nome) return '';
+    // Nome simples (ex.: torre_pisa.png) fica na pasta de imagens do banco; endereço completo é usado como está
+    return nome.includes('/') ? nome : BANCO.imagens + nome;
+}
+function passaNoFiltro(q) {
+    const f = BANCO.filtro;
+    for (const campo in f) {
+        const aceitos = [].concat(f[campo]).map(normalizar);
+        if (!aceitos.includes(normalizar(q[campo]))) return false;
+    }
+    return q.tipo === 'objetiva' && Array.isArray(q.alternativas);
+}
+function origemQuestao(q) {
+    // Banca e ano só aparecem quando a questão realmente caiu na prova (origem ENEM/vestibular)
+    if ((q.origem === 'enem' || q.origem === 'vestibular') && q.banca) {
+        return '(' + q.banca + (q.ano ? ' ' + q.ano : '') + ')';
+    }
+    return '';
+}
+function montarQuestao(q, numero) {
+    const letras = 'ABCDE';
+    const titulo = ['T ' + numero + ':', origemQuestao(q), q.titulo || ''].filter(Boolean).join(' ');
+    const figura = q.imagemUrl
+        ? '<div class="figura-banco"><img src="' + escHTML(caminhoImagem(q.imagemUrl)) + '" alt="Figura da questão T ' + numero + '"></div>'
+        : '';
+    const alternativas = q.alternativas.map((a, i) => letras[i] + ') ' + escHTML(a)).join('<br>');
+    const correta = letras[q.correta] || '?';
+    return '<article class="questao">'
+        + '<h4>' + escHTML(titulo) + '</h4>'
+        + paragrafos(q.enunciado) + figura
+        + '<p>' + alternativas + '</p>'
+        + '<button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>'
+        + '<div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>' + correta + '</strong>.</p>'
+        + paragrafos(q.resolucao) + '</div>'
+        + '</article>';
+}
+function renderizarFormulas(el) {
+    if (window.MathJax && MathJax.typesetPromise) {
+        (MathJax.startup && MathJax.startup.promise ? MathJax.startup.promise : Promise.resolve())
+            .then(() => MathJax.typesetPromise([el]));
+    } else {
+        setTimeout(() => renderizarFormulas(el), 200);
+    }
+}
+async function carregarTestes() {
+    const lista = document.getElementById('lista-testes');
+    const titulo = document.getElementById('titulo-testes');
+    try {
+        const resp = await fetch(BANCO.arquivo, { cache: 'no-cache' });
+        if (!resp.ok) throw new Error('arquivo não encontrado (' + resp.status + ')');
+        const acervo = await resp.json();
+        const escolhidas = acervo.filter(passaNoFiltro).slice(0, BANCO.quantidade);
+        if (!escolhidas.length) {
+            lista.innerHTML = '<p class="aviso-banco">Ainda não há questões deste assunto no banco.</p>';
+            return;
+        }
+        const ini = BANCO.primeiroNumero, fim = ini + escolhidas.length - 1;
+        titulo.textContent = '🎓 TESTES (T ' + ini + (fim > ini ? ' a ' + fim : '') + ')';
+        lista.innerHTML = escolhidas.map((q, i) => montarQuestao(q, ini + i)).join('');
+        renderizarFormulas(lista);
+    } catch (e) {
+        const dica = location.protocol === 'file:'
+            ? ' Abrindo o arquivo direto do computador, o navegador bloqueia a leitura do banco: teste pelo site no ar (GitHub Pages).'
+            : '';
+        lista.innerHTML = '<p class="aviso-banco erro">Não foi possível carregar os testes do banco de questões: '
+            + escHTML(e.message) + '.' + dica + '</p>';
+    }
+}
+document.addEventListener('DOMContentLoaded', carregarTestes);
+
+// =====================================================================
+//  FUNÇÕES PADRÃO DA AULA
+// =====================================================================
+function toggleGabarito(botao) {
+    const gabarito = botao.nextElementSibling;
+    if (gabarito.style.display === "none" || gabarito.style.display === "") {
+        gabarito.style.display = "block"; botao.textContent = "Esconder Gabarito e Resolução"; botao.style.backgroundColor = "#2c3e50";
+    } else {
+        gabarito.style.display = "none"; botao.textContent = "Ver Gabarito e Resolução"; botao.style.backgroundColor = "#3498db";
+    }
+}
+function toggleMenu() { const m = document.getElementById("menu-principal"); if (m) m.classList.toggle("ativo"); }
+let slideAtual = 0; let slides = [];
+function prepararSlides() { slides = Array.from(document.querySelectorAll('.container-resumo, .passo-teoria, .card, .questao')); }
+function toggleSlides() {
+    prepararSlides(); const body = document.body;
+    if (!body.classList.contains('modo-slides')) { body.classList.add('modo-slides'); slideAtual = 0; mostrarSlide(slideAtual); }
+    else { body.classList.remove('modo-slides'); slides.forEach(s => { s.classList.remove('slide-ativo'); s.style.display = ''; }); }
+}
+function mostrarSlide(n) {
+    if (!slides.length) return;
+    slides.forEach(s => { s.classList.remove('slide-ativo'); s.style.display = 'none'; });
+    const slide = slides[n]; slide.classList.add('slide-ativo');
+    slide.querySelectorAll('.gabarito-resolucao').forEach(g => g.style.display = 'none');
+    slide.querySelectorAll('.btn-gabarito').forEach(b => { b.textContent = "Ver Gabarito e Resolução"; b.style.backgroundColor = "#3498db"; });
+    const pHeader = document.querySelector('header p');
+    if (pHeader) { const partes = pHeader.innerText.split('|'); if (partes.length > 1) {
+        document.getElementById('slide-info-serie').innerText = partes[0].trim();
+        document.getElementById('slide-info-aula').innerText = partes[1].trim(); } }
+    document.getElementById('contador-slide').innerText = (n + 1) + " / " + slides.length;
+    if (window.MathJax && window.MathJax.typesetPromise) { MathJax.typesetPromise(); }
+}
+function mudarSlide(d) { slideAtual += d; if (slideAtual >= slides.length) slideAtual = 0; if (slideAtual < 0) slideAtual = slides.length - 1; mostrarSlide(slideAtual); }
+document.addEventListener('keydown', function(event) {
+    if (document.body.classList.contains('modo-slides')) {
+        switch(event.key) {
+            case 'ArrowRight': case 'PageDown': case 'Enter': case ' ': event.preventDefault(); mudarSlide(1); break;
+            case 'ArrowLeft': case 'PageUp': event.preventDefault(); mudarSlide(-1); break;
+            case 'Escape': event.preventDefault(); toggleSlides(); break;
+        }
+    }
+});
+</script>
+<div class="controles-slides">
+    <div id="slide-info-serie" class="info-lateral"></div>
+    <div class="botoes-centrais">
+        <button class="btn-nav" onclick="mudarSlide(-1)">⬅ Anterior</button>
+        <span id="contador-slide"></span>
+        <button class="btn-nav" onclick="mudarSlide(1)">Próximo ➡</button>
+        <button class="btn-nav" onclick="toggleSlides()" style="background:#e74c3c;">Sair</button>
+    </div>
+    <div id="slide-info-aula" class="info-lateral" style="text-align: right;"></div>
+</div>
+</body>
+</html>
