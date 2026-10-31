@@ -1,2 +1,73 @@
-<!doctype html><html lang="pt-br"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Instalação · Cabo de Guerra Matemático</title><link rel="stylesheet" href="css/jogo.css?v=4"></head><body><header class="topbar"><a class="brand">EXATA<span>PLAY</span></a><span>GUIA DE INSTALAÇÃO</span></header><main class="teacher-wrap"><section class="panel"><h1>Cabo de Guerra Matemático</h1><p>Este pacote é um módulo independente inspirado na estrutura do Exata Quiz. Ele usa o mesmo projeto Firebase configurado em <code>js/config.js</code> e não altera os arquivos do quiz original.</p><h2>Arquivos</h2><ul><li><code>professor.html</code>: login, seleção de quizzes existentes, criação e controle da sala.</li><li><code>index.html</code>: entrada dos alunos, escolha de equipe e resposta.</li><li><code>tela.html?pin=1234</code>: tela projetada da partida.</li></ul><h2>Configuração do Firebase</h2><ol><li>Copie a pasta <code>cabo-guerra</code> para o mesmo diretório em que está a pasta <code>quiz</code>.</li><li>O arquivo <code>js/config.js</code> contém a configuração Firebase copiada do ZIP enviado.</li><li>No Firebase Realtime Database, adicione o conteúdo de <code>regras-firebase-adicionar.json</code> ao objeto <code>rules</code> das regras atuais, preservando as regras existentes de professores, biblioteca e salas. Não substitua as regras atuais pelo arquivo de adição.</li><li>Publique as regras atualizadas.</li><li>Abra <code>professor.html</code>, entre com a mesma conta de professor do Exata Quiz, selecione um quiz particular ou da biblioteca compartilhada, carregue-o e crie a sala. Compartilhe o PIN com os alunos e abra a tela projetada.</li></ol><p><b>Observação:</b> o jogo trabalha com uma alternativa correta por pergunta. Perguntas incompletas ou com múltiplas respostas corretas são ignoradas ao carregar o quiz. O conteúdo original do quiz não é alterado. Antes de usar em avaliações reais, é recomendável separar o gabarito dos dados que os alunos conseguem ler no banco de dados.</p></section></main><!-- O painel do professor gera um QR Code com a URL de entrada e o PIN preenchido automaticamente. -->
-</body></html>
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guia de Instalação · Cabo de Guerra Matemático · ExataSite</title>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../estilo.css">
+    <link rel="stylesheet" href="css/jogo.css?v=5">
+</head>
+<body>
+
+<button class="menu-toggle" onclick="toggleMenu()">☰</button>
+
+<nav id="menu-principal" class="nav-global">
+    <ul>
+        <li><a href="../index.html">🏠 Início</a></li>
+        <li><a href="professor.html">👨‍🏫 Painel do Professor</a></li>
+        <li><a href="index.html">⚔️ Entrada dos Alunos</a></li>
+    </ul>
+</nav>
+
+<header>
+    <h1>EXATASITE</h1>
+    <p>Portal de Apoio aos Estudantes</p>
+    <span class="header-sub">📖 Guia de Instalação</span>
+</header>
+
+<main class="teacher-wrap">
+    <section class="panel guia">
+        <div class="eyebrow">Módulo independente</div>
+        <h1>Cabo de Guerra Matemático</h1>
+
+        <div class="resumo-conteudo">
+            Este módulo segue a estrutura do Exata Quiz. Ele usa o mesmo projeto Firebase configurado em
+            <code>js/config.js</code> e não altera os arquivos do quiz original.
+        </div>
+
+        <h2>Arquivos</h2>
+        <ul>
+            <li><code>professor.html</code>: login, escolha de quizzes existentes, criação e controle da sala.</li>
+            <li><code>index.html</code>: entrada dos alunos, escolha de equipe e resposta.</li>
+            <li><code>tela.html?pin=1234</code>: tela projetada da partida.</li>
+            <li><code>css/jogo.css</code>: estilos do jogo; complementa o <code>estilo.css</code> do site.</li>
+        </ul>
+
+        <h2>Configuração</h2>
+        <ol>
+            <li>Copie a pasta <code>cabo-guerra-matematico</code> para a raiz do site, no mesmo nível do <code>estilo.css</code> e da pasta <code>quiz</code>.</li>
+            <li>O arquivo <code>js/config.js</code> contém a configuração do Firebase do Exata Quiz.</li>
+            <li>No Firebase Realtime Database, adicione o conteúdo de <code>regras-firebase-adicionar.json</code> ao objeto <code>rules</code> das regras atuais, preservando as regras de professores, biblioteca e salas. Não substitua as regras atuais por esse arquivo.</li>
+            <li>Publique as regras atualizadas.</li>
+            <li>Abra <code>professor.html</code>, entre com a conta de professor do Exata Quiz, escolha um quiz, carregue-o e crie a sala. Compartilhe o PIN (ou o QR Code) com os alunos e abra a tela projetada.</li>
+        </ol>
+
+        <div class="gabarito-resolucao" style="display:block;">
+            <b>Observação:</b> o jogo trabalha com uma alternativa correta por pergunta. Perguntas incompletas ou com várias
+            respostas corretas são ignoradas ao carregar o quiz. O quiz original não é alterado. Antes de usar em avaliações
+            reais, é recomendável separar o gabarito dos dados que os alunos conseguem ler no banco de dados.
+        </div>
+
+        <a href="professor.html" class="btn-gabarito" style="display:inline-block;margin-top:20px;text-decoration:none;">Ir para o Painel do Professor</a>
+    </section>
+</main>
+
+<script>
+function toggleMenu() {
+    const menuGlobal = document.getElementById("menu-principal");
+    if (menuGlobal) menuGlobal.classList.toggle("ativo");
+}
+</script>
+</body>
+</html>
