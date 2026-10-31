@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1º Ano: Aula 16 - 1ª Lei de Newton (Inércia)</title>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../estilo.css">
+    
+    <!-- Chamada do acervo em JS -->
+    <script src="acervo_questoes_fisica.js"></script>
+
+    <script>
+        MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true
+            }
+        };
+    </script>
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body>
+<button class="menu-toggle" onclick="toggleMenu()">☰</button>
+
+<nav id="menu-principal" class="nav-global">
+    <ul>
+        <li><a href="../index.html">🏠 Início</a></li>
+        <li><a href="../ensino_medio.html">📚 Ensino Médio</a></li>
+        <li><a href="../ensino_superior.html">🎓 Ensino Superior</a></li>
+    </ul>
+</nav>
+
+<header id="topo">
+    <h1>FÍSICA EM</h1>
+    <p>1º Ano | Aula 16: 1ª Lei de Newton (Lei da Inércia)</p>
+    <button id="btn-slides" onclick="toggleSlides()">📺 Iniciar Modo Slides</button>
+</header>
+
+<div class="container">
+
+<main class="conteudo-principal">
+
+<div class="secao-aula">
+ <div class="container-resumo" id="resumo">
+    <h3>📚 Resumo </h3>
+    <section class="resumo-conteudo">
+        <p>A <strong>1ª Lei de Newton (Princípio da Inércia)</strong> afirma que um corpo tende a manter seu estado de repouso ou de movimento retilíneo uniforme (MRU), a menos que seja atuado por uma força resultante externa não nula.</p>
+        <p style="text-align: center;"><strong>Equilíbrio Dinâmico ou Estático:</strong> $\vec{F}_{res} = 0 \iff \vec{a} = 0 \iff \vec{v} = \text{constante}$</p>
+        <p style="text-align: center;"><strong>Massa:</strong> É a medida quantitativa da inércia de um corpo.</p>
+    </section>
+</div>
+
+<section class="conteudo-teorico-completo" id="teoria">
+    <div class="passo-teoria">
+        <h3>📖 1ª Lei de Newton: A Lei da Inércia</h3>
+        <h4>1. O Conceito de Inércia</h4>
+        <p>Inércia é a propriedade da matéria de resistir a variações em seu estado de movimento. Corpos de maior massa possuem maior inércia, ou seja, oferecem maior resistência a serem acelerados ou freados.</p>
+        <figure class="figura-aula figura-grande">
+            <img src="../imagens_fisica/aula1_16_inercia_conceito.png" alt="Ilustração da tendência do corpo de manter o movimento em uma frenagem súbita.">
+            <figcaption>Figura 1: Em uma frenagem ou aceleração, os passageiros tendem por inércia a manter a velocidade que possuíam anteriormente.</figcaption>
+        </figure>
+    </div>
+
+    <div class="passo-teoria">
+        <h4>2. Condição de Equilíbrio ($\vec{F}_{res} = 0$)</h4>
+        <p>Quando a força resultante sobre um corpo é igual a zero ($\vec{F}_{res} = 0$), o corpo está em <strong>equilíbrio</strong>. Existem dois tipos de equilíbrio:</p>
+        <ul>
+            <li><strong>Equilíbrio Estático:</strong> O corpo está em repouso ($\vec{v} = 0$).</li>
+            <li><strong>Equilíbrio Dinâmico:</strong> O corpo move-se em linha reta com velocidade constante (MRU, $\vec{v} \neq 0$).</li>
+        </ul>
+    </div>
+
+    <div class="passo-teoria">
+        <h4>3. Referenciais Inerciais</h4>
+        <p>A 1ª Lei de Newton é válida apenas em <strong>referenciais inerciais</strong>, que são sistemas de referência que estão em repouso ou em movimento retilíneo uniforme entre si (sem aceleração).</p>
+    </div>
+</section>
+
+<section class="aplicacoes-reais" id="aplicacoes">
+    <h3>💡 Física em Ação</h3>
+    <div class="cards-aplicacao">
+        <div class="card">
+            <h4>🚗 Cinto de Segurança</h4>
+            <p>Em uma colisão, o automóvel para bruscamente, mas os passageiros tendem a continuar em movimento retilíneo uniforme por inércia. O cinto exerce a força necessária para alterar esse movimento e proteger o ocupante.</p>
+        </div>
+        <div class="card" style="border-left-color: #2ecc71;">
+            <h4>🚀 Sondas Espaciais</h4>
+            <p>No espaço profundo, longe da gravidade de estrelas e sem atrito atmosférico, uma sonda espacial desligada continua se movendo indefinitidamente em linha reta e com velocidade constante sem gastar combustível.</p>
+        </div>
+    </div>
+</section>
+
+<section class="questoes-resolvidas" id="resolvidas">
+    <h3>✅ 5 Questões Resolvidas (R 1 a 5)</h3>
+    <div class="questao-ref" data-id="R1"></div>
+    <div class="questao-ref" data-id="R2"></div>
+    <div class="questao-ref" data-id="R3"></div>
+    <div class="questao-ref" data-id="R4"></div>
+    <div class="questao-ref" data-id="R5"></div>
+</section>
+
+<section class="questoes-propostas" id="propostas">
+    <h3>✍️ 5 Questões Propostas (P 6 a 10)</h3>
+    <div class="questao-ref" data-id="P6"></div>
+    <div class="questao-ref" data-id="P7"></div>
+    <div class="questao-ref" data-id="P8"></div>
+    <div class="questao-ref" data-id="P9"></div>
+    <div class="questao-ref" data-id="P10"></div>
+</section>
+
+<section class="TESTE" id="testes">
+    <h3>🎓 TESTES (T 11 a 15)</h3>
+    <div class="questao-ref" data-id="T11"></div>
+    <div class="questao-ref" data-id="T12"></div>
+    <div class="questao-ref" data-id="T13"></div>
+    <div class="questao-ref" data-id="T14"></div>
+    <div class="questao-ref" data-id="T15"></div>
+</section>
+
+</div>
+</main>
+
+<aside class="menu-lateral">
+    <iframe src="../menu_fisica.html" style="width:100%; border:none; height:600px;"></iframe>
+</aside>
+
+</div>
+
+<script>
+function carregarAcervo() {
+    try {
+        const questoesAula = acervoGlobal.aula1_16 || [];
+        const mapaQuestoes = new Map(questoesAula.map(q => [q.id, q]));
+
+        document.querySelectorAll('.questao-ref').forEach(el => {
+            const id = el.getAttribute('data-id');
+            const q = mapaQuestoes.get(id);
+
+            if (q) {
+                let html = `<article class="questao"><h4>${q.titulo}</h4><p><strong>Enunciado:</strong> ${q.enunciado}</p>`;
+
+                if (q.imagem) {
+                    html += `<figure class="figura-aula"><img src="${q.imagem}" alt="${q.titulo}"></figure>`;
+                }
+
+                if (q.alternativas && q.alternativas.length > 0) {
+                    html += `<p>${q.alternativas.join('<br>')}</p>`;
+                }
+
+                if (q.tipo === 'resolvida') {
+                    html += `<div class="resolucao-bloco"><p><strong>Resolução:</strong> ${q.resolucao}</p></div>`;
+                } else {
+                    html += `<button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+                             <div class="gabarito-resolucao"><p><strong>Resolução:</strong> ${q.resolucao}</p></div>`;
+                }
+
+                html += `</article>`;
+                el.outerHTML = html;
+            }
+        });
+
+        if (window.MathJax && window.MathJax.typesetPromise) {
+            MathJax.typesetPromise();
+        }
+    } catch (err) {
+        console.error("Erro ao carregar o acervo de questões:", err);
+    }
+}
+
+document.addEventListener('DOMContentLoaded', carregarAcervo);
+
+function toggleGabarito(botao) {
+    const gabarito = botao.nextElementSibling;
+    if (gabarito.style.display === "none" || gabarito.style.display === "") {
+        gabarito.style.display = "block";
+        botao.textContent = "Esconder Gabarito e Resolução";
+        botao.style.backgroundColor = "#2c3e50";
+    } else {
+        gabarito.style.display = "none";
+        botao.textContent = "Ver Gabarito e Resolução";
+        botao.style.backgroundColor = "#3498db";
+    }
+}
+
+function toggleMenu() {
+    const menuGlobal = document.getElementById("menu-principal");
+    if (menuGlobal) menuGlobal.classList.toggle("ativo");
+}
+
+let slideAtual = 0;
+let slides = [];
+
+function prepararSlides() {
+    const seletores = '.container-resumo, .passo-teoria, .aplicacoes-reais, .questao';
+    slides = document.querySelectorAll(seletores);
+}
+
+function toggleSlides() {
+    prepararSlides();
+    const body = document.body;
+    if (!body.classList.contains('modo-slides')) {
+        body.classList.add('modo-slides');
+        slideAtual = 0;
+        mostrarSlide(slideAtual);
+    } else {
+        body.classList.remove('modo-slides');
+        window.location.reload(); 
+    }
+}
+
+function mostrarSlide(n) {
+    if (slides.length === 0) return;
+
+    slides.forEach(s => {
+        s.classList.remove('slide-ativo');
+        s.style.display = 'none';
+    });
+    
+    const slide = slides[n];
+    slide.classList.add('slide-ativo');
+    slide.style.display = 'flex';
+
+    if (slide.classList.contains('questao') && !slide.querySelector('.btn-gabarito')) {
+        const resolucoes = slide.querySelectorAll('.resolucao-bloco');
+        resolucoes.forEach(r => r.style.display = 'block');
+    } else {
+        const gabaritos = slide.querySelectorAll('.gabarito-resolucao');
+        gabaritos.forEach(g => g.style.display = 'none');
+        const botoes = slide.querySelectorAll('.btn-gabarito');
+        botoes.forEach(b => {
+            b.textContent = "Ver Gabarito e Resolução";
+            b.style.backgroundColor = "#3498db";
+        });
+    }
+
+    const pHeader = document.querySelector('header p').innerText;
+    const partes = pHeader.split('|');
+    if(partes.length > 1) {
+        document.getElementById('slide-info-serie').innerText = partes[0].trim();
+        document.getElementById('slide-info-aula').innerText = partes[1].trim();
+    }
+    
+    document.getElementById('contador-slide').innerText = (n + 1) + " / " + slides.length;
+    
+    if (window.MathJax && window.MathJax.typesetPromise) {
+        MathJax.typesetPromise([slide]);
+    }
+}
+
+function mudarSlide(direcao) {
+    if (slides.length === 0) return;
+    slideAtual += direcao;
+    if (slideAtual < 0) {
+        slideAtual = 0;
+    } else if (slideAtual >= slides.length) {
+        slideAtual = slides.length - 1;
+    }
+    mostrarSlide(slideAtual);
+}
+
+document.addEventListener('keydown', function(event) {
+    if (document.body.classList.contains('modo-slides')) {
+        if (event.key === 'ArrowRight' || event.key === ' ' || event.key === 'd') {
+            mudarSlide(1);
+        } else if (event.key === 'ArrowLeft' || event.key === 'a') {
+            mudarSlide(-1);
+        } else if (event.key === 'Escape') {
+            toggleSlides();
+        }
+    }
+});
+</script>
+
+<style>
+    body.modo-slides { overflow: hidden; background-color: #1a1a1a; }
+    body.modo-slides .menu-lateral, body.modo-slides header, body.modo-slides .menu-toggle, body.modo-slides #btn-slides { display: none !important; }
+    .slide-ativo {
+        display: flex !important; flex-direction: column; align-items: center; justify-content: flex-start;
+        position: fixed; top: 0; left: 0; width: 100vw; height: calc(100vh - 70px);
+        background: #ffffff; padding: 40px; z-index: 999; overflow-y: auto !important; 
+        box-sizing: border-box; text-align: center;
+    }
+    .controles-slides {
+        position: fixed; bottom: 0; left: 0; width: 100%; height: 70px;
+        background: #2c3e50; color: white; display: none; 
+        justify-content: space-between; align-items: center; padding: 0 20px; z-index: 1001; box-sizing: border-box;
+    }
+    body.modo-slides .controles-slides { display: flex; }
+    .info-lateral { flex: 1; font-family: 'Oswald', sans-serif; font-size: 0.9rem; color: #bdc3c7; }
+    .botoes-centrais { display: flex; align-items: center; gap: 15px; justify-content: center; flex: 2; }
+    .btn-nav { padding: 10px 20px; background: #3498db; color: white; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; }
+    #contador-slide { font-family: 'Oswald', sans-serif; min-width: 60px; text-align: center; }
+</style>
+
+<div class="controles-slides">
+    <div id="slide-info-serie" class="info-lateral"></div>
+    
+    <div class="botoes-centrais">
+        <button class="btn-nav" onclick="mudarSlide(-1)">⬅ Anterior</button>
+        <span id="contador-slide"></span>
+        <button class="btn-nav" onclick="mudarSlide(1)">Próximo ➡</button>
+        <button class="btn-nav" onclick="toggleSlides()" style="background:#e74c3c;">Sair</button>
+    </div>
+
+    <div id="slide-info-aula" class="info-lateral" style="text-align: right;"></div>
+</div>
+</body>
+</html>
