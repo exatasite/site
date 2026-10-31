@@ -80,7 +80,7 @@
    const joinUrl=new URL('index.html?pin='+encodeURIComponent(pin),window.location.href).href;
    $('join-link').href=joinUrl;$('join-link').textContent=joinUrl;
    $('join-qr').innerHTML='';
-   if(window.QRCode){new QRCode($('join-qr'),{text:joinUrl,width:150,height:150,colorDark:'#082f49',colorLight:'#ffffff',correctLevel:QRCode.CorrectLevel.M});}
+   if(window.QRCode){new QRCode($('join-qr'),{text:joinUrl,width:150,height:150,colorDark:'#003366',colorLight:'#ffffff',correctLevel:QRCode.CorrectLevel.M});}
    else $('join-qr').textContent='QR Code indisponível; use o link ao lado.';
    $('create-room').disabled=true;$('start-game').disabled=false;$('end-game').disabled=false;
    show('room-msg','Sala criada. Compartilhe o PIN com os alunos.');show('control-msg','Sala aberta. Aguardando participantes.');
