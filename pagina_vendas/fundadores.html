@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Banco de Questões Exata — Professores Fundadores | ExataSite</title>
+    <meta name="description" content="Monte provas e listas de Matemática e Física em minutos. Baixe em Word com gabarito separado. Vagas para 20 professores fundadores.">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="estilo.css">
+    <style>
+        /* ===== Estilos exclusivos desta página (o resto vem do estilo.css do site) ===== */
+        .pagina-vendas { width: 95%; max-width: 1100px; margin: 0 auto; }
+
+        /* Bloco de abertura */
+        .abertura {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 40px;
+            align-items: center;
+            background: #fff;
+            border-radius: 12px;
+            border: 2px solid #e0e0e0;
+            border-top: 6px solid var(--cor-secundaria);
+            padding: 40px;
+            margin: 30px 0;
+            box-shadow: 0 6px 16px rgba(0,0,0,0.06);
+        }
+        .selo-vagas {
+            display: inline-block;
+            background: #FEF5E7;
+            color: var(--cor-secundaria);
+            border: 1px solid var(--cor-secundaria);
+            border-radius: 999px;
+            padding: 5px 14px;
+            font-family: var(--fonte-titulo);
+            font-size: 0.95em;
+            margin-bottom: 15px;
+        }
+        .abertura h2 { font-size: 2.3em; line-height: 1.15; margin: 0 0 15px; }
+        .abertura h2 span { color: var(--cor-secundaria); }
+        .abertura p.sub { font-size: 1.15em; margin: 0 0 20px; }
+        .btn-grande {
+            display: inline-block;
+            text-decoration: none;
+            font-size: 1.2em !important;
+            padding: 14px 28px !important;
+            letter-spacing: 0.5px;
+        }
+        .nota-pequena { font-size: 0.9em; color: #666; margin-top: 8px; }
+
+        /* Simulação do gerador */
+        .mock-gerador {
+            background: var(--cor-fundo-claro);
+            border: 2px solid var(--cor-primaria);
+            border-radius: 10px;
+            padding: 20px;
+        }
+        .mock-gerador h4 { margin: 0 0 12px; text-transform: uppercase; }
+        .mock-linha {
+            display: flex; justify-content: space-between;
+            background: #fff; border-left: 4px solid var(--cor-primaria);
+            border-radius: 4px; padding: 8px 12px; margin-bottom: 8px; font-size: 0.95em;
+        }
+        .mock-linha b { color: var(--cor-primaria); }
+        .mock-btn {
+            background: var(--cor-primaria); color: #fff; text-align: center;
+            font-family: var(--fonte-titulo); padding: 10px; border-radius: 4px; margin-top: 12px;
+        }
+        .mock-arquivos { display: flex; gap: 8px; margin-top: 10px; }
+        .mock-arquivos div {
+            flex: 1; text-align: center; font-size: 0.85em; background: #fff;
+            border: 1px dashed var(--cor-secundaria); border-radius: 4px; padding: 7px;
+        }
+
+        /* Seções */
+        .secao-vendas {
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.05);
+            padding: 40px;
+            margin-bottom: 30px;
+        }
+        .secao-vendas > h2 { text-align: center; font-size: 2em; margin-top: 0; }
+        .secao-vendas > .intro { text-align: center; max-width: 700px; margin: -5px auto 30px; color: #555; font-size: 1.05em; }
+
+        .card .icone { font-size: 2em; display: block; margin-bottom: 6px; }
+
+        /* Passos */
+        .passos .card-disciplina { padding: 30px 20px; max-width: none; }
+        .passos .card-disciplina:hover { transform: translateY(-6px); }
+        .num-passo {
+            display: inline-flex; align-items: center; justify-content: center;
+            width: 50px; height: 50px; border-radius: 50%;
+            background: var(--cor-secundaria); color: #fff;
+            font-family: var(--fonte-titulo); font-size: 1.5em; margin-bottom: 10px;
+        }
+        .passos h3 { margin: 5px 0 10px; }
+
+        /* Lista de benefícios */
+        .lista-check { list-style: none; padding: 0; max-width: 760px; margin: 0 auto; }
+        .lista-check li {
+            position: relative; padding: 12px 0 12px 42px;
+            border-bottom: 1px dashed #ddd; font-size: 1.05em;
+        }
+        .lista-check li::before {
+            content: "✔"; position: absolute; left: 0; top: 11px;
+            width: 28px; height: 28px; border-radius: 50%;
+            background: var(--cor-primaria); color: #fff;
+            display: flex; align-items: center; justify-content: center; font-size: 0.85em;
+        }
+
+        /* Autor */
+        .bloco-autor { display: flex; gap: 30px; align-items: center; max-width: 850px; margin: 0 auto; }
+        .bloco-autor img {
+            width: 140px; height: 140px; border-radius: 50%; object-fit: cover;
+            border: 4px solid var(--cor-secundaria); background: #eee; flex-shrink: 0;
+        }
+        .bloco-autor h3 { margin: 0 0 5px; }
+        .bloco-autor .credenciais-autor { font-weight: bold; color: #666; font-size: 0.95em; margin-bottom: 10px; display: block; }
+
+        /* Oferta */
+        .caixa-oferta {
+            max-width: 620px; margin: 0 auto; text-align: center;
+            border: 3px solid var(--cor-secundaria); border-radius: 12px;
+            padding: 35px 30px; background: #fffdf9;
+        }
+        .caixa-oferta .faixa {
+            display: inline-block; background: var(--cor-secundaria); color: #fff;
+            font-family: var(--fonte-titulo); padding: 4px 16px; border-radius: 4px; margin-bottom: 12px;
+        }
+        .caixa-oferta h3 { font-size: 1.8em; margin: 5px 0; }
+        .preco-de { color: #888; text-decoration: line-through; margin-top: 15px; }
+        .preco-por {
+            font-family: var(--fonte-titulo); font-size: 3.4em; color: var(--cor-primaria); line-height: 1.1;
+        }
+        .preco-por small { font-size: 0.4em; }
+        .caixa-oferta ul { list-style: none; padding: 0; text-align: left; max-width: 440px; margin: 20px auto 25px; }
+        .caixa-oferta ul li { position: relative; padding: 6px 0 6px 28px; }
+        .caixa-oferta ul li::before { content: "★"; position: absolute; left: 0; color: var(--cor-secundaria); }
+
+        /* Dúvidas */
+        .duvidas { max-width: 780px; margin: 0 auto; }
+        .duvidas details {
+            border: 1px solid #e0e0e0; border-left: 5px solid var(--cor-primaria);
+            border-radius: 4px; padding: 14px 18px; margin-bottom: 10px; background: #fff;
+        }
+        .duvidas summary {
+            cursor: pointer; font-family: var(--fonte-titulo); color: var(--cor-primaria);
+            font-size: 1.1em; list-style: none; position: relative; padding-right: 26px;
+        }
+        .duvidas summary::-webkit-details-marker { display: none; }
+        .duvidas summary::after { content: "+"; position: absolute; right: 0; color: var(--cor-secundaria); font-size: 1.3em; line-height: 1; }
+        .duvidas details[open] summary::after { content: "–"; }
+        .duvidas details p { margin: 10px 0 0; }
+
+        /* Chamada final */
+        .chamada-final {
+            background: var(--cor-primaria); color: #fff; text-align: center;
+            border-radius: 8px; border-bottom: 5px solid var(--cor-secundaria);
+            padding: 45px 30px; margin-bottom: 30px;
+        }
+        .chamada-final h2 { color: #fff; font-size: 2em; margin-top: 0; }
+        .chamada-final p { font-size: 1.1em; max-width: 620px; margin: 0 auto 20px; }
+
+        .rodape-vendas { text-align: center; color: #777; font-size: 0.9em; padding: 10px 0 30px; }
+        .rodape-vendas a { color: var(--cor-primaria); }
+
+        @media (max-width: 800px) {
+            .abertura { grid-template-columns: 1fr; padding: 25px; }
+            .abertura h2 { font-size: 1.7em; }
+            .secao-vendas { padding: 25px 18px; }
+            .bloco-autor { flex-direction: column; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+<button class="menu-toggle" onclick="toggleMenu()">☰</button>
+
+<nav id="menu-principal" class="nav-global">
+    <ul>
+        <li><a href="index.html">🏠 Início</a></li>
+        <li><a href="ensino_medio.html">📚 Ensino Médio</a></li>
+        <li><a href="ensino_superior.html">🎓 Ensino Superior</a></li>
+        <li><a href="exataplay.html">🎮 Exata Play</a></li>
+        <li><a href="fundadores.html">📝 Banco de Questões</a></li>
+    </ul>
+</nav>
+
+<header>
+    <h1>EXATASITE</h1>
+    <p>Banco de Questões para Professores</p>
+</header>
+
+<div class="pagina-vendas">
+
+    <!-- ABERTURA -->
+    <section class="abertura">
+        <div>
+            <span class="selo-vagas">🎓 Vagas limitadas: 20 professores fundadores</span>
+            <h2>Monte provas e listas de Matemática e Física em <span>minutos</span>, não em horas.</h2>
+            <p class="sub">Escolha o assunto, a série e a dificuldade. Baixe a prova em Word, com gabarito separado, pronta para imprimir ou ajustar do seu jeito.</p>
+            <a href="#oferta" class="btn-gabarito btn-grande">Quero ser professor fundador</a>
+            <p class="nota-pequena">30 dias grátis · Sem cartão para começar · Cancele quando quiser</p>
+        </div>
+        <div class="mock-gerador" aria-hidden="true">
+            <h4>📝 Nova prova</h4>
+            <div class="mock-linha"><span>Disciplina</span><b>Matemática</b></div>
+            <div class="mock-linha"><span>Série</span><b>1º ano – EM</b></div>
+            <div class="mock-linha"><span>Assunto</span><b>Função do 1º grau</b></div>
+            <div class="mock-linha"><span>Dificuldade</span><b>Fácil + Média</b></div>
+            <div class="mock-linha"><span>Questões</span><b>10 objetivas</b></div>
+            <div class="mock-btn">GERAR PROVA</div>
+            <div class="mock-arquivos"><div>📄 Prova.docx</div><div>✅ Gabarito.docx</div></div>
+        </div>
+    </section>
+
+    <!-- DOR -->
+    <section class="secao-vendas">
+        <h2>Quanto tempo você gasta montando prova?</h2>
+        <p class="intro">Todo professor conhece essa rotina. O fim de semana vai embora procurando questão, formatando no Word e conferindo gabarito.</p>
+        <div class="cards-aplicacao">
+            <div class="card"><span class="icone">⏳</span><h4>Horas procurando questões</h4><p>Abrir dez PDFs, copiar, colar, consertar fórmula que quebrou… só para montar uma lista.</p></div>
+            <div class="card"><span class="icone">🧩</span><h4>Formatação que não acaba</h4><p>Figura desalinhada, numeração errada, alternativa pulando de página. Tempo que deveria ser seu.</p></div>
+            <div class="card"><span class="icone">🔁</span><h4>Repetir tudo a cada turma</h4><p>Prova A, prova B, recuperação, lista extra. O mesmo trabalho, várias vezes por bimestre.</p></div>
+        </div>
+    </section>
+
+    <!-- COMO FUNCIONA -->
+    <section class="secao-vendas" id="como-funciona">
+        <h2>Como funciona</h2>
+        <p class="intro">Simples de verdade. Se você usa o Word, já sabe usar o Banco de Questões Exata.</p>
+        <div class="selecao-disciplinas passos">
+            <div class="card-disciplina"><span class="num-passo">1</span><h3>Filtre</h3><p>Escolha disciplina, série, assunto, dificuldade e tipo de questão.</p></div>
+            <div class="card-disciplina"><span class="num-passo">2</span><h3>Selecione</h3><p>Veja as questões com fórmulas e figuras e marque as que quiser na sua prova.</p></div>
+            <div class="card-disciplina"><span class="num-passo">3</span><h3>Baixe</h3><p>Receba a prova em Word, com o gabarito em arquivo separado. Edite à vontade e imprima.</p></div>
+        </div>
+    </section>
+
+    <!-- O QUE VOCÊ RECEBE -->
+    <section class="secao-vendas">
+        <h2>O que você recebe</h2>
+        <p class="intro">Um acervo organizado por quem está em sala de aula todos os dias.</p>
+        <ul class="lista-check">
+            <li><strong>Acervo de Matemática do Ensino Médio</strong> (1º, 2º e 3º anos), organizado por aula e por assunto</li>
+            <li><strong>Questões de Física</strong>, com novos conteúdos entrando todo mês</li>
+            <li><strong>Filtros</strong> por disciplina, série, assunto, dificuldade, tipo e origem da questão</li>
+            <li><strong>Prova em Word</strong> editável, com fórmulas e figuras já formatadas</li>
+            <li><strong>Gabarito em arquivo separado</strong>, para você não entregar a resposta por engano</li>
+            <li><strong>Questões de vestibular e ENEM com a fonte indicada</strong>, além de questões autorais</li>
+            <li><strong>Login e senha próprios</strong>: acesse de qualquer computador, na escola ou em casa</li>
+        </ul>
+    </section>
+
+    <!-- AUTOR -->
+    <section class="secao-vendas">
+        <div class="bloco-autor">
+            <img src="imagens/wans.png" alt="Prof. Me. Wanderson P. Schneider">
+            <div>
+                <h3>Feito por professor, para professor</h3>
+                <span class="credenciais-autor">Prof. Me. Wanderson P. Schneider · Licenciado em Matemática · Mestre em Ensino de Física</span>
+                <p>Dou aulas de Matemática e Física desde 1997, do Ensino Médio às disciplinas de Cálculo e Física nos cursos de Engenharia.</p>
+                <p>Criei este banco porque eu também perdia horas montando provas. Hoje uso ele nas minhas próprias turmas, e quero abrir para colegas que vivem a mesma rotina.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- OFERTA -->
+    <section class="secao-vendas" id="oferta">
+        <h2>Seja um professor fundador</h2>
+        <p class="intro">Estou abrindo o banco para um grupo pequeno de professores antes do lançamento oficial. Quem entrar agora ajuda a construir a ferramenta e garante condições que não voltarão a ser oferecidas.</p>
+        <div class="caixa-oferta">
+            <span class="faixa">SOMENTE 20 VAGAS</span>
+            <h3>Plano Fundador</h3>
+            <p style="margin:0;color:#555">30 dias grátis para testar à vontade</p>
+            <div class="preco-de">Preço normal após o lançamento: R$ 29/mês</div>
+            <div class="preco-por">R$ 19<small>/MÊS</small></div>
+            <p style="margin:0;color:#555;font-size:0.95em">preço congelado para sempre enquanto você for assinante</p>
+            <ul>
+                <li>Acesso completo a todo o acervo, incluindo o que for adicionado depois</li>
+                <li>Contato direto comigo pelo WhatsApp para pedir assuntos e sugerir melhorias</li>
+                <li>Seu nome na lista de professores fundadores (se quiser)</li>
+                <li>Sem fidelidade: cancele quando quiser</li>
+            </ul>
+            <!-- TROQUE 5500000000000 PELO SEU NÚMERO COM 55 + DDD, SÓ NÚMEROS. Ex.: 5527999998888 -->
+            <a class="btn-gabarito btn-grande" href="https://wa.me/5500000000000?text=Ol%C3%A1%2C%20professor%20Wanderson!%20Quero%20uma%20vaga%20de%20professor%20fundador%20no%20Banco%20de%20Quest%C3%B5es%20Exata." target="_blank" rel="noopener">Quero minha vaga de fundador</a>
+            <p class="nota-pequena">Em troca, peço só uma coisa: que você me conte o que funcionou e o que faltou.</p>
+        </div>
+    </section>
+
+    <!-- DÚVIDAS -->
+    <section class="secao-vendas" id="duvidas">
+        <h2>Dúvidas frequentes</h2>
+        <div class="duvidas">
+            <details><summary>Preciso instalar algum programa?</summary><p>Não. Tudo funciona pelo navegador, no computador ou no notebook. As provas são baixadas em Word (.docx), que você abre normalmente.</p></details>
+            <details><summary>Consigo editar a prova depois de baixar?</summary><p>Sim. O arquivo é um Word comum: você pode mudar o cabeçalho, trocar o nome da escola, ajustar valores e reorganizar as questões.</p></details>
+            <details><summary>Quais conteúdos já estão disponíveis?</summary><p>Matemática do 1º ao 3º ano do Ensino Médio e questões de Física. Novos assuntos entram todo mês, e os fundadores ajudam a escolher as prioridades.</p></details>
+            <details><summary>Preciso colocar cartão de crédito para testar?</summary><p>Não. Os 30 dias de teste são gratuitos e sem cartão. Só no fim do teste você decide se quer continuar com o plano fundador.</p></details>
+            <details><summary>E se eu não gostar?</summary><p>É só não continuar depois do teste. E, se continuar, pode cancelar quando quiser, sem multa e sem fidelidade.</p></details>
+            <details><summary>Posso usar em mais de uma escola?</summary><p>Sim. A assinatura é sua, não da escola. Use em todas as turmas e escolas em que você dá aula.</p></details>
+        </div>
+    </section>
+
+    <!-- CHAMADA FINAL -->
+    <section class="chamada-final">
+        <h2>Recupere seus fins de semana</h2>
+        <p>Deixe a parte cansativa com o Banco de Questões Exata e use seu tempo para o que importa de verdade: ensinar.</p>
+        <a href="#oferta" class="btn-gabarito btn-grande">Garantir minha vaga de fundador</a>
+    </section>
+
+    <div class="rodape-vendas">
+        Banco de Questões Exata · Prof. Me. Wanderson P. Schneider · <a href="index.html">exatasite.github.io/site</a>
+    </div>
+</div>
+
+<script>
+function toggleMenu() {
+    const menuGlobal = document.getElementById("menu-principal");
+    if (menuGlobal) menuGlobal.classList.toggle("ativo");
+}
+</script>
+</body>
+</html>
