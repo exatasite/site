@@ -189,7 +189,7 @@
 <!--------------- QUESTÕES PROPOSTAS --------------------------->
 
 <section class="questoes-propostas">
-                    <h3>✍️ 5 Questões Propostas (P 6 a 10)</h3>
+                    <h3>✍️ 10 Questões Propostas (P 6 a 15)</h3>
 
                     <article class="questao">
                         <h4>P 6: Itinerários de Viagem</h4>
@@ -255,75 +255,95 @@
                             <p>Portanto, $n = 7$.</p>
                         </div>
                     </article>
-                </section>
+                
+    <article class="questao">
+        <h4>P 11: Códigos com Repetição</h4>
+        <p><strong>Enunciado:</strong> Quantos códigos podem ser formados com 2 letras (entre 26) seguidas de 3 algarismos, permitindo repetição?</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> $26 \cdot 26 \cdot 10 \cdot 10 \cdot 10 = 676\,000$ códigos.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 12: Simplificação de Fatorial</h4>
+        <p><strong>Enunciado:</strong> Calcule $\dfrac{10!}{8!}$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> $\dfrac{10 \cdot 9 \cdot 8!}{8!} = 90$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 13: Combinando Roupas</h4>
+        <p><strong>Enunciado:</strong> Uma pessoa tem 4 camisas, 3 calças e 2 pares de sapatos. Quantos trajes diferentes (camisa, calça e sapato) ela pode montar?</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> $4 \cdot 3 \cdot 2 = 24$ trajes.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 14: Algarismos Distintos com o Zero</h4>
+        <p><strong>Enunciado:</strong> Quantos números de 4 algarismos distintos podem ser formados com os algarismos de 0 a 9?</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> O 1º algarismo não pode ser 0: 9 opções. Depois: 9, 8 e 7 opções. Total: $9 \cdot 9 \cdot 8 \cdot 7 = 4536$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 15: Equação Fatorial</h4>
+        <p><strong>Enunciado:</strong> Resolva $\dfrac{(n+2)!}{n!} = 56$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> $(n+2)(n+1) = 56 \Rightarrow n^2 + 3n - 54 = 0 \Rightarrow n = 6$ (o valor $-9$ não serve).</p>
+        </div>
+    </article>
+</section>
 <!--------------- TESTE  ----------------------------------->
 
-<section class="TESTE">
+<section class="TESTE" id="testes">
     <h3>🎓 TESTES (T 11 a 15)</h3>
 
     <article class="questao">
-    <h4>T 11: (ENEM) Combinatória — Cardápio do Restaurante</h4>
-    <p>Um restaurante oferece um menu executivo composto por: 1 entrada (entre 3 opções), 1 prato principal (entre 4 opções) e 1 bebida (entre 5 opções). O cliente deve escolher exatamente uma opção em cada categoria.</p>
-    <p>Quantos menus executivos diferentes o cliente pode montar?</p>
-    <p>A) $12$<br>B) $20$<br>C) $60$<br>D) $120$<br>E) $360$</p>
-    <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-    <div class="gabarito-resolucao">
-        <p><strong>Resolução:</strong> Alternativa <strong>C</strong>.<br>
-        Pelo PFC: $N = 3 \times 4 \times 5 = 60$.</p>
-    </div>
-      </article>
+        <h4>T 11: (ENEM 2013) Coeficiente de melhora das senhas</h4>
+        <p>Um banco solicitou aos seus clientes a criação de uma senha pessoal de seis dígitos, formada somente por algarismos de 0 a 9, para acesso à conta corrente pela internet. Entretanto, um especialista em sistemas de segurança eletrônica recomendou à direção do banco recadastrar seus usuários, solicitando, para cada um deles, a criação de uma nova senha com seis dígitos, permitindo agora o uso das 26 letras do alfabeto, além dos algarismos de 0 a 9. Nesse novo sistema, cada letra maiúscula era considerada distinta de sua versão minúscula. Além disso, era proibido o uso de outros tipos de caracteres. Uma forma de avaliar uma alteração no sistema de senhas é a verificação do coeficiente de melhora, que é a razão do novo número de possibilidades de senhas em relação ao antigo. O coeficiente de melhora da alteração recomendada é</p>
+        <p>A) $\dfrac{62^6}{10^6}$<br>B) $\dfrac{62!}{10!}$<br>C) $\dfrac{62!\,4!}{10!\,56!}$<br>D) $62! - 10!$<br>E) $62^6 - 10^6$</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>A</strong>.<br>Antes: 10 opções por dígito, $10^6$ senhas. Depois: $10 + 26 + 26 = 62$ opções por dígito, $62^6$ senhas. Coeficiente: $\dfrac{62^6}{10^6}$.</p></div>
+    </article>
 
     <article class="questao">
-    <h4>T 12: (ENEM) Fatorial — Fila de Alunos</h4>
-    <p>Uma professora quer organizar 5 alunos em fila para uma foto. De quantas maneiras distintas ela pode organizar esses alunos?</p>
-    <p>A) $5$<br>B) $10$<br>C) $25$<br>D) $60$<br>E) $120$</p>
-    <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-    <div class="gabarito-resolucao">
-        <p><strong>Resolução:</strong> Alternativa <strong>E</strong>.<br>
-        Organizar 5 elementos em fila é uma permutação de 5 elementos:<br>
-        $P_5 = 5! = 5 \times 4 \times 3 \times 2 \times 1 = 120$.</p>
-    </div>
-      </article>
+        <h4>T 12: (ENEM 2014 – 2ª aplicação) Novos caracteres na senha</h4>
+        <p>Um procedimento padrão para aumentar a capacidade do número de senhas de banco é acrescentar mais caracteres a essa senha. Essa prática, além de aumentar as possibilidades de senha, gera um aumento na segurança. Deseja-se colocar dois novos caracteres na senha de um banco, um no início e outro no final. Decidiu-se que esses novos caracteres devem ser vogais e o sistema conseguirá diferenciar maiúsculas de minúsculas. Com essa prática, o número de senhas possíveis ficará multiplicado por</p>
+        <p>A) 100<br>B) 90<br>C) 80<br>D) 25<br>E) 20</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>A</strong>.<br>Há 5 vogais maiúsculas e 5 minúsculas: 10 opções para o início e 10 para o final. O total fica multiplicado por $10 \cdot 10 = 100$.</p></div>
+    </article>
 
     <article class="questao">
-    <h4>T 13: (FUVEST) Formação de Placas</h4>
-    <p>No antigo padrão de placas de veículos brasileiros, cada placa era composta por 3 letras seguidas de 4 algarismos (de 0 a 9, com repetição). Considerando apenas as 26 letras do alfabeto e admitindo repetição de letras e de algarismos, quantas placas distintas poderiam ser formadas?</p>
-    <p>A) $26^3 \times 10^4$<br>B) $26^3 \times 10^4 \times 3!$<br>C) $\dfrac{26!}{23!} \times 10^4$<br>D) $26 \times 10^3$<br>E) $26^4 \times 10^3$</p>
-    <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-    <div class="gabarito-resolucao">
-        <p><strong>Resolução:</strong> Alternativa <strong>A</strong>.<br>
-        Pelo PFC, com repetição permitida:<br>
-        Letras: $26 \times 26 \times 26 = 26^3$<br>
-        Dígitos: $10 \times 10 \times 10 \times 10 = 10^4$<br>
-        Total: $26^3 \times 10^4 = 175\,760\,000$ placas.</p>
-    </div>
-</article>
+        <h4>T 13: (Autoral) Refeição com itens opcionais</h4>
+        <p>Um restaurante oferece 3 entradas, 4 pratos principais e 5 sobremesas. O prato principal é obrigatório; a entrada e a sobremesa são opcionais (o cliente pode escolher uma ou nenhuma de cada). Quantas refeições diferentes são possíveis?</p>
+        <p>A) 60<br>B) 72<br>C) 96<br>D) 120<br>E) 240</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>C</strong>.<br>Prato: 4 opções; entrada: 3 + 1 (nenhuma) = 4; sobremesa: 5 + 1 = 6. Total: $4 \cdot 4 \cdot 6 = 96$.</p></div>
+    </article>
 
     <article class="questao">
-    <h4>T 14: (ENEM) PFC — Trajetos</h4>
-    <p>Para ir de sua casa à escola, Pedro pode utilizar 3 rotas diferentes. Para voltar da escola para casa, ele pode utilizar as mesmas 3 rotas ou mais 2 rotas alternativas, que só podem ser percorridas no sentido escola-casa. Quantos trajetos distintos (ida e volta) Pedro pode fazer em um dia de aula?</p>
-    <p>A) $5$<br>B) $6$<br>C) $10$<br>D) $15$<br>E) $30$</p>
-    <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-    <div class="gabarito-resolucao">
-        <p><strong>Resolução:</strong> Alternativa <strong>D</strong>.<br>
-        Rotas de ida: 3<br>
-        Rotas de volta: $3 + 2 = 5$<br>
-        Total de trajetos (ida e volta): $3 \times 5 = 15$.</p>
-    </div>
-     </article>
+        <h4>T 14: (Autoral) Quociente de fatoriais</h4>
+        <p>O valor de $\dfrac{8!}{6!\,2!}$ é</p>
+        <p>A) 4<br>B) 14<br>C) 24<br>D) 28<br>E) 56</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>D</strong>.<br>$\dfrac{8 \cdot 7 \cdot 6!}{6! \cdot 2} = \dfrac{56}{2} = 28$.</p></div>
+    </article>
 
     <article class="questao">
-    <h4>T 15: (ENEM) Expressão Fatorial — Simplificação</h4>
-    <p>Qual é o valor da expressão $\dfrac{(n+1)!}{n!} - \dfrac{n!}{(n-1)!}$?</p>
-    <p>A) $0$<br>B) $1$<br>C) $n$<br>D) $n+1$<br>E) $2n-1$</p>
-    <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-    <div class="gabarito-resolucao">
-        <p><strong>Resolução:</strong> Alternativa <strong>B</strong>.<br>
-        Simplificando cada fração:<br>
-        $$\frac{(n+1)!}{n!} = n+1$$
-        $$\frac{n!}{(n-1)!} = n$$
-        Portanto: $(n+1) - n = \mathbf{1}$.</p>
-    </div>
+        <h4>T 15: (Autoral) Algarismos ímpares</h4>
+        <p>Quantos números de três algarismos têm todos os algarismos ímpares (podendo repetir)?</p>
+        <p>A) 15<br>B) 60<br>C) 100<br>D) 120<br>E) 125</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>E</strong>.<br>Cada posição pode receber 1, 3, 5, 7 ou 9: $5 \cdot 5 \cdot 5 = 125$.</p></div>
     </article>
 </section>
 
