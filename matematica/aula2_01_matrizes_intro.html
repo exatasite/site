@@ -239,7 +239,7 @@
 </section>
 
 <section class="questoes-propostas">
-    <h3>✍️ 5 Questões Propostas (P 6 a 10)</h3>
+    <h3>✍️ 10 Questões Propostas (P 6 a 15)</h3>
 
     <article class="questao">
         <h4>P 6: Lei de Formação com Condição</h4>
@@ -296,82 +296,95 @@
             <p>$s_{13} = 3$ e $s_{31} = z \implies z = -3$.</p>
         </div>
     </article>
+
+    <article class="questao">
+        <h4>P 11: Construção pela Lei</h4>
+        <p><strong>Enunciado:</strong> Construa $A = (a_{ij})_{2\times 3}$ com $a_{ij} = 2i - j$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> $a_{11}=1,\ a_{12}=0,\ a_{13}=-1,\ a_{21}=3,\ a_{22}=2,\ a_{23}=1$. Logo, $A = \begin{pmatrix} 1 & 0 & -1 \\ 3 & 2 & 1 \end{pmatrix}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 12: Tipos de Matriz</h4>
+        <p><strong>Enunciado:</strong> Classifique: (a) $\begin{pmatrix}1 & 0 \\ 0 & 1\end{pmatrix}$; (b) $\begin{pmatrix} 3 & -1 & 2 \end{pmatrix}$; (c) $\begin{pmatrix}0 & 0 \\ 0 & 0\end{pmatrix}$; (d) $\begin{pmatrix}2 & 0 \\ 0 & 5\end{pmatrix}$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> (a) identidade; (b) matriz linha; (c) matriz nula; (d) matriz diagonal.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 13: Elementos Específicos</h4>
+        <p><strong>Enunciado:</strong> Na matriz $B = (b_{ij})_{4\times 4}$ com $b_{ij} = i \cdot j - 1$, calcule $b_{34}$, $b_{43}$ e a soma da diagonal principal.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> $b_{34} = 12 - 1 = 11$ e $b_{43} = 11$. Diagonal: $0 + 3 + 8 + 15 = 26$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 14: Matriz Diagonal</h4>
+        <p><strong>Enunciado:</strong> Determine $x$ e $y$ para que $M = \begin{pmatrix} 2 & x - 3 \\ y + 1 & 5 \end{pmatrix}$ seja diagonal.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> Os elementos fora da diagonal principal devem ser nulos: $x - 3 = 0 \Rightarrow x = 3$ e $y + 1 = 0 \Rightarrow y = -1$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 15: Matriz de uma Tabela</h4>
+        <p><strong>Enunciado:</strong> Duas lojas venderam, em janeiro, fevereiro e março: Loja 1 — 12, 15 e 10 unidades; Loja 2 — 8, 20 e 14 unidades. Escreva a matriz $V$ (lojas nas linhas), diga o que representa $v_{23}$ e some a 2ª coluna.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> $V = \begin{pmatrix} 12 & 15 & 10 \\ 8 & 20 & 14 \end{pmatrix}$. $v_{23} = 14$: vendas da Loja 2 em março. 2ª coluna: $15 + 20 = 35$ (total de fevereiro).</p>
+        </div>
+    </article>
 </section>
 
-<section class="TESTE">
+<section class="TESTE" id="testes">
     <h3>🎓 TESTES (T 11 a 15)</h3>
 
     <article class="questao">
-        <h4>T 11: (FUVEST) Elemento de Matriz</h4>
-        <p>A matriz $A_{3\times 3}$ tem lei de formação $a_{ij} = i \cdot j$. O elemento $a_{23}$ é igual a:</p>
-        <p>A) $2$<br>B) $3$<br>C) $5$<br>D) $6$<br>E) $9$</p>
+        <h4>T 11: (Autoral) Diagonal principal</h4>
+        <p>Seja $A = (a_{ij})_{3\times 3}$ com $a_{ij} = 3i - 2j$. A soma dos elementos da diagonal principal de $A$ é</p>
+        <p>A) 3<br>B) 6<br>C) 9<br>D) 12<br>E) 18</p>
         <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-        <div class="gabarito-resolucao">
-            <p><strong>Resolução:</strong> Alternativa <strong>D</strong>.<br>
-            $a_{23} = 2 \times 3 = 6$.</p>
-        </div>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>B</strong>.<br>$a_{11} = 1$, $a_{22} = 2$, $a_{33} = 3$. Soma: $6$.</p></div>
     </article>
 
     <article class="questao">
-        <h4>T 12: (UNICAMP) Igualdade de Matrizes</h4>
-        <p>Se $\begin{pmatrix} x - y & 4 \\ 2 & x + y \end{pmatrix} = \begin{pmatrix} 2 & 4 \\ 2 & 8 \end{pmatrix}$, então $x$ e $y$ valem, respectivamente:</p>
-        <p>A) $x = 3$ e $y = 1$<br>B) $x = 5$ e $y = 3$<br>C) $x = 4$ e $y = 2$<br>D) $x = 6$ e $y = 2$<br>E) $x = 2$ e $y = 0$</p>
+        <h4>T 12: (Autoral) Igualdade de matrizes</h4>
+        <p>Se $\begin{pmatrix}x + y & 3 \\ 2 & x - y\end{pmatrix}$ $=$ $\begin{pmatrix}7 & 3 \\ 2 & 1\end{pmatrix}$, então $x \cdot y$ vale</p>
+        <p>A) 7<br>B) 10<br>C) 12<br>D) 15<br>E) 21</p>
         <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-        <div class="gabarito-resolucao">
-            <p><strong>Resolução:</strong> Alternativa <strong>B</strong>.<br>
-            $x - y = 2$ e $x + y = 8$. Somando: $2x = 10 \implies x = 5$. Então $y = 3$.</p>
-        </div>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>C</strong>.<br>$x + y = 7$ e $x - y = 1 \Rightarrow x = 4,\ y = 3$. Produto: $12$.</p></div>
     </article>
 
     <article class="questao">
-        <h4>T 13: (UNESP) Transposta e Simétrica</h4>
-        <p>Uma matriz quadrada $A$ é simétrica se $A = A^T$. Qual das alternativas representa uma matriz simétrica?</p>
-        <p>A) $\begin{pmatrix} 1 & 2 \\ 3 & 4 \end{pmatrix}$<br>
-           B) $\begin{pmatrix} 0 & -1 \\ 1 & 0 \end{pmatrix}$<br>
-           C) $\begin{pmatrix} 5 & 3 \\ 3 & 7 \end{pmatrix}$<br>
-           D) $\begin{pmatrix} 1 & 0 \\ 0 & 0 \end{pmatrix}$ (não é simétrica pois não é quadrada completa)<br>
-           E) $\begin{pmatrix} 2 & 4 \\ -4 & 2 \end{pmatrix}$</p>
+        <h4>T 13: (Autoral) Elemento da transposta</h4>
+        <p>Dada $A = \begin{pmatrix} 1 & 2 & 3 \\ 4 & 5 & 6 \end{pmatrix}$, o elemento da 3ª linha e 1ª coluna de $A^T$ é</p>
+        <p>A) 1<br>B) 2<br>C) 3<br>D) 4<br>E) 6</p>
         <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-        <div class="gabarito-resolucao">
-            <p><strong>Resolução:</strong> Alternativa <strong>C</strong>.<br>
-            $\begin{pmatrix} 5 & 3 \\ 3 & 7 \end{pmatrix}$: o elemento $a_{12} = 3 = a_{21}$. Logo $A = A^T$, a matriz é <strong>simétrica</strong>.<br>
-            Verificando as demais: A tem $a_{12}=2 \neq a_{21}=3$; B tem $a_{12}=-1 \neq a_{21}=1$; E tem $a_{12}=4 \neq a_{21}=-4$.</p>
-        </div>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>C</strong>.<br>$(A^T)_{31} = a_{13} = 3$.</p></div>
     </article>
 
     <article class="questao">
-        <h4>T 14: (UFMG) Lei de Formação Condicional</h4>
-        <p>A matriz $B_{3\times 3}$ tem lei $b_{ij} = i + j$ se $i = j$ e $b_{ij} = 0$ se $i \neq j$. A soma dos elementos da diagonal principal é:</p>
-        <p>A) $6$<br>B) $8$<br>C) $10$<br>D) $12$<br>E) $18$</p>
+        <h4>T 14: (Autoral) Matriz simétrica</h4>
+        <p>A matriz $\begin{pmatrix} 1 & x & 5 \\ 3 & 2 & y \\ z & 4 & 0 \end{pmatrix}$ é simétrica. O valor de $x + y + z$ é</p>
+        <p>A) 7<br>B) 9<br>C) 10<br>D) 12<br>E) 15</p>
         <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-        <div class="gabarito-resolucao">
-            <p><strong>Resolução:</strong> Alternativa <strong>D</strong>.<br>
-            A matriz é diagonal. Os elementos da diagonal:
-            $b_{11} = 1+1 = 2$, $b_{22} = 2+2 = 4$, $b_{33} = 3+3 = 6$.<br>
-            $\text{tr}(B) = 2 + 4 + 6 = 12$.</p>
-        </div>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>D</strong>.<br>Simétrica: $a_{ij} = a_{ji}$. Então $x = 3$, $y = 4$ e $z = 5$; soma $12$.</p></div>
     </article>
 
     <article class="questao">
-        <h4>T 15: (FATEC) Transposta e Igualdade</h4>
-        <p>Dada a matriz $A = \begin{pmatrix} 2 & k-1 \\ 3 & 5 \end{pmatrix}$, sabe-se que $A^T = \begin{pmatrix} 2 & 3 \\ m+2 & 5 \end{pmatrix}$. Os valores de $k$ e $m$ são, respectivamente:</p>
-        <p>A) $k = 4$ e $m = -1$<br>B) $k = 2$ e $m = 1$<br>C) $k = 4$ e $m = 1$<br>D) $k = 2$ e $m = -1$<br>E) $k = 3$ e $m = 0$</p>
+        <h4>T 15: (Autoral) Soma dos elementos</h4>
+        <p>Seja $A = (a_{ij})_{2\times 2}$ com $a_{ij} = i^2 - j$. A soma de todos os elementos de $A$ é</p>
+        <p>A) 2<br>B) 4<br>C) 6<br>D) 8<br>E) 10</p>
         <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-        <div class="gabarito-resolucao">
-            <p><strong>Resolução:</strong> Alternativa <strong>A</strong>.<br>
-            A transposta de $A$ troca linhas por colunas:
-            $$A^T = \begin{pmatrix} 2 & 3 \\ k-1 & 5 \end{pmatrix}$$
-            Igualando com o $A^T$ dado:
-            $k - 1 = m + 2$.<br>
-            Além disso, o elemento $(1,2)$ de $A^T$ é $3$ (vem da linha 2, coluna 1 de $A$, que é $3$) ✔.<br>
-            O elemento $(2,1)$ de $A^T$ é $k-1$ (vem de $a_{12}$). Igualando com $m+2$:
-            $$k - 1 = m + 2$$
-            Precisamos de mais uma relação. Como $a_{12} = k-1$ e $(A^T)_{21} = k-1$, e o dado mostra $(A^T)_{21} = m+2$, com $(A^T)_{12} = 3$, temos $a_{21} = 3$ ✔.<br>
-            Do enunciado: $(A^T)_{21} = m + 2$ deve ser igual a $a_{12} = k-1$. Testando alternativa A ($k=4, m=-1$): $k-1 = 3$ e $m+2 = 1$ — não coincidem. Testando C ($k=4, m=1$): $k-1=3$ e $m+2=3$ ✔.<br>
-            Portanto $k = 4$ e $m = 1$. <strong>Alternativa C</strong>.</p>
-        </div>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>B</strong>.<br>$A = \begin{pmatrix} 0 & -1 \\ 3 & 2 \end{pmatrix}$; soma $0 - 1 + 3 + 2 = 4$.</p></div>
     </article>
-
 </section>
 </div>
 </main>

@@ -197,7 +197,7 @@
 <!--------------- QUESTÕES PROPOSTAS --------------------------->
 
 <section class="questoes-propostas">
-                    <h3>✍️ 5 Questões Propostas (P 6 a 10)</h3>
+                    <h3>✍️ 10 Questões Propostas (P 6 a 15)</h3>
 
                     <article class="questao">
                         <h4>P 6: Valor Máximo ou Mínimo</h4>
@@ -256,86 +256,95 @@
                             <p>$$f(x) < 0 \text{ para } -2 < x < 3$$</p>
                         </div>
                     </article>
-                </section>
+                
+    <article class="questao">
+        <h4>P 11: Conjunto Imagem</h4>
+        <p><strong>Enunciado:</strong> Determine o conjunto imagem de $f(x) = x^2 - 6x + 5$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> $a = 1 > 0$ (concavidade para cima). $\Delta = 36 - 20 = 16$, $y_V = -\dfrac{\Delta}{4a} = -4$. Logo, $\text{Im}(f) = [-4, +\infty)$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 12: Lei a partir das Raízes e de um Ponto</h4>
+        <p><strong>Enunciado:</strong> Uma função do 2º grau tem raízes 1 e 3 e $f(0) = 3$. Determine sua lei.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> $f(x) = a(x-1)(x-3)$. $f(0) = 3a = 3 \Rightarrow a = 1$. Logo, $f(x) = x^2 - 4x + 3$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 13: Produto Máximo</h4>
+        <p><strong>Enunciado:</strong> Dois números têm soma 20. Qual é o maior valor possível do produto deles?</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> $P(x) = x(20 - x) = -x^2 + 20x$. $x_V = 10$, então os números são 10 e 10 e o produto máximo é $100$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 14: Crescimento e Decrescimento</h4>
+        <p><strong>Enunciado:</strong> Em que intervalos $f(x) = -2x^2 + 8x + 1$ é crescente e decrescente? Qual é o valor máximo?</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> $x_V = -\dfrac{8}{2(-2)} = 2$. Como $a < 0$: crescente para $x < 2$, decrescente para $x > 2$. Máximo: $f(2) = -8 + 16 + 1 = 9$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 15: Lucro de uma Empresa</h4>
+        <p><strong>Enunciado:</strong> O lucro de uma empresa, em milhares de reais, é $L(x) = -x^2 + 30x - 200$, sendo $x$ o número de unidades (em centenas). Para quais $x$ o lucro é zero e qual é o lucro máximo?</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> $x^2 - 30x + 200 = 0 \Rightarrow x = 10$ ou $x = 20$. Máximo em $x_V = 15$: $L(15) = -225 + 450 - 200 = 25$ mil reais.</p>
+        </div>
+    </article>
+</section>
 <!--------------- TESTE  --------------------------->
 
-<section class="TESTE">
+<section class="TESTE" id="testes">
     <h3>🎓 TESTES (T 11 a 15)</h3>
 
     <article class="questao">
-    <h4>T 11: (ENEM) Função Quadrática — Lucro de uma Empresa</h4>
-    <p>O lucro mensal de uma empresa, em milhares de reais, é dado pela função $L(x) = -x^2 + 8x - 7$, onde $x$ representa a quantidade (em centenas) de produtos vendidos.</p>
-    <p>Qual a quantidade de produtos que maximiza o lucro e qual é esse lucro máximo?</p>
-    <p>A) 400 produtos; lucro de R$ 7 mil<br>B) 400 produtos; lucro de R$ 9 mil<br>C) 400 produtos; lucro de R$ 16 mil<br>D) 800 produtos; lucro de R$ 9 mil<br>E) 800 produtos; lucro de R$ 16 mil</p>
-    <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-    <div class="gabarito-resolucao">
-        <p><strong>Resolução:</strong> Alternativa <strong>B</strong>.<br>
-        $a = -1$, $b = 8$, $c = -7$. Como $a < 0$, há ponto de máximo no vértice.<br>
-        $$x_V = -\frac{8}{2 \cdot (-1)} = 4 \implies 400 \text{ produtos}$$
-        $$L(4) = -(4)^2 + 8(4) - 7 = -16 + 32 - 7 = 9 \text{ mil reais}$$
-        Lucro máximo de R$ 9 mil com 400 produtos.</p>
-    </div>
-      </article>
+        <h4>T 11: (ENEM PPL 2013) Pacotes de bonés</h4>
+        <p>Uma pequena fábrica vende seus bonés em pacotes com quantidades de unidades variáveis. O lucro obtido é dado pela expressão $L(x) = -x^2 + 12x - 20$, onde $x$ representa a quantidade de bonés contidos no pacote. A empresa pretende fazer um único tipo de empacotamento, obtendo um lucro máximo. Para obter o lucro máximo nas vendas, os pacotes devem conter uma quantidade de bonés igual a</p>
+        <p>A) 4.<br>B) 6.<br>C) 9.<br>D) 10.<br>E) 14.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>B</strong>.<br>O lucro máximo ocorre no vértice: $x_V = -\dfrac{12}{2(-1)} = 6$.</p></div>
+    </article>
 
     <article class="questao">
-    <h4>T 12: (ENEM) Função Quadrática — Lançamento de Foguete</h4>
-    <p>Um foguete de brinquedo é lançado verticalmente e sua altura, em metros, é descrita por $h(t) = -4t^2 + 16t$, onde $t$ é o tempo em segundos.</p>
-    <p>Após quantos segundos o foguete atinge o solo novamente e qual foi a altura máxima atingida?</p>
-    <p>A) Atinge o solo em $t = 4$ s; altura máxima de 16 m.<br>B) Atinge o solo em $t = 4$ s; altura máxima de 20 m.<br>C) Atinge o solo em $t = 2$ s; altura máxima de 16 m.<br>D) Atinge o solo em $t = 8$ s; altura máxima de 16 m.<br>E) Atinge o solo em $t = 4$ s; altura máxima de 24 m.</p>
-    <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-    <div class="gabarito-resolucao">
-        <p><strong>Resolução:</strong> Alternativa <strong>A</strong>.<br>
-        Solo: $h(t) = 0 \implies -4t^2 + 16t = 0 \implies -4t(t - 4) = 0$.<br>
-        $t = 0$ (lançamento) ou $t = 4$ s (retorno ao solo).<br>
-        Altura máxima no vértice: $t_V = -\frac{16}{2 \cdot (-4)} = 2$ s.<br>
-        $h(2) = -4(4) + 16(2) = -16 + 32 = 16$ m.</p>
-    </div>
-      </article>
+        <h4>T 12: (ENEM 2013) Temperatura do forno</h4>
+        <p>A temperatura $T$ de um forno (em graus centígrados) é reduzida por um sistema a partir do instante de seu desligamento ($t = 0$) e varia de acordo com a expressão $T(t) = -\dfrac{t^2}{4} + 400$, com $t$ em minutos. Por motivos de segurança, a trava do forno só é liberada para abertura quando o forno atinge a temperatura de 39 °C. Qual o tempo mínimo de espera, em minutos, após se desligar o forno, para que a porta possa ser aberta?</p>
+        <p>A) 19,0<br>B) 19,8<br>C) 20,0<br>D) 38,0<br>E) 39,0</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>D</strong>.<br>$-\dfrac{t^2}{4} + 400 = 39 \Rightarrow t^2 = 1444 \Rightarrow t = 38$ (tempo positivo).</p></div>
+    </article>
 
     <article class="questao">
-    <h4>T 13: (FUVEST) Discriminante e Natureza das Raízes</h4>
-    <p>Para quais valores inteiros de $k$ a equação $x^2 - kx + 4 = 0$ possui duas raízes reais distintas?</p>
-    <p>A) $k > 4$ apenas<br>B) $k = 4$ ou $k = -4$<br>C) $k < -4$ ou $k > 4$<br>D) $-4 \leq k \leq 4$<br>E) Qualquer inteiro $k \neq 0$</p>
-    <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-    <div class="gabarito-resolucao">
-        <p><strong>Resolução:</strong> Alternativa <strong>C</strong>.<br>
-        Para duas raízes reais distintas, exigimos $\Delta > 0$:<br>
-        $$\Delta = k^2 - 4 \cdot 1 \cdot 4 > 0 \implies k^2 > 16 \implies |k| > 4$$
-        Portanto $k < -4$ ou $k > 4$.</p>
-    </div>
-</article>
+        <h4>T 13: (ENEM 2015) Estufa de bactérias</h4>
+        <p>Um estudante está pesquisando o desenvolvimento de certo tipo de bactéria. Para essa pesquisa, ele utiliza uma estufa para armazenar as bactérias. A temperatura no interior dessa estufa, em graus Celsius, é dada pela expressão $T(h) = -h^2 + 22h - 85$, em que $h$ representa as horas do dia. Sabe-se que o número de bactérias é o maior possível quando a estufa atinge sua temperatura máxima e, nesse momento, ele deve retirá-las da estufa. A tabela associa intervalos de temperatura, em graus Celsius, com as classificações: muito baixa, baixa, média, alta e muito alta.</p><table style="border-collapse:collapse;margin:8px 0"><tr><td style="border:1px solid #999;padding:4px 10px"><strong>Intervalos de temperatura (°C)</strong></td><td style="border:1px solid #999;padding:4px 10px"><strong>Classificação</strong></td></tr><tr><td style="border:1px solid #999;padding:4px 10px">$T &lt; 0$</td><td style="border:1px solid #999;padding:4px 10px">Muito baixa</td></tr><tr><td style="border:1px solid #999;padding:4px 10px">$0 \le T \le 17$</td><td style="border:1px solid #999;padding:4px 10px">Baixa</td></tr><tr><td style="border:1px solid #999;padding:4px 10px">$17 &lt; T &lt; 30$</td><td style="border:1px solid #999;padding:4px 10px">Média</td></tr><tr><td style="border:1px solid #999;padding:4px 10px">$30 \le T \le 43$</td><td style="border:1px solid #999;padding:4px 10px">Alta</td></tr><tr><td style="border:1px solid #999;padding:4px 10px">$T &gt; 43$</td><td style="border:1px solid #999;padding:4px 10px">Muito alta</td></tr></table><p>Quando o estudante obtém o maior número possível de bactérias, a temperatura no interior da estufa está classificada como</p>
+        <p>A) muito baixa.<br>B) baixa.<br>C) média.<br>D) alta.<br>E) muito alta.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>D</strong>.<br>$\Delta = 22^2 - 4(-1)(-85) = 484 - 340 = 144$. $T_{máx} = -\dfrac{\Delta}{4a} = -\dfrac{144}{-4} = 36$ °C, que está em $30 \le T \le 43$: alta.</p></div>
+    </article>
 
     <article class="questao">
-    <h4>T 14: (ENEM) Função Quadrática — Área e Dimensões</h4>
-    <p>Uma fazendeiro quer cercar um terreno retangular usando 60 m de cerca. Ele pretende usar uma parede já existente como um dos lados maiores, de modo que a cerca cubra apenas os outros três lados. Sendo $x$ a medida do lado perpendicular à parede, a área $A$ do terreno em função de $x$ é dada por $A(x) = x(60 - 2x)$.</p>
-    <p>Qual o valor de $x$ que maximiza a área cercada?</p>
-    <p>A) $x = 10$ m<br>B) $x = 15$ m<br>C) $x = 20$ m<br>D) $x = 25$ m<br>E) $x = 30$ m</p>
-    <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-    <div class="gabarito-resolucao">
-        <p><strong>Resolução:</strong> Alternativa <strong>B</strong>.<br>
-        Expandindo: $A(x) = 60x - 2x^2$. Temos $a = -2$, $b = 60$.<br>
-        $$x_V = -\frac{60}{2 \cdot (-2)} = \frac{60}{4} = 15 \text{ m}$$
-        A área máxima ocorre com $x = 15$ m, resultando em $A(15) = 15 \cdot 30 = 450$ m².</p>
-    </div>
-     </article>
+        <h4>T 14: (ENEM 2017 – Libras) Renda do cabeleireiro</h4>
+        <p>A única fonte de renda de um cabeleireiro é proveniente de seu salão. Ele cobra R\$ 10,00 por cada serviço realizado e atende 200 clientes por mês, mas está pensando em aumentar o valor cobrado pelo serviço. Ele sabe que cada real cobrado a mais acarreta uma diminuição de 10 clientes por mês. Para que a renda do cabeleireiro seja máxima, ele deve cobrar por serviço o valor de</p>
+        <p>A) R\$ 10,00.<br>B) R\$ 10,50.<br>C) R\$ 11,00.<br>D) R\$ 15,00.<br>E) R\$ 20,00.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>D</strong>.<br>Com $x$ reais a mais: $R(x) = (10 + x)(200 - 10x) = -10x^2 + 100x + 2000$. Máximo em $x_V = 5$, ou seja, preço de R\$ 15,00.</p></div>
+    </article>
 
     <article class="questao">
-    <h4>T 15: (ENEM) Função Quadrática — Preço e Demanda</h4>
-    <p>Uma loja vende camisetas a R$ 40,00 e vende 100 peças por semana. Um estudo mostrou que para cada R$ 5,00 de aumento no preço, a demanda cai em 10 unidades. O faturamento semanal $F$, em reais, em função do número $n$ de aumentos de R$ 5,00 aplicados, é dado por $F(n) = (40 + 5n)(100 - 10n)$.</p>
-    <p>Qual o número de aumentos $n$ que maximiza o faturamento?</p>
-    <p>A) $n = 1$<br>B) $n = 2$<br>C) $n = 3$<br>D) $n = 4$<br>E) $n = 5$</p>
-    <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-    <div class="gabarito-resolucao">
-        <p><strong>Resolução:</strong> Alternativa <strong>C</strong>.<br>
-        Expandindo: $F(n) = 4000 - 400n + 500n - 50n^2 = -50n^2 + 100n + 4000$.<br>
-        $a = -50$, $b = 100$. Como $a < 0$, há máximo no vértice:<br>
-        $$n_V = -\frac{100}{2 \cdot (-50)} = \frac{100}{100} = 1$$
-        Espera — recalculando com cuidado: $F(n) = (40+5n)(100-10n)$.<br>
-        $= 4000 - 400n + 500n - 50n^2 = -50n^2 + 100n + 4000$.<br>
-        $$n_V = -\frac{100}{2(-50)} = 1$$
-        Verificando: $F(0) = 4000$; $F(1) = -50 + 100 + 4000 = 4050$; $F(2) = -200 + 200 + 4000 = 4000$.<br>
-        O faturamento máximo ocorre em $n = \mathbf{1}$, com $F = R\$\,4050$. Alternativa <strong>A</strong>.</p>
-    </div>
+        <h4>T 15: (Autoral) Canteiro junto ao muro</h4>
+        <p>Um agricultor tem 60 m de tela para cercar um canteiro retangular. Um dos lados do canteiro ficará encostado em um muro e não precisará de tela. A maior área que esse canteiro pode ter é</p>
+        <p>A) 225 m².<br>B) 300 m².<br>C) 400 m².<br>D) 450 m².<br>E) 900 m².</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>D</strong>.<br>Lados perpendiculares ao muro: $x$; lado paralelo: $60 - 2x$. $A(x) = x(60 - 2x) = -2x^2 + 60x$. $x_V = 15$ e $A(15) = 15 \cdot 30 = 450$ m².</p></div>
     </article>
 </section>
 

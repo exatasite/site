@@ -46,7 +46,7 @@
     <h3>📚 Resumo: </h3>
     <section class="resumo-conteudo">
         <p>A função do 1º grau, ou função afim, é aquela cuja lei de formação pode ser escrita como:</p>
-        <p style="text-align: center;"><strong>$f(x) = ax + b$</strong></p>
+        <p style="text-align: center;"><strong>$f(x) = ax + b$</strong>, com $a, b \in \mathbb{R}$ e $a \neq 0$</p>
         <ul>
             <li><strong>Coeficiente Angular ($a$):</strong> Define a inclinação da reta.</li>
             <li><strong>Coeficiente Linear ($b$):</strong> Define onde a reta cruza o eixo $y$.</li>
@@ -62,12 +62,12 @@
     </div>
 
     <div class="passo-teoria">
-        <h4>1. O Papel do Coeficiente angular</h4>
+        <h4>1. O Papel do Coeficiente Angular ($a$)</h4>
         <p>O comportamento da reta é ditado pelo valor de $a$:</p>
         <ul>
             <li><strong>Função Crescente ($a > 0$):</strong> Conforme o valor de $x$ aumenta, o valor de $y$ também aumenta.</li>
             <li><strong>Função Decrescente ($a < 0$):</strong> Conforme o valor de $x$ aumenta, o valor de $y$ diminui.</li>
-            <li><strong>Função Constante ($a = 0$):</strong> O gráfico é uma reta horizontal.</li>
+            <li><strong>Caso particular ($a = 0$):</strong> a lei fica $f(x) = b$, a <strong>função constante</strong>, cujo gráfico é uma reta horizontal. Atenção: ela <strong>não</strong> é do 1º grau, pois não possui termo em $x$.</li>
         </ul>
         <figure class="figura-aula figura-grande">
             <img src="../imagens_matematica/aula1_04_figura_1.png" alt="A inclinação da reta depende diretamente do sinal do coeficiente angular.">
@@ -87,7 +87,8 @@
     <div class="passo-teoria">
         <h4>3. Zero ou Raiz da Função</h4>
         <p>O zero da função é o valor de $x$ que faz com que $f(x) = 0$.</p>
-        <p style="text-align: center;">$$ax + b = 0 \implies x = -\frac{b}{a}$$</p>
+        <p style="text-align: center;">$$ax + b = 0 \implies x = -\frac{b}{a} \quad (a \neq 0)$$</p>
+        <p>Graficamente, a raiz é a abscissa do ponto $\left(-\frac{b}{a},\, 0\right)$, onde a reta corta o eixo $x$.</p>
     </div>
 </section>
 
@@ -100,7 +101,7 @@
         </div>
         <div class="card" style="background: #fdfdfd; padding: 20px; border-radius: 10px; border-left: 5px solid #2ecc71; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
             <h4>🔌 Contas de Consumo</h4>
-            <p>Sua conta de água ou luz possui uma "taxa de disponibilidade" (fixo) mais o custo por cada $m^3$ ou $kWh$ consumido.</p>
+            <p>Sua conta de água ou luz possui uma "taxa de disponibilidade" (fixo) mais o custo por cada $\text{m}^3$ ou $\text{kWh}$ consumido.</p>
         </div>
     </div>   
 </section>
@@ -171,12 +172,12 @@
 
                     <article class="questao">
                         <h4>R 5: Problema Contextualizado</h4>
-                        <p><strong>Enunciado:</strong> O custo de produção de uma fábrica é $R\$ 500,00$ fixos mais $R\$ 10,00$ por peça. Qual o custo para produzir 80 peças?</p>
+                        <p><strong>Enunciado:</strong> O custo de produção de uma fábrica é R\$ 500,00 fixos mais R\$ 10,00 por peça. Qual o custo para produzir 80 peças?</p>
                         <div class="resolucao-bloco">
                             <p><strong>Resolução:</strong> A função custo é $C(x) = 10x + 500$.</p>
                             <p>Para $x = 80$:</p>
                             <p>$$C(80) = 10(80) + 500 = 800 + 500 = 1300$$</p>
-                            <p>O custo é de $R\$ 1.300,00$.</p>
+                            <p>O custo é de R\$ 1.300,00.</p>
                         </div>
                     </article>
                 </section>
@@ -184,10 +185,10 @@
 <!--------------- QUESTÕES PROPOSTAS --------------------------->
 
 <section class="questoes-propostas">
-                    <h3>✍️ 5 Questões Propostas (P 6 a 10)</h3>
+                    <h3>✍️ 10 Questões Propostas (P 6 a 15)</h3>
 
                     <article class="questao">
-                        <h4>P 6: Análise de Gráfico</h4>
+                        <h4>P 6: Cálculo do Coeficiente Linear</h4>
                         <p><strong>Enunciado:</strong> Uma função afim tem $a = 3$ e passa pelo ponto $(2, 10)$. Qual o valor de $b$?</p>
                         <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
                         <div class="gabarito-resolucao">
@@ -218,13 +219,13 @@
 
                     <article class="questao">
                         <h4>P 9: Comparação de Planos</h4>
-                        <p><strong>Enunciado:</strong> O Plano A cobra $R\$ 30$ fixos e $R\$ 2$ por hora. O Plano B cobra apenas $R\$ 5$ por hora. A partir de quantas horas o Plano A é mais barato?</p>
+                        <p><strong>Enunciado:</strong> O Plano A cobra R\$ 30,00 fixos e R\$ 2,00 por hora. O Plano B cobra apenas R\$ 5,00 por hora. A partir de quantas horas o Plano A é mais barato?</p>
                         <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
                         <div class="gabarito-resolucao">
                             <p><strong>Resolução:</strong> Montamos as funções: $A(x) = 2x + 30$ e $B(x) = 5x$.</p>
                             <p>Queremos $A(x) < B(x)$:</p>
                             <p>$$2x + 30 < 5x \implies 30 < 3x \implies 10 < x$$</p>
-                            <p>O Plano A é mais barato para mais de 10 horas.</p>
+                            <p>O Plano A é mais barato para mais de 10 horas (com exatamente 10 horas, os dois planos custam R\$ 50). Contando horas inteiras, o Plano A passa a ser mais barato a partir de 11 horas.</p>
                         </div>
                     </article>
 
@@ -233,7 +234,69 @@
                         <p><strong>Enunciado:</strong> Se aumentarmos o valor de $a$ na função $f(x) = ax + b$, o que acontece com a inclinação da reta no gráfico?</p>
                         <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
                         <div class="gabarito-resolucao">
-                            <p><strong>Resolução:</strong> A reta fica <strong>mais inclinada</strong> em relação ao eixo $x$ (sobe mais rápido se for positiva ou desce mais bruscamente se for negativa).</p>
+                            <p><strong>Resolução:</strong> Depende do sinal de $a$:</p>
+                            <ul>
+                                <li>Se $a > 0$: aumentar $a$ deixa a reta <strong>mais inclinada</strong> (ela sobe mais rápido). Ex.: de $a = 1$ para $a = 3$.</li>
+                                <li>Se $a < 0$: aumentar $a$ (aproximá-lo de zero) deixa a reta <strong>menos inclinada</strong>. Ex.: de $a = -5$ para $a = -2$, ela desce mais devagar.</li>
+                            </ul>
+                            <p>Resumo: quanto maior o valor absoluto $|a|$, mais inclinada é a reta.</p>
+                        </div>
+                    </article>
+
+                    <article class="questao">
+                        <h4>P 11: Lei da Função por Dois Pontos</h4>
+                        <p><strong>Enunciado:</strong> Determine a lei da função afim cujo gráfico passa pelos pontos $(1, 4)$ e $(3, 10)$.</p>
+                        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+                        <div class="gabarito-resolucao">
+                            <p><strong>Resolução:</strong> Coeficiente angular:</p>
+                            <p>$$a = \frac{\Delta y}{\Delta x} = \frac{10 - 4}{3 - 1} = \frac{6}{2} = 3$$</p>
+                            <p>Usando o ponto $(1, 4)$: $4 = 3(1) + b \implies b = 1$.</p>
+                            <p>A lei é $f(x) = 3x + 1$. Verificação: $f(3) = 3(3) + 1 = 10$ ✓</p>
+                        </div>
+                    </article>
+
+                    <article class="questao">
+                        <h4>P 12: Estudo do Sinal</h4>
+                        <p><strong>Enunciado:</strong> Para quais valores de $x$ a função $f(x) = 2x - 8$ é positiva?</p>
+                        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+                        <div class="gabarito-resolucao">
+                            <p><strong>Resolução:</strong> Queremos $f(x) > 0$:</p>
+                            <p>$$2x - 8 > 0 \implies 2x > 8 \implies x > 4$$</p>
+                            <p>A raiz é $x = 4$ e, como $a = 2 > 0$ (função crescente), $f(x)$ é positiva para $x > 4$, negativa para $x < 4$ e nula em $x = 4$.</p>
+                        </div>
+                    </article>
+
+                    <article class="questao">
+                        <h4>P 13: Corrida de Táxi</h4>
+                        <p><strong>Enunciado:</strong> Um táxi cobra R\$ 5,00 de bandeirada mais R\$ 2,50 por quilômetro rodado. Uma corrida custou R\$ 30,00. Quantos quilômetros foram percorridos?</p>
+                        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+                        <div class="gabarito-resolucao">
+                            <p><strong>Resolução:</strong> A função preço é $P(x) = 2{,}5x + 5$. Fazendo $P(x) = 30$:</p>
+                            <p>$$2{,}5x + 5 = 30 \implies 2{,}5x = 25 \implies x = 10$$</p>
+                            <p>Foram percorridos <strong>10 km</strong>. Verificação: $5 + 2{,}5 \times 10 = 30$ ✓</p>
+                        </div>
+                    </article>
+
+                    <article class="questao">
+                        <h4>P 14: Intersecção de Duas Retas</h4>
+                        <p><strong>Enunciado:</strong> Determine o ponto em que os gráficos de $f(x) = 2x + 1$ e $g(x) = -x + 7$ se cruzam.</p>
+                        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+                        <div class="gabarito-resolucao">
+                            <p><strong>Resolução:</strong> No ponto de encontro, $f(x) = g(x)$:</p>
+                            <p>$$2x + 1 = -x + 7 \implies 3x = 6 \implies x = 2$$</p>
+                            <p>$f(2) = 2(2) + 1 = 5$ e $g(2) = -2 + 7 = 5$ ✓. O ponto é $(2, 5)$.</p>
+                        </div>
+                    </article>
+
+                    <article class="questao">
+                        <h4>P 15: Depreciação Linear</h4>
+                        <p><strong>Enunciado:</strong> Um celular foi comprado por R\$ 2.400,00 e perde R\$ 300,00 de valor a cada ano, de forma linear. Escreva a lei $V(t)$ do valor do aparelho após $t$ anos e determine após quantos anos ele valerá R\$ 900,00.</p>
+                        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+                        <div class="gabarito-resolucao">
+                            <p><strong>Resolução:</strong> Valor inicial $b = 2400$ e queda de 300 por ano ($a = -300$):</p>
+                            <p>$$V(t) = -300t + 2400$$</p>
+                            <p>Fazendo $V(t) = 900$: $-300t + 2400 = 900 \implies -300t = -1500 \implies t = 5$.</p>
+                            <p>Após <strong>5 anos</strong>. Verificação: $2400 - 300 \times 5 = 900$ ✓</p>
                         </div>
                     </article>
                 </section>
@@ -243,13 +306,13 @@
     <h3>🎓 TESTES (T 11 a 15)</h3>
 
     <article class="questao">
-    <h4>T 11: (ENEM) Função Afim — Estratégia de Mercado</h4>
-    <p>Duas empresas do mercado de pequenos reparos domésticos determinam o valor de seus serviços a partir de um valor fixo acrescido de um valor cobrado por hora. A empresa X cobra R\$ 60,00 de valor fixo mais R\$ 18,00 por hora de serviço prestado. A empresa Y cobra R$ 24,00 de valor fixo e está definindo um novo valor a ser cobrado por hora. Sua estratégia de mercado prevê que, em relação à empresa X, o custo total do serviço deve ser menor ou igual para trabalhos de até duas horas de duração.</p>
+    <h4>T 11: (ENEM PPL 2023) Função Afim — Estratégia de Mercado</h4>
+    <p>Duas empresas do mercado de pequenos reparos domésticos determinam o valor de seus serviços a partir de um valor fixo acrescido de um valor cobrado por hora. A empresa X cobra R\$ 60,00 de valor fixo mais R\$ 18,00 por hora de serviço prestado. A empresa Y cobra R\$ 24,00 de valor fixo e está definindo um novo valor a ser cobrado por hora. Sua estratégia de mercado prevê que, em relação à empresa X, o custo total do serviço deve ser menor ou igual para trabalhos de até duas horas de duração.</p>
     <p>Qual é o valor máximo, em real, que a empresa Y poderá cobrar por hora de serviço prestado a fim de atender à sua estratégia de mercado?</p>
-    <p>A) $18$<br>B) $36$<br>C) $48$<br>D) $54$<br>E) $60$</p>
+    <p>A) $18$<br>B) $36$<br>C) $48$<br>D) $54$<br>E) $78$</p>
     <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
     <div class="gabarito-resolucao">
-        <p><strong>Resolução:</strong> Alternativa <strong>D</strong>.<br>
+        <p><strong>Resolução:</strong> Alternativa <strong>B</strong>.<br>
         Custo X em 2 horas: $60 + 18 \times 2 = 96$. A condição é $Y \leq X$, ou seja:<br>
         $24 + h \cdot 2 \leq 96 \implies 2h \leq 72 \implies h \leq 36$.<br>
         Testando $h = 36$: $Y(2) = 24 + 36 \times 2 = 96 = X(2)$. ✓<br>
@@ -258,34 +321,39 @@
       </article>
 
     <article class="questao">
-    <h4>T 12: (ENEM) Função Afim — Lucro do Produtor</h4>
+    <h4>T 12: (ENEM 2020 Digital) Função Afim — Lucro do Produtor</h4>
     <p>Por muitos anos, o Brasil tem figurado no cenário mundial entre os maiores produtores e exportadores de soja. Entre os anos de 2010 e 2014, houve uma forte tendência de aumento da produtividade, porém, um aspecto dificultou esse avanço: o alto custo do imposto ao produtor associado ao baixo preço de venda do produto. Em média, um produtor gastava R\$ 1 200,00 por hectare plantado, e vendia por R\$ 50,00 cada saca de 60 kg. Ciente desses valores, um produtor pode, em certo ano, determinar uma relação do lucro $L$ que obteve em função das sacas de 60 kg vendidas. Suponha que ele plantou 10 hectares de soja em sua propriedade, na qual colheu $x$ sacas de 60 kg e todas as sacas foram vendidas.</p>
     <p>Qual é a expressão que determinou o lucro $L$ em função de $x$ obtido por esse produtor nesse ano?</p>
     <p>A) $L(x) = 50x - 1\,200$<br>B) $L(x) = 50x - 12\,000$<br>C) $L(x) = 50x + 12\,000$<br>D) $L(x) = 500x - 1\,200$<br>E) $L(x) = 1\,200x - 500$</p>
     <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
     <div class="gabarito-resolucao">
         <p><strong>Resolução:</strong> Alternativa <strong>B</strong>.<br>
-        Receita: $50x$ (R$ 50,00 por saca vendida).<br>
-        Custo total: $1\,200 \times 10 = 12\,000$ (R$ 1 200,00 por hectare em 10 hectares).<br>
-        $L(x) = 50x - 12\,000$.</p>21:34 01/05/202621:34 01/05/2026
+        Receita: $50x$ (R\$ 50,00 por saca vendida).<br>
+        Custo total: $1\,200 \times 10 = 12\,000$ (R\$ 1 200,00 por hectare em 10 hectares).<br>
+        Lucro = Receita − Custo: $L(x) = 50x - 12\,000$.</p>
     </div>
       </article>
 
     <article class="questao">
-    <h4>T 13: (FUVEST) Distância entre Pontos — Formigas</h4>
-    <p>Observou-se que todas as formigas de um formigueiro trabalham de maneira ordeira e organizada. Foi feito um experimento com duas formigas e os resultados obtidos foram esboçados em um plano cartesiano no qual os eixos estão graduados em quilômetros. As duas formigas partiram juntas do ponto O, origem do plano cartesiano xOy. Uma delas caminhou horizontalmente para o lado direito, a uma velocidade de 4 km/h. A outra caminhou verticalmente para cima, à velocidade de 3 km/h.</p>
-    <p>Após 2 horas de movimento, quais as coordenadas cartesianas das posições de cada formiga?</p>
-    <p>A) $(8;0)$ e $(0;6)$<br>B) $(4;0)$ e $(0;6)$<br>C) $(4;0)$ e $(0;3)$<br>D) $(0;8)$ e $(6;0)$<br>E) $(0;4)$ e $(3;0)$</p>
+    <h4>T 13: (ENEM 2012) Função Afim — Oferta e Demanda</h4>
+    <p>As curvas de oferta e de demanda de um produto representam, respectivamente, as quantidades que vendedores e consumidores estão dispostos a comercializar em função do preço do produto. Em alguns casos, essas curvas podem ser representadas por retas. Suponha que as quantidades de oferta e de demanda de um produto sejam, respectivamente, representadas pelas equações:</p>
+    <p style="text-align: center;">$Q_O = -20 + 4P$<br>$Q_D = 46 - 2P$</p>
+    <p>em que $Q_O$ é quantidade de oferta, $Q_D$ é a quantidade de demanda e $P$ é o preço do produto.</p>
+    <p>A partir dessas equações, de oferta e de demanda, os economistas encontram o preço de equilíbrio de mercado, ou seja, quando $Q_O$ e $Q_D$ se igualam.</p>
+    <p>Para a situação descrita, qual o valor do preço de equilíbrio?</p>
+    <p>A) $5$<br>B) $11$<br>C) $13$<br>D) $23$<br>E) $33$</p>
     <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
     <div class="gabarito-resolucao">
-        <p><strong>Resolução:</strong> Alternativa <strong>A</strong>.<br>
-        Formiga 1 (horizontal, 4 km/h): distância $= 4 \times 2 = 8$ km → posição $(8;\, 0)$.<br>
-        Formiga 2 (vertical, 3 km/h): distância $= 3 \times 2 = 6$ km → posição $(0;\, 6)$.</p>
+        <p><strong>Resolução:</strong> Alternativa <strong>B</strong>.<br>
+        No equilíbrio, $Q_O = Q_D$:<br>
+        $-20 + 4P = 46 - 2P \implies 4P + 2P = 46 + 20 \implies 6P = 66 \implies P = 11$.<br>
+        Verificação: $Q_O = -20 + 4(11) = 24$ e $Q_D = 46 - 2(11) = 24$ ✓<br>
+        O preço de equilíbrio é $\mathbf{11}$.</p>
     </div>
 </article>
 
     <article class="questao">
-    <h4>T 14: (ENEM) Função Afim — Pontuação no Futebol</h4>
+    <h4>T 14: (ENEM PPL 2015) Função Afim — Pontuação no Futebol</h4>
     <p>Num campeonato de futebol de 2012, um time sagrou-se campeão com um total de 77 pontos ($P$) em 38 jogos, tendo 22 vitórias ($V$), 11 empates ($E$) e 5 derrotas ($D$). No critério adotado para esse ano, somente as vitórias e empates têm pontuações positivas e inteiras. As derrotas têm valor zero e o valor de cada vitória é maior que o valor de cada empate.</p>
     <p>Um torcedor, considerando a fórmula da soma de pontos injusta, propôs aos organizadores do campeonato que, para o ano de 2013, o time derrotado em cada partida perca 2 pontos, privilegiando os times que perdem menos ao longo do campeonato. Cada vitória e cada empate continuariam com a mesma pontuação de 2012.</p>
     <p>Qual a expressão que fornece a quantidade de pontos ($P$), em função do número de vitórias ($V$), do número de empates ($E$) e do número de derrotas ($D$), no sistema de pontuação proposto pelo torcedor para o ano de 2013?</p>
@@ -293,15 +361,17 @@
     <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
     <div class="gabarito-resolucao">
         <p><strong>Resolução:</strong> Alternativa <strong>D</strong>.<br>
-        Em 2012: $22V + 11E = 77$. Testando $V = 3$ e $E = 1$: $22(3) + 11(1) = 66 + 11 = 77$. ✓<br>
-        Cada vitória vale 3 pontos e cada empate vale 1 ponto.<br>
+        Seja $v$ o valor de cada vitória e $e$ o valor de cada empate (inteiros positivos, com $v > e$).<br>
+        Em 2012: $22v + 11e = 77$. Dividindo por 11: $2v + e = 7$.<br>
+        Possibilidades: $v = 1 \Rightarrow e = 5$ (não serve, pois $v &lt; e$); $v = 2 \Rightarrow e = 3$ (não serve); $v = 3 \Rightarrow e = 1$ ✓.<br>
+        Logo, cada vitória vale 3 pontos e cada empate vale 1 ponto.<br>
         Em 2013, cada derrota passa a valer $-2$ pontos.<br>
         $P = 3V + E - 2D$.</p>
     </div>
      </article>
 
     <article class="questao">
-    <h4>T 15: (ENEM) Função Afim — Corrida de Táxi</h4>
+    <h4>T 15: (ENEM PPL 2014) Função Afim — Corrida de Táxi</h4>
     <p>Os sistemas de cobrança dos serviços de táxi nas cidades A e B são distintos. Uma corrida de táxi na cidade A é calculada pelo valor fixo da bandeirada, que é de R\$ 3,45, mais R\$ 2,05 por quilômetro rodado. Na cidade B, a corrida é calculada pelo valor fixo da bandeirada, que é de R\$ 3,60, mais R\$ 1,90 por quilômetro rodado. Uma pessoa utilizou o serviço de táxi nas duas cidades para percorrer a mesma distância de 6 km.</p>
     <p>Qual o valor que mais se aproxima da diferença, em reais, entre as médias do custo por quilômetro rodado ao final das duas corridas?</p>
     <p>A) $0{,}75$<br>B) $0{,}45$<br>C) $0{,}38$<br>D) $0{,}33$<br>E) $0{,}13$</p>
@@ -310,8 +380,8 @@
         <p><strong>Resolução:</strong> Alternativa <strong>E</strong>.<br>
         Custo total cidade A: $3{,}45 + 2{,}05 \times 6 = 3{,}45 + 12{,}30 = R\$\,15{,}75$.<br>
         Custo total cidade B: $3{,}60 + 1{,}90 \times 6 = 3{,}60 + 11{,}40 = R\$\,15{,}00$.<br>
-        Média por km cidade A: $\dfrac{15{,}75}{6} \approx 2{,}625$ R$/km$.<br>
-        Média por km cidade B: $\dfrac{15{,}00}{6} = 2{,}500$ R$/km$.<br>
+        Média por km cidade A: $\dfrac{15{,}75}{6} = 2{,}625$ R\$/km.<br>
+        Média por km cidade B: $\dfrac{15{,}00}{6} = 2{,}500$ R\$/km.<br>
         Diferença: $2{,}625 - 2{,}500 = 0{,}125 \approx \mathbf{0{,}13}$.</p>
     </div>
     </article>

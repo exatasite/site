@@ -228,7 +228,7 @@
 </section>
 
 <section class="questoes-propostas">
-    <h3>✍️ 5 Questões Propostas (P 6 a 10)</h3>
+    <h3>✍️ 10 Questões Propostas (P 6 a 15)</h3>
 
     <article class="questao">
         <h4>P 6: Cálculo Direto 2×2</h4>
@@ -275,100 +275,95 @@
             <p><strong>Resolução:</strong> $\det = 2 \cdot 2 - 4 \cdot 1 = 4 - 4 = 0$. Como $\det = 0$, a matriz é <strong>singular</strong> (não tem inversa). Note que a 2ª coluna é o dobro da 1ª — linhas proporcionais confirmam o resultado.</p>
         </div>
     </article>
+
+    <article class="questao">
+        <h4>P 11: Regra de Sarrus</h4>
+        <p><strong>Enunciado:</strong> Calcule $\det \begin{pmatrix} 1 & 2 & 0 \\ 3 & 1 & 2 \\ 0 & 1 & 1 \end{pmatrix}$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> Diagonais principais: $1\cdot 1\cdot 1 + 2\cdot 2\cdot 0 + 0\cdot 3\cdot 1 = 1$. Secundárias: $0\cdot 1\cdot 0 + 1\cdot 2\cdot 1 + 1\cdot 3\cdot 2 = 8$. $\det = 1 - 8 = -7$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 12: Filas Proporcionais</h4>
+        <p><strong>Enunciado:</strong> Sem fazer contas, determine $\det \begin{pmatrix} 2 & 4 & 6 \\ 1 & 5 & 7 \\ 1 & 2 & 3 \end{pmatrix}$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> A 1ª linha é o dobro da 3ª (filas proporcionais), então o determinante é $0$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 13: Determinante de $kA$</h4>
+        <p><strong>Enunciado:</strong> Se $A$ é $3\times 3$ e $\det A = 4$, quanto vale $\det(2A)$?</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> $\det(kA) = k^n \det A$, com $n = 3$: $\det(2A) = 8 \cdot 4 = 32$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 14: Teorema de Binet</h4>
+        <p><strong>Enunciado:</strong> Se $\det A = 3$ e $\det B = -2$ (mesma ordem), calcule $\det(AB)$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> $\det(AB) = \det A \cdot \det B = -6$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 15: Equação com Determinante 3×3</h4>
+        <p><strong>Enunciado:</strong> Resolva $\begin{vmatrix} x & 1 & 0 \\ 0 & x & 1 \\ 1 & 0 & 1 \end{vmatrix} = 10$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> Por Sarrus: $(x\cdot x\cdot 1 + 1\cdot 1\cdot 1 + 0) - (0 + 0 + 0) = x^2 + 1$. Então $x^2 + 1 = 10 \Rightarrow x = \pm 3$.</p>
+        </div>
+    </article>
 </section>
 
-<section class="TESTE">
+<section class="TESTE" id="testes">
     <h3>🎓 TESTES (T 11 a 15)</h3>
 
     <article class="questao">
-        <h4>T 11: (PM-ES / AOCP) Determinante — Custo de Uniformes</h4>
-        <p>Para saber o custo total (em reais) na produção de $x$ uniformes, calcula-se o determinante da matriz abaixo após substituir $x$ pela quantidade desejada:</p>
-        <p>$$M = \begin{pmatrix} x & 0 & 0 \\ 1 & -x & -1 \\ 0 & 1 & 1 \end{pmatrix}$$</p>
-        <p>Para se produzir <strong>70 uniformes</strong>, o custo total será de:</p>
-        <p>A) R$\,4{.}100{,}00$<br>B) R$\,3{.}500{,}00$<br>C) R$\,3{.}100{,}00$<br>D) R$\,2{.}500{,}00$<br>E) R$\,2{.}100{,}00$</p>
+        <h4>T 11: (FUVEST 2000) Matriz que satisfaz A² = A</h4>
+        <p>Se $A$ é uma matriz $2\times 2$ inversível que satisfaz $A^2 = A$, então o determinante de $A$ será:</p>
+        <p>A) 0<br>B) 1<br>C) 2<br>D) 3<br>E) 4</p>
         <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-        <div class="gabarito-resolucao">
-            <p><strong>Resolução:</strong> Alternativa <strong>C</strong>.<br>
-            Expandindo o determinante pela 1ª linha (elementos $0$ facilitam):<br>
-            $$\det(M) = x \cdot \begin{vmatrix}-x & -1 \\ 1 & 1\end{vmatrix} - 0 + 0 = x[(-x)(1)-(-1)(1)] = x(-x+1) = -x^2 + x$$
-            Para $x = 70$: $\det = -(70)^2 + 70 = -4900 + 70 = -4830$.<br>
-            O custo é dado por $C(x) = x^2 - 30x + 100$ (interpretação do problema): $C(70) = 4900 - 2100 + 100 = \mathbf{R\$\,3{.}100{,}00}$.</p>
-        </div>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>B</strong>.<br>$\det(A^2) = (\det A)^2 = \det A \Rightarrow \det A(\det A - 1) = 0$. Como $A$ é inversível, $\det A \neq 0$; logo, $\det A = 1$.</p></div>
     </article>
 
     <article class="questao">
-        <h4>T 12: (ENEM adaptado) Cofatores e Laplace</h4>
-        <p>Considere a matriz $A = \begin{pmatrix} 3 & 0 & 1 \\ 2 & -1 & 0 \\ 1 & 4 & 2 \end{pmatrix}$. Usando o Teorema de Laplace com expansão pela 1ª linha, o valor de $\det(A)$ é:</p>
-        <p>A) $-11$<br>B) $-7$<br>C) $3$<br>D) $7$<br>E) $11$</p>
+        <h4>T 12: (Autoral) Determinante nulo</h4>
+        <p>A soma dos valores de $x$ que anulam $\begin{vmatrix} x & 2 \\ 3 & x + 1 \end{vmatrix}$ é</p>
+        <p>A) $-3$<br>B) $-1$<br>C) $1$<br>D) $2$<br>E) $5$</p>
         <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-        <div class="gabarito-resolucao">
-            <p><strong>Resolução:</strong> Alternativa <strong>A</strong>.<br>
-            Expandindo pela 1ª linha:
-            $$\det(A) = 3 \cdot (+1)\begin{vmatrix}-1&0\\4&2\end{vmatrix} + 0 + 1 \cdot (+1)\begin{vmatrix}2&-1\\1&4\end{vmatrix}$$
-            $$= 3[(-1)(2)-(0)(4)] + 1[(2)(4)-(-1)(1)]$$
-            $$= 3(-2) + 1(8+1) = -6 + 9 = \mathbf{3}$$
-            <em>Resultado: 3 → Alternativa C. (Recalculando com sinal correto do cofator $a_{31}$: $1\cdot(+1)^{1+3}[2\cdot4-(-1)\cdot1]=1\cdot9=9$; total $=-6+0+9=3$.)</em></p>
-        </div>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>B</strong>.<br>$x(x + 1) - 6 = 0 \Rightarrow x^2 + x - 6 = 0 \Rightarrow x = 2$ ou $x = -3$. Soma: $-1$.</p></div>
     </article>
 
     <article class="questao">
-        <h4>T 13: (FEPESE – Pref. Balneário Camboriú / 2021) Determinante de Produto</h4>
-        <p>Sejam $x$ um número real,</p>
-        <p>$$A = \begin{pmatrix} \text{sen}(2x) & \text{sen}(x) & 0 \\ \cos(x) & 2 & 0 \\ 0 & 1 & 1 \end{pmatrix} \quad \text{e} \quad B = \begin{pmatrix} 4 & 5 & 7 \\ 3 & 2 & 1 \\ 2 & 3 & 5 \end{pmatrix}$$</p>
-        <p>Então o determinante do produto $A \cdot B$ é:</p>
-        <p>A) Menor que $1$.<br>B) Maior que $1$ e menor que $5$.<br>C) Maior que $5$ e menor que $10$.<br>D) Maior que $10$ e menor que $15$.<br>E) Maior que $15$.</p>
+        <h4>T 13: (Autoral) Multiplicação por escalar</h4>
+        <p>Uma matriz $A$ de ordem 2 tem $\det A = 5$. O valor de $\det(3A)$ é</p>
+        <p>A) 15<br>B) 25<br>C) 30<br>D) 45<br>E) 135</p>
         <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-        <div class="gabarito-resolucao">
-            <p><strong>Resolução:</strong> Alternativa <strong>B</strong>.<br>
-            Pelo Teorema de Binet: $\det(A \cdot B) = \det(A) \cdot \det(B)$.<br><br>
-            <strong>$\det(B)$</strong> (Sarrus): $4(10-3)-5(15-2)+7(9-4) = 28-65+35 = -2$.<br><br>
-            <strong>$\det(A)$</strong> — expandindo pela 3ª coluna (dois zeros):
-            $\det(A) = 1\cdot(+1)^{3+3}[\text{sen}(2x)\cdot2 - \text{sen}(x)\cdot\cos(x)]$<br>
-            $= 2\,\text{sen}(2x) - \text{sen}(x)\cos(x)$.<br>
-            Usando $\text{sen}(2x) = 2\,\text{sen}(x)\cos(x)$:
-            $= 4\,\text{sen}(x)\cos(x) - \text{sen}(x)\cos(x) = 3\,\text{sen}(x)\cos(x) = \dfrac{3}{2}\text{sen}(2x)$.<br><br>
-            <strong>Resultado:</strong> $\det(A \cdot B) = \dfrac{3}{2}\text{sen}(2x) \cdot (-2) = -3\,\text{sen}(2x)$.<br>
-            Como $|\text{sen}(2x)| \leq 1$, temos $|\det(A\cdot B)| \leq 3$ → <strong>maior que $1$ e menor que $5$</strong>.</p>
-        </div>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>D</strong>.<br>$\det(3A) = 3^2 \cdot 5 = 45$.</p></div>
     </article>
 
     <article class="questao">
-        <h4>T 14: (IDHTec – Pref. Maragogi / 2019) Painel de LED</h4>
-        <p>Um painel de 144 LEDs (12 linhas × 12 colunas) acende 12 lâmpadas alinhadas por segundo. Associa-se uma matriz $12\times12$ onde $a_{ij} = j - i$ se a lâmpada estiver acesa e $a_{ij} = 0$ se apagada. Considerando todas as configurações possíveis, a soma de seus determinantes é:</p>
-        <p>A) $0$<br>B) $-144$<br>C) $-1{.}728$<br>D) $-10{.}395$<br>E) $-20{.}736$</p>
+        <h4>T 14: (Autoral) Sarrus</h4>
+        <p>O determinante de $\begin{pmatrix} 2 & 0 & 1 \\ 1 & 3 & 0 \\ 0 & 1 & 4 \end{pmatrix}$ é</p>
+        <p>A) 19<br>B) 21<br>C) 23<br>D) 25<br>E) 27</p>
         <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-        <div class="gabarito-resolucao">
-            <p><strong>Resolução:</strong> Alternativa <strong>D</strong>.<br>
-            Para que o determinante seja não nulo, as 12 lâmpadas acesas devem formar uma <strong>permutação</strong> — uma por linha e uma por coluna. A matriz tem elemento $a_{i,\sigma(i)} = \sigma(i) - i$ e zeros nos demais.<br>
-            O determinante é: $\det = \text{sgn}(\sigma) \cdot \prod_{i=1}^{12}(\sigma(i) - i)$.<br>
-            Somando sobre todas as $12!$ permutações e aplicando as propriedades de simetria, o resultado consolidado pelo gabarito oficial é $\mathbf{-10{.}395}$.</p>
-        </div>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>D</strong>.<br>Principais: $2\cdot3\cdot4 + 0 + 1\cdot1\cdot1 = 25$. Secundárias: $1\cdot3\cdot0 + 2\cdot0\cdot1 + 0 = 0$. $\det = 25$.</p></div>
     </article>
 
     <article class="questao">
-        <h4>T 15: (IDECAN – IFBA / 2019) Determinante — Soma de Matrizes</h4>
-        <p>Sejam as matrizes:</p>
-        <p>$$A = \begin{pmatrix} 3 & 1 & 0 \\ 5 & -2 & -1 \\ 2 & 7 & 2 \end{pmatrix} \quad \text{e} \quad B = \begin{pmatrix} 0 & -1 & 2 \\ 3 & 0 & 0 \\ 4 & -2 & 3 \end{pmatrix}$$</p>
-        <p>Calcule $\det(A + B)$:</p>
-        <p>A) $120$<br>B) $105$<br>C) $97$<br>D) $93$<br>E) $8$</p>
+        <h4>T 15: (Autoral) Matriz não inversível</h4>
+        <p>Qual das matrizes abaixo <strong>não</strong> é inversível?</p>
+        <p>A) $\begin{pmatrix}1 & 2 \\ 3 & 4\end{pmatrix}$<br>B) $\begin{pmatrix}2 & 3 \\ 4 & 6\end{pmatrix}$<br>C) $\begin{pmatrix}1 & 0 \\ 0 & 1\end{pmatrix}$<br>D) $\begin{pmatrix}0 & 1 \\ 1 & 0\end{pmatrix}$<br>E) $\begin{pmatrix}3 & 1 \\ 1 & 3\end{pmatrix}$</p>
         <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-        <div class="gabarito-resolucao">
-            <p><strong>Resolução:</strong> Alternativa <strong>C</strong>.<br>
-            $$A + B = \begin{pmatrix} 3 & 0 & 2 \\ 8 & -2 & -1 \\ 6 & 5 & 5 \end{pmatrix}$$
-            Expandindo pela 1ª linha:
-            $$\det = 3\begin{vmatrix}-2&-1\\5&5\end{vmatrix} - 0 + 2\begin{vmatrix}8&-2\\6&5\end{vmatrix}$$
-            $$= 3[(-10)-(-5)] + 2[(40)-(-12)]$$
-            $$= 3(-5) + 2(52) = -15 + 104 = \mathbf{89}$$
-            <em>Recalculando com cofatores corretos:
-            $3[(-2\cdot5)-(-1\cdot5)] = 3[-10+5] = 3(-5) = -15$;
-            $2[(8\cdot5)-(-2\cdot6)] = 2[40+12] = 104$.
-            Total: $-15 + 104 = 89$... verificando pela Regra de Sarrus:
-            $(3\cdot(-2)\cdot5)+(0\cdot(-1)\cdot6)+(2\cdot8\cdot5) - (2\cdot(-2)\cdot6)+(3\cdot(-1)\cdot5)+(0\cdot8\cdot5)$
-            $=(-30+0+80)-(-12-15+0) = 50 - (-27) = 50+27 = 77$... Pelo Laplace linha 1 rigoroso:
-            $3[(-2)(5)-(-1)(5)] - 0 + 2[(8)(5)-(-2)(6)] = 3(-5)+2(52) = \mathbf{97}$ ✔</em></p>
-        </div>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>B</strong>.<br>Uma matriz é inversível se, e só se, $\det \neq 0$. Em B: $2\cdot 6 - 3\cdot 4 = 0$. As demais têm determinantes $-2$, $1$, $-1$ e $8$.</p></div>
     </article>
-
 </section>
 </div>
 </main>

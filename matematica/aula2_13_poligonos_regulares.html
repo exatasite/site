@@ -243,7 +243,7 @@
 <!--------------- QUESTÕES PROPOSTAS --------------------------->
 
 <section class="questoes-propostas">
-                    <h3>✍️ 5 Questões Propostas (P 6 a 10)</h3>
+                    <h3>✍️ 10 Questões Propostas (P 6 a 15)</h3>
 
                     <article class="questao">
                         <h4>P 6: Soma dos Ângulos Internos</h4>
@@ -289,68 +289,95 @@
                             <p><strong>Resolução:</strong> Um retângulo comum é <strong>equiângulo</strong> (todos os ângulos internos medem $90°$), mas <strong>não é equilátero</strong> (os lados não são todos iguais — há dois pares de lados com medidas diferentes). Como um polígono regular precisa satisfazer as duas condições ao mesmo tempo, o retângulo não é regular.</p>
                         </div>
                     </article>
-                </section>
-<!--------------- TESTES --------------------------->
-
-<section class="testes">
-    <h3>🎓 TESTES (T 11 a 15)</h3>
-
+                
     <article class="questao">
-    <h4>T 11: (ENEM) Pavimentação do Plano</h4>
-    <p>Para que um polígono regular consiga cobrir um plano perfeitamente (pavimentação regular, sem sobreposições nem espaços vazios), seu ângulo interno precisa ser um divisor exato de $360°$.</p>
-    <p>Dentre os polígonos regulares, quais são os únicos que satisfazem essa condição?</p>
-    <p>A) Apenas o quadrado<br>B) Apenas o hexágono regular<br>C) Triângulo equilátero, quadrado e hexágono regular<br>D) Pentágono regular, hexágono regular e octógono regular<br>E) Todos os polígonos regulares</p>
-    <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-    <div class="gabarito-resolucao">
-        <p><strong>Resolução:</strong> Alternativa <strong>C</strong>.<br>
-        Os ângulos internos são: triângulo ($60°$), quadrado ($90°$) e hexágono ($120°$) — todos divisores exatos de $360°$ ($360\div60=6$, $360\div90=4$, $360\div120=3$). Já o pentágono ($108°$) e outros polígonos regulares não dividem $360°$ exatamente, deixando espaços vazios ou sobreposições.</p>
-    </div>
-      </article>
-
-    <article class="questao">
-    <h4>T 12: Determinação do Número de Lados pelo Ângulo Interno</h4>
-    <p>O ângulo interno de um polígono regular mede $150°$. Quantos lados tem esse polígono?</p>
-    <p>A) $8$<br>B) $9$<br>C) $10$<br>D) $12$<br>E) $15$</p>
-    <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-    <div class="gabarito-resolucao">
-        <p><strong>Resolução:</strong> Alternativa <strong>D</strong>.<br>
-        $$\frac{(n-2) \times 180°}{n} = 150° \implies 180n-360=150n \implies 30n=360 \implies n=12$$</p>
-    </div>
-      </article>
-
-    <article class="questao">
-    <h4>T 13: Determinação do Número de Lados pelo Número de Diagonais</h4>
-    <p>Um polígono regular possui $20$ diagonais. Quantos lados tem esse polígono?</p>
-    <p>A) $6$<br>B) $7$<br>C) $8$<br>D) $9$<br>E) $10$</p>
-    <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-    <div class="gabarito-resolucao">
-        <p><strong>Resolução:</strong> Alternativa <strong>C</strong>.<br>
-        $$\frac{n(n-3)}{2}=20 \implies n^2-3n-40=0 \implies n=\frac{3+\sqrt{9+160}}{2}=\frac{3+13}{2}=8$$</p>
-    </div>
-      </article>
-
-    <article class="questao">
-    <h4>T 14: Abertura de Chave para Porca Sextavada</h4>
-    <p>Uma chave de boca precisa se encaixar nas faces opostas de uma porca sextavada regular cujo lado mede $8\,\text{mm}$. A abertura necessária da chave é igual à distância entre dois lados opostos ($2 \times$ apótema).</p>
-    <p>Sabendo que, no hexágono regular, $a = \dfrac{l\sqrt{3}}{2}$, qual deve ser a abertura da chave? (use $\sqrt{3} \approx 1{,}73$)</p>
-    <p>A) $6{,}93\,\text{mm}$<br>B) $8{,}00\,\text{mm}$<br>C) $12{,}00\,\text{mm}$<br>D) $13{,}86\,\text{mm}$<br>E) $16{,}00\,\text{mm}$</p>
-    <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-    <div class="gabarito-resolucao">
-        <p><strong>Resolução:</strong> Alternativa <strong>D</strong>.<br>
-        $$a = \frac{8 \times 1{,}73}{2} = \frac{13{,}84}{2} = 6{,}92\,\text{mm} \implies \text{abertura} = 2a \approx 13{,}86\,\text{mm}$$</p>
-    </div>
+        <h4>P 11: Ângulos do Octógono</h4>
+        <p><strong>Enunciado:</strong> Determine o ângulo externo e o ângulo interno de um octógono regular.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> $a_e = \dfrac{360°}{8} = 45°$ e $a_i = 180° - 45° = 135°$.</p>
+        </div>
     </article>
 
     <article class="questao">
-    <h4>T 15: Área de um Hexágono Regular</h4>
-    <p>Calcule a área de um hexágono regular de lado $6\,\text{cm}$ (use $\sqrt{3} \approx 1{,}73$).</p>
-    <p>A) $36\,\text{cm}^2$<br>B) $62{,}28\,\text{cm}^2$<br>C) $77{,}94\,\text{cm}^2$<br>D) $93{,}42\,\text{cm}^2$<br>E) $103{,}80\,\text{cm}^2$</p>
-    <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-    <div class="gabarito-resolucao">
-        <p><strong>Resolução:</strong> Alternativa <strong>D</strong>.<br>
-        Perímetro: $p = 6 \times 6 = 36\,\text{cm}$. Apótema: $a = \dfrac{l\sqrt{3}}{2} = \dfrac{6 \times 1{,}73}{2} = 5{,}19\,\text{cm}$.<br>
-        $$A = \frac{p \cdot a}{2} = \frac{36 \times 5{,}19}{2} = \frac{186{,}84}{2} = 93{,}42\,\text{cm}^2$$</p>
-    </div>
+        <h4>P 12: Descobrindo o Número de Lados</h4>
+        <p><strong>Enunciado:</strong> Cada ângulo interno de um polígono regular mede 150°. Quantos lados ele tem?</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> $a_e = 180° - 150° = 30°$ e $n = \dfrac{360°}{30°} = 12$ (dodecágono).</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 13: Hexágono Inscrito</h4>
+        <p><strong>Enunciado:</strong> Um hexágono regular está inscrito em uma circunferência de raio 6 cm. Calcule o lado, o perímetro e o apótema.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> No hexágono, $\ell = R = 6$ cm; perímetro $36$ cm; apótema $a = \dfrac{\ell\sqrt{3}}{2} = 3\sqrt{3}$ cm.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 14: Quadrado Inscrito</h4>
+        <p><strong>Enunciado:</strong> Um quadrado está inscrito em uma circunferência de raio 5 cm. Calcule o lado e o apótema.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> $\ell = R\sqrt{2} = 5\sqrt{2}$ cm e $a = \dfrac{\ell}{2} = \dfrac{5\sqrt{2}}{2}$ cm.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 15: Área do Hexágono Regular</h4>
+        <p><strong>Enunciado:</strong> Calcule a área de um hexágono regular de lado 4 cm.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> $A = \dfrac{3\ell^2\sqrt{3}}{2} = \dfrac{3 \cdot 16\sqrt{3}}{2} = 24\sqrt{3}$ cm².</p>
+        </div>
+    </article>
+</section>
+<!--------------- TESTES --------------------------->
+
+<section class="TESTE" id="testes">
+    <h3>🎓 TESTES (T 11 a 15)</h3>
+
+    <article class="questao">
+        <h4>T 11: (Autoral) Diagonais pelo ângulo interno</h4>
+        <p>O ângulo interno de um polígono regular mede 140°. O número de diagonais desse polígono é</p>
+        <p>A) 9<br>B) 18<br>C) 20<br>D) 27<br>E) 35</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>D</strong>.<br>$a_e = 40° \Rightarrow n = 9$. $d = \dfrac{9 \cdot 6}{2} = 27$.</p></div>
+    </article>
+
+    <article class="questao">
+        <h4>T 12: (Autoral) Ângulo externo</h4>
+        <p>A soma dos ângulos internos de um polígono regular é 1440°. Cada ângulo externo mede</p>
+        <p>A) 24°<br>B) 30°<br>C) 36°<br>D) 40°<br>E) 45°</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>C</strong>.<br>$(n - 2)\cdot 180° = 1440° \Rightarrow n = 10$. $a_e = \dfrac{360°}{10} = 36°$.</p></div>
+    </article>
+
+    <article class="questao">
+        <h4>T 13: (Autoral) Triângulo inscrito</h4>
+        <p>Um triângulo equilátero está inscrito em uma circunferência de raio 6 cm. Seu perímetro mede</p>
+        <p>A) 18 cm<br>B) $18\sqrt{2}$ cm<br>C) $18\sqrt{3}$ cm<br>D) 36 cm<br>E) $36\sqrt{3}$ cm</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>C</strong>.<br>$\ell = R\sqrt{3} = 6\sqrt{3}$ cm; perímetro $3\ell = 18\sqrt{3}$ cm.</p></div>
+    </article>
+
+    <article class="questao">
+        <h4>T 14: (Autoral) Pavimentação</h4>
+        <p>Um piso será coberto apenas com ladrilhos iguais, todos com a forma de um mesmo polígono regular, sem sobreposição nem espaços. Entre os polígonos abaixo, o único que permite isso é o</p>
+        <p>A) pentágono.<br>B) hexágono.<br>C) heptágono.<br>D) octógono.<br>E) decágono.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>B</strong>.<br>Em cada vértice, os ângulos internos devem somar 360°, então o ângulo interno precisa dividir 360°. Hexágono: 120° (3 por vértice). Pentágono (108°), heptágono (≈128,6°), octógono (135°) e decágono (144°) não dividem 360°.</p></div>
+    </article>
+
+    <article class="questao">
+        <h4>T 15: (Autoral) Área do hexágono</h4>
+        <p>Um hexágono regular tem perímetro de 36 cm. Sua área é</p>
+        <p>A) $36\sqrt{3}$ cm²<br>B) $54\sqrt{3}$ cm²<br>C) $72\sqrt{3}$ cm²<br>D) $108\sqrt{3}$ cm²<br>E) $216\sqrt{3}$ cm²</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>B</strong>.<br>Lado $= 6$ cm. $A = \dfrac{3 \cdot 36\sqrt{3}}{2} = 54\sqrt{3}$ cm².</p></div>
     </article>
 </section>
 

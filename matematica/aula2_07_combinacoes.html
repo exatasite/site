@@ -189,7 +189,7 @@
 <!--------------- QUESTÕES PROPOSTAS --------------------------->
 
 <section class="questoes-propostas">
-                    <h3>✍️ 5 Questões Propostas (P 6 a 10)</h3>
+                    <h3>✍️ 10 Questões Propostas (P 6 a 15)</h3>
 
                     <article class="questao">
                         <h4>P 6: Escolha de Representantes</h4>
@@ -245,75 +245,96 @@
                             <p>Portanto $n + 1 = \mathbf{9}$, ou seja, $n = 8$.</p>
                         </div>
                     </article>
-                </section>
+                
+    <article class="questao">
+        <h4>P 11: Comissão Mista</h4>
+        <p><strong>Enunciado:</strong> De um grupo de 6 homens e 4 mulheres, quantas comissões com 3 homens e 2 mulheres podem ser formadas?</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> $C_{6,3} \cdot C_{4,2} = 20 \cdot 6 = 120$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 12: Apertos de Mão</h4>
+        <p><strong>Enunciado:</strong> Em uma reunião com 12 pessoas, cada uma cumprimenta todas as outras uma única vez. Quantos apertos de mão ocorrem?</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> Cada aperto é um par não ordenado: $C_{12,2} = \dfrac{12 \cdot 11}{2} = 66$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 13: Pelo Menos Uma Mulher</h4>
+        <p><strong>Enunciado:</strong> De 5 homens e 3 mulheres, quantos grupos de 3 pessoas têm pelo menos uma mulher?</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> Total menos os grupos só de homens: $C_{8,3} - C_{5,3} = 56 - 10 = 46$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 14: Triângulos com Pontos</h4>
+        <p><strong>Enunciado:</strong> Sete pontos de um plano estão dispostos de modo que três deles nunca são colineares. Quantos triângulos têm vértices nesses pontos?</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> Cada triângulo é uma escolha de 3 pontos: $C_{7,3} = 35$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 15: Combinações Complementares</h4>
+        <p><strong>Enunciado:</strong> Calcule $C_{10,3}$ e $C_{10,7}$ e explique por que são iguais.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> $C_{10,3} = \dfrac{10\cdot 9\cdot 8}{6} = 120 = C_{10,7}$. Escolher 3 elementos para entrar equivale a escolher os 7 que ficam de fora.</p>
+        </div>
+    </article>
+</section>
 
 <!--------------- TESTE  ----------------------------------->
 
-<section class="TESTE">
+<section class="TESTE" id="testes">
     <h3>🎓 TESTES (T 11 a 15)</h3>
 
     <article class="questao">
-    <h4>T 11: (ENEM) Combinação — Formação de Times</h4>
-    <p>Uma professora de educação física deseja dividir sua turma de 12 alunos em grupos de 4 para um torneio. Quantos grupos de 4 alunos distintos podem ser formados a partir dessa turma?</p>
-    <p>A) $48$<br>B) $495$<br>C) $990$<br>D) $1\,980$<br>E) $11\,880$</p>
-    <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-    <div class="gabarito-resolucao">
-        <p><strong>Resolução:</strong> Alternativa <strong>B</strong>.<br>
-        Ordem não importa → Combinação:
-        $$C_{12,4} = \frac{12!}{4!\,8!} = \frac{12 \times 11 \times 10 \times 9}{4 \times 3 \times 2 \times 1} = \frac{11\,880}{24} = 495$$</p>
-    </div>
-      </article>
+        <h4>T 11: (ENEM 2010 – 2ª aplicação) Museus do professor</h4>
+        <p>Considere que um professor de arqueologia tenha obtido recursos para visitar 5 museus, sendo 3 deles no Brasil e 2 fora do país. Ele decidiu restringir sua escolha aos museus nacionais e internacionais relacionados na tabela a seguir.</p><p><em>[A tabela da prova lista 4 museus nacionais e 4 museus internacionais.]</em></p><p>De acordo com os recursos obtidos, de quantas maneiras diferentes esse professor pode escolher os 5 museus para visitar?</p>
+        <p>A) 6<br>B) 8<br>C) 20<br>D) 24<br>E) 36</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>D</strong>.<br>Nacionais: $C_{4,3} = 4$; internacionais: $C_{4,2} = 6$. Total: $4 \cdot 6 = 24$.</p></div>
+    </article>
 
     <article class="questao">
-    <h4>T 12: (ENEM) Combinação — Escolha de Questões</h4>
-    <p>Em uma prova de concurso, o candidato deve responder 5 questões dentre 8 disponíveis, podendo escolher livremente quais responder. De quantas maneiras distintas ele pode fazer essa escolha?</p>
-    <p>A) $40$<br>B) $56$<br>C) $112$<br>D) $336$<br>E) $6\,720$</p>
-    <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-    <div class="gabarito-resolucao">
-        <p><strong>Resolução:</strong> Alternativa <strong>B</strong>.<br>
-        $$C_{8,5} = C_{8,3} = \frac{8 \times 7 \times 6}{3!} = \frac{336}{6} = 56$$</p>
-    </div>
-      </article>
+        <h4>T 12: (Autoral) Cartela de números</h4>
+        <p>Em um jogo, o apostador escolhe 6 números distintos entre 1 e 10. Quantas cartelas diferentes são possíveis?</p>
+        <p>A) 60<br>B) 120<br>C) 210<br>D) 720<br>E) 5040</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>C</strong>.<br>A ordem não importa: $C_{10,6} = C_{10,4} = \dfrac{10\cdot 9\cdot 8\cdot 7}{24} = 210$.</p></div>
+    </article>
 
     <article class="questao">
-    <h4>T 13: (FUVEST) Diagonais de Polígono</h4>
-    <p>Um polígono convexo possui 35 diagonais. Quantos lados tem esse polígono?</p>
-    <p>A) $7$<br>B) $8$<br>C) $9$<br>D) $10$<br>E) $12$</p>
-    <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-    <div class="gabarito-resolucao">
-        <p><strong>Resolução:</strong> Alternativa <strong>C</strong>.<br>
-        Número de diagonais: $C_{n,2} - n = 35$<br>
-        $$\frac{n(n-1)}{2} - n = 35 \implies \frac{n^2 - n - 2n}{2} = 35 \implies n^2 - 3n = 70$$
-        $$n^2 - 3n - 70 = 0 \implies (n-10)(n+7) = 0$$
-        Como $n > 0$: testando $n = 10$: $\dfrac{10 \times 9}{2} - 10 = 45 - 10 = 35$ ✓<br>
-        O polígono tem $\mathbf{10}$ lados. (Alternativa D.)</p>
-    </div>
-</article>
+        <h4>T 13: (Autoral) Triângulos na circunferência</h4>
+        <p>Com 8 pontos distintos sobre uma circunferência, quantos triângulos podem ser formados com vértices nesses pontos?</p>
+        <p>A) 28<br>B) 56<br>C) 112<br>D) 168<br>E) 336</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>B</strong>.<br>Três pontos de uma circunferência nunca são colineares: $C_{8,3} = 56$.</p></div>
+    </article>
 
     <article class="questao">
-    <h4>T 14: (ENEM) Combinação — Comitê Misto</h4>
-    <p>Uma empresa tem 7 homens e 5 mulheres em seu conselho. Deseja-se formar uma comissão de 4 pessoas, sendo obrigatoriamente 2 homens e 2 mulheres. De quantas formas distintas essa comissão pode ser formada?</p>
-    <p>A) $70$<br>B) $105$<br>C) $140$<br>D) $210$<br>E) $350$</p>
-    <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-    <div class="gabarito-resolucao">
-        <p><strong>Resolução:</strong> Alternativa <strong>D</strong>.<br>
-        Escolhemos 2 homens de 7 E 2 mulheres de 5. Pelo PFC:
-        $$C_{7,2} \times C_{5,2} = \frac{7 \times 6}{2} \times \frac{5 \times 4}{2} = 21 \times 10 = 210$$</p>
-    </div>
-     </article>
+        <h4>T 14: (Autoral) Comissão com exatamente 2 alunas</h4>
+        <p>Uma turma tem 10 alunos e 8 alunas. Quantas comissões de 4 pessoas com exatamente 2 alunas podem ser formadas?</p>
+        <p>A) 1260<br>B) 2520<br>C) 3060<br>D) 630<br>E) 90</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>A</strong>.<br>$C_{8,2} \cdot C_{10,2} = 28 \cdot 45 = 1260$.</p></div>
+    </article>
 
     <article class="questao">
-    <h4>T 15: (ENEM) Equação com Combinação</h4>
-    <p>Sabe-se que $C_{n,2} + C_{n,1} = 28$. Qual é o valor de $n$?</p>
-    <p>A) $5$<br>B) $6$<br>C) $7$<br>D) $8$<br>E) $9$</p>
-    <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-    <div class="gabarito-resolucao">
-        <p><strong>Resolução:</strong> Alternativa <strong>C</strong>.<br>
-        Expandindo: $C_{n,2} = \dfrac{n(n-1)}{2}$ e $C_{n,1} = n$.<br>
-        $$\frac{n(n-1)}{2} + n = 28 \implies \frac{n^2 - n + 2n}{2} = 28 \implies \frac{n^2 + n}{2} = 28$$
-        $$n^2 + n = 56 \implies n^2 + n - 56 = 0 \implies (n+8)(n-7) = 0$$
-        Como $n > 0$: $n = \mathbf{7}$.</p>
-    </div>
+        <h4>T 15: (Autoral) Equação com combinação</h4>
+        <p>Se $C_{n,2} = 45$, então $n$ é igual a</p>
+        <p>A) 8<br>B) 9<br>C) 10<br>D) 12<br>E) 15</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>C</strong>.<br>$\dfrac{n(n-1)}{2} = 45 \Rightarrow n^2 - n - 90 = 0 \Rightarrow n = 10$.</p></div>
     </article>
 </section>
 

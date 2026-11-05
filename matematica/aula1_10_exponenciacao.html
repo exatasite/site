@@ -160,7 +160,7 @@
 </section>
 
 <section class="questoes-propostas" id="propostas">
-    <h3>✍️ 5 Questões Propostas (P 6 a 10)</h3>
+    <h3>✍️ 10 Questões Propostas (P 6 a 15)</h3>
 
     <article class="questao">
         <h4>P 6: Potências de Mesma Base</h4>
@@ -216,20 +216,95 @@
             $\frac{a}{b} = \frac{2^3}{2^{-1}} = 2^{3 - (-1)} = 2^{3 + 1} = 2^4 = \mathbf{16}$.</p>
         </div>
     </article>
+
+    <article class="questao">
+        <h4>P 11: Potências com Sinal</h4>
+        <p><strong>Enunciado:</strong> Calcule o valor de $(-2)^4 - 2^4 + (-2)^3$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> $(-2)^4 = 16$ (expoente par, resultado positivo); $2^4 = 16$; $(-2)^3 = -8$ (expoente ímpar mantém o sinal).<br>$16 - 16 + (-8) = \mathbf{-8}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 12: Soma de Radicais</h4>
+        <p><strong>Enunciado:</strong> Simplifique $\sqrt{12} + \sqrt{27} - \sqrt{75}$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> $\sqrt{12} = 2\sqrt{3}$, $\sqrt{27} = 3\sqrt{3}$, $\sqrt{75} = 5\sqrt{3}$.<br>$2\sqrt{3} + 3\sqrt{3} - 5\sqrt{3} = \mathbf{0}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 13: Potências de 10</h4>
+        <p><strong>Enunciado:</strong> Calcule $(2 \cdot 10^{-3}) \cdot (3 \cdot 10^{5})$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> $2 \cdot 3 = 6$ e $10^{-3} \cdot 10^{5} = 10^{-3+5} = 10^2$.<br>Resultado: $6 \cdot 10^2 = \mathbf{600}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 14: Racionalização com Conjugado</h4>
+        <p><strong>Enunciado:</strong> Racionalize o denominador de $\dfrac{4}{3 - \sqrt{5}}$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> Multiplicamos pelo conjugado $3 + \sqrt{5}$:<br>$\dfrac{4(3 + \sqrt{5})}{(3 - \sqrt{5})(3 + \sqrt{5})} = \dfrac{4(3 + \sqrt{5})}{9 - 5} = \mathbf{3 + \sqrt{5}}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 15: Expoentes Fracionários</h4>
+        <p><strong>Enunciado:</strong> Calcule $27^{\frac{2}{3}} + 32^{-\frac{1}{5}}$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> $27^{\frac{2}{3}} = (\sqrt[3]{27})^2 = 3^2 = 9$.<br>$32^{-\frac{1}{5}} = \dfrac{1}{\sqrt[5]{32}} = \dfrac{1}{2}$.<br>Soma: $9 + \frac{1}{2} = \mathbf{\frac{19}{2}} = 9{,}5$.</p>
+        </div>
+    </article>
 </section>
 
 <section class="TESTE" id="testes">
     <h3>🎓 TESTES (T 11 a 15)</h3>
 
-    <div class="card" style="text-align:center; padding:60px 20px; background:#f8f9fa; border:2px dashed #3498db; border-radius:12px; margin-top:20px;">
-        <h2 style="color:#3498db; font-size:2.5rem; margin-bottom:15px;">
-            🚧 EM BREVE!
-        </h2>
+    <article class="questao">
+        <h4>T 11: (FUVEST) Potências de Decimais</h4>
+        <p>O valor de $(0{,}2)^3 + (0{,}16)^2$ é</p>
+        <p>A) $0{,}0264$<br>B) $0{,}0336$<br>C) $0{,}1056$<br>D) $0{,}2568$<br>E) $0{,}6256$</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>B</strong>.<br>$(0{,}2)^3 = 0{,}008$ e $(0{,}16)^2 = 0{,}0256$.<br>Soma: $0{,}008 + 0{,}0256 = \mathbf{0{,}0336}$.</p></div>
+    </article>
 
-        <p style="font-size:1.2rem; color:#555;">
-            Questões de vestibulares serão disponibilizadas em breve.
-        </p>
-    </div>
+    <article class="questao">
+        <h4>T 12: (CEFET/RJ) A Raiz do Produto</h4>
+        <p>Por qual número devemos multiplicar o número 0,75 de modo que a raiz quadrada do produto obtido seja igual a 45?</p>
+        <p>A) 2700.<br>B) 2800.<br>C) 2900.<br>D) 3000.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>A</strong>.<br>$\sqrt{0{,}75 \cdot x} = 45 \implies 0{,}75x = 45^2 = 2\,025$.<br>$x = \frac{2\,025}{0{,}75} = \mathbf{2\,700}$.</p></div>
+    </article>
+
+    <article class="questao">
+        <h4>T 13: (ENEM 2012) Alometria</h4>
+        <p>Dentre outros objetos de pesquisa, a Alometria estuda a relação entre medidas de diferentes partes do corpo humano. Por exemplo, segundo a Alometria, a área $A$ da superfície corporal de uma pessoa relaciona-se com a sua massa $m$ pela fórmula $A = k \cdot m^{\frac{2}{3}}$, em que $k$ é uma constante positiva.</p><p>Se no período que vai da infância até a maioridade de um indivíduo sua massa é multiplicada por 8, por quanto será multiplicada a área da superfície corporal?</p>
+        <p>A) $\sqrt[3]{16}$<br>B) $4$<br>C) $\sqrt{24}$<br>D) $8$<br>E) $64$</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>B</strong>.<br>Nova área: $k(8m)^{\frac{2}{3}} = 8^{\frac{2}{3}} \cdot k\,m^{\frac{2}{3}}$.<br>$8^{\frac{2}{3}} = (\sqrt[3]{8})^2 = 2^2 = \mathbf{4}$.</p></div>
+    </article>
+
+    <article class="questao">
+        <h4>T 14: (ENEM 2015) Exportação de Soja</h4>
+        <p>As exportações de soja do Brasil totalizaram 4,129 milhões de toneladas no mês de julho de 2012, e registraram um aumento em relação ao mês de julho de 2011, embora tenha havido uma baixa em relação ao mês de maio de 2012.</p><p>A quantidade, em quilogramas, de soja exportada pelo Brasil no mês de julho de 2012 foi de</p>
+        <p>A) $4{,}129 \times 10^3$<br>B) $4{,}129 \times 10^6$<br>C) $4{,}129 \times 10^9$<br>D) $4{,}129 \times 10^{12}$<br>E) $4{,}129 \times 10^{15}$</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>C</strong>.<br>$4{,}129$ milhões de toneladas $= 4{,}129 \times 10^6$ t. Como $1$ t $= 10^3$ kg:<br>$4{,}129 \times 10^6 \times 10^3 = \mathbf{4{,}129 \times 10^9}$ kg.</p></div>
+    </article>
+
+    <article class="questao">
+        <h4>T 15: (ENEM 2013) Superfície e Massa</h4>
+        <p>Muitos processos fisiológicos e bioquímicos, tais como batimentos cardíacos e taxa de respiração, apresentam escalas construídas a partir da relação entre superfície e massa (ou volume) do animal. Uma dessas escalas, por exemplo, considera que “o cubo da área $S$ da superfície de um mamífero é proporcional ao quadrado de sua massa $M$”.</p><p>Isso é equivalente a dizer que, para uma constante $k > 0$, a área $S$ pode ser escrita em função de $M$ por meio da expressão:</p>
+        <p>A) $S = k \cdot M$<br>B) $S = k \cdot M^{\frac{1}{3}}$<br>C) $S = k^{\frac{1}{3}} \cdot M^{\frac{1}{3}}$<br>D) $S = k^{\frac{1}{3}} \cdot M^{\frac{2}{3}}$<br>E) $S = k^{\frac{1}{3}} \cdot M^2$</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>D</strong>.<br>“O cubo de $S$ é proporcional ao quadrado de $M$”: $S^3 = k \cdot M^2$.<br>Extraindo a raiz cúbica: $S = (k M^2)^{\frac{1}{3}} = \mathbf{k^{\frac{1}{3}} \cdot M^{\frac{2}{3}}}$.</p></div>
+    </article>
 </section>
 
 </div>

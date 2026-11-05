@@ -160,7 +160,7 @@
 </section>
 
 <section class="questoes-propostas" id="propostas">
-    <h3>✍️ 5 Questões Propostas (P 6 a 10)</h3>
+    <h3>✍️ 10 Questões Propostas (P 6 a 15)</h3>
 
     <article class="questao">
         <h4>P 6: Análise do Gráfico e Ponto Intercepto</h4>
@@ -220,20 +220,95 @@
             3. Igualando os expoentes: $-0,1t = -2 \implies 0,1t = 2 \implies t = \frac{2}{0,1} = \mathbf{20\text{ anos}}$.</p>
         </div>
     </article>
+
+    <article class="questao">
+        <h4>P 11: Bases Diferentes</h4>
+        <p><strong>Enunciado:</strong> Resolva a equação $9^x = 27$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> Escrevemos tudo na base 3: $(3^2)^x = 3^3 \implies 3^{2x} = 3^3$.<br>$2x = 3 \implies \mathbf{x = \frac{3}{2}}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 12: Inequação com Base Menor que 1</h4>
+        <p><strong>Enunciado:</strong> Resolva a inequação $\left(\frac{1}{2}\right)^x \leq \frac{1}{8}$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> $\frac{1}{8} = \left(\frac{1}{2}\right)^3$, logo $\left(\frac{1}{2}\right)^x \leq \left(\frac{1}{2}\right)^3$.<br>Como a base está entre 0 e 1 (função decrescente), <strong>inverte-se</strong> o sinal: $\mathbf{x \geq 3}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 13: Colocando em Evidência</h4>
+        <p><strong>Enunciado:</strong> Resolva a equação $2^x + 2^{x+1} = 24$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> $2^{x+1} = 2 \cdot 2^x$, então $2^x + 2 \cdot 2^x = 3 \cdot 2^x = 24$.<br>$2^x = 8 = 2^3 \implies \mathbf{x = 3}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 14: Descobrindo o Coeficiente</h4>
+        <p><strong>Enunciado:</strong> A função $f(x) = a \cdot 2^x$ satisfaz $f(3) = 40$. Calcule $f(5)$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> $f(3) = a \cdot 8 = 40 \implies a = 5$.<br>$f(5) = 5 \cdot 2^5 = 5 \cdot 32 = \mathbf{160}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 15: Crescimento Populacional</h4>
+        <p><strong>Enunciado:</strong> Uma cidade tem 20 000 habitantes e sua população cresce 5% ao ano. Escreva a função $P(t)$ e calcule a população após 2 anos.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> Crescer 5% é multiplicar por $1{,}05$ a cada ano: $P(t) = 20\,000 \cdot (1{,}05)^t$.<br>$P(2) = 20\,000 \cdot 1{,}1025 = \mathbf{22\,050}$ habitantes.</p>
+        </div>
+    </article>
 </section>
 
 <section class="TESTE" id="testes">
     <h3>🎓 TESTES (T 11 a 15)</h3>
 
-    <div class="card" style="text-align:center; padding:60px 20px; background:#f8f9fa; border:2px dashed #3498db; border-radius:12px; margin-top:20px;">
-        <h2 style="color:#3498db; font-size:2.5rem; margin-bottom:15px;">
-            🚧 EM BREVE!
-        </h2>
+    <article class="questao">
+        <h4>T 11: (ENEM PPL 2013) O Bactericida</h4>
+        <p>Em um experimento, uma cultura de bactérias tem sua população reduzida pela metade a cada hora, devido à ação de um agente bactericida.</p><p>Neste experimento, o número de bactérias em função do tempo pode ser modelado por uma função do tipo</p>
+        <p>A) afim.<br>B) seno.<br>C) cosseno.<br>D) logarítmica crescente.<br>E) exponencial.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>E</strong>.<br>A cada hora a população é multiplicada pelo mesmo fator $\frac{1}{2}$: $P(t) = P_0 \cdot \left(\frac{1}{2}\right)^t$.<br>A variável está no expoente: função <strong>exponencial</strong> (decrescente).</p></div>
+    </article>
 
-        <p style="font-size:1.2rem; color:#555;">
-            Questões de vestibulares serão disponibilizadas em breve.
-        </p>
-    </div>
+    <article class="questao">
+        <h4>T 12: (ENEM PPL 2014) Quarto de Hora</h4>
+        <p>Pesquisas indicam que o número de bactérias X é duplicado a cada quarto de hora. Um aluno resolveu fazer uma observação para verificar a veracidade dessa afirmação. Ele usou uma população inicial de $10^5$ bactérias X e encerrou a observação ao final de uma hora.</p><p>Suponha que a observação do aluno tenha confirmado que o número de bactérias X se duplica a cada quarto de hora.</p><p>Após uma hora do início do período de observação desse aluno, o número de bactérias X foi de</p>
+        <p>A) $2^{-2} \cdot 10^5$<br>B) $2^{-1} \cdot 10^5$<br>C) $2^{2} \cdot 10^5$<br>D) $2^{3} \cdot 10^5$<br>E) $2^{4} \cdot 10^5$</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>E</strong>.<br>Em 1 hora há 4 quartos de hora, ou seja, 4 duplicações.<br>$10^5 \cdot 2 \cdot 2 \cdot 2 \cdot 2 = \mathbf{2^4 \cdot 10^5}$.</p></div>
+    </article>
+
+    <article class="questao">
+        <h4>T 13: (ENEM PPL 2020) População Inicial</h4>
+        <p>Um laboratório realizou um teste para calcular a velocidade de reprodução de um tipo de bactéria. Para tanto, realizou um experimento para observar a reprodução de uma quantidade $x$ dessas bactérias por um período de duas horas. Após esse período, constava no habitáculo do experimento uma população de 189 440 da citada bactéria. Constatou-se, assim, que a população de bactérias dobrava a cada 0,25 hora.</p><p>A quantidade inicial de bactérias era de</p>
+        <p>A) 370.<br>B) 740.<br>C) 1 480.<br>D) 11 840.<br>E) 23 680.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>B</strong>.<br>Número de duplicações em 2 h: $\frac{2}{0{,}25} = 8$.<br>$x \cdot 2^8 = 189\,440 \implies x = \frac{189\,440}{256} = \mathbf{740}$.</p></div>
+    </article>
+
+    <article class="questao">
+        <h4>T 14: (PUC-MG) Até 256 000 Bactérias</h4>
+        <p>Uma cultura tem, inicialmente, 125 bactérias. Sabendo-se que essa população dobra a cada 2 horas, o tempo necessário, em horas, para que o número de bactérias chegue a 256 000, é igual a</p>
+        <p>A) 14<br>B) 18<br>C) 22<br>D) 26</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>C</strong>.<br>$N(t) = 125 \cdot 2^{\frac{t}{2}} = 256\,000 \implies 2^{\frac{t}{2}} = \frac{256\,000}{125} = 2\,048 = 2^{11}$.<br>$\frac{t}{2} = 11 \implies t = \mathbf{22}$ horas.</p></div>
+    </article>
+
+    <article class="questao">
+        <h4>T 15: (CEFET-MG) Equação Exponencial</h4>
+        <p>A solução da equação $3^{x+1} - 3^{x+2} = -54$ é</p>
+        <p>A) $-2$<br>B) $-1$<br>C) $0$<br>D) $2$</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>D</strong>.<br>$3^{x+1} - 3^{x+2} = 3 \cdot 3^x - 9 \cdot 3^x = -6 \cdot 3^x$.<br>$-6 \cdot 3^x = -54 \implies 3^x = 9 = 3^2 \implies \mathbf{x = 2}$.</p></div>
+    </article>
 </section>
 
 </div>

@@ -234,7 +234,7 @@
 </section>
 
 <section class="questoes-propostas">
-    <h3>✍️ 5 Questões Propostas (P 6 a 10)</h3>
+    <h3>✍️ 10 Questões Propostas (P 6 a 15)</h3>
 
     <article class="questao">
         <h4>P 6: Regra de Cramer — Sistema $3\times 3$</h4>
@@ -280,7 +280,7 @@
 
     <article class="questao">
         <h4>P 9: Problema de Mistura</h4>
-        <p><strong>Enunciado:</strong> Uma loja vende dois tipos de café: tipo A a R$ 20/kg e tipo B a R$ 30/kg. Uma mistura de 10 kg custa R$ 240,00. Quantos kg de cada tipo foram usados?</p>
+        <p><strong>Enunciado:</strong> Uma loja vende dois tipos de café: tipo A a R\$ 20/kg e tipo B a R\$ 30/kg. Uma mistura de 10 kg custa R\$ 240,00. Quantos kg de cada tipo foram usados?</p>
         <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
         <div class="gabarito-resolucao">
             <p><strong>Resolução:</strong> Sejam $x$ = kg do tipo A e $y$ = kg do tipo B:
@@ -304,123 +304,95 @@
             <p>Solução: $\left(\dfrac{7}{3},\ 1,\ \dfrac{4}{3}\right)$. Sistema <strong>SPD</strong>.</p>
         </div>
     </article>
+
+    <article class="questao">
+        <h4>P 11: Método da Substituição</h4>
+        <p><strong>Enunciado:</strong> Resolva $\begin{cases} 2x + 3y = 12 \\ x - y = 1 \end{cases}$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> Da 2ª: $x = y + 1$. Na 1ª: $2(y+1) + 3y = 12 \Rightarrow 5y = 10 \Rightarrow y = 2$ e $x = 3$. $S = \{(3, 2)\}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 12: Classificação de Sistemas</h4>
+        <p><strong>Enunciado:</strong> Classifique: (a) $\begin{cases} x + 2y = 3 \\ 2x + 4y = 6 \end{cases}$; (b) $\begin{cases} x + 2y = 3 \\ 2x + 4y = 7 \end{cases}$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> (a) A 2ª equação é o dobro da 1ª: retas coincidentes, SPI (infinitas soluções). (b) Os 1º membros são proporcionais, mas $7 \neq 2 \cdot 3$: retas paralelas, SI (sem solução).</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 13: Cabeças e Patas</h4>
+        <p><strong>Enunciado:</strong> Em um sítio há galinhas e coelhos, num total de 30 cabeças e 80 patas. Quantos são os animais de cada tipo?</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> $g + c = 30$ e $2g + 4c = 80$. Da 2ª, $g + 2c = 40$; subtraindo a 1ª: $c = 10$ e $g = 20$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 14: Três Números</h4>
+        <p><strong>Enunciado:</strong> Três números somam 20. O primeiro é o dobro do segundo, e o terceiro é 4 unidades maior que o segundo. Determine-os.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> Com segundo $= y$: $2y + y + (y + 4) = 20 \Rightarrow 4y = 16 \Rightarrow y = 4$. Números: 8, 4 e 8.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 15: Parâmetro para Sistema Impossível</h4>
+        <p><strong>Enunciado:</strong> Para qual valor de $k$ o sistema $\begin{cases} x + ky = 2 \\ 2x + 4y = 5 \end{cases}$ é impossível?</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> O sistema não é SPD quando $\det = 1 \cdot 4 - 2k = 0 \Rightarrow k = 2$. Com $k = 2$: $x + 2y = 2$ e $x + 2y = 2{,}5$, que são incompatíveis. Logo, SI para $k = 2$.</p>
+        </div>
+    </article>
 </section>
 
-<section class="TESTE">
-    <article class="questao">
-    <h4>T 11: (ENEM / 2018) Equações — Rifa na Festa do Colégio</h4>
-    <p>Durante uma festa de colégio, um grupo de alunos organizou uma rifa. Oitenta alunos faltaram à festa e não participaram da rifa. Entre os que compareceram, alguns compraram três bilhetes, 45 compraram 2 bilhetes, e muitos compraram apenas um. O total de alunos que comprou um único bilhete era 20% do número total de bilhetes vendidos, e o total de bilhetes vendidos excedeu em 33 o número total de alunos do colégio.</p>
-    <p>Quantos alunos compraram somente um bilhete?</p>
-    <p>A) $34$<br>B) $42$<br>C) $47$<br>D) $48$<br>E) $79$</p>
-    <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-    <div class="gabarito-resolucao">
-        <p><strong>Resolução:</strong> Alternativa <strong>C</strong>.<br>
-        Sejam:<br>
-        $t$ = número de alunos que compraram 3 bilhetes,<br>
-        $u$ = número de alunos que compraram 1 bilhete,<br>
-        $45$ = número de alunos que compraram 2 bilhetes.<br><br>
-        Total de alunos do colégio: $80 + t + 45 + u$.<br>
-        Total de bilhetes vendidos: $3t + 2(45) + u = 3t + 90 + u$.<br><br>
-        <strong>Condição 1</strong> — bilhetes vendidos superam o total de alunos em 33:<br>
-        $3t + 90 + u = (80 + t + 45 + u) + 33$<br>
-        $3t + 90 + u = 158 + t + u$<br>
-        $2t = 68 \implies t = 34$.<br><br>
-        <strong>Condição 2</strong> — alunos com 1 bilhete = 20% do total de bilhetes:<br>
-        $u = 0{,}20 \cdot (3t + 90 + u)$<br>
-        $u = 0{,}20 \cdot (102 + 90 + u)$<br>
-        $u = 0{,}20 \cdot (192 + u)$<br>
-        $u = 38{,}4 + 0{,}2u$<br>
-        $0{,}8u = 38{,}4 \implies u = 48$... verificando: $0{,}20 \times (102+90+48)=0{,}20\times240=48$ ✓<br><br>
-        O número de alunos que compraram somente um bilhete é $\mathbf{48}$, alternativa <strong>D</strong>.</p>
-    </div>
-</article>
+<section class="TESTE" id="testes">
+    <h3>🎓 TESTES (T 11 a 15)</h3>
 
     <article class="questao">
-    <h4>T 12: (ENEM / 2013) Equações — Nutrientes e Hábitos Alimentares</h4>
-    <p>Médicos alertam sobre a importância de educar as crianças para terem hábitos alimentares saudáveis. Por exemplo, analisando-se uma bolacha com recheio de chocolate (25 g) e um pé de alface (25 g), observam-se as seguintes quantidades de nutrientes, respectivamente:</p>
-    <p>• carboidratos: 15 g e 0,5 g;<br>• proteínas: 1,9 g e 0,5 g.</p>
-    <p>Considerando as informações apresentadas, qual deve ser o número de pés de alface consumidos para se obter a mesma quantidade de carboidratos de uma bolacha?</p>
-    <p>A) $50$<br>B) $30$<br>C) $14$<br>D) $8$<br>E) $7$</p>
-    <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-    <div class="gabarito-resolucao">
-        <p><strong>Resolução:</strong> Alternativa <strong>B</strong>.<br>
-        Uma bolacha contém $15$ g de carboidratos.<br>
-        Um pé de alface contém $0{,}5$ g de carboidratos.<br><br>
-        Seja $n$ o número de pés de alface necessários:<br>
-        $0{,}5n = 15$<br>
-        $n = \dfrac{15}{0{,}5} = 30$.<br><br>
-        Portanto, são necessários <strong>30 pés de alface</strong> para obter a mesma quantidade de carboidratos de uma bolacha.</p>
-    </div>
-</article>
+        <h4>T 11: (ENEM 2018) Rifa na festa do colégio</h4>
+        <p>Durante uma festa de colégio, um grupo de alunos organizou uma rifa. Oitenta alunos faltaram à festa e não participaram da rifa. Entre os que compareceram, alguns compraram três bilhetes, 45 compraram 2 bilhetes, e muitos compraram apenas um. O total de alunos que comprou um único bilhete era 20% do número total de bilhetes vendidos, e o total de bilhetes vendidos excedeu em 33 o número total de alunos do colégio. Quantos alunos compraram somente um bilhete?</p>
+        <p>A) 34<br>B) 42<br>C) 47<br>D) 48<br>E) 79</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>D</strong>.<br>Sejam $t$ os alunos que compraram 3 bilhetes e $u$ os que compraram 1. Alunos do colégio: $80 + t + 45 + u$; bilhetes: $3t + 90 + u$.<br>1ª condição: $3t + 90 + u = (125 + t + u) + 33 \Rightarrow 2t = 68 \Rightarrow t = 34$.<br>2ª condição: $u = 0{,}2\,(102 + 90 + u) \Rightarrow 0{,}8u = 38{,}4 \Rightarrow u = 48$.<br>Verificação: $0{,}2 \cdot 240 = 48$ ✓.</p></div>
+    </article>
 
     <article class="questao">
-    <h4>T 13: (ENEM / 2013) Equações — Fábrica de Fórmicas</h4>
-    <p>Uma fábrica de fórmicas produz placas quadradas de lados de medida igual a $y$ centímetros. Essas placas são vendidas em caixas com $N$ unidades e, na caixa, é especificada a área máxima $S$ que pode ser coberta pelas $N$ placas. Devido a uma demanda do mercado por placas maiores, a fábrica triplicou a medida dos lados de suas placas e conseguiu reuni-las em uma nova caixa, de tal forma que a área coberta $S$ não fosse alterada.</p>
-    <p>A quantidade $X$ de placas do novo modelo em cada nova caixa será igual a:</p>
-    <p>A) $\dfrac{N}{9}$<br>B) $\dfrac{N}{6}$<br>C) $\dfrac{N}{3}$<br>D) $3N$<br>E) $9N$</p>
-    <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-    <div class="gabarito-resolucao">
-        <p><strong>Resolução:</strong> Alternativa <strong>A</strong>.<br>
-        Área de cada placa original: $y^2$.<br>
-        Área total coberta pelas $N$ placas originais: $S = N \cdot y^2$.<br><br>
-        Novo lado da placa: $3y$.<br>
-        Área de cada placa nova: $(3y)^2 = 9y^2$.<br><br>
-        Como a área total $S$ não muda:<br>
-        $X \cdot 9y^2 = N \cdot y^2$<br>
-        $X = \dfrac{N \cdot y^2}{9y^2} = \dfrac{N}{9}$.<br><br>
-        A quantidade de placas do novo modelo em cada caixa é $\mathbf{\dfrac{N}{9}}$.</p>
-    </div>
-</article>
-    <<article class="questao">
-    <h4>T 14: (ENEM / 2018) Equações — Rifa na Festa do Colégio</h4>
-    <p>Durante uma festa de colégio, um grupo de alunos organizou uma rifa. Oitenta alunos faltaram à festa e não participaram da rifa. Entre os que compareceram, alguns compraram três bilhetes, 45 compraram 2 bilhetes, e muitos compraram apenas um. O total de alunos que comprou um único bilhete era 20% do número total de bilhetes vendidos, e o total de bilhetes vendidos excedeu em 33 o número total de alunos do colégio.</p>
-    <p>Quantos alunos compraram somente um bilhete?</p>
-    <p>A) $34$<br>B) $42$<br>C) $47$<br>D) $48$<br>E) $79$</p>
-    <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-    <div class="gabarito-resolucao">
-        <p><strong>Resolução:</strong> Alternativa <strong>D</strong>.<br>
-        Sejam:<br>
-        $t$ = número de alunos que compraram 3 bilhetes,<br>
-        $u$ = número de alunos que compraram 1 bilhete,<br>
-        $45$ = número de alunos que compraram 2 bilhetes.<br><br>
-        Total de alunos do colégio: $80 + t + 45 + u$.<br>
-        Total de bilhetes vendidos: $3t + 2(45) + u = 3t + 90 + u$.<br><br>
-        <strong>Condição 1</strong> — bilhetes vendidos superam o total de alunos em 33:<br>
-        $3t + 90 + u = (80 + t + 45 + u) + 33$<br>
-        $3t + 90 + u = 158 + t + u$<br>
-        $2t = 68 \implies t = 34$.<br><br>
-        <strong>Condição 2</strong> — alunos com 1 bilhete = 20% do total de bilhetes:<br>
-        $u = 0{,}20 \cdot (3t + 90 + u)$<br>
-        Substituindo $t = 34$:<br>
-        $u = 0{,}20 \cdot (102 + 90 + u)$<br>
-        $u = 0{,}20 \cdot (192 + u)$<br>
-        $u = 38{,}4 + 0{,}2u$<br>
-        $0{,}8u = 38{,}4 \implies u = 48$.<br><br>
-        Verificação: $0{,}20 \times (102 + 90 + 48) = 0{,}20 \times 240 = 48$ ✓<br><br>
-        O número de alunos que compraram somente um bilhete é $\mathbf{48}$.</p>
-    </div>
-</article>
+        <h4>T 12: (ENEM 2015 – 2ª aplicação) Tiro ao alvo</h4>
+        <p>Uma barraca de tiro ao alvo de um parque de diversões dará um prêmio de R\$ 20,00 ao participante, cada vez que ele acertar o alvo. Por outro lado, cada vez que ele errar o alvo, deverá pagar R\$ 10,00. Não há cobrança inicial para participar do jogo. Um participante deu 80 tiros e, ao final, recebeu R\$ 100,00. Quantas vezes esse participante acertou o alvo?</p>
+        <p>A) 30<br>B) 36<br>C) 50<br>D) 60<br>E) 80</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>A</strong>.<br>Acertos $x$ e erros $y$: $x + y = 80$ e $20x - 10y = 100$, ou seja, $2x - y = 10$. Somando: $3x = 90 \Rightarrow x = 30$.</p></div>
+    </article>
 
     <article class="questao">
-    <h4>T 15: (ENEM) Sistema de Equações — Camisetas e Bonés</h4>
-    <p>Um vendedor de camisetas e bonés em um evento esportivo vendeu 3 camisetas e 2 bonés, arrecadando um total de R$\,220{,}00$. No dia seguinte, ele vendeu 2 camisetas e 3 bonés, arrecadando R$\,190{,}00$.</p>
-    <p>Qual seria o preço de uma camiseta e o preço de um boné?</p>
-    <p>A) Camiseta: R$\,60{,}00$ | Boné: R$\,40{,}00$<br>B) Camiseta: R$\,40{,}00$ | Boné: R$\,60{,}00$<br>C) Camiseta: R$\,56{,}00$ | Boné: R$\,26{,}00$<br>D) Camiseta: R$\,50{,}00$ | Boné: R$\,70{,}00$<br>E) Camiseta: R$\,80{,}00$ | Boné: R$\,30{,}00$</p>
-    <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-    <div class="gabarito-resolucao">
-        <p><strong>Resolução:</strong> Alternativa <strong>A</strong>.<br>
-        Seja $c$ o preço da camiseta e $b$ o preço do boné. Montando o sistema:<br>
-        $$\begin{cases} 3c + 2b = 220 \\ 2c + 3b = 190 \end{cases}$$
-        Multiplicando a primeira equação por $3$ e a segunda por $2$:<br>
-        $$\begin{cases} 9c + 6b = 660 \\ 4c + 6b = 380 \end{cases}$$
-        Subtraindo a segunda da primeira:<br>
-        $5c = 280 \implies c = 56$... Verificando na primeira: $3(56) + 2b = 220 \implies 168 + 2b = 220 \implies b = 26$.<br>
-        Verificando na segunda: $2(56) + 3(26) = 112 + 78 = 190$ ✓<br><br>
-        Porém testando a alternativa A: $3(60) + 2(40) = 180 + 80 = 260 \neq 220$.<br>
-        O sistema resulta em $c = R\$\,56{,}00$ e $b = R\$\,26{,}00$, portanto a alternativa correta é <strong>C</strong>.</p>
-    </div>
-</article>
+        <h4>T 13: (Autoral) Sistema indeterminado</h4>
+        <p>O sistema $\begin{cases} x + 2y = 4 \\ 3x + 6y = k \end{cases}$ é possível e indeterminado quando $k$ vale</p>
+        <p>A) 4<br>B) 6<br>C) 8<br>D) 12<br>E) 24</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>D</strong>.<br>A 2ª equação deve ser o triplo da 1ª: $k = 3 \cdot 4 = 12$. Para outro $k$, o sistema é impossível.</p></div>
+    </article>
 
+    <article class="questao">
+        <h4>T 14: (Autoral) Sistema 3×3</h4>
+        <p>Se $(x, y, z)$ é a solução de $\begin{cases} x + y + z = 6 \\ x - y = 1 \\ y + z = 3 \end{cases}$, então $x \cdot y \cdot z$ vale</p>
+        <p>A) 0<br>B) 3<br>C) 6<br>D) 9<br>E) 12</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>C</strong>.<br>Da 1ª e da 3ª: $x = 6 - 3 = 3$. Da 2ª: $y = 2$. Da 3ª: $z = 1$. Produto: $6$.</p></div>
+    </article>
+
+    <article class="questao">
+        <h4>T 15: (Autoral) Ingressos de teatro</h4>
+        <p>Um teatro vendeu 200 ingressos, entre inteiras de R\$ 40,00 e meias de R\$ 20,00, arrecadando R\$ 6 000,00. Quantas meias-entradas foram vendidas?</p>
+        <p>A) 60<br>B) 100<br>C) 120<br>D) 140<br>E) 150</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>B</strong>.<br>$i + m = 200$ e $40i + 20m = 6000 \Rightarrow 2i + m = 300$. Subtraindo: $i = 100$ e $m = 100$.</p></div>
+    </article>
 </section>
 </div>
 </main>

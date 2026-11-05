@@ -67,7 +67,7 @@
             <li><strong>Lados correspondentes proporcionais</strong>, numa razão constante $k$, chamada <strong>razão de semelhança</strong>:</li>
         </ul>
         <p style="text-align: center;">$$k = \frac{\text{lado da figura 2}}{\text{lado correspondente da figura 1}}$$</p>
-        <p>Se $k=1$, as figuras são congruentes (idênticas em tamanho). Se $k>1$, a figura 2 é uma ampliação da figura 1; se $0<k<1$, é uma redução.</p>
+        <p>Se $k=1$, as figuras são congruentes (idênticas em tamanho). Se $k>1$, a figura 2 é uma ampliação da figura 1; se $0 &lt; k &lt; 1$, é uma redução.</p>
         <figure class="figura-aula figura-grande">
             <svg viewBox="0 0 420 320" xmlns="http://www.w3.org/2000/svg" style="width:100%; max-width:450px; height:auto; display:block; margin:0 auto; background:#fdfdfd; border-radius:10px;">
                 <!-- triangulo pequeno -->
@@ -227,7 +227,7 @@
 <!--------------- QUESTÕES PROPOSTAS --------------------------->
 
 <section class="questoes-propostas">
-                    <h3>✍️ 5 Questões Propostas (P 6 a 10)</h3>
+                    <h3>✍️ 10 Questões Propostas (P 6 a 15)</h3>
 
                     <article class="questao">
                         <h4>P 6: Razão entre Perímetros (Redução)</h4>
@@ -273,10 +273,55 @@
                             <p><strong>Resolução:</strong> A área é o produto de duas medidas lineares (por exemplo, base × altura). Ao dobrar cada uma dessas medidas, o produto é multiplicado por $2 \times 2 = 4$, não por $2$. Esse é exatamente o motivo pelo qual a razão entre áreas é $k^2$, e não $k$.</p>
                         </div>
                     </article>
-                </section>
+                
+    <article class="questao">
+        <h4>P 11: Triângulos Semelhantes</h4>
+        <p><strong>Enunciado:</strong> Um triângulo tem lados 3, 4 e 5 cm. Um triângulo semelhante a ele tem maior lado de 15 cm. Determine seus lados, seu perímetro e a razão entre as áreas.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> Razão $k = \dfrac{15}{5} = 3$. Lados: 9, 12 e 15 cm; perímetro $36$ cm. Razão entre áreas: $k^2 = 9$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 12: Área no Mapa</h4>
+        <p><strong>Enunciado:</strong> Em um mapa na escala $1:50\,000$, uma região ocupa $2\,\text{cm}^2$. Qual é sua área real em km²?</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> $1$ cm no mapa $= 50\,000$ cm $= 0{,}5$ km. Então $1\,\text{cm}^2$ corresponde a $0{,}25\,\text{km}^2$ e $2\,\text{cm}^2$ a $0{,}5\,\text{km}^2$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 13: Pizzas Semelhantes</h4>
+        <p><strong>Enunciado:</strong> Uma pizza tem 30 cm de diâmetro e outra, 40 cm. Quantas vezes a área da maior é a da menor?</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> Círculos são sempre semelhantes: $k = \dfrac{40}{30} = \dfrac{4}{3}$. Razão das áreas: $k^2 = \dfrac{16}{9} \approx 1{,}78$ vez.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 14: Maquete</h4>
+        <p><strong>Enunciado:</strong> O piso de uma casa tem $120\,\text{m}^2$. Qual é a área desse piso em uma maquete na escala $1:50$?</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> Razão das áreas: $\left(\dfrac{1}{50}\right)^2 = \dfrac{1}{2500}$. $\dfrac{120}{2500} = 0{,}048\,\text{m}^2 = 480\,\text{cm}^2$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 15: Altura pela Sombra</h4>
+        <p><strong>Enunciado:</strong> Uma árvore projeta sombra de 12 m no mesmo instante em que um bastão vertical de 1,5 m projeta sombra de 2 m. Qual é a altura da árvore?</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> Triângulos semelhantes: $\dfrac{h}{12} = \dfrac{1{,}5}{2} \Rightarrow h = 9$ m.</p>
+        </div>
+    </article>
+</section>
 <!--------------- TESTES --------------------------->
 
-<section class="testes">
+<section class="TESTE" id="testes">
     <h3>🎓 TESTES (T 11 a 15) — Questões reais de provas</h3>
     <p style="text-align:center; font-size:0.9em; color:#7f8c8d; margin-top:-10px;">As cinco questões abaixo são reproduções de provas oficiais (ENEM, VUNESP e IFCE), com fonte indicada em cada uma.</p>
 

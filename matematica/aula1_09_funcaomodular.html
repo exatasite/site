@@ -290,7 +290,7 @@
 <!--------------- QUESTÕES PROPOSTAS --------------------------->
 
 <section class="questoes-propostas">
-                    <h3>✍️ 5 Questões Propostas (P 6 a 10)</h3>
+                    <h3>✍️ 10 Questões Propostas (P 6 a 15)</h3>
 
                     <article class="questao">
                         <h4>P 6: Operações com Módulos</h4>
@@ -336,66 +336,95 @@
                             <p><strong>Resolução:</strong> Porque a função é definida por duas "leis" diferentes: para $x \geq 0$, $f(x) = x$ (uma reta crescente, com $a=1$); para $x < 0$, $f(x) = -x$ (uma reta decrescente, com $a=-1$). As duas semirretas se encontram no vértice $(0,0)$, formando o "V".</p>
                         </div>
                     </article>
-                </section>
-<!--------------- TESTES --------------------------->
-
-<section class="testes">
-    <h3>🎓 TESTES (T 11 a 15)</h3>
-
+                
     <article class="questao">
-    <h4>T 11: (ENEM) Função Modular — Tolerância de Fabricação</h4>
-    <p>Uma indústria produz parafusos cujo comprimento nominal é de $25\,\text{mm}$. O controle de qualidade aceita apenas peças cujo comprimento $x$, em milímetros, satisfaça $|x - 25| \leq 0{,}15$.</p>
-    <p>Qual é o intervalo de comprimentos aceitos pelo controle de qualidade?</p>
-    <p>A) $[24{,}85 \,;\, 25{,}15]$<br>B) $[24{,}70 \,;\, 25{,}30]$<br>C) $[25 \,;\, 25{,}15]$<br>D) $[-0{,}15 \,;\, 0{,}15]$<br>E) $[24{,}85 \,;\, 25]$</p>
-    <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-    <div class="gabarito-resolucao">
-        <p><strong>Resolução:</strong> Alternativa <strong>A</strong>.<br>
-        $$-0{,}15 \leq x - 25 \leq 0{,}15 \implies 24{,}85 \leq x \leq 25{,}15$$</p>
-    </div>
-      </article>
-
-    <article class="questao">
-    <h4>T 12: Equação Modular</h4>
-    <p>Qual é o conjunto solução da equação $|3x-6| = 9$?</p>
-    <p>A) $\{5, -1\}$<br>B) $\{-5, 1\}$<br>C) $\{3, -3\}$<br>D) $\{15, -3\}$<br>E) $\{1\}$</p>
-    <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-    <div class="gabarito-resolucao">
-        <p><strong>Resolução:</strong> Alternativa <strong>A</strong>.<br>
-        $$3x-6 = 9 \implies x = 5 \qquad \text{ou} \qquad 3x-6 = -9 \implies x = -1$$</p>
-    </div>
-      </article>
-
-    <article class="questao">
-    <h4>T 13: Inequação Modular</h4>
-    <p>Qual é a solução da inequação $|x+4| > 2$?</p>
-    <p>A) $-6 < x < -2$<br>B) $x < -6$ ou $x > -2$<br>C) $-2 < x < 6$<br>D) $x < -6$ ou $x > 2$<br>E) $x > -2$</p>
-    <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-    <div class="gabarito-resolucao">
-        <p><strong>Resolução:</strong> Alternativa <strong>B</strong>.<br>
-        $$x+4 > 2 \implies x > -2 \qquad \text{ou} \qquad x+4 < -2 \implies x < -6$$</p>
-    </div>
-      </article>
-
-    <article class="questao">
-    <h4>T 14: Distância na Reta Numérica</h4>
-    <p>A distância entre dois pontos $x_1$ e $x_2$ na reta numérica é dada por $|x_1 - x_2|$. Qual é a distância entre os pontos $-3$ e $8$?</p>
-    <p>A) $5$<br>B) $8$<br>C) $-11$<br>D) $11$<br>E) $3$</p>
-    <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-    <div class="gabarito-resolucao">
-        <p><strong>Resolução:</strong> Alternativa <strong>D</strong>.<br>
-        $$|8 - (-3)| = |11| = 11$$</p>
-    </div>
+        <h4>P 11: Equação Modular com Condição</h4>
+        <p><strong>Enunciado:</strong> Resolva $|3x - 6| = x + 2$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> É preciso $x + 2 \ge 0$. Caso 1: $3x - 6 = x + 2 \Rightarrow x = 4$. Caso 2: $3x - 6 = -x - 2 \Rightarrow x = 1$. Ambos satisfazem $x \ge -2$: $S = \{1, 4\}$.</p>
+        </div>
     </article>
 
     <article class="questao">
-    <h4>T 15: Translação do Gráfico Modular</h4>
-    <p>Considere a função $f(x) = |x-2| + 1$. Qual é o vértice do gráfico de $f$?</p>
-    <p>A) $(0,0)$<br>B) $(2,1)$<br>C) $(-2,1)$<br>D) $(2,-1)$<br>E) $(1,2)$</p>
-    <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-    <div class="gabarito-resolucao">
-        <p><strong>Resolução:</strong> Alternativa <strong>B</strong>.<br>
-        Na forma $f(x) = |x-a| + b$, o vértice do "V" está em $(a,b)$. Aqui, $a=2$ e $b=1$, logo o vértice é $(2,1)$.</p>
-    </div>
+        <h4>P 12: Módulo nos Dois Membros</h4>
+        <p><strong>Enunciado:</strong> Resolva $|x - 1| = |2x + 4|$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> $x - 1 = 2x + 4 \Rightarrow x = -5$ ou $x - 1 = -(2x + 4) \Rightarrow x = -1$. $S = \{-5, -1\}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 13: Equação do 2º Grau em $|x|$</h4>
+        <p><strong>Enunciado:</strong> Resolva $x^2 - 5|x| + 6 = 0$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> Como $x^2 = |x|^2$, fazendo $y = |x|$: $y^2 - 5y + 6 = 0 \Rightarrow y = 2$ ou $y = 3$. Logo, $x = \pm 2$ ou $x = \pm 3$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 14: Gráfico Transladado</h4>
+        <p><strong>Enunciado:</strong> Para $f(x) = |x - 2| + 1$, determine o vértice do gráfico, o conjunto imagem e $f(0)$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> O "V" de $|x|$ é deslocado 2 unidades para a direita e 1 para cima: vértice $(2, 1)$, $\text{Im}(f) = [1, +\infty)$ e $f(0) = |-2| + 1 = 3$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 15: Inequação Modular Dupla</h4>
+        <p><strong>Enunciado:</strong> Resolva $2 &lt; |x| &lt; 5$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> $|x| &gt; 2$ dá $x &lt; -2$ ou $x &gt; 2$; $|x| &lt; 5$ dá $-5 &lt; x &lt; 5$. Interseção: $-5 &lt; x &lt; -2$ ou $2 &lt; x &lt; 5$.</p>
+        </div>
+    </article>
+</section>
+<!--------------- TESTES --------------------------->
+
+<section class="TESTE" id="testes">
+    <h3>🎓 TESTES (T 11 a 15)</h3>
+
+    <article class="questao">
+        <h4>T 11: (UNITAU) Domínio com módulo</h4>
+        <p>O domínio da função $f(x) = \sqrt{\dfrac{1 - |x - 1|}{2}}$ é:</p>
+        <p>A) $0 \le x \le 2$<br>B) $x \ge 2$<br>C) $x \le 0$<br>D) $x &lt; 0$<br>E) $x &gt; 0$</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>A</strong>.<br>É preciso $1 - |x - 1| \ge 0 \Rightarrow |x - 1| \le 1 \Rightarrow -1 \le x - 1 \le 1 \Rightarrow 0 \le x \le 2$.</p></div>
+    </article>
+
+    <article class="questao">
+        <h4>T 12: (PUC) Soma de módulos</h4>
+        <p>O valor de $|2 - \sqrt{5}| + |3 - \sqrt{5}|$ é:</p>
+        <p>A) $5 - 2\sqrt{5}$<br>B) $5 + 2\sqrt{5}$<br>C) $5$<br>D) $1 + 2\sqrt{5}$<br>E) $1$</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>E</strong>.<br>Como $\sqrt{5} \approx 2{,}24$: $|2 - \sqrt{5}| = \sqrt{5} - 2$ e $|3 - \sqrt{5}| = 3 - \sqrt{5}$. Soma: $1$.</p></div>
+    </article>
+
+    <article class="questao">
+        <h4>T 13: (UDESC) Raízes distintas</h4>
+        <p>A soma das raízes distintas da equação $x^2 - 5x + 6 = |x - 3|$ é:</p>
+        <p>A) 10<br>B) 7<br>C) 0<br>D) 3<br>E) 4</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>E</strong>.<br>Para $x \ge 3$: $x^2 - 6x + 9 = 0 \Rightarrow x = 3$. Para $x &lt; 3$: $x^2 - 4x + 3 = 0 \Rightarrow x = 1$ (o 3 não serve nesse caso). Raízes distintas: 1 e 3; soma 4.</p></div>
+    </article>
+
+    <article class="questao">
+        <h4>T 14: (UEPB) Módulo dentro de módulo</h4>
+        <p>A soma das raízes da equação modular $\big||x - 2| - 7\big| = 6$ é</p>
+        <p>A) 15<br>B) 30<br>C) 4<br>D) 2<br>E) 8</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>E</strong>.<br>$|x - 2| - 7 = \pm 6 \Rightarrow |x - 2| = 13$ ou $|x - 2| = 1$. Raízes: $15, -11, 3, 1$. Soma: $8$.</p></div>
+    </article>
+
+    <article class="questao">
+        <h4>T 15: (Autoral) Soluções inteiras</h4>
+        <p>O número de soluções inteiras da inequação $|x - 1| &lt; 3$ é</p>
+        <p>A) 3<br>B) 4<br>C) 5<br>D) 6<br>E) 7</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>C</strong>.<br>$-3 &lt; x - 1 &lt; 3 \Rightarrow -2 &lt; x &lt; 4$. Inteiros: $-1, 0, 1, 2, 3$, ou seja, 5 soluções.</p></div>
     </article>
 </section>
 
