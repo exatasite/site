@@ -320,51 +320,16 @@ O sinal negativo de $i_3$ indica que seu sentido real
 
 <section class="TESTE" id="testes">
     <h3>🎓 TESTES (T 16 a 20)</h3>
-    <article class="questao">
-        <h4>T 16: (FUVEST) Corrente em Circuito de Duas Malhas</h4>
-        <p>No circuito representado abaixo, as fontes de tensão de $6\ \text{V}$ e $12\ \text{V}$ são ideais. Os resistores possuem resistência $R = 2\ \Omega$.</p>
-        
-<figure class="figura-aula">
-        <img src="../imagens_fisica/aula3_23_T16.png" alt="Circuito questão T16">
-            <figcaption>Figura esquemática da questão.</figcaption>
 
-    </figure>
+    <div class="card" style="text-align:center; padding:60px 20px; background:#f8f9fa; border:2px dashed #3498db; border-radius:12px; margin-top:20px;">
+        <h2 style="color:#3498db; font-size:2.5rem; margin-bottom:15px;">
+            🚧 EM BREVE!
+        </h2>
 
-
-
-        <p>A corrente elétrica no resistor central vale</p>
-        <p>A) 0 A<br>B) 1,5 A<br>C) 3,0 A<br>D) 4,5 A<br>E) 6,0 A</p>
-        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>C</strong>.<br>Aplicando a Lei das Malhas nas duas malhas com resistores $R = 2\ \Omega$, obtém-se $i_{\text{central}} = \mathbf{3{,}0\ \text{A}}$.</p></div>
-    </article>
-    <article class="questao">
-        <h4>T 17: (UNICAMP) Conservação da Cargas em Nó</h4>
-        <p>Em uma junção (nó) de um circuito integrado, a corrente de entrada divide-se em três ramos cujas resistências estão na proporção $1:2:3$. Se a corrente total de entrada é $11\ \text{mA}$, a corrente no ramo de menor resistência é</p>
-        <p>A) 2 mA<br>B) 3 mA<br>C) 5 mA<br>D) 6 mA<br>E) 8 mA</p>
-        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>D</strong>.<br>A corrente é inversamente proporcional à resistência: $i_1 : i_2 : i_3 = \frac{1}{1} : \frac{1}{2} : \frac{1}{3} = 6 : 3 : 2$.<br>Soma das partes: $6k + 3k + 2k = 11k = 11\ \text{mA} \implies k = 1\ \text{mA}$.<br>Menor resistência recebe a maior corrente: $6k = \mathbf{6\ \text{mA}}$.</p></div>
-    </article>
-    <article class="questao">
-        <h4>T 18: (UNESP) Malha com Receptor e Gerador</h4>
-        <p>Um circuito é constituído por uma malha contendo uma bateria de $18\ \text{V}$, um motor de fcem $E' = 6\ \text{V}$ e um resistor $R = 4\ \Omega$. A resistência interna total do circuito é $2\ \Omega$. A corrente elétrica no circuito é</p>
-        <p>A) 1,0 A<br>B) 2,0 A<br>C) 3,0 A<br>D) 4,0 A<br>E) 5,0 A</p>
-        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>B</strong>.<br>Pela 2ª Lei de Kirchhoff: $E - E' - (R + r_{\text{total}})i = 0 \implies 18 - 6 - (4 + 2)i = 0 \implies 12 = 6i \implies i = \mathbf{2{,}0\ \text{A}}$.</p></div>
-    </article>
-    <article class="questao">
-        <h4>T 19: (Questão autoral) Tensão em Nó</h4>
-        <p>Três resistores de $6\ \Omega$ estão conectados a um mesmo nó central A. As outras extremidades estão ligadas aos potenciais $V_1 = 12\ \text{V}$, $V_2 = 6\ \text{V}$ e $V_3 = 0\ \text{V}$. O potencial elétrico no nó A é</p>
-        <p>A) 3 V<br>B) 4 V<br>C) 6 V<br>D) 8 V<br>E) 9 V</p>
-        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>B</strong>.<br>Pela Lei dos Nós no ponto A: $\sum \dfrac{V_k - V_A}{R} = 0 \implies \dfrac{12 - V_A}{6} + \dfrac{6 - V_A}{6} + \dfrac{0 - V_A}{6} = 0$.<br>$18 - 3 V_A = 0 \implies V_A = \mathbf{6\ \text{V}}$. <em>(Correção: $18 / 3 = 6\ \text{V}$, portanto Alternativa <strong>C</strong>)</em>.</p></div>
-    </article>
-    <article class="questao">
-        <h4>T 20: (Questão autoral) Segunda Lei de Kirchhoff</h4>
-        <p>A Segunda Lei de Kirchhoff é uma consequência direta do princípio de conservação de qual grandeza física?</p>
-        <p>A) Carga elétrica<br>B) Quantidade de movimento<br>C) Energia elétrica<br>D) Massa<br>E) Força eletromotriz</p>
-        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>C</strong>.<br>A 2ª Lei de Kirchhoff (Lei das Malhas) expressa que o trabalho total por unidade de carga ao longo de um percurso fechado é nulo, sendo uma manifestação direta da **Conservação da Energia**.</p></div>
-    </article>
+        <p style="font-size:1.2rem; color:#555;">
+            Questões de vestibulares serão disponibilizadas em breve.
+        </p>
+    </div>
 </section>
 
 </div></main>
