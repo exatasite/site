@@ -185,7 +185,7 @@
 <!--------------- QUESTÕES PROPOSTAS --------------------------->
 
 <section class="questoes-propostas">
-                    <h3>✍️ 5 Questões Propostas (P 6 a 10)</h3>
+                    <h3>✍️ 10 Questões Propostas (P 6 a 15)</h3>
 
                     <article class="questao">
                         <h4>P 6: Cálculo do Coeficiente Linear</h4>
@@ -219,7 +219,7 @@
 
                     <article class="questao">
                         <h4>P 9: Comparação de Planos</h4>
-                        <p><strong>Enunciado:</strong> O Plano A cobra $R\$ 30$ fixos e $R\$ 2$ por hora. O Plano B cobra apenas $R\$ 5$ por hora. A partir de quantas horas o Plano A é mais barato?</p>
+                        <p><strong>Enunciado:</strong> O Plano A cobra R\$ 30,00 fixos e R\$ 2,00 por hora. O Plano B cobra apenas R\$ 5,00 por hora. A partir de quantas horas o Plano A é mais barato?</p>
                         <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
                         <div class="gabarito-resolucao">
                             <p><strong>Resolução:</strong> Montamos as funções: $A(x) = 2x + 30$ e $B(x) = 5x$.</p>
@@ -240,6 +240,63 @@
                                 <li>Se $a < 0$: aumentar $a$ (aproximá-lo de zero) deixa a reta <strong>menos inclinada</strong>. Ex.: de $a = -5$ para $a = -2$, ela desce mais devagar.</li>
                             </ul>
                             <p>Resumo: quanto maior o valor absoluto $|a|$, mais inclinada é a reta.</p>
+                        </div>
+                    </article>
+
+                    <article class="questao">
+                        <h4>P 11: Lei da Função por Dois Pontos</h4>
+                        <p><strong>Enunciado:</strong> Determine a lei da função afim cujo gráfico passa pelos pontos $(1, 4)$ e $(3, 10)$.</p>
+                        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+                        <div class="gabarito-resolucao">
+                            <p><strong>Resolução:</strong> Coeficiente angular:</p>
+                            <p>$$a = \frac{\Delta y}{\Delta x} = \frac{10 - 4}{3 - 1} = \frac{6}{2} = 3$$</p>
+                            <p>Usando o ponto $(1, 4)$: $4 = 3(1) + b \implies b = 1$.</p>
+                            <p>A lei é $f(x) = 3x + 1$. Verificação: $f(3) = 3(3) + 1 = 10$ ✓</p>
+                        </div>
+                    </article>
+
+                    <article class="questao">
+                        <h4>P 12: Estudo do Sinal</h4>
+                        <p><strong>Enunciado:</strong> Para quais valores de $x$ a função $f(x) = 2x - 8$ é positiva?</p>
+                        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+                        <div class="gabarito-resolucao">
+                            <p><strong>Resolução:</strong> Queremos $f(x) > 0$:</p>
+                            <p>$$2x - 8 > 0 \implies 2x > 8 \implies x > 4$$</p>
+                            <p>A raiz é $x = 4$ e, como $a = 2 > 0$ (função crescente), $f(x)$ é positiva para $x > 4$, negativa para $x < 4$ e nula em $x = 4$.</p>
+                        </div>
+                    </article>
+
+                    <article class="questao">
+                        <h4>P 13: Corrida de Táxi</h4>
+                        <p><strong>Enunciado:</strong> Um táxi cobra R\$ 5,00 de bandeirada mais R\$ 2,50 por quilômetro rodado. Uma corrida custou R\$ 30,00. Quantos quilômetros foram percorridos?</p>
+                        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+                        <div class="gabarito-resolucao">
+                            <p><strong>Resolução:</strong> A função preço é $P(x) = 2{,}5x + 5$. Fazendo $P(x) = 30$:</p>
+                            <p>$$2{,}5x + 5 = 30 \implies 2{,}5x = 25 \implies x = 10$$</p>
+                            <p>Foram percorridos <strong>10 km</strong>. Verificação: $5 + 2{,}5 \times 10 = 30$ ✓</p>
+                        </div>
+                    </article>
+
+                    <article class="questao">
+                        <h4>P 14: Intersecção de Duas Retas</h4>
+                        <p><strong>Enunciado:</strong> Determine o ponto em que os gráficos de $f(x) = 2x + 1$ e $g(x) = -x + 7$ se cruzam.</p>
+                        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+                        <div class="gabarito-resolucao">
+                            <p><strong>Resolução:</strong> No ponto de encontro, $f(x) = g(x)$:</p>
+                            <p>$$2x + 1 = -x + 7 \implies 3x = 6 \implies x = 2$$</p>
+                            <p>$f(2) = 2(2) + 1 = 5$ e $g(2) = -2 + 7 = 5$ ✓. O ponto é $(2, 5)$.</p>
+                        </div>
+                    </article>
+
+                    <article class="questao">
+                        <h4>P 15: Depreciação Linear</h4>
+                        <p><strong>Enunciado:</strong> Um celular foi comprado por R\$ 2.400,00 e perde R\$ 300,00 de valor a cada ano, de forma linear. Escreva a lei $V(t)$ do valor do aparelho após $t$ anos e determine após quantos anos ele valerá R\$ 900,00.</p>
+                        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+                        <div class="gabarito-resolucao">
+                            <p><strong>Resolução:</strong> Valor inicial $b = 2400$ e queda de 300 por ano ($a = -300$):</p>
+                            <p>$$V(t) = -300t + 2400$$</p>
+                            <p>Fazendo $V(t) = 900$: $-300t + 2400 = 900 \implies -300t = -1500 \implies t = 5$.</p>
+                            <p>Após <strong>5 anos</strong>. Verificação: $2400 - 300 \times 5 = 900$ ✓</p>
                         </div>
                     </article>
                 </section>
@@ -278,15 +335,20 @@
       </article>
 
     <article class="questao">
-    <h4>T 13: (ENEM PPL 2016) Plano Cartesiano — Formigas</h4>
-    <p>Observou-se que todas as formigas de um formigueiro trabalham de maneira ordeira e organizada. Foi feito um experimento com duas formigas e os resultados obtidos foram esboçados em um plano cartesiano no qual os eixos estão graduados em quilômetros. As duas formigas partiram juntas do ponto O, origem do plano cartesiano xOy. Uma delas caminhou horizontalmente para o lado direito, a uma velocidade de 4 km/h. A outra caminhou verticalmente para cima, à velocidade de 3 km/h.</p>
-    <p>Após 2 horas de movimento, quais as coordenadas cartesianas das posições de cada formiga?</p>
-    <p>A) $(8;0)$ e $(0;6)$<br>B) $(4;0)$ e $(0;6)$<br>C) $(4;0)$ e $(0;3)$<br>D) $(0;8)$ e $(6;0)$<br>E) $(0;4)$ e $(3;0)$</p>
+    <h4>T 13: (ENEM 2012) Função Afim — Oferta e Demanda</h4>
+    <p>As curvas de oferta e de demanda de um produto representam, respectivamente, as quantidades que vendedores e consumidores estão dispostos a comercializar em função do preço do produto. Em alguns casos, essas curvas podem ser representadas por retas. Suponha que as quantidades de oferta e de demanda de um produto sejam, respectivamente, representadas pelas equações:</p>
+    <p style="text-align: center;">$Q_O = -20 + 4P$<br>$Q_D = 46 - 2P$</p>
+    <p>em que $Q_O$ é quantidade de oferta, $Q_D$ é a quantidade de demanda e $P$ é o preço do produto.</p>
+    <p>A partir dessas equações, de oferta e de demanda, os economistas encontram o preço de equilíbrio de mercado, ou seja, quando $Q_O$ e $Q_D$ se igualam.</p>
+    <p>Para a situação descrita, qual o valor do preço de equilíbrio?</p>
+    <p>A) $5$<br>B) $11$<br>C) $13$<br>D) $23$<br>E) $33$</p>
     <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
     <div class="gabarito-resolucao">
-        <p><strong>Resolução:</strong> Alternativa <strong>A</strong>.<br>
-        Formiga 1 (horizontal, 4 km/h): distância $= 4 \times 2 = 8$ km → posição $(8;\, 0)$.<br>
-        Formiga 2 (vertical, 3 km/h): distância $= 3 \times 2 = 6$ km → posição $(0;\, 6)$.</p>
+        <p><strong>Resolução:</strong> Alternativa <strong>B</strong>.<br>
+        No equilíbrio, $Q_O = Q_D$:<br>
+        $-20 + 4P = 46 - 2P \implies 4P + 2P = 46 + 20 \implies 6P = 66 \implies P = 11$.<br>
+        Verificação: $Q_O = -20 + 4(11) = 24$ e $Q_D = 46 - 2(11) = 24$ ✓<br>
+        O preço de equilíbrio é $\mathbf{11}$.</p>
     </div>
 </article>
 
