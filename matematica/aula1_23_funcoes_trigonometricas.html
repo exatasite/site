@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1º Ano: Aula 23 - Funções Trigonométricas: Seno, Cosseno e Tangente</title>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../estilo.css">
+    <script>
+        MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']], processEscapes: true } };
+    </script>
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        body.modo-slides { overflow: hidden !important; background-color: #1a1a1a !important; margin: 0; padding: 0; }
+        body.modo-slides .menu-lateral, body.modo-slides header, body.modo-slides .menu-toggle, body.modo-slides #btn-slides, body.modo-slides .nav-global { display: none !important; }
+        .slide-ativo { display: flex !important; flex-direction: column; align-items: center; justify-content: center; position: fixed; top: 0; left: 0; width: 100vw; height: calc(100vh - 70px); background: #ffffff; padding: 40px; z-index: 999; overflow-y: auto !important; box-sizing: border-box; text-align: left; }
+        .slide-ativo > * { max-width: 900px; width: 100%; }
+        .controles-slides { position: fixed; bottom: 0; left: 0; width: 100%; height: 70px; background: #2c3e50; color: white; display: none; justify-content: space-between; align-items: center; padding: 0 20px; z-index: 1001; box-sizing: border-box; }
+        body.modo-slides .controles-slides { display: flex !important; }
+        .info-lateral { flex: 1; font-family: 'Oswald', sans-serif; font-size: 0.9rem; color: #bdc3c7; }
+        .botoes-centrais { display: flex; align-items: center; gap: 15px; justify-content: center; flex: 2; }
+        .btn-nav { padding: 10px 20px; background: #3498db; color: white; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; font-size: 0.9rem; }
+        .btn-nav:hover { background: #2980b9; }
+        #contador-slide { font-family: 'Oswald', sans-serif; min-width: 60px; text-align: center; font-size: 1.1rem; }
+    </style>
+</head>
+<body>
+<button class="menu-toggle" onclick="toggleMenu()">☰</button>
+<nav id="menu-principal" class="nav-global"><ul>
+    <li><a href="../index.html">🏠 Início</a></li>
+    <li><a href="../ensino_medio.html">📚 Ensino Médio</a></li>
+    <li><a href="../ensino_superior.html">🎓 Ensino Superior</a></li>
+</ul></nav>
+<header id="topo">
+    <h1>MATEMÁTICA EM</h1>
+    <p>1º Ano | Aula 23: Funções Trigonométricas: Seno, Cosseno e Tangente</p>
+    <button id="btn-slides" onclick="toggleSlides()">📺 Iniciar Modo Slides</button>
+</header>
+<div class="container"><main class="conteudo-principal"><div class="secao-aula">
+
+<div class="container-resumo" id="resumo">
+    <h3>📚 Resumo</h3>
+    <section class="resumo-conteudo">
+        <p>As <strong>funções trigonométricas</strong> associam a cada número real $x$ (um arco em radianos no ciclo) o seu seno, cosseno ou tangente. O seno e o cosseno estão definidos para todo $x$ real e variam entre $-1$ e $1$; a tangente não existe onde $\cos x = 0$ e pode assumir qualquer valor real. Os gráficos se repetem: seno e cosseno a cada $2\pi$, a tangente a cada $\pi$.</p>
+        <p style="text-align: center;">$$f(x) = \operatorname{sen}x,\ \text{Im} = [-1, 1] \qquad g(x) = \cos x,\ \text{Im} = [-1, 1] \qquad h(x) = \operatorname{tg}x,\ x \neq \dfrac{\pi}{2} + k\pi$$</p>
+    </section>
+</div>
+
+<section class="conteudo-teorico-completo" id="teoria">
+    <div class="passo-teoria">
+        <h3>📖 Funções Trigonométricas</h3>
+        <h4>1. A Função Seno</h4>
+        <p>A função $f(x) = \operatorname{sen}x$ associa a cada arco $x$ a ordenada do ponto final no ciclo trigonométrico.</p>
+        <ul>
+            <li><strong>Domínio:</strong> $\mathbb{R}$; <strong>imagem:</strong> $[-1, 1]$;</li>
+            <li><strong>Zeros:</strong> $x = k\pi$ ($0, \pi, 2\pi, \dots$); máximo $1$ em $x = \dfrac{\pi}{2}$ e mínimo $-1$ em $x = \dfrac{3\pi}{2}$ (na 1ª volta);</li>
+            <li><strong>Sinal:</strong> positiva no 1º e 2º quadrantes, negativa no 3º e 4º;</li>
+            <li>É <strong>ímpar</strong>: $\operatorname{sen}(-x) = -\operatorname{sen}x$.</li>
+        </ul>
+    </div>
+    <div class="passo-teoria">
+        <h4>2. A Função Cosseno</h4>
+        <p>A função $g(x) = \cos x$ associa a cada arco $x$ a abscissa do ponto final no ciclo.</p>
+        <ul>
+            <li><strong>Domínio:</strong> $\mathbb{R}$; <strong>imagem:</strong> $[-1, 1]$;</li>
+            <li><strong>Zeros:</strong> $x = \dfrac{\pi}{2} + k\pi$; máximo $1$ em $x = 0$ e mínimo $-1$ em $x = \pi$;</li>
+            <li><strong>Sinal:</strong> positiva no 1º e 4º quadrantes, negativa no 2º e 3º;</li>
+            <li>É <strong>par</strong>: $\cos(-x) = \cos x$.</li>
+        </ul>
+        <figure class="figura-aula figura-grande">
+            <svg viewBox="0 0 560 250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Gráficos de seno e cosseno de 0 a 2π" style="width:100%; max-width:600px; display:block; margin:0 auto;">
+  <line x1="30" y1="125" x2="545" y2="125" stroke="#2c3e50" stroke-width="1.5"/><line x1="40" y1="230" x2="40" y2="15" stroke="#2c3e50" stroke-width="1.5"/>
+  <line x1="40" y1="45" x2="545" y2="45" stroke="#bdc3c7" stroke-dasharray="4,4"/><line x1="40" y1="205" x2="545" y2="205" stroke="#bdc3c7" stroke-dasharray="4,4"/>
+  <text x="32" y="50" font-size="13" text-anchor="end" font-family="Oswald, sans-serif">1</text><text x="32" y="210" font-size="13" text-anchor="end" font-family="Oswald, sans-serif">−1</text>
+  <line x1="157.8" y1="121" x2="157.8" y2="129" stroke="#2c3e50"/><text x="157.8" y="145" font-size="13" text-anchor="middle" font-family="Oswald, sans-serif">π/2</text><line x1="275.6" y1="121" x2="275.6" y2="129" stroke="#2c3e50"/><text x="275.6" y="145" font-size="13" text-anchor="middle" font-family="Oswald, sans-serif">π</text><line x1="393.4" y1="121" x2="393.4" y2="129" stroke="#2c3e50"/><text x="393.4" y="145" font-size="13" text-anchor="middle" font-family="Oswald, sans-serif">3π/2</text><line x1="511.2" y1="121" x2="511.2" y2="129" stroke="#2c3e50"/><text x="511.2" y="145" font-size="13" text-anchor="middle" font-family="Oswald, sans-serif">2π</text>
+  <polyline points="40.0,125.0 43.9,120.8 47.9,116.6 51.8,112.5 55.7,108.4 59.6,104.3 63.6,100.3 67.5,96.3 71.4,92.5 75.3,88.7 79.3,85.0 83.2,81.4 87.1,78.0 91.1,74.7 95.0,71.5 98.9,68.4 102.8,65.5 106.8,62.8 110.7,60.3 114.6,57.9 118.5,55.7 122.5,53.7 126.4,51.9 130.3,50.3 134.2,48.9 138.2,47.7 142.1,46.7 146.0,46.0 150.0,45.4 153.9,45.1 157.8,45.0 161.7,45.1 165.7,45.4 169.6,46.0 173.5,46.7 177.4,47.7 181.4,48.9 185.3,50.3 189.2,51.9 193.2,53.7 197.1,55.7 201.0,57.9 204.9,60.3 208.9,62.8 212.8,65.5 216.7,68.4 220.6,71.5 224.6,74.7 228.5,78.0 232.4,81.4 236.3,85.0 240.3,88.7 244.2,92.5 248.1,96.3 252.1,100.3 256.0,104.3 259.9,108.4 263.8,112.5 267.8,116.6 271.7,120.8 275.6,125.0 279.5,129.2 283.5,133.4 287.4,137.5 291.3,141.6 295.3,145.7 299.2,149.7 303.1,153.7 307.0,157.5 311.0,161.3 314.9,165.0 318.8,168.6 322.7,172.0 326.7,175.3 330.6,178.5 334.5,181.6 338.5,184.5 342.4,187.2 346.3,189.7 350.2,192.1 354.2,194.3 358.1,196.3 362.0,198.1 365.9,199.7 369.9,201.1 373.8,202.3 377.7,203.3 381.6,204.0 385.6,204.6 389.5,204.9 393.4,205.0 397.4,204.9 401.3,204.6 405.2,204.0 409.1,203.3 413.1,202.3 417.0,201.1 420.9,199.7 424.8,198.1 428.8,196.3 432.7,194.3 436.6,192.1 440.6,189.7 444.5,187.2 448.4,184.5 452.3,181.6 456.3,178.5 460.2,175.3 464.1,172.0 468.0,168.6 472.0,165.0 475.9,161.3 479.8,157.5 483.7,153.7 487.7,149.7 491.6,145.7 495.5,141.6 499.5,137.5 503.4,133.4 507.3,129.2 511.2,125.0" fill="none" stroke="#e74c3c" stroke-width="3"/>
+  <polyline points="40.0,45.0 43.9,45.1 47.9,45.4 51.8,46.0 55.7,46.7 59.6,47.7 63.6,48.9 67.5,50.3 71.4,51.9 75.3,53.7 79.3,55.7 83.2,57.9 87.1,60.3 91.1,62.8 95.0,65.5 98.9,68.4 102.8,71.5 106.8,74.7 110.7,78.0 114.6,81.4 118.5,85.0 122.5,88.7 126.4,92.5 130.3,96.3 134.2,100.3 138.2,104.3 142.1,108.4 146.0,112.5 150.0,116.6 153.9,120.8 157.8,125.0 161.7,129.2 165.7,133.4 169.6,137.5 173.5,141.6 177.4,145.7 181.4,149.7 185.3,153.7 189.2,157.5 193.2,161.3 197.1,165.0 201.0,168.6 204.9,172.0 208.9,175.3 212.8,178.5 216.7,181.6 220.6,184.5 224.6,187.2 228.5,189.7 232.4,192.1 236.3,194.3 240.3,196.3 244.2,198.1 248.1,199.7 252.1,201.1 256.0,202.3 259.9,203.3 263.8,204.0 267.8,204.6 271.7,204.9 275.6,205.0 279.5,204.9 283.5,204.6 287.4,204.0 291.3,203.3 295.3,202.3 299.2,201.1 303.1,199.7 307.0,198.1 311.0,196.3 314.9,194.3 318.8,192.1 322.7,189.7 326.7,187.2 330.6,184.5 334.5,181.6 338.5,178.5 342.4,175.3 346.3,172.0 350.2,168.6 354.2,165.0 358.1,161.3 362.0,157.5 365.9,153.7 369.9,149.7 373.8,145.7 377.7,141.6 381.6,137.5 385.6,133.4 389.5,129.2 393.4,125.0 397.4,120.8 401.3,116.6 405.2,112.5 409.1,108.4 413.1,104.3 417.0,100.3 420.9,96.3 424.8,92.5 428.8,88.7 432.7,85.0 436.6,81.4 440.6,78.0 444.5,74.7 448.4,71.5 452.3,68.4 456.3,65.5 460.2,62.8 464.1,60.3 468.0,57.9 472.0,55.7 475.9,53.7 479.8,51.9 483.7,50.3 487.7,48.9 491.6,47.7 495.5,46.7 499.5,46.0 503.4,45.4 507.3,45.1 511.2,45.0" fill="none" stroke="#3498db" stroke-width="3"/>
+  <text x="157.80972450961724" y="35" font-size="15" fill="#e74c3c" text-anchor="middle" font-family="Oswald, sans-serif">y = sen x</text>
+  <text x="98.75" y="63" font-size="15" fill="#3498db" font-family="Oswald, sans-serif">y = cos x</text>
+</svg>
+            <figcaption>Figura 1: Gráficos de $y = \operatorname{sen}x$ (vermelho) e $y = \cos x$ (azul) no intervalo $[0, 2\pi]$. Os dois oscilam entre $-1$ e $1$ e se repetem a cada $2\pi$.</figcaption>
+        </figure>
+    </div>
+    <div class="passo-teoria">
+        <h4>3. A Função Tangente</h4>
+        <p style="text-align: center; font-size: 1.15rem; background-color: #f8f9fa; padding: 15px; border-left: 5px solid #3498db; margin: 20px 0;">
+            $$\operatorname{tg}x = \dfrac{\operatorname{sen}x}{\cos x}, \qquad x \neq \dfrac{\pi}{2} + k\pi$$
+        </p>
+        <ul>
+            <li><strong>Domínio:</strong> $\mathbb{R}$ menos os pontos em que $\cos x = 0$; <strong>imagem:</strong> $\mathbb{R}$;</li>
+            <li><strong>Zeros:</strong> $x = k\pi$; nos pontos $\dfrac{\pi}{2} + k\pi$ o gráfico tem assíntotas verticais;</li>
+            <li><strong>Sinal:</strong> positiva no 1º e 3º quadrantes, negativa no 2º e 4º;</li>
+            <li>Repete-se a cada $\pi$ (período $\pi$).</li>
+        </ul>
+    </div>
+    <div class="passo-teoria">
+        <h4>4. Imagem de $f(x) = a + b\,\operatorname{sen}x$ e $f(x) = a + b\cos x$</h4>
+        <p>Como $-1 \le \operatorname{sen}x \le 1$, multiplicando por $b$ e somando $a$ obtemos os extremos da função:</p>
+        <p style="text-align: center; font-size: 1.15rem; background-color: #f8f9fa; padding: 15px; border-left: 5px solid #3498db; margin: 20px 0;">
+            $$\text{Im} = [\,a - |b|,\ a + |b|\,]$$
+        </p>
+        <p>Exemplo: $f(x) = 3 + 2\,\operatorname{sen}x$ tem imagem $[1, 5]$. O estudo de período e amplitude em funções como $a + b\,\operatorname{sen}(cx + d)$ é aprofundado no 2º ano (Funções Periódicas).</p>
+    </div>
+</section>
+
+<section class="aplicacoes-reais" id="aplicacoes">
+    <h3>💡 Matemática em Ação</h3>
+    <div class="cards-aplicacao">
+        <div class="card">
+            <h4>🌊 As Marés</h4>
+            <p>O nível do mar sobe e desce de forma repetitiva ao longo do dia. Modelos do tipo $h(t) = a + b\,\operatorname{sen}(\dots)$ descrevem essa oscilação: $a$ é o nível médio e $|b|$ é quanto a maré sobe ou desce em relação a ele.</p>
+        </div>
+        <div class="card" style="border-left-color: #2ecc71;">
+            <h4>❤️ A Pressão Arterial</h4>
+            <p>A pressão do sangue oscila entre um mínimo e um máximo a cada batimento. Funções com cosseno permitem modelar essa variação e ler, direto da fórmula, a pressão máxima, a mínima e a frequência cardíaca.</p>
+        </div>
+    </div>
+</section>
+<section class="questoes-resolvidas" id="resolvidas">
+    <h3>✅ 5 Questões Resolvidas (R 1 a 5)</h3>
+    <article class="questao">
+        <h4>R 1: Valores da Função Seno</h4>
+        <p><strong>Enunciado:</strong> Para $f(x) = \operatorname{sen}x$, calcule $f\left(\dfrac{\pi}{6}\right)$, $f\left(\dfrac{\pi}{2}\right)$, $f\left(\dfrac{7\pi}{6}\right)$ e $f\left(\dfrac{3\pi}{2}\right)$.</p>
+        <div class="resolucao-bloco"><p><strong>Resolução:</strong><br>$\operatorname{sen}\dfrac{\pi}{6} = \mathbf{\dfrac{1}{2}}$ e $\operatorname{sen}\dfrac{\pi}{2} = \mathbf{1}$.<br>$\dfrac{7\pi}{6}$ está no 3º quadrante (seno negativo), com referência $\dfrac{\pi}{6}$: $\operatorname{sen}\dfrac{7\pi}{6} = \mathbf{-\dfrac{1}{2}}$.<br>$\operatorname{sen}\dfrac{3\pi}{2} = \mathbf{-1}$ (ponto mais baixo do ciclo).</p></div>
+    </article>
+    <article class="questao">
+        <h4>R 2: Imagem de uma Função Seno</h4>
+        <p><strong>Enunciado:</strong> Determine a imagem de $f(x) = 3 + 2\,\operatorname{sen}x$ e o valor de $x \in [0, 2\pi]$ em que ela é máxima.</p>
+        <div class="resolucao-bloco"><p><strong>Resolução:</strong><br>De $-1 \le \operatorname{sen}x \le 1$: $-2 \le 2\,\operatorname{sen}x \le 2 \Rightarrow 1 \le 3 + 2\,\operatorname{sen}x \le 5$.<br>$\text{Im}(f) = \mathbf{[1, 5]}$. O máximo $5$ ocorre quando $\operatorname{sen}x = 1$, isto é, $x = \mathbf{\dfrac{\pi}{2}}$.</p></div>
+    </article>
+    <article class="questao">
+        <h4>R 3: Sinal do Cosseno</h4>
+        <p><strong>Enunciado:</strong> Para quais $x \in [0, 2\pi]$ temos $\cos x &gt; 0$?</p>
+        <div class="resolucao-bloco"><p><strong>Resolução:</strong><br>O cosseno é a abscissa do ponto no ciclo: positivo à direita do eixo vertical, ou seja, no 1º e no 4º quadrantes.<br>$S = \mathbf{\left[0, \dfrac{\pi}{2}\right) \cup \left(\dfrac{3\pi}{2}, 2\pi\right]}$.</p></div>
+    </article>
+    <article class="questao">
+        <h4>R 4: Domínio e Valor da Tangente</h4>
+        <p><strong>Enunciado:</strong> Explique por que $\operatorname{tg}\dfrac{\pi}{2}$ não existe e calcule $\operatorname{tg}\dfrac{3\pi}{4}$.</p>
+        <div class="resolucao-bloco"><p><strong>Resolução:</strong><br>$\operatorname{tg}x = \dfrac{\operatorname{sen}x}{\cos x}$ e $\cos\dfrac{\pi}{2} = 0$: não há divisão por zero, então $\dfrac{\pi}{2}$ <strong>não pertence ao domínio</strong>.<br>$\dfrac{3\pi}{4}$ está no 2º quadrante (tangente negativa), com referência $\dfrac{\pi}{4}$: $\operatorname{tg}\dfrac{3\pi}{4} = \mathbf{-1}$.</p></div>
+    </article>
+    <article class="questao">
+        <h4>R 5: Crescimento do Seno</h4>
+        <p><strong>Enunciado:</strong> Em quais intervalos de $[0, 2\pi]$ a função $f(x) = \operatorname{sen}x$ é crescente e em quais é decrescente?</p>
+        <div class="resolucao-bloco"><p><strong>Resolução:</strong><br>Pelo gráfico (Figura 1), o seno sobe de $0$ até $1$ em $\left[0, \dfrac{\pi}{2}\right]$, desce de $1$ até $-1$ em $\left[\dfrac{\pi}{2}, \dfrac{3\pi}{2}\right]$ e volta a subir até $0$ em $\left[\dfrac{3\pi}{2}, 2\pi\right]$.<br><strong>Crescente:</strong> $\left[0, \dfrac{\pi}{2}\right]$ e $\left[\dfrac{3\pi}{2}, 2\pi\right]$; <strong>decrescente:</strong> $\left[\dfrac{\pi}{2}, \dfrac{3\pi}{2}\right]$.</p></div>
+    </article>
+</section>
+
+<section class="questoes-propostas" id="propostas">
+    <h3>✍️ 10 Questões Propostas (P 6 a 15)</h3>
+
+    <article class="questao">
+        <h4>P 6: Valores do Cosseno</h4>
+        <p><strong>Enunciado:</strong> Calcule $\cos 0$, $\cos \pi$, $\cos\dfrac{\pi}{3}$ e $\cos\dfrac{3\pi}{2}$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> $\cos 0 = 1$, $\cos\pi = -1$, $\cos\dfrac{\pi}{3} = \dfrac{1}{2}$ e $\cos\dfrac{3\pi}{2} = 0$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 7: Imagem com Cosseno</h4>
+        <p><strong>Enunciado:</strong> Determine a imagem de $f(x) = 1 - 2\cos x$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> $-1 \le \cos x \le 1 \Rightarrow -2 \le -2\cos x \le 2 \Rightarrow -1 \le 1 - 2\cos x \le 3$. $\text{Im}(f) = [-1, 3]$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 8: Máximo e Mínimo</h4>
+        <p><strong>Enunciado:</strong> Determine o valor máximo e o valor mínimo de $g(x) = 5 + 3\,\operatorname{sen}x$ e em que $x \in [0, 2\pi]$ ocorrem.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> Máximo $5 + 3 = 8$ quando $\operatorname{sen}x = 1$ ($x = \dfrac{\pi}{2}$); mínimo $5 - 3 = 2$ quando $\operatorname{sen}x = -1$ ($x = \dfrac{3\pi}{2}$).</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 9: Zeros das Funções</h4>
+        <p><strong>Enunciado:</strong> Determine os zeros de $\operatorname{sen}x$ e de $\cos x$ no intervalo $[0, 2\pi]$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> $\operatorname{sen}x = 0$ para $x = 0$, $\pi$ e $2\pi$. $\cos x = 0$ para $x = \dfrac{\pi}{2}$ e $\dfrac{3\pi}{2}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 10: Sinais no 3º Quadrante</h4>
+        <p><strong>Enunciado:</strong> Para $x \in \left(\pi, \dfrac{3\pi}{2}\right)$, dê o sinal de $\operatorname{sen}x$, $\cos x$ e $\operatorname{tg}x$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> No 3º quadrante, o ponto está abaixo e à esquerda da origem: $\operatorname{sen}x &lt; 0$ e $\cos x &lt; 0$. Logo, $\operatorname{tg}x = \dfrac{\operatorname{sen}x}{\cos x} &gt; 0$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 11: Existência de Solução</h4>
+        <p><strong>Enunciado:</strong> Para quais valores de $m$ existe $x$ real com $\operatorname{sen}x = 2m - 3$?</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> É preciso $-1 \le 2m - 3 \le 1 \Rightarrow 2 \le 2m \le 4 \Rightarrow 1 \le m \le 2$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 12: Períodos</h4>
+        <p><strong>Enunciado:</strong> Qual é o período das funções seno, cosseno e tangente? Explique.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> Seno e cosseno se repetem a cada volta completa no ciclo: período $2\pi$. A tangente se repete a cada meia volta, pois pontos opostos do ciclo têm a mesma razão $\dfrac{\text{sen}}{\cos}$: período $\pi$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 13: Paridade</h4>
+        <p><strong>Enunciado:</strong> Usando a paridade, calcule $\operatorname{sen}\left(-\dfrac{\pi}{6}\right)$ e $\cos\left(-\dfrac{\pi}{3}\right)$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> Seno é ímpar: $\operatorname{sen}\left(-\dfrac{\pi}{6}\right) = -\dfrac{1}{2}$. Cosseno é par: $\cos\left(-\dfrac{\pi}{3}\right) = \dfrac{1}{2}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 14: Ordem Crescente</h4>
+        <p><strong>Enunciado:</strong> Coloque em ordem crescente: $\operatorname{sen}30^\circ$, $\operatorname{sen}90^\circ$ e $\operatorname{sen}210^\circ$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> $\operatorname{sen}30^\circ = \dfrac{1}{2}$, $\operatorname{sen}90^\circ = 1$ e $\operatorname{sen}210^\circ = -\dfrac{1}{2}$. Ordem: $\operatorname{sen}210^\circ &lt; \operatorname{sen}30^\circ &lt; \operatorname{sen}90^\circ$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 15: Nível da Maré</h4>
+        <p><strong>Enunciado:</strong> O nível da água de um porto, em metros, é modelado por $h(t) = 3 + 2\,\operatorname{sen}t$. Quais são o nível máximo e o nível mínimo?</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> Como $-1 \le \operatorname{sen}t \le 1$: máximo $3 + 2 = 5$ m e mínimo $3 - 2 = 1$ m.</p>
+        </div>
+    </article>
+</section>
+
+<section class="TESTE" id="testes">
+    <h3>🎓 TESTES (T 11 a 15)</h3>
+
+    <article class="questao">
+        <h4>T 11: (ENEM 2015) Produto sazonal</h4>
+        <p>Segundo o Instituto Brasileiro de Geografia e Estatística (IBGE), produtos sazonais são aqueles que apresentam ciclos bem definidos de produção, consumo e preço. Resumidamente, existem épocas do ano em que a sua disponibilidade nos mercados varejistas ora é escassa, com preços elevados, ora é abundante, com preços mais baixos, o que ocorre no mês de produção máxima da safra. A partir de uma série histórica, observou-se que o preço $P$, em reais, do quilograma de um certo produto sazonal pode ser descrito pela função $P(x) = 8 + 5\cos\left(\dfrac{\pi x - \pi}{6}\right)$, onde $x$ representa o mês do ano, sendo $x = 1$ associado ao mês de janeiro, $x = 2$ ao mês de fevereiro, e assim sucessivamente, até $x = 12$ associado ao mês de dezembro. Na safra, o mês de produção máxima desse produto é</p>
+        <p>A) janeiro.<br>B) abril.<br>C) junho.<br>D) julho.<br>E) outubro.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>D</strong>.<br>Na produção máxima o preço é mínimo, o que ocorre quando o cosseno vale $-1$: $\dfrac{\pi x - \pi}{6} = \pi \Rightarrow x - 1 = 6 \Rightarrow x = 7$ (julho). Nesse mês, $P = 8 - 5 = 3$ reais.</p></div>
+    </article>
+
+    <article class="questao">
+        <h4>T 12: (ENEM 2017) Pressão arterial</h4>
+        <p>Um cientista, em seus estudos para modelar a pressão arterial de uma pessoa, utiliza uma função do tipo $P(t) = A + B\cos(kt)$ em que $A$, $B$ e $k$ são constantes reais positivas e $t$ representa a variável tempo, medida em segundo. Considere que um batimento cardíaco representa o intervalo de tempo entre duas sucessivas pressões máximas. Ao analisar um caso específico, o cientista obteve os dados: pressão mínima 78; pressão máxima 120; número de batimentos cardíacos por minuto 90. A função $P(t)$ obtida, por este cientista, ao analisar o caso específico foi</p>
+        <p>A) $P(t) = 99 + 21\cos(3\pi t)$<br>B) $P(t) = 78 + 42\cos(3\pi t)$<br>C) $P(t) = 99 + 21\cos(2\pi t)$<br>D) $P(t) = 99 + 21\cos(t)$<br>E) $P(t) = 78 + 42\cos(t)$</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>A</strong>.<br>Máximo $A + B = 120$ e mínimo $A - B = 78$: $A = 99$ e $B = 21$. São 90 batimentos em 60 s, então cada batimento (período) dura $\dfrac{2}{3}$ s. Como o período de $\cos(kt)$ é $\dfrac{2\pi}{k}$: $\dfrac{2\pi}{k} = \dfrac{2}{3} \Rightarrow k = 3\pi$.</p></div>
+    </article>
+
+    <article class="questao">
+        <h4>T 13: (UFRGS) Seno igual a cosseno</h4>
+        <p>Considere as funções $f$ e $g$ definidas por $f(x) = \operatorname{sen}x$ e $g(x) = \cos x$. O número de raízes da equação $f(x) = g(x)$ no intervalo $[-2\pi, 2\pi]$ é</p>
+        <p>A) 3.<br>B) 4.<br>C) 5.<br>D) 6.<br>E) 7.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>B</strong>.<br>$\operatorname{sen}x = \cos x \Leftrightarrow \operatorname{tg}x = 1 \Leftrightarrow x = \dfrac{\pi}{4} + k\pi$. No intervalo $[-2\pi, 2\pi]$: $-\dfrac{7\pi}{4}$, $-\dfrac{3\pi}{4}$, $\dfrac{\pi}{4}$ e $\dfrac{5\pi}{4}$, ou seja, 4 raízes.</p></div>
+    </article>
+
+    <article class="questao">
+        <h4>T 14: (Autoral) Imagem</h4>
+        <p>A imagem da função $f(x) = 2 - 3\operatorname{sen}x$ é</p>
+        <p>A) $[-1, 5]$<br>B) $[-3, 3]$<br>C) $[2, 5]$<br>D) $[-1, 2]$<br>E) $[-5, 1]$</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>A</strong>.<br>$-1 \le \operatorname{sen}x \le 1 \Rightarrow -3 \le -3\operatorname{sen}x \le 3 \Rightarrow -1 \le 2 - 3\operatorname{sen}x \le 5$.</p></div>
+    </article>
+
+    <article class="questao">
+        <h4>T 15: (Autoral) Seno e cosseno negativos</h4>
+        <p>Em qual intervalo $\operatorname{sen}x$ e $\cos x$ são, ao mesmo tempo, negativos?</p>
+        <p>A) $\left(0, \dfrac{\pi}{2}\right)$<br>B) $\left(\dfrac{\pi}{2}, \pi\right)$<br>C) $\left(\pi, \dfrac{3\pi}{2}\right)$<br>D) $\left(\dfrac{3\pi}{2}, 2\pi\right)$<br>E) $(0, \pi)$</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>C</strong>.<br>O seno é negativo no 3º e 4º quadrantes; o cosseno, no 2º e 3º. Os dois são negativos apenas no 3º quadrante: $\left(\pi, \dfrac{3\pi}{2}\right)$.</p></div>
+    </article>
+</section>
+
+</div></main>
+<aside class="menu-lateral"><iframe src="../menu_matematica.html" style="width:100%; border:none; height:600px;"></iframe></aside>
+</div>
+<script>
+function toggleGabarito(botao) {
+    const gabarito = botao.nextElementSibling;
+    if (gabarito.style.display === "none" || gabarito.style.display === "") {
+        gabarito.style.display = "block"; botao.textContent = "Esconder Gabarito e Resolução"; botao.style.backgroundColor = "#2c3e50";
+    } else {
+        gabarito.style.display = "none"; botao.textContent = "Ver Gabarito e Resolução"; botao.style.backgroundColor = "#3498db";
+    }
+}
+function toggleMenu() { const m = document.getElementById("menu-principal"); if (m) m.classList.toggle("ativo"); }
+let slideAtual = 0; let slides = [];
+function prepararSlides() { slides = Array.from(document.querySelectorAll('.container-resumo, .passo-teoria, .card, .questao')); }
+function toggleSlides() {
+    prepararSlides(); const body = document.body;
+    if (!body.classList.contains('modo-slides')) { body.classList.add('modo-slides'); slideAtual = 0; mostrarSlide(slideAtual); }
+    else { body.classList.remove('modo-slides'); slides.forEach(s => { s.classList.remove('slide-ativo'); s.style.display = ''; }); }
+}
+function mostrarSlide(n) {
+    if (!slides.length) return;
+    slides.forEach(s => { s.classList.remove('slide-ativo'); s.style.display = 'none'; });
+    const slide = slides[n]; slide.classList.add('slide-ativo');
+    slide.querySelectorAll('.gabarito-resolucao').forEach(g => g.style.display = 'none');
+    slide.querySelectorAll('.btn-gabarito').forEach(b => { b.textContent = "Ver Gabarito e Resolução"; b.style.backgroundColor = "#3498db"; });
+    const pHeader = document.querySelector('header p');
+    if (pHeader) { const partes = pHeader.innerText.split('|'); if (partes.length > 1) {
+        document.getElementById('slide-info-serie').innerText = partes[0].trim();
+        document.getElementById('slide-info-aula').innerText = partes[1].trim(); } }
+    document.getElementById('contador-slide').innerText = (n + 1) + " / " + slides.length;
+    if (window.MathJax && window.MathJax.typesetPromise) { MathJax.typesetPromise(); }
+}
+function mudarSlide(d) { slideAtual += d; if (slideAtual >= slides.length) slideAtual = 0; if (slideAtual < 0) slideAtual = slides.length - 1; mostrarSlide(slideAtual); }
+document.addEventListener('keydown', function(event) {
+    if (document.body.classList.contains('modo-slides')) {
+        switch(event.key) {
+            case 'ArrowRight': case 'PageDown': case 'Enter': case ' ': event.preventDefault(); mudarSlide(1); break;
+            case 'ArrowLeft': case 'PageUp': event.preventDefault(); mudarSlide(-1); break;
+            case 'Escape': event.preventDefault(); toggleSlides(); break;
+        }
+    }
+});
+</script>
+<div class="controles-slides">
+    <div id="slide-info-serie" class="info-lateral"></div>
+    <div class="botoes-centrais">
+        <button class="btn-nav" onclick="mudarSlide(-1)">⬅ Anterior</button>
+        <span id="contador-slide"></span>
+        <button class="btn-nav" onclick="mudarSlide(1)">Próximo ➡</button>
+        <button class="btn-nav" onclick="toggleSlides()" style="background:#e74c3c;">Sair</button>
+    </div>
+    <div id="slide-info-aula" class="info-lateral" style="text-align: right;"></div>
+</div>
+</body>
+</html>
