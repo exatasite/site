@@ -237,25 +237,25 @@
 </section>
 
 <section class="TESTE" id="testes">
-    <h3>🎓 TESTES (T 16 a 20)</h3>
+    <h3>🎓 TESTES (T 11 a 15)</h3>
     <article class="questao">
-        <h4>T 16: (ESA) A Composta de Duas Afins</h4>
+        <h4>T 11: (ESA) A Composta de Duas Afins</h4>
         <p>Sejam $f$ a função dada por $f(x) = 2x + 4$ e $g$ a função dada por $g(x) = 3x - 2$.</p>
         <p>A função $f \circ g$ deve ser dada por</p>
         <p>A) $f(g(x)) = 6x$<br>B) $f(g(x)) = 6x + 4$<br>C) $f(g(x)) = 2x - 2$<br>D) $f(g(x)) = 3x + 4$<br>E) $f(g(x)) = 3x + 2$</p>
         <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>A</strong>.<br>$f(g(x)) = 2 \cdot g(x) + 4 = 2(3x - 2) + 4$.<br>$f(g(x)) = 6x - 4 + 4 = \mathbf{6x}$. Alternativa <strong>A</strong>.</p></div>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>A</strong>.<br>$f(g(x)) = 2 \cdot g(x) + 4 = 2(3x - 2) + 4$.<br>$f(g(x)) = 6x - 4 + 4 = \mathbf{6x}$.</p></div>
     </article>
     <article class="questao">
-        <h4>T 17: (EsPCEx) A Composta Negativa</h4>
+        <h4>T 12: (EsPCEx) A Composta Negativa</h4>
         <p>Sejam $f(x) = 4x^2 - 12x + 5$ e $g(x) = x + 2$ funções reais.</p>
         <p>O menor inteiro para o qual $f(g(x)) < 0$ é</p>
         <p>A) $-2$.<br>B) $-1$.<br>C) $0$.<br>D) $1$.<br>E) $2$.</p>
         <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>B</strong>.<br>$f(g(x)) = 4(x + 2)^2 - 12(x + 2) + 5 = 4x^2 + 16x + 16 - 12x - 24 + 5 = 4x^2 + 4x - 3$.<br>Raízes: $x = \dfrac{-4 \pm 8}{8}$, isto é, $-\dfrac{3}{2}$ e $\dfrac{1}{2}$. A parábola (concavidade para cima) é negativa entre as raízes: $-\dfrac{3}{2} < x < \dfrac{1}{2}$.<br>Inteiros nesse intervalo: $-1$ e $0$. O menor é $\mathbf{-1}$. Alternativa <strong>B</strong>.</p></div>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>B</strong>.<br>$f(g(x)) = 4(x + 2)^2 - 12(x + 2) + 5 = 4x^2 + 16x + 16 - 12x - 24 + 5 = 4x^2 + 4x - 3$.<br>Raízes: $x = \dfrac{-4 \pm 8}{8}$, isto é, $-\dfrac{3}{2}$ e $\dfrac{1}{2}$. A parábola (concavidade para cima) é negativa entre as raízes: $-\dfrac{3}{2} < x < \dfrac{1}{2}$.<br>Inteiros nesse intervalo: $-1$ e $0$. O menor é $\mathbf{-1}$.</p></div>
     </article>
     <article class="questao">
-        <h4>T 18: (EEAR) O Valor da Inversa</h4>
+        <h4>T 13: (EEAR) O Valor da Inversa</h4>
         <p>Seja a função $f: \mathbb{R} \to \mathbb{R}$ definida por $f(x) = 4x - 3$.</p>
         <p>Se $f^{-1}$ é a função inversa de $f$, então $f^{-1}(5)$ é</p>
         <p>A) 17.<br>B) $\dfrac{1}{17}$.<br>C) 2.<br>D) $\dfrac{1}{2}$.</p>
@@ -263,15 +263,15 @@
         <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>C</strong>.<br>$f^{-1}(5)$ é o valor $a$ tal que $f(a) = 5$: $4a - 3 = 5 \implies a = 2$.<br>Ou, pela lei da inversa: $f^{-1}(x) = \dfrac{x + 3}{4}$ e $f^{-1}(5) = \dfrac{8}{4} = \mathbf{2}$. Alternativa <strong>C</strong>. (A alternativa A é $f(5)$.)</p></div>
     </article>
     <article class="questao">
-        <h4>T 19: (UERN) Os Coeficientes da Inversa</h4>
+        <h4>T 14: (UERN) Os Coeficientes da Inversa</h4>
         <p>Seja $f(x)$ uma função do primeiro grau que intercepta os eixos cartesianos nos pontos $(0, 4)$ e $(2, 0)$.</p>
         <p>O produto dos coeficientes da função inversa de $f(x)$ é</p>
         <p>A) 2.<br>B) $-1$.<br>C) 4.<br>D) $-2$.</p>
         <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>B</strong>.<br>Coeficiente linear $4$ e angular $\dfrac{0 - 4}{2 - 0} = -2$: $f(x) = -2x + 4$.<br>Inversa: $x = -2y + 4 \implies y = -\dfrac{x}{2} + 2$, com coeficientes $-\dfrac{1}{2}$ e $2$.<br>Produto: $-\dfrac{1}{2} \cdot 2 = \mathbf{-1}$. Alternativa <strong>B</strong>.</p></div>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>B</strong>.<br>Coeficiente linear $4$ e angular $\dfrac{0 - 4}{2 - 0} = -2$: $f(x) = -2x + 4$.<br>Inversa: $x = -2y + 4 \implies y = -\dfrac{x}{2} + 2$, com coeficientes $-\dfrac{1}{2}$ e $2$.<br>Produto: $-\dfrac{1}{2} \cdot 2 = \mathbf{-1}$.</p></div>
     </article>
     <article class="questao">
-        <h4>T 20: (Unicamp) A Transformação de Möbius</h4>
+        <h4>T 15: (Unicamp) A Transformação de Möbius</h4>
         <p>Uma transformação de Möbius é um quociente de polinômios de grau $1$. Considere a função $y = f(x) = \dfrac{x + 1}{x - 1}$ definida para $x \in \mathbb{R}$, $x \neq 1$.</p>
         <p>Sobre a função inversa de $f(x)$, é correto afirmar que</p>
         <p>A) $f^{-1}(x) = f(x)$, para $x \neq 1$.<br>B) $f^{-1}(x) = \dfrac{1}{f(x)}$, para $x \neq \pm 1$.<br>C) $f^{-1}(x) = -f(x)$, para $x \neq 1$.<br>D) $f^{-1}(x) = f(-x)$, para $x \neq 1$.</p>
