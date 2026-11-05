@@ -219,7 +219,7 @@
 </section>
 
 <section class="questoes-propostas">
-    <h3>✍️ 5 Questões Propostas (P 6 a 10)</h3>
+    <h3>✍️ 10 Questões Propostas (P 6 a 15)</h3>
 
     <article class="questao">
         <h4>P 6: Ordem do Produto</h4>
@@ -278,90 +278,95 @@
             $$X = \begin{pmatrix} 1 & 1 \\ 2 & 1 \end{pmatrix}$$</p>
         </div>
     </article>
+
+    <article class="questao">
+        <h4>P 11: Adição e Subtração</h4>
+        <p><strong>Enunciado:</strong> Dadas $A = \begin{pmatrix} 1 & -2 \\ 3 & 0 \end{pmatrix}$ e $B = \begin{pmatrix} 4 & 1 \\ -1 & 2 \end{pmatrix}$, calcule $A + B$ e $A - B$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> $A + B = \begin{pmatrix} 5 & -1 \\ 2 & 2 \end{pmatrix}$ e $A - B = \begin{pmatrix} -3 & -3 \\ 4 & -2 \end{pmatrix}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 12: Escalar e Transposta</h4>
+        <p><strong>Enunciado:</strong> Com a matriz $A$ da P11, calcule $2A^T$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> $A^T = \begin{pmatrix} 1 & 3 \\ -2 & 0 \end{pmatrix}$, logo $2A^T = \begin{pmatrix} 2 & 6 \\ -4 & 0 \end{pmatrix}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 13: Produto Não Comutativo</h4>
+        <p><strong>Enunciado:</strong> Para $A = \begin{pmatrix} 1 & 2 \\ 3 & 4 \end{pmatrix}$ e $B = \begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix}$, calcule $AB$ e $BA$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> $AB = \begin{pmatrix} 2 & 1 \\ 4 & 3 \end{pmatrix}$ (troca as colunas) e $BA = \begin{pmatrix} 3 & 4 \\ 1 & 2 \end{pmatrix}$ (troca as linhas). Logo, $AB \neq BA$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 14: Equação Matricial com Soma</h4>
+        <p><strong>Enunciado:</strong> Determine $X$ tal que $X + 2A = B$, com $A = \begin{pmatrix} 1 & 0 \\ 2 & -1 \end{pmatrix}$ e $B = \begin{pmatrix} 5 & 2 \\ 4 & 1 \end{pmatrix}$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> $X = B - 2A = \begin{pmatrix} 5 - 2 & 2 - 0 \\ 4 - 4 & 1 + 2 \end{pmatrix} = \begin{pmatrix} 3 & 2 \\ 0 & 3 \end{pmatrix}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 15: Gasto de Clientes</h4>
+        <p><strong>Enunciado:</strong> O cliente 1 comprou 2 unidades do produto X e 3 do Y; o cliente 2 comprou 1 de X e 4 de Y. X custa R\$ 5,00 e Y custa R\$ 2,00. Use o produto de matrizes para obter o gasto de cada um.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> $\begin{pmatrix} 2 & 3 \\ 1 & 4 \end{pmatrix}\begin{pmatrix} 5 \\ 2 \end{pmatrix} = \begin{pmatrix} 16 \\ 13 \end{pmatrix}$: o cliente 1 gasta R\$ 16,00 e o cliente 2, R\$ 13,00.</p>
+        </div>
+    </article>
 </section>
 
-<section class="TESTE">
+<section class="TESTE" id="testes">
     <h3>🎓 TESTES (T 11 a 15)</h3>
 
     <article class="questao">
-        <h4>T 11: (FUVEST) Produto de Matrizes</h4>
-        <p>O elemento $c_{21}$ do produto $C = AB$, com $A = \begin{pmatrix} 2 & 1 \\ 4 & 3 \end{pmatrix}$ e $B = \begin{pmatrix} 1 & 0 \\ 2 & 5 \end{pmatrix}$, vale:</p>
-        <p>A) $8$<br>B) $10$<br>C) $12$<br>D) $14$<br>E) $16$</p>
+        <h4>T 11: (ENEM 2012) Médias com produto de matrizes</h4>
+        <p>Um aluno registrou as notas bimestrais de algumas de suas disciplinas numa tabela. Ele observou que as entradas numéricas da tabela formavam uma matriz 4×4, e que poderia calcular as médias anuais dessas disciplinas usando produto de matrizes. Todas as provas possuíam o mesmo peso, e a tabela que ele conseguiu é mostrada a seguir.</p><table style="border-collapse:collapse;margin:8px 0"><tr><td style="border:1px solid #999;padding:4px 10px"></td><td style="border:1px solid #999;padding:4px 10px"><strong>1º bim.</strong></td><td style="border:1px solid #999;padding:4px 10px"><strong>2º bim.</strong></td><td style="border:1px solid #999;padding:4px 10px"><strong>3º bim.</strong></td><td style="border:1px solid #999;padding:4px 10px"><strong>4º bim.</strong></td></tr><tr><td style="border:1px solid #999;padding:4px 10px">Matemática</td><td style="border:1px solid #999;padding:4px 10px">5,9</td><td style="border:1px solid #999;padding:4px 10px">6,2</td><td style="border:1px solid #999;padding:4px 10px">4,5</td><td style="border:1px solid #999;padding:4px 10px">5,5</td></tr><tr><td style="border:1px solid #999;padding:4px 10px">Português</td><td style="border:1px solid #999;padding:4px 10px">6,6</td><td style="border:1px solid #999;padding:4px 10px">7,1</td><td style="border:1px solid #999;padding:4px 10px">6,5</td><td style="border:1px solid #999;padding:4px 10px">8,4</td></tr><tr><td style="border:1px solid #999;padding:4px 10px">Geografia</td><td style="border:1px solid #999;padding:4px 10px">8,6</td><td style="border:1px solid #999;padding:4px 10px">6,8</td><td style="border:1px solid #999;padding:4px 10px">7,8</td><td style="border:1px solid #999;padding:4px 10px">9,0</td></tr><tr><td style="border:1px solid #999;padding:4px 10px">História</td><td style="border:1px solid #999;padding:4px 10px">6,2</td><td style="border:1px solid #999;padding:4px 10px">5,6</td><td style="border:1px solid #999;padding:4px 10px">5,9</td><td style="border:1px solid #999;padding:4px 10px">7,7</td></tr></table><p>Para obter essas médias, ele multiplicou a matriz obtida a partir da tabela por</p>
+        <p>A) $\begin{pmatrix} \tfrac{1}{2} & \tfrac{1}{2} & \tfrac{1}{2} & \tfrac{1}{2} \end{pmatrix}$<br>B) $\begin{pmatrix} \tfrac{1}{4} & \tfrac{1}{4} & \tfrac{1}{4} & \tfrac{1}{4} \end{pmatrix}$<br>C) $\begin{pmatrix} 1 \\ 1 \\ 1 \\ 1 \end{pmatrix}$<br>D) $\begin{pmatrix} \tfrac{1}{2} \\ \tfrac{1}{2} \\ \tfrac{1}{2} \\ \tfrac{1}{2} \end{pmatrix}$<br>E) $\begin{pmatrix} \tfrac{1}{4} \\ \tfrac{1}{4} \\ \tfrac{1}{4} \\ \tfrac{1}{4} \end{pmatrix}$</p>
         <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-        <div class="gabarito-resolucao">
-            <p><strong>Resolução:</strong> Alternativa <strong>B</strong>.<br>
-            $c_{21}$ = linha 2 de $A$ $\times$ coluna 1 de $B$:
-            $$c_{21} = 4 \cdot 1 + 3 \cdot 2 = 4 + 6 = 10$$</p>
-        </div>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>E</strong>.<br>A matriz de notas é 4×4 e o resultado deve ser uma coluna 4×1 com as médias. Logo, multiplica-se por uma matriz 4×1; para somar as quatro notas e dividir por 4, cada elemento deve ser $\tfrac{1}{4}$.</p></div>
     </article>
 
     <article class="questao">
-        <h4>T 12: (UNICAMP) Equação Matricial</h4>
-        <p>Se $A + 2X = B$ com $A = \begin{pmatrix} 1 & -3 \\ 4 & 0 \end{pmatrix}$ e $B = \begin{pmatrix} 5 & 1 \\ 0 & 6 \end{pmatrix}$, então a matriz $X$ é:</p>
-        <p>A) $\begin{pmatrix} 2 & 2 \\ -2 & 3 \end{pmatrix}$<br>
-           B) $\begin{pmatrix} 3 & 2 \\ -2 & 4 \end{pmatrix}$<br>
-           C) $\begin{pmatrix} 2 & -1 \\ -2 & 3 \end{pmatrix}$<br>
-           D) $\begin{pmatrix} 2 & 2 \\ -3 & 3 \end{pmatrix}$<br>
-           E) $\begin{pmatrix} 4 & 2 \\ -2 & 3 \end{pmatrix}$</p>
+        <h4>T 12: (Autoral) Existência do produto</h4>
+        <p>Sendo $A$ uma matriz $3\times 2$ e $B$ uma matriz $2\times 5$, é correto afirmar que</p>
+        <p>A) $AB$ é $2\times 2$.<br>B) $AB$ é $3\times 5$ e $BA$ não está definido.<br>C) $AB$ e $BA$ estão definidos.<br>D) $BA$ é $5\times 3$.<br>E) $AB$ é $2\times 5$.</p>
         <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-        <div class="gabarito-resolucao">
-            <p><strong>Resolução:</strong> Alternativa <strong>A</strong>.<br>
-            $2X = B - A = \begin{pmatrix} 4 & 4 \\ -4 & 6 \end{pmatrix}$, logo $X = \begin{pmatrix} 2 & 2 \\ -2 & 3 \end{pmatrix}$.</p>
-        </div>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>B</strong>.<br>$A_{3\times 2} \cdot B_{2\times 5}$ existe (2 = 2) e é $3\times 5$. $B_{2\times 5} \cdot A_{3\times 2}$ não existe (5 ≠ 3).</p></div>
     </article>
 
     <article class="questao">
-        <h4>T 13: (UNESP) Condição de Existência do Produto</h4>
-        <p>Quais dos produtos abaixo existem, sendo $A_{2\times 3}$, $B_{3\times 2}$, $C_{2\times 2}$?</p>
-        <p>A) $AB$ e $BA$ apenas<br>
-           B) $AB$, $BA$ e $BC$ apenas<br>
-           C) $AB$, $BC$ e $CA$ apenas<br>
-           D) $AB$, $BA$, $BC$ e $CA$<br>
-           E) Todos os produtos entre os três são possíveis</p>
+        <h4>T 13: (Autoral) Quadrado de uma matriz</h4>
+        <p>Se $A = \begin{pmatrix} 2 & 1 \\ 0 & 3 \end{pmatrix}$, a soma dos elementos de $A^2$ é</p>
+        <p>A) 10<br>B) 14<br>C) 18<br>D) 20<br>E) 25</p>
         <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-        <div class="gabarito-resolucao">
-            <p><strong>Resolução:</strong> Alternativa <strong>D</strong>.<br>
-            $AB$: $2\times 3$ · $3\times 2$ → colunas(3)=linhas(3) ✔ → resultado $2\times 2$.<br>
-            $BA$: $3\times 2$ · $2\times 3$ → colunas(2)=linhas(2) ✔ → resultado $3\times 3$.<br>
-            $BC$: $3\times 2$ · $2\times 2$ → colunas(2)=linhas(2) ✔ → resultado $3\times 2$.<br>
-            $CA$: $2\times 2$ · $2\times 3$ → colunas(2)=linhas(2) ✔ → resultado $2\times 3$.<br>
-            Todos os quatro existem.</p>
-        </div>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>C</strong>.<br>$A^2 = \begin{pmatrix} 4 & 5 \\ 0 & 9 \end{pmatrix}$; soma $18$.</p></div>
     </article>
 
     <article class="questao">
-        <h4>T 14: (UFMG) Matriz Identidade e Produto</h4>
-        <p>Seja $I = \begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix}$ a matriz identidade de ordem 2. Para qualquer matriz $A_{2\times 2}$, é correto afirmar que:</p>
-        <p>A) $AI = A$ mas $IA \neq A$ em geral<br>
-           B) $AI \neq A$ em geral<br>
-           C) $AI = IA = A$ sempre<br>
-           D) $AI = I$ sempre<br>
-           E) $IA = I$ sempre</p>
+        <h4>T 14: (Autoral) Combinação linear</h4>
+        <p>Dadas $A = \begin{pmatrix} 1 & 2 \\ 0 & 1 \end{pmatrix}$ e $B = \begin{pmatrix} 1 & 1 \\ 2 & 0 \end{pmatrix}$, o elemento da 2ª linha e 1ª coluna de $3A - 2B$ é</p>
+        <p>A) $-4$<br>B) $-2$<br>C) $0$<br>D) $2$<br>E) $4$</p>
         <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-        <div class="gabarito-resolucao">
-            <p><strong>Resolução:</strong> Alternativa <strong>C</strong>.<br>
-            A matriz identidade é o elemento neutro da multiplicação matricial: $AI = IA = A$ para qualquer matriz $A$ de ordem compatível. Seja $A = \begin{pmatrix} a & b \\ c & d \end{pmatrix}$:
-            $$AI = \begin{pmatrix} a & b \\ c & d \end{pmatrix}\begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix} = \begin{pmatrix} a & b \\ c & d \end{pmatrix} = A \quad \checkmark$$</p>
-        </div>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>A</strong>.<br>$3A - 2B = \begin{pmatrix} 1 & 4 \\ -4 & 3 \end{pmatrix}$; o elemento pedido é $-4$.</p></div>
     </article>
 
     <article class="questao">
-        <h4>T 15: (FATEC) Aplicação: Custo Total</h4>
-        <p>Uma empresa fabrica dois produtos (P1 e P2) em três fábricas. A matriz de produção mensal (em unidades) e a matriz de lucro unitário (em reais) são:</p>
-        <p style="text-align:center;">
-            $\text{Produção} = \begin{pmatrix} 100 & 200 \\ 150 & 50 \\ 80 & 120 \end{pmatrix}_{3\times 2} \quad \text{Lucro} = \begin{pmatrix} 5 \\ 8 \end{pmatrix}_{2\times 1}$
-        </p>
-        <p>O lucro total da Fábrica 2 (segunda linha) é:</p>
-        <p>A) R\$ 950,00<br>B) R\$ 1.150,00<br>C) R\$ 1.500,00<br>D) R\$ 1.750,00<br>E) R\$ 2.100,00</p>
+        <h4>T 15: (Autoral) Sistema na forma matricial</h4>
+        <p>Se $\begin{pmatrix} 1 & 2 \\ 3 & 4 \end{pmatrix}\begin{pmatrix} x \\ y \end{pmatrix} = \begin{pmatrix} 5 \\ 11 \end{pmatrix}$, então $x + y$ vale</p>
+        <p>A) 1<br>B) 2<br>C) 3<br>D) 4<br>E) 5</p>
         <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-        <div class="gabarito-resolucao">
-            <p><strong>Resolução:</strong> Alternativa <strong>B</strong>.<br>
-            O produto Produção $\times$ Lucro dá a matriz de lucros totais por fábrica:
-            $$L = \begin{pmatrix} 100\cdot5 + 200\cdot8 \\ 150\cdot5 + 50\cdot8 \\ 80\cdot5 + 120\cdot8 \end{pmatrix} = \begin{pmatrix} 2100 \\ 1150 \\ 1360 \end{pmatrix}$$
-            O lucro da Fábrica 2 (linha 2) é <strong>R\$ 1.150,00</strong>.</p>
-        </div>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>C</strong>.<br>$x + 2y = 5$ e $3x + 4y = 11$. Da 1ª, $x = 5 - 2y$; na 2ª: $15 - 2y = 11 \Rightarrow y = 2$ e $x = 1$. Soma: $3$.</p></div>
     </article>
-
 </section>
 </div>
 </main>

@@ -226,7 +226,7 @@
 <!--------------- QUESTÕES PROPOSTAS --------------------------->
 
 <section class="questoes-propostas">
-                    <h3>✍️ 5 Questões Propostas (P 6 a 10)</h3>
+                    <h3>✍️ 10 Questões Propostas (P 6 a 15)</h3>
 
                     <article class="questao">
                         <h4>P 6: Área do Quadrado</h4>
@@ -272,72 +272,95 @@
                             <p><strong>Resolução:</strong> Qualquer triângulo pode ser "completado" em um paralelogramo de mesma base e mesma altura, bastando copiar o triângulo, girá-lo $180°$ e encaixá-lo ao lado do original. Como o paralelogramo tem área $b \times h$ e o triângulo é exatamente metade dele, sua área é $\dfrac{b \times h}{2}$.</p>
                         </div>
                     </article>
-                </section>
-<!--------------- TESTES --------------------------->
-
-<section class="testes">
-    <h3>🎓 TESTES (T 11 a 15)</h3>
-
+                
     <article class="questao">
-    <h4>T 11: (ENEM) Área e Custo de um Terreno Trapezoidal</h4>
-    <p>Um terreno tem formato de trapézio: a frente (base menor) mede $15\,\text{m}$, o fundo (base maior) mede $25\,\text{m}$, e a distância entre a frente e o fundo é de $20\,\text{m}$. O metro quadrado desse terreno custa $R\$ 300,00$.</p>
-    <p>Qual é o valor total do terreno?</p>
-    <p>A) $R\$ 90\,000,00$<br>B) $R\$ 100\,000,00$<br>C) $R\$ 110\,000,00$<br>D) $R\$ 120\,000,00$<br>E) $R\$ 150\,000,00$</p>
-    <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-    <div class="gabarito-resolucao">
-        <p><strong>Resolução:</strong> Alternativa <strong>D</strong>.<br>
-        $$A = \frac{(15+25) \times 20}{2} = \frac{800}{2} = 400\,\text{m}^2$$
-        $$\text{Valor} = 400 \times 300 = R\$\,120\,000,00$$</p>
-    </div>
-      </article>
-
-    <article class="questao">
-    <h4>T 12: Perímetro do Losango via Pitágoras</h4>
-    <p>Um losango tem diagonais medindo $16\,\text{cm}$ e $12\,\text{cm}$. Sabendo que as diagonais de um losango se cruzam perpendicularmente ao meio, formando triângulos retângulos com os lados, qual é o perímetro desse losango?</p>
-    <p>A) $20\,\text{cm}$<br>B) $28\,\text{cm}$<br>C) $32\,\text{cm}$<br>D) $36\,\text{cm}$<br>E) $40\,\text{cm}$</p>
-    <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-    <div class="gabarito-resolucao">
-        <p><strong>Resolução:</strong> Alternativa <strong>E</strong>.<br>
-        Metades das diagonais: $8\,\text{cm}$ e $6\,\text{cm}$. Pelo Teorema de Pitágoras, o lado do losango é a hipotenusa:
-        $$l = \sqrt{8^2+6^2} = \sqrt{64+36} = \sqrt{100} = 10\,\text{cm}$$
-        $$P = 4l = 4 \times 10 = 40\,\text{cm}$$</p>
-    </div>
-      </article>
-
-    <article class="questao">
-    <h4>T 13: Área do Triângulo com Dois Lados e o Ângulo Entre Eles</h4>
-    <p>Um triângulo possui dois lados medindo $8\,\text{cm}$ e $10\,\text{cm}$, formando um ângulo de $30°$ entre eles. Sabendo que $\operatorname{sen}(30°) = 0{,}5$, qual é a área desse triângulo?</p>
-    <p>A) $10\,\text{cm}^2$<br>B) $20\,\text{cm}^2$<br>C) $30\,\text{cm}^2$<br>D) $40\,\text{cm}^2$<br>E) $80\,\text{cm}^2$</p>
-    <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-    <div class="gabarito-resolucao">
-        <p><strong>Resolução:</strong> Alternativa <strong>B</strong>.<br>
-        $$A = \frac{a \cdot b \cdot \operatorname{sen}(\theta)}{2} = \frac{8 \times 10 \times 0{,}5}{2} = \frac{40}{2} = 20\,\text{cm}^2$$</p>
-    </div>
-      </article>
-
-    <article class="questao">
-    <h4>T 14: Fórmula de Herão</h4>
-    <p>Um triângulo tem lados medindo $13\,\text{cm}$, $14\,\text{cm}$ e $15\,\text{cm}$. Usando a fórmula de Herão, qual é a área desse triângulo?</p>
-    <p>A) $21\,\text{cm}^2$<br>B) $42\,\text{cm}^2$<br>C) $56\,\text{cm}^2$<br>D) $84\,\text{cm}^2$<br>E) $91\,\text{cm}^2$</p>
-    <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-    <div class="gabarito-resolucao">
-        <p><strong>Resolução:</strong> Alternativa <strong>D</strong>.<br>
-        Semiperímetro: $s = \dfrac{13+14+15}{2} = 21$.
-        $$A = \sqrt{21(21-13)(21-14)(21-15)} = \sqrt{21 \times 8 \times 7 \times 6} = \sqrt{7056} = 84\,\text{cm}^2$$</p>
-    </div>
+        <h4>P 11: Área e Lado do Losango</h4>
+        <p><strong>Enunciado:</strong> Um losango tem diagonais de 10 cm e 16 cm. Calcule sua área e seu lado.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> $A = \dfrac{D \cdot d}{2} = \dfrac{16 \cdot 10}{2} = 80$ cm². As semidiagonais (5 e 8) formam um triângulo retângulo com o lado: $\ell = \sqrt{25 + 64} = \sqrt{89}$ cm.</p>
+        </div>
     </article>
 
     <article class="questao">
-    <h4>T 15: (ENEM) Quantidade de Etiquetas em uma Caixa</h4>
-    <p>Uma indústria de alimentos usa etiquetas retangulares de $12\,\text{cm} \times 7\,\text{cm}$ para revestir completamente a face frontal de uma caixa, que mede $60\,\text{cm} \times 35\,\text{cm}$.</p>
-    <p>Quantas etiquetas, no total, são necessárias para cobrir exatamente essa face, sem sobras nem sobreposições?</p>
-    <p>A) $15$<br>B) $20$<br>C) $25$<br>D) $30$<br>E) $35$</p>
-    <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-    <div class="gabarito-resolucao">
-        <p><strong>Resolução:</strong> Alternativa <strong>C</strong>.<br>
-        Área da face: $60 \times 35 = 2\,100\,\text{cm}^2$. Área de cada etiqueta: $12 \times 7 = 84\,\text{cm}^2$.
-        $$n = \frac{2\,100}{84} = 25 \text{ etiquetas}$$</p>
-    </div>
+        <h4>P 12: Retângulo pelo Perímetro</h4>
+        <p><strong>Enunciado:</strong> Um retângulo tem perímetro de 46 cm e um lado 7 cm maior que o outro. Calcule a área e a diagonal.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> $2(x + x + 7) = 46 \Rightarrow x = 8$. Lados 8 e 15; área $120$ cm²; diagonal $\sqrt{64 + 225} = 17$ cm.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 13: Quadrado pela Diagonal</h4>
+        <p><strong>Enunciado:</strong> A diagonal de um quadrado mede $8\sqrt{2}$ cm. Calcule sua área.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> $d = \ell\sqrt{2} \Rightarrow \ell = 8$ cm. Área: $64$ cm².</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 14: Trapézio Isósceles</h4>
+        <p><strong>Enunciado:</strong> Um trapézio isósceles tem bases de 20 cm e 10 cm e lados oblíquos de 13 cm. Calcule a altura, a área e o perímetro.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> Cada projeção do lado oblíquo mede $\dfrac{20 - 10}{2} = 5$. $h = \sqrt{169 - 25} = 12$ cm. Área: $\dfrac{(20 + 10)\cdot 12}{2} = 180$ cm². Perímetro: $20 + 10 + 2\cdot 13 = 56$ cm.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 15: Quantidade de Lajotas</h4>
+        <p><strong>Enunciado:</strong> Uma sala de 5 m por 4 m será revestida com lajotas quadradas de 40 cm de lado. Quantas lajotas são necessárias (sem considerar perdas)?</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> Área da sala: $20$ m². Área da lajota: $0{,}4 \cdot 0{,}4 = 0{,}16$ m². Quantidade: $20 \div 0{,}16 = 125$ lajotas.</p>
+        </div>
+    </article>
+</section>
+<!--------------- TESTES --------------------------->
+
+<section class="TESTE" id="testes">
+    <h3>🎓 TESTES (T 11 a 15)</h3>
+
+    <article class="questao">
+        <h4>T 11: (Autoral) Preço do terreno</h4>
+        <p>Um terreno retangular mede 12 m por 25 m e é vendido a R\$ 150,00 o metro quadrado. O preço do terreno é</p>
+        <p>A) R\$ 18 000,00<br>B) R\$ 30 000,00<br>C) R\$ 45 000,00<br>D) R\$ 55 500,00<br>E) R\$ 60 000,00</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>C</strong>.<br>Área: $12 \cdot 25 = 300$ m². Preço: $300 \cdot 150 = 45\,000$ reais.</p></div>
+    </article>
+
+    <article class="questao">
+        <h4>T 12: (Autoral) Losango</h4>
+        <p>Um losango tem lado de 10 cm e diagonal maior de 16 cm. Sua área é</p>
+        <p>A) 80 cm²<br>B) 96 cm²<br>C) 120 cm²<br>D) 160 cm²<br>E) 192 cm²</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>B</strong>.<br>Semidiagonal menor: $\sqrt{100 - 64} = 6$, logo $d = 12$. $A = \dfrac{16 \cdot 12}{2} = 96$ cm².</p></div>
+    </article>
+
+    <article class="questao">
+        <h4>T 13: (Autoral) Altura do trapézio</h4>
+        <p>Um trapézio tem bases de 18 cm e 12 cm e área de 120 cm². Sua altura mede</p>
+        <p>A) 4 cm<br>B) 5 cm<br>C) 6 cm<br>D) 8 cm<br>E) 10 cm</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>D</strong>.<br>$\dfrac{(18 + 12)\,h}{2} = 120 \Rightarrow 15h = 120 \Rightarrow h = 8$ cm.</p></div>
+    </article>
+
+    <article class="questao">
+        <h4>T 14: (Autoral) Aumento do quadrado</h4>
+        <p>Se o lado de um quadrado aumenta 20%, sua área aumenta</p>
+        <p>A) 20%<br>B) 40%<br>C) 44%<br>D) 48%<br>E) 120%</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>C</strong>.<br>Nova área: $(1{,}2\ell)^2 = 1{,}44\,\ell^2$, ou seja, aumento de 44%.</p></div>
+    </article>
+
+    <article class="questao">
+        <h4>T 15: (Autoral) Paralelogramo</h4>
+        <p>Um paralelogramo tem lados de 8 cm e 6 cm, formando um ângulo de 30°. Sua área é</p>
+        <p>A) 24 cm²<br>B) $24\sqrt{3}$ cm²<br>C) 48 cm²<br>D) 12 cm²<br>E) 14 cm²</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>A</strong>.<br>Altura relativa ao lado de 8 cm: $6 \cdot \text{sen}\,30° = 3$ cm. Área: $8 \cdot 3 = 24$ cm².</p></div>
     </article>
 </section>
 
