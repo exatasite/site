@@ -164,7 +164,7 @@
 </section>
 
 <section class="questoes-propostas" id="propostas">
-    <h3>✍️ 5 Questões Propostas (P 6 a 10)</h3>
+    <h3>✍️ 10 Questões Propostas (P 6 a 15)</h3>
 
     <article class="questao">
         <h4>P 6: Restrição de Domínio</h4>
@@ -230,20 +230,95 @@
             4. O ponto de intersecção é $\mathbf{(4, 0)}$.</p>
         </div>
     </article>
+
+    <article class="questao">
+        <h4>P 11: Valores da Função</h4>
+        <p><strong>Enunciado:</strong> Sendo $f(x) = \log_2 x$, calcule $f(32) - f\left(\frac{1}{2}\right)$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> $f(32) = \log_2 2^5 = 5$ e $f\left(\frac{1}{2}\right) = \log_2 2^{-1} = -1$.<br>$5 - (-1) = \mathbf{6}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 12: Domínio com Base Variável</h4>
+        <p><strong>Enunciado:</strong> Determine o domínio de $f(x) = \log_{(x-1)} (5 - x)$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> Logaritmando positivo: $5 - x > 0 \implies x < 5$.<br>Base positiva: $x - 1 > 0 \implies x > 1$. Base diferente de 1: $x - 1 \neq 1 \implies x \neq 2$.<br>$\mathbf{D = \{x \in \mathbb{R} \mid 1 < x < 5 \text{ e } x \neq 2\}}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 13: Função Inversa</h4>
+        <p><strong>Enunciado:</strong> Determine a inversa de $f(x) = \log_3 (x - 1)$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> $y = \log_3 (x - 1) \implies$ trocando $x$ e $y$: $x = \log_3 (y - 1)$.<br>$3^x = y - 1 \implies \mathbf{f^{-1}(x) = 3^x + 1}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 14: Inequação com Base Maior que 1</h4>
+        <p><strong>Enunciado:</strong> Resolva $\log_2 x > 3$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> Condição: $x > 0$. Como a base $2 > 1$ (função crescente), mantém-se o sinal:<br>$x > 2^3 \implies \mathbf{x > 8}$.</p>
+        </div>
+    </article>
+
+    <article class="questao">
+        <h4>P 15: Inequação com Base Menor que 1</h4>
+        <p><strong>Enunciado:</strong> Resolva $\log_{0{,}5} x > 2$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> Condição: $x > 0$. Como a base $0{,}5 < 1$ (função decrescente), <strong>inverte-se</strong> o sinal:<br>$x < (0{,}5)^2 = 0{,}25$. Solução: $\mathbf{0 < x < 0{,}25}$.</p>
+        </div>
+    </article>
 </section>
 
 <section class="TESTE" id="testes">
     <h3>🎓 TESTES (T 11 a 15)</h3>
 
-    <div class="card" style="text-align:center; padding:60px 20px; background:#f8f9fa; border:2px dashed #3498db; border-radius:12px; margin-top:20px;">
-        <h2 style="color:#3498db; font-size:2.5rem; margin-bottom:15px;">
-            🚧 EM BREVE!
-        </h2>
+    <article class="questao">
+        <h4>T 11: (ENEM 2016) A Liga Metálica</h4>
+        <p>Uma liga metálica sai do forno a uma temperatura de 3 000 °C e diminui 1% de sua temperatura a cada 30 min.</p><p>Use 0,477 como aproximação para $\log_{10} 3$ e 1,041 como aproximação para $\log_{10} 11$.</p><p>O tempo decorrido, em hora, até que a liga atinja 30 °C é mais próximo de</p>
+        <p>A) 22<br>B) 50<br>C) 100<br>D) 200<br>E) 400</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>D</strong>.<br>Após $n$ intervalos de 30 min: $T = 3\,000 \cdot (0{,}99)^n = 30 \implies (0{,}99)^n = 0{,}01$.<br>$\log 0{,}99 = \log \frac{9 \cdot 11}{100} = 2(0{,}477) + 1{,}041 - 2 = -0{,}005$.<br>$n \cdot (-0{,}005) = -2 \implies n = 400$ intervalos de meia hora $= \mathbf{200}$ horas.</p></div>
+    </article>
 
-        <p style="font-size:1.2rem; color:#555;">
-            Questões de vestibulares serão disponibilizadas em breve.
-        </p>
-    </div>
+    <article class="questao">
+        <h4>T 12: (ENEM 2011) O Terremoto de Kobe</h4>
+        <p>A Escala de Magnitude de Momento (abreviada como MMS e denotada como $M_W$), introduzida em 1979 por Thomas Haks e Hiroo Kanamori, substituiu a Escala de Richter para medir a magnitude dos terremotos em termos de energia liberada. Menos conhecida pelo público, a MMS é, no entanto, a escala usada para estimar as magnitudes de todos os grandes terremotos da atualidade. Assim como a escala Richter, a MMS é uma escala logarítmica. $M_W$ e $M_0$ se relacionam pela fórmula:</p><p style="text-align:center;">$M_W = -10{,}7 + \frac{2}{3}\log_{10}(M_0)$</p><p>Onde $M_0$ é o momento sísmico (usualmente estimado a partir dos registros de movimento da superfície, através dos sismogramas), cuja unidade é o dina·cm.</p><p>O terremoto de Kobe, acontecido no dia 17 de janeiro de 1995, foi um dos terremotos que causaram maior impacto no Japão e na comunidade científica internacional. Teve magnitude $M_W = 7{,}3$.</p><p>Mostrando que é possível determinar a medida por meio de conhecimentos matemáticos, qual foi o momento sísmico $M_0$ do terremoto de Kobe (em dina·cm)?</p>
+        <p>A) $10^{-5{,}10}$<br>B) $10^{-0{,}73}$<br>C) $10^{12{,}00}$<br>D) $10^{21{,}65}$<br>E) $10^{27{,}00}$</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>E</strong>.<br>$7{,}3 = -10{,}7 + \frac{2}{3}\log M_0 \implies 18 = \frac{2}{3}\log M_0 \implies \log M_0 = 27$.<br>$M_0 = \mathbf{10^{27}}$ dina·cm.</p></div>
+    </article>
+
+    <article class="questao">
+        <h4>T 13: (UFRGS 2016) Razão entre Expoentes</h4>
+        <p>Se $10^x = 20^y$, atribuindo 0,3 para $\log 2$, então o valor de $\frac{x}{y}$ é</p>
+        <p>A) 0,3.<br>B) 0,5.<br>C) 0,7.<br>D) 1.<br>E) 1,3.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>E</strong>.<br>Aplicando log: $x = y \cdot \log 20 = y(\log 2 + \log 10) = y(0{,}3 + 1) = 1{,}3y$.<br>$\frac{x}{y} = \mathbf{1{,}3}$.</p></div>
+    </article>
+
+    <article class="questao">
+        <h4>T 14: (PUC-MG) Logaritmo no Expoente</h4>
+        <p>Na função $y = 3^{\log_2 (2x - 1)}$, o valor de $x$ para o qual $y = 27$ é</p>
+        <p>A) 1,5<br>B) 2,5<br>C) 3,5<br>D) 4,5</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>D</strong>.<br>$3^{\log_2 (2x-1)} = 27 = 3^3 \implies \log_2 (2x - 1) = 3$.<br>$2x - 1 = 2^3 = 8 \implies x = \mathbf{4{,}5}$.</p></div>
+    </article>
+
+    <article class="questao">
+        <h4>T 15: (UNESP) Quantos Algarismos?</h4>
+        <p>Sabendo que $\log 2 \cong 0{,}30$, o número de algarismos de $2^{57}$ é</p>
+        <p>A) 16.<br>B) 19.<br>C) 18.<br>D) 15.<br>E) 17.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>C</strong>.<br>$\log 2^{57} = 57 \cdot 0{,}30 = 17{,}1 \implies 2^{57} = 10^{17{,}1}$, que está entre $10^{17}$ e $10^{18}$.<br>Todo número entre $10^{17}$ e $10^{18}$ tem $\mathbf{18}$ algarismos.</p></div>
+    </article>
 </section>
 
 </div>
