@@ -205,40 +205,36 @@
     <h3>🎓 TESTES (T 11 a 15)</h3>
     <article class="questao">
         <h4>T 11: (UCPEL) Da Tangente ao Seno do Dobro</h4>
-        <p>Sabe-se que $\operatorname{tg} a = 2$, com $0 < a < \dfrac{\pi}{2}$.</p>
-        <p>O valor de $\operatorname{sen} 2a$ é</p>
+        <p>Se $\operatorname{tg} a = 2$ com $0 &lt; a &lt; \dfrac{\pi}{2}$, então $\operatorname{sen} 2a$ é igual a</p>
         <p>A) $\dfrac{4}{5}$<br>B) $\dfrac{5}{4}$<br>C) $\dfrac{5}{3}$<br>D) $\dfrac{2}{5}$<br>E) $\dfrac{4}{3}$</p>
         <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
         <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>A</strong>.<br>$\operatorname{sen} a = 2\cos a$ e $\operatorname{sen}^2 a + \cos^2 a = 1 \implies 5\cos^2 a = 1 \implies \cos a = \dfrac{\sqrt{5}}{5}$ e $\operatorname{sen} a = \dfrac{2\sqrt{5}}{5}$.<br>$\operatorname{sen} 2a = 2 \cdot \dfrac{2\sqrt{5}}{5} \cdot \dfrac{\sqrt{5}}{5} = \mathbf{\dfrac{4}{5}}$.</p></div>
     </article>
     <article class="questao">
         <h4>T 12: (UNIFENAS) O Cosseno da Metade</h4>
-        <p>Sabe-se que $\operatorname{sen}\theta = 0{,}8$, com $0^\circ < \theta < 90^\circ$.</p>
-        <p>O valor de $\cos\dfrac{\theta}{2}$ é</p>
+        <p>Se $\operatorname{sen}(\theta) = 0{,}8$ e $0 &lt; \theta &lt; 90^\circ$, então qual o valor de $\cos\left(\dfrac{\theta}{2}\right)$?</p>
         <p>A) $\sqrt{1{,}5}$<br>B) $\sqrt{1{,}2}$<br>C) $\sqrt{0{,}8}$<br>D) $\sqrt{0{,}7}$<br>E) $\sqrt{0{,}3}$</p>
         <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
         <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>C</strong>.<br>$\cos\theta = \sqrt{1 - 0{,}64} = 0{,}6$ ($\theta$ agudo).<br>$\cos^2\dfrac{\theta}{2} = \dfrac{1 + 0{,}6}{2} = 0{,}8 \implies \cos\dfrac{\theta}{2} = \mathbf{\sqrt{0{,}8}}$.</p></div>
     </article>
     <article class="questao">
         <h4>T 13: (Unaerp) Uma Soma de Frações</h4>
-        <p>Considere a expressão $\dfrac{\operatorname{tg} x}{1 + \operatorname{tg} x} + \dfrac{\operatorname{tg} x}{1 - \operatorname{tg} x}$, definida para os valores de $x$ que não anulam os denominadores.</p>
-        <p>Essa expressão é equivalente a</p>
+        <p>A expressão $\dfrac{\operatorname{tg} x}{1 + \operatorname{tg} x} + \dfrac{\operatorname{tg} x}{1 - \operatorname{tg} x}$ é equivalente a</p>
+        <p>(Considere $\operatorname{tg} x$: tangente de $x$.)</p>
         <p>A) $\operatorname{sen} 2x$<br>B) $\cos 2x$<br>C) $\operatorname{tg} 2x$<br>D) $\operatorname{cotg} 2x$<br>E) $\sec 2x$</p>
         <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
         <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>C</strong>.<br>Denominador comum: $\dfrac{\operatorname{tg} x(1 - \operatorname{tg} x) + \operatorname{tg} x(1 + \operatorname{tg} x)}{1 - \operatorname{tg}^2 x} = \dfrac{2\operatorname{tg} x}{1 - \operatorname{tg}^2 x}$.<br>É a fórmula de $\mathbf{\operatorname{tg} 2x}$.</p></div>
     </article>
     <article class="questao">
         <h4>T 14: (Mackenzie) Tangente Menos Cotangente</h4>
-        <p>Sabe-se que $\operatorname{tg} x - \operatorname{cotg} x = 1$.</p>
-        <p>Então $\operatorname{tg} 2x$ vale</p>
+        <p>Se $\operatorname{tg} x - \operatorname{cotg} x = 1$, então o valor de $\operatorname{tg} 2x$ é</p>
         <p>A) $2$<br>B) $1$<br>C) $0$<br>D) $-1$<br>E) $-2$</p>
         <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
         <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>E</strong>.<br>Com $t = \operatorname{tg} x$: $t - \dfrac{1}{t} = 1 \implies \dfrac{t^2 - 1}{t} = 1$, ou seja, $\dfrac{1 - t^2}{t} = -1$.<br>$\operatorname{tg} 2x = \dfrac{2t}{1 - t^2} = \dfrac{2}{\frac{1 - t^2}{t}} = \dfrac{2}{-1} = \mathbf{-2}$.</p></div>
     </article>
     <article class="questao">
         <h4>T 15: (Fuvest) O Quadrado de 22°30'</h4>
-        <p>Considere o número $\left(\operatorname{sen} 22^\circ 30' + \cos 22^\circ 30'\right)^2$.</p>
-        <p>O valor desse número é</p>
+        <p>O valor de $\left(\operatorname{sen} 22^\circ 30' + \cos 22^\circ 30'\right)^2$ é:</p>
         <p>A) $\dfrac{3}{2}$<br>B) $\dfrac{2 + \sqrt{3}}{2}$<br>C) $\dfrac{2 + \sqrt{2}}{2}$<br>D) $1$<br>E) $2$</p>
         <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
         <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>C</strong>.<br>$(\operatorname{sen} x + \cos x)^2 = \operatorname{sen}^2 x + \cos^2 x + 2\operatorname{sen} x \cos x = 1 + \operatorname{sen} 2x$.<br>Com $x = 22^\circ 30'$: $1 + \operatorname{sen} 45^\circ = 1 + \dfrac{\sqrt{2}}{2} = \mathbf{\dfrac{2 + \sqrt{2}}{2}}$.</p></div>
