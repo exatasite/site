@@ -210,7 +210,7 @@
         <h4>P 10: Encontrando Parâmetros</h4>
         <p><strong>Enunciado:</strong> Determine $a$ e $b$ para que $P(a + 1, 4)$ e $Q(3, b - 2)$ sejam simétricos em relação ao eixo $y$.</p>
         <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
-        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>Simetria no eixo $y$: abscissas opostas e ordenadas iguais.<br>$a + 1 = -3 \implies a = \mathbf{-4}$; \ $b - 2 = 4 \implies b = \mathbf{6}$.</p></div>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>Simetria no eixo $y$: abscissas opostas e ordenadas iguais.<br>$a + 1 = -3 \implies a = \mathbf{-4}$;<br>$b - 2 = 4 \implies b = \mathbf{6}$.</p></div>
     </article>
     <article class="questao">
         <h4>P 11: Simétrico de um Ponto</h4>
@@ -248,7 +248,7 @@
     <h3>🎓 TESTES (T 11 a 15)</h3>
     <article class="questao">
         <h4>T 11: (UDESC) Simetria de Funções Pares e Ímpares</h4>
-        <p>Uma função $f$ é dita par quando $f(-x) = f(x)$ para todo $x$ do seu domínio, e uma função $g$ é dita ímpar quando $g(-x) = -g(x)$ para todo $x$ do seu domínio. Analise as sentenças:</p>
+        <p>Uma função $f$ é dita par se para todo $x$ do domínio tem-se que $f(-x) = f(x)$, e uma função $g$ é dita ímpar se para todo $x$ do domínio tem-se que $g(-x) = -g(x)$. Sobre essas informações, analise as sentenças.</p>
         <p>I. O gráfico de uma função ímpar é simétrico em relação à origem do sistema cartesiano.</p>
         <p>II. O gráfico de uma função par é simétrico em relação à origem do sistema cartesiano.</p>
         <p>III. O gráfico de uma função ímpar é simétrico em relação ao eixo das ordenadas.</p>
@@ -261,16 +261,15 @@
     </article>
     <article class="questao">
         <h4>T 12: (Cesgranrio) Duas Reflexões Seguidas</h4>
-        <p>Seja $P = (x, y)$ um ponto do plano. Se $Q$ é o simétrico de $P$ em relação ao eixo dos $y$ e $R$ é o simétrico de $Q$ em relação à reta $y = 1$.</p>
-        <p>As coordenadas de $R$ são</p>
+        <p>O ponto $Q$ é o simétrico do ponto $P(x, y)$ em relação ao eixo dos $y$. O ponto $R$ é o simétrico do ponto $Q$ em relação à reta $y = 1$. As coordenadas de $R$ são</p>
         <p>A) $(x, 1 - y)$<br>B) $(0, 1)$<br>C) $(-x, 1 - y)$<br>D) $(-x, 2 - y)$<br>E) $(y, -x)$</p>
         <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
         <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>D</strong>.<br>Simetria no eixo $y$: $Q = (-x, y)$.<br>Simetria em relação a $y = 1$: a abscissa se mantém e a ordenada vira $2 \cdot 1 - y = 2 - y$.<br>$R = \mathbf{(-x, 2 - y)}$. Alternativa <strong>D</strong>. (Teste: $P = (1, 3) \to Q = (-1, 3) \to R = (-1, -1)$.)</p></div>
     </article>
     <article class="questao">
         <h4>T 13: (ENEM PPL 2019) A Terceira Câmera</h4>
-        <p>Uma empresa, investindo na segurança, contrata uma firma para instalar mais uma câmera de segurança no teto de uma sala. Para iniciar o serviço, o representante da empresa informa ao instalador que nesta sala já estão instaladas duas câmeras e, a terceira, deverá ser colocada de maneira a ficar equidistante destas. Além disso, ele apresenta outras duas informações: (i) um esboço em um sistema de coordenadas cartesianas, do teto da sala, onde estão inseridas as posições das câmeras 1 e 2, conforme a figura; (ii) cinco relações entre as coordenadas $(x;\, y)$ da posição onde a câmera 3 deverá ser instalada:</p>
-        <p>$R_1$: $y = x$; \ $R_2$: $y = -3x + 5$; \ $R_3$: $y = -3x + 10$; \ $R_4$: $y = \dfrac{1}{3}x + \dfrac{5}{3}$; \ $R_5$: $y = \dfrac{1}{3}x + \dfrac{1}{10}$.</p>
+        <p>Uma empresa, investindo na segurança, contrata uma firma para instalar mais uma câmera de segurança no teto de uma sala. Para iniciar o serviço, o representante da empresa informa ao instalador que nessa sala já estão instaladas duas câmeras e, a terceira, deverá ser colocada de maneira a ficar equidistante destas. Além disso, ele apresenta outras duas informações: (i) um esboço em um sistema de coordenadas cartesianas, do teto da sala, onde estão inseridas as posições das câmeras 1 e 2, conforme a figura; (ii) cinco relações entre as coordenadas $(x;\, y)$ da posição onde a câmera 3 deverá ser instalada:</p>
+        <p>$R_1$: $y = x$;<br>$R_2$: $y = -3x + 5$;<br>$R_3$: $y = -3x + 10$;<br>$R_4$: $y = \dfrac{1}{3}x + \dfrac{5}{3}$;<br>$R_5$: $y = \dfrac{1}{3}x + \dfrac{1}{10}$.</p>
         <figure class="figura-aula">
             <svg viewBox="0 0 300 290" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Esboço do teto em coordenadas cartesianas: câmera 1 no ponto (3, 1) e câmera 2 no ponto (2, 4)" style="width:100%; max-width:280px; display:block; margin:0 auto;">
   <line x1="40" y1="250" x2="40" y2="30" stroke="#ecf0f1"/>
@@ -313,17 +312,18 @@
     </article>
     <article class="questao">
         <h4>T 14: (FEI) Reflexão numa Reta</h4>
-        <p>Considere o ponto $A = (1, 1)$ e a reta $r$: $2x + 2y - 1 = 0$.</p>
-        <p>O ponto $A'$, simétrico de $A$ em relação à reta $r$, é</p>
+        <p>O ponto $A'$, simétrico do ponto $A = (1, 1)$ em relação à reta $r$: $2x + 2y - 1 = 0$, é</p>
         <p>A) $(1, 1)$<br>B) $\left(\dfrac{1}{2}, -\dfrac{3}{2}\right)$<br>C) $\left(-\dfrac{1}{2}, -\dfrac{1}{2}\right)$<br>D) $\left(-\dfrac{1}{2}, -\dfrac{3}{2}\right)$<br>E) $\left(\dfrac{1}{2}, \dfrac{3}{2}\right)$</p>
         <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
         <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>C</strong>.<br>$r$: $y = -x + \dfrac{1}{2}$ (inclinação $-1$). Perpendicular por $A$: inclinação $1$, $y = x$.<br>Interseção: $x = -x + \dfrac{1}{2} \implies M\left(\dfrac{1}{4}, \dfrac{1}{4}\right)$, ponto médio de $AA'$.<br>$A' = 2M - A = \left(\dfrac{1}{2} - 1, \dfrac{1}{2} - 1\right) = \mathbf{\left(-\dfrac{1}{2}, -\dfrac{1}{2}\right)}$.</p></div>
     </article>
     <article class="questao">
         <h4>T 15: (UEL 2020) A Borboleta do Museu</h4>
-        <p>Na exposição virtual “A Beleza da Matemática”, realizada no Museu do Amanhã, a simetria é apresentada por meio da imagem de uma borboleta. Dois pontos distintos $P$ e $Q$ são simétricos em relação a uma reta $r$ se: I) $P$ e $Q$ estão à mesma distância de $r$; II) a reta que passa por $P$ e $Q$ é perpendicular a $r$.</p>
-        <p>Considere o eixo de simetria $r$ dado pela equação $y + x = 2$ e o ponto $P = (-2, 0)$.</p>
-        <p>Assinale a alternativa que apresenta, corretamente, o ponto simétrico a $P$ em relação a $r$.</p>
+        <p>Na exposição virtual “A Beleza da Matemática”, realizada no Museu do Amanhã, o belo é celebrado como simetria matemática, como exemplificado na imagem a seguir.</p>
+        <p><em>(Na prova original, aparece aqui a fotografia de uma borboleta com seu eixo de simetria.)</em></p>
+        <p>No plano cartesiano, dois pontos distintos $P$ e $Q$ são simétricos em relação a uma reta $r$ se as seguintes condições forem simultaneamente atendidas:</p>
+        <p>I) a distância de $P$ a $r$ é igual à distância de $Q$ a $r$<br>II) a reta que contém $P$ e $Q$ é perpendicular à reta $r$</p>
+        <p>Suponha que, no plano que contém a imagem da borboleta, o eixo de simetria $r$ seja dado pela equação de reta $y + x = 2$. Se $P = (-2, 0)$ é um ponto desse plano, assinale a alternativa que apresenta, corretamente, o ponto simétrico a $P$ em relação à reta $r$.</p>
         <p>A) $(0, 2)$<br>B) $(2, 0)$<br>C) $(2, 2)$<br>D) $(2, 4)$<br>E) $(4, 2)$</p>
         <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
         <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>D</strong>.<br>$r$: $y = -x + 2$ (inclinação $-1$). Perpendicular por $P$: inclinação $1$, $y = x + 2$.<br>Interseção: $x + (x + 2) = 2 \implies x = 0$, $y = 2$. O ponto médio de $PP'$ é $M(0, 2)$.<br>$P' = 2M - P = (0 + 2, 4 - 0) = \mathbf{(2, 4)}$. Alternativa <strong>D</strong>. (A alternativa A é o ponto médio.)</p></div>
