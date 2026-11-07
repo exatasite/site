@@ -321,15 +321,163 @@ O sinal negativo de $i_3$ indica que seu sentido real
 <section class="TESTE" id="testes">
     <h3>🎓 TESTES (T 16 a 20)</h3>
 
-    <div class="card" style="text-align:center; padding:60px 20px; background:#f8f9fa; border:2px dashed #3498db; border-radius:12px; margin-top:20px;">
-        <h2 style="color:#3498db; font-size:2.5rem; margin-bottom:15px;">
-            🚧 EM BREVE!
-        </h2>
+    <article class="questao">
+    <h4>T 16: (Mackenzie) Aplicação das Leis de Kirchhoff</h4>
 
-        <p style="font-size:1.2rem; color:#555;">
-            Questões de vestibulares serão disponibilizadas em breve.
+    <p>No circuito representado abaixo, o gerador e o receptor são ideais e as correntes elétricas possuem os sentidos indicados. Sabendo que a intensidade da corrente $i_1$ é $5\ \text{A}$, determine o valor da resistência elétrica do resistor $R$.</p>
+
+    <figure class="figura-aula">
+    <img src="../imagens_fisica/aula3_23_T16.png" alt="Circuito elétrico com gerador de 60 V, receptor de 14 V e três ramos com resistores R, 4 ohms e 2 ohms." style="width:100%; max-width:380px; display:block; margin:0 auto;">
+    <figcaption>Circuito elétrico de três ramos e duas malhas independentes.</figcaption>
+</figure>
+
+    <p>O valor da resistência elétrica $R$ é:</p>
+
+    <p>
+        A) $8\ \Omega$<br>
+        B) $5\ \Omega$<br>
+        C) $4\ \Omega$<br>
+        D) $6\ \Omega$<br>
+        E) $3\ \Omega$
+    </p>
+
+    <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+
+    <div class="gabarito-resolucao">
+        <p><strong>Resolução:</strong> Alternativa <strong>B</strong>.</p>
+
+        <p>
+        <strong>1. Aplicação da Lei das Malhas (malha da direita):</strong><br>
+        Percorrendo a malha da direita no sentido horário:
         </p>
+
+        $$14+2i_2-4i_1=0$$
+
+        <p>Substituindo $i_1=5\ \text{A}$:</p>
+
+        $$14+2i_2-4(5)=0$$
+        $$14+2i_2-20=0$$
+        $$2i_2=6$$
+        $$\boxed{i_2=3\ \text{A}}$$
+
+        <p>
+        <strong>2. Aplicação da Lei das Malhas (malha da esquerda):</strong><br>
+        Percorrendo a malha da esquerda:
+        </p>
+
+        $$60-Ri-4i_1=0$$
+
+        <p>Substituindo $i_1=5\ \text{A}$:</p>
+
+        $$60-Ri-4(5)=0$$
+        $$60-Ri-20=0$$
+        $$\boxed{Ri=40}$$
+
+        <p>
+        <strong>3. Aplicação da Lei dos Nós:</strong><br>
+        No nó superior, a corrente $i$ se divide nas correntes $i_1$ e $i_2$:
+        </p>
+
+        $$i=i_1+i_2$$
+        $$i=5+3$$
+        $$\boxed{i=8\ \text{A}}$$
+
+        <p>
+        <strong>4. Cálculo da resistência:</strong><br>
+        Utilizando a relação obtida na malha da esquerda:
+        </p>
+
+        $$Ri=40$$
+        $$R\cdot 8=40$$
+        $$R=\frac{40}{8}$$
+
+        $$\boxed{R=5\ \Omega}$$
+
+        <p><strong>Resposta:</strong> Alternativa <strong>B (5 $\Omega$)</strong>.</p>
     </div>
+</article>
+
+    
+
+<article class="questao">
+    <h4>T 17: (CESesp) Aplicação das Leis de Kirchhoff</h4>
+
+    <p>No circuito representado abaixo, há três resistores de $2\ \Omega$, um resistor de $10\ \Omega$, um gerador ideal de $12\ \text{V}$ e uma resistência desconhecida $R$, ligada entre os pontos A e B.</p>
+
+    <p>Sabendo que a corrente elétrica no resistor de $10\ \Omega$ possui intensidade de $0,6\ \text{A}$, determine o valor da resistência $R$ para que essa condição seja satisfeita.</p>
+
+    <figure class="figura-aula">
+        <img src="../imagens_fisica/aula3_23_T17.png"
+             alt="Circuito elétrico com gerador de 12 V, três resistores de 2 ohms, um resistor de 10 ohms e resistência R entre os pontos A e B.">
+        <figcaption>Circuito elétrico com três malhas e resistências em diferentes ramos.</figcaption>
+    </figure>
+
+    <p>O valor da resistência elétrica $R$ é:</p>
+
+    <p>
+        A) $10\ \Omega$<br>
+        B) $6\ \Omega$<br>
+        C) $15\ \Omega$<br>
+        D) $20\ \Omega$<br>
+        E) $12\ \Omega$
+    </p>
+
+    <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+
+    <div class="gabarito-resolucao">
+        <p><strong>Resolução:</strong> Alternativa <strong>C</strong>.</p>
+
+        <p>
+        <strong>1. Aplicação da Lei das Malhas (malha superior):</strong><br>
+        Percorrendo a malha superior e considerando a corrente $i_2$ nos três resistores de $2\ \Omega$:
+        </p>
+
+        $$2i_2+2i_2+2i_2+10i_1-12=0$$
+
+        <p>Como $i_1=0,6\ \text{A}$:</p>
+
+        $$6i_2+10(0,6)-12=0$$
+        $$6i_2+6-12=0$$
+        $$6i_2=6$$
+
+        $$\boxed{i_2=1\ \text{A}}$$
+
+        <p>
+        <strong>2. Aplicação da Lei dos Nós:</strong><br>
+        Aplicando a Lei dos Nós de Kirchhoff:
+        </p>
+
+        $$i_2=i_1+i_3$$
+
+        <p>Substituindo os valores conhecidos:</p>
+
+        $$1=0,6+i_3$$
+        $$i_3=1-0,6$$
+
+        $$\boxed{i_3=0,4\ \text{A}}$$
+
+        <p>
+        <strong>3. Aplicação da Lei das Malhas (malha inferior):</strong><br>
+        Percorrendo a malha inferior:
+        </p>
+
+        $$-10i_1+Ri_3=0$$
+
+        <p>Substituindo as correntes:</p>
+
+        $$-10(0,6)+R(0,4)=0$$
+        $$-6+0,4R=0$$
+        $$0,4R=6$$
+
+        $$R=\frac{6}{0,4}$$
+
+        $$\boxed{R=15\ \Omega}$$
+
+        <p><strong>Resposta:</strong> Alternativa <strong>C (15 $\Omega$)</strong>.</p>
+    </div>
+</article>
+
+
 </section>
 
 </div></main>
