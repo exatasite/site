@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1º Ano: Aula 02 - Conjuntos Numéricos</title>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../estilo.css">
+    <script>
+        MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']], processEscapes: true } };
+    </script>
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        body.modo-slides { overflow: hidden !important; background-color: #1a1a1a !important; margin: 0; padding: 0; }
+        body.modo-slides .menu-lateral, body.modo-slides header, body.modo-slides .menu-toggle, body.modo-slides #btn-slides, body.modo-slides .nav-global { display: none !important; }
+        .slide-ativo { display: flex !important; flex-direction: column; align-items: center; justify-content: center; position: fixed; top: 0; left: 0; width: 100vw; height: calc(100vh - 70px); background: #ffffff; padding: 40px; z-index: 999; overflow-y: auto !important; box-sizing: border-box; text-align: left; }
+        .slide-ativo > * { max-width: 900px; width: 100%; }
+        .controles-slides { position: fixed; bottom: 0; left: 0; width: 100%; height: 70px; background: #2c3e50; color: white; display: none; justify-content: space-between; align-items: center; padding: 0 20px; z-index: 1001; box-sizing: border-box; }
+        body.modo-slides .controles-slides { display: flex !important; }
+        .info-lateral { flex: 1; font-family: 'Oswald', sans-serif; font-size: 0.9rem; color: #bdc3c7; }
+        .botoes-centrais { display: flex; align-items: center; gap: 15px; justify-content: center; flex: 2; }
+        .btn-nav { padding: 10px 20px; background: #3498db; color: white; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; font-size: 0.9rem; }
+        .btn-nav:hover { background: #2980b9; }
+        #contador-slide { font-family: 'Oswald', sans-serif; min-width: 60px; text-align: center; font-size: 1.1rem; }
+    </style>
+</head>
+<body>
+<button class="menu-toggle" onclick="toggleMenu()">☰</button>
+<nav id="menu-principal" class="nav-global"><ul>
+    <li><a href="../index.html">🏠 Início</a></li>
+    <li><a href="../ensino_medio.html">📚 Ensino Médio</a></li>
+    <li><a href="../ensino_superior.html">🎓 Ensino Superior</a></li>
+</ul></nav>
+<header id="topo">
+    <h1>MATEMÁTICA EM</h1>
+    <p>1º Ano | Aula 02: Conjuntos Numéricos</p>
+    <button id="btn-slides" onclick="toggleSlides()">📺 Iniciar Modo Slides</button>
+</header>
+<div class="container"><main class="conteudo-principal"><div class="secao-aula">
+
+<div class="container-resumo" id="resumo">
+    <h3>📚 Resumo</h3>
+    <section class="resumo-conteudo">
+        <p>Os números se organizam em conjuntos encaixados: os <strong>naturais</strong> $\mathbb{N}$ estão dentro dos <strong>inteiros</strong> $\mathbb{Z}$, que estão dentro dos <strong>racionais</strong> $\mathbb{Q}$. Os <strong>irracionais</strong> $\mathbb{I}$ completam a reta, formando os <strong>reais</strong> $\mathbb{R}$.</p>
+        <p style="text-align: center;">$$\mathbb{N} \subset \mathbb{Z} \subset \mathbb{Q} \subset \mathbb{R} \qquad\qquad \mathbb{R} = \mathbb{Q} \cup \mathbb{I} \qquad\qquad \mathbb{Q} \cap \mathbb{I} = \varnothing$$</p>
+    </section>
+</div>
+
+<section class="conteudo-teorico-completo" id="teoria">
+    <div class="passo-teoria">
+        <h3>📖 Conjuntos Numéricos</h3>
+        <h4>1. Naturais e Inteiros</h4>
+        <ul>
+            <li><strong>Naturais:</strong> $\mathbb{N} = \{0, 1, 2, 3, \dots\}$ (números usados para contar). Sem o zero: $\mathbb{N}^* = \{1, 2, 3, \dots\}$;</li>
+            <li><strong>Inteiros:</strong> $\mathbb{Z} = \{\dots, -2, -1, 0, 1, 2, \dots\}$. Surgem para que a subtração seja sempre possível (por exemplo, $3 - 5 = -2$).</li>
+        </ul>
+        <p>Notações úteis: $\mathbb{Z}_+$ (inteiros não negativos), $\mathbb{Z}_-$ (não positivos) e $\mathbb{Z}^*$ (inteiros sem o zero).</p>
+    </div>
+
+    <div class="passo-teoria">
+        <h4>2. Racionais e Fração Geratriz</h4>
+        <p>Um número é <strong>racional</strong> quando pode ser escrito como fração de inteiros:</p>
+        <p style="text-align: center; font-size: 1.15rem; background-color: #f8f9fa; padding: 15px; border-left: 5px solid #3498db; margin: 20px 0;">
+            $$\mathbb{Q} = \left\{ \frac{a}{b} \;\middle|\; a \in \mathbb{Z},\ b \in \mathbb{Z}^* \right\}$$
+        </p>
+        <p>São racionais os inteiros, os <strong>decimais exatos</strong> ($0{,}25 = \frac{1}{4}$) e as <strong>dízimas periódicas</strong> ($0{,}333\dots = \frac{1}{3}$). A fração que gera uma dízima é a sua <strong>fração geratriz</strong>. Método: chame a dízima de $x$, multiplique por $10$, $100$, ... até "alinhar" o período e subtraia. Exemplo: $x = 0{,}1212\dots \implies 100x - x = 12 \implies x = \frac{12}{99} = \frac{4}{33}$.</p>
+    </div>
+
+    <div class="passo-teoria">
+        <h4>3. Irracionais e Reais</h4>
+        <p>Os <strong>irracionais</strong> ($\mathbb{I}$) têm infinitas casas decimais <strong>sem período</strong> e não podem ser escritos como fração de inteiros: $\sqrt{2} = 1{,}41421\dots$, $\sqrt{3}$, $\pi = 3{,}14159\dots$ Raízes quadradas de naturais que não são quadrados perfeitos são irracionais.</p>
+        <p>Os <strong>reais</strong> reúnem racionais e irracionais: $\mathbb{R} = \mathbb{Q} \cup \mathbb{I}$. Cada número real corresponde a um ponto da reta numérica, e cada ponto da reta corresponde a um número real.</p>
+        <figure class="figura-aula figura-grande">
+            <svg viewBox="0 0 560 260" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Diagrama dos conjuntos numéricos: N dentro de Z dentro de Q, e I ao lado, todos dentro de R" style="width:100%; max-width:560px; display:block; margin:0 auto;">
+  <rect x="10" y="10" width="540" height="240" rx="18" fill="#f8f9fa" stroke="#2c3e50" stroke-width="2.5"/>
+  <ellipse cx="190" cy="135" rx="165" ry="105" fill="#eaf2fb" stroke="#3498db" stroke-width="2.5"/>
+  <ellipse cx="160" cy="150" rx="110" ry="72" fill="#d6eaf8" stroke="#2c3e50" stroke-width="2"/>
+  <ellipse cx="140" cy="162" rx="58" ry="40" fill="#aed6f1" stroke="#2c3e50" stroke-width="2"/>
+  <ellipse cx="450" cy="135" rx="80" ry="95" fill="#fdebd0" stroke="#e67e22" stroke-width="2.5"/>
+  <g font-family="Oswald, sans-serif" font-size="22" font-weight="bold" fill="#2c3e50">
+    <text x="520" y="40">ℝ</text><text x="310" y="78">ℚ</text><text x="235" y="110">ℤ</text><text x="130" y="140">ℕ</text><text x="440" y="70" fill="#e67e22">𝕀</text>
+  </g>
+  <g font-family="Oswald, sans-serif" font-size="15" fill="#2c3e50">
+    <text x="110" y="180">0, 1, 2, 3...</text><text x="210" y="160">−1, −2...</text><text x="230" y="210">1/2, 0,333...</text>
+    <text x="415" y="125">√2, π</text><text x="410" y="155">√3, e</text>
+  </g>
+</svg>
+            <figcaption>Figura 1: $\mathbb{N} \subset \mathbb{Z} \subset \mathbb{Q}$; os irracionais $\mathbb{I}$ ficam fora de $\mathbb{Q}$; todos estão em $\mathbb{R}$.</figcaption>
+        </figure>
+    </div>
+
+    <div class="passo-teoria">
+        <h4>4. Intervalos Reais</h4>
+        <p>Subconjuntos de $\mathbb{R}$ formados por "trechos" da reta são escritos como <strong>intervalos</strong>. O colchete voltado para o número indica que ele está incluído (bolinha cheia); voltado para fora, que está excluído (bolinha vazia):</p>
+        <ul>
+            <li>$[a,\ b] = \{x \in \mathbb{R} \mid a \leq x \leq b\}$ (fechado);</li>
+            <li>$]a,\ b[ = \{x \in \mathbb{R} \mid a &lt; x &lt; b\}$ (aberto; também se escreve $(a,\ b)$);</li>
+            <li>$[a,\ b[ = \{x \in \mathbb{R} \mid a \leq x &lt; b\}$ e $]a,\ b] = \{x \in \mathbb{R} \mid a &lt; x \leq b\}$;</li>
+            <li>$[a,\ +\infty[ = \{x \in \mathbb{R} \mid x \geq a\}$ (o infinito é sempre aberto).</li>
+        </ul>
+        <p>União, interseção e diferença de intervalos se resolvem desenhando os intervalos um embaixo do outro na reta.</p>
+    </div>
+</section>
+
+<section class="aplicacoes-reais" id="aplicacoes">
+    <h3>💡 Matemática em Ação</h3>
+    <div class="cards-aplicacao">
+        <div class="card">
+            <h4>🌡️ Temperaturas e Saldo Bancário</h4>
+            <p>Os inteiros negativos aparecem no termômetro ($-5\,^\circ$C), no saldo de uma conta no vermelho e nos andares de subsolo de um prédio. Sem eles, não conseguiríamos representar quantidades "abaixo do zero".</p>
+        </div>
+        <div class="card" style="border-left-color: #2ecc71;">
+            <h4>📺 A Diagonal da Tela</h4>
+            <p>Uma tela quadrada de lado $1$ tem diagonal $\sqrt{2}$, um número irracional. Por isso, na prática, medidas são sempre <strong>aproximações racionais</strong>: a fábrica usa $1{,}414$ e aceita uma pequena tolerância.</p>
+        </div>
+    </div>
+</section>
+<section class="questoes-resolvidas" id="resolvidas">
+    <h3>✅ 5 Questões Resolvidas (R 1 a 5)</h3>
+    <article class="questao">
+        <h4>R 1: Classificando Números</h4>
+        <p><strong>Enunciado:</strong> Indique o menor conjunto numérico ($\mathbb{N}$, $\mathbb{Z}$, $\mathbb{Q}$ ou $\mathbb{I}$) ao qual pertence cada número: $-3$, $\ \dfrac{2}{5}$, $\ \sqrt{9}$, $\ \sqrt{5}$, $\ 0{,}333\dots$ e $\pi$.</p>
+        <div class="resolucao-bloco"><p><strong>Resolução:</strong><br>$-3$ é inteiro negativo: $\mathbf{\mathbb{Z}}$. $\ \dfrac{2}{5} = 0{,}4$ é decimal exato: $\mathbf{\mathbb{Q}}$.<br>$\sqrt{9} = 3$: $\mathbf{\mathbb{N}}$. $\ 0{,}333\dots = \dfrac{1}{3}$ (dízima periódica): $\mathbf{\mathbb{Q}}$.<br>$\sqrt{5}$ e $\pi$ têm infinitas casas decimais sem período: $\mathbf{\mathbb{I}}$ (irracionais). Todos são reais.</p></div>
+    </article>
+    <article class="questao">
+        <h4>R 2: Fração Geratriz</h4>
+        <p><strong>Enunciado:</strong> Determine a fração geratriz de $0{,}777\dots$ e de $1{,}2525\dots$</p>
+        <div class="resolucao-bloco"><p><strong>Resolução:</strong><br>$x = 0{,}777\dots \implies 10x = 7{,}777\dots$; subtraindo: $9x = 7 \implies x = \mathbf{\dfrac{7}{9}}$.<br>$y = 1{,}2525\dots \implies 100y = 125{,}2525\dots$; subtraindo: $99y = 124 \implies y = \mathbf{\dfrac{124}{99}}$.<br>Conferência: $124 \div 99 = 1{,}2525\dots$ ✓</p></div>
+    </article>
+    <article class="questao">
+        <h4>R 3: Colocando em Ordem</h4>
+        <p><strong>Enunciado:</strong> Escreva em ordem crescente os números $\dfrac{3}{4}$, $\ 0{,}7$, $\ \dfrac{5}{8}$ e $0{,}72$.</p>
+        <div class="resolucao-bloco"><p><strong>Resolução:</strong><br>Na forma decimal: $\dfrac{3}{4} = 0{,}75$ e $\dfrac{5}{8} = 0{,}625$.<br>Comparando $0{,}625 &lt; 0{,}7 &lt; 0{,}72 &lt; 0{,}75$: $\ \mathbf{\dfrac{5}{8} &lt; 0{,}7 &lt; 0{,}72 &lt; \dfrac{3}{4}}$.</p></div>
+    </article>
+    <article class="questao">
+        <h4>R 4: Operações com Intervalos</h4>
+        <p><strong>Enunciado:</strong> Dados $A = [-1,\ 3[$ e $B = \ ]1,\ 5]$, determine $A \cap B$ e $A \cup B$.</p>
+        <div class="resolucao-bloco"><p><strong>Resolução:</strong><br>$A$ vai de $-1$ (incluído) até $3$ (excluído); $B$ vai de $1$ (excluído) até $5$ (incluído).<br>Interseção (parte comum): $A \cap B = \mathbf{]1,\ 3[}$.<br>União: $A \cup B = \mathbf{[-1,\ 5]}$.</p></div>
+    </article>
+    <article class="questao">
+        <h4>R 5: Irracionais que Viram Racionais</h4>
+        <p><strong>Enunciado:</strong> Calcule $\sqrt{2} \cdot \sqrt{8}$ e $\sqrt{2} + \sqrt{2}$, e diga se cada resultado é racional ou irracional.</p>
+        <div class="resolucao-bloco"><p><strong>Resolução:</strong><br>$\sqrt{2} \cdot \sqrt{8} = \sqrt{16} = \mathbf{4}$: <strong>racional</strong>, embora os dois fatores sejam irracionais.<br>$\sqrt{2} + \sqrt{2} = \mathbf{2\sqrt{2}}$: <strong>irracional</strong>.<br>Conclusão: operações entre irracionais podem dar resultado racional ou irracional.</p></div>
+    </article>
+</section>
+
+<section class="questoes-propostas" id="propostas">
+    <h3>✍️ 10 Questões Propostas (P 6 a 15)</h3>
+    <article class="questao">
+        <h4>P 6: Menor Conjunto</h4>
+        <p><strong>Enunciado:</strong> Indique o menor conjunto numérico ($\mathbb{N}$, $\mathbb{Z}$, $\mathbb{Q}$ ou $\mathbb{I}$) de cada número: $-7$, $\ 0{,}25$, $\ \sqrt{16}$ e $\sqrt{3}$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>$-7 \in \mathbb{Z}$; $\ 0{,}25 = \dfrac{1}{4} \in \mathbb{Q}$.<br>$\sqrt{16} = 4 \in \mathbb{N}$; $\ \sqrt{3} \in \mathbb{I}$.</p></div>
+    </article>
+    <article class="questao">
+        <h4>P 7: Geratriz I</h4>
+        <p><strong>Enunciado:</strong> Determine a fração geratriz de $0{,}444\dots$</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>$x = 0{,}444\dots \implies 10x = 4{,}444\dots \implies 9x = 4$.<br>$x = \mathbf{\dfrac{4}{9}}$.</p></div>
+    </article>
+    <article class="questao">
+        <h4>P 8: Geratriz II</h4>
+        <p><strong>Enunciado:</strong> Determine a fração geratriz de $0{,}1515\dots$ e simplifique-a.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>$x = 0{,}1515\dots \implies 100x = 15{,}1515\dots \implies 99x = 15$.<br>$x = \dfrac{15}{99} = \mathbf{\dfrac{5}{33}}$.</p></div>
+    </article>
+    <article class="questao">
+        <h4>P 9: Geratriz III</h4>
+        <p><strong>Enunciado:</strong> Determine a fração geratriz de $2{,}333\dots$</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>$x = 2{,}333\dots \implies 10x = 23{,}333\dots \implies 9x = 21$.<br>$x = \dfrac{21}{9} = \mathbf{\dfrac{7}{3}}$.</p></div>
+    </article>
+    <article class="questao">
+        <h4>P 10: Ordem com Negativos</h4>
+        <p><strong>Enunciado:</strong> Escreva em ordem crescente: $-\dfrac{1}{2}$, $\ -0{,}6$, $\ 0{,}3$ e $\dfrac{1}{3}$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>Decimais: $-\dfrac{1}{2} = -0{,}5$ e $\dfrac{1}{3} = 0{,}333\dots$<br>$\mathbf{-0{,}6 &lt; -\dfrac{1}{2} &lt; 0{,}3 &lt; \dfrac{1}{3}}$.</p></div>
+    </article>
+    <article class="questao">
+        <h4>P 11: Notação de Intervalo</h4>
+        <p><strong>Enunciado:</strong> Escreva na notação de intervalo: (a) $\{x \in \mathbb{R} \mid -2 \leq x &lt; 4\}$; (b) $\{x \in \mathbb{R} \mid x &gt; 1\}$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>(a) $-2$ incluído e $4$ excluído: $\mathbf{[-2,\ 4[}$.<br>(b) todos os reais maiores que $1$: $\mathbf{]1,\ +\infty[}$.</p></div>
+    </article>
+    <article class="questao">
+        <h4>P 12: Interseção e União</h4>
+        <p><strong>Enunciado:</strong> Dados $A = [0,\ 5]$ e $B = [3,\ 8[$, determine $A \cap B$ e $A \cup B$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>$A \cap B = \mathbf{[3,\ 5]}$.<br>$A \cup B = \mathbf{[0,\ 8[}$.</p></div>
+    </article>
+    <article class="questao">
+        <h4>P 13: Diferença de Intervalos</h4>
+        <p><strong>Enunciado:</strong> Com $A = [0,\ 5]$ e $B = [3,\ 8[$, determine $A - B$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>Retiramos de $A$ os números de $3$ em diante (o $3$ pertence a $B$, então sai).<br>$A - B = \mathbf{[0,\ 3[}$.</p></div>
+    </article>
+    <article class="questao">
+        <h4>P 14: Verdadeiro ou Falso</h4>
+        <p><strong>Enunciado:</strong> Classifique em V ou F: (I) todo número natural é inteiro; (II) todo número racional é inteiro; (III) $\sqrt{2}$ é racional; (IV) toda dízima periódica é um número racional.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>(I) V, pois $\mathbb{N} \subset \mathbb{Z}$. (II) F: $\dfrac{1}{2}$ é racional e não é inteiro.<br>(III) F: $\sqrt{2}$ é irracional. (IV) V: toda dízima periódica tem fração geratriz. Resposta: <strong>V, F, F, V</strong>.</p></div>
+    </article>
+    <article class="questao">
+        <h4>P 15: Inteiros num Intervalo</h4>
+        <p><strong>Enunciado:</strong> Quantos números inteiros pertencem ao intervalo $]-2{,}5;\ 3{,}7]$?</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>Os inteiros maiores que $-2{,}5$ e menores ou iguais a $3{,}7$ são $-2, -1, 0, 1, 2, 3$.<br>Total: $\mathbf{6}$ números inteiros.</p></div>
+    </article>
+</section>
+
+<section class="TESTE" id="testes">
+    <h3>🎓 TESTES (T 11 a 15)</h3>
+    <article class="questao">
+        <h4>T 11: (ENEM 2015) A Espessura das Lentes</h4>
+        <p>Deseja-se comprar lentes para óculos. As lentes devem ter espessuras mais próximas possíveis da medida 3 mm. No estoque de uma loja, há lentes de espessuras: 3,10 mm; 3,021 mm; 2,96 mm; 2,099 mm e 3,07 mm.</p>
+        <p>Se as lentes forem adquiridas nessa loja, a espessura escolhida será, em milímetros, de</p>
+        <p>A) 2,099.<br>B) 2,96.<br>C) 3,021.<br>D) 3,07.<br>E) 3,10.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>C</strong>.<br>Distâncias até $3$: $|3{,}10 - 3| = 0{,}10$; $\ |3{,}021 - 3| = 0{,}021$; $\ |2{,}96 - 3| = 0{,}04$; $\ |2{,}099 - 3| = 0{,}901$; $\ |3{,}07 - 3| = 0{,}07$.<br>A menor distância é $0{,}021$: espessura $\mathbf{3{,}021}$ mm. (Cuidado: $3{,}021 &lt; 3{,}07 &lt; 3{,}10$, pois comparamos casa a casa.)</p></div>
+    </article>
+    <article class="questao">
+        <h4>T 12: (ENEM 2016 – 2ª aplicação) Tubos em Polegadas</h4>
+        <p>Nas construções prediais são utilizados tubos de diferentes medidas para a instalação da rede de água. Essas medidas são conhecidas pelo seu diâmetro, muitas vezes medido em polegada. Alguns desses tubos, com medidas em polegada, são os tubos de $\frac{1}{2}$, $\frac{3}{8}$ e $\frac{5}{4}$.</p>
+        <p>Colocando os valores dessas medidas em ordem crescente, encontramos</p>
+        <p>A) $\frac{1}{2}$; $\frac{3}{8}$; $\frac{5}{4}$<br>B) $\frac{1}{2}$; $\frac{5}{4}$; $\frac{3}{8}$<br>C) $\frac{3}{8}$; $\frac{1}{2}$; $\frac{5}{4}$<br>D) $\frac{3}{8}$; $\frac{5}{4}$; $\frac{1}{2}$<br>E) $\frac{5}{4}$; $\frac{1}{2}$; $\frac{3}{8}$</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>C</strong>.<br>Na forma decimal: $\dfrac{3}{8} = 0{,}375$, $\ \dfrac{1}{2} = 0{,}5$ e $\dfrac{5}{4} = 1{,}25$.<br>Ordem crescente: $\mathbf{\dfrac{3}{8} &lt; \dfrac{1}{2} &lt; \dfrac{5}{4}}$.</p></div>
+    </article>
+    <article class="questao">
+        <h4>T 13: (ENEM 2018) O Elevador</h4>
+        <p>Um edifício tem a numeração dos andares iniciando no térreo (T), e continuando com primeiro, segundo, terceiro, …, até o último andar. Uma criança entrou no elevador e, tocando no painel, seguiu uma sequência de andares, parando, abrindo e fechando a porta em diversos andares. A partir de onde entrou a criança, o elevador subiu sete andares, em seguida desceu dez, desceu mais treze, subiu nove, desceu quatro e parou no quinto andar, finalizando a sequência. Considere que, no trajeto seguido pela criança, o elevador parou uma vez no último andar do edifício.</p>
+        <p>De acordo com as informações dadas, o último andar do edifício é o</p>
+        <p>A) 16º<br>B) 22º<br>C) 23º<br>D) 25º<br>E) 32º</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>C</strong>.<br>Seja $x$ o andar de entrada (térreo $= 0$): $x + 7 - 10 - 13 + 9 - 4 = 5 \implies x - 11 = 5 \implies x = 16$.<br>Trajeto: $16 \to 23 \to 13 \to 0\ (\text{T}) \to 9 \to 5$. O andar mais alto atingido é o $23$º.<br>Como o elevador parou uma vez no último andar, ele é o $\mathbf{23}$º (os inteiros negativos não aparecem porque o térreo é o andar zero).</p></div>
+    </article>
+    <article class="questao">
+        <h4>T 14: (Autoral) Qual é Irracional?</h4>
+        <p>Dentre os números abaixo, o único irracional é:</p>
+        <p>A) $\sqrt{49}$<br>B) $0{,}1212\dots$<br>C) $\dfrac{3}{7}$<br>D) $\sqrt{12}$<br>E) $-5$</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>D</strong>.<br>$\sqrt{49} = 7$, $\ 0{,}1212\dots = \dfrac{12}{99}$, $\ \dfrac{3}{7}$ e $-5$ são racionais.<br>$\sqrt{12} = 2\sqrt{3}$ não é quociente de inteiros: é <strong>irracional</strong>.</p></div>
+    </article>
+    <article class="questao">
+        <h4>T 15: (Autoral) A Geratriz de 0,4545...</h4>
+        <p>A fração geratriz da dízima periódica $0{,}4545\dots$ é:</p>
+        <p>A) $\dfrac{45}{100}$<br>B) $\dfrac{5}{11}$<br>C) $\dfrac{9}{20}$<br>D) $\dfrac{4}{9}$<br>E) $\dfrac{1}{2}$</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>B</strong>.<br>$x = 0{,}4545\dots \implies 100x = 45{,}4545\dots \implies 99x = 45$.<br>$x = \dfrac{45}{99} = \mathbf{\dfrac{5}{11}}$. ($\frac{45}{100}$ seria o decimal exato $0{,}45$.)</p></div>
+    </article>
+</section>
+
+</div></main>
+<aside class="menu-lateral"><iframe src="../menu_matematica.html" style="width:100%; border:none; height:600px;"></iframe></aside>
+</div>
+<script>
+function toggleGabarito(botao) {
+    const gabarito = botao.nextElementSibling;
+    if (gabarito.style.display === "none" || gabarito.style.display === "") {
+        gabarito.style.display = "block"; botao.textContent = "Esconder Gabarito e Resolução"; botao.style.backgroundColor = "#2c3e50";
+    } else {
+        gabarito.style.display = "none"; botao.textContent = "Ver Gabarito e Resolução"; botao.style.backgroundColor = "#3498db";
+    }
+}
+function toggleMenu() { const m = document.getElementById("menu-principal"); if (m) m.classList.toggle("ativo"); }
+let slideAtual = 0; let slides = [];
+function prepararSlides() { slides = Array.from(document.querySelectorAll('.container-resumo, .passo-teoria, .card, .questao')); }
+function toggleSlides() {
+    prepararSlides(); const body = document.body;
+    if (!body.classList.contains('modo-slides')) { body.classList.add('modo-slides'); slideAtual = 0; mostrarSlide(slideAtual); }
+    else { body.classList.remove('modo-slides'); slides.forEach(s => { s.classList.remove('slide-ativo'); s.style.display = ''; }); }
+}
+function mostrarSlide(n) {
+    if (!slides.length) return;
+    slides.forEach(s => { s.classList.remove('slide-ativo'); s.style.display = 'none'; });
+    const slide = slides[n]; slide.classList.add('slide-ativo');
+    slide.querySelectorAll('.gabarito-resolucao').forEach(g => g.style.display = 'none');
+    slide.querySelectorAll('.btn-gabarito').forEach(b => { b.textContent = "Ver Gabarito e Resolução"; b.style.backgroundColor = "#3498db"; });
+    const pHeader = document.querySelector('header p');
+    if (pHeader) { const partes = pHeader.innerText.split('|'); if (partes.length > 1) {
+        document.getElementById('slide-info-serie').innerText = partes[0].trim();
+        document.getElementById('slide-info-aula').innerText = partes[1].trim(); } }
+    document.getElementById('contador-slide').innerText = (n + 1) + " / " + slides.length;
+    if (window.MathJax && window.MathJax.typesetPromise) { MathJax.typesetPromise(); }
+}
+function mudarSlide(d) { slideAtual += d; if (slideAtual >= slides.length) slideAtual = 0; if (slideAtual < 0) slideAtual = slides.length - 1; mostrarSlide(slideAtual); }
+document.addEventListener('keydown', function(event) {
+    if (document.body.classList.contains('modo-slides')) {
+        switch(event.key) {
+            case 'ArrowRight': case 'PageDown': case 'Enter': case ' ': event.preventDefault(); mudarSlide(1); break;
+            case 'ArrowLeft': case 'PageUp': event.preventDefault(); mudarSlide(-1); break;
+            case 'Escape': event.preventDefault(); toggleSlides(); break;
+        }
+    }
+});
+</script>
+<div class="controles-slides">
+    <div id="slide-info-serie" class="info-lateral"></div>
+    <div class="botoes-centrais">
+        <button class="btn-nav" onclick="mudarSlide(-1)">⬅ Anterior</button>
+        <span id="contador-slide"></span>
+        <button class="btn-nav" onclick="mudarSlide(1)">Próximo ➡</button>
+        <button class="btn-nav" onclick="toggleSlides()" style="background:#e74c3c;">Sair</button>
+    </div>
+    <div id="slide-info-aula" class="info-lateral" style="text-align: right;"></div>
+</div>
+</body>
+</html>

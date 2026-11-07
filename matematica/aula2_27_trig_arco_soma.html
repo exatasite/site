@@ -116,12 +116,12 @@
     <article class="questao">
         <h4>R 1: Seno e Cosseno de 75°</h4>
         <p><strong>Enunciado:</strong> Calcule $\operatorname{sen} 75^\circ$ e $\cos 75^\circ$.</p>
-        <div class="resolucao-bloco"><p><strong>Resolução:</strong><br>$75^\circ = 45^\circ + 30^\circ$. \ $\operatorname{sen}(a + b) = \operatorname{sen} a \cos b + \operatorname{sen} b \cos a$:<br>$\operatorname{sen} 75^\circ = \dfrac{\sqrt{2}}{2} \cdot \dfrac{\sqrt{3}}{2} + \dfrac{1}{2} \cdot \dfrac{\sqrt{2}}{2} = \mathbf{\dfrac{\sqrt{6} + \sqrt{2}}{4}}$.<br>$\cos(a + b) = \cos a \cos b - \operatorname{sen} a \operatorname{sen} b$: \ $\cos 75^\circ = \dfrac{\sqrt{6}}{4} - \dfrac{\sqrt{2}}{4} = \mathbf{\dfrac{\sqrt{6} - \sqrt{2}}{4}}$.</p></div>
+        <div class="resolucao-bloco"><p><strong>Resolução:</strong><br>$75^\circ = 45^\circ + 30^\circ$.<br>$\operatorname{sen}(a + b) = \operatorname{sen} a \cos b + \operatorname{sen} b \cos a$:<br>$\operatorname{sen} 75^\circ = \dfrac{\sqrt{2}}{2} \cdot \dfrac{\sqrt{3}}{2} + \dfrac{1}{2} \cdot \dfrac{\sqrt{2}}{2} = \mathbf{\dfrac{\sqrt{6} + \sqrt{2}}{4}}$.<br>$\cos(a + b) = \cos a \cos b - \operatorname{sen} a \operatorname{sen} b$:<br>$\cos 75^\circ = \dfrac{\sqrt{6}}{4} - \dfrac{\sqrt{2}}{4} = \mathbf{\dfrac{\sqrt{6} - \sqrt{2}}{4}}$.</p></div>
     </article>
     <article class="questao">
         <h4>R 2: Cosseno e Tangente de 15°</h4>
         <p><strong>Enunciado:</strong> Calcule $\cos 15^\circ$ e $\operatorname{tg} 15^\circ$.</p>
-        <div class="resolucao-bloco"><p><strong>Resolução:</strong><br>$\cos(45^\circ - 30^\circ) = \cos 45^\circ \cos 30^\circ + \operatorname{sen} 45^\circ \operatorname{sen} 30^\circ = \mathbf{\dfrac{\sqrt{6} + \sqrt{2}}{4}}$.<br>$\operatorname{tg}(a - b) = \dfrac{\operatorname{tg} a - \operatorname{tg} b}{1 + \operatorname{tg} a \operatorname{tg} b}$: \ $\operatorname{tg} 15^\circ = \dfrac{1 - \frac{\sqrt{3}}{3}}{1 + \frac{\sqrt{3}}{3}} = \dfrac{3 - \sqrt{3}}{3 + \sqrt{3}}$.<br>Racionalizando: $\dfrac{(3 - \sqrt{3})^2}{9 - 3} = \dfrac{12 - 6\sqrt{3}}{6} = \mathbf{2 - \sqrt{3}}$.</p></div>
+        <div class="resolucao-bloco"><p><strong>Resolução:</strong><br>$\cos(45^\circ - 30^\circ) = \cos 45^\circ \cos 30^\circ + \operatorname{sen} 45^\circ \operatorname{sen} 30^\circ = \mathbf{\dfrac{\sqrt{6} + \sqrt{2}}{4}}$.<br>$\operatorname{tg}(a - b) = \dfrac{\operatorname{tg} a - \operatorname{tg} b}{1 + \operatorname{tg} a \operatorname{tg} b}$:<br>$\operatorname{tg} 15^\circ = \dfrac{1 - \frac{\sqrt{3}}{3}}{1 + \frac{\sqrt{3}}{3}} = \dfrac{3 - \sqrt{3}}{3 + \sqrt{3}}$.<br>Racionalizando: $\dfrac{(3 - \sqrt{3})^2}{9 - 3} = \dfrac{12 - 6\sqrt{3}}{6} = \mathbf{2 - \sqrt{3}}$.</p></div>
     </article>
     <article class="questao">
         <h4>R 3: Com Dados Fornecidos</h4>
@@ -208,40 +208,37 @@
     <h3>🎓 TESTES (T 11 a 15)</h3>
     <article class="questao">
         <h4>T 11: (UCS) O Seno do Dobro</h4>
-        <p>Sabe-se que $\operatorname{sen} 2x = 2\operatorname{sen} x \cos x$. Considere $\operatorname{sen}\alpha = \dfrac{1}{4}$, com $\dfrac{\pi}{2} \le \alpha \le \pi$.</p>
-        <p>O valor de $\operatorname{sen}(2\alpha)$ é</p>
+        <p>Qual é o valor de $\operatorname{sen}(2\alpha)$ para $\alpha$ tal que $\operatorname{sen}(\alpha) = \dfrac{1}{4}$ e $\dfrac{\pi}{2} \le \alpha \le \pi$?</p>
+        <p>Dado: para todo número real $x$ vale a identidade trigonométrica $\operatorname{sen}(2x) = 2\operatorname{sen}(x)\cos(x)$.</p>
         <p>A) $-\dfrac{\sqrt{15}}{4}$<br>B) $-\dfrac{\sqrt{15}}{8}$<br>C) $\dfrac{\sqrt{15}}{8}$<br>D) $-\dfrac{\sqrt{3}}{4}$<br>E) $\dfrac{\sqrt{15}}{4}$</p>
         <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
         <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>B</strong>.<br>$\cos^2\alpha = 1 - \dfrac{1}{16} = \dfrac{15}{16}$; no 2º quadrante o cosseno é negativo: $\cos\alpha = -\dfrac{\sqrt{15}}{4}$.<br>$\operatorname{sen} 2\alpha = 2 \cdot \dfrac{1}{4} \cdot \left(-\dfrac{\sqrt{15}}{4}\right) = \mathbf{-\dfrac{\sqrt{15}}{8}}$.</p></div>
     </article>
     <article class="questao">
         <h4>T 12: (Unifor-CE) O Quadrado da Soma</h4>
-        <p>Considere a expressão $\left[\operatorname{sen}\left(\dfrac{x}{2}\right) + \cos\left(\dfrac{x}{2}\right)\right]^2$, para $x$ real.</p>
-        <p>Essa expressão é equivalente a</p>
+        <p>A expressão $\left[\operatorname{sen}\left(\dfrac{x}{2}\right) + \cos\left(\dfrac{x}{2}\right)\right]^2$ é equivalente a:</p>
         <p>A) $1$<br>B) $0$<br>C) $\cos^2\left(\dfrac{x}{2}\right)$<br>D) $1 + \operatorname{sen} x$<br>E) $1 + \cos x$</p>
         <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
         <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>D</strong>.<br>Desenvolvendo: $\operatorname{sen}^2\frac{x}{2} + \cos^2\frac{x}{2} + 2\operatorname{sen}\frac{x}{2}\cos\frac{x}{2}$.<br>$= 1 + \operatorname{sen}\left(\dfrac{x}{2} + \dfrac{x}{2}\right) = \mathbf{1 + \operatorname{sen} x}$.</p></div>
     </article>
     <article class="questao">
         <h4>T 13: (Fuvest) A Tangente de 22°30'</h4>
-        <p>A tangente do ângulo $2x$ é dada em função da tangente de $x$ pela fórmula $\operatorname{tg} 2x = \dfrac{2\operatorname{tg} x}{1 - \operatorname{tg}^2 x}$.</p>
-        <p>Um valor aproximado da tangente do ângulo $22^\circ 30'$ é</p>
+        <p>A tangente do ângulo $2x$ é dada em função da tangente de $x$ pela seguinte fórmula: $\operatorname{tg} 2x = \dfrac{2\operatorname{tg} x}{1 - \operatorname{tg}^2 x}$.</p>
+        <p>Calcule um valor aproximado da tangente do ângulo $22^\circ 30'$.</p>
         <p>A) 0,22<br>B) 0,41<br>C) 0,50<br>D) 0,72<br>E) 1,00</p>
         <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
         <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>B</strong>.<br>Com $x = 22^\circ 30'$, $2x = 45^\circ$ e $\operatorname{tg} 45^\circ = 1$. Sendo $t = \operatorname{tg} x$: $1 = \dfrac{2t}{1 - t^2} \implies t^2 + 2t - 1 = 0$.<br>$t = -1 \pm \sqrt{2}$; como $x$ é agudo, $t > 0$: $t = \sqrt{2} - 1 \approx \mathbf{0{,}41}$.</p></div>
     </article>
     <article class="questao">
         <h4>T 14: (Fuvest 2015) A Amplitude A</h4>
-        <p>Sabe-se que existem números reais $A$ e $x_0$, sendo $A > 0$, tais que $\operatorname{sen} x + 2\cos x = A\cos(x - x_0)$ para todo $x$ real.</p>
-        <p>O valor de $A$ é igual a</p>
+        <p>Sabe-se que existem números reais $A$ e $x_0$, sendo $A > 0$, tais que $\operatorname{sen} x + 2\cos x = A\cos(x - x_0)$ para todo $x$ real. O valor de $A$ é igual a</p>
         <p>A) $\sqrt{2}$<br>B) $\sqrt{3}$<br>C) $\sqrt{5}$<br>D) $2\sqrt{2}$<br>E) $2\sqrt{3}$</p>
         <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
         <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>C</strong>.<br>$A\cos(x - x_0) = A\cos x_0 \cos x + A\operatorname{sen} x_0 \operatorname{sen} x$. Comparando: $A\cos x_0 = 2$ e $A\operatorname{sen} x_0 = 1$.<br>Somando os quadrados: $A^2(\cos^2 x_0 + \operatorname{sen}^2 x_0) = 4 + 1 \implies A = \mathbf{\sqrt{5}}$.</p></div>
     </article>
     <article class="questao">
         <h4>T 15: (Fuvest 2011) Arcos Complementares</h4>
-        <p>Sejam $x$ e $y$ números reais positivos tais que $x + y = \dfrac{\pi}{2}$. Sabendo-se que $\operatorname{sen}(x - y) = \dfrac{1}{3}$.</p>
-        <p>O valor de $\operatorname{tg}^2 x - \operatorname{tg}^2 y$ é igual a</p>
+        <p>Sejam $x$ e $y$ números reais positivos tais que $x + y = \dfrac{\pi}{2}$. Sabendo-se que $\operatorname{sen}(x - y) = \dfrac{1}{3}$, o valor de $\operatorname{tg}^2 x - \operatorname{tg}^2 y$ é igual a</p>
         <p>A) $\dfrac{3}{2}$<br>B) $\dfrac{5}{4}$<br>C) $\dfrac{1}{2}$<br>D) $\dfrac{1}{4}$<br>E) $\dfrac{1}{8}$</p>
         <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
         <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>A</strong>.<br>$y = \dfrac{\pi}{2} - x$: $\operatorname{tg} y = \operatorname{cotg} x$ e $\operatorname{sen}(x - y) = \operatorname{sen}\left(2x - \dfrac{\pi}{2}\right) = -\cos 2x = \dfrac{1}{3}$, logo $\cos 2x = -\dfrac{1}{3}$ e $\operatorname{sen}^2 2x = \dfrac{8}{9}$.<br>$\operatorname{tg}^2 x - \operatorname{cotg}^2 x = \dfrac{\operatorname{sen}^4 x - \cos^4 x}{\operatorname{sen}^2 x \cos^2 x} = \dfrac{-\cos 2x}{\frac{1}{4}\operatorname{sen}^2 2x}$.<br>$= \dfrac{1/3}{2/9} = \mathbf{\dfrac{3}{2}}$.</p></div>

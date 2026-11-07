@@ -126,12 +126,12 @@
     <article class="questao">
         <h4>R 2: Valor das Compostas</h4>
         <p><strong>Enunciado:</strong> Sejam $p$: “$3 > 2$” e $q$: “$\sqrt{4} = 3$”. Determine o valor lógico de $p \wedge q$, $p \vee q$, $p \to q$, $q \to p$ e $p \leftrightarrow q$.</p>
-        <div class="resolucao-bloco"><p><strong>Resolução:</strong><br>$p$ é V e $q$ é F.<br>$p \wedge q$: <strong>F</strong> (o “e” exige as duas V). \ $p \vee q$: <strong>V</strong> (basta uma V).<br>$p \to q$: <strong>F</strong> (único caso falso: V $\to$ F). \ $q \to p$: <strong>V</strong>. \ $p \leftrightarrow q$: <strong>F</strong> (valores diferentes).</p></div>
+        <div class="resolucao-bloco"><p><strong>Resolução:</strong><br>$p$ é V e $q$ é F.<br>$p \wedge q$: <strong>F</strong> (o “e” exige as duas V).<br>$p \vee q$: <strong>V</strong> (basta uma V).<br>$p \to q$: <strong>F</strong> (único caso falso: V $\to$ F).<br>$q \to p$: <strong>V</strong>.<br>$p \leftrightarrow q$: <strong>F</strong> (valores diferentes).</p></div>
     </article>
     <article class="questao">
         <h4>R 3: Uma Equivalência</h4>
         <p><strong>Enunciado:</strong> Construa as tabelas-verdade de $p \to q$ e de $\neg p \vee q$ e compare-as.</p>
-        <div class="resolucao-bloco"><p><strong>Resolução:</strong><br>Linhas $(p, q)$: (V,V), (V,F), (F,V), (F,F).<br>$p \to q$: V, F, V, V. \ $\neg p$: F, F, V, V, logo $\neg p \vee q$: V, F, V, V.<br>As colunas são iguais: $\mathbf{p \to q \equiv \neg p \vee q}$ (proposições equivalentes).</p></div>
+        <div class="resolucao-bloco"><p><strong>Resolução:</strong><br>Linhas $(p, q)$: (V,V), (V,F), (F,V), (F,F).<br>$p \to q$: V, F, V, V.<br>$\neg p$: F, F, V, V, logo $\neg p \vee q$: V, F, V, V.<br>As colunas são iguais: $\mathbf{p \to q \equiv \neg p \vee q}$ (proposições equivalentes).</p></div>
     </article>
     <article class="questao">
         <h4>R 4: Negando Compostas</h4>
@@ -172,19 +172,19 @@
         <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>Cada proposição tem $2$ valores possíveis.<br>$2^3 = \mathbf{8}$ linhas.</p></div>
     </article>
     <article class="questao">
-        <h4>P 10: Negação do ``e''</h4>
+        <h4>P 10: Negação do “e”</h4>
         <p><strong>Enunciado:</strong> Negue a proposição “Pedro é alto e magro.”</p>
         <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
         <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>$\neg(p \wedge q) \equiv \neg p \vee \neg q$.<br>“<strong>Pedro não é alto ou não é magro.</strong>”</p></div>
     </article>
     <article class="questao">
-        <h4>P 11: Negação do ``ou''</h4>
+        <h4>P 11: Negação do “ou”</h4>
         <p><strong>Enunciado:</strong> Negue a proposição “Vou ao cinema ou ao teatro.”</p>
         <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
         <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>$\neg(p \vee q) \equiv \neg p \wedge \neg q$.<br>“<strong>Não vou ao cinema e não vou ao teatro.</strong>”</p></div>
     </article>
     <article class="questao">
-        <h4>P 12: Negação do ``se\dots{} então''</h4>
+        <h4>P 12: Negação do “se… então”</h4>
         <p><strong>Enunciado:</strong> Negue a proposição “Se estudo, então passo.”</p>
         <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
         <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>$\neg(p \to q) \equiv p \wedge \neg q$.<br>“<strong>Estudo e não passo.</strong>”</p></div>
@@ -196,7 +196,7 @@
         <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>$p \to q \equiv \neg q \to \neg p$.<br>“<strong>Se não é brasileiro, então não é carioca.</strong>”</p></div>
     </article>
     <article class="questao">
-        <h4>P 14: Negação do ``algum''</h4>
+        <h4>P 14: Negação do “algum”</h4>
         <p><strong>Enunciado:</strong> Negue a proposição “Algum político é honesto.”</p>
         <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
         <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>A negação de “existe um que é” é “nenhum é”.<br>“<strong>Nenhum político é honesto.</strong>”</p></div>
@@ -212,7 +212,7 @@
 <section class="TESTE" id="testes">
     <h3>🎓 TESTES (T 11 a 15)</h3>
     <article class="questao">
-        <h4>T 11: (Fatec 2015) O Que É Proposição</h4>
+        <h4>T 11: (Fatec 2016) O Que É Proposição</h4>
         <p>Proposição é uma frase declarativa que exprime um pensamento de sentido completo. Toda proposição possui um único valor lógico: Falso (F) ou Verdadeiro (V).</p>
         <p>Assinale a alternativa que apresenta uma proposição.</p>
         <p>A) Vamos estudar?<br>B) Parabéns!<br>C) $x + y > 3$<br>D) $\dfrac{1}{3} + \dfrac{1}{2} = \dfrac{2}{5}$<br>E) $x^2 + 5x + 6$</p>
@@ -220,7 +220,7 @@
         <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>D</strong>.<br>A e B não são declarativas (pergunta e exclamação). C é uma sentença aberta: seu valor depende de $x$ e $y$. E é apenas uma expressão, sem afirmar nada.<br>D é declarativa e tem valor lógico definido: $\dfrac{1}{3} + \dfrac{1}{2} = \dfrac{5}{6} \neq \dfrac{2}{5}$, portanto é uma proposição <strong>falsa</strong>.<br>Alternativa <strong>D</strong>: ser falsa não impede de ser proposição.</p></div>
     </article>
     <article class="questao">
-        <h4>T 12: (Fatec 2019) A Negação do ``Todo''</h4>
+        <h4>T 12: (Fatec 2019) A Negação do “Todo”</h4>
         <p>São proposições equivalentes para a negação da proposição “todo homem ama lógica”: “pelo menos um homem não ama lógica”; “algum homem não ama lógica”; “existe um homem que não ama lógica”.</p>
         <p>Assim, a forma correta de negar a proposição “todas as vagas deste vestibular são de ensino superior” é</p>
         <p>A) algumas vagas deste vestibular são de ensino superior.<br>B) existem vagas deste vestibular que não são de ensino superior.<br>C) nenhuma das vagas deste vestibular é de ensino superior.<br>D) pelo menos uma vaga deste vestibular é de ensino superior.<br>E) todas as vagas deste vestibular não são de ensino superior.</p>
@@ -228,25 +228,24 @@
         <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>B</strong>.<br>Para negar “todo $A$ é $B$”, basta exibir um $A$ que não seja $B$: “existe $A$ que não é $B$”.<br>“Existem vagas deste vestibular que não são de ensino superior.” Alternativa <strong>B</strong>.<br>Armadilha: C (“nenhuma”) e E (“todas\dots não”) são afirmações mais fortes que a negação.</p></div>
     </article>
     <article class="questao">
-        <h4>T 13: (ESPM 2018) Paulo e João</h4>
-        <p>“Não é verdade que Paulo foi à escola e João não foi.”</p>
-        <p>Então, podemos afirmar que</p>
+        <h4>T 13: (ESPM 2019) Paulo e João</h4>
+        <p>Não é verdade que Paulo foi à escola e João não foi. Então, podemos afirmar que</p>
         <p>A) se João foi à escola, Paulo não foi.<br>B) se João não foi à escola, Paulo também não foi.<br>C) ambos foram à escola.<br>D) nenhum deles foi à escola.<br>E) apenas um deles foi à escola.</p>
         <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
         <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>B</strong>.<br>Sejam $p$: “Paulo foi” e $j$: “João foi”. A frase é $\neg(p \wedge \neg j) \equiv \neg p \vee j$.<br>Como $\neg p \vee j \equiv p \to j \equiv \neg j \to \neg p$: “se João não foi, Paulo não foi”.<br>Alternativa <strong>B</strong>. (C, D e E não são garantidas: os dois casos “ambos foram” e “nenhum foi” são possíveis.)</p></div>
     </article>
     <article class="questao">
         <h4>T 14: (Fatec 2013) A Contrapositiva</h4>
-        <p>Considere a seguinte equivalência lógica: “Se ocorre $P$, então ocorre $Q$” é equivalente a “Se não ocorre $Q$, então não ocorre $P$”.</p>
-        <p>Assim, uma proposição equivalente a “Se $x < 3$, então $y = -4$” é</p>
+        <p>Na Lógica, tem-se que a proposição “Se ocorre $P$, então ocorre $Q$” é equivalente à proposição “Se não ocorre $Q$, então não ocorre $P$”.</p>
+        <p>Assim sendo, “Se $x &lt; 3$, então $y = -4$” é equivalente a</p>
         <p>A) Se $x > 3$, então $y \neq -4$.<br>B) Se $x \ge 3$, então $y \neq 4$.<br>C) Se $y \neq 4$, então $x \ge 3$.<br>D) Se $y \neq -4$, então $x > 3$.<br>E) Se $y \neq -4$, então $x \ge 3$.</p>
         <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
         <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>E</strong>.<br>$P$: $x < 3$ e $Q$: $y = -4$. Negações: $\neg Q$: $y \neq -4$ e $\neg P$: $x \ge 3$ (a negação de “$<$” é “$\ge$”).<br>Contrapositiva: “Se $y \neq -4$, então $x \ge 3$”. Alternativa <strong>E</strong>.<br>A alternativa D erra a negação de $x < 3$ (esquece o caso $x = 3$).</p></div>
     </article>
     <article class="questao">
-        <h4>T 15: (Unicamp 2023) Patins ou Bicicleta</h4>
+        <h4>T 15: (Unicamp 2024) Patins ou Bicicleta</h4>
         <p>Todo final de semana, as amigas Ana, Bruna e Carol se encontram em um parque para andar de bicicleta ou de patins. Nesta brincadeira, a escolha entre patins e bicicleta é feita usando a seguinte regra:</p>
-        <p>$\bullet$ Se Ana anda de patins, então Carol também anda de patins. \ $\bullet$ Bruna anda de patins apenas quando Carol anda de bicicleta.</p>
+        <p style="text-align:center;"><em>Se Ana anda de patins, então Carol também anda de patins.<br>Bruna anda de patins apenas quando Carol anda de bicicleta.</em></p>
         <p>Sabendo que neste final de semana Carol andou de patins, então é necessariamente verdade que</p>
         <p>A) Ana andou de patins.<br>B) Ana não andou de patins.<br>C) Bruna andou de patins.<br>D) Bruna não andou de patins.</p>
         <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
