@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1º Ano: Aula 01 - Conjuntos</title>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../estilo.css">
+    <script>
+        MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']], processEscapes: true } };
+    </script>
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        body.modo-slides { overflow: hidden !important; background-color: #1a1a1a !important; margin: 0; padding: 0; }
+        body.modo-slides .menu-lateral, body.modo-slides header, body.modo-slides .menu-toggle, body.modo-slides #btn-slides, body.modo-slides .nav-global { display: none !important; }
+        .slide-ativo { display: flex !important; flex-direction: column; align-items: center; justify-content: center; position: fixed; top: 0; left: 0; width: 100vw; height: calc(100vh - 70px); background: #ffffff; padding: 40px; z-index: 999; overflow-y: auto !important; box-sizing: border-box; text-align: left; }
+        .slide-ativo > * { max-width: 900px; width: 100%; }
+        .controles-slides { position: fixed; bottom: 0; left: 0; width: 100%; height: 70px; background: #2c3e50; color: white; display: none; justify-content: space-between; align-items: center; padding: 0 20px; z-index: 1001; box-sizing: border-box; }
+        body.modo-slides .controles-slides { display: flex !important; }
+        .info-lateral { flex: 1; font-family: 'Oswald', sans-serif; font-size: 0.9rem; color: #bdc3c7; }
+        .botoes-centrais { display: flex; align-items: center; gap: 15px; justify-content: center; flex: 2; }
+        .btn-nav { padding: 10px 20px; background: #3498db; color: white; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; font-size: 0.9rem; }
+        .btn-nav:hover { background: #2980b9; }
+        #contador-slide { font-family: 'Oswald', sans-serif; min-width: 60px; text-align: center; font-size: 1.1rem; }
+    </style>
+</head>
+<body>
+<button class="menu-toggle" onclick="toggleMenu()">☰</button>
+<nav id="menu-principal" class="nav-global"><ul>
+    <li><a href="../index.html">🏠 Início</a></li>
+    <li><a href="../ensino_medio.html">📚 Ensino Médio</a></li>
+    <li><a href="../ensino_superior.html">🎓 Ensino Superior</a></li>
+</ul></nav>
+<header id="topo">
+    <h1>MATEMÁTICA EM</h1>
+    <p>1º Ano | Aula 01: Conjuntos</p>
+    <button id="btn-slides" onclick="toggleSlides()">📺 Iniciar Modo Slides</button>
+</header>
+<div class="container"><main class="conteudo-principal"><div class="secao-aula">
+
+<div class="container-resumo" id="resumo">
+    <h3>📚 Resumo</h3>
+    <section class="resumo-conteudo">
+        <p>Um <strong>conjunto</strong> é uma coleção de objetos, chamados <strong>elementos</strong>. Usamos $\in$ (pertence) entre elemento e conjunto e $\subset$ (está contido) entre dois conjuntos. As operações básicas são a <strong>união</strong> ($A \cup B$), a <strong>interseção</strong> ($A \cap B$), a <strong>diferença</strong> ($A - B$) e o <strong>complementar</strong> ($A^c$).</p>
+        <p style="text-align: center;">$$n(A \cup B) = n(A) + n(B) - n(A \cap B) \qquad\qquad \text{nº de subconjuntos} = 2^{n(A)}$$</p>
+    </section>
+</div>
+
+<section class="conteudo-teorico-completo" id="teoria">
+    <div class="passo-teoria">
+        <h3>📖 Conjuntos</h3>
+        <h4>1. Representação e Pertinência</h4>
+        <p>Um conjunto pode ser representado de três formas:</p>
+        <ul>
+            <li><strong>Enumeração (listagem):</strong> $A = \{1, 2, 3, 4\}$;</li>
+            <li><strong>Propriedade:</strong> $A = \{x \in \mathbb{N} \mid 1 \leq x \leq 4\}$ (lê-se "x natural tal que...");</li>
+            <li><strong>Diagrama de Venn:</strong> uma região fechada com os elementos no seu interior.</li>
+        </ul>
+        <p>A relação entre <strong>elemento e conjunto</strong> é de pertinência: $2 \in A$ (2 pertence a A) e $7 \notin A$. O conjunto sem elementos é o <strong>vazio</strong>, $\varnothing$ ou $\{\ \}$; o conjunto com um só elemento é <strong>unitário</strong>; o conjunto que contém todos os elementos em estudo é o <strong>universo</strong> $U$. O número de elementos de $A$ é indicado por $n(A)$.</p>
+    </div>
+
+    <div class="passo-teoria">
+        <h4>2. Subconjuntos e Conjunto das Partes</h4>
+        <p>$A$ é <strong>subconjunto</strong> de $B$ ($A \subset B$) quando todo elemento de $A$ também pertence a $B$. Propriedades: $\varnothing \subset A$ e $A \subset A$ para todo conjunto $A$.</p>
+        <p>O <strong>conjunto das partes</strong> $\mathcal{P}(A)$ reúne todos os subconjuntos de $A$. Se $n(A) = n$, então:</p>
+        <p style="text-align: center; font-size: 1.15rem; background-color: #f8f9fa; padding: 15px; border-left: 5px solid #3498db; margin: 20px 0;">
+            $$n\big(\mathcal{P}(A)\big) = 2^n$$
+        </p>
+        <p><strong>Atenção:</strong> $\in$ relaciona elemento com conjunto; $\subset$ relaciona conjunto com conjunto. Por isso $2 \in \{1, 2\}$, mas $\{2\} \subset \{1, 2\}$.</p>
+    </div>
+
+    <div class="passo-teoria">
+        <h4>3. Operações entre Conjuntos</h4>
+        <ul>
+            <li><strong>União:</strong> $A \cup B = \{x \mid x \in A \text{ ou } x \in B\}$;</li>
+            <li><strong>Interseção:</strong> $A \cap B = \{x \mid x \in A \text{ e } x \in B\}$ (se $A \cap B = \varnothing$, os conjuntos são <strong>disjuntos</strong>);</li>
+            <li><strong>Diferença:</strong> $A - B = \{x \mid x \in A \text{ e } x \notin B\}$;</li>
+            <li><strong>Complementar</strong> em relação ao universo: $A^c = U - A$.</li>
+        </ul>
+        <figure class="figura-aula figura-grande">
+            <svg viewBox="0 0 640 210" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Diagramas de Venn: união, interseção e diferença de A e B" style="width:100%; max-width:640px; display:block; margin:0 auto;">
+  <defs>
+    <clipPath id="cA1"><circle cx="70" cy="95" r="55"/></clipPath>
+    <clipPath id="cA2"><circle cx="290" cy="95" r="55"/></clipPath>
+    <clipPath id="cA3"><circle cx="510" cy="95" r="55"/></clipPath>
+  </defs>
+  <circle cx="70" cy="95" r="55" fill="#3498db" fill-opacity="0.35"/><circle cx="140" cy="95" r="55" fill="#3498db" fill-opacity="0.35"/>
+  <circle cx="360" cy="95" r="55" fill="#3498db" fill-opacity="0.35" clip-path="url(#cA2)"/>
+  <circle cx="510" cy="95" r="55" fill="#3498db" fill-opacity="0.35"/><circle cx="580" cy="95" r="55" fill="#fdfdfd"/>
+  <g fill="none" stroke="#2c3e50" stroke-width="2.5">
+    <circle cx="70" cy="95" r="55"/><circle cx="140" cy="95" r="55"/>
+    <circle cx="290" cy="95" r="55"/><circle cx="360" cy="95" r="55"/>
+    <circle cx="510" cy="95" r="55"/><circle cx="580" cy="95" r="55"/>
+  </g>
+  <g font-family="Oswald, sans-serif" font-size="17" fill="#2c3e50" text-anchor="middle">
+    <text x="40" y="30">A</text><text x="170" y="30">B</text><text x="260" y="30">A</text><text x="390" y="30">B</text><text x="480" y="30">A</text><text x="610" y="30">B</text>
+    <text x="105" y="190">A ∪ B</text><text x="325" y="190">A ∩ B</text><text x="545" y="190">A − B</text>
+  </g>
+</svg>
+            <figcaption>Figura 1: Em azul, as regiões que representam $A \cup B$, $A \cap B$ e $A - B$.</figcaption>
+        </figure>
+    </div>
+
+    <div class="passo-teoria">
+        <h4>4. Número de Elementos (Problemas com Diagramas)</h4>
+        <p>Para dois conjuntos, os elementos da interseção são contados duas vezes em $n(A) + n(B)$; por isso subtraímos uma vez:</p>
+        <p style="text-align: center; font-size: 1.15rem; background-color: #f8f9fa; padding: 15px; border-left: 5px solid #3498db; margin: 20px 0;">
+            $$n(A \cup B) = n(A) + n(B) - n(A \cap B)$$
+        </p>
+        <p>Para três conjuntos: $n(A \cup B \cup C) = n(A) + n(B) + n(C) - n(A \cap B) - n(A \cap C) - n(B \cap C) + n(A \cap B \cap C)$.</p>
+        <p><strong>Dica:</strong> nos problemas com diagramas, preencha sempre <strong>de dentro para fora</strong>: primeiro a interseção de todos, depois as interseções duas a duas e, por último, as regiões "só A", "só B"...</p>
+    </div>
+</section>
+
+<section class="aplicacoes-reais" id="aplicacoes">
+    <h3>💡 Matemática em Ação</h3>
+    <div class="cards-aplicacao">
+        <div class="card">
+            <h4>🔎 Buscas na Internet e em Bancos de Dados</h4>
+            <p>Quando você pesquisa "futebol E feminino", o buscador devolve a <strong>interseção</strong> dos resultados; com "futebol OU vôlei", devolve a <strong>união</strong>. Os bancos de dados usam exatamente as operações entre conjuntos para filtrar informações.</p>
+        </div>
+        <div class="card" style="border-left-color: #2ecc71;">
+            <h4>📊 Pesquisas de Opinião</h4>
+            <p>Institutos de pesquisa organizam respostas como "usa o aplicativo A, o B ou os dois" em diagramas de Venn. A fórmula $n(A \cup B) = n(A) + n(B) - n(A \cap B)$ evita contar duas vezes quem marcou as duas opções.</p>
+        </div>
+    </div>
+</section>
+<section class="questoes-resolvidas" id="resolvidas">
+    <h3>✅ 5 Questões Resolvidas (R 1 a 5)</h3>
+    <article class="questao">
+        <h4>R 1: Representando um Conjunto</h4>
+        <p><strong>Enunciado:</strong> Considere $A = \{x \in \mathbb{N} \mid x \text{ é divisor de } 12\}$. Escreva $A$ enumerando seus elementos, determine $n(A)$ e diga se $5 \in A$ e se $6 \in A$.</p>
+        <div class="resolucao-bloco"><p><strong>Resolução:</strong><br>Os divisores naturais de $12$ são $1, 2, 3, 4, 6$ e $12$. Logo, $A = \{1, 2, 3, 4, 6, 12\}$.<br>O conjunto tem seis elementos: $n(A) = \mathbf{6}$.<br>$5$ não divide $12$, então $\mathbf{5 \notin A}$; já $6$ divide $12$, então $\mathbf{6 \in A}$.</p></div>
+    </article>
+    <article class="questao">
+        <h4>R 2: União, Interseção e Diferença</h4>
+        <p><strong>Enunciado:</strong> Dados $A = \{1, 2, 3, 4, 5\}$ e $B = \{4, 5, 6, 7\}$, determine $A \cup B$, $A \cap B$, $A - B$ e $B - A$.</p>
+        <div class="resolucao-bloco"><p><strong>Resolução:</strong><br>União (elementos de $A$ ou de $B$): $A \cup B = \mathbf{\{1, 2, 3, 4, 5, 6, 7\}}$.<br>Interseção (elementos comuns): $A \cap B = \mathbf{\{4, 5\}}$.<br>Diferenças: $A - B = \mathbf{\{1, 2, 3\}}$ (estão em $A$ e não em $B$) e $B - A = \mathbf{\{6, 7\}}$.</p></div>
+    </article>
+    <article class="questao">
+        <h4>R 3: Subconjuntos e Conjunto das Partes</h4>
+        <p><strong>Enunciado:</strong> Escreva todos os subconjuntos de $A = \{a, b, c\}$ e confira a quantidade pela fórmula $2^n$.</p>
+        <div class="resolucao-bloco"><p><strong>Resolução:</strong><br>Sem elementos: $\varnothing$. Com um elemento: $\{a\}$, $\{b\}$, $\{c\}$.<br>Com dois elementos: $\{a, b\}$, $\{a, c\}$, $\{b, c\}$. Com três: $\{a, b, c\}$.<br>Total: $1 + 3 + 3 + 1 = 8$ subconjuntos, e de fato $2^3 = \mathbf{8}$. Esses $8$ conjuntos formam o conjunto das partes $\mathcal{P}(A)$.</p></div>
+    </article>
+    <article class="questao">
+        <h4>R 4: Pesquisa com Dois Jornais</h4>
+        <p><strong>Enunciado:</strong> Em uma pesquisa com $100$ pessoas, $60$ leem o jornal A, $50$ leem o jornal B e $20$ leem os dois. Quantas leem só o jornal A, quantas leem só o B e quantas não leem nenhum dos dois?</p>
+        <div class="resolucao-bloco"><p><strong>Resolução:</strong><br>Começamos pela interseção: $20$ pessoas leem os dois jornais.<br>Só A: $60 - 20 = \mathbf{40}$. Só B: $50 - 20 = \mathbf{30}$.<br>Leem pelo menos um: $40 + 20 + 30 = 90$. Nenhum: $100 - 90 = \mathbf{10}$ pessoas.</p></div>
+    </article>
+    <article class="questao">
+        <h4>R 5: Três Esportes</h4>
+        <p><strong>Enunciado:</strong> Em uma turma de $40$ alunos, $20$ gostam de futebol, $18$ de vôlei e $15$ de basquete; $7$ gostam de futebol e vôlei, $6$ de futebol e basquete, $5$ de vôlei e basquete e $3$ gostam dos três. Quantos alunos não gostam de nenhum desses esportes?</p>
+        <div class="resolucao-bloco"><p><strong>Resolução:</strong><br>Pela fórmula de três conjuntos: $n(F \cup V \cup B) = 20 + 18 + 15 - 7 - 6 - 5 + 3 = 38$.<br>Não gostam de nenhum: $40 - 38 = \mathbf{2}$ alunos.<br>Conferência pelo diagrama: só futebol $= 20 - (4 + 3 + 3) = 10$, só vôlei $= 18 - (4 + 2 + 3) = 9$, só basquete $= 15 - (3 + 2 + 3) = 7$, e $10 + 9 + 7 + 4 + 3 + 2 + 3 = 38$ ✓</p></div>
+    </article>
+</section>
+
+<section class="questoes-propostas" id="propostas">
+    <h3>✍️ 10 Questões Propostas (P 6 a 15)</h3>
+    <article class="questao">
+        <h4>P 6: Enumerando</h4>
+        <p><strong>Enunciado:</strong> Escreva o conjunto $B = \{x \in \mathbb{N} \mid x &lt; 5\}$ enumerando seus elementos e determine $n(B)$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>Os naturais menores que $5$ são $0, 1, 2, 3$ e $4$.<br>$B = \mathbf{\{0, 1, 2, 3, 4\}}$ e $n(B) = \mathbf{5}$.</p></div>
+    </article>
+    <article class="questao">
+        <h4>P 7: União e Interseção</h4>
+        <p><strong>Enunciado:</strong> Dados $A = \{2, 4, 6, 8\}$ e $B = \{1, 2, 3, 4\}$, determine $A \cup B$ e $A \cap B$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>$A \cup B = \mathbf{\{1, 2, 3, 4, 6, 8\}}$.<br>$A \cap B = \mathbf{\{2, 4\}}$.</p></div>
+    </article>
+    <article class="questao">
+        <h4>P 8: Diferenças</h4>
+        <p><strong>Enunciado:</strong> Com os conjuntos $A = \{2, 4, 6, 8\}$ e $B = \{1, 2, 3, 4\}$, determine $A - B$ e $B - A$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>$A - B$: elementos de $A$ que não estão em $B$: $\mathbf{\{6, 8\}}$.<br>$B - A$: elementos de $B$ que não estão em $A$: $\mathbf{\{1, 3\}}$.</p></div>
+    </article>
+    <article class="questao">
+        <h4>P 9: Quantos Subconjuntos?</h4>
+        <p><strong>Enunciado:</strong> Quantos subconjuntos tem o conjunto $A = \{1, 2, 3, 4, 5\}$? Quantos deles são não vazios?</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>$n(A) = 5$, então o número de subconjuntos é $2^5 = \mathbf{32}$.<br>Retirando o conjunto vazio: $32 - 1 = \mathbf{31}$ subconjuntos não vazios.</p></div>
+    </article>
+    <article class="questao">
+        <h4>P 10: Pertinência e Inclusão</h4>
+        <p><strong>Enunciado:</strong> Classifique cada sentença em verdadeira (V) ou falsa (F): (I) $\varnothing \subset \{1, 2, 3\}$; (II) $\{2\} \in \{1, 2, 3\}$; (III) $2 \in \{1, 2, 3\}$; (IV) $\{1, 2\} \subset \{1, 2, 3\}$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>(I) V: o vazio é subconjunto de qualquer conjunto. (II) F: $\{2\}$ é um conjunto; o certo seria $\{2\} \subset \{1, 2, 3\}$.<br>(III) V: $2$ é elemento do conjunto. (IV) V: todos os elementos de $\{1, 2\}$ estão em $\{1, 2, 3\}$. Resposta: <strong>V, F, V, V</strong>.</p></div>
+    </article>
+    <article class="questao">
+        <h4>P 11: Complementar</h4>
+        <p><strong>Enunciado:</strong> Sendo o conjunto universo $U = \{1, 2, 3, \dots, 10\}$ e $A = \{1, 3, 5, 7, 9\}$, determine o complementar $A^c$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>$A^c = U - A$ reúne os elementos de $U$ que não estão em $A$.<br>$A^c = \mathbf{\{2, 4, 6, 8, 10\}}$.</p></div>
+    </article>
+    <article class="questao">
+        <h4>P 12: Número de Elementos da União</h4>
+        <p><strong>Enunciado:</strong> Sabendo que $n(A) = 25$, $n(B) = 18$ e $n(A \cap B) = 7$, calcule $n(A \cup B)$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>$n(A \cup B) = n(A) + n(B) - n(A \cap B) = 25 + 18 - 7 = \mathbf{36}$.</p></div>
+    </article>
+    <article class="questao">
+        <h4>P 13: Encontrando a Interseção</h4>
+        <p><strong>Enunciado:</strong> Sabendo que $n(A \cup B) = 50$, $n(A) = 30$ e $n(B) = 28$, calcule $n(A \cap B)$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>$50 = 30 + 28 - n(A \cap B)$.<br>$n(A \cap B) = 58 - 50 = \mathbf{8}$.</p></div>
+    </article>
+    <article class="questao">
+        <h4>P 14: Dois Canais de TV</h4>
+        <p><strong>Enunciado:</strong> Em uma pesquisa com $200$ pessoas, $120$ assistem ao canal X, $90$ assistem ao canal Y e $30$ não assistem a nenhum dos dois. Quantas pessoas assistem aos dois canais?</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>Assistem a pelo menos um canal: $200 - 30 = 170$ pessoas.<br>$170 = 120 + 90 - n(X \cap Y) \implies n(X \cap Y) = 210 - 170 = \mathbf{40}$ pessoas.</p></div>
+    </article>
+    <article class="questao">
+        <h4>P 15: Três Idiomas</h4>
+        <p><strong>Enunciado:</strong> Em um curso, $50$ alunos estudam inglês, $40$ estudam espanhol e $30$ estudam francês; $20$ estudam inglês e espanhol, $15$ inglês e francês, $10$ espanhol e francês, e $5$ estudam os três. Quantos alunos estudam pelo menos um idioma? Quantos estudam só inglês?</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>Pelo menos um: $50 + 40 + 30 - 20 - 15 - 10 + 5 = \mathbf{80}$ alunos.<br>Só inglês e espanhol: $20 - 5 = 15$; só inglês e francês: $15 - 5 = 10$.<br>Só inglês: $50 - (15 + 10 + 5) = \mathbf{20}$ alunos.</p></div>
+    </article>
+</section>
+
+<section class="TESTE" id="testes">
+    <h3>🎓 TESTES (T 11 a 15)</h3>
+    <article class="questao">
+        <h4>T 11: (ENEM) Os Catálogos de Cosméticos</h4>
+        <p>Um fabricante de cosméticos decide produzir três diferentes catálogos de seus produtos, visando a públicos distintos. Como alguns produtos estarão presentes em mais de um catálogo e ocupam uma página inteira, ele resolve fazer uma contagem para diminuir os gastos com originais de impressão. Os catálogos C1, C2 e C3 terão, respectivamente, 50, 45 e 40 páginas. Comparando os projetos de cada catálogo, ele verifica que C1 e C2 terão 10 páginas em comum; C1 e C3 terão 6 páginas em comum; C2 e C3 terão 5 páginas em comum, das quais 4 também estarão em C1.</p>
+        <p>Efetuando os cálculos correspondentes, o fabricante concluiu que, para a montagem dos três catálogos, necessitará de um total de originais de impressão igual a:</p>
+        <p>A) 135.<br>B) 126.<br>C) 118.<br>D) 114.<br>E) 110.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>C</strong>.<br>O total de originais é o número de páginas diferentes, isto é, $n(C_1 \cup C_2 \cup C_3)$.<br>$n = 50 + 45 + 40 - 10 - 6 - 5 + 4 = \mathbf{118}$ (subtraímos as páginas contadas duas vezes e devolvemos as $4$ que estão nos três).</p></div>
+    </article>
+    <article class="questao">
+        <h4>T 12: (Autoral) A Diferença Simétrica</h4>
+        <p>Considere os conjuntos $A = \{1, 2, 3\}$ e $B = \{2, 3, 4\}$.</p>
+        <p>O conjunto $(A \cup B) - (A \cap B)$ é igual a:</p>
+        <p>A) $\{1, 4\}$<br>B) $\{2, 3\}$<br>C) $\{1, 2, 3, 4\}$<br>D) $\varnothing$<br>E) $\{1\}$</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>A</strong>.<br>$A \cup B = \{1, 2, 3, 4\}$ e $A \cap B = \{2, 3\}$.<br>$(A \cup B) - (A \cap B) = \mathbf{\{1, 4\}}$: os elementos que estão em apenas um dos conjuntos.</p></div>
+    </article>
+    <article class="questao">
+        <h4>T 13: (Autoral) Quantos Elementos?</h4>
+        <p>Um conjunto $A$ possui exatamente $64$ subconjuntos. O número de elementos de $A$ é:</p>
+        <p>A) 4<br>B) 5<br>C) 6<br>D) 8<br>E) 32</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>C</strong>.<br>O número de subconjuntos é $2^{n(A)} = 64 = 2^6$.<br>Logo, $n(A) = \mathbf{6}$.</p></div>
+    </article>
+    <article class="questao">
+        <h4>T 14: (Autoral) Natação e Futebol</h4>
+        <p>Uma escola tem $300$ alunos. Desses, $180$ fazem natação, $140$ jogam futebol e $60$ praticam as duas atividades.</p>
+        <p>O número de alunos que não pratica nenhuma das duas atividades é:</p>
+        <p>A) 20<br>B) 40<br>C) 60<br>D) 80<br>E) 100</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>B</strong>.<br>Praticam pelo menos uma: $180 + 140 - 60 = 260$.<br>Nenhuma: $300 - 260 = \mathbf{40}$ alunos.</p></div>
+    </article>
+    <article class="questao">
+        <h4>T 15: (Autoral) O Complementar da União</h4>
+        <p>Sejam $A$ e $B$ subconjuntos de um conjunto universo $U$.</p>
+        <p>O complementar da união, $(A \cup B)^c$, é sempre igual a:</p>
+        <p>A) $A^c \cup B^c$<br>B) $A^c \cap B^c$<br>C) $A \cap B$<br>D) $A - B$<br>E) $U$</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>B</strong>.<br>Um elemento está em $(A \cup B)^c$ quando não está em $A$ <strong>e</strong> não está em $B$.<br>Isso é exatamente $A^c \cap B^c$ (Lei de De Morgan). Resposta: $\mathbf{A^c \cap B^c}$.</p></div>
+    </article>
+</section>
+
+</div></main>
+<aside class="menu-lateral"><iframe src="../menu_matematica.html" style="width:100%; border:none; height:600px;"></iframe></aside>
+</div>
+<script>
+function toggleGabarito(botao) {
+    const gabarito = botao.nextElementSibling;
+    if (gabarito.style.display === "none" || gabarito.style.display === "") {
+        gabarito.style.display = "block"; botao.textContent = "Esconder Gabarito e Resolução"; botao.style.backgroundColor = "#2c3e50";
+    } else {
+        gabarito.style.display = "none"; botao.textContent = "Ver Gabarito e Resolução"; botao.style.backgroundColor = "#3498db";
+    }
+}
+function toggleMenu() { const m = document.getElementById("menu-principal"); if (m) m.classList.toggle("ativo"); }
+let slideAtual = 0; let slides = [];
+function prepararSlides() { slides = Array.from(document.querySelectorAll('.container-resumo, .passo-teoria, .card, .questao')); }
+function toggleSlides() {
+    prepararSlides(); const body = document.body;
+    if (!body.classList.contains('modo-slides')) { body.classList.add('modo-slides'); slideAtual = 0; mostrarSlide(slideAtual); }
+    else { body.classList.remove('modo-slides'); slides.forEach(s => { s.classList.remove('slide-ativo'); s.style.display = ''; }); }
+}
+function mostrarSlide(n) {
+    if (!slides.length) return;
+    slides.forEach(s => { s.classList.remove('slide-ativo'); s.style.display = 'none'; });
+    const slide = slides[n]; slide.classList.add('slide-ativo');
+    slide.querySelectorAll('.gabarito-resolucao').forEach(g => g.style.display = 'none');
+    slide.querySelectorAll('.btn-gabarito').forEach(b => { b.textContent = "Ver Gabarito e Resolução"; b.style.backgroundColor = "#3498db"; });
+    const pHeader = document.querySelector('header p');
+    if (pHeader) { const partes = pHeader.innerText.split('|'); if (partes.length > 1) {
+        document.getElementById('slide-info-serie').innerText = partes[0].trim();
+        document.getElementById('slide-info-aula').innerText = partes[1].trim(); } }
+    document.getElementById('contador-slide').innerText = (n + 1) + " / " + slides.length;
+    if (window.MathJax && window.MathJax.typesetPromise) { MathJax.typesetPromise(); }
+}
+function mudarSlide(d) { slideAtual += d; if (slideAtual >= slides.length) slideAtual = 0; if (slideAtual < 0) slideAtual = slides.length - 1; mostrarSlide(slideAtual); }
+document.addEventListener('keydown', function(event) {
+    if (document.body.classList.contains('modo-slides')) {
+        switch(event.key) {
+            case 'ArrowRight': case 'PageDown': case 'Enter': case ' ': event.preventDefault(); mudarSlide(1); break;
+            case 'ArrowLeft': case 'PageUp': event.preventDefault(); mudarSlide(-1); break;
+            case 'Escape': event.preventDefault(); toggleSlides(); break;
+        }
+    }
+});
+</script>
+<div class="controles-slides">
+    <div id="slide-info-serie" class="info-lateral"></div>
+    <div class="botoes-centrais">
+        <button class="btn-nav" onclick="mudarSlide(-1)">⬅ Anterior</button>
+        <span id="contador-slide"></span>
+        <button class="btn-nav" onclick="mudarSlide(1)">Próximo ➡</button>
+        <button class="btn-nav" onclick="toggleSlides()" style="background:#e74c3c;">Sair</button>
+    </div>
+    <div id="slide-info-aula" class="info-lateral" style="text-align: right;"></div>
+</div>
+</body>
+</html>
