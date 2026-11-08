@@ -328,7 +328,6 @@ O sinal negativo de $i_3$ indica que seu sentido real
 
     <figure class="figura-aula">
     <img src="../imagens_fisica/aula3_23_T16.png" alt="Circuito elétrico com gerador de 60 V, receptor de 14 V e três ramos com resistores R, 4 ohms e 2 ohms." style="width:100%; max-width:380px; display:block; margin:0 auto;">
-    <figcaption>Circuito elétrico de três ramos e duas malhas independentes.</figcaption>
 </figure>
 
     <p>O valor da resistência elétrica $R$ é:</p>
@@ -409,7 +408,6 @@ O sinal negativo de $i_3$ indica que seu sentido real
     <figure class="figura-aula">
         <img src="../imagens_fisica/aula3_23_T17.png"
              alt="Circuito elétrico com gerador de 12 V, três resistores de 2 ohms, um resistor de 10 ohms e resistência R entre os pontos A e B.">
-        <figcaption>Circuito elétrico com três malhas e resistências em diferentes ramos.</figcaption>
     </figure>
 
     <p>O valor da resistência elétrica $R$ é:</p>
@@ -477,7 +475,228 @@ O sinal negativo de $i_3$ indica que seu sentido real
     </div>
 </article>
 
+<article class="questao">
+    <h4>T 18: (UDESC) Aplicação das Leis de Kirchhoff</h4>
 
+    <p>De acordo com a figura, um circuito elétrico apresenta três resistores, de resistências $5,0\ \Omega$, $4,0\ \Omega$ e um gerador de $4,0\ \text{V}$ no ramo central. O circuito também possui dois geradores ideais de $6,0\ \text{V}$ e $8,0\ \text{V}$.</p>
+
+    <figure class="figura-aula">
+        <img src="../imagens_fisica/aula3_23_T18.png"
+             alt="Circuito elétrico com três ramos, resistores de 5 e 4 ohms, geradores de 6, 8 e 4 volts e correntes i1, i2 e i3."
+             style="width:100%; max-width:480px; display:block; margin:0 auto;">
+    </figure>
+
+    <p>Os valores das correntes elétricas $i_1$, $i_2$ e $i_3$ são, respectivamente, iguais a:</p>
+
+    <p>
+        A) $2,0\ \text{A}$, $3,0\ \text{A}$, $5,0\ \text{A}$<br>
+        B) $-2,0\ \text{A}$, $3,0\ \text{A}$, $5,0\ \text{A}$<br>
+        C) $3,0\ \text{A}$, $2,0\ \text{A}$, $5,0\ \text{A}$<br>
+        D) $5,0\ \text{A}$, $3,0\ \text{A}$, $8,0\ \text{A}$<br>
+        E) $2,0\ \text{A}$, $-3,0\ \text{A}$, $-5,0\ \text{A}$
+    </p>
+
+    <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+
+    <div class="gabarito-resolucao">
+
+        <p><strong>Resolução:</strong> Alternativa <strong>A</strong>.</p>
+
+        <p>
+        <strong>1. Aplicação da Lei das Malhas (malha esquerda):</strong><br>
+        Percorrendo a malha esquerda, considerando a fonte de $6,0\ \text{V}$ e o gerador central de $4,0\ \text{V}$:
+        </p>
+
+        $$5i_1-6-4=0$$
+
+        $$5i_1=10$$
+
+        $$\boxed{i_1=2,0\ \text{A}}$$
+
+        <p>
+        <strong>2. Aplicação da Lei das Malhas (malha direita):</strong><br>
+        Percorrendo a malha direita:
+        </p>
+
+        $$4i_2-8-4=0$$
+
+        $$4i_2=12$$
+
+        $$\boxed{i_2=3,0\ \text{A}}$$
+
+        <p>
+        <strong>3. Aplicação da Lei dos Nós:</strong><br>
+        No nó superior, a corrente $i_3$ chega ao nó e se divide nas correntes $i_1$ e $i_2$:
+        </p>
+
+        $$i_3=i_1+i_2$$
+
+        $$i_3=2+3$$
+
+        $$\boxed{i_3=5,0\ \text{A}}$$
+
+        <p>
+        <strong>Resposta:</strong> As correntes elétricas são:
+        </p>
+
+        $$\boxed{i_1=2,0\ \text{A},\quad i_2=3,0\ \text{A},\quad i_3=5,0\ \text{A}}$$
+
+        <p>Alternativa <strong>A</strong>.</p>
+
+    </div>
+</article>
+
+<article class="questao">
+    <h4>T 19: (UEL-PR) Diferença de Potencial entre Dois Pontos</h4>
+
+    <p>Um circuito elétrico é constituído por cinco resistores ôhmicos, sendo quatro resistores de resistência $R_1=3\ \Omega$ e um resistor de resistência $R_2=6\ \Omega$, além de três baterias ideais, cujas forças eletromotrizes são $E_1=6,0\ \text{V}$ e $E_2=E_3=12,0\ \text{V}$.</p>
+
+    <figure class="figura-aula">
+        <img src="../imagens_fisica/aula3_23_T19.png"
+             alt="Circuito elétrico com cinco resistores e três baterias, com os pontos a e b destacados."
+             style="width:100%; max-width:380px; display:block; margin:0 auto;">
+    </figure>
+
+    <p>Considerando a disposição dos elementos no circuito, determine a diferença de potencial entre os pontos $a$ e $b$, isto é, $U_{ab}=V_a-V_b$.</p>
+
+    <p>
+        A) $-3,0\ \text{V}$<br>
+        B) $3,0\ \text{V}$<br>
+        C) $10,0\ \text{V}$<br>
+        D) $6,0\ \text{V}$<br>
+        E) $-10,0\ \text{V}$
+    </p>
+
+    <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+
+    <div class="gabarito-resolucao">
+        <p><strong>Resolução:</strong> Alternativa <strong>C</strong>.</p>
+
+        <p>
+        <strong>1. Identificação das resistências dos ramos:</strong><br>
+        Nos ramos esquerdo e direito, existem dois resistores de $3\ \Omega$ associados em série:
+        </p>
+
+        $$R_{\text{esq}}=3+3=6\ \Omega$$
+        $$R_{\text{dir}}=3+3=6\ \Omega$$
+
+        <p>O ramo central possui um resistor de $6\ \Omega$.</p>
+
+        <p>
+        <strong>2. Aplicação da Lei das Malhas:</strong><br>
+        Definindo as correntes $i_1$, $i_2$ e $i_3$ nos três ramos, todas com sentido de $a$ para $b$, temos:
+        </p>
+
+        <p>Malha esquerda:</p>
+        $$6i_1+6-12=0$$
+        $$6i_1=6$$
+
+        <p>Malha direita:</p>
+        $$6i_2+12-12=0$$
+
+        <p>
+        Para evitar confusão com os sentidos das correntes, podemos determinar diretamente a tensão entre os nós utilizando as equações dos três ramos:
+        </p>
+
+        <p>
+        <strong>3. Determinação da diferença de potencial:</strong><br>
+        Aplicando a relação entre tensão, resistência e corrente em cada ramo:
+        </p>
+
+        $$i_1=\frac{U_{ab}-6}{6}$$
+        $$i_2=\frac{U_{ab}-12}{6}$$
+        $$i_3=\frac{U_{ab}-12}{6}$$
+
+        <p>
+        <strong>4. Aplicação da Lei dos Nós:</strong><br>
+        Como não há conexão externa nos nós, a soma algébrica das correntes é nula:
+        </p>
+
+        $$i_1+i_2+i_3=0$$
+
+        <p>Substituindo as expressões das correntes:</p>
+
+        $$\frac{U_{ab}-6}{6}+
+        \frac{U_{ab}-12}{6}+
+        \frac{U_{ab}-12}{6}=0$$
+
+        $$3U_{ab}-30=0$$
+
+        $$3U_{ab}=30$$
+
+        $$\boxed{U_{ab}=10,0\ \text{V}}$$
+
+        <p><strong>Resposta:</strong> Alternativa <strong>C (10,0 V)</strong>.</p>
+    </div>
+</article>
+
+<article class="questao">
+    <h4>T 20: (UFLA-MG) Associação de Geradores e Lei das Malhas</h4>
+
+    <p>No circuito apresentado na figura, estão representadas diversas fontes de força eletromotriz ideais, com resistência interna desprezível, que alimentam dois resistores de resistências $R_1=1,75\ \Omega$ e $R_2=1,25\ \Omega$.</p>
+
+    <figure class="figura-aula">
+        <img src="../imagens_fisica/aula3_23_T20.png"
+             alt="Circuito elétrico com resistores de 1,75 ohm e 1,25 ohm e fontes de 9 V, 1,5 V e duas fontes de 3 V em paralelo."
+             style="width:100%; max-width:420px; display:block; margin:0 auto;">
+    </figure>
+
+    <p>A corrente elétrica $i$ no circuito é de:</p>
+
+    <p>
+        A) $6,0\ \text{A}$<br>
+        B) $5,0\ \text{A}$<br>
+        C) $4,5\ \text{A}$<br>
+        D) $2,0\ \text{A}$<br>
+        E) $3,0\ \text{A}$
+    </p>
+
+    <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+
+    <div class="gabarito-resolucao">
+
+        <p><strong>Resolução:</strong> Alternativa <strong>D</strong>.</p>
+
+        <p>
+        <strong>1. Associação das fontes de 3 V:</strong><br>
+        As duas fontes ideais de $3\ \text{V}$ estão associadas em paralelo e possuem a mesma polaridade. Portanto, sua associação equivale a uma única fonte de:
+        </p>
+
+        $$E_{\text{eq}}=3\ \text{V}$$
+
+        <p>
+        <strong>2. Resistência total do circuito:</strong><br>
+        Os dois resistores estão associados em série:
+        </p>
+
+        $$R_{\text{total}}=R_1+R_2$$
+        $$R_{\text{total}}=1,75+1,25$$
+        $$\boxed{R_{\text{total}}=3,0\ \Omega}$$
+
+        <p>
+        <strong>3. Aplicação da Lei das Malhas:</strong><br>
+        Percorrendo o circuito no sentido da corrente indicada, somamos algebricamente as forças eletromotrizes:
+        </p>
+
+        $$E_{\text{resultante}}=1,5+9-3-1,5$$
+        $$\boxed{E_{\text{resultante}}=6,0\ \text{V}}$$
+
+        <p>
+        Aplicando a Lei das Malhas de Kirchhoff:
+        </p>
+
+        $$9+1,5-3-1,5-R_1i-R_2i=0$$
+
+        $$9-3-3i=0$$
+
+        $$6=3i$$
+
+        $$\boxed{i=2,0\ \text{A}}$$
+
+        <p><strong>Resposta:</strong> Alternativa <strong>D (2,0 A)</strong>.</p>
+
+    </div>
+</article>
 </section>
 
 </div></main>
