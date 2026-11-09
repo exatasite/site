@@ -110,6 +110,16 @@
   .resItem small{color:var(--suave)}
   .toast{position:fixed;left:50%;bottom:22px;transform:translateX(-50%);background:#0f172a;color:#fff;padding:10px 16px;border-radius:10px;font-size:.9rem;z-index:99;opacity:0;transition:opacity .25s;pointer-events:none}
   .toast.on{opacity:1}
+  input[type=email],input[type=password]{display:block;width:100%;margin-top:4px;padding:9px 11px;border:1px solid #cbd5e1;border-radius:9px;font:inherit;background:#fff}
+  .minhas .topoConta{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:8px}
+  .minhas .quem{font-size:.88rem;color:var(--suave)}
+  .itemAula{border:1px solid var(--borda);border-left:5px solid var(--laranja);border-radius:6px;padding:10px 12px;margin-top:10px;background:#fff}
+  .itemAula.atual{background:var(--realce)}
+  .itemAula b{color:var(--azul)}
+  .itemAula small{display:block;color:var(--suave);margin-top:2px}
+  .itemAula .linhaBtns{margin-top:8px}
+  .itemAula .btn{padding:6px 12px;font-size:.9rem}
+  .busca{margin-top:10px}
 </style>
 </head>
 <body>
@@ -123,6 +133,27 @@
   <!-- ================= MODO PROFESSOR ================= -->
   <section id="editor" hidden>
     <a class="voltarSite" href="../exataplay.html">← Voltar ao Exata Play</a>
+    <div class="card minhas" id="cardMinhas">
+      <h2>📂 Minhas aulas</h2>
+      <div id="contaSair">
+        <p class="dica">Entre com a mesma conta de professor do Exata Quiz para guardar suas aulas e abrir de qualquer computador ou celular.</p>
+        <label>E-mail <input type="email" id="lgEmail" autocomplete="username"></label>
+        <label>Senha <input type="password" id="lgSenha" autocomplete="current-password"></label>
+        <div class="linhaBtns">
+          <button class="btn primario" id="btnEntrar">Entrar</button>
+          <button class="btn" id="btnEsqueci">Esqueci a senha</button>
+        </div>
+        <p class="aviso" id="avisoLogin"></p>
+      </div>
+      <div id="contaDentro" hidden>
+        <div class="topoConta">
+          <span class="quem" id="quemConta"></span>
+          <button class="btn" id="btnSair">Sair</button>
+        </div>
+        <input class="busca" id="buscaAula" placeholder="🔎 Procurar aula pelo título">
+        <div id="listaMinhas"><p class="dica">Carregando...</p></div>
+      </div>
+    </div>
     <div class="card">
       <h2>1. Vídeo</h2>
       <label>Título da aula
@@ -151,7 +182,9 @@
       <div class="linhaBtns">
         <button class="btn laranja" id="btnPrevia">▶ Testar como aluno</button>
         <button class="btn primario" id="btnLink">🔗 Gerar link do aluno</button>
+        <button class="btn" id="btnSalvarNuvem">💾 Salvar em Minhas aulas</button>
       </div>
+      <p class="dica" id="statusNuvem"></p>
       <p class="aviso" id="avisoValida"></p>
       <div id="areaLink" hidden>
         <label>Link para mandar aos alunos
@@ -315,6 +348,33 @@
     return String(t||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/º|ª/g,'')
       .trim().replace(/[\s\-\.\/]+/g,'_').replace(/[^A-Za-z0-9_]/g,'').replace(/_+/g,'_').replace(/^_|_$/g,'');
   }
+  /* ---------- conta do professor (Firebase do Exata Quiz) ---------- */
+  function carregarScript(src){
+    return new Promise((ok, falha) => { const s = document.createElement('script'); s.src = src; s.onload = ok; s.onerror = falha; document.head.appendChild(s); });
+  }
+  const FB = { db: null, auth: null, user: null, aulas: {}, parar: null };
+  async function iniciarFirebase(){
+    const v = 'https://www.gstatic.com/firebasejs/10.12.2/';
+    await carregarScript(v + 'firebase-app-compat.js');
+    await Promise.all([carregarScript(v + 'firebase-auth-compat.js'), carregarScript(v + 'firebase-database-compat.js')]);
+    await carregarScript('../quiz/js/config.js');
+    const cfg = window.EXATA_FIREBASE || {};
+    if (!cfg.apiKey) throw new Error('sem configuração');
+    if (!firebase.apps.length) firebase.initializeApp(cfg);
+    FB.db = firebase.database(); FB.auth = firebase.auth();
+    await FB.auth.setPersistence(firebase.auth.Auth.Persistence.LOCAL).catch(()=>{});
+  }
+  function limpoFB(v){ return JSON.parse(JSON.stringify(v)); }
+  function caminhoAulas(){ return 'professores/' + FB.user.uid + '/videos'; }
+  async function salvarNaNuvem(extra){
+    if (!FB.user) return false;
+    if (!aula.idNuvem) aula.idNuvem = FB.db.ref().push().key;
+    const reg = { titulo: aula.titulo || '', videoId: aula.videoId || '', perguntas: aula.perguntas || [], atualizado: Date.now(), ...(extra || {}) };
+    const ref = FB.db.ref(caminhoAulas() + '/' + aula.idNuvem);
+    await ref.update(limpoFB(reg));
+    try { localStorage.setItem(CHAVE, JSON.stringify(aula)); } catch(e){}
+    return true;
+  }
   function novoId(){ return Math.random().toString(36).slice(2, 9); }
   function tipar(el){ if (window.MathJax && MathJax.typesetPromise) MathJax.typesetPromise([el]).catch(()=>{}); }
   function toast(msg){ const t = $('#toast'); t.textContent = msg; t.classList.add('on'); clearTimeout(toast._t); toast._t = setTimeout(()=>t.classList.remove('on'), 2200); }
@@ -374,7 +434,14 @@
   let aula = { titulo: '', videoId: '', link: '', perguntas: [] };
   let edPlayer = null;
 
-  function salvar(){ try { localStorage.setItem(CHAVE, JSON.stringify(aula)); } catch(e){} }
+  function salvar(){
+    try { localStorage.setItem(CHAVE, JSON.stringify(aula)); } catch(e){}
+    /* aula já guardada na conta: atualiza sozinha 2 s depois da última mudança */
+    if (FB.user && aula.idNuvem) {
+      clearTimeout(salvar._t);
+      salvar._t = setTimeout(() => salvarNaNuvem({ desatualizado: true }).then(() => { $('#statusNuvem').textContent = 'Alterações guardadas em Minhas aulas. Gere o link de novo para os alunos verem a versão nova.'; }).catch(() => {}), 2000);
+    }
+  }
   function carregarSalvo(){
     try { const s = localStorage.getItem(CHAVE); if (s) { const o = JSON.parse(s); if (o && Array.isArray(o.perguntas)) aula = o; } } catch(e){}
   }
@@ -537,7 +604,98 @@
     return base + '#aula=' + codificar(aulaParaAluno());
   }
 
+  function dataCurta(ms){ try { return new Date(ms).toLocaleDateString('pt-BR', {day:'2-digit', month:'2-digit', year:'numeric'}); } catch(e){ return ''; } }
+  function renderMinhas(){
+    const box = $('#listaMinhas'); if (!box) return;
+    const filtro = String($('#buscaAula').value || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
+    const lista = Object.entries(FB.aulas || {}).map(([id, o]) => ({ id, ...o }))
+      .filter(o => !filtro || String(o.titulo||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').includes(filtro))
+      .sort((a,b) => (b.atualizado||0) - (a.atualizado||0));
+    if (!Object.keys(FB.aulas || {}).length) { box.innerHTML = '<p class="dica">Você ainda não tem aulas guardadas. Monte uma aula e clique em "💾 Salvar em Minhas aulas" (ou gere o link do aluno: ela é guardada sozinha).</p>'; return; }
+    if (!lista.length) { box.innerHTML = '<p class="dica">Nenhuma aula com esse título.</p>'; return; }
+    box.innerHTML = lista.map(o => {
+      const n = Array.isArray(o.perguntas) ? o.perguntas.length : Object.keys(o.perguntas || {}).length;
+      const link = o.curto || o.linkAluno || '';
+      return `<div class="itemAula${o.id === aula.idNuvem ? ' atual' : ''}" data-id="${esc(o.id)}">
+        <b>${esc(o.titulo || 'Aula sem título')}</b>${o.id === aula.idNuvem ? ' <small style="display:inline">(aberta agora)</small>' : ''}
+        <small>${n} pergunta${n === 1 ? '' : 's'} · atualizada em ${dataCurta(o.atualizado)}${o.curto ? ' · ' + esc(o.curto.replace(/^https?:\/\//,'')) : ''}</small>
+        ${o.desatualizado && link ? '<small style="color:var(--laranja-esc)">⚠ A aula mudou depois do último link: abra e gere o link de novo.</small>' : ''}
+        <div class="linhaBtns">
+          <button class="btn primario" data-acao="abrir">✏️ Abrir</button>
+          ${link ? '<button class="btn" data-acao="copiar">🔗 Copiar link</button>' : ''}
+          <button class="btn" data-acao="apagar">🗑 Apagar</button>
+        </div></div>`;
+    }).join('');
+  }
+  async function iniciarConta(){
+    try { await iniciarFirebase(); }
+    catch(e){ $('#cardMinhas').innerHTML = '<h2>📂 Minhas aulas</h2><p class="aviso">Não foi possível conectar à sua conta agora. Verifique a internet e recarregue a página.</p>'; return; }
+    FB.auth.onAuthStateChanged(u => {
+      if (FB.parar) { FB.parar(); FB.parar = null; }
+      FB.user = (u && !u.isAnonymous) ? u : null;
+      $('#contaSair').hidden = !!FB.user; $('#contaDentro').hidden = !FB.user;
+      $('#btnSalvarNuvem').hidden = !FB.user;
+      $('#statusNuvem').textContent = FB.user ? '' : 'Entre na sua conta (no alto da página) para guardar esta aula em "Minhas aulas".';
+      if (!FB.user) { FB.aulas = {}; return; }
+      $('#quemConta').textContent = 'Conectado como ' + (FB.user.email || '');
+      const ref = FB.db.ref(caminhoAulas());
+      const h = snap => { FB.aulas = snap.val() || {}; renderMinhas(); };
+      ref.on('value', h, () => { $('#listaMinhas').innerHTML = '<p class="aviso">O banco recusou a leitura das suas aulas. Me avise para eu conferir as regras do Firebase.</p>'; });
+      FB.parar = () => ref.off('value', h);
+    });
+    $('#btnEntrar').addEventListener('click', async () => {
+      const e = $('#lgEmail').value.trim(), sn = $('#lgSenha').value, av = $('#avisoLogin');
+      if (!e || !sn) { av.textContent = 'Digite o e-mail e a senha.'; return; }
+      av.textContent = '';
+      try { await FB.auth.signInWithEmailAndPassword(e, sn); $('#lgSenha').value = ''; toast('Bem-vindo!'); }
+      catch(err){ av.textContent = /network/i.test(err.code||'') ? 'Sem conexão com a internet.' : 'E-mail ou senha incorretos. Use a mesma conta do Exata Quiz.'; }
+    });
+    $('#lgSenha').addEventListener('keydown', e => { if (e.key === 'Enter') $('#btnEntrar').click(); });
+    $('#btnEsqueci').addEventListener('click', async () => {
+      const e = $('#lgEmail').value.trim(), av = $('#avisoLogin');
+      if (!e) { av.textContent = 'Digite seu e-mail no campo acima e clique de novo em "Esqueci a senha".'; return; }
+      try { await FB.auth.sendPasswordResetEmail(e); av.textContent = 'Mandamos um e-mail para ' + e + ' com o link para criar uma nova senha.'; }
+      catch(err){ av.textContent = 'Não consegui mandar o e-mail. Confira se o endereço está certo.'; }
+    });
+    $('#btnSair').addEventListener('click', () => FB.auth.signOut());
+    $('#buscaAula').addEventListener('input', renderMinhas);
+    $('#listaMinhas').addEventListener('click', e => {
+      const b = e.target.closest('button[data-acao]'); if (!b) return;
+      const id = b.closest('.itemAula').dataset.id, o = FB.aulas[id]; if (!o) return;
+      if (b.dataset.acao === 'abrir') {
+        abrirAula({ titulo: o.titulo, videoId: o.videoId, perguntas: Array.isArray(o.perguntas) ? o.perguntas : Object.values(o.perguntas || {}) }, id);
+        toast('Aula aberta para edição.');
+      } else if (b.dataset.acao === 'copiar') {
+        copiar(o.curto || o.linkAluno);
+      } else if (b.dataset.acao === 'apagar') {
+        if (!b.dataset.confirma) { b.dataset.confirma = '1'; b.textContent = 'Clique de novo para apagar'; setTimeout(() => { delete b.dataset.confirma; b.textContent = '🗑 Apagar'; }, 3000); return; }
+        FB.db.ref(caminhoAulas() + '/' + id).remove().then(() => {
+          if (aula.idNuvem === id) { delete aula.idNuvem; salvar(); }
+          toast('Aula apagada.');
+        }).catch(() => toast('Não consegui apagar. Tente de novo.'));
+      }
+    });
+    $('#btnSalvarNuvem').addEventListener('click', async () => {
+      if (!validar()) return;
+      try { await salvarNaNuvem(); toast('Aula guardada em Minhas aulas.'); $('#statusNuvem').textContent = 'Guardada em Minhas aulas.'; renderMinhas(); }
+      catch(e){ $('#statusNuvem').textContent = 'Não consegui guardar na sua conta. Verifique a internet.'; }
+    });
+  }
+
+  /* abre uma aula (da conta ou de um link) no editor */
+  function abrirAula(o, idNuvem){
+    (o.perguntas || []).forEach(q => { q.id = q.id || novoId(); q.explicacao = q.explicacao || ''; if (q.tipo === 'mc') { q.opcoes = q.opcoes || ['','']; q.correta = q.correta || 0; } else q.aceitas = q.aceitas || ''; });
+    aula = { titulo: o.titulo || '', videoId: o.videoId || '', link: o.videoId ? 'https://youtu.be/' + o.videoId : '', perguntas: o.perguntas || [] };
+    if (idNuvem) aula.idNuvem = idNuvem;
+    ordenar(); salvar();
+    $('#edTitulo').value = aula.titulo; $('#edLink').value = aula.link;
+    $('#areaLink').hidden = true; $('#avisoValida').textContent = ''; $('#statusNuvem').textContent = '';
+    renderLista(); renderMinhas(); if (aula.videoId) carregarVideoEditor();
+    window.scrollTo({top: $('#edTitulo').getBoundingClientRect().top + scrollY - 120, behavior:'smooth'});
+  }
+
   function iniciarEditor(){
+    iniciarConta();
     $('#modoLabel').textContent = 'Modo professor';
     $('#editor').hidden = false; $('#aluno').hidden = true;
     carregarSalvo();
@@ -564,6 +722,9 @@
       $('#areaLink').hidden = false;
       $('#areaCurto').hidden = true; $('#areaTiny').hidden = true; $('#avisoCurto').textContent = '';
       $('#avisoArquivo').hidden = location.protocol !== 'file:';
+      if (FB.user) salvarNaNuvem({ linkAluno: $('#txtLink').value, curto: null, desatualizado: null })
+        .then(() => { $('#statusNuvem').textContent = 'Guardada em Minhas aulas.'; })
+        .catch(() => { $('#statusNuvem').textContent = 'O link foi gerado, mas não consegui guardar na sua conta.'; });
     });
     $('#btnCopiarLink').addEventListener('click', () => copiar($('#txtLink').value, $('#txtLink')));
     $('#btnEncurtar').addEventListener('click', async e => {
@@ -579,7 +740,8 @@
       try {
         const curto = await encurtarIsGd(paraEncurtar, apelido);
         if (apelido && !curto.endsWith('/' + apelido)) aviso.textContent = 'O encurtador não aceitou o nome escolhido e criou um código aleatório. Tente outro nome.';
-        $('#txtCurto').value = curto; $('#areaCurto').hidden = false; $('#areaTiny').hidden = true;
+        $('#txtCurto').value = curto;
+        if (FB.user) salvarNaNuvem({ linkAluno: longo, curto, desatualizado: null }).catch(() => {}); $('#areaCurto').hidden = false; $('#areaTiny').hidden = true;
         copiar(curto, $('#txtCurto'));
         toast('Link curto criado e copiado!');
       } catch(err){
@@ -602,22 +764,17 @@
       try {
         const o = await lerAula(txt);
         if (!o || !Array.isArray(o.perguntas)) throw 0;
-        o.perguntas.forEach(q => { q.id = q.id || novoId(); q.explicacao = q.explicacao || ''; if (q.tipo === 'mc') { q.opcoes = q.opcoes || ['','']; q.correta = q.correta || 0; } else q.aceitas = q.aceitas || ''; });
-        aula = { titulo: o.titulo || '', videoId: o.videoId || '', link: o.videoId ? 'https://youtu.be/' + o.videoId : '', perguntas: o.perguntas };
-        ordenar(); salvar();
-        $('#edTitulo').value = aula.titulo; $('#edLink').value = aula.link;
-        renderLista(); if (aula.videoId) carregarVideoEditor();
+        abrirAula(o, null);
         $('#txtImport').value = ''; toast('Aula aberta para edição.');
-        window.scrollTo({top:0, behavior:'smooth'});
       } catch(e){ toast('Não reconheci esse link/código.'); }
     });
     $('#btnNova').addEventListener('click', e => {
       const b = e.currentTarget;
-      if (!b.dataset.confirma) { b.dataset.confirma = '1'; b.textContent = 'Clique de novo para apagar a aula atual'; setTimeout(() => { delete b.dataset.confirma; b.textContent = 'Nova aula'; }, 3000); return; }
+      if (!b.dataset.confirma) { b.dataset.confirma = '1'; b.textContent = 'Clique de novo para começar outra aula'; setTimeout(() => { delete b.dataset.confirma; b.textContent = 'Nova aula'; }, 3000); return; }
       aula = { titulo: '', videoId: '', link: '', perguntas: [] }; salvar();
       $('#edTitulo').value = ''; $('#edLink').value = ''; $('#areaLink').hidden = true; $('#avisoValida').textContent = '';
       try { edPlayer && edPlayer.stopVideo(); } catch(err){}
-      $('#edPlayerBox').hidden = true; renderLista();
+      $('#edPlayerBox').hidden = true; renderLista(); renderMinhas(); $('#statusNuvem').textContent = '';
       delete b.dataset.confirma; b.textContent = 'Nova aula'; toast('Nova aula iniciada.');
     });
   }
