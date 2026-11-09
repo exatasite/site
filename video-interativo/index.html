@@ -60,6 +60,8 @@
   .pqTopo .num{font-weight:700;flex:1}
   .tag{font-size:.75rem;font-weight:700;padding:3px 9px;border-radius:4px;background:var(--realce);color:var(--azul)}
   .tag.curta{background:#FDEBD0;color:var(--laranja-esc)}
+  @keyframes piscaQ{0%{box-shadow:0 0 0 4px var(--laranja)}100%{box-shadow:0 0 0 0 transparent}}
+  .pq.pisca{animation:piscaQ 1.6s ease-out}
   .tempoLinha{display:flex;align-items:flex-end;gap:8px;flex-wrap:wrap}
   .tempoLinha label{margin-bottom:0}
   .tempoLinha input{width:110px;font-weight:700;text-align:center}
@@ -465,15 +467,24 @@
     return 0;
   }
 
+  /* depois de reordenar, rola até a pergunta e pisca em laranja para o professor ver onde ela ficou */
+  function destacar(id, focarEnunciado){
+    const card = document.querySelector(`[data-qid="${id}"]`); if (!card) return;
+    card.scrollIntoView({behavior:'smooth', block:'center'});
+    card.classList.remove('pisca'); void card.offsetWidth; card.classList.add('pisca');
+    if (focarEnunciado) { const el = card.querySelector('textarea[data-campo="enunciado"]'); if (el) el.focus({preventScroll:true}); }
+  }
   function novaPergunta(tipo){
-    const t = tempoAtualEditor();
+    /* vídeo parado no início: a pergunta nova vai para o fim da lista (tempo da última pergunta), não para 0:00 */
+    let t = tempoAtualEditor();
+    const ultimo = aula.perguntas.reduce((m, x) => Math.max(m, x.t ?? 0), 0);
+    if (t < 1 && aula.perguntas.length) t = ultimo;
     const q = { id: novoId(), tipo, t, enunciado: '', explicacao: '' };
     if (tipo === 'mc') { q.opcoes = ['', '', '', '']; q.correta = 0; }
     else q.aceitas = '';
     aula.perguntas.push(q);
     ordenar(); salvar(); renderLista();
-    const el = document.querySelector(`[data-qid="${q.id}"] textarea[data-campo="enunciado"]`);
-    if (el) { el.scrollIntoView({behavior:'smooth', block:'center'}); el.focus({preventScroll:true}); }
+    destacar(q.id, true);
   }
 
   function opcoesHTML(q){
@@ -536,7 +547,7 @@
           const v = parseTempo(el.value);
           if (v === null) { el.classList.add('invalido'); toast('Tempo inválido. Use o formato min:seg, ex.: 2:35'); return; }
           el.classList.remove('invalido');
-          q.t = v; ordenar(); salvar(); renderLista();
+          q.t = v; ordenar(); salvar(); renderLista(); destacar(q.id, false);
         }
       });
       d.addEventListener('click', e => {
@@ -547,7 +558,7 @@
           else { b.dataset.confirma = '1'; b.textContent = 'Confirmar exclusão'; setTimeout(() => { if (b.isConnected) { delete b.dataset.confirma; b.textContent = 'Excluir'; } }, 3000); }
         } else if (acao === 'agora') {
           if (!edPlayer) { toast('Carregue o vídeo primeiro.'); return; }
-          q.t = tempoAtualEditor(); ordenar(); salvar(); renderLista(); toast('Tempo definido: ' + fmt(q.t));
+          q.t = tempoAtualEditor(); ordenar(); salvar(); renderLista(); destacar(q.id, false); toast('Tempo definido: ' + fmt(q.t));
         } else if (acao === 'ir') {
           if (!edPlayer) { toast('Carregue o vídeo primeiro.'); return; }
           try { edPlayer.seekTo(Math.max(0, q.t - 3), true); edPlayer.playVideo(); $('#edPlayerBox').scrollIntoView({behavior:'smooth', block:'center'}); } catch(err){}
