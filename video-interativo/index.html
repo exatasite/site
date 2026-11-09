@@ -148,9 +148,6 @@
 
     <div class="card">
       <h2>3. Enviar para os alunos</h2>
-      <label>Turma (opcional)
-        <input id="edTurma" maxlength="20" placeholder="Ex.: 9A, 1º ano B, Eng. Civil">
-      </label>
       <div class="linhaBtns">
         <button class="btn laranja" id="btnPrevia">▶ Testar como aluno</button>
         <button class="btn primario" id="btnLink">🔗 Gerar link do aluno</button>
@@ -165,7 +162,7 @@
           <button class="btn laranja" id="btnEncurtar">✂️ Encurtar link</button>
         </div>
         <label>Nome do link curto (opcional)
-          <input id="edApelido" maxlength="24" placeholder="Ex.: proporcao">
+          <input id="edApelido" maxlength="30" placeholder="Ex.: proporcao9A">
         </label>
         <p class="dica" id="previaCurto"></p>
         <p class="aviso" id="avisoCurto"></p>
@@ -202,10 +199,12 @@
 
     <div class="card centro" id="telaInicio">
       <h1 id="alTitulo"></h1>
-      <p class="dica" id="alTurma" hidden style="margin-top:-6px;font-weight:700"></p>
       <p id="alInfo" class="dica"></p>
       <label>Digite seu nome
         <input id="alNome" placeholder="Nome completo" autocomplete="name">
+      </label>
+      <label>Digite sua turma
+        <input id="alTurma" placeholder="Ex.: 9º A" maxlength="30">
       </label>
       <p class="aviso" id="avisoNome"></p>
       <div class="linhaBtns" style="justify-content:center"><button class="btn primario grande" id="btnComecar">Começar</button></div>
@@ -520,7 +519,6 @@
   function aulaParaAluno(){
     return {
       titulo: aula.titulo.trim(), videoId: aula.videoId,
-      ...(String(aula.turma||'').trim() ? { turma: String(aula.turma).trim() } : {}),
       perguntas: aula.perguntas.map(q => {
         const base = { id: q.id, tipo: q.tipo, t: q.t, enunciado: q.enunciado.trim(), explicacao: (q.explicacao||'').trim() };
         if (q.tipo === 'mc') {
@@ -549,20 +547,11 @@
     if (aula.videoId) carregarVideoEditor();
 
     $('#edTitulo').addEventListener('input', e => { aula.titulo = e.target.value; salvar(); });
-    $('#edTurma').value = aula.turma || '';
-    const apelidoFinal = () => {
-      const n = limparNome($('#edApelido').value), t = limparNome($('#edTurma').value).replace(/_/g,'');
-      if (!n) return '';
-      return (t ? n + '_' + t : n).slice(0, 30);
-    };
+    const apelidoFinal = () => limparNome($('#edApelido').value).slice(0, 30);
     const atualizarPrevia = () => {
       const a = apelidoFinal();
       $('#previaCurto').textContent = a ? 'Seu link vai ficar assim: is.gd/' + a : (String($('#edApelido').value).trim() ? '' : 'Sem nome, o link curto recebe um código aleatório.');
     };
-    $('#edTurma').addEventListener('input', e => {
-      aula.turma = e.target.value; salvar(); atualizarPrevia();
-      if (!$('#areaLink').hidden) { $('#areaCurto').hidden = true; $('#avisoCurto').textContent = 'A turma mudou: clique em "Gerar link do aluno" de novo.'; }
-    });
     $('#edApelido').addEventListener('input', atualizarPrevia);
     atualizarPrevia();
     $('#btnCarregar').addEventListener('click', carregarVideoEditor);
@@ -583,7 +572,7 @@
       if (!longo) return;
       if (location.protocol === 'file:') { aviso.textContent = 'Para encurtar, abra esta página pelo seu site (GitHub), não pelo arquivo do computador.'; return; }
       const apelido = apelidoFinal();
-      if (String($('#edApelido').value).trim() && apelido.length < 5) { aviso.textContent = 'O nome do link precisa ter pelo menos 5 letras ou números (juntando com a turma).'; return; }
+      if (String($('#edApelido').value).trim() && apelido.length < 5) { aviso.textContent = 'O nome do link precisa ter pelo menos 5 letras ou números.'; return; }
       /* com nome escolhido, o endereço longo ganha "?n=nome" para não reaproveitar um link curto criado antes */
       const paraEncurtar = apelido ? longo.replace(/^([^#?]*)(\?[^#]*)?/, '$1?n=' + apelido) : longo;
       aviso.textContent = ''; b.disabled = true; const txtB = b.textContent; b.textContent = 'Encurtando...';
@@ -614,9 +603,9 @@
         const o = await lerAula(txt);
         if (!o || !Array.isArray(o.perguntas)) throw 0;
         o.perguntas.forEach(q => { q.id = q.id || novoId(); q.explicacao = q.explicacao || ''; if (q.tipo === 'mc') { q.opcoes = q.opcoes || ['','']; q.correta = q.correta || 0; } else q.aceitas = q.aceitas || ''; });
-        aula = { titulo: o.titulo || '', turma: o.turma || '', videoId: o.videoId || '', link: o.videoId ? 'https://youtu.be/' + o.videoId : '', perguntas: o.perguntas };
+        aula = { titulo: o.titulo || '', videoId: o.videoId || '', link: o.videoId ? 'https://youtu.be/' + o.videoId : '', perguntas: o.perguntas };
         ordenar(); salvar();
-        $('#edTitulo').value = aula.titulo; $('#edLink').value = aula.link; $('#edTurma').value = aula.turma;
+        $('#edTitulo').value = aula.titulo; $('#edLink').value = aula.link;
         renderLista(); if (aula.videoId) carregarVideoEditor();
         $('#txtImport').value = ''; toast('Aula aberta para edição.');
         window.scrollTo({top:0, behavior:'smooth'});
@@ -626,7 +615,7 @@
       const b = e.currentTarget;
       if (!b.dataset.confirma) { b.dataset.confirma = '1'; b.textContent = 'Clique de novo para apagar a aula atual'; setTimeout(() => { delete b.dataset.confirma; b.textContent = 'Nova aula'; }, 3000); return; }
       aula = { titulo: '', videoId: '', link: '', perguntas: [] }; salvar();
-      $('#edTitulo').value = ''; $('#edLink').value = ''; $('#edTurma').value = ''; $('#areaLink').hidden = true; $('#avisoValida').textContent = '';
+      $('#edTitulo').value = ''; $('#edLink').value = ''; $('#areaLink').hidden = true; $('#avisoValida').textContent = '';
       try { edPlayer && edPlayer.stopVideo(); } catch(err){}
       $('#edPlayerBox').hidden = true; renderLista();
       delete b.dataset.confirma; b.textContent = 'Nova aula'; toast('Nova aula iniciada.');
@@ -653,18 +642,20 @@
     A = { dados, previa, player: null, resp: {}, atual: null, terminou: false, timer: null, dur: 0, marcadores: false, nome: '' };
     document.title = (dados.titulo ? dados.titulo + ' — ' : '') + 'Exata Vídeo';
     $('#alTitulo').textContent = dados.titulo || 'Videoaula interativa';
-    $('#alTurma').textContent = dados.turma ? 'Turma: ' + dados.turma : ''; $('#alTurma').hidden = !dados.turma;
     const n = dados.perguntas.length;
     $('#alInfo').textContent = `Este vídeo tem ${n} pergunta${n>1?'s':''}. Ele vai pausar sozinho nos momentos certos: responda e o vídeo continua.`;
     $('#alNome').value = previa ? 'Professor (teste)' : '';
+    $('#alTurma').value = previa ? 'Teste' : (dados.turma || '');
     $('#avisoNome').textContent = '';
     window.scrollTo({top:0});
   }
 
   async function comecar(){
     const nome = $('#alNome').value.trim();
-    if (!nome) { $('#avisoNome').textContent = 'Digite seu nome para começar.'; return; }
-    A.nome = nome;
+    if (!nome) { $('#avisoNome').textContent = 'Digite seu nome para começar.'; $('#alNome').focus(); return; }
+    const turma = $('#alTurma').value.trim();
+    if (!turma) { $('#avisoNome').textContent = 'Digite sua turma para começar.'; $('#alTurma').focus(); return; }
+    A.nome = nome; A.turma = turma; $('#avisoNome').textContent = '';
     $('#telaInicio').hidden = true; $('#telaVideo').hidden = false;
     atualizarPlacar();
     await ytPronto;
@@ -810,7 +801,7 @@
 
   function textoResultado(){
     const ps = A.dados.perguntas, certos = ps.filter(q => A.resp[q.id] && A.resp[q.id].certo).length;
-    let t = `Videoaula: ${A.dados.titulo || 'Vídeo interativo'}\n${A.dados.turma ? 'Turma: ' + A.dados.turma + '\n' : ''}Aluno(a): ${A.nome}\nAcertos: ${certos} de ${ps.length} (${Math.round(certos/ps.length*100)}%)\n`;
+    let t = `Videoaula: ${A.dados.titulo || 'Vídeo interativo'}\nAluno(a): ${A.nome}\nTurma: ${A.turma}\nAcertos: ${certos} de ${ps.length} (${Math.round(certos/ps.length*100)}%)\n`;
     ps.forEach((q, i) => { const r = A.resp[q.id]; t += `\n${i+1}) ${r && r.certo ? 'Certo' : 'Errado'} — resposta: ${r ? r.dada : '-'}`; });
     return t;
   }
@@ -822,6 +813,7 @@
     const pct = Math.round(certos / ps.length * 100);
     const fim = $('#telaFim');
     let h = `<h2 style="color:var(--azul);margin:0">Parabéns, ${esc(A.nome)}! Você terminou.</h2>
+      <div class="dica" style="margin:4px 0 0">Turma: ${esc(A.turma)}</div>
       <div class="nota">${certos} / ${ps.length}</div>
       <div class="dica" style="margin:0">${pct}% de acertos</div>
       <div class="linhaBtns" style="justify-content:center">
@@ -854,7 +846,8 @@
   }
 
   $('#btnComecar').addEventListener('click', comecar);
-  $('#alNome').addEventListener('keydown', e => { if (e.key === 'Enter') comecar(); });
+  $('#alNome').addEventListener('keydown', e => { if (e.key === 'Enter') $('#alTurma').focus(); });
+  $('#alTurma').addEventListener('keydown', e => { if (e.key === 'Enter') comecar(); });
   $('#btnTela').addEventListener('click', () => {
     const p = $('#palco');
     if (document.fullscreenElement) document.exitFullscreen().catch(()=>{});
