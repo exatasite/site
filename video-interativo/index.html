@@ -20,6 +20,7 @@
     --f-titulo:'Oswald','Arial Narrow',Arial,sans-serif;
   }
   *{box-sizing:border-box}
+  [hidden]{display:none!important}
   body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--fundo);color:var(--texto);line-height:1.45}
   .topo{background:var(--azul);color:#fff;padding:18px 5%;text-align:center;border-bottom:5px solid var(--laranja);box-shadow:0 4px 6px rgba(0,0,0,.1)}
   .topo h1{font-family:var(--f-titulo);font-weight:700;margin:0 0 4px;font-size:2rem;letter-spacing:.02em;color:#fff}
@@ -81,12 +82,12 @@
   .painelQ{background:var(--card);border:1px solid #e0e0e0;border-top:5px solid var(--laranja);border-radius:8px;padding:16px 18px;margin-top:12px;box-shadow:0 6px 18px rgba(0,51,102,.15)}
   .painelQ .rotulo{font-family:var(--f-titulo);font-size:.9rem;font-weight:600;color:var(--laranja);text-transform:uppercase;letter-spacing:.08em}
   .painelQ .enun{font-size:1.08rem;font-weight:600;margin:6px 0 12px;white-space:pre-line}
-  .alt{display:flex;gap:10px;align-items:flex-start;width:100%;text-align:left;background:#fafcfd;border:2px solid var(--borda);border-radius:6px;padding:11px 13px;margin:7px 0;font:inherit;cursor:pointer}
+  .alt{color:var(--texto);display:flex;gap:10px;align-items:flex-start;width:100%;text-align:left;background:#fafcfd;border:2px solid var(--borda);border-radius:6px;padding:11px 13px;margin:7px 0;font:inherit;cursor:pointer}
   .alt b{color:var(--azul)}
   .alt.sel{border-color:var(--azul);background:var(--realce)}
   .alt.certa{border-color:var(--ok);background:#f0fdf4}
   .alt.errada{border-color:var(--erro);background:#fef2f2}
-  .alt:disabled{cursor:default}
+  .alt:disabled{cursor:default;opacity:1}
   .feedback{border-radius:6px;padding:12px 14px;margin-top:12px}
   .feedback.ok{background:#f0fdf4;color:#14532d;border:1px solid #bbf7d0}
   .feedback.no{background:#fef2f2;color:#7f1d1d;border:1px solid #fecaca}
