@@ -214,7 +214,7 @@
         <summary>Guardar ou abrir uma aula (cópia de segurança)</summary>
         <p class="dica">O link do aluno já guarda a aula inteira. Para editar depois, cole aqui o link (ou o código) e clique em "Abrir aula". Comece uma aula nova com o botão "Nova aula".</p>
         <label>Link ou código da aula
-          <textarea id="txtImport" rows="3" placeholder="Cole aqui o link do aluno ou o código"></textarea>
+          <textarea id="txtImport" rows="3" placeholder="Cole aqui o link do aluno (longo ou curto do is.gd)"></textarea>
         </label>
         <div class="linhaBtns">
           <button class="btn" id="btnImportar">Abrir aula</button>
@@ -374,6 +374,19 @@
     await ref.update(limpoFB(reg));
     try { localStorage.setItem(CHAVE, JSON.stringify(aula)); } catch(e){}
     return true;
+  }
+  /* descobre para onde aponta um link curto do is.gd (JSONP) */
+  function expandirIsGd(curto){
+    return new Promise((ok, falha) => {
+      const cb = '__isgdf' + Date.now();
+      const sc = document.createElement('script');
+      const fim = () => { delete window[cb]; sc.remove(); clearTimeout(t); };
+      const t = setTimeout(() => { fim(); falha(); }, 12000);
+      window[cb] = d => { fim(); d && d.url ? ok(d.url) : falha(); };
+      sc.onerror = () => { fim(); falha(); };
+      sc.src = 'https://is.gd/forward.php?format=json&callback=' + cb + '&shorturl=' + encodeURIComponent(curto);
+      document.head.appendChild(sc);
+    });
   }
   function novoId(){ return Math.random().toString(36).slice(2, 9); }
   function tipar(el){ if (window.MathJax && MathJax.typesetPromise) MathJax.typesetPromise([el]).catch(()=>{}); }
@@ -760,8 +773,10 @@
       iniciarAluno(aulaParaAluno(), true);
     });
     $('#btnImportar').addEventListener('click', async () => {
-      const txt = $('#txtImport').value.trim();
+      let txt = $('#txtImport').value.trim();
       try {
+        const m = txt.match(/is\.gd\/([A-Za-z0-9_]+)/);
+        if (m && !txt.includes('#')) txt = await expandirIsGd(m[1]);
         const o = await lerAula(txt);
         if (!o || !Array.isArray(o.perguntas)) throw 0;
         abrirAula(o, null);
