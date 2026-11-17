@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1º Ano: Aula 21 - Força de Atrito</title>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../estilo.css">
+    
+    <script>
+        MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true
+            }
+        };
+    </script>
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+   </head> 
+
+<body>
+<button class="menu-toggle" onclick="toggleMenu()">☰</button>
+
+<nav id="menu-principal" class="nav-global">
+    <ul>
+        <li><a href="../index.html">🏠 Início</a></li>
+        <li><a href="../ensino_medio.html">📚 Ensino Médio</a></li>
+        <li><a href="../ensino_superior.html">🎓 Ensino Superior</a></li>
+    </ul>
+</nav>
+<header id="topo">
+    <h1>FÍSICA EM</h1>
+    <p>1º Ano | Aula 21: Força de Atrito</p>
+    <button id="btn-slides" onclick="toggleSlides()">📺 Iniciar Modo Slides</button>
+</header>
+
+<div class="container">
+
+<main class="conteudo-principal">
+
+<div class="secao-aula">
+<div class="container-resumo" id="resumo">
+    <h3>📚 Resumo</h3>
+    <section class="resumo-conteudo">
+        <p>A <strong>força de atrito</strong> surge no contato entre superfícies ásperas, é <strong>paralela</strong> à superfície e se opõe ao deslizamento (ou à tendência de deslizamento).</p>
+        <p style="text-align: center;"><strong>Estático (parado):</strong> $0 \le f_e \le \mu_e \cdot N$ &nbsp;&nbsp;|&nbsp;&nbsp; <strong>Cinético (deslizando):</strong> $f_c = \mu_c \cdot N$</p>
+        <p style="text-align: center;">Em geral, $\mu_e > \mu_c$: é mais difícil <strong>tirar</strong> um corpo do repouso do que <strong>mantê-lo</strong> em movimento.</p>
+    </section>
+</div>
+
+<section class="conteudo-teorico-completo" id="teoria">
+    <div class="passo-teoria">
+        <h3>📖 Força de Atrito</h3>
+        <h4>1. Origem e Direção do Atrito</h4>
+        <p>Nenhuma superfície é perfeitamente lisa: as pequenas rugosidades se “encaixam” e dificultam o deslizamento. A <strong>força de atrito</strong> é a componente da força de contato <strong>paralela</strong> à superfície, e sempre se opõe ao deslizamento relativo entre as superfícies.</p>
+        <figure class="figura-aula">
+            <svg viewBox="0 0 400 240" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Bloco sobre superfície áspera puxado por uma força F, com atrito contrário, normal e peso" style="width:100%; max-width:380px; display:block; margin:0 auto; font-family:sans-serif;">
+            <defs><marker id="s1_2980b9" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto"><polygon points="0 0, 10 4, 0 8" fill="#2980b9"/></marker><marker id="s1_7f8c8d" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto"><polygon points="0 0, 10 4, 0 8" fill="#7f8c8d"/></marker><marker id="s1_8e44ad" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto"><polygon points="0 0, 10 4, 0 8" fill="#8e44ad"/></marker><marker id="s1_e67e22" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto"><polygon points="0 0, 10 4, 0 8" fill="#e67e22"/></marker><marker id="s1_e74c3c" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto"><polygon points="0 0, 10 4, 0 8" fill="#e74c3c"/></marker></defs>
+            <line x1="30" y1="150" x2="370" y2="150" stroke="#2c3e50" stroke-width="2.5"/>
+            <line x1="30" y1="150" x2="22" y2="159" stroke="#7f8c8d" stroke-width="1.2"/>
+            <line x1="44" y1="150" x2="36" y2="159" stroke="#7f8c8d" stroke-width="1.2"/>
+            <line x1="58" y1="150" x2="50" y2="159" stroke="#7f8c8d" stroke-width="1.2"/>
+            <line x1="72" y1="150" x2="64" y2="159" stroke="#7f8c8d" stroke-width="1.2"/>
+            <line x1="86" y1="150" x2="78" y2="159" stroke="#7f8c8d" stroke-width="1.2"/>
+            <line x1="100" y1="150" x2="92" y2="159" stroke="#7f8c8d" stroke-width="1.2"/>
+            <line x1="114" y1="150" x2="106" y2="159" stroke="#7f8c8d" stroke-width="1.2"/>
+            <line x1="128" y1="150" x2="120" y2="159" stroke="#7f8c8d" stroke-width="1.2"/>
+            <line x1="142" y1="150" x2="134" y2="159" stroke="#7f8c8d" stroke-width="1.2"/>
+            <line x1="156" y1="150" x2="148" y2="159" stroke="#7f8c8d" stroke-width="1.2"/>
+            <line x1="170" y1="150" x2="162" y2="159" stroke="#7f8c8d" stroke-width="1.2"/>
+            <line x1="184" y1="150" x2="176" y2="159" stroke="#7f8c8d" stroke-width="1.2"/>
+            <line x1="198" y1="150" x2="190" y2="159" stroke="#7f8c8d" stroke-width="1.2"/>
+            <line x1="212" y1="150" x2="204" y2="159" stroke="#7f8c8d" stroke-width="1.2"/>
+            <line x1="226" y1="150" x2="218" y2="159" stroke="#7f8c8d" stroke-width="1.2"/>
+            <line x1="240" y1="150" x2="232" y2="159" stroke="#7f8c8d" stroke-width="1.2"/>
+            <line x1="254" y1="150" x2="246" y2="159" stroke="#7f8c8d" stroke-width="1.2"/>
+            <line x1="268" y1="150" x2="260" y2="159" stroke="#7f8c8d" stroke-width="1.2"/>
+            <line x1="282" y1="150" x2="274" y2="159" stroke="#7f8c8d" stroke-width="1.2"/>
+            <line x1="296" y1="150" x2="288" y2="159" stroke="#7f8c8d" stroke-width="1.2"/>
+            <line x1="310" y1="150" x2="302" y2="159" stroke="#7f8c8d" stroke-width="1.2"/>
+            <line x1="324" y1="150" x2="316" y2="159" stroke="#7f8c8d" stroke-width="1.2"/>
+            <line x1="338" y1="150" x2="330" y2="159" stroke="#7f8c8d" stroke-width="1.2"/>
+            <line x1="352" y1="150" x2="344" y2="159" stroke="#7f8c8d" stroke-width="1.2"/>
+            <line x1="366" y1="150" x2="358" y2="159" stroke="#7f8c8d" stroke-width="1.2"/>
+            <rect x="150" y="90" width="100" height="60" fill="#f5cba7" stroke="#a04000" stroke-width="2" rx="3"/>
+            <text x="165" y="110" fill="#4a2a0a" font-size="15" text-anchor="middle" font-weight="bold">m</text>
+            <path d="M 30 150 l 8 -4 l 8 4 l 8 -4 l 8 4 l 8 -4 l 8 4 l 8 -4 l 8 4 l 8 -4 l 8 4 l 8 -4 l 8 4 l 8 -4 l 8 4 l 8 -4 l 8 4 l 8 -4 l 8 4 l 8 -4 l 8 4 l 8 -4 l 8 4 l 8 -4 l 8 4 l 8 -4 l 8 4 l 8 -4 l 8 4 l 8 -4 l 8 4 l 8 -4 l 8 4 l 8 -4 l 8 4 l 8 -4 l 8 4 l 8 -4 l 8 4 l 8 -4 l 8 4 l 8 -4 l 8 4" fill="none" stroke="#a6acaf" stroke-width="1"/>
+            <line x1="250" y1="120" x2="340" y2="120" stroke="#e67e22" stroke-width="3" marker-end="url(#s1_e67e22)"/>
+            <text x="330" y="110" fill="#e67e22" font-size="15" text-anchor="middle" font-weight="bold">F</text>
+            <line x1="150" y1="146" x2="70" y2="146" stroke="#8e44ad" stroke-width="3" marker-end="url(#s1_8e44ad)"/>
+            <text x="100" y="180" fill="#8e44ad" font-size="15" text-anchor="middle" font-weight="bold">f<tspan font-size="10" dy="4">at</tspan></text>
+            <line x1="200" y1="120" x2="200" y2="40" stroke="#2980b9" stroke-width="3" marker-end="url(#s1_2980b9)"/>
+            <text x="218" y="50" fill="#2980b9" font-size="15" text-anchor="middle" font-weight="bold">N</text>
+            <line x1="200" y1="120" x2="200" y2="215" stroke="#e74c3c" stroke-width="3" marker-end="url(#s1_e74c3c)"/>
+            <text x="218" y="210" fill="#e74c3c" font-size="15" text-anchor="middle" font-weight="bold">P</text>
+            <circle cx="200" cy="120" r="3.5" fill="#2c3e50"/>
+            <line x1="270" y1="30" x2="340" y2="30" stroke="#7f8c8d" stroke-width="2" marker-end="url(#s1_7f8c8d)"/>
+            <text x="305" y="22" fill="#7f8c8d" font-size="11" text-anchor="middle" font-weight="bold">tendência de movimento</text>
+            </svg>
+            <figcaption>Figura 1: A força de atrito (roxo) é paralela à superfície e se opõe ao deslizamento (ou à tendência de deslizamento) do bloco.</figcaption>
+        </figure>
+    </div>
+
+    <div class="passo-teoria">
+        <h4>2. Atrito Estático</h4>
+        <p>Enquanto o corpo está <strong>parado</strong>, o atrito estático tem exatamente o valor necessário para impedir o movimento. Ele cresce junto com a força aplicada, até um limite:</p>
+        <p style="text-align: center;">$$f_{e,\,máx} = \mu_e \cdot N$$</p>
+        <ul>
+            <li>$\mu_e$ é o <strong>coeficiente de atrito estático</strong> (adimensional), que depende dos materiais em contato.</li>
+            <li>Se a força aplicada é <strong>menor</strong> que $\mu_e N$, o corpo fica parado e $f_e = F$ (e não $\mu_e N$!).</li>
+            <li>Quando $F = \mu_e N$, o corpo está na <strong>iminência de movimento</strong>.</li>
+        </ul>
+    </div>
+
+    <div class="passo-teoria">
+        <h4>3. Atrito Cinético (ou Dinâmico)</h4>
+        <p>Quando o corpo já está <strong>deslizando</strong>, o atrito é praticamente constante:</p>
+        <p style="text-align: center;">$$f_c = \mu_c \cdot N$$</p>
+        <p>Como em geral $\mu_c &lt; \mu_e$, a força de atrito cai um pouco assim que o corpo começa a deslizar.</p>
+        <figure class="figura-aula">
+            <svg viewBox="0 0 400 260" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Gráfico da força de atrito em função da força aplicada: cresce até o máximo estático e cai para o valor cinético constante" style="width:100%; max-width:380px; display:block; margin:0 auto; font-family:sans-serif;">
+            <defs><marker id="s2_2c3e50" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto"><polygon points="0 0, 10 4, 0 8" fill="#2c3e50"/></marker></defs>
+            <line x1="60" y1="220" x2="370" y2="220" stroke="#2c3e50" stroke-width="2" marker-end="url(#s2_2c3e50)"/>
+            <line x1="60" y1="220" x2="60" y2="25" stroke="#2c3e50" stroke-width="2" marker-end="url(#s2_2c3e50)"/>
+            <text x="374" y="238" fill="#2c3e50" font-size="13" text-anchor="end" font-weight="bold">F aplicada</text>
+            <text x="52" y="29" fill="#2c3e50" font-size="13" text-anchor="end" font-weight="bold">f<tspan font-size="10" dy="4">at</tspan></text>
+            <line x1="60" y1="220" x2="210" y2="70" stroke="#8e44ad" stroke-width="3"/>
+            <line x1="210" y1="70" x2="222" y2="110" stroke="#8e44ad" stroke-width="3"/>
+            <line x1="222" y1="110" x2="360" y2="110" stroke="#8e44ad" stroke-width="3"/>
+            <line x1="60" y1="70" x2="210" y2="70" stroke="#7f8c8d" stroke-width="1.2" stroke-dasharray="6 4"/>
+            <line x1="60" y1="110" x2="222" y2="110" stroke="#7f8c8d" stroke-width="1.2" stroke-dasharray="6 4"/>
+            <line x1="210" y1="70" x2="210" y2="220" stroke="#7f8c8d" stroke-width="1.2" stroke-dasharray="6 4"/>
+            <text x="54" y="75" fill="#2c3e50" font-size="12" text-anchor="end" font-weight="bold">μ<tspan font-size="9" dy="4">e</tspan><tspan dy="-4">N</tspan></text>
+            <text x="54" y="115" fill="#2c3e50" font-size="12" text-anchor="end" font-weight="bold">μ<tspan font-size="9" dy="4">c</tspan><tspan dy="-4">N</tspan></text>
+            <text x="135" y="205" fill="#555" font-size="12" text-anchor="middle" font-style="italic">repouso</text>
+            <text x="135" y="190" fill="#8e44ad" font-size="12" text-anchor="middle" font-weight="bold">atrito estático</text>
+            <text x="290" y="135" fill="#8e44ad" font-size="12" text-anchor="middle" font-weight="bold">atrito cinético</text>
+            <text x="290" y="150" fill="#555" font-size="12" text-anchor="middle" font-style="italic">movimento</text>
+            <text x="210" y="236" fill="#555" font-size="11" text-anchor="middle" font-style="italic">iminência</text>
+            </svg>
+            <figcaption>Figura 2: Enquanto o corpo está parado, o atrito estático acompanha a força aplicada até o valor máximo $\mu_e N$. Depois que o corpo desliza, o atrito passa a ser cinético, de valor constante $\mu_c N$ (menor).</figcaption>
+        </figure>
+    </div>
+
+    <div class="passo-teoria">
+        <h4>4. Propriedades Importantes</h4>
+        <ul>
+            <li>O atrito <strong>não depende da área de contato</strong>, apenas dos materiais ($\mu$) e da normal ($N$).</li>
+            <li>Num plano horizontal, sem outras forças verticais, $N = P = mg$, então $f = \mu \cdot m \cdot g$.</li>
+            <li>Se o atrito é a única força horizontal num corpo que desliza, a desaceleração é $a = \dfrac{\mu_c m g}{m} = \mu_c \cdot g$ (não depende da massa).</li>
+            <li>O atrito nem sempre atrapalha: ao <strong>caminhar</strong>, o pé empurra o chão para trás e o atrito estático no pé aponta <strong>para frente</strong>, impulsionando a pessoa. O mesmo vale para os pneus de um carro.</li>
+        </ul>
+    </div>
+</section>
+
+<section class="aplicacoes-reais" id="aplicacoes">
+    <h3>💡 Física em Ação</h3>
+    <div class="cards-aplicacao">
+        <div class="card">
+            <h4>🛑 Freios ABS</h4>
+            <p>Com as rodas travadas, o pneu desliza e o atrito é cinético. O sistema ABS evita o travamento, mantendo o pneu rolando sem deslizar, com o atrito estático (que é maior). Resultado: o carro para em uma distância menor.</p>
+        </div>
+        <div class="card" style="border-left-color: #2ecc71;">
+            <h4>👟 Solado dos Calçados</h4>
+            <p>Tênis de corrida e chuteiras usam borrachas e cravos que aumentam o coeficiente de atrito com o solo. Assim o atleta consegue empurrar o chão com força sem escorregar.</p>
+        </div>
+    </div>
+</section>
+
+<section class="questoes-resolvidas" id="resolvidas">
+    <h3>✅ 5 Questões Resolvidas (R 1 a 5)</h3>
+
+    <article class="questao">
+        <h4>R 1: Parado ou em Movimento?</h4>
+        <p><strong>Enunciado:</strong> Um bloco de $10\text{ kg}$ está sobre um piso horizontal, com $\mu_e = 0{,}4$ e $\mu_c = 0{,}3$ ($g = 10\text{ m/s}^2$). Determine a força de atrito e a aceleração quando uma força horizontal de: (a) $30\text{ N}$; (b) $40\text{ N}$; (c) $50\text{ N}$ é aplicada ao bloco, inicialmente em repouso.</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong> Normal: $N = P = 100\text{ N}$. Atrito estático máximo: $f_{e,máx} = 0{,}4 \cdot 100 = 40\text{ N}$. Atrito cinético: $f_c = 0{,}3 \cdot 100 = 30\text{ N}$.<br>(a) $30\text{ N} &lt; 40\text{ N}$: o bloco fica parado, $f_e = 30\text{ N}$ e $a = 0$.<br>(b) $40\text{ N}$: iminência de movimento, $f_e = 40\text{ N}$ e $a = 0$.<br>(c) $50\text{ N} &gt; 40\text{ N}$: o bloco desliza, com atrito cinético: $a = \dfrac{50 - 30}{10} = 2\text{ m/s}^2$.</p>
+        </div>
+    </article>
+    <article class="questao">
+        <h4>R 2: Coeficiente a Partir da Frenagem</h4>
+        <p><strong>Enunciado:</strong> Uma caixa de $5\text{ kg}$ é lançada sobre um piso horizontal com velocidade de $10\text{ m/s}$ e para após $5\text{ s}$, sob a ação apenas do atrito. Com $g = 10\text{ m/s}^2$, qual é o coeficiente de atrito cinético?</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong> Desaceleração: $a = \dfrac{\Delta v}{\Delta t} = \dfrac{10}{5} = 2\text{ m/s}^2$.<br>O atrito é a resultante: $\mu_c m g = m a \Rightarrow \mu_c = \dfrac{a}{g} = \dfrac{2}{10} = 0{,}2$.</p>
+        </div>
+    </article>
+    <article class="questao">
+        <h4>R 3: Velocidade Constante</h4>
+        <p><strong>Enunciado:</strong> Uma caixa de $20\text{ kg}$ é arrastada sobre um piso horizontal com velocidade constante por uma força horizontal de $60\text{ N}$. Com $g = 10\text{ m/s}^2$, determine o coeficiente de atrito cinético.</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong> Velocidade constante significa resultante nula: $f_c = F = 60\text{ N}$.<br>$\mu_c = \dfrac{f_c}{N} = \dfrac{60}{200} = 0{,}3$.</p>
+        </div>
+    </article>
+    <article class="questao">
+        <h4>R 4: Bloco com Atrito Ligado a Bloco Pendurado</h4>
+        <p><strong>Enunciado:</strong> Um bloco $A$ de $6\text{ kg}$, sobre uma mesa horizontal com $\mu_c = 0{,}25$, está ligado por um fio ideal, que passa por uma polia ideal, a um bloco $B$ de $4\text{ kg}$ pendurado. Com $g = 10\text{ m/s}^2$ e o sistema em movimento, calcule a aceleração e a tração.</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong> Atrito em A: $f_c = 0{,}25 \cdot 60 = 15\text{ N}$. Peso de B: $40\text{ N}$.<br>Bloco A: $T - 15 = 6a$. &nbsp; Bloco B: $40 - T = 4a$.<br>Somando: $25 = 10a \Rightarrow a = 2{,}5\text{ m/s}^2$.<br>Tração: $T = 15 + 6 \cdot 2{,}5 = 30\text{ N}$ (em B: $40 - 30 = 10 = 4 \cdot 2{,}5$ ✓).</p>
+        </div>
+    </article>
+    <article class="questao">
+        <h4>R 5: Distância de Frenagem</h4>
+        <p><strong>Enunciado:</strong> Um carro trafega a $20\text{ m/s}$ numa pista horizontal e freia com as rodas travadas. O coeficiente de atrito cinético entre os pneus e o asfalto é $0{,}5$ ($g = 10\text{ m/s}^2$). Qual a distância percorrida até parar?</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong> Desaceleração: $a = \mu_c g = 0{,}5 \cdot 10 = 5\text{ m/s}^2$.<br>Torricelli: $0 = v_0^2 - 2 a d \Rightarrow d = \dfrac{v_0^2}{2a} = \dfrac{400}{10} = 40\text{ m}$.</p>
+        </div>
+    </article>
+</section>
+
+<section class="questoes-propostas" id="propostas">
+    <h3>✍️ 10 Questões Propostas (P 6 a 15)</h3>
+
+    <article class="questao">
+        <h4>P 6: Força para Iniciar o Movimento</h4>
+        <p><strong>Enunciado:</strong> Uma caixa de $20\text{ kg}$ está em repouso num piso horizontal com coeficiente de atrito estático $0{,}5$. Qual é a menor força horizontal capaz de colocá-la em movimento? ($g = 10\text{ m/s}^2$)</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> $F_{mín} = f_{e,máx} = \mu_e m g = 0{,}5 \cdot 200 = 100\text{ N}$.</p>
+        </div>
+    </article>
+    <article class="questao">
+        <h4>P 7: Aceleração com Atrito</h4>
+        <p><strong>Enunciado:</strong> Um bloco de $2\text{ kg}$ desliza sobre um piso horizontal ($\mu_c = 0{,}3$) puxado por uma força horizontal de $10\text{ N}$. Qual é sua aceleração? ($g = 10\text{ m/s}^2$)</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> $f_c = 0{,}3 \cdot 20 = 6\text{ N}$. &nbsp; $a = \dfrac{10 - 6}{2} = 2\text{ m/s}^2$.</p>
+        </div>
+    </article>
+    <article class="questao">
+        <h4>P 8: O Armário que Não Se Move</h4>
+        <p><strong>Enunciado:</strong> Uma pessoa empurra horizontalmente um armário de $50\text{ kg}$ com uma força de $120\text{ N}$, mas ele não se move. O coeficiente de atrito estático é $0{,}4$ ($g = 10\text{ m/s}^2$). Qual o valor da força de atrito nessa situação?</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> O atrito estático máximo seria $0{,}4 \cdot 500 = 200\text{ N}$, mas o armário está parado: o atrito apenas equilibra a força aplicada.<br>$f_e = 120\text{ N}$ (e não $200\text{ N}$).</p>
+        </div>
+    </article>
+    <article class="questao">
+        <h4>P 9: Livro Deslizando na Mesa</h4>
+        <p><strong>Enunciado:</strong> Um livro é lançado sobre uma mesa com velocidade de $3\text{ m/s}$. O coeficiente de atrito cinético é $0{,}15$ e $g = 10\text{ m/s}^2$. Que distância ele percorre até parar?</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> $a = \mu_c g = 1{,}5\text{ m/s}^2$. &nbsp; $d = \dfrac{v_0^2}{2a} = \dfrac{9}{3} = 3\text{ m}$.</p>
+        </div>
+    </article>
+    <article class="questao">
+        <h4>P 10: Arrasto com Velocidade Constante</h4>
+        <p><strong>Enunciado:</strong> Uma força horizontal de $40\text{ N}$ mantém uma caixa de $10\text{ kg}$ deslizando com velocidade constante. Qual é o coeficiente de atrito cinético? ($g = 10\text{ m/s}^2$)</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> $f_c = 40\text{ N}$ (resultante nula). &nbsp; $\mu_c = \dfrac{40}{100} = 0{,}4$.</p>
+        </div>
+    </article>
+    <article class="questao">
+        <h4>P 11: Apagador Contra a Parede</h4>
+        <p><strong>Enunciado:</strong> Uma pessoa pressiona um apagador contra uma parede vertical com uma força horizontal de $50\text{ N}$. O coeficiente de atrito estático entre o apagador e a parede é $0{,}4$. Qual a maior massa que o apagador pode ter para não escorregar? ($g = 10\text{ m/s}^2$)</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> A normal é a força de compressão: $N = 50\text{ N}$. O atrito (vertical, para cima) segura o peso.<br>$f_{e,máx} = 0{,}4 \cdot 50 = 20\text{ N} \Rightarrow m_{máx} = \dfrac{20}{10} = 2\text{ kg}$.</p>
+        </div>
+    </article>
+    <article class="questao">
+        <h4>P 12: Caixa na Carroceria</h4>
+        <p><strong>Enunciado:</strong> Uma caixa está solta sobre a carroceria horizontal de um caminhão. O coeficiente de atrito estático entre a caixa e a carroceria é $0{,}3$. Qual a maior aceleração do caminhão para que a caixa não escorregue? ($g = 10\text{ m/s}^2$)</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> Quem acelera a caixa é o atrito estático: $f_e = m a \le \mu_e m g$.<br>$a_{máx} = \mu_e g = 0{,}3 \cdot 10 = 3\text{ m/s}^2$.</p>
+        </div>
+    </article>
+    <article class="questao">
+        <h4>P 13: Dois Blocos com Atrito</h4>
+        <p><strong>Enunciado:</strong> Dois blocos $A$ ($2\text{ kg}$) e $B$ ($3\text{ kg}$), ligados por um fio ideal, são puxados sobre um piso horizontal por uma força de $30\text{ N}$ aplicada em $B$. O coeficiente de atrito cinético é $0{,}2$ para os dois blocos ($g = 10\text{ m/s}^2$). Calcule a aceleração e a tração no fio.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> Atritos: $f_A = 0{,}2 \cdot 20 = 4\text{ N}$ e $f_B = 0{,}2 \cdot 30 = 6\text{ N}$.<br>Conjunto: $30 - 4 - 6 = 5a \Rightarrow a = 4\text{ m/s}^2$.<br>Bloco A: $T - 4 = 2 \cdot 4 \Rightarrow T = 12\text{ N}$.</p>
+        </div>
+    </article>
+    <article class="questao">
+        <h4>P 14: Frenagem de Emergência</h4>
+        <p><strong>Enunciado:</strong> Um carro a $25\text{ m/s}$ trava as rodas numa pista horizontal, com coeficiente de atrito cinético $0{,}5$ ($g = 10\text{ m/s}^2$). Qual a distância de frenagem?</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> $a = 0{,}5 \cdot 10 = 5\text{ m/s}^2$. &nbsp; $d = \dfrac{25^2}{2 \cdot 5} = \dfrac{625}{10} = 62{,}5\text{ m}$.</p>
+        </div>
+    </article>
+    <article class="questao">
+        <h4>P 15: Aumentando a Força Aos Poucos</h4>
+        <p><strong>Enunciado:</strong> Um bloco de $4\text{ kg}$ está parado sobre um piso horizontal com $\mu_e = 0{,}5$ e $\mu_c = 0{,}4$ ($g = 10\text{ m/s}^2$). Uma força horizontal $F$ é aplicada e aumentada aos poucos. (a) Qual é o atrito quando $F = 15\text{ N}$? (b) Para qual valor de $F$ o bloco começa a se mover? (c) Depois que ele se move, mantendo-se $F = 20\text{ N}$, qual a aceleração?</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> (a) $f_{e,máx} = 0{,}5 \cdot 40 = 20\text{ N}$. Como $15 &lt; 20$, o bloco fica parado e $f_e = 15\text{ N}$.<br>(b) $F = 20\text{ N}$ (iminência de movimento).<br>(c) Em movimento: $f_c = 0{,}4 \cdot 40 = 16\text{ N}$, então $a = \dfrac{20 - 16}{4} = 1\text{ m/s}^2$.</p>
+        </div>
+    </article>
+</section>
+
+<section class="TESTE" id="testes">
+    <h3>🎓 TESTES (T 11 a 15)</h3>
+
+    <article class="questao">
+        <h4>T 11: (ENEM 2012 – 2ª aplicação) Por que o ABS Freia Melhor</h4>
+        <p>O freio ABS é um sistema que evita que as rodas de um automóvel sejam bloqueadas durante uma frenagem forte e entrem em derrapagem. Testes demonstram que, a partir de uma dada velocidade, a distância de frenagem será menor se for evitado o bloqueio das rodas.</p>
+        <p>O ganho na eficiência da frenagem na ausência de bloqueio das rodas resulta do fato de</p>
+        <p>A) o coeficiente de atrito estático tornar-se igual ao dinâmico momentos antes da derrapagem.<br>
+        B) o coeficiente de atrito estático ser maior que o dinâmico, independentemente da superfície de contato entre os pneus e o pavimento.<br>
+        C) o coeficiente de atrito estático ser menor que o dinâmico, independentemente da superfície de contato entre os pneus e o pavimento.<br>
+        D) a superfície de contato entre os pneus e o pavimento ser maior com as rodas desbloqueadas, independentemente do coeficiente de atrito.<br>
+        E) a superfície de contato entre os pneus e o pavimento ser maior com as rodas desbloqueadas e o coeficiente de atrito estático ser maior que o dinâmico.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> Alternativa <strong>B</strong>.<br>Sem bloqueio, o pneu rola sem deslizar e o atrito com o asfalto é <strong>estático</strong>; com a roda travada, ele é <strong>cinético</strong>. Como $\mu_e > \mu_c$, a força de frenagem é maior com o ABS. O atrito não depende da área de contato, o que elimina D e E.</p>
+        </div>
+    </article>
+    <article class="questao">
+        <h4>T 12: (ENEM 2015 – 2ª aplicação) Distâncias de Frenagem com e sem ABS</h4>
+        <p>Num sistema de freio convencional, as rodas do carro travam e os pneus derrapam no solo, caso a força exercida sobre o pedal seja muito intensa. O sistema ABS evita o travamento das rodas, mantendo a força de atrito no seu valor estático máximo, sem derrapagem. O coeficiente de atrito estático da borracha em contato com o concreto vale $\mu_e = 1{,}0$ e o coeficiente de atrito cinético para o mesmo par de materiais é $\mu_c = 0{,}75$. Dois carros, com velocidades iniciais iguais a $108\text{ km/h}$, iniciam a frenagem numa estrada perfeitamente horizontal de concreto no mesmo ponto. O carro 1 tem sistema ABS e utiliza a força de atrito estática máxima para a frenagem; já o carro 2 trava as rodas, de maneira que a força de atrito efetiva é a cinética. Considere $g = 10\text{ m/s}^2$.</p>
+        <p>As distâncias, medidas a partir do ponto em que iniciam a frenagem, que os carros 1 ($d_1$) e 2 ($d_2$) percorrem até parar são, respectivamente,</p>
+        <p>A) $d_1 = 45\text{ m}$ e $d_2 = 60\text{ m}$.<br>
+        B) $d_1 = 60\text{ m}$ e $d_2 = 45\text{ m}$.<br>
+        C) $d_1 = 90\text{ m}$ e $d_2 = 120\text{ m}$.<br>
+        D) $d_1 = 5{,}8 \times 10^2\text{ m}$ e $d_2 = 7{,}8 \times 10^2\text{ m}$.<br>
+        E) $d_1 = 7{,}8 \times 10^2\text{ m}$ e $d_2 = 5{,}8 \times 10^2\text{ m}$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> Alternativa <strong>A</strong>.<br>$v_0 = 108\text{ km/h} = 30\text{ m/s}$. A desaceleração é $a = \mu g$.<br>Carro 1: $a_1 = 1{,}0 \cdot 10 = 10\text{ m/s}^2 \Rightarrow d_1 = \dfrac{30^2}{2 \cdot 10} = 45\text{ m}$.<br>Carro 2: $a_2 = 0{,}75 \cdot 10 = 7{,}5\text{ m/s}^2 \Rightarrow d_2 = \dfrac{30^2}{2 \cdot 7{,}5} = 60\text{ m}$.</p>
+        </div>
+    </article>
+    <article class="questao">
+        <h4>T 13: (ENEM 2016) As Polias de Arquimedes</h4>
+        <p>Uma invenção que significou um grande avanço tecnológico na Antiguidade, a polia composta ou a associação de polias, é atribuída a Arquimedes (287 a.C. a 212 a.C.). O aparato consiste em associar uma série de polias móveis a uma fixa. A figura exemplifica um arranjo possível para esse aparato.</p>
+        <figure class="figura-aula">
+            <svg viewBox="0 0 380 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Exemplo de associação de polias: uma polia fixa e polias móveis sustentando uma carga" style="width:100%; max-width:380px; display:block; margin:0 auto; font-family:sans-serif;">
+            <defs><marker id="s3_e67e22" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto"><polygon points="0 0, 10 4, 0 8" fill="#e67e22"/></marker></defs>
+            <line x1="30" y1="25" x2="350" y2="25" stroke="#2c3e50" stroke-width="2.5"/>
+            <line x1="30" y1="25" x2="38" y2="16" stroke="#7f8c8d" stroke-width="1.2"/>
+            <line x1="44" y1="25" x2="52" y2="16" stroke="#7f8c8d" stroke-width="1.2"/>
+            <line x1="58" y1="25" x2="66" y2="16" stroke="#7f8c8d" stroke-width="1.2"/>
+            <line x1="72" y1="25" x2="80" y2="16" stroke="#7f8c8d" stroke-width="1.2"/>
+            <line x1="86" y1="25" x2="94" y2="16" stroke="#7f8c8d" stroke-width="1.2"/>
+            <line x1="100" y1="25" x2="108" y2="16" stroke="#7f8c8d" stroke-width="1.2"/>
+            <line x1="114" y1="25" x2="122" y2="16" stroke="#7f8c8d" stroke-width="1.2"/>
+            <line x1="128" y1="25" x2="136" y2="16" stroke="#7f8c8d" stroke-width="1.2"/>
+            <line x1="142" y1="25" x2="150" y2="16" stroke="#7f8c8d" stroke-width="1.2"/>
+            <line x1="156" y1="25" x2="164" y2="16" stroke="#7f8c8d" stroke-width="1.2"/>
+            <line x1="170" y1="25" x2="178" y2="16" stroke="#7f8c8d" stroke-width="1.2"/>
+            <line x1="184" y1="25" x2="192" y2="16" stroke="#7f8c8d" stroke-width="1.2"/>
+            <line x1="198" y1="25" x2="206" y2="16" stroke="#7f8c8d" stroke-width="1.2"/>
+            <line x1="212" y1="25" x2="220" y2="16" stroke="#7f8c8d" stroke-width="1.2"/>
+            <line x1="226" y1="25" x2="234" y2="16" stroke="#7f8c8d" stroke-width="1.2"/>
+            <line x1="240" y1="25" x2="248" y2="16" stroke="#7f8c8d" stroke-width="1.2"/>
+            <line x1="254" y1="25" x2="262" y2="16" stroke="#7f8c8d" stroke-width="1.2"/>
+            <line x1="268" y1="25" x2="276" y2="16" stroke="#7f8c8d" stroke-width="1.2"/>
+            <line x1="282" y1="25" x2="290" y2="16" stroke="#7f8c8d" stroke-width="1.2"/>
+            <line x1="296" y1="25" x2="304" y2="16" stroke="#7f8c8d" stroke-width="1.2"/>
+            <line x1="310" y1="25" x2="318" y2="16" stroke="#7f8c8d" stroke-width="1.2"/>
+            <line x1="324" y1="25" x2="332" y2="16" stroke="#7f8c8d" stroke-width="1.2"/>
+            <line x1="338" y1="25" x2="346" y2="16" stroke="#7f8c8d" stroke-width="1.2"/>
+            <line x1="74" y1="230" x2="74" y2="25" stroke="#555" stroke-width="2"/>
+            <line x1="106" y1="230" x2="150" y2="191" stroke="#555" stroke-width="2"/>
+            <circle cx="90" cy="230" r="16" fill="#ecf0f1" stroke="#2c3e50" stroke-width="2"/>
+            <circle cx="90" cy="230" r="3" fill="#2c3e50"/>
+            <line x1="134" y1="165" x2="134" y2="25" stroke="#555" stroke-width="2"/>
+            <line x1="166" y1="165" x2="210" y2="126" stroke="#555" stroke-width="2"/>
+            <circle cx="150" cy="165" r="16" fill="#ecf0f1" stroke="#2c3e50" stroke-width="2"/>
+            <circle cx="150" cy="165" r="3" fill="#2c3e50"/>
+            <line x1="194" y1="100" x2="194" y2="25" stroke="#555" stroke-width="2"/>
+            <circle cx="210" cy="100" r="16" fill="#ecf0f1" stroke="#2c3e50" stroke-width="2"/>
+            <circle cx="210" cy="100" r="3" fill="#2c3e50"/>
+            <line x1="150" y1="165" x2="150" y2="191" stroke="#2c3e50" stroke-width="2"/>
+            <line x1="210" y1="100" x2="210" y2="126" stroke="#2c3e50" stroke-width="2"/>
+            <line x1="226" y1="100" x2="274" y2="55" stroke="#555" stroke-width="2"/>
+            <line x1="290" y1="25" x2="290" y2="55" stroke="#2c3e50" stroke-width="2"/>
+            <circle cx="290" cy="55" r="16" fill="#ecf0f1" stroke="#2c3e50" stroke-width="2"/>
+            <circle cx="290" cy="55" r="3" fill="#2c3e50"/>
+            <line x1="306" y1="55" x2="306" y2="200" stroke="#555" stroke-width="2"/>
+            <line x1="306" y1="200" x2="306" y2="260" stroke="#e67e22" stroke-width="3" marker-end="url(#s3_e67e22)"/>
+            <text x="325" y="255" fill="#e67e22" font-size="15" text-anchor="middle" font-weight="bold">F</text>
+            <line x1="90" y1="230" x2="90" y2="252" stroke="#2c3e50" stroke-width="2"/>
+            <rect x="65" y="252" width="50" height="32" fill="#f5cba7" stroke="#a04000" stroke-width="2" rx="3"/>
+            <text x="90.0" y="273.0" fill="#4a2a0a" font-size="11" text-anchor="middle" font-weight="bold">carga</text>
+            </svg>
+            <figcaption>Figura redesenhada como exemplo: a polia de cima à direita é fixa, e as outras são móveis. Cada polia móvel dobra a força transmitida à carga.</figcaption>
+        </figure>
+        <p>É relatado que Arquimedes teria demonstrado para o rei Hierão um outro arranjo desse aparato, movendo sozinho, sobre a areia da praia, um navio repleto de passageiros e cargas, algo que seria impossível sem a participação de muitos homens. Suponha que a massa do navio era de $3\,000\text{ kg}$, que o coeficiente de atrito estático entre o navio e a areia era de $0{,}8$ e que Arquimedes tenha puxado o navio com uma força $\vec{F}$, paralela à direção do movimento e de módulo igual a $400\text{ N}$. Considere os fios e as polias ideais, a aceleração da gravidade igual a $10\text{ m/s}^2$ e que a superfície da praia é perfeitamente horizontal.</p>
+        <p>O número mínimo de polias móveis usadas, nessa situação, por Arquimedes foi</p>
+        <p>A) 3.<br>
+        B) 6.<br>
+        C) 7.<br>
+        D) 8.<br>
+        E) 10.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> Alternativa <strong>B</strong>.<br>Atrito estático máximo: $f_{e,máx} = 0{,}8 \cdot 3\,000 \cdot 10 = 24\,000\text{ N}$.<br>Cada polia móvel dobra a força: $400 \cdot 2^n &gt; 24\,000 \Rightarrow 2^n &gt; 60$.<br>$2^5 = 32$ (insuficiente) e $2^6 = 64$: com $6$ polias móveis, a força chega a $25\,600\text{ N}$ e vence o atrito.</p>
+        </div>
+    </article>
+    <article class="questao">
+        <h4>T 14: (Autoral) O Atrito ao Caminhar</h4>
+        <p>Uma pessoa caminha em linha reta sobre um piso horizontal. No instante em que empurra o chão com o pé de trás, a força de atrito que o chão exerce sobre esse pé:</p>
+        <p>A) aponta para trás, pois o atrito sempre se opõe ao movimento da pessoa.<br>
+        B) aponta para frente, pois se opõe à tendência de o pé escorregar para trás.<br>
+        C) é nula, pois o pé não desliza em relação ao chão.<br>
+        D) é cinética e vale $\mu_c N$, pois a pessoa está em movimento.<br>
+        E) é vertical, pois o pé empurra o chão para baixo.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> Alternativa <strong>B</strong>.<br>O pé tende a escorregar para trás. O atrito <strong>estático</strong> se opõe a essa tendência, apontando para frente: é ele que impulsiona a pessoa. Não é nulo (C) nem cinético (D), pois o pé não desliza.</p>
+        </div>
+    </article>
+    <article class="questao">
+        <h4>T 15: (Autoral) Força Aplicada Menor que o Atrito Máximo</h4>
+        <p>Um caixote de $40\text{ kg}$ está em repouso sobre um piso horizontal. Os coeficientes de atrito estático e cinético entre o caixote e o piso são $0{,}5$ e $0{,}3$. Um operário empurra o caixote com uma força horizontal de $150\text{ N}$. Adote $g = 10\text{ m/s}^2$. A força de atrito sobre o caixote e sua aceleração valem, respectivamente:</p>
+        <p>A) $200\text{ N}$ e $0$<br>
+        B) $150\text{ N}$ e $0$<br>
+        C) $120\text{ N}$ e $0{,}75\text{ m/s}^2$<br>
+        D) $120\text{ N}$ e $3{,}75\text{ m/s}^2$<br>
+        E) $0$ e $3{,}75\text{ m/s}^2$</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> Alternativa <strong>B</strong>.<br>$f_{e,máx} = 0{,}5 \cdot 400 = 200\text{ N}$. Como $150\text{ N} &lt; 200\text{ N}$, o caixote não se move.<br>O atrito estático equilibra a força aplicada: $f_e = 150\text{ N}$ e $a = 0$.</p>
+        </div>
+    </article>
+</section>
+
+</div>
+</main>
+
+<aside class="menu-lateral">
+    <iframe src="../menu_fisica.html" style="width:100%; border:none; height:600px;"></iframe>
+</aside>
+
+</div>
+
+<script>
+function toggleGabarito(botao) {
+    const gabarito = botao.nextElementSibling;
+    if (gabarito.style.display === "none" || gabarito.style.display === "") {
+        gabarito.style.display = "block";
+        botao.textContent = "Esconder Gabarito e Resolução";
+        botao.style.backgroundColor = "#2c3e50";
+    } else {
+        gabarito.style.display = "none";
+        botao.textContent = "Ver Gabarito e Resolução";
+        botao.style.backgroundColor = "#3498db";
+    }
+}
+
+function toggleMenu() {
+    const menuGlobal = document.getElementById("menu-principal");
+    if (menuGlobal) menuGlobal.classList.toggle("ativo");
+}
+
+let slideAtual = 0;
+let slides = [];
+
+function prepararSlides() {
+    const seletores = '#resumo, .passo-teoria, .cards-aplicacao .card, .questao';
+    slides = Array.from(document.querySelectorAll(seletores));
+}
+
+function toggleSlides() {
+    prepararSlides();
+    const body = document.body;
+    
+    if (!body.classList.contains('modo-slides')) {
+        body.classList.add('modo-slides');
+        slideAtual = 0;
+        mostrarSlide(slideAtual);
+    } else {
+        body.classList.remove('modo-slides');
+        
+        slides.forEach(s => {
+            s.classList.remove('slide-ativo');
+            s.style.display = '';
+        });
+        
+        document.querySelectorAll('.gabarito-resolucao').forEach(g => g.style.display = '');
+    }
+}
+
+function mostrarSlide(n) {
+    if (slides.length === 0) return;
+
+    slides.forEach(s => {
+        s.classList.remove('slide-ativo');
+        s.style.display = 'none';
+    });
+
+    const slide = slides[n];
+    slide.classList.add('slide-ativo');
+    slide.style.display = 'flex'; 
+
+    if (slide.classList.contains('questao')) {
+        const btnGabarito = slide.querySelector('.btn-gabarito');
+        const gabarito = slide.querySelector('.gabarito-resolucao');
+        
+        if (btnGabarito && gabarito) {
+            gabarito.style.display = 'none';
+            btnGabarito.textContent = "Ver Gabarito e Resolução";
+            btnGabarito.style.backgroundColor = "#3498db";
+        }
+    }
+
+    const pHeader = document.querySelector('header p');
+    if (pHeader) {
+        const partes = pHeader.innerText.split('|');
+        if (partes.length > 1) {
+            document.getElementById('slide-info-serie').innerText = partes[0].trim();
+            document.getElementById('slide-info-aula').innerText = partes[1].trim();
+        }
+    }
+
+    document.getElementById('contador-slide').innerText = (n + 1) + " / " + slides.length;
+    
+    if (window.MathJax && MathJax.typesetPromise) {
+        MathJax.typesetPromise([slide]);
+    }
+}
+
+function mudarSlide(direcao) {
+    slideAtual += direcao;
+    if (slideAtual >= slides.length) slideAtual = 0;
+    if (slideAtual < 0) slideAtual = slides.length - 1;
+    mostrarSlide(slideAtual);
+}
+
+document.addEventListener('keydown', function(e) {
+    if (document.body.classList.contains('modo-slides')) {
+        if (e.key === 'ArrowRight') mudarSlide(1);
+        if (e.key === 'ArrowLeft') mudarSlide(-1);
+        if (e.key === 'Escape') toggleSlides();
+    }
+});
+</script>
+
+<div class="controles-slides">
+    <div id="slide-info-serie" class="info-lateral"></div>
+    <div class="botoes-centrais">
+        <button class="btn-nav" onclick="mudarSlide(-1)">⬅ Anterior</button>
+        <span id="contador-slide"></span>
+        <button class="btn-nav" onclick="mudarSlide(1)">Próximo ➡</button>
+        <button class="btn-nav" onclick="toggleSlides()" style="background:#e74c3c;">Sair</button>
+    </div>
+    <div id="slide-info-aula" class="info-lateral" style="text-align: right;"></div>
+</div>
+</body>
+</html>
