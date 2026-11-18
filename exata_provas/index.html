@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap" rel="stylesheet">
+<title>Exata Provas – Gerador de provas</title>
+<link rel="stylesheet" href="app/katex/katex.min.css">
+<style>
+:root{--az:#003366;--az2:#1d5aa0;--lj:#D35400;--cz:#f3f5f9;--bd:#d5dbe6;--vd:#2e7d32;--am:#b26a00;--vm:#b3261e}
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,Helvetica,sans-serif;color:#222;background:var(--cz);line-height:1.45}
+header{background:var(--az);color:#fff;padding:10px 18px;display:flex;align-items:center;gap:16px;position:sticky;top:0;z-index:20}
+header h1{font-size:20px;margin:0;flex:1;font-family:Oswald,Arial,sans-serif;text-transform:uppercase;letter-spacing:.5px}
+header a.voltar{color:#fff;font-size:13px;text-decoration:none;opacity:.85}
+header button{background:#fff;color:var(--az);border:0;border-radius:6px;padding:8px 14px;font-weight:bold;cursor:pointer}
+header button.p{background:var(--lj);color:#fff}
+.wrap{display:grid;grid-template-columns:280px 1fr 300px;gap:14px;padding:14px;align-items:start}
+.panel{background:#fff;border:1px solid var(--bd);border-radius:8px;padding:12px}
+.panel h2{font-size:14px;margin:0 0 8px;color:var(--az);text-transform:uppercase;letter-spacing:.4px}
+.side{position:sticky;top:60px;max-height:calc(100vh - 74px);overflow:auto}
+label.l{display:block;font-size:12px;font-weight:bold;margin:10px 0 3px;color:#444}
+input[type=text],select,textarea{width:100%;padding:6px 8px;border:1px solid var(--bd);border-radius:5px;font-size:13px;font-family:inherit}
+.chk{display:flex;align-items:center;gap:6px;font-size:13px;padding:2px 0}
+.chk span.n{margin-left:auto;color:#777;font-size:11px}
+.chips{display:flex;flex-wrap:wrap;gap:4px}
+.chips label{border:1px solid var(--bd);border-radius:14px;padding:2px 8px;font-size:12px;cursor:pointer;background:#fafbfd}
+.chips input{display:none}.chips input:checked+span{font-weight:bold;color:var(--az)}
+.chips label:has(input:checked){background:#dbe6fb;border-color:var(--az2)}
+.linkbtn{background:none;border:0;color:var(--az2);cursor:pointer;font-size:12px;padding:0;text-decoration:underline}
+.qcard{background:#fff;border:1px solid var(--bd);border-radius:8px;margin-bottom:10px;overflow:hidden}
+.qcard.sel{border-color:var(--vd);box-shadow:0 0 0 2px #c8e6c9}
+.qhd{display:flex;gap:8px;align-items:center;background:#eef2fa;padding:6px 10px;font-size:12px;flex-wrap:wrap}
+.qhd .t{font-weight:bold;color:var(--az)}
+.bdg{border-radius:10px;padding:1px 8px;font-size:11px;color:#fff}
+.bdg.F{background:var(--vd)}.bdg.M{background:var(--am)}.bdg.D{background:var(--vm)}.bdg.s{background:#607d8b}.bdg.a{background:#000}
+.qhd .sp{flex:1}
+.addbtn{border:1px solid var(--az2);background:#fff;color:var(--az2);border-radius:6px;padding:4px 10px;cursor:pointer;font-weight:bold;font-size:12px}
+.qcard.sel .addbtn{background:var(--vd);border-color:var(--vd);color:#fff}
+.qbd{padding:10px 14px;font-size:14px}
+.qbd img{max-width:100%;height:auto;display:block;margin:8px auto}
+.qbd table{border-collapse:collapse;margin:6px 0}.qbd td,.qbd th{border:1px solid #999;padding:3px 8px;font-size:13px}
+.qbd blockquote{margin:6px 0;padding:2px 10px;border-left:3px solid #bbb;color:#444}
+.alt{margin:7px 0 7px 4px;line-height:1.9}
+.gabl{padding:4px 14px 8px;font-size:12px;color:#555}
+.gabl details summary{cursor:pointer;color:var(--az2)}
+.fonte{font-size:11px;color:#777;font-style:italic}
+.cartitem{display:flex;gap:4px;align-items:center;border-bottom:1px solid #eee;padding:4px 0;font-size:12px}
+.cartitem b{width:22px}.cartitem .tx{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.cartitem button{border:1px solid var(--bd);background:#fff;border-radius:4px;cursor:pointer;padding:0 5px}
+.more{display:block;margin:10px auto;padding:8px 18px;border:1px solid var(--az2);background:#fff;border-radius:6px;cursor:pointer;color:var(--az2);font-weight:bold}
+.cnt{font-size:13px;margin-bottom:8px;color:#444}
+#prova{display:none;background:#fff}
+.pg-head{border:2px solid #000;padding:8px 12px;margin-bottom:14px}
+.pg-head .tit{font-size:18px;font-weight:bold;text-align:center}
+.pg-head .row{display:flex;gap:16px;font-size:13px;margin-top:6px;flex-wrap:wrap}
+.pg-head .row div{flex:1;border-bottom:1px solid #000;min-width:120px;padding-bottom:2px}
+.pg-inst{font-size:12px;margin:0 0 12px;white-space:pre-wrap}
+.cols2 .qs{display:grid;grid-template-columns:1fr 1fr;column-gap:26px;align-items:start}.cols2 .pq{border-bottom:1px dotted #bbb;padding-bottom:6px}
+.pq{break-inside:avoid;margin-bottom:14px;font-size:13px}
+.pq .nm{font-weight:bold}
+.pq .alt{margin:6px 0 6px 2px;line-height:1.9}.pq img{max-width:100%;max-height:8.5cm;width:auto;height:auto;object-fit:contain;display:block;margin:6px auto}
+.pq table{border-collapse:collapse}.pq td,.pq th{border:1px solid #666;padding:2px 6px;font-size:12px}
+.gabpg{page-break-before:always;padding-top:10px}
+.gabpg table{border-collapse:collapse;margin-top:8px}.gabpg td,.gabpg th{border:1px solid #000;padding:4px 14px;text-align:center}
+.toolbar{background:var(--az);color:#fff;padding:10px 18px;display:flex;gap:10px;align-items:center;position:sticky;top:0;z-index:30}
+.toolbar button{border:0;border-radius:6px;padding:8px 14px;font-weight:bold;cursor:pointer}
+.provabox{max-width:820px;margin:16px auto;padding:24px 30px;background:#fff;border:1px solid var(--bd)}
+@media(max-width:1000px){.wrap{grid-template-columns:1fr}.side{position:static;max-height:none}}
+@media print{
+ body{background:#fff}header,.wrap,.toolbar{display:none!important}
+ #prova{display:block!important}.provabox{border:0;margin:0;padding:0;max-width:none}
+ @page{margin:14mm}
+}
+</style>
+</head>
+<body>
+<header>
+  <a class="voltar" href="../index.html">← ExataSite</a>
+  <h1>📚 Exata Provas – Gerador de provas <small style="font-weight:normal;opacity:.8">(ENEM Matemática)</small></h1>
+  <span id="hdrcnt"></span>
+  <button class="p" onclick="gerarProva()">Gerar prova ▶</button>
+</header>
+
+<div class="wrap" id="app">
+  <aside class="panel side">
+    <h2>Filtros</h2>
+    <label class="l">Buscar no enunciado</label>
+    <input type="text" id="busca" placeholder="ex.: probabilidade, cilindro…">
+    <label class="l">Assunto <button class="linkbtn" onclick="marcarTodos('assunto',false)">limpar</button></label>
+    <div id="fAssunto"></div>
+    <label class="l">Série</label>
+    <div class="chips" id="fSerie"></div>
+    <label class="l">Dificuldade</label>
+    <div class="chips" id="fDif"></div>
+    <label class="l">Ano do ENEM</label>
+    <div class="chips" id="fAno"></div>
+    <label class="l">Outros</label>
+    <label class="chk"><input type="checkbox" id="fFig"> só com figura/gráfico</label>
+    <label class="chk"><input type="checkbox" id="fSemFig"> só sem figura</label>
+    <label class="chk"><input type="checkbox" id="fAnul"> incluir anuladas / sem gabarito</label>
+    <div style="margin-top:12px"><button class="linkbtn" onclick="limparFiltros()">↺ limpar todos os filtros</button></div>
+  </aside>
+
+  <main>
+    <div class="cnt" id="cnt"></div>
+    <div id="lista"></div>
+    <button class="more" id="more" onclick="mais()">Mostrar mais</button>
+  </main>
+
+  <aside class="panel side">
+    <h2>Minha prova (<span id="ncart">0</span>)</h2>
+    <div style="display:flex;gap:6px;margin-bottom:8px">
+      <input type="text" id="nSort" value="10" style="width:56px">
+      <button class="addbtn" onclick="sortear()" title="Sorteia entre as questões filtradas ainda não escolhidas">🎲 Sortear</button>
+      <button class="addbtn" onclick="limparProva()">Limpar</button>
+    </div>
+    <div id="cart"></div>
+    <h2 style="margin-top:14px">Cabeçalho</h2>
+    <label class="l">Título</label><input type="text" id="cTit" value="Avaliação de Matemática">
+    <label class="l">Instituição</label><input type="text" id="cInst" placeholder="Nome da escola">
+    <label class="l">Professor(a)</label><input type="text" id="cProf" value="Prof. Wanderson Schneider">
+    <label class="l">Turma / Série</label><input type="text" id="cTurma">
+    <label class="l">Data</label><input type="text" id="cData" placeholder="__/__/____">
+    <label class="l">Instruções</label><textarea id="cInstr" rows="3">Leia com atenção. Cada questão tem apenas uma alternativa correta.</textarea>
+    <label class="chk"><input type="checkbox" id="oOrigem" checked> mostrar a origem (ex.: ENEM 2019)</label>
+    <label class="chk"><input type="checkbox" id="o2col"> duas colunas</label>
+    <label class="chk"><input type="checkbox" id="oGab" checked> incluir folha de gabarito</label>
+    <label class="chk"><input type="checkbox" id="oGabSep"> Word: gabarito em arquivo separado</label>
+    <button class="addbtn" style="width:100%;margin-top:10px;background:var(--az);color:#fff" onclick="gerarProva()">Gerar prova ▶</button>
+    <button class="addbtn" style="width:100%;margin-top:6px" onclick="baixarWord(this)">📄 Baixar Word (.docx)</button>
+  </aside>
+</div>
+
+<div id="prova">
+  <div class="toolbar">
+    <button onclick="voltar()">◀ Voltar e editar</button>
+    <button style="background:#D35400;color:#fff" onclick="window.print()">🖨 Imprimir / Salvar PDF</button>
+    <button style="background:#fff" onclick="baixarWord(this)">📄 Baixar Word (.docx)</button>
+    <span style="font-size:12px;opacity:.85">Na janela de impressão, escolha “Salvar como PDF”.</span>
+  </div>
+  <div class="provabox" id="provabox"></div>
+</div>
+
+<script src="app/dados.js"></script>
+<script src="app/marked.min.js"></script>
+<script src="app/katex/katex.min.js"></script>
+<script src="app/texto.js"></script>
+<script src="app/docxlib.js"></script>
+<script src="app/word.js"></script>
+<script>
+const Q=window.BANCO;
+const DIFS=['Fácil','Média','Difícil'];
+const $=id=>document.getElementById(id);
+const md=s=>Tx.html(s,false);
+const mdi=s=>Tx.html(s,true);
+let sel=[];            // ids na prova (ordem)
+let filtrados=[],mostrando=0,PAG=30;
+try{sel=JSON.parse(localStorage.getItem('exata_prova')||'[]').filter(id=>Q.some(q=>q.id===id))}catch(e){}
+const porId=Object.fromEntries(Q.map(q=>[q.id,q]));
+const semGab=q=>q.anulada||!q.gabarito;
+
+/* ---------- filtros ---------- */
+function montaFiltros(){
+  const ass={};Q.forEach(q=>{const k=q.assunto;ass[k]=(ass[k]||0)+1});
+  const areas={};Q.forEach(q=>{(areas[q.area]=areas[q.area]||new Set()).add(q.assunto)});
+  let h='';
+  Object.keys(areas).sort().forEach(a=>{
+    h+='<div style="font-size:11px;font-weight:bold;color:#777;margin:6px 0 2px">'+a+'</div>';
+    [...areas[a]].sort().forEach(s=>{h+='<label class="chk"><input type="checkbox" data-f="assunto" value="'+s+'"> '+s+'<span class="n">'+ass[s]+'</span></label>'});
+  });
+  $('fAssunto').innerHTML=h;
+  $('fSerie').innerHTML=[1,2,3].map(s=>'<label><input type="checkbox" data-f="serie" value="'+s+'"><span>'+s+'º ano</span></label>').join('');
+  $('fDif').innerHTML=DIFS.map(s=>'<label><input type="checkbox" data-f="dif" value="'+s+'"><span>'+s+'</span></label>').join('');
+  const anos=[...new Set(Q.map(q=>q.ano))].sort();
+  $('fAno').innerHTML=anos.map(s=>'<label><input type="checkbox" data-f="ano" value="'+s+'"><span>'+s+'</span></label>').join('');
+  document.querySelectorAll('[data-f],#fFig,#fSemFig,#fAnul').forEach(e=>e.addEventListener('change',aplicar));
+  $('busca').addEventListener('input',()=>{clearTimeout(window._t);window._t=setTimeout(aplicar,250)});
+}
+const vals=f=>[...document.querySelectorAll('[data-f="'+f+'"]:checked')].map(e=>e.value);
+function marcarTodos(f,v){document.querySelectorAll('[data-f="'+f+'"]').forEach(e=>e.checked=v);aplicar()}
+function limparFiltros(){document.querySelectorAll('[data-f],#fFig,#fSemFig,#fAnul').forEach(e=>e.checked=false);$('busca').value='';aplicar()}
+const plain=s=>s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'');
+function aplicar(){
+  const A=vals('assunto'),S=vals('serie').map(Number),D=vals('dif'),Y=vals('ano').map(Number);
+  const b=plain($('busca').value.trim());
+  const fig=$('fFig').checked,sfig=$('fSemFig').checked,anul=$('fAnul').checked;
+  filtrados=Q.filter(q=>{
+    if(!anul&&semGab(q))return false;
+    if(A.length&&!A.includes(q.assunto))return false;
+    if(S.length&&!S.includes(q.serie))return false;
+    if(D.length&&!D.includes(q.dificuldade))return false;
+    if(Y.length&&!Y.includes(q.ano))return false;
+    const tf=(q.figuras&&q.figuras.length)||q.alternativas_imagem;
+    if(fig&&!tf)return false;if(sfig&&tf)return false;
+    if(b&&!plain(q.enunciado+' '+q.topico+' '+q.assunto).includes(b))return false;
+    return true;
+  });
+  mostrando=0;$('lista').innerHTML='';mais();
+  $('cnt').textContent=filtrados.length+' questão(ões) encontrada(s) de '+Q.length;
+}
+
+/* ---------- renderização ---------- */
+function corpo(q,paraProva){
+  let h=Tx.html(q.enunciado,false,q.figuras||[]);
+  if(!paraProva&&q.fonte_figura)h+='<div class="fonte">'+q.fonte_figura+'</div>';
+  if(q.alternativas){for(const k of Object.keys(q.alternativas))h+='<div class="alt"><b>'+k+')</b> '+mdi(q.alternativas[k])+'</div>'}
+  if(q.alternativas_imagem)h+='<img src="'+q.alternativas_imagem+'" alt="alternativas">';
+  return h;
+}
+function cardHTML(q){
+  const d=q.dificuldade?q.dificuldade[0]:'M';
+  return '<div class="qcard'+(sel.includes(q.id)?' sel':'')+'" id="c_'+q.id+'">'+
+   '<div class="qhd"><span class="t">'+q.origem+' – Q'+q.numero_original+'</span>'+
+   '<span class="bdg s">'+q.assunto+'</span><span class="bdg s">'+q.serie+'º ano</span>'+
+   '<span class="bdg '+d+'">'+q.dificuldade+'</span>'+(semGab(q)?'<span class="bdg a">'+(q.anulada?'ANULADA':'sem gabarito')+'</span>':'')+
+   '<span class="sp"></span><button class="addbtn" onclick="alternar(\''+q.id+'\')">'+(sel.includes(q.id)?'✓ Na prova':'+ Adicionar')+'</button></div>'+
+   '<div class="qbd">'+corpo(q,false)+'</div>'+
+   '<div class="gabl"><details><summary>Ver gabarito</summary>'+(q.anulada?'Anulada pelo INEP':(q.gabarito?'Gabarito: <b>'+q.gabarito+'</b>':'Sem gabarito oficial ainda'))+
+   (q.gabarito&&q.gabarito_oficial===false?' <i>(calculado, não oficial)</i>':'')+' · tópico: '+q.topico+'</details></div></div>';
+}
+function mais(){
+  const fim=Math.min(filtrados.length,mostrando+PAG);
+  const frag=document.createElement('div');
+  frag.innerHTML=filtrados.slice(mostrando,fim).map(cardHTML).join('');
+  while(frag.firstChild)$('lista').appendChild(frag.firstChild);
+  mostrando=fim;
+  $('more').style.display=mostrando<filtrados.length?'block':'none';
+  $('more').textContent='Mostrar mais ('+(filtrados.length-mostrando)+' restantes)';
+}
+
+/* ---------- prova (carrinho) ---------- */
+function salvar(){try{localStorage.setItem('exata_prova',JSON.stringify(sel))}catch(e){}}
+function alternar(id){
+  const i=sel.indexOf(id);if(i>=0)sel.splice(i,1);else sel.push(id);
+  salvar();const c=$('c_'+id);
+  if(c){c.classList.toggle('sel',sel.includes(id));c.querySelector('.addbtn').textContent=sel.includes(id)?'✓ Na prova':'+ Adicionar'}
+  desenhaCart();
+}
+function desenhaCart(){
+  $('ncart').textContent=sel.length;$('hdrcnt').textContent=sel.length?sel.length+' questão(ões) na prova':'';
+  $('cart').innerHTML=sel.map((id,i)=>{const q=porId[id];
+    return '<div class="cartitem"><b>'+(i+1)+'.</b><span class="tx" title="'+q.topico+'">'+q.origem+' Q'+q.numero_original+' · '+q.assunto+'</span>'+
+    '<button onclick="mover('+i+',-1)">↑</button><button onclick="mover('+i+',1)">↓</button><button onclick="alternar(\''+id+'\')">✕</button></div>'}).join('')||'<div style="font-size:12px;color:#777">Nenhuma questão escolhida. Clique em “+ Adicionar” nas questões ou use o sorteio.</div>';
+}
+function mover(i,d){const j=i+d;if(j<0||j>=sel.length)return;[sel[i],sel[j]]=[sel[j],sel[i]];salvar();desenhaCart()}
+function limparProva(){if(sel.length&&!confirm('Remover todas as questões da prova?'))return;sel=[];salvar();desenhaCart();document.querySelectorAll('.qcard.sel').forEach(c=>{c.classList.remove('sel');c.querySelector('.addbtn').textContent='+ Adicionar'})}
+function sortear(){
+  const n=Math.max(1,parseInt($('nSort').value)||10);
+  const pool=filtrados.filter(q=>!sel.includes(q.id)&&!semGab(q));
+  for(let i=pool.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[pool[i],pool[j]]=[pool[j],pool[i]]}
+  pool.slice(0,n).forEach(q=>sel.push(q.id));
+  salvar();desenhaCart();
+  document.querySelectorAll('.qcard').forEach(c=>{const id=c.id.slice(2);const s=sel.includes(id);c.classList.toggle('sel',s);c.querySelector('.addbtn').textContent=s?'✓ Na prova':'+ Adicionar'});
+  if(pool.length<n)alert('Só havia '+pool.length+' questão(ões) disponíveis com os filtros atuais.');
+}
+
+/* ---------- geração da prova ---------- */
+function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;')}
+function gerarProva(){
+  if(!sel.length){alert('Escolha pelo menos uma questão.');return}
+  const qs=sel.map(id=>porId[id]);
+  let h='<div class="'+($('o2col').checked?'cols2':'')+'">';
+  h+='<div class="pg-head"><div class="tit">'+esc($('cTit').value)+'</div>'+
+     ($('cInst').value?'<div style="text-align:center;font-size:13px">'+esc($('cInst').value)+'</div>':'')+
+     '<div class="row"><div>Aluno(a): </div><div style="flex:.5">Nº: </div></div>'+
+     '<div class="row"><div>Professor(a): '+esc($('cProf').value)+'</div><div>Turma: '+esc($('cTurma').value)+'</div><div>Data: '+esc($('cData').value)+'</div><div style="flex:.5">Nota: </div></div></div>';
+  if($('cInstr').value.trim())h+='<p class="pg-inst">'+esc($('cInstr').value)+'</p>';
+  h+='<div class="qs">';
+  qs.forEach((q,i)=>{
+    h+='<div class="pq"><div><span class="nm">QUESTÃO '+(i+1)+'</span>'+($('oOrigem').checked?' <small>('+q.origem+')</small>':'')+'</div>'+corpo(q,true)+'</div>';
+  });
+  h+='</div></div>';
+  if($('oGab').checked){
+    h+='<div class="gabpg"><h2 style="text-align:center">Gabarito – '+esc($('cTit').value)+'</h2><table><tr><th>Questão</th><th>Resposta</th><th>Origem</th></tr>'+
+      qs.map((q,i)=>'<tr><td>'+(i+1)+'</td><td><b>'+(q.anulada?'ANULADA':(q.gabarito||'—'))+'</b></td><td>'+q.origem+' Q'+q.numero_original+'</td></tr>').join('')+'</table>'+
+      (qs.some(q=>q.gabarito_oficial===false)?'<p style="font-size:12px">Atenção: há respostas de 2026 calculadas, ainda não oficiais.</p>':'')+'</div>';
+  }
+  $('provabox').innerHTML=h;
+  $('app').style.display='none';document.querySelector('header').style.display='none';$('prova').style.display='block';window.scrollTo(0,0);
+}
+async function baixarWord(btn){
+  if(!sel.length){alert('Escolha pelo menos uma questão.');return}
+  const txt=btn.textContent;btn.disabled=true;btn.textContent='Gerando…';
+  try{
+    const arqs=await WordExport.gerar({titulo:$('cTit').value,inst:$('cInst').value,prof:$('cProf').value,turma:$('cTurma').value,data:$('cData').value,instr:$('cInstr').value,
+      origem:$('oOrigem').checked,col2:$('o2col').checked,gab:$('oGab').checked,gabSep:$('oGabSep').checked,questoes:sel.map(id=>porId[id])});
+    for(const a of arqs){const u=URL.createObjectURL(a.blob);const l=document.createElement('a');l.href=u;l.download=a.nome;document.body.appendChild(l);l.click();l.remove();setTimeout(()=>URL.revokeObjectURL(u),4000)}
+  }catch(e){alert('Não foi possível gerar o Word: '+e.message)}
+  btn.disabled=false;btn.textContent=txt;
+}
+function voltar(){$('prova').style.display='none';$('app').style.display='grid';document.querySelector('header').style.display='flex'}
+
+montaFiltros();aplicar();desenhaCart();
+</script>
+</body>
+</html>
