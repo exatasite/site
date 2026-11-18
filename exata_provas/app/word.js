@@ -110,7 +110,9 @@ window.WordExport=(function(){
           t.items.forEach((it,i)=>{
             const pre=(t.ordered?((t.start||1)+i)+'.':'•')+'\t';
             const inl=[];it.tokens.forEach(x=>{if(x.type==='text'||x.type==='paragraph')inl.push.apply(inl,x.tokens||[x])});
-            out+=P(run(pre,{})+this.runs(inl,{},ctx),{ind:567,hang:283,after:40});
+            const lv=(o.lvl||0)*400;
+            out+=P(run(pre,{})+this.runs(inl,{},ctx),{ind:567+lv,hang:283,after:40});
+            it.tokens.forEach(x=>{if(x.type==='list')out+=this.blocks([x],ctx,{lvl:(o.lvl||0)+1})});
           });break;
         case 'table':out+=this.table(t,ctx);break;
         case 'blockquote':out+=this.blocks(t.tokens,ctx,{ind:340});break;
@@ -182,6 +184,16 @@ window.WordExport=(function(){
     return x;
   }
 
+  function resolucoes(qs,o,doc){
+    let x=P(run('Resolução detalhada – '+(o.titulo||''),{b:1,sz:28}),{jc:'center',after:160});
+    qs.forEach((q,i)=>{
+      const r=(window.RESOL||{})[q.id];
+      x+=P(run('QUESTÃO '+(i+1),{b:1})+(o.origem?run('  ('+q.origem+')',{sz:17}):'')+run(q.anulada?'  –  ANULADA':(q.gabarito?'  –  Resposta: '+q.gabarito:''),{b:1}),{keepNext:1,before:200,after:60});
+      x+=r?doc.md(r,[],{maxW:15*CM,maxH:9.5*CM}):P(run('Resolução não disponível para esta questão.',{i:1,sz:18}),{after:80});
+    });
+    return x;
+  }
+
   const NS='xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main" xmlns:m="http://schemas.openxmlformats.org/officeDocument/2006/math" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:wp="http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing"';
 
   async function pacote(body,doc,nome){
@@ -212,21 +224,27 @@ window.WordExport=(function(){
     const base=(o.titulo||'prova').normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/[^A-Za-z0-9]+/g,'_').replace(/^_|_$/g,'')||'prova';
     let body=cabecalho(doc,o);
     let qx='';qs.forEach((q,i)=>{qx+=doc.questao(q,i+1,o)});
-    const gx=gabarito(qs,o);
+    let gx=o.gab?gabarito(qs,o):'';
+    let rx=o.resol?resolucoes(qs,o,doc):'';
     const comGab=o.gab&&!o.gabSep;
+    const sep=o.gabSep&&(o.gab||o.resol);
+    const pgb='<w:p><w:r><w:br w:type="page"/></w:r></w:p>';
+    const extra=(comGab?gx:'')+((o.resol&&!o.gabSep)?((comGab?pgb:'')+rx):'');
     if(o.col2){
       body+=P('',{after:0,sect:SECT(1)})+qx;                       // cabeçalho em 1 coluna; questões em 2 colunas
-      if(comGab)body+=P('',{after:0,sect:SECT(2,'continuous')})+gx+SECT(1);
+      if(extra)body+=P('',{after:0,sect:SECT(2,'continuous')})+(comGab?'':pgb)+extra+SECT(1);
       else body+=SECT(2,'continuous');
     }else{
       body+=qx;
-      if(comGab)body+='<w:p><w:r><w:br w:type="page"/></w:r></w:p>'+gx;
+      if(extra)body+=pgb+extra;
       body+=SECT(1);
     }
     out.push({nome:base+'.docx',blob:await pacote(body,doc,base)});
-    if(o.gab&&o.gabSep){
+    if(sep){
       const d2=new Doc();
-      out.push({nome:base+'_GABARITO.docx',blob:await pacote(gx+SECT(1),d2,base)});
+      const gx2=o.gab?gabarito(qs,o):'';
+      const rx2=o.resol?resolucoes(qs,o,d2):'';
+      out.push({nome:base+'_GABARITO.docx',blob:await pacote(gx2+(gx2&&rx2?pgb:'')+rx2+SECT(1),d2,base)});
     }
     return out;
   }

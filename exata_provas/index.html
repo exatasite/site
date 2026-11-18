@@ -63,6 +63,7 @@ input[type=text],select,textarea{width:100%;padding:6px 8px;border:1px solid var
 .pq .alt{margin:6px 0 6px 2px;line-height:1.9}.pq img{max-width:100%;max-height:8.5cm;width:auto;height:auto;object-fit:contain;display:block;margin:6px auto}
 .pq table{border-collapse:collapse}.pq td,.pq th{border:1px solid #666;padding:2px 6px;font-size:12px}
 .gabpg{page-break-before:always;padding-top:10px}
+.resq{margin:10px 0 14px;break-inside:avoid-page}.resh{background:#e8edf7;padding:4px 8px;margin-bottom:4px}.resb{font-size:13.5px;line-height:1.45}.resb p{margin:4px 0}.resb table{border-collapse:collapse}.resb td,.resb th{border:1px solid #666;padding:2px 8px}
 .gabpg table{border-collapse:collapse;margin-top:8px}.gabpg td,.gabpg th{border:1px solid #000;padding:4px 14px;text-align:center}
 .toolbar{background:var(--az);color:#fff;padding:10px 18px;display:flex;gap:10px;align-items:center;position:sticky;top:0;z-index:30}
 .toolbar button{border:0;border-radius:6px;padding:8px 14px;font-weight:bold;cursor:pointer}
@@ -127,7 +128,8 @@ input[type=text],select,textarea{width:100%;padding:6px 8px;border:1px solid var
     <label class="chk"><input type="checkbox" id="oOrigem" checked> mostrar a origem (ex.: ENEM 2019)</label>
     <label class="chk"><input type="checkbox" id="o2col"> duas colunas</label>
     <label class="chk"><input type="checkbox" id="oGab" checked> incluir folha de gabarito</label>
-    <label class="chk"><input type="checkbox" id="oGabSep"> Word: gabarito em arquivo separado</label>
+    <label class="chk"><input type="checkbox" id="oResol"> incluir resolução detalhada <small id="nResol"></small></label>
+    <label class="chk"><input type="checkbox" id="oGabSep"> Word: gabarito/resolução em arquivo separado</label>
     <button class="addbtn" style="width:100%;margin-top:10px;background:var(--az);color:#fff" onclick="gerarProva()">Gerar prova ▶</button>
     <button class="addbtn" style="width:100%;margin-top:6px" onclick="baixarWord(this)">📄 Baixar Word (.docx)</button>
   </aside>
@@ -144,6 +146,7 @@ input[type=text],select,textarea{width:100%;padding:6px 8px;border:1px solid var
 </div>
 
 <script src="app/dados.js"></script>
+<script src="app/resolucoes.js"></script>
 <script src="app/marked.min.js"></script>
 <script src="app/katex/katex.min.js"></script>
 <script src="app/texto.js"></script>
@@ -159,6 +162,8 @@ let sel=[];            // ids na prova (ordem)
 let filtrados=[],mostrando=0,PAG=30;
 try{sel=JSON.parse(localStorage.getItem('exata_prova')||'[]').filter(id=>Q.some(q=>q.id===id))}catch(e){}
 const porId=Object.fromEntries(Q.map(q=>[q.id,q]));
+const RES=window.RESOL||{};
+$('nResol')&&($('nResol').textContent='('+Object.keys(RES).length+' de '+BANCO.length+' questões já têm resolução)');
 const semGab=q=>q.anulada||!q.gabarito;
 
 /* ---------- filtros ---------- */
@@ -218,7 +223,7 @@ function cardHTML(q){
    '<span class="sp"></span><button class="addbtn" onclick="alternar(\''+q.id+'\')">'+(sel.includes(q.id)?'✓ Na prova':'+ Adicionar')+'</button></div>'+
    '<div class="qbd">'+corpo(q,false)+'</div>'+
    '<div class="gabl"><details><summary>Ver gabarito</summary>'+(q.anulada?'Anulada pelo INEP':(q.gabarito?'Gabarito: <b>'+q.gabarito+'</b>':'Sem gabarito oficial ainda'))+
-   (q.gabarito&&q.gabarito_oficial===false?' <i>(calculado, não oficial)</i>':'')+' · tópico: '+q.topico+'</details></div></div>';
+   (q.gabarito&&q.gabarito_oficial===false?' <i>(calculado, não oficial)</i>':'')+' · tópico: '+q.topico+(RES[q.id]?'<div class="resb" style="margin-top:6px;border-top:1px solid #ddd;padding-top:6px"><b>Resolução:</b>'+Tx.html(RES[q.id],false,[])+'</div>':'')+'</details></div></div>';
 }
 function mais(){
   const fim=Math.min(filtrados.length,mostrando+PAG);
@@ -277,6 +282,12 @@ function gerarProva(){
       qs.map((q,i)=>'<tr><td>'+(i+1)+'</td><td><b>'+(q.anulada?'ANULADA':(q.gabarito||'—'))+'</b></td><td>'+q.origem+' Q'+q.numero_original+'</td></tr>').join('')+'</table>'+
       (qs.some(q=>q.gabarito_oficial===false)?'<p style="font-size:12px">Atenção: há respostas de 2026 calculadas, ainda não oficiais.</p>':'')+'</div>';
   }
+  if($('oResol').checked){
+    h+='<div class="gabpg"><h2 style="text-align:center">Resolução detalhada – '+esc($('cTit').value)+'</h2>'+
+      qs.map((q,i)=>{const r=(window.RESOL||{})[q.id];
+        return '<div class="resq"><div class="resh"><b>QUESTÃO '+(i+1)+'</b> <small>('+q.origem+')</small> – '+(q.anulada?'<b>ANULADA</b>':(q.gabarito?'Resposta: <b>'+q.gabarito+'</b>':'sem gabarito'))+'</div>'+
+        (r?'<div class="resb">'+Tx.html(r,false,[])+'</div>':'<p><i>Resolução não disponível para esta questão.</i></p>')+'</div>'}).join('')+'</div>';
+  }
   $('provabox').innerHTML=h;
   $('app').style.display='none';document.querySelector('header').style.display='none';$('prova').style.display='block';window.scrollTo(0,0);
 }
@@ -285,7 +296,7 @@ async function baixarWord(btn){
   const txt=btn.textContent;btn.disabled=true;btn.textContent='Gerando…';
   try{
     const arqs=await WordExport.gerar({titulo:$('cTit').value,inst:$('cInst').value,prof:$('cProf').value,turma:$('cTurma').value,data:$('cData').value,instr:$('cInstr').value,
-      origem:$('oOrigem').checked,col2:$('o2col').checked,gab:$('oGab').checked,gabSep:$('oGabSep').checked,questoes:sel.map(id=>porId[id])});
+      origem:$('oOrigem').checked,col2:$('o2col').checked,gab:$('oGab').checked,resol:$('oResol').checked,gabSep:$('oGabSep').checked,questoes:sel.map(id=>porId[id])});
     for(const a of arqs){const u=URL.createObjectURL(a.blob);const l=document.createElement('a');l.href=u;l.download=a.nome;document.body.appendChild(l);l.click();l.remove();setTimeout(()=>URL.revokeObjectURL(u),4000)}
   }catch(e){alert('Não foi possível gerar o Word: '+e.message)}
   btn.disabled=false;btn.textContent=txt;
