@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>1º Ano: Aula 23 - Dinâmica no Movimento Circular</title>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../estilo.css">
+<script>
+MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true}};
+</script>
+<script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+<button class="menu-toggle" onclick="toggleMenu()">☰</button>
+<nav id="menu-principal" class="nav-global"><ul>
+<li><a href="../index.html">🏠 Início</a></li>
+<li><a href="../ensino_medio.html">📚 Ensino Médio</a></li>
+<li><a href="../ensino_superior.html">🎓 Ensino Superior</a></li>
+</ul></nav>
+<header id="topo"><h1>FÍSICA EM</h1><p>1º Ano | Aula 23: Dinâmica no Movimento Circular</p>
+<button id="btn-slides" onclick="toggleSlides()">📺 Iniciar Modo Slides</button></header>
+<div class="container"><main class="conteudo-principal">
+<div class="secao-aula"><div class="container-resumo" id="resumo"><h3>📚 Resumo</h3><section class="resumo-conteudo">
+<p>Na dinâmica do movimento circular, a aceleração centrípeta exige uma <strong>força resultante radial</strong>, dirigida para o centro da trajetória. Essa força não é uma nova interação: é o nome dado à <strong>resultante das componentes radiais das forças reais</strong> que atuam no corpo.</p>
+<p>Para um corpo de massa $m$, velocidade escalar $v$ e trajetória circular de raio $R$:</p>
+$$F_{\mathrm{resultante,rad}}=F_c=m\frac{v^2}{R}=m\omega^2R$$
+<p>Em cada situação, identifique as forças reais — peso, normal, atrito, tração — e projete-as na direção radial. A força centrípeta é a resultante dessas componentes, não uma força adicional no diagrama.</p>
+</section></div></div>
+
+<section class="conteudo-teorico-completo" id="teoria">
+<div class="passo-teoria"><h3>📖 Dinâmica no Movimento Circular</h3><h4>1. Por que é necessária uma força centrípeta?</h4>
+<p>Mesmo quando o módulo da velocidade é constante, o vetor velocidade muda continuamente de direção em uma trajetória circular. Essa variação produz uma aceleração dirigida para o centro, denominada <strong>aceleração centrípeta</strong>:</p>
+$$a_c=\frac{v^2}{R}=\omega^2R$$
+<p>Pela 2ª Lei de Newton, a componente radial da força resultante deve ser:</p>
+$$\boxed{\sum F_{\mathrm{radial}}=m\frac{v^2}{R}}$$
+<p>O sentido positivo radial será escolhido, em cada problema, para o centro da circunferência. A equação é uma aplicação da 2ª Lei de Newton na direção radial. Não significa que exista uma força física independente chamada “força centrípeta”.</p>
+</div>
+<div class="passo-teoria"><h4>2. Forças que podem atuar como resultante centrípeta</h4>
+<p>A força centrípeta pode ser fornecida, total ou parcialmente, por diferentes forças reais:</p>
+<ul>
+<li><strong>Tração:</strong> em uma pedra presa a um fio, a tração pode apontar para o centro e fornecer a resultante radial.</li>
+<li><strong>Força de atrito:</strong> em um automóvel fazendo curva em pista horizontal, o atrito estático entre pneus e pista pode fornecer a força centrípeta.</li>
+<li><strong>Força normal:</strong> em pistas curvas, trilhos e loopings, a normal pode ter componente radial.</li>
+<li><strong>Peso:</strong> em movimentos circulares verticais, o peso contribui para a resultante radial.</li>
+<li><strong>Combinações:</strong> frequentemente, mais de uma força possui componente radial. Todas devem ser somadas vetorialmente.</li>
+</ul>
+<p>Não desenhe uma seta extra chamada $F_c$ no diagrama de forças se já desenhou as forças reais. Em vez disso, escreva a soma das componentes radiais igual a $mv^2/R$.</p>
+</div>
+<div class="passo-teoria"><h4>3. Curva em pista horizontal</h4>
+<p>Considere um carro fazendo uma curva plana, de raio $R$. No plano vertical, peso $P=mg$ e normal $N$ se equilibram. Na direção horizontal radial, o atrito estático aponta para o centro e fornece a resultante centrípeta:</p>
+$$f_{\mathrm{at}}=m\frac{v^2}{R}$$
+<p>Como o atrito estático máximo vale $f_{\mathrm{at,max}}=\mu_eN$ e, na pista horizontal sem aceleração vertical, $N=mg$, a condição para não derrapar é:</p>
+$$m\frac{v^2}{R}\leq\mu_e mg$$
+$$\boxed{v_{\max}=\sqrt{\mu_e gR}}$$
+<p>Essa velocidade máxima é válida no modelo de pista horizontal, com atrito estático de coeficiente $\mu_e$ e sem outras forças horizontais relevantes. Se a velocidade exigida superar esse limite, o atrito disponível não será suficiente para manter a trajetória circular.</p>
+<figure class="figura-aula figura-grande"><img src="../imagens_fisica/aula1_23_forca_centripeta_curva.png" alt="Carro em curva plana com atrito estático dirigido para o centro"><figcaption>Figura 1: Em uma curva horizontal, o atrito estático pode atuar como força resultante centrípeta, apontando para o centro da trajetória.</figcaption></figure>
+</div>
+<div class="passo-teoria"><h4>4. Veículo no topo de uma ponte convexa</h4>
+<p>No ponto mais alto de uma ponte convexa, o centro de curvatura está abaixo do veículo. Assim, a direção radial positiva é vertical para baixo. O peso aponta para baixo e a normal da pista aponta para cima:</p>
+$$mg-N=m\frac{v^2}{R}$$
+<p>Logo, a força normal é:</p>
+$$\boxed{N=m\left(g-\frac{v^2}{R}\right)}$$
+<p>A normal representa a intensidade da força de contato da pista sobre o veículo. Para que o carro permaneça em contato com a pista, é necessário $N\geq0$. No limite de contato, $N=0$, e a velocidade correspondente é:</p>
+$$\boxed{v_{\mathrm{limite}}=\sqrt{gR}}$$
+<p>Esse resultado é para o topo de uma ponte circular convexa idealizada. Não deve ser confundido com a velocidade máxima em uma curva plana com atrito.</p>
+<figure class="figura-aula figura-grande"><img src="../imagens_fisica/aula1_23_forca_centripeta_ponte.png" alt="Diagrama de forças em um carro no topo de uma ponte convexa"><figcaption>Figura 2: No topo da ponte, o peso aponta para o centro de curvatura e a normal aponta no sentido oposto.</figcaption></figure>
+</div>
+<div class="passo-teoria"><h4>5. Movimento circular vertical: fio e looping</h4>
+<p>Em uma trajetória circular vertical, o centro da circunferência pode estar acima ou abaixo do corpo, dependendo da posição. A resultante radial aponta sempre para o centro.</p>
+<p><strong>No ponto mais baixo:</strong> o centro está acima do corpo. Para um corpo preso a um fio, a tração aponta para cima e o peso para baixo:</p>
+$$T-mg=m\frac{v_{\mathrm{baixo}}^2}{R}$$
+<p><strong>No ponto mais alto:</strong> o centro está abaixo do corpo. Tanto a tração quanto o peso apontam para baixo:</p>
+$$T+mg=m\frac{v_{\mathrm{alto}}^2}{R}$$
+<p>Para um corpo completar uma volta mantendo o fio esticado, a tração não pode ser negativa. No ponto mais alto, a condição limite é $T=0$, portanto:</p>
+$$mg=m\frac{v_{\mathrm{alto,min}}^2}{R}\quad\Rightarrow\quad
+\boxed{v_{\mathrm{alto,min}}=\sqrt{gR}}$$
+<p>Essa é a velocidade mínima no topo para o fio permanecer apenas esticado. Em um looping rígido, a condição de contato é análoga: a normal não pode ser negativa.</p>
+<figure class="figura-aula figura-grande"><img src="../imagens_fisica/aula1_23_forca_centripeta_loop.png" alt="Pontos superior e inferior de uma trajetória circular vertical e sentidos radiais para o centro"><figcaption>Figura 3: A direção da resultante centrípeta é sempre para o centro, mas sua orientação vertical muda entre o topo e a base da trajetória.</figcaption></figure>
+</div>
+<div class="passo-teoria"><h4>6. Curva inclinada sem atrito</h4>
+<p>Em uma curva inclinada de ângulo $\theta$, sem atrito, a força normal é perpendicular à pista. Suas componentes vertical e horizontal radial desempenham papéis diferentes. Para velocidade constante em altura:</p>
+$$N\cos\theta=mg$$
+$$N\sin\theta=m\frac{v^2}{R}$$
+<p>Dividindo as equações:</p>
+$$\boxed{\tan\theta=\frac{v^2}{Rg}}$$
+<p>Portanto, a inclinação ideal depende da velocidade de projeto, do raio da curva e da gravidade. Para outra velocidade, pode ser necessário atrito para evitar escorregamento.</p>
+</div>
+<div class="passo-teoria"><h4>7. Estratégia para resolver problemas</h4>
+<ol>
+<li>Identifique o corpo e desenhe somente as forças reais que atuam nele.</li>
+<li>Localize o centro da trajetória circular e indique a direção radial.</li>
+<li>Escolha o sentido positivo radial apontando para o centro.</li>
+<li>Decomponha as forças, se necessário, e escreva $\sum F_{\mathrm{radial}}=mv^2/R$.</li>
+<li>Use a condição de contato ($N\geq0$) ou de fio esticado ($T\geq0$), quando pertinente.</li>
+<li>Confira as unidades: força em newtons (N), massa em kg, velocidade em m/s e raio em m.</li>
+</ol>
+<p><strong>Erros comuns:</strong> tratar a força centrípeta como uma força adicional; apontar a resultante para fora da curva; usar $v/R$ no lugar de $v^2/R$; esquecer que o sentido do centro muda conforme o ponto da trajetória; ou confundir atrito estático com atrito cinético.</p>
+<p>Adotaremos, nos exemplos, $g=10\,\text{m/s}^2$ quando esse valor for explicitamente indicado. Em problemas reais, a aceleração da gravidade local é aproximadamente $9,8\,\text{m/s}^2$ próximo à superfície terrestre.</p>
+</div>
+</section>
+
+<section class="aplicacoes-reais" id="aplicacoes"><h3>💡 Física em Ação</h3><div class="cards-aplicacao">
+<div class="card"><h4>Rodovias e curvas inclinadas</h4><p>O raio da curva e a velocidade de projeto orientam a inclinação da pista. A geometria ajuda a reduzir a dependência do atrito para fornecer a resultante centrípeta na velocidade prevista.</p></div>
+<div class="card" style="border-left-color:#2ecc71;"><h4>Montanhas-russas e pontes</h4><p>Em loopings e no topo de pontes, a força normal e o peso determinam a resultante radial. A análise permite avaliar condições de contato e segurança dentro de um modelo físico idealizado.</p></div>
+</div></section>
+
+<section class="questoes-resolvidas" id="resolvidas"><h3>✅ 5 Questões Resolvidas (R1 a R5)</h3>
+<article class="questao"><h4>R1: Força centrípeta em uma curva plana</h4><p><strong>Enunciado:</strong> Um automóvel de massa $1\,200\,\text{kg}$ percorre uma curva horizontal de raio $50\,\text{m}$ com velocidade constante de $10\,\text{m/s}$. Determine a intensidade da força centrípeta necessária.</p><div class="resolucao-bloco"><p><strong>Dados:</strong> $m=1\,200\,\text{kg}$; $R=50\,\text{m}$; $v=10\,\text{m/s}$. Queremos a resultante radial.</p><p>Aplicando a 2ª Lei de Newton na direção radial:</p>$$F_c=m\frac{v^2}{R}=1\,200\frac{10^2}{50}=1\,200(2)=\boxed{2\,400\,\text{N}}$$<p>Essa resultante deve apontar para o centro da curva. Em pista plana, ela pode ser fornecida pelo atrito estático.</p></div></article>
+<article class="questao"><h4>R2: Atrito estático mínimo para realizar a curva</h4><p><strong>Enunciado:</strong> Um carro de massa $1\,000\,\text{kg}$ faz uma curva plana de raio $40\,\text{m}$ a $12\,\text{m/s}$. Determine o atrito estático necessário e o coeficiente mínimo de atrito, adotando $g=10\,\text{m/s}^2$.</p><div class="resolucao-bloco"><p>Na horizontal, o atrito fornece a resultante radial:</p>$$f_{\mathrm{at}}=m\frac{v^2}{R}=1\,000\frac{144}{40}=\boxed{3\,600\,\text{N}}$$<p>Como $N=mg=10\,000\,\text{N}$ e $f_{\max}=\mu_eN$, no limite:</p>$$\mu_{e,\min}=\frac{3\,600}{10\,000}=\boxed{0,36}$$<p>Um coeficiente igual ou superior a esse valor é necessário no modelo adotado.</p></div></article>
+<article class="questao"><h4>R3: Força normal no topo de uma ponte</h4><p><strong>Enunciado:</strong> Um carro de massa $800\,\text{kg}$ passa pelo topo de uma ponte convexa de raio $80\,\text{m}$ a $20\,\text{m/s}$. Determine a força normal da pista sobre o carro. Use $g=10\,\text{m/s}^2$.</p><div class="resolucao-bloco"><p>No topo, o centro está abaixo do carro. Tomando para baixo como radial positivo:</p>$$mg-N=m\frac{v^2}{R}$$ $$N=mg-m\frac{v^2}{R}=800(10)-800\frac{400}{80}$$ $$N=8\,000-4\,000=\boxed{4\,000\,\text{N}}$$<p>A normal é positiva, portanto há contato com a pista nesse instante.</p></div></article>
+<article class="questao"><h4>R4: Velocidade limite no topo de uma ponte</h4><p><strong>Enunciado:</strong> Uma ponte convexa pode ser aproximada por um arco circular de raio $45\,\text{m}$. Qual é a velocidade no topo para a qual a normal se anula? Adote $g=10\,\text{m/s}^2$.</p><div class="resolucao-bloco"><p>No limite de contato, $N=0$. Assim, $mg=mv^2/R$:</p>$$v=\sqrt{gR}=\sqrt{10(45)}=\sqrt{450}=\boxed{15\sqrt2\,\text{m/s}}$$<p>Numericamente, $v\approx21,2\,\text{m/s}$. Para velocidades maiores, o modelo prevê perda de contato no topo.</p></div></article>
+<article class="questao"><h4>R5: Tração no ponto mais baixo de uma trajetória vertical</h4><p><strong>Enunciado:</strong> Uma esfera de massa $0,5\,\text{kg}$ presa a um fio de comprimento $1,2\,\text{m}$ passa pelo ponto mais baixo com velocidade de $6\,\text{m/s}$. Determine a tração no fio. Use $g=10\,\text{m/s}^2$.</p><div class="resolucao-bloco"><p>No ponto mais baixo, a direção radial positiva aponta para cima:</p>$$T-mg=m\frac{v^2}{R}$$ $$T=mg+m\frac{v^2}{R}=0,5(10)+0,5\frac{36}{1,2}$$ $$T=5+15=\boxed{20\,\text{N}}$$<p>A tração precisa fornecer a força centrípeta e também equilibrar o peso na direção radial.</p></div></article>
+</section>
+
+<section class="questoes-propostas" id="propostas"><h3>✍️ 10 Questões Propostas (P6 a P15)</h3>
+<article class="questao"><h4>P6: Resultante centrípeta</h4><p><strong>Enunciado:</strong> Um corpo de massa $2\,\text{kg}$ move-se em uma circunferência de raio $4\,\text{m}$ com velocidade de $6\,\text{m/s}$. Determine a resultante radial.</p><button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button><div class="gabarito-resolucao"><p>$F_c=mv^2/R=2(36)/4=\boxed{18\,\text{N}}$.</p></div></article>
+<article class="questao"><h4>P7: Velocidade em curva plana</h4><p><strong>Enunciado:</strong> Um carro percorre uma curva plana de raio $100\,\text{m}$. Se o coeficiente de atrito estático é $0,25$, qual a velocidade máxima sem derrapar? Use $g=10\,\text{m/s}^2$.</p><button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button><div class="gabarito-resolucao"><p>$v_{\max}=\sqrt{\mu_e gR}=\sqrt{0,25(10)(100)}=\boxed{5\sqrt{10}\,\text{m/s}\approx15,8\,\text{m/s}}$.</p></div></article>
+<article class="questao"><h4>P8: Normal no topo da ponte</h4><p><strong>Enunciado:</strong> Um veículo de massa $1\,000\,\text{kg}$ passa pelo topo de uma ponte de raio $100\,\text{m}$ a $10\,\text{m/s}$. Calcule a normal. Use $g=10\,\text{m/s}^2$.</p><button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button><div class="gabarito-resolucao"><p>$N=mg-mv^2/R=10\,000-1\,000=\boxed{9\,000\,\text{N}}$.</p></div></article>
+<article class="questao"><h4>P9: Tração no topo do círculo</h4><p><strong>Enunciado:</strong> Uma esfera de massa $0,2\,\text{kg}$ gira presa a um fio de raio $0,8\,\text{m}$. No topo, sua velocidade é $5\,\text{m/s}$. Determine a tração, adotando $g=10\,\text{m/s}^2$.</p><button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button><div class="gabarito-resolucao"><p>No topo: $T+mg=mv^2/R$. Logo $T=0,2(25/0,8)-2=\boxed{4,25\,\text{N}}$.</p></div></article>
+<article class="questao"><h4>P10: Velocidade mínima no topo</h4><p><strong>Enunciado:</strong> Um corpo preso a um fio de $1,6\,\text{m}$ deve passar pelo ponto mais alto mantendo o fio apenas esticado. Qual a velocidade mínima nesse ponto? Use $g=10\,\text{m/s}^2$.</p><button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button><div class="gabarito-resolucao"><p>$v_{\min}=\sqrt{gR}=\sqrt{10(1,6)}=\boxed{4\,\text{m/s}}$.</p></div></article>
+<article class="questao"><h4>P11: Curva inclinada</h4><p><strong>Enunciado:</strong> Uma curva sem atrito tem raio de $50\,\text{m}$ e foi projetada para um veículo a $10\sqrt5\,\text{m/s}$. Determine o ângulo de inclinação. Use $g=10\,\text{m/s}^2$.</p><button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button><div class="gabarito-resolucao"><p>$\tan\theta=v^2/(Rg)=(500)/(500)=1$. Portanto, $\boxed{\theta=45^\circ}$.</p></div></article>
+<article class="questao"><h4>P12: Massa e força centrípeta</h4><p><strong>Enunciado:</strong> Um objeto de massa $3\,\text{kg}$ percorre uma circunferência de raio $2\,\text{m}$ a $4\,\text{m/s}$. Determine a força resultante radial.</p><button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button><div class="gabarito-resolucao"><p>$F_c=3(16)/2=\boxed{24\,\text{N}}$.</p></div></article>
+<article class="questao"><h4>P13: Normal no topo e condição de contato</h4><p><strong>Enunciado:</strong> Um carro passa no topo de uma ponte circular de raio $20\,\text{m}$ a $10\,\text{m/s}$. Verifique se há contato com a pista, calculando a normal por unidade de massa. Use $g=10\,\text{m/s}^2$.</p><button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button><div class="gabarito-resolucao"><p>$N/m=g-v^2/R=10-100/20=\boxed{5\,\text{N/kg}}$. Como é positiva, o contato é mantido.</p></div></article>
+<article class="questao"><h4>P14: Atrito em curva plana</h4><p><strong>Enunciado:</strong> Um carro de massa $900\,\text{kg}$ percorre uma curva plana de raio $45\,\text{m}$ a $15\,\text{m/s}$. Calcule o atrito necessário para manter a trajetória circular.</p><button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button><div class="gabarito-resolucao"><p>$f=mv^2/R=900(225)/45=\boxed{4\,500\,\text{N}}$.</p></div></article>
+<article class="questao"><h4>P15: Conceito de força centrípeta</h4><p><strong>Enunciado:</strong> Explique por que a expressão “força centrípeta” não deve ser interpretada como uma força adicional às forças peso, normal, tração e atrito.</p><button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button><div class="gabarito-resolucao"><p>Força centrípeta é o nome da resultante das componentes radiais das forças reais. Não é uma interação independente; é a força resultante necessária para produzir a aceleração centrípeta.</p></div></article>
+</section>
+
+<section class="TESTE" id="testes"><h3>🎓 Testes (T16 a T20)</h3>
+<article class="questao"><h4>T16: (ExataSite) Força centrípeta</h4><p>Um corpo de massa $2\,\text{kg}$ move-se com velocidade de $5\,\text{m/s}$ em uma trajetória circular de raio $2,5\,\text{m}$. A intensidade da resultante centrípeta é:</p><p>A) $10\,\text{N}$ &nbsp; B) $15\,\text{N}$ &nbsp; C) $20\,\text{N}$ &nbsp; D) $25\,\text{N}$ &nbsp; E) $50\,\text{N}$</p><button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button><div class="gabarito-resolucao"><p><strong>Gabarito: C.</strong> $F_c=2(25)/2,5=20\,\text{N}$.</p></div></article>
+<article class="questao"><h4>T17: (ExataSite) Curva plana com atrito</h4><p>Um automóvel percorre uma curva horizontal de raio $40\,\text{m}$. O coeficiente de atrito estático é $0,20$ e $g=10\,\text{m/s}^2$. A velocidade máxima sem derrapar é:</p><p>A) $2\sqrt{10}$ &nbsp; B) $4\sqrt5$ &nbsp; C) $8\sqrt5$ &nbsp; D) $10\sqrt2$ &nbsp; E) $20\,\text{m/s}$</p><button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button><div class="gabarito-resolucao"><p><strong>Gabarito: B.</strong> $v_{\max}=\sqrt{0,2(10)(40)}=\sqrt{80}=4\sqrt5\,\text{m/s}$.</p></div></article>
+<article class="questao"><h4>T18: (ExataSite) Carro no topo de uma ponte</h4><p>Um carro passa pelo topo de uma ponte convexa de raio $20\,\text{m}$ com velocidade de $10\,\text{m/s}$. Considerando $g=10\,\text{m/s}^2$, a normal por unidade de massa é:</p><p>A) $0$ &nbsp; B) $2$ &nbsp; C) $5$ &nbsp; D) $10$ &nbsp; E) $15\,\text{N/kg}$</p><button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button><div class="gabarito-resolucao"><p><strong>Gabarito: C.</strong> $N/m=g-v^2/R=10-100/20=5\,\text{N/kg}$.</p></div></article>
+<article class="questao"><h4>T19: (ExataSite) Movimento circular vertical</h4><p>Uma esfera de massa $0,5\,\text{kg}$ passa pelo ponto mais baixo de uma circunferência de raio $2\,\text{m}$ com velocidade de $4\,\text{m/s}$. A tração no fio vale, adotando $g=10\,\text{m/s}^2$:</p><p>A) $4$ &nbsp; B) $6$ &nbsp; C) $8$ &nbsp; D) $9$ &nbsp; E) $10\,\text{N}$</p><button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button><div class="gabarito-resolucao"><p><strong>Gabarito: D.</strong> $T=mg+mv^2/R=5+0,5(16/2)=9\,\text{N}$.</p></div></article>
+<article class="questao"><h4>T20: (ExataSite) Curva inclinada</h4><p>Uma curva sem atrito possui raio de $80\,\text{m}$ e inclinação de $45^\circ$. Adotando $g=10\,\text{m/s}^2$, a velocidade de projeto é:</p><p>A) $10$ &nbsp; B) $10\sqrt2$ &nbsp; C) $20$ &nbsp; D) $20\sqrt2$ &nbsp; E) $40\,\text{m/s}$</p><button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button><div class="gabarito-resolucao"><p><strong>Gabarito: D.</strong> $v=\sqrt{Rg\tan45^\circ}=\sqrt{80(10)}=\sqrt{800}=20\sqrt2\,\text{m/s}$.</p></div></article>
+</section>
+</main><aside class="menu-lateral"><iframe src="../menu_fisica.html" style="width:100%;border:none;height:600px;"></iframe></aside></div>
+<script>
+function toggleGabarito(botao){const g=botao.nextElementSibling;if(g.style.display==="none"||g.style.display===""){g.style.display="block";botao.textContent="Esconder Gabarito e Resolução";botao.style.backgroundColor="#2c3e50";}else{g.style.display="none";botao.textContent="Ver Gabarito e Resolução";botao.style.backgroundColor="#3498db";}}
+function toggleMenu(){const m=document.getElementById("menu-principal");if(m)m.classList.toggle("ativo");}
+let slideAtual=0,slides=[];
+function prepararSlides(){slides=document.querySelectorAll('.container-resumo,.passo-teoria,.aplicacoes-reais,.questao');}
+function toggleSlides(){prepararSlides();if(!document.body.classList.contains('modo-slides')){document.body.classList.add('modo-slides');slideAtual=0;mostrarSlide(slideAtual);}else{document.body.classList.remove('modo-slides');window.location.reload();}}
+function mostrarSlide(n){slides.forEach(s=>{s.classList.remove('slide-ativo');s.style.display='none';});const s=slides[n];if(!s)return;s.classList.add('slide-ativo');s.style.display='flex';s.querySelectorAll('.gabarito-resolucao').forEach(g=>g.style.display='none');s.querySelectorAll('.btn-gabarito').forEach(b=>{b.textContent='Ver Gabarito e Resolução';b.style.backgroundColor='#3498db';});const c=document.getElementById('contador-slide');if(c)c.innerText=(n+1)+' / '+slides.length;if(window.MathJax)MathJax.typesetPromise();}
+function mudarSlide(d){slideAtual=(slideAtual+d+slides.length)%slides.length;mostrarSlide(slideAtual);}
+document.addEventListener('keydown',e=>{if(document.body.classList.contains('modo-slides')){if(['ArrowRight','PageDown','Enter',' '].includes(e.key))mudarSlide(1);if(['ArrowLeft','PageUp'].includes(e.key))mudarSlide(-1);if(e.key==='Escape')toggleSlides();}});
+</script>
+<style>
+body.modo-slides{overflow:hidden;background:#1a1a1a;}body.modo-slides .menu-lateral,body.modo-slides header,body.modo-slides .menu-toggle,body.modo-slides #btn-slides{display:none!important;}
+.slide-ativo{display:flex!important;flex-direction:column;align-items:center;justify-content:flex-start;position:fixed;top:0;left:0;width:100vw;height:calc(100vh - 70px);background:#fff;padding:35px;z-index:999;overflow-y:auto!important;box-sizing:border-box;text-align:center;}
+.controles-slides{position:fixed;bottom:0;left:0;width:100%;height:70px;background:#2c3e50;color:white;display:none;justify-content:center;align-items:center;gap:20px;z-index:1001;}.modo-slides .controles-slides{display:flex;}.btn-nav{padding:10px 20px;background:#3498db;color:white;border:0;border-radius:5px;cursor:pointer;font-weight:bold;}
+</style>
+<div class="controles-slides"><button class="btn-nav" onclick="mudarSlide(-1)">⬅ Anterior</button><span id="contador-slide"></span><button class="btn-nav" onclick="mudarSlide(1)">Próximo ➡</button><button class="btn-nav" onclick="toggleSlides()" style="background:#e74c3c;">Sair</button></div>
+</body></html>
