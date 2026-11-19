@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>1º Ano: Aula 28 - Energia Potencial Elástica</title>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../estilo.css">
+<script>
+MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']], processEscapes: true } };
+</script>
+<script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+<button class="menu-toggle" onclick="toggleMenu()">☰</button>
+<nav id="menu-principal" class="nav-global"><ul>
+<li><a href="../index.html">🏠 Início</a></li>
+<li><a href="../ensino_medio.html">📚 Ensino Médio</a></li>
+<li><a href="../ensino_superior.html">🎓 Ensino Superior</a></li>
+</ul></nav>
+<header id="topo">
+<h1>FÍSICA EM</h1>
+<p>1º Ano | Aula 28: Energia Potencial Elástica</p>
+<button id="btn-slides" onclick="toggleSlides()">📺 Iniciar Modo Slides</button>
+</header>
+<div class="container"><main class="conteudo-principal"><div class="secao-aula">
+<div class="container-resumo" id="resumo">
+<h3>📚 Resumo</h3><section class="resumo-conteudo">
+<p>A <strong>energia potencial elástica</strong> é a energia associada à deformação de um corpo elástico. Para uma mola ideal que obedece à lei de Hooke, medida a partir de seu comprimento natural, ela é dada por $E_{pe}=\dfrac{1}{2}kx^2$, em que $k$ é a constante elástica e $x$ é a deformação (alongamento ou compressão).</p>
+<p>A energia potencial elástica é sempre não negativa nesse modelo. Ela depende do quadrado da deformação: dobrar $x$ quadruplica a energia. O trabalho da força elástica é $W_{el}=-\Delta E_{pe}$.</p>
+</section></div>
+
+<section class="conteudo-teorico-completo" id="teoria">
+<div class="passo-teoria">
+<h3>📖 Energia potencial elástica</h3>
+<h4>1. Deformação e armazenamento de energia</h4>
+<p>Uma mola, um arco ou uma faixa elástica podem armazenar energia quando são deformados. Ao comprimir ou alongar uma mola, é necessário realizar trabalho contra a força elástica. Quando a mola é liberada, ela pode transferir energia para outros corpos, produzindo movimento.</p>
+<p>Chamamos de <strong>energia potencial elástica</strong> a energia associada à configuração deformada do sistema elástico. No estudo de uma mola ideal, a deformação $x$ é a diferença entre o comprimento atual e o comprimento natural da mola. Pode-se representar a compressão ou o alongamento pelo módulo $|x|$.</p>
+<figure class="figura-aula figura-grande">
+<img src="../imagens_fisica/aula1_28_mola_deformada.png" alt="Mola presa a uma parede e ligada a um bloco, representando sua deformação">
+<figcaption>Figura 1: Mola ideal deformada por compressão ou alongamento. A deformação é medida em relação ao comprimento natural da mola; o desenho é esquemático.</figcaption>
+</figure>
+<h4>2. Lei de Hooke e constante elástica</h4>
+<p>Para pequenas deformações dentro do limite elástico, muitos materiais obedecem aproximadamente à <strong>lei de Hooke</strong>. Para uma mola ideal, a força elástica é proporcional à deformação e tem sentido oposto a ela:</p>
+<p>$$\vec F_{el}=-k\vec x$$</p>
+<p>Em uma dimensão, usando sinais, $F_{el}=-kx$. O módulo é $F_{el}=k|x|$. A constante elástica $k$ mede a rigidez da mola: quanto maior $k$, maior a força necessária para produzir a mesma deformação. No SI, $k$ é medido em newtons por metro (N/m), e $x$ em metros (m).</p>
+<p>A lei de Hooke é um modelo válido enquanto a deformação permanecer na região elástica aproximadamente linear. Se a mola for deformada além do limite elástico, ela pode não retornar ao comprimento original e a relação linear deixa de ser válida.</p>
+<h4>3. Expressão da energia potencial elástica</h4>
+<p>O trabalho necessário para deformar gradualmente uma mola ideal desde a posição natural até uma deformação de módulo $x$ fica armazenado como energia potencial elástica:</p>
+<p>$$E_{pe}=\frac{1}{2}kx^2$$</p>
+<p>Em que $E_{pe}$ é a energia potencial elástica, em joules (J); $k$ é a constante elástica, em N/m; e $x$ é a deformação em relação ao comprimento natural, em metros (m). A unidade é coerente, pois $(\text{N/m})\cdot\text{m}^2=\text{N}\cdot\text{m}=\text{J}$.</p>
+<p>Como a deformação aparece ao quadrado, tanto a compressão quanto o alongamento armazenam energia. No modelo ideal, $E_{pe}=0$ quando a mola está em seu comprimento natural e $E_{pe}>0$ quando está deformada.</p>
+</div>
+
+<div class="passo-teoria">
+<h3>📖 Trabalho, gráficos e transformações</h3>
+<h4>4. Relação entre trabalho e energia potencial elástica</h4>
+<p>A força elástica é conservativa. Assim, o trabalho realizado por ela entre duas posições é igual ao oposto da variação da energia potencial elástica:</p>
+<p>$$W_{el}=-\Delta E_{pe}=E_{pe,i}-E_{pe,f}$$</p>
+<p>Quando a mola retorna em direção ao comprimento natural, sua energia potencial diminui e a força elástica realiza trabalho positivo. Quando a mola é deformada ainda mais, a energia potencial aumenta e o trabalho da força elástica é negativo. O trabalho externo necessário para deformar lentamente a mola, sem variação de energia cinética, é igual a $+\Delta E_{pe}$.</p>
+<h4>5. Gráfico da força elástica em função da deformação</h4>
+<p>O módulo da força elástica é proporcional ao módulo da deformação. Em um gráfico de $F_{el}$ por $x$ (considerando os módulos), obtemos uma reta que passa pela origem. A área sob a reta, entre $0$ e $x$, representa o trabalho necessário para deformar a mola, que corresponde à energia potencial elástica armazenada.</p>
+<figure class="figura-aula figura-grande">
+<img src="../imagens_fisica/aula1_28_grafico_forca_deformacao.png" alt="Gráfico linear do módulo da força elástica em função da deformação">
+<figcaption>Figura 2: Gráfico do módulo da força elástica em função da deformação para uma mola de constante elástica $k=200\,\text{N/m}$. A área triangular sob a reta representa $E_{pe}=kx^2/2$.</figcaption>
+</figure>
+<h4>6. Gráfico da energia potencial elástica em função da deformação</h4>
+<p>Como $E_{pe}=\dfrac{1}{2}kx^2$, o gráfico de energia potencial em função da deformação é uma parábola com concavidade voltada para cima. O valor da energia é o mesmo para deformações de mesmo módulo, uma vez que $x$ está ao quadrado.</p>
+<figure class="figura-aula figura-grande">
+<img src="../imagens_fisica/aula1_28_grafico_energia_deformacao.png" alt="Gráfico parabólico da energia potencial elástica em função da deformação">
+<figcaption>Figura 3: Energia potencial elástica em função da deformação para $k=200\,\text{N/m}$. Alongamentos e compressões de mesmo módulo armazenam a mesma energia.</figcaption>
+</figure>
+<h4>7. Aplicações e conversão de energia</h4>
+<ul>
+<li><strong>Arco e flecha:</strong> o trabalho realizado ao tensionar o arco fica armazenado como energia potencial elástica e pode ser transferido à flecha.</li>
+<li><strong>Brinquedos de mola:</strong> uma mola comprimida pode impulsionar um carrinho ou outro objeto, convertendo energia potencial elástica em energia cinética.</li>
+<li><strong>Cama elástica:</strong> a lona e as molas deformam-se durante o salto e armazenam energia que participa do movimento de retorno.</li>
+<li><strong>Sistemas de suspensão:</strong> molas deformam-se ao passar por irregularidades e armazenam e devolvem energia; amortecedores dissipam parte da energia mecânica, reduzindo as oscilações.</li>
+</ul>
+<h4>8. Limites do modelo e erros comuns</h4>
+<p>A expressão $E_{pe}=\dfrac{1}{2}kx^2$ é aplicada a uma mola ideal que obedece à lei de Hooke. Não se deve confundir a deformação $x$ com o comprimento total da mola. Também não se deve usar $E_{pe}=kx^2$ sem o fator $1/2$. Ao comparar deformações, lembre-se de que a energia depende de $x^2$: se a deformação dobra, a energia quadruplica; se triplica, a energia fica nove vezes maior.</p>
+</div>
+</section>
+
+<section class="aplicacoes-reais" id="aplicacoes">
+<h3>💡 Física em Ação</h3>
+<div class="cards-aplicacao">
+<div class="card"><h4>Arcos esportivos</h4><p>Ao tensionar a corda e deformar os braços do arco, o atleta realiza trabalho que fica armazenado como energia potencial elástica. Na liberação, parte dessa energia é transferida à flecha.</p></div>
+<div class="card" style="border-left-color:#2ecc71;"><h4>Suspensão de veículos</h4><p>As molas da suspensão deformam-se ao passar por desníveis, armazenando e devolvendo energia. O amortecedor dissipa parte da energia mecânica e reduz as oscilações da carroceria.</p></div>
+<div class="card"><h4>Brinquedos de mola</h4><p>Em carrinhos e mecanismos de disparo, uma mola comprimida pode realizar trabalho sobre uma peça móvel, transformando energia potencial elástica em energia cinética.</p></div>
+</div>
+</section>
+
+<section class="questoes-resolvidas" id="resolvidas">
+<h3>✅ 5 Questões Resolvidas (R 1 a 5)</h3>
+<article class="questao"><h4>R1: Energia armazenada em uma mola</h4><p><strong>Enunciado:</strong> Uma mola ideal de constante elástica $k=200\,\text{N/m}$ é comprimida $0{,}10\,\text{m}$ em relação ao seu comprimento natural. Determine a energia potencial elástica armazenada.</p><div class="resolucao-bloco"><p><strong>Dados:</strong> $k=200\,\text{N/m}$; $x=0{,}10\,\text{m}$. Incógnita: $E_{pe}$.</p><p><strong>Modelo:</strong> a mola obedece à lei de Hooke, portanto $E_{pe}=\dfrac12kx^2$.</p><p><strong>Substituição:</strong> $E_{pe}=\dfrac12\cdot200\cdot(0{,}10)^2$.</p><p><strong>Cálculo:</strong> $E_{pe}=100\cdot0{,}01=1{,}0\,\text{J}$.</p><p><strong>Resposta:</strong> $\boxed{E_{pe}=1{,}0\,\text{J}}$. A energia depende do quadrado da deformação e não do sentido da deformação.</p></div></article>
+<article class="questao"><h4>R2: Determinação da deformação</h4><p><strong>Enunciado:</strong> Uma mola de constante elástica $k=500\,\text{N/m}$ armazena $4{,}0\,\text{J}$ de energia potencial elástica. Determine o módulo da deformação.</p><div class="resolucao-bloco"><p><strong>Dados:</strong> $k=500\,\text{N/m}$; $E_{pe}=4{,}0\,\text{J}$. Incógnita: $|x|$.</p><p><strong>Modelo:</strong> $E_{pe}=\dfrac12kx^2$. Isolando $x^2$: $x^2=\dfrac{2E_{pe}}{k}$.</p><p><strong>Substituição:</strong> $x^2=\dfrac{2\cdot4{,}0}{500}=0{,}016\,\text{m}^2$.</p><p><strong>Cálculo:</strong> $|x|=\sqrt{0{,}016}=0{,}126\,\text{m}$ (aproximadamente).</p><p><strong>Resposta:</strong> $\boxed{|x|\approx0{,}126\,\text{m}=12{,}6\,\text{cm}}$.</p></div></article>
+<article class="questao"><h4>R3: Comparação de deformações</h4><p><strong>Enunciado:</strong> A mesma mola é deformada inicialmente em $2{,}0\,\text{cm}$ e, depois, em $6{,}0\,\text{cm}$. Quantas vezes maior é a energia armazenada na segunda situação?</p><div class="resolucao-bloco"><p><strong>Dados:</strong> $x_1=2{,}0\,\text{cm}$; $x_2=6{,}0\,\text{cm}$; $k$ constante.</p><p><strong>Modelo:</strong> $E_{pe}=\dfrac12kx^2$. Dividindo as energias, $\dfrac{E_2}{E_1}=\left(\dfrac{x_2}{x_1}\right)^2$.</p><p><strong>Substituição:</strong> $\dfrac{E_2}{E_1}=\left(\dfrac{6}{2}\right)^2=3^2=9$.</p><p><strong>Resposta:</strong> $\boxed{E_2=9E_1}$. Triplicar a deformação faz a energia ficar nove vezes maior.</p></div></article>
+<article class="questao"><h4>R4: Trabalho da força elástica</h4><p><strong>Enunciado:</strong> Uma mola de constante elástica $k=100\,\text{N/m}$ é comprimida de $0{,}20\,\text{m}$ para $0{,}10\,\text{m}$, considerando os módulos das deformações. Determine o trabalho realizado pela força elástica nesse deslocamento.</p><div class="resolucao-bloco"><p><strong>Dados:</strong> $k=100\,\text{N/m}$; $|x_i|=0{,}20\,\text{m}$; $|x_f|=0{,}10\,\text{m}$.</p><p><strong>Modelo:</strong> $W_{el}=-\Delta E_{pe}=E_{pe,i}-E_{pe,f}$.</p><p><strong>Energias:</strong> $E_i=\dfrac12\cdot100\cdot(0{,}20)^2=2{,}0\,\text{J}$; $E_f=\dfrac12\cdot100\cdot(0{,}10)^2=0{,}50\,\text{J}$.</p><p><strong>Trabalho:</strong> $W_{el}=2{,}0-0{,}50=+1{,}50\,\text{J}$.</p><p><strong>Resposta:</strong> $\boxed{W_{el}=+1{,}50\,\text{J}}$. A mola retorna em direção ao comprimento natural e realiza trabalho positivo.</p></div></article>
+<article class="questao"><h4>R5: Energia potencial e constante elástica</h4><p><strong>Enunciado:</strong> Duas molas são comprimidas pelo mesmo valor, $x=0{,}15\,\text{m}$. A primeira tem $k_1=100\,\text{N/m}$ e a segunda, $k_2=300\,\text{N/m}$. Calcule a energia armazenada em cada mola e compare os resultados.</p><div class="resolucao-bloco"><p><strong>Dados:</strong> $x=0{,}15\,\text{m}$; $k_1=100\,\text{N/m}$; $k_2=300\,\text{N/m}$.</p><p><strong>Modelo:</strong> $E_{pe}=\dfrac12kx^2$.</p><p><strong>Mola 1:</strong> $E_1=\dfrac12\cdot100\cdot(0{,}15)^2=50\cdot0{,}0225=1{,}125\,\text{J}$.</p><p><strong>Mola 2:</strong> $E_2=\dfrac12\cdot300\cdot(0{,}15)^2=150\cdot0{,}0225=3{,}375\,\text{J}$.</p><p><strong>Resposta:</strong> $\boxed{E_1=1{,}125\,\text{J}}$ e $\boxed{E_2=3{,}375\,\text{J}}$. Com a mesma deformação, triplicar $k$ triplica a energia armazenada.</p></div></article>
+</section>
+
+<section class="questoes-propostas" id="propostas"><h3>✍️ 10 Questões Propostas (P 6 a 15)</h3>
+<article class="questao"><h4>P6: Cálculo direto</h4><p><strong>Enunciado:</strong> Uma mola de constante elástica $k=80\,	ext{N/m}$ é alongada $0{,}20\,	ext{m}$. Calcule a energia potencial elástica armazenada.</p><button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button><div class="gabarito-resolucao"><p><strong>Resposta/Resolução:</strong> $E_{pe}=\dfrac12\cdot80\cdot(0{,}20)^2=1{,}6\,\text{J}$.</p></div></article>
+<article class="questao"><h4>P7: Determinação da constante elástica</h4><p><strong>Enunciado:</strong> Uma mola deformada em $0{,}10\,	ext{m}$ armazena $2{,}5\,	ext{J}$. Determine sua constante elástica.</p><button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button><div class="gabarito-resolucao"><p><strong>Resposta/Resolução:</strong> $k=\dfrac{2E_{pe}}{x^2}=\dfrac{5}{0{,}01}=500\,\text{N/m}.$</p></div></article>
+<article class="questao"><h4>P8: Deformação e energia</h4><p><strong>Enunciado:</strong> Uma mola é comprimida de $3{,}0\,	ext{cm}$ para $9{,}0\,	ext{cm}$. Sendo a mesma mola, compare a energia armazenada nas duas situações.</p><button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button><div class="gabarito-resolucao"><p><strong>Resposta/Resolução:</strong> A razão é $E_2/E_1=(9/3)^2=9$. A segunda energia é nove vezes a primeira.</p></div></article>
+<article class="questao"><h4>P9: Trabalho externo</h4><p><strong>Enunciado:</strong> Uma mola de $k=250\,	ext{N/m}$ é deformada lentamente desde seu comprimento natural até $0{,}12\,	ext{m}$. Determine o trabalho realizado pela força externa.</p><button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button><div class="gabarito-resolucao"><p><strong>Resposta/Resolução:</strong> Como a deformação é lenta, $W_{ext}=\Delta E_{pe}=\dfrac12\cdot250\cdot(0{,}12)^2=1{,}8\,\text{J}$.</p></div></article>
+<article class="questao"><h4>P10: Retorno da mola</h4><p><strong>Enunciado:</strong> Uma mola de $k=400\,	ext{N/m}$ passa de uma deformação de $0{,}15\,	ext{m}$ para $0{,}05\,	ext{m}$. Calcule o trabalho da força elástica.</p><button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button><div class="gabarito-resolucao"><p><strong>Resposta/Resolução:</strong> $W_{el}=\dfrac12k(x_i^2-x_f^2)=200(0{,}0225-0{,}0025)=4{,}0\,\text{J}$.</p></div></article>
+<article class="questao"><h4>P11: Força elástica</h4><p><strong>Enunciado:</strong> Uma mola ideal tem constante elástica $k=150\,	ext{N/m}$. Qual é o módulo da força elástica quando a deformação vale $8{,}0\,	ext{cm}$?</p><button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button><div class="gabarito-resolucao"><p><strong>Resposta/Resolução:</strong> $F_{el}=kx=150\cdot0{,}08=12\,\text{N}$.</p></div></article>
+<article class="questao"><h4>P12: Comparação entre molas</h4><p><strong>Enunciado:</strong> Duas molas, A e B, têm constantes $k_A=120\,	ext{N/m}$ e $k_B=240\,	ext{N/m}$. Ambas são comprimidas $5{,}0\,	ext{cm}$. Determine as energias armazenadas.</p><button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button><div class="gabarito-resolucao"><p><strong>Resposta/Resolução:</strong> $E_A=\dfrac12\cdot120\cdot(0{,}05)^2=0{,}15\,\text{J}$; $E_B=0{,}30\,\text{J}$.</p></div></article>
+<article class="questao"><h4>P13: Conversão em energia cinética</h4><p><strong>Enunciado:</strong> Uma mola de constante elástica $k=500\,	ext{N/m}$, comprimida $0{,}20\,	ext{m}$, lança um bloco de $1{,}0\,	ext{kg}$ sobre uma superfície horizontal sem atrito. Determine a velocidade do bloco quando a mola retorna ao comprimento natural.</p><button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button><div class="gabarito-resolucao"><p><strong>Resposta/Resolução:</strong> Pela conservação da energia: $\dfrac12kx^2=\dfrac12mv^2$. Logo, $v=x\sqrt{k/m}=0{,}20\sqrt{500}=4{,}47\,\text{m/s}$.</p></div></article>
+<article class="questao"><h4>P14: Interpretação gráfica</h4><p><strong>Enunciado:</strong> No gráfico $F_{el}$ versus $x$ de uma mola ideal, o que representa a inclinação da reta? E o que representa a área triangular entre $0$ e uma deformação $x$?</p><button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button><div class="gabarito-resolucao"><p><strong>Resposta/Resolução:</strong> A inclinação representa a constante elástica $k$; a área triangular representa o trabalho para deformar a mola e a energia potencial elástica armazenada, $E_{pe}=kx^2/2$.</p></div></article>
+<article class="questao"><h4>P15: Sinal do trabalho</h4><p><strong>Enunciado:</strong> Uma mola inicialmente comprimida é liberada e empurra um bloco, passando de $x_i=0{,}10\,	ext{m}$ para a posição natural $x_f=0$. Qual é o sinal do trabalho da força elástica? Justifique.</p><button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button><div class="gabarito-resolucao"><p><strong>Resposta/Resolução:</strong> O trabalho é positivo: $W_{el}=E_i-E_f=\dfrac12kx_i^2-0>0$, pois a energia potencial elástica diminui.</p></div></article>
+</section>
+
+<section class="TESTE" id="testes"><h3>🎓 5 Questões de Teste (T 16 a 20)</h3>
+<article class="questao"><h4>T16 (ENEM 2018 — questão 131, caderno 7 azul): velocidade de lançamento</h4><p><strong>Enunciado:</strong> Um projetista usa uma mola para lançar um cubo em um trilho horizontal sem atrito. Mantida a mesma mola e a mesma massa do cubo, deseja-se quadruplicar a velocidade de lançamento. Qual alteração na deformação da mola permite esse resultado?</p><ul><li>A) Dobrar a deformação.</li><li>B) Quadruplicar a deformação.</li><li>C) Multiplicar a deformação por 16.</li><li>D) Reduzir a deformação à metade.</li><li>E) Manter a deformação.</li></ul><button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button><div class="gabarito-resolucao"><p><strong>Gabarito:</strong> B. <strong>Resolução:</strong> Pela conservação da energia, $\frac12kx^2=\frac12mv^2$, então $v=x\sqrt{k/m}$. Para quadruplicar $v$, é necessário quadruplicar $x$. A alternativa correta é B, conforme o gabarito oficial do ENEM 2018, aplicação regular, 2º dia, caderno 7 azul, questão 131.</p></div></article>
+<article class="questao"><h4>T17 (ENEM 2012 — questão 50, caderno azul): transformação de energia</h4><p><strong>Enunciado:</strong> Um carrinho de brinquedo possui uma mola interna que é comprimida quando ele é puxado para trás. Ao ser solto, a mola retorna à forma natural e o carrinho entra em movimento. Qual dispositivo apresenta transformação de energia semelhante?</p><ul><li>A) Dínamo.</li><li>B) Freio de automóvel.</li><li>C) Motor a combustão.</li><li>D) Usina hidrelétrica.</li><li>E) Estilingue.</li></ul><button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button><div class="gabarito-resolucao"><p><strong>Gabarito:</strong> E. <strong>Resolução:</strong> A mola comprimida armazena energia potencial elástica, que pode ser convertida em energia cinética. O estilingue também armazena energia na deformação de seu material elástico e a transfere ao projétil. Gabarito oficial do ENEM 2012, questão 50, caderno azul: E.</p></div></article>
+<article class="questao"><h4>T18 (ExataSite): energia armazenada</h4><p><strong>Enunciado:</strong> Uma mola de constante elástica $k=300\,\text{N/m}$ é comprimida $0{,}20\,\text{m}$. A energia potencial elástica armazenada vale:</p><ul><li>A) 3 J.</li><li>B) 6 J.</li><li>C) 9 J.</li><li>D) 12 J.</li><li>E) 15 J.</li></ul><button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button><div class="gabarito-resolucao"><p><strong>Gabarito:</strong> B. <strong>Resolução:</strong> $E_{pe}=\frac12\cdot300\cdot(0{,}20)^2=150\cdot0{,}04=6{,}0\,\text{J}$. Alternativa B.</p></div></article>
+<article class="questao"><h4>T19 (ExataSite): rigidez da mola</h4><p><strong>Enunciado:</strong> Duas molas são deformadas pelo mesmo valor. A mola A possui constante elástica duas vezes maior que a mola B. A energia potencial elástica armazenada em A, em comparação com B, é:</p><ul><li>A) Metade.</li><li>B) Igual.</li><li>C) Duas vezes maior.</li><li>D) Quatro vezes maior.</li><li>E) Oito vezes maior.</li></ul><button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button><div class="gabarito-resolucao"><p><strong>Gabarito:</strong> C. <strong>Resolução:</strong> Como $E_{pe}=\frac12kx^2$ e a deformação é a mesma, a energia é diretamente proporcional a $k$. Logo, a energia em A é duas vezes a de B. Alternativa C.</p></div></article>
+<article class="questao"><h4>T20 (ExataSite): trabalho da força elástica</h4><p><strong>Enunciado:</strong> Uma mola é liberada a partir de uma deformação e empurra um bloco em uma superfície sem atrito, retornando ao comprimento natural. Durante esse processo, a força elástica realiza trabalho:</p><ul><li>A) Negativo, pois a energia potencial aumenta.</li><li>B) Nulo, pois a mola termina relaxada.</li><li>C) Positivo, pois a energia potencial diminui.</li><li>D) Sempre igual ao peso do bloco.</li><li>E) Independente da deformação inicial.</li></ul><button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button><div class="gabarito-resolucao"><p><strong>Gabarito:</strong> C. <strong>Resolução:</strong> O trabalho da força elástica é $W_{el}=-\Delta E_{pe}$. Como a energia potencial diminui até zero, sua variação é negativa e o trabalho da força elástica é positivo. Alternativa C.</p></div></article>
+</section>
+</div></main>
+<aside class="menu-lateral"><iframe src="../menu_fisica.html" style="width:100%; border:none; height:600px;"></iframe></aside>
+</div>
+<script>
+function toggleGabarito(botao) {
+ const gabarito=botao.nextElementSibling;
+ if(gabarito.style.display==="none"||gabarito.style.display===""){gabarito.style.display="block";botao.textContent="Esconder Gabarito e Resolução";botao.style.backgroundColor="#2c3e50";}
+ else{gabarito.style.display="none";botao.textContent="Ver Gabarito e Resolução";botao.style.backgroundColor="#3498db";}
+}
+function toggleMenu(){const menuGlobal=document.getElementById("menu-principal");if(menuGlobal)menuGlobal.classList.toggle("ativo");}
+let slideAtual=0,slides=[];
+function prepararSlides(){slides=document.querySelectorAll('.container-resumo, .passo-teoria, .aplicacoes-reais, .questao');}
+function toggleSlides(){prepararSlides();if(!document.body.classList.contains('modo-slides')){document.body.classList.add('modo-slides');slideAtual=0;mostrarSlide(slideAtual);}else{document.body.classList.remove('modo-slides');window.location.reload();}}
+function mostrarSlide(n){
+ slides.forEach(s=>{s.classList.remove('slide-ativo');s.style.display='none';});
+ const slide=slides[n];slide.classList.add('slide-ativo');slide.style.display='flex';
+ if(slide.classList.contains('questao')&&!slide.querySelector('.btn-gabarito'))slide.querySelectorAll('.resolucao-bloco').forEach(r=>r.style.display='block');
+ else{slide.querySelectorAll('.gabarito-resolucao').forEach(g=>g.style.display='none');slide.querySelectorAll('.btn-gabarito').forEach(b=>{b.textContent="Ver Gabarito e Resolução";b.style.backgroundColor="#3498db";});}
+ const partes=document.querySelector('header p').innerText.split('|');
+ if(partes.length>1){document.getElementById('slide-info-serie').innerText=partes[0].trim();document.getElementById('slide-info-aula').innerText=partes[1].trim();}
+ document.getElementById('contador-slide').innerText=(n+1)+" / "+slides.length;
+ if(window.MathJax)MathJax.typesetPromise();
+}
+function mudarSlide(d){slideAtual+=d;if(slideAtual>=slides.length)slideAtual=0;if(slideAtual<0)slideAtual=slides.length-1;mostrarSlide(slideAtual);}
+document.addEventListener('keydown',e=>{if(document.body.classList.contains('modo-slides')){if(['ArrowRight','PageDown','Enter',' '].includes(e.key))mudarSlide(1);if(['ArrowLeft','PageUp'].includes(e.key))mudarSlide(-1);if(e.key==='Escape')toggleSlides();}});
+</script>
+<style>
+body.modo-slides{overflow:hidden;background-color:#1a1a1a;}
+body.modo-slides .menu-lateral,body.modo-slides header,body.modo-slides .menu-toggle,body.modo-slides #btn-slides{display:none!important;}
+.slide-ativo{display:flex!important;flex-direction:column;align-items:center;justify-content:flex-start;position:fixed;top:0;left:0;width:100vw;height:calc(100vh - 70px);background:#fff;padding:40px;z-index:999;overflow-y:auto!important;box-sizing:border-box;text-align:center;}
+.controles-slides{position:fixed;bottom:0;left:0;width:100%;height:70px;background:#2c3e50;color:white;display:none;justify-content:space-between;align-items:center;padding:0 20px;z-index:1001;box-sizing:border-box;}
+body.modo-slides .controles-slides{display:flex;}
+.info-lateral{flex:1;font-family:'Oswald',sans-serif;font-size:.9rem;color:#bdc3c7;}
+.botoes-centrais{display:flex;align-items:center;gap:15px;justify-content:center;flex:2;}
+.btn-nav{padding:10px 20px;background:#3498db;color:white;border:none;border-radius:5px;cursor:pointer;font-weight:bold;}
+#contador-slide{font-family:'Oswald',sans-serif;min-width:60px;text-align:center;}
+</style>
+<div class="controles-slides"><div id="slide-info-serie" class="info-lateral"></div><div class="botoes-centrais"><button class="btn-nav" onclick="mudarSlide(-1)">⬅ Anterior</button><span id="contador-slide"></span><button class="btn-nav" onclick="mudarSlide(1)">Próximo ➡</button><button class="btn-nav" onclick="toggleSlides()" style="background:#e74c3c;">Sair</button></div><div id="slide-info-aula" class="info-lateral" style="text-align:right;"></div></div>
+</body></html>
