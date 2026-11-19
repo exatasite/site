@@ -1,0 +1,1060 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Exata Vídeo — Vídeo Interativo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script>
+  window.MathJax = {
+    tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] },
+    startup: { typeset: false }
+  };
+</script>
+<script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+<style>
+  :root{
+    --azul:#003366; --azul2:#003366; --laranja:#D35400; --laranja-esc:#A04000; --ok:#1E7A46; --erro:#B71C1C;
+    --fundo:#F4F7F6; --card:#ffffff; --texto:#2C3E50; --suave:#5d6d7c; --borda:#dde4e8; --realce:#EBF5FB;
+    --f-titulo:'Oswald','Arial Narrow',Arial,sans-serif;
+  }
+  *{box-sizing:border-box}
+  [hidden]{display:none!important}
+  body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--fundo);color:var(--texto);line-height:1.45}
+  .topo{background:var(--azul);color:#fff;padding:18px 5%;text-align:center;border-bottom:5px solid var(--laranja);box-shadow:0 4px 6px rgba(0,0,0,.1)}
+  .topo h1{font-family:var(--f-titulo);font-weight:700;margin:0 0 4px;font-size:2rem;letter-spacing:.02em;color:#fff}
+  .topo p{margin:0;font-size:1rem}
+  .topo a{color:#fff;text-decoration:none}
+  #modoLabel{display:inline-block;margin-top:8px;font-family:var(--f-titulo);font-size:.85rem;letter-spacing:.05em;text-transform:uppercase;background:var(--laranja);padding:3px 12px;border-radius:4px}
+  h1,h2,h3{font-family:var(--f-titulo)}
+  .voltarSite{display:inline-block;margin:0 0 12px;color:var(--azul);font-weight:bold;text-decoration:none}
+  .voltarSite:hover{color:var(--laranja)}
+  main{max-width:900px;margin:0 auto;padding:16px}
+  .card{background:var(--card);border:1px solid #e0e0e0;border-radius:8px;padding:18px;margin-bottom:16px;box-shadow:0 1px 3px rgba(0,0,0,.05)}
+  .card h2{margin:0 0 12px;font-size:1.3rem;font-weight:600;color:var(--azul);border-bottom:3px solid var(--laranja);padding-bottom:6px;display:inline-block}
+  label{display:block;font-size:.88rem;font-weight:600;color:#334155;margin:10px 0}
+  input[type=text],input:not([type]),textarea{display:block;width:100%;margin-top:4px;padding:9px 11px;border:1px solid #cbd5e1;border-radius:9px;font:inherit;font-weight:400;background:#fff}
+  textarea{resize:vertical}
+  input:focus,textarea:focus{outline:2px solid var(--laranja);border-color:transparent}
+  .btn{background:#e4e9ee;color:var(--texto);border:0;border-radius:4px;padding:10px 18px;font-family:var(--f-titulo);font-size:1rem;font-weight:500;letter-spacing:.02em;cursor:pointer;transition:background .15s,transform .15s}
+  .btn:hover{transform:translateY(-1px);filter:brightness(.96)}
+  .btn.primario{background:var(--laranja);color:#fff}
+  .btn.primario:hover{background:var(--laranja-esc);filter:none}
+  .btn.laranja{background:var(--azul);color:#fff}
+  .btn.grande{font-size:1.05rem;padding:13px 26px}
+  .btn:disabled{opacity:.5;cursor:not-allowed}
+  .mini{background:var(--realce);color:var(--azul);border:0;border-radius:4px;padding:6px 10px;font:inherit;font-size:.82rem;font-weight:600;cursor:pointer}
+  .mini.perigo{background:#fee2e2;color:var(--erro)}
+  .linhaBtns{display:flex;flex-wrap:wrap;gap:10px;margin-top:10px}
+  .dica{font-size:.85rem;color:var(--suave);margin:8px 0 0}
+  .aviso{font-size:.88rem;color:var(--erro);margin:6px 0 0;white-space:pre-line}
+  .avisoOk{font-size:.88rem;color:var(--laranja-esc);background:#FDEBD0;border-radius:9px;padding:9px 11px;margin:10px 0 0}
+  .playerBox{position:relative;width:100%;aspect-ratio:16/9;background:#000;border-radius:6px;overflow:hidden;margin-top:12px}
+  .playerBox iframe,.playerBox > div{position:absolute;inset:0;width:100%;height:100%}
+  .vazio{color:var(--suave);font-style:italic}
+  /* perguntas no editor */
+  .pq{border:1px solid var(--borda);border-left:5px solid var(--azul);border-radius:6px;padding:12px 14px;margin-bottom:12px;background:#fbfdff}
+  .pq.curta{border-left-color:var(--laranja)}
+  .pqTopo{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .pqTopo .num{font-weight:700;flex:1}
+  .tag{font-size:.75rem;font-weight:700;padding:3px 9px;border-radius:4px;background:var(--realce);color:var(--azul)}
+  .tag.curta{background:#FDEBD0;color:var(--laranja-esc)}
+  @keyframes piscaQ{0%{box-shadow:0 0 0 4px var(--laranja)}100%{box-shadow:0 0 0 0 transparent}}
+  .pq.pisca{animation:piscaQ 1.6s ease-out}
+  .tempoLinha{display:flex;align-items:flex-end;gap:8px;flex-wrap:wrap}
+  .tempoLinha label{margin-bottom:0}
+  .tempoLinha input{width:110px;font-weight:700;text-align:center}
+  .tempoLinha .mini{margin-bottom:2px}
+  .opRow{display:flex;align-items:center;gap:8px;margin:6px 0}
+  .opRow .letra{font-weight:800;width:20px;color:var(--azul)}
+  .opRow input[type=text]{margin:0}
+  .opRow input[type=radio]{width:20px;height:20px;accent-color:var(--ok);flex:none}
+  .opsTitulo{font-size:.88rem;font-weight:600;color:#334155;margin-top:10px}
+  .opsTitulo small{font-weight:400;color:var(--suave)}
+  .invalido{outline:2px solid var(--erro)!important}
+  details{margin-top:14px}
+  summary{cursor:pointer;font-weight:600;color:var(--azul)}
+  /* aluno */
+  .centro{text-align:center}
+  .centro input{max-width:360px;margin:6px auto 0;text-align:center}
+  #alTitulo{color:var(--azul);margin:4px 0 6px}
+  .palco{position:relative;background:transparent}
+  .capa{position:absolute;inset:0;background:rgba(0,38,77,.75);font-family:var(--f-titulo);letter-spacing:.03em;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:1.1rem;z-index:5}
+  .painelQ{background:var(--card);border:1px solid #e0e0e0;border-top:5px solid var(--laranja);border-radius:8px;padding:16px 18px;margin-top:12px;box-shadow:0 6px 18px rgba(0,51,102,.15)}
+  .painelQ .rotulo{font-family:var(--f-titulo);font-size:.9rem;font-weight:600;color:var(--laranja);text-transform:uppercase;letter-spacing:.08em}
+  .painelQ .enun{font-size:1.08rem;font-weight:600;margin:6px 0 12px;white-space:pre-line}
+  .alt{color:var(--texto);display:flex;gap:10px;align-items:flex-start;width:100%;text-align:left;background:#fafcfd;border:2px solid var(--borda);border-radius:6px;padding:11px 13px;margin:7px 0;font:inherit;cursor:pointer}
+  .alt b{color:var(--azul)}
+  .alt.sel{border-color:var(--azul);background:var(--realce)}
+  .alt.certa{border-color:var(--ok);background:#f0fdf4}
+  .alt.errada{border-color:var(--erro);background:#fef2f2}
+  .alt:disabled{cursor:default;opacity:1}
+  .feedback{border-radius:6px;padding:12px 14px;margin-top:12px}
+  .feedback.ok{background:#f0fdf4;color:#14532d;border:1px solid #bbf7d0}
+  .feedback.no{background:#fef2f2;color:#7f1d1d;border:1px solid #fecaca}
+  .feedback .exp{margin-top:8px;color:#334155;white-space:pre-line}
+  .barraInfo{display:flex;align-items:center;gap:12px;margin-top:10px}
+  .linhaTempo{position:relative;flex:1;height:10px;background:#cbd5e1;border-radius:999px}
+  .linhaTempo .prog{position:absolute;left:0;top:0;bottom:0;background:var(--laranja);border-radius:999px}
+  .linhaTempo .marc{position:absolute;top:50%;width:14px;height:14px;margin:-7px 0 0 -7px;border-radius:50%;background:#94a3b8;border:2px solid #fff;box-shadow:0 0 0 1px #94a3b8}
+  .linhaTempo .marc.ok{background:var(--ok);box-shadow:0 0 0 1px var(--ok)}
+  .linhaTempo .marc.no{background:var(--erro);box-shadow:0 0 0 1px var(--erro)}
+  .placarMini{font-size:.88rem;color:var(--suave);margin-top:8px}
+  .palco:fullscreen{background:#000;padding:10px;display:flex;flex-direction:column;overflow:auto}
+  .palco:fullscreen .playerBox{flex:1;aspect-ratio:auto;min-height:40vh;margin:0}
+  .palco:fullscreen .painelQ{max-height:55vh;overflow:auto;flex:none}
+  .nota{font-family:var(--f-titulo);font-size:3rem;font-weight:700;color:var(--laranja);margin:6px 0}
+  .resLista{text-align:left;margin-top:14px}
+  .resItem{border:1px solid var(--borda);border-radius:6px;padding:10px 12px;margin:8px 0}
+  .resItem.ok{border-left:5px solid var(--ok)}
+  .resItem.no{border-left:5px solid var(--erro)}
+  .resItem small{color:var(--suave)}
+  .toast{position:fixed;left:50%;bottom:22px;transform:translateX(-50%);background:#0f172a;color:#fff;padding:10px 16px;border-radius:10px;font-size:.9rem;z-index:99;opacity:0;transition:opacity .25s;pointer-events:none}
+  .toast.on{opacity:1}
+  input[type=email],input[type=password]{display:block;width:100%;margin-top:4px;padding:9px 11px;border:1px solid #cbd5e1;border-radius:9px;font:inherit;background:#fff}
+  .minhas .topoConta{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:8px}
+  .minhas .quem{font-size:.88rem;color:var(--suave)}
+  .itemAula{border:1px solid var(--borda);border-left:5px solid var(--laranja);border-radius:6px;padding:10px 12px;margin-top:10px;background:#fff}
+  .itemAula.atual{background:var(--realce)}
+  .itemAula b{color:var(--azul)}
+  .itemAula small{display:block;color:var(--suave);margin-top:2px}
+  .itemAula .linhaBtns{margin-top:8px}
+  .itemAula .btn{padding:6px 12px;font-size:.9rem}
+  .busca{margin-top:10px}
+</style>
+</head>
+<body>
+<header class="topo">
+  <h1><a href="../index.html">EXATA VÍDEO</a></h1>
+  <p>Videoaulas interativas: o vídeo pausa, o aluno responde e continua</p>
+  <div id="modoLabel"></div>
+</header>
+
+<main>
+  <!-- ================= MODO PROFESSOR ================= -->
+  <section id="editor" hidden>
+    <a class="voltarSite" href="../exataplay.html">← Voltar ao Exata Play</a>
+    <div class="card minhas" id="cardMinhas">
+      <h2>📂 Minhas aulas</h2>
+      <div id="contaSair">
+        <p class="dica">Entre com a mesma conta de professor do Exata Quiz para guardar suas aulas e abrir de qualquer computador ou celular.</p>
+        <label>E-mail <input type="email" id="lgEmail" autocomplete="username"></label>
+        <label>Senha <input type="password" id="lgSenha" autocomplete="current-password"></label>
+        <div class="linhaBtns">
+          <button class="btn primario" id="btnEntrar">Entrar</button>
+          <button class="btn" id="btnEsqueci">Esqueci a senha</button>
+        </div>
+        <p class="aviso" id="avisoLogin"></p>
+      </div>
+      <div id="contaDentro" hidden>
+        <div class="topoConta">
+          <span class="quem" id="quemConta"></span>
+          <button class="btn" id="btnSair">Sair</button>
+        </div>
+        <input class="busca" id="buscaAula" placeholder="🔎 Procurar aula pelo título">
+        <div id="listaMinhas"><p class="dica">Carregando...</p></div>
+      </div>
+    </div>
+    <div class="card">
+      <h2>1. Vídeo</h2>
+      <label>Título da aula
+        <input id="edTitulo" placeholder="Ex.: Função do 1º grau — introdução">
+      </label>
+      <label>Link do vídeo no YouTube
+        <input id="edLink" placeholder="https://www.youtube.com/watch?v=...">
+      </label>
+      <div class="linhaBtns"><button class="btn primario" id="btnCarregar">Carregar vídeo</button></div>
+      <p class="aviso" id="edAvisoLink"></p>
+      <div class="playerBox" id="edPlayerBox" hidden><div id="edPlayer"></div></div>
+      <p class="dica">Dica: dê play, pause no momento em que quer a pergunta e clique em <b>"Usar tempo atual"</b> nela. Para fórmulas, escreva entre cifrões: <code>$x^2+1$</code>.</p>
+    </div>
+
+    <div class="card">
+      <h2>2. Perguntas</h2>
+      <div id="listaPerguntas"></div>
+      <div class="linhaBtns">
+        <button class="btn" id="addMC">+ Múltipla escolha</button>
+        <button class="btn" id="addCurta">+ Resposta curta</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>3. Enviar para os alunos</h2>
+      <div class="linhaBtns">
+        <button class="btn laranja" id="btnPrevia">▶ Testar como aluno</button>
+        <button class="btn primario" id="btnLink">🔗 Gerar link do aluno</button>
+        <button class="btn" id="btnSalvarNuvem">💾 Salvar em Minhas aulas</button>
+      </div>
+      <p class="dica" id="statusNuvem"></p>
+      <p class="aviso" id="avisoValida"></p>
+      <div id="areaLink" hidden>
+        <label>Link para mandar aos alunos
+          <textarea id="txtLink" rows="3" readonly></textarea>
+        </label>
+        <div class="linhaBtns">
+          <button class="btn primario" id="btnCopiarLink">Copiar link</button>
+          <button class="btn laranja" id="btnEncurtar">✂️ Encurtar link</button>
+        </div>
+        <label>Nome do link curto (opcional)
+          <input id="edApelido" maxlength="30" placeholder="Ex.: proporcao9A">
+        </label>
+        <p class="dica" id="previaCurto"></p>
+        <p class="aviso" id="avisoCurto"></p>
+        <div id="areaCurto" hidden>
+          <label>Link curto
+            <input id="txtCurto" readonly>
+          </label>
+          <div class="linhaBtns"><button class="btn primario" id="btnCopiarCurto">Copiar link curto</button></div>
+        </div>
+        <div id="areaTiny" hidden class="linhaBtns">
+          <button class="btn" id="btnTiny">Encurtar pelo TinyURL</button>
+        </div>
+        <p class="avisoOk" id="avisoArquivo" hidden>Atenção: você abriu esta página direto do seu computador, então o link aponta para o seu computador. Coloque este arquivo no seu site (GitHub) e gere o link por lá para os alunos conseguirem abrir.</p>
+      </div>
+      <details>
+        <summary>Guardar ou abrir uma aula (cópia de segurança)</summary>
+        <p class="dica">O link do aluno já guarda a aula inteira. Para editar depois, cole aqui o link (ou o código) e clique em "Abrir aula". Comece uma aula nova com o botão "Nova aula".</p>
+        <label>Link ou código da aula
+          <textarea id="txtImport" rows="3" placeholder="Cole aqui o link do aluno (longo ou curto do is.gd)"></textarea>
+        </label>
+        <div class="linhaBtns">
+          <button class="btn" id="btnImportar">Abrir aula</button>
+          <button class="btn" id="btnNova">Nova aula</button>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <!-- ================= MODO ALUNO ================= -->
+  <section id="aluno" hidden>
+    <div class="linhaBtns" id="barraPrevia" hidden style="margin:0 0 12px">
+      <button class="btn" id="btnVoltarEditor">← Voltar ao editor</button>
+    </div>
+
+    <div class="card centro" id="telaInicio">
+      <h1 id="alTitulo"></h1>
+      <p id="alInfo" class="dica"></p>
+      <label>Digite seu nome
+        <input id="alNome" placeholder="Nome completo" autocomplete="name">
+      </label>
+      <label>Digite sua turma
+        <input id="alTurma" placeholder="Ex.: 9º A" maxlength="30">
+      </label>
+      <p class="aviso" id="avisoNome"></p>
+      <div class="linhaBtns" style="justify-content:center"><button class="btn primario grande" id="btnComecar">Começar</button></div>
+    </div>
+
+    <div id="telaVideo" hidden>
+      <div class="palco" id="palco">
+        <div class="playerBox" style="margin-top:0">
+          <div id="alPlayer"></div>
+          <div class="capa" id="capa" hidden>Responda à pergunta abaixo ⬇</div>
+        </div>
+        <div class="painelQ" id="painelQ" hidden></div>
+      </div>
+      <div class="barraInfo">
+        <div class="linhaTempo" id="linhaTempo"><div class="prog" id="prog"></div></div>
+        <button class="mini" id="btnTela">⛶ Tela cheia</button>
+      </div>
+      <div class="placarMini" id="placarMini"></div>
+      <p class="aviso" id="avisoVideo"></p>
+    </div>
+
+    <div class="card centro" id="telaFim" hidden></div>
+  </section>
+</main>
+<div class="toast" id="toast"></div>
+
+<script>
+(function(){
+  "use strict";
+  const $ = s => document.querySelector(s);
+  const CHAVE = 'exataVideoInterativo_v1';
+
+  /* ---------- utilidades ---------- */
+  function esc(s){ return String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+  function fmt(seg){
+    seg = Math.max(0, Math.floor(Number(seg) || 0));
+    const h = Math.floor(seg/3600), m = Math.floor(seg%3600/60), s = seg%60;
+    const ss = String(s).padStart(2,'0');
+    return h ? `${h}:${String(m).padStart(2,'0')}:${ss}` : `${m}:${ss}`;
+  }
+  function parseTempo(txt){
+    txt = String(txt||'').trim().replace(',', '.');
+    if (!txt) return null;
+    if (/^\d+(\.\d+)?$/.test(txt)) return Math.floor(parseFloat(txt));
+    const p = txt.split(':');
+    if (p.length < 2 || p.length > 3 || p.some(x => !/^\d+$/.test(x))) return null;
+    const n = p.map(Number);
+    if (n.slice(1).some(x => x > 59)) return null;
+    return p.length === 2 ? n[0]*60 + n[1] : n[0]*3600 + n[1]*60 + n[2];
+  }
+  function extrairId(u){
+    u = String(u||'').trim();
+    if (/^[\w-]{11}$/.test(u)) return u;
+    const m = u.match(/(?:youtu\.be\/|[?&]v=|\/embed\/|\/shorts\/|\/live\/)([\w-]{11})/);
+    return m ? m[1] : null;
+  }
+  function codificar(obj){
+    const b = new TextEncoder().encode(JSON.stringify(obj));
+    let s = ''; b.forEach(x => s += String.fromCharCode(x));
+    return btoa(s).replace(/\+/g,'-').replace(/\//g,'_').replace(/=+$/,'');
+  }
+  function decodificar(str){
+    str = String(str).trim().replace(/-/g,'+').replace(/_/g,'/');
+    while (str.length % 4) str += '=';
+    const s = atob(str);
+    return JSON.parse(new TextDecoder().decode(Uint8Array.from(s, c => c.charCodeAt(0))));
+  }
+  function b64url(bytes){
+    let s = ''; bytes.forEach(x => s += String.fromCharCode(x));
+    return btoa(s).replace(/\+/g,'-').replace(/\//g,'_').replace(/=+$/,'');
+  }
+  function deb64url(str){
+    str = String(str).trim().replace(/-/g,'+').replace(/_/g,'/');
+    while (str.length % 4) str += '=';
+    return Uint8Array.from(atob(str), c => c.charCodeAt(0));
+  }
+  const temCompressao = typeof CompressionStream === 'function' && typeof DecompressionStream === 'function';
+  async function codificarZ(obj){
+    const dados = new TextEncoder().encode(JSON.stringify(obj));
+    const buf = await new Response(new Blob([dados]).stream().pipeThrough(new CompressionStream('deflate-raw'))).arrayBuffer();
+    return b64url(new Uint8Array(buf));
+  }
+  async function decodificarZ(str){
+    const buf = await new Response(new Blob([deb64url(str)]).stream().pipeThrough(new DecompressionStream('deflate-raw'))).arrayBuffer();
+    return JSON.parse(new TextDecoder().decode(buf));
+  }
+  /* aceita link completo, "#z=...", "#aula=..." ou só o código */
+  async function lerAula(txt){
+    txt = String(txt || '').trim();
+    let k = txt.indexOf('#z='); if (k >= 0) return decodificarZ(txt.slice(k + 3));
+    k = txt.indexOf('#aula='); if (k >= 0) return decodificar(txt.slice(k + 6));
+    try { return decodificar(txt); } catch(e){ return decodificarZ(txt); }
+  }
+  /* encurtador is.gd via JSONP (não precisa de chave) */
+  function encurtarIsGd(url, apelido){
+    return new Promise((ok, falha) => {
+      const cb = '__isgd' + Date.now();
+      const sc = document.createElement('script');
+      const fim = () => { delete window[cb]; sc.remove(); clearTimeout(t); };
+      const t = setTimeout(() => { fim(); falha({ errorcode: 0 }); }, 12000);
+      window[cb] = d => { fim(); d && d.shorturl ? ok(d.shorturl) : falha(d || {}); };
+      sc.onerror = () => { fim(); falha({ errorcode: 0 }); };
+      sc.src = 'https://is.gd/create.php?format=json&callback=' + cb + '&url=' + encodeURIComponent(url) + (apelido ? '&shorturl=' + encodeURIComponent(apelido) : '');
+      document.head.appendChild(sc);
+    });
+  }
+  function limparNome(t){
+    return String(t||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/º|ª/g,'')
+      .trim().replace(/[\s\-\.\/]+/g,'_').replace(/[^A-Za-z0-9_]/g,'').replace(/_+/g,'_').replace(/^_|_$/g,'');
+  }
+  /* ---------- conta do professor (Firebase do Exata Quiz) ---------- */
+  function carregarScript(src){
+    return new Promise((ok, falha) => { const s = document.createElement('script'); s.src = src; s.onload = ok; s.onerror = falha; document.head.appendChild(s); });
+  }
+  const FB = { db: null, auth: null, user: null, aulas: {}, parar: null };
+  async function iniciarFirebase(){
+    const v = 'https://www.gstatic.com/firebasejs/10.12.2/';
+    await carregarScript(v + 'firebase-app-compat.js');
+    await Promise.all([carregarScript(v + 'firebase-auth-compat.js'), carregarScript(v + 'firebase-database-compat.js')]);
+    await carregarScript('../quiz/js/config.js');
+    const cfg = window.EXATA_FIREBASE || {};
+    if (!cfg.apiKey) throw new Error('sem configuração');
+    if (!firebase.apps.length) firebase.initializeApp(cfg);
+    FB.db = firebase.database(); FB.auth = firebase.auth();
+    await FB.auth.setPersistence(firebase.auth.Auth.Persistence.LOCAL).catch(()=>{});
+  }
+  function limpoFB(v){ return JSON.parse(JSON.stringify(v)); }
+  function caminhoAulas(){ return 'professores/' + FB.user.uid + '/videos'; }
+  async function salvarNaNuvem(extra){
+    if (!FB.user) return false;
+    if (!aula.idNuvem) aula.idNuvem = FB.db.ref().push().key;
+    const reg = { titulo: aula.titulo || '', videoId: aula.videoId || '', perguntas: aula.perguntas || [], atualizado: Date.now(), ...(extra || {}) };
+    const ref = FB.db.ref(caminhoAulas() + '/' + aula.idNuvem);
+    await ref.update(limpoFB(reg));
+    try { localStorage.setItem(CHAVE, JSON.stringify(aula)); } catch(e){}
+    return true;
+  }
+  /* descobre para onde aponta um link curto do is.gd (JSONP) */
+  function expandirIsGd(curto){
+    return new Promise((ok, falha) => {
+      const cb = '__isgdf' + Date.now();
+      const sc = document.createElement('script');
+      const fim = () => { delete window[cb]; sc.remove(); clearTimeout(t); };
+      const t = setTimeout(() => { fim(); falha(); }, 12000);
+      window[cb] = d => { fim(); d && d.url ? ok(d.url) : falha(); };
+      sc.onerror = () => { fim(); falha(); };
+      sc.src = 'https://is.gd/forward.php?format=json&callback=' + cb + '&shorturl=' + encodeURIComponent(curto);
+      document.head.appendChild(sc);
+    });
+  }
+  function novoId(){ return Math.random().toString(36).slice(2, 9); }
+  function tipar(el){ if (window.MathJax && MathJax.typesetPromise) MathJax.typesetPromise([el]).catch(()=>{}); }
+  function toast(msg){ const t = $('#toast'); t.textContent = msg; t.classList.add('on'); clearTimeout(toast._t); toast._t = setTimeout(()=>t.classList.remove('on'), 2200); }
+  async function copiar(texto, area){
+    try { await navigator.clipboard.writeText(texto); toast('Copiado!'); return; } catch(e){}
+    try {
+      const ta = area || Object.assign(document.createElement('textarea'), {value: texto});
+      if (!area) document.body.appendChild(ta);
+      ta.select(); document.execCommand('copy');
+      if (!area) ta.remove();
+      toast('Copiado!');
+    } catch(e){ toast('Não consegui copiar — selecione e copie manualmente.'); }
+  }
+  const LETRAS = 'ABCDEFGH';
+
+  /* ---------- correção de resposta curta ---------- */
+  function norm(s){
+    return String(s||'').normalize('NFD').replace(/[̀-ͯ]/g,'')
+      .toLowerCase().replace(/\s+/g,' ').trim().replace(/[.;!]+$/,'').trim();
+  }
+  function numero(s){
+    s = norm(s).replace(/\s/g,'').replace(/,/g,'.');
+    if (/^[-+]?(\d+\.?\d*|\.\d+)(e[-+]?\d+)?$/.test(s)) return parseFloat(s);
+    const m = s.match(/^([-+]?(?:\d+\.?\d*|\.\d+))\/([-+]?(?:\d+\.?\d*|\.\d+))$/);
+    if (m && parseFloat(m[2]) !== 0) return parseFloat(m[1]) / parseFloat(m[2]);
+    return null;
+  }
+  function listaAceitas(txt){ return String(txt||'').split(';').map(x => x.trim()).filter(Boolean); }
+  function confere(resp, aceitas){
+    const r = norm(resp), rSem = r.replace(/\s/g,''), rn = numero(resp);
+    if (!r) return false;
+    return listaAceitas(aceitas).some(a => {
+      const na = norm(a);
+      if (na === r || na.replace(/\s/g,'') === rSem) return true;
+      const an = numero(a);
+      return rn !== null && an !== null && Math.abs(rn - an) <= 1e-9 * Math.max(1, Math.abs(an));
+    });
+  }
+
+  /* ---------- YouTube API ---------- */
+  let ytResolve; const ytPronto = new Promise(r => ytResolve = r);
+  window.onYouTubeIframeAPIReady = () => ytResolve();
+  const scriptYT = document.createElement('script');
+  scriptYT.src = 'https://www.youtube.com/iframe_api';
+  scriptYT.onerror = () => { const a = $('#edAvisoLink'), b = $('#avisoVideo'); const m = 'Não foi possível carregar o YouTube. Verifique a internet.'; if (a) a.textContent = m; if (b) b.textContent = m; };
+  document.head.appendChild(scriptYT);
+
+  function erroYT(code){
+    if (code === 101 || code === 150 || code === 153) return 'O dono deste vídeo não permite que ele seja exibido fora do YouTube, ou a página foi aberta direto do computador. Coloque a página no seu site ou escolha outro vídeo.';
+    if (code === 100) return 'Vídeo não encontrado (removido ou privado).';
+    return 'Não foi possível tocar este vídeo (erro ' + code + ').';
+  }
+
+  /* =====================================================
+     MODO PROFESSOR
+     ===================================================== */
+  let aula = { titulo: '', videoId: '', link: '', perguntas: [] };
+  let edPlayer = null;
+
+  function salvar(){
+    try { localStorage.setItem(CHAVE, JSON.stringify(aula)); } catch(e){}
+    /* aula já guardada na conta: atualiza sozinha 2 s depois da última mudança */
+    if (FB.user && aula.idNuvem) {
+      clearTimeout(salvar._t);
+      salvar._t = setTimeout(() => salvarNaNuvem({ desatualizado: true }).then(() => { $('#statusNuvem').textContent = 'Alterações guardadas em Minhas aulas. Gere o link de novo para os alunos verem a versão nova.'; }).catch(() => {}), 2000);
+    }
+  }
+  function carregarSalvo(){
+    try { const s = localStorage.getItem(CHAVE); if (s) { const o = JSON.parse(s); if (o && Array.isArray(o.perguntas)) aula = o; } } catch(e){}
+  }
+  function ordenar(){ aula.perguntas.sort((a,b) => (a.t ?? 0) - (b.t ?? 0)); }
+
+  function tempoAtualEditor(){
+    try { if (edPlayer && edPlayer.getCurrentTime) return Math.floor(edPlayer.getCurrentTime()); } catch(e){}
+    return 0;
+  }
+
+  /* depois de reordenar, rola até a pergunta e pisca em laranja para o professor ver onde ela ficou */
+  function destacar(id, focarEnunciado){
+    const card = document.querySelector(`[data-qid="${id}"]`); if (!card) return;
+    card.scrollIntoView({behavior:'smooth', block:'center'});
+    card.classList.remove('pisca'); void card.offsetWidth; card.classList.add('pisca');
+    if (focarEnunciado) { const el = card.querySelector('textarea[data-campo="enunciado"]'); if (el) el.focus({preventScroll:true}); }
+  }
+  function novaPergunta(tipo){
+    /* vídeo parado no início: a pergunta nova vai para o fim da lista (tempo da última pergunta), não para 0:00 */
+    let t = tempoAtualEditor();
+    const ultimo = aula.perguntas.reduce((m, x) => Math.max(m, x.t ?? 0), 0);
+    if (t < 1 && aula.perguntas.length) t = ultimo;
+    const q = { id: novoId(), tipo, t, enunciado: '', explicacao: '' };
+    if (tipo === 'mc') { q.opcoes = ['', '', '', '']; q.correta = 0; }
+    else q.aceitas = '';
+    aula.perguntas.push(q);
+    ordenar(); salvar(); renderLista();
+    destacar(q.id, true);
+  }
+
+  function opcoesHTML(q){
+    let h = `<div class="opsTitulo">Alternativas <small>(marque a bolinha da correta)</small></div>`;
+    q.opcoes.forEach((op, j) => {
+      h += `<div class="opRow">
+        <input type="radio" name="c_${q.id}" data-correta="${j}" ${q.correta === j ? 'checked' : ''} title="Marcar como correta">
+        <span class="letra">${LETRAS[j]}</span>
+        <input type="text" data-op="${j}" value="${esc(op)}" placeholder="Alternativa ${LETRAS[j]}">
+        ${q.opcoes.length > 2 ? `<button class="mini perigo" data-acao="remOp" data-j="${j}" title="Remover">✕</button>` : ''}
+      </div>`;
+    });
+    if (q.opcoes.length < LETRAS.length) h += `<button class="mini" data-acao="addOp">+ alternativa</button>`;
+    return h;
+  }
+
+  function renderLista(){
+    const box = $('#listaPerguntas');
+    box.innerHTML = '';
+    if (!aula.perguntas.length) {
+      box.innerHTML = '<p class="vazio">Nenhuma pergunta ainda. Use os botões abaixo para adicionar.</p>';
+      return;
+    }
+    aula.perguntas.forEach((q, i) => {
+      const d = document.createElement('div');
+      d.className = 'pq ' + q.tipo;
+      d.dataset.qid = q.id;
+      d.innerHTML = `
+        <div class="pqTopo">
+          <span class="num">Pergunta ${i+1}</span>
+          <span class="tag ${q.tipo}">${q.tipo === 'mc' ? 'Múltipla escolha' : 'Resposta curta'}</span>
+          <button class="mini perigo" data-acao="remover">Excluir</button>
+        </div>
+        <div class="tempoLinha">
+          <label>Pausar o vídeo em <input data-campo="t" value="${fmt(q.t)}" placeholder="min:seg"></label>
+          <button class="mini" data-acao="agora">⏱ Usar tempo atual</button>
+          <button class="mini" data-acao="ir">▶ Ver este momento</button>
+        </div>
+        <label>Pergunta
+          <textarea data-campo="enunciado" rows="2" placeholder="Digite a pergunta">${esc(q.enunciado)}</textarea>
+        </label>
+        ${q.tipo === 'mc' ? opcoesHTML(q) : `
+        <label>Respostas aceitas <span style="font-weight:400;color:var(--suave)">(separe por ponto e vírgula)</span>
+          <input data-campo="aceitas" value="${esc(q.aceitas)}" placeholder="Ex.: 12; doze">
+        </label>
+        <p class="dica" style="margin-top:-4px">Maiúsculas, acentos e espaços são ignorados. Números são comparados pelo valor (1,5 = 1.5 = 3/2).</p>`}
+        <label>Explicação depois da resposta <span style="font-weight:400;color:var(--suave)">(opcional)</span>
+          <textarea data-campo="explicacao" rows="2" placeholder="Ex.: Como a = 2 > 0, a função é crescente.">${esc(q.explicacao)}</textarea>
+        </label>`;
+
+      d.addEventListener('input', e => {
+        const el = e.target;
+        if (el.dataset.campo && el.dataset.campo !== 't') { q[el.dataset.campo] = el.value; salvar(); }
+        else if (el.dataset.op !== undefined) { q.opcoes[+el.dataset.op] = el.value; salvar(); }
+      });
+      d.addEventListener('change', e => {
+        const el = e.target;
+        if (el.dataset.correta !== undefined) { q.correta = +el.dataset.correta; salvar(); }
+        if (el.dataset.campo === 't') {
+          const v = parseTempo(el.value);
+          if (v === null) { el.classList.add('invalido'); toast('Tempo inválido. Use o formato min:seg, ex.: 2:35'); return; }
+          el.classList.remove('invalido');
+          q.t = v; ordenar(); salvar(); renderLista(); destacar(q.id, false);
+        }
+      });
+      d.addEventListener('click', e => {
+        const b = e.target.closest('[data-acao]'); if (!b) return;
+        const acao = b.dataset.acao;
+        if (acao === 'remover') {
+          if (b.dataset.confirma) { aula.perguntas = aula.perguntas.filter(x => x !== q); salvar(); renderLista(); }
+          else { b.dataset.confirma = '1'; b.textContent = 'Confirmar exclusão'; setTimeout(() => { if (b.isConnected) { delete b.dataset.confirma; b.textContent = 'Excluir'; } }, 3000); }
+        } else if (acao === 'agora') {
+          if (!edPlayer) { toast('Carregue o vídeo primeiro.'); return; }
+          q.t = tempoAtualEditor(); ordenar(); salvar(); renderLista(); destacar(q.id, false); toast('Tempo definido: ' + fmt(q.t));
+        } else if (acao === 'ir') {
+          if (!edPlayer) { toast('Carregue o vídeo primeiro.'); return; }
+          try { edPlayer.seekTo(Math.max(0, q.t - 3), true); edPlayer.playVideo(); $('#edPlayerBox').scrollIntoView({behavior:'smooth', block:'center'}); } catch(err){}
+        } else if (acao === 'addOp') {
+          q.opcoes.push(''); salvar(); renderLista();
+        } else if (acao === 'remOp') {
+          const j = +b.dataset.j; q.opcoes.splice(j, 1);
+          if (q.correta === j) q.correta = 0; else if (q.correta > j) q.correta--;
+          salvar(); renderLista();
+        }
+      });
+      box.appendChild(d);
+    });
+  }
+
+  async function carregarVideoEditor(){
+    const id = extrairId($('#edLink').value);
+    const aviso = $('#edAvisoLink');
+    if (!id) { aviso.textContent = 'Não reconheci esse link. Copie o endereço do vídeo no YouTube (botão Compartilhar) e cole aqui.'; return; }
+    aviso.textContent = '';
+    aula.videoId = id; aula.link = $('#edLink').value.trim(); salvar();
+    $('#edPlayerBox').hidden = false;
+    await ytPronto;
+    if (edPlayer) { edPlayer.cueVideoById(id); return; }
+    edPlayer = new YT.Player('edPlayer', {
+      videoId: id,
+      playerVars: { rel: 0, playsinline: 1, modestbranding: 1 },
+      events: { onError: e => { aviso.textContent = erroYT(e.data); } }
+    });
+  }
+
+  function validar(){
+    const erros = [];
+    if (!aula.videoId) erros.push('• Cole o link do vídeo e clique em "Carregar vídeo".');
+    if (!aula.perguntas.length) erros.push('• Adicione pelo menos uma pergunta.');
+    aula.perguntas.forEach((q, i) => {
+      const n = `Pergunta ${i+1} (${fmt(q.t)})`;
+      if (!String(q.enunciado).trim()) erros.push(`• ${n}: falta o texto da pergunta.`);
+      if (q.tipo === 'mc') {
+        if (q.opcoes.filter(o => String(o).trim()).length < 2) erros.push(`• ${n}: preencha pelo menos 2 alternativas.`);
+        if (!String(q.opcoes[q.correta] || '').trim()) erros.push(`• ${n}: a alternativa marcada como correta está vazia.`);
+      } else if (!listaAceitas(q.aceitas).length) erros.push(`• ${n}: informe ao menos uma resposta aceita.`);
+    });
+    $('#avisoValida').textContent = erros.length ? 'Antes de continuar, ajuste:\n' + erros.join('\n') : '';
+    return !erros.length;
+  }
+
+  // aula "limpa" para o aluno (tira alternativas vazias, renumerando a correta)
+  function aulaParaAluno(){
+    return {
+      titulo: aula.titulo.trim(), videoId: aula.videoId,
+      perguntas: aula.perguntas.map(q => {
+        const base = { id: q.id, tipo: q.tipo, t: q.t, enunciado: q.enunciado.trim(), explicacao: (q.explicacao||'').trim() };
+        if (q.tipo === 'mc') {
+          const ops = []; let correta = 0;
+          q.opcoes.forEach((o, j) => { if (String(o).trim()) { if (j === q.correta) correta = ops.length; ops.push(String(o).trim()); } });
+          return { ...base, opcoes: ops, correta };
+        }
+        return { ...base, aceitas: q.aceitas.trim() };
+      })
+    };
+  }
+
+  async function linkAluno(){
+    const base = location.href.split('#')[0];
+    if (temCompressao) { try { return base + '#z=' + await codificarZ(aulaParaAluno()); } catch(e){} }
+    return base + '#aula=' + codificar(aulaParaAluno());
+  }
+
+  function dataCurta(ms){ try { return new Date(ms).toLocaleDateString('pt-BR', {day:'2-digit', month:'2-digit', year:'numeric'}); } catch(e){ return ''; } }
+  function renderMinhas(){
+    const box = $('#listaMinhas'); if (!box) return;
+    const filtro = String($('#buscaAula').value || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
+    const lista = Object.entries(FB.aulas || {}).map(([id, o]) => ({ id, ...o }))
+      .filter(o => !filtro || String(o.titulo||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').includes(filtro))
+      .sort((a,b) => (b.atualizado||0) - (a.atualizado||0));
+    if (!Object.keys(FB.aulas || {}).length) { box.innerHTML = '<p class="dica">Você ainda não tem aulas guardadas. Monte uma aula e clique em "💾 Salvar em Minhas aulas" (ou gere o link do aluno: ela é guardada sozinha).</p>'; return; }
+    if (!lista.length) { box.innerHTML = '<p class="dica">Nenhuma aula com esse título.</p>'; return; }
+    box.innerHTML = lista.map(o => {
+      const n = Array.isArray(o.perguntas) ? o.perguntas.length : Object.keys(o.perguntas || {}).length;
+      const link = o.curto || o.linkAluno || '';
+      return `<div class="itemAula${o.id === aula.idNuvem ? ' atual' : ''}" data-id="${esc(o.id)}">
+        <b>${esc(o.titulo || 'Aula sem título')}</b>${o.id === aula.idNuvem ? ' <small style="display:inline">(aberta agora)</small>' : ''}
+        <small>${n} pergunta${n === 1 ? '' : 's'} · atualizada em ${dataCurta(o.atualizado)}${o.curto ? ' · ' + esc(o.curto.replace(/^https?:\/\//,'')) : ''}</small>
+        ${o.desatualizado && link ? '<small style="color:var(--laranja-esc)">⚠ A aula mudou depois do último link: abra e gere o link de novo.</small>' : ''}
+        <div class="linhaBtns">
+          <button class="btn primario" data-acao="abrir">✏️ Abrir</button>
+          ${link ? '<button class="btn" data-acao="copiar">🔗 Copiar link</button>' : ''}
+          <button class="btn" data-acao="apagar">🗑 Apagar</button>
+        </div></div>`;
+    }).join('');
+  }
+  async function iniciarConta(){
+    try { await iniciarFirebase(); }
+    catch(e){ $('#cardMinhas').innerHTML = '<h2>📂 Minhas aulas</h2><p class="aviso">Não foi possível conectar à sua conta agora. Verifique a internet e recarregue a página.</p>'; return; }
+    FB.auth.onAuthStateChanged(u => {
+      if (FB.parar) { FB.parar(); FB.parar = null; }
+      FB.user = (u && !u.isAnonymous) ? u : null;
+      $('#contaSair').hidden = !!FB.user; $('#contaDentro').hidden = !FB.user;
+      $('#btnSalvarNuvem').hidden = !FB.user;
+      $('#statusNuvem').textContent = FB.user ? '' : 'Entre na sua conta (no alto da página) para guardar esta aula em "Minhas aulas".';
+      if (!FB.user) { FB.aulas = {}; return; }
+      $('#quemConta').textContent = 'Conectado como ' + (FB.user.email || '');
+      const ref = FB.db.ref(caminhoAulas());
+      const h = snap => { FB.aulas = snap.val() || {}; renderMinhas(); };
+      ref.on('value', h, () => { $('#listaMinhas').innerHTML = '<p class="aviso">O banco recusou a leitura das suas aulas. Me avise para eu conferir as regras do Firebase.</p>'; });
+      FB.parar = () => ref.off('value', h);
+    });
+    $('#btnEntrar').addEventListener('click', async () => {
+      const e = $('#lgEmail').value.trim(), sn = $('#lgSenha').value, av = $('#avisoLogin');
+      if (!e || !sn) { av.textContent = 'Digite o e-mail e a senha.'; return; }
+      av.textContent = '';
+      try { await FB.auth.signInWithEmailAndPassword(e, sn); $('#lgSenha').value = ''; toast('Bem-vindo!'); }
+      catch(err){ av.textContent = /network/i.test(err.code||'') ? 'Sem conexão com a internet.' : 'E-mail ou senha incorretos. Use a mesma conta do Exata Quiz.'; }
+    });
+    $('#lgSenha').addEventListener('keydown', e => { if (e.key === 'Enter') $('#btnEntrar').click(); });
+    $('#btnEsqueci').addEventListener('click', async () => {
+      const e = $('#lgEmail').value.trim(), av = $('#avisoLogin');
+      if (!e) { av.textContent = 'Digite seu e-mail no campo acima e clique de novo em "Esqueci a senha".'; return; }
+      try { await FB.auth.sendPasswordResetEmail(e); av.textContent = 'Mandamos um e-mail para ' + e + ' com o link para criar uma nova senha.'; }
+      catch(err){ av.textContent = 'Não consegui mandar o e-mail. Confira se o endereço está certo.'; }
+    });
+    $('#btnSair').addEventListener('click', () => FB.auth.signOut());
+    $('#buscaAula').addEventListener('input', renderMinhas);
+    $('#listaMinhas').addEventListener('click', e => {
+      const b = e.target.closest('button[data-acao]'); if (!b) return;
+      const id = b.closest('.itemAula').dataset.id, o = FB.aulas[id]; if (!o) return;
+      if (b.dataset.acao === 'abrir') {
+        abrirAula({ titulo: o.titulo, videoId: o.videoId, perguntas: Array.isArray(o.perguntas) ? o.perguntas : Object.values(o.perguntas || {}) }, id);
+        toast('Aula aberta para edição.');
+      } else if (b.dataset.acao === 'copiar') {
+        copiar(o.curto || o.linkAluno);
+      } else if (b.dataset.acao === 'apagar') {
+        if (!b.dataset.confirma) { b.dataset.confirma = '1'; b.textContent = 'Clique de novo para apagar'; setTimeout(() => { delete b.dataset.confirma; b.textContent = '🗑 Apagar'; }, 3000); return; }
+        FB.db.ref(caminhoAulas() + '/' + id).remove().then(() => {
+          if (aula.idNuvem === id) { delete aula.idNuvem; salvar(); }
+          toast('Aula apagada.');
+        }).catch(() => toast('Não consegui apagar. Tente de novo.'));
+      }
+    });
+    $('#btnSalvarNuvem').addEventListener('click', async () => {
+      if (!validar()) return;
+      try { await salvarNaNuvem(); toast('Aula guardada em Minhas aulas.'); $('#statusNuvem').textContent = 'Guardada em Minhas aulas.'; renderMinhas(); }
+      catch(e){ $('#statusNuvem').textContent = 'Não consegui guardar na sua conta. Verifique a internet.'; }
+    });
+  }
+
+  /* abre uma aula (da conta ou de um link) no editor */
+  function abrirAula(o, idNuvem){
+    (o.perguntas || []).forEach(q => { q.id = q.id || novoId(); q.explicacao = q.explicacao || ''; if (q.tipo === 'mc') { q.opcoes = q.opcoes || ['','']; q.correta = q.correta || 0; } else q.aceitas = q.aceitas || ''; });
+    aula = { titulo: o.titulo || '', videoId: o.videoId || '', link: o.videoId ? 'https://youtu.be/' + o.videoId : '', perguntas: o.perguntas || [] };
+    if (idNuvem) aula.idNuvem = idNuvem;
+    ordenar(); salvar();
+    $('#edTitulo').value = aula.titulo; $('#edLink').value = aula.link;
+    $('#areaLink').hidden = true; $('#avisoValida').textContent = ''; $('#statusNuvem').textContent = '';
+    renderLista(); renderMinhas(); if (aula.videoId) carregarVideoEditor();
+    window.scrollTo({top: $('#edTitulo').getBoundingClientRect().top + scrollY - 120, behavior:'smooth'});
+  }
+
+  function iniciarEditor(){
+    iniciarConta();
+    $('#modoLabel').textContent = 'Modo professor';
+    $('#editor').hidden = false; $('#aluno').hidden = true;
+    carregarSalvo();
+    $('#edTitulo').value = aula.titulo || '';
+    $('#edLink').value = aula.link || (aula.videoId ? 'https://youtu.be/' + aula.videoId : '');
+    renderLista();
+    if (aula.videoId) carregarVideoEditor();
+
+    $('#edTitulo').addEventListener('input', e => { aula.titulo = e.target.value; salvar(); });
+    const apelidoFinal = () => limparNome($('#edApelido').value).slice(0, 30);
+    const atualizarPrevia = () => {
+      const a = apelidoFinal();
+      $('#previaCurto').textContent = a ? 'Seu link vai ficar assim: is.gd/' + a : (String($('#edApelido').value).trim() ? '' : 'Sem nome, o link curto recebe um código aleatório.');
+    };
+    $('#edApelido').addEventListener('input', atualizarPrevia);
+    atualizarPrevia();
+    $('#btnCarregar').addEventListener('click', carregarVideoEditor);
+    $('#edLink').addEventListener('keydown', e => { if (e.key === 'Enter') carregarVideoEditor(); });
+    $('#addMC').addEventListener('click', () => novaPergunta('mc'));
+    $('#addCurta').addEventListener('click', () => novaPergunta('curta'));
+    $('#btnLink').addEventListener('click', async () => {
+      if (!validar()) return;
+      $('#txtLink').value = await linkAluno();
+      $('#areaLink').hidden = false;
+      $('#areaCurto').hidden = true; $('#areaTiny').hidden = true; $('#avisoCurto').textContent = '';
+      $('#avisoArquivo').hidden = location.protocol !== 'file:';
+      if (FB.user) salvarNaNuvem({ linkAluno: $('#txtLink').value, curto: null, desatualizado: null })
+        .then(() => { $('#statusNuvem').textContent = 'Guardada em Minhas aulas.'; })
+        .catch(() => { $('#statusNuvem').textContent = 'O link foi gerado, mas não consegui guardar na sua conta.'; });
+    });
+    $('#btnCopiarLink').addEventListener('click', () => copiar($('#txtLink').value, $('#txtLink')));
+    $('#btnEncurtar').addEventListener('click', async e => {
+      const b = e.currentTarget, aviso = $('#avisoCurto');
+      const longo = $('#txtLink').value;
+      if (!longo) return;
+      if (location.protocol === 'file:') { aviso.textContent = 'Para encurtar, abra esta página pelo seu site (GitHub), não pelo arquivo do computador.'; return; }
+      const apelido = apelidoFinal();
+      if (String($('#edApelido').value).trim() && apelido.length < 5) { aviso.textContent = 'O nome do link precisa ter pelo menos 5 letras ou números.'; return; }
+      /* com nome escolhido, o endereço longo ganha "?n=nome" para não reaproveitar um link curto criado antes */
+      const paraEncurtar = apelido ? longo.replace(/^([^#?]*)(\?[^#]*)?/, '$1?n=' + apelido) : longo;
+      aviso.textContent = ''; b.disabled = true; const txtB = b.textContent; b.textContent = 'Encurtando...';
+      try {
+        const curto = await encurtarIsGd(paraEncurtar, apelido);
+        if (apelido && !curto.endsWith('/' + apelido)) aviso.textContent = 'O encurtador não aceitou o nome escolhido e criou um código aleatório. Tente outro nome.';
+        $('#txtCurto').value = curto;
+        if (FB.user) salvarNaNuvem({ linkAluno: longo, curto, desatualizado: null }).catch(() => {}); $('#areaCurto').hidden = false; $('#areaTiny').hidden = true;
+        copiar(curto, $('#txtCurto'));
+        toast('Link curto criado e copiado!');
+      } catch(err){
+        const c = err && err.errorcode;
+        aviso.textContent = c === 2 ? 'O link is.gd/' + apelido + ' já existe (talvez você já tenha criado). Se foi você, pode usar esse mesmo link. Para criar outro, mude o nome.'
+          : c === 3 ? 'Muitos links criados em pouco tempo. Espere um minuto e tente de novo.'
+          : 'Não consegui encurtar agora. Use o botão abaixo: o link longo já fica copiado, é só colar no TinyURL.';
+        $('#areaTiny').hidden = c === 2 || c === 3;
+      } finally { b.disabled = false; b.textContent = txtB; }
+    });
+    $('#btnCopiarCurto').addEventListener('click', () => copiar($('#txtCurto').value, $('#txtCurto')));
+    $('#btnTiny').addEventListener('click', () => { copiar($('#txtLink').value, $('#txtLink')); window.open('https://tinyurl.com/', '_blank', 'noopener'); });
+    $('#btnPrevia').addEventListener('click', () => {
+      if (!validar()) return;
+      try { edPlayer && edPlayer.pauseVideo(); } catch(e){}
+      iniciarAluno(aulaParaAluno(), true);
+    });
+    $('#btnImportar').addEventListener('click', async () => {
+      let txt = $('#txtImport').value.trim();
+      try {
+        const m = txt.match(/is\.gd\/([A-Za-z0-9_]+)/);
+        if (m && !txt.includes('#')) txt = await expandirIsGd(m[1]);
+        const o = await lerAula(txt);
+        if (!o || !Array.isArray(o.perguntas)) throw 0;
+        abrirAula(o, null);
+        $('#txtImport').value = ''; toast('Aula aberta para edição.');
+      } catch(e){ toast('Não reconheci esse link/código.'); }
+    });
+    $('#btnNova').addEventListener('click', e => {
+      const b = e.currentTarget;
+      if (!b.dataset.confirma) { b.dataset.confirma = '1'; b.textContent = 'Clique de novo para começar outra aula'; setTimeout(() => { delete b.dataset.confirma; b.textContent = 'Nova aula'; }, 3000); return; }
+      aula = { titulo: '', videoId: '', link: '', perguntas: [] }; salvar();
+      $('#edTitulo').value = ''; $('#edLink').value = ''; $('#areaLink').hidden = true; $('#avisoValida').textContent = '';
+      try { edPlayer && edPlayer.stopVideo(); } catch(err){}
+      $('#edPlayerBox').hidden = true; renderLista(); renderMinhas(); $('#statusNuvem').textContent = '';
+      delete b.dataset.confirma; b.textContent = 'Nova aula'; toast('Nova aula iniciada.');
+    });
+  }
+
+  /* =====================================================
+     MODO ALUNO
+     ===================================================== */
+  let A = null;   // estado do aluno
+
+  function iniciarAluno(dados, previa){
+    $('#modoLabel').textContent = previa ? 'Teste (visão do aluno)' : 'Aluno';
+    $('#editor').hidden = true; $('#aluno').hidden = false;
+    $('#barraPrevia').hidden = !previa;
+    $('#telaInicio').hidden = false; $('#telaVideo').hidden = true; $('#telaFim').hidden = true;
+    $('#painelQ').hidden = true; $('#capa').hidden = true; $('#avisoVideo').textContent = '';
+    if (A && A.timer) clearInterval(A.timer);
+    if (A && A.player) { try { A.player.destroy(); } catch(e){} }
+    const slot = document.createElement('div'); slot.id = 'alPlayer';
+    const velho = $('#alPlayer'); velho.replaceWith(slot);
+
+    dados.perguntas.sort((a,b) => a.t - b.t);
+    A = { dados, previa, player: null, resp: {}, atual: null, terminou: false, timer: null, dur: 0, marcadores: false, nome: '' };
+    document.title = (dados.titulo ? dados.titulo + ' — ' : '') + 'Exata Vídeo';
+    $('#alTitulo').textContent = dados.titulo || 'Videoaula interativa';
+    const n = dados.perguntas.length;
+    $('#alInfo').textContent = `Este vídeo tem ${n} pergunta${n>1?'s':''}. Ele vai pausar sozinho nos momentos certos: responda e o vídeo continua.`;
+    $('#alNome').value = previa ? 'Professor (teste)' : '';
+    $('#alTurma').value = previa ? 'Teste' : (dados.turma || '');
+    $('#avisoNome').textContent = '';
+    window.scrollTo({top:0});
+  }
+
+  async function comecar(){
+    const nome = $('#alNome').value.trim();
+    if (!nome) { $('#avisoNome').textContent = 'Digite seu nome para começar.'; $('#alNome').focus(); return; }
+    const turma = $('#alTurma').value.trim();
+    if (!turma) { $('#avisoNome').textContent = 'Digite sua turma para começar.'; $('#alTurma').focus(); return; }
+    A.nome = nome; A.turma = turma; $('#avisoNome').textContent = '';
+    $('#telaInicio').hidden = true; $('#telaVideo').hidden = false;
+    atualizarPlacar();
+    await ytPronto;
+    A.player = new YT.Player('alPlayer', {
+      videoId: A.dados.videoId,
+      playerVars: { rel: 0, fs: 0, playsinline: 1, modestbranding: 1 },
+      events: {
+        onReady: e => { try { e.target.playVideo(); } catch(err){} },
+        onStateChange: e => {
+          if (e.data === YT.PlayerState.ENDED) { A.terminou = true; verificarFim(); }
+          if (e.data === YT.PlayerState.PLAYING && A.atual !== null) { try { A.player.pauseVideo(); } catch(err){} }
+        },
+        onError: e => { $('#avisoVideo').textContent = erroYT(e.data); }
+      }
+    });
+    A.timer = setInterval(tick, 250);
+  }
+
+  function construirMarcadores(){
+    const dur = A.player.getDuration ? A.player.getDuration() : 0;
+    if (!dur) return;
+    A.dur = dur; A.marcadores = true;
+    const lt = $('#linhaTempo');
+    lt.querySelectorAll('.marc').forEach(m => m.remove());
+    A.dados.perguntas.forEach(q => {
+      const m = document.createElement('div');
+      m.className = 'marc'; m.dataset.qid = q.id;
+      m.style.left = Math.min(100, q.t / dur * 100) + '%';
+      m.title = fmt(q.t);
+      lt.appendChild(m);
+    });
+    pintarMarcadores();
+  }
+  function pintarMarcadores(){
+    document.querySelectorAll('#linhaTempo .marc').forEach(m => {
+      const r = A.resp[m.dataset.qid];
+      m.className = 'marc' + (r ? (r.certo ? ' ok' : ' no') : '');
+    });
+  }
+  function atualizarPlacar(){
+    const total = A.dados.perguntas.length;
+    const resp = Object.values(A.resp);
+    const certos = resp.filter(r => r.certo).length;
+    $('#placarMini').textContent = `Respondidas: ${resp.length} de ${total} • Acertos: ${certos}`;
+  }
+
+  function tick(){
+    const p = A && A.player;
+    if (!p || !p.getCurrentTime) return;
+    let t = 0; try { t = p.getCurrentTime(); } catch(e){ return; }
+    if (!A.marcadores) construirMarcadores();
+    if (A.dur) $('#prog').style.width = Math.min(100, t / A.dur * 100) + '%';
+    if (A.atual !== null) {
+      try { if (p.getPlayerState() === YT.PlayerState.PLAYING) p.pauseVideo(); } catch(e){}
+      return;
+    }
+    const q = A.dados.perguntas.find(q => !A.resp[q.id] && t >= q.t - 0.05);
+    if (q) mostrarPergunta(q);
+  }
+
+  function mostrarPergunta(q){
+    A.atual = q.id;
+    try { A.player.pauseVideo(); } catch(e){}
+    $('#capa').hidden = false;
+    const painel = $('#painelQ');
+    const idx = A.dados.perguntas.indexOf(q) + 1;
+    let h = `<div class="rotulo">Pergunta ${idx} de ${A.dados.perguntas.length}</div>
+             <div class="enun">${esc(q.enunciado)}</div>`;
+    if (q.tipo === 'mc') {
+      q.opcoes.forEach((o, j) => { h += `<button class="alt" data-j="${j}"><b>${LETRAS[j]})</b><span>${esc(o)}</span></button>`; });
+    } else {
+      h += `<input id="respCurta" placeholder="Digite sua resposta" autocomplete="off">`;
+    }
+    h += `<div class="linhaBtns"><button class="btn primario" id="btnResponder" disabled>Responder</button></div><div id="fb"></div>`;
+    painel.innerHTML = h;
+    painel.hidden = false;
+    tipar(painel);
+
+    let escolha = null;
+    const btnR = $('#btnResponder');
+    if (q.tipo === 'mc') {
+      painel.querySelectorAll('.alt').forEach(b => b.addEventListener('click', () => {
+        painel.querySelectorAll('.alt').forEach(x => x.classList.remove('sel'));
+        b.classList.add('sel'); escolha = +b.dataset.j; btnR.disabled = false;
+      }));
+    } else {
+      const inp = $('#respCurta');
+      inp.addEventListener('input', () => { btnR.disabled = !inp.value.trim(); });
+      inp.addEventListener('keydown', e => { if (e.key === 'Enter' && inp.value.trim()) responder(); });
+      setTimeout(() => { try { inp.focus({preventScroll:true}); } catch(e){} }, 50);
+    }
+    btnR.addEventListener('click', responder);
+
+    function responder(){
+      let certo, dada, correta;
+      if (q.tipo === 'mc') {
+        if (escolha === null) return;
+        certo = escolha === q.correta;
+        dada = `${LETRAS[escolha]}) ${q.opcoes[escolha]}`;
+        correta = `${LETRAS[q.correta]}) ${q.opcoes[q.correta]}`;
+        painel.querySelectorAll('.alt').forEach(b => {
+          const j = +b.dataset.j; b.disabled = true;
+          if (j === q.correta) b.classList.add('certa');
+          else if (j === escolha) b.classList.add('errada');
+        });
+      } else {
+        const inp = $('#respCurta');
+        dada = inp.value.trim(); inp.disabled = true;
+        certo = confere(dada, q.aceitas);
+        correta = listaAceitas(q.aceitas)[0];
+      }
+      A.resp[q.id] = { certo, dada, correta };
+      btnR.parentElement.remove();
+      const fb = $('#fb');
+      fb.innerHTML = `<div class="feedback ${certo ? 'ok' : 'no'}">
+          <b>${certo ? '✔ Correto!' : '✘ Não foi dessa vez.'}</b>
+          ${!certo ? `<div>Resposta correta: <b>${esc(correta)}</b></div>` : ''}
+          ${q.explicacao ? `<div class="exp">${esc(q.explicacao)}</div>` : ''}
+        </div>
+        <div class="linhaBtns"><button class="btn primario" id="btnContinuar">${A.terminou ? 'Continuar' : 'Continuar vídeo ▶'}</button></div>`;
+      tipar(fb);
+      pintarMarcadores(); atualizarPlacar();
+      $('#btnContinuar').addEventListener('click', continuar);
+      $('#btnContinuar').focus({preventScroll:true});
+    }
+    painel.scrollIntoView({behavior:'smooth', block:'nearest'});
+  }
+
+  function continuar(){
+    A.atual = null;
+    $('#painelQ').hidden = true; $('#capa').hidden = true;
+    if (A.terminou) { verificarFim(); return; }
+    try { A.player.playVideo(); } catch(e){}
+    $('#palco').scrollIntoView({behavior:'smooth', block:'nearest'});
+  }
+
+  function verificarFim(){
+    if (A.atual !== null) return;
+    const falta = A.dados.perguntas.find(q => !A.resp[q.id]);
+    if (falta) { mostrarPergunta(falta); return; }
+    mostrarResultado();
+  }
+
+  function textoResultado(){
+    const ps = A.dados.perguntas, certos = ps.filter(q => A.resp[q.id] && A.resp[q.id].certo).length;
+    let t = `Videoaula: ${A.dados.titulo || 'Vídeo interativo'}\nAluno(a): ${A.nome}\nTurma: ${A.turma}\nAcertos: ${certos} de ${ps.length} (${Math.round(certos/ps.length*100)}%)\n`;
+    ps.forEach((q, i) => { const r = A.resp[q.id]; t += `\n${i+1}) ${r && r.certo ? 'Certo' : 'Errado'} — resposta: ${r ? r.dada : '-'}`; });
+    return t;
+  }
+
+  function mostrarResultado(){
+    clearInterval(A.timer);
+    if (document.fullscreenElement) document.exitFullscreen().catch(()=>{});
+    const ps = A.dados.perguntas, certos = ps.filter(q => A.resp[q.id] && A.resp[q.id].certo).length;
+    const pct = Math.round(certos / ps.length * 100);
+    const fim = $('#telaFim');
+    let h = `<h2 style="color:var(--azul);margin:0">Parabéns, ${esc(A.nome)}! Você terminou.</h2>
+      <div class="dica" style="margin:4px 0 0">Turma: ${esc(A.turma)}</div>
+      <div class="nota">${certos} / ${ps.length}</div>
+      <div class="dica" style="margin:0">${pct}% de acertos</div>
+      <div class="linhaBtns" style="justify-content:center">
+        <button class="btn primario" id="btnCopiarRes">📋 Copiar resultado</button>
+        <button class="btn" id="btnDeNovo">↺ Assistir de novo</button>
+      </div>
+      <p class="dica">Copie o resultado e envie para o professor, se ele pedir.</p>
+      <div class="resLista">`;
+    ps.forEach((q, i) => {
+      const r = A.resp[q.id] || {};
+      h += `<div class="resItem ${r.certo ? 'ok' : 'no'}">
+        <div><b>${i+1}.</b> ${esc(q.enunciado)} <small>(${fmt(q.t)})</small></div>
+        <div>${r.certo ? '✔' : '✘'} Sua resposta: <b>${esc(r.dada)}</b></div>
+        ${!r.certo ? `<div><small>Correta: ${esc(r.correta)}</small></div>` : ''}
+      </div>`;
+    });
+    h += `</div>`;
+    fim.innerHTML = h; fim.hidden = false;
+    $('#telaVideo').hidden = true;
+    tipar(fim);
+    $('#btnCopiarRes').addEventListener('click', () => copiar(textoResultado()));
+    $('#btnDeNovo').addEventListener('click', () => {
+      A.resp = {}; A.terminou = false; A.atual = null;
+      fim.hidden = true; $('#telaVideo').hidden = false;
+      pintarMarcadores(); atualizarPlacar();
+      try { A.player.seekTo(0, true); A.player.playVideo(); } catch(e){}
+      A.timer = setInterval(tick, 250);
+    });
+    fim.scrollIntoView({behavior:'smooth', block:'start'});
+  }
+
+  $('#btnComecar').addEventListener('click', comecar);
+  $('#alNome').addEventListener('keydown', e => { if (e.key === 'Enter') $('#alTurma').focus(); });
+  $('#alTurma').addEventListener('keydown', e => { if (e.key === 'Enter') comecar(); });
+  $('#btnTela').addEventListener('click', () => {
+    const p = $('#palco');
+    if (document.fullscreenElement) document.exitFullscreen().catch(()=>{});
+    else if (p.requestFullscreen) p.requestFullscreen().catch(() => toast('Tela cheia não disponível neste aparelho.'));
+    else toast('Tela cheia não disponível neste aparelho.');
+  });
+  $('#btnVoltarEditor').addEventListener('click', () => {
+    if (A) { clearInterval(A.timer); try { A.player && A.player.destroy(); } catch(e){} A = null; }
+    $('#modoLabel').textContent = 'Modo professor';
+    document.title = 'Exata Vídeo — Vídeo Interativo';
+    $('#aluno').hidden = true; $('#editor').hidden = false;
+  });
+
+  /* ---------- início ---------- */
+  const h = location.hash;
+  if (h.startsWith('#aula=') || h.startsWith('#z=')) {
+    lerAula(h).then(o => iniciarAluno(o, false)).catch(() => {
+      $('#aluno').hidden = false;
+      $('#telaInicio').innerHTML = '<h2>Link inválido</h2><p class="dica">Este link de aula está incompleto. Peça ao professor para enviar novamente.</p>';
+    });
+  } else {
+    iniciarEditor();
+  }
+})();
+</script>
+</body>
+</html>

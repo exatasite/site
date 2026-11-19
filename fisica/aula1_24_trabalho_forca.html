@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1º Ano: Aula 24 - Trabalho de uma Força</title>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../estilo.css">
+    
+    <script>
+        MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true
+            }
+        };
+    </script>
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+   </head> 
+
+<body>
+<button class="menu-toggle" onclick="toggleMenu()">☰</button>
+
+<nav id="menu-principal" class="nav-global">
+    <ul>
+        <li><a href="../index.html">🏠 Início</a></li>
+        <li><a href="../ensino_medio.html">📚 Ensino Médio</a></li>
+        <li><a href="../ensino_superior.html">🎓 Ensino Superior</a></li>
+    </ul>
+</nav>
+<header id="topo">
+    <h1>FÍSICA EM</h1>
+    <p>1º Ano | Aula 24: Trabalho de uma Força</p>
+    <button id="btn-slides" onclick="toggleSlides()">📺 Iniciar Modo Slides</button>
+</header>
+
+<div class="container">
+
+<main class="conteudo-principal">
+
+<div class="secao-aula">
+<div class="container-resumo" id="resumo">
+    <h3>📚 Resumo</h3>
+    <section class="resumo-conteudo">
+        <p><strong>Trabalho</strong> é a energia transferida por uma força quando seu ponto de aplicação se desloca. Para força constante:</p>
+        <p style="text-align: center;">$$\tau = F \cdot d \cdot \cos\theta$$</p>
+        <p>$\theta$ é o ângulo entre a força e o deslocamento. Unidade: <strong>joule</strong> ($1\text{ J} = 1\text{ N} \cdot \text{m}$).</p>
+        <p style="text-align: center;">Motor ($\theta &lt; 90^\circ$): $\tau &gt; 0$ &nbsp;|&nbsp; Nulo ($\theta = 90^\circ$): $\tau = 0$ &nbsp;|&nbsp; Resistente ($\theta &gt; 90^\circ$): $\tau &lt; 0$</p>
+    </section>
+</div>
+
+<section class="conteudo-teorico-completo" id="teoria">
+    <div class="passo-teoria">
+        <h3>📖 Trabalho de uma Força</h3>
+        <h4>1. Definição</h4>
+        <p>Em Física, uma força realiza <strong>trabalho</strong> quando provoca (ou acompanha) um deslocamento. Para uma força constante $F$ que forma um ângulo $\theta$ com o deslocamento $d$:</p>
+        <p style="text-align: center;">$$\tau = F \cdot d \cdot \cos\theta$$</p>
+        <figure class="figura-aula">
+            <svg viewBox="0 0 440 230" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Bloco puxado por uma força F inclinada de um ângulo theta em relação ao deslocamento d" style="width:100%; max-width:380px; display:block; margin:0 auto; font-family:sans-serif;">
+            <defs><marker id="s1_2c3e50" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto"><polygon points="0 0, 10 4, 0 8" fill="#2c3e50"/></marker><marker id="s1_e67e22" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto"><polygon points="0 0, 10 4, 0 8" fill="#e67e22"/></marker></defs>
+            <line x1="30" y1="160" x2="410" y2="160" stroke="#2c3e50" stroke-width="2.5"/>
+            <line x1="30" y1="160" x2="22" y2="169" stroke="#7f8c8d" stroke-width="1.2"/>
+            <line x1="44" y1="160" x2="36" y2="169" stroke="#7f8c8d" stroke-width="1.2"/>
+            <line x1="58" y1="160" x2="50" y2="169" stroke="#7f8c8d" stroke-width="1.2"/>
+            <line x1="72" y1="160" x2="64" y2="169" stroke="#7f8c8d" stroke-width="1.2"/>
+            <line x1="86" y1="160" x2="78" y2="169" stroke="#7f8c8d" stroke-width="1.2"/>
+            <line x1="100" y1="160" x2="92" y2="169" stroke="#7f8c8d" stroke-width="1.2"/>
+            <line x1="114" y1="160" x2="106" y2="169" stroke="#7f8c8d" stroke-width="1.2"/>
+            <line x1="128" y1="160" x2="120" y2="169" stroke="#7f8c8d" stroke-width="1.2"/>
+            <line x1="142" y1="160" x2="134" y2="169" stroke="#7f8c8d" stroke-width="1.2"/>
+            <line x1="156" y1="160" x2="148" y2="169" stroke="#7f8c8d" stroke-width="1.2"/>
+            <line x1="170" y1="160" x2="162" y2="169" stroke="#7f8c8d" stroke-width="1.2"/>
+            <line x1="184" y1="160" x2="176" y2="169" stroke="#7f8c8d" stroke-width="1.2"/>
+            <line x1="198" y1="160" x2="190" y2="169" stroke="#7f8c8d" stroke-width="1.2"/>
+            <line x1="212" y1="160" x2="204" y2="169" stroke="#7f8c8d" stroke-width="1.2"/>
+            <line x1="226" y1="160" x2="218" y2="169" stroke="#7f8c8d" stroke-width="1.2"/>
+            <line x1="240" y1="160" x2="232" y2="169" stroke="#7f8c8d" stroke-width="1.2"/>
+            <line x1="254" y1="160" x2="246" y2="169" stroke="#7f8c8d" stroke-width="1.2"/>
+            <line x1="268" y1="160" x2="260" y2="169" stroke="#7f8c8d" stroke-width="1.2"/>
+            <line x1="282" y1="160" x2="274" y2="169" stroke="#7f8c8d" stroke-width="1.2"/>
+            <line x1="296" y1="160" x2="288" y2="169" stroke="#7f8c8d" stroke-width="1.2"/>
+            <line x1="310" y1="160" x2="302" y2="169" stroke="#7f8c8d" stroke-width="1.2"/>
+            <line x1="324" y1="160" x2="316" y2="169" stroke="#7f8c8d" stroke-width="1.2"/>
+            <line x1="338" y1="160" x2="330" y2="169" stroke="#7f8c8d" stroke-width="1.2"/>
+            <line x1="352" y1="160" x2="344" y2="169" stroke="#7f8c8d" stroke-width="1.2"/>
+            <line x1="366" y1="160" x2="358" y2="169" stroke="#7f8c8d" stroke-width="1.2"/>
+            <line x1="380" y1="160" x2="372" y2="169" stroke="#7f8c8d" stroke-width="1.2"/>
+            <line x1="394" y1="160" x2="386" y2="169" stroke="#7f8c8d" stroke-width="1.2"/>
+            <line x1="408" y1="160" x2="400" y2="169" stroke="#7f8c8d" stroke-width="1.2"/>
+            <rect x="90" y="105" width="80" height="55" fill="#f5cba7" stroke="#a04000" stroke-width="2" rx="3"/>
+            <line x1="130" y1="132" x2="236.48976575756893" y2="57.43506327436401" stroke="#e67e22" stroke-width="3" marker-end="url(#s1_e67e22)"/>
+            <text x="248.48976575756893" y="57.43506327436401" fill="#e67e22" font-size="15" text-anchor="middle" font-weight="bold">F</text>
+            <line x1="130" y1="132" x2="270" y2="132" stroke="#95a5a6" stroke-width="1.2" stroke-dasharray="6 4"/>
+            <path d="M 180 132 A 50 50 0 0 0 171.0 103.3" fill="none" stroke="#2c3e50" stroke-width="1.5"/>
+            <text x="192" y="122" fill="#2c3e50" font-size="13" text-anchor="start" font-weight="bold">θ</text>
+            <circle cx="130" cy="132" r="3.5" fill="#2c3e50"/>
+            <rect x="300" y="105" width="80" height="55" fill="#fdebd0" stroke="#d5a6bd" stroke-width="2" rx="3"/>
+            <rect x="300" y="105" width="80" height="55" fill="none" stroke="#a04000" stroke-width="1.5" stroke-dasharray="5 4" rx="3"/>
+            <line x1="130" y1="190" x2="340" y2="190" stroke="#2c3e50" stroke-width="2" marker-end="url(#s1_2c3e50)"/>
+            <text x="235" y="210" fill="#2c3e50" font-size="15" text-anchor="middle" font-weight="bold">d</text>
+            </svg>
+            <figcaption>Figura 1: Só a componente da força na direção do deslocamento, $F\cos\theta$, realiza trabalho. A componente perpendicular não contribui.</figcaption>
+        </figure>
+        <ul>
+            <li>O trabalho é uma grandeza <strong>escalar</strong>, medida em <strong>joules (J)</strong>.</li>
+            <li>Segurar uma mala parada, por mais cansativo que seja, <strong>não</strong> realiza trabalho sobre ela: não há deslocamento.</li>
+        </ul>
+    </div>
+
+    <div class="passo-teoria">
+        <h4>2. O Sinal do Trabalho</h4>
+        <ul>
+            <li><strong>Trabalho motor</strong> ($0^\circ \le \theta &lt; 90^\circ$, $\cos\theta &gt; 0$): a força “ajuda” o movimento. Ex.: a força que puxa um carrinho.</li>
+            <li><strong>Trabalho nulo</strong> ($\theta = 90^\circ$): força perpendicular ao deslocamento. Ex.: o peso e a normal num deslocamento horizontal; a força centrípeta num movimento circular.</li>
+            <li><strong>Trabalho resistente</strong> ($90^\circ &lt; \theta \le 180^\circ$, $\cos\theta &lt; 0$): a força se opõe ao movimento. Ex.: o atrito cinético ($\theta = 180^\circ$, $\tau = -f_{at} \cdot d$).</li>
+        </ul>
+    </div>
+
+    <div class="passo-teoria">
+        <h4>3. Trabalho do Peso</h4>
+        <p>O trabalho do peso depende apenas do <strong>desnível</strong> $h$ entre as posições inicial e final, e não da trajetória:</p>
+        <p style="text-align: center;">$$\tau_P = \pm\, m \cdot g \cdot h$$</p>
+        <p>É <strong>positivo</strong> quando o corpo desce e <strong>negativo</strong> quando sobe. Por isso, ao descer uma rampa ou cair na vertical de uma mesma altura, o peso realiza o mesmo trabalho.</p>
+    </div>
+
+    <div class="passo-teoria">
+        <h4>4. Força Variável: Método Gráfico</h4>
+        <p>Quando a força varia ao longo do deslocamento, usamos o gráfico $F \times d$:</p>
+        <figure class="figura-aula">
+            <svg viewBox="0 0 380 240" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Gráfico da força em função do deslocamento com a área sob a curva destacada" style="width:100%; max-width:380px; display:block; margin:0 auto; font-family:sans-serif;">
+            <defs><marker id="s2_2c3e50" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto"><polygon points="0 0, 10 4, 0 8" fill="#2c3e50"/></marker></defs>
+            <line x1="50" y1="200" x2="350" y2="200" stroke="#2c3e50" stroke-width="2" marker-end="url(#s2_2c3e50)"/>
+            <line x1="50" y1="200" x2="50" y2="25" stroke="#2c3e50" stroke-width="2" marker-end="url(#s2_2c3e50)"/>
+            <text x="354" y="218" fill="#2c3e50" font-size="13" text-anchor="end" font-weight="bold">d (m)</text>
+            <text x="42" y="29" fill="#2c3e50" font-size="13" text-anchor="end" font-weight="bold">F (N)</text>
+            <polygon points="50,200 50,90 170,90 290,200" fill="#f9e79f" stroke="none"/>
+            <line x1="50" y1="90" x2="170" y2="90" stroke="#e67e22" stroke-width="3"/>
+            <line x1="170" y1="90" x2="290" y2="200" stroke="#e67e22" stroke-width="3"/>
+            <text x="150" y="160" fill="#7d6608" font-size="15" text-anchor="middle" font-weight="bold">Área = τ</text>
+            </svg>
+            <figcaption>Figura 2: No gráfico $F \times d$ (força na direção do deslocamento), o trabalho é numericamente igual à <strong>área</strong> sob a curva.</figcaption>
+        </figure>
+        <p>Para a <strong>força elástica</strong> ($F = kx$), o gráfico é uma reta e a área é um triângulo: $$|\tau_{el}| = \frac{k\,x^2}{2}$$</p>
+    </div>
+
+    <div class="passo-teoria">
+        <h4>5. Trabalho Total (da Resultante)</h4>
+        <p>Quando várias forças atuam, o trabalho total é a <strong>soma</strong> dos trabalhos de cada uma (ou o trabalho da força resultante):</p>
+        <p style="text-align: center;">$$\tau_{total} = \tau_1 + \tau_2 + \dots = F_R \cdot d \cdot \cos\theta$$</p>
+    </div>
+</section>
+
+<section class="aplicacoes-reais" id="aplicacoes">
+    <h3>💡 Física em Ação</h3>
+    <div class="cards-aplicacao">
+        <div class="card">
+            <h4>🏋️ Levantamento de Peso</h4>
+            <p>Ao erguer uma barra de 100 kg a 2 m de altura, o atleta realiza cerca de $2\,000\text{ J}$ de trabalho. Ao segurar a barra parada no alto, o trabalho sobre ela é nulo, mesmo que os músculos estejam se esforçando.</p>
+        </div>
+        <div class="card" style="border-left-color: #2ecc71;">
+            <h4>🛗 Contrapeso dos Elevadores</h4>
+            <p>O contrapeso diminui a força que o motor precisa fazer. Assim, o trabalho realizado pelo motor para subir o elevador fica bem menor, o que economiza energia.</p>
+        </div>
+    </div>
+</section>
+
+<section class="questoes-resolvidas" id="resolvidas">
+    <h3>✅ 5 Questões Resolvidas (R 1 a 5)</h3>
+
+    <article class="questao">
+        <h4>R 1: Força na Direção do Deslocamento</h4>
+        <p><strong>Enunciado:</strong> Uma força horizontal de $50\text{ N}$ arrasta uma caixa por $4\text{ m}$ no mesmo sentido da força. Qual o trabalho realizado?</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong> $\theta = 0^\circ$, $\cos0^\circ = 1$: &nbsp; $\tau = 50 \cdot 4 \cdot 1 = 200\text{ J}$.</p>
+        </div>
+    </article>
+    <article class="questao">
+        <h4>R 2: Força Inclinada</h4>
+        <p><strong>Enunciado:</strong> Uma pessoa puxa um carrinho com uma corda que faz $60^\circ$ com a horizontal, aplicando $100\text{ N}$. O carrinho se desloca $5\text{ m}$ na horizontal. Qual o trabalho da força? ($\cos60^\circ = 0{,}5$)</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong> $\tau = F \cdot d \cdot \cos60^\circ = 100 \cdot 5 \cdot 0{,}5 = 250\text{ J}$.</p>
+        </div>
+    </article>
+    <article class="questao">
+        <h4>R 3: Trabalho do Peso</h4>
+        <p><strong>Enunciado:</strong> Um corpo de $2\text{ kg}$ cai de uma altura de $10\text{ m}$ ($g = 10\text{ m/s}^2$). Qual o trabalho do peso na queda? E se o corpo fosse levado de volta à mesma altura?</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong> Na descida: $\tau_P = +m g h = 2 \cdot 10 \cdot 10 = +200\text{ J}$ (trabalho motor).<br>Na subida: $\tau_P = -200\text{ J}$ (trabalho resistente).</p>
+        </div>
+    </article>
+    <article class="questao">
+        <h4>R 4: Trabalho pelo Gráfico</h4>
+        <p><strong>Enunciado:</strong> Uma força na direção do deslocamento vale $20\text{ N}$ constante de $d = 0$ a $d = 4\text{ m}$ e depois diminui linearmente até zero em $d = 8\text{ m}$. Qual o trabalho total dessa força?</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong> Área = retângulo + triângulo:$$\tau = 20 \cdot 4 + \frac{4 \cdot 20}{2} = 80 + 40 = 120\text{ J}$$</p>
+        </div>
+    </article>
+    <article class="questao">
+        <h4>R 5: Trabalho Total</h4>
+        <p><strong>Enunciado:</strong> Um bloco de $5\text{ kg}$ é puxado $10\text{ m}$ sobre um piso horizontal por uma força horizontal de $40\text{ N}$. O coeficiente de atrito cinético é $0{,}4$ ($g = 10\text{ m/s}^2$). Calcule o trabalho de cada força e o trabalho total.</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong> $\tau_F = 40 \cdot 10 = 400\text{ J}$.<br>Atrito: $f_c = 0{,}4 \cdot 50 = 20\text{ N}$, com $\theta = 180^\circ$: $\tau_{at} = -20 \cdot 10 = -200\text{ J}$.<br>Peso e normal são perpendiculares ao deslocamento: $\tau_P = \tau_N = 0$.<br>$\tau_{total} = 400 - 200 = 200\text{ J}$.</p>
+        </div>
+    </article>
+</section>
+
+<section class="questoes-propostas" id="propostas">
+    <h3>✍️ 10 Questões Propostas (P 6 a 15)</h3>
+
+    <article class="questao">
+        <h4>P 6: Cálculo Direto</h4>
+        <p><strong>Enunciado:</strong> Uma força de $30\text{ N}$, na mesma direção e sentido do deslocamento, atua ao longo de $6\text{ m}$. Qual o trabalho realizado?</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> $\tau = 30 \cdot 6 = 180\text{ J}$.</p>
+        </div>
+    </article>
+    <article class="questao">
+        <h4>P 7: Puxando com Ângulo</h4>
+        <p><strong>Enunciado:</strong> Uma força de $80\text{ N}$ forma $37^\circ$ com o deslocamento, que é de $10\text{ m}$. Qual o trabalho? ($\cos37^\circ = 0{,}8$)</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> $\tau = 80 \cdot 10 \cdot 0{,}8 = 640\text{ J}$.</p>
+        </div>
+    </article>
+    <article class="questao">
+        <h4>P 8: Trabalho do Atrito</h4>
+        <p><strong>Enunciado:</strong> Uma força de atrito de $15\text{ N}$ atua sobre uma caixa que desliza $4\text{ m}$. Qual o trabalho do atrito?</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> O atrito é oposto ao deslocamento ($\theta = 180^\circ$): $\tau = -15 \cdot 4 = -60\text{ J}$.</p>
+        </div>
+    </article>
+    <article class="questao">
+        <h4>P 9: Erguendo uma Caixa</h4>
+        <p><strong>Enunciado:</strong> Uma pessoa ergue verticalmente, com velocidade constante, uma caixa de $10\text{ kg}$ até uma altura de $3\text{ m}$ ($g = 10\text{ m/s}^2$). Qual o trabalho da pessoa e o do peso?</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> Velocidade constante: a pessoa faz força igual ao peso, $100\text{ N}$, para cima.<br>$\tau_{pessoa} = 100 \cdot 3 = +300\text{ J}$. &nbsp; $\tau_P = -300\text{ J}$. &nbsp; Trabalho total: zero.</p>
+        </div>
+    </article>
+    <article class="questao">
+        <h4>P 10: Forças que Não Trabalham</h4>
+        <p><strong>Enunciado:</strong> Um carrinho se desloca $20\text{ m}$ sobre um piso horizontal. Qual o trabalho realizado pelo peso e pela normal sobre ele? Justifique.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> Peso e normal são verticais, perpendiculares ao deslocamento horizontal ($\theta = 90^\circ$, $\cos90^\circ = 0$). Logo, o trabalho de cada uma é <strong>zero</strong>.</p>
+        </div>
+    </article>
+    <article class="questao">
+        <h4>P 11: Descendo a Rampa</h4>
+        <p><strong>Enunciado:</strong> Um bloco de $4\text{ kg}$ desce $5\text{ m}$ ao longo de uma rampa inclinada de $30^\circ$ ($g = 10\text{ m/s}^2$). Qual o trabalho do peso?</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> Desnível: $h = 5 \cdot \operatorname{sen}30^\circ = 2{,}5\text{ m}$.<br>$\tau_P = m g h = 4 \cdot 10 \cdot 2{,}5 = 100\text{ J}$.</p>
+        </div>
+    </article>
+    <article class="questao">
+        <h4>P 12: Área de um Triângulo</h4>
+        <p><strong>Enunciado:</strong> A força que atua sobre um corpo, na direção do deslocamento, cresce linearmente de $0$ a $30\text{ N}$ enquanto ele se desloca de $0$ a $6\text{ m}$. Qual o trabalho realizado?</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> Área do triângulo: $\tau = \dfrac{6 \cdot 30}{2} = 90\text{ J}$.</p>
+        </div>
+    </article>
+    <article class="questao">
+        <h4>P 13: Trabalho da Força Elástica</h4>
+        <p><strong>Enunciado:</strong> Uma mola de constante $200\text{ N/m}$ é esticada de $x = 0$ até $x = 10\text{ cm}$. Qual o módulo do trabalho da força elástica?</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> $|\tau_{el}| = \dfrac{k x^2}{2} = \dfrac{200 \cdot (0{,}1)^2}{2} = \dfrac{200 \cdot 0{,}01}{2} = 1\text{ J}$.</p>
+        </div>
+    </article>
+    <article class="questao">
+        <h4>P 14: Força que Muda de Sentido</h4>
+        <p><strong>Enunciado:</strong> Uma força horizontal vale $+20\text{ N}$ (a favor do movimento) de $d = 0$ a $d = 3\text{ m}$, e $-10\text{ N}$ (contra o movimento) de $d = 3\text{ m}$ a $d = 5\text{ m}$. Qual o trabalho total dessa força?</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> $\tau = 20 \cdot 3 + (-10) \cdot 2 = 60 - 20 = 40\text{ J}$.</p>
+        </div>
+    </article>
+    <article class="questao">
+        <h4>P 15: Carrinho de Supermercado</h4>
+        <p><strong>Enunciado:</strong> Um cliente empurra um carrinho por $15\text{ m}$ aplicando $40\text{ N}$ numa direção que forma $60^\circ$ com o deslocamento. Qual o trabalho realizado? ($\cos60^\circ = 0{,}5$)</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> $\tau = 40 \cdot 15 \cdot 0{,}5 = 300\text{ J}$.</p>
+        </div>
+    </article>
+</section>
+
+<section class="TESTE" id="testes">
+    <h3>🎓 TESTES (T 11 a 15)</h3>
+
+    <article class="questao">
+        <h4>T 11: (UFMG) Força Perpendicular ao Deslocamento</h4>
+        <p>Uma força constante de $10\text{ N}$ atua sobre um corpo que se desloca perpendicularmente a essa força. Sabendo-se que o deslocamento do corpo foi de $4{,}00\text{ m}$, o trabalho realizado por essa força, em Joules, foi de</p>
+        <p>A) zero<br>
+        B) $40\text{ J}$<br>
+        C) $10\text{ J}$<br>
+        D) $4{,}0\text{ J}$<br>
+        E) $20\text{ J}$</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> Alternativa <strong>A</strong>.<br>Força perpendicular ao deslocamento: $\theta = 90^\circ$ e $\cos90^\circ = 0$, logo $\tau = 10 \cdot 4 \cdot 0 = 0$.</p>
+        </div>
+    </article>
+    <article class="questao">
+        <h4>T 12: (PUC-BA) Força a 60° do Deslocamento</h4>
+        <p>A força $\vec{F}$ de módulo $30\text{ N}$ atua sobre um objeto formando um ângulo constante de $60^\circ$ com a direção do deslocamento do objeto.</p>
+        <figure class="figura-aula">
+            <svg viewBox="0 0 440 230" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Objeto deslocado de d sob a ação de uma força F que forma 60 graus com o deslocamento" style="width:100%; max-width:380px; display:block; margin:0 auto; font-family:sans-serif;">
+            <defs><marker id="s3_2c3e50" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto"><polygon points="0 0, 10 4, 0 8" fill="#2c3e50"/></marker><marker id="s3_e67e22" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto"><polygon points="0 0, 10 4, 0 8" fill="#e67e22"/></marker></defs>
+            <line x1="30" y1="160" x2="410" y2="160" stroke="#2c3e50" stroke-width="2.5"/>
+            <line x1="30" y1="160" x2="22" y2="169" stroke="#7f8c8d" stroke-width="1.2"/>
+            <line x1="44" y1="160" x2="36" y2="169" stroke="#7f8c8d" stroke-width="1.2"/>
+            <line x1="58" y1="160" x2="50" y2="169" stroke="#7f8c8d" stroke-width="1.2"/>
+            <line x1="72" y1="160" x2="64" y2="169" stroke="#7f8c8d" stroke-width="1.2"/>
+            <line x1="86" y1="160" x2="78" y2="169" stroke="#7f8c8d" stroke-width="1.2"/>
+            <line x1="100" y1="160" x2="92" y2="169" stroke="#7f8c8d" stroke-width="1.2"/>
+            <line x1="114" y1="160" x2="106" y2="169" stroke="#7f8c8d" stroke-width="1.2"/>
+            <line x1="128" y1="160" x2="120" y2="169" stroke="#7f8c8d" stroke-width="1.2"/>
+            <line x1="142" y1="160" x2="134" y2="169" stroke="#7f8c8d" stroke-width="1.2"/>
+            <line x1="156" y1="160" x2="148" y2="169" stroke="#7f8c8d" stroke-width="1.2"/>
+            <line x1="170" y1="160" x2="162" y2="169" stroke="#7f8c8d" stroke-width="1.2"/>
+            <line x1="184" y1="160" x2="176" y2="169" stroke="#7f8c8d" stroke-width="1.2"/>
+            <line x1="198" y1="160" x2="190" y2="169" stroke="#7f8c8d" stroke-width="1.2"/>
+            <line x1="212" y1="160" x2="204" y2="169" stroke="#7f8c8d" stroke-width="1.2"/>
+            <line x1="226" y1="160" x2="218" y2="169" stroke="#7f8c8d" stroke-width="1.2"/>
+            <line x1="240" y1="160" x2="232" y2="169" stroke="#7f8c8d" stroke-width="1.2"/>
+            <line x1="254" y1="160" x2="246" y2="169" stroke="#7f8c8d" stroke-width="1.2"/>
+            <line x1="268" y1="160" x2="260" y2="169" stroke="#7f8c8d" stroke-width="1.2"/>
+            <line x1="282" y1="160" x2="274" y2="169" stroke="#7f8c8d" stroke-width="1.2"/>
+            <line x1="296" y1="160" x2="288" y2="169" stroke="#7f8c8d" stroke-width="1.2"/>
+            <line x1="310" y1="160" x2="302" y2="169" stroke="#7f8c8d" stroke-width="1.2"/>
+            <line x1="324" y1="160" x2="316" y2="169" stroke="#7f8c8d" stroke-width="1.2"/>
+            <line x1="338" y1="160" x2="330" y2="169" stroke="#7f8c8d" stroke-width="1.2"/>
+            <line x1="352" y1="160" x2="344" y2="169" stroke="#7f8c8d" stroke-width="1.2"/>
+            <line x1="366" y1="160" x2="358" y2="169" stroke="#7f8c8d" stroke-width="1.2"/>
+            <line x1="380" y1="160" x2="372" y2="169" stroke="#7f8c8d" stroke-width="1.2"/>
+            <line x1="394" y1="160" x2="386" y2="169" stroke="#7f8c8d" stroke-width="1.2"/>
+            <line x1="408" y1="160" x2="400" y2="169" stroke="#7f8c8d" stroke-width="1.2"/>
+            <rect x="90" y="105" width="80" height="55" fill="#f5cba7" stroke="#a04000" stroke-width="2" rx="3"/>
+            <line x1="130" y1="132" x2="236.48976575756893" y2="57.43506327436401" stroke="#e67e22" stroke-width="3" marker-end="url(#s3_e67e22)"/>
+            <text x="248.48976575756893" y="57.43506327436401" fill="#e67e22" font-size="15" text-anchor="middle" font-weight="bold">F</text>
+            <line x1="130" y1="132" x2="270" y2="132" stroke="#95a5a6" stroke-width="1.2" stroke-dasharray="6 4"/>
+            <path d="M 180 132 A 50 50 0 0 0 171.0 103.3" fill="none" stroke="#2c3e50" stroke-width="1.5"/>
+            <text x="192" y="122" fill="#2c3e50" font-size="13" text-anchor="start" font-weight="bold">60°</text>
+            <circle cx="130" cy="132" r="3.5" fill="#2c3e50"/>
+            <rect x="300" y="105" width="80" height="55" fill="#fdebd0" stroke="#d5a6bd" stroke-width="2" rx="3"/>
+            <rect x="300" y="105" width="80" height="55" fill="none" stroke="#a04000" stroke-width="1.5" stroke-dasharray="5 4" rx="3"/>
+            <line x1="130" y1="190" x2="340" y2="190" stroke="#2c3e50" stroke-width="2" marker-end="url(#s3_2c3e50)"/>
+            <text x="235" y="210" fill="#2c3e50" font-size="15" text-anchor="middle" font-weight="bold">d</text>
+            </svg>
+            <figcaption>Figura redesenhada a partir da prova: a força $\vec{F}$ forma $60^\circ$ com a direção do deslocamento $d$.</figcaption>
+        </figure>
+        <p>Dados: $\operatorname{sen}60^\circ = \dfrac{\sqrt{3}}{2}$, $\cos60^\circ = \dfrac{1}{2}$. Se $d = 10\text{ m}$, o trabalho realizado pela força $\vec{F}$, em joules, é igual a:</p>
+        <p>A) $300$<br>
+        B) $150\sqrt{3}$<br>
+        C) $150$<br>
+        D) $125$<br>
+        E) $100$</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> Alternativa <strong>C</strong>.<br>$\tau = F \cdot d \cdot \cos60^\circ = 30 \cdot 10 \cdot \dfrac{1}{2} = 150\text{ J}$.</p>
+        </div>
+    </article>
+    <article class="questao">
+        <h4>T 13: (UFRGS 2020) Trabalho no Pêndulo Cônico</h4>
+        <p>A figura abaixo representa um pêndulo cônico: um pequeno corpo de massa $m$, preso à extremidade de um fio, gira, descrevendo uma circunferência horizontal com velocidade constante em módulo, e o fio forma um ângulo $\theta$ com a vertical.</p>
+        <figure class="figura-aula">
+            <svg viewBox="0 0 320 280" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Pêndulo cônico: corpo preso a um fio girando em circunferência horizontal, com o fio formando ângulo theta com a vertical" style="width:100%; max-width:380px; display:block; margin:0 auto; font-family:sans-serif;">
+            <defs></defs>
+            <line x1="110" y1="25" x2="210" y2="25" stroke="#2c3e50" stroke-width="2.5"/>
+            <line x1="110" y1="25" x2="118" y2="16" stroke="#7f8c8d" stroke-width="1.2"/>
+            <line x1="124" y1="25" x2="132" y2="16" stroke="#7f8c8d" stroke-width="1.2"/>
+            <line x1="138" y1="25" x2="146" y2="16" stroke="#7f8c8d" stroke-width="1.2"/>
+            <line x1="152" y1="25" x2="160" y2="16" stroke="#7f8c8d" stroke-width="1.2"/>
+            <line x1="166" y1="25" x2="174" y2="16" stroke="#7f8c8d" stroke-width="1.2"/>
+            <line x1="180" y1="25" x2="188" y2="16" stroke="#7f8c8d" stroke-width="1.2"/>
+            <line x1="194" y1="25" x2="202" y2="16" stroke="#7f8c8d" stroke-width="1.2"/>
+            <line x1="208" y1="25" x2="216" y2="16" stroke="#7f8c8d" stroke-width="1.2"/>
+            <line x1="160" y1="25" x2="160" y2="210" stroke="#95a5a6" stroke-width="1.2" stroke-dasharray="6 4"/>
+            <ellipse cx="160" cy="210" rx="95" ry="22" fill="none" stroke="#7f8c8d" stroke-width="1.5" stroke-dasharray="6 4"/>
+            <line x1="160" y1="25" x2="255" y2="210" stroke="#555" stroke-width="2"/>
+            <circle cx="255" cy="210" r="12" fill="#f5cba7" stroke="#a04000" stroke-width="2"/>
+            <text x="255" y="214" fill="#4a2a0a" font-size="12" text-anchor="middle" font-weight="bold">m</text>
+            <path d="M 160 75 A 50 50 0 0 0 183 70" fill="none" stroke="#2c3e50" stroke-width="1.5"/>
+            <text x="176" y="95" fill="#2c3e50" font-size="14" text-anchor="middle" font-weight="bold">θ</text>
+            </svg>
+            <figcaption>Figura redesenhada a partir da prova: pêndulo cônico; o corpo descreve uma circunferência horizontal, e o fio forma o ângulo $\theta$ com a vertical.</figcaption>
+        </figure>
+        <p>$\vec{T}$ e $\vec{P}$ são, respectivamente, a força de tração, exercida pelo fio, e a força peso. Considere as afirmações sobre o trabalho realizado por essas forças.</p>
+        <p>I. O trabalho realizado pela componente vertical da força de tração, $|\vec{T}|\cos\theta$, é nulo.<br>
+        II. O trabalho realizado pela componente radial da força de tração, $|\vec{T}|\operatorname{sen}\theta$, é nulo.<br>
+        III. O trabalho realizado pela força $\vec{P}$ é nulo.</p>
+        <p>Quais estão corretas?</p>
+        <p>A) Apenas I.<br>
+        B) Apenas II.<br>
+        C) Apenas I e III.<br>
+        D) Apenas II e III.<br>
+        E) I, II e III.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> Alternativa <strong>E</strong>.<br>O corpo se move numa circunferência <strong>horizontal</strong>, e sua velocidade é sempre tangente a ela.<br>I. Correta: a componente vertical é perpendicular ao deslocamento (horizontal).<br>II. Correta: a componente radial aponta para o centro, perpendicular à velocidade.<br>III. Correta: o peso é vertical, e a altura do corpo não muda.</p>
+        </div>
+    </article>
+    <article class="questao">
+        <h4>T 14: (Unifacef) Elevador com Contrapeso</h4>
+        <p>A figura mostra um motor que aciona um elevador cuja massa, juntamente com a dos passageiros, é de $900\text{ kg}$. O contrapeso possui massa $600\text{ kg}$ e a aceleração da gravidade no local vale $10\text{ m/s}^2$.</p>
+        <figure class="figura-aula">
+            <svg viewBox="0 0 320 280" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Motor no alto acionando um elevador ligado por cabo a um contrapeso" style="width:100%; max-width:380px; display:block; margin:0 auto; font-family:sans-serif;">
+            <defs></defs>
+            <line x1="60" y1="25" x2="260" y2="25" stroke="#2c3e50" stroke-width="2.5"/>
+            <line x1="60" y1="25" x2="68" y2="16" stroke="#7f8c8d" stroke-width="1.2"/>
+            <line x1="74" y1="25" x2="82" y2="16" stroke="#7f8c8d" stroke-width="1.2"/>
+            <line x1="88" y1="25" x2="96" y2="16" stroke="#7f8c8d" stroke-width="1.2"/>
+            <line x1="102" y1="25" x2="110" y2="16" stroke="#7f8c8d" stroke-width="1.2"/>
+            <line x1="116" y1="25" x2="124" y2="16" stroke="#7f8c8d" stroke-width="1.2"/>
+            <line x1="130" y1="25" x2="138" y2="16" stroke="#7f8c8d" stroke-width="1.2"/>
+            <line x1="144" y1="25" x2="152" y2="16" stroke="#7f8c8d" stroke-width="1.2"/>
+            <line x1="158" y1="25" x2="166" y2="16" stroke="#7f8c8d" stroke-width="1.2"/>
+            <line x1="172" y1="25" x2="180" y2="16" stroke="#7f8c8d" stroke-width="1.2"/>
+            <line x1="186" y1="25" x2="194" y2="16" stroke="#7f8c8d" stroke-width="1.2"/>
+            <line x1="200" y1="25" x2="208" y2="16" stroke="#7f8c8d" stroke-width="1.2"/>
+            <line x1="214" y1="25" x2="222" y2="16" stroke="#7f8c8d" stroke-width="1.2"/>
+            <line x1="228" y1="25" x2="236" y2="16" stroke="#7f8c8d" stroke-width="1.2"/>
+            <line x1="242" y1="25" x2="250" y2="16" stroke="#7f8c8d" stroke-width="1.2"/>
+            <line x1="256" y1="25" x2="264" y2="16" stroke="#7f8c8d" stroke-width="1.2"/>
+            <rect x="120" y="25" width="80" height="30" rx="4" fill="#aeb6bf" stroke="#2c3e50" stroke-width="2"/>
+            <text x="160" y="45" fill="#2c3e50" font-size="12" text-anchor="middle" font-weight="bold">motor</text>
+            <line x1="160" y1="55" x2="160" y2="70" stroke="#2c3e50" stroke-width="3"/>
+            <circle cx="160" cy="95" r="28" fill="#ecf0f1" stroke="#2c3e50" stroke-width="2"/>
+            <circle cx="160" cy="95" r="3" fill="#2c3e50"/>
+            <line x1="132" y1="95" x2="132" y2="160" stroke="#555" stroke-width="2"/>
+            <line x1="188" y1="95" x2="188" y2="140" stroke="#555" stroke-width="2"/>
+            <rect x="72" y="160" width="100" height="85" fill="#d6eaf8" stroke="#2c3e50" stroke-width="2"/>
+            <text x="122" y="198" fill="#2c3e50" font-size="11" text-anchor="middle" font-weight="bold">elevador</text>
+            <text x="122" y="214" fill="#2c3e50" font-size="11" text-anchor="middle">900 kg</text>
+            <rect x="176" y="140" width="24" height="48" fill="#f5cba7" stroke="#a04000" stroke-width="2" rx="3"/>
+            <text x="188" y="204" fill="#2c3e50" font-size="10" text-anchor="start">600 kg</text>
+            <text x="208" y="160" fill="#555" font-size="11" text-anchor="start" font-style="italic">contrapeso</text>
+            </svg>
+            <figcaption>Figura redesenhada a partir da prova: o motor aciona o cabo que liga o elevador ($900\text{ kg}$, com passageiros) ao contrapeso ($600\text{ kg}$).</figcaption>
+        </figure>
+        <p>Nessa situação, desprezando qualquer atrito, o trabalho realizado pela força exercida pelo motor para fazer com que o elevador suba com velocidade constante uma distância igual a $30\text{ m}$ é, em joules, igual a</p>
+        <p>A) $2{,}7 \times 10^4$.<br>
+        B) $5{,}4 \times 10^4$.<br>
+        C) $2{,}7 \times 10^5$.<br>
+        D) $9{,}0 \times 10^4$.<br>
+        E) $9{,}0 \times 10^5$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> Alternativa <strong>D</strong>.<br>Com velocidade constante, o motor só precisa compensar a diferença entre os pesos: $F = (900 - 600) \cdot 10 = 3\,000\text{ N}$.<br>$\tau = F \cdot d = 3\,000 \cdot 30 = 90\,000\text{ J} = 9{,}0 \times 10^4\text{ J}$.</p>
+        </div>
+    </article>
+    <article class="questao">
+        <h4>T 15: (Autoral) Trabalho pelo Gráfico</h4>
+        <p>A força resultante sobre um carrinho, sempre na direção e no sentido do deslocamento, cresce linearmente de $0$ a $40\text{ N}$ nos primeiros $2\text{ m}$ e permanece constante em $40\text{ N}$ nos $3\text{ m}$ seguintes. O trabalho dessa força nos $5\text{ m}$ é:</p>
+        <p>A) $80\text{ J}$<br>
+        B) $120\text{ J}$<br>
+        C) $160\text{ J}$<br>
+        D) $200\text{ J}$<br>
+        E) $240\text{ J}$</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> Alternativa <strong>C</strong>.<br>Área = triângulo + retângulo: $\tau = \dfrac{2 \cdot 40}{2} + 40 \cdot 3 = 40 + 120 = 160\text{ J}$.</p>
+        </div>
+    </article>
+</section>
+
+</div>
+</main>
+
+<aside class="menu-lateral">
+    <iframe src="../menu_fisica.html" style="width:100%; border:none; height:600px;"></iframe>
+</aside>
+
+</div>
+
+<script>
+function toggleGabarito(botao) {
+    const gabarito = botao.nextElementSibling;
+    if (gabarito.style.display === "none" || gabarito.style.display === "") {
+        gabarito.style.display = "block";
+        botao.textContent = "Esconder Gabarito e Resolução";
+        botao.style.backgroundColor = "#2c3e50";
+    } else {
+        gabarito.style.display = "none";
+        botao.textContent = "Ver Gabarito e Resolução";
+        botao.style.backgroundColor = "#3498db";
+    }
+}
+
+function toggleMenu() {
+    const menuGlobal = document.getElementById("menu-principal");
+    if (menuGlobal) menuGlobal.classList.toggle("ativo");
+}
+
+let slideAtual = 0;
+let slides = [];
+
+function prepararSlides() {
+    const seletores = '#resumo, .passo-teoria, .cards-aplicacao .card, .questao';
+    slides = Array.from(document.querySelectorAll(seletores));
+}
+
+function toggleSlides() {
+    prepararSlides();
+    const body = document.body;
+    
+    if (!body.classList.contains('modo-slides')) {
+        body.classList.add('modo-slides');
+        slideAtual = 0;
+        mostrarSlide(slideAtual);
+    } else {
+        body.classList.remove('modo-slides');
+        
+        slides.forEach(s => {
+            s.classList.remove('slide-ativo');
+            s.style.display = '';
+        });
+        
+        document.querySelectorAll('.gabarito-resolucao').forEach(g => g.style.display = '');
+    }
+}
+
+function mostrarSlide(n) {
+    if (slides.length === 0) return;
+
+    slides.forEach(s => {
+        s.classList.remove('slide-ativo');
+        s.style.display = 'none';
+    });
+
+    const slide = slides[n];
+    slide.classList.add('slide-ativo');
+    slide.style.display = 'flex'; 
+
+    if (slide.classList.contains('questao')) {
+        const btnGabarito = slide.querySelector('.btn-gabarito');
+        const gabarito = slide.querySelector('.gabarito-resolucao');
+        
+        if (btnGabarito && gabarito) {
+            gabarito.style.display = 'none';
+            btnGabarito.textContent = "Ver Gabarito e Resolução";
+            btnGabarito.style.backgroundColor = "#3498db";
+        }
+    }
+
+    const pHeader = document.querySelector('header p');
+    if (pHeader) {
+        const partes = pHeader.innerText.split('|');
+        if (partes.length > 1) {
+            document.getElementById('slide-info-serie').innerText = partes[0].trim();
+            document.getElementById('slide-info-aula').innerText = partes[1].trim();
+        }
+    }
+
+    document.getElementById('contador-slide').innerText = (n + 1) + " / " + slides.length;
+    
+    if (window.MathJax && MathJax.typesetPromise) {
+        MathJax.typesetPromise([slide]);
+    }
+}
+
+function mudarSlide(direcao) {
+    slideAtual += direcao;
+    if (slideAtual >= slides.length) slideAtual = 0;
+    if (slideAtual < 0) slideAtual = slides.length - 1;
+    mostrarSlide(slideAtual);
+}
+
+document.addEventListener('keydown', function(e) {
+    if (document.body.classList.contains('modo-slides')) {
+        if (e.key === 'ArrowRight') mudarSlide(1);
+        if (e.key === 'ArrowLeft') mudarSlide(-1);
+        if (e.key === 'Escape') toggleSlides();
+    }
+});
+</script>
+
+<div class="controles-slides">
+    <div id="slide-info-serie" class="info-lateral"></div>
+    <div class="botoes-centrais">
+        <button class="btn-nav" onclick="mudarSlide(-1)">⬅ Anterior</button>
+        <span id="contador-slide"></span>
+        <button class="btn-nav" onclick="mudarSlide(1)">Próximo ➡</button>
+        <button class="btn-nav" onclick="toggleSlides()" style="background:#e74c3c;">Sair</button>
+    </div>
+    <div id="slide-info-aula" class="info-lateral" style="text-align: right;"></div>
+</div>
+</body>
+</html>

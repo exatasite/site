@@ -1,0 +1,34 @@
+{
+  "titulo": "Função do 1º grau",
+  "objetivos": [
+    "Reconhecer uma função do 1º grau e identificar seus coeficientes",
+    "Construir e interpretar o gráfico de f(x) = ax + b",
+    "Resolver problemas contextualizados com funções afins"
+  ],
+  "habilidades_bncc": [],
+  "aulas": [
+    {
+      "numero": 1,
+      "titulo": "Conceito e lei de formação",
+      "etapas": [
+        { "nome": "Abertura", "minutos": 10, "descricao": "Problema do táxi: valor da corrida = bandeirada + preço por km." },
+        { "nome": "Desenvolvimento", "minutos": 25, "descricao": "Definição de f(x) = ax + b, coeficiente angular e linear, valor numérico." },
+        { "nome": "Atividade", "minutos": 10, "descricao": "Exercícios R1 a R3 em duplas." },
+        { "nome": "Fechamento", "minutos": 5, "descricao": "Revisão rápida e tarefa para casa." }
+      ],
+      "recursos": ["Quadro", "Lista de exercícios"]
+    }
+  ],
+  "avaliacao": {
+    "instrumentos": ["Lista de exercícios em sala", "Mini-teste de 5 questões"],
+    "criterios": ["Identifica a e b corretamente", "Interpreta o gráfico no contexto do problema"]
+  },
+  "slides": [
+    { "titulo": "Quanto custa a corrida?", "topicos": ["Bandeirada: R$ 5,00", "Cada km: R$ 2,00", "Quanto pago por 10 km?"], "notas": "Deixe os alunos chutarem antes de calcular." },
+    { "titulo": "Objetivos da aula", "topicos": ["Reconhecer a função do 1º grau", "Identificar coeficientes a e b", "Resolver problemas do dia a dia"] },
+    { "titulo": "Definição", "topicos": ["f(x) = ax + b, com a ≠ 0", "a: coeficiente angular (inclinação)", "b: coeficiente linear (onde corta o eixo y)"] },
+    { "titulo": "Exemplo resolvido", "topicos": ["f(x) = 2x + 5", "f(10) = 2·10 + 5 = 25", "Resposta: R$ 25,00"] },
+    { "titulo": "Sua vez!", "topicos": ["Faça os exercícios R1 a R3", "Trabalhem em duplas", "Tempo: 10 minutos"] },
+    { "titulo": "Fechamento", "topicos": ["Função afim: f(x) = ax + b", "a dá a inclinação, b dá o ponto inicial", "Tarefa: P6 a P10"] }
+  ]
+}
