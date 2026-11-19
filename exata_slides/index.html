@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Exata Slides - ExataSite</title>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root { --azul:#003366; --laranja:#D35400; --texto:#2C3E50; --fundo:#F4F7F6; --claro:#E8EFF7; --borda:#D5DEE8; --cinza:#6B7280; }
+  *, *::before, *::after { box-sizing: border-box; }
+  body { margin:0; font-family: Arial, sans-serif; color:var(--texto); background:var(--fundo); line-height:1.5; }
+  h1,h2,h3 { font-family:'Oswald',sans-serif; color:var(--azul); text-transform:uppercase; }
+  header { background:var(--azul); color:#fff; padding:18px 20px; border-bottom:4px solid var(--laranja); }
+  header a { color:#fff; opacity:.85; font-size:.9rem; text-decoration:none; }
+  header h1 { color:#fff; margin:6px 0 2px; font-size:1.6rem; }
+  header p { margin:0; opacity:.9; }
+  main { max-width:860px; margin:0 auto; padding:16px; }
+  .card { background:#fff; border:1px solid var(--borda); border-radius:12px; padding:18px; margin-bottom:16px; box-shadow:0 2px 6px rgba(0,0,0,.04); }
+  label { display:block; font-weight:bold; font-size:.88rem; margin:12px 0 4px; }
+  input, select, textarea { width:100%; padding:10px; border:1px solid var(--borda); border-radius:8px; font:inherit; background:#fff; }
+  .linha { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+  button { font:inherit; cursor:pointer; border:0; border-radius:10px; padding:11px 18px; font-weight:bold; }
+  .principal { background:var(--laranja); color:#fff; width:100%; margin-top:16px; font-size:1.05rem; }
+  .principal:disabled { opacity:.6; cursor:wait; }
+  .sec { background:var(--claro); color:var(--azul); }
+  .barra { display:flex; gap:10px; flex-wrap:wrap; align-items:center; margin-bottom:12px; }
+  .aviso { background:#FFF7E0; border:1px solid #F0DC9A; padding:10px 12px; border-radius:8px; font-size:.88rem; margin-bottom:12px; }
+  .erro { background:#FDECEC; border:1px solid #F0B4B4; padding:10px 12px; border-radius:8px; margin-top:12px; }
+  h2 { font-size:1.25rem; margin:0 0 8px; }
+  h3 { font-size:1rem; margin:18px 0 6px; }
+  ul { margin:4px 0 8px 18px; padding:0; }
+  .etapa { border-left:4px solid var(--laranja); background:var(--claro); padding:8px 12px; margin:8px 0; border-radius:0 8px 8px 0; }
+  .etapa b { color:var(--azul); }
+  .min { color:var(--cinza); font-size:.85rem; }
+  .slide { border:1px solid var(--borda); border-radius:8px; padding:8px 12px; margin:6px 0; }
+  .hidden { display:none !important; }
+  @media (max-width:560px){ .linha{grid-template-columns:1fr;} }
+</style>
+</head>
+<body>
+<header>
+  <a href="../exataplay.html">← Voltar ao Exata Play</a>
+  <h1>🖼️ Exata Slides</h1>
+  <p>Planejamento de aula e slides em PowerPoint, gerados para você.</p>
+</header>
+
+<main>
+  <div id="avisoDemo" class="aviso hidden">
+    <b>Modo demonstração:</b> a inteligência artificial ainda não foi ligada, então você verá um plano de exemplo.
+    Dá para testar o formulário e baixar o PowerPoint normalmente.
+  </div>
+
+  <div id="cardLogin" class="card hidden">
+    <h2>🔐 Entre na sua conta</h2>
+    <p>Use a mesma conta do Exata Quiz.</p>
+    <label for="lgEmail">E-mail</label><input id="lgEmail" type="email" autocomplete="username">
+    <label for="lgSenha">Senha</label><input id="lgSenha" type="password" autocomplete="current-password">
+    <button class="principal" id="btnEntrar" type="button">Entrar</button>
+    <div id="avisoLogin" class="erro hidden"></div>
+  </div>
+
+  <div id="areaApp">
+    <div id="barraConta" class="barra hidden">
+      <span class="min" id="quemConta"></span>
+      <button class="sec" id="btnSair" type="button">Sair</button>
+    </div>
+
+    <form id="form" class="card">
+      <div class="linha">
+        <div><label for="disciplina">Disciplina</label>
+          <input id="disciplina" required value="Matemática"></div>
+        <div><label for="serie">Série / turma</label>
+          <input id="serie" value="1º ano do Ensino Médio"></div>
+      </div>
+
+      <label for="tema">Tema da aula</label>
+      <input id="tema" required value="Função do 1º grau" placeholder="Ex.: Função do 1º grau">
+
+      <div class="linha">
+        <div><label for="aulas">Número de aulas</label>
+          <input id="aulas" type="number" min="1" max="10" value="1"></div>
+        <div><label for="duracao">Duração de cada aula (min)</label>
+          <input id="duracao" type="number" min="20" max="120" value="50"></div>
+      </div>
+
+      <label for="metodologia">Metodologia</label>
+      <select id="metodologia">
+        <option>Expositiva dialogada</option>
+        <option>Sala de aula invertida</option>
+        <option>Resolução de problemas</option>
+        <option>Aprendizagem baseada em projetos</option>
+        <option>Atividade prática / experimental</option>
+      </select>
+
+      <label for="observacoes">Observações (opcional)</label>
+      <textarea id="observacoes" rows="3" placeholder="Ex.: turma com dificuldade em frações; usar exemplos do cotidiano"></textarea>
+
+      <button class="principal" id="btnGerar" type="submit">✨ Gerar planejamento e slides</button>
+      <div id="erro" class="erro hidden"></div>
+    </form>
+
+    <section id="resultado" class="hidden">
+      <div class="barra">
+        <button class="sec" id="btnPptx" type="button">⬇️ Baixar PowerPoint</button>
+        <button class="sec" id="btnCopiar" type="button">📋 Copiar plano</button>
+        <span class="min" id="restantes"></span>
+      </div>
+      <div class="card" id="plano"></div>
+    </section>
+  </div>
+</main>
+
+<script src="../quiz/js/config.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/pptxgenjs@4.0.1/dist/pptxgen.bundle.js"></script>
+<script src="pptx-builder.js"></script>
+<script>
+/* ===== CONFIGURAÇÃO =====
+   URL_FUNCAO: endereço da função "gerarPlanejamento" no Firebase (depois do deploy).
+   Enquanto estiver vazio, a página funciona em modo demonstração (sem login e sem IA). */
+const URL_FUNCAO = "";
+const $ = (id) => document.getElementById(id);
+const esc = (s) => String(s ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+
+let planoAtual = null, infoAtual = {}, usuario = null, auth = null;
+
+/* ---------- login (mesma conta do Exata Quiz) ---------- */
+function carregarScript(src) {
+  return new Promise((ok, falha) => { const s = document.createElement("script"); s.src = src; s.onload = ok; s.onerror = falha; document.head.appendChild(s); });
+}
+async function iniciarConta() {
+  const v = "https://www.gstatic.com/firebasejs/10.12.2/";
+  await carregarScript(v + "firebase-app-compat.js");
+  await carregarScript(v + "firebase-auth-compat.js");
+  if (!firebase.apps.length) firebase.initializeApp(window.EXATA_FIREBASE);
+  auth = firebase.auth();
+  auth.onAuthStateChanged((u) => {
+    usuario = u && !u.isAnonymous ? u : null;
+    $("cardLogin").classList.toggle("hidden", !!usuario);
+    $("areaApp").classList.toggle("hidden", !usuario);
+    $("barraConta").classList.toggle("hidden", !usuario);
+    if (usuario) $("quemConta").textContent = "Conectado como " + (usuario.email || "");
+  });
+  $("btnEntrar").addEventListener("click", async () => {
+    const e = $("lgEmail").value.trim(), s = $("lgSenha").value, av = $("avisoLogin");
+    av.classList.add("hidden");
+    if (!e || !s) { av.textContent = "Digite o e-mail e a senha."; av.classList.remove("hidden"); return; }
+    try { await auth.signInWithEmailAndPassword(e, s); $("lgSenha").value = ""; }
+    catch (err) { av.textContent = "E-mail ou senha incorretos. Use a mesma conta do Exata Quiz."; av.classList.remove("hidden"); }
+  });
+  $("lgSenha").addEventListener("keydown", (ev) => { if (ev.key === "Enter") $("btnEntrar").click(); });
+  $("btnSair").addEventListener("click", () => auth.signOut());
+}
+
+if (!URL_FUNCAO) {
+  $("avisoDemo").classList.remove("hidden");
+} else {
+  $("areaApp").classList.add("hidden");
+  iniciarConta().catch(() => {
+    $("cardLogin").classList.remove("hidden");
+    $("cardLogin").innerHTML = "<h2>Sem conexão</h2><p>Não foi possível conectar à sua conta. Verifique a internet e recarregue a página.</p>";
+  });
+}
+
+/* ---------- tela de resultado ---------- */
+function mostrarErro(msg) { $("erro").textContent = msg; $("erro").classList.remove("hidden"); }
+
+function desenharPlano(p) {
+  const lista = (a) => (a && a.length ? "<ul>" + a.map((x) => `<li>${esc(x)}</li>`).join("") + "</ul>" : "");
+  let h = `<h2>${esc(p.titulo)}</h2><h3>Objetivos</h3>${lista(p.objetivos)}`;
+  if (p.habilidades_bncc && p.habilidades_bncc.length) h += `<h3>Habilidades BNCC</h3>${lista(p.habilidades_bncc)}<div class="min">Confira os códigos da BNCC antes de usar.</div>`;
+  (p.aulas || []).forEach((a) => {
+    h += `<h3>Aula ${esc(a.numero)} — ${esc(a.titulo)}</h3>`;
+    (a.etapas || []).forEach((e) => {
+      h += `<div class="etapa"><b>${esc(e.nome)}</b> <span class="min">(${esc(e.minutos)} min)</span><br>${esc(e.descricao)}</div>`;
+    });
+    if (a.recursos && a.recursos.length) h += `<div class="min">Recursos: ${a.recursos.map(esc).join(", ")}</div>`;
+  });
+  const av = p.avaliacao || {};
+  h += `<h3>Avaliação</h3><b>Instrumentos</b>${lista(av.instrumentos)}<b>Critérios</b>${lista(av.criterios)}`;
+  h += `<h3>Slides (${(p.slides || []).length})</h3>`;
+  (p.slides || []).forEach((s, i) => { h += `<div class="slide"><b>${i + 2}. ${esc(s.titulo)}</b>${lista(s.topicos)}</div>`; });
+  $("plano").innerHTML = h;
+}
+
+function planoEmTexto(p) {
+  const L = [p.titulo, "", "OBJETIVOS", ...(p.objetivos || []).map((x) => "- " + x), ""];
+  (p.aulas || []).forEach((a) => {
+    L.push(`AULA ${a.numero} - ${a.titulo}`);
+    (a.etapas || []).forEach((e) => L.push(`  ${e.nome} (${e.minutos} min): ${e.descricao}`));
+    L.push("");
+  });
+  const av = p.avaliacao || {};
+  L.push("AVALIAÇÃO", ...(av.instrumentos || []).map((x) => "- " + x), ...(av.criterios || []).map((x) => "- " + x));
+  return L.join("\n");
+}
+
+$("form").addEventListener("submit", async (ev) => {
+  ev.preventDefault();
+  $("erro").classList.add("hidden");
+  const btn = $("btnGerar");
+  btn.disabled = true; btn.textContent = "⏳ Gerando… (pode levar até 30 segundos)";
+  const dados = {
+    disciplina: $("disciplina").value.trim(), serie: $("serie").value.trim(), tema: $("tema").value.trim(),
+    aulas: +$("aulas").value, duracao: +$("duracao").value, metodologia: $("metodologia").value,
+    observacoes: $("observacoes").value.trim(),
+  };
+  try {
+    let resp;
+    if (!URL_FUNCAO) {
+      await new Promise((r) => setTimeout(r, 800));
+      resp = { plano: await (await fetch("plano-exemplo.json")).json() };
+    } else {
+      if (!usuario) throw new Error("Entre na sua conta para gerar.");
+      const token = await usuario.getIdToken();
+      const r = await fetch(URL_FUNCAO, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Authorization: "Bearer " + token },
+        body: JSON.stringify(dados),
+      });
+      resp = await r.json().catch(() => ({}));
+      if (!r.ok) throw new Error(resp.erro || "Não foi possível gerar agora.");
+    }
+    planoAtual = resp.plano;
+    infoAtual = { disciplina: dados.disciplina, serie: dados.serie };
+    desenharPlano(planoAtual);
+    $("restantes").textContent = resp.restantes != null ? `Restam ${resp.restantes} planejamentos neste mês` : "";
+    $("resultado").classList.remove("hidden");
+    $("resultado").scrollIntoView({ behavior: "smooth" });
+  } catch (e) {
+    mostrarErro(e.message || "Erro inesperado.");
+  } finally {
+    btn.disabled = false; btn.textContent = "✨ Gerar planejamento e slides";
+  }
+});
+
+$("btnPptx").addEventListener("click", () => {
+  if (!planoAtual) return;
+  const nome = (planoAtual.titulo || "aula").normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/[^A-Za-z0-9]+/g, "_");
+  construirPptx(PptxGenJS, planoAtual, infoAtual).writeFile({ fileName: nome + ".pptx" });
+});
+
+$("btnCopiar").addEventListener("click", async () => {
+  if (!planoAtual) return;
+  await navigator.clipboard.writeText(planoEmTexto(planoAtual));
+  $("btnCopiar").textContent = "✅ Copiado!";
+  setTimeout(() => ($("btnCopiar").textContent = "📋 Copiar plano"), 1800);
+});
+</script>
+</body>
+</html>

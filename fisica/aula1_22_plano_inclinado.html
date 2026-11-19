@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1º Ano: Aula 22 - Plano Inclinado</title>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../estilo.css">
+    
+    <script>
+        MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true
+            }
+        };
+    </script>
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+   </head> 
+
+<body>
+<button class="menu-toggle" onclick="toggleMenu()">☰</button>
+
+<nav id="menu-principal" class="nav-global">
+    <ul>
+        <li><a href="../index.html">🏠 Início</a></li>
+        <li><a href="../ensino_medio.html">📚 Ensino Médio</a></li>
+        <li><a href="../ensino_superior.html">🎓 Ensino Superior</a></li>
+    </ul>
+</nav>
+<header id="topo">
+    <h1>FÍSICA EM</h1>
+    <p>1º Ano | Aula 22: Plano Inclinado</p>
+    <button id="btn-slides" onclick="toggleSlides()">📺 Iniciar Modo Slides</button>
+</header>
+
+<div class="container">
+
+<main class="conteudo-principal">
+
+<div class="secao-aula">
+<div class="container-resumo" id="resumo">
+    <h3>📚 Resumo</h3>
+    <section class="resumo-conteudo">
+        <p>No <strong>plano inclinado</strong> de ângulo $\theta$, o peso é decomposto em duas componentes:</p>
+        <p style="text-align: center;">$$P_t = P \cdot \operatorname{sen}\theta \qquad P_n = P \cdot \cos\theta$$</p>
+        <p>Sem atrito e sem outras forças perpendiculares: $N = P\cos\theta$ e $a = g \operatorname{sen}\theta$.</p>
+        <p style="text-align: center;">Com atrito: $f_{at} = \mu \cdot N = \mu \cdot P \cos\theta$ &nbsp;|&nbsp; Iminência de escorregar: $\operatorname{tg}\theta = \mu_e$</p>
+    </section>
+</div>
+
+<section class="conteudo-teorico-completo" id="teoria">
+    <div class="passo-teoria">
+        <h3>📖 Plano Inclinado</h3>
+        <h4>1. Decomposição do Peso</h4>
+        <p>No plano inclinado, é conveniente usar eixos <strong>paralelo</strong> e <strong>perpendicular</strong> à rampa. O peso, que é vertical, é então decomposto em:</p>
+        <ul>
+            <li><strong>Componente tangencial</strong> (paralela ao plano, rampa abaixo): $P_t = P \operatorname{sen}\theta$.</li>
+            <li><strong>Componente normal</strong> (perpendicular ao plano): $P_n = P \cos\theta$.</li>
+        </ul>
+        <figure class="figura-aula figura-grande">
+            <svg viewBox="0 0 460 320" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Bloco sobre plano inclinado sem atrito: peso decomposto em componente tangencial e normal, e a força normal" style="width:100%; max-width:380px; display:block; margin:0 auto; font-family:sans-serif;">
+            <defs><marker id="s1_16a085" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto"><polygon points="0 0, 10 4, 0 8" fill="#16a085"/></marker><marker id="s1_2980b9" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto"><polygon points="0 0, 10 4, 0 8" fill="#2980b9"/></marker><marker id="s1_e74c3c" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto"><polygon points="0 0, 10 4, 0 8" fill="#e74c3c"/></marker></defs>
+            <polygon points="30,300 440,300 440,63.3" fill="#d6eaf8" stroke="#2c3e50" stroke-width="2"/>
+            <path d="M 68 300 A 38 38 0 0 0 62.9 281.0" fill="none" stroke="#2c3e50" stroke-width="1.5"/>
+            <text x="80" y="292" fill="#2c3e50" font-size="14" text-anchor="middle" font-weight="bold">θ</text>
+            <rect x="183.1858428704209" y="143.94744111674234" width="70" height="44" fill="#f5cba7" stroke="#a04000" stroke-width="2" rx="3" transform="rotate(-30 218.1858428704209 165.94744111674234)"/>
+            <circle cx="218.2" cy="165.9" r="3.5" fill="#2c3e50"/>
+            <line x1="218.1858428704209" y1="165.94744111674234" x2="218.1858428704209" y2="290.9474411167423" stroke="#e74c3c" stroke-width="3" marker-end="url(#s1_e74c3c)"/>
+            <text x="232.1858428704209" y="288.9474411167423" fill="#e74c3c" font-size="15" text-anchor="middle" font-weight="bold">P</text>
+            <line x1="218.1858428704209" y1="165.94744111674234" x2="164.0592551338935" y2="72.19744111674233" stroke="#2980b9" stroke-width="3" marker-end="url(#s1_2980b9)"/>
+            <text x="152.0592551338935" y="72.19744111674233" fill="#2980b9" font-size="15" text-anchor="middle" font-weight="bold">N</text>
+            <line x1="218.1858428704209" y1="165.94744111674234" x2="164.0592551338935" y2="197.19744111674234" stroke="#16a085" stroke-width="2.5" marker-end="url(#s1_16a085)"/>
+            <text x="148.0592551338935" y="201.19744111674234" fill="#16a085" font-size="15" text-anchor="middle" font-weight="bold">P<tspan font-size="10" dy="4">t</tspan></text>
+            <line x1="218.1858428704209" y1="165.94744111674234" x2="272.31243060694834" y2="259.69744111674237" stroke="#16a085" stroke-width="2.5" marker-end="url(#s1_16a085)"/>
+            <text x="292.31243060694834" y="263.69744111674237" fill="#16a085" font-size="15" text-anchor="middle" font-weight="bold">P<tspan font-size="10" dy="4">n</tspan></text>
+            <line x1="164.0592551338935" y1="197.19744111674234" x2="218.1858428704209" y2="290.9474411167423" stroke="#95a5a6" stroke-width="1" stroke-dasharray="6 4"/>
+            <line x1="272.31243060694834" y1="259.69744111674237" x2="218.1858428704209" y2="290.9474411167423" stroke="#95a5a6" stroke-width="1" stroke-dasharray="6 4"/>
+            </svg>
+            <figcaption>Figura 1: O peso $P$ (vertical) é decomposto em $P_t = P \operatorname{sen}\theta$, paralela ao plano e puxando o bloco rampa abaixo, e $P_n = P\cos\theta$, perpendicular ao plano, que é equilibrada pela normal $N$.</figcaption>
+        </figure>
+        <p>Na direção perpendicular não há movimento, então: $$N = P_n = P\cos\theta$$ Note que, no plano inclinado, a <strong>normal é menor que o peso</strong>.</p>
+    </div>
+
+    <div class="passo-teoria">
+        <h4>2. Plano Inclinado sem Atrito</h4>
+        <p>A única força ao longo da rampa é $P_t$, então:</p>
+        <p style="text-align: center;">$$m a = m g \operatorname{sen}\theta \;\Rightarrow\; a = g \operatorname{sen}\theta$$</p>
+        <p>A aceleração <strong>não depende da massa</strong>, apenas do ângulo. Quanto mais inclinada a rampa, maior a aceleração (no limite $\theta = 90^\circ$, temos queda livre, $a = g$).</p>
+    </div>
+
+    <div class="passo-teoria">
+        <h4>3. Plano Inclinado com Atrito</h4>
+        <figure class="figura-aula">
+            <svg viewBox="0 0 460 320" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Bloco descendo um plano inclinado com atrito: a força de atrito aponta rampa acima" style="width:100%; max-width:380px; display:block; margin:0 auto; font-family:sans-serif;">
+            <defs><marker id="s2_2980b9" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto"><polygon points="0 0, 10 4, 0 8" fill="#2980b9"/></marker><marker id="s2_7f8c8d" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto"><polygon points="0 0, 10 4, 0 8" fill="#7f8c8d"/></marker><marker id="s2_8e44ad" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto"><polygon points="0 0, 10 4, 0 8" fill="#8e44ad"/></marker><marker id="s2_e74c3c" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto"><polygon points="0 0, 10 4, 0 8" fill="#e74c3c"/></marker></defs>
+            <polygon points="30,300 440,300 440,63.3" fill="#d6eaf8" stroke="#2c3e50" stroke-width="2"/>
+            <path d="M 68 300 A 38 38 0 0 0 62.9 281.0" fill="none" stroke="#2c3e50" stroke-width="1.5"/>
+            <text x="80" y="292" fill="#2c3e50" font-size="14" text-anchor="middle" font-weight="bold">θ</text>
+            <rect x="183.1858428704209" y="143.94744111674234" width="70" height="44" fill="#f5cba7" stroke="#a04000" stroke-width="2" rx="3" transform="rotate(-30 218.1858428704209 165.94744111674234)"/>
+            <circle cx="218.2" cy="165.9" r="3.5" fill="#2c3e50"/>
+            <line x1="218.1858428704209" y1="165.94744111674234" x2="218.1858428704209" y2="285.9474411167423" stroke="#e74c3c" stroke-width="3" marker-end="url(#s2_e74c3c)"/>
+            <text x="232.1858428704209" y="283.9474411167423" fill="#e74c3c" font-size="15" text-anchor="middle" font-weight="bold">P</text>
+            <line x1="218.1858428704209" y1="165.94744111674234" x2="166.2243186433546" y2="75.94744111674233" stroke="#2980b9" stroke-width="3" marker-end="url(#s2_2980b9)"/>
+            <text x="154.2243186433546" y="75.94744111674233" fill="#2980b9" font-size="15" text-anchor="middle" font-weight="bold">N</text>
+            <line x1="252.16660498395407" y1="164.80384757729337" x2="298.93197678831376" y2="137.80384757729337" stroke="#8e44ad" stroke-width="3" marker-end="url(#s2_8e44ad)"/>
+            <text x="304.93197678831376" y="141.94744111674234" fill="#8e44ad" font-size="15" text-anchor="middle" font-weight="bold">f<tspan font-size="10" dy="4">at</tspan></text>
+            <line x1="141.2243186433546" y1="152.64617092752042" x2="89.26279441628827" y2="182.64617092752042" stroke="#7f8c8d" stroke-width="2" marker-end="url(#s2_7f8c8d)"/>
+            <text x="105.24355652982143" y="150.32566285183162" fill="#7f8c8d" font-size="11" text-anchor="middle" font-weight="bold">movimento</text>
+            </svg>
+            <figcaption>Figura 2: Com atrito, quando o bloco desce, a força de atrito (roxo) é paralela ao plano e aponta rampa acima, contra o deslizamento.</figcaption>
+        </figure>
+        <ul>
+            <li>A força de atrito vale $f_{at} = \mu N = \mu P \cos\theta$ e aponta contra o deslizamento.</li>
+            <li><strong>Descendo:</strong> $m a = P\operatorname{sen}\theta - \mu P\cos\theta \Rightarrow a = g(\operatorname{sen}\theta - \mu\cos\theta)$.</li>
+            <li><strong>Iminência de escorregar</strong> (bloco parado, atrito estático máximo): $P\operatorname{sen}\theta = \mu_e P\cos\theta \Rightarrow \operatorname{tg}\theta = \mu_e$.</li>
+            <li><strong>Descendo com velocidade constante:</strong> $\operatorname{tg}\theta = \mu_c$.</li>
+            <li>Se o bloco está parado <strong>sem</strong> estar na iminência, o atrito estático vale apenas $f_e = P\operatorname{sen}\theta$.</li>
+        </ul>
+    </div>
+
+    <div class="passo-teoria">
+        <h4>4. Sistemas com Polia</h4>
+        <figure class="figura-aula">
+            <svg viewBox="0 0 440 280" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Bloco A sobre plano inclinado ligado por fio, que passa por polia no topo, a um bloco B pendurado" style="width:100%; max-width:440px; display:block; margin:0 auto; font-family:sans-serif;">
+            <defs></defs>
+            <polygon points="30,250 330,250 330,76.8" fill="#d6eaf8" stroke="#2c3e50" stroke-width="2"/>
+            <path d="M 68 250 A 38 38 0 0 0 62.9 231.0" fill="none" stroke="#2c3e50" stroke-width="1.5"/>
+            <text x="80" y="242" fill="#2c3e50" font-size="14" text-anchor="middle" font-weight="bold">θ</text>
+            <rect x="140.2243186433546" y="131.4115427318801" width="56" height="36" fill="#f5cba7" stroke="#a04000" stroke-width="2" rx="3" transform="rotate(-30 168.2243186433546 149.4115427318801)"/>
+            <text x="168.2243186433546" y="154.4115427318801" fill="#4a2a0a" font-size="14" font-weight="bold" text-anchor="middle" transform="rotate(-30 168.2243186433546 149.4115427318801)">A</text>
+            <circle cx="342" cy="62.794919243112275" r="14" fill="#ecf0f1" stroke="#2c3e50" stroke-width="2"/>
+            <circle cx="342" cy="62.794919243112275" r="3" fill="#2c3e50"/>
+            <line x1="192.47302994931889" y1="135.4115427318801" x2="335.0" y2="50.67056359013013" stroke="#555" stroke-width="2"/>
+            <line x1="356" y1="62.794919243112275" x2="356" y2="180" stroke="#555" stroke-width="2"/>
+            <rect x="336" y="180" width="40" height="36" fill="#f5cba7" stroke="#a04000" stroke-width="2" rx="3"/>
+            <text x="356.0" y="203.0" fill="#4a2a0a" font-size="15" text-anchor="middle" font-weight="bold">B</text>
+            </svg>
+            <figcaption>Figura 3: Sistema com bloco no plano e bloco pendurado. Para o bloco A, a força que “puxa para baixo” ao longo da rampa é apenas $P_t$.</figcaption>
+        </figure>
+        <p>Aplicamos a 2ª Lei a cada bloco, ao longo do fio. Sem atrito, se B desce: &nbsp; Bloco B: $P_B - T = m_B a$ &nbsp;|&nbsp; Bloco A: $T - P_A\operatorname{sen}\theta = m_A a$.</p>
+        <p><strong>Valores úteis:</strong> $\operatorname{sen}30^\circ = 0{,}5$; $\cos30^\circ = \dfrac{\sqrt{3}}{2} \approx 0{,}87$; $\operatorname{sen}37^\circ = 0{,}6$; $\cos37^\circ = 0{,}8$; $\operatorname{sen}45^\circ = \cos45^\circ = \dfrac{\sqrt{2}}{2} \approx 0{,}71$.</p>
+    </div>
+</section>
+
+<section class="aplicacoes-reais" id="aplicacoes">
+    <h3>💡 Física em Ação</h3>
+    <div class="cards-aplicacao">
+        <div class="card">
+            <h4>♿ Rampas de Acessibilidade</h4>
+            <p>A norma brasileira limita a inclinação das rampas de acesso (em geral, no máximo 8,33%). Quanto menor o ângulo, menor a componente $P\operatorname{sen}\theta$ que o cadeirante precisa vencer para subir.</p>
+        </div>
+        <div class="card" style="border-left-color: #2ecc71;">
+            <h4>🛣️ Estradas de Serra</h4>
+            <p>Em descidas longas, a componente do peso paralela à pista acelera o veículo o tempo todo. Por isso existem as “áreas de escape” e a recomendação de usar o freio motor.</p>
+        </div>
+    </div>
+</section>
+
+<section class="questoes-resolvidas" id="resolvidas">
+    <h3>✅ 5 Questões Resolvidas (R 1 a 5)</h3>
+
+    <article class="questao">
+        <h4>R 1: Componentes do Peso e Aceleração</h4>
+        <p><strong>Enunciado:</strong> Um bloco de $10\text{ kg}$ desliza sobre um plano inclinado de $30^\circ$, sem atrito ($g = 10\text{ m/s}^2$). Determine $P_t$, a normal e a aceleração.</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong> $P = 100\text{ N}$.<br>$P_t = P\operatorname{sen}30^\circ = 100 \cdot 0{,}5 = 50\text{ N}$.<br>$N = P\cos30^\circ = 100 \cdot \dfrac{\sqrt{3}}{2} = 50\sqrt{3} \approx 86{,}6\text{ N}$.<br>$a = g\operatorname{sen}30^\circ = 10 \cdot 0{,}5 = 5\text{ m/s}^2$.</p>
+        </div>
+    </article>
+    <article class="questao">
+        <h4>R 2: Descida com Atrito</h4>
+        <p><strong>Enunciado:</strong> Um bloco desce um plano inclinado de $37^\circ$ com coeficiente de atrito cinético $0{,}2$. Dados: $\operatorname{sen}37^\circ = 0{,}6$, $\cos37^\circ = 0{,}8$ e $g = 10\text{ m/s}^2$. Qual é a aceleração do bloco?</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong> $a = g(\operatorname{sen}\theta - \mu\cos\theta) = 10\,(0{,}6 - 0{,}2 \cdot 0{,}8) = 10\,(0{,}6 - 0{,}16) = 4{,}4\text{ m/s}^2$.</p>
+        </div>
+    </article>
+    <article class="questao">
+        <h4>R 3: Força para Subir com Velocidade Constante</h4>
+        <p><strong>Enunciado:</strong> Um bloco de $20\text{ kg}$ é empurrado rampa acima, com velocidade constante, por uma força paralela ao plano. O plano tem inclinação de $37^\circ$ e coeficiente de atrito cinético $0{,}25$ ($\operatorname{sen}37^\circ = 0{,}6$; $\cos37^\circ = 0{,}8$; $g = 10\text{ m/s}^2$). Qual a intensidade da força?</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong> $P = 200\text{ N}$; $P_t = 200 \cdot 0{,}6 = 120\text{ N}$; $N = 200 \cdot 0{,}8 = 160\text{ N}$; $f_{at} = 0{,}25 \cdot 160 = 40\text{ N}$.<br>Subindo, o atrito aponta rampa abaixo, junto com $P_t$. Velocidade constante: $F = P_t + f_{at} = 120 + 40 = 160\text{ N}$.</p>
+        </div>
+    </article>
+    <article class="questao">
+        <h4>R 4: Ângulo Máximo sem Escorregar</h4>
+        <p><strong>Enunciado:</strong> O coeficiente de atrito estático entre uma caixa e uma tábua é $0{,}75$. Inclinando-se aos poucos a tábua, a partir de que ângulo a caixa começa a escorregar? (Use $\operatorname{tg}37^\circ = 0{,}75$.)</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong> Na iminência: $P\operatorname{sen}\theta = \mu_e P\cos\theta \Rightarrow \operatorname{tg}\theta = \mu_e = 0{,}75$.<br>Logo, $\theta = 37^\circ$. A massa da caixa não influi.</p>
+        </div>
+    </article>
+    <article class="questao">
+        <h4>R 5: Plano Inclinado com Polia</h4>
+        <p><strong>Enunciado:</strong> No arranjo da Figura 3, o bloco $A$ ($4\text{ kg}$) está num plano de $30^\circ$ sem atrito, e o bloco $B$ ($6\text{ kg}$) está pendurado. Fio e polia são ideais e $g = 10\text{ m/s}^2$. Calcule a aceleração e a tração.</p>
+        <div class="resolucao-bloco">
+            <p><strong>Resolução:</strong> $P_B = 60\text{ N}$ e $P_{tA} = 40 \cdot 0{,}5 = 20\text{ N}$. Como $60 &gt; 20$, B desce.<br>B: $60 - T = 6a$. &nbsp; A: $T - 20 = 4a$. &nbsp; Somando: $40 = 10a \Rightarrow a = 4\text{ m/s}^2$.<br>$T = 20 + 4 \cdot 4 = 36\text{ N}$.</p>
+        </div>
+    </article>
+</section>
+
+<section class="questoes-propostas" id="propostas">
+    <h3>✍️ 10 Questões Propostas (P 6 a 15)</h3>
+
+    <article class="questao">
+        <h4>P 6: Componentes do Peso</h4>
+        <p><strong>Enunciado:</strong> Um corpo de $5\text{ kg}$ está sobre um plano inclinado de $30^\circ$ ($g = 10\text{ m/s}^2$). Calcule as componentes tangencial e normal do peso.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> $P_t = 50 \cdot 0{,}5 = 25\text{ N}$. &nbsp; $P_n = 50 \cdot \dfrac{\sqrt{3}}{2} = 25\sqrt{3} \approx 43{,}3\text{ N}$.</p>
+        </div>
+    </article>
+    <article class="questao">
+        <h4>P 7: Tempo de Descida</h4>
+        <p><strong>Enunciado:</strong> Um bloco parte do repouso no alto de um plano inclinado de $37^\circ$, sem atrito, e percorre $12\text{ m}$ ao longo da rampa ($\operatorname{sen}37^\circ = 0{,}6$; $g = 10\text{ m/s}^2$). Quanto tempo ele leva?</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> $a = 10 \cdot 0{,}6 = 6\text{ m/s}^2$. &nbsp; $d = \dfrac{a t^2}{2} \Rightarrow 12 = 3t^2 \Rightarrow t = 2\text{ s}$.</p>
+        </div>
+    </article>
+    <article class="questao">
+        <h4>P 8: Velocidade no Fim da Rampa</h4>
+        <p><strong>Enunciado:</strong> Um carrinho parte do repouso e desce $10\text{ m}$ ao longo de uma rampa de $30^\circ$ sem atrito ($g = 10\text{ m/s}^2$). Com que velocidade chega ao fim da rampa?</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> $a = 10 \cdot 0{,}5 = 5\text{ m/s}^2$. &nbsp; Torricelli: $v^2 = 2 \cdot 5 \cdot 10 = 100 \Rightarrow v = 10\text{ m/s}$.</p>
+        </div>
+    </article>
+    <article class="questao">
+        <h4>P 9: Descida com Velocidade Constante</h4>
+        <p><strong>Enunciado:</strong> Um bloco desce um plano inclinado de $37^\circ$ com velocidade constante. Qual é o coeficiente de atrito cinético? ($\operatorname{tg}37^\circ = 0{,}75$)</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> Velocidade constante: $P\operatorname{sen}\theta = \mu_c P\cos\theta \Rightarrow \mu_c = \operatorname{tg}37^\circ = 0{,}75$.</p>
+        </div>
+    </article>
+    <article class="questao">
+        <h4>P 10: Bloco Parado na Rampa</h4>
+        <p><strong>Enunciado:</strong> Um bloco de $4\text{ kg}$ está em repouso sobre um plano inclinado de $30^\circ$ com atrito ($g = 10\text{ m/s}^2$). Qual o valor da força de atrito estático e da normal?</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> Parado: $f_e = P_t = 40 \cdot 0{,}5 = 20\text{ N}$ (rampa acima).<br>$N = 40 \cdot \dfrac{\sqrt{3}}{2} = 20\sqrt{3} \approx 34{,}6\text{ N}$.</p>
+        </div>
+    </article>
+    <article class="questao">
+        <h4>P 11: Aceleração com Atrito</h4>
+        <p><strong>Enunciado:</strong> Um bloco de $2\text{ kg}$ desce um plano de $37^\circ$ com $\mu_c = 0{,}5$ ($\operatorname{sen}37^\circ = 0{,}6$; $\cos37^\circ = 0{,}8$; $g = 10\text{ m/s}^2$). Qual sua aceleração?</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> $a = 10\,(0{,}6 - 0{,}5 \cdot 0{,}8) = 10 \cdot 0{,}2 = 2\text{ m/s}^2$.</p>
+        </div>
+    </article>
+    <article class="questao">
+        <h4>P 12: Lançado Rampa Acima</h4>
+        <p><strong>Enunciado:</strong> Um bloco é lançado rampa acima com $12\text{ m/s}$ num plano de $37^\circ$ sem atrito ($\operatorname{sen}37^\circ = 0{,}6$; $g = 10\text{ m/s}^2$). Que distância ele percorre até parar?</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> Desaceleração: $a = 6\text{ m/s}^2$. &nbsp; $d = \dfrac{v_0^2}{2a} = \dfrac{144}{12} = 12\text{ m}$.</p>
+        </div>
+    </article>
+    <article class="questao">
+        <h4>P 13: Segurando o Bloco</h4>
+        <p><strong>Enunciado:</strong> Qual força, paralela ao plano, mantém em repouso um bloco de $10\text{ kg}$ num plano de $30^\circ$ sem atrito? ($g = 10\text{ m/s}^2$)</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> $F = P_t = 100 \cdot 0{,}5 = 50\text{ N}$, rampa acima.</p>
+        </div>
+    </article>
+    <article class="questao">
+        <h4>P 14: Polia no Topo da Rampa</h4>
+        <p><strong>Enunciado:</strong> Um bloco $A$ de $5\text{ kg}$, num plano de $37^\circ$ sem atrito, está ligado por fio ideal (polia ideal no topo) a um bloco $B$ de $5\text{ kg}$ pendurado ($\operatorname{sen}37^\circ = 0{,}6$; $g = 10\text{ m/s}^2$). Determine a aceleração e a tração.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> $P_B = 50\text{ N}$; $P_{tA} = 50 \cdot 0{,}6 = 30\text{ N}$. B desce.<br>$50 - 30 = 10a \Rightarrow a = 2\text{ m/s}^2$. &nbsp; $T = 30 + 5 \cdot 2 = 40\text{ N}$.</p>
+        </div>
+    </article>
+    <article class="questao">
+        <h4>P 15: Rampa Muito Inclinada</h4>
+        <p><strong>Enunciado:</strong> Um corpo de peso $100\text{ N}$ está num plano inclinado de $60^\circ$ sem atrito. Calcule a normal e a componente tangencial do peso. ($\operatorname{sen}60^\circ = \dfrac{\sqrt{3}}{2}$; $\cos60^\circ = 0{,}5$)</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> $N = 100 \cdot 0{,}5 = 50\text{ N}$. &nbsp; $P_t = 100 \cdot \dfrac{\sqrt{3}}{2} = 50\sqrt{3} \approx 86{,}6\text{ N}$.<br>Quanto maior o ângulo, menor a normal e maior a componente tangencial.</p>
+        </div>
+    </article>
+</section>
+
+<section class="TESTE" id="testes">
+    <h3>🎓 TESTES (T 11 a 15)</h3>
+
+    <article class="questao">
+        <h4>T 11: (UFRGS 2016) Peso e Normal no Plano Inclinado</h4>
+        <p>Na figura abaixo, um bloco de massa $m$ é colocado sobre um plano inclinado, sem atrito, que forma um ângulo $\alpha$ com a direção horizontal. Considere $g$ o módulo da aceleração da gravidade.</p>
+        <figure class="figura-aula">
+            <svg viewBox="0 0 380 250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Bloco de massa m sobre plano inclinado sem atrito de ângulo alfa" style="width:100%; max-width:380px; display:block; margin:0 auto; font-family:sans-serif;">
+            <defs></defs>
+            <polygon points="40,230 340,230 340,70.5" fill="#d6eaf8" stroke="#2c3e50" stroke-width="2"/>
+            <path d="M 78 230 A 38 38 0 0 0 73.6 212.2" fill="none" stroke="#2c3e50" stroke-width="1.5"/>
+            <text x="90" y="222" fill="#2c3e50" font-size="14" text-anchor="middle" font-weight="bold">α</text>
+            <rect x="153.65060265587155" y="116.29677765493787" width="56" height="36" fill="#f5cba7" stroke="#a04000" stroke-width="2" rx="3" transform="rotate(-28 181.65060265587155 134.29677765493787)"/>
+            <text x="181.65060265587155" y="139.29677765493787" fill="#4a2a0a" font-size="14" font-weight="bold" text-anchor="middle" transform="rotate(-28 181.65060265587155 134.29677765493787)">m</text>
+            </svg>
+            <figcaption>Figura redesenhada a partir da prova: bloco de massa $m$ sobre um plano inclinado sem atrito, de ângulo $\alpha$ com a horizontal.</figcaption>
+        </figure>
+        <p>Nessa situação, os módulos da força peso do bloco e da força normal sobre o bloco valem, respectivamente:</p>
+        <p>A) $mg$ e $mg$.<br>
+        B) $mg$ e $mg\operatorname{sen}\alpha$.<br>
+        C) $mg$ e $mg\cos\alpha$.<br>
+        D) $mg\operatorname{sen}\alpha$ e $mg$.<br>
+        E) $mg\cos\alpha$ e $mg\operatorname{sen}\alpha$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> Alternativa <strong>C</strong>.<br>O peso não muda com a inclinação: $P = mg$.<br>A normal equilibra a componente perpendicular do peso: $N = mg\cos\alpha$.</p>
+        </div>
+    </article>
+    <article class="questao">
+        <h4>T 12: (UEL 1995) Aceleração no Plano Liso</h4>
+        <p>Um corpo de massa $2{,}0\text{ kg}$ é abandonado sobre um plano perfeitamente liso e inclinado de $37^\circ$ com a horizontal. Adotando $g = 10\text{ m/s}^2$, $\operatorname{sen}37^\circ = 0{,}60$ e $\cos37^\circ = 0{,}80$, conclui-se que a aceleração com que o corpo desce o plano tem módulo, em $\text{m/s}^2$:</p>
+        <p>A) $4{,}0$<br>
+        B) $5{,}0$<br>
+        C) $6{,}0$<br>
+        D) $8{,}0$<br>
+        E) $10$</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> Alternativa <strong>C</strong>.<br>Sem atrito: $a = g\operatorname{sen}37^\circ = 10 \cdot 0{,}60 = 6{,}0\text{ m/s}^2$. A massa não interfere.</p>
+        </div>
+    </article>
+    <article class="questao">
+        <h4>T 13: (PUC-Rio 2009) Ângulo Máximo de Repouso</h4>
+        <p>Um bloco de massa $m$ é colocado sobre um plano inclinado cujo coeficiente de atrito estático $\mu = 1$ como mostra a figura.</p>
+        <figure class="figura-aula">
+            <svg viewBox="0 0 380 250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Bloco de massa m sobre plano inclinado de ângulo alfa" style="width:100%; max-width:380px; display:block; margin:0 auto; font-family:sans-serif;">
+            <defs></defs>
+            <polygon points="40,230 340,230 340,56.8" fill="#d6eaf8" stroke="#2c3e50" stroke-width="2"/>
+            <path d="M 78 230 A 38 38 0 0 0 72.9 211.0" fill="none" stroke="#2c3e50" stroke-width="1.5"/>
+            <text x="90" y="222" fill="#2c3e50" font-size="14" text-anchor="middle" font-weight="bold">α</text>
+            <rect x="150.2243186433546" y="111.4115427318801" width="56" height="36" fill="#f5cba7" stroke="#a04000" stroke-width="2" rx="3" transform="rotate(-30 178.2243186433546 129.4115427318801)"/>
+            <text x="178.2243186433546" y="134.4115427318801" fill="#4a2a0a" font-size="14" font-weight="bold" text-anchor="middle" transform="rotate(-30 178.2243186433546 129.4115427318801)">m</text>
+            </svg>
+            <figcaption>Figura redesenhada a partir da prova: bloco de massa $m$ sobre o plano inclinado de ângulo $\alpha$.</figcaption>
+        </figure>
+        <p>Qual é o maior valor possível para o ângulo $\alpha$ de inclinação do plano de modo que o bloco permaneça em repouso?</p>
+        <p>A) $30^\circ$<br>
+        B) $45^\circ$<br>
+        C) $60^\circ$<br>
+        D) $75^\circ$<br>
+        E) $90^\circ$</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> Alternativa <strong>B</strong>.<br>Na iminência de escorregar: $mg\operatorname{sen}\alpha = \mu\, mg\cos\alpha \Rightarrow \operatorname{tg}\alpha = \mu = 1$.<br>Logo, $\alpha = 45^\circ$.</p>
+        </div>
+    </article>
+    <article class="questao">
+        <h4>T 14: (Unespar 2015) Bloco Abandonado no Plano com Atrito</h4>
+        <p>Considere que um bloco de massa $40\text{ kg}$ é abandonado do repouso sobre o plano inclinado representado na figura abaixo.</p>
+        <figure class="figura-aula">
+            <svg viewBox="0 0 380 250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Bloco sobre plano inclinado de 45 graus" style="width:100%; max-width:380px; display:block; margin:0 auto; font-family:sans-serif;">
+            <defs></defs>
+            <polygon points="40,230 230,230 230,40.0" fill="#d6eaf8" stroke="#2c3e50" stroke-width="2"/>
+            <path d="M 78 230 A 38 38 0 0 0 66.9 203.1" fill="none" stroke="#2c3e50" stroke-width="1.5"/>
+            <text x="90" y="222" fill="#2c3e50" font-size="14" text-anchor="middle" font-weight="bold">45°</text>
+            <rect x="77.05382386916237" y="121.49033200812192" width="56" height="36" fill="#f5cba7" stroke="#a04000" stroke-width="2" rx="3" transform="rotate(-45 105.05382386916237 139.49033200812192)"/>
+            <text x="105.05382386916237" y="144.49033200812192" fill="#4a2a0a" font-size="14" font-weight="bold" text-anchor="middle" transform="rotate(-45 105.05382386916237 139.49033200812192)">m</text>
+            </svg>
+            <figcaption>Figura redesenhada a partir da prova: bloco sobre plano inclinado de $45^\circ$ (inclinação indicada pelos dados do enunciado).</figcaption>
+        </figure>
+        <p>Se o coeficiente de atrito estático entre o bloco e o plano for $\mu = 0{,}4$, assinale a alternativa que contenha os valores da componente do peso na direção perpendicular ao plano, a intensidade da força de atrito que o plano exerce sobre o bloco e a aceleração do objeto.</p>
+        <p>Dados: $g = 10\text{ m/s}^2$; $\operatorname{sen}45^\circ = 0{,}71$; $\cos45^\circ = 0{,}71$.</p>
+        <p>A) $P_N = 284\text{ N}$; $f_c = 113{,}6\text{ N}$; $a = 4{,}26\text{ m/s}^2$;<br>
+        B) $P_N = 284\text{ N}$; $f_c = 110{,}0\text{ N}$; $a = 4{,}26\text{ m/s}^2$;<br>
+        C) $P_N = 284\text{ N}$; $f_c = 113{,}6\text{ N}$; $a = 4{,}00\text{ m/s}^2$;<br>
+        D) $P_N = 280\text{ N}$; $f_c = 113{,}6\text{ N}$; $a = 4{,}26\text{ m/s}^2$;<br>
+        E) $P_N = 284\text{ N}$; $f_c = 11{,}36\text{ N}$; $a = 0{,}43\text{ m/s}^2$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> Alternativa <strong>A</strong>.<br>$P = 400\text{ N}$. &nbsp; $P_N = 400 \cdot 0{,}71 = 284\text{ N}$ e $P_t = 284\text{ N}$.<br>Atrito máximo: $0{,}4 \cdot 284 = 113{,}6\text{ N} &lt; 284\text{ N}$, então o bloco desliza, com $f_c = 113{,}6\text{ N}$ (usando o coeficiente dado).<br>$a = \dfrac{284 - 113{,}6}{40} = \dfrac{170{,}4}{40} = 4{,}26\text{ m/s}^2$.</p>
+        </div>
+    </article>
+    <article class="questao">
+        <h4>T 15: (Autoral) Comparando Duas Rampas</h4>
+        <p>Dois blocos idênticos são abandonados, a partir do repouso, em duas rampas sem atrito: a rampa 1 tem inclinação de $30^\circ$ e a rampa 2, de $60^\circ$. Sendo $a_1$ e $a_2$ as acelerações e $N_1$ e $N_2$ as normais nas rampas 1 e 2, é correto afirmar que:</p>
+        <p>A) $a_1 = a_2$ e $N_1 = N_2$.<br>
+        B) $a_1 &gt; a_2$ e $N_1 &gt; N_2$.<br>
+        C) $a_1 &lt; a_2$ e $N_1 &gt; N_2$.<br>
+        D) $a_1 &lt; a_2$ e $N_1 &lt; N_2$.<br>
+        E) $a_1 &gt; a_2$ e $N_1 &lt; N_2$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao">
+            <p><strong>Resolução:</strong> Alternativa <strong>C</strong>.<br>$a = g\operatorname{sen}\theta$: como $\operatorname{sen}30^\circ &lt; \operatorname{sen}60^\circ$, temos $a_1 &lt; a_2$.<br>$N = mg\cos\theta$: como $\cos30^\circ &gt; \cos60^\circ$, temos $N_1 &gt; N_2$.</p>
+        </div>
+    </article>
+</section>
+
+</div>
+</main>
+
+<aside class="menu-lateral">
+    <iframe src="../menu_fisica.html" style="width:100%; border:none; height:600px;"></iframe>
+</aside>
+
+</div>
+
+<script>
+function toggleGabarito(botao) {
+    const gabarito = botao.nextElementSibling;
+    if (gabarito.style.display === "none" || gabarito.style.display === "") {
+        gabarito.style.display = "block";
+        botao.textContent = "Esconder Gabarito e Resolução";
+        botao.style.backgroundColor = "#2c3e50";
+    } else {
+        gabarito.style.display = "none";
+        botao.textContent = "Ver Gabarito e Resolução";
+        botao.style.backgroundColor = "#3498db";
+    }
+}
+
+function toggleMenu() {
+    const menuGlobal = document.getElementById("menu-principal");
+    if (menuGlobal) menuGlobal.classList.toggle("ativo");
+}
+
+let slideAtual = 0;
+let slides = [];
+
+function prepararSlides() {
+    const seletores = '#resumo, .passo-teoria, .cards-aplicacao .card, .questao';
+    slides = Array.from(document.querySelectorAll(seletores));
+}
+
+function toggleSlides() {
+    prepararSlides();
+    const body = document.body;
+    
+    if (!body.classList.contains('modo-slides')) {
+        body.classList.add('modo-slides');
+        slideAtual = 0;
+        mostrarSlide(slideAtual);
+    } else {
+        body.classList.remove('modo-slides');
+        
+        slides.forEach(s => {
+            s.classList.remove('slide-ativo');
+            s.style.display = '';
+        });
+        
+        document.querySelectorAll('.gabarito-resolucao').forEach(g => g.style.display = '');
+    }
+}
+
+function mostrarSlide(n) {
+    if (slides.length === 0) return;
+
+    slides.forEach(s => {
+        s.classList.remove('slide-ativo');
+        s.style.display = 'none';
+    });
+
+    const slide = slides[n];
+    slide.classList.add('slide-ativo');
+    slide.style.display = 'flex'; 
+
+    if (slide.classList.contains('questao')) {
+        const btnGabarito = slide.querySelector('.btn-gabarito');
+        const gabarito = slide.querySelector('.gabarito-resolucao');
+        
+        if (btnGabarito && gabarito) {
+            gabarito.style.display = 'none';
+            btnGabarito.textContent = "Ver Gabarito e Resolução";
+            btnGabarito.style.backgroundColor = "#3498db";
+        }
+    }
+
+    const pHeader = document.querySelector('header p');
+    if (pHeader) {
+        const partes = pHeader.innerText.split('|');
+        if (partes.length > 1) {
+            document.getElementById('slide-info-serie').innerText = partes[0].trim();
+            document.getElementById('slide-info-aula').innerText = partes[1].trim();
+        }
+    }
+
+    document.getElementById('contador-slide').innerText = (n + 1) + " / " + slides.length;
+    
+    if (window.MathJax && MathJax.typesetPromise) {
+        MathJax.typesetPromise([slide]);
+    }
+}
+
+function mudarSlide(direcao) {
+    slideAtual += direcao;
+    if (slideAtual >= slides.length) slideAtual = 0;
+    if (slideAtual < 0) slideAtual = slides.length - 1;
+    mostrarSlide(slideAtual);
+}
+
+document.addEventListener('keydown', function(e) {
+    if (document.body.classList.contains('modo-slides')) {
+        if (e.key === 'ArrowRight') mudarSlide(1);
+        if (e.key === 'ArrowLeft') mudarSlide(-1);
+        if (e.key === 'Escape') toggleSlides();
+    }
+});
+</script>
+
+<div class="controles-slides">
+    <div id="slide-info-serie" class="info-lateral"></div>
+    <div class="botoes-centrais">
+        <button class="btn-nav" onclick="mudarSlide(-1)">⬅ Anterior</button>
+        <span id="contador-slide"></span>
+        <button class="btn-nav" onclick="mudarSlide(1)">Próximo ➡</button>
+        <button class="btn-nav" onclick="toggleSlides()" style="background:#e74c3c;">Sair</button>
+    </div>
+    <div id="slide-info-aula" class="info-lateral" style="text-align: right;"></div>
+</div>
+</body>
+</html>
