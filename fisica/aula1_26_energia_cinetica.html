@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>1º Ano: Aula 26 - Energia Cinética e Teorema do Trabalho</title>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../estilo.css">
+<script>
+MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']], processEscapes: true } };
+</script>
+<script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+<button class="menu-toggle" onclick="toggleMenu()">☰</button>
+<nav id="menu-principal" class="nav-global"><ul>
+<li><a href="../index.html">🏠 Início</a></li>
+<li><a href="../ensino_medio.html">📚 Ensino Médio</a></li>
+<li><a href="../ensino_superior.html">🎓 Ensino Superior</a></li>
+</ul></nav>
+<header id="topo">
+<h1>FÍSICA EM</h1>
+<p>1º Ano | Aula 26: Energia Cinética e Teorema do Trabalho</p>
+<button id="btn-slides" onclick="toggleSlides()">📺 Iniciar Modo Slides</button>
+</header>
+<div class="container"><main class="conteudo-principal"><div class="secao-aula">
+<div class="container-resumo" id="resumo">
+<h3>📚 Resumo</h3><section class="resumo-conteudo">
+<p>A <strong>energia cinética</strong> é a energia associada ao movimento de um corpo. Para um corpo de massa $m$ em movimento de translação com velocidade de módulo $v$, $E_c=mv^2/2$. O <strong>teorema da energia cinética</strong> afirma que o trabalho da força resultante sobre o corpo é igual à variação de sua energia cinética: $W_{\rm resultante}=\Delta E_c=E_{c,f}-E_{c,i}$.</p>
+<p>O trabalho resultante positivo aumenta a energia cinética; o negativo a diminui; e o trabalho resultante nulo mantém constante a energia cinética entre os estados considerados. No SI, a energia cinética e o trabalho são medidos em joules (J).</p>
+</section></div>
+
+<section class="conteudo-teorico-completo" id="teoria">
+<div class="passo-teoria">
+<h3>📖 Energia cinética</h3>
+<h4>1. Conceito e expressão matemática</h4>
+<p>Energia cinética é a grandeza escalar associada ao estado de movimento de um corpo. Na mecânica clássica, para um corpo de massa constante em movimento de translação, sua energia cinética é:</p>
+<p>$$E_c=\frac{1}{2}mv^2$$</p>
+<p>Em que $m$ é a massa do corpo, em quilogramas (kg), e $v$ é o módulo de sua velocidade, em metros por segundo (m/s). A unidade de energia no Sistema Internacional é o joule:</p>
+<p>$$1\text{ J}=1\text{ kg}\cdot\text{m}^2/\text{s}^2$$</p>
+<p>Como a velocidade aparece elevada ao quadrado, a energia cinética não depende do sentido do movimento: um corpo com velocidade $+v$ e outro com velocidade $-v$, de mesma massa, possuem a mesma energia cinética. Se a velocidade dobra, a energia cinética fica quatro vezes maior; se triplica, fica nove vezes maior.</p>
+<figure class="figura-aula figura-grande">
+<img src="../imagens_fisica/aula1_26_energia_cinetica.png" alt="Corpo em movimento com vetor velocidade">
+<figcaption>Figura 1: A energia cinética de translação depende da massa e do quadrado do módulo da velocidade do corpo.</figcaption>
+</figure>
+<h4>2. Comparações importantes</h4>
+<ul>
+<li>Para massas iguais, o corpo mais veloz possui maior energia cinética.</li>
+<li>Para velocidades de mesmo módulo, o corpo de maior massa possui maior energia cinética.</li>
+<li>Um corpo em repouso em relação ao referencial adotado tem $E_c=0$.</li>
+<li>A energia cinética depende do referencial, pois a velocidade também depende dele.</li>
+</ul>
+<p>A expressão apresentada é a da energia cinética de translação na mecânica clássica, adequada quando as velocidades são muito menores que a velocidade da luz.</p>
+</div>
+
+<div class="passo-teoria">
+<h3>📖 Trabalho de uma força e seu sinal</h3>
+<h4>3. Trabalho de uma força constante</h4>
+<p>Quando uma força constante $\vec F$ atua durante um deslocamento $\Delta\vec r$, o trabalho realizado por essa força é:</p>
+<p>$$W=F\,\Delta r\,\cos\theta$$</p>
+<p>Em que $F$ é o módulo da força, $\Delta r$ é o módulo do deslocamento e $\theta$ é o ângulo entre a força e o deslocamento. O trabalho é uma grandeza escalar, medida em joules.</p>
+<ul>
+<li>$0^\circ\leq\theta&lt;90^\circ$: trabalho positivo; a força possui componente no sentido do deslocamento.</li>
+<li>$\theta=90^\circ$: trabalho nulo; a força é perpendicular ao deslocamento.</li>
+<li>$90^\circ&lt;\theta\leq180^\circ$: trabalho negativo; a força possui componente contrária ao deslocamento.</li>
+</ul>
+<figure class="figura-aula figura-grande">
+<img src="../imagens_fisica/aula1_26_trabalho_sinal.png" alt="Comparação entre trabalho positivo e negativo">
+<figcaption>Figura 2: O sinal do trabalho depende do ângulo entre a força e o deslocamento.</figcaption>
+</figure>
+<p>O trabalho da força resultante é a soma dos trabalhos de todas as forças que atuam no corpo: $W_{\rm resultante}=\sum_i W_i$. Não se deve confundir o trabalho de uma força específica com o trabalho resultante.</p>
+</div>
+
+<div class="passo-teoria">
+<h3>📖 Teorema da energia cinética</h3>
+<h4>4. Relação entre trabalho resultante e variação da energia cinética</h4>
+<p>O teorema da energia cinética estabelece que o trabalho realizado pela força resultante sobre um corpo é igual à variação de sua energia cinética:</p>
+<p>$$W_{\rm resultante}=\Delta E_c=E_{c,f}-E_{c,i}$$</p>
+<p>Substituindo a expressão da energia cinética:</p>
+<p>$$W_{\rm resultante}=\frac{1}{2}mv_f^2-\frac{1}{2}mv_i^2$$</p>
+<p>O teorema vale para a partícula ou para o movimento do centro de massa sob a força resultante, no contexto da mecânica clássica. É especialmente útil quando se deseja relacionar velocidades e trabalho sem determinar o tempo de movimento.</p>
+<figure class="figura-aula figura-grande">
+<img src="../imagens_fisica/aula1_26_teorema_trabalho.png" alt="Estados inicial e final ligados pelo trabalho resultante">
+<figcaption>Figura 3: O trabalho resultante representa a variação da energia cinética entre os estados inicial e final.</figcaption>
+</figure>
+<h4>5. Interpretação do resultado</h4>
+<ul>
+<li>$W_{\rm resultante}&gt;0$: $E_{c,f}&gt;E_{c,i}$; o módulo da velocidade aumenta.</li>
+<li>$W_{\rm resultante}&lt;0$: $E_{c,f}&lt;E_{c,i}$; o módulo da velocidade diminui.</li>
+<li>$W_{\rm resultante}=0$: $E_{c,f}=E_{c,i}$; o módulo da velocidade permanece igual.</li>
+</ul>
+<p>O trabalho resultante nulo não exige que todas as forças sejam nulas. Por exemplo, uma força centrípeta perpendicular à velocidade pode alterar a direção do movimento sem alterar o módulo da velocidade e, portanto, sem variar a energia cinética.</p>
+<h4>6. Procedimento para resolver problemas</h4>
+<ol>
+<li>Identifique a massa e as velocidades inicial e final.</li>
+<li>Converta os valores para unidades do SI.</li>
+<li>Calcule $E_{c,i}$ e $E_{c,f}$, ou aplique diretamente o teorema.</li>
+<li>Se houver várias forças, determine o trabalho de cada uma e some os trabalhos.</li>
+<li>Interprete o sinal do trabalho resultante e confira a unidade em joules.</li>
+</ol>
+</div>
+</section>
+
+<section class="aplicacoes-reais" id="aplicacoes">
+<h3>💡 Física em Ação</h3>
+<div class="cards-aplicacao">
+<div class="card"><h4>Frenagem de veículos</h4><p>O trabalho negativo da força de atrito dos freios reduz a energia cinética do veículo até que ele pare. A distância de frenagem depende da velocidade inicial e das forças que realizam trabalho.</p></div>
+<div class="card" style="border-left-color:#2ecc71;"><h4>Esportes e colisões</h4><p>Em um chute, arremesso ou tacada, o trabalho da força aplicada altera a energia cinética do objeto. O teorema permite relacionar a intensidade do trabalho à velocidade alcançada.</p></div>
+</div>
+</section>
+
+<section class="questoes-resolvidas" id="resolvidas">
+<h3>✅ 5 Questões Resolvidas (R 1 a 5)</h3>
+<article class="questao"><h4>R 1: Energia cinética de um corpo</h4>
+<p><strong>Enunciado:</strong> Um corpo de massa $4{,}0\text{ kg}$ desloca-se com velocidade de módulo $5{,}0\text{ m/s}$. Determine sua energia cinética.</p>
+<div class="resolucao-bloco"><p><strong>Dados:</strong> $m=4{,}0\text{ kg}$; $v=5{,}0\text{ m/s}$. <strong>Incógnita:</strong> $E_c$.</p>
+<p><strong>Modelo:</strong> $E_c=mv^2/2$.</p><p><strong>Cálculo:</strong> $E_c=(4\cdot5^2)/2=100/2=50\text{ J}$.</p>
+<p><strong>Resposta:</strong> $\boxed{E_c=50\text{ J}}$. A energia cinética é positiva e depende do quadrado do módulo da velocidade.</p></div></article>
+<article class="questao"><h4>R 2: Efeito de dobrar a velocidade</h4>
+<p><strong>Enunciado:</strong> Um automóvel de massa $1000\text{ kg}$ passa de $10\text{ m/s}$ para $20\text{ m/s}$. Determine a energia cinética inicial, a final e a variação de energia cinética.</p>
+<div class="resolucao-bloco"><p><strong>Dados:</strong> $m=1000\text{ kg}$; $v_i=10\text{ m/s}$; $v_f=20\text{ m/s}$.</p>
+<p>$E_{c,i}=\frac12(1000)(10)^2=50\,000\text{ J}$.</p><p>$E_{c,f}=\frac12(1000)(20)^2=200\,000\text{ J}$.</p>
+<p>$\Delta E_c=200\,000-50\,000=150\,000\text{ J}$.</p><p><strong>Resposta:</strong> $E_{c,i}=50\text{ kJ}$, $E_{c,f}=200\text{ kJ}$ e $\Delta E_c=150\text{ kJ}$. Ao dobrar a velocidade, a energia cinética quadruplica.</p></div></article>
+<article class="questao"><h4>R 3: Trabalho resultante e velocidade final</h4>
+<p><strong>Enunciado:</strong> Um corpo de massa $2{,}0\text{ kg}$ possui velocidade inicial de $3{,}0\text{ m/s}$. A força resultante realiza trabalho de $16\text{ J}$. Determine a velocidade final, supondo que o corpo continue no mesmo sentido.</p>
+<div class="resolucao-bloco"><p><strong>Dados:</strong> $m=2\text{ kg}$; $v_i=3\text{ m/s}$; $W_R=16\text{ J}$.</p>
+<p><strong>Teorema:</strong> $W_R=\frac12mv_f^2-\frac12mv_i^2$.</p>
+<p>$16=\frac12(2)v_f^2-\frac12(2)(3)^2=v_f^2-9$.</p><p>$v_f^2=25\Rightarrow v_f=5\text{ m/s}$, escolhendo o sentido informado.</p>
+<p><strong>Resposta:</strong> $\boxed{v_f=5{,}0\text{ m/s}}$.</p></div></article>
+<article class="questao"><h4>R 4: Trabalho negativo na frenagem</h4>
+<p><strong>Enunciado:</strong> Um carrinho de massa $5{,}0\text{ kg}$ move-se a $8{,}0\text{ m/s}$ e é freado até atingir $2{,}0\text{ m/s}$. Calcule o trabalho da força resultante durante a frenagem.</p>
+<div class="resolucao-bloco"><p><strong>Dados:</strong> $m=5\text{ kg}$; $v_i=8\text{ m/s}$; $v_f=2\text{ m/s}$.</p>
+<p>$W_R=\Delta E_c=\frac12m(v_f^2-v_i^2)$.</p><p>$W_R=\frac12(5)(2^2-8^2)=2{,}5(4-64)=-150\text{ J}$.</p>
+<p><strong>Resposta:</strong> $\boxed{W_R=-150\text{ J}}$. O sinal negativo indica redução da energia cinética.</p></div></article>
+<article class="questao"><h4>R 5: Trabalho de forças em conjunto</h4>
+<p><strong>Enunciado:</strong> Um bloco desloca-se horizontalmente por $6{,}0\text{ m}$. Uma força de tração de $20\text{ N}$ atua no sentido do deslocamento, enquanto o atrito exerce força de $5{,}0\text{ N}$ em sentido contrário. Determine o trabalho resultante.</p>
+<div class="resolucao-bloco"><p><strong>Dados:</strong> $d=6\text{ m}$; $F_T=20\text{ N}$; $F_a=5\text{ N}$.</p>
+<p>Tração: $W_T=20\cdot6=120\text{ J}$. Atrito: $W_a=5\cdot6\cos180^\circ=-30\text{ J}$.</p>
+<p>Peso e normal são perpendiculares ao deslocamento horizontal, portanto realizam trabalho nulo.</p>
+<p>$W_R=120-30=90\text{ J}$.</p><p><strong>Resposta:</strong> $\boxed{W_R=90\text{ J}}$.</p></div></article>
+</section>
+
+<section class="questoes-propostas" id="propostas"><h3>✍️ 10 Questões Propostas (P 6 a 15)</h3>
+<article class="questao"><h4>P 6: Energia cinética</h4><p><strong>Enunciado:</strong> Um ciclista e sua bicicleta têm massa total de 80 kg e deslocam-se a 6,0 m/s. Calcule a energia cinética do conjunto.</p><button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button><div class="gabarito-resolucao"><p><strong>Resolução:</strong> E_c=½·80·6²=1440 J.</p></div></article><article class="questao"><h4>P 7: Velocidade e energia</h4><p><strong>Enunciado:</strong> Um corpo de massa 3,0 kg possui energia cinética de 150 J. Determine o módulo de sua velocidade.</p><button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button><div class="gabarito-resolucao"><p><strong>Resolução:</strong> v=√(2E_c/m)=√(300/3)=10 m/s.</p></div></article><article class="questao"><h4>P 8: Conversão de velocidade</h4><p><strong>Enunciado:</strong> Um automóvel de massa 1200 kg move-se a 72 km/h. Determine sua energia cinética em joules.</p><button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button><div class="gabarito-resolucao"><p><strong>Resolução:</strong> 72 km/h=20 m/s; E_c=½·1200·20²=240 000 J.</p></div></article><article class="questao"><h4>P 9: Variação de energia cinética</h4><p><strong>Enunciado:</strong> Um objeto de 2,0 kg aumenta sua velocidade de 4,0 m/s para 10 m/s. Determine a variação de energia cinética.</p><button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button><div class="gabarito-resolucao"><p><strong>Resolução:</strong> ΔE_c=½·2·(10²−4²)=84 J.</p></div></article><article class="questao"><h4>P 10: Trabalho resultante</h4><p><strong>Enunciado:</strong> Um corpo parte do repouso e recebe trabalho resultante de 450 J. Qual é a energia cinética final?</p><button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button><div class="gabarito-resolucao"><p><strong>Resolução:</strong> E_ci=0; W_R=ΔE_c; E_cf=450 J.</p></div></article><article class="questao"><h4>P 11: Força contrária ao movimento</h4><p><strong>Enunciado:</strong> Uma força de atrito constante de 12 N atua contra o movimento de um bloco durante 5,0 m. Calcule o trabalho do atrito.</p><button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button><div class="gabarito-resolucao"><p><strong>Resolução:</strong> W=F·d·cos180°=−12·5=−60 J.</p></div></article><article class="questao"><h4>P 12: Teorema trabalho-energia</h4><p><strong>Enunciado:</strong> Um corpo de massa 4,0 kg tem velocidade inicial de 2,0 m/s. O trabalho resultante é 48 J. Determine o módulo da velocidade final.</p><button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button><div class="gabarito-resolucao"><p><strong>Resolução:</strong> 48=½·4·(v_f²−2²); v_f²=28; v_f=√28≈5,29 m/s.</p></div></article><article class="questao"><h4>P 13: Soma dos trabalhos</h4><p><strong>Enunciado:</strong> Um bloco desloca-se 3,0 m. Uma força de 30 N atua a favor do movimento e outra de 10 N atua contra. Determine o trabalho resultante, desprezando outras forças com componente no deslocamento.</p><button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button><div class="gabarito-resolucao"><p><strong>Resolução:</strong> W_R=30·3−10·3=60 J.</p></div></article><article class="questao"><h4>P 14: Trabalho nulo</h4><p><strong>Enunciado:</strong> Um corpo realiza movimento circular uniforme sob ação de força centrípeta de 40 N. Explique por que o trabalho instantâneo dessa força é nulo.</p><button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button><div class="gabarito-resolucao"><p><strong>Resolução:</strong> A força centrípeta é perpendicular ao deslocamento instantâneo; W=F·d·cos90°=0.</p></div></article><article class="questao"><h4>P 15: Determinação do trabalho pela variação da velocidade</h4><p><strong>Enunciado:</strong> Um veículo de massa 800 kg reduz a velocidade de 25 m/s para 15 m/s. Determine o trabalho resultante durante a redução.</p><button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button><div class="gabarito-resolucao"><p><strong>Resolução:</strong> W_R=½·800·(15²−25²)=400·(225−625)=−160 000 J.</p></div></article></section>
+<section class="TESTE" id="testes"><h3>🎓 5 Questões de Teste (T 16 a 20)</h3><article class="questao"><h4>T 16 (ExataSite): Energia cinética</h4><p><strong>Enunciado:</strong> Um corpo de massa 2,0 kg move-se a 3,0 m/s. Sua energia cinética é:</p><ul><li>A) 3 J.</li><li>B) 6 J.</li><li>C) 9 J.</li><li>D) 12 J.</li><li>E) 18 J.</li></ul><button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button><div class="gabarito-resolucao"><p><strong>Gabarito:</strong> C. <strong>Resolução:</strong> E_c=½·2·3²=9 J.</p></div></article><article class="questao"><h4>T 17 (ExataSite): Dependência com a velocidade</h4><p><strong>Enunciado:</strong> Mantida a massa de um corpo, se o módulo de sua velocidade triplica, sua energia cinética:</p><ul><li>A) triplica.</li><li>B) dobra.</li><li>C) fica seis vezes maior.</li><li>D) fica nove vezes maior.</li><li>E) não se altera.</li></ul><button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button><div class="gabarito-resolucao"><p><strong>Gabarito:</strong> D. <strong>Resolução:</strong> E_c é proporcional a v²; portanto, passa a ser 3²=9 vezes maior.</p></div></article><article class="questao"><h4>T 18 (ExataSite): Teorema do trabalho</h4><p><strong>Enunciado:</strong> O trabalho resultante realizado sobre um corpo é −80 J. Nesse intervalo, sua energia cinética:</p><ul><li>A) aumenta 80 J.</li><li>B) diminui 80 J.</li><li>C) permanece constante.</li><li>D) aumenta 160 J.</li><li>E) torna-se necessariamente nula.</li></ul><button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button><div class="gabarito-resolucao"><p><strong>Gabarito:</strong> B. <strong>Resolução:</strong> W_R=ΔE_c=−80 J: a energia cinética diminui 80 J.</p></div></article><article class="questao"><h4>T 19 (ExataSite): Trabalho e ângulo</h4><p><strong>Enunciado:</strong> Uma força de 10 N atua sobre um corpo que se desloca 4,0 m, formando 60° com o deslocamento. O trabalho da força é:</p><ul><li>A) 10 J.</li><li>B) 20 J.</li><li>C) 40 J.</li><li>D) 20√3 J.</li><li>E) 40√3 J.</li></ul><button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button><div class="gabarito-resolucao"><p><strong>Gabarito:</strong> B. <strong>Resolução:</strong> W=F·d·cos60°=10·4·0,5=20 J.</p></div></article><article class="questao"><h4>T 20 (ExataSite): Frenagem</h4><p><strong>Enunciado:</strong> Um automóvel de massa 1000 kg reduz sua velocidade de 20 m/s para 10 m/s. O trabalho resultante é:</p><ul><li>A) −150 kJ.</li><li>B) −100 kJ.</li><li>C) −50 kJ.</li><li>D) 50 kJ.</li><li>E) 150 kJ.</li></ul><button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button><div class="gabarito-resolucao"><p><strong>Gabarito:</strong> A. <strong>Resolução:</strong> W_R=½·1000·(10²−20²)=500·(−300)=−150 000 J=−150 kJ.</p></div></article></section></div></main>
+<aside class="menu-lateral"><iframe src="../menu_fisica.html" style="width:100%; border:none; height:600px;"></iframe></aside>
+</div>
+<script>
+function toggleGabarito(botao) {
+ const gabarito=botao.nextElementSibling;
+ if(gabarito.style.display==="none"||gabarito.style.display===""){gabarito.style.display="block";botao.textContent="Esconder Gabarito e Resolução";botao.style.backgroundColor="#2c3e50";}
+ else{gabarito.style.display="none";botao.textContent="Ver Gabarito e Resolução";botao.style.backgroundColor="#3498db";}
+}
+function toggleMenu(){const menuGlobal=document.getElementById("menu-principal");if(menuGlobal)menuGlobal.classList.toggle("ativo");}
+let slideAtual=0,slides=[];
+function prepararSlides(){slides=document.querySelectorAll('.container-resumo, .passo-teoria, .aplicacoes-reais, .questao');}
+function toggleSlides(){prepararSlides();if(!document.body.classList.contains('modo-slides')){document.body.classList.add('modo-slides');slideAtual=0;mostrarSlide(slideAtual);}else{document.body.classList.remove('modo-slides');window.location.reload();}}
+function mostrarSlide(n){
+ slides.forEach(s=>{s.classList.remove('slide-ativo');s.style.display='none';});
+ const slide=slides[n];slide.classList.add('slide-ativo');slide.style.display='flex';
+ if(slide.classList.contains('questao')&&!slide.querySelector('.btn-gabarito'))slide.querySelectorAll('.resolucao-bloco').forEach(r=>r.style.display='block');
+ else{slide.querySelectorAll('.gabarito-resolucao').forEach(g=>g.style.display='none');slide.querySelectorAll('.btn-gabarito').forEach(b=>{b.textContent="Ver Gabarito e Resolução";b.style.backgroundColor="#3498db";});}
+ const partes=document.querySelector('header p').innerText.split('|');
+ if(partes.length>1){document.getElementById('slide-info-serie').innerText=partes[0].trim();document.getElementById('slide-info-aula').innerText=partes[1].trim();}
+ document.getElementById('contador-slide').innerText=(n+1)+" / "+slides.length;
+ if(window.MathJax)MathJax.typesetPromise();
+}
+function mudarSlide(d){slideAtual+=d;if(slideAtual>=slides.length)slideAtual=0;if(slideAtual<0)slideAtual=slides.length-1;mostrarSlide(slideAtual);}
+document.addEventListener('keydown',e=>{if(document.body.classList.contains('modo-slides')){if(['ArrowRight','PageDown','Enter',' '].includes(e.key))mudarSlide(1);if(['ArrowLeft','PageUp'].includes(e.key))mudarSlide(-1);if(e.key==='Escape')toggleSlides();}});
+</script>
+<style>
+body.modo-slides{overflow:hidden;background-color:#1a1a1a;}
+body.modo-slides .menu-lateral,body.modo-slides header,body.modo-slides .menu-toggle,body.modo-slides #btn-slides{display:none!important;}
+.slide-ativo{display:flex!important;flex-direction:column;align-items:center;justify-content:flex-start;position:fixed;top:0;left:0;width:100vw;height:calc(100vh - 70px);background:#fff;padding:40px;z-index:999;overflow-y:auto!important;box-sizing:border-box;text-align:center;}
+.controles-slides{position:fixed;bottom:0;left:0;width:100%;height:70px;background:#2c3e50;color:white;display:none;justify-content:space-between;align-items:center;padding:0 20px;z-index:1001;box-sizing:border-box;}
+body.modo-slides .controles-slides{display:flex;}
+.info-lateral{flex:1;font-family:'Oswald',sans-serif;font-size:.9rem;color:#bdc3c7;}
+.botoes-centrais{display:flex;align-items:center;gap:15px;justify-content:center;flex:2;}
+.btn-nav{padding:10px 20px;background:#3498db;color:white;border:none;border-radius:5px;cursor:pointer;font-weight:bold;}
+#contador-slide{font-family:'Oswald',sans-serif;min-width:60px;text-align:center;}
+</style>
+<div class="controles-slides"><div id="slide-info-serie" class="info-lateral"></div><div class="botoes-centrais"><button class="btn-nav" onclick="mudarSlide(-1)">⬅ Anterior</button><span id="contador-slide"></span><button class="btn-nav" onclick="mudarSlide(1)">Próximo ➡</button><button class="btn-nav" onclick="toggleSlides()" style="background:#e74c3c;">Sair</button></div><div id="slide-info-aula" class="info-lateral" style="text-align:right;"></div></div>
+</body></html>
