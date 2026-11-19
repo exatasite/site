@@ -79,7 +79,7 @@ input[type=text],select,textarea{width:100%;padding:6px 8px;border:1px solid var
 <body>
 <header>
   <a class="voltar" href="../index.html">← ExataSite</a>
-  <h1>📚 Exata Provas – Gerador de provas <small style="font-weight:normal;opacity:.8">(ENEM Matemática)</small></h1>
+  <h1>📚 Exata Provas – Gerador de provas <small style="font-weight:normal;opacity:.8">(ENEM e IFES – Matemática)</small></h1>
   <span id="hdrcnt"></span>
   <button class="p" onclick="gerarProva()">Gerar prova ▶</button>
 </header>
@@ -95,7 +95,9 @@ input[type=text],select,textarea{width:100%;padding:6px 8px;border:1px solid var
     <div class="chips" id="fSerie"></div>
     <label class="l">Dificuldade</label>
     <div class="chips" id="fDif"></div>
-    <label class="l">Ano do ENEM</label>
+    <label class="l">Prova</label>
+    <div class="chips" id="fBanca"></div>
+    <label class="l">Ano</label>
     <div class="chips" id="fAno"></div>
     <label class="l">Outros</label>
     <label class="chk"><input type="checkbox" id="fFig"> só com figura/gráfico</label>
@@ -125,7 +127,7 @@ input[type=text],select,textarea{width:100%;padding:6px 8px;border:1px solid var
     <label class="l">Turma / Série</label><input type="text" id="cTurma">
     <label class="l">Data</label><input type="text" id="cData" placeholder="__/__/____">
     <label class="l">Instruções</label><textarea id="cInstr" rows="3">Leia com atenção. Cada questão tem apenas uma alternativa correta.</textarea>
-    <label class="chk"><input type="checkbox" id="oOrigem" checked> mostrar a origem (ex.: ENEM 2019)</label>
+    <label class="chk"><input type="checkbox" id="oOrigem" checked> mostrar a origem (ex.: ENEM 2019, IFES 2024)</label>
     <label class="chk"><input type="checkbox" id="o2col"> duas colunas</label>
     <label class="chk"><input type="checkbox" id="oGab" checked> incluir folha de gabarito</label>
     <label class="chk"><input type="checkbox" id="oResol"> incluir resolução detalhada <small id="nResol"></small></label>
@@ -178,6 +180,8 @@ function montaFiltros(){
   $('fAssunto').innerHTML=h;
   $('fSerie').innerHTML=[1,2,3].map(s=>'<label><input type="checkbox" data-f="serie" value="'+s+'"><span>'+s+'º ano</span></label>').join('');
   $('fDif').innerHTML=DIFS.map(s=>'<label><input type="checkbox" data-f="dif" value="'+s+'"><span>'+s+'</span></label>').join('');
+  const bancas=[...new Set(Q.map(q=>q.banca||'ENEM'))].sort();
+  $('fBanca').innerHTML=bancas.map(s=>'<label><input type="checkbox" data-f="banca" value="'+s+'"><span>'+s+'</span></label>').join('');
   const anos=[...new Set(Q.map(q=>q.ano))].sort();
   $('fAno').innerHTML=anos.map(s=>'<label><input type="checkbox" data-f="ano" value="'+s+'"><span>'+s+'</span></label>').join('');
   document.querySelectorAll('[data-f],#fFig,#fSemFig,#fAnul').forEach(e=>e.addEventListener('change',aplicar));
@@ -188,7 +192,7 @@ function marcarTodos(f,v){document.querySelectorAll('[data-f="'+f+'"]').forEach(
 function limparFiltros(){document.querySelectorAll('[data-f],#fFig,#fSemFig,#fAnul').forEach(e=>e.checked=false);$('busca').value='';aplicar()}
 const plain=s=>s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'');
 function aplicar(){
-  const A=vals('assunto'),S=vals('serie').map(Number),D=vals('dif'),Y=vals('ano').map(Number);
+  const A=vals('assunto'),S=vals('serie').map(Number),D=vals('dif'),Y=vals('ano').map(Number),BC=vals('banca');
   const b=plain($('busca').value.trim());
   const fig=$('fFig').checked,sfig=$('fSemFig').checked,anul=$('fAnul').checked;
   filtrados=Q.filter(q=>{
@@ -197,6 +201,7 @@ function aplicar(){
     if(S.length&&!S.includes(q.serie))return false;
     if(D.length&&!D.includes(q.dificuldade))return false;
     if(Y.length&&!Y.includes(q.ano))return false;
+    if(BC.length&&!BC.includes(q.banca||'ENEM'))return false;
     const tf=(q.figuras&&q.figuras.length)||q.alternativas_imagem;
     if(fig&&!tf)return false;if(sfig&&tf)return false;
     if(b&&!plain(q.enunciado+' '+q.topico+' '+q.assunto).includes(b))return false;
