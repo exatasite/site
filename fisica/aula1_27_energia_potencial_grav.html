@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>1º Ano: Aula 27 - Energia Potencial Gravitacional</title>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../estilo.css">
+<script>
+MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']], processEscapes: true } };
+</script>
+<script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+<button class="menu-toggle" onclick="toggleMenu()">☰</button>
+<nav id="menu-principal" class="nav-global"><ul>
+<li><a href="../index.html">🏠 Início</a></li>
+<li><a href="../ensino_medio.html">📚 Ensino Médio</a></li>
+<li><a href="../ensino_superior.html">🎓 Ensino Superior</a></li>
+</ul></nav>
+<header id="topo">
+<h1>FÍSICA EM</h1>
+<p>1º Ano | Aula 27: Energia Potencial Gravitacional</p>
+<button id="btn-slides" onclick="toggleSlides()">📺 Iniciar Modo Slides</button>
+</header>
+<div class="container"><main class="conteudo-principal"><div class="secao-aula">
+<div class="container-resumo" id="resumo">
+<h3>📚 Resumo</h3><section class="resumo-conteudo">
+<p>A <strong>energia potencial gravitacional</strong> está associada à posição de um corpo em um campo gravitacional. Próximo à superfície da Terra, quando podemos considerar a aceleração da gravidade constante, ela é dada por $E_{pg}=mgh$, em que $m$ é a massa, $g$ é a aceleração gravitacional e $h$ é a altura em relação a um nível de referência.</p>
+<p>A energia potencial depende do nível escolhido como referência, mas sua variação entre duas posições não depende dessa escolha. O trabalho realizado pela força peso é igual ao oposto da variação da energia potencial: $W_{peso}=-\Delta E_{pg}$.</p>
+</section></div>
+
+<section class="conteudo-teorico-completo" id="teoria">
+<div class="passo-teoria">
+<h3>📖 Energia potencial gravitacional</h3>
+<h4>1. Conceito e origem física</h4>
+<p>Quando um objeto é elevado, é necessário realizar trabalho contra a força gravitacional. Depois de elevado, o objeto pode realizar trabalho ao descer, como ocorre com a água armazenada em uma represa ou com uma carga suspensa por um guindaste. A energia associada à configuração do sistema corpo-Terra é chamada de <strong>energia potencial gravitacional</strong>.</p>
+<p>Essa energia está relacionada à posição do corpo em um campo gravitacional e deve ser definida em relação a um nível de referência. Não é correto atribuir um valor absoluto único à energia potencial sem informar esse referencial.</p>
+<figure class="figura-aula figura-grande">
+<img src="../imagens_fisica/aula1_27_epg_esquema.png" alt="Corpo de massa m elevado a uma altura h em relação ao nível de referência, com força peso vertical para baixo">
+<figcaption>Figura 1: Um corpo de massa m está a uma altura h acima do nível de referência. A força peso aponta para baixo. Representação esquemática, sem escala.</figcaption>
+</figure>
+<h4>2. Expressão matemática nas proximidades da superfície terrestre</h4>
+<p>Em uma região próxima à superfície da Terra, na qual a variação de $g$ pode ser desprezada, a energia potencial gravitacional é calculada por:</p>
+<p>$$E_{pg}=mgh$$</p>
+<p>Em que $m$ é a massa do corpo, em quilogramas (kg); $g$ é o módulo da aceleração da gravidade, em metros por segundo ao quadrado (m/s²); e $h$ é a altura em relação ao nível de referência, em metros (m). A energia é expressa em joules (J):</p>
+<p>$$1\text{ J}=1\text{ kg}\cdot\text{m}^2/\text{s}^2$$</p>
+<p>Em muitos exercícios, adota-se $g=10\,\text{m/s}^2$ como aproximação. Se o enunciado fornecer outro valor, deve-se utilizar o valor informado.</p>
+<h4>3. O nível de referência e o sinal da energia</h4>
+<p>O nível de referência é a posição escolhida para atribuir altura nula ($h=0$) e, consequentemente, energia potencial gravitacional nula. Pode ser o solo, o piso de um andar, uma mesa ou qualquer plano conveniente.</p>
+<p>Se o corpo estiver acima desse nível, $h$ será positivo; se estiver abaixo, $h$ será negativo. Assim, a energia potencial pode ser positiva, nula ou negativa. O sinal depende da escolha do referencial e não indica, por si só, uma condição física melhor ou pior.</p>
+<figure class="figura-aula figura-grande">
+<img src="../imagens_fisica/aula1_27_epg_referencia.png" alt="Um mesmo corpo relacionado a dois níveis de referência diferentes, com alturas relativas distintas">
+<figcaption>Figura 2: A mudança do nível de referência altera o valor atribuído à energia potencial, mas não altera a diferença de energia entre duas posições.</figcaption>
+</figure>
+</div>
+
+<div class="passo-teoria">
+<h3>📖 Variação da energia potencial gravitacional</h3>
+<h4>4. Variação entre duas posições</h4>
+<p>Quando um corpo passa de uma altura inicial $h_i$ para uma altura final $h_f$, sua variação de energia potencial gravitacional é:</p>
+<p>$$\Delta E_{pg}=E_{pg,f}-E_{pg,i}=mg(h_f-h_i)$$</p>
+<p>Para massa e gravidade constantes:</p>
+<ul>
+<li>Na subida, $h_f&gt;h_i$ e $\Delta E_{pg}&gt;0$: a energia potencial aumenta.</li>
+<li>Na descida, $h_f&lt;h_i$ e $\Delta E_{pg}&lt;0$: a energia potencial diminui.</li>
+<li>Se as alturas inicial e final forem iguais, $\Delta E_{pg}=0$.</li>
+</ul>
+<p>Observe que a variação depende somente das alturas inicial e final. O caminho percorrido entre essas posições não altera a variação da energia potencial gravitacional.</p>
+<h4>5. Relação com o trabalho da força peso</h4>
+<p>A força peso é conservativa. Por isso, o trabalho realizado por ela é igual ao oposto da variação da energia potencial gravitacional:</p>
+<p>$$W_{peso}=-\Delta E_{pg}$$</p>
+<p>Na descida, o peso realiza trabalho positivo e a energia potencial diminui. Na subida, o peso realiza trabalho negativo e a energia potencial aumenta. Essa relação refere-se ao trabalho da força peso; outras forças podem também realizar trabalho sobre o corpo.</p>
+</div>
+
+<div class="passo-teoria">
+<h3>📖 Interpretação gráfica e aplicações</h3>
+<h4>6. Energia potencial em função da altura</h4>
+<p>Para uma massa constante em um local onde $g$ é constante, a expressão $E_{pg}=mgh$ mostra que a energia potencial é diretamente proporcional à altura. O gráfico é uma reta que passa pela origem quando o nível de referência escolhido corresponde a $h=0$.</p>
+<figure class="figura-aula figura-grande">
+<img src="../imagens_fisica/aula1_27_epg_grafico.png" alt="Gráfico linear da energia potencial gravitacional em função da altura para massa de 2 kg e gravidade de 10 metros por segundo ao quadrado">
+<figcaption>Figura 3: Para $m=2\,\text{kg}$ e $g=10\,\text{m/s}^2$, a relação é $E_{pg}=20h$, com energia em joules e altura em metros.</figcaption>
+</figure>
+<h4>7. Aplicações no cotidiano e na tecnologia</h4>
+<ul>
+<li><strong>Usinas hidrelétricas:</strong> a água armazenada em níveis elevados possui energia potencial que pode ser convertida em energia cinética e, posteriormente, em energia elétrica.</li>
+<li><strong>Guindastes:</strong> ao elevar uma carga, aumenta-se sua energia potencial gravitacional em relação ao nível de referência.</li>
+<li><strong>Montanhas-russas:</strong> durante a descida, parte da energia potencial gravitacional pode ser transformada em energia cinética.</li>
+</ul>
+<h4>8. Limites de validade da expressão $mgh$</h4>
+<p>A expressão $E_{pg}=mgh$ é uma aproximação adequada quando a região analisada é pequena em comparação com o raio do astro e a aceleração gravitacional pode ser considerada constante. Em situações envolvendo grandes distâncias ao centro da Terra, como órbitas de satélites, a variação de $g$ precisa ser considerada e utiliza-se uma expressão mais geral para a interação gravitacional.</p>
+<h4>9. Atenção às unidades e aos conceitos</h4>
+<ul>
+<li>Utilize a massa em quilogramas, a altura em metros e $g$ em m/s².</li>
+<li>Não confunda massa (kg) com peso (N).</li>
+<li>Informe sempre o nível de referência ao apresentar um valor de energia potencial.</li>
+<li>Não confunda energia potencial em uma posição com sua variação entre duas posições.</li>
+<li>O trabalho da força peso tem sinal oposto ao da variação da energia potencial.</li>
+</ul>
+</div>
+</section>
+
+<section class="aplicacoes-reais" id="aplicacoes">
+<h3>💡 Física em Ação</h3>
+<div class="cards-aplicacao">
+<div class="card"><h4>Reservatórios e hidrelétricas</h4><p>A água armazenada em um reservatório elevado possui energia potencial gravitacional. Ao escoar para níveis mais baixos, pode movimentar turbinas conectadas a geradores elétricos.</p></div>
+<div class="card" style="border-left-color:#2ecc71;"><h4>Guindastes e elevadores</h4><p>Ao elevar uma carga, o equipamento aumenta a energia potencial gravitacional do sistema em relação ao nível de referência. A variação depende da massa, da gravidade local e da diferença de altura.</p></div>
+</div>
+</section>
+
+<section class="questoes-resolvidas" id="resolvidas">
+<h3>✅ 5 Questões Resolvidas (R 1 a 5)</h3>
+<article class="questao"><h4>R 1: Energia potencial em relação ao solo</h4>
+<p><strong>Enunciado:</strong> Um vaso de massa $3{,}0\text{ kg}$ está em uma varanda a $4{,}0\text{ m}$ do solo. Adote $g=10\text{ m/s}^2$ e o solo como nível de referência. Determine sua energia potencial gravitacional.</p>
+<div class="resolucao-bloco"><p><strong>Dados:</strong> $m=3{,}0\text{ kg}$; $h=4{,}0\text{ m}$; $g=10\text{ m/s}^2$. Incógnita: $E_{pg}$.</p><p><strong>Modelo:</strong> como a altura é pequena em comparação com o raio da Terra, consideramos $g$ constante e aplicamos $E_{pg}=mgh$.</p>
+<p><strong>Substituição:</strong> $E_{pg}=3{,}0\cdot10\cdot4{,}0$.</p>
+<p><strong>Cálculo:</strong> $E_{pg}=120\text{ J}$.</p>
+<p><strong>Resposta:</strong> $\boxed{E_{pg}=120\text{ J}}$. Esse valor é definido em relação ao solo.</p></div></article><article class="questao"><h4>R 2: Determinação da altura</h4>
+<p><strong>Enunciado:</strong> Um objeto de massa $5{,}0\text{ kg}$ possui energia potencial gravitacional de $250\text{ J}$ em relação ao piso. Considerando $g=10\text{ m/s}^2$, determine sua altura.</p>
+<div class="resolucao-bloco"><p><strong>Dados:</strong> $m=5{,}0\text{ kg}$; $E_{pg}=250\text{ J}$; $g=10\text{ m/s}^2$. Incógnita: $h$.</p><p><strong>Modelo:</strong> $E_{pg}=mgh$. Isolando a altura, $h=\dfrac{E_{pg}}{mg}$.</p>
+<p><strong>Substituição:</strong> $h=\dfrac{250}{5{,}0\cdot10}=\dfrac{250}{50}$.</p>
+<p><strong>Resultado:</strong> $\boxed{h=5{,}0\text{ m}}$.</p>
+<p><strong>Interpretação:</strong> o objeto está cinco metros acima do nível de referência escolhido.</p></div></article><article class="questao"><h4>R 3: Variação da energia durante a subida</h4>
+<p><strong>Enunciado:</strong> Um pacote de massa $2{,}0\text{ kg}$ é elevado do chão até uma prateleira a $3{,}5\text{ m}$ de altura. Adote $g=10\text{ m/s}^2$. Determine a variação de energia potencial gravitacional.</p>
+<div class="resolucao-bloco"><p><strong>Dados:</strong> $m=2{,}0\text{ kg}$; $h_i=0$; $h_f=3{,}5\text{ m}$; $g=10\text{ m/s}^2$.</p><p><strong>Modelo:</strong> usamos a variação entre as posições: $\Delta E_{pg}=mg(h_f-h_i)$.</p>
+<p><strong>Substituição:</strong> $\Delta E_{pg}=2{,}0\cdot10\cdot(3{,}5-0)$.</p>
+<p><strong>Cálculo:</strong> $\Delta E_{pg}=70\text{ J}$.</p>
+<p><strong>Resposta:</strong> $\boxed{\Delta E_{pg}=+70\text{ J}}$. O sinal positivo indica que a energia potencial aumentou.</p></div></article><article class="questao"><h4>R 4: Descida e trabalho da força peso</h4>
+<p><strong>Enunciado:</strong> Um corpo de massa $6{,}0\text{ kg}$ desce de $8{,}0\text{ m}$ para $2{,}0\text{ m}$. Considere $g=10\text{ m/s}^2$. Determine a variação da energia potencial e o trabalho realizado pela força peso.</p>
+<div class="resolucao-bloco"><p><strong>Dados:</strong> $m=6{,}0\text{ kg}$; $h_i=8{,}0\text{ m}$; $h_f=2{,}0\text{ m}$; $g=10\text{ m/s}^2$.</p><p><strong>Variação da energia potencial:</strong> $\Delta E_{pg}=mg(h_f-h_i)=6{,}0\cdot10\cdot(2{,}0-8{,}0)=-360\text{ J}$.</p>
+<p><strong>Trabalho do peso:</strong> $W_{peso}=-\Delta E_{pg}=-(-360)=+360\text{ J}$.</p>
+<p><strong>Resposta:</strong> $\boxed{\Delta E_{pg}=-360\text{ J}}$ e $\boxed{W_{peso}=+360\text{ J}}$. Na descida, a energia potencial diminui e o peso realiza trabalho positivo.</p></div></article><article class="questao"><h4>R 5: Mudança do nível de referência</h4>
+<p><strong>Enunciado:</strong> Uma caixa de massa $4{,}0\text{ kg}$ está a $6{,}0\text{ m}$ do chão. Uma mesa situada a $1{,}5\text{ m}$ do chão é escolhida como novo nível de referência. Adote $g=10\text{ m/s}^2$. Calcule a energia potencial em relação ao chão e em relação à mesa.</p>
+<div class="resolucao-bloco"><p><strong>Dados:</strong> $m=4{,}0\text{ kg}$; altura em relação ao chão $h_A=6{,}0\text{ m}$; altura da mesa $1{,}5\text{ m}$; $g=10\text{ m/s}^2$.</p><p><strong>Em relação ao chão:</strong> $E_{pg,A}=4{,}0\cdot10\cdot6{,}0=240\text{ J}$.</p>
+<p><strong>Em relação à mesa:</strong> a altura relativa é $h_B=6{,}0-1{,}5=4{,}5\text{ m}$. Logo, $E_{pg,B}=4{,}0\cdot10\cdot4{,}5=180\text{ J}$.</p>
+<p><strong>Resposta:</strong> $\boxed{E_{pg,A}=240\text{ J}}$ e $\boxed{E_{pg,B}=180\text{ J}}$. A diferença decorre da escolha do zero de energia potencial.</p></div></article></section>
+
+<section class="questoes-propostas" id="propostas"><h3>✍️ 10 Questões Propostas (P 6 a 15)</h3>
+<article class="questao"><h4>P 6: Cálculo direto</h4><p><strong>Enunciado:</strong> Uma mochila de massa $7{,}0\text{ kg}$ está em uma plataforma a $2{,}0\text{ m}$ do chão. Adote $g=10\text{ m/s}^2$. Calcule sua energia potencial gravitacional em relação ao chão.</p><button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button><div class="gabarito-resolucao"><p><strong>Resolução:</strong> $E_{pg}=mgh=7\cdot10\cdot2=140\text{ J}$.</p></div></article><article class="questao"><h4>P 7: Determinação da massa</h4><p><strong>Enunciado:</strong> Um objeto a $4{,}0\text{ m}$ de altura possui energia potencial gravitacional de $320\text{ J}$. Considerando $g=10\text{ m/s}^2$, determine sua massa.</p><button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button><div class="gabarito-resolucao"><p><strong>Resolução:</strong> $m=E_{pg}/(gh)=320/(10\cdot4)=8{,}0\text{ kg}$.</p></div></article><article class="questao"><h4>P 8: Comparação de alturas</h4><p><strong>Enunciado:</strong> Dois corpos de mesma massa estão a $2{,}0\text{ m}$ e $6{,}0\text{ m}$ do mesmo nível de referência. Quantas vezes a energia potencial do corpo mais alto é maior?</p><button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button><div class="gabarito-resolucao"><p><strong>Resolução:</strong> Como $E_{pg}\propto h$, a razão é $6/2=3$. A energia do corpo mais alto é três vezes maior.</p></div></article><article class="questao"><h4>P 9: Elevação de carga</h4><p><strong>Enunciado:</strong> Um elevador transporta uma carga de massa $250\text{ kg}$ do térreo até um andar situado $12\text{ m}$ acima. Adote $g=10\text{ m/s}^2$. Determine a variação da energia potencial.</p><button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button><div class="gabarito-resolucao"><p><strong>Resolução:</strong> $\Delta E_{pg}=mg\Delta h=250\cdot10\cdot12=30\,000\text{ J}=30\text{ kJ}$.</p></div></article><article class="questao"><h4>P 10: Descida de uma pedra</h4><p><strong>Enunciado:</strong> Uma pedra de massa $1{,}5\text{ kg}$ passa de $20\text{ m}$ para $8{,}0\text{ m}$. Considere $g=10\text{ m/s}^2$. Calcule a variação da energia potencial e o trabalho do peso.</p><button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button><div class="gabarito-resolucao"><p><strong>Resolução:</strong> $\Delta E_{pg}=1{,}5\cdot10\cdot(8-20)=-180\text{ J}$; portanto, $W_{peso}=+180\text{ J}$.</p></div></article><article class="questao"><h4>P 11: Posição abaixo da referência</h4><p><strong>Enunciado:</strong> Um corpo de massa $2{,}0\text{ kg}$ está $3{,}0\text{ m}$ abaixo do nível de referência. Adote $g=10\text{ m/s}^2$. Determine sua energia potencial e explique o sinal.</p><button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button><div class="gabarito-resolucao"><p><strong>Resolução:</strong> $h=-3{,}0\text{ m}$; $E_{pg}=2\cdot10\cdot(-3)=-60\text{ J}$. O sinal negativo indica que o corpo está abaixo do nível escolhido como zero.</p></div></article><article class="questao"><h4>P 12: Trabalho contra a gravidade</h4><p><strong>Enunciado:</strong> Uma caixa de massa $8{,}0\text{ kg}$ é erguida verticalmente por $1{,}5\text{ m}$. Adote $g=10\text{ m/s}^2$. Determine a variação da energia potencial e o trabalho da força peso.</p><button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button><div class="gabarito-resolucao"><p><strong>Resolução:</strong> $\Delta E_{pg}=8\cdot10\cdot1{,}5=+120\text{ J}$; $W_{peso}=-120\text{ J}$.</p></div></article><article class="questao"><h4>P 13: Comparação entre campos gravitacionais</h4><p><strong>Enunciado:</strong> Um equipamento de massa $5{,}0\text{ kg}$ está a $2{,}0\text{ m}$ de altura. Calcule sua energia potencial na Terra ($g=10\text{ m/s}^2$) e em um planeta fictício ($g=4{,}0\text{ m/s}^2$).</p><button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button><div class="gabarito-resolucao"><p><strong>Resolução:</strong> Terra: $E_{pg}=5\cdot10\cdot2=100\text{ J}$. Planeta: $E_{pg}=5\cdot4\cdot2=40\text{ J}$.</p></div></article><article class="questao"><h4>P 14: Interpretação do gráfico</h4><p><strong>Enunciado:</strong> Para uma massa constante em um local onde $g$ é constante, explique o formato do gráfico de $E_{pg}$ em função de $h$. O que ocorre com a energia quando a altura triplica, mantendo-se o mesmo referencial?</p><button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button><div class="gabarito-resolucao"><p><strong>Resolução:</strong> O gráfico é uma reta que passa pela origem, pois $E_{pg}=mgh$. Ao triplicar a altura, a energia potencial também triplica.</p></div></article><article class="questao"><h4>P 15: Dependência do caminho</h4><p><strong>Enunciado:</strong> Um bloco de massa $3{,}0\text{ kg}$ é levado do chão até uma plataforma a $5{,}0\text{ m}$, por elevação vertical ou por uma rampa. Adote $g=10\text{ m/s}^2$. Compare a variação da energia potencial nos dois trajetos.</p><button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button><div class="gabarito-resolucao"><p><strong>Resolução:</strong> Em ambos, $\Delta E_{pg}=mg\Delta h=3\cdot10\cdot5=150\text{ J}$. A variação não depende do caminho, apenas das alturas inicial e final.</p></div></article></section>
+
+<section class="TESTE" id="testes"><h3>🎓 5 Questões de Teste (T 16 a 20)</h3>
+<article class="questao"><h4>T 16 (ExataSite): Cálculo da energia potencial</h4><p><strong>Enunciado:</strong> Um livro de massa $0{,}50\text{ kg}$ está em uma estante a $2{,}0\text{ m}$ do piso. Considere $g=10\text{ m/s}^2$ e o piso como referência. Sua energia potencial é:</p><ul><li>A) 1,0 J</li><li>B) 2,5 J</li><li>C) 5,0 J</li><li>D) 10 J</li><li>E) 20 J</li></ul><button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button><div class="gabarito-resolucao"><p><strong>Gabarito:</strong> D. <strong>Resolução:</strong> $E_{pg}=0{,}50\cdot10\cdot2{,}0=10\text{ J}$.</p></div></article><article class="questao"><h4>T 17 (ExataSite): Variação na descida</h4><p><strong>Enunciado:</strong> Um corpo de massa $2{,}0\text{ kg}$ desce $4{,}0\text{ m}$ em uma região onde $g=10\text{ m/s}^2$. A variação da energia potencial é:</p><ul><li>A) +80 J</li><li>B) +40 J</li><li>C) 0 J</li><li>D) −40 J</li><li>E) −80 J</li></ul><button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button><div class="gabarito-resolucao"><p><strong>Gabarito:</strong> E. <strong>Resolução:</strong> $\Delta E_{pg}=mg\Delta h=2\cdot10\cdot(-4)=-80\text{ J}$.</p></div></article><article class="questao"><h4>T 18 (ExataSite): Trabalho da força peso</h4><p><strong>Enunciado:</strong> Uma esfera desce e perde $150\text{ J}$ de energia potencial gravitacional. O trabalho realizado pela força peso vale:</p><ul><li>A) −300 J</li><li>B) −150 J</li><li>C) 0 J</li><li>D) +150 J</li><li>E) +300 J</li></ul><button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button><div class="gabarito-resolucao"><p><strong>Gabarito:</strong> D. <strong>Resolução:</strong> $W_{peso}=-\Delta E_{pg}=-(-150)=+150\text{ J}$.</p></div></article><article class="questao"><h4>T 19 (ExataSite): Nível de referência</h4><p><strong>Enunciado:</strong> Uma caixa está sobre uma bancada. Um estudante escolhe o piso como nível de energia potencial nula; outro escolhe a superfície da bancada. É correto afirmar que:</p><ul><li>A) Os dois atribuem necessariamente a mesma energia potencial.</li><li>B) A energia potencial é nula para todo corpo em repouso.</li><li>C) Os valores podem ser diferentes, mas a variação entre as mesmas posições é igual.</li><li>D) A energia potencial depende da velocidade do corpo.</li><li>E) A massa deixa de influenciar a energia potencial.</li></ul><button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button><div class="gabarito-resolucao"><p><strong>Gabarito:</strong> C. <strong>Resolução:</strong> O valor depende do zero escolhido; a diferença de energia entre duas posições não depende dessa escolha.</p></div></article><article class="questao"><h4>T 20 (ExataSite): Proporcionalidade com a altura</h4><p><strong>Enunciado:</strong> Um corpo de massa constante é elevado de uma altura $h$ para uma altura $3h$, mantendo-se o mesmo nível de referência e um campo gravitacional uniforme. Sua energia potencial gravitacional:</p><ul><li>A) Permanece constante.</li><li>B) Diminui à terça parte.</li><li>C) Dobra.</li><li>D) Triplica.</li><li>E) Fica nove vezes maior.</li></ul><button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button><div class="gabarito-resolucao"><p><strong>Gabarito:</strong> D. <strong>Resolução:</strong> Como $E_{pg}=mgh$, com $m$ e $g$ constantes, triplicar $h$ triplica a energia potencial.</p></div></article></section>
+
+</div></main>
+<aside class="menu-lateral"><iframe src="../menu_fisica.html" style="width:100%; border:none; height:600px;"></iframe></aside>
+</div>
+<script>
+function toggleGabarito(botao) {
+ const gabarito=botao.nextElementSibling;
+ if(gabarito.style.display==="none"||gabarito.style.display===""){gabarito.style.display="block";botao.textContent="Esconder Gabarito e Resolução";botao.style.backgroundColor="#2c3e50";}
+ else{gabarito.style.display="none";botao.textContent="Ver Gabarito e Resolução";botao.style.backgroundColor="#3498db";}
+}
+function toggleMenu(){const menuGlobal=document.getElementById("menu-principal");if(menuGlobal)menuGlobal.classList.toggle("ativo");}
+let slideAtual=0,slides=[];
+function prepararSlides(){slides=document.querySelectorAll('.container-resumo, .passo-teoria, .aplicacoes-reais, .questao');}
+function toggleSlides(){prepararSlides();if(!document.body.classList.contains('modo-slides')){document.body.classList.add('modo-slides');slideAtual=0;mostrarSlide(slideAtual);}else{document.body.classList.remove('modo-slides');window.location.reload();}}
+function mostrarSlide(n){
+ slides.forEach(s=>{s.classList.remove('slide-ativo');s.style.display='none';});
+ const slide=slides[n];slide.classList.add('slide-ativo');slide.style.display='flex';
+ if(slide.classList.contains('questao')&&!slide.querySelector('.btn-gabarito'))slide.querySelectorAll('.resolucao-bloco').forEach(r=>r.style.display='block');
+ else{slide.querySelectorAll('.gabarito-resolucao').forEach(g=>g.style.display='none');slide.querySelectorAll('.btn-gabarito').forEach(b=>{b.textContent="Ver Gabarito e Resolução";b.style.backgroundColor="#3498db";});}
+ const partes=document.querySelector('header p').innerText.split('|');
+ if(partes.length>1){document.getElementById('slide-info-serie').innerText=partes[0].trim();document.getElementById('slide-info-aula').innerText=partes[1].trim();}
+ document.getElementById('contador-slide').innerText=(n+1)+" / "+slides.length;
+ if(window.MathJax)MathJax.typesetPromise();
+}
+function mudarSlide(d){slideAtual+=d;if(slideAtual>=slides.length)slideAtual=0;if(slideAtual<0)slideAtual=slides.length-1;mostrarSlide(slideAtual);}
+document.addEventListener('keydown',e=>{if(document.body.classList.contains('modo-slides')){if(['ArrowRight','PageDown','Enter',' '].includes(e.key))mudarSlide(1);if(['ArrowLeft','PageUp'].includes(e.key))mudarSlide(-1);if(e.key==='Escape')toggleSlides();}});
+</script>
+<style>
+body.modo-slides{overflow:hidden;background-color:#1a1a1a;}
+body.modo-slides .menu-lateral,body.modo-slides header,body.modo-slides .menu-toggle,body.modo-slides #btn-slides{display:none!important;}
+.slide-ativo{display:flex!important;flex-direction:column;align-items:center;justify-content:flex-start;position:fixed;top:0;left:0;width:100vw;height:calc(100vh - 70px);background:#fff;padding:40px;z-index:999;overflow-y:auto!important;box-sizing:border-box;text-align:center;}
+.controles-slides{position:fixed;bottom:0;left:0;width:100%;height:70px;background:#2c3e50;color:white;display:none;justify-content:space-between;align-items:center;padding:0 20px;z-index:1001;box-sizing:border-box;}
+body.modo-slides .controles-slides{display:flex;}
+.info-lateral{flex:1;font-family:'Oswald',sans-serif;font-size:.9rem;color:#bdc3c7;}
+.botoes-centrais{display:flex;align-items:center;gap:15px;justify-content:center;flex:2;}
+.btn-nav{padding:10px 20px;background:#3498db;color:white;border:none;border-radius:5px;cursor:pointer;font-weight:bold;}
+#contador-slide{font-family:'Oswald',sans-serif;min-width:60px;text-align:center;}
+</style>
+<div class="controles-slides"><div id="slide-info-serie" class="info-lateral"></div><div class="botoes-centrais"><button class="btn-nav" onclick="mudarSlide(-1)">⬅ Anterior</button><span id="contador-slide"></span><button class="btn-nav" onclick="mudarSlide(1)">Próximo ➡</button><button class="btn-nav" onclick="toggleSlides()" style="background:#e74c3c;">Sair</button></div><div id="slide-info-aula" class="info-lateral" style="text-align:right;"></div></div>
+</body></html>
