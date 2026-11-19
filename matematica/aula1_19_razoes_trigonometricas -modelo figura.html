@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1º Ano: Aula 19 - Razões Trigonométricas e Ângulos Notáveis (30°, 45°, 60°)</title>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../estilo.css">
+    <script>
+        MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']], processEscapes: true } };
+    </script>
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        body.modo-slides { overflow: hidden !important; background-color: #1a1a1a !important; margin: 0; padding: 0; }
+        body.modo-slides .menu-lateral, body.modo-slides header, body.modo-slides .menu-toggle, body.modo-slides #btn-slides, body.modo-slides .nav-global { display: none !important; }
+        .slide-ativo { display: flex !important; flex-direction: column; align-items: center; justify-content: center; position: fixed; top: 0; left: 0; width: 100vw; height: calc(100vh - 70px); background: #ffffff; padding: 40px; z-index: 999; overflow-y: auto !important; box-sizing: border-box; text-align: left; }
+        .slide-ativo > * { max-width: 900px; width: 100%; }
+        .controles-slides { position: fixed; bottom: 0; left: 0; width: 100%; height: 70px; background: #2c3e50; color: white; display: none; justify-content: space-between; align-items: center; padding: 0 20px; z-index: 1001; box-sizing: border-box; }
+        body.modo-slides .controles-slides { display: flex !important; }
+        .info-lateral { flex: 1; font-family: 'Oswald', sans-serif; font-size: 0.9rem; color: #bdc3c7; }
+        .botoes-centrais { display: flex; align-items: center; gap: 15px; justify-content: center; flex: 2; }
+        .btn-nav { padding: 10px 20px; background: #3498db; color: white; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; font-size: 0.9rem; }
+        .btn-nav:hover { background: #2980b9; }
+        #contador-slide { font-family: 'Oswald', sans-serif; min-width: 60px; text-align: center; font-size: 1.1rem; }
+    </style>
+</head>
+<body>
+<button class="menu-toggle" onclick="toggleMenu()">☰</button>
+<nav id="menu-principal" class="nav-global"><ul>
+    <li><a href="../index.html">🏠 Início</a></li>
+    <li><a href="../ensino_medio.html">📚 Ensino Médio</a></li>
+    <li><a href="../ensino_superior.html">🎓 Ensino Superior</a></li>
+</ul></nav>
+<header id="topo">
+    <h1>MATEMÁTICA EM</h1>
+    <p>1º Ano | Aula 19: Razões Trigonométricas e Ângulos Notáveis (30°, 45°, 60°)</p>
+    <button id="btn-slides" onclick="toggleSlides()">📺 Iniciar Modo Slides</button>
+</header>
+<div class="container"><main class="conteudo-principal"><div class="secao-aula">
+
+<div class="container-resumo" id="resumo">
+    <h3>📚 Resumo</h3>
+    <section class="resumo-conteudo">
+        <p>Em um triângulo retângulo, para cada ângulo agudo $\alpha$ definimos três <strong>razões trigonométricas</strong>, que dependem apenas do ângulo (e não do tamanho do triângulo):</p>
+        <p style="text-align: center;">$$\operatorname{sen}\alpha = \frac{\text{cateto oposto}}{\text{hipotenusa}} \qquad \cos\alpha = \frac{\text{cateto adjacente}}{\text{hipotenusa}} \qquad \operatorname{tg}\alpha = \frac{\text{cateto oposto}}{\text{cateto adjacente}}$$</p>
+        <p>Os ângulos de $30^\circ$, $45^\circ$ e $60^\circ$ são os <strong>ângulos notáveis</strong>, cujos valores são obtidos do quadrado e do triângulo equilátero.</p>
+    </section>
+</div>
+
+<section class="conteudo-teorico-completo" id="teoria">
+    <div class="passo-teoria">
+        <h3>📖 Razões Trigonométricas no Triângulo Retângulo</h3>
+        <h4>1. Nomeando os Lados em Relação ao Ângulo</h4>
+        <p>Fixado um ângulo agudo $\alpha$ do triângulo retângulo:</p>
+        <ul>
+            <li><strong>Hipotenusa:</strong> o lado oposto ao ângulo reto (o maior lado);</li>
+            <li><strong>Cateto oposto</strong> a $\alpha$: o cateto que não toca o vértice de $\alpha$;</li>
+            <li><strong>Cateto adjacente</strong> a $\alpha$: o cateto que forma o ângulo $\alpha$ junto com a hipotenusa.</li>
+        </ul>
+       <figure class="figura-aula figura-grande">
+              
+
+
+
+  <img src="../imagens_matematica/teste.png" alt="TRIANGULO RETANGULO">
+               
+           
+
+
+
+  <figcaption>Figura 1: Os catetos recebem nome de acordo com o ângulo $\alpha$ considerado.</figcaption>
+</figure>
+    </div>
+
+    <div class="passo-teoria">
+        <h4>2. Seno, Cosseno e Tangente</h4>
+        <p style="text-align: center; font-size: 1.15rem; background-color: #f8f9fa; padding: 15px; border-left: 5px solid #3498db; margin: 20px 0;">
+            $$\operatorname{sen}\alpha = \frac{\text{C.O.}}{\text{hip}} \qquad \cos\alpha = \frac{\text{C.A.}}{\text{hip}} \qquad \operatorname{tg}\alpha = \frac{\text{C.O.}}{\text{C.A.}}$$
+        </p>
+        <p>Como triângulos retângulos com o mesmo ângulo $\alpha$ são <strong>semelhantes</strong>, essas razões não mudam quando o triângulo aumenta ou diminui. Por isso, cada ângulo tem o seu seno, o seu cosseno e a sua tangente. Para ângulos agudos, $0 < \operatorname{sen}\alpha < 1$ e $0 < \cos\alpha < 1$.</p>
+    </div>
+
+    <div class="passo-teoria">
+        <h4>3. Relações Importantes</h4>
+        <ul>
+            <li><strong>Relação fundamental:</strong> $\operatorname{sen}^2\alpha + \cos^2\alpha = 1$ (vem do Teorema de Pitágoras);</li>
+            <li><strong>Tangente:</strong> $\operatorname{tg}\alpha = \dfrac{\operatorname{sen}\alpha}{\cos\alpha}$;</li>
+            <li><strong>Ângulos complementares</strong> ($\alpha + \beta = 90^\circ$): $\operatorname{sen}\alpha = \cos\beta$, $\cos\alpha = \operatorname{sen}\beta$ e $\operatorname{tg}\alpha = \dfrac{1}{\operatorname{tg}\beta}$.</li>
+        </ul>
+    </div>
+
+    <div class="passo-teoria">
+        <h4>4. Os Ângulos Notáveis (30°, 45°, 60°)</h4>
+        <ul>
+            <li><strong>45°:</strong> a diagonal divide um quadrado de lado $\ell$ em dois triângulos retângulos isósceles de hipotenusa $\ell\sqrt{2}$. Daí $\operatorname{sen}45^\circ = \cos45^\circ = \dfrac{\ell}{\ell\sqrt{2}} = \dfrac{\sqrt{2}}{2}$ e $\operatorname{tg}45^\circ = 1$.</li>
+            <li><strong>30° e 60°:</strong> a altura divide um triângulo equilátero de lado $\ell$ em dois triângulos retângulos de ângulos $30^\circ$ e $60^\circ$, com catetos $\dfrac{\ell}{2}$ e $\dfrac{\ell\sqrt{3}}{2}$. Daí $\operatorname{sen}30^\circ = \dfrac{1}{2}$ e $\operatorname{sen}60^\circ = \dfrac{\sqrt{3}}{2}$.</li>
+        </ul>
+        <table style="margin: 15px auto; border-collapse: collapse; text-align: center; font-size: 1.1rem;">
+            <tr style="background-color: #2c3e50; color: white;"><th style="padding: 8px 18px;"></th><th style="padding: 8px 18px;">$30^\circ$</th><th style="padding: 8px 18px;">$45^\circ$</th><th style="padding: 8px 18px;">$60^\circ$</th></tr>
+            <tr><td style="padding: 8px 18px; border: 1px solid #ccc;"><strong>seno</strong></td><td style="padding: 8px 18px; border: 1px solid #ccc;">$\dfrac{1}{2}$</td><td style="padding: 8px 18px; border: 1px solid #ccc;">$\dfrac{\sqrt{2}}{2}$</td><td style="padding: 8px 18px; border: 1px solid #ccc;">$\dfrac{\sqrt{3}}{2}$</td></tr>
+            <tr style="background-color: #f8f9fa;"><td style="padding: 8px 18px; border: 1px solid #ccc;"><strong>cosseno</strong></td><td style="padding: 8px 18px; border: 1px solid #ccc;">$\dfrac{\sqrt{3}}{2}$</td><td style="padding: 8px 18px; border: 1px solid #ccc;">$\dfrac{\sqrt{2}}{2}$</td><td style="padding: 8px 18px; border: 1px solid #ccc;">$\dfrac{1}{2}$</td></tr>
+            <tr><td style="padding: 8px 18px; border: 1px solid #ccc;"><strong>tangente</strong></td><td style="padding: 8px 18px; border: 1px solid #ccc;">$\dfrac{\sqrt{3}}{3}$</td><td style="padding: 8px 18px; border: 1px solid #ccc;">$1$</td><td style="padding: 8px 18px; border: 1px solid #ccc;">$\sqrt{3}$</td></tr>
+        </table>
+        <p><strong>Dica para memorizar:</strong> os senos de $30^\circ$, $45^\circ$ e $60^\circ$ são $\dfrac{\sqrt{1}}{2}$, $\dfrac{\sqrt{2}}{2}$ e $\dfrac{\sqrt{3}}{2}$; os cossenos são os mesmos valores em ordem inversa.</p>
+    </div>
+</section>
+
+<section class="aplicacoes-reais" id="aplicacoes">
+    <h3>💡 Matemática em Ação</h3>
+    <div class="cards-aplicacao">
+        <div class="card">
+            <h4>🔭 O Teodolito</h4>
+            <p>Topógrafos medem o ângulo de elevação até o topo de um prédio ou morro com o teodolito. Conhecendo a distância horizontal $d$, a altura é $d \cdot \operatorname{tg}\alpha$ (mais a altura do aparelho), sem precisar subir lá.</p>
+        </div>
+        <div class="card" style="border-left-color: #2ecc71;">
+            <h4>♿ Rampas de Acessibilidade</h4>
+            <p>A norma de acessibilidade limita a inclinação das rampas. A razão entre a altura vencida e o comprimento horizontal é a tangente do ângulo de inclinação: quanto menor ela for, mais suave é a rampa.</p>
+        </div>
+    </div>
+</section>
+<section class="questoes-resolvidas" id="resolvidas">
+    <h3>✅ 5 Questões Resolvidas (R 1 a 5)</h3>
+    <article class="questao">
+        <h4>R 1: Calculando as Três Razões</h4>
+        <p><strong>Enunciado:</strong> Um triângulo retângulo tem catetos de $3$ cm e $4$ cm. Sendo $\alpha$ o ângulo agudo oposto ao cateto de $3$ cm, calcule $\operatorname{sen}\alpha$, $\cos\alpha$ e $\operatorname{tg}\alpha$.</p>
+        <div class="resolucao-bloco"><p><strong>Resolução:</strong><br>Hipotenusa: $a = \sqrt{3^2 + 4^2} = 5$ cm. Cateto oposto a $\alpha$: $3$; cateto adjacente: $4$.<br>$\operatorname{sen}\alpha = \dfrac{3}{5} = \mathbf{0{,}6}$, $\cos\alpha = \dfrac{4}{5} = \mathbf{0{,}8}$ e $\operatorname{tg}\alpha = \dfrac{3}{4} = \mathbf{0{,}75}$.<br>Conferência: $0{,}6^2 + 0{,}8^2 = 0{,}36 + 0{,}64 = 1$ ✓</p></div>
+    </article>
+    <article class="questao">
+        <h4>R 2: A Escada Apoiada</h4>
+        <p><strong>Enunciado:</strong> Uma escada de $6$ m está apoiada em uma parede vertical, formando um ângulo de $60^\circ$ com o chão horizontal. A que altura ela toca a parede e a que distância da parede está o seu pé?</p>
+        <div class="resolucao-bloco"><p><strong>Resolução:</strong><br>A escada é a hipotenusa ($6$ m); a altura é o cateto oposto a $60^\circ$ e a distância ao pé é o cateto adjacente.<br>Altura: $h = 6 \cdot \operatorname{sen}60^\circ = 6 \cdot \dfrac{\sqrt{3}}{2} = \mathbf{3\sqrt{3}}$ m $\approx 5{,}2$ m.<br>Distância: $d = 6 \cdot \cos 60^\circ = 6 \cdot \dfrac{1}{2} = \mathbf{3}$ m.</p></div>
+    </article>
+    <article class="questao">
+        <h4>R 3: Altura de um Prédio</h4>
+        <p><strong>Enunciado:</strong> Uma pessoa, com os olhos a $1{,}6$ m do chão, está a $30$ m de um prédio e vê o seu topo sob um ângulo de $30^\circ$ com a horizontal. Calcule a altura do prédio (use $\sqrt{3} \approx 1{,}73$).</p>
+        <div class="resolucao-bloco"><p><strong>Resolução:</strong><br>Na altura dos olhos, a distância horizontal ($30$ m) é o cateto adjacente e a parte $x$ do prédio acima dos olhos é o cateto oposto.<br>$\operatorname{tg}30^\circ = \dfrac{x}{30} \implies x = 30 \cdot \dfrac{\sqrt{3}}{3} = 10\sqrt{3} \approx 17{,}3$ m.<br>Altura do prédio: $H = 17{,}3 + 1{,}6 = \mathbf{18{,}9}$ m (aproximadamente).</p></div>
+    </article>
+    <article class="questao">
+        <h4>R 4: Das Uma, as Outras</h4>
+        <p><strong>Enunciado:</strong> Sabendo que $\alpha$ é um ângulo agudo e que $\operatorname{sen}\alpha = 0{,}6$, calcule $\cos\alpha$ e $\operatorname{tg}\alpha$.</p>
+        <div class="resolucao-bloco"><p><strong>Resolução:</strong><br>Relação fundamental: $\operatorname{sen}^2\alpha + \cos^2\alpha = 1 \implies \cos^2\alpha = 1 - 0{,}36 = 0{,}64$.<br>Como $\alpha$ é agudo, $\cos\alpha > 0$: $\cos\alpha = \mathbf{0{,}8}$.<br>$\operatorname{tg}\alpha = \dfrac{\operatorname{sen}\alpha}{\cos\alpha} = \dfrac{0{,}6}{0{,}8} = \mathbf{0{,}75}$.</p></div>
+    </article>
+    <article class="questao">
+        <h4>R 5: A Sombra da Árvore</h4>
+        <p><strong>Enunciado:</strong> Quando os raios de sol formam um ângulo de $60^\circ$ com o solo, uma árvore projeta uma sombra de $5$ m. Qual é a altura da árvore?</p>
+        <div class="resolucao-bloco"><p><strong>Resolução:</strong><br>A sombra é o cateto adjacente ao ângulo de $60^\circ$ e a altura $h$ é o cateto oposto.<br>$\operatorname{tg}60^\circ = \dfrac{h}{5} \implies h = 5\sqrt{3}$ m.<br>$h = \mathbf{5\sqrt{3}}$ m $\approx 8{,}66$ m.</p></div>
+    </article>
+</section>
+
+<section class="questoes-propostas" id="propostas">
+    <h3>✍️ 10 Questões Propostas (P 6 a 15)</h3>
+    <article class="questao">
+        <h4>P 6: As Três Razões</h4>
+        <p><strong>Enunciado:</strong> Os catetos de um triângulo retângulo medem $5$ cm e $12$ cm. Sendo $\alpha$ o ângulo oposto ao cateto de $5$ cm, calcule $\operatorname{sen}\alpha$, $\cos\alpha$ e $\operatorname{tg}\alpha$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>Hipotenusa: $\sqrt{25 + 144} = 13$ cm.<br>$\operatorname{sen}\alpha = \mathbf{\dfrac{5}{13}}$, $\cos\alpha = \mathbf{\dfrac{12}{13}}$, $\operatorname{tg}\alpha = \mathbf{\dfrac{5}{12}}$.</p></div>
+    </article>
+    <article class="questao">
+        <h4>P 7: Catetos pela Hipotenusa</h4>
+        <p><strong>Enunciado:</strong> Em um triângulo retângulo, a hipotenusa mede $10$ cm e um dos ângulos agudos mede $30^\circ$. Calcule os dois catetos.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>Oposto a $30^\circ$: $10 \cdot \operatorname{sen}30^\circ = 10 \cdot \frac{1}{2} = \mathbf{5}$ cm.<br>Adjacente a $30^\circ$: $10 \cdot \cos30^\circ = 10 \cdot \frac{\sqrt{3}}{2} = \mathbf{5\sqrt{3}}$ cm.</p></div>
+    </article>
+    <article class="questao">
+        <h4>P 8: Subindo a Rampa</h4>
+        <p><strong>Enunciado:</strong> Uma rampa de $20$ m de comprimento forma um ângulo de $30^\circ$ com a horizontal. Quantos metros sobe, na vertical, quem percorre toda a rampa?</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>Altura $= 20 \cdot \operatorname{sen}30^\circ = 20 \cdot \frac{1}{2} = \mathbf{10}$ m.</p></div>
+    </article>
+    <article class="questao">
+        <h4>P 9: A Pipa</h4>
+        <p><strong>Enunciado:</strong> Uma pipa está presa a uma linha esticada de $50$ m, que forma um ângulo de $45^\circ$ com o solo. Desprezando a altura da mão, a que altura está a pipa?</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>Altura $= 50 \cdot \operatorname{sen}45^\circ = 50 \cdot \frac{\sqrt{2}}{2} = \mathbf{25\sqrt{2}}$ m $\approx 35{,}4$ m.</p></div>
+    </article>
+    <article class="questao">
+        <h4>P 10: Do Cosseno às Outras</h4>
+        <p><strong>Enunciado:</strong> Sendo $\alpha$ agudo e $\cos\alpha = \dfrac{5}{13}$, calcule $\operatorname{sen}\alpha$ e $\operatorname{tg}\alpha$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>$\operatorname{sen}^2\alpha = 1 - \frac{25}{169} = \frac{144}{169} \implies \operatorname{sen}\alpha = \mathbf{\frac{12}{13}}$.<br>$\operatorname{tg}\alpha = \dfrac{12/13}{5/13} = \mathbf{\dfrac{12}{5}}$.</p></div>
+    </article>
+    <article class="questao">
+        <h4>P 11: Expressão com Notáveis</h4>
+        <p><strong>Enunciado:</strong> Calcule o valor de $E = \operatorname{sen}30^\circ \cdot \cos60^\circ + \operatorname{tg}45^\circ$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>$E = \frac{1}{2} \cdot \frac{1}{2} + 1 = \frac{1}{4} + 1 = \mathbf{\frac{5}{4}}$.</p></div>
+    </article>
+    <article class="questao">
+        <h4>P 12: Cateto Adjacente a 60°</h4>
+        <p><strong>Enunciado:</strong> Em um triângulo retângulo, o cateto adjacente a um ângulo de $60^\circ$ mede $7$ cm. Calcule o outro cateto e a hipotenusa.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>Oposto: $7 \cdot \operatorname{tg}60^\circ = \mathbf{7\sqrt{3}}$ cm.<br>Hipotenusa: $\dfrac{7}{\cos60^\circ} = \dfrac{7}{1/2} = \mathbf{14}$ cm.</p></div>
+    </article>
+    <article class="questao">
+        <h4>P 13: Altura do Triângulo Equilátero</h4>
+        <p><strong>Enunciado:</strong> Use o seno de $60^\circ$ para calcular a altura de um triângulo equilátero de lado $8$ cm.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>A altura é cateto oposto a $60^\circ$ num triângulo retângulo de hipotenusa $8$ (um lado).<br>$h = 8 \cdot \operatorname{sen}60^\circ = 8 \cdot \frac{\sqrt{3}}{2} = \mathbf{4\sqrt{3}}$ cm.</p></div>
+    </article>
+    <article class="questao">
+        <h4>P 14: Ângulos Complementares</h4>
+        <p><strong>Enunciado:</strong> Sendo $\alpha$ agudo e $\operatorname{sen}\alpha = 0{,}8$, determine $\cos(90^\circ - \alpha)$ e $\operatorname{sen}(90^\circ - \alpha)$.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>Ângulos complementares: $\cos(90^\circ - \alpha) = \operatorname{sen}\alpha = \mathbf{0{,}8}$.<br>$\operatorname{sen}(90^\circ - \alpha) = \cos\alpha = \sqrt{1 - 0{,}64} = \mathbf{0{,}6}$.</p></div>
+    </article>
+    <article class="questao">
+        <h4>P 15: Dois Pontos de Observação</h4>
+        <p><strong>Enunciado:</strong> De um ponto $A$ no solo, vê-se o topo de uma torre sob $30^\circ$. Avançando $20$ m em direção à torre, até o ponto $B$, passa-se a ver o topo sob $60^\circ$. Calcule a altura da torre.</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong><br>Seja $x$ a distância de $B$ ao pé da torre: $h = x \cdot \operatorname{tg}60^\circ = x\sqrt{3}$ e $h = (x + 20) \cdot \operatorname{tg}30^\circ = \dfrac{x + 20}{\sqrt{3}}$.<br>$x\sqrt{3} = \dfrac{x + 20}{\sqrt{3}} \implies 3x = x + 20 \implies x = 10$ m.<br>$h = \mathbf{10\sqrt{3}}$ m $\approx 17{,}3$ m.</p></div>
+    </article>
+</section>
+
+<section class="TESTE" id="testes">
+    <h3>🎓 TESTES (T 11 a 15)</h3>
+    <article class="questao">
+        <h4>T 11: (Autoral) Decolagem do Avião</h4>
+        <p>Um avião levanta voo sob um ângulo de $30^\circ$. (Considere $\operatorname{sen}30^\circ = 0{,}50$ e $\cos30^\circ = 0{,}87$.)</p>
+        <figure class="figura-aula">
+            <svg viewBox="0 0 360 170" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Avião subindo em linha reta 500 m sob ângulo de 30 graus, altura h" style="width:100%; max-width:380px; display:block; margin:0 auto;">
+  <line x1="20" y1="145" x2="340" y2="145" stroke="#2c3e50" stroke-width="2"/>
+  <line x1="40" y1="145" x2="300" y2="5" stroke="#3498db" stroke-width="2.5" transform="scale(1,1)"/>
+  <line x1="300" y1="5" x2="300" y2="145" stroke="#e74c3c" stroke-width="2" stroke-dasharray="6,4"/>
+  <polyline points="288,145 288,133 300,133" fill="none" stroke="#2c3e50" stroke-width="1.5"/>
+  <path d="M 90 145 A 50 50 0 0 0 84 121" fill="none" stroke="#2c3e50" stroke-width="1.5"/>
+  <g font-family="Oswald, sans-serif" font-size="16" fill="#2c3e50">
+    <text x="96" y="138">30°</text><text x="150" y="70" fill="#3498db">500 m</text><text x="308" y="80" fill="#e74c3c">h</text><text x="292" y="14" font-size="20">✈</text>
+  </g>
+</svg>
+            <figcaption>Figura ilustrativa.</figcaption>
+        </figure>
+        <p>Então, depois que tiver percorrido $500$ m, conforme indicado na figura, sua altura $h$ em relação ao solo, em metros, será igual a:</p>
+        <p>A) 250<br>B) 300<br>C) 400<br>D) 435<br>E) 440</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>A</strong>.<br>Os $500$ m percorridos formam a hipotenusa e $h$ é o cateto oposto ao ângulo de $30^\circ$.<br>$\operatorname{sen}30^\circ = \dfrac{h}{500} \implies h = 500 \cdot 0{,}50 = \mathbf{250}$ m.<br>(O valor $435$ resultaria de usar o cosseno por engano.)</p></div>
+    </article>
+    <article class="questao">
+        <h4>T 12: (Cesgranrio) A Rampa</h4>
+        <p>Uma rampa plana, de $36$ m de comprimento, faz ângulo de $30^\circ$ com o plano horizontal.</p>
+        <p>Uma pessoa que sobe a rampa inteira eleva-se verticalmente de:</p>
+        <p>A) $6\sqrt{3}$ m<br>B) 12 m<br>C) 13,6 m<br>D) $9\sqrt{3}$ m<br>E) 18 m</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>E</strong>.<br>A rampa é a hipotenusa e a elevação é o cateto oposto a $30^\circ$.<br>$h = 36 \cdot \operatorname{sen}30^\circ = 36 \cdot \dfrac{1}{2} = \mathbf{18}$ m.</p></div>
+    </article>
+    <article class="questao">
+        <h4>T 13: (UFAM) Tangente do Menor Ângulo</h4>
+        <p>Se um cateto e a hipotenusa de um triângulo retângulo medem $2a$ e $4a$, respectivamente, então a tangente do ângulo oposto ao menor lado é:</p>
+        <p>A) $2\sqrt{3}$<br>B) $\dfrac{\sqrt{3}}{3}$<br>C) $\dfrac{\sqrt{3}}{6}$<br>D) $\dfrac{\sqrt{20}}{20}$<br>E) $3\sqrt{3}$</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>B</strong>.<br>Outro cateto: $\sqrt{(4a)^2 - (2a)^2} = \sqrt{12a^2} = 2\sqrt{3}\,a$. O menor lado é $2a$.<br>$\operatorname{tg} = \dfrac{\text{oposto}}{\text{adjacente}} = \dfrac{2a}{2\sqrt{3}\,a} = \dfrac{1}{\sqrt{3}} = \mathbf{\dfrac{\sqrt{3}}{3}}$ (o ângulo é de $30^\circ$).</p></div>
+    </article>
+    <article class="questao">
+        <h4>T 14: (UEPB) Ferrovias que se Cruzam</h4>
+        <p>Duas ferrovias se cruzam segundo um ângulo de $30^\circ$.</p>
+        <p>Em km, a distância entre um terminal de cargas que se encontra numa das ferrovias, a $4$ km do cruzamento, e a outra ferrovia, é igual a:</p>
+        <p>A) $2\sqrt{3}$<br>B) 2<br>C) 8<br>D) $4\sqrt{3}$<br>E) $\sqrt{3}$</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>B</strong>.<br>A distância do terminal à outra ferrovia é medida na perpendicular: forma-se um triângulo retângulo de hipotenusa $4$ km (trecho até o cruzamento).<br>$d = 4 \cdot \operatorname{sen}30^\circ = 4 \cdot \dfrac{1}{2} = \mathbf{2}$ km.</p></div>
+    </article>
+    <article class="questao">
+        <h4>T 15: (Autoral) Altura da Árvore</h4>
+        <p>Um rapaz, com os olhos a $1{,}7$ m do chão, está a $12$ m de uma árvore e vê o topo dela sob um ângulo de $45^\circ$ com a horizontal.</p>
+        <p>A altura da árvore é:</p>
+        <p>A) 12 m<br>B) 12,7 m<br>C) 13,7 m<br>D) 14,2 m<br>E) 15 m</p>
+        <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+        <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>C</strong>.<br>$\operatorname{tg}45^\circ = \dfrac{x}{12} = 1 \implies x = 12$ m (parte acima dos olhos).<br>Altura: $12 + 1{,}7 = \mathbf{13{,}7}$ m. (12 m seria esquecer a altura dos olhos.)</p></div>
+    </article>
+</section>
+
+</div></main>
+<aside class="menu-lateral"><iframe src="../menu_matematica.html" style="width:100%; border:none; height:600px;"></iframe></aside>
+</div>
+<script>
+function toggleGabarito(botao) {
+    const gabarito = botao.nextElementSibling;
+    if (gabarito.style.display === "none" || gabarito.style.display === "") {
+        gabarito.style.display = "block"; botao.textContent = "Esconder Gabarito e Resolução"; botao.style.backgroundColor = "#2c3e50";
+    } else {
+        gabarito.style.display = "none"; botao.textContent = "Ver Gabarito e Resolução"; botao.style.backgroundColor = "#3498db";
+    }
+}
+function toggleMenu() { const m = document.getElementById("menu-principal"); if (m) m.classList.toggle("ativo"); }
+let slideAtual = 0; let slides = [];
+function prepararSlides() { slides = Array.from(document.querySelectorAll('.container-resumo, .passo-teoria, .card, .questao')); }
+function toggleSlides() {
+    prepararSlides(); const body = document.body;
+    if (!body.classList.contains('modo-slides')) { body.classList.add('modo-slides'); slideAtual = 0; mostrarSlide(slideAtual); }
+    else { body.classList.remove('modo-slides'); slides.forEach(s => { s.classList.remove('slide-ativo'); s.style.display = ''; }); }
+}
+function mostrarSlide(n) {
+    if (!slides.length) return;
+    slides.forEach(s => { s.classList.remove('slide-ativo'); s.style.display = 'none'; });
+    const slide = slides[n]; slide.classList.add('slide-ativo');
+    slide.querySelectorAll('.gabarito-resolucao').forEach(g => g.style.display = 'none');
+    slide.querySelectorAll('.btn-gabarito').forEach(b => { b.textContent = "Ver Gabarito e Resolução"; b.style.backgroundColor = "#3498db"; });
+    const pHeader = document.querySelector('header p');
+    if (pHeader) { const partes = pHeader.innerText.split('|'); if (partes.length > 1) {
+        document.getElementById('slide-info-serie').innerText = partes[0].trim();
+        document.getElementById('slide-info-aula').innerText = partes[1].trim(); } }
+    document.getElementById('contador-slide').innerText = (n + 1) + " / " + slides.length;
+    if (window.MathJax && window.MathJax.typesetPromise) { MathJax.typesetPromise(); }
+}
+function mudarSlide(d) { slideAtual += d; if (slideAtual >= slides.length) slideAtual = 0; if (slideAtual < 0) slideAtual = slides.length - 1; mostrarSlide(slideAtual); }
+document.addEventListener('keydown', function(event) {
+    if (document.body.classList.contains('modo-slides')) {
+        switch(event.key) {
+            case 'ArrowRight': case 'PageDown': case 'Enter': case ' ': event.preventDefault(); mudarSlide(1); break;
+            case 'ArrowLeft': case 'PageUp': event.preventDefault(); mudarSlide(-1); break;
+            case 'Escape': event.preventDefault(); toggleSlides(); break;
+        }
+    }
+});
+</script>
+<div class="controles-slides">
+    <div id="slide-info-serie" class="info-lateral"></div>
+    <div class="botoes-centrais">
+        <button class="btn-nav" onclick="mudarSlide(-1)">⬅ Anterior</button>
+        <span id="contador-slide"></span>
+        <button class="btn-nav" onclick="mudarSlide(1)">Próximo ➡</button>
+        <button class="btn-nav" onclick="toggleSlides()" style="background:#e74c3c;">Sair</button>
+    </div>
+    <div id="slide-info-aula" class="info-lateral" style="text-align: right;"></div>
+</div>
+</body>
+</html>
