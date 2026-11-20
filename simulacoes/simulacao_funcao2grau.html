@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Laboratório de Funções Quadráticas | Interativo</title>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -79,13 +78,20 @@
         .viz-container {
             background: white;
             border-radius: 20px;
-            padding: 20px;
+            padding: 12px;
             border: 1px solid rgba(255,255,255,0.1);
             display: flex;
             align-items: center;
             justify-content: center;
-            min-height: 450px;
+            align-self: start;
         }
+        .canvas-wrap {
+            position: relative;
+            width: 100%;
+            max-width: 640px;
+            aspect-ratio: 1 / 1;
+        }
+        .canvas-wrap canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
 
         .res-card {
             background: rgba(255,255,255,0.03);
@@ -147,7 +153,7 @@
     </aside>
 
     <main class="viz-container">
-        <canvas id="graficoQuadratico"></canvas>
+        <div class="canvas-wrap"><canvas id="graficoQuadratico"></canvas></div>
     </main>
 
     <aside class="panel">
@@ -181,93 +187,172 @@
 </div>
 
 <script>
-    let chart;
-    const ctx = document.getElementById('graficoQuadratico').getContext('2d');
+    const canvas = document.getElementById('graficoQuadratico');
+    const ctx = canvas.getContext('2d');
+    const XLIM = 10, YLIM = 20; // plano: x de -10 a 10, y de -20 a 20
 
-    function renderizar() {
-        const a = parseFloat(document.getElementById('inputA').value);
-        const b = parseFloat(document.getElementById('inputB').value);
-        const c = parseFloat(document.getElementById('inputC').value);
-
-        // Se 'a' for zero, não é segundo grau. Forçamos um valor mínimo.
-        const adjA = a === 0 ? 0.0001 : a;
-
-        // Atualizar interface
-        document.getElementById('valA').innerText = a.toFixed(1);
-        document.getElementById('valB').innerText = b.toFixed(1);
-        document.getElementById('valC').innerText = c;
-        
-        const sinalB = b >= 0 ? "+ " + b : "- " + Math.abs(b);
-        const sinalC = c >= 0 ? "+ " + c : "- " + Math.abs(c);
-        document.getElementById('display-lei').innerText = `f(x) = ${a}x² ${sinalB}x ${sinalC}`;
-
-        // Cálculos Matemáticos
-        const delta = (b * b) - (4 * adjA * c);
-        const xv = -b / (2 * adjA);
-        const yv = -delta / (4 * adjA);
-        
-        document.getElementById('res-concavidade').innerText = a > 0 ? "Para cima (∪)" : (a < 0 ? "Para baixo (∩)" : "Reta");
-        document.getElementById('res-delta').innerText = delta.toFixed(2);
-        document.getElementById('res-vertice').innerText = `V(${xv.toFixed(1)}, ${yv.toFixed(1)})`;
-        document.getElementById('res-extremo').innerText = a > 0 ? "Valor Mínimo" : "Valor Máximo";
-
-        // Raízes
-        let raizesTxt = "Não possui raízes reais";
-        if (delta > 0) {
-            const x1 = (-b + Math.sqrt(delta)) / (2 * adjA);
-            const x2 = (-b - Math.sqrt(delta)) / (2 * adjA);
-            raizesTxt = `x' = ${x1.toFixed(1)} | x'' = ${x2.toFixed(1)}`;
-        } else if (delta === 0) {
-            const x = -b / (2 * adjA);
-            raizesTxt = `x' = x'' = ${x.toFixed(1)}`;
-        }
-        document.getElementById('res-raizes').innerText = raizesTxt;
-
-        // Gerar Dados para o Gráfico
-        const labels = [];
-        const data = [];
-        // Geramos de -15 a 15 para ver bem a curva
-        for (let x = -15; x <= 15; x += 0.5) {
-            labels.push(x);
-            data.push(a * (x * x) + b * x + c);
-        }
-
-        if (chart) chart.destroy();
-
-        chart = new Chart(ctx, {
-            type: 'line',
-            data: {
-                labels: labels,
-                datasets: [{
-                    label: 'f(x) = ax² + bx + c',
-                    data: data,
-                    borderColor: '#D35400',
-                    borderWidth: 3,
-                    pointRadius: 0,
-                    fill: false,
-                    tension: 0.4 // Suaviza a curva da parábola
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                scales: {
-                    y: { 
-                        min: -30, max: 30,
-                        grid: { color: 'rgba(0,0,0,0.05)' }
-                    },
-                    x: { 
-                        grid: { color: 'rgba(0,0,0,0.05)' }
-                    }
-                },
-                plugins: {
-                    legend: { display: false }
-                }
-            }
-        });
+    // número no padrão brasileiro (vírgula), sem zeros inúteis
+    function fmt(n, casas = 2) {
+        const f = Math.pow(10, casas);
+        const v = Math.round(n * f) / f;
+        return String(v === 0 ? 0 : v).replace('.', ',').replace('-', '−');
     }
 
-    window.onload = renderizar;
+    function lerParametros() {
+        return {
+            a: Math.round(parseFloat(document.getElementById('inputA').value) * 10) / 10,
+            b: Math.round(parseFloat(document.getElementById('inputB').value) * 2) / 2,
+            c: parseInt(document.getElementById('inputC').value, 10)
+        };
+    }
+
+    function leiTexto(a, b, c) {
+        let t = 'f(x) = ';
+        const termos = [];
+        if (a !== 0) termos.push({ s: a < 0 ? -1 : 1, v: (Math.abs(a) === 1 ? '' : fmt(Math.abs(a))) + 'x²' });
+        if (b !== 0) termos.push({ s: b < 0 ? -1 : 1, v: (Math.abs(b) === 1 ? '' : fmt(Math.abs(b))) + 'x' });
+        if (c !== 0) termos.push({ s: c < 0 ? -1 : 1, v: fmt(Math.abs(c)) });
+        if (!termos.length) return t + '0';
+        termos.forEach((q, i) => {
+            if (i === 0) t += (q.s < 0 ? '−' : '') + q.v;
+            else t += (q.s < 0 ? ' − ' : ' + ') + q.v;
+        });
+        return t;
+    }
+
+    // Todas as grandezas da parábola (null quando não se aplicam)
+    function calcular(a, b, c) {
+        const r = { a, b, c, delta: b * b - 4 * a * c, raizes: [], xv: null, yv: null };
+        if (a === 0) return r;
+        if (Math.abs(r.delta) < 1e-9) r.delta = 0;
+        r.xv = -b / (2 * a);
+        r.yv = -r.delta / (4 * a);
+        if (r.delta > 0) {
+            const x1 = (-b - Math.sqrt(r.delta)) / (2 * a);
+            const x2 = (-b + Math.sqrt(r.delta)) / (2 * a);
+            r.raizes = [Math.min(x1, x2), Math.max(x1, x2)];
+        } else if (r.delta === 0) {
+            r.raizes = [r.xv];
+        }
+        return r;
+    }
+
+    function atualizarPainel() {
+        const { a, b, c } = lerParametros();
+        const r = calcular(a, b, c);
+        document.getElementById('valA').innerText = fmt(a, 1);
+        document.getElementById('valB').innerText = fmt(b, 1);
+        document.getElementById('valC').innerText = fmt(c, 0);
+        document.getElementById('display-lei').innerText = leiTexto(a, b, c);
+
+        const set = (id, t) => document.getElementById(id).innerText = t;
+        if (a === 0) {
+            set('res-concavidade', 'Não é do 2º grau (a = 0)');
+            set('res-delta', '—');
+            set('res-raizes', b !== 0 ? `x = ${fmt(-c / b)}` : (c === 0 ? 'Todo x é raiz' : 'Não possui raízes'));
+            set('res-vertice', '—');
+            set('res-extremo', '—');
+            return;
+        }
+        set('res-concavidade', a > 0 ? 'Para cima (∪)' : 'Para baixo (∩)');
+        set('res-delta', fmt(r.delta));
+        set('res-vertice', `V(${fmt(r.xv)}, ${fmt(r.yv)})`);
+        set('res-extremo', a > 0 ? 'Valor mínimo' : 'Valor máximo');
+        if (r.delta > 0) set('res-raizes', `x' = ${fmt(r.raizes[0])} | x'' = ${fmt(r.raizes[1])}`);
+        else if (r.delta === 0) set('res-raizes', `x' = x'' = ${fmt(r.raizes[0])}`);
+        else set('res-raizes', 'Não possui raízes reais');
+    }
+
+    function desenhar() {
+        const { a, b, c } = lerParametros();
+        const r = calcular(a, b, c);
+        const dpr = window.devicePixelRatio || 1;
+        const W = canvas.clientWidth, H = canvas.clientHeight;
+        if (!W || !H) return;
+        canvas.width = Math.round(W * dpr);
+        canvas.height = Math.round(H * dpr);
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+        ctx.clearRect(0, 0, W, H);
+
+        const m = 30;
+        const sx = (W - 2 * m) / (2 * XLIM), sy = (H - 2 * m) / (2 * YLIM);
+        const cx = W / 2, cy = H / 2;
+        const px = x => cx + x * sx;
+        const py = y => cy - y * sy;
+
+        // grade
+        ctx.lineWidth = 1;
+        for (let k = -XLIM; k <= XLIM; k++) {
+            ctx.strokeStyle = k % 5 === 0 ? 'rgba(0,0,0,0.18)' : 'rgba(0,0,0,0.07)';
+            ctx.beginPath(); ctx.moveTo(px(k), py(-YLIM)); ctx.lineTo(px(k), py(YLIM)); ctx.stroke();
+        }
+        for (let k = -YLIM; k <= YLIM; k += 2) {
+            ctx.strokeStyle = k % 10 === 0 ? 'rgba(0,0,0,0.18)' : 'rgba(0,0,0,0.07)';
+            ctx.beginPath(); ctx.moveTo(px(-XLIM), py(k)); ctx.lineTo(px(XLIM), py(k)); ctx.stroke();
+        }
+
+        // eixos com setas
+        ctx.strokeStyle = '#2c3e50'; ctx.fillStyle = '#2c3e50'; ctx.lineWidth = 2;
+        const ex = XLIM + 0.7, ey = YLIM + 1.4;
+        ctx.beginPath(); ctx.moveTo(px(-ex), cy); ctx.lineTo(px(ex), cy); ctx.stroke();
+        ctx.beginPath(); ctx.moveTo(cx, py(-ey)); ctx.lineTo(cx, py(ey)); ctx.stroke();
+        ctx.beginPath(); ctx.moveTo(px(ex) + 6, cy); ctx.lineTo(px(ex) - 4, cy - 5); ctx.lineTo(px(ex) - 4, cy + 5); ctx.fill();
+        ctx.beginPath(); ctx.moveTo(cx, py(ey) - 6); ctx.lineTo(cx - 5, py(ey) + 4); ctx.lineTo(cx + 5, py(ey) + 4); ctx.fill();
+
+        // numeração
+        ctx.font = '12px Arial'; ctx.fillStyle = '#34495e';
+        ctx.textAlign = 'center'; ctx.textBaseline = 'top';
+        for (let k = -XLIM; k <= XLIM; k += 2) if (k !== 0) ctx.fillText(String(k).replace('-', '−'), px(k), cy + 6);
+        ctx.textAlign = 'right'; ctx.textBaseline = 'middle';
+        for (let k = -YLIM; k <= YLIM; k += 4) if (k !== 0) ctx.fillText(String(k).replace('-', '−'), cx - 7, py(k));
+        ctx.textAlign = 'right'; ctx.textBaseline = 'top'; ctx.fillText('0', cx - 6, cy + 5);
+        ctx.font = 'italic bold 14px Arial'; ctx.textAlign = 'left'; ctx.textBaseline = 'middle';
+        ctx.fillText('x', px(ex) - 2, cy - 14);
+        ctx.textBaseline = 'top'; ctx.fillText('y', cx + 10, py(ey) - 4);
+
+        // eixo de simetria (tracejado)
+        if (r.xv !== null && Math.abs(r.xv) <= XLIM) {
+            ctx.save();
+            ctx.setLineDash([6, 5]); ctx.strokeStyle = 'rgba(41,128,185,0.7)'; ctx.lineWidth = 1.5;
+            ctx.beginPath(); ctx.moveTo(px(r.xv), py(-YLIM)); ctx.lineTo(px(r.xv), py(YLIM)); ctx.stroke();
+            ctx.restore();
+        }
+
+        // curva (recortada no plano)
+        ctx.save();
+        ctx.beginPath(); ctx.rect(px(-XLIM), py(YLIM), 2 * XLIM * sx, 2 * YLIM * sy); ctx.clip();
+        ctx.strokeStyle = '#D35400'; ctx.lineWidth = 3.5; ctx.lineJoin = 'round'; ctx.lineCap = 'round';
+        ctx.beginPath();
+        const passo = 0.05;
+        for (let i = 0, x = -XLIM - 0.5; x <= XLIM + 0.5; i++, x = -XLIM - 0.5 + i * passo) {
+            const y = a * x * x + b * x + c;
+            if (i === 0) ctx.moveTo(px(x), py(y)); else ctx.lineTo(px(x), py(y));
+        }
+        ctx.stroke();
+        ctx.restore();
+
+        // pontos notáveis
+        function ponto(x, y, cor, texto, dx, dy, alinh) {
+            if (Math.abs(x) > XLIM || Math.abs(y) > YLIM) return;
+            ctx.fillStyle = cor; ctx.strokeStyle = '#fff'; ctx.lineWidth = 2;
+            ctx.beginPath(); ctx.arc(px(x), py(y), 5.5, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+            ctx.font = 'bold 12px Arial'; ctx.textAlign = alinh; ctx.textBaseline = 'middle';
+            ctx.lineWidth = 4; ctx.strokeStyle = 'rgba(255,255,255,0.9)';
+            ctx.strokeText(texto, px(x) + dx, py(y) + dy);
+            ctx.fillStyle = cor; ctx.fillText(texto, px(x) + dx, py(y) + dy);
+        }
+        if (a !== 0) {
+            r.raizes.forEach(x => ponto(x, 0, '#1e8449', `(${fmt(x)}, 0)`, 0, -16, 'center'));
+            ponto(r.xv, r.yv, '#8e44ad', `V(${fmt(r.xv)}, ${fmt(r.yv)})`, 10, a > 0 ? 16 : -16, 'left');
+        }
+        if ((c !== 0 && !(a !== 0 && r.xv === 0)) || a === 0) ponto(0, c, '#D35400', `(0, ${fmt(c, 0)})`, -10, -12, 'right');
+    }
+
+    function renderizar() { atualizarPainel(); desenhar(); }
+
+    window.addEventListener('load', renderizar);
+    window.addEventListener('resize', desenhar);
+    if (window.ResizeObserver) new ResizeObserver(desenhar).observe(canvas.parentElement);
 </script>
 
 </body>
