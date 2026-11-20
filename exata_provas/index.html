@@ -79,7 +79,7 @@ input[type=text],select,textarea{width:100%;padding:6px 8px;border:1px solid var
 <body>
 <header>
   <a class="voltar" href="../index.html">← ExataSite</a>
-  <h1>📚 Exata Provas – Gerador de provas <small style="font-weight:normal;opacity:.8">(ENEM e IFES – Matemática)</small></h1>
+  <h1>📚 Exata Provas – Gerador de provas <small style="font-weight:normal;opacity:.8">(ENEM e IFES – Matemática e Física)</small></h1>
   <span id="hdrcnt"></span>
   <button class="p" onclick="gerarProva()">Gerar prova ▶</button>
 </header>
@@ -87,8 +87,10 @@ input[type=text],select,textarea{width:100%;padding:6px 8px;border:1px solid var
 <div class="wrap" id="app">
   <aside class="panel side">
     <h2>Filtros</h2>
+    <label class="l">Disciplina</label>
+    <select id="fDisc"></select>
     <label class="l">Buscar no enunciado</label>
-    <input type="text" id="busca" placeholder="ex.: probabilidade, cilindro…">
+    <input type="text" id="busca" placeholder="ex.: probabilidade, cilindro, lente…">
     <label class="l">Assunto <button class="linkbtn" onclick="marcarTodos('assunto',false)">limpar</button></label>
     <div id="fAssunto"></div>
     <label class="l">Série</label>
@@ -169,9 +171,12 @@ $('nResol')&&($('nResol').textContent='('+Object.keys(RES).length+' de '+BANCO.l
 const semGab=q=>q.anulada||!q.gabarito;
 
 /* ---------- filtros ---------- */
+let DISC='Matemática';
+const discDe=q=>q.disciplina||'Matemática';
 function montaFiltros(){
-  const ass={};Q.forEach(q=>{const k=q.assunto;ass[k]=(ass[k]||0)+1});
-  const areas={};Q.forEach(q=>{(areas[q.area]=areas[q.area]||new Set()).add(q.assunto)});
+  const QD=Q.filter(q=>discDe(q)===DISC);
+  const ass={};QD.forEach(q=>{const k=q.assunto;ass[k]=(ass[k]||0)+1});
+  const areas={};QD.forEach(q=>{(areas[q.area]=areas[q.area]||new Set()).add(q.assunto)});
   let h='';
   Object.keys(areas).sort().forEach(a=>{
     h+='<div style="font-size:11px;font-weight:bold;color:#777;margin:6px 0 2px">'+a+'</div>';
@@ -180,11 +185,25 @@ function montaFiltros(){
   $('fAssunto').innerHTML=h;
   $('fSerie').innerHTML=[1,2,3].map(s=>'<label><input type="checkbox" data-f="serie" value="'+s+'"><span>'+s+'º ano</span></label>').join('');
   $('fDif').innerHTML=DIFS.map(s=>'<label><input type="checkbox" data-f="dif" value="'+s+'"><span>'+s+'</span></label>').join('');
-  const bancas=[...new Set(Q.map(q=>q.banca||'ENEM'))].sort();
+  const bancas=[...new Set(QD.map(q=>q.banca||'ENEM'))].sort();
   $('fBanca').innerHTML=bancas.map(s=>'<label><input type="checkbox" data-f="banca" value="'+s+'"><span>'+s+'</span></label>').join('');
-  const anos=[...new Set(Q.map(q=>q.ano))].sort();
+  const anos=[...new Set(QD.map(q=>q.ano))].sort();
   $('fAno').innerHTML=anos.map(s=>'<label><input type="checkbox" data-f="ano" value="'+s+'"><span>'+s+'</span></label>').join('');
-  document.querySelectorAll('[data-f],#fFig,#fSemFig,#fAnul').forEach(e=>e.addEventListener('change',aplicar));
+  document.querySelectorAll('[data-f]').forEach(e=>e.addEventListener('change',aplicar));
+}
+function iniciaFiltros(){
+  const ds=[...new Set(Q.map(discDe))].sort((a,b)=>a==='Matemática'?-1:b==='Matemática'?1:a.localeCompare(b));
+  try{const d=localStorage.getItem('exata_disc');if(d&&ds.includes(d))DISC=d}catch(e){}
+  if(!ds.includes(DISC))DISC=ds[0];
+  $('fDisc').innerHTML=ds.map(d=>'<option'+(d===DISC?' selected':'')+'>'+d+'</option>').join('');
+  $('fDisc').addEventListener('change',()=>{
+    DISC=$('fDisc').value;try{localStorage.setItem('exata_disc',DISC)}catch(e){}
+    const t=$('cTit');if(/^Avaliação de (Matemática|Física)$/.test(t.value))t.value='Avaliação de '+DISC;
+    montaFiltros();aplicar();
+  });
+  const t=$('cTit');if(/^Avaliação de (Matemática|Física)$/.test(t.value))t.value='Avaliação de '+DISC;
+  montaFiltros();
+  document.querySelectorAll('#fFig,#fSemFig,#fAnul').forEach(e=>e.addEventListener('change',aplicar));
   $('busca').addEventListener('input',()=>{clearTimeout(window._t);window._t=setTimeout(aplicar,250)});
 }
 const vals=f=>[...document.querySelectorAll('[data-f="'+f+'"]:checked')].map(e=>e.value);
@@ -196,6 +215,7 @@ function aplicar(){
   const b=plain($('busca').value.trim());
   const fig=$('fFig').checked,sfig=$('fSemFig').checked,anul=$('fAnul').checked;
   filtrados=Q.filter(q=>{
+    if(discDe(q)!==DISC)return false;
     if(!anul&&semGab(q))return false;
     if(A.length&&!A.includes(q.assunto))return false;
     if(S.length&&!S.includes(q.serie))return false;
@@ -208,7 +228,7 @@ function aplicar(){
     return true;
   });
   mostrando=0;$('lista').innerHTML='';mais();
-  $('cnt').textContent=filtrados.length+' questão(ões) encontrada(s) de '+Q.length;
+  $('cnt').textContent=filtrados.length+' questão(ões) encontrada(s) de '+Q.filter(q=>discDe(q)===DISC).length+' em '+DISC;
 }
 
 /* ---------- renderização ---------- */
@@ -308,7 +328,7 @@ async function baixarWord(btn){
 }
 function voltar(){$('prova').style.display='none';$('app').style.display='grid';document.querySelector('header').style.display='flex'}
 
-montaFiltros();aplicar();desenhaCart();
+iniciaFiltros();aplicar();desenhaCart();
 </script>
 </body>
 </html>
