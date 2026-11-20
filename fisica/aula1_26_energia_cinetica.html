@@ -26,89 +26,74 @@ MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$'
 <div class="container"><main class="conteudo-principal"><div class="secao-aula">
 <div class="container-resumo" id="resumo">
 <h3>📚 Resumo</h3><section class="resumo-conteudo">
-<p>A <strong>energia cinética</strong> é a energia associada ao movimento de um corpo. Para um corpo de massa $m$ em movimento de translação com velocidade de módulo $v$, $E_c=mv^2/2$. O <strong>teorema da energia cinética</strong> afirma que o trabalho da força resultante sobre o corpo é igual à variação de sua energia cinética: $W_{\rm resultante}=\Delta E_c=E_{c,f}-E_{c,i}$.</p>
-<p>O trabalho resultante positivo aumenta a energia cinética; o negativo a diminui; e o trabalho resultante nulo mantém constante a energia cinética entre os estados considerados. No SI, a energia cinética e o trabalho são medidos em joules (J).</p>
+<p>A <strong>energia cinética</strong> é a energia associada ao movimento de um corpo. Para um corpo de massa constante, em movimento de translação e no regime da mecânica clássica, seu valor é $E_c=\dfrac{1}{2}mv^2$, em que $m$ é a massa e $v$ é o módulo da velocidade.</p>
+<p>O <strong>trabalho</strong> de uma força constante é $W=F\,d\cos\theta$. O trabalho resultante é a soma dos trabalhos de todas as forças e, pelo <strong>teorema da energia cinética</strong>, $W_R=\Delta E_c=E_{c,f}-E_{c,i}$. Trabalho resultante positivo aumenta a energia cinética; trabalho negativo a diminui; trabalho nulo mantém seu valor entre os estados considerados.</p>
+<p>No Sistema Internacional, trabalho e energia são medidos em joules (J), sendo $1\,\text{J}=1\,\text{N}\cdot\text{m}=1\,\text{kg}\cdot\text{m}^2/\text{s}^2$.</p>
 </section></div>
-
 <section class="conteudo-teorico-completo" id="teoria">
 <div class="passo-teoria">
-<h3>📖 Energia cinética</h3>
-<h4>1. Conceito e expressão matemática</h4>
-<p>Energia cinética é a grandeza escalar associada ao estado de movimento de um corpo. Na mecânica clássica, para um corpo de massa constante em movimento de translação, sua energia cinética é:</p>
-<p>$$E_c=\frac{1}{2}mv^2$$</p>
-<p>Em que $m$ é a massa do corpo, em quilogramas (kg), e $v$ é o módulo de sua velocidade, em metros por segundo (m/s). A unidade de energia no Sistema Internacional é o joule:</p>
-<p>$$1\text{ J}=1\text{ kg}\cdot\text{m}^2/\text{s}^2$$</p>
-<p>Como a velocidade aparece elevada ao quadrado, a energia cinética não depende do sentido do movimento: um corpo com velocidade $+v$ e outro com velocidade $-v$, de mesma massa, possuem a mesma energia cinética. Se a velocidade dobra, a energia cinética fica quatro vezes maior; se triplica, fica nove vezes maior.</p>
-<figure class="figura-aula figura-grande">
-<img src="../imagens_fisica/aula1_26_energia_cinetica.png" alt="Corpo em movimento com vetor velocidade">
-<figcaption>Figura 1: A energia cinética de translação depende da massa e do quadrado do módulo da velocidade do corpo.</figcaption>
-</figure>
-<h4>2. Comparações importantes</h4>
-<ul>
-<li>Para massas iguais, o corpo mais veloz possui maior energia cinética.</li>
-<li>Para velocidades de mesmo módulo, o corpo de maior massa possui maior energia cinética.</li>
-<li>Um corpo em repouso em relação ao referencial adotado tem $E_c=0$.</li>
-<li>A energia cinética depende do referencial, pois a velocidade também depende dele.</li>
-</ul>
-<p>A expressão apresentada é a da energia cinética de translação na mecânica clássica, adequada quando as velocidades são muito menores que a velocidade da luz.</p>
+<h3>📖 Energia cinética: energia associada ao movimento</h3>
+<h4>1. O que significa dizer que um corpo possui energia cinética?</h4>
+<p>Um corpo em movimento pode transferir energia ao interagir com outros corpos. Um automóvel em movimento, por exemplo, pode deformar uma barreira durante uma colisão; uma bola lançada pode deslocar um objeto ao atingi-lo. Em ambos os casos, o movimento está associado à capacidade de realizar trabalho. Essa energia recebe o nome de <strong>energia cinética</strong>.</p>
+<p>Na mecânica clássica, para um corpo de massa constante em movimento de translação, a energia cinética é definida por:</p>
+<p>$$\boxed{E_c=\frac{1}{2}mv^2}$$</p>
+<p>Nessa expressão, $m$ é a massa do corpo, medida em quilogramas (kg), e $v$ é o módulo de sua velocidade, em metros por segundo (m/s). A energia cinética é uma grandeza <strong>escalar</strong>: não possui direção nem sentido. Seu valor é sempre não negativo, pois depende de $v^2$.</p>
+<p>A unidade no Sistema Internacional é o joule (J): $$1\,\text{J}=1\,\text{kg}\cdot\text{m}^2/\text{s}^2=1\,\text{N}\cdot\text{m}.$$</p>
+<h4>2. De onde vem a expressão da energia cinética?</h4>
+<p>A expressão pode ser relacionada ao trabalho realizado pela força resultante. Considere, inicialmente, um corpo de massa $m$ submetido a uma força resultante constante, paralela ao deslocamento. Pela segunda lei de Newton, $F_R=ma$. O trabalho resultante entre duas posições separadas por uma distância $d$ é $W_R=F_Rd=mad$.</p>
+<p>Para aceleração constante, a equação de Torricelli fornece:</p>
+<p>$$v_f^2-v_i^2=2ad\quad\Rightarrow\quad ad=\frac{v_f^2-v_i^2}{2}.$$</p>
+<p>Substituindo essa relação no trabalho:</p>
+<p>$$W_R=m\frac{v_f^2-v_i^2}{2}=\frac{1}{2}mv_f^2-\frac{1}{2}mv_i^2.$$</p>
+<p>Identificando os termos que dependem das velocidades, definimos $E_c=\frac12mv^2$ e obtemos o teorema da energia cinética. Essa dedução simples considera força resultante constante e alinhada ao deslocamento; o teorema, porém, também é válido em situações mais gerais, desde que o trabalho resultante seja calculado corretamente.</p>
 </div>
-
 <div class="passo-teoria">
-<h3>📖 Trabalho de uma força e seu sinal</h3>
-<h4>3. Trabalho de uma força constante</h4>
-<p>Quando uma força constante $\vec F$ atua durante um deslocamento $\Delta\vec r$, o trabalho realizado por essa força é:</p>
-<p>$$W=F\,\Delta r\,\cos\theta$$</p>
-<p>Em que $F$ é o módulo da força, $\Delta r$ é o módulo do deslocamento e $\theta$ é o ângulo entre a força e o deslocamento. O trabalho é uma grandeza escalar, medida em joules.</p>
-<ul>
-<li>$0^\circ\leq\theta&lt;90^\circ$: trabalho positivo; a força possui componente no sentido do deslocamento.</li>
-<li>$\theta=90^\circ$: trabalho nulo; a força é perpendicular ao deslocamento.</li>
-<li>$90^\circ&lt;\theta\leq180^\circ$: trabalho negativo; a força possui componente contrária ao deslocamento.</li>
-</ul>
-<figure class="figura-aula figura-grande">
-<img src="../imagens_fisica/aula1_26_trabalho_sinal.png" alt="Comparação entre trabalho positivo e negativo">
-<figcaption>Figura 2: O sinal do trabalho depende do ângulo entre a força e o deslocamento.</figcaption>
-</figure>
-<p>O trabalho da força resultante é a soma dos trabalhos de todas as forças que atuam no corpo: $W_{\rm resultante}=\sum_i W_i$. Não se deve confundir o trabalho de uma força específica com o trabalho resultante.</p>
+<h3>📖 Como a massa e a velocidade influenciam a energia cinética?</h3>
+<h4>3. Dependência com a massa e com o quadrado da velocidade</h4>
+<p>Mantida a velocidade, a energia cinética é diretamente proporcional à massa: se a massa dobrar, a energia cinética também dobra. Mantida a massa, a dependência com a velocidade é quadrática: se o módulo da velocidade dobrar, a energia cinética será multiplicada por quatro; se triplicar, será multiplicada por nove.</p>
+<p>Essa dependência quadrática é importante em situações de frenagem e segurança. Um veículo a duas vezes a velocidade possui quatro vezes a energia cinética, se sua massa não mudar. Isso não significa, isoladamente, que a distância de frenagem será sempre exatamente quatro vezes maior: essa conclusão exige hipóteses adicionais sobre as forças de frenagem e as condições de contato.</p>
+<figure class="figura-aula figura-grande"><img src="../imagens_fisica/aula1_26_energia_cinetica_velocidade.png" alt="Gráfico parabólico da energia cinética em função da velocidade para massa constante de dois quilogramas"><figcaption>Figura 1: Para massa constante de $2\,\text{kg}$, a energia cinética cresce com o quadrado da velocidade. Ao passar de $2$ para $4\,\text{m/s}$, por exemplo, o valor passa de $4$ para $16\,\text{J}$.</figcaption></figure>
+<h4>4. A energia cinética depende do referencial</h4>
+<p>A velocidade depende do referencial adotado. Por isso, a energia cinética também depende dele. Uma pessoa sentada em um ônibus possui velocidade nula em relação ao próprio ônibus, mas possui a velocidade do ônibus em relação à rua. Assim, os valores de energia cinética atribuídos à pessoa são diferentes nesses dois referenciais.</p>
+<p>Ao resolver um problema, indique implicitamente ou explicitamente em relação a que referencial a velocidade está sendo medida. Em problemas escolares, normalmente se utiliza o solo como referencial.</p>
 </div>
-
+<div class="passo-teoria">
+<h3>📖 Trabalho de uma força e interpretação do sinal</h3>
+<h4>5. Trabalho de uma força constante</h4>
+<p>O trabalho mede a transferência de energia associada à ação de uma força durante um deslocamento. Para uma força constante $\vec F$ e um deslocamento $\Delta\vec r$, o trabalho é dado pelo produto escalar:</p>
+<p>$$\boxed{W=F\,d\cos\theta}$$</p>
+<p>Em que $F$ é o módulo da força, $d$ é o módulo do deslocamento e $\theta$ é o ângulo entre a força e o deslocamento. O resultado é escalar e sua unidade é o joule. A expressão também pode ser entendida como o produto da componente da força na direção do deslocamento pelo deslocamento: $W=F_{\parallel}d$.</p>
+<h4>6. Por que o trabalho pode ser positivo, negativo ou nulo?</h4>
+<ul><li><strong>Trabalho positivo:</strong> a força possui componente no mesmo sentido do deslocamento. Para $\theta=0^\circ$, $W=Fd$.</li><li><strong>Trabalho nulo:</strong> a força é perpendicular ao deslocamento ($\theta=90^\circ$) ou não há deslocamento. Nesse caso, $W=0$.</li><li><strong>Trabalho negativo:</strong> a componente da força tem sentido contrário ao deslocamento. Para $\theta=180^\circ$, $W=-Fd$.</li></ul>
+<figure class="figura-aula figura-grande"><img src="../imagens_fisica/aula1_26_trabalho_sinal.png" alt="Três diagramas vetoriais comparando trabalho positivo, nulo e negativo"><figcaption>Figura 2: O sinal do trabalho depende da projeção da força sobre a direção do deslocamento. Uma força perpendicular pode alterar a direção da velocidade sem alterar seu módulo instantaneamente.</figcaption></figure>
+<p>Quando várias forças atuam sobre um corpo, calcule o trabalho de cada uma e some os resultados: $$W_R=W_1+W_2+\cdots+W_n=\sum_i W_i.$$</p>
+<p>Não confunda o trabalho de uma força específica com o trabalho resultante. Por exemplo, durante o deslocamento horizontal de uma caixa, o atrito pode realizar trabalho negativo, a tração trabalho positivo e o peso e a normal trabalho nulo, caso sejam perpendiculares ao deslocamento.</p>
+</div>
 <div class="passo-teoria">
 <h3>📖 Teorema da energia cinética</h3>
-<h4>4. Relação entre trabalho resultante e variação da energia cinética</h4>
-<p>O teorema da energia cinética estabelece que o trabalho realizado pela força resultante sobre um corpo é igual à variação de sua energia cinética:</p>
-<p>$$W_{\rm resultante}=\Delta E_c=E_{c,f}-E_{c,i}$$</p>
-<p>Substituindo a expressão da energia cinética:</p>
-<p>$$W_{\rm resultante}=\frac{1}{2}mv_f^2-\frac{1}{2}mv_i^2$$</p>
-<p>O teorema vale para a partícula ou para o movimento do centro de massa sob a força resultante, no contexto da mecânica clássica. É especialmente útil quando se deseja relacionar velocidades e trabalho sem determinar o tempo de movimento.</p>
-<figure class="figura-aula figura-grande">
-<img src="../imagens_fisica/aula1_26_teorema_trabalho.png" alt="Estados inicial e final ligados pelo trabalho resultante">
-<figcaption>Figura 3: O trabalho resultante representa a variação da energia cinética entre os estados inicial e final.</figcaption>
-</figure>
-<h4>5. Interpretação do resultado</h4>
-<ul>
-<li>$W_{\rm resultante}&gt;0$: $E_{c,f}&gt;E_{c,i}$; o módulo da velocidade aumenta.</li>
-<li>$W_{\rm resultante}&lt;0$: $E_{c,f}&lt;E_{c,i}$; o módulo da velocidade diminui.</li>
-<li>$W_{\rm resultante}=0$: $E_{c,f}=E_{c,i}$; o módulo da velocidade permanece igual.</li>
-</ul>
-<p>O trabalho resultante nulo não exige que todas as forças sejam nulas. Por exemplo, uma força centrípeta perpendicular à velocidade pode alterar a direção do movimento sem alterar o módulo da velocidade e, portanto, sem variar a energia cinética.</p>
-<h4>6. Procedimento para resolver problemas</h4>
-<ol>
-<li>Identifique a massa e as velocidades inicial e final.</li>
-<li>Converta os valores para unidades do SI.</li>
-<li>Calcule $E_{c,i}$ e $E_{c,f}$, ou aplique diretamente o teorema.</li>
-<li>Se houver várias forças, determine o trabalho de cada uma e some os trabalhos.</li>
-<li>Interprete o sinal do trabalho resultante e confira a unidade em joules.</li>
-</ol>
+<h4>7. Relação entre o trabalho resultante e a variação da energia cinética</h4>
+<p>O teorema da energia cinética estabelece que o trabalho realizado pela <strong>força resultante</strong> sobre um corpo é igual à variação de sua energia cinética:</p>
+<p>$$\boxed{W_R=\Delta E_c=E_{c,f}-E_{c,i}}$$</p>
+<p>Como $E_c=\frac12mv^2$, para massa constante: $$W_R=\frac{1}{2}m(v_f^2-v_i^2).$$</p>
+<p>O trabalho resultante representa o efeito conjunto de todas as forças sobre a energia cinética. O teorema permite relacionar velocidades e trabalhos sem que seja necessário conhecer o tempo de movimento.</p>
+<figure class="figura-aula figura-grande"><img src="../imagens_fisica/aula1_26_teorema_trabalho.png" alt="Comparação dos estados inicial e final de um corpo e do trabalho resultante entre eles"><figcaption>Figura 3: O trabalho resultante entre os estados inicial e final é igual à diferença entre as energias cinéticas final e inicial.</figcaption></figure>
+<h4>8. Como interpretar o sinal do trabalho resultante?</h4>
+<ul><li>Se $W_R&gt;0$, então $\Delta E_c&gt;0$: a energia cinética aumenta e o módulo da velocidade final é maior que o inicial.</li><li>Se $W_R&lt;0$, então $\Delta E_c&lt;0$: a energia cinética diminui e o módulo da velocidade final é menor que o inicial.</li><li>Se $W_R=0$, então $\Delta E_c=0$: a energia cinética final é igual à inicial. O módulo da velocidade permanece igual, embora sua direção possa mudar.</li></ul>
+<p>Um exemplo importante de trabalho nulo é o da força centrípeta no movimento circular uniforme: ela é perpendicular à velocidade instantânea e muda a direção do movimento, mas não o módulo da velocidade. Portanto, não altera a energia cinética.</p>
 </div>
-</section>
-
-<section class="aplicacoes-reais" id="aplicacoes">
-<h3>💡 Física em Ação</h3>
-<div class="cards-aplicacao">
-<div class="card"><h4>Frenagem de veículos</h4><p>O trabalho negativo da força de atrito dos freios reduz a energia cinética do veículo até que ele pare. A distância de frenagem depende da velocidade inicial e das forças que realizam trabalho.</p></div>
-<div class="card" style="border-left-color:#2ecc71;"><h4>Esportes e colisões</h4><p>Em um chute, arremesso ou tacada, o trabalho da força aplicada altera a energia cinética do objeto. O teorema permite relacionar a intensidade do trabalho à velocidade alcançada.</p></div>
-</div>
-</section>
-
+<div class="passo-teoria">
+<h3>📖 Estratégia de resolução e limites do modelo</h3>
+<h4>9. Procedimento para resolver problemas</h4>
+<ol><li>Identifique a massa, as velocidades inicial e final e as forças que realizam trabalho.</li><li>Converta todas as grandezas para unidades do SI, especialmente velocidades em m/s.</li><li>Se o problema fornecer massa e velocidade, calcule $E_c=\frac12mv^2$.</li><li>Se fornecer o trabalho resultante e as velocidades, use $W_R=\frac12m(v_f^2-v_i^2)$.</li><li>Se houver várias forças, determine o trabalho de cada uma e some-os algebricamente.</li><li>Confira o sinal do resultado, a unidade (J) e se o valor é fisicamente possível.</li></ol>
+<h4>10. Cuidados e erros frequentes</h4>
+<ul><li>Usar a velocidade em km/h sem convertê-la para m/s. A conversão é $v(\text{m/s})=v(\text{km/h})/3{,}6$.</li><li>Esquecer que a velocidade aparece elevada ao quadrado.</li><li>Aplicar o teorema usando o trabalho de apenas uma força, quando há outras forças que também realizam trabalho.</li><li>Confundir trabalho resultante com força resultante: trabalho é energia transferida durante um deslocamento, não uma força.</li><li>Supor que trabalho resultante nulo significa ausência de forças. Forças podem atuar e ter trabalhos que se cancelam.</li></ul>
+<p>A expressão $E_c=\frac12mv^2$ é a forma clássica para movimento de translação e velocidades muito menores que a velocidade da luz. Ela não inclui energia de rotação de um corpo extenso; quando a rotação é relevante, pode ser necessário considerar também a energia cinética rotacional.</p>
+</div></section>
+<section class="aplicacoes-reais" id="aplicacoes"><h3>💡 Física em Ação</h3><div class="cards-aplicacao">
+<div class="card"><h4>Frenagem e segurança viária</h4><p>Durante a frenagem, as forças de atrito e de resistência realizam trabalho resultante negativo, reduzindo a energia cinética do veículo. A energia mecânica é transformada principalmente em energia térmica nos freios, pneus e pista.</p></div>
+<div class="card"><h4>Esportes e equipamentos</h4><p>Em um chute, arremesso ou tacada, a força aplicada realiza trabalho e aumenta a energia cinética da bola. A relação entre trabalho e variação da energia cinética permite estimar a velocidade alcançada sem precisar conhecer o tempo de contato.</p></div>
+<div class="card"><h4>Montanhas-russas e parques</h4><p>Em uma descida, a força peso pode realizar trabalho positivo e aumentar a energia cinética do carrinho. Em curvas, a força centrípeta altera a direção da velocidade; se for perpendicular ao movimento instantâneo, não altera diretamente o módulo da velocidade.</p></div>
+</div></section>
 <section class="questoes-resolvidas" id="resolvidas">
 <h3>✅ 5 Questões Resolvidas (R 1 a 5)</h3>
 <article class="questao"><h4>R 1: Energia cinética de um corpo</h4>
