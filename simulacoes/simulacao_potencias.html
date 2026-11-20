@@ -254,7 +254,7 @@
         return `${racStr(r)} = ${dec(Number(r.n) / Number(r.d))}`;
     }
     const par = (r, forcar) => { const s = racStr(r); return (r.n < 0n || r.d !== 1n || forcar) ? `(${s})` : s; };
-    const baseStr = b => b < 0 ? `(${num(b)})` : num(b);
+    const baseStr = b => (b < 0 ? `(${num(b)})` : num(b)).replace('.', ',');
 
     /* ---------- fatores (blocos) ---------- */
     function blocos(a, n, cor) {
@@ -268,9 +268,9 @@
         modo = m;
         [1, 2, 3].forEach(i => el('tab' + i).classList.toggle('ativo', i === m));
         const A = el('inA'), B = el('inB'), M = el('inM'), N = el('inN'), Q = el('inQ');
-        if (m === 1) { A.min = -5; A.max = 5; A.step = 0.5; A.value = 2; N.min = -5; N.max = 8; N.value = 3; }
+        if (m === 1) { A.min = -5; A.max = 5; A.step = 0.1; A.value = 2; N.min = -5; N.max = 8; N.value = 3; }
         if (m === 2) { A.min = -5; A.max = 5; A.step = 1; A.value = 2; B.value = 3; M.value = 3; N.min = -4; N.max = 6; N.value = 2; }
-        if (m === 3) { A.min = 0; A.max = 64; A.step = 1; A.value = 8; N.min = -4; N.max = 8; N.value = 2; Q.value = 3; }
+        if (m === 3) { A.min = 0; A.max = 64; A.step = 0.25; A.value = 8; N.min = -4; N.max = 8; N.value = 2; Q.value = 3; }
         el('lblA').innerText = m === 3 ? 'Base (a ≥ 0)' : 'Base (a)';
         el('lblN').innerText = m === 3 ? 'Expoente do radicando (p)' : 'Expoente (n)';
         renderizar();
@@ -304,10 +304,10 @@
 
     /* ======== MODO 1: potência ======== */
     function modo1(v) {
-        const a = v.a, n = v.n, ra = R(Math.round(a * 2), 2n);
+        const a = Math.round(v.a * 10) / 10, n = v.n, ra = R(Math.round(a * 10), 10n);
         el('valA').innerText = num(a).replace('.', ',');
         el('valN').innerText = num(n);
-        const aS = baseStr(a).replace('.', ',');
+        const aS = baseStr(a);
         el('display-lei').innerHTML = `${aS}<sup>${num(n)}</sup>`;
         let res, dev, regra = '';
         try {
@@ -323,7 +323,7 @@
             else if (a === 0) regra = '0 elevado a expoente positivo é 0.';
             else if (a < 0) regra = n % 2 === 0 ? 'Base negativa e expoente PAR: o resultado é positivo (os sinais "−" se cancelam em pares).'
                                                 : 'Base negativa e expoente ÍMPAR: o resultado é negativo.';
-            else regra = a > 1 ? 'Base maior que 1: a potência cresce quando o expoente aumenta.' : (a < 1 ? 'Base entre 0 e 1: a potência diminui quando o expoente aumenta.' : '1 elevado a qualquer expoente é 1.');
+            else regra = a > 1 ? 'Base maior que 1: a potência cresce quando o expoente aumenta.' : (a < 1 ? 'Base entre 0 e 1: a potência DIMINUI quando o expoente aumenta (e cresce quando o expoente é negativo).' : '1 elevado a qualquer expoente é 1.');
             el('res-regra').innerText = regra;
         } catch (e) {
             res = null;
@@ -372,7 +372,7 @@
             ctx.fillRect(x + bw * 0.18, h >= 0 ? y0 - h : y0, bw * 0.64, Math.max(Math.abs(h), 1.5));
             ctx.fillStyle = k === nSel ? '#D35400' : '#34495e'; ctx.font = (k === nSel ? 'bold ' : '') + '10.5px Arial';
             ctx.textBaseline = h >= 0 ? 'bottom' : 'top';
-            ctx.fillText(dec(v), x + bw / 2, h >= 0 ? y0 - h - 3 : y0 - h + 3);
+            ctx.fillText(dec(Number(v.toPrecision(4))), x + bw / 2, h >= 0 ? y0 - h - 3 : y0 - h + 3);
         });
         ctx.textAlign = 'left'; ctx.textBaseline = 'top'; ctx.fillStyle = '#34495e'; ctx.font = '11px Arial';
         ctx.fillText('k (expoente)', l, H - 14);
@@ -446,36 +446,45 @@
     }
 
     /* ======== MODO 3: raízes e expoente fracionário ======== */
+    function irq(n, q) {   // raiz q-ésima inteira exata de n (BigInt), ou null
+        let g = BigInt(Math.round(Math.pow(Number(n), 1 / q)));
+        for (const t of [g - 1n, g, g + 1n]) if (t >= 0n && t ** BigInt(q) === n) return t;
+        return null;
+    }
     function modo3(v) {
-        const a = Math.round(v.a), p = v.n, q = v.q;
-        el('valA').innerText = a; el('valN').innerText = num(p); el('valQ').innerText = q;
+        const a = Math.round(v.a * 4) / 4, p = v.n, q = v.q;
+        const aS = String(a).replace('.', ',');
+        el('valA').innerText = aS; el('valN').innerText = num(p); el('valQ').innerText = q;
         const raiz = q === 2 ? '√' : sup(q) + '√';
-        const A = BigInt(a), ap = BigInt(Math.abs(p));
-        el('display-lei').innerHTML = `${a}<sup>${num(p)}/${q}</sup>`;
-        let val = null, txt = '', exato = null;
+        el('display-lei').innerHTML = `${aS}<sup>${num(p)}/${q}</sup>`;
         if (a === 0 && p <= 0) {
-            el('res-dev').innerText = `${a}${sup(p)}⁄${sup(q)}`;
+            el('res-dev').innerText = `${aS}${sup(p)}⁄${sup(q)}`;
             el('res-val').innerText = 'Indefinido';
             el('res-regra').innerText = p === 0 ? '0⁰ é indeterminado.' : '0 com expoente negativo exigiria dividir por zero.';
             el('fatores').innerHTML = '';
             desenharRaiz(a, p, q, null); return;
         }
-        val = Math.pow(a, p / q);
-        const radicando = A ** ap;                   // a^|p|
-        let s = Math.round(Math.pow(Number(radicando), 1 / q));
-        let perfeito = false;
-        for (const t of [s - 1, s, s + 1]) if (t >= 0 && BigInt(t) ** BigInt(q) === radicando) { s = t; perfeito = true; }
-        if (perfeito) exato = p >= 0 ? R(s) : R(1, s);
-        const radStr = `${raiz}(${a}${sup(p)})`;
-        let dev = `${a}${sup(p)}⁄${sup(q)} = ${radStr}\n`;
-        dev += `a potência ${a}${sup(p)} = ${p >= 0 ? radicando.toString() : '1/' + radicando.toString()}\n`;
-        dev += perfeito ? `${raiz}${p >= 0 ? radicando.toString() : '(1/' + radicando.toString() + ')'} = ${racStr(exato)}  (pois ${s}${sup(q)} = ${radicando.toString()})`
-                        : `${raiz}${radicando.toString()} não é exata (número irracional) ≈ ${dec(Math.pow(Number(radicando), 1 / q))}`;
+        const val = Math.pow(a, p / q);
+        const ra = R(Math.round(a * 4), 4n);
+        const rad = pot(ra, p);                         // a^p (racional exato)
+        const radAbs = pot(ra, Math.abs(p));            // a^|p|
+        const rn = irq(radAbs.n, q), rd = irq(radAbs.d, q);
+        const perfeito = rn !== null && rd !== null;
+        const exato = perfeito ? (p >= 0 ? R(rn, rd) : R(rd, rn)) : null;
+        const radStr = `${raiz}(${aS}${sup(p)})`;
+        const radTxt = racStr(rad);
+        let dev = `${aS}${sup(p)}⁄${sup(q)} = ${radStr}\n`;
+        dev += `a potência ${aS}${sup(p)} = ${radTxt}\n`;
+        dev += perfeito ? `${raiz}${rad.d === 1n ? radTxt : '(' + radTxt + ')'} = ${racStr(exato)}  (raiz exata)`
+                        : `${raiz}${rad.d === 1n ? radTxt : '(' + radTxt + ')'} não é exata (irracional) ≈ ${dec(val)}`;
         el('res-dev').innerText = dev;
         el('res-val').innerText = perfeito ? '= ' + racFull(exato) : '≈ ' + dec(val);
-        el('res-regra').innerText = `Expoente fracionário: o denominador (${q}) é o ÍNDICE da raiz e o numerador (${num(p)}) é o expoente do radicando.\n` +
-            `Conferência: (${perfeito ? racStr(exato) : dec(val)})${sup(q)} ${perfeito ? '=' : '≈'} ${a}${sup(p)} = ${p >= 0 ? radicando.toString() : '1/' + radicando.toString()}`;
-        el('fatores').innerHTML = `<div class="linha"><span class="res">${a}<sup>${num(p)}/${q}</sup></span><span class="igual">=</span><span class="res">${raiz}<span class="radi">${a}<sup>${num(p)}</sup></span></span><span class="igual">${perfeito ? '=' : '≈'}</span><span class="res">${perfeito ? racStr(exato) : dec(val)}</span></div>`;
+        let regra = `Expoente fracionário: o denominador (${q}) é o ÍNDICE da raiz e o numerador (${num(p)}) é o expoente do radicando.\n` +
+            `Conferência: (${perfeito ? racStr(exato) : dec(val)})${sup(q)} ${perfeito ? '=' : '≈'} ${radTxt}`;
+        if (a > 0 && a < 1 && p > 0) regra += `\nBase entre 0 e 1: a potência e a raiz ficam MENORES que a base (${dec(val)} < ${aS}).`;
+        else if (a > 0 && a < 1 && p < 0) regra += `\nBase entre 0 e 1 com expoente negativo: o resultado fica MAIOR que 1.`;
+        el('res-regra').innerText = regra;
+        el('fatores').innerHTML = `<div class="linha"><span class="res">${aS}<sup>${num(p)}/${q}</sup></span><span class="igual">=</span><span class="res">${raiz}<span class="radi">${aS}<sup>${num(p)}</sup></span></span><span class="igual">${perfeito ? '=' : '≈'}</span><span class="res">${perfeito ? racStr(exato) : dec(val)}</span></div>`;
         desenharRaiz(a, p, q, val);
     }
 
@@ -486,8 +495,9 @@
         canvas.width = Math.round(W * dpr); canvas.height = Math.round(H * dpr);
         ctx.setTransform(dpr, 0, 0, dpr, 0, 0); ctx.clearRect(0, 0, W, H);
         const r = p / q;
-        const XL = Math.max(10, Math.ceil(a * 1.15 / 5) * 5);
-        const YL = Math.max(5, Math.ceil(Math.max(val || 0, 0) * 1.3 / 5) * 5);
+        const XL = a <= 2 ? 2 : Math.max(10, Math.ceil(a * 1.15 / 5) * 5);
+        const nice = v => v <= 2 ? 2 : Math.max(5, Math.ceil(v / 5) * 5);
+        const YL = nice(Math.max(val || 0, 0) * 1.3);
         const ml = 44, mb = 34, mt = 16, mr = 18;
         const px = x => ml + x / XL * (W - ml - mr);
         const py = y => H - mb - y / YL * (H - mb - mt);
@@ -528,7 +538,8 @@
                 ctx.textAlign = a > XL * 0.7 ? 'right' : 'left';
                 const lx = px(a) + (a > XL * 0.7 ? -10 : 10);
                 ctx.lineWidth = 4; ctx.strokeStyle = 'rgba(255,255,255,0.9)';
-                ctx.strokeText(`(${a}; ${dec(Math.round(val * 1000) / 1000)})`, lx, py(val) - 8); ctx.fillText(`(${a}; ${dec(Math.round(val * 1000) / 1000)})`, lx, py(val) - 8);
+                const rot = `(${dec(a)}; ${dec(Math.round(val * 1000) / 1000)})`;
+                ctx.strokeText(rot, lx, py(val) - 8); ctx.fillText(rot, lx, py(val) - 8);
             }
         }
     }
