@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laboratório de Áreas | Interativo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --cor-primaria: #003366;
+            --cor-secundaria: #D35400;
+            --cor-texto: #f8fafc;
+            --cor-fundo-glass: rgba(255, 255, 255, 0.1);
+            --fonte-titulo: 'Oswald', sans-serif;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0; padding: 0;
+            background: radial-gradient(circle at 50% 50%, #001f3f 0%, #000a14 100%);
+            color: var(--cor-texto);
+            min-height: 100vh;
+        }
+
+        header {
+            background: rgba(0, 51, 102, 0.8);
+            backdrop-filter: blur(10px);
+            padding: 15px 5%;
+            text-align: center;
+            border-bottom: 5px solid var(--cor-secundaria);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        header h1 { font-family: var(--fonte-titulo); margin: 0; text-transform: uppercase; }
+
+        .main-grid {
+            display: grid;
+            grid-template-columns: 320px 1fr 280px;
+            gap: 20px;
+            padding: 20px;
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        .panel {
+            background: var(--cor-fundo-glass);
+            backdrop-filter: blur(15px);
+            padding: 20px;
+            border-radius: 15px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .panel h2 {
+            font-family: var(--fonte-titulo);
+            color: var(--cor-secundaria);
+            border-bottom: 2px solid var(--cor-secundaria);
+            padding-bottom: 8px;
+            text-transform: uppercase;
+            font-size: 1.2rem;
+        }
+
+        .input-group { margin-bottom: 15px; }
+        label { display: block; font-size: 0.75rem; font-weight: bold; color: #cbd5e1; text-transform: uppercase; margin-bottom: 8px; }
+        
+        input[type="range"] {
+            width: 100%;
+            cursor: pointer;
+            accent-color: var(--cor-secundaria);
+        }
+
+        .valor-dinamico {
+            float: right;
+            color: var(--cor-secundaria);
+            font-family: monospace;
+            font-size: 1rem;
+        }
+
+        .viz-container {
+            background: white;
+            border-radius: 20px;
+            padding: 12px;
+            border: 1px solid rgba(255,255,255,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            align-self: start;
+        }
+        .canvas-wrap {
+            position: relative;
+            width: 100%;
+            max-width: 640px;
+            aspect-ratio: 1 / 1;
+        }
+        .canvas-wrap canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+
+        .res-card {
+            background: rgba(255,255,255,0.03);
+            padding: 12px;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            border-left: 4px solid var(--cor-secundaria);
+        }
+        .res-card span { display: block; font-size: 0.65rem; color: #94a3b8; text-transform: uppercase; }
+        .res-card strong { font-size: 1rem; color: white; display: block; margin-top: 4px; }
+
+        .formula-display {
+            margin-top: 15px;
+            font-size: 1rem;
+            color: #2ecc71;
+            background: rgba(0,0,0,0.3);
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            font-family: 'Courier New', monospace;
+            font-weight: bold;
+        }
+
+
+        .tabs { display: flex; gap: 6px; margin-bottom: 18px; }
+        .tab-btn { flex: 1; cursor: pointer; border: 1px solid rgba(255,255,255,0.25); background: rgba(255,255,255,0.06); color: #e2e8f0; border-radius: 8px; padding: 9px 2px; font-weight: bold; font-size: 0.8rem; }
+        .tab-btn.ativo { background: var(--cor-secundaria); border-color: var(--cor-secundaria); color: #fff; }
+        select { width: 100%; padding: 8px; border-radius: 8px; background: #0b2540; color: #fff; border: 1px solid rgba(255,255,255,0.3); font-size: 1rem; }
+        .passos { white-space: pre-line; font-size: 0.85rem; line-height: 1.5; font-weight: normal; color: #e2e8f0; }
+        .solucao, .passos, .res-card strong { text-transform: none; }
+        .solucao { color: #2ecc71 !important; font-size: 1.1rem !important; }
+        .res-card strong span { display: inline; font-size: inherit; text-transform: none; color: inherit; }
+        .res-card strong .ok { color: #2ecc71; } .res-card strong .nok { color: #e74c3c; }
+        #fatores { color: #2c3e50; text-align: center; min-height: 60px; }
+        #fatores .linha { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 6px; margin: 10px 0 4px; }
+        #fatores .rot { font-size: 0.8rem; color: #566573; margin-bottom: 4px; }
+        .grupo { display: inline-flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 3px; padding: 3px 6px; border: 2px dashed #bdc3c7; border-radius: 10px; }
+        .fator { display: inline-block; min-width: 30px; padding: 5px 7px; border-radius: 8px; background: #5dade2; color: #fff; font-weight: bold; font-size: 0.95rem; }
+        .fator.neg { background: #e57373; } .fator.g1 { background: #5dade2; } .fator.g2 { background: #f5a623; }
+        .x { color: #7f8c8d; font-weight: bold; margin: 0 1px; }
+        .igual { font-size: 1.5rem; font-weight: bold; color: #2c3e50; margin: 0 4px; }
+        .res { font-size: 1.4rem; font-weight: bold; color: #D35400; }
+        .res .radi { border-top: 2px solid #D35400; padding: 0 3px; margin-left: 2px; }
+        .frac { display: inline-flex; flex-direction: column; align-items: center; }
+        .frac .num { border-bottom: 2px solid #2c3e50; padding: 0 6px 3px; font-weight: bold; }
+        .frac .den { padding-top: 3px; }
+        @media (max-width: 1100px) { .main-grid { grid-template-columns: 1fr; } }
+        .main-grid > * { min-width: 0; }
+        #fatores { max-width: 100%; overflow-x: auto; }
+        .salto { color: #27ae60; font-weight: bold; font-size: 0.8rem; margin: 0 2px; }
+        .fator.sel { background: #c0392b; transform: scale(1.12); }
+        .fator.soma { background: #27ae60; }
+        .linha.chips { gap: 4px; }
+        .rot-l { justify-content: flex-start !important; flex-wrap: nowrap !important; overflow-x: auto; }
+        .rot-l .lbl { min-width: 64px; text-align: right; font-size: 0.75rem; color: #566573; font-weight: bold; margin-right: 4px; }
+        .rot-l .fator { min-width: 24px; padding: 4px 5px; font-size: 0.8rem; }
+        .leg { display: inline-block; width: 12px; height: 12px; border-radius: 3px; vertical-align: middle; }
+        .leg.g1 { background: #5dade2; } .leg.g2 { background: #f5a623; }
+        .figs { display: grid; grid-template-columns: repeat(2, 1fr); gap: 6px; margin-bottom: 18px; }
+        .figs .tab-btn { font-size: 0.78rem; padding: 8px 4px; }
+        .chk { display: flex; align-items: center; gap: 8px; cursor: pointer; margin: 6px 0 14px; text-transform: none; font-size: 0.9rem; }
+        .chk input { width: 18px; height: 18px; accent-color: var(--cor-secundaria); }
+        .nota { font-size: 0.8rem; color: #94a3b8; margin: 10px 0 0; }
+            .input-group label { text-transform: none; }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Laboratório de Áreas</h1>
+    <p>Arraste os pontos laranja, mude as medidas e veja a área se transformar</p>
+</header>
+
+<div class="main-grid">
+    <aside class="panel">
+        <h2>Figura</h2>
+        <div class="figs" id="figs"></div>
+
+        <div id="controles"></div>
+
+        <label class="chk"><input type="checkbox" id="chkIdeia" checked onchange="renderizar()"> Mostrar a ideia da fórmula</label>
+        <div class="formula-display" id="display-lei"></div>
+        <p class="nota">Dica: arraste os <b style="color:#e67e22">pontos laranja</b> direto no desenho.</p>
+    </aside>
+
+    <main class="viz-container">
+        <div class="canvas-wrap" id="cwrap" style="aspect-ratio: 11 / 6; max-width: none;"><canvas id="grafico" style="touch-action:none;"></canvas></div>
+    </main>
+
+    <aside class="panel">
+        <h2>Análise</h2>
+        <div class="res-card"><span>Fórmula</span><strong class="passos" id="res-formula"></strong></div>
+        <div class="res-card" style="border-left-color:#2ecc71;"><span>Área</span><strong class="solucao" id="res-val"></strong></div>
+        <div class="res-card" style="border-left-color:#3498db;"><span>Ideia por trás da fórmula</span><strong class="passos" id="res-ideia"></strong></div>
+    </aside>
+</div>
+
+<script>
+    const el = id => document.getElementById(id);
+    const canvas = el('grafico'), ctx = canvas.getContext('2d');
+    const WX = 22, WY = 12, OX = 2, OY = 2;          // janela do "mundo" e origem da figura
+    const P = { b: 6, h: 4, s: 2, p: 2, B: 8, bt: 4, o: 2, D: 8, d: 5, l: 5, k: 2 };
+    let modo = 'ret';
+    let handles = [], arrastando = null, S = 1, geo = {};
+
+    const nf = (x, c = 2) => { const f = Math.pow(10, c), v = Math.round(x * f) / f; return String(v === 0 ? 0 : v).replace('.', ',').replace('-', '−'); };
+    const snap = v => Math.round(v * 2) / 2;
+    const lim = (v, a, b) => Math.max(a, Math.min(b, v));
+
+    /* definição dos parâmetros e das figuras */
+    const PD = {
+        b:  { rot: 'Base (b)',                 min: () => 1,  max: () => 10 },
+        h:  { rot: 'Altura (h)',               min: () => 1,  max: () => 9 },
+        s:  { rot: 'Inclinação (s)',           min: () => 0,  max: () => P.b },
+        p:  { rot: 'Posição do vértice (p)',   min: () => 0,  max: () => P.b },
+        B:  { rot: 'Base maior (B)',           min: () => 2,  max: () => 10 },
+        bt: { rot: 'Base menor (b)',           min: () => 1,  max: () => P.B },
+        o:  { rot: 'Deslocamento (o)',         min: () => 0,  max: () => P.B - P.bt },
+        D:  { rot: 'Diagonal maior (D)',       min: () => 2,  max: () => 10 },
+        d:  { rot: 'Diagonal menor (d)',       min: () => 2,  max: () => 9 },
+        l:  { rot: 'Lado (ℓ)',                 min: () => 1,  max: () => 10 },
+        k:  { rot: 'Razão de semelhança (k)',  min: () => 0.5, max: () => 3, step: 0.1 }
+    };
+    const FIG = {
+        ret: { nome: 'Retângulo', ps: ['b', 'h'] },
+        qua: { nome: 'Quadrado', ps: ['l'] },
+        par: { nome: 'Paralelogramo', ps: ['b', 'h', 's'] },
+        tri: { nome: 'Triângulo', ps: ['b', 'h', 'p'] },
+        equ: { nome: 'Triângulo equilátero', ps: ['l'] },
+        tra: { nome: 'Trapézio', ps: ['B', 'bt', 'h', 'o'] },
+        los: { nome: 'Losango', ps: ['D', 'd'] },
+        sem: { nome: 'Semelhança (k²)', ps: ['k'] }
+    };
+
+    function ajustarLimites() {
+        P.s = lim(P.s, 0, P.b); P.p = lim(P.p, 0, P.b);
+        P.bt = lim(P.bt, 1, P.B); P.o = lim(P.o, 0, P.B - P.bt);
+                Object.keys(PD).forEach(k => { P[k] = lim(P[k], PD[k].min(), PD[k].max()); });
+    }
+
+    function montarBotoes() {
+        el('figs').innerHTML = Object.keys(FIG).map(k => `<button class="tab-btn ${k === modo ? 'ativo' : ''}" onclick="setModo('${k}')">${FIG[k].nome}</button>`).join('');
+    }
+    function montarControles() {
+        el('controles').innerHTML = FIG[modo].ps.map(k => {
+            const d = PD[k], st = d.step || 0.5;
+            return `<div class="input-group"><label>${d.rot} <span id="v_${k}" class="valor-dinamico"></span></label>
+                <input type="range" id="in_${k}" step="${st}" oninput="mudou('${k}', this.value)"></div>`;
+        }).join('');
+        sincronizar();
+    }
+    function sincronizar() {
+        FIG[modo].ps.forEach(k => {
+            const inp = el('in_' + k); if (!inp) return;
+            inp.min = PD[k].min(); inp.max = PD[k].max(); inp.value = P[k];
+            el('v_' + k).innerText = nf(P[k], 1);
+        });
+    }
+    function mudou(k, v) { P[k] = parseFloat(v); ajustarLimites(); sincronizar(); renderizar(); }
+    function setModo(m) { modo = m; ajustarLimites(); montarBotoes(); montarControles(); renderizar(); }
+
+    /* ---------- geometria de cada figura (coordenadas do mundo, relativas à origem) ---------- */
+    function geometria() {
+        const g = { poly: [], ghost: null, pecas: [], alturas: [], rotulos: [], handles: [], area: 0 };
+        if (modo === 'ret') {
+            const { b, h } = P; g.poly = [[0, 0], [b, 0], [b, h], [0, h]]; g.area = b * h;
+            g.rotulos = [[b / 2, -0.7, `b = ${nf(b)}`, 'c'], [-0.4, h / 2, `h = ${nf(h)}`, 'r']];
+            g.handles = [{ x: b, y: h, set: (x, y) => { P.b = snap(x); P.h = snap(y); } }];
+        } else if (modo === 'qua') {
+            const l = P.l; g.poly = [[0, 0], [l, 0], [l, l], [0, l]]; g.area = l * l;
+            g.diag = [[0, 0], [l, l]];
+            g.rotulos = [[l / 2, -0.7, `ℓ = ${nf(l)}`, 'c'], [-0.4, l / 2, `ℓ = ${nf(l)}`, 'r']];
+            g.handles = [{ x: l, y: l, set: (x, y) => { P.l = snap(Math.max(x, y)); } }];
+        } else if (modo === 'par') {
+            const { b, h, s } = P; g.poly = [[0, 0], [b, 0], [b + s, h], [s, h]]; g.area = b * h;
+            g.pecas = [[[0, 0], [s, 0], [s, h]]];
+            g.ghost = { tri: [[b, 0], [b + s, 0], [b + s, h]], ret: [[s, 0], [s + b, 0], [s + b, h], [s, h]] };
+            g.alturas = [[[s, 0], [s, h]]];
+            g.rotulos = [[b / 2, -0.7, `b = ${nf(b)}`, 'c'], [s + 0.3, h / 2, `h = ${nf(h)}`, 'l']];
+            g.handles = [{ x: b, y: 0, set: x => { P.b = snap(x); } }, { x: s, y: h, set: (x, y) => { P.s = snap(x); P.h = snap(y); } }];
+        } else if (modo === 'tri') {
+            const { b, h, p } = P; g.poly = [[0, 0], [b, 0], [p, h]]; g.area = b * h / 2;
+            g.ghost = { tri: [[b, 0], [p, h], [b + p, h]], par: [[0, 0], [b, 0], [b + p, h], [p, h]] };
+            g.alturas = [[[p, 0], [p, h]]];
+            g.rotulos = [[b / 2, -0.7, `b = ${nf(b)}`, 'c'], [p + 0.4, h / 2, `h = ${nf(h)}`, 'l']];
+            g.handles = [{ x: b, y: 0, set: x => { P.b = snap(x); } }, { x: p, y: h, set: (x, y) => { P.p = snap(x); P.h = snap(y); } }];
+        } else if (modo === 'equ') {
+            const l = P.l, h = l * Math.sqrt(3) / 2; g.poly = [[0, 0], [l, 0], [l / 2, h]]; g.area = l * l * Math.sqrt(3) / 4;
+            g.alturas = [[[l / 2, 0], [l / 2, h]]];
+            g.rotulos = [[l / 2, -0.7, `ℓ = ${nf(l)}`, 'c'], [l / 2 + 0.4, h / 2, `h = ${nf(h)}`, 'l']];
+            g.handles = [{ x: l, y: 0, set: x => { P.l = snap(x); } }, { x: l / 2, y: h, set: (x, y) => { P.l = snap(2 * y / Math.sqrt(3)); } }];
+        } else if (modo === 'tra') {
+            const { B, bt, h, o } = P;
+            const p1 = [0, 0], p2 = [B, 0], p3 = [o + bt, h], p4 = [o, h];
+            g.poly = [p1, p2, p3, p4]; g.area = (B + bt) * h / 2;
+            const rot = q => [p2[0] + p3[0] - q[0], p2[1] + p3[1] - q[1]];
+            g.ghost = { copia: [p1, p2, p3, p4].map(rot) };
+            g.alturas = [[[o, 0], [o, h]]];
+            g.rotulos = [[B / 2, -0.7, `B = ${nf(B)}`, 'c'], [o + bt / 2, h + 0.7, `b = ${nf(bt)}`, 'c'], [o + 0.3, h / 2, `h = ${nf(h)}`, 'l']];
+            g.handles = [{ x: B, y: 0, set: x => { P.B = snap(x); } },
+                         { x: o, y: h, set: (x, y) => { P.o = snap(x); P.h = snap(y); } },
+                         { x: o + bt, y: h, set: x => { P.bt = snap(x - P.o); } }];
+        } else if (modo === 'los') {
+            const { D, d } = P;
+            g.poly = [[0, d / 2], [D / 2, 0], [D, d / 2], [D / 2, d]]; g.area = D * d / 2;
+            g.ghost = { ret: [[0, 0], [D, 0], [D, d], [0, d]] };
+            g.diag = [[0, d / 2], [D, d / 2]]; g.diag2 = [[D / 2, 0], [D / 2, d]];
+            g.rotulos = [[D / 2, -0.7, `D = ${nf(D)}`, 'c'], [-0.4, d / 2, `d = ${nf(d)}`, 'r']];
+            g.handles = [{ x: D, y: d / 2, set: x => { P.D = snap(x); } }, { x: D / 2, y: d, set: (x, y) => { P.d = snap(y); } }];
+        } else {
+            const k = P.k, w = 3, a = 2;
+            g.poly = [[0, 0], [w, 0], [w, a], [0, a]]; g.area = w * a;
+            g.copia = [[0, 0], [w * k, 0], [w * k, a * k], [0, a * k]];
+            g.area2 = w * a * k * k;
+            g.rotulos = [[w * k / 2, -0.7, `${nf(w * k)}`, 'c'], [-0.4, a * k / 2, `${nf(a * k)}`, 'r']];
+            g.handles = [{ x: w * k, y: a * k, set: (x, y) => { P.k = Math.round(Math.max(x / w, y / a) * 10) / 10; } }];
+        }
+        return g;
+    }
+
+    /* ---------- desenho ---------- */
+    const C = (x, y) => [mx0 + (OX + x) * S, H0 - ((H0 - WY * S) / 2) - (OY + y) * S];
+    let mx0 = 8, H0 = 0;
+    function caminho(pts) { ctx.beginPath(); pts.forEach((q, i) => { const [cx, cy] = C(q[0], q[1]); i ? ctx.lineTo(cx, cy) : ctx.moveTo(cx, cy); }); ctx.closePath(); }
+    function linha(a, b) { const [x1, y1] = C(a[0], a[1]), [x2, y2] = C(b[0], b[1]); ctx.beginPath(); ctx.moveTo(x1, y1); ctx.lineTo(x2, y2); ctx.stroke(); }
+    function texto(x, y, t, al, cor = '#2c3e50', tam = 13) {
+        const [cx, cy] = C(x, y);
+        ctx.font = `bold ${tam}px Arial`; ctx.textBaseline = 'middle';
+        ctx.textAlign = al === 'c' ? 'center' : (al === 'r' ? 'right' : 'left');
+        ctx.lineWidth = 4; ctx.strokeStyle = 'rgba(255,255,255,0.92)'; ctx.strokeText(t, cx, cy);
+        ctx.fillStyle = cor; ctx.fillText(t, cx, cy);
+    }
+    function anguloReto(x, y, dx, dy, t = 0.45) {   // quadradinho de ângulo reto no ponto (x,y)
+        const a = C(x + dx * t, y), b = C(x + dx * t, y + dy * t), c = C(x, y + dy * t);
+        ctx.beginPath(); ctx.moveTo(a[0], a[1]); ctx.lineTo(b[0], b[1]); ctx.lineTo(c[0], c[1]); ctx.stroke();
+    }
+
+    function desenhar() {
+        const dpr = window.devicePixelRatio || 1, W = canvas.clientWidth, H = canvas.clientHeight;
+        if (!W || !H) return;
+        canvas.width = Math.round(W * dpr); canvas.height = Math.round(H * dpr);
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0); ctx.clearRect(0, 0, W, H);
+        H0 = H; S = (W - 2 * mx0) / WX;
+        const g = geo = geometria(); const ideia = el('chkIdeia').checked;
+
+        // malha de 1 unidade
+        ctx.lineWidth = 1; ctx.strokeStyle = 'rgba(0,0,0,0.09)';
+        for (let i = 0; i <= WX; i++) { linha([i - OX, -OY], [i - OX, WY - OY]); }
+        for (let j = 0; j <= WY; j++) { linha([-OX, j - OY], [WX - OX, j - OY]); }
+
+        // figura de comparação (semelhança) por baixo
+        if (g.copia) {
+            caminho(g.copia); ctx.fillStyle = 'rgba(230,126,34,0.22)'; ctx.fill();
+            ctx.strokeStyle = '#e67e22'; ctx.lineWidth = 2.5; ctx.stroke();
+        }
+        // peças fantasma (a "ideia")
+        if (ideia && g.ghost) {
+            ctx.setLineDash([6, 4]); ctx.lineWidth = 2; ctx.strokeStyle = '#e67e22';
+            if (g.ghost.ret) { caminho(g.ghost.ret); ctx.fillStyle = 'rgba(230,126,34,0.10)'; ctx.fill(); ctx.stroke(); }
+            if (g.ghost.par) { caminho(g.ghost.par); ctx.stroke(); }
+            if (g.ghost.tri) { caminho(g.ghost.tri); ctx.fillStyle = 'rgba(230,126,34,0.35)'; ctx.fill(); ctx.stroke(); }
+            if (g.ghost.copia) { caminho(g.ghost.copia); ctx.fillStyle = 'rgba(230,126,34,0.28)'; ctx.fill(); ctx.stroke(); }
+            ctx.setLineDash([]);
+        }
+        // figura
+        caminho(g.poly); ctx.fillStyle = 'rgba(52,152,219,0.45)'; ctx.fill();
+        // quadradinhos dentro da figura (malha mais forte)
+        ctx.save(); caminho(g.poly); ctx.clip(); ctx.lineWidth = 1; ctx.strokeStyle = 'rgba(31,97,141,0.45)';
+        for (let i = 0; i <= WX; i++) linha([i - OX, -OY], [i - OX, WY - OY]);
+        for (let j = 0; j <= WY; j++) linha([-OX, j - OY], [WX - OX, j - OY]);
+        ctx.restore();
+        if (ideia) g.pecas.forEach(pc => { caminho(pc); ctx.fillStyle = 'rgba(230,126,34,0.55)'; ctx.fill(); });
+        caminho(g.poly); ctx.lineWidth = 3; ctx.strokeStyle = '#1f618d'; ctx.lineJoin = 'round'; ctx.stroke();
+
+        // diagonais, alturas e ângulos retos
+        ctx.setLineDash([6, 4]); ctx.lineWidth = 2;
+        ctx.strokeStyle = '#8e44ad'; if (g.diag) linha(g.diag[0], g.diag[1]); if (g.diag2) linha(g.diag2[0], g.diag2[1]);
+        ctx.strokeStyle = '#e74c3c'; g.alturas.forEach(a => linha(a[0], a[1]));
+        ctx.setLineDash([]);
+        ctx.lineWidth = 1.5; ctx.strokeStyle = '#e74c3c';
+        if (modo === 'par') anguloReto(P.s, 0, 1, 1); if (modo === 'tri') anguloReto(P.p, 0, P.p > P.b / 2 ? -1 : 1, 1);
+        if (modo === 'equ') anguloReto(P.l / 2, 0, 1, 1); if (modo === 'tra') anguloReto(P.o, 0, 1, 1);
+        if (modo === 'los') { ctx.strokeStyle = '#8e44ad'; anguloReto(P.D / 2, P.d / 2, 1, 1, 0.4); }
+
+        g.rotulos.forEach(r => texto(r[0], r[1], r[2], r[3], '#1f3a52'));
+        if (modo === 'qua') { const l = P.l; texto(l / 2 + 0.2, l / 2 + 0.7, `d = ${nf(l * Math.SQRT2)}`, 'c', '#8e44ad', 12); }
+        if (modo === 'sem') {
+            texto(1.5, 1, 'A = 6', 'c', '#1f618d');
+            const k = P.k; if (k > 1.2) texto(3 * k / 2, 2 * k / 2 + 1.1, `A = ${nf(6 * k * k)}`, 'c', '#c0392b', 14);
+        }
+        // alças
+        handles = g.handles.map(hd => ({ ...hd, c: C(hd.x, hd.y) }));
+        handles.forEach(hd => {
+            ctx.beginPath(); ctx.arc(hd.c[0], hd.c[1], 8, 0, 7); ctx.fillStyle = '#e67e22'; ctx.fill();
+            ctx.lineWidth = 2.5; ctx.strokeStyle = '#fff'; ctx.stroke();
+        });
+        ctx.fillStyle = '#566573'; ctx.font = '11px Arial'; ctx.textAlign = 'right'; ctx.textBaseline = 'bottom';
+        ctx.fillText('cada quadradinho = 1 cm²', W - 8, H - 4);
+    }
+
+    /* ---------- análise ---------- */
+    function analisar() {
+        const g = geo.poly.length ? geo : geometria();
+        const A = g.area;
+        let f, ideia, area = `A = ${nf(A)} cm²`;
+        const q = `\nIsso equivale a ${nf(A)} quadradinhos de 1 cm².`;
+        if (modo === 'ret') { f = `A = b · h\nA = ${nf(P.b)} · ${nf(P.h)}`; ideia = 'O retângulo é a base de tudo: cabem b quadradinhos em cada fileira e há h fileiras.'; }
+        else if (modo === 'qua') {
+            const d = P.l * Math.SQRT2; f = `A = ℓ²  =  ${nf(P.l)}²\nPela diagonal: d = ℓ√2 ≈ ${nf(d)}\nA = d² ÷ 2 ≈ ${nf(d * d / 2)}`;
+            ideia = 'Quadrado é retângulo com b = h = ℓ. A diagonal o divide em dois triângulos iguais: por isso A = d²/2.';
+        } else if (modo === 'par') {
+            const lado = Math.hypot(P.s, P.h);
+            f = `A = b · h\nA = ${nf(P.b)} · ${nf(P.h)}`;
+            ideia = `Recorte o triângulo laranja e encaixe do outro lado (pontilhado): vira um retângulo b × h.\nAtenção: o lado inclinado (≈ ${nf(lado)}) NÃO é a altura. A altura h é perpendicular à base.`;
+        } else if (modo === 'tri') {
+            f = `A = b · h ÷ 2\nA = ${nf(P.b)} · ${nf(P.h)} ÷ 2\nA = ${nf(P.b * P.h)} ÷ 2`;
+            ideia = `Duas cópias do triângulo (a laranja é a cópia girada 180°) formam um paralelogramo de área b · h = ${nf(P.b * P.h)}. Cada triângulo é a metade.\nMexa no vértice do topo: a área não muda se a altura e a base não mudam!`;
+        } else if (modo === 'equ') {
+            const h = P.l * Math.sqrt(3) / 2;
+            f = `h = ℓ√3 ÷ 2 ≈ ${nf(h)}\nA = ℓ²√3 ÷ 4\nA = ${nf(P.l)}² · 1,732 ÷ 4`;
+            ideia = 'No equilátero, a altura divide o triângulo em dois triângulos retângulos 30°-60°-90°. Pitágoras dá h = ℓ√3/2 e, em b·h/2, A = ℓ²√3/4.';
+        } else if (modo === 'tra') {
+            f = `A = (B + b) · h ÷ 2\nA = (${nf(P.B)} + ${nf(P.bt)}) · ${nf(P.h)} ÷ 2\nA = ${nf(P.B + P.bt)} · ${nf(P.h)} ÷ 2`;
+            ideia = `A cópia girada (pontilhada) completa um paralelogramo de base B + b = ${nf(P.B + P.bt)} e altura h. O trapézio é a metade.\nOutra leitura: A = (média das bases) · h = ${nf((P.B + P.bt) / 2)} · ${nf(P.h)}.`;
+        } else if (modo === 'los') {
+            const lado = Math.hypot(P.D / 2, P.d / 2);
+            f = `A = D · d ÷ 2\nA = ${nf(P.D)} · ${nf(P.d)} ÷ 2\nLado: ℓ = √((D/2)² + (d/2)²) ≈ ${nf(lado)}`;
+            ideia = `As diagonais formam o retângulo D × d (pontilhado, área ${nf(P.D * P.d)}). O losango ocupa exatamente a metade; os 4 cantos fora dele somam a outra metade.\nComo também é paralelogramo: A = ℓ · h → h ≈ ${nf(A / lado)}.`;
+        } else {
+            const k = P.k;
+            f = `Original: 3 × 2 → A = 6\nAmpliação (k = ${nf(k, 1)}): ${nf(3 * k)} × ${nf(2 * k)}\nA' = ${nf(3 * k)} · ${nf(2 * k)} = ${nf(6 * k * k)}`;
+            area = `A' = ${nf(6 * k * k)} cm²  (= ${nf(k * k, 2)} · 6)`;
+            ideia = `Razão linear k = ${nf(k, 1)}  →  razão das áreas k² = ${nf(k * k, 2)}.\nO perímetro só multiplica por k (×${nf(k, 1)}), mas a área multiplica por k² (×${nf(k * k, 2)}). Dobrar as medidas quadruplica a área!`;
+        }
+        el('res-formula').innerText = f;
+        el('res-val').innerText = area;
+        el('res-ideia').innerText = ideia + (modo === 'sem' || modo === 'equ' || modo === 'qua' ? '' : (modo === 'ret' ? q : ''));
+        const lei = { ret: 'A = b · h', qua: 'A = ℓ²', par: 'A = b · h', tri: 'A = b · h ÷ 2', equ: 'A = ℓ²√3 ÷ 4', tra: 'A = (B + b) · h ÷ 2', los: 'A = D · d ÷ 2', sem: "A'/A = k²" };
+        el('display-lei').innerText = lei[modo];
+    }
+
+    function renderizar() { ajustarLimites(); sincronizar(); desenhar(); analisar(); }
+
+    /* ---------- arrastar ---------- */
+    function ponto(e) { const r = canvas.getBoundingClientRect(); return [e.clientX - r.left, e.clientY - r.top]; }
+    function mundo(cx, cy) { const x = (cx - mx0) / S - OX; const y = -((cy - (H0 - (H0 - WY * S) / 2)) / S) - OY; return [x, y]; }
+    canvas.addEventListener('pointerdown', e => {
+        const [px, py] = ponto(e);
+        const i = handles.findIndex(h => Math.hypot(h.c[0] - px, h.c[1] - py) < 16);
+        if (i >= 0) { arrastando = i; canvas.setPointerCapture(e.pointerId); e.preventDefault(); }
+    });
+    canvas.addEventListener('pointermove', e => {
+        const [px, py] = ponto(e);
+        if (arrastando === null) { canvas.style.cursor = handles.some(h => Math.hypot(h.c[0] - px, h.c[1] - py) < 16) ? 'grab' : 'default'; return; }
+        const [wx, wy] = mundo(px, py);
+        handles[arrastando].set(wx, wy);
+        ajustarLimites(); renderizar();
+    });
+    const soltar = () => { arrastando = null; };
+    canvas.addEventListener('pointerup', soltar); canvas.addEventListener('pointercancel', soltar);
+
+    window.addEventListener('load', () => setModo('ret'));
+    window.addEventListener('resize', renderizar);
+    if (window.ResizeObserver) new ResizeObserver(renderizar).observe(canvas.parentElement);
+</script>
+
+</body>
+</html>
