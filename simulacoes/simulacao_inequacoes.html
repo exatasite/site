@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explorador de Inequações | Interativo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --cor-primaria: #003366;
+            --cor-secundaria: #D35400;
+            --cor-texto: #f8fafc;
+            --cor-fundo-glass: rgba(255, 255, 255, 0.1);
+            --fonte-titulo: 'Oswald', sans-serif;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0; padding: 0;
+            background: radial-gradient(circle at 50% 50%, #001f3f 0%, #000a14 100%);
+            color: var(--cor-texto);
+            min-height: 100vh;
+        }
+
+        header {
+            background: rgba(0, 51, 102, 0.8);
+            backdrop-filter: blur(10px);
+            padding: 15px 5%;
+            text-align: center;
+            border-bottom: 5px solid var(--cor-secundaria);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        header h1 { font-family: var(--fonte-titulo); margin: 0; text-transform: uppercase; }
+
+        .main-grid {
+            display: grid;
+            grid-template-columns: 320px 1fr 280px;
+            gap: 20px;
+            padding: 20px;
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        .panel {
+            background: var(--cor-fundo-glass);
+            backdrop-filter: blur(15px);
+            padding: 20px;
+            border-radius: 15px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .panel h2 {
+            font-family: var(--fonte-titulo);
+            color: var(--cor-secundaria);
+            border-bottom: 2px solid var(--cor-secundaria);
+            padding-bottom: 8px;
+            text-transform: uppercase;
+            font-size: 1.2rem;
+        }
+
+        .input-group { margin-bottom: 15px; }
+        label { display: block; font-size: 0.75rem; font-weight: bold; color: #cbd5e1; text-transform: uppercase; margin-bottom: 8px; }
+        
+        input[type="range"] {
+            width: 100%;
+            cursor: pointer;
+            accent-color: var(--cor-secundaria);
+        }
+
+        .valor-dinamico {
+            float: right;
+            color: var(--cor-secundaria);
+            font-family: monospace;
+            font-size: 1rem;
+        }
+
+        .viz-container {
+            background: white;
+            border-radius: 20px;
+            padding: 12px;
+            border: 1px solid rgba(255,255,255,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            align-self: start;
+        }
+        .canvas-wrap {
+            position: relative;
+            width: 100%;
+            max-width: 640px;
+            aspect-ratio: 1 / 1;
+        }
+        .canvas-wrap canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+
+        .res-card {
+            background: rgba(255,255,255,0.03);
+            padding: 12px;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            border-left: 4px solid var(--cor-secundaria);
+        }
+        .res-card span { display: block; font-size: 0.65rem; color: #94a3b8; text-transform: uppercase; }
+        .res-card strong { font-size: 1rem; color: white; display: block; margin-top: 4px; }
+
+        .formula-display {
+            margin-top: 15px;
+            font-size: 1rem;
+            color: #2ecc71;
+            background: rgba(0,0,0,0.3);
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            font-family: 'Courier New', monospace;
+            font-weight: bold;
+        }
+
+
+        .tabs { display: flex; gap: 8px; margin-bottom: 18px; }
+        .tab-btn, .op-btn {
+            flex: 1; cursor: pointer; border: 1px solid rgba(255,255,255,0.25);
+            background: rgba(255,255,255,0.06); color: #e2e8f0; border-radius: 8px;
+            padding: 9px 4px; font-weight: bold; font-size: 0.85rem;
+        }
+        .op-btn { font-size: 1.3rem; padding: 6px 0; font-family: 'Courier New', monospace; }
+        .tab-btn.ativo, .op-btn.ativo { background: var(--cor-secundaria); border-color: var(--cor-secundaria); color: #fff; }
+        .ops { display: flex; gap: 8px; margin-bottom: 18px; }
+        .lei-ineq { margin-top: 6px; }
+        .passos { white-space: pre-line; font-size: 0.85rem; line-height: 1.5; font-weight: normal; color: #e2e8f0; }
+        .solucao { color: #2ecc71 !important; font-size: 1.15rem !important; }
+        .ok { color: #2ecc71; } .nok { color: #e74c3c; }
+        .nota { font-size: 0.65rem; color: #94a3b8; margin: 4px 0 0; }
+        .res-card strong.msg { font-size: 0.95rem; }
+        @media (max-width: 1100px) { .main-grid { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Explorador de Inequações</h1>
+    <p>Veja a solução no gráfico e na reta real</p>
+</header>
+
+<div class="main-grid">
+    <aside class="panel">
+        <h2>Inequação</h2>
+
+        <div class="tabs">
+            <button class="tab-btn ativo" id="tab1" onclick="setModo(1)">1º grau</button>
+            <button class="tab-btn" id="tab2" onclick="setModo(2)">2º grau</button>
+        </div>
+
+        <label>Sinal da desigualdade</label>
+        <div class="ops">
+            <button class="op-btn" id="op-lt" onclick="setOp('lt')">&lt;</button>
+            <button class="op-btn" id="op-le" onclick="setOp('le')">≤</button>
+            <button class="op-btn" id="op-gt" onclick="setOp('gt')">&gt;</button>
+            <button class="op-btn ativo" id="op-ge" onclick="setOp('ge')">≥</button>
+        </div>
+
+        <div class="input-group">
+            <label>Coeficiente (a) <span id="valA" class="valor-dinamico">1</span></label>
+            <input type="range" id="inputA" min="-5" max="5" step="0.5" value="1" oninput="renderizar()">
+        </div>
+        <div class="input-group">
+            <label>Coeficiente (b) <span id="valB" class="valor-dinamico">0</span></label>
+            <input type="range" id="inputB" min="-10" max="10" step="1" value="-3" oninput="renderizar()">
+        </div>
+        <div class="input-group" id="grupoC">
+            <label>Coeficiente (c) <span id="valC" class="valor-dinamico">0</span></label>
+            <input type="range" id="inputC" min="-15" max="15" step="1" value="0" oninput="renderizar()">
+        </div>
+
+        <div class="formula-display" id="display-lei">x − 3 ≥ 0</div>
+
+        <div class="input-group" style="margin-top:22px;">
+            <label>Teste um valor de x <span id="valX" class="valor-dinamico">0</span></label>
+            <input type="range" id="inputX" min="-10" max="10" step="0.5" value="0" oninput="renderizar()">
+            <p class="nota">Mova o ponto e veja se ele pertence à solução.</p>
+        </div>
+    </aside>
+
+    <main class="viz-container">
+        <div class="canvas-wrap"><canvas id="grafico"></canvas></div>
+    </main>
+
+    <aside class="panel">
+        <h2>Análise</h2>
+
+        <div class="res-card">
+            <span>Resolução</span>
+            <strong class="passos" id="res-passos"></strong>
+        </div>
+        <div class="res-card" style="border-left-color: #2ecc71;">
+            <span>Raízes</span>
+            <strong class="msg" id="res-raizes"></strong>
+        </div>
+        <div class="res-card" style="border-left-color: #2ecc71;">
+            <span>Conjunto solução</span>
+            <strong class="solucao" id="res-solucao"></strong>
+        </div>
+        <div class="res-card" style="border-left-color: #3498db;">
+            <span>Teste do ponto</span>
+            <strong class="msg" id="res-teste"></strong>
+        </div>
+    </aside>
+</div>
+
+<script>
+    const canvas = document.getElementById('grafico');
+    const ctx = canvas.getContext('2d');
+    const OPS = {
+        lt: { s: '<', estrito: true, sinal: -1 },
+        le: { s: '≤', estrito: false, sinal: -1 },
+        gt: { s: '>', estrito: true, sinal: 1 },
+        ge: { s: '≥', estrito: false, sinal: 1 }
+    };
+    const INV = { '<': '>', '≤': '≥', '>': '<', '≥': '≤' };
+    let modo = 1, op = 'ge';
+    const el = id => document.getElementById(id);
+
+    // número no padrão brasileiro (vírgula), sem zeros inúteis
+    function fmt(n, casas = 2) {
+        if (n === Infinity) return '+∞';
+        if (n === -Infinity) return '−∞';
+        const f = Math.pow(10, casas);
+        const v = Math.round(n * f) / f;
+        return String(v === 0 ? 0 : v).replace('.', ',').replace('-', '−');
+    }
+    const aproximado = n => Math.abs(n * 100 - Math.round(n * 100)) > 1e-9;
+
+    function setModo(m) {
+        modo = m;
+        el('tab1').classList.toggle('ativo', m === 1);
+        el('tab2').classList.toggle('ativo', m === 2);
+        el('grupoC').style.display = m === 2 ? 'block' : 'none';
+        const A = el('inputA'), B = el('inputB'), C = el('inputC');
+        if (m === 1) { A.min = -5; A.max = 5; A.value = 1; B.value = -3; C.value = 0; }
+        else         { A.min = -3; A.max = 3; A.value = 1; B.value = -2; C.value = -3; }
+        renderizar();
+    }
+    function setOp(o) {
+        op = o;
+        Object.keys(OPS).forEach(k => el('op-' + k).classList.toggle('ativo', k === o));
+        renderizar();
+    }
+
+    function coef() {
+        const a = Math.round(parseFloat(el('inputA').value) * 10) / 10;
+        const b = Math.round(parseFloat(el('inputB').value) * 2) / 2;
+        const c = parseInt(el('inputC').value, 10);
+        return modo === 1 ? { A: 0, B: a, C: b, a, b, c: 0 } : { A: a, B: b, C: c, a, b, c };
+    }
+
+    function termos(A, B, C) {
+        const t = [];
+        const mono = (v, x) => (Math.abs(v) === 1 ? '' : fmt(Math.abs(v))) + x;
+        if (A !== 0) t.push({ s: A < 0 ? -1 : 1, v: mono(A, 'x²') });
+        if (B !== 0) t.push({ s: B < 0 ? -1 : 1, v: mono(B, 'x') });
+        if (C !== 0) t.push({ s: C < 0 ? -1 : 1, v: fmt(Math.abs(C)) });
+        if (!t.length) return '0';
+        return t.map((q, i) => i === 0 ? (q.s < 0 ? '−' : '') + q.v : (q.s < 0 ? ' − ' : ' + ') + q.v).join('');
+    }
+
+    // raízes reais de f, em ordem crescente
+    function raizes(A, B, C) {
+        if (A !== 0) {
+            const d = B * B - 4 * A * C;
+            if (d < 0) return [];
+            if (d === 0) return [-B / (2 * A)];
+            const r1 = (-B - Math.sqrt(d)) / (2 * A), r2 = (-B + Math.sqrt(d)) / (2 * A);
+            return [Math.min(r1, r2), Math.max(r1, r2)];
+        }
+        return B !== 0 ? [-C / B] : [];
+    }
+
+    // Conjunto solução: lista de intervalos {lo, hi, loF, hiF} (F = fechado)
+    function resolver(A, B, C, R, o) {
+        const f = x => A * x * x + B * x + C;
+        const O = OPS[o], n = R.length, els = [];
+        const vale = s => (s === 0 ? !O.estrito : s * O.sinal > 0);
+        for (let i = 0; i <= n; i++) {
+            const m = n === 0 ? 0 : (i === 0 ? R[0] - 1 : (i === n ? R[n - 1] + 1 : (R[i - 1] + R[i]) / 2));
+            els.push({ t: 's', lo: i ? R[i - 1] : -Infinity, hi: i < n ? R[i] : Infinity, inc: vale(Math.sign(f(m))) });
+            if (i < n) els.push({ t: 'p', v: R[i], inc: !O.estrito });
+        }
+        const runs = []; let cur = null;
+        els.forEach(e => { if (e.inc) { (cur = cur || []).push(e); } else if (cur) { runs.push(cur); cur = null; } });
+        if (cur) runs.push(cur);
+        return runs.map(r => {
+            const p = r[0], q = r[r.length - 1];
+            return {
+                lo: p.t === 'p' ? p.v : p.lo, loF: p.t === 'p',
+                hi: q.t === 'p' ? q.v : q.hi, hiF: q.t === 'p'
+            };
+        });
+    }
+
+    function textoSolucao(S) {
+        if (!S.length) return 'S = ∅';
+        if (S.length === 1 && S[0].lo === -Infinity && S[0].hi === Infinity) return 'S = ℝ';
+        return 'S = ' + S.map(i => i.lo === i.hi ? `{${fmt(i.lo)}}` :
+            (i.loF ? '[' : ']') + fmt(i.lo) + ', ' + fmt(i.hi) + (i.hiF ? ']' : '[')).join(' ∪ ');
+    }
+
+    function passos(A, B, C, R) {
+        const s = OPS[op].s;
+        const lei = termos(A, B, C);
+        if (A === 0) {
+            if (B === 0) {
+                const ok = OPS[op].estrito ? C * OPS[op].sinal > 0 : (C === 0 || C * OPS[op].sinal > 0);
+                return `${fmt(C)} ${s} 0\nNão há x na expressão: a afirmação é ${ok ? 'verdadeira para todo x' : 'falsa para todo x'}.`;
+            }
+            const novo = B > 0 ? s : INV[s];
+            const passo2 = `${termos(0, B, 0)} ${s} ${fmt(-C)}`, passo3 = `x ${novo} ${fmt(-C / B)}`;
+            return `${lei} ${s} 0\n${passo2 === passo3 ? '' : passo2 + '\n'}${passo3}` +
+                   (B < 0 ? `\nComo a < 0, o sinal inverte ao dividir.` : '');
+        }
+        const d = B * B - 4 * A * C;
+        let t = `${lei} ${s} 0\n1) Δ = b² − 4ac = ${fmt(d)}\n`;
+        if (d > 0) t += `   Raízes: x' = ${fmt(R[0])} e x'' = ${fmt(R[1])}\n`;
+        else if (d === 0) t += `   Raiz dupla: x = ${fmt(R[0])}\n`;
+        else t += `   Não há raízes reais\n`;
+        t += `2) Concavidade: a ${A > 0 ? '> 0 → para cima (∪)' : '< 0 → para baixo (∩)'}\n3) Sinal de f(x): `;
+        if (d > 0) t += A > 0 ? 'positivo fora das raízes, negativo entre elas' : 'positivo entre as raízes, negativo fora delas';
+        else if (d === 0) t += A > 0 ? 'nunca negativo (zero só na raiz)' : 'nunca positivo (zero só na raiz)';
+        else t += A > 0 ? 'sempre positivo' : 'sempre negativo';
+        return t + `\n4) Escolha os trechos em que f(x) ${s} 0`;
+    }
+
+    function atualizar() {
+        const { A, B, C, a, b, c } = coef();
+        el('valA').innerText = fmt(a, 1);
+        el('valB').innerText = fmt(b, 1);
+        el('valC').innerText = fmt(c, 0);
+        el('display-lei').innerText = `${termos(A, B, C)} ${OPS[op].s} 0`;
+
+        const R = raizes(A, B, C);
+        const S = resolver(A, B, C, R, op);
+        const ap = R.some(aproximado);
+        el('res-passos').innerText = passos(A, B, C, R);
+        el('res-raizes').innerText = R.length ? R.map((r, i) => (R.length > 1 ? (i ? "x'' = " : "x' = ") : 'x = ') + fmt(r)).join(' | ') + (ap ? '  (aprox.)' : '') : 'Sem raízes reais';
+        el('res-solucao').innerText = textoSolucao(S) + (ap && S.length ? ' (aprox.)' : '');
+
+        // ponto de teste
+        const x = parseFloat(el('inputX').value);
+        const fx = A * x * x + B * x + C;
+        const O = OPS[op];
+        const fz = Math.abs(fx) < 1e-9 ? 0 : fx;
+        const ok = fz === 0 ? !O.estrito : fz * O.sinal > 0;
+        el('valX').innerText = fmt(x, 1);
+        el('res-teste').innerHTML = `x = ${fmt(x, 1)} → f(x) = ${fmt(fz)}<br>${fmt(fz)} ${O.s} 0 ? ` +
+            (ok ? '<span class="ok">✔ satisfaz</span>' : '<span class="nok">✘ não satisfaz</span>');
+        return { A, B, C, R, S, x, fx: fz, ok };
+    }
+
+    function desenhar(d) {
+        const { A, B, C, R, S, x, fx, ok } = d;
+        const dpr = window.devicePixelRatio || 1;
+        const W = canvas.clientWidth, H = canvas.clientHeight;
+        if (!W || !H) return;
+        canvas.width = Math.round(W * dpr); canvas.height = Math.round(H * dpr);
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+        ctx.clearRect(0, 0, W, H);
+
+        // escalas automáticas
+        const xv = A !== 0 ? -B / (2 * A) : 0, yv = A !== 0 ? C - B * B / (4 * A) : 0;
+        const mx = Math.max(0, ...R.map(Math.abs), Math.abs(xv));
+        const XL = Math.max(10, Math.ceil((mx + 2) / 5) * 5);
+        const my = Math.max(5, Math.abs(C) * 1.25, Math.abs(yv) * 1.25);
+        const YL = Math.ceil(my / 5) * 5;
+        const xs = XL / 5, ys = YL / 5;
+
+        const m = 30, gx0 = m, gw = W - 2 * m, gy0 = 18, gh = H * 0.6;
+        const px = v => gx0 + (v + XL) / (2 * XL) * gw;
+        const py = v => gy0 + (YL - v) / (2 * YL) * gh;
+        const clampX = v => Math.max(-XL, Math.min(XL, v));
+
+        // grade
+        ctx.lineWidth = 1; ctx.strokeStyle = 'rgba(0,0,0,0.08)';
+        for (let k = -XL; k <= XL + 1e-9; k += xs) { ctx.beginPath(); ctx.moveTo(px(k), py(YL)); ctx.lineTo(px(k), py(-YL)); ctx.stroke(); }
+        for (let k = -YL; k <= YL + 1e-9; k += ys) { ctx.beginPath(); ctx.moveTo(px(-XL), py(k)); ctx.lineTo(px(XL), py(k)); ctx.stroke(); }
+
+        // faixas da solução
+        ctx.fillStyle = 'rgba(46,204,113,0.18)';
+        S.forEach(i => { const x0 = px(clampX(i.lo)), x1 = px(clampX(i.hi)); ctx.fillRect(x0, py(YL), Math.max(x1 - x0, 2), 2 * YL * (gh / (2 * YL))); });
+
+        // eixos
+        ctx.strokeStyle = '#2c3e50'; ctx.fillStyle = '#2c3e50'; ctx.lineWidth = 2;
+        ctx.beginPath(); ctx.moveTo(px(-XL) - 8, py(0)); ctx.lineTo(px(XL) + 8, py(0)); ctx.stroke();
+        ctx.beginPath(); ctx.moveTo(px(0), py(-YL) + 4); ctx.lineTo(px(0), py(YL) - 8); ctx.stroke();
+        ctx.beginPath(); ctx.moveTo(px(XL) + 14, py(0)); ctx.lineTo(px(XL) + 5, py(0) - 4.5); ctx.lineTo(px(XL) + 5, py(0) + 4.5); ctx.fill();
+        ctx.beginPath(); ctx.moveTo(px(0), py(YL) - 14); ctx.lineTo(px(0) - 4.5, py(YL) - 5); ctx.lineTo(px(0) + 4.5, py(YL) - 5); ctx.fill();
+        ctx.font = '11px Arial'; ctx.fillStyle = '#34495e';
+        ctx.textAlign = 'right'; ctx.textBaseline = 'middle';
+        for (let k = -YL; k <= YL + 1e-9; k += ys) if (Math.abs(k) > 1e-9) ctx.fillText(fmt(k, 1), px(0) - 5, py(k));
+        ctx.font = 'italic bold 13px Arial'; ctx.textAlign = 'left';
+        ctx.fillText('y', px(0) + 8, py(YL) - 6);
+
+        // curva
+        ctx.save();
+        ctx.beginPath(); ctx.rect(px(-XL), py(YL), 2 * XL * gw / (2 * XL), gh); ctx.clip();
+        ctx.strokeStyle = '#D35400'; ctx.lineWidth = 3.5; ctx.lineJoin = 'round';
+        ctx.beginPath();
+        const N = 400;
+        for (let i = 0; i <= N; i++) {
+            const xx = -XL - 1 + (2 * XL + 2) * i / N, yy = A * xx * xx + B * xx + C;
+            if (i === 0) ctx.moveTo(px(xx), py(yy)); else ctx.lineTo(px(xx), py(yy));
+        }
+        ctx.stroke(); ctx.restore();
+
+        // marcador do teste no gráfico
+        const cor = ok ? '#1e8449' : '#c0392b';
+        ctx.setLineDash([4, 4]); ctx.strokeStyle = cor; ctx.lineWidth = 1.5;
+        if (Math.abs(fx) <= YL) { ctx.beginPath(); ctx.moveTo(px(x), py(0)); ctx.lineTo(px(x), py(fx)); ctx.stroke(); }
+        ctx.setLineDash([]);
+        if (Math.abs(fx) <= YL) { ctx.fillStyle = cor; ctx.strokeStyle = '#fff'; ctx.lineWidth = 2; ctx.beginPath(); ctx.arc(px(x), py(fx), 5, 0, 7); ctx.fill(); ctx.stroke(); }
+
+        // raízes no eixo x
+        const bola = (cx, cy, cheia, cor2, r = 5.5) => {
+            ctx.beginPath(); ctx.arc(cx, cy, r, 0, 7);
+            ctx.fillStyle = cheia ? cor2 : '#fff'; ctx.fill();
+            ctx.strokeStyle = cor2; ctx.lineWidth = 2.5; ctx.stroke();
+        };
+        // solução destacada sobre o eixo x do gráfico
+        const barra = (yy, esp) => {
+            S.forEach(i => {
+                const x0 = px(clampX(i.lo)), x1 = px(clampX(i.hi));
+                ctx.strokeStyle = '#27ae60'; ctx.lineWidth = esp; ctx.lineCap = 'butt';
+                ctx.beginPath(); ctx.moveTo(x0, yy); ctx.lineTo(x1, yy); ctx.stroke();
+            });
+        };
+        barra(py(0), 6);
+        R.forEach(r => { if (Math.abs(r) <= XL) bola(px(r), py(0), !OPS[op].estrito, '#27ae60'); });
+
+        // números do eixo x (do gráfico)
+        ctx.font = '11px Arial'; ctx.fillStyle = '#34495e'; ctx.textAlign = 'center'; ctx.textBaseline = 'top';
+
+        // ---------- reta real ----------
+        const ry = gy0 + gh + (H - gy0 - gh) * 0.52;
+        ctx.fillStyle = '#2c3e50'; ctx.font = 'bold 12px Arial'; ctx.textAlign = 'left'; ctx.textBaseline = 'middle';
+        ctx.fillText('Reta real', gx0 - 20, ry - 34);
+        ctx.strokeStyle = '#7f8c8d'; ctx.lineWidth = 2;
+        ctx.beginPath(); ctx.moveTo(px(-XL) - 8, ry); ctx.lineTo(px(XL) + 8, ry); ctx.stroke();
+        ctx.fillStyle = '#7f8c8d';
+        ctx.beginPath(); ctx.moveTo(px(XL) + 14, ry); ctx.lineTo(px(XL) + 5, ry - 4.5); ctx.lineTo(px(XL) + 5, ry + 4.5); ctx.fill();
+        ctx.beginPath(); ctx.moveTo(px(-XL) - 14, ry); ctx.lineTo(px(-XL) - 5, ry - 4.5); ctx.lineTo(px(-XL) - 5, ry + 4.5); ctx.fill();
+        ctx.font = '11px Arial'; ctx.fillStyle = '#34495e'; ctx.textAlign = 'center'; ctx.textBaseline = 'top';
+        for (let k = -XL; k <= XL + 1e-9; k += xs) {
+            ctx.strokeStyle = '#7f8c8d'; ctx.lineWidth = 1.5;
+            ctx.beginPath(); ctx.moveTo(px(k), ry - 4); ctx.lineTo(px(k), ry + 4); ctx.stroke();
+            ctx.fillText(fmt(k, 1), px(k), ry + 8);
+        }
+        barra(ry, 7);
+        S.forEach(i => {   // setas nas pontas infinitas
+            ctx.fillStyle = '#27ae60';
+            if (i.hi === Infinity) { ctx.beginPath(); ctx.moveTo(px(XL) + 14, ry); ctx.lineTo(px(XL) + 4, ry - 7); ctx.lineTo(px(XL) + 4, ry + 7); ctx.fill(); }
+            if (i.lo === -Infinity) { ctx.beginPath(); ctx.moveTo(px(-XL) - 14, ry); ctx.lineTo(px(-XL) - 4, ry - 7); ctx.lineTo(px(-XL) - 4, ry + 7); ctx.fill(); }
+        });
+        ctx.font = 'bold 12px Arial'; ctx.textBaseline = 'bottom'; ctx.textAlign = 'center';
+        R.forEach(r => {
+            if (Math.abs(r) > XL) return;
+            bola(px(r), ry, !OPS[op].estrito, '#27ae60', 6);
+            ctx.fillStyle = '#1e8449'; ctx.fillText(fmt(r), px(r), ry - 12);
+        });
+        // ponto de teste na reta
+        ctx.fillStyle = cor; ctx.strokeStyle = '#fff'; ctx.lineWidth = 2;
+        ctx.beginPath(); ctx.moveTo(px(x), ry - 5); ctx.lineTo(px(x) - 7, ry - 19); ctx.lineTo(px(x) + 7, ry - 19); ctx.closePath(); ctx.fill();
+        ctx.textBaseline = 'top'; ctx.font = 'bold 11px Arial';
+        ctx.fillText(ok ? '✔' : '✘', px(x), ry - 36 > 0 ? ry - 36 : 0);
+
+        // legenda
+        ctx.textAlign = 'left'; ctx.textBaseline = 'middle'; ctx.font = '11px Arial'; ctx.fillStyle = '#34495e';
+        const ly = H - 14;
+        const txt = (t, x0) => { ctx.fillStyle = '#34495e'; ctx.fillText(t, x0, ly); };
+        const curto = W < 520, dx1 = curto ? 78 : 120, dx2 = curto ? 160 : 250;
+        bola(gx0 + 6, ly, true, '#27ae60', 4); txt(curto ? 'incluído' : 'extremo incluído', gx0 + 16);
+        bola(gx0 + dx1 + 6, ly, false, '#27ae60', 4); txt(curto ? 'excluído' : 'extremo excluído', gx0 + dx1 + 16);
+        ctx.fillStyle = '#27ae60'; ctx.fillRect(gx0 + dx2, ly - 3, 22, 6); txt('solução', gx0 + dx2 + 28);
+    }
+
+    function renderizar() {
+        // limites do controle de teste acompanham a escala
+        const { A, B, C } = coef();
+        const R = raizes(A, B, C);
+        const xv = A !== 0 ? -B / (2 * A) : 0;
+        const XL = Math.max(10, Math.ceil((Math.max(0, ...R.map(Math.abs), Math.abs(xv)) + 2) / 5) * 5);
+        const X = el('inputX');
+        if (parseFloat(X.max) !== XL) { X.min = -XL; X.max = XL; }
+        desenhar(atualizar());
+    }
+    function redesenhar() { desenhar(atualizar()); }
+
+    window.addEventListener('load', () => setModo(1));
+    window.addEventListener('resize', redesenhar);
+    if (window.ResizeObserver) new ResizeObserver(redesenhar).observe(canvas.parentElement);
+</script>
+
+</body>
+</html>
