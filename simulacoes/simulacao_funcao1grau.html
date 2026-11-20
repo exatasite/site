@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Laboratório de Funções | Explorador Interativo</title>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -80,13 +79,20 @@
         .viz-container {
             background: white; /* Gráfico precisa de fundo claro para contraste */
             border-radius: 20px;
-            padding: 20px;
+            padding: 12px;
             border: 1px solid rgba(255,255,255,0.1);
             display: flex;
             align-items: center;
             justify-content: center;
-            min-height: 450px;
+            align-self: start;
         }
+        .canvas-wrap {
+            position: relative;
+            width: 100%;
+            max-width: 640px;
+            aspect-ratio: 1 / 1;
+        }
+        .canvas-wrap canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
 
         /* Resultados e Análise */
         .res-card {
@@ -143,7 +149,7 @@
     </aside>
 
     <main class="viz-container">
-        <canvas id="graficoFuncao"></canvas>
+        <div class="canvas-wrap"><canvas id="graficoFuncao"></canvas></div>
     </main>
 
     <aside class="panel">
@@ -172,75 +178,135 @@
 </div>
 
 <script>
-    let chart;
-    const ctx = document.getElementById('graficoFuncao').getContext('2d');
+    const canvas = document.getElementById('graficoFuncao');
+    const ctx = canvas.getContext('2d');
+    const LIM = 10; // plano de -10 a 10 nos dois eixos
 
-    function renderizar() {
-        const a = parseFloat(document.getElementById('inputA').value);
-        const b = parseFloat(document.getElementById('inputB').value);
-
-        // Atualizar Labels
-        document.getElementById('valA').innerText = a.toFixed(1);
-        document.getElementById('valB').innerText = b;
-        document.getElementById('display-lei').innerText = `f(x) = ${a}x ${b >= 0 ? '+ ' + b : '- ' + Math.abs(b)}`;
-
-        // Cálculos de Análise
-        const comportamento = a > 0 ? "Crescente" : (a < 0 ? "Decrescente" : "Constante");
-        const raiz = a !== 0 ? (-b / a).toFixed(2) : "Inexistente";
-        const tipo = b === 0 ? "Linear" : "Afim";
-
-        document.getElementById('res-comportamento').innerText = comportamento;
-        document.getElementById('res-raiz').innerText = a !== 0 ? `x = ${raiz}` : "∅ (Paralela ao eixo X)";
-        document.getElementById('res-inter-y').innerText = `(0, ${b})`;
-        document.getElementById('res-tipo').innerText = tipo;
-
-        // Dados do Gráfico
-        const labels = [];
-        const data = [];
-        for (let x = -10; x <= 10; x++) {
-            labels.push(x);
-            data.push(a * x + b);
-        }
-
-        if (chart) chart.destroy();
-
-        chart = new Chart(ctx, {
-            type: 'line',
-            data: {
-                labels: labels,
-                datasets: [{
-                    label: 'f(x)',
-                    data: data,
-                    borderColor: '#D35400',
-                    borderWidth: 3,
-                    pointRadius: 2,
-                    fill: false,
-                    tension: 0
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                scales: {
-                    y: { 
-                        min: -15, max: 15,
-                        grid: { color: 'rgba(0,0,0,0.1)' },
-                        title: { display: true, text: 'Eixo Y' }
-                    },
-                    x: { 
-                        grid: { color: 'rgba(0,0,0,0.1)' },
-                        title: { display: true, text: 'Eixo X' }
-                    }
-                },
-                plugins: {
-                    legend: { display: false }
-                }
-            }
-        });
+    // número no padrão brasileiro (vírgula), sem zeros inúteis
+    function fmt(n, casas = 2) {
+        const v = Math.round(n * Math.pow(10, casas)) / Math.pow(10, casas);
+        return String(v === 0 ? 0 : v).replace('.', ',').replace('-', '−');
     }
 
-    // Inicializar ao carregar
-    window.onload = renderizar;
+    function lerParametros() {
+        const a = Math.round(parseFloat(document.getElementById('inputA').value) * 10) / 10;
+        const b = parseInt(document.getElementById('inputB').value, 10);
+        return { a, b };
+    }
+
+    function leiTexto(a, b) {
+        if (a === 0) return `f(x) = ${fmt(b)}`;
+        const parteA = a === 1 ? 'x' : (a === -1 ? '−x' : fmt(a) + 'x');
+        if (b === 0) return `f(x) = ${parteA}`;
+        return `f(x) = ${parteA} ${b > 0 ? '+' : '−'} ${Math.abs(b)}`;
+    }
+
+    function atualizarPainel() {
+        const { a, b } = lerParametros();
+        document.getElementById('valA').innerText = fmt(a, 1);
+        document.getElementById('valB').innerText = fmt(b, 0);
+        document.getElementById('display-lei').innerText = leiTexto(a, b);
+
+        let comportamento, raizTxt, tipo;
+        if (a > 0) comportamento = 'Crescente';
+        else if (a < 0) comportamento = 'Decrescente';
+        else comportamento = 'Constante';
+
+        if (a !== 0) raizTxt = `x = ${fmt(-b / a)}`;
+        else raizTxt = b === 0 ? 'Todo x é raiz' : 'Não possui raiz';
+
+        if (a === 0) tipo = 'Constante';
+        else tipo = b === 0 ? 'Linear' : 'Afim';
+
+        document.getElementById('res-comportamento').innerText = comportamento;
+        document.getElementById('res-raiz').innerText = raizTxt;
+        document.getElementById('res-inter-y').innerText = `(0, ${fmt(b, 0)})`;
+        document.getElementById('res-tipo').innerText = tipo;
+    }
+
+    function desenhar() {
+        const { a, b } = lerParametros();
+        const dpr = window.devicePixelRatio || 1;
+        const W = canvas.clientWidth, H = canvas.clientHeight;
+        if (!W || !H) return;
+        canvas.width = Math.round(W * dpr);
+        canvas.height = Math.round(H * dpr);
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+        ctx.clearRect(0, 0, W, H);
+
+        const m = 28;                         // margem
+        const esc = (Math.min(W, H) - 2 * m) / (2 * LIM);
+        const cx = W / 2, cy = H / 2;
+        const px = x => cx + x * esc;
+        const py = y => cy - y * esc;
+
+        // grade
+        ctx.lineWidth = 1;
+        for (let k = -LIM; k <= LIM; k++) {
+            ctx.strokeStyle = k % 5 === 0 ? 'rgba(0,0,0,0.18)' : 'rgba(0,0,0,0.07)';
+            ctx.beginPath(); ctx.moveTo(px(k), py(-LIM)); ctx.lineTo(px(k), py(LIM)); ctx.stroke();
+            ctx.beginPath(); ctx.moveTo(px(-LIM), py(k)); ctx.lineTo(px(LIM), py(k)); ctx.stroke();
+        }
+
+        // eixos passando pela origem, com setas
+        ctx.strokeStyle = '#2c3e50'; ctx.fillStyle = '#2c3e50'; ctx.lineWidth = 2;
+        const ext = LIM + 0.7;
+        ctx.beginPath(); ctx.moveTo(px(-ext), cy); ctx.lineTo(px(ext), cy); ctx.stroke();
+        ctx.beginPath(); ctx.moveTo(cx, py(-ext)); ctx.lineTo(cx, py(ext)); ctx.stroke();
+        ctx.beginPath(); ctx.moveTo(px(ext) + 6, cy); ctx.lineTo(px(ext) - 4, cy - 5); ctx.lineTo(px(ext) - 4, cy + 5); ctx.fill();
+        ctx.beginPath(); ctx.moveTo(cx, py(ext) - 6); ctx.lineTo(cx - 5, py(ext) + 4); ctx.lineTo(cx + 5, py(ext) + 4); ctx.fill();
+
+        // números nos eixos (de 2 em 2)
+        ctx.font = '12px Arial'; ctx.fillStyle = '#34495e';
+        ctx.textAlign = 'center'; ctx.textBaseline = 'top';
+        for (let k = -LIM; k <= LIM; k += 2) {
+            if (k === 0) continue;
+            ctx.fillText(String(k).replace('-', '−'), px(k), cy + 6);
+        }
+        ctx.textAlign = 'right'; ctx.textBaseline = 'middle';
+        for (let k = -LIM; k <= LIM; k += 2) {
+            if (k === 0) continue;
+            ctx.fillText(String(k).replace('-', '−'), cx - 7, py(k));
+        }
+        ctx.textAlign = 'right'; ctx.textBaseline = 'top';
+        ctx.fillText('0', cx - 6, cy + 5);
+        ctx.font = 'italic bold 14px Arial';
+        ctx.textAlign = 'left'; ctx.textBaseline = 'middle';
+        ctx.fillText('x', px(ext) - 2, cy - 14);
+        ctx.textAlign = 'left'; ctx.textBaseline = 'top';
+        ctx.fillText('y', cx + 10, py(ext) - 4);
+
+        // reta (recortada na área do plano)
+        ctx.save();
+        ctx.beginPath(); ctx.rect(px(-LIM), py(LIM), 2 * LIM * esc, 2 * LIM * esc); ctx.clip();
+        ctx.strokeStyle = '#D35400'; ctx.lineWidth = 3.5; ctx.lineCap = 'round';
+        ctx.beginPath();
+        ctx.moveTo(px(-LIM - 1), py(a * (-LIM - 1) + b));
+        ctx.lineTo(px(LIM + 1), py(a * (LIM + 1) + b));
+        ctx.stroke();
+        ctx.restore();
+
+        // pontos notáveis
+        function ponto(x, y, cor, texto, dx, dy, alinh) {
+            ctx.fillStyle = cor; ctx.strokeStyle = '#fff'; ctx.lineWidth = 2;
+            ctx.beginPath(); ctx.arc(px(x), py(y), 5.5, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+            ctx.font = 'bold 12px Arial'; ctx.textAlign = alinh; ctx.textBaseline = 'middle';
+            ctx.lineWidth = 4; ctx.strokeStyle = 'rgba(255,255,255,0.9)';
+            ctx.strokeText(texto, px(x) + dx, py(y) + dy);
+            ctx.fillStyle = cor; ctx.fillText(texto, px(x) + dx, py(y) + dy);
+        }
+        if (Math.abs(b) <= LIM) ponto(0, b, '#D35400', `(0, ${fmt(b, 0)})`, 10, b >= 0 ? -12 : 12, 'left');
+        if (a !== 0 && b !== 0) {
+            const r = -b / a;
+            if (Math.abs(r) <= LIM) ponto(r, 0, '#1e8449', `(${fmt(r)}, 0)`, 0, -16, 'center');
+        }
+    }
+
+    function renderizar() { atualizarPainel(); desenhar(); }
+
+    window.addEventListener('load', renderizar);
+    window.addEventListener('resize', desenhar);
+    if (window.ResizeObserver) new ResizeObserver(desenhar).observe(canvas.parentElement);
 </script>
 
 </body>
