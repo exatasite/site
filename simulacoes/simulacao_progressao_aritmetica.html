@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laboratório de Progressão Aritmética | Interativo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --cor-primaria: #003366;
+            --cor-secundaria: #D35400;
+            --cor-texto: #f8fafc;
+            --cor-fundo-glass: rgba(255, 255, 255, 0.1);
+            --fonte-titulo: 'Oswald', sans-serif;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0; padding: 0;
+            background: radial-gradient(circle at 50% 50%, #001f3f 0%, #000a14 100%);
+            color: var(--cor-texto);
+            min-height: 100vh;
+        }
+
+        header {
+            background: rgba(0, 51, 102, 0.8);
+            backdrop-filter: blur(10px);
+            padding: 15px 5%;
+            text-align: center;
+            border-bottom: 5px solid var(--cor-secundaria);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        header h1 { font-family: var(--fonte-titulo); margin: 0; text-transform: uppercase; }
+
+        .main-grid {
+            display: grid;
+            grid-template-columns: 320px 1fr 280px;
+            gap: 20px;
+            padding: 20px;
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        .panel {
+            background: var(--cor-fundo-glass);
+            backdrop-filter: blur(15px);
+            padding: 20px;
+            border-radius: 15px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .panel h2 {
+            font-family: var(--fonte-titulo);
+            color: var(--cor-secundaria);
+            border-bottom: 2px solid var(--cor-secundaria);
+            padding-bottom: 8px;
+            text-transform: uppercase;
+            font-size: 1.2rem;
+        }
+
+        .input-group { margin-bottom: 15px; }
+        label { display: block; font-size: 0.75rem; font-weight: bold; color: #cbd5e1; text-transform: uppercase; margin-bottom: 8px; }
+        
+        input[type="range"] {
+            width: 100%;
+            cursor: pointer;
+            accent-color: var(--cor-secundaria);
+        }
+
+        .valor-dinamico {
+            float: right;
+            color: var(--cor-secundaria);
+            font-family: monospace;
+            font-size: 1rem;
+        }
+
+        .viz-container {
+            background: white;
+            border-radius: 20px;
+            padding: 12px;
+            border: 1px solid rgba(255,255,255,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            align-self: start;
+        }
+        .canvas-wrap {
+            position: relative;
+            width: 100%;
+            max-width: 640px;
+            aspect-ratio: 1 / 1;
+        }
+        .canvas-wrap canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+
+        .res-card {
+            background: rgba(255,255,255,0.03);
+            padding: 12px;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            border-left: 4px solid var(--cor-secundaria);
+        }
+        .res-card span { display: block; font-size: 0.65rem; color: #94a3b8; text-transform: uppercase; }
+        .res-card strong { font-size: 1rem; color: white; display: block; margin-top: 4px; }
+
+        .formula-display {
+            margin-top: 15px;
+            font-size: 1rem;
+            color: #2ecc71;
+            background: rgba(0,0,0,0.3);
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            font-family: 'Courier New', monospace;
+            font-weight: bold;
+        }
+
+
+        .tabs { display: flex; gap: 6px; margin-bottom: 18px; }
+        .tab-btn { flex: 1; cursor: pointer; border: 1px solid rgba(255,255,255,0.25); background: rgba(255,255,255,0.06); color: #e2e8f0; border-radius: 8px; padding: 9px 2px; font-weight: bold; font-size: 0.8rem; }
+        .tab-btn.ativo { background: var(--cor-secundaria); border-color: var(--cor-secundaria); color: #fff; }
+        select { width: 100%; padding: 8px; border-radius: 8px; background: #0b2540; color: #fff; border: 1px solid rgba(255,255,255,0.3); font-size: 1rem; }
+        .passos { white-space: pre-line; font-size: 0.85rem; line-height: 1.5; font-weight: normal; color: #e2e8f0; }
+        .solucao, .passos, .res-card strong { text-transform: none; }
+        .solucao { color: #2ecc71 !important; font-size: 1.1rem !important; }
+        .res-card strong span { display: inline; font-size: inherit; text-transform: none; color: inherit; }
+        .res-card strong .ok { color: #2ecc71; } .res-card strong .nok { color: #e74c3c; }
+        #fatores { color: #2c3e50; text-align: center; min-height: 60px; }
+        #fatores .linha { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 6px; margin: 10px 0 4px; }
+        #fatores .rot { font-size: 0.8rem; color: #566573; margin-bottom: 4px; }
+        .grupo { display: inline-flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 3px; padding: 3px 6px; border: 2px dashed #bdc3c7; border-radius: 10px; }
+        .fator { display: inline-block; min-width: 30px; padding: 5px 7px; border-radius: 8px; background: #5dade2; color: #fff; font-weight: bold; font-size: 0.95rem; }
+        .fator.neg { background: #e57373; } .fator.g1 { background: #5dade2; } .fator.g2 { background: #f5a623; }
+        .x { color: #7f8c8d; font-weight: bold; margin: 0 1px; }
+        .igual { font-size: 1.5rem; font-weight: bold; color: #2c3e50; margin: 0 4px; }
+        .res { font-size: 1.4rem; font-weight: bold; color: #D35400; }
+        .res .radi { border-top: 2px solid #D35400; padding: 0 3px; margin-left: 2px; }
+        .frac { display: inline-flex; flex-direction: column; align-items: center; }
+        .frac .num { border-bottom: 2px solid #2c3e50; padding: 0 6px 3px; font-weight: bold; }
+        .frac .den { padding-top: 3px; }
+        @media (max-width: 1100px) { .main-grid { grid-template-columns: 1fr; } }
+        .main-grid > * { min-width: 0; }
+        #fatores { max-width: 100%; overflow-x: auto; }
+        .salto { color: #27ae60; font-weight: bold; font-size: 0.8rem; margin: 0 2px; }
+        .fator.sel { background: #c0392b; transform: scale(1.12); }
+        .fator.soma { background: #27ae60; }
+        .linha.chips { gap: 4px; }
+        .rot-l { justify-content: flex-start !important; flex-wrap: nowrap !important; overflow-x: auto; }
+        .rot-l .lbl { min-width: 64px; text-align: right; font-size: 0.75rem; color: #566573; font-weight: bold; margin-right: 4px; }
+        .rot-l .fator { min-width: 24px; padding: 4px 5px; font-size: 0.8rem; }
+        .leg { display: inline-block; width: 12px; height: 12px; border-radius: 3px; vertical-align: middle; }
+        .leg.g1 { background: #5dade2; } .leg.g2 { background: #f5a623; }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Laboratório de Progressão Aritmética</h1>
+    <p>Termos, razão, soma de Gauss e meios aritméticos</p>
+</header>
+
+<div class="main-grid">
+    <aside class="panel">
+        <h2>Controles</h2>
+
+        <div class="tabs">
+            <button class="tab-btn ativo" id="tab1" onclick="setModo(1)">Termos</button>
+            <button class="tab-btn" id="tab2" onclick="setModo(2)">Soma</button>
+            <button class="tab-btn" id="tab3" onclick="setModo(3)">Meios</button>
+        </div>
+
+        <div class="input-group" id="g-a1">
+            <label><span id="lblA1">Primeiro termo (a₁)</span> <span id="valA1" class="valor-dinamico">2</span></label>
+            <input type="range" id="inA1" min="-20" max="20" step="1" value="2" oninput="renderizar()">
+        </div>
+        <div class="input-group" id="g-r">
+            <label>Razão (r) <span id="valR" class="valor-dinamico">3</span></label>
+            <input type="range" id="inR" min="-10" max="10" step="0.5" value="3" oninput="renderizar()">
+        </div>
+        <div class="input-group" id="g-n">
+            <label>Número de termos (n) <span id="valN" class="valor-dinamico">8</span></label>
+            <input type="range" id="inN" min="2" max="20" step="1" value="8" oninput="renderizar()">
+        </div>
+        <div class="input-group" id="g-k">
+            <label>Termo a observar (k) <span id="valK" class="valor-dinamico">5</span></label>
+            <input type="range" id="inK" min="1" max="8" step="1" value="5" oninput="renderizar()">
+        </div>
+        <div class="input-group" id="g-b">
+            <label>Último termo (b) <span id="valB" class="valor-dinamico">17</span></label>
+            <input type="range" id="inB" min="-30" max="40" step="1" value="17" oninput="renderizar()">
+        </div>
+        <div class="input-group" id="g-m">
+            <label>Meios aritméticos (m) <span id="valM" class="valor-dinamico">4</span></label>
+            <input type="range" id="inM" min="1" max="8" step="1" value="4" oninput="renderizar()">
+        </div>
+
+        <div class="formula-display" id="display-lei"></div>
+    </aside>
+
+    <main class="viz-container" style="flex-direction:column; align-items:stretch; justify-content:flex-start; gap:10px;">
+        <div id="fatores"></div>
+        <div class="canvas-wrap" id="cwrap" style="aspect-ratio: 4 / 3;"><canvas id="grafico"></canvas></div>
+    </main>
+
+    <aside class="panel">
+        <h2>Análise</h2>
+        <div class="res-card"><span>Fórmula</span><strong class="passos" id="res-formula"></strong></div>
+        <div class="res-card" style="border-left-color:#2ecc71;"><span>Resultado</span><strong class="solucao" id="res-val"></strong></div>
+        <div class="res-card" style="border-left-color:#3498db;"><span>Regra em ação</span><strong class="passos" id="res-regra"></strong></div>
+    </aside>
+</div>
+
+<script>
+    const el = id => document.getElementById(id);
+    const canvas = el('grafico'), ctx = canvas.getContext('2d');
+    let modo = 1;
+
+    /* ---------- frações exatas (Number, valores pequenos) ---------- */
+    const mdc = (a, b) => { a = Math.abs(a); b = Math.abs(b); while (b) [a, b] = [b, a % b]; return a || 1; };
+    function F(n, d = 1) { if (d < 0) { n = -n; d = -d; } const g = mdc(n, d); return { n: n / g, d: d / g }; }
+    const add = (x, y) => F(x.n * y.d + y.n * x.d, x.d * y.d);
+    const sub = (x, y) => F(x.n * y.d - y.n * x.d, x.d * y.d);
+    const mul = (x, y) => F(x.n * y.n, x.d * y.d);
+    const val = x => x.n / x.d;
+    const num = n => String(n).replace('-', '−');
+    function ds(x) {   // decimal pt-BR
+        const v = Math.round(x * 1e4) / 1e4;
+        return String(v === 0 ? 0 : v).replace('.', ',').replace('-', '−');
+    }
+    const fs = x => x.d === 1 ? num(x.n) : `${num(x.n)}/${x.d}`;
+    const full = x => x.d === 1 ? num(x.n) : `${fs(x)} = ${ds(val(x))}`;
+    const sg = x => x.n < 0 ? `(${fs(x)})` : fs(x);
+    const SUB = '₀₁₂₃₄₅₆₇₈₉';
+    const sb = k => String(k).split('').map(c => SUB[+c]).join('');
+
+    function termos(a1, r, n) { const t = []; let a = a1; for (let i = 0; i < n; i++) { t.push(a); a = add(a, r); } return t; }
+
+    /* ---------- modos ---------- */
+    function setModo(m) {
+        modo = m;
+        [1, 2, 3].forEach(i => el('tab' + i).classList.toggle('ativo', i === m));
+        const N = el('inN');
+        if (m === 1) { N.max = 20; N.value = 8; el('inA1').value = 2; el('inR').value = 3; }
+        if (m === 2) { N.max = 12; N.value = 8; el('inA1').value = 2; el('inR').value = 3; }
+        if (m === 3) { el('inA1').value = 2; el('inB').value = 17; el('inM').value = 4; }
+        el('lblA1').innerText = m === 3 ? 'Primeiro termo (a)' : 'Primeiro termo (a₁)';
+        renderizar();
+    }
+
+    function lerValores() {
+        const a1 = F(parseInt(el('inA1').value, 10));
+        const r = F(Math.round(parseFloat(el('inR').value) * 2), 2);
+        const n = parseInt(el('inN').value, 10);
+        const K = el('inK'); K.max = n; if (parseInt(K.value, 10) > n) K.value = n;
+        return { a1, r, n, k: parseInt(K.value, 10), b: F(parseInt(el('inB').value, 10)), m: parseInt(el('inM').value, 10) };
+    }
+
+    function ajustar() {
+        const vis = { 'g-a1': true, 'g-r': modo !== 3, 'g-n': modo !== 3, 'g-k': modo === 1, 'g-b': modo === 3, 'g-m': modo === 3 };
+        Object.keys(vis).forEach(k => el(k).style.display = vis[k] ? 'block' : 'none');
+    }
+
+    /* ---------- chips ---------- */
+    const chip = (x, cls = '') => `<span class="fator ${cls}">${fs(x)}</span>`;
+    function linhaChips(ts, r, selIdx, meios) {
+        const out = [];
+        ts.forEach((t, i) => {
+            if (i > 0) out.push(`<span class="salto">+${r.n < 0 ? '(' + fs(r) + ')' : fs(r)}</span>`);
+            let cls = '';
+            if (meios) cls = (i === 0 || i === ts.length - 1) ? 'g1' : 'g2';
+            else if (i === selIdx) cls = 'sel';
+            out.push(chip(t, cls));
+        });
+        return `<div class="linha chips">${out.join('')}</div>`;
+    }
+
+    /* ======== MODO 1 ======== */
+    function modo1(v) {
+        const { a1, r, n, k } = v;
+        const ts = termos(a1, r, n);
+        el('valA1').innerText = fs(a1); el('valR').innerText = ds(val(r)); el('valN').innerText = n; el('valK').innerText = k;
+        el('display-lei').innerText = `aₙ = ${fs(a1)} + (n − 1)·${sg(r)}`;
+        const ak = ts[k - 1];
+        const classe = r.n > 0 ? 'Crescente (r > 0)' : (r.n < 0 ? 'Decrescente (r < 0)' : 'Constante (r = 0)');
+        el('res-formula').innerText = `aₙ = a₁ + (n − 1)·r\na${sb(k)} = ${fs(a1)} + (${k} − 1)·${sg(r)}\na${sb(k)} = ${fs(a1)} + ${num(k - 1)}·${sg(r)} = ${fs(ak)}`;
+        el('res-val').innerText = `a${sb(k)} = ${full(ak)}`;
+        el('res-regra').innerText = `Classificação: ${classe}.\nCada termo é o anterior somado à razão: r = a₂ − a₁ = ${fs(r)}.\n` +
+            (r.n > 0 ? 'Os pontos do gráfico SOBEM.' : (r.n < 0 ? 'Os pontos do gráfico DESCEM.' : 'Os pontos ficam na mesma altura.'));
+        const mostrar = ts.slice(0, 10);
+        el('fatores').innerHTML = linhaChips(mostrar, r, k <= 10 ? k - 1 : -1) + (n > 10 ? '<div class="rot">… (mostrando os 10 primeiros termos)</div>' : '<div class="rot">a ordem de cada termo: n = 1, 2, 3, …</div>');
+        graficoPontos(ts, r, k - 1, false);
+    }
+
+    /* ======== MODO 2: soma ======== */
+    function modo2(v) {
+        const { a1, r, n } = v;
+        const ts = termos(a1, r, n);
+        el('valA1').innerText = fs(a1); el('valR').innerText = ds(val(r)); el('valN').innerText = n;
+        const an = ts[n - 1], par = add(a1, an), S = mul(par, F(n, 2));
+        el('display-lei').innerText = `Sₙ = (a₁ + aₙ)·n ÷ 2`;
+        el('res-formula').innerText = `a${sb(n)} = ${fs(a1)} + ${n - 1}·${sg(r)} = ${fs(an)}\nS${sb(n)} = (a₁ + a${sb(n)})·n ÷ 2\nS${sb(n)} = (${fs(a1)} + ${sg(an)})·${n} ÷ 2\nS${sb(n)} = ${sg(par)}·${n} ÷ 2`;
+        el('res-val').innerText = `S${sb(n)} = ${full(S)}`;
+        const somaTotal = ts.reduce((acc, t) => add(acc, t), F(0));
+        el('res-regra').innerText = `Termos equidistantes das pontas somam sempre ${fs(par)} (= a₁ + a${sb(n)}).\n` +
+            (n % 2 === 0 ? `Há ${n / 2} pares iguais: ${n / 2} · ${sg(par)} = ${fs(S)}.` : `Há ${(n - 1) / 2} pares e um termo central (${fs(ts[(n - 1) / 2])}), que é a média: o resultado é n ÷ 2 pares do mesmo valor.`) +
+            `\nConferência somando um a um: ${fs(somaTotal)} ${igualF(somaTotal, S) ? '✔' : '✘'}`;
+        const rev = ts.slice().reverse();
+        const linhaSoma = ts.map((t, i) => `<span class="fator soma">${fs(add(t, rev[i]))}</span>`).join('<span class="x"> </span>');
+        const l1 = ts.map(t => chip(t)).join('<span class="x"> </span>');
+        const l2 = rev.map(t => chip(t, 'g2')).join('<span class="x"> </span>');
+        el('fatores').innerHTML = `<div class="linha chips rot-l"><span class="lbl">PA</span>${l1}</div>` +
+            `<div class="linha chips rot-l"><span class="lbl">invertida</span>${l2}</div>` +
+            `<div class="linha chips rot-l"><span class="lbl">soma</span>${linhaSoma}</div>`;
+        graficoBarras(ts);
+    }
+    const igualF = (x, y) => x.n === y.n && x.d === y.d;
+
+    /* ======== MODO 3: meios aritméticos ======== */
+    function modo3(v) {
+        const { a1, b, m } = v;
+        const n = m + 2, A = a1;
+        const rr = F((b.n * A.d - A.n * b.d), (b.d * A.d * (m + 1)));
+        const ts = termos(A, rr, n);
+        el('valA1').innerText = fs(A); el('valB').innerText = fs(b); el('valM').innerText = m;
+        el('display-lei').innerText = `r = (b − a) ÷ (m + 1)`;
+        el('res-formula').innerText = `São m + 2 = ${n} termos no total.\nb = a + (n − 1)·r  →  ${fs(b)} = ${fs(A)} + ${m + 1}·r\nr = (${fs(b)} − ${sg(A)}) ÷ ${m + 1} = ${full(rr)}`;
+        el('res-val').innerText = `r = ${full(rr)}`;
+        el('res-regra').innerText = `Interpolar ${m} meio${m > 1 ? 's' : ''} aritmético${m > 1 ? 's' : ''} entre ${fs(A)} e ${fs(b)} é descobrir a razão e somar r ${m} vezes.\nMeios: ${ts.slice(1, -1).map(t => fs(t)).join(', ')}` +
+            (rr.d !== 1 ? '\n(a razão não é inteira, então os meios são frações.)' : '');
+        el('fatores').innerHTML = linhaChips(ts, rr, -1, true) + '<div class="rot"><span class="leg g1"></span> extremos dados &nbsp; <span class="leg g2"></span> meios aritméticos</div>';
+        graficoPontos(ts, rr, -1, true);
+    }
+
+    /* ---------- gráficos ---------- */
+    function prepara() {
+        const dpr = window.devicePixelRatio || 1, W = canvas.clientWidth, H = canvas.clientHeight;
+        if (!W || !H) return null;
+        canvas.width = Math.round(W * dpr); canvas.height = Math.round(H * dpr);
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0); ctx.clearRect(0, 0, W, H);
+        return { W, H };
+    }
+    function passoNice(range, alvo) {
+        const bruto = range / alvo, p = Math.pow(10, Math.floor(Math.log10(bruto))), f = bruto / p;
+        return (f <= 1 ? 1 : f <= 2 ? 2 : f <= 5 ? 5 : 10) * p;
+    }
+    function eixosY(vs, H, mt, mb) {
+        let lo = Math.min(0, ...vs), hi = Math.max(0, ...vs);
+        if (hi === lo) hi = lo + 1;
+        const pad = (hi - lo) * 0.14; if (hi > 0) hi += pad; if (lo < 0) lo -= pad;
+        const st = passoNice(hi - lo, 6);
+        lo = Math.floor(lo / st) * st; hi = Math.ceil(hi / st) * st;
+        return { lo, hi, st, py: y => H - mb - (y - lo) / (hi - lo) * (H - mt - mb) };
+    }
+    function graficoPontos(ts, r, selIdx, meios) {
+        const g = prepara(); if (!g) return; const { W, H } = g;
+        const vs = ts.map(val), n = ts.length;
+        const ml = 46, mr = 24, mt = 20, mb = 36;
+        const E = eixosY(vs, H, mt, mb), py = E.py;
+        const px = i => ml + (i + 0.5) / (n + 0.5) * (W - ml - mr);   // i = 0..n-1 → n = i+1
+        ctx.font = '11px Arial'; ctx.lineWidth = 1;
+        for (let y = E.lo; y <= E.hi + 1e-9; y += E.st) {
+            ctx.strokeStyle = 'rgba(0,0,0,0.08)'; ctx.beginPath(); ctx.moveTo(ml, py(y)); ctx.lineTo(W - mr, py(y)); ctx.stroke();
+            ctx.fillStyle = '#566573'; ctx.textAlign = 'right'; ctx.textBaseline = 'middle'; ctx.fillText(ds(y), ml - 6, py(y));
+        }
+        const passoX = Math.ceil(n / 12);
+        for (let i = 0; i < n; i++) {
+            ctx.strokeStyle = 'rgba(0,0,0,0.06)'; ctx.beginPath(); ctx.moveTo(px(i), mt); ctx.lineTo(px(i), H - mb); ctx.stroke();
+            if ((i + 1) % passoX === 0 || i === 0) { ctx.fillStyle = '#566573'; ctx.textAlign = 'center'; ctx.textBaseline = 'top'; ctx.fillText(i + 1, px(i), py(Math.max(E.lo, Math.min(0, E.hi))) + 6); }
+        }
+        const y0 = py(Math.max(E.lo, Math.min(0, E.hi)));
+        ctx.strokeStyle = '#2c3e50'; ctx.fillStyle = '#2c3e50'; ctx.lineWidth = 2;
+        ctx.beginPath(); ctx.moveTo(ml, y0); ctx.lineTo(W - mr + 8, y0); ctx.stroke();
+        ctx.beginPath(); ctx.moveTo(ml, H - mb + 4); ctx.lineTo(ml, mt - 6); ctx.stroke();
+        ctx.beginPath(); ctx.moveTo(W - mr + 16, y0); ctx.lineTo(W - mr + 7, y0 - 4.5); ctx.lineTo(W - mr + 7, y0 + 4.5); ctx.fill();
+        ctx.beginPath(); ctx.moveTo(ml, mt - 14); ctx.lineTo(ml - 4.5, mt - 5); ctx.lineTo(ml + 4.5, mt - 5); ctx.fill();
+        ctx.font = 'bold 12px Arial'; ctx.textAlign = 'left'; ctx.textBaseline = 'middle';
+        ctx.fillText('aₙ', ml + 8, mt - 8);
+        ctx.textAlign = 'right'; ctx.fillText('n', W - 4, y0 - 12);
+        // degraus +r (poucos termos)
+        if (n <= 11 && r.n !== 0) {
+            for (let i = 0; i < n - 1; i++) {
+                ctx.setLineDash([4, 3]); ctx.strokeStyle = '#95a5a6'; ctx.lineWidth = 1.2;
+                ctx.beginPath(); ctx.moveTo(px(i), py(vs[i])); ctx.lineTo(px(i + 1), py(vs[i])); ctx.stroke(); ctx.setLineDash([]);
+                ctx.strokeStyle = '#2ecc71'; ctx.lineWidth = 2.2;
+                ctx.beginPath(); ctx.moveTo(px(i + 1), py(vs[i])); ctx.lineTo(px(i + 1), py(vs[i + 1])); ctx.stroke();
+            }
+        }
+        // linha e pontos
+        ctx.strokeStyle = '#3498db'; ctx.lineWidth = 3; ctx.lineJoin = 'round'; ctx.beginPath();
+        vs.forEach((y, i) => i ? ctx.lineTo(px(i), py(y)) : ctx.moveTo(px(i), py(y))); ctx.stroke();
+        vs.forEach((y, i) => {
+            const ext = meios && (i === 0 || i === n - 1), mid = meios && !ext;
+            ctx.fillStyle = (i === selIdx) ? '#c0392b' : (mid ? '#e67e22' : (ext ? '#3498db' : '#e67e22'));
+            if (!meios) ctx.fillStyle = i === selIdx ? '#c0392b' : '#e67e22';
+            ctx.strokeStyle = '#fff'; ctx.lineWidth = 2;
+            ctx.beginPath(); ctx.arc(px(i), py(y), i === selIdx ? 7 : 5.5, 0, 7); ctx.fill(); ctx.stroke();
+            if (i === selIdx || (meios && n <= 11) || (!meios && n <= 6)) {
+                ctx.font = (i === selIdx ? 'bold ' : '') + '12px Arial'; ctx.fillStyle = i === selIdx ? '#c0392b' : '#2c3e50';
+                ctx.textAlign = 'center'; ctx.textBaseline = 'bottom';
+                ctx.lineWidth = 4; ctx.strokeStyle = 'rgba(255,255,255,0.9)';
+                const t = ds(y); ctx.strokeText(t, px(i), py(y) - 9); ctx.fillText(t, px(i), py(y) - 9);
+            }
+        });
+    }
+    function graficoBarras(ts) {
+        const g = prepara(); if (!g) return; const { W, H } = g;
+        const vs = ts.map(val), n = ts.length;
+        const ml = 46, mr = 16, mt = 20, mb = 32;
+        const E = eixosY(vs, H, mt, mb), py = E.py;
+        const bw = (W - ml - mr) / n;
+        ctx.font = '11px Arial';
+        for (let y = E.lo; y <= E.hi + 1e-9; y += E.st) {
+            ctx.strokeStyle = 'rgba(0,0,0,0.08)'; ctx.lineWidth = 1; ctx.beginPath(); ctx.moveTo(ml, py(y)); ctx.lineTo(W - mr, py(y)); ctx.stroke();
+            ctx.fillStyle = '#566573'; ctx.textAlign = 'right'; ctx.textBaseline = 'middle'; ctx.fillText(ds(y), ml - 6, py(y));
+        }
+        const y0 = py(Math.max(E.lo, Math.min(0, E.hi)));
+        vs.forEach((v, i) => {
+            const par = Math.min(i, n - 1 - i);                 // par equidistante
+            const central = n % 2 === 1 && i === (n - 1) / 2;
+            const hue = (par * 47 + 200) % 360;
+            ctx.fillStyle = central ? '#7f8c8d' : `hsl(${hue},65%,58%)`;
+            const x = ml + i * bw + bw * 0.12, w = bw * 0.76, yy = py(v);
+            ctx.fillRect(x, Math.min(yy, y0), w, Math.max(Math.abs(yy - y0), 1.5));
+            ctx.fillStyle = '#2c3e50'; ctx.font = '11px Arial'; ctx.textAlign = 'center';
+            ctx.textBaseline = v >= 0 ? 'bottom' : 'top'; ctx.fillText(ds(v), x + w / 2, v >= 0 ? yy - 3 : yy + 3);
+            ctx.textBaseline = 'top'; ctx.fillStyle = '#566573'; ctx.fillText(i + 1, x + w / 2, H - mb + 8);
+        });
+        ctx.strokeStyle = '#2c3e50'; ctx.lineWidth = 2; ctx.beginPath(); ctx.moveTo(ml, y0); ctx.lineTo(W - mr, y0); ctx.stroke();
+        ctx.fillStyle = '#2c3e50'; ctx.font = 'bold 12px Arial'; ctx.textAlign = 'left'; ctx.textBaseline = 'middle';
+        ctx.fillText('Termos de mesma cor (equidistantes) somam o mesmo valor', ml + 4, 10);
+    }
+
+    function renderizar() {
+        ajustar();
+        const v = lerValores();
+        if (modo === 1) modo1(v); else if (modo === 2) modo2(v); else modo3(v);
+    }
+    window.addEventListener('load', () => setModo(1));
+    window.addEventListener('resize', renderizar);
+    if (window.ResizeObserver) new ResizeObserver(renderizar).observe(canvas.parentElement);
+</script>
+
+</body>
+</html>
