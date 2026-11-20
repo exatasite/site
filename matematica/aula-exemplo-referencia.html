@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aula de exemplo — Questões do banco</title>
+
+  <style>
+    :root {
+      --cor-principal: #174a70;
+      --cor-borda: #d9e0e6;
+      --fundo: #f4f6f8;
+      --texto: #263238;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      padding: 32px 16px;
+      background: var(--fundo);
+      color: var(--texto);
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.65;
+    }
+
+    main {
+      width: min(900px, 100%);
+      margin: 0 auto;
+    }
+
+    .cabecalho-aula {
+      margin-bottom: 28px;
+      padding: 26px;
+      color: white;
+      background: var(--cor-principal);
+      border-radius: 12px;
+    }
+
+    .cabecalho-aula h1 { margin: 0 0 8px; }
+    .cabecalho-aula p { margin: 0; opacity: .9; }
+
+    .questao {
+      margin: 24px 0;
+      padding: 24px;
+      background: white;
+      border: 1px solid var(--cor-borda);
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgb(0 0 0 / 4%);
+    }
+
+    .questao-cabecalho {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 8px;
+      margin-bottom: 18px;
+      padding-bottom: 12px;
+      color: var(--cor-principal);
+      border-bottom: 1px solid var(--cor-borda);
+      font-size: .9rem;
+    }
+
+    .questao-enunciado p:first-child { margin-top: 0; }
+    .questao-enunciado p:last-child { margin-bottom: 0; }
+
+    .figura-questao {
+      display: block;
+      max-width: 100%;
+      height: auto;
+      margin: 20px auto;
+    }
+
+    .alternativas { margin-top: 20px; }
+    .alternativa { margin: 10px 0; }
+    .letra-alternativa { color: var(--cor-principal); }
+
+    .acoes-questao { margin-top: 20px; }
+    .botao-gabarito {
+      padding: 9px 14px;
+      color: white;
+      background: var(--cor-principal);
+      border: 0;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    .resposta-gabarito {
+      display: none;
+      margin-top: 12px;
+      padding: 10px 14px;
+      background: #edf6ef;
+      border-left: 4px solid #39834a;
+    }
+
+    .aviso-erro {
+      padding: 14px;
+      color: #8b1e1e;
+      background: #fff0f0;
+      border: 1px solid #efcaca;
+      border-radius: 8px;
+    }
+
+    table { border-collapse: collapse; max-width: 100%; }
+    th, td { padding: 8px 10px; border: 1px solid var(--cor-borda); }
+
+    @media (max-width: 600px) {
+      body { padding: 16px 10px; }
+      .questao { padding: 17px; }
+      .cabecalho-aula { padding: 20px; }
+    }
+  </style>
+
+  <!-- Markdown: permite interpretar tabelas, listas, negrito etc. do banco. -->
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+  <!-- MathJax: renderiza fórmulas LaTeX armazenadas nos enunciados. -->
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']]
+      },
+      options: {
+        skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+      }
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+  <!--
+    CAMINHO RELATIVO:
+    aula em /site/matematica/
+    dados.js em /site/exata_provas/app/
+    Portanto, sobe um nível e entra em exata_provas/app.
+  -->
+  <script src="../exata_provas/app/dados.js"></script>
+</head>
+<body>
+  <main>
+    <header class="cabecalho-aula">
+      <h1>Aula de exemplo — Matemática</h1>
+      <p>Questões carregadas diretamente do banco de dados, sem copiar seus enunciados para este HTML.</p>
+    </header>
+
+    <section aria-labelledby="titulo-questoes">
+      <h2 id="titulo-questoes">Questões para praticar</h2>
+      <div id="lista-questoes"></div>
+    </section>
+  </main>
+
+  <script>
+    // Os únicos dados das questões escritos nesta aula são seus IDs.
+    const QUESTOES_DA_AULA = [
+      'enem-2000-13',
+      'enem-2000-41',
+      'enem-2000-43'
+    ];
+
+    /*
+      Os caminhos das figuras no banco começam com "imagens/".
+      Como a pasta de imagens está em /site/exata_provas/imagens/,
+      usamos esta base para formar o caminho correto a partir de
+      /site/matematica/.
+
+      A pasta de imagens e o arquivo dados.js estão dentro de "exata_provas".
+    */
+    const BASE_IMAGENS = '../exata_provas/';
+
+    function localizarQuestao(id) {
+      if (!Array.isArray(window.BANCO)) return undefined;
+      return window.BANCO.find(questao => questao.id === id);
+    }
+
+    function caminhoDaImagem(caminho) {
+      if (!caminho) return '';
+      // Se futuramente o banco tiver uma URL absoluta, ela será preservada.
+      if (/^(https?:|data:|\/)/i.test(caminho)) return caminho;
+      return BASE_IMAGENS + caminho.replace(/^\.\//, '');
+    }
+
+    function renderizarEnunciado(questao) {
+      let texto = questao.enunciado || '';
+
+      // Troca [[FIG1]], [[FIG2]] etc. pelas figuras correspondentes.
+      texto = texto.replace(/\[\[FIG(\d+)\]\]/g, (marcador, numero) => {
+        const caminho = questao.figuras?.[Number(numero) - 1];
+        if (!caminho) return '';
+        const src = caminhoDaImagem(caminho);
+        return `<img class="figura-questao" src="${src}" alt="Figura ${numero} da questão" loading="lazy">`;
+      });
+
+      return window.marked
+        ? marked.parse(texto)
+        : `<p>${texto.replace(/\n/g, '<br>')}</p>`;
+    }
+
+    function renderizarAlternativas(questao) {
+      if (!questao.alternativas) return '';
+
+      const itens = Object.entries(questao.alternativas).map(([letra, texto]) => {
+        const textoFormatado = window.marked
+          ? marked.parseInline(String(texto))
+          : String(texto);
+        return `<p class="alternativa"><strong class="letra-alternativa">${letra})</strong> ${textoFormatado}</p>`;
+      }).join('');
+
+      return `<div class="alternativas">${itens}</div>`;
+    }
+
+    function renderizarQuestao(id, indice) {
+      const questao = localizarQuestao(id);
+
+      if (!questao) {
+        return `<div class="aviso-erro">Não foi possível localizar a questão <strong>${id}</strong> no banco.</div>`;
+      }
+
+      const imagemAlternativas = questao.alternativas_imagem
+        ? `<img class="figura-questao" src="${caminhoDaImagem(questao.alternativas_imagem)}" alt="Alternativas da questão" loading="lazy">`
+        : '';
+
+      const gabarito = questao.gabarito
+        ? `<div class="acoes-questao">
+             <button class="botao-gabarito" type="button" aria-expanded="false" aria-controls="gabarito-${indice}"
+               onclick="alternarGabarito(${indice})">Mostrar gabarito</button>
+             <div class="resposta-gabarito" id="gabarito-${indice}">Gabarito: <strong>${questao.gabarito}</strong></div>
+           </div>`
+        : '';
+
+      return `
+        <article class="questao">
+          <div class="questao-cabecalho">
+            <strong>${questao.origem || 'Banco de questões'}</strong>
+            <span>${questao.ano || ''} — Questão ${questao.numero_original ?? ''}</span>
+          </div>
+          <div class="questao-enunciado">${renderizarEnunciado(questao)}</div>
+          ${renderizarAlternativas(questao)}
+          ${imagemAlternativas}
+          ${gabarito}
+        </article>`;
+    }
+
+    function alternarGabarito(indice) {
+      const resposta = document.getElementById(`gabarito-${indice}`);
+      const botao = resposta?.previousElementSibling;
+      if (!resposta || !botao) return;
+
+      const vaiMostrar = resposta.style.display !== 'block';
+      resposta.style.display = vaiMostrar ? 'block' : 'none';
+      botao.textContent = vaiMostrar ? 'Ocultar gabarito' : 'Mostrar gabarito';
+      botao.setAttribute('aria-expanded', String(vaiMostrar));
+    }
+
+    function carregarQuestoesDaAula() {
+      const destino = document.getElementById('lista-questoes');
+
+      if (!Array.isArray(window.BANCO)) {
+        destino.innerHTML = `
+          <div class="aviso-erro">
+            O arquivo dados.js não foi carregado. Confira o caminho
+            <code>../exata_provas/app/dados.js</code> e se o arquivo define <code>window.BANCO</code>.
+          </div>`;
+        return;
+      }
+
+      destino.innerHTML = QUESTOES_DA_AULA
+        .map((id, indice) => renderizarQuestao(id, indice + 1))
+        .join('');
+
+      if (window.MathJax?.typesetPromise) {
+        MathJax.typesetPromise([destino]);
+      }
+    }
+
+    carregarQuestoesDaAula();
+  </script>
+</body>
+</html>
