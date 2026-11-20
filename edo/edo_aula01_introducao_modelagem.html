@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Engenharia: Aula 01 - INTRODUÇÃO ÀS EQUAÇÕES DIFERENCIAIS E MODELAGEM MATEMÁTICA</title>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../estilo.css">
+    <script>
+        MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']], processEscapes: true } };
+    </script>
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        body.modo-slides { overflow: hidden !important; background-color: #1a1a1a !important; margin: 0; padding: 0; }
+        body.modo-slides .menu-lateral, body.modo-slides header, body.modo-slides .menu-toggle, body.modo-slides #btn-slides, body.modo-slides .nav-global { display: none !important; }
+        .slide-ativo { display: flex !important; flex-direction: column; align-items: center; justify-content: center; position: fixed; top: 0; left: 0; width: 100vw; height: calc(100vh - 70px); background: #ffffff; padding: 40px; z-index: 999; overflow-y: auto !important; box-sizing: border-box; text-align: left; }
+        .slide-ativo > * { max-width: 900px; width: 100%; }
+        .controles-slides { position: fixed; bottom: 0; left: 0; width: 100%; height: 70px; background: #2c3e50; color: white; display: none; justify-content: space-between; align-items: center; padding: 0 20px; z-index: 1001; box-sizing: border-box; }
+        body.modo-slides .controles-slides { display: flex !important; }
+        .info-lateral { flex: 1; font-family: 'Oswald', sans-serif; font-size: 0.9rem; color: #bdc3c7; }
+        .botoes-centrais { display: flex; align-items: center; gap: 15px; justify-content: center; flex: 2; }
+        .btn-nav { padding: 10px 20px; background: #3498db; color: white; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; font-size: 0.9rem; }
+        .btn-nav:hover { background: #2980b9; }
+        #contador-slide { font-family: 'Oswald', sans-serif; min-width: 60px; text-align: center; font-size: 1.1rem; }
+    </style>
+</head>
+<body>
+<button class="menu-toggle" onclick="toggleMenu()">☰</button>
+<nav id="menu-principal" class="nav-global"><ul>
+    <li><a href="../index.html">🏠 Início</a></li>
+    <li><a href="../ensino_medio.html">📚 Ensino Médio</a></li>
+    <li><a href="../ensino_superior.html">🎓 Ensino Superior</a></li>
+</ul></nav>
+<header id="topo">
+    <h1>EQUAÇÕES DIFERENCIAIS</h1>
+    <p>Engenharia | Aula 01: Introdução às Equações Diferenciais e Modelagem Matemática</p>
+    <button id="btn-slides" onclick="toggleSlides()">📺 Iniciar Modo Slides</button>
+</header>
+<div class="container"><main class="conteudo-principal"><div class="secao-aula">
+  <div class="container-resumo" id="resumo"><h3>📚 Resumo</h3><section class="resumo-conteudo"><p>Uma <strong>equação diferencial ordinária (EDO)</strong> relaciona uma função incógnita de uma variável com suas derivadas. Como a derivada mede uma <em>taxa de variação</em>, as EDOs são a linguagem natural para descrever sistemas que mudam no tempo. Chamamos de <strong>modelo matemático</strong> a EDO que descreve um processo físico. O exemplo-guia é o corpo em queda com resistência do ar:</p>
+$$m\,\frac{dv}{dt}=mg-\gamma v \quad\Longleftrightarrow\quad \frac{dv}{dt}=g-\frac{\gamma}{m}\,v$$</section></div>
+  <section class="conteudo-teorico-completo" id="teoria">
+    <div class="passo-teoria"><h3>📖 INTRODUÇÃO ÀS EQUAÇÕES DIFERENCIAIS E MODELAGEM</h3><h4>1. O que é uma equação diferencial?</h4>
+
+<p>Uma equação diferencial é uma equação em que aparece a <strong>derivada</strong> de uma função incógnita. Quando a função depende de uma única variável (por exemplo, o tempo $t$), as derivadas são ordinárias e temos uma <strong>EDO</strong>. Exemplos:</p>
+$$\frac{dP}{dt}=kP \qquad\qquad m\,\frac{d^2x}{dt^2}=F$$
+<p>Resolver uma EDO significa encontrar a <strong>função</strong> (e não um número) que, ao ser substituída na equação, a satisfaz. Muitas leis da natureza dizem que "a taxa de variação de uma grandeza depende do estado atual do sistema". É exatamente isso que uma EDO escreve em linguagem matemática.</p>
+    </div>
+    <div class="passo-teoria"><h4>2. As etapas da modelagem</h4>
+
+<p>Modelar é traduzir um problema real em uma EDO. O roteiro é sempre o mesmo:</p>
+<ol>
+  <li><strong>Identificar as variáveis:</strong> qual é a variável independente (em geral $t$) e qual é a função incógnita (velocidade, população, quantidade de sal...).</li>
+  <li><strong>Escolher a lei física ou o princípio</strong> que governa o sistema (2ª lei de Newton, conservação, proporcionalidade).</li>
+  <li><strong>Escrever a EDO</strong>, expressando as taxas como derivadas.</li>
+  <li><strong>Resolver</strong> a equação (nas próximas aulas) ou analisá-la por gráficos.</li>
+  <li><strong>Interpretar</strong> o resultado e comparar com a realidade.</li>
+</ol>
+    </div>
+    <div class="passo-teoria"><h4>3. Exemplo-guia: corpo em queda com resistência do ar</h4>
+
+<p>Um objeto de massa $m$ cai perto do nível do mar. A <strong>2ª lei de Newton</strong> diz que $F=ma$, e a aceleração é a derivada da velocidade: $a=\dfrac{dv}{dt}$. Tomando o sentido para baixo como positivo, atuam duas forças:</p>
+<ul>
+  <li>o <strong>peso</strong>, $P=mg$, para baixo;</li>
+  <li>a <strong>resistência do ar</strong>, proporcional à velocidade e contrária ao movimento: $F_{ar}=-\gamma v$, em que $\gamma$ (kg/s) é o coeficiente de resistência.</li>
+</ul>
+<p>Logo $F=mg-\gamma v$ e, como $F=m\,\dfrac{dv}{dt}$, obtemos o <strong>modelo matemático</strong> da queda:</p>
+$$m\,\frac{dv}{dt}=mg-\gamma v \qquad\Longrightarrow\qquad \frac{dv}{dt}=g-\frac{\gamma}{m}\,v$$
+<p>É uma EDO: a incógnita é a função $v(t)$. Quando a aceleração se anula, a velocidade para de crescer e atinge a <strong>velocidade terminal</strong>: $0=g-\dfrac{\gamma}{m}v \Rightarrow v_L=\dfrac{mg}{\gamma}$.</p>
+      <figure class="figura-aula figura-grande"><svg viewBox="0 0 420 300" xmlns="http://www.w3.org/2000/svg" style="max-width:420px;width:100%;height:auto;display:block;margin:auto" role="img" aria-label="Diagrama de forças: peso para baixo e resistência do ar para cima">
+<defs>
+<marker id="ah1" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto"><path d="M0,0 L10,4 L0,8 z" fill="#27ae60"/></marker>
+<marker id="ah2" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto"><path d="M0,0 L10,4 L0,8 z" fill="#e74c3c"/></marker>
+<marker id="ah3" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto"><path d="M0,0 L10,4 L0,8 z" fill="#2c3e50"/></marker>
+</defs>
+<rect x="0" y="0" width="420" height="300" fill="#fdfefe" stroke="#d5dbdb"/>
+<circle cx="210" cy="140" r="28" fill="#aed6f1" stroke="#2c3e50" stroke-width="2"/>
+<text x="210" y="146" text-anchor="middle" font-size="16" fill="#2c3e50" font-family="sans-serif">m</text>
+<line x1="210" y1="168" x2="210" y2="262" stroke="#27ae60" stroke-width="4" marker-end="url(#ah1)"/>
+<text x="246" y="226" font-size="15" fill="#27ae60" font-family="sans-serif">Peso: P = mg</text>
+<line x1="210" y1="112" x2="210" y2="40" stroke="#e74c3c" stroke-width="4" marker-end="url(#ah2)"/>
+<text x="246" y="70" font-size="15" fill="#e74c3c" font-family="sans-serif">Resistência: γv</text>
+<line x1="90" y1="70" x2="90" y2="150" stroke="#2c3e50" stroke-width="3" marker-end="url(#ah3)"/>
+<text x="62" y="172" font-size="14" fill="#2c3e50" font-family="sans-serif">v (sentido positivo)</text>
+</svg><figcaption>Figura 1: Diagrama de forças do corpo em queda: o peso aponta para baixo e a resistência do ar, para cima.</figcaption></figure>
+    </div>
+    <div class="passo-teoria"><h4>4. Campo de direções e equilíbrio</h4>
+
+<p>Toda EDO de 1ª ordem pode ser escrita como $\dfrac{dy}{dt}=f(t,y)$. Isso significa que, em <strong>cada ponto</strong> $(t,y)$ do plano, a equação informa a <strong>inclinação</strong> da solução que passa por ali. O conjunto desses pequenos segmentos é o <strong>campo de direções</strong>.</p>
+<p>Para a queda com $g=10$ m/s² e $\gamma/m=1$ s⁻¹ temos $\dfrac{dv}{dt}=10-v$. Observe:</p>
+<ul>
+  <li>se $v<10$, a inclinação é positiva: a velocidade <strong>aumenta</strong>;</li>
+  <li>se $v>10$, a inclinação é negativa: a velocidade <strong>diminui</strong>;</li>
+  <li>se $v=10$, a inclinação é zero: é a solução constante de <strong>equilíbrio</strong> (velocidade terminal).</li>
+</ul>
+<p>Sem resolver a equação, já vemos que qualquer solução tende a $v=10$ m/s.</p>
+      <figure class="figura-aula figura-grande"><svg viewBox="0 0 600 340" xmlns="http://www.w3.org/2000/svg" style="max-width:600px;width:100%;height:auto;display:block;margin:auto" role="img" aria-label="Campo de direções de v linha igual a 10 menos v"><rect x="0" y="0" width="600" height="340" fill="#fdfefe" stroke="#d5dbdb"/><line x1="60" y1="300" x2="560" y2="300" stroke="#2c3e50" stroke-width="1.5"/><line x1="60" y1="300" x2="60" y2="30" stroke="#2c3e50" stroke-width="1.5"/><text x="60.0" y="316" text-anchor="middle" font-size="12" fill="#2c3e50" font-family="sans-serif">0</text><text x="160.0" y="316" text-anchor="middle" font-size="12" fill="#2c3e50" font-family="sans-serif">1</text><text x="260.0" y="316" text-anchor="middle" font-size="12" fill="#2c3e50" font-family="sans-serif">2</text><text x="360.0" y="316" text-anchor="middle" font-size="12" fill="#2c3e50" font-family="sans-serif">3</text><text x="460.0" y="316" text-anchor="middle" font-size="12" fill="#2c3e50" font-family="sans-serif">4</text><text x="560.0" y="316" text-anchor="middle" font-size="12" fill="#2c3e50" font-family="sans-serif">5</text><text x="54" y="304.0" text-anchor="end" font-size="12" fill="#2c3e50" font-family="sans-serif">0</text><text x="54" y="207.6" text-anchor="end" font-size="12" fill="#2c3e50" font-family="sans-serif">5</text><text x="54" y="111.1" text-anchor="end" font-size="12" fill="#2c3e50" font-family="sans-serif">10</text><text x="310" y="334" text-anchor="middle" font-size="13" fill="#2c3e50" font-family="sans-serif">t (s)</text><text x="22" y="165" font-size="13" fill="#2c3e50" font-family="sans-serif" transform="rotate(-90 22 165)" text-anchor="middle">v (m/s)</text><line x1="79.0" y1="311.5" x2="91.0" y2="288.5" stroke="#85929e" stroke-width="1.6"/><line x1="78.5" y1="292.0" x2="91.5" y2="269.5" stroke="#85929e" stroke-width="1.6"/><line x1="77.9" y1="272.3" x2="92.1" y2="250.5" stroke="#85929e" stroke-width="1.6"/><line x1="77.3" y1="252.6" x2="92.7" y2="231.7" stroke="#85929e" stroke-width="1.6"/><line x1="76.5" y1="232.7" x2="93.5" y2="213.0" stroke="#85929e" stroke-width="1.6"/><line x1="75.6" y1="212.6" x2="94.4" y2="194.5" stroke="#85929e" stroke-width="1.6"/><line x1="74.7" y1="192.2" x2="95.3" y2="176.3" stroke="#85929e" stroke-width="1.6"/><line x1="73.7" y1="171.5" x2="96.3" y2="158.5" stroke="#85929e" stroke-width="1.6"/><line x1="72.9" y1="150.4" x2="97.1" y2="141.0" stroke="#85929e" stroke-width="1.6"/><line x1="72.2" y1="128.9" x2="97.8" y2="124.0" stroke="#85929e" stroke-width="1.6"/><line x1="72.0" y1="107.1" x2="98.0" y2="107.1" stroke="#85929e" stroke-width="1.6"/><line x1="72.2" y1="85.4" x2="97.8" y2="90.3" stroke="#85929e" stroke-width="1.6"/><line x1="72.9" y1="63.9" x2="97.1" y2="73.2" stroke="#85929e" stroke-width="1.6"/><line x1="73.7" y1="42.8" x2="96.3" y2="55.8" stroke="#85929e" stroke-width="1.6"/><line x1="74.7" y1="22.1" x2="95.3" y2="37.9" stroke="#85929e" stroke-width="1.6"/><line x1="129.0" y1="311.5" x2="141.0" y2="288.5" stroke="#85929e" stroke-width="1.6"/><line x1="128.5" y1="292.0" x2="141.5" y2="269.5" stroke="#85929e" stroke-width="1.6"/><line x1="127.9" y1="272.3" x2="142.1" y2="250.5" stroke="#85929e" stroke-width="1.6"/><line x1="127.3" y1="252.6" x2="142.7" y2="231.7" stroke="#85929e" stroke-width="1.6"/><line x1="126.5" y1="232.7" x2="143.5" y2="213.0" stroke="#85929e" stroke-width="1.6"/><line x1="125.6" y1="212.6" x2="144.4" y2="194.5" stroke="#85929e" stroke-width="1.6"/><line x1="124.7" y1="192.2" x2="145.3" y2="176.3" stroke="#85929e" stroke-width="1.6"/><line x1="123.7" y1="171.5" x2="146.3" y2="158.5" stroke="#85929e" stroke-width="1.6"/><line x1="122.9" y1="150.4" x2="147.1" y2="141.0" stroke="#85929e" stroke-width="1.6"/><line x1="122.2" y1="128.9" x2="147.8" y2="124.0" stroke="#85929e" stroke-width="1.6"/><line x1="122.0" y1="107.1" x2="148.0" y2="107.1" stroke="#85929e" stroke-width="1.6"/><line x1="122.2" y1="85.4" x2="147.8" y2="90.3" stroke="#85929e" stroke-width="1.6"/><line x1="122.9" y1="63.9" x2="147.1" y2="73.2" stroke="#85929e" stroke-width="1.6"/><line x1="123.7" y1="42.8" x2="146.3" y2="55.8" stroke="#85929e" stroke-width="1.6"/><line x1="124.7" y1="22.1" x2="145.3" y2="37.9" stroke="#85929e" stroke-width="1.6"/><line x1="179.0" y1="311.5" x2="191.0" y2="288.5" stroke="#85929e" stroke-width="1.6"/><line x1="178.5" y1="292.0" x2="191.5" y2="269.5" stroke="#85929e" stroke-width="1.6"/><line x1="177.9" y1="272.3" x2="192.1" y2="250.5" stroke="#85929e" stroke-width="1.6"/><line x1="177.3" y1="252.6" x2="192.7" y2="231.7" stroke="#85929e" stroke-width="1.6"/><line x1="176.5" y1="232.7" x2="193.5" y2="213.0" stroke="#85929e" stroke-width="1.6"/><line x1="175.6" y1="212.6" x2="194.4" y2="194.5" stroke="#85929e" stroke-width="1.6"/><line x1="174.7" y1="192.2" x2="195.3" y2="176.3" stroke="#85929e" stroke-width="1.6"/><line x1="173.7" y1="171.5" x2="196.3" y2="158.5" stroke="#85929e" stroke-width="1.6"/><line x1="172.9" y1="150.4" x2="197.1" y2="141.0" stroke="#85929e" stroke-width="1.6"/><line x1="172.2" y1="128.9" x2="197.8" y2="124.0" stroke="#85929e" stroke-width="1.6"/><line x1="172.0" y1="107.1" x2="198.0" y2="107.1" stroke="#85929e" stroke-width="1.6"/><line x1="172.2" y1="85.4" x2="197.8" y2="90.3" stroke="#85929e" stroke-width="1.6"/><line x1="172.9" y1="63.9" x2="197.1" y2="73.2" stroke="#85929e" stroke-width="1.6"/><line x1="173.7" y1="42.8" x2="196.3" y2="55.8" stroke="#85929e" stroke-width="1.6"/><line x1="174.7" y1="22.1" x2="195.3" y2="37.9" stroke="#85929e" stroke-width="1.6"/><line x1="229.0" y1="311.5" x2="241.0" y2="288.5" stroke="#85929e" stroke-width="1.6"/><line x1="228.5" y1="292.0" x2="241.5" y2="269.5" stroke="#85929e" stroke-width="1.6"/><line x1="227.9" y1="272.3" x2="242.1" y2="250.5" stroke="#85929e" stroke-width="1.6"/><line x1="227.3" y1="252.6" x2="242.7" y2="231.7" stroke="#85929e" stroke-width="1.6"/><line x1="226.5" y1="232.7" x2="243.5" y2="213.0" stroke="#85929e" stroke-width="1.6"/><line x1="225.6" y1="212.6" x2="244.4" y2="194.5" stroke="#85929e" stroke-width="1.6"/><line x1="224.7" y1="192.2" x2="245.3" y2="176.3" stroke="#85929e" stroke-width="1.6"/><line x1="223.7" y1="171.5" x2="246.3" y2="158.5" stroke="#85929e" stroke-width="1.6"/><line x1="222.9" y1="150.4" x2="247.1" y2="141.0" stroke="#85929e" stroke-width="1.6"/><line x1="222.2" y1="128.9" x2="247.8" y2="124.0" stroke="#85929e" stroke-width="1.6"/><line x1="222.0" y1="107.1" x2="248.0" y2="107.1" stroke="#85929e" stroke-width="1.6"/><line x1="222.2" y1="85.4" x2="247.8" y2="90.3" stroke="#85929e" stroke-width="1.6"/><line x1="222.9" y1="63.9" x2="247.1" y2="73.2" stroke="#85929e" stroke-width="1.6"/><line x1="223.7" y1="42.8" x2="246.3" y2="55.8" stroke="#85929e" stroke-width="1.6"/><line x1="224.7" y1="22.1" x2="245.3" y2="37.9" stroke="#85929e" stroke-width="1.6"/><line x1="279.0" y1="311.5" x2="291.0" y2="288.5" stroke="#85929e" stroke-width="1.6"/><line x1="278.5" y1="292.0" x2="291.5" y2="269.5" stroke="#85929e" stroke-width="1.6"/><line x1="277.9" y1="272.3" x2="292.1" y2="250.5" stroke="#85929e" stroke-width="1.6"/><line x1="277.3" y1="252.6" x2="292.7" y2="231.7" stroke="#85929e" stroke-width="1.6"/><line x1="276.5" y1="232.7" x2="293.5" y2="213.0" stroke="#85929e" stroke-width="1.6"/><line x1="275.6" y1="212.6" x2="294.4" y2="194.5" stroke="#85929e" stroke-width="1.6"/><line x1="274.7" y1="192.2" x2="295.3" y2="176.3" stroke="#85929e" stroke-width="1.6"/><line x1="273.7" y1="171.5" x2="296.3" y2="158.5" stroke="#85929e" stroke-width="1.6"/><line x1="272.9" y1="150.4" x2="297.1" y2="141.0" stroke="#85929e" stroke-width="1.6"/><line x1="272.2" y1="128.9" x2="297.8" y2="124.0" stroke="#85929e" stroke-width="1.6"/><line x1="272.0" y1="107.1" x2="298.0" y2="107.1" stroke="#85929e" stroke-width="1.6"/><line x1="272.2" y1="85.4" x2="297.8" y2="90.3" stroke="#85929e" stroke-width="1.6"/><line x1="272.9" y1="63.9" x2="297.1" y2="73.2" stroke="#85929e" stroke-width="1.6"/><line x1="273.7" y1="42.8" x2="296.3" y2="55.8" stroke="#85929e" stroke-width="1.6"/><line x1="274.7" y1="22.1" x2="295.3" y2="37.9" stroke="#85929e" stroke-width="1.6"/><line x1="329.0" y1="311.5" x2="341.0" y2="288.5" stroke="#85929e" stroke-width="1.6"/><line x1="328.5" y1="292.0" x2="341.5" y2="269.5" stroke="#85929e" stroke-width="1.6"/><line x1="327.9" y1="272.3" x2="342.1" y2="250.5" stroke="#85929e" stroke-width="1.6"/><line x1="327.3" y1="252.6" x2="342.7" y2="231.7" stroke="#85929e" stroke-width="1.6"/><line x1="326.5" y1="232.7" x2="343.5" y2="213.0" stroke="#85929e" stroke-width="1.6"/><line x1="325.6" y1="212.6" x2="344.4" y2="194.5" stroke="#85929e" stroke-width="1.6"/><line x1="324.7" y1="192.2" x2="345.3" y2="176.3" stroke="#85929e" stroke-width="1.6"/><line x1="323.7" y1="171.5" x2="346.3" y2="158.5" stroke="#85929e" stroke-width="1.6"/><line x1="322.9" y1="150.4" x2="347.1" y2="141.0" stroke="#85929e" stroke-width="1.6"/><line x1="322.2" y1="128.9" x2="347.8" y2="124.0" stroke="#85929e" stroke-width="1.6"/><line x1="322.0" y1="107.1" x2="348.0" y2="107.1" stroke="#85929e" stroke-width="1.6"/><line x1="322.2" y1="85.4" x2="347.8" y2="90.3" stroke="#85929e" stroke-width="1.6"/><line x1="322.9" y1="63.9" x2="347.1" y2="73.2" stroke="#85929e" stroke-width="1.6"/><line x1="323.7" y1="42.8" x2="346.3" y2="55.8" stroke="#85929e" stroke-width="1.6"/><line x1="324.7" y1="22.1" x2="345.3" y2="37.9" stroke="#85929e" stroke-width="1.6"/><line x1="379.0" y1="311.5" x2="391.0" y2="288.5" stroke="#85929e" stroke-width="1.6"/><line x1="378.5" y1="292.0" x2="391.5" y2="269.5" stroke="#85929e" stroke-width="1.6"/><line x1="377.9" y1="272.3" x2="392.1" y2="250.5" stroke="#85929e" stroke-width="1.6"/><line x1="377.3" y1="252.6" x2="392.7" y2="231.7" stroke="#85929e" stroke-width="1.6"/><line x1="376.5" y1="232.7" x2="393.5" y2="213.0" stroke="#85929e" stroke-width="1.6"/><line x1="375.6" y1="212.6" x2="394.4" y2="194.5" stroke="#85929e" stroke-width="1.6"/><line x1="374.7" y1="192.2" x2="395.3" y2="176.3" stroke="#85929e" stroke-width="1.6"/><line x1="373.7" y1="171.5" x2="396.3" y2="158.5" stroke="#85929e" stroke-width="1.6"/><line x1="372.9" y1="150.4" x2="397.1" y2="141.0" stroke="#85929e" stroke-width="1.6"/><line x1="372.2" y1="128.9" x2="397.8" y2="124.0" stroke="#85929e" stroke-width="1.6"/><line x1="372.0" y1="107.1" x2="398.0" y2="107.1" stroke="#85929e" stroke-width="1.6"/><line x1="372.2" y1="85.4" x2="397.8" y2="90.3" stroke="#85929e" stroke-width="1.6"/><line x1="372.9" y1="63.9" x2="397.1" y2="73.2" stroke="#85929e" stroke-width="1.6"/><line x1="373.7" y1="42.8" x2="396.3" y2="55.8" stroke="#85929e" stroke-width="1.6"/><line x1="374.7" y1="22.1" x2="395.3" y2="37.9" stroke="#85929e" stroke-width="1.6"/><line x1="429.0" y1="311.5" x2="441.0" y2="288.5" stroke="#85929e" stroke-width="1.6"/><line x1="428.5" y1="292.0" x2="441.5" y2="269.5" stroke="#85929e" stroke-width="1.6"/><line x1="427.9" y1="272.3" x2="442.1" y2="250.5" stroke="#85929e" stroke-width="1.6"/><line x1="427.3" y1="252.6" x2="442.7" y2="231.7" stroke="#85929e" stroke-width="1.6"/><line x1="426.5" y1="232.7" x2="443.5" y2="213.0" stroke="#85929e" stroke-width="1.6"/><line x1="425.6" y1="212.6" x2="444.4" y2="194.5" stroke="#85929e" stroke-width="1.6"/><line x1="424.7" y1="192.2" x2="445.3" y2="176.3" stroke="#85929e" stroke-width="1.6"/><line x1="423.7" y1="171.5" x2="446.3" y2="158.5" stroke="#85929e" stroke-width="1.6"/><line x1="422.9" y1="150.4" x2="447.1" y2="141.0" stroke="#85929e" stroke-width="1.6"/><line x1="422.2" y1="128.9" x2="447.8" y2="124.0" stroke="#85929e" stroke-width="1.6"/><line x1="422.0" y1="107.1" x2="448.0" y2="107.1" stroke="#85929e" stroke-width="1.6"/><line x1="422.2" y1="85.4" x2="447.8" y2="90.3" stroke="#85929e" stroke-width="1.6"/><line x1="422.9" y1="63.9" x2="447.1" y2="73.2" stroke="#85929e" stroke-width="1.6"/><line x1="423.7" y1="42.8" x2="446.3" y2="55.8" stroke="#85929e" stroke-width="1.6"/><line x1="424.7" y1="22.1" x2="445.3" y2="37.9" stroke="#85929e" stroke-width="1.6"/><line x1="479.0" y1="311.5" x2="491.0" y2="288.5" stroke="#85929e" stroke-width="1.6"/><line x1="478.5" y1="292.0" x2="491.5" y2="269.5" stroke="#85929e" stroke-width="1.6"/><line x1="477.9" y1="272.3" x2="492.1" y2="250.5" stroke="#85929e" stroke-width="1.6"/><line x1="477.3" y1="252.6" x2="492.7" y2="231.7" stroke="#85929e" stroke-width="1.6"/><line x1="476.5" y1="232.7" x2="493.5" y2="213.0" stroke="#85929e" stroke-width="1.6"/><line x1="475.6" y1="212.6" x2="494.4" y2="194.5" stroke="#85929e" stroke-width="1.6"/><line x1="474.7" y1="192.2" x2="495.3" y2="176.3" stroke="#85929e" stroke-width="1.6"/><line x1="473.7" y1="171.5" x2="496.3" y2="158.5" stroke="#85929e" stroke-width="1.6"/><line x1="472.9" y1="150.4" x2="497.1" y2="141.0" stroke="#85929e" stroke-width="1.6"/><line x1="472.2" y1="128.9" x2="497.8" y2="124.0" stroke="#85929e" stroke-width="1.6"/><line x1="472.0" y1="107.1" x2="498.0" y2="107.1" stroke="#85929e" stroke-width="1.6"/><line x1="472.2" y1="85.4" x2="497.8" y2="90.3" stroke="#85929e" stroke-width="1.6"/><line x1="472.9" y1="63.9" x2="497.1" y2="73.2" stroke="#85929e" stroke-width="1.6"/><line x1="473.7" y1="42.8" x2="496.3" y2="55.8" stroke="#85929e" stroke-width="1.6"/><line x1="474.7" y1="22.1" x2="495.3" y2="37.9" stroke="#85929e" stroke-width="1.6"/><line x1="529.0" y1="311.5" x2="541.0" y2="288.5" stroke="#85929e" stroke-width="1.6"/><line x1="528.5" y1="292.0" x2="541.5" y2="269.5" stroke="#85929e" stroke-width="1.6"/><line x1="527.9" y1="272.3" x2="542.1" y2="250.5" stroke="#85929e" stroke-width="1.6"/><line x1="527.3" y1="252.6" x2="542.7" y2="231.7" stroke="#85929e" stroke-width="1.6"/><line x1="526.5" y1="232.7" x2="543.5" y2="213.0" stroke="#85929e" stroke-width="1.6"/><line x1="525.6" y1="212.6" x2="544.4" y2="194.5" stroke="#85929e" stroke-width="1.6"/><line x1="524.7" y1="192.2" x2="545.3" y2="176.3" stroke="#85929e" stroke-width="1.6"/><line x1="523.7" y1="171.5" x2="546.3" y2="158.5" stroke="#85929e" stroke-width="1.6"/><line x1="522.9" y1="150.4" x2="547.1" y2="141.0" stroke="#85929e" stroke-width="1.6"/><line x1="522.2" y1="128.9" x2="547.8" y2="124.0" stroke="#85929e" stroke-width="1.6"/><line x1="522.0" y1="107.1" x2="548.0" y2="107.1" stroke="#85929e" stroke-width="1.6"/><line x1="522.2" y1="85.4" x2="547.8" y2="90.3" stroke="#85929e" stroke-width="1.6"/><line x1="522.9" y1="63.9" x2="547.1" y2="73.2" stroke="#85929e" stroke-width="1.6"/><line x1="523.7" y1="42.8" x2="546.3" y2="55.8" stroke="#85929e" stroke-width="1.6"/><line x1="524.7" y1="22.1" x2="545.3" y2="37.9" stroke="#85929e" stroke-width="1.6"/><line x1="60" y1="107.1" x2="560" y2="107.1" stroke="#e74c3c" stroke-width="2.5" stroke-dasharray="7,5"/><text x="100.0" y="125.1" font-size="13" fill="#e74c3c" font-family="sans-serif">v = 10 (equilíbrio)</text><polyline points="60.0,300.0 65.0,290.6 70.0,281.6 75.0,273.1 80.0,265.0 85.0,257.3 90.0,250.0 95.0,243.0 100.0,236.4 105.0,230.1 110.0,224.1 115.0,218.4 120.0,213.0 125.0,207.8 130.0,202.9 135.0,198.2 140.0,193.8 145.0,189.6 150.0,185.6 155.0,181.7 160.0,178.1 165.0,174.6 170.0,171.3 175.0,168.2 180.0,165.2 185.0,162.4 190.0,159.7 195.0,157.1 200.0,154.7 205.0,152.4 210.0,150.2 215.0,148.1 220.0,146.1 225.0,144.2 230.0,142.4 235.0,140.7 240.0,139.0 245.0,137.5 250.0,136.0 255.0,134.6 260.0,133.2 265.0,132.0 270.0,130.8 275.0,129.6 280.0,128.5 285.0,127.5 290.0,126.5 295.0,125.5 300.0,124.6 305.0,123.8 310.0,123.0 315.0,122.2 320.0,121.5 325.0,120.8 330.0,120.1 335.0,119.5 340.0,118.9 345.0,118.3 350.0,117.8 355.0,117.2 360.0,116.7 365.0,116.3 370.0,115.8 375.0,115.4 380.0,115.0 385.0,114.6 390.0,114.3 395.0,113.9 400.0,113.6 405.0,113.3 410.0,113.0 415.0,112.7 420.0,112.4 425.0,112.2 430.0,111.9 435.0,111.7 440.0,111.5 445.0,111.2 450.0,111.0 455.0,110.9 460.0,110.7 465.0,110.5 470.0,110.3 475.0,110.2 480.0,110.0 485.0,109.9 490.0,109.8 495.0,109.6 500.0,109.5 505.0,109.4 510.0,109.3 515.0,109.2 520.0,109.1 525.0,109.0 530.0,108.9 535.0,108.8 540.0,108.7 545.0,108.7 550.0,108.6 555.0,108.5 560.0,108.4" fill="none" stroke="#2980b9" stroke-width="3"/><polyline points="60.0,30.0 65.0,33.8 70.0,37.3 75.0,40.7 80.0,44.0 85.0,47.1 90.0,50.0 95.0,52.8 100.0,55.4 105.0,58.0 110.0,60.4 115.0,62.6 120.0,64.8 125.0,66.9 130.0,68.8 135.0,70.7 140.0,72.5 145.0,74.2 150.0,75.8 155.0,77.3 160.0,78.8 165.0,80.1 170.0,81.5 175.0,82.7 180.0,83.9 185.0,85.0 190.0,86.1 195.0,87.1 200.0,88.1 205.0,89.0 210.0,89.9 215.0,90.8 220.0,91.6 225.0,92.3 230.0,93.1 235.0,93.7 240.0,94.4 245.0,95.0 250.0,95.6 255.0,96.2 260.0,96.7 265.0,97.2 270.0,97.7 275.0,98.2 280.0,98.6 285.0,99.0 290.0,99.4 295.0,99.8 300.0,100.1 305.0,100.5 310.0,100.8 315.0,101.1 320.0,101.4 325.0,101.7 330.0,102.0 335.0,102.2 340.0,102.5 345.0,102.7 350.0,102.9 355.0,103.1 360.0,103.3 365.0,103.5 370.0,103.7 375.0,103.8 380.0,104.0 385.0,104.2 390.0,104.3 395.0,104.4 400.0,104.6 405.0,104.7 410.0,104.8 415.0,104.9 420.0,105.0 425.0,105.1 430.0,105.2 435.0,105.3 440.0,105.4 445.0,105.5 450.0,105.6 455.0,105.7 460.0,105.7 465.0,105.8 470.0,105.9 475.0,105.9 480.0,106.0 485.0,106.0 490.0,106.1 495.0,106.1 500.0,106.2 505.0,106.2 510.0,106.3 515.0,106.3 520.0,106.4 525.0,106.4 530.0,106.4 535.0,106.5 540.0,106.5 545.0,106.5 550.0,106.6 555.0,106.6 560.0,106.6" fill="none" stroke="#27ae60" stroke-width="3"/></svg><figcaption>Figura 2: Campo de direções de dv/dt = 10 − v. As curvas mostram soluções que partem de v(0) = 0 e de v(0) = 14; ambas tendem ao equilíbrio v = 10.</figcaption></figure>
+    </div>
+  </section>
+  <section class="aplicacoes-reais" id="aplicacoes"><h3>💡 EDO em Ação</h3><div class="cards-aplicacao">
+    <div class="card"><h4>🪂 Paraquedismo</h4><p>Ao saltar, o paraquedista acelera até que a resistência do ar iguale o peso. Nesse instante $\frac{dv}{dt}=0$ e a velocidade se estabiliza em $v_L=\frac{mg}{\gamma}$. Ao abrir o paraquedas, $\gamma$ aumenta muito e $v_L$ cai para um valor seguro.</p></div>
+    <div class="card" style="border-left-color: #2ecc71;"><h4>🦠 Crescimento populacional</h4><p>Em condições ideais, a taxa de crescimento de uma colônia de bactérias é proporcional ao número de indivíduos: $\frac{dP}{dt}=kP$. É o modelo mais simples de população, usado também em juros contínuos e em decaimento radioativo (com $k<0$).</p></div>
+  </div></section>
+  <section class="questoes-resolvidas" id="resolvidas"><h3>✅ 5 Questões Resolvidas (R 1 a 5)</h3>
+    <article class="questao"><h4>R 1: Modelo de crescimento populacional</h4><p><strong>Enunciado:</strong> Uma população de bactérias cresce com taxa de variação proporcional ao número de bactérias presentes, com constante $k=0{,}3\ \text{h}^{-1}$. No instante $t=0$ há $P_0$ bactérias. (a) Escreva o PVI que modela o problema. (b) Verifique que $P(t)=P_0e^{0{,}3t}$ é solução.</p>
+      <div class="resolucao-bloco"><p><strong>Resolução:</strong> <br>(a) A taxa de variação é $\frac{dP}{dt}$ e é proporcional a $P$: $\frac{dP}{dt}=0{,}3P$, com $P(0)=P_0$.
+  <br>(b) Derivando $P(t)=P_0e^{0{,}3t}$: $\frac{dP}{dt}=0{,}3\,P_0e^{0{,}3t}=0{,}3P$ ✓. Além disso, $P(0)=P_0e^{0}=P_0$ ✓.
+  <br><strong>Resposta:</strong> $\frac{dP}{dt}=0{,}3P,\ P(0)=P_0$; $P(t)=P_0e^{0{,}3t}$ satisfaz o PVI.</p></div></article>
+    <article class="questao"><h4>R 2: Queda com resistência do ar: modelo e velocidade terminal</h4><p><strong>Enunciado:</strong> Um objeto de $m=2$ kg cai com resistência do ar $F_{ar}=-\gamma v$, com $\gamma=0{,}5$ kg/s. Adote $g=10$ m/s². (a) Escreva a EDO de $v(t)$. (b) Calcule a velocidade terminal.</p>
+      <div class="resolucao-bloco"><p><strong>Resolução:</strong> <br>(a) $m\frac{dv}{dt}=mg-\gamma v \Rightarrow 2\frac{dv}{dt}=20-0{,}5v \Rightarrow \frac{dv}{dt}=10-0{,}25v$.
+  <br>(b) No equilíbrio, $\frac{dv}{dt}=0$: $10-0{,}25v=0 \Rightarrow v=\frac{10}{0{,}25}=40$ m/s. Conferindo pela fórmula: $v_L=\frac{mg}{\gamma}=\frac{2\cdot10}{0{,}5}=40$ m/s ✓.
+  <br><strong>Resposta:</strong> $\frac{dv}{dt}=10-0{,}25v$ e $v_L=40$ m/s.</p></div></article>
+    <article class="questao"><h4>R 3: Lei do resfriamento de Newton</h4><p><strong>Enunciado:</strong> Um café a $90\,^\circ$C é colocado em uma sala a $25\,^\circ$C. A lei de Newton diz que a taxa de variação da temperatura é proporcional à diferença entre a temperatura do café e a do ambiente, com constante $k=0{,}1\ \text{min}^{-1}$. (a) Escreva o PVI. (b) Calcule a taxa de variação da temperatura em $t=0$.</p>
+      <div class="resolucao-bloco"><p><strong>Resolução:</strong> <br>(a) O café esfria, então a taxa é negativa: $\frac{dT}{dt}=-0{,}1\,(T-25)$, com $T(0)=90$.
+  <br>(b) Em $t=0$: $\frac{dT}{dt}=-0{,}1\,(90-25)=-0{,}1\cdot65=-6{,}5$.
+  <br><strong>Resposta:</strong> $\frac{dT}{dt}=-0{,}1(T-25),\ T(0)=90$; taxa inicial de $-6{,}5\,^\circ$C/min.</p></div></article>
+    <article class="questao"><h4>R 4: Mistura em um tanque</h4><p><strong>Enunciado:</strong> Um tanque contém $100$ L de água com $10$ kg de sal dissolvido. Entra no tanque, a $3$ L/min, água com sal na concentração de $0{,}2$ kg/L. A mistura, mantida homogênea, sai à mesma vazão de $3$ L/min. Seja $Q(t)$ a massa de sal (kg) no tanque. (a) Escreva o PVI. (b) Qual é a quantidade de sal de equilíbrio?</p>
+      <div class="resolucao-bloco"><p><strong>Resolução:</strong> <br>(a) Taxa de variação = entrada − saída.
+  <br>Entrada: $3\cdot0{,}2=0{,}6$ kg/min. Saída: vazão × concentração do tanque $=3\cdot\frac{Q}{100}=0{,}03Q$ kg/min.
+  <br>Logo $\frac{dQ}{dt}=0{,}6-0{,}03Q$, com $Q(0)=10$.
+  <br>(b) No equilíbrio, $0{,}6-0{,}03Q=0 \Rightarrow Q=\frac{0{,}6}{0{,}03}=20$ kg. Conferindo: o volume é constante ($100$ L) e a concentração final é a da entrada, $0{,}2\cdot100=20$ kg ✓.
+  <br><strong>Resposta:</strong> $\frac{dQ}{dt}=0{,}6-0{,}03Q,\ Q(0)=10$; equilíbrio em $20$ kg.</p></div></article>
+    <article class="questao"><h4>R 5: Verificando uma solução do modelo de queda</h4><p><strong>Enunciado:</strong> Para $m=5$ kg, $\gamma=2$ kg/s e $g=10$ m/s², o objeto parte do repouso. Mostre que $v(t)=25\,(1-e^{-0{,}4t})$ é solução do PVI e calcule $v(5)$.</p>
+      <div class="resolucao-bloco"><p><strong>Resolução:</strong> <br>O modelo é $\frac{dv}{dt}=10-\frac{2}{5}v=10-0{,}4v$, com $v(0)=0$.
+  <br>Derivando: $v'(t)=25\cdot0{,}4\,e^{-0{,}4t}=10e^{-0{,}4t}$.
+  <br>Segundo membro: $10-0{,}4\cdot25(1-e^{-0{,}4t})=10-10+10e^{-0{,}4t}=10e^{-0{,}4t}$ ✓ (iguais).
+  <br>Condição inicial: $v(0)=25(1-1)=0$ ✓. Velocidade terminal: $v\to25$ m/s $=\frac{mg}{\gamma}=\frac{5\cdot10}{2}$ ✓.
+  <br>$v(5)=25\,(1-e^{-2})=25\,(1-0{,}1353)\approx21{,}62$ m/s.
+  <br><strong>Resposta:</strong> a função satisfaz o PVI e $v(5)\approx21{,}62$ m/s.</p></div></article>
+  </section>
+  <section class="questoes-propostas" id="propostas"><h3>✍️ 10 Questões Propostas (P 6 a 15)</h3>
+    <article class="questao"><h4>P 6: Juros contínuos</h4><p><strong>Enunciado:</strong> Um capital $C(t)$ cresce a uma taxa proporcional a si mesmo, com constante $0{,}05$ ao ano. (a) Escreva a EDO. (b) Verifique que $C(t)=C_0e^{0{,}05t}$ é solução. (c) Em quantos anos o capital dobra? Use $\ln2\approx0{,}693$.</p>
+      <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+      <div class="gabarito-resolucao"><p><strong>Resolução:</strong> (a) $\frac{dC}{dt}=0{,}05\,C$.
+  <br>(b) $C'(t)=0{,}05\,C_0e^{0{,}05t}=0{,}05\,C$ ✓.
+  <br>(c) Dobrar: $C_0e^{0{,}05t}=2C_0 \Rightarrow e^{0{,}05t}=2 \Rightarrow t=\frac{\ln2}{0{,}05}\approx13{,}9$ anos.
+  <br><strong>Resposta:</strong> $\frac{dC}{dt}=0{,}05C$; dobra em $\approx13{,}9$ anos.</p></div></article>
+    <article class="questao"><h4>P 7: Decaimento radioativo</h4><p><strong>Enunciado:</strong> A massa $N(t)$ de uma amostra radioativa decai com taxa proporcional à massa presente: $\frac{dN}{dt}=-\lambda N$. A meia-vida é de $10$ anos. Verifique que $N(t)=N_0e^{-\lambda t}$ é solução e determine $\lambda$.</p>
+      <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+      <div class="gabarito-resolucao"><p><strong>Resolução:</strong> $N'(t)=-\lambda N_0e^{-\lambda t}=-\lambda N$ ✓.
+  <br>Meia-vida: $N(10)=\frac{N_0}{2} \Rightarrow e^{-10\lambda}=\frac12 \Rightarrow \lambda=\frac{\ln2}{10}\approx0{,}0693\ \text{ano}^{-1}$.
+  <br><strong>Resposta:</strong> $\lambda=\frac{\ln2}{10}\approx0{,}0693$ por ano.</p></div></article>
+    <article class="questao"><h4>P 8: Queda com resistência forte</h4><p><strong>Enunciado:</strong> Um objeto de $m=4$ kg cai com $\gamma=8$ kg/s. Adote $g=10$ m/s². Escreva a EDO de $v(t)$ e calcule a velocidade terminal.</p>
+      <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+      <div class="gabarito-resolucao"><p><strong>Resolução:</strong> $4\frac{dv}{dt}=40-8v \Rightarrow \frac{dv}{dt}=10-2v$.
+  <br>Equilíbrio: $10-2v=0 \Rightarrow v=5$ m/s. Conferência: $\frac{mg}{\gamma}=\frac{40}{8}=5$ ✓.
+  <br><strong>Resposta:</strong> $\frac{dv}{dt}=10-2v$; $v_L=5$ m/s.</p></div></article>
+    <article class="questao"><h4>P 9: Verificação de solução exponencial</h4><p><strong>Enunciado:</strong> Verifique se $y(t)=4e^{3t}$ é solução de $y'-3y=0$.</p>
+      <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+      <div class="gabarito-resolucao"><p><strong>Resolução:</strong> $y'=12e^{3t}$ e $3y=12e^{3t}$. Então $y'-3y=12e^{3t}-12e^{3t}=0$ ✓.
+  <br><strong>Resposta:</strong> sim, é solução.</p></div></article>
+    <article class="questao"><h4>P 10: Tanque com água salgada entrando</h4><p><strong>Enunciado:</strong> Um tanque de $200$ L contém água pura. Entra solução a $4$ L/min com $0{,}5$ g/L de sal e a mistura homogênea sai a $4$ L/min. Escreva o PVI para a massa de sal $Q(t)$ (em g) e determine a quantidade de equilíbrio.</p>
+      <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+      <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Entrada: $4\cdot0{,}5=2$ g/min. Saída: $4\cdot\frac{Q}{200}=0{,}02Q$ g/min.
+  <br>PVI: $\frac{dQ}{dt}=2-0{,}02Q$, $Q(0)=0$.
+  <br>Equilíbrio: $2-0{,}02Q=0 \Rightarrow Q=100$ g. Conferindo: $0{,}5\cdot200=100$ g ✓.
+  <br><strong>Resposta:</strong> $\frac{dQ}{dt}=2-0{,}02Q,\ Q(0)=0$; equilíbrio em $100$ g.</p></div></article>
+    <article class="questao"><h4>P 11: Resfriamento de uma peça metálica</h4><p><strong>Enunciado:</strong> Uma peça a $80\,^\circ$C é colocada em um ambiente a $20\,^\circ$C. A taxa de variação da temperatura é proporcional à diferença de temperaturas, com constante $0{,}05\ \text{min}^{-1}$. Escreva o PVI e calcule a taxa de variação em $t=0$.</p>
+      <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+      <div class="gabarito-resolucao"><p><strong>Resolução:</strong> $\frac{dT}{dt}=-0{,}05\,(T-20)$, $T(0)=80$.
+  <br>Em $t=0$: $-0{,}05\,(80-20)=-0{,}05\cdot60=-3$.
+  <br><strong>Resposta:</strong> taxa inicial de $-3\,^\circ$C/min.</p></div></article>
+    <article class="questao"><h4>P 12: Inclinações do campo de direções</h4><p><strong>Enunciado:</strong> Considere $\frac{dy}{dt}=y-t$. Calcule a inclinação do campo de direções nos pontos $(0,1)$, $(1,3)$, $(2,2)$ e $(3,1)$. Em que reta as inclinações são nulas?</p>
+      <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+      <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Basta substituir em $f(t,y)=y-t$:
+  <br>$(0,1)\to1-0=1$; $(1,3)\to3-1=2$; $(2,2)\to2-2=0$; $(3,1)\to1-3=-2$.
+  <br>Inclinação nula quando $y-t=0$, isto é, na reta $y=t$.
+  <br><strong>Resposta:</strong> $1,\ 2,\ 0,\ -2$; inclinações nulas sobre a reta $y=t$.</p></div></article>
+    <article class="questao"><h4>P 13: Soluções constantes</h4><p><strong>Enunciado:</strong> Determine as soluções constantes (de equilíbrio) de $\frac{dy}{dt}=y\,(4-y)$.</p>
+      <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+      <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Solução constante tem $\frac{dy}{dt}=0$: $y(4-y)=0 \Rightarrow y=0$ ou $y=4$.
+  <br>Conferência: $y\equiv0$ dá $0=0\cdot4$ ✓; $y\equiv4$ dá $0=4\cdot0$ ✓.
+  <br><strong>Resposta:</strong> $y=0$ e $y=4$.</p></div></article>
+    <article class="questao"><h4>P 14: Velocidade em um instante</h4><p><strong>Enunciado:</strong> No modelo $v(t)=25\,(1-e^{-0{,}4t})$ m/s (Resolvido R5), calcule a velocidade em $t=2$ s.</p>
+      <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+      <div class="gabarito-resolucao"><p><strong>Resolução:</strong> $v(2)=25\,(1-e^{-0{,}8})$. Com $e^{-0{,}8}\approx0{,}4493$: $v(2)=25\cdot0{,}5507\approx13{,}77$ m/s.
+  <br><strong>Resposta:</strong> $\approx13{,}77$ m/s.</p></div></article>
+    <article class="questao"><h4>P 15: População com retirada constante</h4><p><strong>Enunciado:</strong> Uma população de peixes de um lago obedece a $\frac{dP}{dt}=0{,}02P-500$ (crescimento natural menos $500$ peixes pescados por ano). (a) Qual é o valor de equilíbrio? (b) Se $P(0)=20\,000$, a população cresce ou decresce?</p>
+      <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+      <div class="gabarito-resolucao"><p><strong>Resolução:</strong> (a) $0{,}02P-500=0 \Rightarrow P=\frac{500}{0{,}02}=25\,000$.
+  <br>(b) Em $P=20\,000$: $\frac{dP}{dt}=0{,}02\cdot20\,000-500=400-500=-100<0$, logo a população <strong>decresce</strong> (e se afasta do equilíbrio).
+  <br><strong>Resposta:</strong> (a) $25\,000$; (b) decresce.</p></div></article>
+  </section>
+  <section class="TESTE" id="testes"><h3>🎓 TESTES (T 16 a 20)</h3>
+    <article class="questao"><h4>T 16: (Questão autoral) Modelo da queda</h4><p>Um corpo de $3$ kg cai sob a ação do peso e de uma resistência do ar $-\gamma v$ com $\gamma=6$ kg/s. Adotando $g=10$ m/s², a EDO que descreve $v(t)$ é:</p><p>A) $\frac{dv}{dt}=10+2v$<br>B) $\frac{dv}{dt}=30-6v$<br>C) $\frac{dv}{dt}=10-2v$<br>D) $\frac{dv}{dt}=10-18v$<br>E) $\frac{dv}{dt}=2-10v$</p>
+      <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+      <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>C</strong>.<br>$m\frac{dv}{dt}=mg-\gamma v \Rightarrow 3\frac{dv}{dt}=30-6v \Rightarrow \frac{dv}{dt}=10-2v$. A alternativa B ainda não dividiu por $m$ e a D multiplicou $\gamma$ por $m$ em vez de dividir.</p></div></article>
+    <article class="questao"><h4>T 17: (Questão autoral) Velocidade terminal</h4><p>Um objeto de massa $2$ kg cai com coeficiente de resistência $\gamma=0{,}4$ kg/s. Adotando $g=10$ m/s², a velocidade terminal vale:</p><p>A) $5$ m/s<br>B) $8$ m/s<br>C) $20$ m/s<br>D) $50$ m/s<br>E) $80$ m/s</p>
+      <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+      <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>D</strong>.<br>$v_L=\frac{mg}{\gamma}=\frac{2\cdot10}{0{,}4}=50$ m/s. Conferência pelo equilíbrio: $\frac{dv}{dt}=10-0{,}2v=0 \Rightarrow v=50$ ✓.</p></div></article>
+    <article class="questao"><h4>T 18: (Questão autoral) Solução de um PVI exponencial</h4><p>A solução do problema de valor inicial $y'=-3y$, $y(0)=2$ é:</p><p>A) $2e^{3t}$<br>B) $2e^{-3t}$<br>C) $e^{-3t}+1$<br>D) $-2e^{-3t}$<br>E) $3e^{-2t}$</p>
+      <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+      <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>B</strong>.<br>Testando $y=2e^{-3t}$: $y'=-6e^{-3t}=-3y$ ✓ e $y(0)=2$ ✓. As demais falham: A dá $y'=3y$; C e E não satisfazem a equação; D dá $y(0)=-2$.</p></div></article>
+    <article class="questao"><h4>T 19: (Questão autoral) Modelo de mistura</h4><p>Um tanque de $50$ L contém água pura. Entra solução a $2$ L/min com $0{,}1$ kg/L de sal e a mistura homogênea sai a $2$ L/min. A EDO para a massa de sal $Q(t)$, em kg, é:</p><p>A) $\frac{dQ}{dt}=0{,}2+0{,}04Q$<br>B) $\frac{dQ}{dt}=0{,}1-0{,}02Q$<br>C) $\frac{dQ}{dt}=0{,}2-0{,}02Q$<br>D) $\frac{dQ}{dt}=2-0{,}04Q$<br>E) $\frac{dQ}{dt}=0{,}2-0{,}04Q$</p>
+      <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+      <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>E</strong>.<br>Entrada: $2\cdot0{,}1=0{,}2$ kg/min. Saída: $2\cdot\frac{Q}{50}=0{,}04Q$ kg/min. Então $\frac{dQ}{dt}=0{,}2-0{,}04Q$. Conferência: o equilíbrio é $\frac{0{,}2}{0{,}04}=5$ kg $=0{,}1\cdot50$ ✓.</p></div></article>
+    <article class="questao"><h4>T 20: (Questão autoral) Resfriamento</h4><p>Um corpo a $50\,^\circ$C está em um ambiente a $10\,^\circ$C e esfria segundo $\frac{dT}{dt}=-0{,}2\,(T-10)$ (T em $^\circ$C, t em min). No instante em que $T=50\,^\circ$C, a taxa de variação da temperatura é:</p><p>A) $-8\,^\circ$C/min<br>B) $-10\,^\circ$C/min<br>C) $-12\,^\circ$C/min<br>D) $-4\,^\circ$C/min<br>E) $+8\,^\circ$C/min</p>
+      <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+      <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>A</strong>.<br>$\frac{dT}{dt}=-0{,}2\,(50-10)=-0{,}2\cdot40=-8\,^\circ$C/min. O sinal é negativo porque o corpo esfria.</p></div></article>
+  </section>
+</div></main>
+<aside class="menu-lateral"><iframe src="../edo_menu.html" style="width:100%; border:none; height:600px;"></iframe></aside>
+</div>
+<script>
+function toggleGabarito(botao) {
+    const gabarito = botao.nextElementSibling;
+    if (gabarito.style.display === "none" || gabarito.style.display === "") {
+        gabarito.style.display = "block"; botao.textContent = "Esconder Gabarito e Resolução"; botao.style.backgroundColor = "#2c3e50";
+    } else {
+        gabarito.style.display = "none"; botao.textContent = "Ver Gabarito e Resolução"; botao.style.backgroundColor = "#3498db";
+    }
+}
+function toggleMenu() { const m = document.getElementById("menu-principal"); if (m) m.classList.toggle("ativo"); }
+let slideAtual = 0; let slides = [];
+function prepararSlides() { slides = Array.from(document.querySelectorAll('.container-resumo, .passo-teoria, .card, .questao')); }
+function toggleSlides() {
+    prepararSlides(); const body = document.body;
+    if (!body.classList.contains('modo-slides')) { body.classList.add('modo-slides'); slideAtual = 0; mostrarSlide(slideAtual); }
+    else { body.classList.remove('modo-slides'); slides.forEach(s => { s.classList.remove('slide-ativo'); s.style.display = ''; }); }
+}
+function mostrarSlide(n) {
+    if (!slides.length) return;
+    slides.forEach(s => { s.classList.remove('slide-ativo'); s.style.display = 'none'; });
+    const slide = slides[n]; slide.classList.add('slide-ativo');
+    slide.querySelectorAll('.gabarito-resolucao').forEach(g => g.style.display = 'none');
+    slide.querySelectorAll('.btn-gabarito').forEach(b => { b.textContent = "Ver Gabarito e Resolução"; b.style.backgroundColor = "#3498db"; });
+    const pHeader = document.querySelector('header p');
+    if (pHeader) { const partes = pHeader.innerText.split('|'); if (partes.length > 1) {
+        document.getElementById('slide-info-serie').innerText = partes[0].trim();
+        document.getElementById('slide-info-aula').innerText = partes[1].trim(); } }
+    document.getElementById('contador-slide').innerText = (n + 1) + " / " + slides.length;
+    if (window.MathJax && window.MathJax.typesetPromise) { MathJax.typesetPromise(); }
+}
+function mudarSlide(d) { slideAtual += d; if (slideAtual >= slides.length) slideAtual = 0; if (slideAtual < 0) slideAtual = slides.length - 1; mostrarSlide(slideAtual); }
+document.addEventListener('keydown', function(event) {
+    if (document.body.classList.contains('modo-slides')) {
+        switch(event.key) {
+            case 'ArrowRight': case 'PageDown': case 'Enter': case ' ': event.preventDefault(); mudarSlide(1); break;
+            case 'ArrowLeft': case 'PageUp': event.preventDefault(); mudarSlide(-1); break;
+            case 'Escape': event.preventDefault(); toggleSlides(); break;
+        }
+    }
+});
+</script>
+<div class="controles-slides">
+    <div id="slide-info-serie" class="info-lateral"></div>
+    <div class="botoes-centrais">
+        <button class="btn-nav" onclick="mudarSlide(-1)">⬅ Anterior</button>
+        <span id="contador-slide"></span>
+        <button class="btn-nav" onclick="mudarSlide(1)">Próximo ➡</button>
+        <button class="btn-nav" onclick="toggleSlides()" style="background:#e74c3c;">Sair</button>
+    </div>
+    <div id="slide-info-aula" class="info-lateral" style="text-align: right;"></div>
+</div>
+</body>
+</html>

@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Engenharia: Aula 08 - APLICAÇÕES: QUEDA COM RESISTÊNCIA DO AR E RESFRIAMENTO DE NEWTON</title>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../estilo.css">
+    <script>
+        MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']], processEscapes: true } };
+    </script>
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        body.modo-slides { overflow: hidden !important; background-color: #1a1a1a !important; margin: 0; padding: 0; }
+        body.modo-slides .menu-lateral, body.modo-slides header, body.modo-slides .menu-toggle, body.modo-slides #btn-slides, body.modo-slides .nav-global { display: none !important; }
+        .slide-ativo { display: flex !important; flex-direction: column; align-items: center; justify-content: center; position: fixed; top: 0; left: 0; width: 100vw; height: calc(100vh - 70px); background: #ffffff; padding: 40px; z-index: 999; overflow-y: auto !important; box-sizing: border-box; text-align: left; }
+        .slide-ativo > * { max-width: 900px; width: 100%; }
+        .controles-slides { position: fixed; bottom: 0; left: 0; width: 100%; height: 70px; background: #2c3e50; color: white; display: none; justify-content: space-between; align-items: center; padding: 0 20px; z-index: 1001; box-sizing: border-box; }
+        body.modo-slides .controles-slides { display: flex !important; }
+        .info-lateral { flex: 1; font-family: 'Oswald', sans-serif; font-size: 0.9rem; color: #bdc3c7; }
+        .botoes-centrais { display: flex; align-items: center; gap: 15px; justify-content: center; flex: 2; }
+        .btn-nav { padding: 10px 20px; background: #3498db; color: white; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; font-size: 0.9rem; }
+        .btn-nav:hover { background: #2980b9; }
+        #contador-slide { font-family: 'Oswald', sans-serif; min-width: 60px; text-align: center; font-size: 1.1rem; }
+    </style>
+</head>
+<body>
+<button class="menu-toggle" onclick="toggleMenu()">☰</button>
+<nav id="menu-principal" class="nav-global"><ul>
+    <li><a href="../index.html">🏠 Início</a></li>
+    <li><a href="../ensino_medio.html">📚 Ensino Médio</a></li>
+    <li><a href="../ensino_superior.html">🎓 Ensino Superior</a></li>
+</ul></nav>
+<header id="topo">
+    <h1>EQUAÇÕES DIFERENCIAIS</h1>
+    <p>Engenharia | Aula 08: Aplicações: Queda com Resistência do Ar e Resfriamento de Newton</p>
+    <button id="btn-slides" onclick="toggleSlides()">📺 Iniciar Modo Slides</button>
+</header>
+<div class="container"><main class="conteudo-principal"><div class="secao-aula">
+  <div class="container-resumo" id="resumo"><h3>📚 Resumo</h3><section class="resumo-conteudo"><p>Duas situações muito diferentes — um corpo caindo no ar e uma xícara de café esfriando — obedecem ao <strong>mesmo modelo</strong>: uma EDO linear de 1ª ordem em que a taxa de variação é proporcional à distância até um valor limite:</p>
+$$\frac{dy}{dt}=-a\,(y-y_\infty)\quad\Longrightarrow\quad y(t)=y_\infty+(y_0-y_\infty)\,e^{-at},\quad a>0.$$
+<p>Na queda com resistência do ar, $y$ é a velocidade e $y_\infty=mg/k$ é a <strong>velocidade terminal</strong>. No resfriamento de Newton, $y$ é a temperatura e $y_\infty=T_a$ é a temperatura do ambiente.</p></section></div>
+  <section class="conteudo-teorico-completo" id="teoria">
+    <div class="passo-teoria"><h3>📖 UM MODELO, DUAS APLICAÇÕES</h3><h4>1. O modelo geral: aproximação exponencial de um valor limite</h4>
+
+<p>Considere $\dfrac{dy}{dt}=-a\,(y-y_\infty)$, com $a>0$ e $y_\infty$ constante. Separando as variáveis:</p>
+$$\frac{dy}{y-y_\infty}=-a\,dt\;\Rightarrow\;\ln|y-y_\infty|=-at+c\;\Rightarrow\;y-y_\infty=Ce^{-at}.$$
+<p>Com $y(0)=y_0$, temos $C=y_0-y_\infty$, e portanto</p>
+$$\boxed{\,y(t)=y_\infty+(y_0-y_\infty)\,e^{-at}\,}$$
+<p>A diferença $y-y_\infty$ decai exponencialmente; logo $y\to y_\infty$ quando $t\to\infty$ <strong>sem nunca ultrapassá-lo</strong>. A constante $a$ mede a rapidez: a diferença cai à metade a cada $\dfrac{\ln 2}{a}$ unidades de tempo.</p>
+    </div>
+    <div class="passo-teoria"><h4>2. Queda com resistência do ar proporcional à velocidade</h4>
+
+<p>Um corpo de massa $m$ cai sob a ação do peso $mg$ e de uma resistência do ar $kv$ (com $k>0$, em kg/s), proporcional à velocidade. Tomando o sentido da queda como positivo, a 2ª lei de Newton ($m\,a=\sum F$) dá</p>
+$$m\frac{dv}{dt}=mg-kv\;\Longleftrightarrow\;\frac{dv}{dt}=-\frac km\left(v-\frac{mg}{k}\right).$$
+<p>É o modelo geral com $a=\frac km$ e $y_\infty=\frac{mg}{k}$. Com $v(0)=0$:</p>
+$$v(t)=\frac{mg}{k}\left(1-e^{-kt/m}\right),\qquad v_{\text{lim}}=\lim_{t\to\infty}v(t)=\frac{mg}{k}.$$
+<p>Na velocidade terminal, a resistência do ar iguala o peso ($kv=mg$) e a aceleração se anula. Se o corpo já parte com $v_0>v_{\text{lim}}$ (como um paraquedista ao abrir o paraquedas), ele <strong>desacelera</strong> até $v_{\text{lim}}$.</p>
+      <figure class="figura-aula figura-grande"><svg viewBox="0 0 600 340" xmlns="http://www.w3.org/2000/svg" style="max-width:600px;width:100%;height:auto;display:block;margin:auto" role="img" aria-label="Velocidade de queda com resistência do ar tendendo à velocidade terminal"><rect x="0" y="0" width="600" height="340" fill="#fdfefe" stroke="#d5dbdb"/><line x1="60" y1="300.0" x2="560" y2="300.0" stroke="#2c3e50" stroke-width="1.5"/><line x1="60.0" y1="300" x2="60.0" y2="25" stroke="#2c3e50" stroke-width="1.5"/><text x="160.0" y="316.0" text-anchor="middle" font-size="12" fill="#2c3e50" font-family="sans-serif">1</text><text x="260.0" y="316.0" text-anchor="middle" font-size="12" fill="#2c3e50" font-family="sans-serif">2</text><text x="360.0" y="316.0" text-anchor="middle" font-size="12" fill="#2c3e50" font-family="sans-serif">3</text><text x="460.0" y="316.0" text-anchor="middle" font-size="12" fill="#2c3e50" font-family="sans-serif">4</text><text x="560.0" y="316.0" text-anchor="middle" font-size="12" fill="#2c3e50" font-family="sans-serif">5</text><text x="560" y="292.0" font-size="13" fill="#2c3e50" font-family="sans-serif" text-anchor="end">t/τ</text><text x="68.0" y="29" font-size="13" fill="#2c3e50" font-family="sans-serif">v / v_lim</text><text x="54.0" y="205.8" text-anchor="end" font-size="12" fill="#2c3e50" font-family="sans-serif">0,5</text><text x="54.0" y="107.6" text-anchor="end" font-size="12" fill="#2c3e50" font-family="sans-serif">1,0</text><line x1="60.0" y1="103.6" x2="560.0" y2="103.6" stroke="#e74c3c" stroke-width="1.8" stroke-dasharray="6,4"/><polyline points="60.0,300.0 62.5,295.2 65.0,290.4 67.5,285.8 70.0,281.3 72.5,276.9 75.0,272.6 77.5,268.5 80.0,264.4 82.5,260.4 85.0,256.6 87.5,252.8 90.0,249.1 92.5,245.5 95.0,242.0 97.5,238.6 100.0,235.2 102.5,232.0 105.0,228.8 107.5,225.7 110.0,222.7 112.5,219.8 115.0,216.9 117.5,214.1 120.0,211.4 122.5,208.7 125.0,206.1 127.5,203.6 130.0,201.1 132.5,198.7 135.0,196.4 137.5,194.1 140.0,191.8 142.5,189.7 145.0,187.5 147.5,185.5 150.0,183.4 152.5,181.5 155.0,179.5 157.5,177.7 160.0,175.8 162.5,174.0 165.0,172.3 167.5,170.6 170.0,169.0 172.5,167.3 175.0,165.8 177.5,164.2 180.0,162.7 182.5,161.3 185.0,159.8 187.5,158.5 190.0,157.1 192.5,155.8 195.0,154.5 197.5,153.2 200.0,152.0 202.5,150.8 205.0,149.6 207.5,148.5 210.0,147.4 212.5,146.3 215.0,145.3 217.5,144.2 220.0,143.2 222.5,142.3 225.0,141.3 227.5,140.4 230.0,139.5 232.5,138.6 235.0,137.7 237.5,136.9 240.0,136.0 242.5,135.2 245.0,134.5 247.5,133.7 250.0,133.0 252.5,132.2 255.0,131.5 257.5,130.8 260.0,130.2 262.5,129.5 265.0,128.9 267.5,128.2 270.0,127.6 272.5,127.0 275.0,126.5 277.5,125.9 280.0,125.3 282.5,124.8 285.0,124.3 287.5,123.8 290.0,123.3 292.5,122.8 295.0,122.3 297.5,121.8 300.0,121.4 302.5,121.0 305.0,120.5 307.5,120.1 310.0,119.7 312.5,119.3 315.0,118.9 317.5,118.5 320.0,118.2 322.5,117.8 325.0,117.4 327.5,117.1 330.0,116.8 332.5,116.4 335.0,116.1 337.5,115.8 340.0,115.5 342.5,115.2 345.0,114.9 347.5,114.7 350.0,114.4 352.5,114.1 355.0,113.9 357.5,113.6 360.0,113.4 362.5,113.1 365.0,112.9 367.5,112.6 370.0,112.4 372.5,112.2 375.0,112.0 377.5,111.8 380.0,111.6 382.5,111.4 385.0,111.2 387.5,111.0 390.0,110.8 392.5,110.6 395.0,110.5 397.5,110.3 400.0,110.1 402.5,110.0 405.0,109.8 407.5,109.7 410.0,109.5 412.5,109.4 415.0,109.2 417.5,109.1 420.0,108.9 422.5,108.8 425.0,108.7 427.5,108.6 430.0,108.4 432.5,108.3 435.0,108.2 437.5,108.1 440.0,108.0 442.5,107.9 445.0,107.8 447.5,107.6 450.0,107.5 452.5,107.4 455.0,107.4 457.5,107.3 460.0,107.2 462.5,107.1 465.0,107.0 467.5,106.9 470.0,106.8 472.5,106.7 475.0,106.7 477.5,106.6 480.0,106.5 482.5,106.4 485.0,106.4 487.5,106.3 490.0,106.2 492.5,106.2 495.0,106.1 497.5,106.0 500.0,106.0 502.5,105.9 505.0,105.9 507.5,105.8 510.0,105.8 512.5,105.7 515.0,105.6 517.5,105.6 520.0,105.5 522.5,105.5 525.0,105.4 527.5,105.4 530.0,105.4 532.5,105.3 535.0,105.3 537.5,105.2 540.0,105.2 542.5,105.1 545.0,105.1 547.5,105.1 550.0,105.0 552.5,105.0 555.0,105.0 557.5,104.9 560.0,104.9" fill="none" stroke="#2980b9" stroke-width="3.5"/><polyline points="60.0,25.0 62.5,26.9 65.0,28.8 67.5,30.7 70.0,32.5 72.5,34.2 75.0,35.9 77.5,37.6 80.0,39.2 82.5,40.8 85.0,42.4 87.5,43.9 90.0,45.4 92.5,46.8 95.0,48.2 97.5,49.6 100.0,50.9 102.5,52.2 105.0,53.5 107.5,54.7 110.0,55.9 112.5,57.1 115.0,58.2 117.5,59.4 120.0,60.5 122.5,61.5 125.0,62.6 127.5,63.6 130.0,64.6 132.5,65.5 135.0,66.5 137.5,67.4 140.0,68.3 142.5,69.1 145.0,70.0 147.5,70.8 150.0,71.6 152.5,72.4 155.0,73.2 157.5,73.9 160.0,74.7 162.5,75.4 165.0,76.1 167.5,76.8 170.0,77.4 172.5,78.1 175.0,78.7 177.5,79.3 180.0,79.9 182.5,80.5 185.0,81.1 187.5,81.6 190.0,82.2 192.5,82.7 195.0,83.2 197.5,83.7 200.0,84.2 202.5,84.7 205.0,85.1 207.5,85.6 210.0,86.0 212.5,86.5 215.0,86.9 217.5,87.3 220.0,87.7 222.5,88.1 225.0,88.5 227.5,88.9 230.0,89.2 232.5,89.6 235.0,89.9 237.5,90.3 240.0,90.6 242.5,90.9 245.0,91.2 247.5,91.5 250.0,91.8 252.5,92.1 255.0,92.4 257.5,92.7 260.0,92.9 262.5,93.2 265.0,93.5 267.5,93.7 270.0,93.9 272.5,94.2 275.0,94.4 277.5,94.6 280.0,94.9 282.5,95.1 285.0,95.3 287.5,95.5 290.0,95.7 292.5,95.9 295.0,96.1 297.5,96.3 300.0,96.4 302.5,96.6 305.0,96.8 307.5,97.0 310.0,97.1 312.5,97.3 315.0,97.4 317.5,97.6 320.0,97.7 322.5,97.9 325.0,98.0 327.5,98.2 330.0,98.3 332.5,98.4 335.0,98.5 337.5,98.7 340.0,98.8 342.5,98.9 345.0,99.0 347.5,99.1 350.0,99.2 352.5,99.4 355.0,99.5 357.5,99.6 360.0,99.7 362.5,99.8 365.0,99.9 367.5,99.9 370.0,100.0 372.5,100.1 375.0,100.2 377.5,100.3 380.0,100.4 382.5,100.4 385.0,100.5 387.5,100.6 390.0,100.7 392.5,100.7 395.0,100.8 397.5,100.9 400.0,100.9 402.5,101.0 405.0,101.1 407.5,101.1 410.0,101.2 412.5,101.3 415.0,101.3 417.5,101.4 420.0,101.4 422.5,101.5 425.0,101.5 427.5,101.6 430.0,101.6 432.5,101.7 435.0,101.7 437.5,101.8 440.0,101.8 442.5,101.9 445.0,101.9 447.5,101.9 450.0,102.0 452.5,102.0 455.0,102.1 457.5,102.1 460.0,102.1 462.5,102.2 465.0,102.2 467.5,102.2 470.0,102.3 472.5,102.3 475.0,102.3 477.5,102.4 480.0,102.4 482.5,102.4 485.0,102.5 487.5,102.5 490.0,102.5 492.5,102.5 495.0,102.6 497.5,102.6 500.0,102.6 502.5,102.6 505.0,102.7 507.5,102.7 510.0,102.7 512.5,102.7 515.0,102.7 517.5,102.8 520.0,102.8 522.5,102.8 525.0,102.8 527.5,102.8 530.0,102.9 532.5,102.9 535.0,102.9 537.5,102.9 540.0,102.9 542.5,102.9 545.0,103.0 547.5,103.0 550.0,103.0 552.5,103.0 555.0,103.0 557.5,103.0 560.0,103.0" fill="none" stroke="#27ae60" stroke-width="3.5"/><text x="380.0" y="75.6" font-size="13" fill="#e74c3c" font-family="sans-serif">v_lim = mg/k</text><text x="300.0" y="192.0" font-size="13" fill="#2980b9" font-family="sans-serif">v(0) = 0: acelera</text><text x="220.0" y="30.9" font-size="13" fill="#27ae60" font-family="sans-serif">v(0) &gt; v_lim: freia</text></svg><figcaption>Figura 1: Velocidade de queda em função de t/τ (τ = m/k): partindo do repouso, v cresce até v_lim; partindo acima de v_lim, v decresce até v_lim.</figcaption></figure>
+    </div>
+    <div class="passo-teoria"><h4>3. A Lei do Resfriamento de Newton</h4>
+
+<p>Para um corpo cuja temperatura $T$ é uniforme e que troca calor com um ambiente de temperatura constante $T_a$, a taxa de variação da temperatura é proporcional à diferença entre o corpo e o meio:</p>
+$$\frac{dT}{dt}=-k\,(T-T_a),\qquad k>0.$$
+<p>Novamente é o modelo geral, com $a=k$ e $y_\infty=T_a$:</p>
+$$T(t)=T_a+(T_0-T_a)\,e^{-kt}.$$
+<p>Se $T_0 &gt; T_a$, o corpo <strong>esfria</strong> ($T' &lt; 0$); se $T_0 &lt; T_a$, ele <strong>esquenta</strong> ($T' &gt; 0$). Nos dois casos, $T\to T_a$.</p>
+      <figure class="figura-aula figura-grande"><svg viewBox="0 0 600 340" xmlns="http://www.w3.org/2000/svg" style="max-width:600px;width:100%;height:auto;display:block;margin:auto" role="img" aria-label="Resfriamento e aquecimento de um corpo tendendo à temperatura do ambiente"><rect x="0" y="0" width="600" height="340" fill="#fdfefe" stroke="#d5dbdb"/><line x1="60" y1="300.0" x2="560" y2="300.0" stroke="#2c3e50" stroke-width="1.5"/><line x1="60.0" y1="300" x2="60.0" y2="25" stroke="#2c3e50" stroke-width="1.5"/><text x="143.3" y="316.0" text-anchor="middle" font-size="12" fill="#2c3e50" font-family="sans-serif">1</text><text x="226.7" y="316.0" text-anchor="middle" font-size="12" fill="#2c3e50" font-family="sans-serif">2</text><text x="310.0" y="316.0" text-anchor="middle" font-size="12" fill="#2c3e50" font-family="sans-serif">3</text><text x="393.3" y="316.0" text-anchor="middle" font-size="12" fill="#2c3e50" font-family="sans-serif">4</text><text x="476.7" y="316.0" text-anchor="middle" font-size="12" fill="#2c3e50" font-family="sans-serif">5</text><text x="560.0" y="316.0" text-anchor="middle" font-size="12" fill="#2c3e50" font-family="sans-serif">6</text><text x="54.0" y="249.0" text-anchor="end" font-size="12" fill="#2c3e50" font-family="sans-serif">20</text><text x="54.0" y="194.0" text-anchor="end" font-size="12" fill="#2c3e50" font-family="sans-serif">40</text><text x="54.0" y="139.0" text-anchor="end" font-size="12" fill="#2c3e50" font-family="sans-serif">60</text><text x="54.0" y="84.0" text-anchor="end" font-size="12" fill="#2c3e50" font-family="sans-serif">80</text><text x="54.0" y="29.0" text-anchor="end" font-size="12" fill="#2c3e50" font-family="sans-serif">100</text><text x="560" y="292.0" font-size="13" fill="#2c3e50" font-family="sans-serif" text-anchor="end">k·t</text><text x="68.0" y="29" font-size="13" fill="#2c3e50" font-family="sans-serif">T (°C)</text><line x1="60.0" y1="245.0" x2="560.0" y2="245.0" stroke="#e74c3c" stroke-width="1.8" stroke-dasharray="6,4"/><polyline points="60.0,52.5 62.5,58.2 65.0,63.7 67.5,69.1 70.0,74.3 72.5,79.3 75.0,84.2 77.5,89.0 80.0,93.6 82.5,98.0 85.0,102.4 87.5,106.6 90.0,110.7 92.5,114.7 95.0,118.5 97.5,122.3 100.0,125.9 102.5,129.4 105.0,132.8 107.5,136.1 110.0,139.4 112.5,142.5 115.0,145.5 117.5,148.4 120.0,151.3 122.5,154.1 125.0,156.8 127.5,159.4 130.0,161.9 132.5,164.4 135.0,166.7 137.5,169.0 140.0,171.3 142.5,173.5 145.0,175.6 147.5,177.6 150.0,179.6 152.5,181.6 155.0,183.4 157.5,185.3 160.0,187.0 162.5,188.7 165.0,190.4 167.5,192.0 170.0,193.6 172.5,195.1 175.0,196.6 177.5,198.0 180.0,199.4 182.5,200.7 185.0,202.0 187.5,203.3 190.0,204.5 192.5,205.7 195.0,206.9 197.5,208.0 200.0,209.1 202.5,210.2 205.0,211.2 207.5,212.2 210.0,213.2 212.5,214.1 215.0,215.0 217.5,215.9 220.0,216.8 222.5,217.6 225.0,218.4 227.5,219.2 230.0,220.0 232.5,220.7 235.0,221.4 237.5,222.1 240.0,222.8 242.5,223.5 245.0,224.1 247.5,224.7 250.0,225.3 252.5,225.9 255.0,226.5 257.5,227.0 260.0,227.5 262.5,228.1 265.0,228.6 267.5,229.0 270.0,229.5 272.5,230.0 275.0,230.4 277.5,230.8 280.0,231.3 282.5,231.7 285.0,232.1 287.5,232.4 290.0,232.8 292.5,233.2 295.0,233.5 297.5,233.9 300.0,234.2 302.5,234.5 305.0,234.8 307.5,235.1 310.0,235.4 312.5,235.7 315.0,236.0 317.5,236.2 320.0,236.5 322.5,236.8 325.0,237.0 327.5,237.2 330.0,237.5 332.5,237.7 335.0,237.9 337.5,238.1 340.0,238.3 342.5,238.5 345.0,238.7 347.5,238.9 350.0,239.1 352.5,239.2 355.0,239.4 357.5,239.6 360.0,239.7 362.5,239.9 365.0,240.0 367.5,240.2 370.0,240.3 372.5,240.5 375.0,240.6 377.5,240.7 380.0,240.9 382.5,241.0 385.0,241.1 387.5,241.2 390.0,241.3 392.5,241.4 395.0,241.5 397.5,241.6 400.0,241.7 402.5,241.8 405.0,241.9 407.5,242.0 410.0,242.1 412.5,242.2 415.0,242.3 417.5,242.4 420.0,242.4 422.5,242.5 425.0,242.6 427.5,242.7 430.0,242.7 432.5,242.8 435.0,242.9 437.5,242.9 440.0,243.0 442.5,243.0 445.0,243.1 447.5,243.2 450.0,243.2 452.5,243.3 455.0,243.3 457.5,243.4 460.0,243.4 462.5,243.5 465.0,243.5 467.5,243.6 470.0,243.6 472.5,243.6 475.0,243.7 477.5,243.7 480.0,243.8 482.5,243.8 485.0,243.8 487.5,243.9 490.0,243.9 492.5,243.9 495.0,244.0 497.5,244.0 500.0,244.0 502.5,244.0 505.0,244.1 507.5,244.1 510.0,244.1 512.5,244.2 515.0,244.2 517.5,244.2 520.0,244.2 522.5,244.3 525.0,244.3 527.5,244.3 530.0,244.3 532.5,244.3 535.0,244.4 537.5,244.4 540.0,244.4 542.5,244.4 545.0,244.4 547.5,244.4 550.0,244.5 552.5,244.5 555.0,244.5 557.5,244.5 560.0,244.5" fill="none" stroke="#2980b9" stroke-width="3.5"/><polyline points="60.0,286.2 62.5,285.0 65.0,283.8 67.5,282.7 70.0,281.6 72.5,280.5 75.0,279.5 77.5,278.4 80.0,277.4 82.5,276.5 85.0,275.6 87.5,274.7 90.0,273.8 92.5,272.9 95.0,272.1 97.5,271.3 100.0,270.5 102.5,269.8 105.0,269.0 107.5,268.3 110.0,267.6 112.5,267.0 115.0,266.3 117.5,265.7 120.0,265.1 122.5,264.5 125.0,263.9 127.5,263.4 130.0,262.8 132.5,262.3 135.0,261.8 137.5,261.3 140.0,260.8 142.5,260.3 145.0,259.9 147.5,259.4 150.0,259.0 152.5,258.6 155.0,258.2 157.5,257.8 160.0,257.4 162.5,257.1 165.0,256.7 167.5,256.4 170.0,256.0 172.5,255.7 175.0,255.4 177.5,255.1 180.0,254.8 182.5,254.5 185.0,254.2 187.5,253.9 190.0,253.7 192.5,253.4 195.0,253.2 197.5,252.9 200.0,252.7 202.5,252.5 205.0,252.2 207.5,252.0 210.0,251.8 212.5,251.6 215.0,251.4 217.5,251.2 220.0,251.0 222.5,250.9 225.0,250.7 227.5,250.5 230.0,250.4 232.5,250.2 235.0,250.1 237.5,249.9 240.0,249.8 242.5,249.6 245.0,249.5 247.5,249.3 250.0,249.2 252.5,249.1 255.0,249.0 257.5,248.9 260.0,248.7 262.5,248.6 265.0,248.5 267.5,248.4 270.0,248.3 272.5,248.2 275.0,248.1 277.5,248.0 280.0,247.9 282.5,247.9 285.0,247.8 287.5,247.7 290.0,247.6 292.5,247.5 295.0,247.5 297.5,247.4 300.0,247.3 302.5,247.2 305.0,247.2 307.5,247.1 310.0,247.1 312.5,247.0 315.0,246.9 317.5,246.9 320.0,246.8 322.5,246.8 325.0,246.7 327.5,246.7 330.0,246.6 332.5,246.6 335.0,246.5 337.5,246.5 340.0,246.4 342.5,246.4 345.0,246.3 347.5,246.3 350.0,246.3 352.5,246.2 355.0,246.2 357.5,246.2 360.0,246.1 362.5,246.1 365.0,246.1 367.5,246.0 370.0,246.0 372.5,246.0 375.0,245.9 377.5,245.9 380.0,245.9 382.5,245.9 385.0,245.8 387.5,245.8 390.0,245.8 392.5,245.8 395.0,245.7 397.5,245.7 400.0,245.7 402.5,245.7 405.0,245.7 407.5,245.6 410.0,245.6 412.5,245.6 415.0,245.6 417.5,245.6 420.0,245.5 422.5,245.5 425.0,245.5 427.5,245.5 430.0,245.5 432.5,245.5 435.0,245.5 437.5,245.4 440.0,245.4 442.5,245.4 445.0,245.4 447.5,245.4 450.0,245.4 452.5,245.4 455.0,245.4 457.5,245.3 460.0,245.3 462.5,245.3 465.0,245.3 467.5,245.3 470.0,245.3 472.5,245.3 475.0,245.3 477.5,245.3 480.0,245.3 482.5,245.3 485.0,245.3 487.5,245.2 490.0,245.2 492.5,245.2 495.0,245.2 497.5,245.2 500.0,245.2 502.5,245.2 505.0,245.2 507.5,245.2 510.0,245.2 512.5,245.2 515.0,245.2 517.5,245.2 520.0,245.2 522.5,245.2 525.0,245.2 527.5,245.2 530.0,245.1 532.5,245.1 535.0,245.1 537.5,245.1 540.0,245.1 542.5,245.1 545.0,245.1 547.5,245.1 550.0,245.1 552.5,245.1 555.0,245.1 557.5,245.1 560.0,245.1" fill="none" stroke="#27ae60" stroke-width="3.5"/><text x="343.3" y="219.0" font-size="13" fill="#e74c3c" font-family="sans-serif">T_a = 20 °C (ambiente)</text><text x="168.3" y="107.5" font-size="13" fill="#2980b9" font-family="sans-serif">corpo quente: esfria</text><text x="343.3" y="278.0" font-size="13" fill="#27ae60" font-family="sans-serif">corpo frio: esquenta</text></svg><figcaption>Figura 2: Lei do resfriamento de Newton (T_a = 20 °C): um corpo quente esfria e um corpo frio esquenta, ambos tendendo a T_a.</figcaption></figure>
+    </div>
+    <div class="passo-teoria"><h4>4. Roteiro para resolver os problemas</h4>
+
+<ol>
+  <li>Identifique o valor limite $y_\infty$ ($T_a$ ou $mg/k$) e a condição inicial $y(0)=y_0$.</li>
+  <li>Escreva $y=y_\infty+(y_0-y_\infty)e^{-at}$.</li>
+  <li>Se $a$ (ou $k$) não for dado, use <strong>um segundo dado</strong> do problema (por exemplo, $T(10)=25$) para calculá-lo.</li>
+  <li>Responda à pergunta: valor em um instante dado, ou instante em que se atinge um valor (isole $t$ com logaritmo).</li>
+</ol>
+<p><strong>Dica:</strong> trabalhe com a diferença $D(t)=y-y_\infty$, que simplesmente decai como $D_0e^{-at}$. Isso evita erros de sinal.</p>
+    </div>
+  </section>
+  <section class="aplicacoes-reais" id="aplicacoes"><h3>💡 EDO em Ação</h3><div class="cards-aplicacao">
+    <div class="card"><h4>🕵️ Perícia criminal: hora do óbito</h4><p>Um corpo encontrado em um local de temperatura conhecida esfria segundo a lei de Newton. Medindo a temperatura em dois instantes, o perito calcula $k$ e volta no tempo até $37$ °C para estimar a hora da morte.</p></div>
+    <div class="card" style="border-left-color: #2ecc71;"><h4>🪂 Paraquedismo e velocidade terminal</h4><p>Um paraquedista em queda aberta atinge uma velocidade terminal e, ao abrir o paraquedas (grande aumento de $k$), desacelera até uma nova velocidade limite bem menor, exatamente como no modelo $m v'=mg-kv$.</p></div>
+  </div></section>
+  <section class="questoes-resolvidas" id="resolvidas"><h3>✅ 5 Questões Resolvidas (R 1 a 5)</h3>
+    <article class="questao"><h4>R 1: Resfriamento: o exemplo do livro-texto</h4><p><strong>Enunciado:</strong> Um corpo a $0$ °F é colocado em um cômodo mantido a $100$ °F. Após $10$ minutos, sua temperatura é $25$ °F. Em quanto tempo o corpo atinge $50$ °F?</p>
+      <div class="resolucao-bloco"><p><strong>Resolução:</strong> <br>$T(t)=100+(0-100)e^{-kt}=100-100e^{-kt}$.
+  <br>$T(10)=25$: $100-100e^{-10k}=25 \Rightarrow e^{-10k}=\frac34 \Rightarrow k=\frac{1}{10}\ln\frac43$.
+  <br>$T(t)=50$: $100e^{-kt}=50 \Rightarrow e^{-kt}=\frac12 \Rightarrow t=\frac{\ln2}{k}=\frac{10\ln2}{\ln(4/3)}\approx\frac{10\cdot0{,}6931}{0{,}2877}$.
+  <br>Conferência: $e^{-kt}=\left(\frac34\right)^{t/10}=\left(\frac34\right)^{2{,}409}\approx0{,}50$ ✓.
+  <br><strong>Resposta:</strong> $t\approx24{,}09$ minutos.</p></div></article>
+    <article class="questao"><h4>R 2: Café esfriando</h4><p><strong>Enunciado:</strong> Um café a $90$ °C é deixado em uma sala a $20$ °C. Após $5$ minutos está a $70$ °C. (a) Qual será a temperatura aos $15$ minutos? (b) Em quanto tempo chegará a $30$ °C?</p>
+      <div class="resolucao-bloco"><p><strong>Resolução:</strong> <br>$T=20+70e^{-kt}$. Com $T(5)=70$: $70e^{-5k}=50 \Rightarrow e^{-5k}=\frac57$.
+  <br>(a) $e^{-15k}=\left(\frac57\right)^3=\frac{125}{343}$, então $T(15)=20+70\cdot\frac{125}{343}\approx20+25{,}51=45{,}51$ °C.
+  <br>(b) $T=30$: $70e^{-kt}=10 \Rightarrow e^{-kt}=\frac17 \Rightarrow t=\frac{\ln7}{k}=\frac{5\ln7}{\ln(7/5)}\approx\frac{5\cdot1{,}9459}{0{,}3365}\approx28{,}92$ min.
+  <br><strong>Resposta:</strong> (a) $\approx45{,}5$ °C; (b) $\approx28{,}9$ minutos.</p></div></article>
+    <article class="questao"><h4>R 3: Perícia: hora do óbito</h4><p><strong>Enunciado:</strong> Um corpo é encontrado às $21$ h em uma sala a $20$ °C, com temperatura de $30$ °C. Uma hora depois, a temperatura é $25$ °C. Supondo que a temperatura normal em vida era $37$ °C, estime a hora do óbito.</p>
+      <div class="resolucao-bloco"><p><strong>Resolução:</strong> <br>Seja $t$ o tempo em horas após as $21$ h. $T-20=10e^{-kt}$. Com $T(1)=25$: $5=10e^{-k} \Rightarrow e^{-k}=\frac12$, ou seja, $e^{-kt}=2^{-t}$.
+  <br>No óbito, $T=37$: $17=10\cdot2^{-t} \Rightarrow 2^{-t}=1{,}7 \Rightarrow t=-\log_2 1{,}7\approx-0{,}7655$ h $\approx-45{,}9$ min.
+  <br>O instante é anterior às $21$ h, como esperado (resultado negativo).
+  <br>Conferência: $10\cdot2^{0{,}7655}=10\cdot1{,}7=17$ ✓.
+  <br><strong>Resposta:</strong> o óbito ocorreu por volta das $20$ h $14$ min.</p></div></article>
+    <article class="questao"><h4>R 4: O paraquedista do livro-texto</h4><p><strong>Enunciado:</strong> Um paraquedista de $86$ kg salta de um avião e abre o paraquedas após $12$ s de queda. Com coeficiente de resistência $k=5$ kg/s no início da queda e $g=9{,}8$ m/s², determine sua velocidade no instante em que o paraquedas abre.</p>
+      <div class="resolucao-bloco"><p><strong>Resolução:</strong> <br>$m\,v'=mg-kv$, $v(0)=0$, então $v(t)=\frac{mg}{k}\left(1-e^{-kt/m}\right)$.
+  <br>$\frac{mg}{k}=\frac{86\cdot9{,}8}{5}=168{,}56$ m/s e $\frac{kt}{m}=\frac{5\cdot12}{86}\approx0{,}6977$.
+  <br>$v(12)=168{,}56\,(1-e^{-0{,}6977})\approx168{,}56\cdot0{,}5023\approx84{,}66$ m/s.
+  <br>Conferência: $v'(t)=g\,e^{-kt/m}$ e $g-\frac kmv=9{,}8-\frac5{86}\cdot v$; para $t=0$ dá $9{,}8=9{,}8$ ✓.
+  <br><strong>Resposta:</strong> $v(12)\approx84{,}7$ m/s (cerca de $305$ km/h).</p></div></article>
+    <article class="questao"><h4>R 5: Desaceleração até a velocidade terminal</h4><p><strong>Enunciado:</strong> Um corpo de $10$ kg, com $k=2$ kg/s e $g=9{,}8$ m/s², entra em um meio com velocidade inicial $v(0)=60$ m/s (para baixo). (a) Determine $v_{\text{lim}}$ e $v(t)$. (b) Em quanto tempo a velocidade cai a $50$ m/s?</p>
+      <div class="resolucao-bloco"><p><strong>Resolução:</strong> <br>(a) $v_{\text{lim}}=\frac{mg}{k}=\frac{10\cdot9{,}8}{2}=49$ m/s e $\frac km=\frac15$. Então $v(t)=49+(60-49)e^{-t/5}=49+11e^{-t/5}$.
+  <br>Como $v(0)>v_{\text{lim}}$, o corpo desacelera.
+  <br>(b) $49+11e^{-t/5}=50 \Rightarrow e^{-t/5}=\frac1{11} \Rightarrow t=5\ln11\approx11{,}99$ s.
+  <br>Conferência: $v'=-\frac{11}{5}e^{-t/5}$ e $g-\frac kmv=9{,}8-\frac15(49+11e^{-t/5})=-\frac{11}5e^{-t/5}$ ✓.
+  <br><strong>Resposta:</strong> (a) $v_{\text{lim}}=49$ m/s, $v=49+11e^{-t/5}$; (b) $t\approx12{,}0$ s.</p></div></article>
+  </section>
+  <section class="questoes-propostas" id="propostas"><h3>✍️ 10 Questões Propostas (P 6 a 15)</h3>
+    <article class="questao"><h4>P 6: Temperatura em um instante</h4><p><strong>Enunciado:</strong> Um objeto a $80$ °C é colocado em um ambiente a $20$ °C. Após $10$ minutos está a $50$ °C. Qual será a temperatura após $20$ minutos?</p>
+      <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+      <div class="gabarito-resolucao"><p><strong>Resolução:</strong> $T=20+60e^{-kt}$; $T(10)=50 \Rightarrow e^{-10k}=\frac12$. Então $e^{-20k}=\frac14$ e $T(20)=20+60\cdot\frac14=35$.
+  <br><strong>Resposta:</strong> $35$ °C.</p></div></article>
+    <article class="questao"><h4>P 7: Tempo para atingir uma temperatura</h4><p><strong>Enunciado:</strong> No problema anterior, em quanto tempo o objeto chega a $25$ °C?</p>
+      <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+      <div class="gabarito-resolucao"><p><strong>Resolução:</strong> $60e^{-kt}=5 \Rightarrow e^{-kt}=\frac1{12}$. Com $e^{-10k}=\frac12$, temos $e^{-kt}=2^{-t/10}$, então $2^{t/10}=12$ e $t=10\log_212=\frac{10\ln12}{\ln2}\approx35{,}85$.
+  <br><strong>Resposta:</strong> $\approx35{,}8$ minutos.</p></div></article>
+    <article class="questao"><h4>P 8: Corpo frio em um forno</h4><p><strong>Enunciado:</strong> Uma barra a $5$ °C é colocada em um forno a $200$ °C. Após $3$ minutos está a $65$ °C. Em quanto tempo atingirá $150$ °C?</p>
+      <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+      <div class="gabarito-resolucao"><p><strong>Resolução:</strong> $T=200-195e^{-kt}$. $T(3)=65 \Rightarrow 195e^{-3k}=135 \Rightarrow e^{-3k}=\frac9{13}$, logo $k=\frac13\ln\frac{13}{9}$.
+  <br>$T=150 \Rightarrow 195e^{-kt}=50 \Rightarrow e^{-kt}=\frac{10}{39} \Rightarrow t=\frac{\ln3{,}9}{k}=\frac{3\ln3{,}9}{\ln(13/9)}\approx11{,}10$.
+  <br><strong>Resposta:</strong> $\approx11{,}1$ minutos.</p></div></article>
+    <article class="questao"><h4>P 9: Deduzindo a lei</h4><p><strong>Enunciado:</strong> Resolva $\dfrac{dT}{dt}=-k\,(T-T_a)$, $T(0)=T_0$, pelo método das equações separáveis e confirme que $T=T_a+(T_0-T_a)e^{-kt}$.</p>
+      <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+      <div class="gabarito-resolucao"><p><strong>Resolução:</strong> $\frac{dT}{T-T_a}=-k\,dt \Rightarrow \ln|T-T_a|=-kt+c \Rightarrow T-T_a=Ce^{-kt}$.
+  <br>$T(0)=T_0 \Rightarrow C=T_0-T_a$. Logo $T=T_a+(T_0-T_a)e^{-kt}$.
+  <br>Conferência: $T'=-k(T_0-T_a)e^{-kt}=-k(T-T_a)$ ✓.</p></div></article>
+    <article class="questao"><h4>P 10: Tempo de meia-diferença</h4><p><strong>Enunciado:</strong> Mostre que o tempo para a diferença $T-T_a$ cair à metade é $\dfrac{\ln2}{k}$, e calcule-o para $k=0{,}1\ \text{min}^{-1}$.</p>
+      <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+      <div class="gabarito-resolucao"><p><strong>Resolução:</strong> $T-T_a=D_0e^{-kt}=\frac{D_0}2 \Rightarrow e^{-kt}=\frac12 \Rightarrow t=\frac{\ln2}{k}$.
+  <br>Para $k=0{,}1$: $t=\frac{0{,}6931}{0{,}1}\approx6{,}93$.
+  <br><strong>Resposta:</strong> $\frac{\ln2}k$; $\approx6{,}9$ minutos.</p></div></article>
+    <article class="questao"><h4>P 11: Velocidade terminal (1)</h4><p><strong>Enunciado:</strong> Um corpo de $70$ kg cai com $k=14$ kg/s e $g=9{,}8$ m/s², partindo do repouso. Determine $v_{\text{lim}}$ e a velocidade em $t=5$ s.</p>
+      <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+      <div class="gabarito-resolucao"><p><strong>Resolução:</strong> $v_{\text{lim}}=\frac{70\cdot9{,}8}{14}=49$ m/s. $\frac{kt}m=\frac{14\cdot5}{70}=1$, então $v(5)=49(1-e^{-1})\approx49\cdot0{,}6321\approx30{,}97$.
+  <br><strong>Resposta:</strong> $v_{\text{lim}}=49$ m/s e $v(5)\approx31{,}0$ m/s.</p></div></article>
+    <article class="questao"><h4>P 12: Tempo para chegar perto do limite</h4><p><strong>Enunciado:</strong> No problema anterior, em quanto tempo a velocidade atinge $95\%$ de $v_{\text{lim}}$?</p>
+      <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+      <div class="gabarito-resolucao"><p><strong>Resolução:</strong> $1-e^{-t/5}=0{,}95 \Rightarrow e^{-t/5}=0{,}05=\frac1{20} \Rightarrow t=5\ln20\approx14{,}98$ (note que $\frac mk=5$ s).
+  <br><strong>Resposta:</strong> $\approx15{,}0$ s.</p></div></article>
+    <article class="questao"><h4>P 13: Deduzindo a velocidade</h4><p><strong>Enunciado:</strong> Resolva $m\,v'=mg-kv$, $v(0)=0$, pelo fator integrante e confirme que $v=\dfrac{mg}{k}\left(1-e^{-kt/m}\right)$.</p>
+      <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+      <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Forma linear: $v'+\frac km v=g$. Fator integrante $\mu=e^{kt/m}$: $(e^{kt/m}v)'=g\,e^{kt/m} \Rightarrow e^{kt/m}v=\frac{mg}{k}e^{kt/m}+C$.
+  <br>$v(0)=0 \Rightarrow C=-\frac{mg}k$. Então $v=\frac{mg}k\left(1-e^{-kt/m}\right)$ ✓.</p></div></article>
+    <article class="questao"><h4>P 14: Abertura do paraquedas</h4><p><strong>Enunciado:</strong> Um paraquedista de $86$ kg abre o paraquedas com $v(0)=60$ m/s e passa a ter $k=200$ kg/s ($g=9{,}8$ m/s²). Determine a nova velocidade terminal e a velocidade $2$ s depois.</p>
+      <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+      <div class="gabarito-resolucao"><p><strong>Resolução:</strong> $v_{\text{lim}}=\frac{86\cdot9{,}8}{200}=4{,}214$ m/s e $\frac km=\frac{200}{86}$.
+  <br>$v(t)=4{,}214+(60-4{,}214)e^{-200t/86}$; $v(2)=4{,}214+55{,}786\,e^{-4{,}651}\approx4{,}214+0{,}532\approx4{,}75$.
+  <br><strong>Resposta:</strong> $v_{\text{lim}}\approx4{,}21$ m/s e $v(2)\approx4{,}75$ m/s.</p></div></article>
+    <article class="questao"><h4>P 15: Temperatura ambiente desconhecida</h4><p><strong>Enunciado:</strong> Um corpo tem temperaturas $90$ °C, $60$ °C e $45$ °C nos instantes $t=0$, $10$ e $20$ minutos. Supondo a lei de Newton, determine a temperatura ambiente $T_a$.</p>
+      <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+      <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Como $T-T_a$ decai por um fator constante $r=e^{-10k}$ a cada $10$ min: $\frac{60-T_a}{90-T_a}=\frac{45-T_a}{60-T_a}$.
+  <br>$(60-T_a)^2=(90-T_a)(45-T_a) \Rightarrow 3600-120T_a=4050-135T_a \Rightarrow 15T_a=450 \Rightarrow T_a=30$.
+  <br>Conferência: diferenças $60,\ 30,\ 15$ (fator $\frac12$) ✓.
+  <br><strong>Resposta:</strong> $T_a=30$ °C.</p></div></article>
+  </section>
+  <section class="TESTE" id="testes"><h3>🎓 TESTES (T 16 a 20)</h3>
+    <article class="questao"><h4>T 16: (Questão autoral) Identificando o modelo</h4><p>Um corpo troca calor com um ambiente mantido a $25$ °C. Qual EDO descreve a lei do resfriamento de Newton, com $k>0$?</p><p>A) $T'=k\,(T-25)$<br>B) $T'=-k\,(T-25)$<br>C) $T'=-k\,T$<br>D) $T'=-k\,(T+25)$<br>E) $T'=25-kT^2$</p>
+      <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+      <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>B</strong>.<br>A taxa de variação é proporcional à diferença $T-T_a$ e de sinal oposto (o corpo tende ao ambiente): $T'=-k(T-25)$. Em A, o corpo se afastaria do ambiente.</p></div></article>
+    <article class="questao"><h4>T 17: (Questão autoral) Temperatura em um instante</h4><p>Um corpo a $90$ °C é colocado em um ambiente a $10$ °C. Após $5$ minutos está a $50$ °C. Sua temperatura após $15$ minutos é:</p><p>A) $15$ °C<br>B) $25$ °C<br>C) $30$ °C<br>D) $40$ °C<br>E) $20$ °C</p>
+      <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+      <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>E</strong>.<br>$T-10=80e^{-kt}$; $T(5)=50 \Rightarrow e^{-5k}=\frac12$. Então $e^{-15k}=\frac18$ e $T(15)=10+80\cdot\frac18=20$ °C.</p></div></article>
+    <article class="questao"><h4>T 18: (Questão autoral) Velocidade terminal</h4><p>Um corpo de $50$ kg cai sob resistência do ar $kv$, com $k=10$ kg/s. Adotando $g=10$ m/s², sua velocidade terminal é:</p><p>A) $5$ m/s<br>B) $20$ m/s<br>C) $50$ m/s<br>D) $100$ m/s<br>E) $500$ m/s</p>
+      <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+      <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>C</strong>.<br>$v_{\text{lim}}=\frac{mg}{k}=\frac{50\cdot10}{10}=50$ m/s (peso igual à resistência: $kv=mg$).</p></div></article>
+    <article class="questao"><h4>T 19: (Questão autoral) Velocidade em um instante</h4><p>Um corpo de $10$ kg cai do repouso com $k=20$ kg/s e $g=10$ m/s². Sua velocidade no instante $t=\ln2$ s é:</p><p>A) $2{,}5$ m/s<br>B) $5$ m/s<br>C) $1{,}25$ m/s<br>D) $3{,}75$ m/s<br>E) $7{,}5$ m/s</p>
+      <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+      <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>D</strong>.<br>$v=\frac{mg}{k}\left(1-e^{-kt/m}\right)=5\left(1-e^{-2t}\right)$. Em $t=\ln2$: $e^{-2\ln2}=\frac14$, logo $v=5\cdot\frac34=3{,}75$ m/s.</p></div></article>
+    <article class="questao"><h4>T 20: (Questão autoral) Constante de resfriamento</h4><p>Um corpo a $100$ °C é colocado em um ambiente a $20$ °C. Após $10$ minutos está a $60$ °C. A constante $k$ da lei de Newton (em $\text{min}^{-1}$) é:</p><p>A) $\dfrac{\ln2}{10}$<br>B) $\dfrac{\ln2}{20}$<br>C) $10\ln2$<br>D) $\dfrac{\ln 2}{5}$<br>E) $\dfrac1{10}$</p>
+      <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+      <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>A</strong>.<br>$60-20=80e^{-10k} \Rightarrow e^{-10k}=\frac12 \Rightarrow k=\frac{\ln2}{10}\approx0{,}0693$ min$^{-1}$.</p></div></article>
+  </section>
+</div></main>
+<aside class="menu-lateral"><iframe src="../edo_menu.html" style="width:100%; border:none; height:600px;"></iframe></aside>
+</div>
+<script>
+function toggleGabarito(botao) {
+    const gabarito = botao.nextElementSibling;
+    if (gabarito.style.display === "none" || gabarito.style.display === "") {
+        gabarito.style.display = "block"; botao.textContent = "Esconder Gabarito e Resolução"; botao.style.backgroundColor = "#2c3e50";
+    } else {
+        gabarito.style.display = "none"; botao.textContent = "Ver Gabarito e Resolução"; botao.style.backgroundColor = "#3498db";
+    }
+}
+function toggleMenu() { const m = document.getElementById("menu-principal"); if (m) m.classList.toggle("ativo"); }
+let slideAtual = 0; let slides = [];
+function prepararSlides() { slides = Array.from(document.querySelectorAll('.container-resumo, .passo-teoria, .card, .questao')); }
+function toggleSlides() {
+    prepararSlides(); const body = document.body;
+    if (!body.classList.contains('modo-slides')) { body.classList.add('modo-slides'); slideAtual = 0; mostrarSlide(slideAtual); }
+    else { body.classList.remove('modo-slides'); slides.forEach(s => { s.classList.remove('slide-ativo'); s.style.display = ''; }); }
+}
+function mostrarSlide(n) {
+    if (!slides.length) return;
+    slides.forEach(s => { s.classList.remove('slide-ativo'); s.style.display = 'none'; });
+    const slide = slides[n]; slide.classList.add('slide-ativo');
+    slide.querySelectorAll('.gabarito-resolucao').forEach(g => g.style.display = 'none');
+    slide.querySelectorAll('.btn-gabarito').forEach(b => { b.textContent = "Ver Gabarito e Resolução"; b.style.backgroundColor = "#3498db"; });
+    const pHeader = document.querySelector('header p');
+    if (pHeader) { const partes = pHeader.innerText.split('|'); if (partes.length > 1) {
+        document.getElementById('slide-info-serie').innerText = partes[0].trim();
+        document.getElementById('slide-info-aula').innerText = partes[1].trim(); } }
+    document.getElementById('contador-slide').innerText = (n + 1) + " / " + slides.length;
+    if (window.MathJax && window.MathJax.typesetPromise) { MathJax.typesetPromise(); }
+}
+function mudarSlide(d) { slideAtual += d; if (slideAtual >= slides.length) slideAtual = 0; if (slideAtual < 0) slideAtual = slides.length - 1; mostrarSlide(slideAtual); }
+document.addEventListener('keydown', function(event) {
+    if (document.body.classList.contains('modo-slides')) {
+        switch(event.key) {
+            case 'ArrowRight': case 'PageDown': case 'Enter': case ' ': event.preventDefault(); mudarSlide(1); break;
+            case 'ArrowLeft': case 'PageUp': event.preventDefault(); mudarSlide(-1); break;
+            case 'Escape': event.preventDefault(); toggleSlides(); break;
+        }
+    }
+});
+</script>
+<div class="controles-slides">
+    <div id="slide-info-serie" class="info-lateral"></div>
+    <div class="botoes-centrais">
+        <button class="btn-nav" onclick="mudarSlide(-1)">⬅ Anterior</button>
+        <span id="contador-slide"></span>
+        <button class="btn-nav" onclick="mudarSlide(1)">Próximo ➡</button>
+        <button class="btn-nav" onclick="toggleSlides()" style="background:#e74c3c;">Sair</button>
+    </div>
+    <div id="slide-info-aula" class="info-lateral" style="text-align: right;"></div>
+</div>
+</body>
+</html>

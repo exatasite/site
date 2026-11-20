@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Engenharia: Aula 06 - EQUAÇÕES DIFERENCIAIS EXATAS</title>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../estilo.css">
+    <script>
+        MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']], processEscapes: true } };
+    </script>
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        body.modo-slides { overflow: hidden !important; background-color: #1a1a1a !important; margin: 0; padding: 0; }
+        body.modo-slides .menu-lateral, body.modo-slides header, body.modo-slides .menu-toggle, body.modo-slides #btn-slides, body.modo-slides .nav-global { display: none !important; }
+        .slide-ativo { display: flex !important; flex-direction: column; align-items: center; justify-content: center; position: fixed; top: 0; left: 0; width: 100vw; height: calc(100vh - 70px); background: #ffffff; padding: 40px; z-index: 999; overflow-y: auto !important; box-sizing: border-box; text-align: left; }
+        .slide-ativo > * { max-width: 900px; width: 100%; }
+        .controles-slides { position: fixed; bottom: 0; left: 0; width: 100%; height: 70px; background: #2c3e50; color: white; display: none; justify-content: space-between; align-items: center; padding: 0 20px; z-index: 1001; box-sizing: border-box; }
+        body.modo-slides .controles-slides { display: flex !important; }
+        .info-lateral { flex: 1; font-family: 'Oswald', sans-serif; font-size: 0.9rem; color: #bdc3c7; }
+        .botoes-centrais { display: flex; align-items: center; gap: 15px; justify-content: center; flex: 2; }
+        .btn-nav { padding: 10px 20px; background: #3498db; color: white; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; font-size: 0.9rem; }
+        .btn-nav:hover { background: #2980b9; }
+        #contador-slide { font-family: 'Oswald', sans-serif; min-width: 60px; text-align: center; font-size: 1.1rem; }
+    </style>
+</head>
+<body>
+<button class="menu-toggle" onclick="toggleMenu()">☰</button>
+<nav id="menu-principal" class="nav-global"><ul>
+    <li><a href="../index.html">🏠 Início</a></li>
+    <li><a href="../ensino_medio.html">📚 Ensino Médio</a></li>
+    <li><a href="../ensino_superior.html">🎓 Ensino Superior</a></li>
+</ul></nav>
+<header id="topo">
+    <h1>EQUAÇÕES DIFERENCIAIS</h1>
+    <p>Engenharia | Aula 06: Equações Diferenciais Exatas</p>
+    <button id="btn-slides" onclick="toggleSlides()">📺 Iniciar Modo Slides</button>
+</header>
+<div class="container"><main class="conteudo-principal"><div class="secao-aula">
+  <div class="container-resumo" id="resumo"><h3>📚 Resumo</h3><section class="resumo-conteudo"><p>A equação $M(x,y)\,dx+N(x,y)\,dy=0$ é <strong>exata</strong> quando existe uma função $\psi(x,y)$ com $\psi_x=M$ e $\psi_y=N$; então a equação diz que $d\psi=0$ e a <strong>solução implícita</strong> é $\psi(x,y)=C$. O teste de exatidão é simples:</p>
+$$\frac{\partial M}{\partial y}=\frac{\partial N}{\partial x}\quad\Longleftrightarrow\quad M\,dx+N\,dy=0 \text{ é exata}.$$</section></div>
+  <section class="conteudo-teorico-completo" id="teoria">
+    <div class="passo-teoria"><h3>📖 EQUAÇÕES DIFERENCIAIS EXATAS</h3><h4>1. A ideia: diferencial total</h4>
+
+<p>Vimos equações separáveis e lineares. Agora tratamos EDOs escritas na <strong>forma diferencial</strong></p>
+$$M(x,y)\,dx+N(x,y)\,dy=0 \qquad\left(\text{ou } M+N\,y'=0\right).$$
+<p>Para uma função $\psi(x,y)$, a <strong>diferencial total</strong> é $d\psi=\psi_x\,dx+\psi_y\,dy$. Se $\psi_x=M$ e $\psi_y=N$, a equação é simplesmente $d\psi=0$, ou seja, $\psi$ é constante ao longo das soluções:</p>
+$$\psi(x,y)=C.$$
+<p>As soluções são as <strong>curvas de nível</strong> de $\psi$. Exemplo: em $(2x+y)\,dx+(x+2y)\,dy=0$, a função $\psi=x^2+xy+y^2$ tem $\psi_x=2x+y$ e $\psi_y=x+2y$. As soluções são as elipses $x^2+xy+y^2=C$.</p>
+      <figure class="figura-aula figura-grande"><svg viewBox="0 0 600 420" xmlns="http://www.w3.org/2000/svg" style="max-width:600px;width:100%;height:auto;display:block;margin:auto" role="img" aria-label="Curvas de nível x ao quadrado mais xy mais y ao quadrado igual a constante"><rect x="0" y="0" width="600" height="420" fill="#fdfefe" stroke="#d5dbdb"/><line x1="20" y1="210" x2="580" y2="210" stroke="#2c3e50" stroke-width="1.5"/><line x1="300" y1="15" x2="300" y2="405" stroke="#2c3e50" stroke-width="1.5"/><text x="570" y="202" font-size="13" fill="#2c3e50" font-family="sans-serif">x</text><text x="308" y="30" font-size="13" fill="#2c3e50" font-family="sans-serif">y</text><polyline points="326.0,184.0 326.8,184.8 327.5,185.6 328.3,186.4 329.1,187.2 329.8,188.0 330.5,188.9 331.3,189.7 332.0,190.5 332.7,191.4 333.4,192.2 334.1,193.1 334.8,193.9 335.4,194.8 336.1,195.7 336.7,196.6 337.4,197.4 338.0,198.3 338.6,199.2 339.2,200.1 339.8,201.0 340.4,201.9 340.9,202.8 341.5,203.7 342.0,204.6 342.6,205.5 343.1,206.4 343.6,207.3 344.1,208.2 344.5,209.1 345.0,210.0 345.4,210.9 345.9,211.8 346.3,212.7 346.7,213.6 347.1,214.5 347.5,215.4 347.8,216.3 348.2,217.2 348.5,218.1 348.8,219.0 349.1,219.9 349.4,220.8 349.7,221.7 349.9,222.6 350.2,223.4 350.4,224.3 350.6,225.2 350.8,226.1 351.0,226.9 351.2,227.8 351.3,228.6 351.5,229.5 351.6,230.3 351.7,231.1 351.8,232.0 351.8,232.8 351.9,233.6 351.9,234.4 352.0,235.2 352.0,236.0 352.0,236.8 351.9,237.5 351.9,238.3 351.8,239.1 351.8,239.8 351.7,240.5 351.6,241.3 351.5,242.0 351.3,242.7 351.2,243.4 351.0,244.1 350.8,244.8 350.6,245.4 350.4,246.1 350.2,246.7 349.9,247.4 349.7,248.0 349.4,248.6 349.1,249.2 348.8,249.8 348.5,250.4 348.2,250.9 347.8,251.5 347.5,252.0 347.1,252.6 346.7,253.1 346.3,253.6 345.9,254.1 345.4,254.5 345.0,255.0 344.5,255.4 344.1,255.9 343.6,256.3 343.1,256.7 342.6,257.1 342.0,257.5 341.5,257.8 340.9,258.2 340.4,258.5 339.8,258.8 339.2,259.1 338.6,259.4 338.0,259.7 337.4,259.9 336.7,260.2 336.1,260.4 335.4,260.6 334.8,260.8 334.1,261.0 333.4,261.2 332.7,261.3 332.0,261.5 331.3,261.6 330.5,261.7 329.8,261.8 329.1,261.8 328.3,261.9 327.5,261.9 326.8,262.0 326.0,262.0 325.2,262.0 324.4,261.9 323.6,261.9 322.8,261.8 322.0,261.8 321.1,261.7 320.3,261.6 319.5,261.5 318.6,261.3 317.8,261.2 316.9,261.0 316.1,260.8 315.2,260.6 314.3,260.4 313.4,260.2 312.6,259.9 311.7,259.7 310.8,259.4 309.9,259.1 309.0,258.8 308.1,258.5 307.2,258.2 306.3,257.8 305.4,257.5 304.5,257.1 303.6,256.7 302.7,256.3 301.8,255.9 300.9,255.4 300.0,255.0 299.1,254.5 298.2,254.1 297.3,253.6 296.4,253.1 295.5,252.6 294.6,252.0 293.7,251.5 292.8,250.9 291.9,250.4 291.0,249.8 290.1,249.2 289.2,248.6 288.3,248.0 287.4,247.4 286.6,246.7 285.7,246.1 284.8,245.4 283.9,244.8 283.1,244.1 282.2,243.4 281.4,242.7 280.5,242.0 279.7,241.3 278.9,240.5 278.0,239.8 277.2,239.1 276.4,238.3 275.6,237.5 274.8,236.8 274.0,236.0 273.2,235.2 272.5,234.4 271.7,233.6 270.9,232.8 270.2,232.0 269.5,231.1 268.7,230.3 268.0,229.5 267.3,228.6 266.6,227.8 265.9,226.9 265.2,226.1 264.6,225.2 263.9,224.3 263.3,223.4 262.6,222.6 262.0,221.7 261.4,220.8 260.8,219.9 260.2,219.0 259.6,218.1 259.1,217.2 258.5,216.3 258.0,215.4 257.4,214.5 256.9,213.6 256.4,212.7 255.9,211.8 255.5,210.9 255.0,210.0 254.6,209.1 254.1,208.2 253.7,207.3 253.3,206.4 252.9,205.5 252.5,204.6 252.2,203.7 251.8,202.8 251.5,201.9 251.2,201.0 250.9,200.1 250.6,199.2 250.3,198.3 250.1,197.4 249.8,196.6 249.6,195.7 249.4,194.8 249.2,193.9 249.0,193.1 248.8,192.2 248.7,191.4 248.5,190.5 248.4,189.7 248.3,188.9 248.2,188.0 248.2,187.2 248.1,186.4 248.1,185.6 248.0,184.8 248.0,184.0 248.0,183.2 248.1,182.5 248.1,181.7 248.2,180.9 248.2,180.2 248.3,179.5 248.4,178.7 248.5,178.0 248.7,177.3 248.8,176.6 249.0,175.9 249.2,175.2 249.4,174.6 249.6,173.9 249.8,173.3 250.1,172.6 250.3,172.0 250.6,171.4 250.9,170.8 251.2,170.2 251.5,169.6 251.8,169.1 252.2,168.5 252.5,168.0 252.9,167.4 253.3,166.9 253.7,166.4 254.1,165.9 254.6,165.5 255.0,165.0 255.5,164.6 255.9,164.1 256.4,163.7 256.9,163.3 257.4,162.9 258.0,162.5 258.5,162.2 259.1,161.8 259.6,161.5 260.2,161.2 260.8,160.9 261.4,160.6 262.0,160.3 262.6,160.1 263.3,159.8 263.9,159.6 264.6,159.4 265.2,159.2 265.9,159.0 266.6,158.8 267.3,158.7 268.0,158.5 268.7,158.4 269.5,158.3 270.2,158.2 270.9,158.2 271.7,158.1 272.5,158.1 273.2,158.0 274.0,158.0 274.8,158.0 275.6,158.1 276.4,158.1 277.2,158.2 278.0,158.2 278.9,158.3 279.7,158.4 280.5,158.5 281.4,158.7 282.2,158.8 283.1,159.0 283.9,159.2 284.8,159.4 285.7,159.6 286.6,159.8 287.4,160.1 288.3,160.3 289.2,160.6 290.1,160.9 291.0,161.2 291.9,161.5 292.8,161.8 293.7,162.2 294.6,162.5 295.5,162.9 296.4,163.3 297.3,163.7 298.2,164.1 299.1,164.6 300.0,165.0 300.9,165.5 301.8,165.9 302.7,166.4 303.6,166.9 304.5,167.4 305.4,168.0 306.3,168.5 307.2,169.1 308.1,169.6 309.0,170.2 309.9,170.8 310.8,171.4 311.7,172.0 312.6,172.6 313.4,173.3 314.3,173.9 315.2,174.6 316.1,175.2 316.9,175.9 317.8,176.6 318.6,177.3 319.5,178.0 320.3,178.7 321.1,179.5 322.0,180.2 322.8,180.9 323.6,181.7 324.4,182.5 325.2,183.2 326.0,184.0" fill="none" stroke="#27ae60" stroke-width="3"/><line x1="470" y1="36" x2="500" y2="36" stroke="#27ae60" stroke-width="3"/><text x="508" y="40" font-size="13" fill="#27ae60" font-family="sans-serif">c = 1</text><polyline points="345.0,165.0 346.4,166.4 347.7,167.7 349.0,169.1 350.3,170.5 351.6,172.0 352.9,173.4 354.2,174.8 355.4,176.3 356.6,177.7 357.9,179.2 359.0,180.7 360.2,182.2 361.4,183.7 362.5,185.2 363.6,186.7 364.7,188.2 365.8,189.8 366.9,191.3 367.9,192.8 368.9,194.4 369.9,195.9 370.9,197.5 371.9,199.0 372.8,200.6 373.7,202.2 374.6,203.7 375.5,205.3 376.3,206.9 377.1,208.4 377.9,210.0 378.7,211.6 379.5,213.1 380.2,214.7 380.9,216.3 381.6,217.8 382.2,219.4 382.8,221.0 383.4,222.5 384.0,224.1 384.6,225.6 385.1,227.2 385.6,228.7 386.1,230.2 386.5,231.8 386.9,233.3 387.3,234.8 387.7,236.3 388.0,237.8 388.3,239.3 388.6,240.8 388.9,242.3 389.1,243.7 389.3,245.2 389.5,246.6 389.7,248.0 389.8,249.5 389.9,250.9 389.9,252.3 390.0,253.6 390.0,255.0 390.0,256.4 389.9,257.7 389.9,259.0 389.8,260.3 389.7,261.6 389.5,262.9 389.3,264.2 389.1,265.4 388.9,266.6 388.6,267.9 388.3,269.0 388.0,270.2 387.7,271.4 387.3,272.5 386.9,273.6 386.5,274.7 386.1,275.8 385.6,276.9 385.1,277.9 384.6,278.9 384.0,279.9 383.4,280.9 382.8,281.9 382.2,282.8 381.6,283.7 380.9,284.6 380.2,285.5 379.5,286.3 378.7,287.1 377.9,287.9 377.1,288.7 376.3,289.5 375.5,290.2 374.6,290.9 373.7,291.6 372.8,292.2 371.9,292.8 370.9,293.4 369.9,294.0 368.9,294.6 367.9,295.1 366.9,295.6 365.8,296.1 364.7,296.5 363.6,296.9 362.5,297.3 361.4,297.7 360.2,298.0 359.0,298.3 357.9,298.6 356.6,298.9 355.4,299.1 354.2,299.3 352.9,299.5 351.6,299.7 350.3,299.8 349.0,299.9 347.7,299.9 346.4,300.0 345.0,300.0 343.6,300.0 342.3,299.9 340.9,299.9 339.5,299.8 338.0,299.7 336.6,299.5 335.2,299.3 333.7,299.1 332.3,298.9 330.8,298.6 329.3,298.3 327.8,298.0 326.3,297.7 324.8,297.3 323.3,296.9 321.8,296.5 320.2,296.1 318.7,295.6 317.2,295.1 315.6,294.6 314.1,294.0 312.5,293.4 311.0,292.8 309.4,292.2 307.8,291.6 306.3,290.9 304.7,290.2 303.1,289.5 301.6,288.7 300.0,287.9 298.4,287.1 296.9,286.3 295.3,285.5 293.7,284.6 292.2,283.7 290.6,282.8 289.0,281.9 287.5,280.9 285.9,279.9 284.4,278.9 282.8,277.9 281.3,276.9 279.8,275.8 278.2,274.7 276.7,273.6 275.2,272.5 273.7,271.4 272.2,270.2 270.7,269.0 269.2,267.9 267.7,266.6 266.3,265.4 264.8,264.2 263.4,262.9 262.0,261.6 260.5,260.3 259.1,259.0 257.7,257.7 256.4,256.4 255.0,255.0 253.6,253.6 252.3,252.3 251.0,250.9 249.7,249.5 248.4,248.0 247.1,246.6 245.8,245.2 244.6,243.7 243.4,242.3 242.1,240.8 241.0,239.3 239.8,237.8 238.6,236.3 237.5,234.8 236.4,233.3 235.3,231.8 234.2,230.2 233.1,228.7 232.1,227.2 231.1,225.6 230.1,224.1 229.1,222.5 228.1,221.0 227.2,219.4 226.3,217.8 225.4,216.3 224.5,214.7 223.7,213.1 222.9,211.6 222.1,210.0 221.3,208.4 220.5,206.9 219.8,205.3 219.1,203.7 218.4,202.2 217.8,200.6 217.2,199.0 216.6,197.5 216.0,195.9 215.4,194.4 214.9,192.8 214.4,191.3 213.9,189.8 213.5,188.2 213.1,186.7 212.7,185.2 212.3,183.7 212.0,182.2 211.7,180.7 211.4,179.2 211.1,177.7 210.9,176.3 210.7,174.8 210.5,173.4 210.3,172.0 210.2,170.5 210.1,169.1 210.1,167.7 210.0,166.4 210.0,165.0 210.0,163.6 210.1,162.3 210.1,161.0 210.2,159.7 210.3,158.4 210.5,157.1 210.7,155.8 210.9,154.6 211.1,153.4 211.4,152.1 211.7,151.0 212.0,149.8 212.3,148.6 212.7,147.5 213.1,146.4 213.5,145.3 213.9,144.2 214.4,143.1 214.9,142.1 215.4,141.1 216.0,140.1 216.6,139.1 217.2,138.1 217.8,137.2 218.4,136.3 219.1,135.4 219.8,134.5 220.5,133.7 221.3,132.9 222.1,132.1 222.9,131.3 223.7,130.5 224.5,129.8 225.4,129.1 226.3,128.4 227.2,127.8 228.1,127.2 229.1,126.6 230.1,126.0 231.1,125.4 232.1,124.9 233.1,124.4 234.2,123.9 235.3,123.5 236.4,123.1 237.5,122.7 238.6,122.3 239.8,122.0 241.0,121.7 242.1,121.4 243.4,121.1 244.6,120.9 245.8,120.7 247.1,120.5 248.4,120.3 249.7,120.2 251.0,120.1 252.3,120.1 253.6,120.0 255.0,120.0 256.4,120.0 257.7,120.1 259.1,120.1 260.5,120.2 262.0,120.3 263.4,120.5 264.8,120.7 266.3,120.9 267.7,121.1 269.2,121.4 270.7,121.7 272.2,122.0 273.7,122.3 275.2,122.7 276.7,123.1 278.2,123.5 279.8,123.9 281.3,124.4 282.8,124.9 284.4,125.4 285.9,126.0 287.5,126.6 289.0,127.2 290.6,127.8 292.2,128.4 293.7,129.1 295.3,129.8 296.9,130.5 298.4,131.3 300.0,132.1 301.6,132.9 303.1,133.7 304.7,134.5 306.3,135.4 307.8,136.3 309.4,137.2 311.0,138.1 312.5,139.1 314.1,140.1 315.6,141.1 317.2,142.1 318.7,143.1 320.2,144.2 321.8,145.3 323.3,146.4 324.8,147.5 326.3,148.6 327.8,149.8 329.3,151.0 330.8,152.1 332.3,153.4 333.7,154.6 335.2,155.8 336.6,157.1 338.0,158.4 339.5,159.7 340.9,161.0 342.3,162.3 343.6,163.6 345.0,165.0" fill="none" stroke="#2980b9" stroke-width="3"/><line x1="470" y1="58" x2="500" y2="58" stroke="#2980b9" stroke-width="3"/><text x="508" y="62" font-size="13" fill="#2980b9" font-family="sans-serif">c = 3</text><polyline points="363.6,146.4 365.6,148.3 367.4,150.2 369.3,152.2 371.2,154.2 373.0,156.2 374.8,158.2 376.6,160.3 378.4,162.3 380.1,164.4 381.8,166.5 383.5,168.6 385.2,170.7 386.8,172.8 388.4,174.9 390.0,177.1 391.6,179.2 393.1,181.4 394.6,183.5 396.1,185.7 397.5,187.9 398.9,190.1 400.3,192.3 401.6,194.5 403.0,196.7 404.3,198.9 405.5,201.1 406.7,203.3 407.9,205.6 409.1,207.8 410.2,210.0 411.3,212.2 412.4,214.4 413.4,216.7 414.4,218.9 415.4,221.1 416.3,223.3 417.2,225.5 418.0,227.7 418.8,229.9 419.6,232.1 420.3,234.3 421.0,236.5 421.7,238.6 422.3,240.8 422.9,242.9 423.5,245.1 424.0,247.2 424.5,249.3 424.9,251.4 425.3,253.5 425.7,255.6 426.0,257.7 426.3,259.7 426.6,261.8 426.8,263.8 427.0,265.8 427.1,267.8 427.2,269.8 427.3,271.7 427.3,273.6 427.3,275.6 427.2,277.4 427.1,279.3 427.0,281.2 426.8,283.0 426.6,284.8 426.3,286.6 426.0,288.4 425.7,290.1 425.3,291.8 424.9,293.5 424.5,295.2 424.0,296.8 423.5,298.4 422.9,300.0 422.3,301.6 421.7,303.1 421.0,304.6 420.3,306.1 419.6,307.5 418.8,308.9 418.0,310.3 417.2,311.6 416.3,313.0 415.4,314.3 414.4,315.5 413.4,316.7 412.4,317.9 411.3,319.1 410.2,320.2 409.1,321.3 407.9,322.4 406.7,323.4 405.5,324.4 404.3,325.4 403.0,326.3 401.6,327.2 400.3,328.0 398.9,328.8 397.5,329.6 396.1,330.3 394.6,331.0 393.1,331.7 391.6,332.3 390.0,332.9 388.4,333.5 386.8,334.0 385.2,334.5 383.5,334.9 381.8,335.3 380.1,335.7 378.4,336.0 376.6,336.3 374.8,336.6 373.0,336.8 371.2,337.0 369.3,337.1 367.4,337.2 365.6,337.3 363.6,337.3 361.7,337.3 359.8,337.2 357.8,337.1 355.8,337.0 353.8,336.8 351.8,336.6 349.7,336.3 347.7,336.0 345.6,335.7 343.5,335.3 341.4,334.9 339.3,334.5 337.2,334.0 335.1,333.5 332.9,332.9 330.8,332.3 328.6,331.7 326.5,331.0 324.3,330.3 322.1,329.6 319.9,328.8 317.7,328.0 315.5,327.2 313.3,326.3 311.1,325.4 308.9,324.4 306.7,323.4 304.4,322.4 302.2,321.3 300.0,320.2 297.8,319.1 295.6,317.9 293.3,316.7 291.1,315.5 288.9,314.3 286.7,313.0 284.5,311.6 282.3,310.3 280.1,308.9 277.9,307.5 275.7,306.1 273.5,304.6 271.4,303.1 269.2,301.6 267.1,300.0 264.9,298.4 262.8,296.8 260.7,295.2 258.6,293.5 256.5,291.8 254.4,290.1 252.3,288.4 250.3,286.6 248.2,284.8 246.2,283.0 244.2,281.2 242.2,279.3 240.2,277.4 238.3,275.6 236.4,273.6 234.4,271.7 232.6,269.8 230.7,267.8 228.8,265.8 227.0,263.8 225.2,261.8 223.4,259.7 221.6,257.7 219.9,255.6 218.2,253.5 216.5,251.4 214.8,249.3 213.2,247.2 211.6,245.1 210.0,242.9 208.4,240.8 206.9,238.6 205.4,236.5 203.9,234.3 202.5,232.1 201.1,229.9 199.7,227.7 198.4,225.5 197.0,223.3 195.7,221.1 194.5,218.9 193.3,216.7 192.1,214.4 190.9,212.2 189.8,210.0 188.7,207.8 187.6,205.6 186.6,203.3 185.6,201.1 184.6,198.9 183.7,196.7 182.8,194.5 182.0,192.3 181.2,190.1 180.4,187.9 179.7,185.7 179.0,183.5 178.3,181.4 177.7,179.2 177.1,177.1 176.5,174.9 176.0,172.8 175.5,170.7 175.1,168.6 174.7,166.5 174.3,164.4 174.0,162.3 173.7,160.3 173.4,158.2 173.2,156.2 173.0,154.2 172.9,152.2 172.8,150.2 172.7,148.3 172.7,146.4 172.7,144.4 172.8,142.6 172.9,140.7 173.0,138.8 173.2,137.0 173.4,135.2 173.7,133.4 174.0,131.6 174.3,129.9 174.7,128.2 175.1,126.5 175.5,124.8 176.0,123.2 176.5,121.6 177.1,120.0 177.7,118.4 178.3,116.9 179.0,115.4 179.7,113.9 180.4,112.5 181.2,111.1 182.0,109.7 182.8,108.4 183.7,107.0 184.6,105.7 185.6,104.5 186.6,103.3 187.6,102.1 188.7,100.9 189.8,99.8 190.9,98.7 192.1,97.6 193.3,96.6 194.5,95.6 195.7,94.6 197.0,93.7 198.4,92.8 199.7,92.0 201.1,91.2 202.5,90.4 203.9,89.7 205.4,89.0 206.9,88.3 208.4,87.7 210.0,87.1 211.6,86.5 213.2,86.0 214.8,85.5 216.5,85.1 218.2,84.7 219.9,84.3 221.6,84.0 223.4,83.7 225.2,83.4 227.0,83.2 228.8,83.0 230.7,82.9 232.6,82.8 234.4,82.7 236.4,82.7 238.3,82.7 240.2,82.8 242.2,82.9 244.2,83.0 246.2,83.2 248.2,83.4 250.3,83.7 252.3,84.0 254.4,84.3 256.5,84.7 258.6,85.1 260.7,85.5 262.8,86.0 264.9,86.5 267.1,87.1 269.2,87.7 271.4,88.3 273.5,89.0 275.7,89.7 277.9,90.4 280.1,91.2 282.3,92.0 284.5,92.8 286.7,93.7 288.9,94.6 291.1,95.6 293.3,96.6 295.6,97.6 297.8,98.7 300.0,99.8 302.2,100.9 304.4,102.1 306.7,103.3 308.9,104.5 311.1,105.7 313.3,107.0 315.5,108.4 317.7,109.7 319.9,111.1 322.1,112.5 324.3,113.9 326.5,115.4 328.6,116.9 330.8,118.4 332.9,120.0 335.1,121.6 337.2,123.2 339.3,124.8 341.4,126.5 343.5,128.2 345.6,129.9 347.7,131.6 349.7,133.4 351.8,135.2 353.8,137.0 355.8,138.8 357.8,140.7 359.8,142.6 361.7,144.4 363.6,146.4" fill="none" stroke="#8e44ad" stroke-width="3"/><line x1="470" y1="80" x2="500" y2="80" stroke="#8e44ad" stroke-width="3"/><text x="508" y="84" font-size="13" fill="#8e44ad" font-family="sans-serif">c = 6</text><polyline points="382.2,127.8 384.6,130.3 387.1,132.9 389.5,135.4 391.9,138.0 394.2,140.6 396.6,143.2 398.9,145.8 401.2,148.4 403.4,151.1 405.6,153.8 407.8,156.5 409.9,159.2 412.1,162.0 414.1,164.7 416.2,167.5 418.2,170.2 420.2,173.0 422.1,175.8 424.0,178.6 425.9,181.5 427.7,184.3 429.5,187.1 431.2,190.0 432.9,192.8 434.6,195.7 436.2,198.5 437.8,201.4 439.3,204.3 440.8,207.1 442.3,210.0 443.7,212.9 445.1,215.7 446.4,218.6 447.7,221.5 448.9,224.3 450.1,227.2 451.3,230.0 452.4,232.9 453.4,235.7 454.4,238.5 455.4,241.4 456.3,244.2 457.1,247.0 458.0,249.8 458.7,252.5 459.4,255.3 460.1,258.0 460.7,260.8 461.3,263.5 461.8,266.2 462.3,268.9 462.7,271.6 463.1,274.2 463.4,276.8 463.7,279.4 463.9,282.0 464.1,284.6 464.2,287.1 464.3,289.7 464.3,292.2 464.3,294.6 464.2,297.1 464.1,299.5 463.9,301.9 463.7,304.2 463.4,306.6 463.1,308.9 462.7,311.2 462.3,313.4 461.8,315.6 461.3,317.8 460.7,319.9 460.1,322.1 459.4,324.1 458.7,326.2 458.0,328.2 457.1,330.2 456.3,332.1 455.4,334.0 454.4,335.9 453.4,337.7 452.4,339.5 451.3,341.2 450.1,342.9 448.9,344.6 447.7,346.2 446.4,347.8 445.1,349.3 443.7,350.8 442.3,352.3 440.8,353.7 439.3,355.1 437.8,356.4 436.2,357.7 434.6,358.9 432.9,360.1 431.2,361.3 429.5,362.4 427.7,363.4 425.9,364.4 424.0,365.4 422.1,366.3 420.2,367.1 418.2,368.0 416.2,368.7 414.1,369.4 412.1,370.1 409.9,370.7 407.8,371.3 405.6,371.8 403.4,372.3 401.2,372.7 398.9,373.1 396.6,373.4 394.2,373.7 391.9,373.9 389.5,374.1 387.1,374.2 384.6,374.3 382.2,374.3 379.7,374.3 377.1,374.2 374.6,374.1 372.0,373.9 369.4,373.7 366.8,373.4 364.2,373.1 361.6,372.7 358.9,372.3 356.2,371.8 353.5,371.3 350.8,370.7 348.0,370.1 345.3,369.4 342.5,368.7 339.8,368.0 337.0,367.1 334.2,366.3 331.4,365.4 328.5,364.4 325.7,363.4 322.9,362.4 320.0,361.3 317.2,360.1 314.3,358.9 311.5,357.7 308.6,356.4 305.7,355.1 302.9,353.7 300.0,352.3 297.1,350.8 294.3,349.3 291.4,347.8 288.5,346.2 285.7,344.6 282.8,342.9 280.0,341.2 277.1,339.5 274.3,337.7 271.5,335.9 268.6,334.0 265.8,332.1 263.0,330.2 260.2,328.2 257.5,326.2 254.7,324.1 252.0,322.1 249.2,319.9 246.5,317.8 243.8,315.6 241.1,313.4 238.4,311.2 235.8,308.9 233.2,306.6 230.6,304.2 228.0,301.9 225.4,299.5 222.9,297.1 220.3,294.6 217.8,292.2 215.4,289.7 212.9,287.1 210.5,284.6 208.1,282.0 205.8,279.4 203.4,276.8 201.1,274.2 198.8,271.6 196.6,268.9 194.4,266.2 192.2,263.5 190.1,260.8 187.9,258.0 185.9,255.3 183.8,252.5 181.8,249.8 179.8,247.0 177.9,244.2 176.0,241.4 174.1,238.5 172.3,235.7 170.5,232.9 168.8,230.0 167.1,227.2 165.4,224.3 163.8,221.5 162.2,218.6 160.7,215.7 159.2,212.9 157.7,210.0 156.3,207.1 154.9,204.3 153.6,201.4 152.3,198.5 151.1,195.7 149.9,192.8 148.7,190.0 147.6,187.1 146.6,184.3 145.6,181.5 144.6,178.6 143.7,175.8 142.9,173.0 142.0,170.2 141.3,167.5 140.6,164.7 139.9,162.0 139.3,159.2 138.7,156.5 138.2,153.8 137.7,151.1 137.3,148.4 136.9,145.8 136.6,143.2 136.3,140.6 136.1,138.0 135.9,135.4 135.8,132.9 135.7,130.3 135.7,127.8 135.7,125.4 135.8,122.9 135.9,120.5 136.1,118.1 136.3,115.8 136.6,113.4 136.9,111.1 137.3,108.8 137.7,106.6 138.2,104.4 138.7,102.2 139.3,100.1 139.9,97.9 140.6,95.9 141.3,93.8 142.0,91.8 142.9,89.8 143.7,87.9 144.6,86.0 145.6,84.1 146.6,82.3 147.6,80.5 148.7,78.8 149.9,77.1 151.1,75.4 152.3,73.8 153.6,72.2 154.9,70.7 156.3,69.2 157.7,67.7 159.2,66.3 160.7,64.9 162.2,63.6 163.8,62.3 165.4,61.1 167.1,59.9 168.8,58.7 170.5,57.6 172.3,56.6 174.1,55.6 176.0,54.6 177.9,53.7 179.8,52.9 181.8,52.0 183.8,51.3 185.9,50.6 187.9,49.9 190.1,49.3 192.2,48.7 194.4,48.2 196.6,47.7 198.8,47.3 201.1,46.9 203.4,46.6 205.8,46.3 208.1,46.1 210.5,45.9 212.9,45.8 215.4,45.7 217.8,45.7 220.3,45.7 222.9,45.8 225.4,45.9 228.0,46.1 230.6,46.3 233.2,46.6 235.8,46.9 238.4,47.3 241.1,47.7 243.8,48.2 246.5,48.7 249.2,49.3 252.0,49.9 254.7,50.6 257.5,51.3 260.2,52.0 263.0,52.9 265.8,53.7 268.6,54.6 271.5,55.6 274.3,56.6 277.1,57.6 280.0,58.7 282.8,59.9 285.7,61.1 288.5,62.3 291.4,63.6 294.3,64.9 297.1,66.3 300.0,67.7 302.9,69.2 305.7,70.7 308.6,72.2 311.5,73.8 314.3,75.4 317.2,77.1 320.0,78.8 322.9,80.5 325.7,82.3 328.5,84.1 331.4,86.0 334.2,87.9 337.0,89.8 339.8,91.8 342.5,93.8 345.3,95.9 348.0,97.9 350.8,100.1 353.5,102.2 356.2,104.4 358.9,106.6 361.6,108.8 364.2,111.1 366.8,113.4 369.4,115.8 372.0,118.1 374.6,120.5 377.1,122.9 379.7,125.4 382.2,127.8" fill="none" stroke="#e74c3c" stroke-width="3"/><line x1="470" y1="102" x2="500" y2="102" stroke="#e74c3c" stroke-width="3"/><text x="508" y="106" font-size="13" fill="#e74c3c" font-family="sans-serif">c = 10</text><text x="30" y="30" font-size="14" fill="#2c3e50" font-family="sans-serif">ψ(x, y) = x² + xy + y² = c</text></svg><figcaption>Figura 1: Soluções de (2x + y)dx + (x + 2y)dy = 0: as curvas de nível ψ = x² + xy + y² = c.</figcaption></figure>
+    </div>
+    <div class="passo-teoria"><h4>2. Teste de exatidão</h4>
+
+<p>Como saber se existe tal $\psi$? Se $M$, $N$, $M_y$ e $N_x$ são contínuas em um retângulo, então a equação é exata <strong>se e somente se</strong></p>
+$$\frac{\partial M}{\partial y}=\frac{\partial N}{\partial x}.$$
+<p>A razão: se $\psi_x=M$ e $\psi_y=N$, então $M_y=\psi_{xy}$ e $N_x=\psi_{yx}$, e as derivadas mistas coincidem (teorema de Schwarz).</p>
+<p><strong>Exemplo (livro-texto):</strong> $(3xy-7x^2)\,dx+(y+x^2+7)\,dy=0$. Aqui $M_y=3x$ e $N_x=2x$. Como $3x\neq2x$, a equação <strong>não é exata</strong>.</p>
+    </div>
+    <div class="passo-teoria"><h4>3. Roteiro de resolução</h4>
+
+<ol>
+  <li><strong>Teste:</strong> identifique $M$ (acompanha $dx$) e $N$ (acompanha $dy$) e confira $M_y=N_x$.</li>
+  <li><strong>Integre $M$ em $x$:</strong> $\psi=\displaystyle\int M\,dx+h(y)$. A "constante" de integração é uma função de $y$.</li>
+  <li><strong>Determine $h(y)$:</strong> derive em relação a $y$ e iguale a $N$: $\psi_y=N \Rightarrow h'(y)$. Integre para obter $h(y)$.</li>
+  <li><strong>Solução implícita:</strong> $\psi(x,y)=C$.</li>
+  <li><strong>Condição inicial:</strong> substitua $(x_0,y_0)$ para achar $C$.</li>
+</ol>
+    </div>
+    <div class="passo-teoria"><h4>4. Exemplo do livro: $(2xy-9x^2)\,dx+(2y+x^2+1)\,dy=0$, $y(0)=0$</h4>
+
+<p><strong>Teste:</strong> $M=2xy-9x^2 \Rightarrow M_y=2x$ e $N=2y+x^2+1 \Rightarrow N_x=2x$. São iguais: a equação é exata.</p>
+<p><strong>Integrando $M$ em $x$:</strong> $\psi=\displaystyle\int(2xy-9x^2)\,dx=x^2y-3x^3+h(y)$.</p>
+<p><strong>Achando $h$:</strong> $\psi_y=x^2+h'(y)$ deve ser igual a $N=2y+x^2+1$. Logo $h'(y)=2y+1$ e $h(y)=y^2+y$.</p>
+<p><strong>Solução:</strong> $x^2y-3x^3+y^2+y=C$. Com $y(0)=0$: $0=C$. Portanto</p>
+$$x^2y-3x^3+y^2+y=0.$$
+    </div>
+    <div class="passo-teoria"><h4>5. Quando não é exata: fator integrante</h4>
+
+<p>Se $M_y\neq N_x$, às vezes é possível multiplicar a equação por um <strong>fator integrante</strong> $\mu$ que a torne exata. Há dois casos fáceis:</p>
+<ul>
+  <li>Se $\dfrac{M_y-N_x}{N}$ depende <strong>só de $x$</strong>, então $\mu(x)=e^{\int\frac{M_y-N_x}{N}\,dx}$.</li>
+  <li>Se $\dfrac{N_x-M_y}{M}$ depende <strong>só de $y$</strong>, então $\mu(y)=e^{\int\frac{N_x-M_y}{M}\,dy}$.</li>
+</ul>
+<p>Exemplo: $(3xy+y^2)\,dx+(x^2+xy)\,dy=0$. Temos $M_y=3x+2y$ e $N_x=2x+y$, então não é exata. Mas $\dfrac{M_y-N_x}{N}=\dfrac{x+y}{x(x+y)}=\dfrac1x$ depende só de $x$, e $\mu=e^{\int\frac1x\,dx}=x$. Multiplicando por $x$, obtemos $(3x^2y+xy^2)\,dx+(x^3+x^2y)\,dy=0$, cujos $M_y=3x^2+2xy=N_x$: agora é exata.</p>
+    </div>
+  </section>
+  <section class="aplicacoes-reais" id="aplicacoes"><h3>💡 EDO em Ação</h3><div class="cards-aplicacao">
+    <div class="card"><h4>⚡ Campos conservativos e potencial</h4><p>Um campo de forças $\vec F=M\,\vec\imath+N\,\vec\jmath$ é <strong>conservativo</strong> quando $M\,dx+N\,dy$ é exato, isto é, $M_y=N_x$. Então existe a energia potencial $\psi$ (com sinal trocado) e o trabalho entre dois pontos depende apenas dos pontos extremos, não do caminho. É a base de Física III e Eletromagnetismo.</p></div>
+    <div class="card" style="border-left-color: #2ecc71;"><h4>🌡️ Termodinâmica: funções de estado</h4><p>Energia interna, entropia e entalpia são <strong>funções de estado</strong>: suas variações são diferenciais exatas e dependem só dos estados inicial e final. O calor $\delta Q$ não é exato, mas $dS=\delta Q/T$ é: $\frac1T$ funciona como fator integrante.</p></div>
+  </div></section>
+  <section class="questoes-resolvidas" id="resolvidas"><h3>✅ 5 Questões Resolvidas (R 1 a 5)</h3>
+    <article class="questao"><h4>R 1: Testando a exatidão</h4><p><strong>Enunciado:</strong> Verifique se cada equação é exata: (a) $(2x+y)\,dx+(x+2y)\,dy=0$; (b) $(3xy-7x^2)\,dx+(y+x^2+7)\,dy=0$; (c) $2xy\,dx+(x^2-1)\,dy=0$; (d) $y\,dx-x\,dy=0$.</p>
+      <div class="resolucao-bloco"><p><strong>Resolução:</strong> <br>(a) $M_y=1$ e $N_x=1$: <strong>exata</strong>.
+  <br>(b) $M_y=3x$ e $N_x=2x$: <strong>não exata</strong>.
+  <br>(c) $M_y=2x$ e $N_x=2x$: <strong>exata</strong>.
+  <br>(d) $M_y=1$ e $N_x=-1$: <strong>não exata</strong>.
+  <br><strong>Resposta:</strong> (a) e (c) são exatas; (b) e (d) não são.</p></div></article>
+    <article class="questao"><h4>R 2: O exemplo do livro-texto</h4><p><strong>Enunciado:</strong> Resolva $(2xy-9x^2)\,dx+(2y+x^2+1)\,dy=0$, $y(0)=0$.</p>
+      <div class="resolucao-bloco"><p><strong>Resolução:</strong> <br>$M_y=2x=N_x$: exata. $\psi=\int(2xy-9x^2)\,dx=x^2y-3x^3+h(y)$.
+  <br>$\psi_y=x^2+h'(y)=2y+x^2+1 \Rightarrow h'(y)=2y+1 \Rightarrow h(y)=y^2+y$.
+  <br>Então $x^2y-3x^3+y^2+y=C$. Com $(0,0)$: $C=0$.
+  <br>Conferência: $\psi_x=2xy-9x^2=M$ ✓ e $\psi_y=x^2+2y+1=N$ ✓.
+  <br><strong>Resposta:</strong> $x^2y-3x^3+y^2+y=0$.</p></div></article>
+    <article class="questao"><h4>R 3: Uma exata simples com PVI</h4><p><strong>Enunciado:</strong> Resolva $(2x+y)\,dx+(x+2y)\,dy=0$, $y(1)=1$.</p>
+      <div class="resolucao-bloco"><p><strong>Resolução:</strong> <br>$M_y=1=N_x$. $\psi=\int(2x+y)\,dx=x^2+xy+h(y)$. $\psi_y=x+h'(y)=x+2y \Rightarrow h(y)=y^2$.
+  <br>$x^2+xy+y^2=C$. Com $(1,1)$: $C=3$.
+  <br>Conferência: $\psi_x=2x+y$ ✓ e $\psi_y=x+2y$ ✓.
+  <br><strong>Resposta:</strong> $x^2+xy+y^2=3$ (uma elipse).</p></div></article>
+    <article class="questao"><h4>R 4: Exata com exponencial e seno</h4><p><strong>Enunciado:</strong> Resolva $(y\cos x+2xe^{y})\,dx+(\operatorname{sen}x+x^2e^{y}-1)\,dy=0$, $y(0)=1$.</p>
+      <div class="resolucao-bloco"><p><strong>Resolução:</strong> <br>$M_y=\cos x+2xe^{y}$ e $N_x=\cos x+2xe^{y}$: exata.
+  <br>$\psi=\int(y\cos x+2xe^{y})\,dx=y\operatorname{sen}x+x^2e^{y}+h(y)$.
+  <br>$\psi_y=\operatorname{sen}x+x^2e^{y}+h'(y)=\operatorname{sen}x+x^2e^{y}-1 \Rightarrow h'(y)=-1 \Rightarrow h=-y$.
+  <br>$y\operatorname{sen}x+x^2e^{y}-y=C$. Com $(0,1)$: $0+0-1=C=-1$.
+  <br><strong>Resposta:</strong> $y\operatorname{sen}x+x^2e^{y}-y=-1$.</p></div></article>
+    <article class="questao"><h4>R 5: Fator integrante</h4><p><strong>Enunciado:</strong> Resolva $(3xy+y^2)\,dx+(x^2+xy)\,dy=0$ usando um fator integrante.</p>
+      <div class="resolucao-bloco"><p><strong>Resolução:</strong> <br>$M_y=3x+2y$ e $N_x=2x+y$: não exata. $\frac{M_y-N_x}{N}=\frac{x+y}{x(x+y)}=\frac1x \Rightarrow \mu=e^{\int\frac1x\,dx}=x$.
+  <br>Multiplicando: $(3x^2y+xy^2)\,dx+(x^3+x^2y)\,dy=0$; agora $M_y=3x^2+2xy=N_x$ ✓.
+  <br>$\psi=\int(3x^2y+xy^2)\,dx=x^3y+\frac{x^2y^2}{2}+h(y)$. $\psi_y=x^3+x^2y+h'(y)=x^3+x^2y \Rightarrow h'=0$.
+  <br><strong>Resposta:</strong> $x^3y+\dfrac{x^2y^2}{2}=C$.</p></div></article>
+  </section>
+  <section class="questoes-propostas" id="propostas"><h3>✍️ 10 Questões Propostas (P 6 a 15)</h3>
+    <article class="questao"><h4>P 6: Exata com PVI (1)</h4><p><strong>Enunciado:</strong> Mostre que $3x^2y\,dx+(x^3+1)\,dy=0$ é exata e resolva com $y(0)=2$.</p>
+      <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+      <div class="gabarito-resolucao"><p><strong>Resolução:</strong> $M_y=3x^2=N_x$: exata. $\psi=\int3x^2y\,dx=x^3y+h(y)$; $\psi_y=x^3+h'=x^3+1 \Rightarrow h=y$.
+  <br>$x^3y+y=C$; $y(0)=2 \Rightarrow C=2$, logo $y(x^3+1)=2$.
+  <br><strong>Resposta:</strong> $y=\dfrac{2}{x^3+1}$.</p></div></article>
+    <article class="questao"><h4>P 7: Testes de exatidão</h4><p><strong>Enunciado:</strong> Classifique em exata ou não exata: (a) $(2x+3y)\,dx+(3x-2y)\,dy=0$; (b) $y\,dx+x^2\,dy=0$; (c) $e^{x}\operatorname{sen}y\,dx+e^{x}\cos y\,dy=0$; (d) $(x^2+y^2)\,dx+(2xy+1)\,dy=0$.</p>
+      <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+      <div class="gabarito-resolucao"><p><strong>Resolução:</strong> (a) $M_y=3=N_x$: <strong>exata</strong>. (b) $M_y=1$ e $N_x=2x$: <strong>não exata</strong>.
+  <br>(c) $M_y=e^x\cos y=N_x$: <strong>exata</strong>. (d) $M_y=2y=N_x$: <strong>exata</strong>.
+  <br><strong>Resposta:</strong> exatas: (a), (c) e (d); não exata: (b).</p></div></article>
+    <article class="questao"><h4>P 8: Exata com PVI (2)</h4><p><strong>Enunciado:</strong> Resolva $(2x+3y)\,dx+(3x-2y)\,dy=0$, $y(1)=0$.</p>
+      <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+      <div class="gabarito-resolucao"><p><strong>Resolução:</strong> $\psi=\int(2x+3y)\,dx=x^2+3xy+h(y)$; $\psi_y=3x+h'=3x-2y \Rightarrow h=-y^2$.
+  <br>$x^2+3xy-y^2=C$; $(1,0)$: $C=1$.
+  <br>Conferência: $\psi_x=2x+3y$ ✓ e $\psi_y=3x-2y$ ✓.
+  <br><strong>Resposta:</strong> $x^2+3xy-y^2=1$.</p></div></article>
+    <article class="questao"><h4>P 9: Exata com exponencial e seno</h4><p><strong>Enunciado:</strong> Resolva $e^{x}\operatorname{sen}y\,dx+e^{x}\cos y\,dy=0$, $y(0)=\dfrac\pi2$.</p>
+      <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+      <div class="gabarito-resolucao"><p><strong>Resolução:</strong> $\psi=\int e^x\operatorname{sen}y\,dx=e^x\operatorname{sen}y+h(y)$; $\psi_y=e^x\cos y+h'=e^x\cos y \Rightarrow h'=0$.
+  <br>$e^x\operatorname{sen}y=C$; $(0,\frac\pi2)$: $C=1$.
+  <br><strong>Resposta:</strong> $e^{x}\operatorname{sen}y=1$.</p></div></article>
+    <article class="questao"><h4>P 10: Determinando a constante</h4><p><strong>Enunciado:</strong> Determine $k$ para que $(3x^2+k\,y)\,dx+(4y+5x)\,dy=0$ seja exata e encontre a solução geral.</p>
+      <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+      <div class="gabarito-resolucao"><p><strong>Resolução:</strong> $M_y=k$ e $N_x=5$: exata se $k=5$.
+  <br>$\psi=\int(3x^2+5y)\,dx=x^3+5xy+h(y)$; $\psi_y=5x+h'=4y+5x \Rightarrow h'=4y \Rightarrow h=2y^2$.
+  <br><strong>Resposta:</strong> $k=5$; $x^3+5xy+2y^2=C$.</p></div></article>
+    <article class="questao"><h4>P 11: Exata com termos mistos</h4><p><strong>Enunciado:</strong> Resolva $(2xy^2+1)\,dx+(2x^2y+3y^2)\,dy=0$, $y(1)=1$.</p>
+      <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+      <div class="gabarito-resolucao"><p><strong>Resolução:</strong> $M_y=4xy=N_x$. $\psi=\int(2xy^2+1)\,dx=x^2y^2+x+h(y)$; $\psi_y=2x^2y+h'=2x^2y+3y^2 \Rightarrow h=y^3$.
+  <br>$x^2y^2+x+y^3=C$; $(1,1)$: $C=3$.
+  <br><strong>Resposta:</strong> $x^2y^2+x+y^3=3$.</p></div></article>
+    <article class="questao"><h4>P 12: Fator integrante $\mu(y)$</h4><p><strong>Enunciado:</strong> Resolva $y\,dx+(2x-y\,e^{y})\,dy=0$ usando o fator integrante $\mu(y)=y$ (mostre que ele funciona).</p>
+      <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+      <div class="gabarito-resolucao"><p><strong>Resolução:</strong> $M_y=1$ e $N_x=2$: não exata. $\frac{N_x-M_y}{M}=\frac1y \Rightarrow \mu=e^{\int\frac1y\,dy}=y$.
+  <br>Multiplicando: $y^2\,dx+(2xy-y^2e^y)\,dy=0$; $M_y=2y=N_x$ ✓.
+  <br>$\psi=\int y^2\,dx=xy^2+h(y)$; $\psi_y=2xy+h'=2xy-y^2e^y \Rightarrow h'=-y^2e^y$. Por partes, $\int y^2e^y\,dy=e^y(y^2-2y+2)$, logo $h=-e^y(y^2-2y+2)$.
+  <br><strong>Resposta:</strong> $xy^2-e^{y}(y^2-2y+2)=C$.</p></div></article>
+    <article class="questao"><h4>P 13: Fator integrante $\mu(x)$</h4><p><strong>Enunciado:</strong> Resolva $y\,dx+(x^2y-x)\,dy=0$ achando um fator integrante que dependa só de $x$.</p>
+      <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+      <div class="gabarito-resolucao"><p><strong>Resolução:</strong> $M_y=1$ e $N_x=2xy-1$. $\frac{M_y-N_x}{N}=\frac{2-2xy}{x(xy-1)}=-\frac2x \Rightarrow \mu=e^{-2\ln x}=\frac1{x^2}$.
+  <br>Multiplicando: $\frac{y}{x^2}\,dx+\left(y-\frac1x\right)dy=0$; $M_y=\frac1{x^2}=N_x$ ✓.
+  <br>$\psi=\int\frac{y}{x^2}\,dx=-\frac yx+h(y)$; $\psi_y=-\frac1x+h'=y-\frac1x \Rightarrow h=\frac{y^2}{2}$.
+  <br><strong>Resposta:</strong> $-\dfrac yx+\dfrac{y^2}{2}=C$.</p></div></article>
+    <article class="questao"><h4>P 14: Trabalho de uma força conservativa</h4><p><strong>Enunciado:</strong> Mostre que $\vec F=(2xy+y^2)\,\vec\imath+(x^2+2xy)\,\vec\jmath$ é conservativo, encontre $\psi$ com $\vec F=\nabla\psi$ e calcule o trabalho de $(0,0)$ até $(1,2)$.</p>
+      <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+      <div class="gabarito-resolucao"><p><strong>Resolução:</strong> $M=2xy+y^2$ e $N=x^2+2xy$: $M_y=2x+2y=N_x$, logo é conservativo.
+  <br>$\psi=\int(2xy+y^2)\,dx=x^2y+xy^2+h(y)$; $\psi_y=x^2+2xy+h'=N \Rightarrow h'=0$. Então $\psi=x^2y+xy^2$.
+  <br>$W=\psi(1,2)-\psi(0,0)=(2+4)-0=6$.
+  <br><strong>Resposta:</strong> $\psi=x^2y+xy^2$; $W=6$ (em unidades de $\psi$).</p></div></article>
+    <article class="questao"><h4>P 15: Exata com exponencial</h4><p><strong>Enunciado:</strong> Resolva $(2x+e^{y})\,dx+(xe^{y}-2y)\,dy=0$, $y(1)=0$.</p>
+      <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+      <div class="gabarito-resolucao"><p><strong>Resolução:</strong> $M_y=e^y=N_x$. $\psi=\int(2x+e^y)\,dx=x^2+xe^y+h(y)$; $\psi_y=xe^y+h'=xe^y-2y \Rightarrow h=-y^2$.
+  <br>$x^2+xe^y-y^2=C$; $(1,0)$: $1+1-0=2$.
+  <br><strong>Resposta:</strong> $x^2+xe^{y}-y^2=2$.</p></div></article>
+  </section>
+  <section class="TESTE" id="testes"><h3>🎓 TESTES (T 16 a 20)</h3>
+    <article class="questao"><h4>T 16: (Questão autoral) Qual é exata?</h4><p>Qual das equações abaixo é exata?</p><p>A) $y\,dx+x^2\,dy=0$<br>B) $2xy\,dx+(x^2+1)\,dy=0$<br>C) $y\,dx-x\,dy=0$<br>D) $x\,dx+x\,dy=0$<br>E) $y^2\,dx+x\,dy=0$</p>
+      <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+      <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>B</strong>.<br>Em B: $M_y=2x$ e $N_x=2x$. Nas outras: A tem $1\neq2x$; C tem $1\neq-1$; D tem $0\neq1$; E tem $2y\neq1$.</p></div></article>
+    <article class="questao"><h4>T 17: (Questão autoral) Valor de k</h4><p>Para que valor de $k$ a equação $(kxy+3)\,dx+(2x^2+4y)\,dy=0$ é exata?</p><p>A) $1$<br>B) $2$<br>C) $3$<br>D) $4$<br>E) $6$</p>
+      <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+      <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>D</strong>.<br>$M_y=kx$ e $N_x=4x$. A igualdade $kx=4x$ exige $k=4$.</p></div></article>
+    <article class="questao"><h4>T 18: (Questão autoral) Solução geral</h4><p>A solução geral de $(2x+y)\,dx+(x+2y)\,dy=0$ é:</p><p>A) $x^2+xy+y^2=C$<br>B) $x^2+y^2=C$<br>C) $2x^2+xy+2y^2=C$<br>D) $x^2+2xy+y^2=C$<br>E) $x^2+xy=C$</p>
+      <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+      <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>A</strong>.<br>$\psi=\int(2x+y)\,dx=x^2+xy+h(y)$ e $\psi_y=x+h'=x+2y \Rightarrow h=y^2$. Logo $x^2+xy+y^2=C$.</p></div></article>
+    <article class="questao"><h4>T 19: (Questão autoral) PVI exato</h4><p>A solução do PVI $2xy\,dx+(x^2+1)\,dy=0$, $y(0)=3$ é:</p><p>A) $y=3(x^2+1)$<br>B) $y=\dfrac{3}{x^2-1}$<br>C) $y=\dfrac{3}{x^2+1}$<br>D) $y=3e^{-x^2}$<br>E) $y=3-x^2$</p>
+      <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+      <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>C</strong>.<br>$\psi=\int2xy\,dx=x^2y+h(y)$ e $\psi_y=x^2+h'=x^2+1 \Rightarrow h=y$. Então $x^2y+y=C$; $y(0)=3 \Rightarrow C=3$, logo $y=\frac{3}{x^2+1}$. Conferência: $y(0)=3$ ✓.</p></div></article>
+    <article class="questao"><h4>T 20: (Questão autoral) Equação a partir de ψ</h4><p>Seja $\psi(x,y)=x^2y+y^3$. A equação diferencial exata cuja solução geral é $\psi(x,y)=C$ é:</p><p>A) $x^2\,dx+3y^2\,dy=0$<br>B) $(x^2+y)\,dx+(x+3y^2)\,dy=0$<br>C) $2xy\,dx+3y^2\,dy=0$<br>D) $(2x+y)\,dx+(x^2+3y)\,dy=0$<br>E) $2xy\,dx+(x^2+3y^2)\,dy=0$</p>
+      <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+      <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>E</strong>.<br>$d\psi=\psi_x\,dx+\psi_y\,dy=2xy\,dx+(x^2+3y^2)\,dy$. Conferência: $M_y=2x=N_x$ ✓.</p></div></article>
+  </section>
+</div></main>
+<aside class="menu-lateral"><iframe src="../edo_menu.html" style="width:100%; border:none; height:600px;"></iframe></aside>
+</div>
+<script>
+function toggleGabarito(botao) {
+    const gabarito = botao.nextElementSibling;
+    if (gabarito.style.display === "none" || gabarito.style.display === "") {
+        gabarito.style.display = "block"; botao.textContent = "Esconder Gabarito e Resolução"; botao.style.backgroundColor = "#2c3e50";
+    } else {
+        gabarito.style.display = "none"; botao.textContent = "Ver Gabarito e Resolução"; botao.style.backgroundColor = "#3498db";
+    }
+}
+function toggleMenu() { const m = document.getElementById("menu-principal"); if (m) m.classList.toggle("ativo"); }
+let slideAtual = 0; let slides = [];
+function prepararSlides() { slides = Array.from(document.querySelectorAll('.container-resumo, .passo-teoria, .card, .questao')); }
+function toggleSlides() {
+    prepararSlides(); const body = document.body;
+    if (!body.classList.contains('modo-slides')) { body.classList.add('modo-slides'); slideAtual = 0; mostrarSlide(slideAtual); }
+    else { body.classList.remove('modo-slides'); slides.forEach(s => { s.classList.remove('slide-ativo'); s.style.display = ''; }); }
+}
+function mostrarSlide(n) {
+    if (!slides.length) return;
+    slides.forEach(s => { s.classList.remove('slide-ativo'); s.style.display = 'none'; });
+    const slide = slides[n]; slide.classList.add('slide-ativo');
+    slide.querySelectorAll('.gabarito-resolucao').forEach(g => g.style.display = 'none');
+    slide.querySelectorAll('.btn-gabarito').forEach(b => { b.textContent = "Ver Gabarito e Resolução"; b.style.backgroundColor = "#3498db"; });
+    const pHeader = document.querySelector('header p');
+    if (pHeader) { const partes = pHeader.innerText.split('|'); if (partes.length > 1) {
+        document.getElementById('slide-info-serie').innerText = partes[0].trim();
+        document.getElementById('slide-info-aula').innerText = partes[1].trim(); } }
+    document.getElementById('contador-slide').innerText = (n + 1) + " / " + slides.length;
+    if (window.MathJax && window.MathJax.typesetPromise) { MathJax.typesetPromise(); }
+}
+function mudarSlide(d) { slideAtual += d; if (slideAtual >= slides.length) slideAtual = 0; if (slideAtual < 0) slideAtual = slides.length - 1; mostrarSlide(slideAtual); }
+document.addEventListener('keydown', function(event) {
+    if (document.body.classList.contains('modo-slides')) {
+        switch(event.key) {
+            case 'ArrowRight': case 'PageDown': case 'Enter': case ' ': event.preventDefault(); mudarSlide(1); break;
+            case 'ArrowLeft': case 'PageUp': event.preventDefault(); mudarSlide(-1); break;
+            case 'Escape': event.preventDefault(); toggleSlides(); break;
+        }
+    }
+});
+</script>
+<div class="controles-slides">
+    <div id="slide-info-serie" class="info-lateral"></div>
+    <div class="botoes-centrais">
+        <button class="btn-nav" onclick="mudarSlide(-1)">⬅ Anterior</button>
+        <span id="contador-slide"></span>
+        <button class="btn-nav" onclick="mudarSlide(1)">Próximo ➡</button>
+        <button class="btn-nav" onclick="toggleSlides()" style="background:#e74c3c;">Sair</button>
+    </div>
+    <div id="slide-info-aula" class="info-lateral" style="text-align: right;"></div>
+</div>
+</body>
+</html>

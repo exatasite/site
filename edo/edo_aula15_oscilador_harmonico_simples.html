@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Engenharia: Aula 15 - O OSCILADOR HARMÔNICO SIMPLES (MASSA-MOLA)</title>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../estilo.css">
+    <script>
+        MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']], processEscapes: true } };
+    </script>
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        body.modo-slides { overflow: hidden !important; background-color: #1a1a1a !important; margin: 0; padding: 0; }
+        body.modo-slides .menu-lateral, body.modo-slides header, body.modo-slides .menu-toggle, body.modo-slides #btn-slides, body.modo-slides .nav-global { display: none !important; }
+        .slide-ativo { display: flex !important; flex-direction: column; align-items: center; justify-content: center; position: fixed; top: 0; left: 0; width: 100vw; height: calc(100vh - 70px); background: #ffffff; padding: 40px; z-index: 999; overflow-y: auto !important; box-sizing: border-box; text-align: left; }
+        .slide-ativo > * { max-width: 900px; width: 100%; }
+        .controles-slides { position: fixed; bottom: 0; left: 0; width: 100%; height: 70px; background: #2c3e50; color: white; display: none; justify-content: space-between; align-items: center; padding: 0 20px; z-index: 1001; box-sizing: border-box; }
+        body.modo-slides .controles-slides { display: flex !important; }
+        .info-lateral { flex: 1; font-family: 'Oswald', sans-serif; font-size: 0.9rem; color: #bdc3c7; }
+        .botoes-centrais { display: flex; align-items: center; gap: 15px; justify-content: center; flex: 2; }
+        .btn-nav { padding: 10px 20px; background: #3498db; color: white; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; font-size: 0.9rem; }
+        .btn-nav:hover { background: #2980b9; }
+        #contador-slide { font-family: 'Oswald', sans-serif; min-width: 60px; text-align: center; font-size: 1.1rem; }
+    </style>
+</head>
+<body>
+<button class="menu-toggle" onclick="toggleMenu()">☰</button>
+<nav id="menu-principal" class="nav-global"><ul>
+    <li><a href="../index.html">🏠 Início</a></li>
+    <li><a href="../ensino_medio.html">📚 Ensino Médio</a></li>
+    <li><a href="../ensino_superior.html">🎓 Ensino Superior</a></li>
+</ul></nav>
+<header id="topo">
+    <h1>EQUAÇÕES DIFERENCIAIS</h1>
+    <p>Engenharia | Aula 15: O Oscilador Harmônico Simples (Massa-Mola)</p>
+    <button id="btn-slides" onclick="toggleSlides()">📺 Iniciar Modo Slides</button>
+</header>
+<div class="container"><main class="conteudo-principal"><div class="secao-aula">
+  <div class="container-resumo" id="resumo"><h3>📚 Resumo</h3><section class="resumo-conteudo"><p>Um corpo de massa $m$ preso a uma mola de constante $k$ obedece à lei de Hooke, $F=-kx$, e à 2ª lei de Newton: $m\,x''=-kx$, isto é,</p>
+$$x''+\omega_0^2\,x=0,\qquad \omega_0=\sqrt{\frac km}.$$
+<p>A solução é o <strong>movimento harmônico simples</strong> $x(t)=A\cos(\omega_0t-\varphi)$, com período $T=2\pi\sqrt{m/k}$. A energia total $E=\frac12m x'^2+\frac12kx^2=\frac12kA^2$ é constante.</p></section></div>
+  <section class="conteudo-teorico-completo" id="teoria">
+    <div class="passo-teoria"><h3>📖 O SISTEMA MASSA-MOLA</h3><h4>1. A EDO do oscilador</h4>
+
+<p>Seja $x$ o deslocamento a partir da posição de equilíbrio. A mola exerce a força restauradora $F=-kx$ (lei de Hooke, $k>0$ em N/m): ela puxa o corpo de volta ao equilíbrio. Pela 2ª lei de Newton,</p>
+$$m\,x''=-kx\;\Longrightarrow\;\boxed{\,x''+\omega_0^2x=0\,},\qquad \omega_0^2=\frac km.$$
+<p>É a mesma EDO do pêndulo linearizado (Aula 14), com a equação característica $r^2+\omega_0^2=0$ e raízes $r=\pm i\omega_0$.</p>
+<p><strong>Mola vertical.</strong> Pendurando o corpo, o equilíbrio se desloca de $\Delta=\frac{mg}{k}$ para baixo. Medindo $x$ a partir do <em>novo</em> equilíbrio, a EDO continua sendo $x''+\omega_0^2x=0$: o peso apenas muda a origem.</p>
+    </div>
+    <div class="passo-teoria"><h4>2. Solução, amplitude e fase</h4>
+
+<p>A solução geral é $x(t)=C_1\cos\omega_0t+C_2\operatorname{sen}\omega_0t$. Com $x(0)=x_0$ e $x'(0)=v_0$: $C_1=x_0$ e $C_2=\dfrac{v_0}{\omega_0}$. Escrevendo $C_1=A\cos\varphi$ e $C_2=A\operatorname{sen}\varphi$,</p>
+$$x(t)=A\cos(\omega_0t-\varphi),\qquad A=\sqrt{x_0^2+\left(\frac{v_0}{\omega_0}\right)^2},\quad \operatorname{tg}\varphi=\frac{v_0}{\omega_0x_0}.$$
+<p>O <strong>período</strong> é $T=\dfrac{2\pi}{\omega_0}=2\pi\sqrt{\dfrac mk}$ e a <strong>frequência</strong> é $f=\dfrac1T$ (em Hz). Mola mais dura ($k$ maior) ou massa menor: oscila mais rápido. O período <strong>não depende da amplitude</strong>.</p>
+      <figure class="figura-aula figura-grande"><svg viewBox="0 0 600 340" xmlns="http://www.w3.org/2000/svg" style="max-width:600px;width:100%;height:auto;display:block;margin:auto" role="img" aria-label="Movimento harmônico simples com amplitude, fase e período"><rect x="0" y="0" width="600" height="340" fill="#fdfefe" stroke="#d5dbdb"/><line x1="156.2" y1="25" x2="156.2" y2="300" stroke="#d5dbdb" stroke-width="1"/><text x="156.2" y="316" text-anchor="middle" font-size="12" fill="#2c3e50" font-family="sans-serif">0.5</text><line x1="252.3" y1="25" x2="252.3" y2="300" stroke="#d5dbdb" stroke-width="1"/><text x="252.3" y="316" text-anchor="middle" font-size="12" fill="#2c3e50" font-family="sans-serif">1.0</text><line x1="348.5" y1="25" x2="348.5" y2="300" stroke="#d5dbdb" stroke-width="1"/><text x="348.5" y="316" text-anchor="middle" font-size="12" fill="#2c3e50" font-family="sans-serif">1.5</text><line x1="444.6" y1="25" x2="444.6" y2="300" stroke="#d5dbdb" stroke-width="1"/><text x="444.6" y="316" text-anchor="middle" font-size="12" fill="#2c3e50" font-family="sans-serif">2.0</text><line x1="540.8" y1="25" x2="540.8" y2="300" stroke="#d5dbdb" stroke-width="1"/><text x="540.8" y="316" text-anchor="middle" font-size="12" fill="#2c3e50" font-family="sans-serif">2.5</text><line x1="60" y1="162.5" x2="560" y2="162.5" stroke="#2c3e50" stroke-width="1.5"/><line x1="60" y1="25" x2="60" y2="300" stroke="#2c3e50" stroke-width="1.5"/><text x="54" y="258.2" text-anchor="end" font-size="12" fill="#2c3e50" font-family="sans-serif">-6</text><text x="54" y="212.3" text-anchor="end" font-size="12" fill="#2c3e50" font-family="sans-serif">-3</text><text x="54" y="120.7" text-anchor="end" font-size="12" fill="#2c3e50" font-family="sans-serif">3</text><text x="54" y="74.8" text-anchor="end" font-size="12" fill="#2c3e50" font-family="sans-serif">6</text><text x="560" y="154.5" font-size="13" fill="#2c3e50" font-family="sans-serif" text-anchor="end">t (s)</text><text x="68" y="29" font-size="13" fill="#2c3e50" font-family="sans-serif">x (cm)</text><line x1="60.0" y1="52.3" x2="560.0" y2="52.3" stroke="#e74c3c" stroke-width="1.5" stroke-dasharray="6,4"/><line x1="60.0" y1="272.7" x2="560.0" y2="272.7" stroke="#e74c3c" stroke-width="1.5" stroke-dasharray="6,4"/><polyline points="60.0,101.4 61.0,99.0 62.0,96.7 63.0,94.4 64.0,92.2 65.0,90.0 66.0,87.9 67.0,85.8 68.0,83.8 69.0,81.8 70.0,79.9 71.0,78.0 72.0,76.2 73.0,74.5 74.0,72.8 75.0,71.1 76.0,69.6 77.0,68.1 78.0,66.6 79.0,65.2 80.0,63.9 81.0,62.7 82.0,61.5 83.0,60.4 84.0,59.4 85.0,58.4 86.0,57.5 87.0,56.7 88.0,55.9 89.0,55.2 90.0,54.6 91.0,54.1 92.0,53.6 93.0,53.2 94.0,52.9 95.0,52.6 96.0,52.5 97.0,52.4 98.0,52.3 99.0,52.4 100.0,52.5 101.0,52.7 102.0,53.0 103.0,53.4 104.0,53.8 105.0,54.3 106.0,54.8 107.0,55.5 108.0,56.2 109.0,57.0 110.0,57.8 111.0,58.8 112.0,59.8 113.0,60.8 114.0,62.0 115.0,63.2 116.0,64.5 117.0,65.8 118.0,67.2 119.0,68.7 120.0,70.2 121.0,71.8 122.0,73.4 123.0,75.2 124.0,76.9 125.0,78.8 126.0,80.7 127.0,82.6 128.0,84.6 129.0,86.6 130.0,88.7 131.0,90.9 132.0,93.1 133.0,95.3 134.0,97.6 135.0,100.0 136.0,102.4 137.0,104.8 138.0,107.2 139.0,109.7 140.0,112.3 141.0,114.8 142.0,117.4 143.0,120.1 144.0,122.7 145.0,125.4 146.0,128.1 147.0,130.8 148.0,133.6 149.0,136.4 150.0,139.2 151.0,142.0 152.0,144.8 153.0,147.6 154.0,150.5 155.0,153.3 156.0,156.2 157.0,159.0 158.0,161.9 159.0,164.7 160.0,167.6 161.0,170.5 162.0,173.3 163.0,176.2 164.0,179.0 165.0,181.8 166.0,184.6 167.0,187.4 168.0,190.2 169.0,193.0 170.0,195.7 171.0,198.4 172.0,201.1 173.0,203.8 174.0,206.4 175.0,209.1 176.0,211.6 177.0,214.2 178.0,216.7 179.0,219.2 180.0,221.6 181.0,224.0 182.0,226.4 183.0,228.7 184.0,230.9 185.0,233.2 186.0,235.3 187.0,237.5 188.0,239.5 189.0,241.6 190.0,243.5 191.0,245.4 192.0,247.3 193.0,249.1 194.0,250.8 195.0,252.5 196.0,254.1 197.0,255.7 198.0,257.2 199.0,258.6 200.0,260.0 201.0,261.3 202.0,262.5 203.0,263.7 204.0,264.8 205.0,265.8 206.0,266.8 207.0,267.7 208.0,268.5 209.0,269.2 210.0,269.9 211.0,270.5 212.0,271.0 213.0,271.5 214.0,271.9 215.0,272.2 216.0,272.4 217.0,272.6 218.0,272.6 219.0,272.6 220.0,272.6 221.0,272.4 222.0,272.2 223.0,271.9 224.0,271.6 225.0,271.1 226.0,270.6 227.0,270.1 228.0,269.4 229.0,268.7 230.0,267.9 231.0,267.0 232.0,266.1 233.0,265.1 234.0,264.0 235.0,262.8 236.0,261.6 237.0,260.3 238.0,259.0 239.0,257.6 240.0,256.1 241.0,254.5 242.0,252.9 243.0,251.3 244.0,249.5 245.0,247.8 246.0,245.9 247.0,244.0 248.0,242.1 249.0,240.1 250.0,238.0 251.0,235.9 252.0,233.7 253.0,231.5 254.0,229.3 255.0,227.0 256.0,224.6 257.0,222.2 258.0,219.8 259.0,217.3 260.0,214.8 261.0,212.3 262.0,209.7 263.0,207.1 264.0,204.5 265.0,201.8 266.0,199.1 267.0,196.4 268.0,193.7 269.0,190.9 270.0,188.2 271.0,185.4 272.0,182.6 273.0,179.7 274.0,176.9 275.0,174.1 276.0,171.2 277.0,168.4 278.0,165.5 279.0,162.6 280.0,159.8 281.0,156.9 282.0,154.0 283.0,151.2 284.0,148.3 285.0,145.5 286.0,142.7 287.0,139.9 288.0,137.1 289.0,134.3 290.0,131.5 291.0,128.8 292.0,126.1 293.0,123.4 294.0,120.7 295.0,118.1 296.0,115.5 297.0,112.9 298.0,110.4 299.0,107.9 300.0,105.4 301.0,103.0 302.0,100.6 303.0,98.2 304.0,95.9 305.0,93.7 306.0,91.5 307.0,89.3 308.0,87.2 309.0,85.1 310.0,83.1 311.0,81.2 312.0,79.3 313.0,77.4 314.0,75.6 315.0,73.9 316.0,72.2 317.0,70.6 318.0,69.1 319.0,67.6 320.0,66.1 321.0,64.8 322.0,63.5 323.0,62.3 324.0,61.1 325.0,60.0 326.0,59.0 327.0,58.1 328.0,57.2 329.0,56.4 330.0,55.7 331.0,55.0 332.0,54.4 333.0,53.9 334.0,53.5 335.0,53.1 336.0,52.8 337.0,52.6 338.0,52.4 339.0,52.4 340.0,52.4 341.0,52.4 342.0,52.6 343.0,52.8 344.0,53.1 345.0,53.5 346.0,53.9 347.0,54.5 348.0,55.1 349.0,55.7 350.0,56.5 351.0,57.3 352.0,58.1 353.0,59.1 354.0,60.1 355.0,61.2 356.0,62.4 357.0,63.6 358.0,64.9 359.0,66.3 360.0,67.7 361.0,69.2 362.0,70.7 363.0,72.3 364.0,74.0 365.0,75.8 366.0,77.5 367.0,79.4 368.0,81.3 369.0,83.3 370.0,85.3 371.0,87.4 372.0,89.5 373.0,91.6 374.0,93.9 375.0,96.1 376.0,98.4 377.0,100.8 378.0,103.2 379.0,105.6 380.0,108.1 381.0,110.6 382.0,113.1 383.0,115.7 384.0,118.3 385.0,120.9 386.0,123.6 387.0,126.3 388.0,129.0 389.0,131.8 390.0,134.5 391.0,137.3 392.0,140.1 393.0,142.9 394.0,145.7 395.0,148.6 396.0,151.4 397.0,154.3 398.0,157.1 399.0,160.0 400.0,162.9 401.0,165.7 402.0,168.6 403.0,171.4 404.0,174.3 405.0,177.1 406.0,180.0 407.0,182.8 408.0,185.6 409.0,188.4 410.0,191.2 411.0,193.9 412.0,196.7 413.0,199.4 414.0,202.0 415.0,204.7 416.0,207.3 417.0,209.9 418.0,212.5 419.0,215.0 420.0,217.5 421.0,220.0 422.0,222.4 423.0,224.8 424.0,227.1 425.0,229.4 426.0,231.7 427.0,233.9 428.0,236.1 429.0,238.2 430.0,240.2 431.0,242.2 432.0,244.2 433.0,246.1 434.0,247.9 435.0,249.7 436.0,251.4 437.0,253.1 438.0,254.7 439.0,256.2 440.0,257.7 441.0,259.1 442.0,260.4 443.0,261.7 444.0,262.9 445.0,264.1 446.0,265.1 447.0,266.1 448.0,267.1 449.0,267.9 450.0,268.7 451.0,269.5 452.0,270.1 453.0,270.7 454.0,271.2 455.0,271.6 456.0,272.0 457.0,272.2 458.0,272.5 459.0,272.6 460.0,272.6 461.0,272.6 462.0,272.5 463.0,272.4 464.0,272.1 465.0,271.8 466.0,271.4 467.0,271.0 468.0,270.4 469.0,269.8 470.0,269.2 471.0,268.4 472.0,267.6 473.0,266.7 474.0,265.7 475.0,264.7 476.0,263.6 477.0,262.4 478.0,261.2 479.0,259.9 480.0,258.5 481.0,257.1 482.0,255.6 483.0,254.0 484.0,252.4 485.0,250.7 486.0,248.9 487.0,247.1 488.0,245.3 489.0,243.4 490.0,241.4 491.0,239.4 492.0,237.3 493.0,235.2 494.0,233.0 495.0,230.8 496.0,228.5 497.0,226.2 498.0,223.8 499.0,221.4 500.0,219.0 501.0,216.5 502.0,214.0 503.0,211.4 504.0,208.9 505.0,206.2 506.0,203.6 507.0,200.9 508.0,198.2 509.0,195.5 510.0,192.8 511.0,190.0 512.0,187.2 513.0,184.4 514.0,181.6 515.0,178.8 516.0,175.9 517.0,173.1 518.0,170.2 519.0,167.4 520.0,164.5 521.0,161.7 522.0,158.8 523.0,155.9 524.0,153.1 525.0,150.2 526.0,147.4 527.0,144.6 528.0,141.7 529.0,138.9 530.0,136.1 531.0,133.4 532.0,130.6 533.0,127.9 534.0,125.2 535.0,122.5 536.0,119.8 537.0,117.2 538.0,114.6 539.0,112.1 540.0,109.5 541.0,107.0 542.0,104.6 543.0,102.2 544.0,99.8 545.0,97.5 546.0,95.2 547.0,92.9 548.0,90.7 549.0,88.6 550.0,86.5 551.0,84.4 552.0,82.4 553.0,80.5 554.0,78.6 555.0,76.8 556.0,75.0 557.0,73.3 558.0,71.7 559.0,70.1 560.0,68.5" fill="none" stroke="#2980b9" stroke-width="3.5"/><line x1="97.8" y1="34.2" x2="339.5" y2="34.2" stroke="#27ae60" stroke-width="2"/><line x1="97.8" y1="40.3" x2="97.8" y2="28.1" stroke="#27ae60" stroke-width="2"/><line x1="339.5" y1="40.3" x2="339.5" y2="28.1" stroke="#27ae60" stroke-width="2"/><text x="218.6" y="25.8" font-size="13" fill="#27ae60" font-family="sans-serif" text-anchor="middle">T = 2π/ω ≈ 1,26 s</text><text x="396.5" y="286.4" font-size="13" fill="#e74c3c" font-family="sans-serif">−A</text><text x="444.6" y="41.7" font-size="13" fill="#e74c3c" font-family="sans-serif">+A = 7,21 cm</text><text x="69.6" y="196.1" font-size="13" fill="#2c3e50" font-family="sans-serif">x(0) = 4 cm</text></svg><figcaption>Figura 1: x(t) = 7,21 cos(5t − 0,98) cm: oscila entre −A e +A com período T = 2π/ω; a fase φ desloca o primeiro máximo.</figcaption></figure>
+    </div>
+    <div class="passo-teoria"><h4>3. Conservação da energia</h4>
+
+<p>Multiplicando $m\,x''+kx=0$ por $x'$, obtemos $\dfrac{d}{dt}\left(\tfrac12mx'^2+\tfrac12kx^2\right)=0$. Logo a <strong>energia mecânica</strong> é constante:</p>
+$$E=\tfrac12m\,x'^2+\tfrac12k\,x^2=\tfrac12kA^2.$$
+<p>A energia se transforma continuamente: nas extremidades ($x=\pm A$) é toda potencial; ao passar pelo equilíbrio ($x=0$) é toda cinética, com a velocidade máxima $v_{\max}=\omega_0A$. Em uma posição qualquer, $v^2=\omega_0^2\left(A^2-x^2\right)$.</p>
+      <figure class="figura-aula figura-grande"><svg viewBox="0 0 600 340" xmlns="http://www.w3.org/2000/svg" style="max-width:600px;width:100%;height:auto;display:block;margin:auto" role="img" aria-label="Troca entre energia cinética e potencial elástica no oscilador"><rect x="0" y="0" width="600" height="340" fill="#fdfefe" stroke="#d5dbdb"/><line x1="156.2" y1="25" x2="156.2" y2="300" stroke="#d5dbdb" stroke-width="1"/><text x="156.2" y="316" text-anchor="middle" font-size="12" fill="#2c3e50" font-family="sans-serif">0.25</text><line x1="252.3" y1="25" x2="252.3" y2="300" stroke="#d5dbdb" stroke-width="1"/><text x="252.3" y="316" text-anchor="middle" font-size="12" fill="#2c3e50" font-family="sans-serif">0.5</text><line x1="348.5" y1="25" x2="348.5" y2="300" stroke="#d5dbdb" stroke-width="1"/><text x="348.5" y="316" text-anchor="middle" font-size="12" fill="#2c3e50" font-family="sans-serif">0.75</text><line x1="444.6" y1="25" x2="444.6" y2="300" stroke="#d5dbdb" stroke-width="1"/><text x="444.6" y="316" text-anchor="middle" font-size="12" fill="#2c3e50" font-family="sans-serif">1.0</text><line x1="540.8" y1="25" x2="540.8" y2="300" stroke="#d5dbdb" stroke-width="1"/><text x="540.8" y="316" text-anchor="middle" font-size="12" fill="#2c3e50" font-family="sans-serif">1.25</text><line x1="60" y1="284.7" x2="560" y2="284.7" stroke="#2c3e50" stroke-width="1.5"/><line x1="60" y1="25" x2="60" y2="300" stroke="#2c3e50" stroke-width="1.5"/><text x="54" y="212.3" text-anchor="end" font-size="12" fill="#2c3e50" font-family="sans-serif">0.1</text><text x="54" y="135.9" text-anchor="end" font-size="12" fill="#2c3e50" font-family="sans-serif">0.2</text><text x="54" y="97.8" text-anchor="end" font-size="12" fill="#2c3e50" font-family="sans-serif">0.25</text><text x="560" y="276.7" font-size="13" fill="#2c3e50" font-family="sans-serif" text-anchor="end">t (s)</text><text x="68" y="29" font-size="13" fill="#2c3e50" font-family="sans-serif">E (J)</text><line x1="60.0" y1="93.8" x2="560.0" y2="93.8" stroke="#2c3e50" stroke-width="2" stroke-dasharray="6,4"/><polyline points="60.0,93.8 61.2,93.8 62.5,94.0 63.8,94.2 65.0,94.6 66.2,95.0 67.5,95.6 68.8,96.2 70.0,97.0 71.2,97.8 72.5,98.7 73.8,99.8 75.0,100.9 76.2,102.1 77.5,103.5 78.8,104.9 80.0,106.4 81.2,108.0 82.5,109.6 83.8,111.4 85.0,113.2 86.2,115.1 87.5,117.1 88.8,119.2 90.0,121.4 91.2,123.6 92.5,125.9 93.8,128.2 95.0,130.6 96.2,133.1 97.5,135.7 98.8,138.2 100.0,140.9 101.2,143.6 102.5,146.4 103.8,149.1 105.0,152.0 106.2,154.9 107.5,157.8 108.8,160.7 110.0,163.7 111.2,166.7 112.5,169.7 113.7,172.8 115.0,175.8 116.2,178.9 117.5,182.0 118.8,185.1 120.0,188.2 121.2,191.3 122.5,194.4 123.7,197.5 125.0,200.6 126.2,203.7 127.5,206.7 128.8,209.8 130.0,212.8 131.2,215.8 132.5,218.7 133.8,221.7 135.0,224.6 136.2,227.4 137.5,230.3 138.8,233.1 140.0,235.8 141.2,238.5 142.5,241.1 143.8,243.7 145.0,246.2 146.2,248.7 147.5,251.1 148.8,253.4 150.0,255.7 151.2,257.8 152.5,260.0 153.8,262.0 155.0,264.0 156.2,265.9 157.5,267.7 158.8,269.4 160.0,271.1 161.2,272.6 162.5,274.1 163.8,275.5 165.0,276.7 166.2,277.9 167.5,279.0 168.8,280.1 170.0,281.0 171.2,281.8 172.5,282.5 173.8,283.1 175.0,283.6 176.2,284.0 177.5,284.4 178.8,284.6 180.0,284.7 181.2,284.7 182.5,284.6 183.8,284.4 185.0,284.2 186.2,283.8 187.5,283.3 188.8,282.7 190.0,282.0 191.2,281.2 192.5,280.4 193.8,279.4 195.0,278.3 196.3,277.2 197.5,275.9 198.8,274.5 200.0,273.1 201.2,271.6 202.5,270.0 203.8,268.3 205.0,266.5 206.2,264.6 207.5,262.7 208.8,260.6 210.0,258.6 211.3,256.4 212.5,254.1 213.8,251.8 215.0,249.5 216.2,247.0 217.5,244.5 218.8,242.0 220.0,239.3 221.3,236.7 222.5,234.0 223.8,231.2 225.0,228.4 226.2,225.5 227.5,222.6 228.8,219.7 230.0,216.8 231.2,213.8 232.5,210.8 233.8,207.7 235.0,204.7 236.3,201.6 237.5,198.5 238.8,195.4 240.0,192.3 241.2,189.2 242.5,186.1 243.8,183.0 245.0,179.9 246.3,176.8 247.5,173.8 248.8,170.7 250.0,167.7 251.2,164.7 252.5,161.7 253.8,158.7 255.0,155.8 256.2,152.9 257.5,150.1 258.8,147.3 260.0,144.5 261.2,141.8 262.5,139.1 263.8,136.5 265.0,133.9 266.2,131.4 267.5,129.0 268.8,126.6 270.0,124.3 271.2,122.1 272.5,119.9 273.8,117.8 275.0,115.8 276.2,113.8 277.5,112.0 278.8,110.2 280.0,108.5 281.2,106.9 282.5,105.4 283.8,103.9 285.0,102.6 286.2,101.3 287.5,100.1 288.8,99.1 290.0,98.1 291.2,97.2 292.5,96.4 293.8,95.8 295.0,95.2 296.2,94.7 297.5,94.3 298.8,94.0 300.0,93.8 301.2,93.8 302.5,93.8 303.8,93.9 305.0,94.1 306.2,94.4 307.5,94.8 308.7,95.4 310.0,96.0 311.2,96.7 312.5,97.5 313.8,98.4 315.0,99.4 316.2,100.5 317.5,101.7 318.8,103.0 320.0,104.4 321.2,105.9 322.5,107.4 323.8,109.1 325.0,110.8 326.2,112.6 327.5,114.5 328.8,116.5 330.0,118.5 331.2,120.6 332.5,122.8 333.8,125.1 335.0,127.4 336.2,129.8 337.5,132.3 338.8,134.8 340.0,137.4 341.2,140.0 342.5,142.7 343.8,145.4 345.0,148.2 346.2,151.0 347.5,153.9 348.8,156.8 350.0,159.7 351.3,162.7 352.5,165.7 353.8,168.7 355.0,171.8 356.3,174.8 357.5,177.9 358.7,181.0 360.0,184.1 361.2,187.2 362.5,190.3 363.8,193.4 365.0,196.5 366.2,199.6 367.5,202.7 368.8,205.7 370.0,208.8 371.2,211.8 372.5,214.8 373.8,217.8 375.0,220.7 376.2,223.6 377.5,226.5 378.8,229.3 380.0,232.1 381.2,234.9 382.5,237.6 383.8,240.2 385.0,242.8 386.3,245.4 387.5,247.9 388.8,250.3 390.0,252.6 391.2,254.9 392.5,257.1 393.8,259.3 395.0,261.4 396.2,263.3 397.5,265.3 398.8,267.1 400.0,268.9 401.3,270.5 402.5,272.1 403.8,273.6 405.0,275.0 406.3,276.3 407.5,277.6 408.8,278.7 410.0,279.7 411.2,280.7 412.5,281.5 413.8,282.3 415.0,282.9 416.2,283.5 417.5,283.9 418.8,284.3 420.0,284.5 421.2,284.7 422.5,284.7 423.8,284.7 425.0,284.5 426.2,284.3 427.5,283.9 428.8,283.5 430.0,282.9 431.2,282.3 432.5,281.5 433.8,280.7 435.0,279.7 436.3,278.7 437.5,277.5 438.8,276.3 440.0,275.0 441.2,273.6 442.5,272.1 443.8,270.5 445.0,268.8 446.2,267.1 447.5,265.2 448.8,263.3 450.0,261.3 451.2,259.3 452.5,257.1 453.7,254.9 455.0,252.6 456.2,250.2 457.5,247.8 458.8,245.3 460.0,242.8 461.2,240.2 462.5,237.6 463.8,234.9 465.0,232.1 466.2,229.3 467.5,226.5 468.8,223.6 470.0,220.7 471.2,217.7 472.5,214.8 473.8,211.8 475.0,208.7 476.3,205.7 477.5,202.6 478.8,199.5 480.0,196.4 481.2,193.3 482.5,190.2 483.8,187.1 485.0,184.0 486.2,180.9 487.5,177.9 488.8,174.8 490.0,171.7 491.2,168.7 492.5,165.7 493.8,162.7 495.0,159.7 496.2,156.8 497.5,153.9 498.8,151.0 500.0,148.2 501.2,145.4 502.5,142.7 503.8,140.0 505.0,137.4 506.2,134.8 507.5,132.3 508.8,129.8 510.0,127.4 511.3,125.1 512.5,122.8 513.8,120.6 515.0,118.5 516.2,116.4 517.5,114.5 518.8,112.6 520.0,110.8 521.2,109.0 522.5,107.4 523.8,105.8 525.0,104.4 526.2,103.0 527.5,101.7 528.8,100.5 530.0,99.4 531.2,98.4 532.5,97.5 533.8,96.7 535.0,96.0 536.2,95.4 537.5,94.8 538.8,94.4 540.0,94.1 541.2,93.9 542.5,93.8 543.8,93.8 545.0,93.8 546.2,94.0 547.5,94.3 548.8,94.7 550.0,95.2 551.2,95.8 552.5,96.5 553.8,97.2 555.0,98.1 556.2,99.1 557.5,100.2 558.8,101.3 560.0,102.6" fill="none" stroke="#2980b9" stroke-width="3.5"/><polyline points="60.0,284.7 61.2,284.7 62.5,284.5 63.8,284.3 65.0,283.9 66.2,283.5 67.5,282.9 68.8,282.3 70.0,281.5 71.2,280.7 72.5,279.7 73.8,278.7 75.0,277.6 76.2,276.3 77.5,275.0 78.8,273.6 80.0,272.1 81.2,270.5 82.5,268.8 83.8,267.1 85.0,265.3 86.2,263.3 87.5,261.3 88.8,259.3 90.0,257.1 91.2,254.9 92.5,252.6 93.8,250.3 95.0,247.8 96.2,245.4 97.5,242.8 98.8,240.2 100.0,237.6 101.2,234.9 102.5,232.1 103.8,229.3 105.0,226.5 106.2,223.6 107.5,220.7 108.8,217.8 110.0,214.8 111.2,211.8 112.5,208.7 113.7,205.7 115.0,202.6 116.2,199.6 117.5,196.5 118.8,193.4 120.0,190.3 121.2,187.2 122.5,184.1 123.7,181.0 125.0,177.9 126.2,174.8 127.5,171.7 128.8,168.7 130.0,165.7 131.2,162.7 132.5,159.7 133.8,156.8 135.0,153.9 136.2,151.0 137.5,148.2 138.8,145.4 140.0,142.7 141.2,140.0 142.5,137.4 143.8,134.8 145.0,132.3 146.2,129.8 147.5,127.4 148.8,125.1 150.0,122.8 151.2,120.6 152.5,118.5 153.8,116.5 155.0,114.5 156.2,112.6 157.5,110.8 158.8,109.1 160.0,107.4 161.2,105.9 162.5,104.4 163.8,103.0 165.0,101.7 166.2,100.5 167.5,99.4 168.8,98.4 170.0,97.5 171.2,96.7 172.5,96.0 173.8,95.4 175.0,94.8 176.2,94.4 177.5,94.1 178.8,93.9 180.0,93.8 181.2,93.8 182.5,93.8 183.8,94.0 185.0,94.3 186.2,94.7 187.5,95.2 188.8,95.8 190.0,96.5 191.2,97.2 192.5,98.1 193.8,99.1 195.0,100.2 196.3,101.3 197.5,102.6 198.8,103.9 200.0,105.4 201.2,106.9 202.5,108.5 203.8,110.2 205.0,112.0 206.2,113.9 207.5,115.8 208.8,117.8 210.0,119.9 211.3,122.1 212.5,124.3 213.8,126.6 215.0,129.0 216.2,131.5 217.5,134.0 218.8,136.5 220.0,139.1 221.3,141.8 222.5,144.5 223.8,147.3 225.0,150.1 226.2,152.9 227.5,155.8 228.8,158.8 230.0,161.7 231.2,164.7 232.5,167.7 233.8,170.7 235.0,173.8 236.3,176.9 237.5,180.0 238.8,183.0 240.0,186.1 241.2,189.2 242.5,192.3 243.8,195.4 245.0,198.5 246.3,201.6 247.5,204.7 248.8,207.7 250.0,210.8 251.2,213.8 252.5,216.8 253.8,219.7 255.0,222.7 256.2,225.5 257.5,228.4 258.8,231.2 260.0,234.0 261.2,236.7 262.5,239.4 263.8,242.0 265.0,244.5 266.2,247.0 267.5,249.5 268.8,251.8 270.0,254.2 271.2,256.4 272.5,258.6 273.8,260.7 275.0,262.7 276.2,264.6 277.5,266.5 278.8,268.3 280.0,270.0 281.2,271.6 282.5,273.1 283.8,274.6 285.0,275.9 286.2,277.2 287.5,278.3 288.8,279.4 290.0,280.4 291.2,281.2 292.5,282.0 293.8,282.7 295.0,283.3 296.2,283.8 297.5,284.2 298.8,284.4 300.0,284.6 301.2,284.7 302.5,284.7 303.8,284.6 305.0,284.4 306.2,284.0 307.5,283.6 308.7,283.1 310.0,282.5 311.2,281.8 312.5,281.0 313.8,280.0 315.0,279.0 316.2,277.9 317.5,276.7 318.8,275.5 320.0,274.1 321.2,272.6 322.5,271.0 323.8,269.4 325.0,267.7 326.2,265.9 327.5,264.0 328.8,262.0 330.0,260.0 331.2,257.8 332.5,255.6 333.8,253.4 335.0,251.0 336.2,248.6 337.5,246.2 338.8,243.7 340.0,241.1 341.2,238.5 342.5,235.8 343.8,233.0 345.0,230.3 346.2,227.4 347.5,224.6 348.8,221.7 350.0,218.7 351.3,215.8 352.5,212.8 353.8,209.7 355.0,206.7 356.3,203.6 357.5,200.6 358.7,197.5 360.0,194.4 361.2,191.3 362.5,188.2 363.8,185.1 365.0,182.0 366.2,178.9 367.5,175.8 368.8,172.8 370.0,169.7 371.2,166.7 372.5,163.7 373.8,160.7 375.0,157.8 376.2,154.8 377.5,152.0 378.8,149.1 380.0,146.3 381.2,143.6 382.5,140.9 383.8,138.2 385.0,135.6 386.3,133.1 387.5,130.6 388.8,128.2 390.0,125.8 391.2,123.6 392.5,121.3 393.8,119.2 395.0,117.1 396.2,115.1 397.5,113.2 398.8,111.4 400.0,109.6 401.3,107.9 402.5,106.4 403.8,104.9 405.0,103.5 406.3,102.1 407.5,100.9 408.8,99.8 410.0,98.7 411.2,97.8 412.5,97.0 413.8,96.2 415.0,95.6 416.2,95.0 417.5,94.6 418.8,94.2 420.0,94.0 421.2,93.8 422.5,93.8 423.8,93.8 425.0,94.0 426.2,94.2 427.5,94.6 428.8,95.0 430.0,95.6 431.2,96.2 432.5,97.0 433.8,97.8 435.0,98.8 436.3,99.8 437.5,100.9 438.8,102.2 440.0,103.5 441.2,104.9 442.5,106.4 443.8,108.0 445.0,109.6 446.2,111.4 447.5,113.2 448.8,115.2 450.0,117.1 451.2,119.2 452.5,121.4 453.7,123.6 455.0,125.9 456.2,128.2 457.5,130.6 458.8,133.1 460.0,135.7 461.2,138.3 462.5,140.9 463.8,143.6 465.0,146.4 466.2,149.2 467.5,152.0 468.8,154.9 470.0,157.8 471.2,160.7 472.5,163.7 473.8,166.7 475.0,169.7 476.3,172.8 477.5,175.9 478.8,178.9 480.0,182.0 481.2,185.1 482.5,188.2 483.8,191.3 485.0,194.4 486.2,197.5 487.5,200.6 488.8,203.7 490.0,206.7 491.2,209.8 492.5,212.8 493.8,215.8 495.0,218.8 496.2,221.7 497.5,224.6 498.8,227.5 500.0,230.3 501.2,233.1 502.5,235.8 503.8,238.5 505.0,241.1 506.2,243.7 507.5,246.2 508.8,248.7 510.0,251.1 511.3,253.4 512.5,255.7 513.8,257.9 515.0,260.0 516.2,262.0 517.5,264.0 518.8,265.9 520.0,267.7 521.2,269.4 522.5,271.1 523.8,272.6 525.0,274.1 526.2,275.5 527.5,276.8 528.8,278.0 530.0,279.1 531.2,280.1 532.5,281.0 533.8,281.8 535.0,282.5 536.2,283.1 537.5,283.6 538.8,284.0 540.0,284.4 541.2,284.6 542.5,284.7 543.8,284.7 545.0,284.6 546.2,284.4 547.5,284.2 548.8,283.8 550.0,283.3 551.2,282.7 552.5,282.0 553.8,281.2 555.0,280.4 556.2,279.4 557.5,278.3 558.8,277.1 560.0,275.9" fill="none" stroke="#27ae60" stroke-width="3.5"/><text x="367.7" y="67.0" font-size="13" fill="#2c3e50" font-family="sans-serif">E = ½kA² = 0,25 J (constante)</text><text x="175.4" y="36.5" font-size="13" fill="#2980b9" font-family="sans-serif">azul: E_p = ½kx²</text><text x="175.4" y="55.6" font-size="13" fill="#27ae60" font-family="sans-serif">verde: E_c = ½mv²</text></svg><figcaption>Figura 2: m = 2 kg, k = 50 N/m, A = 0,1 m: a energia potencial e a cinética se alternam, e a soma é constante (0,25 J).</figcaption></figure>
+    </div>
+    <div class="passo-teoria"><h4>4. Associação de molas</h4>
+
+<p>Duas molas $k_1$ e $k_2$ podem ser substituídas por uma mola equivalente $k_{eq}$:</p>
+<ul>
+  <li><strong>Paralelo</strong> (mesmo deslocamento, forças somam): $k_{eq}=k_1+k_2$ (mais dura);</li>
+  <li><strong>Série</strong> (mesma força, deslocamentos somam): $\dfrac1{k_{eq}}=\dfrac1{k_1}+\dfrac1{k_2}$ (mais mole).</li>
+</ul>
+<p>Em seguida, $\omega_0=\sqrt{k_{eq}/m}$. Duas molas idênticas em paralelo aumentam $\omega_0$ por $\sqrt2$; em série, diminuem por $\sqrt2$.</p>
+    </div>
+  </section>
+  <section class="aplicacoes-reais" id="aplicacoes"><h3>💡 EDO em Ação</h3><div class="cards-aplicacao">
+    <div class="card"><h4>🚗 Suspensão e balança de mola</h4><p>A suspensão de um carro e a balança de mola são osciladores massa-mola. A balança mede $x=\frac{mg}{k}$; a suspensão é projetada com $k$ e $m$ para dar um período confortável (cerca de $1$ s).</p></div>
+    <div class="card" style="border-left-color: #2ecc71;"><h4>⌚ Cronometragem e relógios de quartzo</h4><p>O cristal de quartzo de um relógio vibra como um oscilador harmônico de frequência muito estável (por exemplo, $32\,768$ Hz). Contar as oscilações é medir o tempo: a mesma EDO $x''+\omega_0^2x=0$.</p></div>
+  </div></section>
+  <section class="questoes-resolvidas" id="resolvidas"><h3>✅ 5 Questões Resolvidas (R 1 a 5)</h3>
+    <article class="questao"><h4>R 1: Frequência e período</h4><p><strong>Enunciado:</strong> Um corpo de $0{,}5$ kg está preso a uma mola de $k=200$ N/m. Calcule $\omega_0$, $T$ e $f$.</p>
+      <div class="resolucao-bloco"><p><strong>Resolução:</strong> <br>$\omega_0=\sqrt{k/m}=\sqrt{400}=20$ rad/s.
+  <br>$T=\frac{2\pi}{20}=\frac\pi{10}\approx0{,}314$ s e $f=\frac1T\approx3{,}18$ Hz.
+  <br><strong>Resposta:</strong> $20$ rad/s; $0{,}314$ s; $3{,}18$ Hz.</p></div></article>
+    <article class="questao"><h4>R 2: PVI com posição e velocidade iniciais</h4><p><strong>Enunciado:</strong> Resolva $x''+25x=0$, $x(0)=0{,}04$ m e $x'(0)=0{,}3$ m/s. Determine a amplitude e a fase.</p>
+      <div class="resolucao-bloco"><p><strong>Resolução:</strong> <br>$\omega_0=5$: $x=C_1\cos5t+C_2\operatorname{sen}5t$. $C_1=0{,}04$ e $5C_2=0{,}3 \Rightarrow C_2=0{,}06$.
+  <br>$A=\sqrt{0{,}04^2+0{,}06^2}=\sqrt{0{,}0052}\approx0{,}0721$ m. $\varphi=\operatorname{arctg}\frac{0{,}06}{0{,}04}\approx0{,}983$ rad.
+  <br>Conferência: $x'(0)=5C_2=0{,}3$ ✓ e $A\cos(-\varphi)=0{,}0721\cdot0{,}5547=0{,}04$ ✓.
+  <br><strong>Resposta:</strong> $x=0{,}04\cos5t+0{,}06\operatorname{sen}5t=0{,}0721\cos(5t-0{,}983)$ m.</p></div></article>
+    <article class="questao"><h4>R 3: Energia e velocidade</h4><p><strong>Enunciado:</strong> Uma massa de $2$ kg em uma mola de $50$ N/m é solta do repouso em $x_0=0{,}1$ m. Calcule a energia total, a velocidade máxima e a velocidade em $x=0{,}06$ m.</p>
+      <div class="resolucao-bloco"><p><strong>Resolução:</strong> <br>$E=\frac12kA^2=\frac12\cdot50\cdot0{,}01=0{,}25$ J. $\omega_0=\sqrt{25}=5$ rad/s.
+  <br>$v_{\max}=\omega_0A=5\cdot0{,}1=0{,}5$ m/s.
+  <br>$v=\omega_0\sqrt{A^2-x^2}=5\sqrt{0{,}01-0{,}0036}=5\cdot0{,}08=0{,}4$ m/s.
+  <br>Conferência: $\frac12(2)(0{,}4)^2+\frac12(50)(0{,}06)^2=0{,}16+0{,}09=0{,}25$ J ✓.
+  <br><strong>Resposta:</strong> $0{,}25$ J; $0{,}5$ m/s; $0{,}4$ m/s.</p></div></article>
+    <article class="questao"><h4>R 4: Mola vertical</h4><p><strong>Enunciado:</strong> Um corpo de $0{,}4$ kg é pendurado em uma mola de $k=100$ N/m ($g=10$ m/s²). Calcule a deformação estática e o período de oscilação vertical.</p>
+      <div class="resolucao-bloco"><p><strong>Resolução:</strong> <br>Equilíbrio: $k\Delta=mg \Rightarrow \Delta=\frac{0{,}4\cdot10}{100}=0{,}04$ m.
+  <br>$\omega_0=\sqrt{100/0{,}4}=\sqrt{250}\approx15{,}81$ rad/s e $T=\frac{2\pi}{\omega_0}\approx0{,}397$ s.
+  <br>Conferência (outra fórmula): $T=2\pi\sqrt{\Delta/g}=2\pi\sqrt{0{,}004}\approx0{,}397$ s ✓.
+  <br><strong>Resposta:</strong> $\Delta=4$ cm; $T\approx0{,}40$ s.</p></div></article>
+    <article class="questao"><h4>R 5: Associação de molas</h4><p><strong>Enunciado:</strong> Uma massa de $3$ kg é presa a duas molas, $k_1=300$ N/m e $k_2=600$ N/m. Calcule $\omega_0$ quando as molas estão (a) em paralelo; (b) em série.</p>
+      <div class="resolucao-bloco"><p><strong>Resolução:</strong> <br>(a) $k_{eq}=300+600=900$ N/m: $\omega_0=\sqrt{900/3}=\sqrt{300}\approx17{,}32$ rad/s.
+  <br>(b) $\frac1{k_{eq}}=\frac1{300}+\frac1{600}=\frac{3}{600} \Rightarrow k_{eq}=200$ N/m: $\omega_0=\sqrt{200/3}\approx8{,}16$ rad/s.
+  <br>A razão é $\sqrt{900/200}=\sqrt{4{,}5}\approx2{,}12$ ✓ ($17{,}32/8{,}16$).
+  <br><strong>Resposta:</strong> (a) $\approx17{,}3$ rad/s; (b) $\approx8{,}16$ rad/s.</p></div></article>
+  </section>
+  <section class="questoes-propostas" id="propostas"><h3>✍️ 10 Questões Propostas (P 6 a 15)</h3>
+    <article class="questao"><h4>P 6: Período</h4><p><strong>Enunciado:</strong> Calcule $\omega_0$ e $T$ para $m=2$ kg e $k=8$ N/m.</p>
+      <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+      <div class="gabarito-resolucao"><p><strong>Resolução:</strong> $\omega_0=\sqrt{8/2}=2$ rad/s; $T=\frac{2\pi}2=\pi\approx3{,}14$ s.
+  <br><strong>Resposta:</strong> $2$ rad/s; $\pi$ s.</p></div></article>
+    <article class="questao"><h4>P 7: Qual $k$ para uma frequência?</h4><p><strong>Enunciado:</strong> Qual a constante de mola para que um corpo de $0{,}25$ kg oscile a $2$ Hz?</p>
+      <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+      <div class="gabarito-resolucao"><p><strong>Resolução:</strong> $\omega_0=2\pi f=4\pi$ rad/s; $k=m\omega_0^2=0{,}25\cdot16\pi^2=4\pi^2\approx39{,}5$ N/m.
+  <br><strong>Resposta:</strong> $\approx39{,}5$ N/m.</p></div></article>
+    <article class="questao"><h4>P 8: Solto do repouso</h4><p><strong>Enunciado:</strong> Resolva $x''+9x=0$, $x(0)=0{,}1$, $x'(0)=0$.</p>
+      <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+      <div class="gabarito-resolucao"><p><strong>Resolução:</strong> $C_1=0{,}1$ e $3C_2=0 \Rightarrow C_2=0$.
+  <br><strong>Resposta:</strong> $x=0{,}1\cos3t$.</p></div></article>
+    <article class="questao"><h4>P 9: Lançado do equilíbrio</h4><p><strong>Enunciado:</strong> Resolva $x''+4x=0$, $x(0)=0$, $x'(0)=0{,}6$ e dê a amplitude.</p>
+      <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+      <div class="gabarito-resolucao"><p><strong>Resolução:</strong> $C_1=0$, $2C_2=0{,}6 \Rightarrow C_2=0{,}3$.
+  <br><strong>Resposta:</strong> $x=0{,}3\operatorname{sen}2t$; amplitude $0{,}3$.</p></div></article>
+    <article class="questao"><h4>P 10: Amplitude e fase</h4><p><strong>Enunciado:</strong> Escreva a solução de $x''+16x=0$, $x(0)=0{,}03$, $x'(0)=0{,}16$ na forma $A\cos(4t-\varphi)$.</p>
+      <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+      <div class="gabarito-resolucao"><p><strong>Resolução:</strong> $C_1=0{,}03$ e $4C_2=0{,}16 \Rightarrow C_2=0{,}04$. $A=\sqrt{0{,}0009+0{,}0016}=0{,}05$; $\varphi=\operatorname{arctg}\frac43\approx0{,}927$ rad.
+  <br><strong>Resposta:</strong> $x=0{,}05\cos(4t-0{,}927)$.</p></div></article>
+    <article class="questao"><h4>P 11: Energia</h4><p><strong>Enunciado:</strong> Uma massa de $1$ kg em uma mola de $100$ N/m oscila com $A=0{,}2$ m. Calcule $E$, $v_{\max}$ e a velocidade em $x=0{,}1$ m.</p>
+      <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+      <div class="gabarito-resolucao"><p><strong>Resolução:</strong> $E=\frac12\cdot100\cdot0{,}04=2$ J. $\omega_0=10$: $v_{\max}=2$ m/s. $v=10\sqrt{0{,}04-0{,}01}=10\cdot0{,}1732\approx1{,}73$ m/s.
+  <br>Conferência: $\frac12(1)(1{,}73)^2+\frac12(100)(0{,}01)=1{,}5+0{,}5=2$ J ✓.
+  <br><strong>Resposta:</strong> $2$ J; $2$ m/s; $\approx1{,}73$ m/s.</p></div></article>
+    <article class="questao"><h4>P 12: Provando a conservação</h4><p><strong>Enunciado:</strong> Multiplique $m\,x''+kx=0$ por $x'$ e mostre que $\frac12mx'^2+\frac12kx^2$ é constante.</p>
+      <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+      <div class="gabarito-resolucao"><p><strong>Resolução:</strong> $m\,x'x''+k\,x\,x'=0$. Como $\frac d{dt}\left(\frac12mx'^2\right)=m\,x'x''$ e $\frac d{dt}\left(\frac12kx^2\right)=k\,x\,x'$, vem $\frac d{dt}\left(\frac12mx'^2+\frac12kx^2\right)=0$ ✓.</p></div></article>
+    <article class="questao"><h4>P 13: Paralelo e série</h4><p><strong>Enunciado:</strong> Duas molas de $100$ N/m sustentam a mesma massa. Compare $k_{eq}$ e a razão das frequências em paralelo e em série.</p>
+      <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+      <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Paralelo: $200$ N/m. Série: $\frac1{k_{eq}}=\frac2{100} \Rightarrow 50$ N/m. $\frac{\omega_{par}}{\omega_{ser}}=\sqrt{\frac{200}{50}}=2$.
+  <br><strong>Resposta:</strong> $200$ e $50$ N/m; a frequência em paralelo é o dobro.</p></div></article>
+    <article class="questao"><h4>P 14: Qual massa?</h4><p><strong>Enunciado:</strong> Um oscilador com $m=1$ kg tem $T=1$ s. Que massa dá $T=2$ s com a mesma mola?</p>
+      <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+      <div class="gabarito-resolucao"><p><strong>Resolução:</strong> $T\propto\sqrt m$: $T'=2T \Rightarrow m'=4m=4$ kg.
+  <br><strong>Resposta:</strong> $4$ kg.</p></div></article>
+    <article class="questao"><h4>P 15: Mola vertical</h4><p><strong>Enunciado:</strong> Um corpo de $1$ kg estica uma mola em $0{,}1$ m, em equilíbrio ($g=10$). Calcule $k$, $\omega_0$ e $T$.</p>
+      <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+      <div class="gabarito-resolucao"><p><strong>Resolução:</strong> $k=\frac{mg}{\Delta}=\frac{10}{0{,}1}=100$ N/m; $\omega_0=\sqrt{100/1}=10$ rad/s; $T=\frac{2\pi}{10}\approx0{,}628$ s (e $2\pi\sqrt{\Delta/g}=2\pi\sqrt{0{,}01}$ ✓).
+  <br><strong>Resposta:</strong> $100$ N/m; $10$ rad/s; $\approx0{,}63$ s.</p></div></article>
+  </section>
+  <section class="TESTE" id="testes"><h3>🎓 TESTES (T 16 a 20)</h3>
+    <article class="questao"><h4>T 16: (Questão autoral) Frequência angular</h4><p>Um corpo de $0{,}5$ kg preso a uma mola de $50$ N/m oscila com frequência angular:</p><p>A) $5$ rad/s<br>B) $10$ rad/s<br>C) $25$ rad/s<br>D) $100$ rad/s<br>E) $50$ rad/s</p>
+      <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+      <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>B</strong>.<br>$\omega_0=\sqrt{k/m}=\sqrt{50/0{,}5}=\sqrt{100}=10$ rad/s.</p></div></article>
+    <article class="questao"><h4>T 17: (Questão autoral) O que não afeta o período</h4><p>No oscilador massa-mola ideal, o período <strong>não</strong> depende:</p><p>A) da massa<br>B) da constante da mola<br>C) de ambos, $m$ e $k$<br>D) de nenhuma grandeza<br>E) da amplitude</p>
+      <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+      <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>E</strong>.<br>$T=2\pi\sqrt{m/k}$ depende só de $m$ e $k$. A amplitude $A$ não aparece (o movimento é isócrono).</p></div></article>
+    <article class="questao"><h4>T 18: (Questão autoral) PVI e amplitude</h4><p>A solução de $x''+36x=0$ com $x(0)=0$ e $x'(0)=12$ é $x=2\operatorname{sen}6t$. Sua amplitude é:</p><p>A) $12$<br>B) $6$<br>C) $1$<br>D) $2$<br>E) $36$</p>
+      <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+      <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>D</strong>.<br>$C_1=0$ e $6C_2=12 \Rightarrow C_2=2$. A amplitude é $A=\sqrt{C_1^2+C_2^2}=2$.</p></div></article>
+    <article class="questao"><h4>T 19: (Questão autoral) Energia total</h4><p>Uma mola de $k=200$ N/m oscila com amplitude $0{,}1$ m. A energia mecânica total é:</p><p>A) $0{,}2$ J<br>B) $2$ J<br>C) $1$ J<br>D) $20$ J<br>E) $10$ J</p>
+      <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+      <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>C</strong>.<br>$E=\frac12kA^2=\frac12\cdot200\cdot0{,}01=1$ J.</p></div></article>
+    <article class="questao"><h4>T 20: (Questão autoral) Molas em paralelo</h4><p>Ao associar duas molas idênticas <strong>em paralelo</strong> para sustentar a mesma massa, a frequência de oscilação fica multiplicada por:</p><p>A) $\sqrt2$<br>B) $2$<br>C) $\dfrac1{\sqrt2}$<br>D) $\dfrac12$<br>E) $4$</p>
+      <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+      <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>A</strong>.<br>Em paralelo, $k_{eq}=2k$, e $\omega_0=\sqrt{k_{eq}/m}$ cresce por $\sqrt2$.</p></div></article>
+  </section>
+</div></main>
+<aside class="menu-lateral"><iframe src="../edo_menu.html" style="width:100%; border:none; height:600px;"></iframe></aside>
+</div>
+<script>
+function toggleGabarito(botao) {
+    const gabarito = botao.nextElementSibling;
+    if (gabarito.style.display === "none" || gabarito.style.display === "") {
+        gabarito.style.display = "block"; botao.textContent = "Esconder Gabarito e Resolução"; botao.style.backgroundColor = "#2c3e50";
+    } else {
+        gabarito.style.display = "none"; botao.textContent = "Ver Gabarito e Resolução"; botao.style.backgroundColor = "#3498db";
+    }
+}
+function toggleMenu() { const m = document.getElementById("menu-principal"); if (m) m.classList.toggle("ativo"); }
+let slideAtual = 0; let slides = [];
+function prepararSlides() { slides = Array.from(document.querySelectorAll('.container-resumo, .passo-teoria, .card, .questao')); }
+function toggleSlides() {
+    prepararSlides(); const body = document.body;
+    if (!body.classList.contains('modo-slides')) { body.classList.add('modo-slides'); slideAtual = 0; mostrarSlide(slideAtual); }
+    else { body.classList.remove('modo-slides'); slides.forEach(s => { s.classList.remove('slide-ativo'); s.style.display = ''; }); }
+}
+function mostrarSlide(n) {
+    if (!slides.length) return;
+    slides.forEach(s => { s.classList.remove('slide-ativo'); s.style.display = 'none'; });
+    const slide = slides[n]; slide.classList.add('slide-ativo');
+    slide.querySelectorAll('.gabarito-resolucao').forEach(g => g.style.display = 'none');
+    slide.querySelectorAll('.btn-gabarito').forEach(b => { b.textContent = "Ver Gabarito e Resolução"; b.style.backgroundColor = "#3498db"; });
+    const pHeader = document.querySelector('header p');
+    if (pHeader) { const partes = pHeader.innerText.split('|'); if (partes.length > 1) {
+        document.getElementById('slide-info-serie').innerText = partes[0].trim();
+        document.getElementById('slide-info-aula').innerText = partes[1].trim(); } }
+    document.getElementById('contador-slide').innerText = (n + 1) + " / " + slides.length;
+    if (window.MathJax && window.MathJax.typesetPromise) { MathJax.typesetPromise(); }
+}
+function mudarSlide(d) { slideAtual += d; if (slideAtual >= slides.length) slideAtual = 0; if (slideAtual &lt; 0) slideAtual = slides.length - 1; mostrarSlide(slideAtual); }
+document.addEventListener('keydown', function(event) {
+    if (document.body.classList.contains('modo-slides')) {
+        switch(event.key) {
+            case 'ArrowRight': case 'PageDown': case 'Enter': case ' ': event.preventDefault(); mudarSlide(1); break;
+            case 'ArrowLeft': case 'PageUp': event.preventDefault(); mudarSlide(-1); break;
+            case 'Escape': event.preventDefault(); toggleSlides(); break;
+        }
+    }
+});
+</script>
+<div class="controles-slides">
+    <div id="slide-info-serie" class="info-lateral"></div>
+    <div class="botoes-centrais">
+        <button class="btn-nav" onclick="mudarSlide(-1)">⬅ Anterior</button>
+        <span id="contador-slide"></span>
+        <button class="btn-nav" onclick="mudarSlide(1)">Próximo ➡</button>
+        <button class="btn-nav" onclick="toggleSlides()" style="background:#e74c3c;">Sair</button>
+    </div>
+    <div id="slide-info-aula" class="info-lateral" style="text-align: right;"></div>
+</div>
+</body>
+</html>

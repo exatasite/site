@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Engenharia: Aula 13 - VARIAÇÃO DE PARÂMETROS</title>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../estilo.css">
+    <script>
+        MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']], processEscapes: true } };
+    </script>
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        body.modo-slides { overflow: hidden !important; background-color: #1a1a1a !important; margin: 0; padding: 0; }
+        body.modo-slides .menu-lateral, body.modo-slides header, body.modo-slides .menu-toggle, body.modo-slides #btn-slides, body.modo-slides .nav-global { display: none !important; }
+        .slide-ativo { display: flex !important; flex-direction: column; align-items: center; justify-content: center; position: fixed; top: 0; left: 0; width: 100vw; height: calc(100vh - 70px); background: #ffffff; padding: 40px; z-index: 999; overflow-y: auto !important; box-sizing: border-box; text-align: left; }
+        .slide-ativo > * { max-width: 900px; width: 100%; }
+        .controles-slides { position: fixed; bottom: 0; left: 0; width: 100%; height: 70px; background: #2c3e50; color: white; display: none; justify-content: space-between; align-items: center; padding: 0 20px; z-index: 1001; box-sizing: border-box; }
+        body.modo-slides .controles-slides { display: flex !important; }
+        .info-lateral { flex: 1; font-family: 'Oswald', sans-serif; font-size: 0.9rem; color: #bdc3c7; }
+        .botoes-centrais { display: flex; align-items: center; gap: 15px; justify-content: center; flex: 2; }
+        .btn-nav { padding: 10px 20px; background: #3498db; color: white; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; font-size: 0.9rem; }
+        .btn-nav:hover { background: #2980b9; }
+        #contador-slide { font-family: 'Oswald', sans-serif; min-width: 60px; text-align: center; font-size: 1.1rem; }
+    </style>
+</head>
+<body>
+<button class="menu-toggle" onclick="toggleMenu()">☰</button>
+<nav id="menu-principal" class="nav-global"><ul>
+    <li><a href="../index.html">🏠 Início</a></li>
+    <li><a href="../ensino_medio.html">📚 Ensino Médio</a></li>
+    <li><a href="../ensino_superior.html">🎓 Ensino Superior</a></li>
+</ul></nav>
+<header id="topo">
+    <h1>EQUAÇÕES DIFERENCIAIS</h1>
+    <p>Engenharia | Aula 13: Variação de Parâmetros</p>
+    <button id="btn-slides" onclick="toggleSlides()">📺 Iniciar Modo Slides</button>
+</header>
+<div class="container"><main class="conteudo-principal"><div class="secao-aula">
+  <div class="container-resumo" id="resumo"><h3>📚 Resumo</h3><section class="resumo-conteudo"><p>O método dos coeficientes indeterminados (Aula 12) só funciona para $g(t)$ de tipos especiais e coeficientes constantes. A <strong>variação de parâmetros</strong> resolve $y''+p(t)\,y'+q(t)\,y=g(t)$ para <strong>qualquer</strong> $g$ contínua: conhecidas duas soluções independentes $y_1,y_2$ da homogênea, uma solução particular é</p>
+$$y_p=-y_1\!\int\frac{y_2\,g}{W}\,dt+y_2\!\int\frac{y_1\,g}{W}\,dt,\qquad W=y_1y_2'-y_1'y_2.$$
+<p>A equação deve estar na <strong>forma padrão</strong> (coeficiente de $y''$ igual a $1$), e a solução geral é $y=C_1y_1+C_2y_2+y_p$.</p></section></div>
+  <section class="conteudo-teorico-completo" id="teoria">
+    <div class="passo-teoria"><h3>📖 VARIAÇÃO DE PARÂMETROS</h3><h4>1. Por que outro método?</h4>
+
+<p>Os coeficientes indeterminados exigem coeficientes constantes e $g(t)$ polinomial, exponencial, seno ou cosseno. Já em $y''+y=\operatorname{tg}t$, $y''-2y'+y=\dfrac{e^{t}}{t}$ ou $t^2y''-2ty'+2y=t^2$, nenhuma tentativa serve.</p>
+<p>A ideia de Lagrange é: a homogênea tem solução $C_1y_1+C_2y_2$. Em vez de tratar $C_1$ e $C_2$ como constantes, deixamos que <strong>variem</strong> com $t$ e procuramos $u_1(t)$ e $u_2(t)$ tais que</p>
+$$y_p=u_1(t)\,y_1(t)+u_2(t)\,y_2(t)$$
+<p>resolva a equação não homogênea.</p>
+    </div>
+    <div class="passo-teoria"><h4>2. Dedução da fórmula</h4>
+
+<p>Como há duas funções incógnitas $u_1$ e $u_2$ e uma só equação, impomos uma condição extra para simplificar as derivadas:</p>
+$$u_1'y_1+u_2'y_2=0.\qquad(\ast)$$
+<p>Então $y_p'=u_1y_1'+u_2y_2'$ e $y_p''=u_1'y_1'+u_2'y_2'+u_1y_1''+u_2y_2''$. Substituindo em $y''+py'+qy=g$ e usando que $y_1$ e $y_2$ resolvem a homogênea (os termos em $u_1$ e $u_2$ se anulam), resta</p>
+$$u_1'y_1'+u_2'y_2'=g.\qquad(\ast\ast)$$
+<p>Resolvendo o sistema linear $(\ast)$–$(\ast\ast)$ por Cramer, cujo determinante é o Wronskiano $W\neq0$:</p>
+$$u_1'=-\frac{y_2\,g}{W},\qquad u_2'=\frac{y_1\,g}{W}.$$
+<p>Integrando (as constantes de integração podem ser omitidas, pois só queremos uma solução particular) obtemos $u_1$ e $u_2$, e portanto $y_p=u_1y_1+u_2y_2$.</p>
+    </div>
+    <div class="passo-teoria"><h4>3. Roteiro e exemplo: $y''+y=\operatorname{tg}t$</h4>
+
+<ol>
+  <li>Escreva a EDO na forma padrão $y''+py'+qy=g$ (divida pelo coeficiente de $y''$).</li>
+  <li>Ache $y_1,y_2$ da homogênea e calcule $W=y_1y_2'-y_1'y_2$.</li>
+  <li>Calcule $u_1'=-\dfrac{y_2g}{W}$ e $u_2'=\dfrac{y_1g}{W}$ e integre.</li>
+  <li>Monte $y_p=u_1y_1+u_2y_2$ e a solução geral $y=C_1y_1+C_2y_2+y_p$.</li>
+</ol>
+<p><strong>Exemplo.</strong> $y''+y=\operatorname{tg}t$, em $-\frac\pi2&lt;t&lt;\frac\pi2$. Tomamos $y_1=\cos t$, $y_2=\operatorname{sen}t$, $W=\cos^2t+\operatorname{sen}^2t=1$.</p>
+$$u_1'=-\operatorname{sen}t\,\operatorname{tg}t=-\frac{\operatorname{sen}^2t}{\cos t}=-\sec t+\cos t\;\Rightarrow\;u_1=-\ln|\sec t+\operatorname{tg}t|+\operatorname{sen}t,$$
+$$u_2'=\cos t\,\operatorname{tg}t=\operatorname{sen}t\;\Rightarrow\;u_2=-\cos t.$$
+<p>Logo $y_p=\cos t\,u_1+\operatorname{sen}t\,u_2=-\cos t\,\ln|\sec t+\operatorname{tg}t|$ (os termos $\operatorname{sen}t\cos t$ se cancelam) e</p>
+$$y=C_1\cos t+C_2\operatorname{sen}t-\cos t\,\ln|\sec t+\operatorname{tg}t|.$$
+      <figure class="figura-aula figura-grande"><svg viewBox="0 0 600 340" xmlns="http://www.w3.org/2000/svg" style="max-width:600px;width:100%;height:auto;display:block;margin:auto" role="img" aria-label="Termo forçante tangente e solução particular limitada"><rect x="0" y="0" width="600" height="340" fill="#fdfefe" stroke="#d5dbdb"/><line x1="75.6" y1="25" x2="75.6" y2="300" stroke="#d5dbdb" stroke-width="1"/><text x="75.6" y="316" text-anchor="middle" font-size="12" fill="#2c3e50" font-family="sans-serif">-1.5</text><line x1="153.8" y1="25" x2="153.8" y2="300" stroke="#d5dbdb" stroke-width="1"/><text x="153.8" y="316" text-anchor="middle" font-size="12" fill="#2c3e50" font-family="sans-serif">-1</text><line x1="231.9" y1="25" x2="231.9" y2="300" stroke="#d5dbdb" stroke-width="1"/><text x="231.9" y="316" text-anchor="middle" font-size="12" fill="#2c3e50" font-family="sans-serif">-0.5</text><line x1="388.1" y1="25" x2="388.1" y2="300" stroke="#d5dbdb" stroke-width="1"/><text x="388.1" y="316" text-anchor="middle" font-size="12" fill="#2c3e50" font-family="sans-serif">0.5</text><line x1="466.2" y1="25" x2="466.2" y2="300" stroke="#d5dbdb" stroke-width="1"/><text x="466.2" y="316" text-anchor="middle" font-size="12" fill="#2c3e50" font-family="sans-serif">1</text><line x1="544.4" y1="25" x2="544.4" y2="300" stroke="#d5dbdb" stroke-width="1"/><text x="544.4" y="316" text-anchor="middle" font-size="12" fill="#2c3e50" font-family="sans-serif">1.5</text><line x1="60" y1="162.5" x2="560" y2="162.5" stroke="#2c3e50" stroke-width="1.5"/><line x1="60" y1="25" x2="60" y2="300" stroke="#2c3e50" stroke-width="1.5"/><text x="54" y="258.2" text-anchor="end" font-size="12" fill="#2c3e50" font-family="sans-serif">-2</text><text x="54" y="212.3" text-anchor="end" font-size="12" fill="#2c3e50" font-family="sans-serif">-1</text><text x="54" y="120.7" text-anchor="end" font-size="12" fill="#2c3e50" font-family="sans-serif">1</text><text x="54" y="74.8" text-anchor="end" font-size="12" fill="#2c3e50" font-family="sans-serif">2</text><text x="560" y="154.5" font-size="13" fill="#2c3e50" font-family="sans-serif" text-anchor="end">t</text><text x="68" y="29" font-size="13" fill="#2c3e50" font-family="sans-serif">y</text><line x1="64.6" y1="25" x2="64.6" y2="300" stroke="#2c3e50" stroke-width="1.3" stroke-dasharray="5,4"/><line x1="555.4" y1="25" x2="555.4" y2="300" stroke="#2c3e50" stroke-width="1.3" stroke-dasharray="5,4"/><polyline points="115.0,299.6 115.6,297.8 116.2,296.1 116.8,294.4 117.4,292.8 118.0,291.1 118.7,289.6 119.3,288.0 119.9,286.5 120.5,285.0 121.1,283.6 121.7,282.1 122.3,280.8 122.9,279.4 123.6,278.1 124.2,276.7 124.8,275.5 125.4,274.2 126.0,273.0 126.6,271.8 127.2,270.6 127.9,269.4 128.5,268.2 129.1,267.1 129.7,266.0 130.3,264.9 130.9,263.9 131.5,262.8 132.1,261.8 132.8,260.8 133.4,259.8 134.0,258.8 134.6,257.8 135.2,256.9 135.8,255.9 136.4,255.0 137.1,254.1 137.7,253.2 138.3,252.3 138.9,251.5 139.5,250.6 140.1,249.8 140.7,248.9 141.3,248.1 142.0,247.3 142.6,246.5 143.2,245.8 143.8,245.0 144.4,244.2 145.0,243.5 145.6,242.8 146.3,242.0 146.9,241.3 147.5,240.6 148.1,239.9 148.7,239.2 149.3,238.5 149.9,237.9 150.5,237.2 151.2,236.6 151.8,235.9 152.4,235.3 153.0,234.6 153.6,234.0 154.2,233.4 154.8,232.8 155.5,232.2 156.1,231.6 156.7,231.0 157.3,230.4 157.9,229.9 158.5,229.3 159.1,228.7 159.7,228.2 160.4,227.6 161.0,227.1 161.6,226.6 162.2,226.0 162.8,225.5 163.4,225.0 164.0,224.5 164.7,224.0 165.3,223.5 165.9,223.0 166.5,222.5 167.1,222.0 167.7,221.5 168.3,221.1 168.9,220.6 169.6,220.1 170.2,219.7 170.8,219.2 171.4,218.7 172.0,218.3 172.6,217.9 173.2,217.4 173.9,217.0 174.5,216.5 175.1,216.1 175.7,215.7 176.3,215.3 176.9,214.9 177.5,214.4 178.1,214.0 178.8,213.6 179.4,213.2 180.0,212.8 180.6,212.4 181.2,212.0 181.8,211.7 182.4,211.3 183.1,210.9 183.7,210.5 184.3,210.1 184.9,209.8 185.5,209.4 186.1,209.0 186.7,208.7 187.3,208.3 188.0,207.9 188.6,207.6 189.2,207.2 189.8,206.9 190.4,206.5 191.0,206.2 191.6,205.8 192.2,205.5 192.9,205.2 193.5,204.8 194.1,204.5 194.7,204.2 195.3,203.8 195.9,203.5 196.5,203.2 197.2,202.9 197.8,202.6 198.4,202.2 199.0,201.9 199.6,201.6 200.2,201.3 200.8,201.0 201.4,200.7 202.1,200.4 202.7,200.1 203.3,199.8 203.9,199.5 204.5,199.2 205.1,198.9 205.7,198.6 206.4,198.3 207.0,198.0 207.6,197.7 208.2,197.5 208.8,197.2 209.4,196.9 210.0,196.6 210.6,196.3 211.3,196.1 211.9,195.8 212.5,195.5 213.1,195.2 213.7,195.0 214.3,194.7 214.9,194.4 215.6,194.2 216.2,193.9 216.8,193.6 217.4,193.4 218.0,193.1 218.6,192.8 219.2,192.6 219.8,192.3 220.5,192.1 221.1,191.8 221.7,191.6 222.3,191.3 222.9,191.1 223.5,190.8 224.1,190.6 224.8,190.3 225.4,190.1 226.0,189.8 226.6,189.6 227.2,189.3 227.8,189.1 228.4,188.9 229.0,188.6 229.7,188.4 230.3,188.2 230.9,187.9 231.5,187.7 232.1,187.4 232.7,187.2 233.3,187.0 234.0,186.8 234.6,186.5 235.2,186.3 235.8,186.1 236.4,185.8 237.0,185.6 237.6,185.4 238.2,185.2 238.9,184.9 239.5,184.7 240.1,184.5 240.7,184.3 241.3,184.1 241.9,183.8 242.5,183.6 243.2,183.4 243.8,183.2 244.4,183.0 245.0,182.8 245.6,182.5 246.2,182.3 246.8,182.1 247.4,181.9 248.1,181.7 248.7,181.5 249.3,181.3 249.9,181.1 250.5,180.8 251.1,180.6 251.7,180.4 252.4,180.2 253.0,180.0 253.6,179.8 254.2,179.6 254.8,179.4 255.4,179.2 256.0,179.0 256.6,178.8 257.3,178.6 257.9,178.4 258.5,178.2 259.1,178.0 259.7,177.8 260.3,177.6 260.9,177.4 261.6,177.2 262.2,177.0 262.8,176.8 263.4,176.6 264.0,176.4 264.6,176.2 265.2,176.0 265.8,175.8 266.5,175.6 267.1,175.4 267.7,175.2 268.3,175.0 268.9,174.8 269.5,174.6 270.1,174.5 270.8,174.3 271.4,174.1 272.0,173.9 272.6,173.7 273.2,173.5 273.8,173.3 274.4,173.1 275.0,172.9 275.7,172.7 276.3,172.6 276.9,172.4 277.5,172.2 278.1,172.0 278.7,171.8 279.3,171.6 279.9,171.4 280.6,171.2 281.2,171.1 281.8,170.9 282.4,170.7 283.0,170.5 283.6,170.3 284.2,170.1 284.9,169.9 285.5,169.8 286.1,169.6 286.7,169.4 287.3,169.2 287.9,169.0 288.5,168.8 289.1,168.7 289.8,168.5 290.4,168.3 291.0,168.1 291.6,167.9 292.2,167.7 292.8,167.6 293.4,167.4 294.1,167.2 294.7,167.0 295.3,166.8 295.9,166.6 296.5,166.5 297.1,166.3 297.7,166.1 298.3,165.9 299.0,165.7 299.6,165.6 300.2,165.4 300.8,165.2 301.4,165.0 302.0,164.8 302.6,164.7 303.3,164.5 303.9,164.3 304.5,164.1 305.1,163.9 305.7,163.8 306.3,163.6 306.9,163.4 307.5,163.2 308.2,163.0 308.8,162.9 309.4,162.7 310.0,162.5 310.6,162.3 311.2,162.1 311.8,162.0 312.5,161.8 313.1,161.6 313.7,161.4 314.3,161.2 314.9,161.1 315.5,160.9 316.1,160.7 316.7,160.5 317.4,160.3 318.0,160.2 318.6,160.0 319.2,159.8 319.8,159.6 320.4,159.4 321.0,159.3 321.7,159.1 322.3,158.9 322.9,158.7 323.5,158.5 324.1,158.4 324.7,158.2 325.3,158.0 325.9,157.8 326.6,157.6 327.2,157.4 327.8,157.3 328.4,157.1 329.0,156.9 329.6,156.7 330.2,156.5 330.9,156.3 331.5,156.2 332.1,156.0 332.7,155.8 333.3,155.6 333.9,155.4 334.5,155.2 335.1,155.1 335.8,154.9 336.4,154.7 337.0,154.5 337.6,154.3 338.2,154.1 338.8,153.9 339.4,153.8 340.1,153.6 340.7,153.4 341.3,153.2 341.9,153.0 342.5,152.8 343.1,152.6 343.7,152.4 344.3,152.3 345.0,152.1 345.6,151.9 346.2,151.7 346.8,151.5 347.4,151.3 348.0,151.1 348.6,150.9 349.2,150.7 349.9,150.5 350.5,150.4 351.1,150.2 351.7,150.0 352.3,149.8 352.9,149.6 353.5,149.4 354.2,149.2 354.8,149.0 355.4,148.8 356.0,148.6 356.6,148.4 357.2,148.2 357.8,148.0 358.4,147.8 359.1,147.6 359.7,147.4 360.3,147.2 360.9,147.0 361.5,146.8 362.1,146.6 362.7,146.4 363.4,146.2 364.0,146.0 364.6,145.8 365.2,145.6 365.8,145.4 366.4,145.2 367.0,145.0 367.6,144.8 368.3,144.6 368.9,144.4 369.5,144.2 370.1,143.9 370.7,143.7 371.3,143.5 371.9,143.3 372.6,143.1 373.2,142.9 373.8,142.7 374.4,142.5 375.0,142.2 375.6,142.0 376.2,141.8 376.8,141.6 377.5,141.4 378.1,141.2 378.7,140.9 379.3,140.7 379.9,140.5 380.5,140.3 381.1,140.1 381.8,139.8 382.4,139.6 383.0,139.4 383.6,139.2 384.2,138.9 384.8,138.7 385.4,138.5 386.0,138.2 386.7,138.0 387.3,137.8 387.9,137.6 388.5,137.3 389.1,137.1 389.7,136.8 390.3,136.6 391.0,136.4 391.6,136.1 392.2,135.9 392.8,135.7 393.4,135.4 394.0,135.2 394.6,134.9 395.2,134.7 395.9,134.4 396.5,134.2 397.1,133.9 397.7,133.7 398.3,133.4 398.9,133.2 399.5,132.9 400.2,132.7 400.8,132.4 401.4,132.2 402.0,131.9 402.6,131.6 403.2,131.4 403.8,131.1 404.4,130.8 405.1,130.6 405.7,130.3 406.3,130.0 406.9,129.8 407.5,129.5 408.1,129.2 408.7,128.9 409.4,128.7 410.0,128.4 410.6,128.1 411.2,127.8 411.8,127.5 412.4,127.3 413.0,127.0 413.6,126.7 414.3,126.4 414.9,126.1 415.5,125.8 416.1,125.5 416.7,125.2 417.3,124.9 417.9,124.6 418.6,124.3 419.2,124.0 419.8,123.7 420.4,123.4 421.0,123.1 421.6,122.8 422.2,122.4 422.8,122.1 423.5,121.8 424.1,121.5 424.7,121.2 425.3,120.8 425.9,120.5 426.5,120.2 427.1,119.8 427.8,119.5 428.4,119.2 429.0,118.8 429.6,118.5 430.2,118.1 430.8,117.8 431.4,117.4 432.0,117.1 432.7,116.7 433.3,116.3 433.9,116.0 434.5,115.6 435.1,115.2 435.7,114.9 436.3,114.5 436.9,114.1 437.6,113.7 438.2,113.3 438.8,113.0 439.4,112.6 440.0,112.2 440.6,111.8 441.2,111.4 441.9,111.0 442.5,110.6 443.1,110.1 443.7,109.7 444.3,109.3 444.9,108.9 445.5,108.5 446.1,108.0 446.8,107.6 447.4,107.1 448.0,106.7 448.6,106.3 449.2,105.8 449.8,105.3 450.4,104.9 451.1,104.4 451.7,103.9 452.3,103.5 452.9,103.0 453.5,102.5 454.1,102.0 454.7,101.5 455.3,101.0 456.0,100.5 456.6,100.0 457.2,99.5 457.8,99.0 458.4,98.4 459.0,97.9 459.6,97.4 460.3,96.8 460.9,96.3 461.5,95.7 462.1,95.1 462.7,94.6 463.3,94.0 463.9,93.4 464.5,92.8 465.2,92.2 465.8,91.6 466.4,91.0 467.0,90.4 467.6,89.7 468.2,89.1 468.8,88.4 469.5,87.8 470.1,87.1 470.7,86.5 471.3,85.8 471.9,85.1 472.5,84.4 473.1,83.7 473.7,83.0 474.4,82.2 475.0,81.5 475.6,80.8 476.2,80.0 476.8,79.2 477.4,78.5 478.0,77.7 478.7,76.9 479.3,76.1 479.9,75.2 480.5,74.4 481.1,73.5 481.7,72.7 482.3,71.8 482.9,70.9 483.6,70.0 484.2,69.1 484.8,68.1 485.4,67.2 486.0,66.2 486.6,65.2 487.2,64.2 487.9,63.2 488.5,62.2 489.1,61.1 489.7,60.1 490.3,59.0 490.9,57.9 491.5,56.8 492.1,55.6 492.8,54.4 493.4,53.2 494.0,52.0 494.6,50.8 495.2,49.5 495.8,48.3 496.4,46.9 497.1,45.6 497.7,44.2 498.3,42.9 498.9,41.4 499.5,40.0 500.1,38.5 500.7,37.0 501.3,35.4 502.0,33.9 502.6,32.2 503.2,30.6 503.8,28.9 504.4,27.2 505.0,25.4" fill="none" stroke="#e74c3c" stroke-width="2.5" stroke-dasharray="7,4"/><polyline points="75.6,151.7 76.8,150.9 78.0,150.1 79.1,149.4 80.3,148.7 81.5,148.1 82.7,147.4 83.8,146.8 85.0,146.2 86.2,145.6 87.3,145.1 88.5,144.5 89.7,144.0 90.9,143.5 92.0,143.0 93.2,142.6 94.4,142.1 95.5,141.7 96.7,141.2 97.9,140.8 99.1,140.4 100.2,140.0 101.4,139.7 102.6,139.3 103.8,138.9 104.9,138.6 106.1,138.3 107.3,138.0 108.4,137.6 109.6,137.4 110.8,137.1 112.0,136.8 113.1,136.5 114.3,136.3 115.5,136.0 116.6,135.8 117.8,135.5 119.0,135.3 120.2,135.1 121.3,134.9 122.5,134.7 123.7,134.5 124.8,134.3 126.0,134.2 127.2,134.0 128.4,133.8 129.5,133.7 130.7,133.5 131.9,133.4 133.0,133.3 134.2,133.2 135.4,133.1 136.6,132.9 137.7,132.8 138.9,132.8 140.1,132.7 141.2,132.6 142.4,132.5 143.6,132.5 144.8,132.4 145.9,132.3 147.1,132.3 148.3,132.2 149.5,132.2 150.6,132.2 151.8,132.2 153.0,132.1 154.1,132.1 155.3,132.1 156.5,132.1 157.7,132.1 158.8,132.1 160.0,132.2 161.2,132.2 162.3,132.2 163.5,132.2 164.7,132.3 165.9,132.3 167.0,132.4 168.2,132.4 169.4,132.5 170.5,132.5 171.7,132.6 172.9,132.7 174.1,132.8 175.2,132.8 176.4,132.9 177.6,133.0 178.8,133.1 179.9,133.2 181.1,133.3 182.3,133.4 183.4,133.5 184.6,133.7 185.8,133.8 187.0,133.9 188.1,134.0 189.3,134.2 190.5,134.3 191.6,134.4 192.8,134.6 194.0,134.7 195.2,134.9 196.3,135.1 197.5,135.2 198.7,135.4 199.8,135.6 201.0,135.7 202.2,135.9 203.4,136.1 204.5,136.3 205.7,136.5 206.9,136.7 208.0,136.8 209.2,137.0 210.4,137.2 211.6,137.5 212.7,137.7 213.9,137.9 215.1,138.1 216.2,138.3 217.4,138.5 218.6,138.7 219.8,139.0 220.9,139.2 222.1,139.4 223.3,139.7 224.5,139.9 225.6,140.2 226.8,140.4 228.0,140.6 229.1,140.9 230.3,141.2 231.5,141.4 232.7,141.7 233.8,141.9 235.0,142.2 236.2,142.5 237.3,142.7 238.5,143.0 239.7,143.3 240.9,143.5 242.0,143.8 243.2,144.1 244.4,144.4 245.5,144.7 246.7,145.0 247.9,145.2 249.1,145.5 250.2,145.8 251.4,146.1 252.6,146.4 253.8,146.7 254.9,147.0 256.1,147.3 257.3,147.6 258.4,147.9 259.6,148.2 260.8,148.5 262.0,148.9 263.1,149.2 264.3,149.5 265.5,149.8 266.6,150.1 267.8,150.4 269.0,150.7 270.2,151.1 271.3,151.4 272.5,151.7 273.7,152.0 274.8,152.4 276.0,152.7 277.2,153.0 278.4,153.3 279.5,153.7 280.7,154.0 281.9,154.3 283.0,154.7 284.2,155.0 285.4,155.3 286.6,155.7 287.7,156.0 288.9,156.4 290.1,156.7 291.2,157.0 292.4,157.4 293.6,157.7 294.8,158.0 295.9,158.4 297.1,158.7 298.3,159.1 299.5,159.4 300.6,159.8 301.8,160.1 303.0,160.4 304.1,160.8 305.3,161.1 306.5,161.5 307.7,161.8 308.8,162.2 310.0,162.5 311.2,162.8 312.3,163.2 313.5,163.5 314.7,163.9 315.9,164.2 317.0,164.6 318.2,164.9 319.4,165.2 320.5,165.6 321.7,165.9 322.9,166.3 324.1,166.6 325.2,167.0 326.4,167.3 327.6,167.6 328.8,168.0 329.9,168.3 331.1,168.6 332.3,169.0 333.4,169.3 334.6,169.7 335.8,170.0 337.0,170.3 338.1,170.7 339.3,171.0 340.5,171.3 341.6,171.7 342.8,172.0 344.0,172.3 345.2,172.6 346.3,173.0 347.5,173.3 348.7,173.6 349.8,173.9 351.0,174.3 352.2,174.6 353.4,174.9 354.5,175.2 355.7,175.5 356.9,175.8 358.0,176.1 359.2,176.5 360.4,176.8 361.6,177.1 362.7,177.4 363.9,177.7 365.1,178.0 366.2,178.3 367.4,178.6 368.6,178.9 369.8,179.2 370.9,179.5 372.1,179.8 373.3,180.0 374.5,180.3 375.6,180.6 376.8,180.9 378.0,181.2 379.1,181.5 380.3,181.7 381.5,182.0 382.7,182.3 383.8,182.5 385.0,182.8 386.2,183.1 387.3,183.3 388.5,183.6 389.7,183.8 390.9,184.1 392.0,184.4 393.2,184.6 394.4,184.8 395.5,185.1 396.7,185.3 397.9,185.6 399.1,185.8 400.2,186.0 401.4,186.3 402.6,186.5 403.8,186.7 404.9,186.9 406.1,187.1 407.3,187.3 408.4,187.5 409.6,187.8 410.8,188.0 412.0,188.2 413.1,188.3 414.3,188.5 415.5,188.7 416.6,188.9 417.8,189.1 419.0,189.3 420.2,189.4 421.3,189.6 422.5,189.8 423.7,189.9 424.8,190.1 426.0,190.3 427.2,190.4 428.4,190.6 429.5,190.7 430.7,190.8 431.9,191.0 433.0,191.1 434.2,191.2 435.4,191.3 436.6,191.5 437.7,191.6 438.9,191.7 440.1,191.8 441.2,191.9 442.4,192.0 443.6,192.1 444.8,192.2 445.9,192.2 447.1,192.3 448.3,192.4 449.5,192.5 450.6,192.5 451.8,192.6 453.0,192.6 454.1,192.7 455.3,192.7 456.5,192.8 457.7,192.8 458.8,192.8 460.0,192.8 461.2,192.9 462.3,192.9 463.5,192.9 464.7,192.9 465.9,192.9 467.0,192.9 468.2,192.8 469.4,192.8 470.5,192.8 471.7,192.8 472.9,192.7 474.1,192.7 475.2,192.6 476.4,192.5 477.6,192.5 478.8,192.4 479.9,192.3 481.1,192.2 482.3,192.2 483.4,192.1 484.6,191.9 485.8,191.8 487.0,191.7 488.1,191.6 489.3,191.5 490.5,191.3 491.6,191.2 492.8,191.0 494.0,190.8 495.2,190.7 496.3,190.5 497.5,190.3 498.7,190.1 499.8,189.9 501.0,189.7 502.2,189.5 503.4,189.2 504.5,189.0 505.7,188.7 506.9,188.5 508.0,188.2 509.2,187.9 510.4,187.6 511.6,187.4 512.7,187.0 513.9,186.7 515.1,186.4 516.2,186.1 517.4,185.7 518.6,185.3 519.8,185.0 520.9,184.6 522.1,184.2 523.3,183.8 524.5,183.3 525.6,182.9 526.8,182.4 528.0,182.0 529.1,181.5 530.3,181.0 531.5,180.5 532.7,179.9 533.8,179.4 535.0,178.8 536.2,178.2 537.3,177.6 538.5,176.9 539.7,176.3 540.9,175.6 542.0,174.9 543.2,174.1 544.4,173.3" fill="none" stroke="#2980b9" stroke-width="3.5"/><text x="83.4" y="36.5" font-size="13" fill="#2980b9" font-family="sans-serif">y_p = −cos t · ln|sec t + tg t|</text><text x="83.4" y="54.8" font-size="13" fill="#e74c3c" font-family="sans-serif">g(t) = tg t (tracejado)</text></svg><figcaption>Figura 1: y'' + y = tg t: embora g(t) = tg t exploda em ±π/2, a solução particular y_p permanece limitada e tende a 0 nas extremidades.</figcaption></figure>
+    </div>
+    <div class="passo-teoria"><h4>4. Qual método usar?</h4>
+
+<ul>
+  <li><strong>Coeficientes indeterminados:</strong> coeficientes constantes e $g$ do tipo polinômio, $e^{\alpha t}$, $\cos\beta t$, $\operatorname{sen}\beta t$ (e somas ou produtos). Rápido, sem integrais.</li>
+  <li><strong>Variação de parâmetros:</strong> serve para <strong>qualquer</strong> $g$ contínua e também para coeficientes variáveis, desde que se conheçam $y_1$ e $y_2$. Exige integrais, que às vezes são difíceis.</li>
+</ul>
+<p>Os dois métodos concordam: a solução particular pode diferir por um múltiplo de $y_1$ ou de $y_2$, o que não altera a solução geral.</p>
+    </div>
+  </section>
+  <section class="aplicacoes-reais" id="aplicacoes"><h3>💡 EDO em Ação</h3><div class="cards-aplicacao">
+    <div class="card"><h4>🎛️ Entradas arbitrárias em sistemas lineares</h4><p>Em engenharia de controle e processamento de sinais, a resposta de um sistema linear (massa-mola, circuito) a uma entrada $g(t)$ qualquer é dada por integrais, como na fórmula da variação de parâmetros. Isso permite prever a resposta a pulsos, rampas e sinais gravados.</p></div>
+    <div class="card" style="border-left-color: #2ecc71;"><h4>🌉 Forças não periódicas em estruturas</h4><p>Rajadas de vento, impactos e cargas móveis não são senos nem exponenciais. A variação de parâmetros calcula a resposta de uma estrutura modelada por $m\,x''+c\,x'+k\,x=g(t)$ para essas forças.</p></div>
+  </div></section>
+  <section class="questoes-resolvidas" id="resolvidas"><h3>✅ 5 Questões Resolvidas (R 1 a 5)</h3>
+    <article class="questao"><h4>R 1: Termo $\operatorname{tg}t$</h4><p><strong>Enunciado:</strong> Resolva $y''+y=\operatorname{tg}t$ em $-\frac\pi2&lt;t&lt;\frac\pi2$.</p>
+      <div class="resolucao-bloco"><p><strong>Resolução:</strong> <br>$y_1=\cos t$, $y_2=\operatorname{sen}t$, $W=1$.
+  <br>$u_1'=-y_2g/W=-\operatorname{sen}t\operatorname{tg}t=-\sec t+\cos t \Rightarrow u_1=-\ln|\sec t+\operatorname{tg}t|+\operatorname{sen}t$. $u_2'=y_1g/W=\operatorname{sen}t \Rightarrow u_2=-\cos t$.
+  <br>$y_p=u_1\cos t+u_2\operatorname{sen}t=-\cos t\ln|\sec t+\operatorname{tg}t|+\operatorname{sen}t\cos t-\operatorname{sen}t\cos t$.
+  <br>Conferência: substituição de $y_p$ em $y''+y$ resulta em $\operatorname{tg}t$ (verificado simbolicamente).
+  <br><strong>Resposta:</strong> $y=C_1\cos t+C_2\operatorname{sen}t-\cos t\,\ln|\sec t+\operatorname{tg}t|$.</p></div></article>
+    <article class="questao"><h4>R 2: Raiz dupla com $g=e^t/t$</h4><p><strong>Enunciado:</strong> Resolva $y''-2y'+y=\dfrac{e^{t}}{t}$ para $t>0$.</p>
+      <div class="resolucao-bloco"><p><strong>Resolução:</strong> <br>$r=1$ dupla: $y_1=e^t$, $y_2=te^t$, $W=e^{2t}$.
+  <br>$u_1'=-\frac{te^t\cdot e^t/t}{e^{2t}}=-1 \Rightarrow u_1=-t$. $u_2'=\frac{e^t\cdot e^t/t}{e^{2t}}=\frac1t \Rightarrow u_2=\ln t$.
+  <br>$y_p=-te^t+te^t\ln t$. Como $-te^t=-y_2$ resolve a homogênea, basta $y_p=te^t\ln t$.
+  <br>Conferência: $y_p'=e^t(t\ln t+\ln t+1)$, $y_p''=e^t(t\ln t+2\ln t+2+\frac1t)$ e $y_p''-2y_p'+y_p=\frac{e^t}{t}$ ✓.
+  <br><strong>Resposta:</strong> $y=(C_1+C_2t)e^{t}+te^{t}\ln t$.</p></div></article>
+    <article class="questao"><h4>R 3: Termo $\sec t$</h4><p><strong>Enunciado:</strong> Resolva $y''+y=\sec t$ em $-\frac\pi2&lt;t&lt;\frac\pi2$.</p>
+      <div class="resolucao-bloco"><p><strong>Resolução:</strong> <br>$y_1=\cos t$, $y_2=\operatorname{sen}t$, $W=1$.
+  <br>$u_1'=-\operatorname{sen}t\sec t=-\operatorname{tg}t \Rightarrow u_1=\ln|\cos t|$. $u_2'=\cos t\sec t=1 \Rightarrow u_2=t$.
+  <br>$y_p=\cos t\ln|\cos t|+t\operatorname{sen}t$.
+  <br>Conferência: $y_p''+y_p=\sec t$ (verificado simbolicamente).
+  <br><strong>Resposta:</strong> $y=C_1\cos t+C_2\operatorname{sen}t+\cos t\ln|\cos t|+t\operatorname{sen}t$.</p></div></article>
+    <article class="questao"><h4>R 4: Coeficientes variáveis (forma padrão)</h4><p><strong>Enunciado:</strong> Sabendo que $y_1=t$ e $y_2=t^2$ resolvem a homogênea, resolva $t^2y''-2ty'+2y=t^2$ para $t>0$.</p>
+      <div class="resolucao-bloco"><p><strong>Resolução:</strong> <br>Forma padrão (dividindo por $t^2$): $y''-\frac2ty'+\frac2{t^2}y=1$, logo $g=1$ (e <strong>não</strong> $t^2$).
+  <br>$W=t\cdot2t-1\cdot t^2=t^2$. $u_1'=-\frac{t^2\cdot1}{t^2}=-1 \Rightarrow u_1=-t$. $u_2'=\frac{t\cdot1}{t^2}=\frac1t \Rightarrow u_2=\ln t$.
+  <br>$y_p=-t\cdot t+t^2\ln t=-t^2+t^2\ln t$; como $-t^2$ resolve a homogênea, $y_p=t^2\ln t$.
+  <br>Conferência: $y_p'=2t\ln t+t$, $y_p''=2\ln t+3$; $t^2(2\ln t+3)-2t(2t\ln t+t)+2t^2\ln t=t^2$ ✓.
+  <br><strong>Resposta:</strong> $y=C_1t+C_2t^2+t^2\ln t$.</p></div></article>
+    <article class="questao"><h4>R 5: Conferindo com a Aula 12</h4><p><strong>Enunciado:</strong> Resolva $y''-y=e^{t}$, $y(0)=0$, $y'(0)=0$, por variação de parâmetros, e compare com o método dos coeficientes indeterminados.</p>
+      <div class="resolucao-bloco"><p><strong>Resolução:</strong> <br>$y_1=e^t$, $y_2=e^{-t}$, $W=e^t(-e^{-t})-e^te^{-t}=-2$.
+  <br>$u_1'=-\frac{e^{-t}e^t}{-2}=\frac12 \Rightarrow u_1=\frac t2$. $u_2'=\frac{e^te^t}{-2}=-\frac{e^{2t}}2 \Rightarrow u_2=-\frac{e^{2t}}4$.
+  <br>$y_p=\frac t2e^t-\frac14e^t$; como $-\frac14e^t$ resolve a homogênea, $y_p=\frac12te^t$, o mesmo resultado dos coeficientes indeterminados (tentativa $Ate^t$).
+  <br>$y=C_1e^t+C_2e^{-t}+\frac12te^t$; $y(0)=C_1+C_2=0$ e $y'(0)=C_1-C_2+\frac12=0$, logo $C_1=-\frac14$, $C_2=\frac14$.
+  <br><strong>Resposta:</strong> $y=-\frac14e^t+\frac14e^{-t}+\frac12te^t$.</p></div></article>
+  </section>
+  <section class="questoes-propostas" id="propostas"><h3>✍️ 10 Questões Propostas (P 6 a 15)</h3>
+    <article class="questao"><h4>P 6: Deduzindo o sistema</h4><p><strong>Enunciado:</strong> Mostre que, impondo $u_1'y_1+u_2'y_2=0$, vale $y_p'=u_1y_1'+u_2y_2'$ e que a EDO se reduz a $u_1'y_1'+u_2'y_2'=g$.</p>
+      <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+      <div class="gabarito-resolucao"><p><strong>Resolução:</strong> $y_p'=u_1'y_1+u_1y_1'+u_2'y_2+u_2y_2'=(u_1'y_1+u_2'y_2)+u_1y_1'+u_2y_2'=u_1y_1'+u_2y_2'$.
+  <br>$y_p''=u_1'y_1'+u_1y_1''+u_2'y_2'+u_2y_2''$. Em $y_p''+py_p'+qy_p$, os termos $u_1(y_1''+py_1'+qy_1)$ e $u_2(y_2''+py_2'+qy_2)$ valem $0$, restando $u_1'y_1'+u_2'y_2'=g$.</p></div></article>
+    <article class="questao"><h4>P 7: Termo $\csc t$</h4><p><strong>Enunciado:</strong> Resolva $y''+y=\csc t$ para $0&lt;t&lt;\pi$.</p>
+      <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+      <div class="gabarito-resolucao"><p><strong>Resolução:</strong> $W=1$. $u_1'=-\operatorname{sen}t\cdot\frac1{\operatorname{sen}t}=-1 \Rightarrow u_1=-t$. $u_2'=\cos t\cdot\frac1{\operatorname{sen}t} \Rightarrow u_2=\ln|\operatorname{sen}t|$.
+  <br><strong>Resposta:</strong> $y=C_1\cos t+C_2\operatorname{sen}t-t\cos t+\operatorname{sen}t\ln|\operatorname{sen}t|$.</p></div></article>
+    <article class="questao"><h4>P 8: Frequência 3</h4><p><strong>Enunciado:</strong> Determine uma solução particular de $y''+9y=\sec3t$ para $|t|&lt;\frac\pi6$.</p>
+      <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+      <div class="gabarito-resolucao"><p><strong>Resolução:</strong> $y_1=\cos3t$, $y_2=\operatorname{sen}3t$, $W=3$. $u_1'=-\frac{\operatorname{sen}3t\sec3t}{3}=-\frac{\operatorname{tg}3t}{3} \Rightarrow u_1=\frac19\ln|\cos3t|$. $u_2'=\frac{\cos3t\sec3t}3=\frac13 \Rightarrow u_2=\frac t3$.
+  <br><strong>Resposta:</strong> $y_p=\frac19\cos3t\ln|\cos3t|+\frac t3\operatorname{sen}3t$.</p></div></article>
+    <article class="questao"><h4>P 9: Raiz dupla $-1$</h4><p><strong>Enunciado:</strong> Determine uma solução particular de $y''+2y'+y=\dfrac{e^{-t}}{t}$ para $t>0$.</p>
+      <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+      <div class="gabarito-resolucao"><p><strong>Resolução:</strong> $y_1=e^{-t}$, $y_2=te^{-t}$, $W=e^{-2t}$. $u_1'=-\frac{te^{-t}\cdot e^{-t}/t}{e^{-2t}}=-1 \Rightarrow u_1=-t$. $u_2'=\frac{e^{-t}\cdot e^{-t}/t}{e^{-2t}}=\frac1t \Rightarrow u_2=\ln t$.
+  <br>$y_p=-te^{-t}+te^{-t}\ln t$; descartando $-te^{-t}$ (da homogênea):
+  <br><strong>Resposta:</strong> $y_p=te^{-t}\ln t$.</p></div></article>
+    <article class="questao"><h4>P 10: Equação de Euler</h4><p><strong>Enunciado:</strong> Dado que $y_1=t$ e $y_2=t^2$ resolvem a homogênea, determine uma solução particular de $t^2y''-2ty'+2y=t^3$, $t>0$.</p>
+      <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+      <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Forma padrão: $g=t$. $W=t^2$. $u_1'=-\frac{t^2\cdot t}{t^2}=-t \Rightarrow u_1=-\frac{t^2}2$. $u_2'=\frac{t\cdot t}{t^2}=1 \Rightarrow u_2=t$.
+  <br>$y_p=-\frac{t^3}2+t^3=\frac{t^3}2$. Conferência: $t^2\cdot3t-2t\cdot\frac{3t^2}2+2\cdot\frac{t^3}2=3t^3-3t^3+t^3=t^3$ ✓.
+  <br><strong>Resposta:</strong> $y_p=\dfrac{t^3}{2}$.</p></div></article>
+    <article class="questao"><h4>P 11: Frequência 2 com tangente</h4><p><strong>Enunciado:</strong> Determine uma solução particular de $y''+4y=\operatorname{tg}2t$ para $|t|&lt;\frac\pi4$.</p>
+      <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+      <div class="gabarito-resolucao"><p><strong>Resolução:</strong> $y_1=\cos2t$, $y_2=\operatorname{sen}2t$, $W=2$. $u_1'=-\frac{\operatorname{sen}2t\operatorname{tg}2t}2=-\frac12(\sec2t-\cos2t) \Rightarrow u_1=-\frac14\ln|\sec2t+\operatorname{tg}2t|+\frac14\operatorname{sen}2t$. $u_2'=\frac{\cos2t\operatorname{tg}2t}2=\frac{\operatorname{sen}2t}2 \Rightarrow u_2=-\frac{\cos2t}4$.
+  <br>$y_p=u_1\cos2t+u_2\operatorname{sen}2t$; os termos $\frac14\operatorname{sen}2t\cos2t$ se cancelam.
+  <br><strong>Resposta:</strong> $y_p=-\frac14\cos2t\,\ln|\sec2t+\operatorname{tg}2t|$.</p></div></article>
+    <article class="questao"><h4>P 12: PVI</h4><p><strong>Enunciado:</strong> Resolva $y''+y=\sec t$, $y(0)=1$, $y'(0)=0$ (use o resultado da R3).</p>
+      <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+      <div class="gabarito-resolucao"><p><strong>Resolução:</strong> $y=C_1\cos t+C_2\operatorname{sen}t+\cos t\ln\cos t+t\operatorname{sen}t$. $y(0)=C_1=1$.
+  <br>$y'=-C_1\operatorname{sen}t+C_2\cos t-\operatorname{sen}t\ln\cos t-\operatorname{sen}t+\operatorname{sen}t+t\cos t$, então $y'(0)=C_2=0$.
+  <br><strong>Resposta:</strong> $y=\cos t+\cos t\ln\cos t+t\operatorname{sen}t$.</p></div></article>
+    <article class="questao"><h4>P 13: Escolha do método</h4><p><strong>Enunciado:</strong> Para cada equação, indique o método mais adequado (coeficientes indeterminados ou variação de parâmetros): (a) $y''-y=t^2$; (b) $y''+y=\operatorname{cotg}t$; (c) $y''+4y=\operatorname{sen}3t$; (d) $y''-2y'+y=\dfrac{e^t}{1+t^2}$.</p>
+      <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+      <div class="gabarito-resolucao"><p><strong>Resolução:</strong> (a) <strong>Coeficientes indeterminados</strong> ($g$ polinômio, coeficientes constantes).
+  <br>(b) <strong>Variação de parâmetros</strong> ($\operatorname{cotg}t$ não tem tentativa).
+  <br>(c) <strong>Coeficientes indeterminados</strong> ($g$ é seno, sem ressonância).
+  <br>(d) <strong>Variação de parâmetros</strong> ($\frac{e^t}{1+t^2}$ não é do tipo tabelado).</p></div></article>
+    <article class="questao"><h4>P 14: Ressonância por variação de parâmetros</h4><p><strong>Enunciado:</strong> Use a variação de parâmetros para obter uma solução particular de $y''-2y'+y=e^{t}$ e compare com o método da Aula 12.</p>
+      <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+      <div class="gabarito-resolucao"><p><strong>Resolução:</strong> $y_1=e^t$, $y_2=te^t$, $W=e^{2t}$. $u_1'=-\frac{te^t\cdot e^t}{e^{2t}}=-t \Rightarrow u_1=-\frac{t^2}2$. $u_2'=\frac{e^t\cdot e^t}{e^{2t}}=1 \Rightarrow u_2=t$.
+  <br>$y_p=-\frac{t^2}2e^t+t^2e^t=\frac{t^2}{2}e^t$.
+  <br>Na Aula 12, como $r=1$ é raiz dupla, a tentativa seria $At^2e^t$: $y_p''-2y_p'+y_p=2Ae^t=e^t \Rightarrow A=\frac12$ ✓ (mesmo resultado).</p></div></article>
+    <article class="questao"><h4>P 15: Forma padrão</h4><p><strong>Enunciado:</strong> Em $t^2y''-2ty'+2y=t^2$, o que acontece se usarmos $g=t^2$ (sem dividir por $t^2$) na fórmula? Que equação $y_p$ obtido resolve de fato?</p>
+      <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+      <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Com $g=t^2$: $u_1'=-\frac{t^2\cdot t^2}{t^2}=-t^2 \Rightarrow u_1=-\frac{t^3}3$. $u_2'=\frac{t\cdot t^2}{t^2}=t \Rightarrow u_2=\frac{t^2}2$. $y_p=-\frac{t^4}3+\frac{t^4}2=\frac{t^4}6$.
+  <br>Substituindo: $t^2\cdot2t^2-2t\cdot\frac{2t^3}3+2\cdot\frac{t^4}6=2t^4-\frac43t^4+\frac13t^4=t^4\neq t^2$. 
+  <br>Esse $y_p$ resolve $t^2y''-2ty'+2y=t^4$ (o lado direito multiplicado por $t^2$). A fórmula só vale na forma padrão, com coeficiente $1$ em $y''$.</p></div></article>
+  </section>
+  <section class="TESTE" id="testes"><h3>🎓 TESTES (T 16 a 20)</h3>
+    <article class="questao"><h4>T 16: (Questão autoral) Quando indeterminados não servem</h4><p>Para qual dos termos $g(t)$ abaixo o método dos coeficientes indeterminados <strong>não</strong> é aplicável?</p><p>A) $5t^2+1$<br>B) $e^{3t}$<br>C) $\operatorname{tg}t$<br>D) $\operatorname{sen}2t$<br>E) $4$</p>
+      <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+      <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>C</strong>.<br>Polinômios, exponenciais, senos, cossenos e constantes têm derivadas do mesmo tipo e admitem tentativa. $\operatorname{tg}t$ gera derivadas cada vez mais complicadas ($\sec^2t$, $2\sec^2t\operatorname{tg}t,\dots$): usa-se variação de parâmetros.</p></div></article>
+    <article class="questao"><h4>T 17: (Questão autoral) Cálculo de $u_2'$</h4><p>Para $y''+y=\sec t$, com $y_1=\cos t$ e $y_2=\operatorname{sen}t$, o valor de $u_2'$ é:</p><p>A) $1$<br>B) $\operatorname{tg}t$<br>C) $\sec t$<br>D) $-1$<br>E) $\cos^2t$</p>
+      <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+      <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>A</strong>.<br>$W=1$ e $u_2'=\dfrac{y_1g}{W}=\cos t\cdot\sec t=1$. (Já $u_1'=-\operatorname{sen}t\sec t=-\operatorname{tg}t$.)</p></div></article>
+    <article class="questao"><h4>T 18: (Questão autoral) Solução particular</h4><p>Uma solução particular de $y''-2y'+y=\dfrac{e^{t}}{t}$ ($t>0$) é:</p><p>A) $e^{t}\ln t$<br>B) $te^{t}$<br>C) $t^2e^{t}\ln t$<br>D) $\dfrac{e^{t}}{t}$<br>E) $te^{t}\ln t$</p>
+      <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+      <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>E</strong>.<br>$y_1=e^t$, $y_2=te^t$, $W=e^{2t}$, $u_1'=-1$, $u_2'=\frac1t$: $y_p=-te^t+te^t\ln t$; descartando o termo $-te^t$ (solução da homogênea), $y_p=te^t\ln t$.</p></div></article>
+    <article class="questao"><h4>T 19: (Questão autoral) Forma padrão</h4><p>Para usar a variação de parâmetros em $t^2y''-2ty'+2y=t^2$, o termo $g(t)$ da fórmula deve ser:</p><p>A) $t^2$<br>B) $1$<br>C) $t$<br>D) $t^4$<br>E) $\dfrac1{t^2}$</p>
+      <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+      <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>B</strong>.<br>A fórmula exige $y''+py'+qy=g$. Dividindo toda a equação por $t^2$, o lado direito passa a $\frac{t^2}{t^2}=1$.</p></div></article>
+    <article class="questao"><h4>T 20: (Questão autoral) Solução particular com $\csc t$</h4><p>Uma solução particular de $y''+y=\csc t$ ($0&lt;t&lt;\pi$) é:</p><p>A) $t\cos t+\operatorname{sen}t\ln|\operatorname{sen}t|$<br>B) $-t\cos t-\operatorname{sen}t\ln|\operatorname{sen}t|$<br>C) $-t\operatorname{sen}t+\cos t\ln|\operatorname{sen}t|$<br>D) $-t\cos t+\operatorname{sen}t\ln|\operatorname{sen}t|$<br>E) $-\cos t\ln|\operatorname{sen}t|+t\operatorname{sen}t$</p>
+      <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+      <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>D</strong>.<br>$W=1$: $u_1'=-\operatorname{sen}t\csc t=-1 \Rightarrow u_1=-t$ e $u_2'=\cos t\csc t=\operatorname{cotg}t \Rightarrow u_2=\ln|\operatorname{sen}t|$. Logo $y_p=-t\cos t+\operatorname{sen}t\ln|\operatorname{sen}t|$.</p></div></article>
+  </section>
+</div></main>
+<aside class="menu-lateral"><iframe src="../edo_menu.html" style="width:100%; border:none; height:600px;"></iframe></aside>
+</div>
+<script>
+function toggleGabarito(botao) {
+    const gabarito = botao.nextElementSibling;
+    if (gabarito.style.display === "none" || gabarito.style.display === "") {
+        gabarito.style.display = "block"; botao.textContent = "Esconder Gabarito e Resolução"; botao.style.backgroundColor = "#2c3e50";
+    } else {
+        gabarito.style.display = "none"; botao.textContent = "Ver Gabarito e Resolução"; botao.style.backgroundColor = "#3498db";
+    }
+}
+function toggleMenu() { const m = document.getElementById("menu-principal"); if (m) m.classList.toggle("ativo"); }
+let slideAtual = 0; let slides = [];
+function prepararSlides() { slides = Array.from(document.querySelectorAll('.container-resumo, .passo-teoria, .card, .questao')); }
+function toggleSlides() {
+    prepararSlides(); const body = document.body;
+    if (!body.classList.contains('modo-slides')) { body.classList.add('modo-slides'); slideAtual = 0; mostrarSlide(slideAtual); }
+    else { body.classList.remove('modo-slides'); slides.forEach(s => { s.classList.remove('slide-ativo'); s.style.display = ''; }); }
+}
+function mostrarSlide(n) {
+    if (!slides.length) return;
+    slides.forEach(s => { s.classList.remove('slide-ativo'); s.style.display = 'none'; });
+    const slide = slides[n]; slide.classList.add('slide-ativo');
+    slide.querySelectorAll('.gabarito-resolucao').forEach(g => g.style.display = 'none');
+    slide.querySelectorAll('.btn-gabarito').forEach(b => { b.textContent = "Ver Gabarito e Resolução"; b.style.backgroundColor = "#3498db"; });
+    const pHeader = document.querySelector('header p');
+    if (pHeader) { const partes = pHeader.innerText.split('|'); if (partes.length > 1) {
+        document.getElementById('slide-info-serie').innerText = partes[0].trim();
+        document.getElementById('slide-info-aula').innerText = partes[1].trim(); } }
+    document.getElementById('contador-slide').innerText = (n + 1) + " / " + slides.length;
+    if (window.MathJax && window.MathJax.typesetPromise) { MathJax.typesetPromise(); }
+}
+function mudarSlide(d) { slideAtual += d; if (slideAtual >= slides.length) slideAtual = 0; if (slideAtual &lt; 0) slideAtual = slides.length - 1; mostrarSlide(slideAtual); }
+document.addEventListener('keydown', function(event) {
+    if (document.body.classList.contains('modo-slides')) {
+        switch(event.key) {
+            case 'ArrowRight': case 'PageDown': case 'Enter': case ' ': event.preventDefault(); mudarSlide(1); break;
+            case 'ArrowLeft': case 'PageUp': event.preventDefault(); mudarSlide(-1); break;
+            case 'Escape': event.preventDefault(); toggleSlides(); break;
+        }
+    }
+});
+</script>
+<div class="controles-slides">
+    <div id="slide-info-serie" class="info-lateral"></div>
+    <div class="botoes-centrais">
+        <button class="btn-nav" onclick="mudarSlide(-1)">⬅ Anterior</button>
+        <span id="contador-slide"></span>
+        <button class="btn-nav" onclick="mudarSlide(1)">Próximo ➡</button>
+        <button class="btn-nav" onclick="toggleSlides()" style="background:#e74c3c;">Sair</button>
+    </div>
+    <div id="slide-info-aula" class="info-lateral" style="text-align: right;"></div>
+</div>
+</body>
+</html>
