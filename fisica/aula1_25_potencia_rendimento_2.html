@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1º Ano: Aula 25 - Potência e Rendimento</title>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../estilo.css">
+    <script>
+        MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true
+            }
+        };
+    </script>
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+<button class="menu-toggle" onclick="toggleMenu()">☰</button>
+<nav id="menu-principal" class="nav-global">
+    <ul>
+        <li><a href="../index.html">🏠 Início</a></li>
+        <li><a href="../ensino_medio.html">📚 Ensino Médio</a></li>
+        <li><a href="../ensino_superior.html">🎓 Ensino Superior</a></li>
+    </ul>
+</nav>
+<header id="topo">
+    <h1>FÍSICA EM</h1>
+    <p>1º Ano | Aula 25: Potência e Rendimento</p>
+    <button id="btn-slides" onclick="toggleSlides()">📺 Iniciar Modo Slides</button>
+</header>
+<div class="container">
+<main class="conteudo-principal">
+<div class="secao-aula">
+<div class="container-resumo" id="resumo">
+    <h3>📚 Resumo</h3>
+    <section class="resumo-conteudo">
+        <p><strong>Potência mecânica</strong> mede a rapidez com que um trabalho é realizado ou uma energia é transferida. Para um intervalo de tempo, $P_m=\dfrac{W}{\Delta t}=\dfrac{\Delta E}{\Delta t}$. No Sistema Internacional, sua unidade é o watt: $1\,\text{W}=1\,\text{J/s}$.</p>
+        <p>A potência instantânea de uma força é $P=\vec F\cdot\vec v=Fv\cos\theta$, em que $\theta$ é o ângulo entre força e velocidade. O rendimento compara a potência útil com a potência recebida: $\eta=\dfrac{P_{útil}}{P_{recebida}}$. Em máquinas reais, parte da energia é dissipada e $\eta<1$.</p>
+    </section>
+</div>
+
+<section class="conteudo-teorico-completo" id="teoria">
+<div class="passo-teoria">
+    <h3>📖 Potência mecânica</h3>
+    <h4>1. O que a potência mede?</h4>
+    <p>Imagine duas equipes elevando cargas idênticas até a mesma altura. Se ambas realizam o mesmo trabalho, mas uma termina a tarefa em menos tempo, ela desenvolve maior potência média. Portanto, potência não informa apenas <em>quanto</em> trabalho foi realizado: informa <em>com que rapidez</em> ocorreu a transferência de energia.</p>
+    <p>Considere um sistema que transfere uma quantidade de energia $\Delta E$ durante um intervalo $\Delta t$. Define-se potência média por:</p>
+    <p>$$P_m=\frac{\Delta E}{\Delta t}$$</p>
+    <p>Quando a transferência de energia ocorre por meio do trabalho de uma força, podemos escrever:</p>
+    <p>$$P_m=\frac{W}{\Delta t}$$</p>
+    <p>Nessas expressões, $\Delta E$ é a energia transferida (joule, J), $W$ é o trabalho (joule, J) e $\Delta t$ é o intervalo de tempo (segundo, s). A potência média é uma grandeza escalar. O sinal acompanha o trabalho considerado: potência positiva indica transferência de energia para o sistema; potência negativa indica que a força retira energia dele.</p>
+    <figure class="figura-aula figura-grande">
+        <img src="../imagens_fisica/aula1_25_potencia_trabalho.png" alt="Sistema de entrada transfere energia para um sistema de saída durante um intervalo de tempo">
+        <figcaption>Figura 1: Representação esquemática da transferência de energia entre dois sistemas. A potência média corresponde à energia transferida por unidade de tempo.</figcaption>
+    </figure>
+    <h4>2. Unidade de potência e conversões</h4>
+    <p>No Sistema Internacional:</p>
+    <p>$$1\,\text{W}=1\,\frac{\text{J}}{\text{s}}$$</p>
+    <p>Assim, uma máquina de potência média igual a $500\,\text{W}$ transfere, em média, $500\,\text{J}$ de energia a cada segundo. Também são comuns:</p>
+    <ul>
+        <li>$1\,\text{kW}=10^3\,\text{W}=1000\,\text{W}$;</li>
+        <li>$1\,\text{MW}=10^6\,\text{W}$;</li>
+        <li>cavalo-vapor: $1\,\text{cv}\approx735{,}5\,\text{W}$;</li>
+        <li>horsepower mecânico: $1\,\text{hp}\approx745{,}7\,\text{W}$.</li>
+    </ul>
+    <p><strong>Atenção:</strong> cv e hp são unidades diferentes, embora seus valores sejam próximos. Em exercícios, utilize a conversão fornecida quando houver uma convenção específica.</p>
+    <h4>3. Como comparar máquinas?</h4>
+    <p>Se duas máquinas realizam o mesmo trabalho, a que utiliza menor intervalo de tempo apresenta maior potência média. Por outro lado, para uma mesma potência constante, a energia transferida cresce proporcionalmente ao tempo:</p>
+    <p>$$\Delta E=P\,\Delta t$$</p>
+    <p>Por exemplo, um motor de $2{,}0\,\text{kW}$ funcionando durante $30\,\text{s}$ transfere:</p>
+    <p>$$\Delta E=2000\cdot30=60\,000\,\text{J}=60\,\text{kJ}$$</p>
+    <p>Essa relação é válida quando a potência permanece constante no intervalo. Se ela variar, deve-se utilizar a potência média ou considerar a variação ao longo do tempo.</p>
+</div>
+
+<div class="passo-teoria">
+    <h3>📖 Potência instantânea</h3>
+    <h4>4. Da potência média à potência instantânea</h4>
+    <p>A potência média descreve um intervalo. Entretanto, em movimentos nos quais a força ou a velocidade varia, pode ser necessário conhecer a taxa de transferência de energia em um instante específico. A potência instantânea é definida pelo limite:</p>
+    <p>$$P=\lim_{\Delta t\to0}\frac{\Delta W}{\Delta t}=\frac{dW}{dt}$$</p>
+    <p>Para uma força constante durante um pequeno deslocamento $d\vec r$, o trabalho elementar é $dW=\vec F\cdot d\vec r$. Como $\vec v=d\vec r/dt$, obtemos:</p>
+    <p>$$P=\frac{dW}{dt}=\vec F\cdot\vec v=Fv\cos\theta$$</p>
+    <p>Em que $F$ é o módulo da força (N), $v$ é o módulo da velocidade (m/s) e $\theta$ é o ângulo entre os vetores. O produto $Fv$ tem unidade $\text{N}\cdot\text{m/s}=\text{J/s}=\text{W}$.</p>
+    <figure class="figura-aula figura-grande">
+        <img src="../imagens_fisica/aula1_25_potencia_inst.png" alt="Três diagramas vetoriais com força paralela, perpendicular e oposta à velocidade">
+        <figcaption>Figura 2: A potência depende da projeção da força sobre a direção da velocidade. O ângulo entre os vetores determina o sinal e o valor da potência.</figcaption>
+    </figure>
+    <h4>5. Interpretação do ângulo entre força e velocidade</h4>
+    <ul>
+        <li><strong>$\theta=0^\circ$:</strong> força e velocidade têm o mesmo sentido. $P=Fv$, potência positiva; a força favorece o movimento.</li>
+        <li><strong>$0^\circ&lt;\theta&lt;90^\circ$:</strong> a componente da força na direção do movimento é positiva; a potência é positiva.</li>
+        <li><strong>$\theta=90^\circ$:</strong> a força é perpendicular à velocidade. $P=0$; naquele instante, ela não transfere energia por trabalho.</li>
+        <li><strong>$90^\circ&lt;\theta\leq180^\circ$:</strong> a componente da força na direção do movimento é contrária à velocidade; a potência é negativa.</li>
+        <li><strong>$\theta=180^\circ$:</strong> força e velocidade têm sentidos opostos. $P=-Fv$.</li>
+    </ul>
+    <p>Um exemplo importante ocorre no movimento circular: a força centrípeta é radial, enquanto a velocidade instantânea é tangente à trajetória. Como são perpendiculares, a potência instantânea da força centrípeta é nula. Ela altera a direção do vetor velocidade, mas não modifica seu módulo quando atua isoladamente em um movimento circular uniforme.</p>
+    <h4>6. Quando a potência média coincide com a instantânea?</h4>
+    <p>Se a potência permanece constante durante todo o intervalo analisado, seu valor médio é igual ao valor instantâneo em qualquer instante. Se a potência varia, a média corresponde à taxa constante equivalente que produziria a mesma transferência total de energia no mesmo intervalo.</p>
+</div>
+
+<div class="passo-teoria">
+    <h3>📖 Rendimento</h3>
+    <h4>7. Potência recebida, útil e dissipada</h4>
+    <p>Uma máquina real não converte toda a energia recebida na forma desejada. Em um motor, por exemplo, parte da energia pode ser dissipada pelo aquecimento dos componentes, pelo atrito e pela emissão de som. A energia não desaparece: transforma-se em outras formas, mas nem toda parcela atende à finalidade principal do equipamento.</p>
+    <p>Em um balanço energético, a potência recebida se distribui entre a potência útil e a potência dissipada:</p>
+    <p>$$P_{recebida}=P_{útil}+P_{dissipada}$$</p>
+    <figure class="figura-aula figura-grande">
+        <img src="../imagens_fisica/aula1_25_rendimento.png" alt="Diagrama de fluxo da potência recebida dividida em potência útil e potência dissipada">
+        <figcaption>Figura 3: Balanço de potência em uma máquina. A potência de entrada é distribuída entre a parcela aproveitada para a finalidade desejada e as perdas por dissipação.</figcaption>
+    </figure>
+    <h4>8. Definição matemática do rendimento</h4>
+    <p>O rendimento ($\eta$) é a razão entre a potência útil e a potência recebida:</p>
+    <p>$$\eta=\frac{P_{útil}}{P_{recebida}}$$</p>
+    <p>Também pode ser definido pela razão entre a energia útil e a energia total recebida, desde que ambas sejam consideradas no mesmo intervalo:</p>
+    <p>$$\eta=\frac{E_{útil}}{E_{recebida}}$$</p>
+    <p>O rendimento é adimensional, pois compara grandezas da mesma natureza e com a mesma unidade. Para expressá-lo em porcentagem:</p>
+    <p>$$\eta(\%)=\frac{P_{útil}}{P_{recebida}}\times100\%$$</p>
+    <p>Se uma máquina recebe $1000\,\text{W}$ e fornece $800\,\text{W}$ de potência útil, então $\eta=0{,}80=80\%$. Os $200\,\text{W}$ restantes correspondem à potência dissipada. Em uma máquina real, o rendimento é inferior a $100\%$, pois sempre há processos de dissipação.</p>
+    <h4>9. Determinação de grandezas a partir do rendimento</h4>
+    <p>Conhecendo o rendimento e a potência recebida, a potência útil pode ser calculada por $P_{útil}=\eta P_{recebida}$. Se forem conhecidas a potência útil e o rendimento, isolamos a potência recebida:</p>
+    <p>$$P_{recebida}=\frac{P_{útil}}{\eta}$$</p>
+    <p>Nessa última expressão, use o rendimento na forma decimal. Por exemplo, $75\%=0{,}75$, e não 75.</p>
+</div>
+
+<div class="passo-teoria">
+    <h3>📖 Aplicação: potência na elevação de cargas</h3>
+    <h4>10. Elevadores e guindastes</h4>
+    <p>Considere uma carga de massa $m$ elevada verticalmente com velocidade constante $v$. Como não há aceleração, a força de tração que o cabo exerce sobre a carga tem módulo igual ao peso: $F=mg$. Se a força e a velocidade têm o mesmo sentido, a potência mecânica útil entregue à carga é:</p>
+    <p>$$P_{útil}=Fv=mgv$$</p>
+    <p>Essa expressão considera a velocidade vertical constante e despreza variações de energia cinética. Se houver aceleração, a tração não será necessariamente igual ao peso; deve-se aplicar a segunda lei de Newton antes de calcular a potência.</p>
+    <p><strong>Exemplo:</strong> um elevador transporta uma carga de $400\,\text{kg}$ para cima, com velocidade constante de $1{,}5\,\text{m/s}$. Adotando $g=10\,\text{m/s}^2$:</p>
+    <p>$$P_{útil}=mgv=400\cdot10\cdot1{,}5=6000\,\text{W}=6{,}0\,\text{kW}$$</p>
+    <p>Se o conjunto motor apresentar rendimento de $80\%$, a potência recebida deverá ser:</p>
+    <p>$$P_{recebida}=\frac{6000}{0{,}80}=7500\,\text{W}=7{,}5\,\text{kW}$$</p>
+    <p>A diferença, $1500\,\text{W}$, corresponde à potência dissipada no funcionamento do sistema.</p>
+    <h4>11. Cuidados conceituais e erros frequentes</h4>
+    <ul>
+        <li>Energia e trabalho são medidos em joules; potência é medida em watts.</li>
+        <li>Potência elevada não significa necessariamente trabalho total maior: o tempo também precisa ser considerado.</li>
+        <li>Na potência instantânea, utilize o ângulo entre força e velocidade, não necessariamente o ângulo entre força e deslocamento total.</li>
+        <li>Uma força perpendicular à velocidade pode alterar a direção do movimento mesmo tendo potência instantânea nula.</li>
+        <li>Rendimento de $80\%$ deve ser usado como $0{,}80$ nas operações algébricas.</li>
+        <li>Não confunda potência útil com potência recebida; a diferença corresponde à potência dissipada.</li>
+        <li>A relação $P=mgv$ exige elevação vertical com velocidade constante e condições explicitadas no modelo.</li>
+    </ul>
+</div>
+</section>
+
+<section class="aplicacoes-reais" id="aplicacoes">
+    <h3>💡 Física em Ação</h3>
+    <div class="cards-aplicacao">
+        <div class="card">
+            <h4>Elevadores e guindastes</h4>
+            <p>Ao elevar uma carga, o motor transfere energia para aumentar sua energia potencial gravitacional. Para velocidade vertical constante, a potência útil é $P_{útil}=mgv$. A potência que o motor recebe deve ser maior quando há perdas no sistema.</p>
+        </div>
+        <div class="card">
+            <h4>Veículos e motores</h4>
+            <p>A potência disponibilizada pelo motor está relacionada à taxa de realização de trabalho. Para uma força de tração paralela ao movimento, $P=Fv$. Aumentar a velocidade mantendo a mesma potência disponível reduz a força de tração que pode ser fornecida, em um modelo ideal.</p>
+        </div>
+        <div class="card">
+            <h4>Geração eólica</h4>
+            <p>O vento transfere energia às pás de uma turbina, que movimentam um gerador. Parte da energia recebida é convertida em energia elétrica e parte é dissipada em processos mecânicos e elétricos; por isso, o rendimento global é inferior a 100%.</p>
+        </div>
+    </div>
+</section>
+
+<section class="questoes-resolvidas" id="resolvidas">
+<h3>✅ 5 Questões Resolvidas (R 1 a 5)</h3>
+<article class="questao">
+<h4>R 1: Potência média a partir do trabalho</h4>
+<p><strong>Enunciado:</strong> Uma força realiza um trabalho de $2400\text{ J}$ sobre um corpo durante $12\text{ s}$. Determine a potência média.</p>
+<div class="resolucao-bloco"><p><strong>Dados:</strong> $W=2400\text{ J}$; $\Delta t=12\text{ s}$. <strong>Incógnita:</strong> $P_m$.</p>
+<p><strong>Modelo:</strong> $P_m=W/\Delta t$, válido para a potência média no intervalo.</p>
+<p><strong>Cálculo:</strong> $P_m=2400/12=200\text{ J/s}$.</p>
+<p><strong>Resposta:</strong> $\boxed{P_m=200\text{ W}}$. A força transfere energia à taxa média de 200 joules por segundo.</p></div>
+</article>
+<article class="questao">
+<h4>R 2: Comparação de máquinas</h4>
+<p><strong>Enunciado:</strong> Duas máquinas realizam o mesmo trabalho de $18\text{ kJ}$. A máquina A leva $30\text{ s}$ e a máquina B leva $45\text{ s}$. Calcule as potências médias e indique qual é mais potente.</p>
+<div class="resolucao-bloco"><p><strong>Dados:</strong> $W=18\,000\text{ J}$; $t_A=30\text{ s}$; $t_B=45\text{ s}$.</p>
+<p><strong>Modelo:</strong> $P_m=W/\Delta t$.</p>
+<p>$P_A=18000/30=600\text{ W}$; $P_B=18000/45=400\text{ W}$.</p>
+<p><strong>Resposta:</strong> A máquina A é mais potente, pois realiza o mesmo trabalho em menor tempo: $600\text{ W}$ contra $400\text{ W}$.</p></div>
+</article>
+<article class="questao">
+<h4>R 3: Potência instantânea e ângulo</h4>
+<p><strong>Enunciado:</strong> Uma força de módulo $50\text{ N}$ atua sobre um corpo que se desloca instantaneamente com velocidade de $4\text{ m/s}$. O ângulo entre a força e a velocidade é $60^\circ$. Determine a potência instantânea da força.</p>
+<div class="resolucao-bloco"><p><strong>Dados:</strong> $F=50\text{ N}$; $v=4\text{ m/s}$; $\theta=60^\circ$.</p>
+<p><strong>Modelo:</strong> $P=Fv\cos\theta$.</p>
+<p>$P=50\cdot4\cdot\cos60^\circ=200\cdot0{,}5=100\text{ W}$.</p>
+<p><strong>Resposta:</strong> $\boxed{100\text{ W}}$. A componente da força paralela à velocidade é positiva.</p></div>
+</article>
+<article class="questao">
+<h4>R 4: Potência útil de um elevador</h4>
+<p><strong>Enunciado:</strong> Um elevador transporta uma carga de massa $500\text{ kg}$ verticalmente para cima, com velocidade constante de $2{,}0\text{ m/s}$. Adote $g=10\text{ m/s}^2$. Determine a potência útil necessária para elevar a carga, desprezando perdas.</p>
+<div class="resolucao-bloco"><p><strong>Dados:</strong> $m=500\text{ kg}$; $v=2{,}0\text{ m/s}$; $g=10\text{ m/s}^2$.</p>
+<p>Como a velocidade é constante, a força de tração equilibra o peso: $F=mg=5000\text{ N}$.</p>
+<p><strong>Modelo:</strong> $P=Fv=mgv$.</p>
+<p>$P=500\cdot10\cdot2=10\,000\text{ W}$.</p>
+<p><strong>Resposta:</strong> $\boxed{P_{\rm útil}=10\text{ kW}}$.</p></div>
+</article>
+<article class="questao">
+<h4>R 5: Rendimento de uma máquina</h4>
+<p><strong>Enunciado:</strong> Uma máquina recebe potência de $2{,}5\text{ kW}$ e fornece potência útil de $2{,}0\text{ kW}$. Determine seu rendimento percentual e a potência dissipada.</p>
+<div class="resolucao-bloco"><p><strong>Dados:</strong> $P_{\rm total}=2500\text{ W}$; $P_{\rm útil}=2000\text{ W}$.</p>
+<p><strong>Rendimento:</strong> $\eta=(2000/2500)\cdot100\%=80\%$.</p>
+<p><strong>Potência dissipada:</strong> $P_{\rm dissipada}=2500-2000=500\text{ W}$.</p>
+<p><strong>Resposta:</strong> rendimento de $\boxed{80\%}$ e potência dissipada de $\boxed{500\text{ W}}$.</p></div>
+</article>
+</section>
+
+<section class="questoes-propostas" id="propostas">
+<h3>✍️ 10 Questões Propostas (P 6 a 15)</h3>
+<article class="questao">
+<h4>P 6: Potência média</h4>
+<p><strong>Enunciado:</strong> Um guindaste realiza trabalho de 15 000 J em 25 s. Determine sua potência média.</p>
+<button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+<div class="gabarito-resolucao"><p><strong>Resolução:</strong> P=15000/25=600 W.</p></div>
+</article>
+<article class="questao">
+<h4>P 7: Unidade de potência</h4>
+<p><strong>Enunciado:</strong> Uma máquina opera com potência constante de 750 W durante 8 s. Qual energia ela transfere nesse intervalo?</p>
+<button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+<div class="gabarito-resolucao"><p><strong>Resolução:</strong> E=PΔt=750·8=6000 J.</p></div>
+</article>
+<article class="questao">
+<h4>P 8: Conversão de unidade</h4>
+<p><strong>Enunciado:</strong> Um motor tem potência de 3,2 kW. Expresse esse valor em watts.</p>
+<button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+<div class="gabarito-resolucao"><p><strong>Resolução:</strong> 3,2 kW=3,2×1000=3200 W.</p></div>
+</article>
+<article class="questao">
+<h4>P 9: Potência e velocidade</h4>
+<p><strong>Enunciado:</strong> Um veículo é tracionado por uma força resultante de 1200 N, paralela à velocidade de 15 m/s. Determine a potência instantânea dessa força.</p>
+<button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+<div class="gabarito-resolucao"><p><strong>Resolução:</strong> P=Fv=1200·15=18 000 W=18 kW.</p></div>
+</article>
+<article class="questao">
+<h4>P 10: Ângulo entre força e velocidade</h4>
+<p><strong>Enunciado:</strong> Uma força de 80 N atua sobre um corpo com velocidade de 5 m/s, formando 120° com a velocidade. Calcule a potência instantânea.</p>
+<button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+<div class="gabarito-resolucao"><p><strong>Resolução:</strong> P=80·5·cos120°=400·(-0,5)=-200 W.</p></div>
+</article>
+<article class="questao">
+<h4>P 11: Força perpendicular</h4>
+<p><strong>Enunciado:</strong> Um corpo move-se com velocidade constante em módulo numa trajetória circular. A força centrípeta tem módulo 30 N e a velocidade 4 m/s. Qual é a potência instantânea da força centrípeta? Justifique.</p>
+<button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+<div class="gabarito-resolucao"><p><strong>Resolução:</strong> P=Fv cos90°=0 W.</p></div>
+</article>
+<article class="questao">
+<h4>P 12: Potência de elevação</h4>
+<p><strong>Enunciado:</strong> Uma carga de 200 kg é elevada verticalmente com velocidade constante de 1,5 m/s. Adote g=10 m/s² e despreze perdas. Determine a potência útil.</p>
+<button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+<div class="gabarito-resolucao"><p><strong>Resolução:</strong> P=mgv=200·10·1,5=3000 W=3,0 kW.</p></div>
+</article>
+<article class="questao">
+<h4>P 13: Rendimento</h4>
+<p><strong>Enunciado:</strong> Um equipamento recebe 900 W e fornece 720 W de potência útil. Determine o rendimento percentual.</p>
+<button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+<div class="gabarito-resolucao"><p><strong>Resolução:</strong> η=(720/900)·100%=80%.</p></div>
+</article>
+<article class="questao">
+<h4>P 14: Potência dissipada</h4>
+<p><strong>Enunciado:</strong> Um motor recebe 5,0 kW e possui rendimento de 70%. Determine a potência útil e a potência dissipada.</p>
+<button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+<div class="gabarito-resolucao"><p><strong>Resolução:</strong> Pútil=0,70·5,0=3,5 kW; Pdiss=5,0−3,5=1,5 kW.</p></div>
+</article>
+<article class="questao">
+<h4>P 15: Tempo de operação</h4>
+<p><strong>Enunciado:</strong> Uma máquina de potência constante igual a 2,0 kW realiza um trabalho de 48 kJ. Quanto tempo ela leva?</p>
+<button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+<div class="gabarito-resolucao"><p><strong>Resolução:</strong> Δt=W/P=48000/2000=24 s.</p></div>
+</article>
+</section>
+
+<section class="TESTE" id="testes">
+<h3>🎓 5 Questões de Teste (T 16 a 20)</h3>
+<article class="questao">
+<h4>T 16 (ExataSite): Definição de potência</h4>
+<p><strong>Enunciado:</strong> A grandeza física que expressa a rapidez com que um trabalho é realizado é:</p>
+<ul><li>A) energia potencial.</li><li>B) potência.</li><li>C) força.</li><li>D) impulso.</li><li>E) rendimento.</li></ul>
+<button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+<div class="gabarito-resolucao"><p><strong>Gabarito:</strong> B. <strong>Resolução:</strong> Potência média é trabalho dividido pelo intervalo de tempo.</p></div>
+</article>
+<article class="questao">
+<h4>T 17 (ExataSite): Potência média</h4>
+<p><strong>Enunciado:</strong> Uma força realiza 3600 J de trabalho em 12 s. A potência média é:</p>
+<ul><li>A) 30 W.</li><li>B) 120 W.</li><li>C) 300 W.</li><li>D) 432 W.</li><li>E) 3600 W.</li></ul>
+<button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+<div class="gabarito-resolucao"><p><strong>Gabarito:</strong> C. <strong>Resolução:</strong> P=3600/12=300 W.</p></div>
+</article>
+<article class="questao">
+<h4>T 18 (ExataSite): Potência instantânea</h4>
+<p><strong>Enunciado:</strong> Uma força de 100 N atua na mesma direção e sentido da velocidade de 6 m/s. A potência instantânea é:</p>
+<ul><li>A) 16,7 W.</li><li>B) 100 W.</li><li>C) 600 W.</li><li>D) 1000 W.</li><li>E) 6000 W.</li></ul>
+<button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+<div class="gabarito-resolucao"><p><strong>Gabarito:</strong> C. <strong>Resolução:</strong> P=Fv=100·6=600 W.</p></div>
+</article>
+<article class="questao">
+<h4>T 19 (ExataSite): Rendimento</h4>
+<p><strong>Enunciado:</strong> Uma máquina recebe 1,2 kW e fornece 900 W de potência útil. Seu rendimento é:</p>
+<ul><li>A) 25%.</li><li>B) 50%.</li><li>C) 60%.</li><li>D) 75%.</li><li>E) 90%.</li></ul>
+<button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+<div class="gabarito-resolucao"><p><strong>Gabarito:</strong> D. <strong>Resolução:</strong> η=900/1200=0,75=75%.</p></div>
+</article>
+<article class="questao">
+<h4>T 20 (ExataSite): Máquina de elevação</h4>
+<p><strong>Enunciado:</strong> Um motor eleva uma carga de 400 kg com velocidade constante de 0,50 m/s. Adote g=10 m/s² e rendimento de 80%. A potência total recebida pelo motor é:</p>
+<ul><li>A) 1,0 kW.</li><li>B) 2,0 kW.</li><li>C) 2,5 kW.</li><li>D) 4,0 kW.</li><li>E) 5,0 kW.</li></ul>
+<button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+<div class="gabarito-resolucao"><p><strong>Gabarito:</strong> C. <strong>Resolução:</strong> Pútil=mgv=400·10·0,50=2000 W. Como η=Pútil/Ptotal, Ptotal=2000/0,80=2500 W=2,5 kW.</p></div>
+</article>
+</section>
+</div>
+</main>
+<aside class="menu-lateral">
+    <iframe src="../menu_fisica.html" style="width:100%; border:none; height:600px;"></iframe>
+</aside>
+</div>
+
+<script>
+function toggleGabarito(botao) {
+    const gabarito = botao.nextElementSibling;
+    if (gabarito.style.display === "none" || gabarito.style.display === "") {
+        gabarito.style.display = "block";
+        botao.textContent = "Esconder Gabarito e Resolução";
+        botao.style.backgroundColor = "#2c3e50";
+    } else {
+        gabarito.style.display = "none";
+        botao.textContent = "Ver Gabarito e Resolução";
+        botao.style.backgroundColor = "#3498db";
+    }
+}
+function toggleMenu() {
+    const menuGlobal = document.getElementById("menu-principal");
+    if (menuGlobal) menuGlobal.classList.toggle("ativo");
+}
+let slideAtual = 0;
+let slides = [];
+function prepararSlides() {
+    slides = document.querySelectorAll('.container-resumo, .passo-teoria, .aplicacoes-reais, .questao');
+}
+function toggleSlides() {
+    prepararSlides();
+    const body = document.body;
+    if (!body.classList.contains('modo-slides')) {
+        body.classList.add('modo-slides'); slideAtual = 0; mostrarSlide(slideAtual);
+    } else {
+        body.classList.remove('modo-slides'); window.location.reload();
+    }
+}
+function mostrarSlide(n) {
+    slides.forEach(s => { s.classList.remove('slide-ativo'); s.style.display = 'none'; });
+    const slide = slides[n];
+    slide.classList.add('slide-ativo'); slide.style.display = 'flex';
+    if (slide.classList.contains('questao') && !slide.querySelector('.btn-gabarito')) {
+        slide.querySelectorAll('.resolucao-bloco').forEach(r => r.style.display = 'block');
+    } else {
+        slide.querySelectorAll('.gabarito-resolucao').forEach(g => g.style.display = 'none');
+        slide.querySelectorAll('.btn-gabarito').forEach(b => { b.textContent = "Ver Gabarito e Resolução"; b.style.backgroundColor = "#3498db"; });
+    }
+    const partes = document.querySelector('header p').innerText.split('|');
+    if (partes.length > 1) {
+        document.getElementById('slide-info-serie').innerText = partes[0].trim();
+        document.getElementById('slide-info-aula').innerText = partes[1].trim();
+    }
+    document.getElementById('contador-slide').innerText = (n + 1) + " / " + slides.length;
+    if (window.MathJax) MathJax.typesetPromise();
+}
+function mudarSlide(direcao) {
+    slideAtual += direcao;
+    if (slideAtual >= slides.length) slideAtual = 0;
+    if (slideAtual < 0) slideAtual = slides.length - 1;
+    mostrarSlide(slideAtual);
+}
+document.addEventListener('keydown', function(event) {
+    if (document.body.classList.contains('modo-slides')) {
+        switch(event.key) {
+            case 'ArrowRight': case 'PageDown': case 'Enter': case ' ': mudarSlide(1); break;
+            case 'ArrowLeft': case 'PageUp': mudarSlide(-1); break;
+            case 'Escape': toggleSlides(); break;
+        }
+    }
+});
+</script>
+<style>
+body.modo-slides { overflow:hidden; background-color:#1a1a1a; }
+body.modo-slides .menu-lateral, body.modo-slides header, body.modo-slides .menu-toggle, body.modo-slides #btn-slides { display:none !important; }
+.slide-ativo {
+    display:flex !important; flex-direction:column; align-items:center; justify-content:flex-start;
+    position:fixed; top:0; left:0; width:100vw; height:calc(100vh - 70px);
+    background:#fff; padding:40px; z-index:999; overflow-y:auto !important;
+    box-sizing:border-box; text-align:center;
+}
+.controles-slides {
+    position:fixed; bottom:0; left:0; width:100%; height:70px; background:#2c3e50; color:white;
+    display:none; justify-content:space-between; align-items:center; padding:0 20px; z-index:1001; box-sizing:border-box;
+}
+body.modo-slides .controles-slides { display:flex; }
+.info-lateral { flex:1; font-family:'Oswald',sans-serif; font-size:.9rem; color:#bdc3c7; }
+.botoes-centrais { display:flex; align-items:center; gap:15px; justify-content:center; flex:2; }
+.btn-nav { padding:10px 20px; background:#3498db; color:white; border:none; border-radius:5px; cursor:pointer; font-weight:bold; }
+#contador-slide { font-family:'Oswald',sans-serif; min-width:60px; text-align:center; }
+</style>
+<div class="controles-slides">
+    <div id="slide-info-serie" class="info-lateral"></div>
+    <div class="botoes-centrais">
+        <button class="btn-nav" onclick="mudarSlide(-1)">⬅ Anterior</button>
+        <span id="contador-slide"></span>
+        <button class="btn-nav" onclick="mudarSlide(1)">Próximo ➡</button>
+        <button class="btn-nav" onclick="toggleSlides()" style="background:#e74c3c;">Sair</button>
+    </div>
+    <div id="slide-info-aula" class="info-lateral" style="text-align:right;"></div>
+</div>
+</body>
+</html>
