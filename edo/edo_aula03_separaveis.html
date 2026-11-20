@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Engenharia: Aula 03 - EQUAÇÕES DIFERENCIAIS SEPARÁVEIS</title>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../estilo.css">
+    <script>
+        MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']], processEscapes: true } };
+    </script>
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        body.modo-slides { overflow: hidden !important; background-color: #1a1a1a !important; margin: 0; padding: 0; }
+        body.modo-slides .menu-lateral, body.modo-slides header, body.modo-slides .menu-toggle, body.modo-slides #btn-slides, body.modo-slides .nav-global { display: none !important; }
+        .slide-ativo { display: flex !important; flex-direction: column; align-items: center; justify-content: center; position: fixed; top: 0; left: 0; width: 100vw; height: calc(100vh - 70px); background: #ffffff; padding: 40px; z-index: 999; overflow-y: auto !important; box-sizing: border-box; text-align: left; }
+        .slide-ativo > * { max-width: 900px; width: 100%; }
+        .controles-slides { position: fixed; bottom: 0; left: 0; width: 100%; height: 70px; background: #2c3e50; color: white; display: none; justify-content: space-between; align-items: center; padding: 0 20px; z-index: 1001; box-sizing: border-box; }
+        body.modo-slides .controles-slides { display: flex !important; }
+        .info-lateral { flex: 1; font-family: 'Oswald', sans-serif; font-size: 0.9rem; color: #bdc3c7; }
+        .botoes-centrais { display: flex; align-items: center; gap: 15px; justify-content: center; flex: 2; }
+        .btn-nav { padding: 10px 20px; background: #3498db; color: white; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; font-size: 0.9rem; }
+        .btn-nav:hover { background: #2980b9; }
+        #contador-slide { font-family: 'Oswald', sans-serif; min-width: 60px; text-align: center; font-size: 1.1rem; }
+    </style>
+</head>
+<body>
+<button class="menu-toggle" onclick="toggleMenu()">☰</button>
+<nav id="menu-principal" class="nav-global"><ul>
+    <li><a href="../index.html">🏠 Início</a></li>
+    <li><a href="../ensino_medio.html">📚 Ensino Médio</a></li>
+    <li><a href="../ensino_superior.html">🎓 Ensino Superior</a></li>
+</ul></nav>
+<header id="topo">
+    <h1>EQUAÇÕES DIFERENCIAIS</h1>
+    <p>Engenharia | Aula 03: Equações Diferenciais Separáveis</p>
+    <button id="btn-slides" onclick="toggleSlides()">📺 Iniciar Modo Slides</button>
+</header>
+<div class="container"><main class="conteudo-principal"><div class="secao-aula">
+  <div class="container-resumo" id="resumo"><h3>📚 Resumo</h3><section class="resumo-conteudo"><p>Uma EDO de 1ª ordem é <strong>separável</strong> quando podemos isolar, de um lado, tudo o que depende de $y$ e, do outro, tudo o que depende de $x$. Na forma do livro-texto, $M(x)\,dx+N(y)\,dy=0$; de modo equivalente, $\dfrac{dy}{dx}=f(x)\,g(y)$. Basta integrar os dois lados:</p>
+$$\frac{dy}{dx}=f(x)\,g(y)\;\Longrightarrow\;\int\frac{dy}{g(y)}=\int f(x)\,dx$$</section></div>
+  <section class="conteudo-teorico-completo" id="teoria">
+    <div class="passo-teoria"><h3>📖 EQUAÇÕES DIFERENCIAIS SEPARÁVEIS</h3><h4>1. Reconhecendo uma equação separável</h4>
+
+<p>Vimos que as equações lineares com coeficientes constantes, como $y'=a\,y+b$, resolvem-se por integração. Agora ampliamos a classe: uma EDO de 1ª ordem é <strong>separável</strong> se pode ser escrita como</p>
+$$M(x)\,dx+N(y)\,dy=0 \qquad\text{ou}\qquad \frac{dy}{dx}=f(x)\,g(y).$$
+<p>O nome vem do fato de as variáveis poderem ser <em>separadas</em>: os termos em $x$ ficam com $dx$ e os termos em $y$ ficam com $dy$. Exemplos separáveis: $\dfrac{dy}{dx}=\dfrac{x}{y}$, $\dfrac{dy}{dx}=3x^2y$, $\dfrac{dQ}{dt}=0{,}6-0{,}03Q$. Não é separável, por exemplo, $\dfrac{dy}{dx}=x+y$ (a soma não se fatora).</p>
+    </div>
+    <div class="passo-teoria"><h4>2. O método em quatro passos</h4>
+
+<ol>
+  <li><strong>Separar:</strong> se $g(y)\neq0$, escreva $\dfrac{dy}{g(y)}=f(x)\,dx$.</li>
+  <li><strong>Integrar</strong> os dois lados: $\displaystyle\int\frac{dy}{g(y)}=\int f(x)\,dx+C$.</li>
+  <li><strong>Isolar $y$</strong> quando for possível (caso contrário, deixe a solução na forma implícita).</li>
+  <li><strong>Aplicar a condição inicial</strong> para determinar $C$, se houver um PVI.</li>
+</ol>
+<p><strong>Atenção:</strong> ao dividir por $g(y)$ podemos perder as <em>soluções constantes</em> dadas por $g(y)=0$. Verifique sempre se elas são soluções do problema.</p>
+    </div>
+    <div class="passo-teoria"><h4>3. Exemplo: $\dfrac{dy}{dx}=\dfrac{x}{y}$</h4>
+
+<p>Separando: $y\,dy=x\,dx$. Integrando os dois lados:</p>
+$$\frac{y^2}{2}=\frac{x^2}{2}+C_1 \;\Longrightarrow\; y^2-x^2=C \quad (C=2C_1).$$
+<p>A solução é dada de forma <strong>implícita</strong>: uma família de hipérboles. Para $C>0$ os ramos abrem para cima e para baixo; para $C<0$, para a direita e para a esquerda. Como $y=0$ não é permitido na equação original, cada solução fica restrita a um ramo da hipérbole.</p>
+      <figure class="figura-aula figura-grande"><svg viewBox="0 0 600 340" xmlns="http://www.w3.org/2000/svg" style="max-width:600px;width:100%;height:auto;display:block;margin:auto" role="img" aria-label="Hipérboles y ao quadrado menos x ao quadrado igual a constante"><rect x="0" y="0" width="600" height="340" fill="#fdfefe" stroke="#d5dbdb"/><line x1="40" y1="165.0" x2="560" y2="165.0" stroke="#2c3e50" stroke-width="1.5"/><line x1="300.0" y1="310" x2="300.0" y2="20" stroke="#2c3e50" stroke-width="1.5"/><text x="550" y="159.0" font-size="13" fill="#2c3e50" font-family="sans-serif">x</text><text x="286.0" y="28" font-size="13" fill="#2c3e50" font-family="sans-serif">y</text><line x1="105.0" y1="310.0" x2="495.0" y2="20.0" stroke="#e74c3c" stroke-width="1.5" stroke-dasharray="6,4"/><line x1="105.0" y1="20.0" x2="495.0" y2="310.0" stroke="#e74c3c" stroke-width="1.5" stroke-dasharray="6,4"/><polyline points="118.0,21.3 120.6,23.1 123.2,24.9 125.8,26.7 128.4,28.6 131.0,30.4 133.6,32.2 136.2,34.0 138.8,35.8 141.4,37.5 144.0,39.3 146.6,41.1 149.2,42.9 151.8,44.7 154.4,46.4 157.0,48.2 159.6,50.0 162.2,51.7 164.8,53.5 167.4,55.2 170.0,56.9 172.6,58.6 175.2,60.4 177.8,62.1 180.4,63.8 183.0,65.5 185.6,67.2 188.2,68.8 190.8,70.5 193.4,72.2 196.0,73.8 198.6,75.4 201.2,77.1 203.8,78.7 206.4,80.3 209.0,81.8 211.6,83.4 214.2,85.0 216.8,86.5 219.4,88.0 222.0,89.5 224.6,91.0 227.2,92.4 229.8,93.9 232.4,95.3 235.0,96.6 237.6,98.0 240.2,99.3 242.8,100.6 245.4,101.9 248.0,103.1 250.6,104.3 253.2,105.4 255.8,106.6 258.4,107.6 261.0,108.6 263.6,109.6 266.2,110.5 268.8,111.4 271.4,112.2 274.0,112.9 276.6,113.6 279.2,114.3 281.8,114.8 284.4,115.3 287.0,115.7 289.6,116.1 292.2,116.3 294.8,116.5 297.4,116.6 300.0,116.7 302.6,116.6 305.2,116.5 307.8,116.3 310.4,116.1 313.0,115.7 315.6,115.3 318.2,114.8 320.8,114.3 323.4,113.6 326.0,112.9 328.6,112.2 331.2,111.4 333.8,110.5 336.4,109.6 339.0,108.6 341.6,107.6 344.2,106.6 346.8,105.4 349.4,104.3 352.0,103.1 354.6,101.9 357.2,100.6 359.8,99.3 362.4,98.0 365.0,96.6 367.6,95.3 370.2,93.9 372.8,92.4 375.4,91.0 378.0,89.5 380.6,88.0 383.2,86.5 385.8,85.0 388.4,83.4 391.0,81.8 393.6,80.3 396.2,78.7 398.8,77.1 401.4,75.4 404.0,73.8 406.6,72.2 409.2,70.5 411.8,68.8 414.4,67.2 417.0,65.5 419.6,63.8 422.2,62.1 424.8,60.4 427.4,58.6 430.0,56.9 432.6,55.2 435.2,53.5 437.8,51.7 440.4,50.0 443.0,48.2 445.6,46.4 448.2,44.7 450.8,42.9 453.4,41.1 456.0,39.3 458.6,37.5 461.2,35.8 463.8,34.0 466.4,32.2 469.0,30.4 471.6,28.6 474.2,26.7 476.8,24.9 479.4,23.1 482.0,21.3" fill="none" stroke="#2980b9" stroke-width="2.5"/><polyline points="118.0,308.7 120.6,306.9 123.2,305.1 125.8,303.3 128.4,301.4 131.0,299.6 133.6,297.8 136.2,296.0 138.8,294.2 141.4,292.5 144.0,290.7 146.6,288.9 149.2,287.1 151.8,285.3 154.4,283.6 157.0,281.8 159.6,280.0 162.2,278.3 164.8,276.5 167.4,274.8 170.0,273.1 172.6,271.4 175.2,269.6 177.8,267.9 180.4,266.2 183.0,264.5 185.6,262.8 188.2,261.2 190.8,259.5 193.4,257.8 196.0,256.2 198.6,254.6 201.2,252.9 203.8,251.3 206.4,249.7 209.0,248.2 211.6,246.6 214.2,245.0 216.8,243.5 219.4,242.0 222.0,240.5 224.6,239.0 227.2,237.6 229.8,236.1 232.4,234.7 235.0,233.4 237.6,232.0 240.2,230.7 242.8,229.4 245.4,228.1 248.0,226.9 250.6,225.7 253.2,224.6 255.8,223.4 258.4,222.4 261.0,221.4 263.6,220.4 266.2,219.5 268.8,218.6 271.4,217.8 274.0,217.1 276.6,216.4 279.2,215.7 281.8,215.2 284.4,214.7 287.0,214.3 289.6,213.9 292.2,213.7 294.8,213.5 297.4,213.4 300.0,213.3 302.6,213.4 305.2,213.5 307.8,213.7 310.4,213.9 313.0,214.3 315.6,214.7 318.2,215.2 320.8,215.7 323.4,216.4 326.0,217.1 328.6,217.8 331.2,218.6 333.8,219.5 336.4,220.4 339.0,221.4 341.6,222.4 344.2,223.4 346.8,224.6 349.4,225.7 352.0,226.9 354.6,228.1 357.2,229.4 359.8,230.7 362.4,232.0 365.0,233.4 367.6,234.7 370.2,236.1 372.8,237.6 375.4,239.0 378.0,240.5 380.6,242.0 383.2,243.5 385.8,245.0 388.4,246.6 391.0,248.2 393.6,249.7 396.2,251.3 398.8,252.9 401.4,254.6 404.0,256.2 406.6,257.8 409.2,259.5 411.8,261.2 414.4,262.8 417.0,264.5 419.6,266.2 422.2,267.9 424.8,269.6 427.4,271.4 430.0,273.1 432.6,274.8 435.2,276.5 437.8,278.3 440.4,280.0 443.0,281.8 445.6,283.6 448.2,285.3 450.8,287.1 453.4,288.9 456.0,290.7 458.6,292.5 461.2,294.2 463.8,296.0 466.4,297.8 469.0,299.6 471.6,301.4 474.2,303.3 476.8,305.1 479.4,306.9 482.0,308.7" fill="none" stroke="#2980b9" stroke-width="2.5"/><polyline points="157.0,21.3 159.6,22.7 162.2,24.1 164.8,25.5 167.4,26.9 170.0,28.3 172.6,29.7 175.2,31.0 177.8,32.3 180.4,33.6 183.0,34.9 185.6,36.2 188.2,37.5 190.8,38.8 193.4,40.0 196.0,41.2 198.6,42.4 201.2,43.6 203.8,44.7 206.4,45.9 209.0,47.0 211.6,48.1 214.2,49.2 216.8,50.2 219.4,51.3 222.0,52.3 224.6,53.3 227.2,54.2 229.8,55.1 232.4,56.0 235.0,56.9 237.6,57.8 240.2,58.6 242.8,59.4 245.4,60.2 248.0,60.9 250.6,61.6 253.2,62.3 255.8,62.9 258.4,63.5 261.0,64.1 263.6,64.6 266.2,65.1 268.8,65.6 271.4,66.0 274.0,66.4 276.6,66.8 279.2,67.1 281.8,67.4 284.4,67.6 287.0,67.9 289.6,68.0 292.2,68.2 294.8,68.3 297.4,68.3 300.0,68.3 302.6,68.3 305.2,68.3 307.8,68.2 310.4,68.0 313.0,67.9 315.6,67.6 318.2,67.4 320.8,67.1 323.4,66.8 326.0,66.4 328.6,66.0 331.2,65.6 333.8,65.1 336.4,64.6 339.0,64.1 341.6,63.5 344.2,62.9 346.8,62.3 349.4,61.6 352.0,60.9 354.6,60.2 357.2,59.4 359.8,58.6 362.4,57.8 365.0,56.9 367.6,56.0 370.2,55.1 372.8,54.2 375.4,53.3 378.0,52.3 380.6,51.3 383.2,50.2 385.8,49.2 388.4,48.1 391.0,47.0 393.6,45.9 396.2,44.7 398.8,43.6 401.4,42.4 404.0,41.2 406.6,40.0 409.2,38.8 411.8,37.5 414.4,36.2 417.0,34.9 419.6,33.6 422.2,32.3 424.8,31.0 427.4,29.7 430.0,28.3 432.6,26.9 435.2,25.5 437.8,24.1 440.4,22.7 443.0,21.3" fill="none" stroke="#2980b9" stroke-width="2.5"/><polyline points="157.0,308.7 159.6,307.3 162.2,305.9 164.8,304.5 167.4,303.1 170.0,301.7 172.6,300.3 175.2,299.0 177.8,297.7 180.4,296.4 183.0,295.1 185.6,293.8 188.2,292.5 190.8,291.2 193.4,290.0 196.0,288.8 198.6,287.6 201.2,286.4 203.8,285.3 206.4,284.1 209.0,283.0 211.6,281.9 214.2,280.8 216.8,279.8 219.4,278.7 222.0,277.7 224.6,276.7 227.2,275.8 229.8,274.9 232.4,274.0 235.0,273.1 237.6,272.2 240.2,271.4 242.8,270.6 245.4,269.8 248.0,269.1 250.6,268.4 253.2,267.7 255.8,267.1 258.4,266.5 261.0,265.9 263.6,265.4 266.2,264.9 268.8,264.4 271.4,264.0 274.0,263.6 276.6,263.2 279.2,262.9 281.8,262.6 284.4,262.4 287.0,262.1 289.6,262.0 292.2,261.8 294.8,261.7 297.4,261.7 300.0,261.7 302.6,261.7 305.2,261.7 307.8,261.8 310.4,262.0 313.0,262.1 315.6,262.4 318.2,262.6 320.8,262.9 323.4,263.2 326.0,263.6 328.6,264.0 331.2,264.4 333.8,264.9 336.4,265.4 339.0,265.9 341.6,266.5 344.2,267.1 346.8,267.7 349.4,268.4 352.0,269.1 354.6,269.8 357.2,270.6 359.8,271.4 362.4,272.2 365.0,273.1 367.6,274.0 370.2,274.9 372.8,275.8 375.4,276.7 378.0,277.7 380.6,278.7 383.2,279.8 385.8,280.8 388.4,281.9 391.0,283.0 393.6,284.1 396.2,285.3 398.8,286.4 401.4,287.6 404.0,288.8 406.6,290.0 409.2,291.2 411.8,292.5 414.4,293.8 417.0,295.1 419.6,296.4 422.2,297.7 424.8,299.0 427.4,300.3 430.0,301.7 432.6,303.1 435.2,304.5 437.8,305.9 440.4,307.3 443.0,308.7" fill="none" stroke="#2980b9" stroke-width="2.5"/><polyline points="505.5,310.0 503.7,308.6 501.9,307.1 500.0,305.7 498.2,304.2 496.3,302.8 494.5,301.3 492.6,299.9 490.8,298.4 489.0,296.9 487.2,295.5 485.3,294.1 483.5,292.6 481.7,291.1 479.9,289.7 478.0,288.2 476.2,286.8 474.4,285.4 472.6,283.9 470.8,282.4 469.0,281.0 467.2,279.6 465.4,278.1 463.6,276.6 461.8,275.2 460.0,273.8 458.3,272.3 456.5,270.9 454.7,269.4 452.9,267.9 451.2,266.5 449.4,265.1 447.7,263.6 445.9,262.1 444.2,260.7 442.4,259.2 440.7,257.8 439.0,256.4 437.3,254.9 435.6,253.5 433.8,252.0 432.1,250.6 430.4,249.1 428.8,247.7 427.1,246.2 425.4,244.8 423.7,243.3 422.1,241.9 420.4,240.4 418.8,238.9 417.2,237.5 415.6,236.1 414.0,234.6 412.4,233.1 410.8,231.7 409.2,230.2 407.6,228.8 406.1,227.4 404.6,225.9 403.0,224.4 401.5,223.0 400.0,221.6 398.6,220.1 397.1,218.6 395.7,217.2 394.2,215.8 392.8,214.3 391.5,212.9 390.1,211.4 388.8,209.9 387.4,208.5 386.2,207.1 384.9,205.6 383.6,204.1 382.4,202.7 381.2,201.2 380.1,199.8 379.0,198.4 377.9,196.9 376.8,195.4 375.8,194.0 374.8,192.6 373.9,191.1 373.0,189.6 372.1,188.2 371.3,186.8 370.5,185.3 369.8,183.9 369.1,182.4 368.4,181.0 367.9,179.5 367.3,178.0 366.8,176.6 366.4,175.2 366.0,173.7 365.7,172.2 365.5,170.8 365.3,169.3 365.1,167.9 365.0,166.4 365.0,165.0 365.0,163.6 365.1,162.1 365.3,160.7 365.5,159.2 365.7,157.8 366.0,156.3 366.4,154.8 366.8,153.4 367.3,152.0 367.9,150.5 368.4,149.0 369.1,147.6 369.8,146.2 370.5,144.7 371.3,143.2 372.1,141.8 373.0,140.3 373.9,138.9 374.8,137.5 375.8,136.0 376.8,134.5 377.9,133.1 379.0,131.7 380.1,130.2 381.2,128.8 382.4,127.3 383.6,125.8 384.9,124.4 386.2,123.0 387.4,121.5 388.8,120.0 390.1,118.6 391.5,117.1 392.8,115.7 394.2,114.2 395.7,112.8 397.1,111.3 398.6,109.9 400.0,108.5 401.5,107.0 403.0,105.5 404.6,104.1 406.1,102.7 407.6,101.2 409.2,99.8 410.8,98.3 412.4,96.8 414.0,95.4 415.6,94.0 417.2,92.5 418.8,91.0 420.4,89.6 422.1,88.2 423.7,86.7 425.4,85.2 427.1,83.8 428.8,82.3 430.4,80.9 432.1,79.5 433.8,78.0 435.6,76.5 437.3,75.1 439.0,73.7 440.7,72.2 442.4,70.8 444.2,69.3 445.9,67.9 447.7,66.4 449.4,64.9 451.2,63.5 452.9,62.0 454.7,60.6 456.5,59.1 458.3,57.7 460.0,56.2 461.8,54.8 463.6,53.4 465.4,51.9 467.2,50.4 469.0,49.0 470.8,47.6 472.6,46.1 474.4,44.6 476.2,43.2 478.0,41.8 479.9,40.3 481.7,38.8 483.5,37.4 485.3,35.9 487.2,34.5 489.0,33.1 490.8,31.6 492.6,30.2 494.5,28.7 496.3,27.2 498.2,25.8 500.0,24.3 501.9,22.9 503.7,21.4 505.5,20.0" fill="none" stroke="#27ae60" stroke-width="2.5"/><polyline points="94.5,310.0 96.3,308.6 98.1,307.1 100.0,305.7 101.8,304.2 103.7,302.8 105.5,301.3 107.4,299.9 109.2,298.4 111.0,296.9 112.8,295.5 114.7,294.1 116.5,292.6 118.3,291.1 120.1,289.7 122.0,288.2 123.8,286.8 125.6,285.4 127.4,283.9 129.2,282.4 131.0,281.0 132.8,279.6 134.6,278.1 136.4,276.6 138.2,275.2 140.0,273.8 141.7,272.3 143.5,270.9 145.3,269.4 147.1,267.9 148.8,266.5 150.6,265.1 152.3,263.6 154.1,262.1 155.8,260.7 157.6,259.2 159.3,257.8 161.0,256.4 162.7,254.9 164.4,253.5 166.2,252.0 167.9,250.6 169.6,249.1 171.2,247.7 172.9,246.2 174.6,244.8 176.3,243.3 177.9,241.9 179.6,240.4 181.2,238.9 182.8,237.5 184.4,236.1 186.0,234.6 187.6,233.1 189.2,231.7 190.8,230.2 192.4,228.8 193.9,227.4 195.4,225.9 197.0,224.4 198.5,223.0 200.0,221.6 201.4,220.1 202.9,218.6 204.3,217.2 205.8,215.8 207.2,214.3 208.5,212.9 209.9,211.4 211.2,209.9 212.6,208.5 213.8,207.1 215.1,205.6 216.4,204.1 217.6,202.7 218.8,201.2 219.9,199.8 221.0,198.4 222.1,196.9 223.2,195.4 224.2,194.0 225.2,192.6 226.1,191.1 227.0,189.6 227.9,188.2 228.7,186.8 229.5,185.3 230.2,183.9 230.9,182.4 231.6,181.0 232.1,179.5 232.7,178.0 233.2,176.6 233.6,175.2 234.0,173.7 234.3,172.2 234.5,170.8 234.7,169.3 234.9,167.9 235.0,166.4 235.0,165.0 235.0,163.6 234.9,162.1 234.7,160.7 234.5,159.2 234.3,157.8 234.0,156.3 233.6,154.8 233.2,153.4 232.7,152.0 232.1,150.5 231.6,149.0 230.9,147.6 230.2,146.2 229.5,144.7 228.7,143.2 227.9,141.8 227.0,140.3 226.1,138.9 225.2,137.5 224.2,136.0 223.2,134.5 222.1,133.1 221.0,131.7 219.9,130.2 218.8,128.8 217.6,127.3 216.4,125.8 215.1,124.4 213.8,123.0 212.6,121.5 211.2,120.0 209.9,118.6 208.5,117.1 207.2,115.7 205.8,114.2 204.3,112.8 202.9,111.3 201.4,109.9 200.0,108.5 198.5,107.0 197.0,105.5 195.4,104.1 193.9,102.7 192.4,101.2 190.8,99.8 189.2,98.3 187.6,96.8 186.0,95.4 184.4,94.0 182.8,92.5 181.2,91.0 179.6,89.6 177.9,88.2 176.3,86.7 174.6,85.2 172.9,83.8 171.2,82.3 169.6,80.9 167.9,79.5 166.2,78.0 164.4,76.5 162.7,75.1 161.0,73.7 159.3,72.2 157.6,70.8 155.8,69.3 154.1,67.9 152.3,66.4 150.6,64.9 148.8,63.5 147.1,62.0 145.3,60.6 143.5,59.1 141.7,57.7 140.0,56.2 138.2,54.8 136.4,53.4 134.6,51.9 132.8,50.4 131.0,49.0 129.2,47.6 127.4,46.1 125.6,44.6 123.8,43.2 122.0,41.8 120.1,40.3 118.3,38.8 116.5,37.4 114.7,35.9 112.8,34.5 111.0,33.1 109.2,31.6 107.4,30.2 105.5,28.7 103.7,27.2 101.8,25.8 100.0,24.3 98.1,22.9 96.3,21.4 94.5,20.0" fill="none" stroke="#27ae60" stroke-width="2.5"/><polyline points="534.4,310.0 532.7,308.6 531.1,307.1 529.5,305.7 527.9,304.2 526.3,302.8 524.7,301.3 523.1,299.9 521.5,298.4 520.0,296.9 518.4,295.5 516.8,294.1 515.3,292.6 513.7,291.1 512.2,289.7 510.6,288.2 509.1,286.8 507.6,285.4 506.1,283.9 504.6,282.4 503.1,281.0 501.6,279.6 500.1,278.1 498.6,276.6 497.1,275.2 495.7,273.8 494.2,272.3 492.8,270.9 491.3,269.4 489.9,267.9 488.5,266.5 487.1,265.1 485.7,263.6 484.3,262.1 482.9,260.7 481.6,259.2 480.2,257.8 478.9,256.4 477.5,254.9 476.2,253.5 474.9,252.0 473.6,250.6 472.3,249.1 471.0,247.7 469.8,246.2 468.5,244.8 467.3,243.3 466.1,241.9 464.9,240.4 463.7,238.9 462.5,237.5 461.3,236.1 460.2,234.6 459.1,233.1 457.9,231.7 456.8,230.2 455.8,228.8 454.7,227.4 453.6,225.9 452.6,224.4 451.6,223.0 450.6,221.6 449.6,220.1 448.7,218.6 447.7,217.2 446.8,215.8 445.9,214.3 445.1,212.9 444.2,211.4 443.4,209.9 442.6,208.5 441.8,207.1 441.0,205.6 440.3,204.1 439.5,202.7 438.8,201.2 438.2,199.8 437.5,198.4 436.9,196.9 436.3,195.4 435.7,194.0 435.2,192.6 434.7,191.1 434.2,189.6 433.7,188.2 433.3,186.8 432.8,185.3 432.4,183.9 432.1,182.4 431.8,181.0 431.5,179.5 431.2,178.0 430.9,176.6 430.7,175.2 430.5,173.7 430.4,172.2 430.2,170.8 430.1,169.3 430.1,167.9 430.0,166.4 430.0,165.0 430.0,163.6 430.1,162.1 430.1,160.7 430.2,159.2 430.4,157.8 430.5,156.3 430.7,154.8 430.9,153.4 431.2,152.0 431.5,150.5 431.8,149.0 432.1,147.6 432.4,146.2 432.8,144.7 433.3,143.2 433.7,141.8 434.2,140.3 434.7,138.9 435.2,137.5 435.7,136.0 436.3,134.5 436.9,133.1 437.5,131.7 438.2,130.2 438.8,128.8 439.5,127.3 440.3,125.8 441.0,124.4 441.8,123.0 442.6,121.5 443.4,120.0 444.2,118.6 445.1,117.1 445.9,115.7 446.8,114.2 447.7,112.8 448.7,111.3 449.6,109.9 450.6,108.5 451.6,107.0 452.6,105.5 453.6,104.1 454.7,102.7 455.8,101.2 456.8,99.8 457.9,98.3 459.1,96.8 460.2,95.4 461.3,94.0 462.5,92.5 463.7,91.0 464.9,89.6 466.1,88.2 467.3,86.7 468.5,85.2 469.8,83.8 471.0,82.3 472.3,80.9 473.6,79.5 474.9,78.0 476.2,76.5 477.5,75.1 478.9,73.7 480.2,72.2 481.6,70.8 482.9,69.3 484.3,67.9 485.7,66.4 487.1,64.9 488.5,63.5 489.9,62.0 491.3,60.6 492.8,59.1 494.2,57.7 495.7,56.2 497.1,54.8 498.6,53.4 500.1,51.9 501.6,50.4 503.1,49.0 504.6,47.6 506.1,46.1 507.6,44.6 509.1,43.2 510.6,41.8 512.2,40.3 513.7,38.8 515.3,37.4 516.8,35.9 518.4,34.5 520.0,33.1 521.5,31.6 523.1,30.2 524.7,28.7 526.3,27.2 527.9,25.8 529.5,24.3 531.1,22.9 532.7,21.4 534.4,20.0" fill="none" stroke="#27ae60" stroke-width="2.5"/><polyline points="65.6,310.0 67.3,308.6 68.9,307.1 70.5,305.7 72.1,304.2 73.7,302.8 75.3,301.3 76.9,299.9 78.5,298.4 80.0,296.9 81.6,295.5 83.2,294.1 84.7,292.6 86.3,291.1 87.8,289.7 89.4,288.2 90.9,286.8 92.4,285.4 93.9,283.9 95.4,282.4 96.9,281.0 98.4,279.6 99.9,278.1 101.4,276.6 102.9,275.2 104.3,273.8 105.8,272.3 107.2,270.9 108.7,269.4 110.1,267.9 111.5,266.5 112.9,265.1 114.3,263.6 115.7,262.1 117.1,260.7 118.4,259.2 119.8,257.8 121.1,256.4 122.5,254.9 123.8,253.5 125.1,252.0 126.4,250.6 127.7,249.1 129.0,247.7 130.2,246.2 131.5,244.8 132.7,243.3 133.9,241.9 135.1,240.4 136.3,238.9 137.5,237.5 138.7,236.1 139.8,234.6 140.9,233.1 142.1,231.7 143.2,230.2 144.2,228.8 145.3,227.4 146.4,225.9 147.4,224.4 148.4,223.0 149.4,221.6 150.4,220.1 151.3,218.6 152.3,217.2 153.2,215.8 154.1,214.3 154.9,212.9 155.8,211.4 156.6,209.9 157.4,208.5 158.2,207.1 159.0,205.6 159.7,204.1 160.5,202.7 161.2,201.2 161.8,199.8 162.5,198.4 163.1,196.9 163.7,195.4 164.3,194.0 164.8,192.6 165.3,191.1 165.8,189.6 166.3,188.2 166.8,186.8 167.2,185.3 167.6,183.9 167.9,182.4 168.2,181.0 168.5,179.5 168.8,178.0 169.1,176.6 169.3,175.2 169.5,173.7 169.6,172.2 169.8,170.8 169.9,169.3 169.9,167.9 170.0,166.4 170.0,165.0 170.0,163.6 169.9,162.1 169.9,160.7 169.8,159.2 169.6,157.8 169.5,156.3 169.3,154.8 169.1,153.4 168.8,152.0 168.5,150.5 168.2,149.0 167.9,147.6 167.6,146.2 167.2,144.7 166.8,143.2 166.3,141.8 165.8,140.3 165.3,138.9 164.8,137.5 164.3,136.0 163.7,134.5 163.1,133.1 162.5,131.7 161.8,130.2 161.2,128.8 160.5,127.3 159.7,125.8 159.0,124.4 158.2,123.0 157.4,121.5 156.6,120.0 155.8,118.6 154.9,117.1 154.1,115.7 153.2,114.2 152.3,112.8 151.3,111.3 150.4,109.9 149.4,108.5 148.4,107.0 147.4,105.5 146.4,104.1 145.3,102.7 144.2,101.2 143.2,99.8 142.1,98.3 140.9,96.8 139.8,95.4 138.7,94.0 137.5,92.5 136.3,91.0 135.1,89.6 133.9,88.2 132.7,86.7 131.5,85.2 130.2,83.8 129.0,82.3 127.7,80.9 126.4,79.5 125.1,78.0 123.8,76.5 122.5,75.1 121.1,73.7 119.8,72.2 118.4,70.8 117.1,69.3 115.7,67.9 114.3,66.4 112.9,64.9 111.5,63.5 110.1,62.0 108.7,60.6 107.2,59.1 105.8,57.7 104.3,56.2 102.9,54.8 101.4,53.4 99.9,51.9 98.4,50.4 96.9,49.0 95.4,47.6 93.9,46.1 92.4,44.6 90.9,43.2 89.4,41.8 87.8,40.3 86.3,38.8 84.7,37.4 83.2,35.9 81.6,34.5 80.0,33.1 78.5,31.6 76.9,30.2 75.3,28.7 73.7,27.2 72.1,25.8 70.5,24.3 68.9,22.9 67.3,21.4 65.6,20.0" fill="none" stroke="#27ae60" stroke-width="2.5"/><polyline points="559.8,292.6 558.5,291.1 557.2,289.7 555.9,288.2 554.7,286.8 553.4,285.4 552.2,283.9 550.9,282.4 549.7,281.0 548.5,279.6 547.3,278.1 546.1,276.6 544.9,275.2 543.8,273.8 542.6,272.3 541.4,270.9 540.3,269.4 539.2,267.9 538.0,266.5 536.9,265.1 535.8,263.6 534.7,262.1 533.6,260.7 532.6,259.2 531.5,257.8 530.5,256.4 529.4,254.9 528.4,253.5 527.4,252.0 526.4,250.6 525.4,249.1 524.5,247.7 523.5,246.2 522.5,244.8 521.6,243.3 520.7,241.9 519.8,240.4 518.9,238.9 518.0,237.5 517.2,236.1 516.3,234.6 515.5,233.1 514.6,231.7 513.8,230.2 513.0,228.8 512.3,227.4 511.5,225.9 510.8,224.4 510.0,223.0 509.3,221.6 508.6,220.1 507.9,218.6 507.3,217.2 506.6,215.8 506.0,214.3 505.3,212.9 504.7,211.4 504.2,209.9 503.6,208.5 503.0,207.1 502.5,205.6 502.0,204.1 501.5,202.7 501.0,201.2 500.5,199.8 500.1,198.4 499.7,196.9 499.3,195.4 498.9,194.0 498.5,192.6 498.1,191.1 497.8,189.6 497.5,188.2 497.2,186.8 496.9,185.3 496.6,183.9 496.4,182.4 496.2,181.0 496.0,179.5 495.8,178.0 495.6,176.6 495.5,175.2 495.4,173.7 495.2,172.2 495.2,170.8 495.1,169.3 495.0,167.9 495.0,166.4 495.0,165.0 495.0,163.6 495.0,162.1 495.1,160.7 495.2,159.2 495.2,157.8 495.4,156.3 495.5,154.8 495.6,153.4 495.8,152.0 496.0,150.5 496.2,149.0 496.4,147.6 496.6,146.2 496.9,144.7 497.2,143.2 497.5,141.8 497.8,140.3 498.1,138.9 498.5,137.5 498.9,136.0 499.3,134.5 499.7,133.1 500.1,131.7 500.5,130.2 501.0,128.8 501.5,127.3 502.0,125.8 502.5,124.4 503.0,123.0 503.6,121.5 504.2,120.0 504.7,118.6 505.3,117.1 506.0,115.7 506.6,114.2 507.3,112.8 507.9,111.3 508.6,109.9 509.3,108.5 510.0,107.0 510.8,105.5 511.5,104.1 512.3,102.7 513.0,101.2 513.8,99.8 514.6,98.3 515.5,96.8 516.3,95.4 517.2,94.0 518.0,92.5 518.9,91.0 519.8,89.6 520.7,88.2 521.6,86.7 522.5,85.2 523.5,83.8 524.5,82.3 525.4,80.9 526.4,79.5 527.4,78.0 528.4,76.5 529.4,75.1 530.5,73.7 531.5,72.2 532.6,70.8 533.6,69.3 534.7,67.9 535.8,66.4 536.9,64.9 538.0,63.5 539.2,62.0 540.3,60.6 541.4,59.1 542.6,57.7 543.8,56.2 544.9,54.8 546.1,53.4 547.3,51.9 548.5,50.4 549.7,49.0 550.9,47.6 552.2,46.1 553.4,44.6 554.7,43.2 555.9,41.8 557.2,40.3 558.5,38.8 559.8,37.4" fill="none" stroke="#27ae60" stroke-width="2.5"/><polyline points="40.2,292.6 41.5,291.1 42.8,289.7 44.1,288.2 45.3,286.8 46.6,285.4 47.8,283.9 49.1,282.4 50.3,281.0 51.5,279.6 52.7,278.1 53.9,276.6 55.1,275.2 56.2,273.8 57.4,272.3 58.6,270.9 59.7,269.4 60.8,267.9 62.0,266.5 63.1,265.1 64.2,263.6 65.3,262.1 66.4,260.7 67.4,259.2 68.5,257.8 69.5,256.4 70.6,254.9 71.6,253.5 72.6,252.0 73.6,250.6 74.6,249.1 75.5,247.7 76.5,246.2 77.5,244.8 78.4,243.3 79.3,241.9 80.2,240.4 81.1,238.9 82.0,237.5 82.8,236.1 83.7,234.6 84.5,233.1 85.4,231.7 86.2,230.2 87.0,228.8 87.7,227.4 88.5,225.9 89.2,224.4 90.0,223.0 90.7,221.6 91.4,220.1 92.1,218.6 92.7,217.2 93.4,215.8 94.0,214.3 94.7,212.9 95.3,211.4 95.8,209.9 96.4,208.5 97.0,207.1 97.5,205.6 98.0,204.1 98.5,202.7 99.0,201.2 99.5,199.8 99.9,198.4 100.3,196.9 100.7,195.4 101.1,194.0 101.5,192.6 101.9,191.1 102.2,189.6 102.5,188.2 102.8,186.8 103.1,185.3 103.4,183.9 103.6,182.4 103.8,181.0 104.0,179.5 104.2,178.0 104.4,176.6 104.5,175.2 104.6,173.7 104.8,172.2 104.8,170.8 104.9,169.3 105.0,167.9 105.0,166.4 105.0,165.0 105.0,163.6 105.0,162.1 104.9,160.7 104.8,159.2 104.8,157.8 104.6,156.3 104.5,154.8 104.4,153.4 104.2,152.0 104.0,150.5 103.8,149.0 103.6,147.6 103.4,146.2 103.1,144.7 102.8,143.2 102.5,141.8 102.2,140.3 101.9,138.9 101.5,137.5 101.1,136.0 100.7,134.5 100.3,133.1 99.9,131.7 99.5,130.2 99.0,128.8 98.5,127.3 98.0,125.8 97.5,124.4 97.0,123.0 96.4,121.5 95.8,120.0 95.3,118.6 94.7,117.1 94.0,115.7 93.4,114.2 92.7,112.8 92.1,111.3 91.4,109.9 90.7,108.5 90.0,107.0 89.2,105.5 88.5,104.1 87.7,102.7 87.0,101.2 86.2,99.8 85.4,98.3 84.5,96.8 83.7,95.4 82.8,94.0 82.0,92.5 81.1,91.0 80.2,89.6 79.3,88.2 78.4,86.7 77.5,85.2 76.5,83.8 75.5,82.3 74.6,80.9 73.6,79.5 72.6,78.0 71.6,76.5 70.6,75.1 69.5,73.7 68.5,72.2 67.4,70.8 66.4,69.3 65.3,67.9 64.2,66.4 63.1,64.9 62.0,63.5 60.8,62.0 59.7,60.6 58.6,59.1 57.4,57.7 56.2,56.2 55.1,54.8 53.9,53.4 52.7,51.9 51.5,50.4 50.3,49.0 49.1,47.6 47.8,46.1 46.6,44.6 45.3,43.2 44.1,41.8 42.8,40.3 41.5,38.8 40.2,37.4" fill="none" stroke="#27ae60" stroke-width="2.5"/><text x="322.8" y="32.1" font-size="13" fill="#2980b9" font-family="sans-serif">y² − x² = k &gt; 0</text><text x="443.0" y="140.8" font-size="13" fill="#27ae60" font-family="sans-serif">k &lt; 0</text></svg><figcaption>Figura 1: Soluções de dy/dx = x/y: hipérboles y² − x² = k, com assíntotas y = ±x.</figcaption></figure>
+    </div>
+    <div class="passo-teoria"><h4>4. Aplicação: o tanque com mistura</h4>
+
+<p>Um tanque tem $V=100$ galões de água, com $Q_0$ libras de sal. Entra solução com $0{,}25$ lb/gal a $r$ gal/min e a mistura homogênea sai à mesma vazão. Então:</p>
+$$\frac{dQ}{dt}=0{,}25\,r-\frac{r}{100}\,Q=\frac{r}{100}\,(25-Q),\qquad Q(0)=Q_0.$$
+<p>A equação é linear e <strong>também separável</strong>. Separando e integrando (com $Q\neq25$):</p>
+$$\int\frac{dQ}{25-Q}=\int\frac{r}{100}\,dt \;\Rightarrow\; -\ln|25-Q|=\frac{r}{100}t+c \;\Rightarrow\; 25-Q=Ke^{-rt/100}.$$
+<p>Com $Q(0)=Q_0$, temos $K=25-Q_0$ e, portanto,</p>
+$$Q(t)=25+(Q_0-25)\,e^{-rt/100}.$$
+<p>Quando $t\to\infty$, $Q\to25$ lb: a concentração do tanque tende à da entrada ($0{,}25\cdot100$).</p>
+    </div>
+  </section>
+  <section class="aplicacoes-reais" id="aplicacoes"><h3>💡 EDO em Ação</h3><div class="cards-aplicacao">
+    <div class="card"><h4>🧂 Tratamento de água e reatores</h4><p>Em estações de tratamento e reatores químicos, a concentração de um soluto em um tanque agitado segue $\frac{dQ}{dt}=\text{entrada}-\text{saída}$, uma EDO separável. A solução mostra quanto tempo leva para o tanque atingir a concentração desejada.</p></div>
+    <div class="card" style="border-left-color: #2ecc71;"><h4>☕ Resfriamento de Newton</h4><p>A lei $\frac{dT}{dt}=-k\,(T-T_a)$ é separável: $\frac{dT}{T-T_a}=-k\,dt$. Ela descreve o resfriamento de um motor, de um componente eletrônico ou de uma xícara de café e permite estimar quanto tempo falta para atingir uma temperatura segura.</p></div>
+  </div></section>
+  <section class="questoes-resolvidas" id="resolvidas"><h3>✅ 5 Questões Resolvidas (R 1 a 5)</h3>
+    <article class="questao"><h4>R 1: Separável com solução implícita e PVI</h4><p><strong>Enunciado:</strong> Resolva $\dfrac{dy}{dx}=\dfrac{2x}{y}$, $y(1)=3$.</p>
+      <div class="resolucao-bloco"><p><strong>Resolução:</strong> <br>Separando: $y\,dy=2x\,dx$. Integrando: $\frac{y^2}{2}=x^2+C$.
+  <br>Com $y(1)=3$: $\frac92=1+C \Rightarrow C=\frac72$. Logo $y^2=2x^2+7$.
+  <br>Como $y(1)=3>0$, tomamos a raiz positiva: $y=\sqrt{2x^2+7}$.
+  <br>Conferência: $y'=\frac{4x}{2\sqrt{2x^2+7}}=\frac{2x}{y}$ ✓ e $y(1)=\sqrt9=3$ ✓.
+  <br><strong>Resposta:</strong> $y(x)=\sqrt{2x^2+7}$.</p></div></article>
+    <article class="questao"><h4>R 2: Crescimento exponencial generalizado</h4><p><strong>Enunciado:</strong> Resolva $\dfrac{dy}{dx}=3x^2y$, $y(0)=2$.</p>
+      <div class="resolucao-bloco"><p><strong>Resolução:</strong> <br>Separando ($y\neq0$): $\frac{dy}{y}=3x^2\,dx \Rightarrow \ln|y|=x^3+c \Rightarrow y=Ce^{x^3}$.
+  <br>$y(0)=C=2$, logo $y=2e^{x^3}$. (A solução constante $y=0$ é a que se perde na divisão; ela não satisfaz $y(0)=2$.)
+  <br>Conferência: $y'=2e^{x^3}\cdot3x^2=3x^2y$ ✓.
+  <br><strong>Resposta:</strong> $y(x)=2e^{x^3}$.</p></div></article>
+    <article class="questao"><h4>R 3: Separável com arco tangente</h4><p><strong>Enunciado:</strong> Resolva $\dfrac{dy}{dx}=\dfrac{1+y^2}{1+x^2}$, $y(0)=1$.</p>
+      <div class="resolucao-bloco"><p><strong>Resolução:</strong> <br>Separando: $\frac{dy}{1+y^2}=\frac{dx}{1+x^2}$. Integrando: $\operatorname{arctg}y=\operatorname{arctg}x+C$.
+  <br>$y(0)=1$: $\operatorname{arctg}1=\frac\pi4=0+C \Rightarrow C=\frac\pi4$.
+  <br>Então $y=\operatorname{tg}\!\left(\operatorname{arctg}x+\frac\pi4\right)=\dfrac{x+1}{1-x}$ (fórmula da tangente da soma, com $\operatorname{tg}\frac\pi4=1$), para $x<1$.
+  <br>Conferência: $y'=\frac{(1-x)+(1+x)}{(1-x)^2}=\frac{2}{(1-x)^2}$ e $\frac{1+y^2}{1+x^2}=\frac{2(1+x^2)/(1-x)^2}{1+x^2}=\frac{2}{(1-x)^2}$ ✓.
+  <br><strong>Resposta:</strong> $y(x)=\dfrac{1+x}{1-x}$, $x<1$.</p></div></article>
+    <article class="questao"><h4>R 4: Resfriamento de Newton</h4><p><strong>Enunciado:</strong> Um café a $90\,^\circ$C está em uma sala a $20\,^\circ$C e esfria segundo $\dfrac{dT}{dt}=-0{,}1\,(T-20)$. Determine $T(t)$, a temperatura após $10$ min e o instante em que o café chega a $30\,^\circ$C.</p>
+      <div class="resolucao-bloco"><p><strong>Resolução:</strong> <br>Separando ($T\neq20$): $\frac{dT}{T-20}=-0{,}1\,dt \Rightarrow \ln|T-20|=-0{,}1t+c \Rightarrow T=20+Ce^{-0{,}1t}$.
+  <br>$T(0)=90 \Rightarrow C=70$: $T(t)=20+70e^{-0{,}1t}$.
+  <br>$T(10)=20+70e^{-1}\approx20+70\cdot0{,}3679\approx45{,}75\,^\circ$C.
+  <br>$T=30$: $70e^{-0{,}1t}=10 \Rightarrow e^{-0{,}1t}=\frac17 \Rightarrow t=10\ln7\approx19{,}46$ min.
+  <br><strong>Resposta:</strong> $T=20+70e^{-0{,}1t}$; $T(10)\approx45{,}75\,^\circ$C; $t\approx19{,}46$ min.</p></div></article>
+    <article class="questao"><h4>R 5: Tanque do livro-texto com números</h4><p><strong>Enunciado:</strong> No tanque de $100$ gal, entra solução com $0{,}25$ lb/gal a $r=2$ gal/min e a mistura sai à mesma vazão. Se $Q(0)=10$ lb, determine $Q(t)$, $Q(50)$ e o instante em que $Q=20$ lb.</p>
+      <div class="resolucao-bloco"><p><strong>Resolução:</strong> <br>$\frac{dQ}{dt}=0{,}5-0{,}02Q=0{,}02\,(25-Q)$, com $Q(0)=10$.
+  <br>Separando: $\frac{dQ}{25-Q}=0{,}02\,dt \Rightarrow -\ln|25-Q|=0{,}02t+c \Rightarrow 25-Q=Ke^{-0{,}02t}$.
+  <br>$Q(0)=10 \Rightarrow K=15$, logo $Q(t)=25-15e^{-0{,}02t}$.
+  <br>Conferência: $Q'=0{,}3e^{-0{,}02t}$ e $0{,}02\,(25-Q)=0{,}02\cdot15e^{-0{,}02t}=0{,}3e^{-0{,}02t}$ ✓.
+  <br>$Q(50)=25-15e^{-1}\approx25-5{,}518\approx19{,}48$ lb.
+  <br>$Q=20$: $15e^{-0{,}02t}=5 \Rightarrow e^{-0{,}02t}=\frac13 \Rightarrow t=50\ln3\approx54{,}93$ min.
+  <br><strong>Resposta:</strong> $Q=25-15e^{-0{,}02t}$; $Q(50)\approx19{,}48$ lb; $t\approx54{,}93$ min.</p></div></article>
+  </section>
+  <section class="questoes-propostas" id="propostas"><h3>✍️ 10 Questões Propostas (P 6 a 15)</h3>
+    <article class="questao"><h4>P 6: Homogênea simples</h4><p><strong>Enunciado:</strong> Resolva $\dfrac{dy}{dx}=\dfrac{y}{x}$ ($x>0$), $y(2)=6$.</p>
+      <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+      <div class="gabarito-resolucao"><p><strong>Resolução:</strong> $\frac{dy}{y}=\frac{dx}{x} \Rightarrow \ln|y|=\ln x+c \Rightarrow y=Cx$. De $y(2)=2C=6$: $C=3$.
+  <br>Conferência: $y=3x \Rightarrow y'=3=\frac{3x}{x}$ ✓.
+  <br><strong>Resposta:</strong> $y=3x$.</p></div></article>
+    <article class="questao"><h4>P 7: Exponencial no segundo membro</h4><p><strong>Enunciado:</strong> Resolva $\dfrac{dy}{dx}=\dfrac{e^{x}}{y}$, $y(0)=2$ ($y>0$).</p>
+      <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+      <div class="gabarito-resolucao"><p><strong>Resolução:</strong> $y\,dy=e^x\,dx \Rightarrow \frac{y^2}{2}=e^x+C$. De $y(0)=2$: $2=1+C \Rightarrow C=1$, logo $y^2=2e^x+2$ e $y=\sqrt{2e^x+2}$.
+  <br>Conferência: $y'=\frac{2e^x}{2y}=\frac{e^x}{y}$ ✓.
+  <br><strong>Resposta:</strong> $y=\sqrt{2e^x+2}$.</p></div></article>
+    <article class="questao"><h4>P 8: Gaussiana</h4><p><strong>Enunciado:</strong> Resolva $\dfrac{dy}{dx}=-2x\,y$, $y(0)=5$.</p>
+      <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+      <div class="gabarito-resolucao"><p><strong>Resolução:</strong> $\frac{dy}{y}=-2x\,dx \Rightarrow \ln|y|=-x^2+c \Rightarrow y=Ce^{-x^2}$. De $y(0)=5$: $C=5$.
+  <br>Conferência: $y'=-2x\cdot5e^{-x^2}=-2xy$ ✓.
+  <br><strong>Resposta:</strong> $y=5e^{-x^2}$.</p></div></article>
+    <article class="questao"><h4>P 9: Com funções trigonométricas</h4><p><strong>Enunciado:</strong> Resolva $\dfrac{dy}{dx}=y^2\cos x$, $y(0)=1$.</p>
+      <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+      <div class="gabarito-resolucao"><p><strong>Resolução:</strong> $\frac{dy}{y^2}=\cos x\,dx \Rightarrow -\frac1y=\operatorname{sen}x+C$. De $y(0)=1$: $-1=0+C \Rightarrow C=-1$.
+  <br>Então $-\frac1y=\operatorname{sen}x-1 \Rightarrow y=\frac{1}{1-\operatorname{sen}x}$.
+  <br>Conferência: $y'=\frac{\cos x}{(1-\operatorname{sen}x)^2}=y^2\cos x$ ✓ e $y(0)=1$ ✓.
+  <br><strong>Resposta:</strong> $y=\dfrac{1}{1-\operatorname{sen}x}$.</p></div></article>
+    <article class="questao"><h4>P 10: Decaimento</h4><p><strong>Enunciado:</strong> Uma substância decai segundo $\dfrac{dN}{dt}=-0{,}02N$, com $N(0)=500$ g. Determine $N(t)$ e $N(50)$.</p>
+      <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+      <div class="gabarito-resolucao"><p><strong>Resolução:</strong> $\frac{dN}{N}=-0{,}02\,dt \Rightarrow N=Ce^{-0{,}02t}$; $C=500$.
+  <br>$N(50)=500e^{-1}\approx500\cdot0{,}3679\approx183{,}94$ g.
+  <br><strong>Resposta:</strong> $N=500e^{-0{,}02t}$; $N(50)\approx183{,}94$ g.</p></div></article>
+    <article class="questao"><h4>P 11: Resfriamento de Newton (2)</h4><p><strong>Enunciado:</strong> Uma peça a $60\,^\circ$C está em um ambiente a $10\,^\circ$C e esfria segundo $\dfrac{dT}{dt}=-0{,}2\,(T-10)$. Em quanto tempo ela chega a $20\,^\circ$C?</p>
+      <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+      <div class="gabarito-resolucao"><p><strong>Resolução:</strong> $T=10+Ce^{-0{,}2t}$; $T(0)=60 \Rightarrow C=50$.
+  <br>$T=20$: $50e^{-0{,}2t}=10 \Rightarrow e^{-0{,}2t}=\frac15 \Rightarrow t=5\ln5\approx8{,}05$ min.
+  <br><strong>Resposta:</strong> $\approx8{,}05$ min.</p></div></article>
+    <article class="questao"><h4>P 12: Tanque (retomada da Aula 01)</h4><p><strong>Enunciado:</strong> Um tanque de $200$ L contém água pura. Entra solução a $4$ L/min com $0{,}5$ g/L e a mistura sai a $4$ L/min. Resolva $\dfrac{dQ}{dt}=2-0{,}02Q$, $Q(0)=0$, e calcule $Q(50)$.</p>
+      <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+      <div class="gabarito-resolucao"><p><strong>Resolução:</strong> $\frac{dQ}{dt}=0{,}02\,(100-Q) \Rightarrow \frac{dQ}{100-Q}=0{,}02\,dt \Rightarrow 100-Q=Ke^{-0{,}02t}$. Com $Q(0)=0$: $K=100$.
+  <br>$Q(t)=100\,(1-e^{-0{,}02t})$ e $Q(50)=100\,(1-e^{-1})\approx63{,}21$ g.
+  <br>Conferência: $Q'=2e^{-0{,}02t}$ e $2-0{,}02Q=2-2(1-e^{-0{,}02t})=2e^{-0{,}02t}$ ✓.
+  <br><strong>Resposta:</strong> $Q=100(1-e^{-0{,}02t})$; $Q(50)\approx63{,}21$ g.</p></div></article>
+    <article class="questao"><h4>P 13: Soluções implícitas e raiz cúbica</h4><p><strong>Enunciado:</strong> Resolva $\dfrac{dy}{dx}=\dfrac{x^2}{y^2}$, $y(1)=2$.</p>
+      <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+      <div class="gabarito-resolucao"><p><strong>Resolução:</strong> $y^2\,dy=x^2\,dx \Rightarrow \frac{y^3}{3}=\frac{x^3}{3}+C \Rightarrow y^3=x^3+C'$. De $y(1)=2$: $8=1+C' \Rightarrow C'=7$.
+  <br>Logo $y=\sqrt[3]{x^3+7}$. Conferência: $3y^2y'=3x^2 \Rightarrow y'=\frac{x^2}{y^2}$ ✓.
+  <br><strong>Resposta:</strong> $y=\sqrt[3]{x^3+7}$.</p></div></article>
+    <article class="questao"><h4>P 14: Tempo de duplicação</h4><p><strong>Enunciado:</strong> Uma população obedece a $\dfrac{dP}{dt}=0{,}03P$, com $P(0)=1000$. Em quanto tempo ela dobra?</p>
+      <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+      <div class="gabarito-resolucao"><p><strong>Resolução:</strong> $P=1000\,e^{0{,}03t}$. Dobrar: $e^{0{,}03t}=2 \Rightarrow t=\frac{\ln2}{0{,}03}\approx\frac{0{,}6931}{0{,}03}\approx23{,}10$ anos.
+  <br><strong>Resposta:</strong> $\approx23{,}10$ anos.</p></div></article>
+    <article class="questao"><h4>P 15: Exponencial em x e y</h4><p><strong>Enunciado:</strong> Resolva $\dfrac{dy}{dx}=e^{x-y}$, $y(0)=\ln2$.</p>
+      <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+      <div class="gabarito-resolucao"><p><strong>Resolução:</strong> $\frac{dy}{dx}=\frac{e^x}{e^y} \Rightarrow e^y\,dy=e^x\,dx \Rightarrow e^y=e^x+C$. De $y(0)=\ln2$: $2=1+C \Rightarrow C=1$.
+  <br>Então $e^y=e^x+1$ e $y=\ln(e^x+1)$.
+  <br>Conferência: $y'=\frac{e^x}{e^x+1}$ e $e^{x-y}=\frac{e^x}{e^x+1}$ ✓.
+  <br><strong>Resposta:</strong> $y=\ln(e^x+1)$.</p></div></article>
+  </section>
+  <section class="TESTE" id="testes"><h3>🎓 TESTES (T 16 a 20)</h3>
+    <article class="questao"><h4>T 16: (Questão autoral) Solução implícita</h4><p>A solução geral de $\dfrac{dy}{dx}=\dfrac{x}{y}$ é dada por:</p><p>A) $y=x^2+C$<br>B) $y^2=x^2+C$<br>C) $y=x+C$<br>D) $y^2=2x+C$<br>E) $y=Cx$</p>
+      <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+      <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>B</strong>.<br>Separando: $y\,dy=x\,dx \Rightarrow \frac{y^2}{2}=\frac{x^2}{2}+C_1 \Rightarrow y^2=x^2+C$. Derivando implicitamente $y^2=x^2+C$: $2yy'=2x \Rightarrow y'=\frac xy$ ✓.</p></div></article>
+    <article class="questao"><h4>T 17: (Questão autoral) PVI separável</h4><p>A solução do PVI $\dfrac{dy}{dx}=2x\,y$, $y(0)=1$ é:</p><p>A) $e^{2x}$<br>B) $1+x^2$<br>C) $2e^{x^2}$<br>D) $e^{-x^2}$<br>E) $e^{x^2}$</p>
+      <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+      <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>E</strong>.<br>$\frac{dy}{y}=2x\,dx \Rightarrow \ln|y|=x^2+c \Rightarrow y=Ce^{x^2}$; $y(0)=C=1$. Logo $y=e^{x^2}$ (confira: $y'=2xe^{x^2}=2xy$ ✓).</p></div></article>
+    <article class="questao"><h4>T 18: (Questão autoral) PVI com explosão em tempo finito</h4><p>A solução do PVI $\dfrac{dy}{dx}=y^2$, $y(0)=1$ é:</p><p>A) $\dfrac{1}{1-x}$<br>B) $e^{x}$<br>C) $\dfrac{1}{1+x}$<br>D) $1-x$<br>E) $1+x$</p>
+      <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+      <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>A</strong>.<br>$\frac{dy}{y^2}=dx \Rightarrow -\frac1y=x+C$; $y(0)=1 \Rightarrow C=-1$, então $y=\frac{1}{1-x}$. Conferência: $y'=\frac{1}{(1-x)^2}=y^2$ ✓. A solução existe apenas para $x<1$.</p></div></article>
+    <article class="questao"><h4>T 19: (Questão autoral) Resfriamento</h4><p>Um objeto a $80\,^\circ$C está em um ambiente a $25\,^\circ$C e a sua temperatura obedece a $\dfrac{dT}{dt}=-0{,}05\,(T-25)$. A função $T(t)$ é:</p><p>A) $25+55e^{0{,}05t}$<br>B) $55+25e^{-0{,}05t}$<br>C) $25+55e^{-0{,}05t}$<br>D) $80e^{-0{,}05t}$<br>E) $25-55e^{-0{,}05t}$</p>
+      <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+      <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>C</strong>.<br>$\frac{dT}{T-25}=-0{,}05\,dt \Rightarrow T=25+Ce^{-0{,}05t}$; $T(0)=80 \Rightarrow C=55$. Logo $T=25+55e^{-0{,}05t}$ (cai de $80$ para $25$ quando $t\to\infty$ ✓).</p></div></article>
+    <article class="questao"><h4>T 20: (Questão autoral) Tanque: valor limite</h4><p>Em um tanque, a massa de sal (kg) obedece a $\dfrac{dQ}{dt}=0{,}3-0{,}06Q$, com $Q(0)=0$. O valor para o qual $Q(t)$ tende quando $t\to\infty$ é:</p><p>A) $0{,}06$ kg<br>B) $0{,}3$ kg<br>C) $18$ kg<br>D) $5$ kg<br>E) $50$ kg</p>
+      <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+      <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>D</strong>.<br>$\frac{dQ}{dt}=0{,}06\,(5-Q)$, então $\frac{dQ}{5-Q}=0{,}06\,dt \Rightarrow Q=5\,(1-e^{-0{,}06t})$ (usando $Q(0)=0$). Quando $t\to\infty$, $Q\to5$ kg $=\frac{0{,}3}{0{,}06}$.</p></div></article>
+  </section>
+</div></main>
+<aside class="menu-lateral"><iframe src="../edo_menu.html" style="width:100%; border:none; height:600px;"></iframe></aside>
+</div>
+<script>
+function toggleGabarito(botao) {
+    const gabarito = botao.nextElementSibling;
+    if (gabarito.style.display === "none" || gabarito.style.display === "") {
+        gabarito.style.display = "block"; botao.textContent = "Esconder Gabarito e Resolução"; botao.style.backgroundColor = "#2c3e50";
+    } else {
+        gabarito.style.display = "none"; botao.textContent = "Ver Gabarito e Resolução"; botao.style.backgroundColor = "#3498db";
+    }
+}
+function toggleMenu() { const m = document.getElementById("menu-principal"); if (m) m.classList.toggle("ativo"); }
+let slideAtual = 0; let slides = [];
+function prepararSlides() { slides = Array.from(document.querySelectorAll('.container-resumo, .passo-teoria, .card, .questao')); }
+function toggleSlides() {
+    prepararSlides(); const body = document.body;
+    if (!body.classList.contains('modo-slides')) { body.classList.add('modo-slides'); slideAtual = 0; mostrarSlide(slideAtual); }
+    else { body.classList.remove('modo-slides'); slides.forEach(s => { s.classList.remove('slide-ativo'); s.style.display = ''; }); }
+}
+function mostrarSlide(n) {
+    if (!slides.length) return;
+    slides.forEach(s => { s.classList.remove('slide-ativo'); s.style.display = 'none'; });
+    const slide = slides[n]; slide.classList.add('slide-ativo');
+    slide.querySelectorAll('.gabarito-resolucao').forEach(g => g.style.display = 'none');
+    slide.querySelectorAll('.btn-gabarito').forEach(b => { b.textContent = "Ver Gabarito e Resolução"; b.style.backgroundColor = "#3498db"; });
+    const pHeader = document.querySelector('header p');
+    if (pHeader) { const partes = pHeader.innerText.split('|'); if (partes.length > 1) {
+        document.getElementById('slide-info-serie').innerText = partes[0].trim();
+        document.getElementById('slide-info-aula').innerText = partes[1].trim(); } }
+    document.getElementById('contador-slide').innerText = (n + 1) + " / " + slides.length;
+    if (window.MathJax && window.MathJax.typesetPromise) { MathJax.typesetPromise(); }
+}
+function mudarSlide(d) { slideAtual += d; if (slideAtual >= slides.length) slideAtual = 0; if (slideAtual < 0) slideAtual = slides.length - 1; mostrarSlide(slideAtual); }
+document.addEventListener('keydown', function(event) {
+    if (document.body.classList.contains('modo-slides')) {
+        switch(event.key) {
+            case 'ArrowRight': case 'PageDown': case 'Enter': case ' ': event.preventDefault(); mudarSlide(1); break;
+            case 'ArrowLeft': case 'PageUp': event.preventDefault(); mudarSlide(-1); break;
+            case 'Escape': event.preventDefault(); toggleSlides(); break;
+        }
+    }
+});
+</script>
+<div class="controles-slides">
+    <div id="slide-info-serie" class="info-lateral"></div>
+    <div class="botoes-centrais">
+        <button class="btn-nav" onclick="mudarSlide(-1)">⬅ Anterior</button>
+        <span id="contador-slide"></span>
+        <button class="btn-nav" onclick="mudarSlide(1)">Próximo ➡</button>
+        <button class="btn-nav" onclick="toggleSlides()" style="background:#e74c3c;">Sair</button>
+    </div>
+    <div id="slide-info-aula" class="info-lateral" style="text-align: right;"></div>
+</div>
+</body>
+</html>
