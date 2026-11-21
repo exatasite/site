@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explorador de Cilindros | Geometria Espacial</title>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --cor-primaria: #003366;
+            --cor-secundaria: #D35400;
+            --cor-texto: #f8fafc;
+            --cor-fundo-glass: rgba(255, 255, 255, 0.1);
+            --fonte-titulo: 'Oswald', sans-serif;
+        }
+        * { box-sizing: border-box; }
+        body {
+            font-family: Arial, sans-serif; margin: 0; padding: 0;
+            background: radial-gradient(circle at 50% 50%, #001f3f 0%, #000a14 100%);
+            color: var(--cor-texto); min-height: 100vh; overflow-x: hidden;
+        }
+        header {
+            background: rgba(0, 51, 102, 0.8); backdrop-filter: blur(10px);
+            padding: 15px 5%; text-align: center; border-bottom: 5px solid var(--cor-secundaria);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+        }
+        header h1 { font-family: var(--fonte-titulo); margin: 0; text-transform: uppercase; }
+        header p { margin: 6px 0 0; color: #cbd5e1; }
+        .voltar { display: inline-block; margin-top: 8px; color: #f8fafc; font-size: 0.85rem; text-decoration: none;
+            border: 1px solid rgba(255,255,255,0.35); padding: 5px 12px; border-radius: 20px; }
+        .voltar:hover { background: rgba(255,255,255,0.15); }
+
+        .main-grid {
+            display: grid; grid-template-columns: 300px 1fr 280px; gap: 20px;
+            padding: 20px; max-width: 1600px; margin: 0 auto;
+        }
+        .panel {
+            background: var(--cor-fundo-glass); backdrop-filter: blur(15px);
+            padding: 20px; border-radius: 15px; border: 1px solid rgba(255,255,255,0.1);
+        }
+        .panel h2 {
+            font-family: var(--fonte-titulo); color: var(--cor-secundaria);
+            border-bottom: 2px solid var(--cor-secundaria); padding-bottom: 8px;
+            text-transform: uppercase; font-size: 1.2rem; margin-top: 0;
+        }
+        .input-group { margin-bottom: 14px; }
+        label { display: block; font-size: 0.7rem; font-weight: bold; color: #cbd5e1; text-transform: uppercase; margin-bottom: 5px; }
+        .linha { display: flex; gap: 10px; align-items: center; }
+        input[type=number], select {
+            width: 100%; padding: 9px; border-radius: 6px; border: 1px solid rgba(255,255,255,0.2);
+            background: rgba(0,0,0,0.4); color: white;
+        }
+        input[type=number] { width: 90px; flex: none; }
+        input[type=range] { width: 100%; accent-color: var(--cor-secundaria); }
+        .chk { display: flex; gap: 8px; align-items: center; font-size: 0.85rem; text-transform: none; color: #e2e8f0; cursor: pointer; margin: 0; }
+        .chk input { width: auto; accent-color: var(--cor-secundaria); }
+        .botoes { display: flex; gap: 8px; flex-wrap: wrap; }
+        button.b {
+            background: var(--cor-secundaria); color: white; border: none; padding: 8px 12px;
+            border-radius: 6px; cursor: pointer; font-weight: bold; font-size: 0.8rem;
+        }
+        button.b:hover { filter: brightness(1.15); }
+        button.b.sec { background: rgba(255,255,255,0.15); }
+
+        .centro { display: flex; flex-direction: column; gap: 12px; min-width: 0; }
+        .abas { display: flex; gap: 8px; flex-wrap: wrap; }
+        .aba {
+            background: rgba(255,255,255,0.08); color: #e2e8f0; border: 1px solid rgba(255,255,255,0.15);
+            padding: 9px 16px; border-radius: 20px; cursor: pointer; font-weight: bold; font-size: 0.85rem;
+        }
+        .aba.ativa { background: var(--cor-secundaria); border-color: var(--cor-secundaria); color: white; }
+        .viz-container {
+            height: 500px; background: rgba(0,0,0,0.25); border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.05); position: relative; overflow: hidden;
+        }
+        #cv { width: 100%; height: 100%; display: block; cursor: grab; touch-action: none; }
+        #cv.arrastando { cursor: grabbing; }
+        .dica { position: absolute; left: 12px; bottom: 10px; font-size: 0.75rem; color: #94a3b8; pointer-events: none; }
+        .msg { min-height: 22px; font-size: 0.9rem; color: #fcd34d; }
+
+        .res-card {
+            background: rgba(255,255,255,0.03); padding: 12px 14px; border-radius: 10px;
+            margin-bottom: 10px; border-left: 4px solid var(--cor-secundaria);
+        }
+        .res-card span { display: block; font-size: 0.7rem; color: #94a3b8; text-transform: uppercase; }
+        .res-card span span { display: inline; }
+        .res-card strong { font-size: 1.05rem; color: white; display: block; margin-top: 4px; }
+        .res-card small { display: block; color: #2ecc71; font-family: 'Courier New', monospace; font-size: 0.78rem; margin-top: 3px; }
+        .formula-box {
+            font-size: 0.8rem; background: rgba(0,0,0,0.3); padding: 10px; border-radius: 5px;
+            color: #2ecc71; font-family: 'Courier New', Courier, monospace; line-height: 1.5;
+        }
+        .desafio { margin-top: 18px; padding-top: 14px; border-top: 1px solid rgba(255,255,255,0.15); }
+        .desafio h3 { font-family: var(--fonte-titulo); color: var(--cor-secundaria); margin: 0 0 8px; font-size: 1rem; text-transform: uppercase; }
+        #enunciado { font-size: 0.9rem; line-height: 1.4; margin-bottom: 10px; min-height: 40px; }
+        #feedback { font-size: 0.85rem; margin-top: 10px; line-height: 1.4; }
+        .ok { color: #2ecc71; } .erro { color: #f87171; }
+
+        @media (max-width: 1100px) { .main-grid { grid-template-columns: 1fr; } .viz-container { height: 420px; } }
+
+        .menu-toggle {
+            position: fixed; top: 15px; left: 15px; font-size: 24px; background: var(--cor-secundaria);
+            color: white; border: none; padding: 8px 12px; border-radius: 5px; cursor: pointer; z-index: 1001;
+        }
+        .nav-global {
+            position: fixed; top: 0; left: -250px; width: 250px; height: 100%; background: #003366;
+            transition: left 0.3s ease; z-index: 1000; padding-top: 60px;
+        }
+        .nav-global.ativo { left: 0; }
+        .nav-global ul { list-style: none; padding: 0; }
+        .nav-global li { margin: 15px 0; }
+        .nav-global a { color: white; text-decoration: none; padding: 10px 20px; display: block; }
+    </style>
+</head>
+<body>
+<button class="menu-toggle" onclick="toggleMenu()">☰</button>
+
+<nav id="menu-principal" class="nav-global">
+    <ul>
+        <li><a href="../index.html">🏠 Início</a></li>
+        <li><a href="../fisica_home.html">⚛️ Física</a></li>
+        <li><a href="../matematica_home.html">📐 Matemática</a></li>
+        <li><a href="../simulacoes_home.html">💻 Simulações</a></li>
+    </ul>
+</nav>
+
+<header>
+    <h1>Laboratório de Geometria Espacial</h1>
+    <p>Simulador Interativo de Cilindros Circulares Retos</p>
+    <a class="voltar" href="../matematica/aula2_23_cilindros.html">← Voltar para a aula de Cilindros</a>
+</header>
+
+<div class="main-grid">
+    <aside class="panel">
+        <h2>Dimensões</h2>
+        <div class="input-group">
+            <label>Raio da base <span style="text-transform:none">(r)</span></label>
+            <div class="linha">
+                <input type="range" id="rS" min="0.5" max="10" step="0.1" value="3">
+                <input type="number" id="rN" min="0.5" max="10" step="0.1" value="3">
+            </div>
+        </div>
+        <div class="input-group">
+            <label>Altura <span style="text-transform:none">(h)</span></label>
+            <div class="linha">
+                <input type="range" id="hS" min="0.5" max="15" step="0.1" value="6">
+                <input type="number" id="hN" min="0.5" max="15" step="0.1" value="6">
+            </div>
+        </div>
+        <div class="input-group">
+            <label class="chk"><input type="checkbox" id="equi"> Cilindro equilátero (h = 2r)</label>
+        </div>
+        <div class="input-group">
+            <label>Unidade de medida</label>
+            <select id="unid">
+                <option value="u">unidades genéricas</option>
+                <option value="cm">centímetros (cm)</option>
+                <option value="dm">decímetros (dm)</option>
+                <option value="m">metros (m)</option>
+            </select>
+        </div>
+        <div class="input-group">
+            <label>Experimentos</label>
+            <div class="botoes">
+                <button class="b sec" id="dobrar-r">× 2 no raio</button>
+                <button class="b sec" id="dobrar-h">× 2 na altura</button>
+                <button class="b sec" id="reset">Reiniciar</button>
+            </div>
+        </div>
+        <div class="msg" id="msg"></div>
+        <div>
+            <label>Fórmulas utilizadas</label>
+            <div class="formula-box">
+                A<sub>b</sub> = π·r²<br>
+                A<sub>l</sub> = 2π·r·h<br>
+                A<sub>t</sub> = 2π·r·(r + h)<br>
+                V = π·r²·h
+            </div>
+        </div>
+    </aside>
+
+    <main class="centro">
+        <div class="abas" id="abas">
+            <button class="aba ativa" data-v="3d">Cilindro 3D</button>
+            <button class="aba" data-v="plan">Planificação</button>
+            <button class="aba" data-v="sec">Seção meridiana</button>
+        </div>
+        <div class="viz-container">
+            <canvas id="cv"></canvas>
+            <div class="dica" id="dica">Arraste para girar o cilindro e mudar o ângulo de visão</div>
+        </div>
+        <div class="input-group" id="ctrl-elev">
+            <label>Ângulo de visão: <span id="elevV">25</span>°</label>
+            <input type="range" id="elev" min="5" max="85" step="1" value="25">
+        </div>
+    </main>
+
+    <aside class="panel">
+        <h2>Cálculos em tempo real</h2>
+        <div class="res-card"><span>Área da base <span style="text-transform:none">(A<sub>b</sub>)</span></span><strong id="res-ab">—</strong><small id="pi-ab"></small></div>
+        <div class="res-card"><span>Área lateral <span style="text-transform:none">(A<sub>l</sub>)</span></span><strong id="res-al">—</strong><small id="pi-al"></small></div>
+        <div class="res-card"><span>Área total <span style="text-transform:none">(A<sub>t</sub>)</span></span><strong id="res-at">—</strong><small id="pi-at"></small></div>
+        <div class="res-card" style="border-left-color:#2ecc71;"><span>Volume <span style="text-transform:none">(V)</span></span><strong id="res-v" style="color:#2ecc71;">—</strong><small id="pi-v"></small></div>
+        <div class="res-card" style="border-left-color:#38bdf8;"><span>Diagonal da seção meridiana <span style="text-transform:none">(d)</span></span><strong id="res-d">—</strong><small>d = √(4r² + h²)</small></div>
+        <div class="res-card" style="border-left-color:#a78bfa;" id="card-lit"><span>Capacidade</span><strong id="res-l">—</strong></div>
+
+        <div class="desafio">
+            <h3>🎯 Modo desafio</h3>
+            <div id="enunciado">Clique em “Novo desafio” para receber um cilindro e calcular.</div>
+            <div class="linha">
+                <input type="number" id="resp" step="0.01" placeholder="coeficiente de π">
+                <button class="b" id="verif">Verificar</button>
+            </div>
+            <div class="botoes" style="margin-top:8px;"><button class="b sec" id="novo">Novo desafio</button></div>
+            <div id="feedback"></div>
+        </div>
+    </aside>
+</div>
+
+<script>
+function toggleMenu() { const m = document.getElementById("menu-principal"); if (m) m.classList.toggle("ativo"); }
+
+(function () {
+    const $ = id => document.getElementById(id);
+    const cv = $('cv'), ctx = cv.getContext('2d');
+    const rS = $('rS'), rN = $('rN'), hS = $('hS'), hN = $('hN'), equi = $('equi'), unid = $('unid'), elev = $('elev');
+    let r = 3, h = 6, vista = '3d', az = 0.9, el = 25 * Math.PI / 180, W = 0, H = 0, desafio = null;
+
+    const fmt = (x, d = 2) => x.toLocaleString('pt-BR', { minimumFractionDigits: d, maximumFractionDigits: d });
+    const fmtPi = c => (Math.abs(c - Math.round(c)) < 1e-9 ? String(Math.round(c)) : fmt(c)) + 'π';
+
+    function resize() {
+        const dpr = window.devicePixelRatio || 1, b = cv.getBoundingClientRect();
+        W = b.width; H = b.height;
+        cv.width = Math.round(W * dpr); cv.height = Math.round(H * dpr);
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+        desenhar();
+    }
+
+    /* ---------- cálculos ---------- */
+    function calcular() {
+        const ab = Math.PI * r * r, al = 2 * Math.PI * r * h, at = ab + al, v = ab * h, d = Math.sqrt(4 * r * r + h * h);
+        const u = unid.value, su = u === 'u' ? 'u.c.' : u, uA = u === 'u' ? 'u.a.' : u + '²', uV = u === 'u' ? 'u.v.' : u + '³';
+        $('res-ab').textContent = fmt(ab) + ' ' + uA; $('pi-ab').textContent = '= ' + fmtPi(r * r);
+        $('res-al').textContent = fmt(al) + ' ' + uA; $('pi-al').textContent = '= ' + fmtPi(2 * r * h);
+        $('res-at').textContent = fmt(at) + ' ' + uA; $('pi-at').textContent = '= ' + fmtPi(2 * r * (r + h));
+        $('res-v').textContent = fmt(v) + ' ' + uV; $('pi-v').textContent = '= ' + fmtPi(r * r * h);
+        $('res-d').textContent = fmt(d) + ' ' + su;
+        const fator = { cm: 1e-3, dm: 1, m: 1e3 }[u];
+        $('card-lit').style.display = fator ? 'block' : 'none';
+        if (fator) $('res-l').textContent = fmt(v * fator) + ' litros';
+        desenhar();
+    }
+
+    /* ---------- entradas ---------- */
+    function setR(x) { r = Math.min(10, Math.max(0.5, x)); rS.value = rN.value = (+r.toFixed(2)); if (equi.checked) setH(2 * r, true); calcular(); }
+    function setH(x, silent) { h = Math.min(15, Math.max(0.5, x)); hS.value = hN.value = (+h.toFixed(2)); if (!silent) { equi.checked = false; calcular(); } }
+    rS.oninput = () => setR(+rS.value); rN.oninput = () => { if (rN.value !== '') setR(+rN.value); };
+    hS.oninput = () => setH(+hS.value); hN.oninput = () => { if (hN.value !== '') setH(+hN.value); };
+    equi.onchange = () => { if (equi.checked) { if (2 * r > 15) setR(7.5); setH(2 * r, true); } calcular(); };
+    unid.onchange = calcular;
+    elev.oninput = () => { el = +elev.value * Math.PI / 180; $('elevV').textContent = elev.value; desenhar(); };
+    $('reset').onclick = () => { equi.checked = false; setR(3); setH(6); $('msg').textContent = ''; };
+    $('dobrar-r').onclick = () => {
+        const v0 = r * r * h; if (r * 2 > 10) { $('msg').textContent = 'O raio máximo do simulador é 10.'; return; }
+        setR(r * 2); const v1 = r * r * h;
+        $('msg').textContent = 'Dobrando o raio, o volume ficou ' + fmt(v1 / v0, 0) + '× maior (r² → 4×), e a área lateral 2× maior.';
+    };
+    $('dobrar-h').onclick = () => {
+        const v0 = r * r * h; if (h * 2 > 15) { $('msg').textContent = 'A altura máxima do simulador é 15.'; return; }
+        equi.checked = false; setH(h * 2); const v1 = r * r * h;
+        $('msg').textContent = 'Dobrando a altura, o volume ficou ' + fmt(v1 / v0, 0) + '× maior e a área lateral também 2× maior.';
+    };
+    document.querySelectorAll('.aba').forEach(b => b.onclick = () => {
+        document.querySelectorAll('.aba').forEach(x => x.classList.remove('ativa')); b.classList.add('ativa');
+        vista = b.dataset.v;
+        $('ctrl-elev').style.display = vista === '3d' ? 'block' : 'none';
+        $('dica').textContent = vista === '3d' ? 'Arraste para girar o cilindro e mudar o ângulo de visão'
+            : vista === 'plan' ? 'A superfície lateral planificada é um retângulo 2πr × h' : 'Cortando pelo eixo: retângulo 2r × h';
+        cv.style.cursor = vista === '3d' ? 'grab' : 'default'; desenhar();
+    });
+
+    /* ---------- interação 3D ---------- */
+    let drag = null;
+    cv.addEventListener('pointerdown', e => { if (vista !== '3d') return; drag = { x: e.clientX, y: e.clientY }; cv.setPointerCapture(e.pointerId); cv.classList.add('arrastando'); });
+    cv.addEventListener('pointermove', e => {
+        if (!drag) return;
+        az += (e.clientX - drag.x) * 0.012;
+        el = Math.min(85, Math.max(5, el * 180 / Math.PI + (e.clientY - drag.y) * 0.3)) * Math.PI / 180;
+        elev.value = Math.round(el * 180 / Math.PI); $('elevV').textContent = elev.value;
+        drag = { x: e.clientX, y: e.clientY }; desenhar();
+    });
+    const fim = () => { drag = null; cv.classList.remove('arrastando'); };
+    cv.addEventListener('pointerup', fim); cv.addEventListener('pointercancel', fim);
+
+    /* ---------- desenho ---------- */
+    const AZ = '#38bdf8', LJ = '#fb923c', VD = '#4ade80', VM = '#f87171', TX = '#e2e8f0';
+    function rotulo(t, x, y, cor, al, tam) {
+        ctx.font = 'bold ' + (tam || 15) + 'px Arial'; ctx.textAlign = al || 'center'; ctx.fillStyle = cor || TX;
+        ctx.lineWidth = 4; ctx.strokeStyle = 'rgba(0,10,20,0.85)'; ctx.strokeText(t, x, y); ctx.fillText(t, x, y);
+    }
+    function linha(x1, y1, x2, y2, cor, w, tracejado) {
+        ctx.beginPath(); ctx.setLineDash(tracejado ? [7, 5] : []); ctx.strokeStyle = cor; ctx.lineWidth = w || 2;
+        ctx.moveTo(x1, y1); ctx.lineTo(x2, y2); ctx.stroke(); ctx.setLineDash([]);
+    }
+
+    function desenhar() {
+        if (!W) return;
+        ctx.clearRect(0, 0, W, H);
+        if (vista === '3d') d3(); else if (vista === 'plan') dPlan(); else dSec();
+    }
+
+    function d3() {
+        const sn = Math.sin(el), cs = Math.cos(el);
+        const s = Math.min((W * 0.62) / (2 * r), (H * 0.74) / (h * cs + 2 * r * sn));
+        const rx = r * s, ry = r * s * sn, hp = h * s * cs;
+        const cx = W / 2 - 30, yb = H / 2 + hp / 2, yt = yb - hp;
+        // corpo
+        const g = ctx.createLinearGradient(cx - rx, 0, cx + rx, 0);
+        g.addColorStop(0, 'rgba(14,90,160,0.85)'); g.addColorStop(0.35, 'rgba(56,160,230,0.85)'); g.addColorStop(1, 'rgba(12,70,130,0.9)');
+        ctx.beginPath(); ctx.moveTo(cx - rx, yt); ctx.lineTo(cx - rx, yb);
+        ctx.ellipse(cx, yb, rx, ry, 0, Math.PI, 0, true); ctx.lineTo(cx + rx, yt);
+        ctx.ellipse(cx, yt, rx, ry, 0, 0, Math.PI, true); ctx.closePath();
+        ctx.fillStyle = g; ctx.fill();
+        // base de trás (tracejada)
+        ctx.beginPath(); ctx.setLineDash([7, 5]); ctx.strokeStyle = 'rgba(226,232,240,0.55)'; ctx.lineWidth = 1.6;
+        ctx.ellipse(cx, yb, rx, ry, 0, Math.PI, 2 * Math.PI); ctx.stroke(); ctx.setLineDash([]);
+        // geratriz (marcada) – atrás tracejada, frente sólida
+        const gx = cx + rx * Math.cos(az), vis = Math.sin(az) > 0;
+        const gy1 = yt + ry * Math.sin(az), gy2 = yb + ry * Math.sin(az);
+        // arestas externas
+        ctx.beginPath(); ctx.strokeStyle = TX; ctx.lineWidth = 2.4;
+        ctx.moveTo(cx - rx, yt); ctx.lineTo(cx - rx, yb); ctx.moveTo(cx + rx, yt); ctx.lineTo(cx + rx, yb); ctx.stroke();
+        ctx.beginPath(); ctx.ellipse(cx, yb, rx, ry, 0, 0, Math.PI); ctx.stroke();
+        // base superior
+        ctx.beginPath(); ctx.ellipse(cx, yt, rx, ry, 0, 0, 2 * Math.PI);
+        ctx.fillStyle = 'rgba(186,230,253,0.55)'; ctx.fill(); ctx.strokeStyle = TX; ctx.lineWidth = 2.4; ctx.stroke();
+        // eixo e raio
+        linha(cx, yt, cx, yb, VM, 2, true);
+        linha(cx, yt, cx + rx, yt, LJ, 3);
+        ctx.fillStyle = TX; [[cx, yt], [cx, yb]].forEach(p => { ctx.beginPath(); ctx.arc(p[0], p[1], 3.5, 0, 7); ctx.fill(); });
+        linha(gx, gy1, gx, gy2, VD, 3.4, !vis);
+        // cotas
+        rotulo('r', cx + rx / 2, yt - 8 + (ry > 20 ? 0 : -2), LJ, 'center', 17);
+        rotulo('h', cx + 12, (yt + yb) / 2, VM, 'left', 17);
+        rotulo('g = h', gx + (Math.cos(az) >= 0 ? 8 : -8), (gy1 + gy2) / 2 + (vis ? 0 : -6), VD, Math.cos(az) >= 0 ? 'left' : 'right', 14);
+        // legenda
+        rotulo('Base superior (círculo de raio r)', cx + rx + 14, yt - ry - 6, TX, 'left', 12);
+        rotulo('Base inferior', cx + rx + 14, yb + ry + 16, TX, 'left', 12);
+    }
+
+    function dPlan() {
+        const L = 2 * Math.PI * r, tot = h + 4 * r;
+        const s = Math.min((W * 0.88) / L, (H * 0.84) / tot);
+        const x0 = (W - L * s) / 2, y0 = (H - tot * s) / 2 + 2 * r * s, rw = L * s, rh = h * s;
+        // lateral
+        ctx.fillStyle = 'rgba(56,160,230,0.55)'; ctx.fillRect(x0, y0, rw, rh);
+        ctx.strokeStyle = TX; ctx.lineWidth = 2.4; ctx.strokeRect(x0, y0, rw, rh);
+        // bases (tangentes ao retângulo)
+        const cxc = x0 + Math.min(rw / 2, Math.max(r * s, rw * 0.25));
+        [[cxc, y0 - r * s], [cxc, y0 + rh + r * s]].forEach(p => {
+            ctx.beginPath(); ctx.arc(p[0], p[1], r * s, 0, 7); ctx.fillStyle = 'rgba(251,146,60,0.45)'; ctx.fill();
+            ctx.strokeStyle = TX; ctx.lineWidth = 2.4; ctx.stroke();
+            ctx.beginPath(); ctx.arc(p[0], p[1], 3, 0, 7); ctx.fillStyle = TX; ctx.fill();
+            linha(p[0], p[1], p[0] + r * s, p[1], LJ, 2.6);
+        });
+        rotulo('r', cxc + r * s / 2, y0 - r * s - 7, LJ, 'center', 15);
+        rotulo('r', cxc + r * s / 2, y0 + rh + r * s - 7, LJ, 'center', 15);
+        rotulo('πr²  (base)', cxc, y0 - r * s + r * s * 0.55, TX, 'center', 13);
+        rotulo('πr²  (base)', cxc, y0 + rh + r * s + r * s * 0.55, TX, 'center', 13);
+        // cota 2πr dentro do retângulo lateral
+        const yy = y0 + Math.min(rh * 0.25, 24);
+        linha(x0, yy, x0 + rw, yy, VD, 2); linha(x0, yy - 6, x0, yy + 6, VD, 2); linha(x0 + rw, yy - 6, x0 + rw, yy + 6, VD, 2);
+        rotulo('2πr = ' + fmt(L) + '  (comprimento da circunferência da base)', x0 + rw / 2, yy - 8, VD, 'center', Math.min(14, Math.max(10, rw / 40)));
+        rotulo('Superfície lateral:  Aₗ = 2πr · h', x0 + rw / 2, y0 + rh / 2 + 14, '#ffffff', 'center', Math.min(17, Math.max(11, rw / 26)));
+        linha(x0 - 14, y0, x0 - 14, y0 + rh, VM, 2); linha(x0 - 19, y0, x0 - 9, y0, VM, 2); linha(x0 - 19, y0 + rh, x0 - 9, y0 + rh, VM, 2);
+        rotulo('h', x0 - 22, y0 + rh / 2 + 5, VM, 'right', 16);
+    }
+
+    function dSec() {
+        const s = Math.min((W * 0.5) / (2 * r), (H * 0.7) / h);
+        const w = 2 * r * s, hh = h * s, x0 = (W - w) / 2, y0 = (H - hh) / 2;
+        ctx.fillStyle = 'rgba(56,160,230,0.55)'; ctx.fillRect(x0, y0, w, hh);
+        ctx.strokeStyle = TX; ctx.lineWidth = 2.4; ctx.strokeRect(x0, y0, w, hh);
+        linha(x0 + w / 2, y0, x0 + w / 2, y0 + hh, VM, 2, true);
+        linha(x0, y0 + hh, x0 + w, y0, LJ, 3);
+        const rm = Math.round(Math.max(8, Math.min(w, hh) * 0.06));
+        // cotas
+        const yb = y0 + hh + 24;
+        linha(x0, yb, x0 + w, yb, VD, 2); linha(x0, yb - 5, x0, yb + 5, VD, 2); linha(x0 + w, yb - 5, x0 + w, yb + 5, VD, 2);
+        rotulo('2r = ' + fmt(2 * r), x0 + w / 2, yb + 19, VD, 'center', 14);
+        const xl = x0 - 24;
+        linha(xl, y0, xl, y0 + hh, VM, 2); linha(xl - 5, y0, xl + 5, y0, VM, 2); linha(xl - 5, y0 + hh, xl + 5, y0 + hh, VM, 2);
+        rotulo('h = ' + fmt(h), xl - 8, y0 + hh / 2 + 5, VM, 'right', 14);
+        rotulo('d = √(4r² + h²) = ' + fmt(Math.sqrt(4 * r * r + h * h)), x0 + w / 2 + 6, y0 + hh * 0.5 - 14, LJ, 'left', 14);
+        const eq = Math.abs(h - 2 * r) < 0.011;
+        rotulo(eq ? 'Cilindro equilátero: a seção meridiana é um QUADRADO (h = 2r)' : 'Seção meridiana: retângulo 2r × h', W / 2, 26, eq ? VD : TX, 'center', 14);
+        rotulo('Área da seção = 2r·h = ' + fmt(2 * r * h), W / 2, 48, TX, 'center', 13);
+    }
+
+    /* ---------- desafio ---------- */
+    function novoDesafio() {
+        const rr = 1 + Math.floor(Math.random() * 8), hh = 1 + Math.floor(Math.random() * 12);
+        const tipo = ['v', 'al', 'at'][Math.floor(Math.random() * 3)];
+        desafio = { r: rr, h: hh, tipo };
+        equi.checked = false; unid.value = 'u'; setR(rr); setH(hh);
+        const nome = { v: 'o volume', al: 'a área lateral', at: 'a área total' }[tipo];
+        $('enunciado').innerHTML = 'Um cilindro circular reto tem <b>r = ' + rr + '</b> e <b>h = ' + hh + '</b>. Calcule <b>' + nome + '</b>. Responda com o número que multiplica π.';
+        $('resp').value = ''; $('feedback').innerHTML = '';
+    }
+    function verificar() {
+        if (!desafio) { $('feedback').innerHTML = '<span class="erro">Clique em “Novo desafio” primeiro.</span>'; return; }
+        const { r: rr, h: hh, tipo } = desafio;
+        const certo = tipo === 'v' ? rr * rr * hh : tipo === 'al' ? 2 * rr * hh : 2 * rr * (rr + hh);
+        const res = tipo === 'v' ? 'V = π·' + rr + '²·' + hh + ' = ' + certo + 'π'
+            : tipo === 'al' ? 'Aₗ = 2π·' + rr + '·' + hh + ' = ' + certo + 'π'
+            : 'Aₜ = 2π·' + rr + '·(' + rr + ' + ' + hh + ') = ' + certo + 'π';
+        const x = parseFloat($('resp').value.replace(',', '.'));
+        if (isNaN(x)) { $('feedback').innerHTML = '<span class="erro">Digite um número.</span>'; return; }
+        $('feedback').innerHTML = Math.abs(x - certo) < 0.01
+            ? '<span class="ok">✔ Correto! ' + res + ' ≈ ' + fmt(certo * Math.PI) + '</span>'
+            : '<span class="erro">✘ Ainda não.</span> Dica: ' + (tipo === 'v' ? 'V = π·r²·h' : tipo === 'al' ? 'Aₗ = 2π·r·h' : 'Aₜ = 2πr(r + h)') + '. <a href="#" id="ver" style="color:#fcd34d">Ver resposta</a>';
+        const ver = $('ver'); if (ver) ver.onclick = e => { e.preventDefault(); $('feedback').innerHTML = '<span class="ok">' + res + ' ≈ ' + fmt(certo * Math.PI) + '</span>'; };
+    }
+    $('novo').onclick = novoDesafio; $('verif').onclick = verificar;
+    $('resp').addEventListener('keydown', e => { if (e.key === 'Enter') verificar(); });
+
+    window.addEventListener('resize', resize);
+    resize(); calcular();
+    window.__sim = { setR, setH, get estado() { return { r, h, vista }; } };
+})();
+</script>
+</body>
+</html>
