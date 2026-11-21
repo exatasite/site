@@ -165,7 +165,8 @@
   <label for="termos" id="termosLabel">Palavras (uma por linha)</label>
   <textarea id="termos"></textarea>
   <div class="nota" id="contagem"></div>
-  <div class="acoes"><button class="btn-gabarito" id="gerar">Gerar caça-palavras</button></div>
+  <div class="acoes"><button class="btn-gabarito" id="gerar">Gerar caça-palavras</button><button class="sec" id="btnDicas">✨ Preencher dicas pela aula/PDF</button></div>
+  <div class="nota" id="dicasInfo"></div>
 </section>
 
 <section class="bloco jogo" id="jogo-caca">
@@ -296,9 +297,13 @@ let textoFonte='';
 function dicaAuto(w){
   if(!textoFonte) return '';
   const esc=w.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
-  const reT=new RegExp(esc,'i'), reG=new RegExp(esc,'gi');
+  const L='(?<![A-Za-zÀ-ú])', R='(?![A-Za-zÀ-ú])', reT=new RegExp(L+esc+R,'i'), reG=new RegExp(L+esc+R,'gi');
   const frases=textoFonte.replace(/\s+/g,' ').split(/(?<=[.!?])\s+/);
-  const s=frases.find(x=>x.length>=30&&x.length<=200&&!/[\\$|]/.test(x)&&reT.test(x));
+  const cands=frases.filter(x=>x.length>=30&&x.length<=260&&!/[\\$|]/.test(x)&&reT.test(x));
+  const def=/\b(é|são|chama-se|chamam-se|denomina-se|define-se|definido|definida|consiste|representa)\b/i;
+  const vezes=x=>(x.match(reG)||[]).length;
+  const nota=x=>(vezes(x)===1?0:100)+(def.test(x)?0:50)+Math.abs(x.length-110)/10;
+  const s=cands.sort((x,y)=>nota(x)-nota(y))[0];
   return s?s.replace(reG,'_____').trim():'';
 }
 function mostraSugestoes(lista){
@@ -384,6 +389,7 @@ function setTipo(t){
   document.querySelectorAll('.tipo').forEach(e=>e.classList.toggle('ativo',e.dataset.tipo===t));
   $('qtdLabel').textContent='Quantidade de '+c.unid; $('qtd').max=c.max; $('qtd').min=c.min; $('qtd').value=c.def;
   $('difWrap').style.display=t==='caca'?'':'none';
+  $('btnDicas').style.display=c.dica?'':'none'; $('dicasInfo').textContent='';
   $('termosLabel').textContent=c.lab; $('termos').placeholder=c.ph; $('tipoInfo').textContent=c.info;
   $('gerar').textContent='Gerar '+c.nome.toLowerCase();
   atualizaContagem();
@@ -713,6 +719,20 @@ function gerar(){
   sec.scrollIntoView({behavior:'smooth'});
 }
 $('gerar').onclick=gerar;
+$('btnDicas').onclick=()=>{
+  if(!textoFonte){ $('dicasInfo').textContent='Primeiro importe uma aula do site ou envie um PDF (passo 2): é dele que as dicas são tiradas.'; return; }
+  let feitas=0, faltam=[];
+  const linhas=$('termos').value.split('\n').map(l=>{
+    if(!l.trim()) return l;
+    const i=l.indexOf('|'), termo=(i<0?l:l.slice(0,i)).trim(), dica=i<0?'':l.slice(i+1).trim();
+    if(dica) return l;
+    const d=dicaAuto(termo);
+    if(d){ feitas++; return termo+' | '+d; }
+    faltam.push(termo); return l;
+  });
+  $('termos').value=linhas.join('\n'); atualizaContagem();
+  $('dicasInfo').textContent='Dicas preenchidas: '+feitas+'.'+(faltam.length?' Não achei frase no texto para: '+faltam.join(', ')+' (escreva a dica à mão).':'')+' Revise antes de gerar.';
+};
 document.querySelectorAll('.btnNovo').forEach(b=>b.onclick=gerar);
 document.querySelectorAll('.btnImprimir').forEach(b=>b.onclick=()=>{
   const sec=b.closest('.jogo'), g=sec.querySelector('.gabPrint'), cb=sec.querySelector('.comGab');
