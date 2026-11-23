@@ -187,7 +187,7 @@ window.WordExport=(function(){
   function resolucoes(qs,o,doc){
     let x=P(run('Resolução detalhada – '+(o.titulo||''),{b:1,sz:28}),{jc:'center',after:160});
     qs.forEach((q,i)=>{
-      const r=(window.RESOL||{})[q.id];
+      const r=(q.resol_txt!==undefined)?q.resol_txt:(window.RESOL||{})[q.id];
       x+=P(run('QUESTÃO '+(i+1),{b:1})+(o.origem?run('  ('+q.origem+')',{sz:17}):'')+run(q.anulada?'  –  ANULADA':(q.gabarito?'  –  Resposta: '+q.gabarito:''),{b:1}),{keepNext:1,before:200,after:60});
       x+=r?doc.md(r,[],{maxW:15*CM,maxH:9.5*CM}):P(run('Resolução não disponível para esta questão.',{i:1,sz:18}),{after:80});
     });
