@@ -28,6 +28,7 @@ input[type=text],select,textarea{width:100%;padding:6px 8px;border:1px solid var
 .chips label{border:1px solid var(--bd);border-radius:14px;padding:2px 8px;font-size:12px;cursor:pointer;background:#fafbfd}
 .chips input{display:none}.chips input:checked+span{font-weight:bold;color:var(--az)}
 .chips label:has(input:checked){background:#dbe6fb;border-color:var(--az2)}
+.arv{margin:3px 0;border-bottom:1px solid #eee}.arv summary{cursor:pointer;font-size:13px;padding:3px 0;display:flex;align-items:center;gap:6px}.arv summary .n{margin-left:auto;color:#777;font-size:11px}.chk.sub{padding-left:22px}
 .linkbtn{background:none;border:0;color:var(--az2);cursor:pointer;font-size:12px;padding:0;text-decoration:underline}
 .qcard{background:#fff;border:1px solid var(--bd);border-radius:8px;margin-bottom:10px;overflow:hidden}
 .qcard.sel{border-color:var(--vd);box-shadow:0 0 0 2px #c8e6c9}
@@ -91,7 +92,7 @@ input[type=text],select,textarea{width:100%;padding:6px 8px;border:1px solid var
     <select id="fDisc"></select>
     <label class="l">Buscar no enunciado</label>
     <input type="text" id="busca" placeholder="ex.: probabilidade, cilindro, lente…">
-    <label class="l">Assunto <button class="linkbtn" onclick="marcarTodos('assunto',false)">limpar</button></label>
+    <label class="l">Assunto e tópico <button class="linkbtn" onclick="marcarTodos('arv',false)">limpar</button></label>
     <div id="fAssunto"></div>
     <label class="l">Série</label>
     <div class="chips" id="fSerie"></div>
@@ -180,6 +181,7 @@ input[type=text],select,textarea{width:100%;padding:6px 8px;border:1px solid var
 </div>
 
 <script src="app/dados.js"></script>
+<script src="app/arvore.js"></script>
 <script src="app/resolucoes.js"></script>
 <script src="app/modelos.js"></script>
 <script src="app/marked.min.js"></script>
@@ -218,12 +220,14 @@ let DISC='Matemática';
 const discDe=q=>q.disciplina||'Matemática';
 function montaFiltros(){
   const QD=Q.filter(q=>discDe(q)===DISC);
-  const ass={};QD.forEach(q=>{const k=q.assunto;ass[k]=(ass[k]||0)+1});
-  const areas={};QD.forEach(q=>{(areas[q.area]=areas[q.area]||new Set()).add(q.assunto)});
+  const cg={},cs={};QD.forEach(q=>{const [g,t]=arvDe(q);cg[g]=(cg[g]||0)+1;cs[g+'|'+t]=(cs[g+'|'+t]||0)+1});
   let h='';
-  Object.keys(areas).sort().forEach(a=>{
-    h+='<div style="font-size:11px;font-weight:bold;color:#777;margin:6px 0 2px">'+a+'</div>';
-    [...areas[a]].sort().forEach(s=>{h+='<label class="chk"><input type="checkbox" data-f="assunto" value="'+s+'"> '+s+'<span class="n">'+ass[s]+'</span></label>'});
+  const T=(ARVORE.find(x=>x.d===DISC)||{g:[]}).g;
+  T.forEach(G=>{
+    if(!cg[G.n])return;
+    h+='<details class="arv"><summary><input type="checkbox" class="gchk" data-g="'+G.n+'" onclick="event.stopPropagation()" onchange="marcaGrupo(this)"> <b>'+G.n+'</b><span class="n">'+cg[G.n]+'</span></summary>';
+    G.s.forEach(t=>{const n=cs[G.n+'|'+t];if(n)h+='<label class="chk sub"><input type="checkbox" data-f="arv" data-gp="'+G.n+'" value="'+G.n+'|'+t+'"> '+t+'<span class="n">'+n+'</span></label>'});
+    h+='</details>';
   });
   $('fAssunto').innerHTML=h;
   $('fSerie').innerHTML=[1,2,3].map(s=>'<label><input type="checkbox" data-f="serie" value="'+s+'"><span>'+s+'º ano</span></label>').join('');
@@ -250,17 +254,18 @@ function iniciaFiltros(){
   $('busca').addEventListener('input',()=>{clearTimeout(window._t);window._t=setTimeout(aplicar,250)});
 }
 const vals=f=>[...document.querySelectorAll('[data-f="'+f+'"]:checked')].map(e=>e.value);
-function marcarTodos(f,v){document.querySelectorAll('[data-f="'+f+'"]').forEach(e=>e.checked=v);aplicar()}
-function limparFiltros(){document.querySelectorAll('[data-f],#fFig,#fSemFig,#fAnul').forEach(e=>e.checked=false);$('busca').value='';aplicar()}
+function marcaGrupo(el){document.querySelectorAll('[data-f="arv"]').forEach(e=>{if(e.dataset.gp===el.dataset.g)e.checked=el.checked});aplicar()}
+function marcarTodos(f,v){if(f==='arv')document.querySelectorAll('.gchk').forEach(e=>e.checked=false);document.querySelectorAll('[data-f="'+f+'"]').forEach(e=>e.checked=v);aplicar()}
+function limparFiltros(){document.querySelectorAll('[data-f],.gchk,#fFig,#fSemFig,#fAnul').forEach(e=>e.checked=false);$('busca').value='';aplicar()}
 const plain=s=>s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'');
 function aplicar(){
-  const A=vals('assunto'),S=vals('serie').map(Number),D=vals('dif'),Y=vals('ano').map(Number),BC=vals('banca');
+  const A=vals('arv'),S=vals('serie').map(Number),D=vals('dif'),Y=vals('ano').map(Number),BC=vals('banca');
   const b=plain($('busca').value.trim());
   const fig=$('fFig').checked,sfig=$('fSemFig').checked,anul=$('fAnul').checked;
   filtrados=Q.filter(q=>{
     if(discDe(q)!==DISC)return false;
     if(!anul&&semGab(q))return false;
-    if(A.length&&!A.includes(q.assunto))return false;
+    if(A.length&&!A.includes(arvDe(q).join('|')))return false;
     if(S.length&&!S.includes(q.serie))return false;
     if(D.length&&!D.includes(q.dificuldade))return false;
     if(Y.length&&!Y.includes(q.ano))return false;
