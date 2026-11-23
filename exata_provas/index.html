@@ -140,11 +140,33 @@ input[type=text],select,textarea{width:100%;padding:6px 8px;border:1px solid var
       <select id="nVer"><option value="1">1 (só a prova)</option><option value="2">2 (A e B)</option><option value="3">3 (A, B e C)</option><option value="4">4 (A, B, C e D)</option></select>
       <label class="chk"><input type="checkbox" id="oEmbQ" checked> embaralhar a ordem das questões</label>
       <label class="chk"><input type="checkbox" id="oEmbA" checked> embaralhar as alternativas</label>
+      <label class="chk"><input type="checkbox" id="oVarD" checked> 🎲 mudar os números nas questões “dados variáveis”</label>
       <small style="color:#777;display:block;margin-top:4px">A versão A mantém a ordem que você escolheu. As demais são embaralhadas, e o gabarito de cada uma é refeito. Alternativas do tipo “todas as anteriores” ou em imagem não são embaralhadas.</small>
     </div>
     <button class="addbtn" style="width:100%;margin-top:10px;background:var(--az);color:#fff" onclick="gerarProva()">Gerar prova ▶</button>
     <button class="addbtn" style="width:100%;margin-top:6px" onclick="baixarWord(this)">📄 Baixar Word (.docx)</button>
   </aside>
+</div>
+
+
+<div id="ed" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:50;overflow:auto">
+ <div style="background:#fff;max-width:820px;margin:30px auto;padding:18px;border-radius:10px">
+  <h2 style="margin:0 0 4px">✎ Editar questão</h2>
+  <p style="margin:0 0 10px;font-size:12px;color:#666">A questão editada vale só para a sua prova (o banco não muda). Fórmulas: escreva entre cifrões, como <code>$x^2+1$</code>. Use <code>**negrito**</code> se quiser.</p>
+  <label class="l">Enunciado</label><textarea id="edEnun" rows="7" style="width:100%"></textarea>
+  <div id="edAltBox">
+   <label class="l">Alternativas</label>
+   <div id="edAlts"></div>
+   <label class="l">Alternativa correta</label><select id="edGab"></select>
+  </div>
+  <div id="edAltImg" style="display:none;font-size:12px;color:#a60;margin:6px 0">As alternativas desta questão são uma imagem e não podem ser editadas aqui. Você pode mudar o enunciado.</div>
+  <label class="l">Resolução (opcional – aparece na folha de resolução)</label><textarea id="edRes" rows="6" style="width:100%"></textarea>
+  <label class="l">Prévia do enunciado</label><div id="edPrev" class="qbd" style="border:1px dashed #bbb;padding:8px;border-radius:6px;max-height:220px;overflow:auto"></div>
+  <div style="display:flex;gap:8px;margin-top:12px;justify-content:flex-end">
+   <button class="addbtn" onclick="fecharEditor()">Cancelar</button>
+   <button class="addbtn" style="background:var(--az);color:#fff" onclick="salvarEditor()">Salvar e usar na prova</button>
+  </div>
+ </div>
 </div>
 
 <div id="prova">
@@ -159,6 +181,7 @@ input[type=text],select,textarea{width:100%;padding:6px 8px;border:1px solid var
 
 <script src="app/dados.js"></script>
 <script src="app/resolucoes.js"></script>
+<script src="app/modelos.js"></script>
 <script src="app/marked.min.js"></script>
 <script src="app/katex/katex.min.js"></script>
 <script src="app/texto.js"></script>
@@ -172,8 +195,20 @@ const md=s=>Tx.html(s,false);
 const mdi=s=>Tx.html(s,true);
 let sel=[];            // ids na prova (ordem)
 let filtrados=[],mostrando=0,PAG=30;
-try{sel=JSON.parse(localStorage.getItem('exata_prova')||'[]').filter(id=>Q.some(q=>q.id===id))}catch(e){}
+/* modelos com dados variáveis entram no banco como questões "vivas" */
+Param.modelos.forEach(m=>{const q=Param.gerar(m.id,1);q.id='m-'+m.id;Q.push(q)});
 const porId=Object.fromEntries(Q.map(q=>[q.id,q]));
+let CUSTOM={};try{CUSTOM=JSON.parse(localStorage.getItem('exata_custom')||'{}')}catch(e){}
+Object.keys(CUSTOM).forEach(k=>porId[k]=CUSTOM[k]);
+const baseId=s=>String(s).split('@')[0];
+function reg(id){ // garante que o id (inclusive "modelo@semente") exista em porId
+  if(porId[id])return true;
+  const i=id.indexOf('@');if(i>0){const q=Param.gerar(id.slice(2,i),parseInt(id.slice(i+1)));if(q){porId[id]=q;return true}}
+  return false;
+}
+try{sel=JSON.parse(localStorage.getItem('exata_prova')||'[]').filter(reg)}catch(e){}
+const idxSel=id=>sel.findIndex(s=>baseId(s)===id);
+const idSel=q=>{if(q.modelo&&q.id.indexOf('@')<0){const sid=q.id+'@'+q.seed;if(!porId[sid])porId[sid]=Param.gerar(q.id.slice(2),q.seed);return sid}return q.id};
 const RES=window.RESOL||{};
 $('nResol')&&($('nResol').textContent='('+Object.keys(RES).length+' de '+BANCO.length+' questões já têm resolução)');
 const semGab=q=>q.anulada||!q.gabarito;
@@ -195,7 +230,7 @@ function montaFiltros(){
   $('fDif').innerHTML=DIFS.map(s=>'<label><input type="checkbox" data-f="dif" value="'+s+'"><span>'+s+'</span></label>').join('');
   const bancas=[...new Set(QD.map(q=>q.banca||'ENEM'))].sort();
   $('fBanca').innerHTML=bancas.map(s=>'<label><input type="checkbox" data-f="banca" value="'+s+'"><span>'+s+'</span></label>').join('');
-  const anos=[...new Set(QD.map(q=>q.ano))].sort();
+  const anos=[...new Set(QD.map(q=>q.ano))].filter(Boolean).sort();
   $('fAno').innerHTML=anos.map(s=>'<label><input type="checkbox" data-f="ano" value="'+s+'"><span>'+s+'</span></label>').join('');
   document.querySelectorAll('[data-f]').forEach(e=>e.addEventListener('change',aplicar));
 }
@@ -247,16 +282,17 @@ function corpo(q,paraProva){
   if(q.alternativas_imagem)h+='<img src="'+q.alternativas_imagem+'" alt="alternativas">';
   return h;
 }
+const resDe=q=>q.resol_txt!==undefined?q.resol_txt:RES[q.id];
 function cardHTML(q){
   const d=q.dificuldade?q.dificuldade[0]:'M';
-  return '<div class="qcard'+(sel.includes(q.id)?' sel':'')+'" id="c_'+q.id+'">'+
+  return '<div class="qcard'+(idxSel(q.id)>=0?' sel':'')+'" id="c_'+q.id+'">'+
    '<div class="qhd"><span class="t">'+q.origem+' – Q'+q.numero_original+'</span>'+
-   '<span class="bdg s">'+q.assunto+'</span><span class="bdg s">'+q.serie+'º ano</span>'+
+   '<span class="bdg s">'+q.assunto+'</span>'+(q.modelo?'<span class="bdg M">dados variáveis</span>':'')+'<span class="bdg s">'+q.serie+'º ano</span>'+
    '<span class="bdg '+d+'">'+q.dificuldade+'</span>'+(semGab(q)?'<span class="bdg a">'+(q.anulada?'ANULADA':'sem gabarito')+'</span>':'')+
-   '<span class="sp"></span><button class="addbtn" onclick="alternar(\''+q.id+'\')">'+(sel.includes(q.id)?'✓ Na prova':'+ Adicionar')+'</button></div>'+
+   '<span class="sp"></span>'+(q.modelo?'<button class="addbtn" title="Sorteia novos números para esta questão" onclick="reroll(\''+q.id+'\')">🎲 Alterar dados</button> ':'')+'<button class="addbtn" title="Editar enunciado, alternativas e resposta" onclick="abrirEditor(\''+q.id+'\')">✎ Editar</button> <button class="addbtn" onclick="alternar(\''+q.id+'\')">'+(idxSel(q.id)>=0?'✓ Na prova':'+ Adicionar')+'</button></div>'+
    '<div class="qbd">'+corpo(q,false)+'</div>'+
    '<div class="gabl"><details><summary>Ver gabarito</summary>'+(q.anulada?'Anulada pelo INEP':(q.gabarito?'Gabarito: <b>'+q.gabarito+'</b>':'Sem gabarito oficial ainda'))+
-   (q.gabarito&&q.gabarito_oficial===false?' <i>(calculado, não oficial)</i>':'')+' · tópico: '+q.topico+(RES[q.id]?'<div class="resb" style="margin-top:6px;border-top:1px solid #ddd;padding-top:6px"><b>Resolução:</b>'+Tx.html(RES[q.id],false,[])+'</div>':'')+'</details></div></div>';
+   (q.gabarito&&q.gabarito_oficial===false?' <i>(calculado, não oficial)</i>':'')+' · tópico: '+q.topico+(resDe(q)?'<div class="resb" style="margin-top:6px;border-top:1px solid #ddd;padding-top:6px"><b>Resolução:</b>'+Tx.html(resDe(q),false,[])+'</div>':'')+'</details></div></div>';
 }
 function mais(){
   const fim=Math.min(filtrados.length,mostrando+PAG);
@@ -271,26 +307,32 @@ function mais(){
 /* ---------- prova (carrinho) ---------- */
 function salvar(){try{localStorage.setItem('exata_prova',JSON.stringify(sel))}catch(e){}}
 function alternar(id){
-  const i=sel.indexOf(id);if(i>=0)sel.splice(i,1);else sel.push(id);
-  salvar();const c=$('c_'+id);
-  if(c){c.classList.toggle('sel',sel.includes(id));c.querySelector('.addbtn').textContent=sel.includes(id)?'✓ Na prova':'+ Adicionar'}
+  const i=idxSel(id);if(i>=0)sel.splice(i,1);else{const q=porId[id];sel.push(idSel(q))}
+  salvar();const c=$('c_'+id);const on=idxSel(id)>=0;
+  if(c){c.classList.toggle('sel',on);const b=c.querySelector('.addbtn:last-of-type');b.textContent=on?'✓ Na prova':'+ Adicionar'}
   desenhaCart();
+}
+function reroll(id){
+  const q=porId[id];const novo=Math.floor(Math.random()*900000)+2;
+  const g=Param.gerar(id.slice(2),novo);Object.assign(q,g,{id:id});
+  const c=$('c_'+id);if(c){const t=document.createElement('div');t.innerHTML=cardHTML(q);c.replaceWith(t.firstChild)}
 }
 function desenhaCart(){
   $('ncart').textContent=sel.length;$('hdrcnt').textContent=sel.length?sel.length+' questão(ões) na prova':'';
   $('cart').innerHTML=sel.map((id,i)=>{const q=porId[id];
     return '<div class="cartitem"><b>'+(i+1)+'.</b><span class="tx" title="'+q.topico+'">'+q.origem+' Q'+q.numero_original+' · '+q.assunto+'</span>'+
-    '<button onclick="mover('+i+',-1)">↑</button><button onclick="mover('+i+',1)">↓</button><button onclick="alternar(\''+id+'\')">✕</button></div>'}).join('')||'<div style="font-size:12px;color:#777">Nenhuma questão escolhida. Clique em “+ Adicionar” nas questões ou use o sorteio.</div>';
+    '<button onclick="mover('+i+',-1)">↑</button><button onclick="mover('+i+',1)">↓</button><button title="Editar esta questão" onclick="abrirEditor(\''+id+'\')">✎</button><button onclick="removerDaProva('+i+')">✕</button></div>'}).join('')||'<div style="font-size:12px;color:#777">Nenhuma questão escolhida. Clique em “+ Adicionar” nas questões ou use o sorteio.</div>';
 }
+function removerDaProva(i){const id=baseId(sel[i]);sel.splice(i,1);salvar();const c=$('c_'+id);if(c){c.classList.remove('sel');const b=c.querySelector('.addbtn:last-of-type');if(b)b.textContent='+ Adicionar'}desenhaCart()}
 function mover(i,d){const j=i+d;if(j<0||j>=sel.length)return;[sel[i],sel[j]]=[sel[j],sel[i]];salvar();desenhaCart()}
-function limparProva(){if(sel.length&&!confirm('Remover todas as questões da prova?'))return;sel=[];salvar();desenhaCart();document.querySelectorAll('.qcard.sel').forEach(c=>{c.classList.remove('sel');c.querySelector('.addbtn').textContent='+ Adicionar'})}
+function limparProva(){if(sel.length&&!confirm('Remover todas as questões da prova?'))return;sel=[];salvar();desenhaCart();document.querySelectorAll('.qcard.sel').forEach(c=>{c.classList.remove('sel');c.querySelector('.addbtn:last-of-type').textContent='+ Adicionar'})}
 function sortear(){
   const n=Math.max(1,parseInt($('nSort').value)||10);
-  const pool=filtrados.filter(q=>!sel.includes(q.id)&&!semGab(q));
+  const pool=filtrados.filter(q=>idxSel(q.id)<0&&!semGab(q));
   for(let i=pool.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[pool[i],pool[j]]=[pool[j],pool[i]]}
-  pool.slice(0,n).forEach(q=>sel.push(q.id));
+  pool.slice(0,n).forEach(q=>sel.push(idSel(q)));
   salvar();desenhaCart();
-  document.querySelectorAll('.qcard').forEach(c=>{const id=c.id.slice(2);const s=sel.includes(id);c.classList.toggle('sel',s);c.querySelector('.addbtn').textContent=s?'✓ Na prova':'+ Adicionar'});
+  document.querySelectorAll('.qcard').forEach(c=>{const id=c.id.slice(2);const s=idxSel(id)>=0;c.classList.toggle('sel',s);c.querySelector('.addbtn:last-of-type').textContent=s?'✓ Na prova':'+ Adicionar'});
   if(pool.length<n)alert('Só havia '+pool.length+' questão(ões) disponíveis com os filtros atuais.');
 }
 
@@ -306,21 +348,26 @@ function altFixa(q){
   return /anteriores?|nenhuma d[aeo]s?|nenhum d[aeo]s?|todas as|todos os|\bacima\b|\babaixo\b|\bambas\b|alternativas?\s*[A-E]\b/i.test(t);
 }
 function ajustaResol(txt,letra){return txt.replace(/\*\*Resposta: alternativa [A-E]\.\*\*\s*$/,'**Resposta: alternativa '+letra+'.**')}
+const chaveDe=q=>q.chave||q.mid||q.id;
 function montaVersao(idx){
   const L='ABCD'[idx];
   let qs=sel.map(id=>porId[id]);
-  if(idx===0)return{letra:L,qs:qs};
+  if(idx===0)return{letra:L,qs:qs.map(q=>Object.assign({},q,{chave:chaveDe(q)}))};
   const rnd=prng(L+'|'+sel.join(','));
+  const jaUsados={};for(let j=0;j<idx;j++)montaVersao(j).qs.forEach(x=>{(jaUsados[x.chave]=jaUsados[x.chave]||new Set()).add(x.enunciado)});
   if($('oEmbQ').checked)qs=embaralha(qs,rnd);
   qs=qs.map(q=>{
+    const ch=chaveDe(q);
+    if(q.modelo&&$('oVarD').checked){let g,t=0;do{g=Param.gerar(q.mid.slice(2),Math.floor(rnd()*900000)+2);t++}while(t<30&&jaUsados[ch]&&jaUsados[ch].has(g.enunciado));q=Object.assign({},g,{id:g.id})}
+    q=Object.assign({},q,{chave:ch});
     if(!$('oEmbA').checked||altFixa(q)||!q.gabarito)return q;
     const ks=Object.keys(q.alternativas).sort();
     const ordem=embaralha(ks,rnd);
     const alts={};let novo=q.gabarito;
     ks.forEach((k,p)=>{alts[k]=q.alternativas[ordem[p]];if(ordem[p]===q.gabarito)novo=k});
-    const r=(window.RESOL||{})[q.id];
+    const r=resDe(q);
     const c=Object.assign({},q,{alternativas:alts,gabarito:novo});
-    if(r)c.resol_txt=ajustaResol(r,novo)+'\n\n*(As letras citadas no texto acima seguem a ordem original das alternativas; a resposta final já está na letra desta versão.)*';
+    if(r)c.resol_txt=ajustaResol(r,novo)+(q.modelo?'':'\n\n*(As letras citadas no texto acima seguem a ordem original das alternativas; a resposta final já está na letra desta versão.)*');
     return c;
   });
   return{letra:L,qs:qs};
@@ -349,7 +396,7 @@ function htmlVersao(v,multi){
   }
   if($('oResol').checked){
     h+='<div class="gabpg"><h2 style="text-align:center">Resolução detalhada – '+esc(tit)+'</h2>'+
-      qs.map((q,i)=>{const r=(q.resol_txt!==undefined)?q.resol_txt:(window.RESOL||{})[q.id];
+      qs.map((q,i)=>{const r=resDe(q);
         return '<div class="resq"><div class="resh"><b>QUESTÃO '+(i+1)+'</b> <small>('+q.origem+')</small> – '+(q.anulada?'<b>ANULADA</b>':(q.gabarito?'Resposta: <b>'+q.gabarito+'</b>':'sem gabarito'))+'</div>'+
         (r?'<div class="resb">'+Tx.html(r,false,[])+'</div>':'<p><i>Resolução não disponível para esta questão.</i></p>')+'</div>'}).join('')+'</div>';
   }
@@ -357,14 +404,14 @@ function htmlVersao(v,multi){
 }
 function gabaritoMestre(vs){
   const n=vs[0].qs.length;
-  const pos=v=>{const m={};v.qs.forEach((q,i)=>m[q.id]=i+1);return m};
+  const pos=v=>{const m={};v.qs.forEach((q,i)=>m[chaveDe(q)]=i+1);return m};
   const ps=vs.map(pos);
   let h='<div class="gabpg"><h2 style="text-align:center">Gabarito de todas as versões – '+esc($('cTit').value)+'</h2>'+
    '<p style="font-size:12px;text-align:center">Cada linha é uma questão da Versão A; as colunas mostram o número e a resposta dela em cada versão.</p>'+
    '<table><tr><th>Questão (Versão A)</th><th>Origem</th>'+vs.map(v=>'<th>Versão '+v.letra+'</th>').join('')+'</tr>';
   vs[0].qs.forEach((q0,i)=>{
     h+='<tr><td>'+(i+1)+'</td><td>'+q0.origem+' Q'+q0.numero_original+'</td>'+vs.map((v,k)=>{
-      const q=v.qs.find(x=>x.id===q0.id);return '<td>Q'+ps[k][q0.id]+' → <b>'+(q.anulada?'ANULADA':(q.gabarito||'—'))+'</b></td>'}).join('')+'</tr>';
+      const q=v.qs.find(x=>chaveDe(x)===chaveDe(q0));return '<td>Q'+ps[k][chaveDe(q0)]+' → <b>'+(q.anulada?'ANULADA':(q.gabarito||'—'))+'</b></td>'}).join('')+'</tr>';
   });
   return h+'</table></div>';
 }
@@ -391,6 +438,38 @@ async function baixarWord(btn){
     if(multi)alert('Foram gerados '+vs.length+' arquivos (um por versão). Se o navegador pedir, permita baixar vários arquivos.');
   }catch(e){alert('Não foi possível gerar o Word: '+e.message)}
   btn.disabled=false;btn.textContent=txt;
+}
+
+/* ---------- editor de questão ---------- */
+let edId=null;
+function abrirEditor(id){
+  reg(id);const q=porId[id];if(!q)return;edId=id;
+  $('edEnun').value=q.enunciado;
+  const tem=!!q.alternativas;
+  $('edAltBox').style.display=tem?'block':'none';$('edAltImg').style.display=tem?'none':'block';
+  if(tem){const ks=Object.keys(q.alternativas).sort();
+    $('edAlts').innerHTML=ks.map(k=>'<div style="display:flex;gap:6px;margin:3px 0"><b style="width:22px">'+k+')</b><input type="text" class="edA" data-k="'+k+'" style="flex:1" value=""></div>').join('');
+    document.querySelectorAll('.edA').forEach(e=>e.value=q.alternativas[e.dataset.k]);
+    $('edGab').innerHTML=ks.map(k=>'<option'+(k===q.gabarito?' selected':'')+'>'+k+'</option>').join('');}
+  $('edRes').value=resDe(q)||'';
+  prevEd();$('ed').style.display='block';
+}
+function prevEd(){try{$('edPrev').innerHTML=Tx.html($('edEnun').value,false,porId[edId]?porId[edId].figuras||[]:[])}catch(e){}}
+$('edEnun').addEventListener('input',prevEd);
+function fecharEditor(){$('ed').style.display='none';edId=null}
+function salvarEditor(){
+  const o=porId[edId];if(!o)return;
+  const nid='u-'+Date.now().toString(36);
+  const c=Object.assign({},o);delete c.modelo;delete c.seed;delete c.mid;delete c._v;delete c.chave;
+  c.id=nid;c.enunciado=$('edEnun').value.trim();
+  c.origem=o.origem.indexOf('Editada')===0?o.origem:'Editada de '+o.origem;
+  if(o.alternativas){const a={};document.querySelectorAll('.edA').forEach(e=>a[e.dataset.k]=e.value);c.alternativas=a;c.gabarito=$('edGab').value}
+  c.resol_txt=$('edRes').value.trim();c.gabarito_oficial=true;c.anulada=false;
+  CUSTOM[nid]=c;porId[nid]=c;try{localStorage.setItem('exata_custom',JSON.stringify(CUSTOM))}catch(e){}
+  const i=idxSel(baseId(edId));if(i>=0)sel[i]=nid;else sel.push(nid);
+  salvar();desenhaCart();
+  const cd=$('c_'+baseId(edId));if(cd){cd.classList.remove('sel');const b=cd.querySelector('.addbtn:last-of-type');if(b)b.textContent='+ Adicionar'}
+  fecharEditor();
 }
 function voltar(){$('prova').style.display='none';$('app').style.display='grid';document.querySelector('header').style.display='flex'}
 
