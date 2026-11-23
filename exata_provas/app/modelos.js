@@ -425,15 +425,100 @@ A velocidade linear de uma cadeira presa à borda da roda, em m/s, é`,
 
 **Passo 2.** $v=${6*v.R/v.T}$ m/s.`});
 
+  /* ===== variações de questões reais do ENEM (botão “outros números” na questão original) ===== */
+  def({id:'fis-ar-condicionado',de:['enem-2026-92'],disc:'Física',area:'Termologia',assunto:'Calorimetria e propagação de calor',topico:'ar-condicionado – potência em Btu/h',serie:2,dif:'Média',
+    gen:r=>{let v;do{v={a:r.pick([5,8,10,12]),b:r.pick([10,15,20,25]),c:r.pick([1,2,3]),d:r.pick([10,15,20,25])};v.W=v.a*100+v.b*150+v.c*500+v.d*200}while(Math.round(v.W/30)*30!==v.W);return v},
+    enun:v=>T`Uma engenheira simulou as fontes de calor de um escritório: ${v.a} lâmpadas de 100 W cada, ${v.b} computadores de 150 W cada, ${v.c} geladeiras de 500 W cada e ${v.d} pessoas adultas que dissipam 200 W cada. Todos dissipam calor ao mesmo tempo. Para manter a temperatura constante, ela precisa de um ar-condicionado o mais econômico possível. Considere as paredes isolantes e o fator de conversão 1 Btu/h = 0,3 W.
+
+Qual é a capacidade de refrigeração mínima, em Btu/h?`,
+    resp:v=>({ok:v.W/0.3,bad:[v.W,v.W*0.3,(v.W-v.d*200)/0.3,(v.W+v.c*500)/0.3,v.W/3],fmt:n=>f(n)+' Btu/h'}),
+    resol:v=>T`**Passo 1 – Potência de cada fonte.** Lâmpadas: ${v.a}·100 = ${v.a*100} W. Computadores: ${v.b}·150 = ${v.b*150} W. Geladeiras: ${v.c}·500 = ${v.c*500} W. Pessoas: ${v.d}·200 = ${v.d*200} W.
+
+**Passo 2 – Total.** ${v.W} W.
+
+**Passo 3 – Conversão.** Como 1 Btu/h = 0,3 W: $\dfrac{${v.W}}{0{,}3}=${f(v.W/0.3)}$ Btu/h.`});
+
+  def({id:'fis-radar-ida-volta',de:['enem-2026-96'],disc:'Física',area:'Óptica e ondas',assunto:'Ondas eletromagnéticas',topico:'radar – tempo de ida e volta',serie:2,dif:'Fácil',
+    gen:r=>({d:r.pick([30,45,60,75,90,150,300])}),
+    enun:v=>T`Um radar emite ondas eletromagnéticas com velocidade de 300 mil quilômetros por segundo. Um avião foi localizado a ${v.d} km do radar. O operador mede o tempo entre o envio do sinal e a chegada do eco refletido no avião.
+
+Qual é esse tempo, em milissegundos?`,
+    resp:v=>({ok:2*v.d/300,bad:[v.d/300,4*v.d/300,2*v.d/300*1000,v.d/3,2*v.d/30],fmt:n=>f(n)+' ms'}),
+    resol:v=>T`**Ideia:** o sinal vai até o avião e **volta**, então percorre o dobro da distância.
+
+**Passo 1.** Distância total: $2\cdot${v.d}=${2*v.d}$ km.
+
+**Passo 2.** $t=\dfrac{${2*v.d}}{300\,000}=${f(2*v.d/300)}\times10^{-3}$ s $=${f(2*v.d/300)}$ ms.`});
+
+  def({id:'fis-corda-violao',de:['enem-2026-113'],disc:'Física',area:'Óptica e ondas',assunto:'Ondulatória e acústica',topico:'corda vibrante – frequência × comprimento',serie:2,dif:'Fácil',
+    gen:r=>({f1:r.pick([220,330,440,660]),L2:r.pick([30,40,45,48])}),
+    enun:v=>T`Em um violão, a corda livre tem 60 cm de comprimento vibrante e emite uma nota de ${v.f1} Hz no modo fundamental. A frequência é inversamente proporcional ao comprimento da parte que vibra. Ao pressionar a corda, a parte oscilante passa a ter ${v.L2} cm.
+
+Qual é a nova frequência emitida?`,
+    resp:v=>({ok:v.f1*60/v.L2,bad:[v.f1*v.L2/60,v.f1+(60-v.L2),v.f1*(60-v.L2)/60,v.f1*60/(60-v.L2),v.f1*2],fmt:n=>f(n)+' Hz'}),
+    resol:v=>T`**Ideia:** $f\cdot L$ é constante.
+
+$f_2=f_1\cdot\dfrac{L_1}{L_2}=${v.f1}\cdot\dfrac{60}{${v.L2}}=${f(v.f1*60/v.L2)}$ Hz.`});
+
+  def({id:'fis-tv-espera',de:['enem-2026-133'],disc:'Física',area:'Mecânica',assunto:'Trabalho, energia e potência',topico:'energia em espera × energia total',serie:1,dif:'Média',
+    gen:r=>({Pu:r.pick([100,120,158,200]),Pe:r.pick([1,2,3]),h:r.pick([2,3,4,5,6])}),
+    enun:v=>T`Um aparelho de TV consome ${v.Pu} W em uso e ${v.Pe} W em espera. Uma pessoa assistiu à TV durante ${v.h} horas e, no restante das 24 horas do dia, o aparelho ficou em espera.
+
+Qual é a porcentagem da energia gasta em espera em relação ao total de energia gasta no dia?`,
+    resp:v=>{const e=v.Pe*(24-v.h),u=v.Pu*v.h;return {ok:e/(e+u)*100,bad:[e/u*100,v.Pe/v.Pu*100,v.Pe/(v.Pu+v.Pe)*100,e/(e+u)*10,(24-v.h)/24*100],fmt:n=>f(n)+'%'}},
+    resol:v=>{const e=v.Pe*(24-v.h),u=v.Pu*v.h;return T`**Passo 1 – Uso.** ${v.Pu}·${v.h} = ${u} Wh.
+
+**Passo 2 – Espera.** ${24-v.h} h a ${v.Pe} W: ${e} Wh.
+
+**Passo 3 – Porcentagem.** $\dfrac{${e}}{${u+e}}\approx${f(e/(e+u)*100)}\%$.`}});
+
+  def({id:'fis-lampada-folha',de:['enem-2026-121'],disc:'Física',area:'Óptica e ondas',assunto:'Óptica geométrica',topico:'intensidade luminosa e energia absorvida',serie:2,dif:'Difícil',
+    gen:r=>({P:r.pick([4,6,8,12]),r:r.pick([1,2]),A:r.pick([2,4,5]),k:r.pick([40,50,60,70])}),
+    enun:v=>T`Uma lâmpada puntiforme de ${v.P} W emite luz vermelha em um quarto escuro. A ${v.r} m dela há uma folha de planta com área de ${v.A} cm², que absorve ${v.k}% da luz incidente nesse comprimento de onda. A intensidade da luz é a razão entre a potência da fonte e a área da superfície esférica de raio $r$ ($4\pi r^2$). Use $\pi\approx3$.
+
+Qual é a energia absorvida pela folha a cada segundo, em unidades de $10^{-4}$ J?`,
+    resp:v=>{const E=v.P/(12*v.r*v.r)*v.A*v.k/100;return {ok:E,bad:[E*100/v.k,E*3,E/3,E*v.r*v.r/4,E*4],fmt:n=>f(n)+' × 10⁻⁴ J'}},
+    resol:v=>{const I=v.P/(12*v.r*v.r);return T`**Passo 1 – Intensidade.** $I=\dfrac{${v.P}}{4\cdot3\cdot${v.r}^2}=${f(I)}$ W/m².
+
+**Passo 2 – Potência incidente.** ${v.A} cm² $=${v.A}\times10^{-4}$ m², então $P_{inc}=${f(I*v.A)}\times10^{-4}$ W.
+
+**Passo 3 – Absorvida (${v.k}%).** $${f(I*v.A)}\cdot${f(v.k/100)}=${f(I*v.A*v.k/100)}\times10^{-4}$ W, ou seja, ${f(I*v.A*v.k/100)}×10⁻⁴ J a cada segundo.`}});
+
+  def({id:'fis-ponte-sensor',de:['enem-2026-95'],disc:'Física',area:'Eletricidade e magnetismo',assunto:'Eletrodinâmica (circuitos e potência)',topico:'ponte de resistores – tensão entre pontos',serie:3,dif:'Difícil',
+    gen:r=>{let v;do{v={U:r.pick([12,24]),T:r.pick([550,800,1050]),Rc:r.pick([20,60])};v.Rs=20*(1+0.002*(v.T-300))}while(Math.abs(v.U*v.Rs/(40+v.Rs)-v.U*v.Rc/(40+v.Rc))<1e-6);return v},
+    enun:v=>T`Um sensor de temperatura tem resistência $R_s=20\,[1+0{,}002\,(T-300)]$ (em ohm, com $T$ em kelvin). Ele está em série com um resistor de 40 Ω, formando um ramo ligado a uma bateria de ${v.U} V cuja outra ponta é o terra. Um segundo ramo, em paralelo ao primeiro, tem um resistor de 40 Ω em série com outro de ${v.Rc} Ω (na mesma ordem: 40 Ω ligado ao polo da bateria). O ponto A fica entre o 40 Ω e o sensor, e o ponto B, entre o 40 Ω e o de ${v.Rc} Ω. O sensor está a ${v.T} K.
+
+Qual é o módulo da tensão entre A e B?`,
+    resp:v=>{const VA=v.U*v.Rs/(40+v.Rs),VB=v.U*v.Rc/(40+v.Rc);return {ok:Math.abs(VA-VB),bad:[VA,VB,VA+VB,v.U/2,Math.abs(VA-VB)*2],fmt:n=>f(n)+' V'}},
+    resol:v=>{const VA=v.U*v.Rs/(40+v.Rs),VB=v.U*v.Rc/(40+v.Rc);return T`**Passo 1 – Sensor.** $R_s=20[1+0{,}002(${v.T}-300)]=${f(v.Rs)}$ Ω.
+
+**Passo 2 – Ponto A (divisor de tensão).** $V_A=${v.U}\cdot\dfrac{${f(v.Rs)}}{40+${f(v.Rs)}}=${f(VA)}$ V.
+
+**Passo 3 – Ponto B.** $V_B=${v.U}\cdot\dfrac{${v.Rc}}{40+${v.Rc}}=${f(VB)}$ V.
+
+**Passo 4.** $|V_A-V_B|=${f(Math.abs(VA-VB))}$ V.`}});
+
+  def({id:'fis-fusao-neutron',de:['enem-2026-94'],disc:'Física',area:'Física moderna',assunto:'Física moderna e radioatividade',topico:'fusão – divisão da energia cinética',serie:3,dif:'Média',
+    gen:r=>({E:r.pick([10,15,20,30,35])}),
+    enun:v=>T`Em uma fusão nuclear, um núcleo de deutério e um de trítio formam uma partícula $\alpha$ (4 nucleons) e um nêutron (1 nucleon). O momento linear total antes da reação é nulo e a energia cinética total dos produtos é ${v.E} MeV. Considere as massas do próton e do nêutron iguais.
+
+Qual é a energia cinética do nêutron?`,
+    resp:v=>({ok:v.E*4/5,bad:[v.E/5,v.E/2,v.E*3/4,v.E/4,v.E*2/5],fmt:n=>f(n)+' MeV'}),
+    resol:v=>T`**Ideia:** momentos de mesmo módulo $p$ e sentidos opostos; $E_c=p^2/2m$.
+
+**Passo 1.** $E_\alpha=\dfrac{E_n}{4}$ (a massa do $\alpha$ é 4 vezes maior).
+
+**Passo 2.** $E_n+\dfrac{E_n}{4}=${v.E}\Rightarrow E_n=${f(v.E*4/5)}$ MeV.`});
+
   /* ================= motor ================= */
   function numAlts(m,v,r){
     const o=m.resp(v);const ok=Math.round(o.ok*1e6)/1e6;
-    const vistos=new Set([ok]);const bad=[];
+    const vistos=new Set([ok]);const fv=new Set([o.fmt(ok)]);const bad=[];
     for(const b of r.shuffle(o.bad)){const x=Math.round(b*1e6)/1e6;
-      if(!isFinite(x)||x<=0&&ok>0||vistos.has(x))continue;vistos.add(x);bad.push(x);if(bad.length===4)break}
+      if(!isFinite(x)||x<=0&&ok>0||vistos.has(x)||fv.has(o.fmt(x)))continue;vistos.add(x);fv.add(o.fmt(x));bad.push(x);if(bad.length===4)break}
     let k=1;while(bad.length<4){const base=Math.abs(ok)>=10?Math.max(1,Math.round(Math.abs(ok)*0.1)):1;
       const x=Math.round((ok+(k%2?1:-1)*Math.ceil(k/2)*base)*1e6)/1e6;k++;
-      if(!vistos.has(x)&&x>0){vistos.add(x);bad.push(x)}}
+      if(!vistos.has(x)&&!fv.has(o.fmt(x))&&x>0){vistos.add(x);fv.add(o.fmt(x));bad.push(x)}}
     const todos=[ok].concat(bad).sort((a,b)=>a-b);
     const L='ABCDE',alts={};todos.forEach((x,i)=>alts[L[i]]=o.fmt(x));
     return {alts:alts,gab:L[todos.indexOf(ok)],ok:ok};
@@ -451,5 +536,5 @@ A velocidade linear de uma cadeira presa à borda da roda, em m/s, é`,
       enunciado:m.enun(v).trim(),alternativas:a.alts,gabarito:a.gab,anulada:false,gabarito_oficial:true,
       _v:v,resol_txt:m.resol(v).trim().replace(/\n*$/,'')+'\n\n**Resposta: alternativa '+a.gab+'.**'};
   }
-  root.Param={modelos:M,gerar:gerar,rng:rng};
+  root.Param={modelos:M,gerar:gerar,rng:rng,deBase:function(b){const m=M.find(x=>(x.de||[]).indexOf(b)>=0);return m?m.id:null}};
 })(typeof window!=='undefined'?window:globalThis);

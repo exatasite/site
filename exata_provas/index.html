@@ -289,7 +289,7 @@ function cardHTML(q){
    '<div class="qhd"><span class="t">'+q.origem+' – Q'+q.numero_original+'</span>'+
    '<span class="bdg s">'+q.assunto+'</span>'+(q.modelo?'<span class="bdg M">dados variáveis</span>':'')+'<span class="bdg s">'+q.serie+'º ano</span>'+
    '<span class="bdg '+d+'">'+q.dificuldade+'</span>'+(semGab(q)?'<span class="bdg a">'+(q.anulada?'ANULADA':'sem gabarito')+'</span>':'')+
-   '<span class="sp"></span>'+(q.modelo?'<button class="addbtn" title="Sorteia novos números para esta questão" onclick="reroll(\''+q.id+'\')">🎲 Alterar dados</button> ':'')+'<button class="addbtn" title="Editar enunciado, alternativas e resposta" onclick="abrirEditor(\''+q.id+'\')">✎ Editar</button> <button class="addbtn" onclick="alternar(\''+q.id+'\')">'+(idxSel(q.id)>=0?'✓ Na prova':'+ Adicionar')+'</button></div>'+
+   '<span class="sp"></span>'+(!q.modelo&&Param.deBase(q.id)?'<button class="addbtn" title="Cria uma versão desta questão com outros números" onclick="variante(\''+q.id+'\')">🎲 Outros números</button> ':'')+(q.modelo?'<button class="addbtn" title="Sorteia novos números para esta questão" onclick="reroll(\''+q.id+'\')">🎲 Alterar dados</button> ':'')+'<button class="addbtn" title="Editar enunciado, alternativas e resposta" onclick="abrirEditor(\''+q.id+'\')">✎ Editar</button> <button class="addbtn" onclick="alternar(\''+q.id+'\')">'+(idxSel(q.id)>=0?'✓ Na prova':'+ Adicionar')+'</button></div>'+
    '<div class="qbd">'+corpo(q,false)+'</div>'+
    '<div class="gabl"><details><summary>Ver gabarito</summary>'+(q.anulada?'Anulada pelo INEP':(q.gabarito?'Gabarito: <b>'+q.gabarito+'</b>':'Sem gabarito oficial ainda'))+
    (q.gabarito&&q.gabarito_oficial===false?' <i>(calculado, não oficial)</i>':'')+' · tópico: '+q.topico+(resDe(q)?'<div class="resb" style="margin-top:6px;border-top:1px solid #ddd;padding-top:6px"><b>Resolução:</b>'+Tx.html(resDe(q),false,[])+'</div>':'')+'</details></div></div>';
@@ -311,6 +311,12 @@ function alternar(id){
   salvar();const c=$('c_'+id);const on=idxSel(id)>=0;
   if(c){c.classList.toggle('sel',on);const b=c.querySelector('.addbtn:last-of-type');b.textContent=on?'✓ Na prova':'+ Adicionar'}
   desenhaCart();
+}
+function variante(id){
+  const mid=Param.deBase(id);if(!mid)return;
+  const g=Param.gerar(mid,Math.floor(Math.random()*900000)+2);porId[g.id]=g;
+  const c=$('c_'+id);if(!c)return;const t=document.createElement('div');t.innerHTML=cardHTML(g);
+  const nv=t.firstChild;nv.style.borderLeft='4px solid #e8a317';c.insertAdjacentElement('afterend',nv);
 }
 function reroll(id){
   const q=porId[id];const novo=Math.floor(Math.random()*900000)+2;
