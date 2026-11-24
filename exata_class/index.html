@@ -81,6 +81,7 @@ async function abrir(cod){
       const s=ler(); s.turmas=s.turmas.filter(x=>x.cod!==cod); gravar(s);
       return inicio('Esta turma não existe mais.');
     }
+    { const sv=ler(), it=sv.turmas.find(x=>x.cod===cod); if(it && it.nome!==t.nome){ it.nome=t.nome; gravar(sv); } }
     const itens=CLASS.lista(t.materiais), agora=Date.now();
     tela.innerHTML=
       '<div class="linha" style="justify-content:space-between;margin-bottom:14px"><button class="btn vazio peq" id="volta">← Minhas turmas</button><button class="btn perigo peq" id="sair">Sair desta turma</button></div>'+

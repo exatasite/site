@@ -84,7 +84,7 @@ function turma(cod,nome){
   const convite=new URL('index.html?c='+cod,location.href).href;
   tela.innerHTML=
    '<div class="linha" style="margin-bottom:14px"><button class="btn vazio peq" id="volta">← Minhas turmas</button></div>'+
-   '<div class="cartao"><h2>'+esc(nome)+'</h2>'+
+   '<div class="cartao"><div class="linha" id="cab" style="justify-content:space-between"><h2>'+esc(nome)+'</h2><button class="btn vazio peq" id="ren">Renomear</button></div>'+
    '<p>Código para os alunos: <span class="codigo">'+esc(cod)+'</span></p>'+
    '<p class="sub" style="margin-top:6px">Link direto da sala: <a href="'+esc(convite)+'" target="_blank">'+esc(convite)+'</a></p>'+
    '<div class="linha" style="margin-top:12px"><button class="btn sec peq" id="cp">Copiar convite</button></div></div>'+
@@ -100,21 +100,46 @@ function turma(cod,nome){
    '<div class="cartao"><details><summary id="alsum">Alunos na turma</summary><div id="als" style="margin-top:10px"></div></details></div>'+
    '<div class="cartao"><button class="btn perigo peq" id="del">Excluir esta turma</button></div>';
   $('#volta').onclick=painel;
+  $('#ren').onclick=()=>{
+    $('#cab').innerHTML='<input id="nn" type="text" maxlength="60" style="flex:1;min-width:200px" value="'+esc(nome)+'"><button class="btn sec peq" id="nok">Salvar</button><button class="btn vazio peq" id="nno">Cancelar</button>';
+    $('#nn').focus(); $('#nn').select();
+    $('#nno').onclick=()=>turma(cod,nome);
+    const salvar=()=>{
+      const n=$('#nn').value.trim().replace(/\s+/g,' ');
+      if(n.length<2) return CLASS.toast('O nome precisa ter pelo menos 2 letras.');
+      const o={}; o['class/turmas/'+cod+'/nome']=n; o['class/professores/'+user.uid+'/turmas/'+cod]=n;
+      CLASS.db.ref().update(o).then(()=>{ CLASS.toast('Nome atualizado.'); turma(cod,n); }).catch(e=>{ console.error(e); CLASS.toast('Não foi possível renomear.'); });
+    };
+    $('#nok').onclick=salvar; $('#nn').addEventListener('keydown',e=>{ if(e.key==='Enter') salvar(); if(e.key==='Escape') turma(cod,nome); });
+  };
   $('#cp').onclick=()=>{ const t='Sala de aula virtual — '+nome+'\nEntre em '+convite+'\nCódigo da turma: '+cod; (navigator.clipboard?navigator.clipboard.writeText(t):Promise.reject()).then(()=>CLASS.toast('Convite copiado!'),()=>CLASS.toast('Copie o link manualmente.')); };
 
-  let pub={}, ras={};
+  let pub={}, ras={}, editando=null;
   const desenha=()=>{
     const L=[].concat(CLASS.lista(ras).map(m=>Object.assign(m,{_r:1})),CLASS.lista(pub));
     $('#ms').innerHTML=L.length?L.map(m=>{
       const tp=CLASS.TIPOS[m.tipo]||CLASS.TIPOS.outro;
+      if(m.id===editando) return '<div class="item'+(m._r?' rasc':'')+'" style="display:block"><label for="et">Título</label><input id="et" type="text" maxlength="120" value="'+esc(m.titulo)+'">'+
+        '<label for="ep">Tipo</label><select id="ep">'+Object.keys(CLASS.TIPOS).map(k=>'<option value="'+k+'"'+(k===m.tipo?' selected':'')+'>'+CLASS.TIPOS[k][0]+' '+CLASS.TIPOS[k][1]+'</option>').join('')+'</select>'+
+        '<label for="el">Link</label><input id="el" type="url" value="'+esc(m.link)+'"><label for="eo">Observação (opcional)</label><input id="eo" type="text" maxlength="200" value="'+esc(m.obs||'')+'">'+
+        '<div class="linha" style="margin-top:12px"><button class="btn peq" data-a="sv" data-id="'+esc(m.id)+'" data-r="'+(m._r?1:0)+'">Salvar alterações</button><button class="btn vazio peq" data-a="cc" data-id="'+esc(m.id)+'" data-r="'+(m._r?1:0)+'">Cancelar</button></div></div>';
       return '<div class="item'+(m._r?' rasc':'')+'"><span class="ic">'+tp[0]+'</span><div class="tx"><span class="etiqueta">'+esc(tp[1])+'</span>'+(m._r?'<span class="etiqueta rasc">Oculto</span>':'')+'<b>'+esc(m.titulo)+'</b>'+
         (m.obs?'<span class="sub">'+esc(m.obs)+'</span><br>':'')+'<a href="'+esc(m.link)+'" target="_blank" rel="noopener noreferrer" class="sub">abrir link</a></div>'+
-        '<div class="linha"><button class="btn sec peq" data-a="tog" data-id="'+esc(m.id)+'" data-r="'+(m._r?1:0)+'">'+(m._r?'Liberar':'Ocultar')+'</button>'+
+        '<div class="linha"><button class="btn vazio peq" data-a="ed" data-id="'+esc(m.id)+'" data-r="'+(m._r?1:0)+'">Editar</button><button class="btn sec peq" data-a="tog" data-id="'+esc(m.id)+'" data-r="'+(m._r?1:0)+'">'+(m._r?'Liberar':'Ocultar')+'</button>'+
         '<button class="btn perigo peq" data-a="del" data-id="'+esc(m.id)+'" data-r="'+(m._r?1:0)+'">Excluir</button></div></div>';
     }).join(''):'<p class="vazio-txt">Nenhum material ainda.</p>';
     $('#ms').querySelectorAll('button').forEach(b=>b.onclick=()=>{
       const id=b.dataset.id, rasc=b.dataset.r==='1', src=(rasc?ras:pub)[id];
       const pa='class/turmas/'+cod+'/materiais/'+id, pr='class/rascunhos/'+cod+'/'+id;
+      if(b.dataset.a==='ed'){ editando=id; return desenha(); }
+      if(b.dataset.a==='cc'){ editando=null; return desenha(); }
+      if(b.dataset.a==='sv'){
+        const titulo=$('#et').value.trim(), link=$('#el').value.trim(), obs=$('#eo').value.trim();
+        if(!titulo) return CLASS.toast('Escreva o título do material.');
+        if(!CLASS.linkOk(link)) return CLASS.toast('Cole um link que comece com https://');
+        return CLASS.db.ref(rasc?pr:pa).update({titulo:titulo,tipo:$('#ep').value,link:link,obs:obs||null})
+          .then(()=>{ editando=null; CLASS.toast('Material atualizado.'); desenha(); }).catch(e=>{ console.error(e); CLASS.toast('Não foi possível salvar.'); });
+      }
       if(b.dataset.a==='tog'){
         const o={}; o[rasc?pr:pa]=null; o[rasc?pa:pr]=Object.assign({},src,{publicado:rasc?CLASS.TS:src.publicado||Date.now()});
         CLASS.db.ref().update(o).then(()=>CLASS.toast(rasc?'Liberado para os alunos.':'Material ocultado.')).catch(e=>{console.error(e);CLASS.toast('Não foi possível alterar.');});
