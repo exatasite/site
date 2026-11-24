@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2º Ano: Aula 25 - LENTES ESFÉRICAS: COMPORTAMENTO ÓPTICO E FORMAÇÃO DE IMAGENS</title>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../estilo.css">
+    <script>
+        MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']], processEscapes: true } };
+    </script>
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        body.modo-slides { overflow: hidden !important; background-color: #1a1a1a !important; margin: 0; padding: 0; }
+        body.modo-slides .menu-lateral, body.modo-slides header, body.modo-slides .menu-toggle, body.modo-slides #btn-slides, body.modo-slides .nav-global { display: none !important; }
+        .slide-ativo { display: flex !important; flex-direction: column; align-items: center; justify-content: center; position: fixed; top: 0; left: 0; width: 100vw; height: calc(100vh - 70px); background: #ffffff; padding: 40px; z-index: 999; overflow-y: auto !important; box-sizing: border-box; text-align: left; }
+        .slide-ativo > * { max-width: 900px; width: 100%; }
+        .controles-slides { position: fixed; bottom: 0; left: 0; width: 100%; height: 70px; background: #2c3e50; color: white; display: none; justify-content: space-between; align-items: center; padding: 0 20px; z-index: 1001; box-sizing: border-box; }
+        body.modo-slides .controles-slides { display: flex !important; }
+        .info-lateral { flex: 1; font-family: 'Oswald', sans-serif; font-size: 0.9rem; color: #bdc3c7; }
+        .botoes-centrais { display: flex; align-items: center; gap: 15px; justify-content: center; flex: 2; }
+        .btn-nav { padding: 10px 20px; background: #3498db; color: white; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; font-size: 0.9rem; }
+        .btn-nav:hover { background: #2980b9; }
+        #contador-slide { font-family: 'Oswald', sans-serif; min-width: 60px; text-align: center; font-size: 1.1rem; }
+    </style>
+</head>
+<body>
+<button class="menu-toggle" onclick="toggleMenu()">☰</button>
+<nav id="menu-principal" class="nav-global"><ul>
+    <li><a href="../index.html">🏠 Início</a></li>
+    <li><a href="../fisica_home.html">⚛️ Física</a></li>
+    <li><a href="../matematica_home.html">📐 Matemática</a></li>
+    <li><a href="../simulacoes_home.html">💻 Simulações</a></li>
+</ul></nav>
+<header id="topo">
+    <h1>FÍSICA EM</h1>
+    <p>2º Ano | Aula 25: Lentes Esféricas: Comportamento Óptico e Formação de Imagens</p>
+    <button id="btn-slides" onclick="toggleSlides()">📺 Iniciar Modo Slides</button>
+</header>
+<div class="container"><main class="conteudo-principal"><div class="secao-aula">
+  <div class="container-resumo" id="resumo"><h3>📚 Resumo</h3><section class="resumo-conteudo"><p>Uma <strong>lente esférica</strong> é um meio transparente limitado por duas superfícies esféricas (ou uma esférica e uma plana). Se for mais refringente que o meio, as de <strong>bordas finas</strong> são <strong>convergentes</strong> e as de <strong>bordas grossas</strong> são <strong>divergentes</strong>.</p>
+<p>Três <strong>raios notáveis</strong> permitem construir a imagem: o paralelo ao eixo (passa pelo foco imagem), o que passa pelo centro óptico (não desvia) e o que passa pelo foco objeto (sai paralelo ao eixo). A natureza da imagem depende da posição do objeto.</p></section></div>
+  <section class="conteudo-teorico-completo" id="teoria">
+    <div class="passo-teoria"><h3>📖 LENTES ESFÉRICAS: COMPORTAMENTO ÓPTICO E FORMAÇÃO DE IMAGENS</h3><h4>1. Tipos de lentes e comportamento óptico</h4>
+
+<ul>
+<li><strong>Bordas finas:</strong> biconvexa, plano-convexa e côncavo-convexa (menisco convergente).</li>
+<li><strong>Bordas grossas:</strong> bicôncava, plano-côncava e convexo-côncava (menisco divergente).</li>
+<li><strong>Comportamento:</strong> com $n_{lente}>n_{meio}$, bordas finas <em>convergem</em> e bordas grossas <em>divergem</em>. Se $n_{lente}\lt n_{meio}$, o comportamento <em>inverte</em> (uma bolha de ar em forma de lente biconvexa, dentro da água, diverge a luz).</li>
+</ul>
+<p>Representação: ↕ com pontas para fora (convergente) e pontas para dentro (divergente).</p>
+    </div>
+    <div class="passo-teoria"><h4>2. Elementos geométricos</h4>
+
+<ul>
+<li><strong>Eixo principal</strong> e <strong>centro óptico</strong> $O$: o raio que passa por $O$ não sofre desvio (lente fina).</li>
+<li><strong>Foco imagem</strong> $F'$ e <strong>foco objeto</strong> $F$, simétricos em relação à lente, à distância $f$ (distância focal).</li>
+<li><strong>Pontos antiprincipais</strong> $A$ e $A'$, a uma distância $2f$ da lente.</li>
+<li>Lente convergente: focos <em>reais</em> (cruzamento dos próprios raios). Lente divergente: focos <em>virtuais</em> (cruzamento dos prolongamentos).</li>
+</ul>
+    </div>
+    <div class="passo-teoria"><h4>3. Raios notáveis e construção da imagem</h4>
+
+<ol>
+<li>Raio <strong>paralelo ao eixo</strong> → emerge passando pelo foco imagem $F'$ (na divergente, o <em>prolongamento</em> passa por $F'$).</li>
+<li>Raio que passa pelo <strong>centro óptico</strong> $O$ → atravessa sem desviar.</li>
+<li>Raio que passa pelo <strong>foco objeto</strong> $F$ (ou aponta para ele) → emerge <strong>paralelo ao eixo</strong>.</li>
+</ol>
+<p>A imagem de um ponto está onde dois desses raios (ou prolongamentos) se cruzam.</p>
+      <figure class="figura-aula figura-grande"><svg viewBox="0 0 600 340" xmlns="http://www.w3.org/2000/svg" style="max-width:600px;width:100%;height:auto;display:block;margin:auto" role="img" aria-label="Lente convergente: construção da imagem"><rect x="0" y="0" width="600" height="340" fill="#fdfefe" stroke="#d5dbdb"/><line x1="20.0" y1="170.0" x2="580.0" y2="170.0" stroke="#2c3e50" stroke-width="1.5"/><line x1="290.0" y1="55.0" x2="290.0" y2="285.0" stroke="#2980b9" stroke-width="3.5"/><polygon points="290.0,55.0 297.0,69.0 283.0,69.0" fill="#2980b9"/><polygon points="290.0,285.0 283.0,271.0 297.0,271.0" fill="#2980b9"/><circle cx="130.0" cy="170.0" r="3.5" fill="#2c3e50"/><text x="130.0" y="190.0" font-size="14" fill="#2c3e50" font-family="sans-serif" text-anchor="middle" font-weight="bold">A</text><circle cx="210.0" cy="170.0" r="3.5" fill="#2c3e50"/><text x="210.0" y="190.0" font-size="14" fill="#2c3e50" font-family="sans-serif" text-anchor="middle" font-weight="bold">F</text><circle cx="450.0" cy="170.0" r="3.5" fill="#2c3e50"/><text x="450.0" y="190.0" font-size="14" fill="#2c3e50" font-family="sans-serif" text-anchor="middle" font-weight="bold">A'</text><circle cx="370.0" cy="170.0" r="3.5" fill="#2c3e50"/><text x="366.0" y="190.0" font-size="14" fill="#2c3e50" font-family="sans-serif" text-anchor="end" font-weight="bold">F'</text><circle cx="290.0" cy="170.0" r="3.5" fill="#2c3e50"/><text x="300.0" y="190.0" font-size="14" fill="#2c3e50" font-family="sans-serif" text-anchor="start" font-weight="bold">O</text><line x1="90.0" y1="170.0" x2="90.0" y2="120.0" stroke="#2c3e50" stroke-width="3.5"/><polygon points="90.0,120.0 94.5,131.0 85.5,131.0" fill="#2c3e50"/><line x1="90.0" y1="120.0" x2="290.0" y2="120.0" stroke="#e74c3c" stroke-width="2.5"/><polygon points="198.0,120.0 187.0,124.5 187.0,115.5" fill="#e74c3c"/><line x1="290.0" y1="120.0" x2="423.3" y2="203.3" stroke="#e74c3c" stroke-width="2.5"/><polygon points="350.0,157.5 338.3,155.5 343.1,147.9" fill="#e74c3c"/><line x1="90.0" y1="120.0" x2="423.3" y2="203.3" stroke="#27ae60" stroke-width="2.5"/><polygon points="190.0,145.0 178.2,146.7 180.4,138.0" fill="#27ae60"/><line x1="90.0" y1="120.0" x2="290.0" y2="203.3" stroke="#2980b9" stroke-width="2.5"/><line x1="290.0" y1="203.3" x2="423.3" y2="203.3" stroke="#2980b9" stroke-width="2.5"/><polygon points="360.0,203.3 349.0,207.8 349.0,198.8" fill="#2980b9"/><line x1="423.3" y1="170.0" x2="423.3" y2="203.3" stroke="#2c3e50" stroke-width="3.5"/><polygon points="423.3,203.3 418.8,192.3 427.8,192.3" fill="#2c3e50"/><text x="82.0" y="124.0" font-size="13" fill="#2c3e50" font-family="sans-serif" text-anchor="end">objeto</text><text x="433.3" y="219.3" font-size="13" fill="#2c3e50" font-family="sans-serif" text-anchor="start">imagem</text><text x="300.0" y="30.0" font-size="15" fill="#27ae60" font-family="sans-serif" text-anchor="middle" font-weight="bold">Lente convergente — objeto além de A (p &gt; 2f)</text><text x="300.0" y="322.0" font-size="14" fill="#2c3e50" font-family="sans-serif" text-anchor="middle" font-weight="bold">Imagem real, invertida e menor, entre F' e A'</text></svg><figcaption>Figura 1: Lente convergente com objeto além de $A$: a imagem é real, invertida e menor.</figcaption></figure>
+    </div>
+    <div class="passo-teoria"><h4>4. Natureza da imagem conforme a posição do objeto</h4>
+
+<p><strong>Lente convergente</strong> ($p$ = distância do objeto à lente):</p>
+<ul>
+<li>$p>2f$: imagem real, invertida e <strong>menor</strong> (câmera fotográfica).</li>
+<li>$p=2f$: real, invertida e de <strong>mesmo tamanho</strong>.</li>
+<li>$f\lt p\lt2f$: real, invertida e <strong>maior</strong> (projetor).</li>
+<li>$p=f$: imagem <strong>imprópria</strong> (raios paralelos; formada no infinito).</li>
+<li>$p\lt f$: virtual, <strong>direita</strong> e <strong>maior</strong> (lupa).</li>
+</ul>
+<p><strong>Lente divergente:</strong> para qualquer $p$, a imagem é virtual, direita e menor.</p>
+      <figure class="figura-aula figura-grande"><svg viewBox="0 0 600 340" xmlns="http://www.w3.org/2000/svg" style="max-width:600px;width:100%;height:auto;display:block;margin:auto" role="img" aria-label="Lente divergente: construção da imagem"><rect x="0" y="0" width="600" height="340" fill="#fdfefe" stroke="#d5dbdb"/><line x1="20.0" y1="170.0" x2="580.0" y2="170.0" stroke="#2c3e50" stroke-width="1.5"/><line x1="290.0" y1="55.0" x2="290.0" y2="285.0" stroke="#2980b9" stroke-width="3.5"/><polygon points="290,69 283,55 297,55" fill="#2980b9"/><polygon points="290,271 283,285 297,285" fill="#2980b9"/><circle cx="210.0" cy="170.0" r="3.5" fill="#2c3e50"/><text x="210.0" y="190.0" font-size="14" fill="#2c3e50" font-family="sans-serif" text-anchor="middle" font-weight="bold">F'</text><circle cx="370.0" cy="170.0" r="3.5" fill="#2c3e50"/><text x="370.0" y="190.0" font-size="14" fill="#2c3e50" font-family="sans-serif" text-anchor="middle" font-weight="bold">F</text><circle cx="290.0" cy="170.0" r="3.5" fill="#2c3e50"/><text x="300.0" y="190.0" font-size="14" fill="#2c3e50" font-family="sans-serif" text-anchor="start" font-weight="bold">O</text><line x1="140.0" y1="170.0" x2="140.0" y2="120.0" stroke="#2c3e50" stroke-width="3.5"/><polygon points="140.0,120.0 144.5,131.0 135.5,131.0" fill="#2c3e50"/><line x1="140.0" y1="120.0" x2="290.0" y2="120.0" stroke="#e74c3c" stroke-width="2.5"/><polygon points="230.0,120.0 219.0,124.5 219.0,115.5" fill="#e74c3c"/><line x1="290.0" y1="120.0" x2="420.0" y2="38.8" stroke="#e74c3c" stroke-width="2.5"/><polygon points="420.0,38.8 413.1,48.4 408.3,40.8" fill="#e74c3c"/><line x1="290.0" y1="120.0" x2="210.0" y2="170.0" stroke="#e74c3c" stroke-width="1.6" stroke-dasharray="5 4"/><line x1="140.0" y1="120.0" x2="390.0" y2="203.3" stroke="#27ae60" stroke-width="2.5"/><polygon points="230.0,150.0 218.1,150.8 221.0,142.3" fill="#27ae60"/><line x1="140.0" y1="120.0" x2="290.0" y2="152.6" stroke="#2980b9" stroke-width="2.5"/><polygon points="280.0,150.4 268.3,152.5 270.2,143.7" fill="#2980b9"/><line x1="290.0" y1="152.6" x2="420.0" y2="152.6" stroke="#2980b9" stroke-width="2.5"/><polygon points="420.0,152.6 409.0,157.1 409.0,148.1" fill="#2980b9"/><line x1="290.0" y1="152.6" x2="237.8" y2="152.6" stroke="#2980b9" stroke-width="1.6" stroke-dasharray="5 4"/><line x1="237.8" y1="170.0" x2="237.8" y2="152.6" stroke="#7f8c8d" stroke-width="3" stroke-dasharray="5 3"/><polygon points="237.8,152.6 242.3,163.6 233.3,163.6" fill="#7f8c8d"/><text x="132.0" y="124.0" font-size="13" fill="#2c3e50" font-family="sans-serif" text-anchor="end">objeto</text><text x="237.8" y="210.0" font-size="13" fill="#7f8c8d" font-family="sans-serif" text-anchor="middle">imagem virtual</text><text x="300.0" y="30.0" font-size="15" fill="#27ae60" font-family="sans-serif" text-anchor="middle" font-weight="bold">Lente divergente — qualquer posição do objeto</text><text x="300.0" y="322.0" font-size="14" fill="#2c3e50" font-family="sans-serif" text-anchor="middle" font-weight="bold">Imagem virtual, direita e menor (prolongamentos tracejados)</text></svg><figcaption>Figura 2: Lente divergente: a imagem é virtual, direita e menor, qualquer que seja a posição do objeto real.</figcaption></figure>
+    </div>
+  </section>
+  <section class="aplicacoes-reais" id="aplicacoes"><h3>💡 Física em Ação</h3><div class="cards-aplicacao">
+    <div class="card"><h4>🔍 Lupa</h4><p>A lupa é uma lente convergente usada com o objeto entre o foco e a lente ($p\lt f$). A imagem é virtual, direita e maior, e por isso lemos letras miúdas e vemos detalhes de insetos.</p></div>
+    <div class="card" style="border-left-color: #2ecc71;"><h4>📽️ Projetor e Câmera</h4><p>Um projetor coloca o slide entre $F$ e $A$ e forma na tela uma imagem real, invertida e ampliada, por isso o slide é colocado de cabeça para baixo. Já uma câmera fotografa objetos distantes ($p>2f$), formando imagens reais, invertidas e menores no sensor.</p></div>
+  </div></section>
+  <section class="questoes-resolvidas" id="resolvidas"><h3>✅ 5 Questões Resolvidas (R 1 a 5)</h3>
+    <article class="questao"><h4>R 1: Classificação da Lente</h4><p><strong>Enunciado:</strong> Uma lente biconvexa de vidro ($n=1{,}5$) é usada no ar. Depois, uma lente biconvexa feita de uma bolha de ar é usada dentro da água ($n=1{,}33$). Como cada uma se comporta?</p>
+      <div class="resolucao-bloco"><p><strong>Resolução:</strong> Biconvexa é de bordas finas.<br>Vidro no ar: $n_{lente}>n_{meio}$ ⇒ <strong>convergente</strong>.<br>Bolha de ar na água: $n_{lente}=1\lt1{,}33=n_{meio}$ ⇒ o comportamento inverte e a lente é <strong>divergente</strong>.</p></div></article>
+    <article class="questao"><h4>R 2: Objeto Distante</h4><p><strong>Enunciado:</strong> Um objeto está a $30$ cm de uma lente convergente de distância focal $10$ cm. Caracterize a imagem.</p>
+      <div class="resolucao-bloco"><p><strong>Resolução:</strong> $2f=20$ cm e $p=30$ cm, logo $p>2f$.<br>Imagem <strong>real, invertida e menor</strong>, entre $F'$ e $A'$.<br>Conferência por Gauss (Aula 26): $\dfrac1{p'}=\dfrac1{10}-\dfrac1{30}=\dfrac1{15}\implies p'=15$ cm ($10\lt15\lt20$ ✓).</p></div></article>
+    <article class="questao"><h4>R 3: Objeto entre F e A</h4><p><strong>Enunciado:</strong> Um objeto está a $15$ cm de uma lente convergente de $f=10$ cm. Caracterize a imagem.</p>
+      <div class="resolucao-bloco"><p><strong>Resolução:</strong> $f=10\lt p=15\lt2f=20$.<br>Imagem <strong>real, invertida e maior</strong>, localizada além de $A'$.<br>Conferência: $\dfrac1{p'}=\dfrac1{10}-\dfrac1{15}=\dfrac1{30}\implies p'=30$ cm $>20$ cm ✓.</p></div></article>
+    <article class="questao"><h4>R 4: Lupa</h4><p><strong>Enunciado:</strong> Um objeto está a $5$ cm de uma lente convergente de $f=10$ cm. Caracterize a imagem.</p>
+      <div class="resolucao-bloco"><p><strong>Resolução:</strong> $p=5\lt f=10$.<br>Imagem <strong>virtual, direita e maior</strong>, do mesmo lado do objeto (comportamento de lupa).<br>Conferência: $\dfrac1{p'}=\dfrac1{10}-\dfrac15=-\dfrac1{10}\implies p'=-10$ cm (virtual ✓).</p></div></article>
+    <article class="questao"><h4>R 5: Lente Divergente</h4><p><strong>Enunciado:</strong> Um raio de luz paralelo ao eixo incide em uma lente divergente. Como ele emerge? Que imagem essa lente forma de um objeto real?</p>
+      <div class="resolucao-bloco"><p><strong>Resolução:</strong> O raio emerge <strong>divergindo</strong>, de modo que o seu <em>prolongamento</em> passa pelo foco imagem $F'$ (virtual).<br>Para qualquer posição do objeto real, a imagem é <strong>virtual, direita e menor</strong>.</p></div></article>
+  </section>
+  <section class="questoes-propostas" id="propostas"><h3>✍️ 10 Questões Propostas (P 6 a 15)</h3>
+    <article class="questao"><h4>P 6: Plano-Convexa</h4><p><strong>Enunciado:</strong> Uma lente plano-convexa de vidro é usada no ar. Ela é convergente ou divergente? Por quê?</p>
+      <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+      <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Plano-convexa tem bordas finas e $n_{vidro}>n_{ar}$: é <strong>convergente</strong>.</p></div></article>
+    <article class="questao"><h4>P 7: Bicôncava</h4><p><strong>Enunciado:</strong> Uma lente bicôncava de vidro é usada no ar. Classifique-a.</p>
+      <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+      <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Bicôncava tem bordas grossas e $n_{vidro}>n_{ar}$: é <strong>divergente</strong>.</p></div></article>
+    <article class="questao"><h4>P 8: Mudando o Meio</h4><p><strong>Enunciado:</strong> Uma lente biconvexa de vidro ($n=1{,}5$) é mergulhada em um líquido de índice $1{,}7$. O que acontece com seu comportamento?</p>
+      <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+      <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Agora $n_{lente}=1{,}5\lt n_{meio}=1{,}7$: o comportamento <strong>inverte</strong> e a lente passa a ser <strong>divergente</strong>.</p></div></article>
+    <article class="questao"><h4>P 9: Objeto em A</h4><p><strong>Enunciado:</strong> Um objeto é colocado no ponto antiprincipal $A$ de uma lente convergente. Caracterize a imagem.</p>
+      <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+      <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Imagem <strong>real, invertida e do mesmo tamanho</strong>, formada em $A'$ (a $2f$ do outro lado).</p></div></article>
+    <article class="questao"><h4>P 10: Objeto no Foco</h4><p><strong>Enunciado:</strong> Onde se forma a imagem de um objeto colocado no foco objeto $F$ de uma lente convergente?</p>
+      <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+      <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Os raios emergem <strong>paralelos</strong>: a imagem é <strong>imprópria</strong>, formada no infinito.</p></div></article>
+    <article class="questao"><h4>P 11: Projetor</h4><p><strong>Enunciado:</strong> Uma lente convergente de $f=10$ cm forma a imagem real de um slide a $12$ cm dela. Caracterize a imagem.</p>
+      <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+      <div class="gabarito-resolucao"><p><strong>Resolução:</strong> $f=10\lt p=12\lt2f=20$: imagem <strong>real, invertida e maior</strong>.<br>Por isso o slide é colocado <strong>de cabeça para baixo</strong>.</p></div></article>
+    <article class="questao"><h4>P 12: Usando a Lupa</h4><p><strong>Enunciado:</strong> Uma lupa de $f=8$ cm é usada com o objeto a $6$ cm. A imagem é real ou virtual? Direita ou invertida? Maior ou menor?</p>
+      <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+      <div class="gabarito-resolucao"><p><strong>Resolução:</strong> $p=6\lt f=8$: imagem <strong>virtual, direita e maior</strong>.<br>(Pela equação de Gauss: $p'=-24$ cm e aumento $A=+4$.)</p></div></article>
+    <article class="questao"><h4>P 13: Raio pelo Foco</h4><p><strong>Enunciado:</strong> Um raio passa pelo foco objeto $F$ de uma lente convergente e a atravessa. Qual a direção do raio emergente?</p>
+      <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+      <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Emerge <strong>paralelo ao eixo principal</strong> (raio notável 3).</p></div></article>
+    <article class="questao"><h4>P 14: Imagem Real?</h4><p><strong>Enunciado:</strong> Uma lente divergente pode formar imagem real de um objeto real? Justifique.</p>
+      <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+      <div class="gabarito-resolucao"><p><strong>Resolução:</strong> <strong>Não.</strong> Os raios emergentes são sempre divergentes, e apenas seus prolongamentos se cruzam: a imagem é sempre virtual.</p></div></article>
+    <article class="questao"><h4>P 15: Câmera Fotográfica</h4><p><strong>Enunciado:</strong> Ao fotografar uma paisagem distante, a imagem formada no sensor é real ou virtual? Direita ou invertida? Maior ou menor? Em que região se forma?</p>
+      <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+      <div class="gabarito-resolucao"><p><strong>Resolução:</strong> O objeto está muito além de $2f$ ($p>2f$): imagem <strong>real, invertida e menor</strong>, formada entre $F'$ e $A'$ (praticamente em $F'$).</p></div></article>
+  </section>
+  <section class="TESTE" id="testes"><h3>🎓 TESTES (T 16 a 20)</h3>
+    <article class="questao"><h4>T 16: (Questão autoral) Comportamento da Lente</h4><p>Uma lente biconvexa de vidro ($n=1{,}5$), imersa no ar, é</p><p>A) convergente, pois suas bordas são finas e $n_{lente}>n_{meio}$.<br>B) divergente, pois suas bordas são finas.<br>C) convergente, pois suas bordas são grossas.<br>D) divergente, pois $n_{lente}>n_{meio}$.<br>E) neutra, pois não altera a direção da luz.</p>
+      <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+      <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>A</strong>.<br>Bordas finas e $n_{lente}>n_{ar}$ ⇒ lente convergente. Alternativa <strong>A</strong>.</p></div></article>
+    <article class="questao"><h4>T 17: (Questão autoral) Objeto Distante</h4><p>Um objeto é colocado a $30$ cm de uma lente convergente de distância focal $10$ cm. A imagem é</p><p>A) virtual, direita e maior.<br>B) virtual, direita e menor.<br>C) real, invertida e menor.<br>D) real, invertida e maior.<br>E) real, direita e do mesmo tamanho.</p>
+      <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+      <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>C</strong>.<br>$p=30>2f=20$ ⇒ imagem real, invertida e menor. Alternativa <strong>C</strong>.</p></div></article>
+    <article class="questao"><h4>T 18: (Questão autoral) Lupa</h4><p>Para que uma lente convergente funcione como lupa, o objeto deve ser colocado</p><p>A) além do ponto antiprincipal $A$.<br>B) exatamente sobre o ponto $A$.<br>C) entre $F$ e $A$.<br>D) exatamente sobre o foco $F$.<br>E) entre o foco $F$ e a lente.</p>
+      <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+      <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>E</strong>.<br>A imagem virtual, direita e maior só se obtém com $p\lt f$, isto é, o objeto entre o foco e a lente. Alternativa <strong>E</strong>.</p></div></article>
+    <article class="questao"><h4>T 19: (Questão autoral) Lente Divergente</h4><p>Para um objeto real, qualquer que seja sua posição, uma lente divergente fornece imagem</p><p>A) real, invertida e menor.<br>B) virtual, direita e menor.<br>C) virtual, direita e maior.<br>D) real, direita e maior.<br>E) real, invertida e maior.</p>
+      <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+      <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>B</strong>.<br>Os raios emergentes divergem; a imagem é formada pelos prolongamentos: virtual, direita e menor. Alternativa <strong>B</strong>.</p></div></article>
+    <article class="questao"><h4>T 20: (Questão autoral) Raio Paralelo</h4><p>Um raio de luz paralelo ao eixo principal incide em uma lente convergente. O raio emergente</p><p>A) passa pelo ponto antiprincipal $A'$.<br>B) segue paralelo ao eixo principal.<br>C) passa pelo centro óptico.<br>D) passa pelo foco imagem $F'$.<br>E) passa pelo foco objeto $F$.</p>
+      <button class="btn-gabarito" onclick="toggleGabarito(this)">Ver Gabarito e Resolução</button>
+      <div class="gabarito-resolucao"><p><strong>Resolução:</strong> Alternativa <strong>D</strong>.<br>Pelo raio notável 1, o raio paralelo ao eixo emerge passando pelo foco imagem $F'$. Alternativa <strong>D</strong>.</p></div></article>
+  </section>
+</div></main>
+<aside class="menu-lateral"><iframe src="../menu_fisica.html" style="width:100%; border:none; height:600px;"></iframe></aside>
+</div>
+<script>
+function toggleGabarito(botao) {
+    const gabarito = botao.nextElementSibling;
+    if (gabarito.style.display === "none" || gabarito.style.display === "") {
+        gabarito.style.display = "block"; botao.textContent = "Esconder Gabarito e Resolução"; botao.style.backgroundColor = "#2c3e50";
+    } else {
+        gabarito.style.display = "none"; botao.textContent = "Ver Gabarito e Resolução"; botao.style.backgroundColor = "#3498db";
+    }
+}
+function toggleMenu() { const m = document.getElementById("menu-principal"); if (m) m.classList.toggle("ativo"); }
+let slideAtual = 0; let slides = [];
+function prepararSlides() { slides = Array.from(document.querySelectorAll('.container-resumo, .passo-teoria, .card, .questao')); }
+function toggleSlides() {
+    prepararSlides(); const body = document.body;
+    if (!body.classList.contains('modo-slides')) { body.classList.add('modo-slides'); slideAtual = 0; mostrarSlide(slideAtual); }
+    else { body.classList.remove('modo-slides'); slides.forEach(s => { s.classList.remove('slide-ativo'); s.style.display = ''; }); }
+}
+function mostrarSlide(n) {
+    if (!slides.length) return;
+    slides.forEach(s => { s.classList.remove('slide-ativo'); s.style.display = 'none'; });
+    const slide = slides[n]; slide.classList.add('slide-ativo');
+    slide.querySelectorAll('.gabarito-resolucao').forEach(g => g.style.display = 'none');
+    slide.querySelectorAll('.btn-gabarito').forEach(b => { b.textContent = "Ver Gabarito e Resolução"; b.style.backgroundColor = "#3498db"; });
+    const pHeader = document.querySelector('header p');
+    if (pHeader) { const partes = pHeader.innerText.split('|'); if (partes.length > 1) {
+        document.getElementById('slide-info-serie').innerText = partes[0].trim();
+        document.getElementById('slide-info-aula').innerText = partes[1].trim(); } }
+    document.getElementById('contador-slide').innerText = (n + 1) + " / " + slides.length;
+    if (window.MathJax && window.MathJax.typesetPromise) { MathJax.typesetPromise(); }
+}
+function mudarSlide(d) { slideAtual += d; if (slideAtual >= slides.length) slideAtual = 0; if (slideAtual &lt; 0) slideAtual = slides.length - 1; mostrarSlide(slideAtual); }
+document.addEventListener('keydown', function(event) {
+    if (document.body.classList.contains('modo-slides')) {
+        switch(event.key) {
+            case 'ArrowRight': case 'PageDown': case 'Enter': case ' ': event.preventDefault(); mudarSlide(1); break;
+            case 'ArrowLeft': case 'PageUp': event.preventDefault(); mudarSlide(-1); break;
+            case 'Escape': event.preventDefault(); toggleSlides(); break;
+        }
+    }
+});
+</script>
+<div class="controles-slides">
+    <div id="slide-info-serie" class="info-lateral"></div>
+    <div class="botoes-centrais">
+        <button class="btn-nav" onclick="mudarSlide(-1)">⬅ Anterior</button>
+        <span id="contador-slide"></span>
+        <button class="btn-nav" onclick="mudarSlide(1)">Próximo ➡</button>
+        <button class="btn-nav" onclick="toggleSlides()" style="background:#e74c3c;">Sair</button>
+    </div>
+    <div id="slide-info-aula" class="info-lateral" style="text-align: right;"></div>
+</div>
+</body>
+</html>
