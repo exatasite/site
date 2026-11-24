@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#003366">
+<title>Exata Class — Sala de aula</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="css/class.css">
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
+<script src="../quiz/js/config.js"></script>
+<script src="js/class.js"></script>
+</head>
+<body>
+<header class="topo"><div class="topo-in">
+  <span class="marca">EXATA <b>CLASS</b></span>
+  <span><a href="../index.html">← Voltar ao ExataSite</a></span>
+</div></header>
+<main id="tela"></main>
+<script>
+(function(){
+'use strict';
+const $=CLASS.$, esc=CLASS.esc, tela=$('#tela'), LS='exataclass_aluno_v1';
+let off=null;
+
+function ler(){ try{ const s=JSON.parse(localStorage.getItem(LS)); return {nome:(s&&s.nome)||'',turmas:(s&&s.turmas)||[]}; }catch(e){ return {nome:'',turmas:[]}; } }
+function gravar(s){ try{ localStorage.setItem(LS,JSON.stringify(s)); }catch(e){} }
+
+if(!CLASS.iniciar()){
+  tela.innerHTML='<div class="cartao"><h2>Configuração pendente</h2><p>O Firebase ainda não foi configurado neste site.</p></div>';
+  return;
+}
+
+function inicio(msg){
+  if(off){ off(); off=null; }
+  const s=ler(), url=new URLSearchParams(location.search), c0=CLASS.normCodigo(url.get('c'));
+  tela.innerHTML=
+   (s.turmas.length?'<div class="cartao"><h2>Minhas turmas</h2><div class="grade">'+
+     s.turmas.map(t=>'<button class="turma" data-cod="'+esc(t.cod)+'"><h3>'+esc(t.nome)+'</h3><p class="sub">Código <span class="codigo">'+esc(t.cod)+'</span></p></button>').join('')+
+   '</div></div>':'')+
+   '<div class="cartao"><h2>Entrar em uma turma</h2>'+
+   '<p class="sub">Digite o código que o professor passou na sala.</p>'+
+   '<label for="cod">Código da turma</label><input id="cod" class="cod" type="text" maxlength="12" autocomplete="off" value="'+esc(c0)+'" placeholder="ABC123">'+
+   '<label for="nome">Seu nome <span class="sub">(opcional)</span></label><input id="nome" type="text" maxlength="40" autocomplete="name" value="'+esc(s.nome)+'" placeholder="Nome e sobrenome">'+
+   '<div style="margin-top:16px"><button class="btn" id="ir">Entrar na sala</button></div>'+
+   (msg?'<div class="msg erro" role="alert">'+esc(msg)+'</div>':'')+'</div>';
+  tela.querySelectorAll('.turma').forEach(b=>b.onclick=()=>abrir(b.dataset.cod));
+  $('#ir').onclick=entrar;
+  $('#cod').addEventListener('keydown',e=>{ if(e.key==='Enter') entrar(); });
+  $('#nome').addEventListener('keydown',e=>{ if(e.key==='Enter') entrar(); });
+}
+
+function entrar(){ return entrarCom(CLASS.normCodigo($('#cod').value), $('#nome').value.trim().replace(/\s+/g,' ')); }
+
+async function entrarCom(cod,nome){
+  if(cod.length<6) return inicio('O código tem de 6 a 12 letras ou números.');
+  const real=nome.length>=2, nomeBd=real?nome:'Aluno';
+  const btn=$('#ir'); if(btn){ btn.disabled=true; btn.textContent='Entrando…'; }
+  try{
+    const uid=await CLASS.alunoUid();
+    const snap=await CLASS.db.ref('class/turmas/'+cod+'/nome').get();
+    if(!snap.exists()) return inicio('Turma não encontrada. Confira o código com o professor.');
+    await CLASS.db.ref('class/alunos/'+cod+'/'+uid).set({nome:nomeBd,entrou:CLASS.TS});
+    const s=ler(); if(real) s.nome=nome;
+    if(!s.turmas.some(t=>t.cod===cod)) s.turmas.push({cod:cod,nome:snap.val()});
+    gravar(s); abrir(cod);
+  }catch(e){ console.error(e); inicio('Não foi possível entrar agora. Verifique a internet e tente de novo.'); }
+}
+
+async function abrir(cod){
+  if(off){ off(); off=null; }
+  try{ await CLASS.alunoUid(); }catch(e){ return inicio('Sem conexão com o servidor.'); }
+  tela.innerHTML='<p class="vazio-txt">Carregando a sala…</p>';
+  const ref=CLASS.db.ref('class/turmas/'+cod);
+  const h=ref.on('value',snap=>{
+    const t=snap.val();
+    if(!t){
+      const s=ler(); s.turmas=s.turmas.filter(x=>x.cod!==cod); gravar(s);
+      return inicio('Esta turma não existe mais.');
+    }
+    const itens=CLASS.lista(t.materiais), agora=Date.now();
+    tela.innerHTML=
+      '<div class="linha" style="justify-content:space-between;margin-bottom:14px"><button class="btn vazio peq" id="volta">← Minhas turmas</button><button class="btn perigo peq" id="sair">Sair desta turma</button></div>'+
+      '<div class="cartao"><h2>'+esc(t.nome)+'</h2><p class="sub">Código <span class="codigo">'+esc(cod)+'</span> · '+itens.length+' material(is) disponível(is)</p></div>'+
+      (ler().nome?'':'<div class="cartao"><h2>Quem é você?</h2><p class="sub">Opcional: assim o professor sabe quem acessou a sala.</p><div class="linha" style="margin-top:8px"><input id="meunome" type="text" maxlength="40" placeholder="Seu nome" style="flex:1;min-width:180px"><button class="btn sec peq" id="svnome">Salvar nome</button></div></div>')+
+      (itens.length?itens.map(m=>{
+        const tp=CLASS.TIPOS[m.tipo]||CLASS.TIPOS.outro, novo=agora-(m.publicado||0)<48*3600*1000;
+        return '<div class="item"><span class="ic" aria-hidden="true">'+tp[0]+'</span><div class="tx"><span class="etiqueta">'+esc(tp[1])+'</span>'+(novo?'<span class="etiqueta novo">Novo</span>':'')+
+          '<b>'+esc(m.titulo)+'</b>'+(m.obs?'<span class="sub">'+esc(m.obs)+'</span><br>':'')+'<span class="sub">Publicado em '+CLASS.fmt(m.publicado)+'</span></div>'+
+          (CLASS.linkOk(m.link)?'<a class="btn" target="_blank" rel="noopener noreferrer" href="'+esc(m.link)+'">Abrir</a>':'')+'</div>';
+      }).join(''):'<div class="cartao vazio-txt">O professor ainda não publicou materiais nesta turma. Volte depois!</div>');
+    if($('#svnome')) $('#svnome').onclick=async()=>{
+      const n=$('#meunome').value.trim().replace(/\s+/g,' '); if(n.length<2) return CLASS.toast('Escreva pelo menos 2 letras.');
+      try{ const u=await CLASS.alunoUid(); await CLASS.db.ref('class/alunos/'+cod+'/'+u+'/nome').set(n); const s=ler(); s.nome=n; gravar(s); CLASS.toast('Nome salvo!'); abrir(cod); }catch(e){ CLASS.toast('Não foi possível salvar o nome.'); }
+    };
+    $('#volta').onclick=()=>inicio();
+    $('#sair').onclick=function(){ CLASS.confirmar2(this,'Clique de novo para sair',()=>{
+      const s=ler(); s.turmas=s.turmas.filter(x=>x.cod!==cod); gravar(s); CLASS.alunoUid().then(u=>CLASS.db.ref('class/alunos/'+cod+'/'+u).remove().catch(()=>{})); inicio();
+    }); };
+  },err=>{ console.error(err); inicio('O servidor recusou a leitura desta turma.'); });
+  off=()=>ref.off('value',h);
+}
+
+/* Link de convite (?c=CÓDIGO): entra direto na sala, sem digitar nada */
+const conv=CLASS.normCodigo(new URLSearchParams(location.search).get('c'));
+if(conv.length>=6) entrarCom(conv, ler().nome||''); else inicio();
+})();
+</script>
+</body>
+</html>

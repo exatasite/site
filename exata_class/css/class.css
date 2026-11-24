@@ -1,0 +1,52 @@
+/* EXATA CLASS — identidade visual do ExataSite */
+:root{--marinho:#003366;--marinho-esc:#00264d;--laranja:#D35400;--laranja-esc:#A04000;--texto:#2C3E50;--suave:#5d6d7c;--fundo:#F4F7F6;--linha:#dde4e8;--realce:#eef3f8;--ok:#1E7A46;--erro:#B71C1C;--aviso:#FDEBD0;--f-titulo:'Oswald','Arial Narrow',Arial,sans-serif}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--fundo);color:var(--texto);font-family:Arial,Helvetica,sans-serif;font-size:16px;line-height:1.5}
+h1,h2,h3{font-family:var(--f-titulo);color:var(--marinho);line-height:1.15;margin:0}
+p{margin:0}
+[hidden]{display:none!important}
+button,input,select{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--laranja);outline-offset:2px}
+.topo{background:var(--marinho);border-bottom:5px solid var(--laranja);color:#fff;padding:14px 16px}
+.topo-in{max-width:960px;margin:0 auto;display:flex;align-items:center;gap:12px;flex-wrap:wrap;justify-content:space-between}
+.marca{font-family:var(--f-titulo);font-size:1.6rem;letter-spacing:.04em;text-transform:uppercase}
+.marca b{color:#ff9a57;font-weight:700}
+.topo a,.topo button.link{color:#fff;background:none;border:0;text-decoration:underline;cursor:pointer;font-size:.95rem}
+.quem{font-size:.9rem;opacity:.9}
+main{max-width:960px;margin:0 auto;padding:22px 16px 60px}
+.cartao{background:#fff;border:1px solid var(--linha);border-radius:10px;padding:20px;box-shadow:0 2px 10px rgba(0,0,0,.04);margin-bottom:18px}
+.cartao h2{font-size:1.35rem;margin-bottom:10px;text-transform:uppercase}
+.sub{color:var(--suave);font-size:.92rem}
+label{display:block;font-weight:700;margin:12px 0 4px;font-size:.95rem}
+input[type=text],input[type=email],input[type=password],input[type=url],select{width:100%;padding:11px 12px;border:2px solid var(--linha);border-radius:8px;background:#fff;font-size:1rem}
+input:focus,select:focus{border-color:var(--marinho);outline:none}
+input.cod{font-family:var(--f-titulo);font-size:1.6rem;letter-spacing:.3em;text-transform:uppercase;text-align:center}
+.btn{display:inline-block;background:var(--laranja);color:#fff;border:0;border-radius:8px;padding:11px 20px;font-weight:700;cursor:pointer;text-decoration:none;font-size:1rem}
+.btn:hover{background:var(--laranja-esc)}
+.btn.sec{background:var(--marinho)}.btn.sec:hover{background:var(--marinho-esc)}
+.btn.vazio{background:#fff;color:var(--marinho);border:2px solid var(--marinho)}.btn.vazio:hover{background:var(--realce)}
+.btn.peq{padding:6px 12px;font-size:.88rem}
+.btn.perigo{background:#fff;color:var(--erro);border:2px solid var(--erro)}
+.btn.perigo.confirmar,.btn.perigo:hover{background:var(--erro);color:#fff}
+.linha{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.msg{margin-top:12px;padding:10px 12px;border-radius:8px;background:var(--aviso);color:#7a3a00;font-size:.95rem}
+.msg.erro{background:#fde8e8;color:var(--erro)}
+.grade{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px}
+.turma{background:#fff;border:1px solid var(--linha);border-left:6px solid var(--laranja);border-radius:10px;padding:16px;cursor:pointer;text-align:left;width:100%}
+.turma:hover{background:var(--realce)}
+.turma h3{font-size:1.2rem;text-transform:uppercase}
+.codigo{font-family:var(--f-titulo);letter-spacing:.2em;background:var(--realce);color:var(--marinho);padding:2px 10px;border-radius:6px;font-size:1.05rem}
+.item{display:flex;gap:14px;align-items:center;border:1px solid var(--linha);border-radius:10px;padding:14px;margin-bottom:10px;background:#fff}
+.item .ic{font-size:1.9rem;flex:none}
+.item .tx{flex:1;min-width:0}
+.item .tx b{display:block;overflow-wrap:anywhere}
+.item.rasc{background:#fafafa;border-style:dashed}
+.etiqueta{display:inline-block;font-size:.75rem;font-weight:700;text-transform:uppercase;padding:2px 8px;border-radius:20px;background:var(--realce);color:var(--marinho);margin-right:6px}
+.etiqueta.novo{background:var(--laranja);color:#fff}
+.etiqueta.rasc{background:#e8e8e8;color:#555}
+.vazio-txt{color:var(--suave);padding:18px;text-align:center}
+details summary{cursor:pointer;font-weight:700;color:var(--marinho)}
+#toast{position:fixed;left:50%;bottom:24px;transform:translate(-50%,30px);background:var(--marinho);color:#fff;padding:10px 18px;border-radius:30px;opacity:0;pointer-events:none;transition:.25s;z-index:9}
+#toast.vis{opacity:1;transform:translate(-50%,0)}
+@media(max-width:560px){.item{flex-wrap:wrap}.item .btn{width:100%;text-align:center}}

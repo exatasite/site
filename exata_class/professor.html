@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#003366">
+<title>Exata Class — Painel do professor</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="css/class.css">
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
+<script src="../quiz/js/config.js"></script>
+<script src="js/class.js"></script>
+</head>
+<body>
+<header class="topo"><div class="topo-in">
+  <span class="marca">EXATA <b>CLASS</b> · Professor</span>
+  <span class="linha"><span class="quem" id="quem"></span><button class="link" id="sair" hidden>Sair</button><a href="../index.html">ExataSite</a></span>
+</div></header>
+<main id="tela"></main>
+<script>
+(function(){
+'use strict';
+const $=CLASS.$, esc=CLASS.esc, tela=$('#tela');
+let user=null, offs=[];
+const limpar=()=>{ offs.forEach(f=>f()); offs=[]; };
+function ouvir(ref,cb){ const h=ref.on('value',s=>cb(s.val()),e=>{console.error(e);CLASS.toast('O banco recusou a leitura. Publique as regras do Exata Class no Firebase.');}); offs.push(()=>ref.off('value',h)); }
+
+if(!CLASS.iniciar()){ tela.innerHTML='<div class="cartao"><h2>Configuração pendente</h2><p>O Firebase não está configurado.</p></div>'; return; }
+
+CLASS.auth.onAuthStateChanged(u=>{
+  limpar();
+  if(u && !u.isAnonymous){ user=u; $('#quem').textContent=u.email; $('#sair').hidden=false; painel(); }
+  else { user=null; $('#quem').textContent=''; $('#sair').hidden=true; login(); }
+});
+$('#sair').onclick=()=>CLASS.auth.signOut();
+
+function login(msg){
+  tela.innerHTML='<div class="cartao" style="max-width:420px;margin:30px auto"><h2>Entrar</h2><p class="sub">Use o mesmo e-mail e senha do Exata Quiz.</p>'+
+   '<label for="em">E-mail</label><input id="em" type="email" autocomplete="username">'+
+   '<label for="se">Senha</label><input id="se" type="password" autocomplete="current-password">'+
+   '<div class="linha" style="margin-top:16px"><button class="btn" id="go">Entrar</button><button class="btn vazio" id="esq">Esqueci a senha</button></div>'+
+   (msg?'<div class="msg erro" role="alert">'+esc(msg)+'</div>':'')+'</div>';
+  const go=async()=>{ try{ await CLASS.auth.signInWithEmailAndPassword($('#em').value.trim(),$('#se').value); }catch(e){ login('E-mail ou senha incorretos.'); } };
+  $('#go').onclick=go; $('#se').addEventListener('keydown',e=>{ if(e.key==='Enter') go(); });
+  $('#esq').onclick=async()=>{ const em=$('#em').value.trim(); if(!em) return login('Digite seu e-mail e clique em "Esqueci a senha".'); try{ await CLASS.auth.sendPasswordResetEmail(em); CLASS.toast('Enviamos um e-mail para redefinir a senha.'); }catch(e){ login('Não foi possível enviar o e-mail.'); } };
+}
+
+/* ---------- Lista de turmas ---------- */
+function painel(){
+  limpar();
+  tela.innerHTML='<div class="cartao"><h2>Minhas turmas</h2><div id="lt"><p class="vazio-txt">Carregando…</p></div></div>'+
+   '<div class="cartao"><h2>Nova turma</h2><label for="nt">Nome da turma</label><input id="nt" type="text" maxlength="60" placeholder="Ex.: Física III · Eng. Civil · Noite">'+
+   '<label for="nc">Código da turma <span class="sub">(opcional — de 6 a 12 letras ou números; se deixar vazio, o sistema cria um)</span></label><input id="nc" type="text" maxlength="12" placeholder="Ex.: FIS3NOITE" style="text-transform:uppercase">'+
+   '<div style="margin-top:14px"><button class="btn" id="criar">Criar turma</button></div></div>';
+  ouvir(CLASS.db.ref('class/professores/'+user.uid+'/turmas'),v=>{
+    const ks=Object.keys(v||{});
+    $('#lt').innerHTML=ks.length?'<div class="grade">'+ks.map(c=>'<button class="turma" data-c="'+esc(c)+'"><h3>'+esc(v[c])+'</h3><p class="sub">Código <span class="codigo">'+esc(c)+'</span></p></button>').join('')+'</div>':'<p class="vazio-txt">Você ainda não tem turmas. Crie a primeira abaixo.</p>';
+    tela.querySelectorAll('.turma').forEach(b=>b.onclick=()=>turma(b.dataset.c,v[b.dataset.c]));
+  });
+  $('#criar').onclick=async()=>{
+    const nome=$('#nt').value.trim().replace(/\s+/g,' '), pedido=CLASS.normCodigo($('#nc').value);
+    if(nome.length<2) return CLASS.toast('Dê um nome para a turma.');
+    if($('#nc').value.trim() && pedido.length<6) return CLASS.toast('O código precisa ter de 6 a 12 letras ou números (sem espaços ou acentos).');
+    for(let i=0;i<6;i++){
+      const cod=pedido||CLASS.codigo();
+      try{
+        if((await CLASS.db.ref('class/turmas/'+cod+'/nome').get()).exists()){
+          if(pedido) return CLASS.toast('Esse código já está em uso. Escolha outro.');
+          continue;
+        }
+        await CLASS.db.ref('class/turmas/'+cod).set({nome:nome,dono:user.uid,criada:CLASS.TS});
+        await CLASS.db.ref('class/professores/'+user.uid+'/turmas/'+cod).set(nome);
+        CLASS.toast('Turma criada! Código: '+cod); $('#nt').value=''; $('#nc').value=''; return;
+      }catch(e){ console.error(e); return CLASS.toast('Não foi possível criar. Confira as regras do Firebase.'); }
+    }
+  };
+}
+
+/* ---------- Uma turma ---------- */
+function turma(cod,nome){
+  limpar();
+  const convite=new URL('index.html?c='+cod,location.href).href;
+  tela.innerHTML=
+   '<div class="linha" style="margin-bottom:14px"><button class="btn vazio peq" id="volta">← Minhas turmas</button></div>'+
+   '<div class="cartao"><h2>'+esc(nome)+'</h2>'+
+   '<p>Código para os alunos: <span class="codigo">'+esc(cod)+'</span></p>'+
+   '<p class="sub" style="margin-top:6px">Link direto da sala: <a href="'+esc(convite)+'" target="_blank">'+esc(convite)+'</a></p>'+
+   '<div class="linha" style="margin-top:12px"><button class="btn sec peq" id="cp">Copiar convite</button></div></div>'+
+   '<div class="cartao"><h2>Novo material</h2>'+
+   '<p class="sub">No Google Drive: clique com o botão direito no arquivo → Compartilhar → <b>Qualquer pessoa com o link</b> (leitor) → Copiar link.</p>'+
+   '<label for="mt">Título</label><input id="mt" type="text" maxlength="120" placeholder="Ex.: Gabarito da Prova 2">'+
+   '<label for="mp">Tipo</label><select id="mp">'+Object.keys(CLASS.TIPOS).map(k=>'<option value="'+k+'">'+CLASS.TIPOS[k][0]+' '+CLASS.TIPOS[k][1]+'</option>').join('')+'</select>'+
+   '<label for="ml">Link do Google Drive (ou outro link https)</label><input id="ml" type="url" placeholder="https://drive.google.com/file/d/…">'+
+   '<label for="mo">Observação (opcional)</label><input id="mo" type="text" maxlength="200" placeholder="Ex.: Resolução comentada das questões 1 a 5">'+
+   '<label style="font-weight:400;display:flex;gap:8px;align-items:center;margin-top:14px"><input type="checkbox" id="mv" checked> Liberar para os alunos agora</label>'+
+   '<div style="margin-top:14px"><button class="btn" id="add">Adicionar material</button></div></div>'+
+   '<div class="cartao"><h2>Materiais</h2><div id="ms"><p class="vazio-txt">Carregando…</p></div></div>'+
+   '<div class="cartao"><details><summary id="alsum">Alunos na turma</summary><div id="als" style="margin-top:10px"></div></details></div>'+
+   '<div class="cartao"><button class="btn perigo peq" id="del">Excluir esta turma</button></div>';
+  $('#volta').onclick=painel;
+  $('#cp').onclick=()=>{ const t='Sala de aula virtual — '+nome+'\nEntre em '+convite+'\nCódigo da turma: '+cod; (navigator.clipboard?navigator.clipboard.writeText(t):Promise.reject()).then(()=>CLASS.toast('Convite copiado!'),()=>CLASS.toast('Copie o link manualmente.')); };
+
+  let pub={}, ras={};
+  const desenha=()=>{
+    const L=[].concat(CLASS.lista(ras).map(m=>Object.assign(m,{_r:1})),CLASS.lista(pub));
+    $('#ms').innerHTML=L.length?L.map(m=>{
+      const tp=CLASS.TIPOS[m.tipo]||CLASS.TIPOS.outro;
+      return '<div class="item'+(m._r?' rasc':'')+'"><span class="ic">'+tp[0]+'</span><div class="tx"><span class="etiqueta">'+esc(tp[1])+'</span>'+(m._r?'<span class="etiqueta rasc">Oculto</span>':'')+'<b>'+esc(m.titulo)+'</b>'+
+        (m.obs?'<span class="sub">'+esc(m.obs)+'</span><br>':'')+'<a href="'+esc(m.link)+'" target="_blank" rel="noopener noreferrer" class="sub">abrir link</a></div>'+
+        '<div class="linha"><button class="btn sec peq" data-a="tog" data-id="'+esc(m.id)+'" data-r="'+(m._r?1:0)+'">'+(m._r?'Liberar':'Ocultar')+'</button>'+
+        '<button class="btn perigo peq" data-a="del" data-id="'+esc(m.id)+'" data-r="'+(m._r?1:0)+'">Excluir</button></div></div>';
+    }).join(''):'<p class="vazio-txt">Nenhum material ainda.</p>';
+    $('#ms').querySelectorAll('button').forEach(b=>b.onclick=()=>{
+      const id=b.dataset.id, rasc=b.dataset.r==='1', src=(rasc?ras:pub)[id];
+      const pa='class/turmas/'+cod+'/materiais/'+id, pr='class/rascunhos/'+cod+'/'+id;
+      if(b.dataset.a==='tog'){
+        const o={}; o[rasc?pr:pa]=null; o[rasc?pa:pr]=Object.assign({},src,{publicado:rasc?CLASS.TS:src.publicado||Date.now()});
+        CLASS.db.ref().update(o).then(()=>CLASS.toast(rasc?'Liberado para os alunos.':'Material ocultado.')).catch(e=>{console.error(e);CLASS.toast('Não foi possível alterar.');});
+      } else CLASS.confirmar2(b,'Confirmar exclusão',()=>CLASS.db.ref(rasc?pr:pa).remove().then(()=>CLASS.toast('Excluído.')));
+    });
+  };
+  ouvir(CLASS.db.ref('class/turmas/'+cod+'/materiais'),v=>{ pub=v||{}; desenha(); });
+  ouvir(CLASS.db.ref('class/rascunhos/'+cod),v=>{ ras=v||{}; desenha(); });
+  ouvir(CLASS.db.ref('class/alunos/'+cod),v=>{
+    const ks=Object.keys(v||{}).sort((a,b)=>v[a].nome.localeCompare(v[b].nome,'pt-BR'));
+    $('#alsum').textContent='Alunos na turma ('+ks.length+')';
+    $('#als').innerHTML=ks.length?ks.map(k=>'<div class="linha" style="justify-content:space-between;border-bottom:1px solid var(--linha);padding:6px 0"><span>'+esc(v[k].nome)+' <span class="sub">· último acesso '+CLASS.fmt(v[k].entrou)+'</span></span><button class="btn perigo peq" data-k="'+esc(k)+'">Remover</button></div>').join(''):'<p class="sub">Ninguém entrou ainda.</p>';
+    $('#als').querySelectorAll('button').forEach(b=>b.onclick=()=>CLASS.confirmar2(b,'Confirmar',()=>CLASS.db.ref('class/alunos/'+cod+'/'+b.dataset.k).remove()));
+  });
+
+  $('#add').onclick=async()=>{
+    const titulo=$('#mt').value.trim(), link=$('#ml').value.trim(), liberar=$('#mv').checked;
+    if(!titulo) return CLASS.toast('Escreva o título do material.');
+    if(!CLASS.linkOk(link)) return CLASS.toast('Cole um link que comece com https://');
+    const id=CLASS.db.ref().push().key, m={titulo:titulo,tipo:$('#mp').value,link:link,criado:CLASS.TS};
+    const obs=$('#mo').value.trim(); if(obs) m.obs=obs;
+    if(liberar) m.publicado=CLASS.TS;
+    try{
+      await CLASS.db.ref(liberar?'class/turmas/'+cod+'/materiais/'+id:'class/rascunhos/'+cod+'/'+id).set(m);
+      ['#mt','#ml','#mo'].forEach(s=>$(s).value=''); CLASS.toast(liberar?'Publicado para a turma!':'Salvo como oculto.');
+    }catch(e){ console.error(e); CLASS.toast('O banco recusou. Confira as regras do Firebase.'); }
+  };
+  $('#del').onclick=function(){ CLASS.confirmar2(this,'Excluir turma e materiais?',async()=>{
+    const o={}; o['class/turmas/'+cod]=null; o['class/rascunhos/'+cod]=null; o['class/alunos/'+cod]=null; o['class/professores/'+user.uid+'/turmas/'+cod]=null;
+    try{ await CLASS.db.ref().update(o); CLASS.toast('Turma excluída.'); painel(); }catch(e){ console.error(e); CLASS.toast('Não foi possível excluir.'); }
+  }); };
+}
+})();
+</script>
+</body>
+</html>

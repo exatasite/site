@@ -1,0 +1,41 @@
+{
+  "class": {
+    "turmas": {
+      "$cod": {
+        ".read": "auth != null",
+        ".write": "auth != null && auth.token.email != null && ((!data.exists() && newData.child('dono').val() === auth.uid) || (data.exists() && data.child('dono').val() === auth.uid))",
+        "nome": { ".validate": "newData.isString() && newData.val().length >= 2 && newData.val().length <= 60" },
+        "materiais": {
+          "$id": {
+            ".validate": "newData.hasChildren(['titulo', 'tipo', 'link']) && newData.child('titulo').isString() && newData.child('titulo').val().length <= 120 && newData.child('link').isString() && newData.child('link').val().matches(/^https:\\/\\/.+/) && newData.child('link').val().length <= 800"
+          }
+        }
+      }
+    },
+    "rascunhos": {
+      "$cod": {
+        ".read": "auth != null && root.child('class/turmas/' + $cod + '/dono').val() === auth.uid",
+        ".write": "auth != null && auth.token.email != null && root.child('class/turmas/' + $cod + '/dono').val() === auth.uid",
+        "$id": {
+          ".validate": "newData.hasChildren(['titulo', 'tipo', 'link']) && newData.child('titulo').isString() && newData.child('titulo').val().length <= 120 && newData.child('link').isString() && newData.child('link').val().matches(/^https:\\/\\/.+/) && newData.child('link').val().length <= 800"
+        }
+      }
+    },
+    "alunos": {
+      "$cod": {
+        ".read": "auth != null && root.child('class/turmas/' + $cod + '/dono').val() === auth.uid",
+        ".write": "auth != null && root.child('class/turmas/' + $cod + '/dono').val() === auth.uid",
+        "$uid": {
+          ".write": "auth != null && auth.uid === $uid && root.child('class/turmas/' + $cod).exists()",
+          ".validate": "newData.hasChildren(['nome', 'entrou']) && newData.child('nome').isString() && newData.child('nome').val().length >= 2 && newData.child('nome').val().length <= 40"
+        }
+      }
+    },
+    "professores": {
+      "$uid": {
+        ".read": "auth != null && auth.uid === $uid",
+        ".write": "auth != null && auth.uid === $uid && auth.token.email != null"
+      }
+    }
+  }
+}
